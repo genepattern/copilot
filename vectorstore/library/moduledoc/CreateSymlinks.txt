@@ -1,0 +1,54 @@
+CreateSymlinks is on version 1.
+A description of CreateSymlinks is Creates symlinks to the input files in the job results directory. This is intended to be a helper module for creating scatter-gather pipelines. Note that this module is not supported on Windows..
+CreateSymlinks is a GenePattern module written by Marc-Danie Nazaire, Broad Institute.
+CreateSymlinks can be categorized as Preprocess & Utilities.
+CreateSymlinks has the following parameters: input files.
+The CreateSymlinks GenePattern module is a utility tool for creating symbolic links to input files in a job's results directory.
+CreateSymlinks helps manage file organization in computational biology workflows, particularly in scatter-gather pipeline strategies.
+The module is specifically designed for Linux and Mac operating systems, making it unsuitable for Windows-based bioinformatics environments.
+CreateSymlinks allows researchers to create multiple symbolic links to input files, which can be useful for complex data processing and analysis pipelines.
+The module is authored by Marc-Danie Nazaire from the Broad Institute, a leading center for computational genomics research.
+CreateSymlinks serves as a preprocessing utility in GenePattern, enabling more flexible file management during bioinformatics data analysis.
+The module requires at least one input file and generates symlinks in the job's output directory, facilitating easier file tracking and organization.
+CreateSymlinks is particularly useful in scenarios where multiple files need to be processed or referenced in a standardized directory structure.
+The module leverages symbolic linking, a Unix/Linux file system feature that creates lightweight references to original files without duplicating data.
+CreateSymlinks can help reduce storage redundancy while maintaining clear file organization in complex bioinformatics computational workflows.
+input_files: File, Required, Files that will be symlinked to the output directory in CreateSymlinks module
+input_files represent the source files that need to be copied as symbolic links in the CreateSymlinks workflow
+input_files are mandatory for the CreateSymlinks module to function correctly
+input_files can be multiple files that will each receive a symlink in the job results directory
+input_files must exist and be accessible to the CreateSymlinks module before symlinking occurs
+input_files are typically used in scatter-gather pipeline scenarios to prepare files for downstream processing
+input_files will maintain their original file paths while creating lightweight references in the output directory
+input_files symlinks preserve the original file metadata and permissions in the CreateSymlinks module
+input_files can include any file type supported by the underlying operating system
+input_files are processed sequentially during the symlink creation process in CreateSymlinks
+CreateSymlinks module creates symlinks to input files with the following characteristics:
+Input Files:
+One or more files of any type or format that the user wants to create symlinks for in the output directory.
+Output Files:
+Symlinks in the job results directory that point to the original input files, preserving the original file names and locations.
+Detailed file descriptions:
+CreateSymlinks module supports creating symlinks for any input file type.
+Input files can be of any format: text, binary, genomic data files, images, etc.
+Input files are not modified during the symlink creation process.
+Symlinks maintain the original file name and path reference.
+Output symlinks are created in the job results directory.
+Symlinks act as references to the original files without duplicating file contents.
+CreateSymlinks is designed for scatter-gather pipeline workflows.
+Module is only supported on Linux and Mac operating systems.
+Symlinks provide a way to organize and reference files without additional storage overhead.
+Module preserves original file metadata and permissions.
+CreateSymlinks module helps researchers create symbolic links to input files in a job results directory
+CreateSymlinks is designed specifically for scatter-gather computational pipelines in bioinformatics research
+The CreateSymlinks module requires at least one input file to function
+CreateSymlinks is not supported on Windows operating systems
+CreateSymlinks is written in Perl and can run on Linux and Mac platforms
+The module creates symlinks that allow files to be easily referenced or duplicated without physically copying data
+CreateSymlinks is classified as a preprocessing and utility module for computational biology workflows
+The module allows researchers to create a unified directory structure for complex computational analyses
+CreateSymlinks helps manage file organization in computational biology research pipelines
+The module was developed by Marc-Danie Nazaire at the Broad Institute
+CreateSymlinks version 1 was released on 2014-07-17
+The module supports any CPU type and is designed for flexible file management
+CreateSymlinks simplifies file handling in scatter-gather computational strategies

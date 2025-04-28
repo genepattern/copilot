@@ -1,0 +1,59 @@
+Salmon.Indexer is on version 0.5.
+A description of Salmon.Indexer is Indexing a transcriptome in order to perform quantification with Salmon (version 1.6.0) and Alevin. In order to quantify gene expression using Salmon or Alevin, the transcriptome must first be indexed. This module performs this indexing step..
+Salmon.Indexer is a GenePattern module written by Rob Patro, COMBINE Lab, Department of Computer Science, University of Maryland. Wrapped as a module by Anthony S. Castanza, Mesirov Lab, UCSD School of Medicine..
+Salmon.Indexer can be categorized as Transcriptomics, RNA-Seq, Quantification, Indexing.
+Salmon.Indexer has the following parameters: GTF gz, Transcriptome fa gz, Genome fa gz, Kmer, Index Mode, Use Gencode.
+The Salmon.Indexer module is a critical first step in RNA-seq transcript quantification using the Salmon algorithm.
+The Salmon.Indexer prepares genomic data for downstream expression analysis by creating an efficient computational index.
+Salmon.Indexer generates a specialized data structure that allows rapid alignment and quantification of RNA sequencing reads.
+The module requires three primary input files: a GTF annotation file, a transcriptome FASTA file, and a genome FASTA file.
+Salmon.Indexer uses a k-mer based indexing strategy to create a compact representation of the transcriptome.
+The default k-mer length for Salmon.Indexer is 31, which can be adjusted based on read length characteristics.
+Salmon.Indexer can generate both full and partial decoy-aware indices to improve quantification accuracy.
+The module supports specialized processing for Gencode gene annotations with complex identifier formats.
+Salmon.Indexer can automatically extract transcript sequences using GFFread if a transcriptome FASTA is not provided.
+The output of Salmon.Indexer is a compressed index file used by Salmon for rapid transcript quantification.
+Salmon.Indexer is part of the broader GenePattern bioinformatics platform, facilitating reproducible genomic analysis.
+The module implements the computational indexing strategy described in the seminal Salmon publication by Patro et al.
+Salmon.Indexer is particularly useful for researchers performing differential gene expression and transcript-level analyses.
+Salmon.Indexer module parameter descriptions:
+GTF gz: File type (string), genomic features file for indexing, gzipped format, required input for transcriptome annotation
+Transcriptome fa gz: File type (string), transcript sequence FASTA file, gzipped, optional input with fallback extraction method
+Genome fa gz: File type (string), genomic sequence FASTA file, gzipped, required for potential transcript sequence extraction
+Kmer: Integer type, odd-numbered minimum match length for indexing, default is 31, adjustable for read length variations
+Index Mode: String type, decoy index generation strategy, options include full or partial decoy index configuration
+Use Gencode: Boolean type, handling Gencode-specific FASTA record ID formatting with "|" characters, default likely false
+Salmon.Indexer input files:
+GTF gz file contains genomic feature annotations for transcriptome indexing
+Transcriptome fa gz file contains transcript sequence information for the organism
+Genome fa gz file contains full genomic sequence data for the organism's assembly
+Kmer parameter specifies minimum match length for indexing transcriptome
+Salmon.Indexer output files:
+[index_details]_index.tar.gz contains compressed salmon index for downstream quantification
+<GTF.basename>.fa.gz generated transcriptome fasta when no input transcriptome fasta is provided
+Input file format details for Salmon.Indexer:
+GTF gz file must be gzipped genomic feature annotation in GTF format
+Transcriptome fa gz file must be gzipped FASTA format with transcript sequences
+Genome fa gz file must be gzipped FASTA format with full genomic sequence
+Kmer must be an odd-numbered integer for transcriptome indexing
+Output file format details for Salmon.Indexer:
+[index_details]_index.tar.gz is a compressed tar archive containing salmon index files
+<GTF.basename>.fa.gz is a gzipped FASTA file generated using GFFread when no input transcriptome fasta exists
+Salmon.Indexer file processing characteristics:
+GTF gz file provides genomic feature annotations for indexing
+Transcriptome fa gz file contains sequence data for transcript mapping
+Genome fa gz file supplies reference genomic sequence information
+Index generation supports full and partial decoy-aware indexing modes
+Salmon.Indexer is a computational tool for preparing transcriptome data for gene expression quantification
+Salmon.Indexer generates an indexed reference transcriptome that enables rapid transcript abundance estimation
+The Salmon.Indexer module requires three primary input files: a genomic GTF file, a transcriptome FASTA file, and a genome FASTA file
+Salmon.Indexer uses a k-mer based indexing strategy to create an efficient computational representation of transcript sequences
+The default k-mer length for Salmon.Indexer is 31, which is optimized for reads longer than 70 base pairs
+Salmon.Indexer can generate two types of indices: a full decoy index or a partial decoy index, which impact downstream quantification accuracy
+The module can automatically extract transcript sequences using GFFread if a transcriptome FASTA is not directly provided
+Salmon.Indexer was developed by Rob Patro and the COMBINE Lab at the University of Maryland
+The indexing process is a critical preparatory step for using Salmon and Alevin for RNA-seq data analysis
+Salmon.Indexer supports specialized handling of Gencode gene identifiers with specific character parsing options
+The output of Salmon.Indexer is a compressed index file that can be directly used for transcript quantification
+Salmon.Indexer is implemented as a shell script and is available as a Docker container for consistent computational environments
+The module is based on the Salmon algorithm, which provides fast and bias-aware quantification of transcript expression

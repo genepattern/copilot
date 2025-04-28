@@ -1,0 +1,79 @@
+GISTIC2 is on version 2.0.23.
+A description of GISTIC2 is Genomic Identification of Significant Targets in Cancer, version 2.0. The GISTIC module identifies regions of the genome that are significantly amplified or deleted across a set of samples. Each aberration is assigned a G-score that considers the amplitude of the aberration as well as the frequency of its occurrence across samples..
+GISTIC2 is a GenePattern module written by Gad Getz, Rameen Beroukhim, Craig Mermel, Steve Schumacher and Jen Dobson.
+GISTIC2 can be categorized as Genomic Analysis, Cancer Research, Copy Number Variation.
+GISTIC2 has the following parameters: base_dir, seg_file, refgene, markers, t_amp, t_del, qv_thresh, remove_X, run_broad_analysis.
+The GISTIC2 module is a powerful bioinformatics tool for identifying significant copy number alterations in cancer genomics.
+GISTIC2 helps researchers detect genomic regions that are frequently amplified or deleted across multiple cancer samples.
+The GISTIC2 module calculates a G-score for each genomic region, considering both the amplitude and frequency of copy number changes.
+GISTIC2 uses a statistical approach to assign q-values that indicate the significance of detected copy number alterations.
+The GISTIC2 module can distinguish between broad chromosomal events and focal genetic alterations.
+GISTIC2 identifies "peak regions" with the most significant copy number changes within larger aberrant genomic regions.
+The module generates multiple output files that provide detailed insights into copy number variations across cancer samples.
+GISTIC2 can help researchers pinpoint potential cancer driver genes located in frequently altered genomic regions.
+The module allows customization of analysis parameters, such as amplification and deletion thresholds.
+GISTIC2 can process segmented copy number data from various genomic profiling platforms.
+The module supports multiple reference genome builds, including human genome versions hg16 through hg19.
+GISTIC2 can perform gene-level analysis to identify specific genes within significant copy number alteration regions.
+The module provides visualization outputs like heatmaps and score plots to help researchers interpret complex genomic data.
+GISTIC2 is particularly useful in cancer research for understanding recurrent genetic alterations across different tumor types.
+The module can handle large-scale genomic datasets and offers memory optimization options for computational efficiency.
+base_dir: String, Required, Directory to save all output files for GISTIC2 module
+seg_file: String, Required, Path to segmented data input file containing copy number information for samples
+refgene: String, Required, Path to reference genome data file specifying gene and cytoband locations
+markers: String, Optional, Path to markers input file identifying marker positions in original dataset
+maxspace: Numeric, Optional, Maximum spacing between pseudo-markers in bases, default is 10,000
+t_amp: Numeric, Optional, Threshold for copy number amplifications, default is 0.1
+t_del: Numeric, Optional, Threshold for copy number deletions, default is 0.1
+join_segment_size: Numeric, Optional, Minimum number of markers allowed in segments, default is 4
+qv_thresh: Numeric, Optional, Significance threshold for q-values, default is 0.25
+ext: String, Optional, Extension to append to output files, default is empty string
+fname: String, Optional, Base filename to prepend to output files, default is no basename
+remove_X: Integer, Optional, Flag to remove sex chromosome data, default is 1 (remove X,Y)
+cap: Numeric, Optional, Minimum and maximum cap values for log2 ratio data, default is 1.5
+run_broad_analysis: Integer, Optional, Flag to perform broad-level analysis, default is 0
+broad_len_cutoff: Numeric, Optional, Threshold to distinguish broad from focal events, default is 0.98
+use_two_sided: Integer, Optional, Flag to create two-dimensional quadrant figure, default is 0
+ziggs.max_segs_per_sample: Integer, Optional, Maximum segments allowed per sample, default is 2500
+res: Numeric, Optional, Resolution for empirical distribution generation, default is 0.05
+conf_level: Numeric, Optional, Confidence level for driver region calculation, default is 0.75
+do_gene_gistic: Integer, Optional, Flag to use gene-level GISTIC algorithm, default is 0
+do_arbitration: Integer, Optional, Flag to use arbitrated peel-off algorithm, default is 1
+peak_types: String, Optional, Method for evaluating peak significance, default is robust
+arm_peeloff: Integer, Optional, Flag to enable arm-level peel-off of events, default is 0
+sample_center: String, Optional, Method for centering samples, default is median
+conserve_disk_space: Integer, Optional, Flag to avoid saving large Matlab objects, default is 0
+use_segarray: Integer, Optional, Flag to use memory compression scheme, default is 1
+write_gene_files: Integer, Optional, Flag to save gene tables, default is 0
+gene_collapse_method: String, Optional, Method for reducing marker-level to gene-level copy number data, default is mean
+save_seg_data: Integer, Optional, Flag to save preprocessed segmented input data, default is 1
+save_data_files: Integer, Optional, Flag to save native Matlab output files, default is 1
+use set_verbose_level(): Integer, Optional, Verbosity level for program execution log, default is 0
+Here are the input and output file descriptions for the GISTIC2 module:
+Input Files:
+Segmentation file contains six tab-delimited columns with sample copy number segment data across chromosomes
+Markers file identifies marker positions used in original dataset with three tab-delimited columns
+Reference genome file contains gene and cytoband location information in Matlab format
+Array list file optionally specifies subset of samples to analyze with one column of sample identifiers
+CNV file optionally lists germline copy number variations to exclude from analysis
+Output Files:
+All Lesions file summarizes significant amplification and deletion regions across samples with detailed genomic coordinates
+Amplification Genes file lists genes found in amplification peak regions with statistical significance metrics
+Deletion Genes file lists genes found in deletion peak regions with statistical significance metrics
+Gistic Scores file provides genome-wide q-values, G-scores, and aberration frequencies for amplifications and deletions
+Segmented Copy Number heatmap visualizes genomic copy number profiles across samples
+Amplification Score plot shows G-scores and q-values for amplification events
+Deletion Score plot shows G-scores and q-values for deletion events
+GISTIC2 is a computational method for identifying significant regions of genomic copy number alterations in cancer samples.
+GISTIC2 calculates a G-score for each genomic region that considers both the amplitude and frequency of copy number changes across multiple samples.
+The module assigns statistical significance to genomic regions using false discovery rate (FDR) q-values, with regions below a user-defined threshold considered significant.
+GISTIC2 identifies "peak regions" within aberrant genomic segments that have the highest amplitude and frequency of alteration.
+The method uses a leave-one-out algorithm to determine robust "wide peak" boundaries that are less sensitive to individual sample variations.
+GISTIC2 can distinguish between broad chromosomal-level events and focal genetic alterations in cancer genomes.
+The module generates multiple output files, including a comprehensive summary of significant amplifications and deletions across samples.
+GISTIC2 requires input files including segmented copy number data, a reference genome file, and optionally a markers file.
+The analysis can be customized through multiple parameters like amplification/deletion thresholds, significance cutoffs, and analysis resolution.
+GISTIC2 provides gene-level insights by identifying genes located within significant copy number alteration regions.
+The module can perform both focal and broad-level analyses of genomic copy number changes.
+GISTIC2 generates visualization outputs like heatmaps and score plots to help researchers interpret genomic alteration patterns.
+The method was developed to provide sensitive and confident localization of somatic copy number alterations across cancer samples.

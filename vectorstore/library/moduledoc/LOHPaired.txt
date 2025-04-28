@@ -1,0 +1,58 @@
+LOHPaired is on version .
+A description of LOHPaired is Detects Loss of Heterozygosity (LOH). It takes as input a GenePattern .snp file that contains paired normal-target samples with genotype calls and returns a GenePattern .loh file containing LOH calls for each probe and array pair..
+LOHPaired is a GenePattern module written by Jim Robinson, David Twomey, Joshua Gould, gp-help@broad.mit.edu.
+LOHPaired can be categorized as SNP Analysis.
+LOHPaired has the following parameters: input filename, sample info filename, output file.
+The LOHPaired module is a computational tool for detecting Loss of Heterozygosity (LOH) in paired normal and tumor samples.
+LOHPaired helps researchers identify genetic changes where a previously heterozygous region becomes homozygous in a tumor sample.
+The module specifically analyzes genetic variations by comparing genotype calls between normal and tumor tissue samples.
+LOHPaired works with non-allele-specific SNP files, processing genetic information from Affymetrix SNP chip data.
+The module classifies genetic changes into specific categories: LOH (L), Retention (R), Conflict (C), and Non-informative calls (N).
+LOHPaired is particularly useful in cancer research for understanding genetic alterations that might contribute to tumor development.
+The module requires a sample information file that defines normal-tumor sample pairs for comparative analysis.
+LOHPaired generates an output .loh file that provides detailed genetic call information for each probe in the sample pairs.
+The module's classification system allows researchers to systematically track genetic changes across different genomic regions.
+LOHPaired is part of the GenePattern suite, making it accessible to researchers with varying computational backgrounds.
+The tool is based on computational methods developed by researchers like Ming Lin and colleagues in genomic analysis.
+LOHPaired can help identify potential genetic mechanisms underlying cancer progression and tumor development.
+The module supports cross-platform analysis, running on various operating systems and computer architectures.
+LOHPaired provides a standardized approach to detecting Loss of Heterozygosity across different genetic samples.
+The module is particularly valuable in translational research connecting genetic variations to potential disease mechanisms.
+input filename:
+- Type: File
+- Description: GenePattern .snp file containing paired normal-target samples with genotype calls
+- Required: Yes
+- Module: LOHPaired requires a specific .snp file format with non-allele-specific data
+sample info filename:
+- Type: File
+- Description: Tab-delimited sample information file specifying normal-target sample pairs
+- Required: Yes
+- Module: LOHPaired needs a sample information file with specific column labels like "Paired" and "Array"
+output file:
+- Type: File
+- Description: Name of the output file containing LOH calls for each probe and sample pair
+- Required: No
+- Default: Automatically named as input-file.loh
+- Module: LOHPaired generates a .loh file with detailed loss of heterozygosity analysis results
+LOHPaired module input .snp file contains paired normal-target samples with genotype calls.
+LOHPaired module input .snp file is a non-allele-specific file with one intensity value per probe.
+LOHPaired module requires a sample information file in tab-delimited format with columns for Paired and Array.
+LOHPaired module sample information file first row contains column labels identifying content.
+LOHPaired module sample information file subsequent rows describe individual samples.
+LOHPaired module output is a .loh file containing LOH calls for each probe in each array pair.
+LOHPaired module .loh file includes LOH call values: L (LOH), R (Retention), C (Conflict), N (Non-informative), or No Call.
+LOHPaired module .loh file provides detailed mapping of genotype changes between normal and tumor samples.
+LOHPaired module supports detection of loss of heterozygosity across paired sample sets.
+LOHPaired module can process multiple normal-tumor sample pairs in a single analysis.
+The LOHPaired module detects loss of heterozygosity (LOH) in paired normal-tumor genetic samples.
+LOHPaired analyzes genetic variation by comparing genotype calls between normal and tumor tissue samples.
+The module requires a GenePattern .snp file containing paired normal and target sample genotype information.
+LOHPaired specifically works with non-allele-specific SNP files that have one intensity value per genetic probe.
+The module classifies genetic probe states into five distinct categories: LOH, Retention, Conflict, Non-informative, and No Call.
+LOH detection depends on comparing genotype calls between normal and tumor samples across different genetic probe states.
+The module uses a matrix-based approach to determine genetic alterations by examining allelic configurations in normal and tumor samples.
+LOHPaired generates an output .loh file that contains LOH calls for each probe in each array pair.
+The underlying algorithm is based on computational methods developed by researchers like Ming Lin and colleagues in SNP array analysis.
+The module requires a sample information file that specifies normal-tumor sample pairings and array names.
+LOHPaired can detect genetic changes by identifying shifts in heterozygosity between normal and tumor genetic samples.
+The module is platform-independent and implemented in Java, making it widely accessible for genetic research.

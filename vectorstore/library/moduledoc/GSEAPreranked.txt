@@ -1,0 +1,52 @@
+GSEAPreranked is on version 7.4.x.
+A description of GSEAPreranked is A GenePattern module for running the GSEA Preranked method. It runs gene set enrichment analysis against a user-supplied ranked list of genes, determining whether a priori defined sets of genes show statistically significant enrichment at either end of the ranking..
+GSEAPreranked is a GenePattern module written by Chet Birger, David Eby; Broad Institute.
+GSEAPreranked can be categorized as Gene Set Enrichment Analysis, Genomic Analysis.
+GSEAPreranked has the following parameters: ranked list, gene sets database, number of permutations, collapse dataset, chip platform, scoring scheme, max gene set size, min gene set size.
+The GSEAPreranked GenePattern module is a powerful computational tool for analyzing gene set enrichment across ranked genomic datasets.
+GSEAPreranked allows researchers to perform gene set enrichment analysis on pre-ranked lists of genes or genomic features from various experimental platforms.
+The module can analyze diverse datasets like microarray expression data, RNA-Seq, ChIP-Seq, and GWAS results by evaluating cumulative changes across predefined gene sets.
+GSEAPreranked calculates an enrichment score for each gene set, reflecting how frequently gene set members appear at the top or bottom of a ranked dataset.
+The module uses a statistical permutation test to assess the significance of gene set enrichment, with a recommended 1000 permutations for robust results.
+Users can select gene sets from the Molecular Signatures Database (MSigDB) or upload custom gene set files in GMT, GMX, or GRP formats.
+GSEAPreranked provides flexible options for handling probe set data, including collapsing multiple probes to a single gene symbol and choosing different collapsing modes.
+The module generates comprehensive output including enrichment reports, statistical summaries, and visualization plots to help researchers interpret complex genomic data.
+Researchers can customize the analysis by selecting specific scoring schemes, setting gene set size limits, and controlling normalization methods.
+GSEAPreranked is particularly useful for interpreting genome-wide datasets by connecting individual gene rankings to broader biological pathways and functional categories.
+ranked list: File (RNK), Required, Contains the rank-ordered gene or feature list for GSEA Preranked analysis.
+gene sets database: File (GMT/GMX/GRP), Required, Specifies gene sets from MSigDB or user-uploaded gene set files for enrichment analysis.
+number of permutations: Integer, Required, Determines statistical significance by specifying permutation count, default is 1000, recommended to start with 10 for initial testing.
+collapse dataset: String, Optional, Controls probe set collapsing method, default is Remap_Only, options include No_Collapse and Collapse.
+chip platform: File (CHIP), Conditional, Required when collapse dataset is set to true, specifies chip annotation file for gene symbol mapping.
+scoring scheme: String, Optional, Defines enrichment statistic calculation method, default is weighted, options include classic, weighted_p2, weighted_p1.5.
+max gene set size: Integer, Optional, Filters out gene sets larger than specified size after dataset filtering, default is 500.
+min gene set size: Integer, Optional, Filters out gene sets smaller than specified size after dataset filtering, default is 15.
+collapsing mode for probe sets: String, Optional, Determines how multiple probes for a single gene are collapsed, default is Abs_max_of_probes.
+normalization mode: String, Optional, Specifies method for normalizing enrichment scores, default is meandiv.
+omit features with no symbol match: Boolean, Optional, Controls whether probes/genes without gene symbols are excluded, default is true.
+make detailed gene set report: Boolean, Optional, Determines if detailed reports are generated for enriched gene sets, default is true.
+num top sets: Integer, Optional, Specifies number of top gene sets for summary plots and analysis, default is 20.
+random seed: Integer/String, Optional, Sets seed for random number generation, default is timestamp.
+output file name: String, Optional, Specifies name for output file, cannot include spaces, default is derived from input dataset.
+create svgs: Boolean, Optional, Controls generation of SVG images alongside PNGs, default is false.
+selected gene sets: String, Optional, Allows selection of specific gene sets from provided database files.
+alt delim: String, Optional, Provides alternate delimiter for gene set names.
+GSEAPreranked module input file: ranked list (RNK format) contains gene identifiers and their corresponding ranking statistic values.
+GSEAPreranked module input file: gene sets database file in GMT, GMX, or GRP format containing predefined sets of genes for enrichment analysis.
+GSEAPreranked module optional input file: chip platform (CHIP format) for mapping probe identifiers to gene symbols.
+GSEAPreranked module output file: enrichment report archive (ZIP) containing comprehensive analysis results.
+GSEAPreranked module output file: HTML enrichment report with statistical summaries and visualizations.
+GSEAPreranked module optional output file: PNG images illustrating enrichment analysis results.
+GSEAPreranked module optional output file: compressed SVG images for high-resolution visualization of enrichment results.
+GSEAPreranked is a GenePattern module for conducting Gene Set Enrichment Analysis (GSEA) on pre-ranked gene lists.
+GSEAPreranked allows researchers to analyze gene sets against a user-supplied ranked list of genes or genomic features.
+The module can handle diverse data types like microarray expression, GWAS results, ChIP-Seq, and RNA-Seq data.
+GSEAPreranked calculates an enrichment score for each gene set, reflecting how frequently gene set members appear at the top or bottom of the ranked dataset.
+The module always performs permutations by gene set, which differs from standard GSEA's phenotype permutation option.
+Users must ensure their ranked list contains no duplicate ranking values to prevent arbitrary gene ordering and potential result errors.
+GSEAPreranked uses a weighted scoring scheme by default, incrementing a running sum statistic based on the absolute value of the ranking metric.
+The module allows selection of gene sets from the Molecular Signatures Database (MSigDB) or user-uploaded gene set files.
+Researchers can customize analysis parameters like number of permutations, gene set size filtering, and scoring scheme.
+The module generates comprehensive enrichment reports, including normalized enrichment scores and statistical significance assessments.
+GSEAPreranked supports probe set collapsing and gene symbol remapping to standardize genomic feature identification.
+The analysis helps interpret genome-wide data by identifying statistically significant enrichment of predefined gene sets.

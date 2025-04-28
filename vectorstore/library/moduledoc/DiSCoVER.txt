@@ -1,0 +1,46 @@
+DiSCoVER is on version 1.0.
+A description of DiSCoVER is A Python implementation of DiSCoVER, intended to be used for drug recommendation based on RNA-seq expression (e.g., the results from Kallisto)..
+DiSCoVER is a GenePattern module written by Edwin Juarez.
+DiSCoVER can be categorized as Drug Recommendation, RNA-seq, Bioinformatics.
+DiSCoVER has the following parameters: gene_expression, select_control, control.
+The DiSCoVER GenePattern module is a computational tool for recommending potential therapeutic drugs based on RNA-seq gene expression data.
+DiSCoVER enables researchers to analyze gene expression profiles and identify novel drug treatment strategies for rare or complex tumors.
+The module can process gene expression data in two specific CSV formats: a "wide" format from Kallisto and a "tall" format with three columns of gene expression information.
+DiSCoVER allows users to select different control gene expression datasets, including custom controls, cerebellar stem cells, or neural stem cells for comparative analysis.
+The module is implemented in Python 3.7 and can run on any operating system, making it widely accessible to researchers across different computational environments.
+DiSCoVER uses computational modeling to match gene expression patterns with potential drug treatments, helping researchers discover innovative therapeutic approaches.
+The module is particularly useful for studying rare tumors where traditional drug discovery methods might be challenging or limited.
+DiSCoVER integrates computational analysis with genetic data to provide personalized drug recommendation insights for complex medical conditions.
+The GenePattern implementation of DiSCoVER makes advanced drug recommendation algorithms more accessible to researchers without extensive computational expertise.
+DiSCoVER can help researchers explore potential targeted therapies by comparing gene expression profiles against known drug-gene interaction databases.
+DiSCoVER module gene_expression parameter is a string representing the CSV file containing gene expression data, which is required for the analysis.
+DiSCoVER module select_control parameter is a string specifying the control type, with options 'Custom', 'Cerebellar stem cell', or 'Neural stem cell', defaulting to 'Custom'.
+DiSCoVER module control parameter is a string representing the CSV file with control gene expression data, which is required when 'Custom' is selected as the control type, with a default empty string.
+DiSCoVER module requires gene expression files in two acceptable CSV formats: "Wide" format with two rows and multiple columns, or "Tall" format with three columns and multiple rows.
+DiSCoVER module supports gene expression data analysis for drug recommendation based on RNA-seq expression results.
+DiSCoVER module can use predefined control types or allow custom control gene expression data input.
+DiSCoVER module is compatible with Python 3.7 and can run on any operating system and CPU type.
+DiSCoVER module input and output file descriptions:
+Gene expression input file (CSV) is a tabular dataset containing gene names and their quantified expression levels
+DiSCoVER module requires gene expression data in either "wide" or "tall" CSV format with specific column structures
+Input gene expression file can be generated from RNA-seq quantification tools like Kallisto
+Control gene expression input file follows the same CSV format as the primary gene expression file
+DiSCoVER module allows selection of predefined control datasets like Cerebellar stem cell or Neural stem cell
+Input CSV files must have consistent column structures with gene names and expression quantification
+Gene expression input files should represent normalized or processed RNA-seq expression measurements
+DiSCoVER module expects precise CSV formatting with specific row and column arrangements
+Input files can be manually created or generated from computational RNA-seq analysis pipelines
+CSV input files for DiSCoVER should contain numerical expression values for accurate drug recommendation analysis
+DiSCoVER is a Python-based computational module for recommending potential therapeutic drugs using RNA-seq gene expression data.
+DiSCoVER analyzes gene expression profiles to identify innovative drug treatment strategies for rare tumors.
+The module can process gene expression data in two specific CSV formats: a "wide" format from Kallisto and a "tall" format with three columns.
+DiSCoVER allows users to select different control datasets, including custom, cerebellar stem cell, and neural stem cell controls.
+The module was developed by researchers studying genetically accurate disease models and computational drug target identification.
+DiSCoVER is designed to work with Python 3.7 and is compatible with any operating system and CPU type.
+The module's input requires gene expression data files that quantify gene expression levels across different samples.
+DiSCoVER's underlying algorithm aims to discover potential therapeutic interventions by comparing experimental and control gene expression profiles.
+The module is distributed under a modified BSD license and is part of the GenePattern computational genomics platform.
+DiSCoVER was originally published in Clinical Cancer Research, describing its approach to identifying novel therapeutic targets for rare tumors.
+Users can access a demonstration notebook to understand how to use the DiSCoVER module effectively.
+The module supports both manual and automated generation of gene expression CSV files for analysis.
+DiSCoVER represents an computational approach to precision medicine, using gene expression data to suggest personalized drug recommendations.

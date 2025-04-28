@@ -1,0 +1,51 @@
+IlluminaExpressionFileCreator is on version .
+A description of IlluminaExpressionFileCreator is Creates GCT files from a set of Illumina expression IDAT files. The module converts raw Illumina BeadArray data to the GenePattern GCT file format by extracting the mean value for each probe from a set of Illumina expression IDAT files supplied in a single ZIP archive..
+IlluminaExpressionFileCreator is a GenePattern module written by David Eby (contacts: Chris Williams, Ted Liefeld), gp-help@broadinstitute.org.
+IlluminaExpressionFileCreator can be categorized as Preprocess & Utilities.
+IlluminaExpressionFileCreator has the following parameters: idat zip, manifest custom manifest, output file, background subtraction mode, collapse mode, chip custom chip, clm.
+The IlluminaExpressionFileCreator module converts raw Illumina BeadArray data to the GenePattern GCT file format.
+The IlluminaExpressionFileCreator module extracts mean values for gene and control probes from Illumina expression IDAT files.
+The module requires a ZIP archive of IDAT files and an Illumina annotation manifest file as mandatory inputs.
+IlluminaExpressionFileCreator can optionally perform background subtraction by removing the mean of negative control signal values from probe values.
+The module offers multiple probe collapsing strategies: no collapse, maximum value per gene, or median value per gene.
+IlluminaExpressionFileCreator can use an optional CHIP file to map probes to gene names for more precise data representation.
+The module generates two primary output files: a GCT file for gene probes and another for control probes.
+An optional CLM file allows users to specify custom sample names and control which IDAT files are processed.
+IlluminaExpressionFileCreator supports multiple Illumina array types and can handle different versions of BeadStudio and GenomeStudio.
+The module is designed to be platform-independent, running on any CPU and operating system with Java support.
+Here's a detailed breakdown of the parameters for the IlluminaExpressionFileCreator module:
+idat zip (File, Required): ZIP archive containing Illumina expression IDAT files of the same array type.
+manifest (File, Required): Illumina annotation manifest file in tab-delimited TXT format for the IDAT files.
+output file (File, Required): Specifies the base name for output GCT files for gene and control probes.
+background subtraction mode (Boolean, Optional, Default=false): Option to subtract background noise by removing mean of negative control signal values.
+collapse mode (String, Optional, Default="none"): Determines how multiple probe values for a gene are consolidated (options: "none", "max", "median").
+chip (File, Optional): CHIP file mapping probes to gene names, used for probe collapsing and description lookup.
+clm (File, Optional): CLM file mapping IDAT file names to sample names, controlling sample inclusion and order in output files.
+Here are the input and output files described in atomic, semantically distinct chunks:
+IDAT ZIP archive contains raw Illumina BeadArray expression data files of the same array type.
+Illumina manifest file in tab-delimited TXT format provides annotation information for the IDAT files.
+CHIP file optionally maps probes to gene names, with files available from the module or uploadable.
+CLM file optionally maps IDAT file names to sample names, controlling which samples are included in output.
+Gene probe GCT output file contains expression values for gene probes, named with base input file name.
+Control probe GCT output file contains expression values for control probes, named with base input file name plus "-controls".
+Optional CLS file generated when CLM file contains class names, providing class information for further analysis.
+IDAT files are raw binary files containing Illumina microarray expression data measurements.
+Manifest file is a tab-delimited text file with probe and array annotation details from Illumina.
+CHIP file maps probe identifiers to gene names and descriptions in a specific GenePattern format.
+CLM file is a text file specifying IDAT file names and corresponding sample names for processing.
+GCT output files are tab-delimited text files containing gene expression measurements in GenePattern format.
+CLS file is a text file containing sample class information for downstream analysis in GenePattern modules.
+Here are the chunks for the IlluminaExpressionFileCreator module documentation:
+The IlluminaExpressionFileCreator module converts raw Illumina BeadArray data to the GenePattern GCT file format.
+The module extracts mean probe values from Illumina expression IDAT files contained in a single ZIP archive.
+Two GCT files are created: one for gene probes and another for control probes in the IlluminaExpressionFileCreator module.
+Optionally, the IlluminaExpressionFileCreator module can collapse probe results to a single value per gene for each sample.
+The module requires a ZIP archive of Illumina IDAT files of the same array type for the IlluminaExpressionFileCreator process.
+An array annotation manifest file corresponding to the IDAT files is required for the IlluminaExpressionFileCreator module.
+Background subtraction can be performed in the IlluminaExpressionFileCreator by calculating the mean of negative control signal values.
+The IlluminaExpressionFileCreator offers three collapse modes: none (default), max, and median for handling multiple probes per gene.
+A CHIP file can be optionally provided to map probes to gene names in the IlluminaExpressionFileCreator module.
+A CLM file can specify sample names and control which IDAT files are processed in the IlluminaExpressionFileCreator.
+The module generates two primary output files: a gene probe GCT file and a control probe GCT file in the IlluminaExpressionFileCreator.
+An optional CLS file can be generated if a CLM file with class information is provided in the IlluminaExpressionFileCreator.
+The IlluminaExpressionFileCreator is compatible with any CPU and operating system, implemented in Java.

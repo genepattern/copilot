@@ -1,0 +1,186 @@
+<div class="gp-content-header fluid">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h1><big>Admin: GenePattern Module Docs</big></h1>
+</div>
+</div>
+</div>
+</div><div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h2>CoGAPS (v00376) <a class="btn btn-primary" href="/module_docs/222/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a></h2>
+<dl class="dl-horizontal">
+<dt>LSID</dt>
+<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00376</dd>
+<dt>Author(s)</dt>
+<dd>Fertig Lab</dd>
+<dt>Contact(s)</dt>
+<dd><html>
+<head>
+<title></title>
+</head>
+<body>
+<p>Ted Liefeld, jliefeld@cloud.ucsd.edu</p>
+</body>
+</html>
+</dd>
+<dt>Updated By</dt>
+<dd>liefeld@broadinstitute.org</dd>
+<dt>Task type</dt>
+<dd>Tutorial</dd>
+<dt>Cpu type</dt>
+<dd>Docker</dd>
+<dt>Os</dt>
+<dd>Docker</dd>
+<dt>Language</dt>
+<dd>R, C++</dd>
+<dt>Algorithm version</dt>
+<dd>3.1</dd>
+<dt>Published</dt>
+<dd><span class="glyphicon glyphicon-ok text-success"></span></dd>
+<dt>Dev</dt>
+<dd><span class="glyphicon glyphicon-remove text-danger"></span></dd>
+<dt>Beta</dt>
+<dd><span class="glyphicon glyphicon-remove text-danger"></span></dd>
+</dl>
+<hr/>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<h2>Introduction</h2>
+<p>See https://github.com/FertigLab/CoGAPS and https://bioconductor.org/packages/release/bioc/vignettes/CoGAPS/inst/doc/CoGAPSUsersManual.pdf for more details.</p>
+<p>Gene Association in Pattern Sets (GAPS) infers underlying patterns in a matrix of measurements that can<br/>
+be interpreted as arising from the multiplication of two lower dimensional matrices. The first development of<br/>
+this code in R/Biocondcutor was focused on gene expression analysis, however the original concept was used<br/>
+in spectral imaging. The approach is a general form of matrix factorization using a stochastic algorithm. While in this doc we will focus on gene expression analysis for concreteness, but the factorization is applicable more broadly.</p>
+<p><br/>
+The Markov chain Monte Carlo (MCMC) matrix factorization that infers patterns also infers the extent<br/>
+to which individual genes belong to these patterns. The CoGAPS algorithm extends GAPS to infer the<br/>
+coordinated activity in sets of genes for each of the inferred patterns based upon (5) and to refine gene set<br/>
+membership based upon (2).</p>
+<h2>Algorithm</h2>
+<p>The GAPS algorithm is implemented in C++ and compiled and integrated into R using the Rcpp package.<br/>
+GAPS is licensed under the GNU General Public License version 2. You may freely modify and redistribute<br/>
+GAPS under certain conditions that are described in the top level source directory file COPYING.<br/>
+The R package CoGAPS is designed to facilitate the corresponding analysis of microarray measurements<br/>
+by calling the GAPS C++ library. With the migration to C++ code, the installation as noted in Chapter 2<br/>
+should now be automatic. Running instructions for the GAPS and CoGAPS analyses are provided in Sections<br/>
+3.1 and 3.2, respectively. CoGAPS and GAPS are freely available at https://github.com/ejfertig/CoGAPS<br/>
+and through the CoGAPS Bioconductor package.</p>
+<p>GAPS seeks a pattern matrix (P) and the corresponding distribution matrix of weights (A) whose product forms a mock data matrix (M) that represents the expression data D within noise limits (ε). That is,</p>
+<p>D = M + ε = AP + ε.</p>
+<p>The number of rows in P (columns in A) defines the number of biological patterns that GAPS will infer from the measured microarray data or equivalently the number of nonorthogonal basis vectors required to span the data space. As in the Bayesian Decomposition algorithm, the matrices A and P in GAPS are assumed to have the atomic prior. In the GAPS implementation, αA and αP are corresponding parameters for the expected number of atoms which map to each matrix element in A and P, respectively. The corresponding matrices A and P are found by MCMC sampling.</p>
+<p> </p>
+<p>CoGAPS infers coordinated activity in gene sets active in each row of the pattern matrix P found by GAPS in a single step, by running both GAPS and then performing the statistical analysis of calcCoGAPSStat. Specifically, CoGAPS computes a Z-score based statistic on each column of the A matrix. The resulting Z-score for pattern p and gene set i, Gi , with G elements is given by Zi,p = 1 / G SUM <sub>g∈Gi</sub> (A<sub>gp/</sub> Asd<sub>gp</sub> ) where g indexes the genes in the set and Asdgp is the standard deviation of Agp obtained from the MCMC sampling in GAPS. CoGAPS then uses random sample tests to convert the Z-scores from eq. (3.2) to p values for each gene set.</p>
+<p> </p>
+<h2>References</h2>
+<p>If you use the CoGAPS package for your analysis please cite: (1) EJ Fertig, J Ding, AV Favorov, G<br/>
+Parmigiani, and MF Ochs (2010) CoGAPS: an R/C++ package to identify patterns and biological process<br/>
+activity in transcriptomic data. Bioinformatics 26: 2792-2793.<br/>
+To cite the CoGAPS algorithm use: (3) MF Ochs (2003) Bayesian Decomposition in The Analysis of<br/>
+Gene Expression Data: Methods and Software G Parmigiani, E Garrett, R Irizarry, and S Zeger, ed. New<br/>
+York: Springer Verlag.</p>
+<p><br/>
+To cite the gene set statistic use: (5) MF Ochs, L Rink, C Tarn, S Mburu, T Taguchi, B Eisenberg, and<br/>
+AK Godwin (2009) Detection of treatment-induced changes in signaling pathways in gastrointestinal stromal<br/>
+tumors using transcriptomic data. Cancer Research 69: 9125-9132.</p>
+<p><br/>
+To site the set-membership refinement statistic use: (2) EJ Fertig, AV Favorov, and MF Ochs (2012)<br/>
+Identifying context-specific transcription factor targets from prior knowledge and gene expression data. 2012<br/>
+IEEE International Conference on Bioinformatics and Biomedicine, B310, in press.<br/>
+Please contact Elana J. Fertig ejfertig@jhmi.edu or Michael F. Ochs ochsm@tcnj.edu for assistance.</p>
+</body>
+</html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<h2>Input Files</h2>
+<ol>
+<li>input file<br/>
+	A file of gene expression values</li>
+<li>standard deviation input file<br/>
+	A file containing extimates for the standard deviations of the gene expression values provided in the input file.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output file&gt;_chiSquare.pdf<br/>
+	Plot of the chi squared values for each pattern number in the pattern search space.</li>
+<li>&lt;output file&gt;_cogaps.pdf<br/>
+	Plot of the chi squared values for each pattern number in the pattern search space.</li>
+<li>&lt;output file&gt;_Amean.gct<br/>
+	The matrix containing the mean distribution of weights.</li>
+<li>&lt;output file&gt;_Asd.gct<br/>
+	A matrix containing the standard deviations of the Amean matrix.</li>
+<li>&lt;output file&gt;_Pmean.gct<br/>
+	The pattern matrix, written in the gct format.</li>
+<li>&lt;output file&gt;_Pstd.gct<br/>
+	A matrix containing the standard deviations of the P matrix.</li>
+</ol>
+<h2>Requirements</h2>
+<p>This module runs using R 3.4.1 in a docker container, genepattern/docker-cogaps.</p>
+</body>
+</html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input file</td>
+<td>A file containing gene expression profiles.  Supported formats include gct, mtx and rds (seurat objects)</td>
+</tr>
+<tr>
+<td>Output file</td>
+<td>Base name for all output files.</td>
+</tr>
+<tr>
+<td>num iterations</td>
+<td>Number of iterations.</td>
+</tr>
+<tr>
+<td>standard deviation input file</td>
+<td>A gct file containing the same rows and columns as the input file.  Each value represents an estimate of the standard deviation for the corresponding input.</td>
+</tr>
+<tr>
+<td>standard deviation decimal value</td>
+<td>If a &lt;Standard deviation input file&gt; is not provided, use this multiplier of the gene expression value as the standard deviation estimate for the given gene expression value.</td>
+</tr>
+<tr>
+<td>start at</td>
+<td>Begin searching the pattern space at this many patterns.</td>
+</tr>
+<tr>
+<td>stop at</td>
+<td>Stop searching the pattern space at this many patterns.</td>
+</tr>
+<tr>
+<td>step</td>
+<td>Step size between the &lt;start at&gt; and &lt;stop at&gt; for sweeping the pattern space.</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>Seed value for the pseudo random number generator</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</body>
+</html>
+<p><a class="btn btn-primary" href="/module_docs/222/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-warning" href="/module_docs"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></p>
+</div>
+</div>
+</div>

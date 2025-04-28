@@ -1,0 +1,54 @@
+SOMClustering is on version 1.0.
+A description of SOMClustering is Self-Organizing Maps algorithm where a grid of 2D nodes (clusters) is iteratively adjusted to reflect the global structure in the expression dataset. The mapping is iteratively adjusted to reflect the natural structure of the data, resulting in clusters organized in a 2D grid where similar clusters lie near to each other..
+SOMClustering is a GenePattern module written by Keith Ohm (Broad Institute), gp-help@broad.mit.edu.
+SOMClustering can be categorized as Clustering.
+SOMClustering has the following parameters: dataset.filename, cluster.range, iterations, seed.range, cluster.by, som.rows, som.cols, initialization, neighborhood, alpha.initial, alpha.final, sigma.initial, sigma.final.
+The SOMClustering module is a powerful tool for exploring complex multidimensional datasets using Self-Organizing Maps (SOM) clustering algorithm.
+The SOMClustering module can transform high-dimensional gene expression data into a visually interpretable 2D grid representation.
+SOMClustering allows researchers to automatically discover natural groupings and patterns within biological datasets, such as gene expression profiles or sample characteristics.
+The module can cluster both rows (genes) and columns (samples) in a dataset, providing flexible exploratory data analysis capabilities.
+SOMClustering uses an iterative algorithm that maps complex multidimensional data onto a lower-dimensional grid, revealing underlying structural relationships.
+Researchers can control the clustering process through parameters like iterations, initialization method, and neighborhood function in the SOMClustering module.
+The SOMClustering module supports multiple initialization strategies, including random vector generation and selection of actual datapoints as initial centroids.
+By adjusting learning rates and neighborhood sizes, users can fine-tune the SOMClustering algorithm's sensitivity to data structure and clustering precision.
+The SOMClustering module can generate multiple cluster configurations by specifying a range of cluster sizes, enabling comprehensive exploratory analysis.
+Biological researchers can use SOMClustering to identify co-regulated genes, discover sample similarities, and generate hypotheses about complex biological systems.
+The SOMClustering module is particularly useful for visualizing and understanding high-dimensional datasets in fields like genomics, transcriptomics, and systems biology.
+dataset.filename: String, input dataset file path, required, no default value, specifies the source data for SOMClustering module
+cluster.range: String, defines range of cluster configurations to explore, optional, allows automatic generation of multiple cluster geometries from 2-6 clusters
+iterations: Integer, number of refinement passes for the SOM algorithm, recommended high values like 50,000-500,000 for good convergence, optional with default likely being lower value
+seed.range: Integer, random number generator seed, optional, allows reproducible clustering by setting a specific seed
+cluster.by: String, specifies clustering dimension (rows or columns), optional, determines whether genes or samples are clustered
+som.rows: Integer, explicitly set number of rows in SOM grid, optional, overrides cluster.range when non-zero
+som.cols: Integer, explicitly set number of columns in SOM grid, optional, overrides cluster.range when non-zero
+initialization: String, method for initial centroid selection, options include Random_Vectors or Random_Datapoints, determines starting point for SOM algorithm
+neighborhood: String, defines how centroids are updated, options include Gaussian (weighted update) or Bubble (binary update), controls learning dynamics
+alpha.initial: Float, starting learning rate for centroid updates, controls initial learning speed
+alpha.final: Float, ending learning rate for centroid updates, controls final learning precision
+sigma.initial: Float, initial neighborhood size for centroid updates, determines initial update radius
+sigma.final: Float, final neighborhood size for centroid updates, determines final update precision
+SOMClustering module input dataset is a gene expression matrix file in res, gct, or odf format containing numerical expression values for genes or samples.
+SOMClustering module input dataset must have rows representing genes or samples and columns representing experimental conditions or measurements.
+SOMClustering module requires numerical data with consistent formatting and no missing values for optimal clustering performance.
+SOMClustering module output includes multiple cluster result files generated based on the specified cluster.range parameter.
+SOMClustering module generates a stdout.txt file containing runtime information and algorithm execution details.
+SOMClustering module output cluster files will contain the mapped centroids and cluster assignments for the input dataset.
+SOMClustering module can produce multiple output files representing different cluster configurations based on the cluster.range parameter.
+SOMClustering module output files will likely include information about cluster membership, centroid locations, and potentially visualization data.
+SOMClustering module input dataset should be preprocessed to ensure numerical consistency and appropriate scaling before clustering.
+SOMClustering module supports both gene and sample clustering depending on the cluster.by parameter setting.
+The SOMClustering module is a powerful machine learning algorithm for clustering gene expression data using Self-Organizing Maps.
+The SOMClustering module implements a neural network-based clustering technique that maps high-dimensional data onto a 2D grid.
+Self-Organizing Maps create a topological representation of complex datasets by iteratively adjusting cluster centroids to reflect underlying data structures.
+The algorithm can cluster genes, samples, or other multidimensional data by transforming k-dimensional data into a lower-dimensional, interpretable grid.
+SOMClustering allows users to specify a range of cluster configurations, enabling exploration of different grid geometries and cluster sizes.
+The module provides control over key algorithmic parameters like iterations, learning rates, and neighborhood update functions.
+Users can choose between random vector initialization or selecting actual datapoints as initial cluster centroids.
+The neighborhood update function determines how nearby centroids are modified during the clustering process, with options like Gaussian or Bubble approaches.
+SOMClustering supports both row-wise and column-wise clustering, providing flexibility in analyzing gene expression datasets.
+The algorithm's random seed can be manually set, allowing reproducibility of clustering results across different computational sessions.
+Iterations control the refinement of the clustering process, with higher values typically leading to more stable and representative cluster assignments.
+The module generates output files containing cluster results and a stdout text file documenting the computational process.
+SOMClustering is implemented in Java and is platform-independent, running on any system with Java JVM 1.3 or higher.
+The algorithm is particularly useful for visualizing complex datasets and identifying underlying patterns in high-dimensional biological data.
+Researchers can use SOMClustering to gain insights into gene expression patterns, cellular differentiation, and other complex biological phenomena.

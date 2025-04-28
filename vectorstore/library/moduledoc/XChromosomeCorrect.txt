@@ -1,0 +1,42 @@
+XChromosomeCorrect is on version .
+A description of XChromosomeCorrect is Corrects SNP values on the X chromosome for samples from male donors. For each sample from a male donor, the XChromosomeCorrect module doubles the intensity value for each SNP on the X chromosome..
+XChromosomeCorrect is a GenePattern module written by David Twomey and Joshua Gould, gp-help@broad.mit.edu.
+XChromosomeCorrect can be categorized as SNP Analysis.
+XChromosomeCorrect has the following parameters: snp filename, sample info filename, output file.
+The XChromosomeCorrect module is a specialized bioinformatics tool for correcting X chromosome SNP intensity values in genetic analysis.
+XChromosomeCorrect addresses a key genetic difference between male and female samples by adjusting X chromosome SNP intensities.
+The module specifically handles intensity correction for male donors, who have only one X chromosome, by doubling the SNP intensity values.
+XChromosomeCorrect requires a non-allele-specific .snp file as input, which contains single intensity values for genetic probes.
+The module uses a sample information file to determine the gender of each sample, which is critical for applying the X chromosome correction.
+XChromosomeCorrect is designed to work within the GenePattern computational genomics platform, facilitating standardized genetic data processing.
+The correction process is particularly important for genetic studies involving sex chromosomes, ensuring more accurate comparative analysis across male and female samples.
+By doubling X chromosome SNP intensities for male samples, XChromosomeCorrect helps normalize genetic data and account for chromosomal differences.
+The module is platform-independent, running on any operating system and CPU architecture, making it widely accessible for genetic research.
+XChromosomeCorrect generates an output .snp file with corrected intensity values, which can be used in subsequent genetic analysis workflows.
+snp filename, file, XChromosomeCorrect requires a non-allele-specific GenePattern .snp file with one intensity value per probe, required, no default value
+sample info filename, file, XChromosomeCorrect needs a tab-delimited sample information file specifying sample names and gender, required, no default value
+output file, string, XChromosomeCorrect generates the corrected .snp file with modified X chromosome intensity values, optional, default is input-file.xcorrected.snp
+XChromosomeCorrect module processes SNP data by doubling X chromosome intensity for male samples
+XChromosomeCorrect requires precise column labels in sample information file: "Sample" and "Gender"
+XChromosomeCorrect supports gender-specific correction for X chromosome SNP intensity values
+XChromosomeCorrect handles non-allele-specific SNP files from Affymetrix SNP chip data
+XChromosomeCorrect ensures accurate genetic analysis by adjusting X chromosome signal intensity for male donors
+XChromosomeCorrect module input file is a non-allele-specific GenePattern .snp file with one intensity value per probe.
+XChromosomeCorrect module input sample information file is a tab-delimited text file with sample names and gender information.
+XChromosomeCorrect module requires sample information file to have columns labeled "Sample" and "Gender" with exact case and spacing.
+XChromosomeCorrect module sample information file uses "M" or "F" to indicate donor gender.
+XChromosomeCorrect module output file is a modified .snp file with doubled X chromosome SNP intensity values for male samples.
+XChromosomeCorrect module output .snp file follows same format as input file, but with corrected X chromosome intensity values.
+XChromosomeCorrect module default output filename appends ".xcorrected.snp" to the input filename.
+XChromosomeCorrect module input .snp file is typically created using the SNPFileCreator module from Affymetrix CEL files.
+XChromosomeCorrect module processes SNP intensity data specifically for correcting X chromosome measurements in male samples.
+XChromosomeCorrect is a computational genomics module designed to adjust X chromosome SNP intensity values for male samples.
+The module corrects SNP intensity measurements specifically for male donors by doubling X chromosome probe signal intensities.
+XChromosomeCorrect requires a non-allele-specific GenePattern .snp file as input, which contains single intensity values per genetic probe.
+The module needs an accompanying sample information file that specifies sample names and gender, with gender designated as 'M' or 'F' for each sample.
+XChromosomeCorrect performs a targeted correction for male samples, effectively normalizing X chromosome genetic signal intensity.
+The module is implemented in Java and can run on any computational platform, making it widely accessible for genetic research.
+Output from XChromosomeCorrect is a modified .snp file with corrected X chromosome intensity values for male samples.
+The correction process is designed to address potential signal intensity discrepancies arising from the unique genetic configuration of male X chromosomes.
+XChromosomeCorrect is particularly useful in genetic studies involving sex-linked genetic variations and X chromosome analysis.
+The module was developed by researchers David Twomey and Joshua Gould to improve genetic data preprocessing for SNP chip experiments.

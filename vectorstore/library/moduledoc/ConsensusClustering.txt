@@ -1,0 +1,57 @@
+ConsensusClustering is on version 8.
+A description of ConsensusClustering is Resampling-based clustering. Given a set of items to be clustered (items can be either genes or chips/experiments), Consensus clustering provides for a method to represent the consensus across multiple runs of a clustering algorithm and to assess the stability of the discovered clusters..
+ConsensusClustering is a GenePattern module written by Stefano Monti (Broad Institute) gp-help@broadinstitute.org.
+ConsensusClustering can be categorized as Clustering.
+ConsensusClustering has the following parameters: input filename, kmax, resampling iterations, seed value, clustering algorithm, cluster by, distance measure, resample, merge type, descent iterations, output stub, normalize type, normalization iterations, create heat map, heat map size.
+The ConsensusClustering module is a powerful bioinformatics tool for robust cluster analysis in GenePattern.
+ConsensusClustering helps researchers discover stable and reliable clusters in complex biological datasets.
+The module uses a resampling-based approach to assess the consistency of clustering results across multiple iterations.
+ConsensusClustering can be applied to both gene expression data and experimental data, providing flexibility in analysis.
+The module generates consensus matrices that show how frequently different data points are clustered together across multiple runs.
+ConsensusClustering allows researchers to explore different numbers of potential clusters (from 2 to kmax) to find the most meaningful grouping.
+The module supports multiple clustering algorithms, distance measures, and resampling strategies to suit different research needs.
+ConsensusClustering produces visual outputs like heatmaps and statistical plots to help researchers interpret clustering results.
+Researchers can use ConsensusClustering to identify robust gene groups or experimental conditions with consistent clustering patterns.
+The module is particularly useful for analyzing microarray and other high-dimensional biological datasets where traditional clustering might be less reliable.
+ConsensusClustering helps reduce the impact of random variation by repeatedly sampling and re-clustering the data.
+The module generates multiple output files, including cluster assignments, consensus matrices, and statistical visualization PDFs.
+ConsensusClustering can cluster data by rows (genes) or columns (experiments), providing versatility in data exploration.
+The tool is platform-independent and runs on various operating systems with Java support.
+ConsensusClustering is part of the GenePattern suite, making it accessible to biologists and computational researchers alike.
+ConsensusClustering module requires input filename for clustering data
+ConsensusClustering module uses kmax to specify maximum number of clusters to try
+ConsensusClustering module needs resampling iterations to determine clustering stability
+ConsensusClustering module allows setting a seed value for random number generation
+ConsensusClustering module supports selection of specific clustering algorithm
+ConsensusClustering module can cluster by rows (genes) or columns (experiments)
+ConsensusClustering module allows specification of distance measure for clustering
+ConsensusClustering module provides flexible resampling schemes like subsampling or feature selection
+ConsensusClustering module has merge type parameter for hierarchical clustering
+ConsensusClustering module supports descent iterations for specific algorithms like SOM/NMF
+ConsensusClustering module allows setting an output stub for generated files
+ConsensusClustering module supports normalization types (row-wise, column-wise, or both)
+ConsensusClustering module can specify number of normalization iterations
+ConsensusClustering module can generate heatmaps for visualization
+ConsensusClustering module allows customization of heatmap point size
+ConsensusClustering input file is a gene expression matrix in .gct, .res, or .odf format containing numerical data representing gene or experiment measurements.
+ConsensusClustering input file contains rows representing genes or experiments and columns representing samples or features.
+ConsensusClustering input file requires numerical data suitable for clustering analysis.
+ConsensusClustering output file <output.stub>.<sampleid>.<k>.clu is a text file listing cluster membership for each item.
+ConsensusClustering output file <output.stub>.<sampleid>.<k>.gct contains the consensus matrix with entries representing clustering co-occurrence probability.
+ConsensusClustering output file <output.stub>.<sampleid>.srt.<k>.gct is a sorted consensus matrix with items clustering together placed adjacently.
+ConsensusClustering output file <output.stub>.<sampleid>.srt.<k>.gif is a heatmap visualization of the sorted consensus matrix.
+ConsensusClustering output file <output.stub>.<sampleid>.statistics.pdf includes statistical plots for determining optimal cluster number.
+ConsensusClustering consensus matrix entries represent the proportion of times two items are clustered together across multiple resampling iterations.
+ConsensusClustering output files are generated for each number of clusters specified by the kmax parameter.
+ConsensusClustering is a resampling-based clustering method for discovering and visualizing clusters in gene expression data.
+ConsensusClustering generates multiple clustering iterations by perturbing the original dataset through resampling techniques.
+The module applies a chosen clustering algorithm to each perturbed dataset to assess cluster stability and agreement.
+A consensus matrix is created where each entry represents the proportion of times two items are clustered together across iterations.
+ConsensusClustering can generate consensus matrices for different numbers of clusters (from 2 to kmax) to help determine the optimal cluster count.
+The module supports clustering by rows (genes) or columns (experiments) using various distance measures and clustering algorithms.
+Resampling can be performed through subsampling (default 80%), feature selection, or no sampling.
+Output files include cluster membership lists, consensus matrices, heatmaps, and statistical plots for cluster validation.
+The statistical plots (Lorenz curve, Gini index, Consensus CDF) help researchers visually assess the most appropriate number of clusters.
+ConsensusClustering is implemented in Java and R, and is compatible with multiple platforms and operating systems.
+The module was developed by Stefano Monti at the Broad Institute to provide a robust method for class discovery in gene expression data.
+The underlying methodology is based on a 2003 Machine Learning Journal publication by Monti et al. on consensus clustering techniques.

@@ -1,0 +1,50 @@
+LogicleTransformFCS is on version 1.
+A description of LogicleTransformFCS is Logicle transformation of (selected) parameters in a list mode Flow Cytometry Standard (FCS) data file. The module takes an input FCS data file and applies the Logicle transformation on selected parameters..
+LogicleTransformFCS is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+LogicleTransformFCS can be categorized as Flow Cytometry.
+LogicleTransformFCS has the following parameters: Input.fcs.data.file, Parameters.to.transform, T, M, W, A, Use.Fast.Implementation, Output.fcs.file.name.
+The LogicleTransformFCS module is a specialized GenePattern tool for transforming flow cytometry data to improve visualization and analysis.
+The LogicleTransformFCS module helps researchers address challenges in displaying complex flow cytometry fluorescence data with wide dynamic ranges.
+The Logicle transformation solves traditional visualization problems by creating a more informative representation of flow cytometry signals, especially for low-intensity and negative values.
+The LogicleTransformFCS module can transform selected or all fluorescence parameters in an FCS file, allowing researchers to customize their data visualization approach.
+The transformation is particularly useful for compensated flow cytometry data, helping researchers more accurately interpret cell population distributions.
+The LogicleTransformFCS module provides multiple configuration options, including specifying transformation parameters like top scale value (T), display width (M), and linearization width (W).
+Researchers can choose between a high-precision regular implementation or a faster implementation of the Logicle transformation in the LogicleTransformFCS module.
+The LogicleTransformFCS module outputs a new FCS file with transformed data, preserving the original file's structure while improving data visualization potential.
+The transformation method implemented in LogicleTransformFCS was developed by Parks et al. and represents a significant advancement in flow cytometry data representation.
+The LogicleTransformFCS module is compatible with various computational platforms and requires Java 1.6 or higher to run.
+Input.fcs.data.file: file type, the FCS data file to be transformed, required, no default value
+Parameters.to.transform: string type, comma-separated list of FCS parameters to transform by short names, optional, default is all parameters with FL in their names
+T: numeric type, data value at the top of the scale range to display, optional, default is maximum input value
+M: numeric type, full width of Logicle display in asymptotic decades, optional, default is 4.5 decades
+W: numeric type, linearization width in asymptotic decades specifying near-linear region width, optional, default calculated from 5th percentile of negative events
+A: numeric type, additional negative display range in asymptotic decades, optional, default is 0, not recommended to use positive values
+Use.Fast.Implementation: boolean type, choose between regular high-precision or fast lower-precision Logicle implementation, optional, default is regular implementation
+Output.fcs.file.name: string type, name of output FCS file, optional, default uses input file name as base
+Here are the input and output file descriptions for the LogicleTransformFCS module:
+Input FCS data file contains raw flow cytometry measurement data in standard FCS file format with multiple cellular parameters
+Input file includes multiple parameters representing cellular measurements like fluorescence intensity across different channels
+Input file can contain up to 1,000,000 events with 24 different parameters stored in floating point data type
+Input file follows FCS 3.0 or 3.1 file standard with specific keyword definitions for parameter names and characteristics
+Output FCS file contains Logicle transformed data with selected parameters converted using specialized mathematical transformation
+Output file preserves original file structure but applies Logicle transformation to specified fluorescence parameters
+Output file includes TRANSFORMATION DETAILS keyword documenting specific transformation parameters and methods applied
+Output file stores transformed data as floating point values with linear encoding indicator ($PnE/0,0/)
+Output file maintains original event count and parameter structure from input file
+Transformed parameters are distinguished from linear scale parameters for accurate downstream analysis
+Here are the chunks for the LogicleTransformFCS module documentation:
+LogicleTransformFCS is a GenePattern module for applying Logicle transformation to flow cytometry data files.
+The Logicle transformation addresses limitations of traditional logarithmic scaling in flow cytometry data visualization.
+Logicle transformation helps display cell populations with low means and negative data values more accurately than standard log scaling.
+The module can transform selected parameters in an FCS (Flow Cytometry Standard) data file.
+By default, the module transforms parameters with "FL" in their short names.
+Users can specify specific parameters to transform using a comma-separated list.
+The transformation requires defining parameters like T (top of scale range), M (display width in decades), and W (linearization width).
+The module offers a recommended method for calculating the W parameter based on the 5th percentile of negative events.
+Users can choose between a regular high-precision implementation and a faster, slightly less precise implementation.
+The output is an FCS file with Logicle-transformed parameters, stored as floating-point values.
+The module includes a TRANSFORMATION DETAILS keyword to document the specific transformations applied.
+Logicle transformation is particularly useful for compensated flow cytometry data with low-signal populations.
+The module is platform-independent and requires Java 1.6 or higher.
+Maximum resource requirements are estimated at 1.9 GB RAM and 30 seconds processing time for a 1,000,000 event file.
+The transformation method is based on research by Parks et al. published in Cytometry A in 2006.

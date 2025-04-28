@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Validation Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let groupedData = [];
+            let currentIndex = 0;
+    
+            function fetchData() {
+                let docVersion = document.getElementById("docVersionDropdown").querySelector(".dropdown-trigger button").getAttribute("data-value");
+                let systemPrompt = document.getElementById("systemPromptDropdown").querySelector(".dropdown-trigger button").getAttribute("data-value");    
+                fetch("{% url 'get_grouped_data' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    body: JSON.stringify({
+                        document_store_version: docVersion,
+                        system_prompt: systemPrompt
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    groupedData = data.grouped_data || [];  
+                    currentIndex = 0;
+                    displayCurrentItem();
+                })
+                .catch(error => console.error("Error:", error));
+            }
+    
+            function displayCurrentItem() {
+                let resultsDiv = document.getElementById("groupedResults");
+                resultsDiv.innerHTML = ""; 
+    
+                if (groupedData.length === 0) {
+                    resultsDiv.innerHTML = "<p>No results found.</p>";
+                    updatePagination();
+                    return;
+                }
+    
+                let item = groupedData[currentIndex];
+                let entry = `
+                    <div class="box">
+                        <h2 class="subtitle"><strong>User Prompt:</strong></h2>
+                        <p>${item.UserPrompt}</p>
+                        <hr>
+    
+                        <h2 class="subtitle"><strong>Real Answer:</strong></h2>
+                        <p>${item.RealAnswer}</p>
+                        <hr>
+    
+                        <h3 class="subtitle"><strong>Responses:</strong></h3>
+                        <div class="columns is-multiline">
+                            ${item.responses.map(resp => `
+                                <div class="column is-one-quarter">
+                                    <div class="box">
+                                        <strong>Model:</strong> ${resp.ModelType} <br>
+                                        <strong>Response ID:</strong> ${resp.ID} <br>
+                                        <strong>Response:</strong> ${resp.Response}
+                                    </div>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                `;
+    
+                resultsDiv.innerHTML = entry;
+                updatePagination();
+            }
+    
+            function updatePagination() {
+                let paginationContainer = document.getElementById("pagination");
+                paginationContainer.innerHTML = `
+                    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                        <button class="pagination-previous" id="prevItem" ${currentIndex === 0 ? "disabled" : ""}>Previous</button>
+                        <button class="pagination-next" id="nextItem" ${currentIndex === groupedData.length - 1 ? "disabled" : ""}>Next</button>
+                        <ul class="pagination-list">
+                            ${groupedData.map((_, i) => `
+                                <li>
+                                    <a href="#" class="pagination-link ${i === currentIndex ? "is-current" : ""}" data-index="${i}">${i + 1}</a>
+                                </li>
+                            `).join("")}
+                        </ul>
+                    </nav>
+                `;
+    
+                document.getElementById("prevItem")?.addEventListener("click", function () {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        displayCurrentItem();
+                    }
+                });
+    
+                document.getElementById("nextItem")?.addEventListener("click", function () {
+                    if (currentIndex < groupedData.length - 1) {
+                        currentIndex++;
+                        displayCurrentItem();
+                    }
+                });
+    
+                document.querySelectorAll(".pagination-link").forEach(link => {
+                    link.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        currentIndex = parseInt(this.dataset.index);
+                        displayCurrentItem();
+                    });
+                });
+            }
+    
+            document.getElementById("fetchResults").addEventListener("click", function () {
+                fetchData();
+            });
+        });
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let groupedData = [];
+            let currentIndex = 0;
+    
+            // ==========================
+            // Event Listener for Dropdown Selection
+            // ==========================
+            document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+                let trigger = dropdown.querySelector(".dropdown-trigger button");
+                let dropdownMenu = dropdown.querySelector(".dropdown-menu");
+                let dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
+    
+                // Handle dropdown toggle
+                trigger.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle("is-active");
+                });
+    
+                // Close dropdown if clicking outside
+                document.addEventListener("click", function (event) {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove("is-active");
+                    }
+                });
+    
+                // Handle dropdown item selection
+                dropdownItems.forEach(function (item) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        trigger.querySelector("span").textContent = this.textContent; // Update button text
+                        trigger.dataset.value = this.textContent; // Store value for fetching data
+                        dropdown.classList.remove("is-active");
+                    });
+                });
+            });
+
+        });
+    </script>
+    
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Validation Results</h1>
+
+            <!-- Dropdowns Row -->
+            <div class="columns">
+                <div class="column is-one-third">
+                    <label class="label">Select DocumentStore Version</label>
+                    <div class="dropdown" id="docVersionDropdown">
+                        <div class="dropdown-trigger">
+                            <button class="button is-info" aria-haspopup="true">
+                                <span>Select DocumentStore Version</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-content">
+                                {% for version in document_store_versions %}
+                                    <a href="#" class="dropdown-item">{{ version }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-one-third">
+                    <label class="label">Select System Prompt</label>
+                    <div class="dropdown" id="systemPromptDropdown">
+                        <div class="dropdown-trigger">
+                            <button class="button is-info" aria-haspopup="true">
+                                <span>Select System Prompt</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-content">
+                                {% for value in system_prompt_options %}
+                                    <a href="#" class="dropdown-item">{{ value }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-one-third">
+                    <label class="label">&nbsp;</label> <!-- Adds spacing for alignment -->
+                    <button id="fetchResults" class="button is-primary is-fullwidth">Get Grouped Data</button>
+                </div>
+            </div>
+
+            <!-- Fetch Results Button -->
+            
+
+            <!-- Grouped Results -->
+            <div id="groupedResults" class="mt-4"></div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="mt-4"></div>
+        </div>
+    </section>
+</body>
+</html>

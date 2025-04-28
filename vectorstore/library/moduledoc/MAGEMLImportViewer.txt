@@ -1,0 +1,48 @@
+MAGEMLImportViewer is on version .
+A description of MAGEMLImportViewer is A visualizer to import data in MAGE-ML format into GenePattern. MAGE-ML is a standard for the representation of microarray expression data. This module takes a zip file containing the MAGE-ML files as input. Files containing MAGE data can be downloaded from ArrayExpress..
+MAGEMLImportViewer is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+MAGEMLImportViewer can be categorized as Visualizer, Microarray Data Import.
+MAGEMLImportViewer has the following parameters: input.filename.
+The MAGEMLImportViewer is a GenePattern module for importing microarray expression data stored in MAGE-ML format.
+MAGEMLImportViewer allows researchers to convert complex microarray data files from MAGE-ML standard into more accessible GenePattern file formats.
+The module supports importing data from multiple sources like ArrayExpress, enabling researchers to easily transfer microarray datasets between different bioinformatics platforms.
+MAGEMLImportViewer provides a step-by-step wizard interface for selecting specific bioassays, quantitation types, and output file configurations during data import.
+For two-color microarray experiments, MAGEMLImportViewer can handle common quantitation types like cy5/cy3 ratio, Log2Ratio, and LOG_RAT2N_MEDIAN.
+The module supports Affymetrix microarray data processing, allowing selection of quantitation types such as Avg Diff, RMA normalized value, and Signal.
+MAGEMLImportViewer generates output files in .gct format, a standard gene expression matrix file type used widely in computational biology.
+The module is platform-independent and runs on any operating system with Java 1.4 or higher, making it accessible to researchers with different computational environments.
+MAGEMLImportViewer helps standardize microarray data import by providing a consistent interface for converting complex MAGE-ML files into analysis-ready formats.
+Researchers can use MAGEMLImportViewer to streamline the process of preparing microarray data for downstream computational analysis in GenePattern and other bioinformatics tools.
+input.filename:file:MAGEMLImportViewer requires a compressed archive file containing MAGE-ML data files:Supports .tar, .tgz, .tar.gz, .zip, .gz formats
+input.filename:type:Required parameter specifying the input file for MAGE-ML data import
+input.filename:description:Compressed archive containing microarray expression data files in MAGE-ML standard format
+input.filename:purpose:Provides the source data file for importing microarray expression data into GenePattern
+input.filename:compatibility:Works with files downloaded from repositories like ArrayExpress
+input.filename:file_types:Supports multiple compressed archive formats for flexibility in data import
+input.filename:data_standard:Follows MAGE-ML microarray data representation standard
+input.filename:usage:Used in first step of MAGEMLImportViewer to select and parse microarray data files
+input.filename:selection_process:Enables user to choose specific BioAssays and quantitation types during import workflow
+MAGEMLImportViewer module uses a zip file containing MAGE-ML files as input.
+Input file is a compressed archive (.tar, .tgz, .tar.gz, .zip, .gz) containing MAGE-ML microarray data files.
+MAGE-ML input files represent microarray expression data in a standardized XML-based format.
+Input files can be downloaded from repositories like ArrayExpress.
+MAGEMLImportViewer allows selection of specific BioAssays from the input file.
+MAGEMLImportViewer allows selection of specific quantitation types from the input data.
+Output file is a .gct (Gene Cluster Text) format file containing selected microarray expression data.
+Output .gct file includes selected BioAssays and quantitation types from the original MAGE-ML data.
+Output file can be customized with user-specified filename and path.
+MAGEMLImportViewer supports common quantitation types like cy5/cy3 ratio, Log2Ratio, and Signal.
+Input files can contain data from different microarray platforms like cDNA and Affymetrix.
+MAGEMLImportViewer is a GenePattern module for importing microarray expression data in MAGE-ML format.
+The MAGEMLImportViewer module allows researchers to convert MAGE-ML data files into a standard GenePattern .gct file format.
+MAGE-ML is a standardized format for representing microarray expression data developed by the Microarray Gene Expression Working Group.
+The module supports importing data files from repositories like ArrayExpress, which host microarray experimental datasets.
+MAGEMLImportViewer provides a multi-step wizard interface for selecting specific bioassays and quantitation types during data import.
+Users can choose between derived data (expression values) and raw probe intensity values when importing MAGE-ML files.
+The module supports multiple common quantitation types for different microarray platforms, including cDNA and Affymetrix arrays.
+For two-color microarray data, typical quantitation types include cy5/cy3 ratio, Log2Ratio, and LOG_RAT2N_MEDIAN.
+For Affymetrix data, common quantitation types are Avg Diff, RMA normalized value, and Signal.
+The MAGEMLImportViewer module supports compressed archive files like .tar, .tgz, .tar.gz, .zip, and .gz.
+The import process includes five steps: BioAssay selection, quantitation type selection, output file specification, selection summary, and file save confirmation.
+The module is implemented in Java and requires Java JVM level 1.4 or higher.
+MAGEMLImportViewer is platform-independent and can run on any CPU and operating system.

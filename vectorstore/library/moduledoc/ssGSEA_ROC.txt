@@ -1,0 +1,51 @@
+ssGSEA_ROC is on version 1.
+A description of ssGSEA_ROC is Generate ROC curves and calculate the AUC from ssGSEA results and a binary phenotype classification. ssGSEA_ROC module implements the R package ROCR to analyze the coherence between ssGSEA enrichment scores for gene sets of interest and assigned phenotypes for the samples (e.g. high or low expression of a specific marker gene). For each gene set, the Matthews correlation coefficient, the area under the curve (AUC), a two-sided wilcox test on the ssSGEA scores and a number of other metrics are calculated..
+ssGSEA_ROC is a GenePattern module written by Anthony S. Castanza.
+ssGSEA_ROC can be categorized as Bioinformatics, Gene Set Enrichment Analysis, ROC Analysis.
+ssGSEA_ROC has the following parameters: PROJ gct, CLS, Reverse, Plot Top Results.
+The ssGSEA_ROC module helps researchers analyze gene set enrichment scores across different phenotypes.
+The ssGSEA_ROC module generates receiver operating characteristic (ROC) curves to evaluate gene set performance in distinguishing between two biological conditions.
+ssGSEA_ROC uses the R package ROCR to calculate statistical metrics like area under the curve (AUC) and Matthews correlation coefficient for gene sets.
+The module requires two primary input files: a gene set enrichment results file (PROJ.gct) and a phenotype classification file (CLS).
+ssGSEA_ROC can help researchers identify which gene sets are most predictive of a specific biological state or disease condition.
+The module produces both a PDF visualization of top-performing gene sets and a detailed tab-delimited text file with comprehensive statistical results.
+Researchers can use ssGSEA_ROC to compare gene set performance across different phenotypes, such as disease versus healthy states.
+The ssGSEA_ROC module provides flexibility in analysis direction through its "Reverse" parameter, allowing researchers to examine phenotype comparisons from multiple perspectives.
+ssGSEA_ROC is particularly useful in cancer research, genomics, and other fields where distinguishing between biological states is critical.
+The module leverages advanced statistical techniques to quantify the discriminatory power of gene sets across different biological conditions.
+ssGSEA_ROC module requires a GCT file containing ssGSEA projection results
+ssGSEA_ROC module needs a CLS file with two phenotype classifications
+PROJ parameter is a GCT file type representing ssGSEA projection results, required
+CLS parameter is a two-phenotype classification file, required for phenotype mapping
+Reverse parameter is a boolean flag to change ROC curve calculation direction, optional, default is FALSE
+Plot Top Results parameter allows specifying number of top gene sets to plot, optional
+ssGSEA_ROC module generates a PDF with ROC plots for top-scoring gene sets
+ssGSEA_ROC module produces a tab-delimited text file with statistical metrics for each gene set
+Module uses R programming language for analysis
+Module leverages ROCR package for ROC curve and performance metric calculations
+Module supports visualization of classifier performance across different gene sets
+Module helps assess coherence between ssGSEA enrichment scores and phenotype classifications
+Module calculates Matthews correlation coefficient for each gene set
+Module computes area under the curve (AUC) for each gene set
+Module performs two-sided Wilcoxon test on ssGSEA scores
+Module designed for comparative analysis of gene set enrichment across phenotypes
+ssGSEA_ROC module requires a GCT file containing ssGSEA projection results
+ssGSEA_ROC module needs a CLS file with two phenotype classifications
+ssGSEA_ROC input GCT file contains gene set enrichment scores from previous ssGSEA analysis
+ssGSEA_ROC input CLS file defines binary classification of samples into two phenotypic groups
+ssGSEA_ROC generates a PDF output with ROC curves for top-scoring gene sets
+ssGSEA_ROC produces a tab-delimited text file with statistical metrics for each gene set
+ssGSEA_ROC PDF output visualizes receiver operating characteristic curves
+ssGSEA_ROC text output includes Matthews correlation coefficient and area under the curve (AUC)
+ssGSEA_ROC can reverse the direction of phenotype comparison using an optional parameter
+ssGSEA_ROC uses R package ROCR for performance analysis and curve generation
+The ssGSEA_ROC module analyzes gene set enrichment scores using receiver operating characteristic (ROC) curve analysis.
+The module uses the R package ROCR to evaluate the performance of ssGSEA enrichment scores in distinguishing between two phenotypes.
+ssGSEA_ROC calculates multiple statistical metrics for each gene set, including Matthews correlation coefficient and area under the curve (AUC).
+The module requires two primary input files: a GCT file with ssGSEA projection results and a CLS file defining two phenotype classes.
+Users can optionally reverse the direction of phenotype comparison or specify the number of top results to plot in the output.
+The module generates two output files: a PDF with ROC plots for top-scoring gene sets and a tab-delimited text file with comprehensive statistical results.
+ssGSEA_ROC performs a two-sided Wilcoxon test on the ssGSEA scores to assess statistical significance between phenotype groups.
+The module is implemented in R and is available as a Docker container for consistent computational environments.
+Researchers can use ssGSEA_ROC to quantitatively evaluate the discriminatory power of gene sets across different biological conditions.
+The module supports reproducible computational analysis by providing standardized statistical evaluation of gene set enrichment data.

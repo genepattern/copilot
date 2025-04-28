@@ -1,0 +1,41 @@
+UniquifyLabels is on version .
+A description of UniquifyLabels is Makes row and column labels unique. For example if the label 'foo' occurs three times in the input file, the output file will contain the labels 'foo', 'foo-1', and 'foo-2'..
+UniquifyLabels is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+UniquifyLabels can be categorized as Preprocess & Utility.
+UniquifyLabels has the following parameters: input filename, output file, make.row.labels.unique, make.column.labels.unique.
+The UniquifyLabels GenePattern module helps researchers resolve duplicate labels in genomic datasets by adding numerical suffixes to repeated row or column names.
+UniquifyLabels is useful for preventing data processing errors caused by non-unique identifiers in genomic data files.
+The UniquifyLabels module can modify both row and column labels independently, providing flexible label uniquification strategies.
+UniquifyLabels supports multiple file formats including .res, .gct, and .odf, making it compatible with various genomic data representations.
+When UniquifyLabels encounters a repeated label like 'foo', it will transform subsequent instances to 'foo-1', 'foo-2', etc., ensuring each label remains distinct.
+The UniquifyLabels module is particularly valuable in bioinformatics preprocessing workflows where data consistency and unique identification are critical.
+UniquifyLabels operates as a utility module within the GenePattern ecosystem, helping researchers clean and standardize their genomic datasets before further analysis.
+By making row and column labels unique, UniquifyLabels helps prevent potential downstream computational errors in gene expression and genomic data processing.
+The UniquifyLabels module can be configured to modify either row labels, column labels, or both, depending on the specific requirements of a research project.
+UniquifyLabels provides a simple yet essential data cleaning function that supports more accurate and reliable genomic data analysis.
+input: filename of input dataset, type Dataset, required parameter for UniquifyLabels module
+input: supports .res, .gct, .odf file formats for UniquifyLabels processing
+output file: destination filename for processed dataset in UniquifyLabels module
+output file: required parameter specifying where transformed dataset will be saved
+make.row.labels.unique: boolean parameter controlling row label uniqueness in UniquifyLabels
+make.row.labels.unique: determines whether duplicate row labels will be modified with numeric suffixes
+make.column.labels.unique: boolean parameter controlling column label uniqueness in UniquifyLabels
+make.column.labels.unique: determines whether duplicate column labels will be modified with numeric suffixes
+UniquifyLabels module input file is a dataset file in .res, .gct, or .odf format containing potentially non-unique row and column labels.
+UniquifyLabels module input file contains data values and labels that may have duplicate entries across rows or columns.
+UniquifyLabels module input file can be a gene expression matrix or similar tabular data with potential label redundancy.
+UniquifyLabels module output file is a modified version of the input file with unique row and/or column labels.
+UniquifyLabels module output file preserves the original data values but appends numerical suffixes to duplicate labels.
+UniquifyLabels module output file ensures each row and/or column label is distinct by adding '-1', '-2', etc. to repeated labels.
+UniquifyLabels module supports .res, .gct, and .odf file formats for both input and output files.
+UniquifyLabels module maintains the original data structure while resolving label uniqueness.
+UniquifyLabels module helps resolve duplicate row and column labels in genomic datasets by appending numerical suffixes.
+The UniquifyLabels module automatically detects and modifies repeated labels in input files like .res, .gct, and .odf formats.
+When duplicate labels exist, UniquifyLabels adds incrementing numerical suffixes like 'foo', 'foo-1', and 'foo-2' to ensure uniqueness.
+UniquifyLabels allows users to independently choose whether to modify row labels, column labels, or both through configuration parameters.
+The module preserves the original file format while ensuring label uniqueness, making it a useful preprocessing tool for genomic data analysis.
+UniquifyLabels is implemented in Java and compatible with Java JVM 1.4, running on any operating system and CPU architecture.
+The module was developed by Joshua Gould at the Broad Institute to address label redundancy issues in genomic datasets.
+UniquifyLabels generates an output file with the same structure and format as the input file, with only label modifications.
+Users can apply UniquifyLabels to resolve label conflicts before further computational analysis or visualization of genomic data.
+The module provides a simple yet essential data cleaning function for researchers working with complex genomic datasets.

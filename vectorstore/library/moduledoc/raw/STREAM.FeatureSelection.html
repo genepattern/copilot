@@ -1,0 +1,162 @@
+<div class="gp-content-header fluid">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
+<h1><big>STREAM.FeatureSelection</big></h1>
+</div>
+</div>
+</div>
+</div><div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<br/>
+<dl class="dl-horizontal">
+<dt>LSID</dt>
+<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00396</dd>
+<dt>Author(s)</dt>
+<dd>Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
+<dt>Contact(s)</dt>
+<dd><p>Algorithm and scientific questions: &lt;Huidong.Chen  at mgh dot harvard  dot edu&gt;</p>
+<p>Module wrapping issues:  Ted Liefeld  &lt; jliefeld at cloud dot ucsd dot edu&gt;</p>
+</dd>
+</dl>
+<hr/>
+<h2>Introduction</h2>
+<p>STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data.  Within GenePattern STREAM is implemented as a collection of modules that cover the entire STREAM processing pipeline to allow individual steps to be performed interactively for data exploration.</p>
+<p>STREAM.FeatureSelection is used to identify features to be used in the downstream analysis. Two types of features can be used;</p>
+<ul>
+<li>Variable genes</li>
+<li>Top principal components</li>
+</ul>
+
+<p>
+For transcriptomic data (single-cell RNA-seq or qPCR), the input of STREAM is a gene expression matrix, where rows represent genes, columns represent cells. Each entry contains an adjusted gene expression value (after library size normalization and log2 transformation, typically performed using the STREAM.Preprocessing module).
+</p>
+<p> </p>
+<h2>Algorithm</h2>
+<p>
+By default the most variable genes are selected as features. For each gene, its mean value and standard deviation are calculated across all the cells. Then a non-parametric local regression method (LOESS) is used to fit the relationship between mean and standard deviation values. Genes above the curve that diverge significantly are selected as variable genes.
+</p><p>
+Alternatively, users can also perform PCA on the scaled matrix and select the top principal components based on the variance ratio elbow plot.
+
+</p>
+<h2>References</h2>
+<p>H Chen, L Albergante, JY Hsu, CA Lareau, GL Bosco, J Guan, S Zhou, AN Gorban, DE Bauer, MJ Aryee, DM Langenau, A Zinovyev, JD Buenrostro, GC Yuan, L Pinello <a href="https://www.nature.com/articles/s41467-019-09670-4">Single-cell trajectories reconstruction, exploration and mapping of omics data with STREAM. </a> Nature Communications, volume 10, Article number: 1903 (2019)</p>
+<p>Nestorowa, S. et al.<a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425"> A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a>. Blood 128, e20-31 (2016).</p>
+<p>Pinello Lab   <a href="https://github.com/pinellolab/STREAM">STREAM Github Repository</a></p>
+<p><b>ADD GPNB NOTEBOOK HERE WHEN READY</b></p>
+<h2>Input Files</h2>
+<ol>
+<li>data file *<br/>
+ A STREAM pkl file containing an annotated AnnData matrix of gene expression data.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output filename&gt;_stream_result.pkl<br>
+	Output file in STREAM AnnData extended pickle (.pkl) file format suitable for passing to the next step, STREAM&gt;DimensionReduction.</br></li>
+<li>&lt;output filename&gt;_variable_genes.png<bt></bt>
+        Plot of genes against the fitted curve (if select variable genes is selected). 
+        </li>
+<li>&lt;output filename&gt;_variable_genes.png<bt></bt>
+        Plot of principal components agains variance ratio (if PCA is selected). 
+        </li>
+</ol>
+<h2>Example Data</h2>
+<p>Example data for the STREAM workflow can be downloaded from dropbox: <a href="https://www.dropbox.com/sh/dfqht1ob89ku99d/AACI5ZW3aRuq9MhBfSNS_1O_a?dl=0">Stream Example Data</a><br/>
+Ref: Nestorowa, S. et al. <a href="https://www.ncbi.nlm.nih.gov/pubmed/27365425">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a>. Blood 128, e20-31 (2016).</p>
+<p>An input file suitable for this step is available at <a href="https://datasets.genepattern.org/data/test_data/STREAM/filtered_stream_result.pkl">filtered_stream_result.pkl</a> </p>
+<h2>Requirements</h2>
+<p>GenePattern 3.9.11 or later (dockerized).</p>
+<h2>Parameters</h2>
+<table class="table table-striped">
+<tbody>
+<tr><td colspan="2"><h4>Inputs and Outputs</h4></td></tr>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>data file*</td>
+<td>A STREAM pkl file containing an annotated AnnData matrix of gene expression data/td&gt;
+		</td></tr>
+<tr>
+<td>output filename*</td>
+<td>The output filename prefix.</td>
+</tr>
+<tr><td colspan="2"><h4>Select Variable Genes</h4>
+			Parameters used if variable genes are to be selected as the feature.
+                </td></tr>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>find variable genes</td>
+<td>Wether to find variable genes and add them to the output pkl object True/False.</td>
+</tr>
+<tr>
+<td>loess fraction</td>
+<td>Between 0 and 1. The fraction of the data used when estimating each y-value in LOWESS function.</td>
+</tr>
+<tr>
+<td>percentile</td>
+<td>Between 0 and 100. Specify the percentile to select genes.Genes are ordered based on its distance from the fitted curve.</td>
+</tr>
+<tr>
+<td>num genes</td>
+<td>Specify the number of selected genes. Genes are ordered based on its distance from the fitted curve.</td>
+</tr>
+<tr><td colspan="2">
+<h4>Principal Component Analysis</h4>
+                        Parameters used if PCA components are to be selected as the feature.
+                </td></tr>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>find principal components</td>
+<td>	Do a principal compnents Analysis (PCA) True/False.</td>
+</tr>
+<tr>
+<td>feature</td>
+<td>Choose from the genes in the dataset, Features used for pricipal component analysis. If None, all the genes will be used. IF 'var_genes', the most variable genes obtained from select variable genes will be used.</td>
+</tr>
+<tr>
+<td>num principal components</td>
+<td>The number of principal components.</td>
+</tr>
+<tr>
+<td>max principal components</td>
+<td>The maximum number of principal components used for variance Ratio plot.</td>
+</tr>
+<tr>
+<td>first principal component</td>
+<td>	If True, the first principal component will be included. True/False</td>
+</tr>
+<tr>
+<td>use precomputed</td>
+<td>	If True, the PCA results from previous computing will be used. True/False</td>
+</tr>
+<tr><td colspan="2"><h4>Plotting</h4>
+                        Parameters controlling the output figures.
+                </td></tr>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>figure height</td>
+<td>Figure height as used in matplotlib graphs.  Default=8.</td>
+</tr>
+<tr>
+<td>figure width</td>
+<td>Figure width as used in matplotlib plots.  Default=8</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+</div>

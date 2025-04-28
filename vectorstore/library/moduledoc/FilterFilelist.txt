@@ -1,0 +1,44 @@
+FilterFilelist is on version 1.
+A description of FilterFilelist is Generates a filtered filelist from the input filelist and some filter parameters. Takes a list of file paths, usually generated from within GenePattern, and filters the file paths according to the filter parameters. The optional includePattern applies to the filename only (not the fully qualified file path)..
+FilterFilelist is a GenePattern module written by Peter Carr, gp-help@broadinstitute.org.
+FilterFilelist can be categorized as Preprocess & Utilities.
+FilterFilelist has the following parameters: input filelist, includePattern, type, errorOnEmptySet, output file name.
+FilterFilelist is a versatile GenePattern module for filtering lists of file paths based on specific criteria.
+FilterFilelist allows researchers to selectively extract file paths matching particular patterns or types.
+The FilterFilelist module can include or exclude files based on filename extensions like *.cls or *.gct.
+FilterFilelist supports filtering across different file types, including files, directories, or both.
+Researchers use FilterFilelist to preprocess and organize large collections of data files in bioinformatics workflows.
+The FilterFilelist module helps manage complex datasets by providing flexible file path selection mechanisms.
+FilterFilelist can generate error messages when no files match the specified filtering criteria.
+Bioinformaticians leverage FilterFilelist to streamline data preparation and analysis pipelines.
+The FilterFilelist module operates independently of specific operating systems or computational platforms.
+FilterFilelist is particularly useful in genomic and transcriptomic research for managing multiple data files.
+Researchers can use FilterFilelist to quickly extract specific subsets of files from large directory structures.
+The module supports complex filtering strategies through its include pattern and type parameters.
+FilterFilelist enables precise file selection without manual intervention in computational biology workflows.
+GenePattern users can integrate FilterFilelist seamlessly into larger analysis pipelines and computational protocols.
+The FilterFilelist module provides a standardized approach to file path management across different research contexts.
+input: file type, contains list of file paths, required for FilterFilelist module, specifies initial set of files to filter
+includePattern: optional string parameter, defines filename patterns to match like *.cls or *.gct, filters files based on name matching
+type: specifies whether to include files, directories, or both in output filelist, default is "all", determines filtering scope in FilterFilelist module
+errorOnEmptySet: boolean parameter controlling module behavior when no files match filter criteria, default is "no", determines whether to generate error message if result set is empty
+output file name: string parameter defining name of output file, required for FilterFilelist module, specifies destination for filtered file list
+FilterFilelist module input and output file descriptions:
+input filelist: A text file containing a list of file paths, typically generated within GenePattern, with each file path on a separate line.
+includePattern: A text file or comma-separated string specifying filename patterns to match, such as "*.cls,*.gct", used to filter the input filelist.
+output file: A text file containing the filtered list of file paths after applying the specified include patterns and type filters, with each filtered file path on a separate line.
+FilterFilelist module uses a simple text-based file list for input and output, allowing flexible file path filtering.
+The input filelist represents a collection of file paths to be processed by the FilterFilelist module.
+The output file contains only the file paths that match the specified filtering criteria from the input filelist.
+The module supports filtering files based on filename patterns and file/directory type selection.
+The output file maintains the same text-based format as the input filelist, with one file path per line.
+FilterFilelist is a GenePattern module for filtering lists of file paths based on specified criteria.
+The FilterFilelist module allows users to selectively filter file paths using filename patterns.
+FilterFilelist can include or exclude files and directories based on user-defined parameters.
+The module supports matching filename patterns like *.cls or *.gct using the includePattern parameter.
+FilterFilelist can generate an output file containing only the files that match specified filtering conditions.
+Users can configure FilterFilelist to handle empty result sets by controlling the errorOnEmptySet parameter.
+The FilterFilelist module is implemented in Java and is platform-independent across different operating systems.
+FilterFilelist operates as a preprocessing utility within the GenePattern computational genomics environment.
+The module allows flexible filtering of file lists by type, including files, directories, or both.
+FilterFilelist provides a simple mechanism for curating file collections before further computational analysis.

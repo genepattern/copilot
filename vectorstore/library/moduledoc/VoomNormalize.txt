@@ -1,0 +1,50 @@
+VoomNormalize is on version 1.2.
+A description of VoomNormalize is Preprocess RNA-Seq count data in a GCT file so that it is suitable for use in GenePattern analyses. Many of these tools were originally designed to handle microarray data - particularly from Affymetrix arrays - and so we must be mindful of that origin when preprocessing data for use with them. The module does this by using a mean-variance modeling technique to transform the dataset to fit an approximation of a normal distribution, with the goal of thus being able to apply classic normal-based microarray-oriented statistical methods and workflows..
+VoomNormalize is a GenePattern module written by Arthur Liberzon, David Eby, Edwin Juárez.
+VoomNormalize can be categorized as Preprocess & Utilities.
+VoomNormalize has the following parameters: input file, cls file, output file, expression value filter threshold.
+The VoomNormalize module is a specialized RNA-Seq data preprocessing tool in GenePattern for transforming raw count data.
+VoomNormalize helps convert raw RNA-Seq count data into a format compatible with microarray-oriented statistical methods.
+The module uses the 'voom' method from the Bioconductor 'limma' package to normalize and transform RNA-Seq data.
+VoomNormalize first filters out features with low read counts using a counts per million (CPM) threshold approach.
+The module applies Trimmed Mean of M-values (TMM) normalization to the remaining features in the RNA-Seq dataset.
+VoomNormalize transforms RNA-Seq count data to approximate a normal distribution, enabling use of classic statistical techniques.
+The module requires raw read count data as input, specifically avoiding pre-normalized metrics like RPKM or FPKM.
+VoomNormalize generates two output files: a preprocessed GCT file and a log2 normalized version of the dataset.
+The module is designed to prepare RNA-Seq data for downstream analyses in tools like GSEA, ComparativeMarkerSelection, and NMFConsensus.
+VoomNormalize automatically determines the smallest group of samples for filtering based on the provided categorical classification file.
+The preprocessing technique implemented by VoomNormalize helps address the inherent variability and non-normal distribution of RNA-Seq count data.
+input file: file type GCT, contains raw RNA-Seq counts from MergeHTSeqCounts, required parameter for VoomNormalize module
+cls file: categorical file specifying phenotype classes for samples in GCT, required parameter for VoomNormalize module
+output file: name of output file to be generated, required parameter for VoomNormalize module
+expression value filter threshold: numeric value used to filter CPM expression values, determines which rows are kept based on threshold, optional parameter with default value, part of VoomNormalize preprocessing
+VoomNormalize module requires raw read count data that has not been previously normalized
+VoomNormalize performs filtering of features with low read counts using counts per million (CPM) calculation
+VoomNormalize applies Trimmed Mean of M-values (TMM) normalization to remaining features
+VoomNormalize transforms data using 'voom' method to approximate normal distribution for downstream analysis
+VoomNormalize converts data to logCPM (log2 counts per million) for compatibility with microarray-oriented statistical methods
+VoomNormalize module requires a raw RNA-Seq count data input file in GCT format.
+The input GCT file should contain unprocessed read counts from tools like HTSeq or RSEM.
+VoomNormalize requires a categorical CLS file specifying phenotype classes for samples.
+The CLS file maps samples to their experimental or clinical groupings.
+VoomNormalize produces a preprocessed GCT file with fewer rows after filtering low-count features.
+The output preprocessed GCT file contains normalized read counts transformed using the voom method.
+VoomNormalize also generates a log2 normalized GCT file with transformed gene expression values.
+The log2 normalized file allows downstream analysis using microarray-oriented statistical methods.
+Input files for VoomNormalize must be raw RNA-Seq counts, not already normalized RPKM or FPKM values.
+The module filters out features with less than 1 read per million in the smallest sample group.
+VoomNormalize applies Trimmed Mean of M-values (TMM) normalization to remaining features.
+The output files represent gene expression data prepared for further computational analysis.
+VoomNormalize is a GenePattern module for preprocessing RNA-Seq count data for downstream analysis.
+The module is designed to transform RNA-Seq count data to be compatible with microarray-oriented statistical methods.
+VoomNormalize uses the 'voom' method from the Bioconductor 'limma' package to normalize and transform RNA-Seq data.
+The module requires raw read counts as input, not pre-normalized metrics like RPKM or FPKM.
+VoomNormalize first filters out features with less than 1 read per million in the smallest group of samples.
+The module performs normalization using Trimmed Mean of M-values (TMM) on the remaining features.
+VoomNormalize transforms the data to approximate a normal distribution using the 'voom' method.
+The output is a dataset with values in log2 counts per million (logCPM) that can be used with standard microarray statistical methods.
+The module requires two input files: a GCT file with raw RNA-Seq counts and a CLS file specifying sample phenotype classes.
+VoomNormalize generates two output files: a preprocessed GCT file and a log2 normalized GCT file.
+The module runs on R-3.1.3 and requires specific R packages from CRAN and Bioconductor.
+VoomNormalize is part of the GenePattern suite of computational genomics tools.
+The module follows recommendations from published literature on RNA-Seq data normalization and transformation.

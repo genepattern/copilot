@@ -1,0 +1,81 @@
+ProteomicsAnalysis is on version .
+A description of ProteomicsAnalysis is Runs the proteomics analysis on the set of input spectra. This consists of quality assessment, normalization, peak detection, and peak matching across different spectra..
+ProteomicsAnalysis is a GenePattern module written by D. R. Mani (Broad Institute), gp-help@broad.mit.edu.
+ProteomicsAnalysis can be categorized as Proteomics.
+ProteomicsAnalysis has the following parameters: zip.filename, output.file, quality.threshold, fill.na, normalize, peak.detection.method, filter.peaks, filter.peaks.factor, peak.list.filename, random.seed, random.n.peaks, low.Da, high.Da, percentile, smoothing.size, adaptive.background.correction.strength, adaptive.background.correction.size, high.pass.filter.strength, high.pass.filter.factor.
+The ProteomicsAnalysis GenePattern module is a comprehensive tool for processing and analyzing mass spectrometry spectral data.
+The ProteomicsAnalysis module enables researchers to perform quality assessment and normalization of mass spectrometry spectra.
+The module can discard low-quality spectra based on a user-defined quality threshold, ensuring only high-quality data is analyzed.
+ProteomicsAnalysis supports multiple normalization strategies including total area normalization, total intensity normalization, and scaling intensities between 0 and 1.
+The module performs peak detection across multiple spectra, identifying and matching peaks using either a window-based or Gaussian mixture model approach.
+ProteomicsAnalysis can generate a comprehensive output table mapping peaks (m/z values) across all input spectra, with options to handle missing peak data.
+Researchers can customize peak detection and filtering parameters, such as m/z range, peak intensity thresholds, and background correction settings.
+The module produces multiple output files including a GCT file with peak intensities, statistics files, and detailed peak mapping information.
+ProteomicsAnalysis is particularly useful for comparative proteomics studies, biomarker discovery, and pattern recognition in mass spectrometry data.
+The module is implemented in R and can run on any computational platform, making it widely accessible to proteomics researchers.
+zip.filename, string, Zip file containing CSV files for each spectrum in ProteomicsAnalysis module, required, no default value
+output.file, string, Output file prefix for ProteomicsAnalysis module results, required, no default value
+quality.threshold, numeric, Discard spectra with quality below this value in ProteomicsAnalysis module, optional, no default specified
+fill.na, boolean, Determines whether missing peaks should be filled with interpolated values in ProteomicsAnalysis module, optional, default is unspecified
+normalize, string, Specifies normalization strategy for spectra in ProteomicsAnalysis module, optional, options include 'tan', 'tin', '01', 'none'
+peak.detection.method, string, Defines method for peak detection in ProteomicsAnalysis module, optional, options include 'detect', 'input', 'random'
+filter.peaks, string, Indicates whether peaks should be filtered based on intensity/noise in ProteomicsAnalysis module, optional, options 'yes' or 'no'
+filter.peaks.factor, numeric, Threshold for retaining peaks based on intensity relative to noise standard deviation in ProteomicsAnalysis module, optional, no default specified
+peak.list.filename, string, File containing M/Z values when peaks method is 'input' in ProteomicsAnalysis module, optional, no default value
+random.seed, numeric, Random seed used when peak detection method is 'random' in ProteomicsAnalysis module, optional, no default specified
+random.n.peaks, numeric, Number of random M/Z values selected when peak detection method is 'random' in ProteomicsAnalysis module, optional, no default specified
+low.Da, numeric, Minimum M/Z value to include in ProteomicsAnalysis module, required, no default value
+high.Da, numeric, Maximum M/Z value to include in ProteomicsAnalysis module, required, no default value
+percentile, numeric, Threshold for peak location after applying filters in ProteomicsAnalysis module, optional, default is 0.65
+smoothing.size, numeric, Size of smoothing filter in ProteomicsAnalysis module, optional, default is 21
+adaptive.background.correction.strength, numeric, Strength of adaptive background correction filter in ProteomicsAnalysis module, optional, default is 0.75
+adaptive.background.correction.size, numeric, Size of adaptive background correction filter in ProteomicsAnalysis module, optional, default is 21
+high.pass.filter.strength, numeric, Strength of high pass filter in ProteomicsAnalysis module, optional, default is 10
+high.pass.filter.factor, numeric, Filter factor for high pass filter in ProteomicsAnalysis module, optional, default is 5
+ProteomicsAnalysis module input files:
+zip file containing CSV files of spectra data for proteomics analysis
+peak list file containing one M/Z value per line when peaks=input method is selected
+ProteomicsAnalysis module output files:
+<output.file>.gct file containing spectra x m/z table with detected and matched peaks
+<output.file>-stats.odf file with spectrum-level statistics like min, max, normalization factors
+<output.file>-mzarray.odf file listing peaks detected in each input spectrum
+<output.file>-empeaks.odf file with Gaussian mixture parameters for matched peaks
+<output.file>-mzarray-em.odf file mapping actual peaks to EM-matched peaks
+ProteomicsAnalysis module input zip file format:
+CSV files representing individual mass spectrometry spectra
+Each CSV likely contains m/z and intensity values for a single spectrum
+ProteomicsAnalysis module peak list file format:
+Plain text file
+One m/z value per line
+Used when manual peak selection is desired
+ProteomicsAnalysis module .gct output file format:
+Tabular format with spectra as rows and m/z values as columns
+Contains peak intensities or NA for missing peaks
+Represents union of detected peaks across all input spectra
+ProteomicsAnalysis module -stats.odf output file contents:
+Spectrum-level metadata
+Includes minimum and maximum intensity values
+Contains normalization factors
+Includes spectrum selection flags based on quality threshold
+ProteomicsAnalysis module -mzarray.odf file contents:
+List of peaks detected in each input spectrum
+Likely includes m/z and intensity values for each detected peak
+ProteomicsAnalysis module -empeaks.odf file contents:
+Parameters for Gaussian mixture model used in peak matching
+Includes mean, variance, and mixing probability for each peak cluster
+ProteomicsAnalysis module -mzarray-em.odf file contents:
+Mapping between original spectrum peaks and EM-matched peaks
+Shows how individual peaks were assigned to mixture model clusters
+ProteomicsAnalysis is a computational module for analyzing mass spectrometry spectral data across multiple spectra.
+The ProteomicsAnalysis module performs comprehensive proteomics data processing through multiple sequential steps.
+Quality assessment is the first step in the ProteomicsAnalysis module, where spectra are evaluated and filtered based on a specified quality threshold.
+Normalization in the ProteomicsAnalysis module allows comparison of peaks across different spectra using strategies like total area, total intensity, or scaling between 0 and 1.
+Peak detection is a critical component of the ProteomicsAnalysis module that identifies significant spectral features across input data.
+The ProteomicsAnalysis module uses peak matching techniques to identify consistent peaks across multiple spectra, either through windowing or Gaussian mixture modeling.
+The output of the ProteomicsAnalysis module is a comprehensive table mapping m/z values and their corresponding intensities across all input spectra.
+Users can control peak detection in the ProteomicsAnalysis module through parameters like fill.na, which determines how missing peaks are handled.
+The ProteomicsAnalysis module allows flexible configuration of spectral analysis, including setting m/z range, normalization strategy, and peak filtering parameters.
+Advanced filtering in the ProteomicsAnalysis module can remove peaks based on intensity relative to noise levels using configurable statistical thresholds.
+The ProteomicsAnalysis module generates multiple output files providing detailed insights into spectral peak detection, matching, and statistical characteristics.
+Gaussian mixture modeling in the ProteomicsAnalysis module enables sophisticated peak matching through probabilistic clustering techniques.
+The ProteomicsAnalysis module is implemented in R and designed to be platform-independent, supporting analysis across different computational environments.

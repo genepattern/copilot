@@ -1,0 +1,205 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>HierarchicalClustering (v6) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/HierarchicalClustering/6?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Agglomerative hierarchical clustering of genes/experiments</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Joshua Gould, Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>Cluster analysis is a means of discovering, within a body of data, groups whose members are similar for some property.  Clustering of gene expression data is geared toward finding genes that are expressed or not expressed in similar ways under certain conditions.</p>
+<p>Given a set of items to be clustered (items can be either genes or samples), agglomerative hierarchical clustering (HC) recursively merges items with other items or with the result of previous merges, according to the distance between each pair of items, with the closest item pairs being merged first. As a result, it produces a tree structure, referred to as dendogram, whose nodes correspond to:</p>
+<ul>
+<li>the original items (these are the leaves of the tree)</li>
+<li>the merging of other nodes (these are the internal nodes of the tree)</li>
+</ul>
+<p>The HierarchicalClustering module produces a <a href="/file-formats-guide#CDT">CDT</a> file that contains the original data, but reordered to reflect the clustering. Additionally, either a dendrogram or two dendrogram files are created (one for clustering rows and one for clustering columns). The row dendrogram has the extension <a href="/file-formats-guide#GTR">GTR</a>, while the column dendrogram has the extension <a href="/file-formats-guide#ATR">ATR</a>. These files describe the order in which nodes were joined during the clustering.</p>
+<p>The module includes several preprocessing options. The order of the preprocessing operations is:</p>
+<ol>
+<li>Log Base 2 Transform</li>
+<li>Row (gene) center</li>
+<li>Row (gene) normalize</li>
+<li>Column (sample) center</li>
+<li>Column (sample) normalize</li>
+</ol>
+<h2>References</h2>
+<p>Eisen MB, Spellman PT, Brown PO, Botstein D. Cluster analysis and display of genome-wide expression patterns. <em>Proc Natl Acad Sci USA</em>. 1998;95:14863-14868.</p>
+<p>de Hoon MJ, Imoto S, Nolan J, Miyano S. Open source clustering software. <em>Bioinformatics</em>. 2004;20:1453-1454.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th style="width: 109px;">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input filename <span style="color:red;">*</span></td>
+<td>input data file name - .gct, .res, .pcl</td>
+</tr>
+<tr>
+<td>column distance measure <span style="color:red;">*</span></td>
+<td>
+<p>Distance measure for column (sample) clustering.  Options include:</p>
+<ul>
+<li>No column clustering</li>
+<li>Uncentered correlation: The same as the Pearson correlation, except that the sample means are set to zero in the expression for uncentered correlation. The uncentered correlation coefficient lies between –1 and +1; hence the distance lies between 0 and 2.</li>
+<li>Pearson correlation (default): Pearson's correlation coefficient between two variables is defined as the covariance of the two variables divided by the product of their standard deviations. It is a measure for how well a straight line can be fitted to a scatter plot of x and y. If all the points in the scatter plot lie on a straight line, the Pearson correlation coefficient is either +1 or -1, depending on whether the slope of line is positive or negative. If it is equal to zero, there is no correlation between x and y.</li>
+<li>Uncentered correlation, absolute value: The same as the absolute Pearson correlation, except that the sample means are set to zero in the expression for uncentered correlation. The uncentered correlation coefficient lies between 0 and +1; hence the distance lies between 0 and 1.</li>
+<li>Pearson correlation, absolute value:  The absolute value of the Pearson correlation coefficient is used; hence the corresponding distance lies between 0 and 1, just like the correlation coefficient.</li>
+<li>Spearman’s rank correlation: Nonparametric version of the Pearson correlation that measures the strength of association between two ranked variables. To calculate the Spearman rank correlation, each data value is replaced by their rank if the data in each vector is ordered by their value. Then the Pearson correlation between the two rank vectors instead of the data vectors is calculated. It is useful because it is more robust against outliers than the Pearson correlation.</li>
+<li>Kendall’s tau: The Kendall tau distance is a metric that counts the number of pairwise disagreements between two lists. The larger the distance, the more dissimilar the two lists are.</li>
+<li>Euclidean distance: Corresponds to the length of the shortest path between two points. Takes into account the difference between two samples directly, based on the magnitude of changes in the sample levels. This distance type is usually used for data sets that are normalized or without any special distribution problem.</li>
+<li>City-block distance: Also known as the Manhattan or taxi cab distance; the city-block distance is the sum of distances along each dimension between two points.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>row distance measure <span style="color:red;">*</span></td>
+<td>
+<p>Distance measure for row (gene) clustering.  Options include:</p>
+<ul>
+<li>No row clustering (default)</li>
+<li>Uncentered correlation</li>
+<li>Pearson correlation</li>
+<li>Uncentered correlation, absolute value</li>
+<li>Pearson correlation, absolute value</li>
+<li>Spearman’s rank correlation</li>
+<li>Kendall’s tau</li>
+<li>Euclidean distance</li>
+<li>City-block distance</li>
+</ul>
+<strong>NOTE: Filtering beforehand is recommended since row clustering is computationally intensive.</strong></td>
+</tr>
+<tr>
+<td>clustering method <span style="color:red;">*</span></td>
+<td>
+<p>Hierarchical clustering method to use.  Options include:</p>
+<ul>
+<li>Pairwise complete-linkage (default): The distance between two clusters is computed as the maximum distance between a pair of objects, one in one cluster and one in another.</li>
+<li>Pairwise single-linkage:  The distance between two clusters is computed as the distance between the two closest elements in the two clusters.</li>
+<li>Pairwise centroid-linkage: The distance between two clusters is computed as the (squared) Euclidean distance between their centroids or means.</li>
+<li>Pairwise average-linkage: The distance between two clusters is computed as the average distance between the elements in the two clusters.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>log transform </td>
+<td>Specifies whether to log-transform the data before clustering. Default: no</td>
+</tr>
+<tr>
+<td>row center </td>
+<td>Specifies whether to center each row (gene) in the data.  Centering each row subtracts the row-wise mean or median from the values in each row of data, so that the mean or median value of each row is 0. Default: no</td>
+</tr>
+<tr>
+<td>row normalize </td>
+<td>Specifies whether to normalize each row (gene) in the data. Normalizing each row multiplies all values in each row of data by a scale factor S so that the sum of the squares of the values in each row is 1.0 (a separate S is computed for each row).  Default: no</td>
+</tr>
+<tr>
+<td>column center </td>
+<td>Specifies whether to center each column (sample) in the data. Centering each column subtracts the column-wise mean or median from the values in each column of data, so that the mean or median value of each column is 0. Default: no</td>
+</tr>
+<tr>
+<td>column normalize </td>
+<td>Specifies whether to normalize each column (sample) in the data. Normalizing each column multiplies all values in each column of data by a scale factor S so that the sum of the squares of the values in each column is 1.0 (a separate S is computed for each column). Default: no</td>
+</tr>
+<tr>
+<td>output base name <span style="color:red;">*</span></td>
+<td>Base name for the output files</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Output Files</h2>
+<ol>
+<li><a href="/cancer/software/genepattern/file-formats-guide#CDT">CDT</a> file<br/>
+	Contains the original data, but reordered to reflect the clustering.</li>
+<li><a href="/cancer/software/genepattern/file-formats-guide#ATR">ATR</a> file (if clustering by columns/samples) or <a href="/cancer/software/genepattern/file-formats-guide#GTR">GTR</a> file (if clustering by rows/genes)<br/>
+	These files describe the order in which nodes were joined during the clustering.</li>
+</ol>
+<h2>License</h2>
+<p>HierarchicalClustering is distributed under the license available at <a href="http://rana.lbl.gov/EisenSoftwareSource.htm">http://rana.lbl.gov/EisenSoftwareSource.htm</a></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Clustering</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java, C</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>2013-03-13</td>
+<td>Updated for Java 7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2009-02-10</td>
+<td>Row clustering turned off by default</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2008-08-20</td>
+<td>Report error when out of memory. Added 64-bit Linux support. Fixed bug that caused mean centering to be performed when median centering was selected.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2007-03-08</td>
+<td>Changed default distance measure</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2005-12-16</td>
+<td>Fixes bugs in previous version</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

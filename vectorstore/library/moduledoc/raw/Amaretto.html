@@ -1,0 +1,128 @@
+<div class="gp-content-header fluid">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h1><big>Admin: GenePattern Module Docs</big></h1>
+</div>
+</div>
+</div>
+</div><div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h2>Amaretto (v00378) <a class="btn btn-primary" href="/module_docs/223/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a></h2>
+<dl class="dl-horizontal">
+<dt>LSID</dt>
+<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00378</dd>
+<dt>Author(s)</dt>
+<dd>Gevaert Lab, Stanford</dd>
+<dt>Contact(s)</dt>
+<dd><p>Amaretto algorithm and data preprocessing: Jayendra Ravindra Shinde &lt;jayendra@stanford.edu&gt;, Rileen Sinha &lt;rileen@broadinstitute.org&gt;</p>
+<p>Module wrapping issues:  Ted Liefeld &lt;liefeld@cloud.ucsd.edu&gt;</p>
+</dd>
+<dt>Updated By</dt>
+<dd>liefeld@broadinstitute.org</dd>
+<dt>Task type</dt>
+<dd></dd>
+<dt>Cpu type</dt>
+<dd></dd>
+<dt>Os</dt>
+<dd></dd>
+<dt>Language</dt>
+<dd></dd>
+<dt>Algorithm version</dt>
+<dd></dd>
+<dt>Published</dt>
+<dd><span class="glyphicon glyphicon-ok text-success"></span></dd>
+<dt>Dev</dt>
+<dd><span class="glyphicon glyphicon-remove text-danger"></span></dd>
+<dt>Beta</dt>
+<dd><span class="glyphicon glyphicon-ok text-success"></span></dd>
+</dl>
+<hr/>
+<h2>Introduction</h2>
+<p>This repository contains the code accompanying the manuscript "Module analysis captures pancancer genetically and epigenetically deregulated cancer driver genes for smoking and antiviral response".<br/>
+We have developed an algorithm called AMARETTO to identify pancancer driver genes. AMARETTO integrates pancancer DNA copy number, DNA methylation and gene expression data into modules to identify pancancer driver genes. </p>
+<p> </p>
+<h2>Algorithm</h2>
+<div>The algorithm: </div>
+<div><span style="white-space:pre"> </span>Step 1 identifies candidate cancer driver genes with tumor-specific DNA copy number or DNA methylation alterations compared to normal tissue. We used GISTIC to identify significantly and recurrently deleted or amplified regions in the genome. Similarly, we used MethylMix to identify recurrently hyper-or hypomethylated genes. </div>
+<div><span style="white-space:pre"> </span>Step 2 identifies cancer driver genes by modeling the relationship between (epi)genomic and transcriptomic data on an individual gene basis.</div>
+<div><span style="white-space:pre"> </span>Step 3 uses the cancer driver genes identified from step 2 and now takes a global approach by dissecting global gene expression data into modules of co-expressed genes. Each module also has an associated regulatory program that connects the cancer driver genes from step 1 with their downstream targets. This regulatory program is modeled using linear regression with elastic net regularization.</div>
+<div> </div>
+<div>AMARETTO supports downloading and processing TCGA data from Firehose (see https://gdac.broadinstitute.org/).</div>
+<h2>References</h2>
+<p>"Module Analysis Captures Pancancer Genetically and Epigenetically Deregulated Cancer Driver Genes for Smoking and Antiviral Response"<br/>
+MagaliChampiona, KevinBrennana, TomCroonenborghs, Andrew J.Gentles, NathaliePochet, OlivierGevaert.  <a aria-label="Persistent link using digital object identifier" class="doi" href="https://doi.org/10.1016/j.ebiom.2017.11.028" style='margin: 0px; padding: 0px; color: rgb(0, 115, 152); word-break: break-word; font-family: Arial, Helvetica, "Lucida Sans Unicode", "Microsoft Sans Serif", "Segoe UI Symbol", STIXGeneral, "Cambria Math", "Arial Unicode MS", sans-serif; font-size: 13px;' target="_blank" title="Persistent link using digital object identifier">https://doi.org/10.1016/j.ebiom.2017.11.028</a></p>
+<p>https://bitbucket.org/gevaertlab/pancanceramaretto/overview</p>
+<h2>Input Files</h2>
+<ol>
+<li>Expresion File<br/>
+	Gene expression data in gct file format.</li>
+<li>Copy number File<br/>
+	Gene copy number data in gct file format.</li>
+<li>Methylation File<br/>
+	Methylation data in gct file format.</li>
+<li>Number of modules<br/>
+	?</li>
+<li>percent genes<br/>
+	?</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>AllGenes_amaretto.tsv<br/>
+	list of genes</li>
+<li>AllRegulators_amaretto.tsv<br/>
+	list of regulators</li>
+<li>ModuleData_amaretto.gct<br/>
+	Data for modules</li>
+<li>ModuleMembership_amaretto.tsv<br/>
+	List of membership of genes to modules</li>
+<li>NrModules_amaretto.tsv<br/>
+	?</li>
+<li>RegulatoryProgramData_amaretto.tsv<br/>
+	?</li>
+<li>RegulatoryPrograms_amaretto.tsv<br/>
+	?</li>
+<li>&lt;input_base_name&gt;_Expression_module_&lt;number&gt;.pdf<br/>
+	Plot of module</li>
+</ol>
+<h2>Example Data</h2>
+<p>Preprocessed TCGA data is available at https://datasets.genepattern.org/?prefix=data/module_support_files/Amaretto/ for most of the TCGA cancer types. </p>
+<h2>Requirements</h2>
+<p>[any software requirements for running this, e.g., version of R, licensing]</p>
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expression file*</td>
+<td>gene expression file in gct format</td>
+</tr>
+<tr>
+<td>copy number file*</td>
+<td>copy number data in gct format</td>
+</tr>
+<tr>
+<td>methylation file*</td>
+<td>methylation data in gct format</td>
+</tr>
+<tr>
+<td>number of modules*</td>
+<td>The number of modules to build.</td>
+</tr>
+<tr>
+<td>percent genes*</td>
+<td>Use this many % of the most varying genes</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+<p><a class="btn btn-primary" href="/module_docs/223/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-warning" href="/module_docs"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></p>
+</div>
+</div>
+</div>

@@ -1,0 +1,74 @@
+PreviewFCS is on version 2.
+A description of PreviewFCS is Allows viewing of structural metadata, parameters, and descriptive statistics from a Flow Cytometry Standard (FCS) data file.
+PreviewFCS is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca).
+PreviewFCS can be categorized as Flow Cytometry.
+PreviewFCS has the following parameters: Input fcs data file, Output file format, Output file name.
+The PreviewFCS GenePattern module provides a comprehensive overview of Flow Cytometry Standard (FCS) data files.
+PreviewFCS allows researchers to quickly inspect the structural and statistical metadata contained within flow cytometry data files.
+The module can generate detailed reports about FCS files in either HTML or XML format.
+PreviewFCS provides key information about flow cytometry datasets, including the total number of events and parameters recorded.
+For each parameter in an FCS file, PreviewFCS calculates and reports statistical measures like minimum, maximum, median, mean, and quartile values.
+The PreviewFCS module supports analysis of FCS files with up to 1,000,000 events and 24 parameters, requiring a maximum of 2 GB RAM.
+PreviewFCS can extract and display all keyword/value pairs embedded within an FCS file, offering comprehensive metadata exploration.
+The module supports multiple FCS file versions, with specific documentation referencing the FCS 3.1 file standard.
+PreviewFCS is designed to work across different computing platforms, with Java 1.6 or higher as the primary runtime requirement.
+Researchers can use PreviewFCS to quickly validate and understand the contents of flow cytometry data files before more complex downstream analyses.
+The module provides a spillover matrix report if such information is present in the original FCS file, which is crucial for certain flow cytometry experimental designs.
+PreviewFCS generates reports that include detailed information about data acquisition, such as date and time of data collection.
+The module helps researchers assess parameter scaling (linear or logarithmic) for each measurement channel in a flow cytometry experiment.
+input fcs data file: File, the input FCS file to be previewed, required, no default value
+output file format: String, specifies the output report format (HTML or XML), optional, default is HTML
+output file name: String, name of the output file, optional, defaults to input file name with appropriate extension
+preview report: Output document containing detailed FCS file metadata, including:
+- Number of events in dataset
+- Number of parameters
+- FCS file version
+- Data acquisition date and time
+- Data type
+- Parameter-specific details:
+- Parameter name
+- Full parameter name
+- Scale type (linear/logarithmic)
+- Minimum value
+- Maximum value
+- Median
+- Mean
+- First quartile
+- Third quartile
+- Complete keyword/value pairs
+- Spillover matrix (if present in file)
+platform dependencies:
+- Module type: Flow Cytometry
+- CPU type: any
+- Operating system: any
+- Language: Java (version 1.6 minimum)
+Here are the input and output file descriptions for the PreviewFCS module:
+Input FCS file is a Flow Cytometry Standard (FCS) data file containing cellular measurement data from a flow cytometry experiment
+Input FCS file contains multiple parameters representing different cellular characteristics measured during flow cytometry analysis
+Input FCS file stores event-level data with numerical measurements for each detected cellular particle
+Input FCS file follows the FCS 3.1 file standard with specific keyword metadata and numerical data sections
+Input FCS file can contain up to 1,000,000 events with up to 24 different parameters
+Output HTML file provides a human-readable preview report of the FCS file contents
+Output HTML file includes summary statistics for each parameter in the FCS file
+Output HTML file displays total number of events, parameters, and acquisition metadata
+Output HTML file shows minimum, maximum, median, mean, and quartile values for each parameter
+Output HTML file follows transitional XHTML version 1 formatting standards
+Output XML file provides a machine-readable preview report of the FCS file contents
+Output XML file includes structured metadata about the FCS file parameters
+Output XML file contains numerical summary statistics in a parseable format
+Output XML file follows transitional XML file standards
+Output XML file enables programmatic parsing of FCS file characteristics
+Here are the embedding-friendly chunks for the PreviewFCS module documentation:
+PreviewFCS is a GenePattern module for analyzing Flow Cytometry Standard (FCS) data files.
+The module provides a comprehensive overview of structural metadata and statistical parameters within an FCS file.
+PreviewFCS can generate reports showing the number of events, parameters, and detailed statistical distributions for each parameter.
+The module supports two output formats: HTML and XML for presenting FCS file analysis results.
+PreviewFCS can process FCS files with up to 1,000,000 events and 24 parameters, requiring a maximum of 2 GB RAM.
+The module extracts key information like data acquisition date, FCS version, and parameter details using standard FCS file keywords.
+PreviewFCS provides statistical summaries including minimum, maximum, median, mean, and quartile values for each parameter.
+The module is designed to work across different platforms and requires Java 1.6 or higher to run.
+PreviewFCS helps researchers quickly understand the structural and statistical characteristics of flow cytometry data files.
+The module was developed by Josef Spidlen and is part of the GenePattern flow cytometry analysis toolkit.
+PreviewFCS can extract and display a complete spillover matrix if present in the input FCS file.
+The module supports both linear and logarithmic parameter scaling in its analysis.
+PreviewFCS provides a comprehensive view of all keyword/value pairs embedded in the FCS file metadata.

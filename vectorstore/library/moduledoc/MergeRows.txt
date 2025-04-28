@@ -1,0 +1,44 @@
+MergeRows is on version .
+A description of MergeRows is Creates a new merged dataset from a list of datasets. Common columns in the datasets are retained while others are discarded..
+MergeRows is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+MergeRows can be categorized as Preprocess & Utilities.
+MergeRows has the following parameters: input filename1, input filename2, zip filename, output.
+The MergeRows GenePattern module allows researchers to combine multiple datasets by combining their rows.
+MergeRows is useful for consolidating data from multiple experimental sources or replicates into a single comprehensive dataset.
+The MergeRows module can handle multiple file formats including .res, .gct, .snp, .cn, .xcn, .odf, and .cls files.
+When merging datasets, MergeRows retains common columns across input files and discards unique columns.
+If input files have different formats, the MergeRows module will output the merged data in .gct format by default.
+MergeRows is a preprocessing utility that helps researchers standardize and combine genomic, transcriptomic, or other biological datasets.
+The module can merge two files directly or accept a zip file containing multiple files for merging.
+MergeRows is platform-independent and can run on any operating system with Java support.
+Researchers in fields like genomics, transcriptomics, and systems biology frequently use MergeRows to consolidate experimental data.
+The MergeRows module simplifies data integration by automatically handling column matching and format conversion.
+input: filename1, string, first file to merge in MergeRows module, required, supports .res, .gct, .snp, .cn, .xcn, .odf, .cls formats
+input: filename2, string, second file to merge in MergeRows module, required, supports .res, .gct, .snp, .cn, .xcn, .odf, .cls formats
+input: zip, filename, zip file containing files to merge in MergeRows module, optional alternative to individual file inputs
+output, string, name of the merged file produced by MergeRows module, required
+MergeRows module combines datasets by row, retaining common columns and discarding unique columns
+MergeRows output file format matches input file formats, defaulting to .gct if input formats differ
+MergeRows supports multiple file types for merging, providing flexibility in data preprocessing
+MergeRows module enables researchers to consolidate datasets with shared column structures
+MergeRows preserves data integrity by maintaining common column information during merging
+MergeRows module requires input files in .res, .gct, .snp, .cn, .xcn, .odf, or .cls file formats.
+First input file for MergeRows module contains original dataset rows to be merged.
+Second input file for MergeRows module contains additional dataset rows to combine with first input.
+Zip file input for MergeRows module can contain multiple files to merge instead of individual file inputs.
+MergeRows module output file retains common columns from input datasets.
+MergeRows module output file format matches input file format, defaulting to .gct if input formats differ.
+MergeRows module preserves row data from both input files in merged output.
+MergeRows module discards columns not common to all input datasets.
+MergeRows module generates a single merged dataset file as output.
+MergeRows module supports merging datasets with consistent column structures.
+MergeRows module allows combining multiple datasets by merging their rows into a single comprehensive dataset.
+MergeRows supports merging files with various genomic data formats like .res, .gct, .snp, .cn, .xcn, .odf, and .cls.
+The MergeRows module retains common columns across input datasets while discarding unique columns.
+MergeRows can merge datasets using either direct file inputs or a zip file containing multiple files.
+The output of MergeRows maintains the format of the input files, defaulting to .gct format if input formats differ.
+MergeRows is a preprocessing utility module designed to work across different computational platforms.
+The module is implemented in Java and can run on any operating system and CPU architecture.
+MergeRows is developed by Joshua Gould from the Broad Institute, supporting genomic data integration workflows.
+When using MergeRows, users must specify input files, an optional zip file, and a desired output filename.
+The MergeRows module enables researchers to consolidate multiple genomic datasets efficiently and systematically.

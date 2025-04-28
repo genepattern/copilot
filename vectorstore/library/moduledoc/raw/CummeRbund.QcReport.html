@@ -1,0 +1,178 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>CummeRbund.QcReport (v1) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/CummeRbund.QcReport/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Cuffdiff visualization package providing plots and tables related to QC and Global Stats</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Loyal Goff, MIT Computer Science and Artificial Intelligence Lab</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>2.0.0</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>CummeRbund is a visualization package designed to help you navigate through the many inter-related files produced from a Cuffdiff RNA-Seq differential expression analysis and visualize the relevant results.  CummeRbund helps promote rapid analysis of RNA-Seq data by aggregating, indexing, and allowing you to easily visualize and create publication-ready figures of your RNA-Seq data. </p>
+<div>CummeRbund works with the output of the Cuffdiff module, processing its output files into a database to be used for reporting and plotting.  The results are indexed to speed up access to specific feature data (genes, isoforms, transcript start sites, coding sequences, etc.), and preserve the various relationships between these features. Creation of this database means that the expression values and other results are stored in a rapidly accessible form, quickly searchable for future use in the other CummeRbund reporting modules or downloadable for direct use in CummeRbund with R for custom reports.  For more details about CummeRbund, see the <a href="http://compbio.mit.edu/cummeRbund/">website</a> and <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>.</div>
+<div>
+<div> </div>
+<div>There are four CummeRbund modules available, each allowing you to examine your Cuffdiff results from a different perspective.  All of the modules allow reporting at either the aggregate or the replicate level and can present quantification metrics at the level of genes, isoforms, transcription start sites, or coding sequences.  The CummeRbund.QcReport provides high-level visualizations allowing for comparisons across all conditions and all genes - for example, to look at the distribution of expression values across conditions - to spot similarities and differences and to see the relationship between conditions.</div>
+<div> </div>
+<div>The other modules allow you to focus on specific conditions and/or genes.  The CummeRbund.SelectedConditionReport provides visualizations across all genes, but limited to a specific set of conditions so that you can compare individual condition pairs.  The CummeRbund.GeneSetReport allows you to focus on a specific list of genes to be visualized, while the CummeRbund.SelectedGeneReport is focused on a single user-chosen gene.  Both the GeneSetReport and the SelectedGeneReport can be further constrained to a selected set of conditions.  The plots provided by each module differs based on the slice of data to be examined; the visualization possible vary due to reasons of both performance and practicality of visual presentation.</div>
+</div>
+<div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">CummeRbund is a collaborative effort between the <a href="http://compbio.mit.edu/">Computational Biology group</a> led by Manolis Kellis at MIT's <a href="http://www.csail.mit.edu/"> Computer Science and Artificial Intelligence Laboratory</a>, and the <a href="http://www.rinnlab.com/">Rinn Lab</a> at the Harvard University department of <a href="http://www.scrb.harvard.edu/">Stem Cells and Regenerative Medicine</a> - See more at: http://compbio.mit.edu/cummeRbund/#sthash.dunKB0RP.dpuf</div>
+<p>CummeRbund is a collaborative effort between the <a href="http://compbio.mit.edu/">Computational Biology group</a> led by Manolis Kellis at MIT's <a href="http://www.csail.mit.edu/">Computer Science and Artificial Intelligence Laboratory</a>, and the <a href="http://www.rinnlab.com/">Rinn Lab</a> at the Harvard University department of <a href="http://www.scrb.harvard.edu/">Stem Cells and Regenerative Medicine</a>.  This document is adapted from the <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">CummeRbund manual</a> for release 2.0.0.</p>
+<h2>Usage</h2>
+<p>Unlike most modules in GenePattern, the CummeRbund reporting modules require the entire output of a Cufflinks.cuffdiff job as they work with not just one or two files but rather with all of the Cuffdiff output files.  Simply drag the top-level Cuffdiff job folder into the 'cuffdiff.input' parameter from the 'Jobs' tab ('Recent Jobs' in versions of GenePattern before 3.8.0) or from the Job Results page.  The CummeRbund modules can also be directly accessed from the context menu of jobs in either of these locations.  Remember, you are submitting the entire job folder and not just a single file.</p>
+<p>Alternatively, once a given job has been run through any one of the CummeRbund reporting modules, a reusable database file named <em>cuffData.db</em> will be produced that can be submitted in place of the Cuffdiff job for other CummeRbund reports.  You can use this file for job submission via all of the usual GenePattern mechanisms or you can submit the entire CummeRbund job folder for a subsequent CummeRbund job in the same way as described above for Cuffdiff jobs.  You are highly encouraged to reuse these database files wherever possible as your jobs will run much quicker and use less storage space than by starting from scratch with a Cuffdiff job.</p>
+<p>CummeRbund.QcReport will produce a variety of result files in the form of both plots and text tables; these are described further in the Output Files section below.  You can use the <em>feature.level</em> parameter to control whether these should be generated at the level of genes, isoforms, transcript start sites (TSS), or coding sequences (CDS).  Note, however, that some result files are always produced at the genes level regardless of setting, while there are other result files where these settings do not apply and for which that output is generated irrespective of the chosen feature level; see the Output Files section for details.</p>
+<p>The <em>report.as.aggregate</em> parameter controls whether results will be reported with replicates split out separately or together in aggregated samples.  Similar to <em>feature.level</em>, however, note that some result files are always generated for aggregate samples regardless of this setting.</p>
+<p>If you used the merged.gtf output from Cuffmerge as the GTF input to Cuffdiff, then the text reports may contain Cuffdiff tracking IDs instead of gene symbols.  These will take the <span style="color: rgb(34, 34, 34);"> form of XLOC_00001 for genes, TCONS_00000001 for isoforms, TSS1 for tss references, and P1 for cds references.</span>  You can use the <em>attempt.to.merge.names</em> parameter to have the module try to merge gene symbols into these files alongside these IDs.</p>
+<p>For more information on using RNA-seq modules in GenePattern, see the <a href="http://www.broadinstitute.org/modules/RNA-seq">RNA-seq Analysis</a> page.</p>
+<h2>References</h2>
+<p>Trapnell C, Hendrickson D,Sauvageau S, Goff L, Rinn JL, Pachter L. <a href="http://www.nature.com/nbt/journal/v31/n1/full/nbt.2450.html">Differential analysis of gene regulation at transcript resolution with RNA-seq</a>. <em>Nature Biotechnology</em>. 2013;31:46-53.</p>
+<h3>Links</h3>
+<p>CummeRbund <a href="http://compbio.mit.edu/cummeRbund/">website</a> and <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cuffdiff input <span style="color:red;">*</span></td>
+<td>A Cuffdiff job, a previous CummeRbund job, or a cuffData.db file from a previous CummeRbund job</td>
+</tr>
+<tr>
+<td>output format <span style="color:red;">*</span></td>
+<td>The output file format.</td>
+</tr>
+<tr>
+<td>feature level <span style="color:red;">*</span></td>
+<td>Feature level for the report.</td>
+</tr>
+<tr>
+<td>report as aggregate <span style="color:red;">*</span></td>
+<td>Controls whether reporting should be done for individual replicates or aggregate condition/sample values.  The default is to use aggregate sample values.  Note that the Dispersion, FPKM.SCV, and MA plots always show aggregate samples.</td>
+</tr>
+<tr>
+<td>log transform <span style="color:red;">*</span></td>
+<td>Whether or not to log transform FPKM values. Note that the FPKM values are always log transformed for the FPKM.SCV plots. Log transformation does not apply to the Dispersion, MDS, and PCA plots.</td>
+</tr>
+<tr>
+<td>pca x <span style="color: rgb(255, 0, 0);">*</span></td>
+<td>Indicates which principal component is to be presented on the x-axis of the PCA plot.  Must differ from <em>pca.y</em>.</td>
+</tr>
+<tr>
+<td>pca y <span style="color: rgb(255, 0, 0);">*</span></td>
+<td>Indicates which principal component is to be presented on the y-axis of the PCA plot.  Must differ from <em>pca.x</em>.</td>
+</tr>
+<tr>
+<td>attempt.to.merge.names <span style="color: rgb(255, 0, 0);">*</span></td>
+<td>Should the module attempt to merge gene names into the text reports?  Depending on the GTF file used in the <span class="s1">Cuffdiff</span> run, the text reports may instead contain tracking ID references, particularly if a <span class="s1">Cuffmerge</span> merged.gtf file was used.  Note that this setting does not affect the plots.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>&lt;cuffdiff.input&gt; (required)<br/>
+	A Cuffdiff job, a previous CummeRbund job, or a cuffData.db file from a previous CummeRbund job.  Unlike most modules in GenePattern, the CummeRbund reporting modules require the entire output of a Cufflinks.cuffdiff job as they work with not just one or two files but rather with all of the Cuffdiff output files.  Simply drag the top-level Cuffdiff job folder into the 'cuffdiff.input' parameter from the 'Jobs' tab ('Recent Jobs' in versions of GenePattern before 3.8.0) or from the Job Results page.  The CummeRbund modules can also be directly accessed from the context menu of jobs in either of these locations.  Remember, unless you use a cuffData.db file, you are submitting the entire job folder and not just a single file.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>cuffData.db<br/>
+	The RSQLite database created from the original Cuffdiff job.  This file can be used in other CummeRbund jobs to avoid the need for extra computation and storage, in which case the new job will instead hold a link back to the file from the original job.</li>
+<li>QC.Boxplot<br/>
+	A box plot of summary statistics for FPKM values (Fragments Per Kilobase of transcript per Million mapped read) depicting groups of numerical data through their quartiles, calculated across all samples (or replicates) in the Cuffdiff dataset.  See <a href="http://cufflinks.cbcb.umd.edu/howitworks.html#hqua">this explanation from the Cufflinks website</a> and the <a href="http://cufflinks.cbcb.umd.edu/faq.html#fpkm">this entry from the Cufflinks FAQ</a> for more information about FPKM values.</li>
+<li>QC.Dendrogram<br/>
+	A dendrogram based on Jensen-Shannon distances between conditions, across all samples (or replicates) in the Cuffdiff dataset.  Dendrograms can provide insight into the relationships between conditions for various genesets (e.g. significant genes used to draw relationships between conditions).</li>
+<li>QC.Density<br/>
+	A density plot of log10 FPKM values across all samples (or replicates) in the Cuffdiff dataset.  This can be used to assess the distributions of FPKM scores across samples by visualizing an estimate of the underlying probability density function.  This <a href="http://en.wikipedia.org/wiki/Density_estimation">Wikipedia entry</a> gives some background on density plots.</li>
+<li>QC.DimensionalityReduction.mds<br/>
+	A plot of a projection of expression estimates across samples (or replicates) onto a smaller number of dimensions using multidimensional scaling (MDS).  This plot places the samples into two-dimensional space with the distances between them representing the degree of similarity (closer representing more similar).  This dimensionality reduction can be useful for feature selection, feature extraction, and outlier detection.  This <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">Wikipedia entry</a> gives some background on multidimensional scaling; <a href="http://www.analytictech.com/borgatti/mds.htm">this overview</a> and <a href="http://forrest.psych.unc.edu/teaching/p208a/mds/mds.html">this article</a> give more details.<br/>
+	MDS plots are available only when analyzing more than two samples (or replicates).</li>
+<li>QC.DimensionalityReduction.pca<br/>
+	A projection of expression estimates across samples (or replicates) onto a smaller number of dimensions using principal component analysis (PCA).  It is a means of identifying patterns in highly dimensional data by highlighting the variables with the greatest variance across the samples.  This dimensionality reduction can be useful for feature selection, feature extraction, and outlier detection.  It is recommended to plot with the second and third principal components, as the first principal component will most probably be expression level which is unlikely to be informative.  This <a href="http://en.wikipedia.org/wiki/Principal_component_analysis">Wikipedia entry</a> gives some background on principal component analysis, and <a href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf">this tutorial</a> gives more details, as does <a href="http://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf">this second tutorial</a>.</li>
+<li>QC.Dispersion<br/>
+	A scatter plot comparing the mean counts against the estimated dispersion for a given level of features from a cuffdiff run.  This is a way to evaluate the quality of the model fitting to look for overdispersion in your RNA-Seq data.</li>
+<li>QC.FPKM.SCV<br/>
+	A plot of the squared coefficient of variation between empirical repicate FPKM values per sample, across the range of FPKM estimates.  This is a normalized measure of cross-replicate variability that can be useful for evaluating the quality your RNA-seq data.  Differences in CV<sup>2</sup> can result in lower numbers of differentially expressed genes due to a higher degree of variability between replicate FPKM estimates.</li>
+<li>QC.JSDistanceHeatmap.Samples<br/>
+	A heatmap of all pairwise similarities between conditions at either the sample or the replicate level, measured using Jensen-Shannon distance.  In this heatmap, "cooler" colors represent greater similarity (smaller JS distance) while "hotter" colors represent greater difference.  Similarities between conditions and/or replicates can provide useful insight into the relationship between various groupings of conditions and can aid in identifying outlier replicates that do not behave as expected.</li>
+<li>QC.sig_diffExp_genes.txt (or _isoforms or _TSS or _CDS)<br/>
+	A text listing of data for differentially expressed genes, isoforms, transcription start sites, or coding sequences, respectively.  Only entities that pass a significance threshold are included.  If you used a Cuffmerge merged.gtf when running Cuffdiff, you can use the <em>attempt.to.merge.names</em> parameter to include gene names alongside the tracking IDs.</li>
+<li>QC.sig_promoter_data.txt, QC.sig_splicing_data.txt and QC.sig_relCDS_data.txt<br/>
+	Text listings of promoter, splicing, and relCDS distribution-level test data, respectively.  Only entities that pass a significance threshold are included.  If you used a Cuffmerge merged.gtf when running Cuffdiff, you can use the <em>attempt.to.merge.names</em> parameter to include gene names alongside the tracking IDs.</li>
+<li>stdout.txt (and stderr.txt)<br/>
+	A log of output (and errors) produced during the database creation and plotting process.  In case of an error, check both of these files for more details.  The module has been designed to skip those plots where it encounters a problem along the way, continuing on to the next; if a given plot is missing, it should be noted in one of these files along with a reason if one could be determined.</li>
+</ol>
+<h2>Example Data</h2>
+<p>There is an example reusable database file available <a href="ftp://gpftp.broadinstitute.org/module_support_files/cummeRbund/cuffData.db">on our FTP site</a>.  This was generated using the example data and workflow from the <a href="http://www.nature.com/nbt/journal/v31/n1/full/nbt.2450.html">Differential analysis of gene regulation at transcript resolution with RNA-seq</a> article referenced above, by Trapnell, et al.</p>
+<h2>Requirements</h2>
+<p>CummeRbund.QcReport requires R 2.15.  When installing this module, GenePattern will automatically check for the presence of this exact version of R and will not proceed without it.  See the section of our <a href="http://www.broadinstitute.org/cancer/software/genepattern/gp_guides/administrators-guide/sections/using-the-r-installer-plug-in">Administrator's Guide on the R Installer plug-in</a> for details.  Installing this module requires a number of supporting R packages from CRAN and Bioconductor; it will also check for their presence and install any that are missing in the process.  These packages will be installed in a separate area specific to GenePattern and will not affect any other R library on the machine.</p>
+<p><span class="im">Please install R2.15.3 instead of R2.15.2 before installing the module. </span><span class="im">The GenePattern team has confirmed test data reproducibility for this module using R2.15.3 compared to R2.15.2 and can only provide limited support for other versions. The GenePattern team recommends R2.15.3, which fixes significant bugs in R2.15.2, and which must be installed and configured independently as discussed in <a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-different-versions-of-r" style="background-image: none; background-attachment: scroll; background-color: rgb(255, 255, 255); background-position: 0% 0%; background-repeat: repeat;" target="_blank"><em>Using Different Versions of R</em></a> and <em><a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-the-r-installer-plug-in" style="background-image: none; background-attachment: scroll; background-position: 0% 0%; background-repeat: repeat;" target="_blank">Using the R Installer Plug-in</a></em>. These sections also provide patch level fixes that are necessary when additional installations of R are made and considerations for those who use R outside of GenePattern.</span></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.30</td>
+<td>2015-10-13</td>
+<td>Updated to make use of the R package installer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

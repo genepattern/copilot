@@ -1,0 +1,57 @@
+ConstellationMap is on version 1.4.x.
+A description of ConstellationMap is A downstream visualization and analysis tool for gene set enrichment results with interactive web visualizer.
+ConstellationMap is a GenePattern module written by Felix Wu;Broad Institute.
+ConstellationMap can be categorized as Visualization, Gene Set Enrichment, Bioinformatics.
+ConstellationMap has the following parameters: input gct file, input cls file, gene sets database, gene sets file, top n, direction, image format, jaccard threshold, target class.
+ConstellationMap is a downstream visualization and analysis tool for gene set enrichment results that helps researchers understand complex genomic data relationships.
+ConstellationMap generates an interactive web visualization that maps gene set enrichment profiles in a circular plot.
+The ConstellationMap module allows researchers to explore similarities and relationships between gene sets based on their enrichment scores.
+ConstellationMap uses normalized mutual information (NMI) scores to quantify the association between gene sets and phenotypic classes.
+In the ConstellationMap visualization, gene sets are represented as nodes with radial distance reflecting their enrichment in a specific phenotype.
+ConstellationMap can process gene set enrichment data from various sources, including ssGSEAProjection and other gene set analysis methods.
+The module supports two primary workflows: one using pre-selected gene sets and another using comprehensive enrichment rankings.
+ConstellationMap generates multiple output files, including an interactive HTML visualizer, static plots, and statistical reports.
+The radial plot in ConstellationMap displays gene sets with angular distance proportional to the similarity of their enrichment profiles.
+ConstellationMap uses the Jaccard index to represent gene overlap between sets, with edge thickness proportional to the degree of overlap.
+Researchers can use ConstellationMap to explore gene set relationships across different phenotypes or experimental conditions.
+The module supports both categorical and continuous phenotype data for comprehensive gene set enrichment analysis.
+ConstellationMap provides an intuitive way to visualize complex gene set enrichment results, making it easier to interpret large-scale genomic datasets.
+Here's a detailed breakdown of the parameters for the ConstellationMap module:
+input gct file: File type (GCT), required, contains gene set enrichment data from ssGSEAProjection, with rows as gene sets and columns as sample names.
+input cls file: File type (CLS), required, contains phenotype labels for samples, either categorical or continuous.
+gene sets database: Drop-down menu, optional, allows selection of MSigDB gene set collections, provides access to version 5.0 collections.
+gene sets file: File type (GMT or GMX), optional, allows user to upload custom gene set file not available in drop-down menu.
+top n: Integer parameter, required, specifies number of top NMI-scoring gene sets to display, must be greater than 2 and less than or equal to total enriched gene sets.
+direction: Drop-down menu, optional, selects correlation direction ("positive" or "negative"), default is "positive", determines how gene sets are positioned in radial plot.
+image format: Drop-down menu, optional, selects output plot format (PNG or PDF), default is PNG.
+jaccard threshold: Numeric parameter, optional, sets threshold for drawing edges between gene sets based on gene overlap, ranges from 0 to 1, default is 0.1.
+target class: String parameter, required, specifies phenotype label to measure gene set associations, must match a label in the input CLS file.
+Here are the input and output files for the ConstellationMap module:
+Input Files:
+Input GCT file contains gene set enrichment data with gene sets as rows and samples as columns
+Input CLS file contains phenotype labels for samples in categorical or continuous format
+Gene sets file in GMT or GMX format containing collections of gene sets from MSigDB or user-provided
+Output Files:
+Visualizer.html is an interactive JavaScript-powered radial plot for exploring gene set relationships
+HEATMAP image shows top gene sets with color-coded enrichment scores and statistical metrics
+REPORT text file contains calculated statistical metrics like NMI, AUC, and t-test values
+CONSTELLATION_MAP static image of the radial plot showing gene set relationships
+ConstellationMap.plot.data.nodes.odf contains node coordinate and metadata information
+ConstellationMap.plot.data.edges.odf contains edge location and metadata information
+Here are the chunks for the ConstellationMap module documentation:
+ConstellationMap is a downstream visualization and analysis tool for gene set enrichment results.
+The module helps identify commonalities between high-scoring gene sets by mapping their relationships.
+ConstellationMap creates an interactive web visualization of gene set enrichment profile similarities.
+In the visualization, gene sets are represented as nodes with radial distance reflecting positive or negative enrichment.
+Member gene overlaps between sets are represented as edges, with edge thickness proportional to the degree of overlap.
+The angular distance between nodes is proportional to the similarity of their enrichment profiles.
+ConstellationMap uses normalized mutual information (NMI) scores to estimate gene set and phenotypic class associations.
+The module can work with gene set enrichment data from various sources, including ssGSEAProjection outputs.
+Users can input gene set enrichment data in GCT format and gene set collections in GMX or GMT format.
+The module provides two workflow options: one using pre-selected enriched sets and another using enrichment rankings computed from the expression dataset.
+ConstellationMap outputs include an interactive HTML visualizer, static plots, and statistical reports.
+The visualization allows users to export overlapping gene symbols for further annotation in tools like DAVID and MSigDB.
+The module uses multidimensional scaling to project gene sets onto a circular plot.
+Pairwise Jaccard indices are calculated to determine gene set overlap and edge thickness in the visualization.
+ConstellationMap supports both categorical and continuous phenotype comparisons.
+The module can handle gene set collections with _UP and _DN suffixes, with specific parameter settings for combining sets.

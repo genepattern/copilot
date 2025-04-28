@@ -1,0 +1,47 @@
+RemoveMissingValues is on version .
+A description of RemoveMissingValues is Removes rows or columns containing missing values from a dataset. Missing values are indicated by NA..
+RemoveMissingValues is a GenePattern module written by Michael Reich, michaelr@broadinstitute.org.
+RemoveMissingValues can be categorized as Missing Value Imputation.
+RemoveMissingValues has the following parameters: Input file, Remove opt, Output filename.
+The RemoveMissingValues GenePattern module helps researchers clean genomic datasets by removing rows or columns with missing data.
+The RemoveMissingValues module is designed to handle missing values (indicated as "NA") in genomic datasets, improving data quality for downstream analysis.
+In bioinformatics, missing values can significantly impact statistical analyses, and the RemoveMissingValues module provides a straightforward solution for data cleaning.
+The module supports three removal strategies: removing rows with missing values, columns with missing values, or both rows and columns containing missing data.
+RemoveMissingValues works specifically with .gct file formats, which are commonly used in gene expression and genomic research.
+The module is particularly useful in preprocessing steps for gene expression studies, microarray data analysis, and other high-throughput genomic experiments.
+By removing rows or columns with missing values, researchers can ensure more robust and reliable statistical analyses in their genomic research.
+The RemoveMissingValues module helps researchers maintain data integrity by providing a simple mechanism to handle incomplete datasets.
+Researchers can choose to remove missing values strategically, depending on their specific research questions and the nature of their genomic data.
+The module is part of the GenePattern suite, which provides a comprehensive set of computational tools for genomic data analysis.
+RemoveMissingValues module handles missing value removal from datasets
+Input file: string, path to the .gct file containing missing values, required parameter for the RemoveMissingValues module
+Remove opt: string, specifies removal strategy for missing values, options include 'rows', 'cols', or 'both', determines which dimension of data will have NA-containing entries deleted, required parameter for the RemoveMissingValues module
+Output filename: string, name of the resulting file after missing value removal, required parameter for the RemoveMissingValues module
+The input file must be in .gct format with missing values indicated as "NA"
+Empty cells will also be treated as missing values in the RemoveMissingValues module
+If no missing values exist in the input file, the output file will be identical to the input file
+The module will generate an error if the resulting dataset would contain zero rows or columns after removal
+The RemoveMissingValues module operates as a missing value imputation tool across any computational platform
+The module is implemented in R programming language, version 2.5 or greater
+RemoveMissingValues module input file is a .gct format file containing gene expression data with potential missing values.
+The .gct input file represents a matrix of gene expression measurements with rows as genes and columns as samples.
+Missing values in the .gct input file are indicated by "NA" or empty cells.
+The .gct input file follows a standard GenePattern gene expression data matrix format.
+The input file contains numerical gene expression measurements with potential missing data points.
+RemoveMissingValues module output file is a cleaned .gct format file with missing values removed.
+The output .gct file will have rows and/or columns containing NA values eliminated based on user selection.
+The output file maintains the original .gct file structure with reduced rows or columns.
+If all rows or columns are removed due to missing values, the module generates an error.
+The output file preserves the original data format and gene/sample identifiers.
+RemoveMissingValues is a GenePattern module designed to clean datasets with missing values.
+The module helps researchers remove rows, columns, or both containing NA (not available) data points.
+RemoveMissingValues works specifically with .gct file formats, which are commonly used in genomic data analysis.
+The module can handle missing values indicated either by "NA" or empty cells in a dataset.
+Users can choose to remove rows (genes), columns (samples), or both containing missing data.
+The module prevents generation of empty datasets by generating an error if all rows or columns would be removed.
+RemoveMissingValues is implemented in R and can run on any operating system with R version 2.5 or higher.
+The module is particularly useful in preprocessing genomic and transcriptomic data before further analysis.
+RemoveMissingValues helps researchers maintain data integrity by eliminating incomplete or problematic data points.
+The module supports cleaning large datasets with multiple missing values across genes or samples.
+RemoveMissingValues requires users to specify an input file, removal option, and desired output filename.
+The module is part of the missing value imputation category in GenePattern's data processing tools.

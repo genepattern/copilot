@@ -1,0 +1,60 @@
+AreaChange is on version .
+A description of AreaChange is Calculates fraction of area under the spectrum that is attributable to signal (area after noise removal / original area). This function is used to determine the quality of the input spectrum. The function computes the original area under the spectrum. The noise component of the signal is then subtracted from the spectrum and area recomputed. The function returns the ratio: (area after noise removal / original area)..
+AreaChange is a GenePattern module written by D. R. Mani (Broad Institute), gp-help@broad.mit.edu.
+AreaChange can be categorized as Proteomics.
+AreaChange has the following parameters: spectrum.filename, low.Da, high.Da, quality.threshold, window, factor, smooth, output.file.
+The AreaChange module in GenePattern is a specialized tool for analyzing mass spectrometry spectral data quality.
+The AreaChange module helps researchers evaluate the signal-to-noise ratio in mass spectrometry experiments.
+AreaChange calculates the fraction of spectral area attributable to meaningful signal after noise removal.
+The module compares the original spectral area to the area after noise subtraction to determine spectral quality.
+AreaChange uses a quality threshold to determine whether a spectrum should be selected or rejected for further analysis.
+Researchers can use the AreaChange module to filter low-quality mass spectrometry data before downstream proteomics analyses.
+The module provides detailed output including area ratio, original area, and a breakdown of noise characteristics.
+AreaChange implements a noise removal algorithm based on low-pass filtering and standard deviation calculations.
+The module is particularly useful in proteomics research for identifying high-quality mass spectrometry spectra.
+AreaChange can help improve the reliability of protein identification and quantification experiments.
+The module allows researchers to specify custom parameters like M/Z range and noise filtering window.
+AreaChange generates an output file with comprehensive information about spectral quality and noise characteristics.
+The module is implemented in R and can be used across different computing platforms.
+Researchers can use AreaChange as part of a broader mass spectrometry data processing and analysis workflow.
+The module's algorithm is based on research by Mani & Gillette, providing a scientifically validated approach to spectral quality assessment.
+spectrum.filename,string,Input CSV file containing spectrum data,required
+low.Da,numeric,Minimum M/Z value to include in analysis,required
+high.Da,numeric,Maximum M/Z value to include in analysis,required
+quality.threshold,numeric,Threshold for determining spectrum quality,required
+window,numeric,Size of filter window for noise calculation,required,default=5
+factor,numeric,Multiplier for standard deviation in noise envelope calculation,required,default=3
+smooth,string,Averaging function used for smoothing spectrum,optional
+output.file,string,Filename for output data file,optional
+AreaChange module helps determine spectrum quality by comparing original and noise-removed spectrum areas
+AreaChange calculates the ratio of area after noise removal to original spectrum area
+Module identifies spectra as selected or rejected based on area ratio compared to quality threshold
+Spectrum analysis focuses on M/Z range defined by low.Da and high.Da parameters
+Noise is calculated by subtracting low-pass filtered spectrum from original spectrum
+Noise envelope is defined as 3 times the local standard deviation of noise
+Output includes area ratio, original area, selection status, and detailed spectrum data
+Module designed for proteomics data analysis and spectrum quality assessment
+AreaChange module input and output file descriptions:
+spectrum.filename: CSV file containing mass spectrometry spectrum data with M/Z and intensity values
+low.Da: Numeric parameter defining minimum M/Z range for spectrum analysis in AreaChange module
+high.Da: Numeric parameter defining maximum M/Z range for spectrum analysis in AreaChange module
+quality.threshold: Numeric parameter in AreaChange module determining spectrum quality acceptance criteria
+window: Numeric parameter defining filter window size for noise reduction in AreaChange module
+factor: Numeric multiplier for standard deviation calculation in AreaChange module
+smooth: Parameter specifying averaging function for spectrum smoothing in AreaChange module
+output.file: Output CSV file from AreaChange module containing processed spectrum analysis results
+odf file: Output file from AreaChange module containing area ratio, original area, selection flag, and detailed spectrum data table
+AreaChange module is a computational tool for analyzing mass spectrometry spectral data quality by calculating area ratios.
+AreaChange evaluates spectrum quality by comparing the original spectral area to the area after noise removal.
+The module computes the original area under a mass spectrometry spectrum within specified mass-to-charge (M/Z) range boundaries.
+AreaChange subtracts the noise component from the original spectrum to recalculate the spectral area.
+The module calculates an area ratio by dividing the noise-removed spectral area by the original spectral area.
+Spectra are marked as "selected" if the area ratio meets or exceeds a predefined quality threshold.
+Spectra with area ratios below the quality threshold are rejected, unless they exhibit strong, sharp peaks.
+The AreaChange module generates an output file containing the area ratio, original area, selection status, and detailed spectral data.
+The module uses a low-pass filtering technique to estimate and remove noise from the spectrum.
+AreaChange calculates a noise envelope by multiplying the local standard deviation of noise by a specified factor.
+The module allows users to define the mass-to-charge range, quality threshold, filter window size, and noise calculation parameters.
+Developed by D. R. Mani at the Broad Institute, the AreaChange module is designed for proteomics data analysis.
+The module is implemented in R and can run on any computational platform with R installed.
+The methodology is based on research by Mani & Gillette published in the IEEE Press publication on data mining applications.

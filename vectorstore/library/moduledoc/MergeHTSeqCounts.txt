@@ -1,0 +1,52 @@
+MergeHTSeqCounts is on version 1.
+A description of MergeHTSeqCounts is This module takes the read count output from HTSeq for multiple samples and creates a single GCT file. Optionally you can include a sampleInfo file which contains one column with the count file basenames, one column to be used to differentiate the samples for a CLS file and optionally a column with a sample name to use in the gct file..
+MergeHTSeqCounts is a GenePattern module written by Marc-Danie Nazaire, Ted Liefeld.
+MergeHTSeqCounts can be categorized as RNA-seq.
+MergeHTSeqCounts has the following parameters: input files, output prefix, sampleinfo file, filenames column, class division column, sample name column.
+The MergeHTSeqCounts module in GenePattern is designed to consolidate RNA-seq read count data from multiple samples into a single, unified file format.
+The MergeHTSeqCounts module helps researchers combine HTSeq count data files, which typically contain gene expression measurements across different experimental conditions.
+MergeHTSeqCounts can transform raw read count data from multiple samples into a standardized GCT (Gene Cluster Text) file format, facilitating downstream analysis and visualization.
+The module allows optional inclusion of a sample information file, which can provide additional metadata about each sample, such as experimental condition or phenotype.
+MergeHTSeqCounts enables researchers to generate a comprehensive class file (CLS) that categorizes samples based on specified phenotypic or experimental characteristics.
+By merging HTSeq count files, the MergeHTSeqCounts module simplifies the process of preparing RNA-seq data for further computational analysis, such as differential gene expression studies.
+The module supports flexible sample naming, allowing users to replace default filename-based sample names with more descriptive labels from a sample information file.
+MergeHTSeqCounts is particularly useful in bioinformatics workflows that require consolidated gene expression data across multiple experimental conditions or biological replicates.
+The GenePattern MergeHTSeqCounts module provides a standardized approach to aggregating RNA-seq read count data, making it easier to compare and analyze gene expression across different samples.
+MergeHTSeqCounts module requires input files containing HTSeq read count data for multiple samples.
+Input files must be tab-delimited text files with gene symbols and read counts.
+The output prefix parameter specifies the base name for generated output files.
+The sampleinfo file is an optional file containing metadata about input samples.
+Filenames column identifies which column in the sample info file contains input file names.
+Class division column specifies a phenotype column for generating a class file.
+Sample name column allows custom sample naming in the output GCT file.
+MergeHTSeqCounts module supports renaming samples using metadata from the sample info file.
+The module generates a single GCT file combining read counts from multiple input files.
+Optional sample info file enables automatic class file generation for input samples.
+MergeHTSeqCounts supports flexible sample metadata handling for RNA-seq analysis.
+The module requires Python 2.6 and works on any operating system and CPU type.
+Output includes a GCT format file with merged read count data from input files.
+Sample info file can provide custom sample names and phenotype information.
+MergeHTSeqCounts simplifies consolidation of HTSeq read count data across multiple samples.
+MergeHTSeqCounts module processes HTSeq read count files into a single GCT file.
+Input file 1: HTSeq read count text files containing gene symbols and read counts.
+Input file 2: Optional sample info file with columns for filenames, class division, and sample names.
+Output file 1: Merged GCT file containing read counts for multiple samples.
+Output file 2: Optional CLS file generated from sample info file's class division column.
+HTSeq read count input files are tab-delimited with two columns: gene identifier and read count.
+Sample info file can include columns for matching input files, defining sample classes, and specifying sample names.
+GCT output file will contain merged read count data with genes as rows and samples as columns.
+CLS file will contain class information for samples if a class division column is provided.
+MergeHTSeqCounts supports optional renaming of samples using the sample info file.
+Input files can be provided as individual text files or from a directory of HTSeq count files.
+Module requires Python 2.6 and can run on any operating system or CPU type.
+MergeHTSeqCounts is a GenePattern module for combining multiple HTSeq read count files into a single GCT file.
+The MergeHTSeqCounts module allows researchers to consolidate RNA-seq read count data from multiple samples into a unified format.
+Input files for MergeHTSeqCounts are tab-delimited text files containing gene symbols and their corresponding read counts from HTSeq analysis.
+The module can optionally incorporate a sample information file to provide additional metadata about the input samples.
+MergeHTSeqCounts supports renaming samples in the output GCT file using a specified column from the sample information file.
+Users can generate a class file (CLS) for the samples based on a phenotype column in the sample information file.
+The module automatically handles file extensions and naming conventions for the output files.
+MergeHTSeqCounts is written in Python 2.6 and can run on any operating system with compatible Python support.
+The module is currently in beta release, indicating that some features may be subject to change or refinement.
+Researchers can use MergeHTSeqCounts to streamline the process of consolidating RNA-seq read count data from multiple samples.
+The output of MergeHTSeqCounts is a GCT file, which is a standard format for gene expression data in bioinformatics research.

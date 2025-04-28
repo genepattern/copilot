@@ -1,0 +1,48 @@
+CummeRbund.SelectedGeneReport is on version 1.
+A description of CummeRbund.SelectedGeneReport is CummeRbund is a visualization package designed to help navigate through Cuffdiff RNA-Seq differential expression analysis results. This specific module provides plots based on a single user-specified gene, allowing visualization and creation of publication-ready figures of RNA-Seq data..
+CummeRbund.SelectedGeneReport is a GenePattern module written by Loyal Goff, MIT Computer Science and Artificial Intelligence Lab.
+CummeRbund.SelectedGeneReport can be categorized as RNA-seq, Bioinformatics, Visualization.
+CummeRbund.SelectedGeneReport has the following parameters: cuffdiff input, feature id, selected.conditions, find.similar, output format, feature level, report as aggregate, log transform.
+The CummeRbund.SelectedGeneReport module is a specialized RNA-Seq data visualization tool in the GenePattern bioinformatics platform.
+The CummeRbund.SelectedGeneReport allows researchers to generate detailed visualizations for a single user-specified gene from Cuffdiff RNA-Seq differential expression analysis results.
+This module can produce multiple types of expression plots, including bar plots and line plots showing gene expression levels across different experimental conditions.
+The CummeRbund.SelectedGeneReport can generate plots at different feature levels, including genes, isoforms, transcript start sites, and coding sequences.
+Researchers can use the CummeRbund.SelectedGeneReport to compare expression levels of a specific gene across multiple experimental conditions or replicates.
+The module provides an option to find and plot genes with expression profiles most similar to the selected gene of interest.
+CummeRbund.SelectedGeneReport can log transform FPKM values, allowing for different visualization and comparison of gene expression data.
+The module is part of a collaborative effort between MIT's Computational Biology group and Harvard University's Stem Cells and Regenerative Medicine department.
+CummeRbund.SelectedGeneReport requires the entire Cuffdiff job output or a pre-generated database file for processing RNA-Seq data.
+The module generates multiple output files, including expression bar plots, expression line plots, and similarity expression plots for the selected gene.
+cuffdiff.input (File): Required input for CummeRbund.SelectedGeneReport module, which can be a Cuffdiff job folder, previous CummeRbund job, or cuffData.db file.
+feature.id (String): Required parameter specifying the specific gene or feature to analyze, which can be a gene symbol, gene ID, isoform ID, TSS group ID, or CDS ID.
+selected.conditions (String): Optional parameter to specify which conditions/samples to include in plots, using comma-separated condition names from the original Cuffdiff job.
+find.similar (Integer): Optional parameter to identify and plot genes with expression profiles most similar to the selected gene, up to the specified count.
+output.format (String): Required parameter to specify the output file format for generated plots and reports.
+feature.level (String): Required parameter to determine the level of analysis, such as genes, isoforms, transcript start sites, or coding sequences.
+report.as.aggregate (Boolean): Optional parameter controlling whether reporting uses individual replicates or aggregate condition/sample values, with default set to aggregate samples.
+log.transform (Boolean): Optional parameter to determine whether FPKM values should be log-transformed for visualization, affecting the y-axis scale.
+Here are the input and output files for the CummeRbund.SelectedGeneReport module:
+Input Files:
+CummeRbund.SelectedGeneReport requires a Cuffdiff job folder containing differential expression analysis output files
+The input can be a complete Cuffdiff job folder, a previous CummeRbund job folder, or a pre-generated cuffData.db database file
+Input files must include all Cuffdiff output files to enable comprehensive RNA-seq data visualization
+The input files contain raw RNA-seq differential expression data from multiple experimental conditions
+Input files include gene expression measurements, statistical tests, and fold change information
+Output Files:
+cuffData.db is an RSQLite database created from the original Cuffdiff job for rapid data access
+SelectedGene.ExpressionBarplot shows FPKM values with confidence intervals for the selected gene across samples
+SelectedGene.ExpressionPlot displays FPKM values as a line plot with confidence intervals for the selected gene
+SelectedGene.SimilarityExpressionBarplot presents FPKM values for genes with similar expression profiles
+SelectedGene.SimilarityExpressionPlot shows line plot of genes with expression profiles similar to the selected gene
+stdout.txt and stderr.txt provide logs of the database creation and plotting process, including any errors encountered
+CummeRbund.SelectedGeneReport is a GenePattern module for visualizing RNA-Seq differential expression data from Cuffdiff analysis.
+The module allows researchers to generate detailed visualizations focused on a single user-specified gene.
+CummeRbund.SelectedGeneReport can produce expression plots, bar charts, and similarity comparisons across different experimental conditions.
+The module requires the entire Cuffdiff job output folder as input, not just individual files.
+CummeRbund.SelectedGeneReport can generate visualizations at different feature levels including genes, isoforms, transcript start sites, and coding sequences.
+Users can specify specific conditions to include in the analysis and control whether data is reported at the replicate or aggregate sample level.
+The module creates an RSQLite database from Cuffdiff results to enable rapid data access and visualization.
+CummeRbund.SelectedGeneReport can optionally find and plot genes with expression profiles most similar to the selected gene of interest.
+The module supports log transformation of FPKM (Fragments Per Kilobase of transcript per Million mapped reads) values for visualization.
+CummeRbund.SelectedGeneReport was developed through a collaborative effort between computational biology groups at MIT and Harvard.
+The module requires R version 2.15.3 and automatically checks for and installs necessary supporting R packages.

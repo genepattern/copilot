@@ -1,0 +1,84 @@
+ComBat is on version 2.0.
+A description of ComBat is Performs batch correction on a dataset containing multiple batches. The ComBat R script uses an Empirical Bayes method to adjust for potential batch effects in the dataset..
+ComBat is a GenePattern module written by Marc-Danie Nazaire (Broad Institute).
+ComBat can be categorized as Preprocess, Utility.
+ComBat has the following parameters: input file, sample info file, covariate columns, absent calls filter, create prior plots, prior method, output file.
+The ComBat GenePattern module is a powerful tool for correcting batch effects in microarray gene expression datasets.
+ComBat helps researchers remove systematic variations that can arise when biological samples are processed or measured in different batches.
+The ComBat module uses an Empirical Bayes method to statistically adjust for potential batch-related biases in gene expression data.
+Researchers can use ComBat to standardize gene expression measurements across multiple experimental batches, improving data comparability.
+The module requires an input gene expression file (in RES or GCT format) and a sample information file that describes batch and covariate details.
+ComBat allows users to choose between parametric and non-parametric methods for estimating batch effect correction, with parametric being faster.
+The module can generate prior probability distribution plots to help researchers visualize the batch effect correction process.
+Scientists can specify which covariate columns from the sample information file should be used in the batch effect correction analysis.
+ComBat is particularly useful in large-scale genomic studies where samples might be processed at different times or in different laboratories.
+The module helps prevent false conclusions that might arise from technical variations rather than true biological differences.
+Bioinformaticians and molecular biologists can use ComBat to improve the statistical reliability of gene expression comparisons across complex datasets.
+The ComBat module is part of the GenePattern suite, which provides a comprehensive set of computational tools for genomic data analysis.
+Researchers can apply ComBat to microarray data to ensure more accurate and reproducible gene expression measurements across experimental batches.
+The module supports flexible filtering of genes with absent calls, allowing users to control the stringency of data preprocessing.
+ComBat's Empirical Bayes approach provides a statistically robust method for addressing technical variations in gene expression data.
+input file:
+- Type: File
+- Description: ComBat module requires an input file in RES or GCT format for batch correction
+- Required: Yes
+- Default: None
+sample info file:
+- Type: Text file
+- Description: ComBat module needs a file with sample information containing Array, Sample, and Batch columns
+- Required: Yes
+- Default: None
+covariate columns:
+- Type: String or List
+- Description: ComBat module allows specifying which covariate columns to use in batch correction analysis
+- Options: "all", "none", or specific column numbers
+- Required: No
+- Default: "none"
+absent calls filter:
+- Type: Float
+- Description: ComBat module filters genes with absent calls across a specified proportion of samples
+- Range: 0 to 1
+- Required: No
+- Default: None
+- Condition: Only applies to RES file inputs
+create prior plots:
+- Type: Boolean
+- Description: ComBat module option to generate prior probability distribution plots
+- Required: No
+- Default: False
+- Condition: Only for parametric method
+prior method:
+- Type: String
+- Description: ComBat module allows selection of Empirical Bayes priors distribution estimation method
+- Options: Parametric or non-parametric
+- Required: No
+- Default: Parametric
+- Note: Non-parametric method may take longer to complete
+output file:
+- Type: String
+- Description: ComBat module name for the batch effect adjusted output file
+- Required: Yes
+- Default: None
+ComBat module input file is a microarray dataset in RES or GCT format containing gene expression measurements.
+ComBat module sample info file is a tab-delimited text file with columns for Array, Sample, and Batch, and optional covariate columns.
+ComBat module input file contains raw gene expression data with gene identifiers and expression values across multiple samples.
+ComBat module sample info file first three columns specify array, sample, and batch identifiers for each sample in the dataset.
+ComBat module sample info file additional columns can include biological or technical covariates that might influence gene expression.
+ComBat module output file contains batch-corrected gene expression data in the same format as the input file (RES or GCT).
+ComBat module generates prior probability distribution plots as a secondary output file in PDF or JPEG format.
+ComBat module output file preserves the original gene identifiers and expression matrix structure after batch effect correction.
+ComBat module prior plots visualize the distribution of gene expression before and after batch effect adjustment.
+ComBat module can handle microarray datasets with multiple batches and optional covariate information for more sophisticated batch correction.
+ComBat module is a statistical method for correcting batch effects in microarray datasets.
+ComBat uses an Empirical Bayes approach to adjust for potential systematic variations across different experimental batches.
+The ComBat module requires two primary input files: a gene expression dataset and a sample information file with batch and covariate details.
+ComBat can handle both parametric and non-parametric methods for estimating prior probability distributions of batch effect corrections.
+The module allows filtering of genes with absent calls, helping to improve data quality before batch correction.
+Users can choose to generate prior probability distribution plots to visually assess the batch effect correction process.
+The output of the ComBat module includes a batch-adjusted gene expression dataset and optional visualization plots.
+ComBat is particularly useful in genomic studies where samples might have been processed in multiple experimental batches, potentially introducing technical variations.
+The module is based on a 2007 biostatistics paper by Johnson et al., which introduced the Empirical Bayes method for batch effect correction.
+ComBat supports both RES and GCT file formats for input gene expression data.
+The module allows flexible covariate selection, enabling users to include or exclude specific covariates in the batch correction process.
+Non-parametric batch effect correction can be computationally intensive, potentially taking hours to complete depending on dataset size.
+The ComBat module is implemented in R and is compatible with multiple operating systems and CPU architectures.

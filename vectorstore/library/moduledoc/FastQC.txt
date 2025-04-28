@@ -1,0 +1,48 @@
+FastQC is on version 1.
+A description of FastQC is Generates a QC report on raw sequence data. FastQC takes as input the raw sequencing data (short read data contained within a FastQ, BAM or SAM file) produced by an NGS sequencing platform and produces a quality control report which can identify problems that might have originated either in the sequencer or during library preparation..
+FastQC is a GenePattern module written by Brabaham Institute.
+FastQC can be categorized as RNA-seq, Quality Control.
+FastQC has the following parameters: input file, input format, contaminant file, kmer size, extract output.
+The FastQC GenePattern module is a powerful quality control tool for analyzing raw sequencing data from next-generation sequencing platforms.
+FastQC can process multiple file formats including FASTQ, SAM, and BAM files containing short read sequencing data.
+The FastQC module generates a comprehensive quality control report that helps researchers identify potential issues in sequencing data.
+FastQC performs multiple analysis modules to assess different aspects of sequencing data quality, providing a status for each module (normal, slightly abnormal, very unusual).
+The module can detect potential problems that might have originated during sequencing or library preparation processes.
+FastQC generates graphical and statistical representations of sequence quality, allowing researchers to quickly evaluate data integrity.
+The GenePattern implementation of FastQC allows users to specify custom parameters like kmer size and contaminant screening.
+Researchers can use the FastQC module to screen for overrepresented sequences and potential contaminants in their sequencing data.
+The module produces a zip file containing an HTML report with detailed quality metrics and visualizations.
+FastQC is particularly useful in RNA-seq and other next-generation sequencing workflows for ensuring data quality before downstream analysis.
+The module supports multiple computational platforms, including different operating systems and CPU architectures.
+Researchers can customize the analysis by specifying a non-default contaminant file for more targeted screening.
+The FastQC GenePattern module helps researchers identify potential sequencing artifacts, adapter contamination, and other data quality issues.
+input file: File type: raw sequence file (FASTQ, SAM, BAM). Required parameter for FastQC module. Specifies the input sequencing data to be analyzed.
+input format: File type: string. Optional parameter for FastQC module. Allows manual specification of file format to bypass automatic detection.
+contaminant file: File type: tab-delimited text file. Optional parameter for FastQC module. Contains list of potential sequence contaminants to screen against.
+kmer size: Data type: integer. Optional parameter for FastQC module. Specifies length of Kmer to analyze, with valid range between 2 and 10. Default is 5.
+extract output: Data type: boolean. Optional parameter for FastQC module. Determines whether to generate an uncompressed report version for direct viewing.
+FastQC module input file is a raw sequencing data file in FASTQ, SAM, or BAM format containing short read sequences from an NGS platform.
+FastQC module contaminant input file is a tab-delimited text file listing potential sequence contaminants with name and sequence information.
+FastQC module output is a compressed ZIP file containing an HTML quality control report with detailed sequencing data analysis.
+FastQC module input file must contain raw sequencing reads from a high-throughput sequencing experiment.
+FastQC module contaminant file allows custom screening of overrepresented sequences against known adapter or primer sequences.
+FastQC module supports input files from multiple sequencing platforms including Illumina, allowing flexible quality assessment.
+FastQC module generates comprehensive quality metrics including sequence quality, GC content, adapter content, and kmer analysis.
+FastQC module HTML report provides visual and statistical representations of sequencing data quality across multiple analysis modules.
+FastQC module can process single-end and paired-end sequencing data from various file formats.
+FastQC module output enables researchers to quickly identify potential issues in sequencing library preparation or sequencing process.
+FastQC (v1) is a quality control tool for analyzing raw next-generation sequencing data.
+The FastQC module helps researchers assess the quality of high-throughput sequencing reads from various file formats like FASTQ, SAM, and BAM.
+FastQC performs multiple analysis modules to evaluate different aspects of sequencing data quality.
+The module generates a comprehensive report with status indicators for each quality analysis module, ranging from normal to very unusual.
+FastQC can detect potential issues originating from the sequencing platform or library preparation process.
+Users can specify a custom contaminant file to screen for overrepresented sequences during the analysis.
+The module allows selection of Kmer length between 2 and 10 for the Kmer content analysis, with a default length of 5.
+FastQC produces an HTML report compressed in a zip file, providing detailed visualizations of sequencing data quality metrics.
+The tool is platform-independent and runs on any operating system with Java support.
+FastQC can process sequencing data from various platforms, with specific examples provided for Illumina datasets.
+The module helps researchers quickly identify potential quality issues before downstream bioinformatics analysis.
+Users can extract an uncompressed version of the report for direct viewing within GenePattern.
+The contaminant file allows custom screening of sequences using a simple tab-delimited format.
+FastQC supports multiple input file formats, providing flexibility for different sequencing technologies.
+The module's analysis modules cover various aspects of sequencing data quality, including base quality, sequence content, and potential contamination.

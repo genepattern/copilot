@@ -1,0 +1,96 @@
+SparseHierarchicalClustering is on version .
+A description of SparseHierarchicalClustering is Agglomerative hierarchical clustering of genes/experiments, using the sparse hierarchical clustering method of Witten and Tibshirani (2009)..
+SparseHierarchicalClustering is a GenePattern module written by Daniela Witten (Stanford University), dwitten@u.washington.edu.
+SparseHierarchicalClustering can be categorized as Clustering.
+SparseHierarchicalClustering has the following parameters: input.filename, method, wbound, maxnumgenes, cluster.features, method.features, standardize.arrays.
+The SparseHierarchicalClustering module is a powerful bioinformatics tool for advanced gene expression data analysis.
+SparseHierarchicalClustering allows researchers to perform hierarchical clustering with an innovative approach that selectively uses only the most relevant genes.
+Unlike traditional clustering methods that use all genes, SparseHierarchicalClustering adaptively chooses a subset of genes most important to the clustering process.
+The module assigns non-negative weights to genes, with many genes potentially receiving zero weight, indicating they are not critical to the clustering analysis.
+SparseHierarchicalClustering helps researchers identify the most important genes in a dataset by ranking them based on their assigned weights.
+The module supports multiple linkage methods including single, complete, average, and centroid clustering approaches.
+Researchers can control the gene selection process using the 'wbound' parameter, which determines the total weight assigned to genes in the clustering.
+SparseHierarchicalClustering can automatically select an optimal tuning parameter if desired, making it flexible for different research needs.
+The module can handle large datasets by allowing users to limit the number of genes analyzed, improving computational efficiency.
+Output from SparseHierarchicalClustering includes clustering files (CDT, ATR, GTR) and a weights file that details the importance of each gene in the analysis.
+This module is particularly useful in genomics research for identifying key genes in complex datasets and reducing noise in clustering results.
+SparseHierarchicalClustering provides a framework for feature selection in clustering, helping researchers focus on the most biologically significant genes.
+The module can standardize array data before clustering, ensuring more reliable and comparable results across different experiments.
+Researchers can choose to cluster both observations (arrays) and features (genes) using this flexible bioinformatics tool.
+SparseHierarchicalClustering is implemented in R and can be used across different computing platforms, making it widely accessible to researchers.
+input.filename
+- Type: String
+- Description: Specifies the input GCT file containing data to be clustered in SparseHierarchicalClustering
+- Required: Yes
+method
+- Type: String
+- Description: Determines the linkage method for clustering in SparseHierarchicalClustering
+- Options: single, complete, average, centroid
+- Default: average
+- Required: Yes
+wbound
+- Type: Numeric
+- Description: Tuning parameter controlling the total gene weights in SparseHierarchicalClustering
+- Controls number of genes used in sparse clustering
+- Smaller values result in fewer non-zero gene weights
+- If -1, program automatically selects optimal tuning parameter
+- Default: -1
+- Required: Yes
+maxnumgenes
+- Type: Integer
+- Description: Limits number of genes used in SparseHierarchicalClustering to improve performance
+- If positive integer k is specified, only k genes with highest variance are used
+- If -1, all genes are used
+- Recommended value: 5000 for large datasets
+- Default: 5000
+- Required: Yes
+cluster.features
+- Type: Boolean
+- Description: Determines whether genes with non-zero weights are clustered in SparseHierarchicalClustering
+- If true, generates GTR file with gene clustering
+- Default: false
+- Required: Yes
+method.features
+- Type: String
+- Description: Specifies linkage method for feature clustering in SparseHierarchicalClustering
+- Options: single, complete, average, centroid
+- Default: average
+- Required: Yes
+standardize.arrays
+- Type: Boolean
+- Description: Controls array standardization before clustering in SparseHierarchicalClustering
+- If true, arrays are standardized to mean zero and standard deviation one
+- Default: true
+- Required: Yes
+Here are the input and output files for the SparseHierarchicalClustering module:
+Input Files:
+SparseHierarchicalClustering requires a GCT file containing gene expression data to perform clustering.
+The GCT file is a tab-delimited matrix representing gene expression measurements across multiple arrays or experiments.
+Each row represents a gene, and each column represents an experimental condition or sample.
+The first few columns typically contain gene identifier and description information.
+The remaining columns contain numerical expression values for each gene across different conditions.
+Output Files:
+SparseHierarchicalClustering generates a CDT file containing genes with non-zero weights for visualization.
+The CDT file includes the subset of genes selected as most relevant for clustering.
+SparseHierarchicalClustering produces an ATR file representing the clustering of arrays or observations.
+The ATR file contains the hierarchical structure of sample/array relationships.
+SparseHierarchicalClustering optionally creates a GTR file if gene clustering is enabled.
+The GTR file represents the hierarchical clustering of genes with non-zero weights.
+SparseHierarchicalClustering generates a WEIGHTS.TXT file showing the weight assigned to each gene.
+The WEIGHTS.TXT file allows users to understand gene importance in the clustering process.
+SparseHierarchicalClustering outputs a WBOUND.TXT file with information about the sparse clustering parameters.
+The WBOUND.TXT file includes details about the tuning parameter used in the clustering algorithm.
+SparseHierarchicalClustering is an advanced clustering method that adaptively selects genes for analysis.
+The SparseHierarchicalClustering module allows researchers to perform hierarchical clustering with gene selection.
+Unlike standard hierarchical clustering, this method chooses a subset of genes most relevant to the clustering process.
+Each gene receives a non-negative weight, with many genes potentially having zero weight if they are not important to the clustering.
+The module allows researchers to control gene selection through a tuning parameter called wbound, which determines the total gene weights used.
+Researchers can specify different linkage methods like single, complete, average, or centroid clustering for both arrays and features.
+The module can automatically select an optimal tuning parameter or allow manual specification of gene weight constraints.
+Users can limit the number of genes analyzed to improve computational efficiency, with a default maximum of 5000 genes.
+The output includes a CDT file with non-zero weighted genes, an ATR file for array clustering, and optional gene clustering files.
+Gene weights can be used to rank the importance of different genes in the clustering analysis.
+The method is based on research by Witten and Tibshirani, providing a sophisticated approach to feature selection in clustering.
+The module supports standardization of arrays to have zero mean and unit standard deviation before clustering.
+Researchers can choose to cluster both observations (arrays) and features (genes) using this flexible method.
+The SparseHierarchicalClustering module is implemented in R and can run on any platform with R 2.5 or higher.

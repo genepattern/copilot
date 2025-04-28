@@ -1,0 +1,61 @@
+AddFCSEventIndex is on version 2.
+A description of AddFCSEventIndex is Adds indexes to events in a Flow Cytometry Standard (FCS) data file. The module takes an input FCS data file and adds an index to each event as a new parameter. The index may be used identify events in different analytical processing steps, e.g., to facilitate back-gating independently of the flow cytometry analysis tools used..
+AddFCSEventIndex is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+AddFCSEventIndex can be categorized as Flow Cytometry.
+AddFCSEventIndex has the following parameters: Input data file, Start index, Index parameter short name, Index parameter long name, Output fcs file name.
+The AddFCSEventIndex module allows researchers to add unique numerical identifiers to individual events in flow cytometry data files.
+The AddFCSEventIndex module helps track and annotate specific cellular events across different analytical processing steps in flow cytometry experiments.
+AddFCSEventIndex enables precise event tracking by assigning incremental index numbers to each cellular measurement within a flow cytometry dataset.
+The module supports customization of index parameters, allowing researchers to specify starting index values and parameter names for event identification.
+AddFCSEventIndex is particularly useful for facilitating back-gating analysis, which involves tracing cellular events across multiple experimental stages or computational workflows.
+The module operates on Flow Cytometry Standard (FCS) file formats, a standardized data format used extensively in immunology and cellular research.
+AddFCSEventIndex can be applied across various research domains, including immunology, cancer research, and cellular biology, where precise event tracking is critical.
+The module requires Java 1.5 or higher and is compatible with multiple operating systems and computing platforms.
+AddFCSEventIndex generates a new FCS file with an additional index parameter, preserving the original data while adding a unique identifier to each cellular event.
+Researchers can use the AddFCSEventIndex module to improve data reproducibility and enable more sophisticated computational analysis of flow cytometry datasets.
+Input data file:
+- Type: FCS file
+- Description: AddFCSEventIndex module requires an input Flow Cytometry Standard data file to add event indexes
+- Required: Yes
+- Default: None
+Start index:
+- Type: Integer
+- Description: AddFCSEventIndex module sets the beginning numeric index for events in the dataset
+- Required: No
+- Default: 1
+Index parameter short name:
+- Type: String
+- Description: AddFCSEventIndex module defines the abbreviated parameter name for the new index column
+- Required: No
+- Default: "Index"
+Index parameter long name:
+- Type: String
+- Description: AddFCSEventIndex module specifies the full descriptive name for the new index parameter
+- Required: No
+- Default: Blank
+Output fcs file name:
+- Type: String
+- Description: AddFCSEventIndex module determines the filename for the output FCS file with added event indexes
+- Required: No
+- Default: Derived from input filename
+Here are the input and output file descriptions for the AddFCSEventIndex module:
+Input FCS data file is a Flow Cytometry Standard (FCS) file containing raw flow cytometry event data.
+Input FCS data file contains multiple parameters measuring cellular characteristics for each recorded event.
+Input FCS data file follows the FCS 3.1 file standard specification for flow cytometry data storage.
+Input FCS data file requires no pre-processing before being used with the AddFCSEventIndex module.
+Output FCS data file contains the original input file's events with a new index parameter added.
+Output FCS data file maintains the same structure and parameters as the input file, with an additional index column.
+Output FCS data file assigns sequential index numbers to events starting from the user-specified start index.
+Output FCS data file allows tracking and identification of individual events across different analysis workflows.
+Output FCS data file preserves all original measurement data from the input FCS file.
+AddFCSEventIndex is a GenePattern module for adding event indexes to Flow Cytometry Standard (FCS) data files.
+The AddFCSEventIndex module allows researchers to assign unique sequential indexes to individual events in a flow cytometry dataset.
+The module helps researchers track and identify specific events across different analytical processing steps in flow cytometry experiments.
+The AddFCSEventIndex module adds a new parameter to each event in the FCS file, incrementing the index by 1 for each event.
+Users can specify a custom starting index number for the first event in the dataset, with a default value of 1.
+The module allows customization of the index parameter's short name (default is "Index") and long name (default is blank).
+The output is a new FCS file containing the original data with an additional index parameter assigned to each event.
+The module supports any CPU type and operating system, and requires Java 1.5 or higher to run.
+The AddFCSEventIndex module follows the FCS 3.1 file standard for flow cytometry data file formatting.
+Version 2 of the AddFCSEventIndex module included a fix for parsing empty keyword values in FCS files.
+The module was developed by Josef Spidlen and is designed to facilitate event tracking in flow cytometry analysis.

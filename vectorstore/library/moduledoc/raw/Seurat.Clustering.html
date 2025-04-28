@@ -1,0 +1,98 @@
+<div class="gp-content-header fluid">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
+<h1><big>Seurat.Clustering</big></h1>
+</div>
+</div>
+</div>
+</div><div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<br/>
+<dl class="dl-horizontal">
+<dt>LSID</dt>
+<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00408</dd>
+<dt>Author(s)</dt>
+<dd>Satija Lab, NY Genome Center, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
+<dt>Contact(s)</dt>
+<dd><p>Algorithm and scientific questions: satijalab.org</p>
+<p>Module wrapping issues:  Ted Liefeld  &lt; jliefeld at cloud dot ucsd dot edu&gt;</p>
+</dd>
+</dl>
+<hr/>
+<h2>Introduction</h2>
+<p>Seurat is an R package designed for QC, analysis, and exploration of single-cell RNA-seq data. Seurat aims to enable users to identify and interpret sources of heterogeneity from single-cell transcriptomic measurements, and to integrate diverse types of single-cell data.</p>
+<p>
+Within GenePattern, Seurat is accessed as several different modules exposing different portions of the Seurat workflow;  Seurat.Preprocessing, Seurat.BatchCorrection, Seurat.QC and Seurat.Clustering.  This module, Seurat.Clustering performs UMAP clustering and marker identification on single-cell RNA-Seq data. 
+</p>
+<h2>Algorithm</h2>
+<p> The Seurat.Clustering module performs uses Seurat version 3.0.2.  It performs following steps from Seurat to the input dataset;
+<ol>
+<li>FindNeighbors</li>
+<li>FindClusters</li>
+<li>RunUMAP</li>
+<li>DimPlot</li>
+</ol>  
+For details of the Seurat implementation please refer to the <a href="https://satijalab.org/seurat/">Seurat documentation</a> from the Satija lab.
+</p>
+<h2>References</h2>
+<p><a href="https://satijalab.org/seurat/">https://satijalab.org/seurat/</a></p>
+<h2>Input Files</h2>
+<ol>
+<li> input seurat rds file*<br/>
+ A RDS (from the R programming language) file containing a Seurat object.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output filename&gt;.rds<br>
+	Output RDS file containing a Seurat object that contains the cluster details for optional further processing.</br></li>
+<li>&lt;output filename&gt;_all_markers.csv<br/>
+        Comma delimited file containing "p_val","avg_logFC","pct.1","pct.2","p_val_adj","cluster","gene" for the marker genes.</li>
+<li>&lt;output_filename&gt;.clustered.csv<br/>
+        Comma delimited file containing "p_val","avg_logFC","pct.1","pct.2","p_val_adj","cluster","gene" for the identified gene clusters.</li>
+<li>&lt;output_filename&gt;.clustered.pdf<br/>
+        PDF formatted file containing the UMAP plot of the clusters.</li>
+</ol>
+<h2>Example Data</h2>
+<p><a href="https://datasets.genepattern.org/data/Carter-Fraley/mat_notRegressed.rds">mat_notRegressed.rds</a></p>
+<h2>Requirements</h2>
+<p>GenePattern 3.9.11 or later (dockerized).</p>
+<h2>Parameters</h2>
+<table class="table table-striped">
+<tbody>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>input seurat rds file*</td>
+<td>A rds file containig a Seurat object.</td>
+</tr>
+<tr>
+<td>output filename*</td>
+<td>The output filename prefix used for all output files.</td>
+</tr>
+<tr>
+<td>maximum dimension</td>
+<td>The maximum number of clusters to attempt to find.</td>
+</tr>
+<tr>
+<td>resolution*</td>
+<td>The resolution to use to find clusters.</td>
+</tr>
+<tr>
+<td>reduction*</td>
+<td>The reduction to use (UMAP). Other reductions (e.g. TSNE) may be added later.</td>
+</tr>
+<tr>
+<td>seed*</td>
+<td>The random number seed to use.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+</div>

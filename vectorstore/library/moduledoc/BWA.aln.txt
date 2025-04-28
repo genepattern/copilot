@@ -1,0 +1,63 @@
+BWA.aln is on version 2.
+A description of BWA.aln is A fast and accurate short-read alignment tool that allows for mismatches and gaps. Alignments are output in a SAM format file, which provides Phred-scale quality scores for each alignment. Burrows-Wheeler Aligner (BWA.aln) is a fast, light-weight tool that aligns relatively short nucleotide sequences against a long reference sequence such as the human genome. It works for query sequences shorter than 200bp, and does gapped alignment..
+BWA.aln is a GenePattern module written by Heng Li, Broad Institute.
+BWA.aln can be categorized as RNA-seq, Alignment.
+BWA.aln has the following parameters: BWA index, reads pair 1, reads pair 2, bam mapping, max edit distance, max num gap, max gap extension, max deletion length, max indel length, seed length, max seed edit distance, mismatch penalty, gap open penalty, gap extension penalty, max best hits, iterative search, trim reads, Illumina 1.3 format, barcode length, max insert size, max occurrences, max alignments, max dc alignments, output prefix.
+Here are the chunks for the BWA.aln module description:
+The BWA.aln module is a powerful bioinformatics tool for aligning short nucleotide sequences to reference genomes.
+BWA.aln is specifically designed for aligning reads shorter than 200 base pairs with high accuracy and speed.
+The module uses the Burrows-Wheeler Alignment algorithm, which enables rapid mapping of sequencing reads to a reference genome.
+BWA.aln can process single-end and paired-end sequencing data from various file formats including FASTA, FASTQ, and BAM.
+The module allows researchers to set multiple alignment parameters like maximum edit distance, gap penalties, and seed length to optimize mapping results.
+BWA.aln generates output in SAM format, which provides detailed information about read alignments including quality scores.
+The tool was developed collaboratively by researchers at the Wellcome Trust Sanger Institute and the Broad Institute.
+BWA.aln is particularly efficient for sequencing data with low error rates, making it ideal for high-quality next-generation sequencing experiments.
+The module supports different sequencing platforms, including Illumina 1.3+ read formats, enhancing its versatility in genomic research.
+Researchers can use BWA.aln to map millions of short reads to reference genomes quickly, with mapping times ranging from minutes to hours depending on genome size.
+BWA index: Reference genome index file, type: BWA index, required, used for aligning reads to a reference genome.
+reads pair 1: Input reads file, type: FASTA/FASTQ/BAM, required, contains first/forward read sequences for alignment.
+reads pair 2: Input reads file, type: FASTA/FASTQ/BAM, optional, contains reverse/second read sequences for paired-end alignment.
+bam mapping: Mapping specification for BAM input, type: string, optional, determines how BAM files are processed.
+max edit distance: Maximum allowed edit distance, type: integer, optional, sets threshold for sequence transformations.
+max num gap: Maximum number of gap openings, type: integer, optional, controls gap initiation during alignment.
+max gap extension: Maximum gap extension length, type: integer, optional, limits bases by which gaps can be extended.
+max deletion length: Deletion length restriction, type: integer, optional, prevents long deletions near read ends.
+max indel length: Indel proximity restriction, type: integer, optional, disallows insertions/deletions near read ends.
+seed length: Seed region definition, type: integer, optional, specifies high-quality read end for initial matching.
+max seed edit distance: Maximum seed edit distance, type: integer, optional, controls seed region matching precision.
+mismatch penalty: Penalty for sequence mismatches, type: float, optional, adjusts alignment scoring.
+gap open penalty: Penalty for initiating sequence gaps, type: float, optional, influences alignment gap scoring.
+gap extension penalty: Penalty for extending sequence gaps, type: float, optional, controls gap elongation scoring.
+max best hits: Maximum number of equally best alignments, type: integer, optional, affects paired-end mapping accuracy.
+iterative search: Search strategy toggle, type: boolean, optional, controls alignment search comprehensiveness.
+trim reads: Read quality trimming threshold, type: integer, optional, removes low-quality read ends.
+Illumina 1.3 format: Input read format specification, type: boolean, optional, indicates sequencing platform encoding.
+barcode length: Barcode sequence length, type: integer, optional, specifies initial read sequence.
+max insert size: Maximum acceptable read pair distance, type: integer, optional, defines proper mapping range.
+max occurrences: Maximum read pairing occurrences, type: integer, optional, limits alignment complexity.
+max alignments: Maximum output alignment count, type: integer, optional, restricts alignment reporting.
+max dc alignments: Maximum discordant alignment count, type: integer, optional, limits non-standard alignment reporting.
+output prefix: Output file name prefix, type: string, required, determines output file naming convention.
+Here are the input and output file descriptions for the BWA.aln module:
+BWA index is a ZIP archive containing pre-computed BWA index files for a reference genome.
+reads pair 1 is a single-end or first paired-end reads file in FASTA, FASTQ, or BAM format, representing the forward reads.
+reads pair 2 is the reverse reads file for paired-end sequencing in FASTA, FASTQ, or BAM format.
+SAM output file contains aligned sequence reads with Phred-scale quality scores for each alignment.
+The BWA index files are generated by the BWA indexer module and must be compatible with BWA versions 0.6.x or 0.7.x.
+Input files can be gzipped FASTA, FASTQ, or BAM formats.
+The SAM output file follows the SAM format specification with detailed alignment information.
+BWA.aln supports alignment of short nucleotide sequences (< 200 bp) against reference genomes.
+The module can handle single-end and paired-end sequencing data with various alignment parameters.
+Here are the chunks for the BWA.aln module documentation:
+BWA.aln is a fast and accurate short-read alignment tool for mapping nucleotide sequences against reference genomes.
+The module supports aligning query sequences shorter than 200 base pairs with gapped alignment capabilities.
+BWA.aln works most efficiently with query sequences that have low error rates, providing faster and more accurate alignments.
+Developed collaboratively by the Wellcome Trust Sanger Institute and the Broad Institute, BWA.aln uses the Burrows-Wheeler Transform for efficient sequence mapping.
+The alignment speed is primarily determined by the error rate of input query sequences, with near-perfect matches processing more quickly.
+BWA.aln can map millions of short reads to complex genomes like bacterial or human genomes in minutes.
+The module supports both single-end and paired-end read alignment in FASTA, FASTQ, or BAM file formats.
+Users can specify multiple alignment parameters like maximum edit distance, gap penalties, seed length, and mismatch penalties.
+The output is a SAM format file that provides Phred-scale quality scores for each alignment.
+BWA.aln index files are version-specific, with compatibility limited between different BWA versions.
+The module includes advanced features like read trimming, barcode handling, and configurable alignment output settings.
+Alignment accuracy can be tuned by adjusting parameters such as maximum best hits, gap open penalties, and seed edit distances.

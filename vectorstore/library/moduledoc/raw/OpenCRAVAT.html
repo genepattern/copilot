@@ -1,0 +1,111 @@
+<div class="gp-content-header fluid">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<h4><img src="./assets/gplogo.png"/>Module Documentation</h4>
+<h1><big>OpenCRAVAT</big></h1>
+</div>
+</div>
+</div>
+</div><div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<br/>
+<dl class="dl-horizontal">
+<dt>LSID</dt>
+<dd>urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00411</dd>
+<dt>Author(s)</dt>
+<dd>Karchin Lab, Johns Hopkins University, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.</dd>
+<dt>Contact(s)</dt>
+<dd><p>Algorithm and scientific questions: &lt;support  at cravat  dot us&gt;</p>
+<p>Module wrapping issues:  Ted Liefeld  &lt; jliefeld at cloud dot ucsd dot edu&gt;</p>
+</dd>
+</dl>
+<h2>Introduction</h2>
+<p>The OpenCRAVAT GenePattern module submits a list of variants to the <a ,="" href="https://run.opencravat.org" target="_blank">OpenCRAVAT Server</a> for analysis.  
+OpenCRAVAT is a software package that performs genomic variant interpretation including variant impact, annotation, and scoring. It has a modular 
+architecture with a wide variety of analysis modules that are developed both by the CRAVAT team and the broader variant analysis community. 
+OpenCRAVAT is a product of the <a ,="" href="https://karchinlab.org/" target="_blank">Karchin Lab</a> at Johns Hopkins University in collaboration with 
+<a ,="" href="http://insilico.us.com" target="_blank">In Silico Solutions</a> with funding provided by the National Cancer Institute's 
+<a ,="" href="https://itcr.cancer.gov/" target="_blank">ITCR</a> program.</p>
+<h2>References</h2>
+<p><b>Publication:</b> Pagel KA, Kim R, Moad K, Busby B, Zheng L, Tokheim C, Ryan M, Karchin R. 
+"Integrated Informatics Analysis of Cancer-Related Variants."
+ JCO Clinical Cancer Informatics 4 (2020): 310-317. DOI: 10.1200/CCI.19.00132 </p>
+<p><b>Documentation:</b> <a ,="" href="https://github.com/KarchinLab/open-cravat/wiki" target="_blank">OpenCRAVAT Wiki</a></p>
+<p><b>Store:</b> Please see the Store tab on the OpenCRAVAT <a ,="" href="https://run.opencravat.org" target="_blank">server</a> for a description of each available analysis module.</p>
+<h2>Tool Description</h2>
+<img class="center" src="./assets/OC_GenePattern.png"/>
+<h3>Input File</h3>
+<ul style="list-style-type:none;">
+<li>OpenCRAVAT accepts input files of several different formats.  The most common is VCF but it
+	also accepts a simple tab delimited text file as well as 23andMe, Ancestry, and dbSNP formats.</li>
+<li> </li>
+<li>Please see the OpenCRAVAT <a ,="" href="https://github.com/KarchinLab/open-cravat/wiki" target="_blank">Docs</a> for more information on input file formats.</li>
+<li> </li>
+<li>Note the current version of this tool supports only variants in GRCh38 coordinates.  The
+	next release of the tool will provide a selection for older genome version (e.g. GRCh37/hg19)</li>
+</ul>
+<h3>Output Files</h3>
+<ul style="list-style-type:none;">
+<li><b>&lt;Cravat job number&gt;.csv.zip</b><br/>
+	   The zip file contains the results of OpenCRAVAT annotation in a comma separated text file format.  There are several files in the zip file.
+	   The file *.variant.csv will have one line per submitted variant and will contain columns with results from each analysis module. </li>
+<li> </li>
+<li><b>&lt;Cravat job number&gt;.html</b><bt></bt>
+        OpenCRAVAT has a functionally rich environment for filtering, sorting and exploring the variants in your results.  This link will
+        take you to the results browser for your job on the OpenCRAVAT server. 
+        </li>
+</ul>
+<img class="center" src="./assets/OC_ResultsViewer.png" width="80%"/>
+<h3>Example Data</h3>
+<p>	Small sample input files: <a href="./assets/OpenCRAVAT_Sample.vcf">VCF</a> <a href="./assets/OpenCRAVAT_Sample.txt">TXT</a>
+<h3>Requirements</h3>
+<p>GenePattern 3.9.11 or later (dockerized).</p>
+<h3>Parameters</h3>
+<table class="table table-striped">
+<tbody>
+<tr><td colspan="2"><h4>Inputs and Outputs</h4></td></tr>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>data file*</td>
+<td>Input file in one of the supported OpenCRAVAT input file formats like VCF.</td>
+</tr>
+<tr>
+<td>Cravat username*</td>
+<td>A requirement of this tool is a valid login to the OpenCRAVAT server.  If you don't have a login, use the 'Register' link to create one.</td>
+</tr>
+<tr>
+<td>Cravat password*</td>
+<td>The password for the OpenCRAVAT login.</td>
+</tr>
+<tr>
+<td>Annotations</td>
+<td>This panel is used to select the annotation modules that should be run on the variants.  Annotation modules are grouped by category like
+            clinical relevance and variant effect prediction.  The drop down lists in each category are multi select list so more than one module in 
+            each category can be selected.  The same module may be found in multiple categories.  A detailed description of each module can be found
+            on the Store tab of the OpenCRAVAT <a ,="" href="https://run.opencravat.org" target="_blank">server</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3>Version Comments</h3>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-21</td>
+<td>Initial Version, developed against OpenCRAVAT Version: 1.7.2</td>
+</tr>
+</tbody>
+</table>
+</p></div></div></div>

@@ -1,0 +1,52 @@
+ssGSEA is on version 10.1.x.
+A description of ssGSEA is A GenePattern module for running the ssGSEA method. Single-sample GSEA (ssGSEA) calculates separate enrichment scores for each pairing of a sample and gene set, projecting each sample within a data set onto a space of gene set enrichment scores..
+ssGSEA is a GenePattern module written by GenePattern.
+ssGSEA can be categorized as Projection, Gene Set Enrichment Analysis.
+ssGSEA has the following parameters: input_gct_file, output_file_prefix, gene_sets_database, gene_symbol_column, gene_set_selection, sample_normalization_method, weighting_exponent, min_gene_set_size, combine_mode.
+The ssGSEA GenePattern module transforms gene expression data into a pathway-level representation of biological activity.
+The ssGSEA module calculates enrichment scores for each gene set within individual samples, providing a higher-level view of biological processes beyond individual gene expression.
+ssGSEA allows researchers to characterize cell states by measuring the activity levels of biological pathways rather than focusing solely on individual gene expression levels.
+The module can reduce data dimensionality by converting gene-level expression data into pathway-level enrichment scores, making downstream analysis more interpretable.
+ssGSEA supports multiple normalization methods, including rank, log rank, and log transformations, to prepare gene expression data for enrichment analysis.
+Researchers can use ssGSEA to project gene expression data onto predefined gene sets from databases like Molecular Signatures Database (MSigDB), enabling comprehensive pathway analysis.
+The module allows selection of specific gene sets or can project data across all available gene sets in a chosen database, providing flexibility in analysis scope.
+ssGSEA generates an output GCT file containing enrichment scores that can be used for further clustering, classification, or comparative analysis in GenePattern.
+The module implements the single-sample GSEA projection methodology originally described by Barbie et al. in 2009, providing a standardized approach to pathway-level analysis.
+Researchers can use ssGSEA to identify differentially active biological processes across phenotypes, potentially uncovering insights into underlying molecular mechanisms.
+input gct file: File type (GCT), contains gene expression data, required for ssGSEA module analysis.
+output file prefix: String type, defines prefix for output file name, optional with default being input file name with .PROJ appended.
+gene sets database files: Collection of gene set definitions (GMT/GMX/GRP format), allows selection from MSigDB or custom upload, required for ssGSEA module.
+gene symbol column: Integer/column name specifying which column contains gene symbol names in input GCT file, default is column 1.
+gene set selection: List of gene set names to project data onto, can be specific sets or "ALL", default is ALL.
+sample normalization method: Method for normalizing expression data, options include none, rank, log.rank, log, default is none.
+weighting exponent: Numeric value used in enrichment score calculation, default is 0.75, recommended not to change.
+min gene set size: Minimum number of genes required in a gene set for inclusion in projection, default is 10.
+combine mode: Method for handling gene sets with _UP and _DN suffixes, options include combine.add, combine.replace, combine.off, default is combine.add.
+Here are the input and output files for the ssGSEA GenePattern module:
+Input expression dataset is a GCT file containing gene expression data with gene symbols.
+Gene sets database files are GMT or GMX files containing collections of gene set definitions.
+Input GCT file must have gene symbols from the same ontology or name space as the gene sets database.
+Input GCT file can contain probe IDs, but may need to be collapsed to gene symbols using CollapseDataset module.
+Gene sets database files can be selected from MSigDB or uploaded as custom GMT, GMX, or GRP files.
+Output enrichment score dataset is a GCT file projecting the input dataset onto gene set enrichment scores.
+Output GCT file can be used as input for clustering and classification algorithms in GenePattern.
+Output file prefix determines the name of the output GCT file, defaulting to <input file>.PROJ.
+Output file includes enrichment scores for each sample and gene set combination.
+Output file can include combined enrichment scores depending on the combine mode selected.
+Here are the chunks for the ssGSEA module documentation:
+ssGSEA is a GenePattern module for performing single-sample Gene Set Enrichment Analysis (ssGSEA).
+ssGSEA extends traditional GSEA by calculating separate enrichment scores for each sample and gene set combination.
+The module transforms gene expression data into a space representing biological process activity levels instead of individual gene expression.
+ssGSEA allows researchers to characterize cell states through the activity levels of biological pathways rather than individual gene expressions.
+The module reduces data dimensionality by projecting gene expression data onto gene set enrichment scores.
+ssGSEA can help identify correlations between gene set enrichment scores and phenotypes of interest.
+The module implements the single-sample GSEA projection methodology described in the Barbie et al., 2009 research paper.
+Input for ssGSEA requires a GCT file containing gene expression data with gene symbols matching the gene sets database.
+Users can select gene sets from the Molecular Signatures Database (MSigDB) or upload custom gene set files in GMT, GMX, or GRP formats.
+The module offers normalization methods including none, rank, log.rank, and log transformations.
+ssGSEA provides options for combining enrichment scores for gene sets with _UP and _DN suffixes.
+The output is a GCT file containing the input dataset projected onto a space of gene set enrichment scores.
+The default weighting exponent is 0.75, and the module authors recommend against changing this value.
+ssGSEA can exclude gene sets with fewer overlapping genes than a specified minimum set size.
+The module supports both human and mouse gene set databases from MSigDB.
+Researchers can use the ssGSEA output for further analysis like clustering or classification of biological processes.

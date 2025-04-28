@@ -1,0 +1,72 @@
+PCAViewer is on version 5.0.
+A description of PCAViewer is Principal Components Analysis Viewer. The PCAViewer displays the results from principal component analysis (the PCA module). It is adapted from TIGR's MultiExperiment Viewer and allows visualization of eigenvectors and projections of genes or experiments onto principal components..
+PCAViewer is a GenePattern module written by Marc-Danie Nazaire, Joshua Gould (Broad Institute).
+PCAViewer can be categorized as Visualization, Principal Component Analysis, Microarray Analysis.
+PCAViewer has the following parameters: dataset, s_matrix, t_matrix, u_matrix, cls_or_sample_info_class, sample_info_class, featureset.
+PCAViewer is a GenePattern module for visualizing and analyzing results from Principal Components Analysis (PCA).
+PCAViewer helps researchers explore complex genomic data by transforming high-dimensional datasets into more interpretable visual representations.
+The PCAViewer module allows scientists to plot eigenvectors of principal components to understand variance in genetic data.
+PCAViewer provides two primary visualization tabs: Components and Projection, enabling different perspectives on multivariate genomic information.
+In the Components tab of PCAViewer, researchers can select and plot eigenvectors to understand which components explain the most variation in their dataset.
+The Projection tab of PCAViewer enables 2D and 3D visualization of genes or experiments projected onto principal components.
+PCAViewer supports color-coding of data points based on sample information files, allowing researchers to visually distinguish different experimental groups.
+The module allows interactive exploration of plots, including zooming, rotating, and hovering to reveal detailed information about specific data points.
+PCAViewer can be used to analyze microarray data, helping researchers identify patterns and relationships that might not be apparent in raw numerical data.
+Researchers can use PCAViewer to reduce complex genomic datasets to their most informative components, facilitating more efficient data interpretation.
+The PCAViewer module is particularly useful for exploring gene expression data, helping scientists understand underlying structures and variations in experimental results.
+PCAViewer supports both 2D and 3D visualizations, providing flexible options for data representation depending on research needs.
+PCAViewer module requires a dataset file for analysis.
+Dataset file is typically a .res or .gct file format.
+Dataset file contains the original data processed by the PCA module.
+Dataset file is a required parameter for the PCAViewer module.
+PCAViewer module requires an s matrix file from PCA processing.
+S matrix file is in .odf file format.
+S matrix file contains specific matrix data generated during principal component analysis.
+S matrix file is a required parameter for the PCAViewer module.
+PCAViewer module requires a t matrix file from PCA processing.
+T matrix file is in .odf file format.
+T matrix file contains specific matrix data generated during principal component analysis.
+T matrix file is a required parameter for the PCAViewer module.
+PCAViewer module requires a u matrix file from PCA processing.
+U matrix file is in .odf file format.
+U matrix file contains specific matrix data generated during principal component analysis.
+U matrix file is a required parameter for the PCAViewer module.
+PCAViewer module can accept a cls or sample info class file.
+Cls or sample info file is optional and can be in .cls or .txt format.
+This file helps in grouping and color-coding points in the projection plot.
+File provides additional metadata about samples or experiments.
+PCAViewer module can use a sample info class column name.
+Sample info class is required if a sample info file is provided.
+This parameter specifies which column in the sample info file should be used for grouping.
+Helps in organizing and analyzing data points.
+PCAViewer module can accept a feature set file.
+Feature set file is optional and can be in .gmt, .gmx, or .grp format.
+File contains information about specific gene sets or features.
+Helps in additional data annotation and visualization.
+PCAViewer module input and output file descriptions:
+dataset file is a gene expression matrix in .res or .gct format containing gene expression measurements across experiments
+s matrix file is an .odf file containing singular value decomposition results from the PCA module representing the singular values
+t matrix file is an .odf file containing the transformed data matrix from the PCA module
+u matrix file is an .odf file containing the left singular vectors from the PCA module
+cls.or.sample.info.class file is a .cls or .txt file containing sample group classifications for color-coding plot points
+sample.info.class is a column name from the sample info file specifying which group classification to use
+featureset file is a .gmt, .gmx, or .grp file containing gene set definitions for additional annotation or filtering
+PCAViewer does not explicitly generate output files but can export plot data to tab-delimited text files
+PCAViewer can save plot visualizations as image files through the File>Save As menu option
+PCAViewer generates interactive 2D and 3D principal component projection plots as visual outputs
+PCAViewer creates a plot table listing the values for each point in the principal component projection
+PCAViewer allows manual group assignment and coloring of plot points during visualization
+PCAViewer is a module for visualizing and analyzing Principal Components Analysis (PCA) results in genomic data.
+PCAViewer helps researchers explore complex genomic datasets by reducing high-dimensional data into principal components.
+The PCAViewer module allows visualization of eigenvectors and data projections from PCA analysis.
+PCAViewer provides two primary visualization tabs: Components and Projection for exploring PCA results.
+In the Components tab, users can plot eigenvectors for selected principal components to understand data variance.
+The Projection tab enables 2D and 3D visualization of genes or experiments projected onto principal components.
+PCAViewer supports coloring plot points based on predefined groups from cls, sample info, or featureset files.
+Users can interact with 2D plots by zooming, hovering over points, and examining detailed point information.
+3D plot manipulation in PCAViewer includes rotation, zooming, and axis movement for comprehensive data exploration.
+PCAViewer allows manual group assignment by selecting points and defining group names and colors.
+The module is designed to work with various input file types including .res, .gct, .odf, .cls, .txt, .gmt, .gmx, and .grp.
+PCAViewer is based on research by Raychaudhuri et al. (2000) for summarizing microarray experiment data.
+The module requires Java JVM level 1.5 and is compatible with any CPU and operating system.
+PCAViewer helps researchers identify underlying patterns and relationships in complex genomic datasets through dimensionality reduction.

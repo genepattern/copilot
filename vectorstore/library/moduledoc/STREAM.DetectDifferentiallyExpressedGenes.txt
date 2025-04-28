@@ -1,0 +1,48 @@
+STREAM.DetectDifferentiallyExpressedGenes is on version .
+A description of STREAM.DetectDifferentiallyExpressedGenes is STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. This module is used to detect differentially expressed genes between pairs of branches..
+STREAM.DetectDifferentiallyExpressedGenes is a GenePattern module written by Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+STREAM.DetectDifferentiallyExpressedGenes can be categorized as Single-cell Analysis, Gene Expression, Differential Expression.
+STREAM.DetectDifferentiallyExpressedGenes has the following parameters: data file, output filename, root, preference, percentil expr, use precomputed, cutoff zscore, cutoff logfc, num genes, figure height, figure width.
+STREAM.DetectDifferentiallyExpressedGenes is a GenePattern module for identifying genes with significantly different expression levels between branches of single-cell trajectories.
+The STREAM.DetectDifferentiallyExpressedGenes module helps researchers understand gene expression changes during cellular differentiation processes.
+This module uses a statistical approach involving Mann-Whitney U test and z-score standardization to compare gene expression between different cell trajectory branches.
+STREAM.DetectDifferentiallyExpressedGenes can detect both upregulated and downregulated genes when comparing expression levels across different cellular states.
+The module requires a preprocessed single-cell RNA sequencing dataset in STREAM's AnnData pickle format as input.
+STREAM.DetectDifferentiallyExpressedGenes generates multiple output files, including PDF visualizations and TSV files listing differentially expressed genes with statistical metrics.
+The module allows researchers to specify parameters like z-score cutoff, log fold change threshold, and the number of genes to plot in the analysis.
+STREAM.DetectDifferentiallyExpressedGenes is particularly useful for studying complex cellular differentiation processes, such as hematopoiesis or developmental biology.
+The module's algorithm scales gene expression values and uses statistical tests to ensure robust identification of differentially expressed genes between trajectory branches.
+STREAM.DetectDifferentiallyExpressedGenes can help researchers identify key genes driving cellular state transitions and developmental processes.
+data file: File type, A STREAM pkl file containing an annotated AnnData matrix of gene expression data, Required parameter for STREAM.DetectDifferentiallyExpressedGenes module.
+output filename: String type, The output filename prefix for generated files, Required parameter for STREAM module.
+root: String type, Specifies the starting node in the trajectory analysis, Optional parameter for STREAM differential expression detection.
+preference: String type, Determines node ranking and branch positioning in subway plot visualization, Optional parameter allowing custom branch arrangement.
+percentil expr: Numeric type, Percentile value between 0-100 for filtering gene expression, Used to remove extreme gene expression values.
+use precomputed: Boolean type, Determines whether previously scaled gene expression data will be reused, Defaults to False, Allows computational efficiency.
+cutoff zscore: Numeric type, Z-score threshold for Mann-Whitney U statistical test, Controls stringency of differential expression detection.
+cutoff logfc: Numeric type, Log-transformed fold change cutoff between branch comparisons, Determines magnitude of expression differences.
+num genes: Integer type, Number of genes to include in visualization output, Controls plot complexity and gene representation.
+figure height: Numeric type, Height of output matplotlib visualization, Default value is 8, Controls vertical plot dimensions.
+figure width: Numeric type, Width of output matplotlib visualization, Default value is 8, Controls horizontal plot dimensions.
+STREAM.DetectDifferentiallyExpressedGenes module input and output file descriptions:
+Input file is a STREAM pkl file containing an annotated AnnData matrix of single-cell gene expression data.
+Output file stream_result.pkl is an extended pickle file with updated AnnData matrix after differential gene expression analysis.
+Output file de_genes_S#_S#_and_S#_S#.pdf is a bar plot visualizing differentially expressed genes between trajectory branches.
+Output file de_genes_greater_S#_S#_and_S#_S#.tsv contains upregulated genes between branches with columns for z-score, log fold change, means, p-value, and q-value.
+Output file de_genes_less_S#_S#_and_S#_S#.tsv contains downregulated genes between branches with columns for z-score, log fold change, means, p-value, and q-value.
+Input pkl file contains normalized single-cell RNA-seq data with cell annotations and trajectory information.
+Output pkl file preserves original data structure with added differential expression results.
+PDF output provides a graphical representation of gene expression differences between branches.
+TSV files offer detailed statistical information about differentially expressed genes in a tabular format.
+STREAM.DetectDifferentiallyExpressedGenes is a computational method for identifying genes with significantly different expression levels between branches of single-cell trajectories.
+The module uses a statistical approach to compare gene expression across different cell branches in single-cell RNA sequencing data.
+STREAM.DetectDifferentiallyExpressedGenes scales gene expression values between 0 and 1 to enable standardized comparisons across different branches.
+The algorithm calculates mean gene expression values for each branch and checks the fold change between these means using a default log2 fold change threshold of 0.25.
+STREAM.DetectDifferentiallyExpressedGenes employs the Mann-Whitney U test to statistically evaluate differences in gene expression between branches.
+For small sample sizes (less than 20 cells per branch), the module reports fold change as a qualitative measure of gene expression differences.
+The module standardizes the Mann-Whitney U statistic to a Z-score, allowing comparison across different datasets with varying sample sizes.
+Genes are considered differentially expressed if their Z-score or fold change exceeds a specified threshold, which defaults to 2.0.
+STREAM.DetectDifferentiallyExpressedGenes generates multiple output files, including a pickle file with analysis results and PDF visualizations of differentially expressed genes.
+The module is part of the STREAM pipeline, which reconstructs and explores single-cell trajectories from transcriptomic and epigenomic data.
+Researchers can customize the analysis by adjusting parameters like percentile expression cutoff, z-score threshold, and the number of genes to plot.
+The algorithm was developed by researchers at Massachusetts General Hospital and is designed to handle complex branching trajectories in single-cell data.

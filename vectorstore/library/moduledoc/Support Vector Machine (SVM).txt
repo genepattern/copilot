@@ -1,0 +1,46 @@
+Support Vector Machine (SVM) is on version .
+A description of Support Vector Machine (SVM) is Classify samples using SVM. The Support Vector Machines (SVM) module implements the support vector machines algorithm for supervised classification methods to compute a maximal separating hyperplane between the expression vectors of different classes or phenotypes..
+Support Vector Machine (SVM) is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+Support Vector Machine (SVM) can be categorized as Prediction.
+Support Vector Machine (SVM) has the following parameters: train.data.filename, train.cls.filename, saved.model.filename, test.data.filename, test.cls.filename, pred.results.file, model.output.file.
+The Support Vector Machine (SVM) module in GenePattern is a powerful tool for supervised classification of biological data.
+The SVM module can create predictive models from microarray gene expression datasets to classify samples into different phenotypic groups.
+SVM works by finding a maximal separating hyperplane between different classes of expression vectors, effectively creating a mathematical boundary between sample groups.
+Each gene's expression value contributes to the classification, with the magnitude of its coefficient in the hyperplane indicating its importance in distinguishing between classes.
+The module supports three primary operational modes: training a model, testing with a saved model, or simultaneously training and testing a model.
+SVM can handle various input file formats like .gct and .res for gene expression data, and .cls for class labels, providing flexibility in data preparation.
+The module allows saving trained models for future use, enabling researchers to apply a single classification strategy across multiple datasets.
+By analyzing the weights assigned to each gene, researchers can identify which genes are most critical in distinguishing between different biological conditions.
+The SVM module is particularly useful in cancer research, where it can help classify molecular profiles and potentially predict disease subtypes.
+Mathematically, the SVM algorithm computes a decision function that separates classes by maximizing the margin between different sample groups.
+The module implements advanced machine learning techniques originally developed by statistical learning theorists like Vladimir Vapnik.
+Researchers can use the SVM module to build predictive models in various biological contexts, from cancer classification to understanding genetic variations.
+The GenePattern SVM module provides a user-friendly interface for complex machine learning techniques, making advanced computational methods accessible to biologists.
+train.data.filename: string type, specifies the input training data file in .gct or .res format, required for training an SVM model
+train.cls.filename: string type, specifies the training class labels file in .cls format, required for training an SVM model, defines the class categories for classification
+saved.model.filename: string type, allows loading a previously saved SVM model, optional parameter used when testing with an existing model
+test.data.filename: string type, specifies the input test data file in .gct or .res format, required for testing a model or train/test workflow
+test.cls.filename: string type, specifies the test class labels file in .cls format, required for evaluating model performance and generating prediction metrics
+pred.results.file: string type, defines the output filename for prediction results, optional but recommended for saving model performance and predictions
+model.output.file: string type, specifies the filename for saving the trained SVM model, required when creating a new predictive model for future use
+SVM module training data input file is a gene expression matrix in .gct or .res format containing numerical expression values for each gene across samples.
+SVM module training class file is a .cls format file specifying the class labels corresponding to each sample in the training dataset.
+SVM module test data input file is a gene expression matrix in .gct or .res format containing numerical expression values for genes in the test samples.
+SVM module test class file is a .cls format file specifying the known class labels for samples in the test dataset.
+SVM module saved model input file contains a previously trained SVM classification model that can be applied to new test data.
+SVM module prediction results output file contains the predicted class labels for test samples based on the trained SVM model.
+SVM module model output file stores the trained SVM classification model for potential future use on additional test datasets.
+SVM module supports multiclass molecular classification using support vector machine learning algorithm.
+SVM module can perform model training, testing with a saved model, or simultaneous training and testing workflows.
+SVM module requires matching dimensions between training and test data files to ensure proper classification.
+The SVM module is a machine learning classification tool for analyzing microarray gene expression data.
+The SVM module uses support vector machines to create a mathematical hyperplane that separates different biological classes based on gene expression patterns.
+Each gene's expression value contributes to the classification decision, with the magnitude of its weight indicating its importance in distinguishing between classes.
+The SVM module can operate in three modes: training a model, testing with a saved model, or simultaneously training and testing.
+The module requires input files including training data (.gct or .res format), training class labels (.cls file), and optionally test data and test class labels.
+The mathematical core of SVM involves computing a decision function f(x) = Σ(wi * xi) + b, where wi represents gene weights and b is a bias term.
+The module can output two potential files: a prediction results file when testing data is provided, or a saved model file when training data is specified.
+The SVM implementation is based on advanced machine learning techniques from computational mathematics and statistical learning theory.
+The module supports multiclass classification, allowing analysis of complex biological phenotypes beyond simple binary classification.
+Developed by researchers at the Broad Institute, this SVM module is designed for molecular cancer classification and gene expression pattern analysis.
+The module's flexibility allows researchers to train models on one dataset and apply them to new, unseen data for predictive analysis.

@@ -1,0 +1,60 @@
+Seurat.Clustering is on version 3.0.2.
+A description of Seurat.Clustering is Seurat.Clustering performs UMAP clustering and marker identification on single-cell RNA-Seq data. It uses Seurat to perform FindNeighbors, FindClusters, RunUMAP, and DimPlot on the input dataset..
+Seurat.Clustering is a GenePattern module written by Satija Lab, NY Genome Center, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+Seurat.Clustering can be categorized as Single-cell RNA-seq, Clustering, Bioinformatics.
+Seurat.Clustering has the following parameters: input seurat rds file, output filename, maximum dimension, resolution, reduction, seed.
+The Seurat.Clustering module is a powerful tool for analyzing single-cell RNA sequencing data by identifying cellular clusters and their defining marker genes.
+Seurat.Clustering enables researchers to transform complex single-cell transcriptomic data into interpretable cellular groupings using advanced computational techniques.
+The module performs key computational steps including FindNeighbors, FindClusters, RunUMAP, and DimPlot to organize cells into distinct populations based on their gene expression profiles.
+Seurat.Clustering helps biologists understand cellular heterogeneity by revealing distinct cell types or states within a single biological sample through unsupervised machine learning approaches.
+The module generates multiple output files, including an RDS file with cluster details, a CSV file of marker genes, and a PDF visualization of the UMAP clustering results.
+Seurat.Clustering uses resolution as a key parameter to control the granularity of clustering, allowing researchers to adjust the number and specificity of identified cell populations.
+The module is part of the broader Seurat ecosystem, which provides comprehensive tools for single-cell RNA sequencing data analysis and interpretation.
+Researchers can use Seurat.Clustering to identify rare cell populations, understand developmental trajectories, and explore cellular diversity in complex biological systems.
+The module's UMAP dimensionality reduction technique helps visualize high-dimensional single-cell data in an intuitive two-dimensional representation of cellular relationships.
+Seurat.Clustering can be applied across various biological contexts, including developmental biology, cancer research, immunology, and stem cell studies.
+The module's marker gene identification feature helps researchers understand the molecular characteristics that define each identified cell cluster.
+By using a random seed parameter, Seurat.Clustering ensures reproducibility of clustering results across different computational environments.
+The module is designed to work seamlessly within the GenePattern computational biology platform, facilitating advanced single-cell data analysis for researchers.
+input seurat rds file: File type RDS, contains Seurat object, required input for Seurat.Clustering module
+output filename: String type, prefix for output files, required parameter for naming generated files
+maximum dimension: Integer specifying maximum number of clusters to attempt finding, helps control clustering complexity
+resolution: Numeric value controlling cluster granularity in Seurat.Clustering, determines how tightly or loosely cells are grouped
+reduction: String specifying dimensional reduction method, currently supports UMAP in Seurat.Clustering module, determines visualization technique
+seed: Integer for random number generation, ensures reproducibility of clustering results in Seurat.Clustering module
+Seurat.Clustering module uses resolution parameter to define cluster tightness and granularity
+output filename allows user to specify custom naming convention for generated clustering files
+maximum dimension helps control computational complexity of clustering algorithm
+reduction method determines how cells are projected and visualized in dimensional space
+seed ensures consistent random number generation across different runs of Seurat.Clustering
+input Seurat RDS file contains preprocessed single-cell RNA-seq data for clustering analysis
+Seurat.Clustering module performs dimensionality reduction and clustering on single-cell transcriptomic data
+resolution parameter is critical for defining meaningful cellular subgroups in single-cell data
+output files include clustered RDS, marker genes CSV, and UMAP visualization PDF
+Seurat.Clustering uses FindNeighbors, FindClusters, and RunUMAP algorithms for analysis
+Seurat.Clustering module input file is a RDS file containing a Seurat object with single-cell RNA-Seq data.
+Seurat.Clustering module output RDS file contains the Seurat object with added cluster details for further processing.
+Seurat.Clustering module output CSV file with all marker genes includes columns for p-value, log fold change, percentage, and cluster information.
+Seurat.Clustering module output CSV file with identified gene clusters contains statistical and clustering information for genes.
+Seurat.Clustering module output PDF file displays the UMAP plot visualizing the identified cell clusters.
+Input RDS file is a native R data serialization format storing the complete Seurat object with single-cell transcriptomics data.
+Output RDS file preserves the original Seurat object structure with additional clustering and dimensionality reduction information.
+All marker genes CSV file provides comprehensive statistical analysis of differentially expressed genes across identified clusters.
+Clustered genes CSV file offers a summary of gene expression patterns and cluster assignments.
+UMAP plot PDF visualizes the dimensional reduction and clustering results of the single-cell RNA-Seq data.
+Seurat.Clustering is a GenePattern module for analyzing single-cell RNA-seq data using the Seurat R package.
+The Seurat.Clustering module performs computational analysis to identify and visualize cellular clusters in single-cell transcriptomic data.
+This module uses Seurat version 3.0.2 to process single-cell RNA sequencing data through several key computational steps.
+The module performs FindNeighbors to identify cellular relationships based on gene expression similarities.
+FindClusters is used to group cells with similar transcriptional profiles into discrete clusters.
+RunUMAP generates a two-dimensional visualization that represents cellular relationships and clustering patterns.
+DimPlot creates a graphical representation of the cellular clusters in a low-dimensional space.
+The module requires an input Seurat RDS file containing preprocessed single-cell RNA-seq data.
+Users can specify the maximum number of clusters, resolution of clustering, and a random seed for reproducibility.
+The module outputs multiple files including an RDS file with cluster details, a CSV of marker genes, and a PDF visualization of the UMAP plot.
+Developed by the Satija Lab at NY Genome Center, this module is designed for comprehensive single-cell transcriptomic analysis.
+The clustering algorithm helps researchers identify cellular heterogeneity and distinct cell populations within complex biological samples.
+Resolution is a critical parameter that controls the granularity of cluster identification in the single-cell dataset.
+The module uses computational methods to transform high-dimensional gene expression data into interpretable cellular groupings.
+Marker gene identification helps characterize the unique transcriptional signatures of each identified cell cluster.
+The UMAP visualization provides an intuitive representation of cellular relationships and clustering patterns.

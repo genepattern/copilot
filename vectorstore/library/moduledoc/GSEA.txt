@@ -1,0 +1,57 @@
+GSEA is on version 20.4.x.
+A description of GSEA is Evaluates a genome-wide expression profile and determines whether a priori defined sets of genes show statistically significant, cumulative changes in gene expression that are correlated with a phenotype..
+GSEA is a GenePattern module written by Aravind Subramanian, Pablo Tamayo, David Eby; Broad Institute.
+GSEA can be categorized as Gene Expression, Gene Set Enrichment Analysis, Bioinformatics.
+GSEA has the following parameters: expression dataset, gene sets database, phenotype labels, number of permutations, chip platform.
+The GSEA GenePattern module is a powerful computational tool for analyzing gene expression data by evaluating groups of genes rather than individual genes.
+The GSEA GenePattern module allows researchers to perform gene set enrichment analysis on microarray or RNA-seq datasets to identify coordinated changes in gene expression.
+GSEA takes two primary inputs: a gene expression dataset and a collection of predefined gene sets with biological significance, such as those from the Molecular Signatures Database (MSigDB).
+The module can handle both categorical phenotypes (like tumor vs. normal) and continuous phenotypes (like gene expression levels across a time series) for comprehensive gene set analysis.
+GSEA ranks all genes in a dataset based on their differential expression or correlation with a phenotype, then evaluates how genes within each gene set are distributed across this ranked list.
+The enrichment score (ES) in the GSEA GenePattern module reflects the degree to which genes in a set are concentrated at the top or bottom of the ranked gene list, indicating coordinated expression changes.
+Statistical significance in the GSEA GenePattern module is determined through permutation tests, where phenotype labels are randomly shuffled to create a null distribution of enrichment scores.
+The module provides normalized enrichment scores (NES) that allow comparison across gene sets of different sizes, accounting for variations in gene set composition and dataset correlations.
+Researchers can customize the GSEA GenePattern module's analysis by selecting different ranking metrics, permutation types, and gene set size thresholds to suit their specific research questions.
+The GSEA GenePattern module generates comprehensive output, including HTML reports, heatmaps, and statistical summaries that help researchers interpret complex gene expression patterns across biological conditions.
+expression dataset: File type (GCT, RES, TXT), contains gene expression data, required input for GSEA analysis.
+gene sets database: File type (GMT, GMX, GRP), contains predefined sets of genes with biological meaning, required input for GSEA analysis.
+number of permutations: Integer parameter, specifies statistical significance assessment iterations, default is 1000, recommended to start with 10 for initial testing.
+phenotype labels: CLS file defining categorical or continuous phenotypes for samples, required input for GSEA analysis.
+target profile: Name of continuous phenotype, used only for continuous phenotype CLS files, optional parameter.
+collapse dataset: Boolean parameter controlling probe set collapsing to gene symbols, default is Collapse, determines how gene identifiers are processed.
+permutation type: Specifies method for generating null distribution, options are phenotype (default) or gene_set, affects statistical significance calculation.
+chip platform: Annotation file mapping probe identifiers to gene symbols, required when collapsing dataset, helps with gene symbol identification.
+scoring scheme: Determines enrichment statistic calculation method, options include classic, weighted (default), weighted_p2, weighted_p1.5.
+metric for ranking genes: Method used to score and rank genes in expression dataset, default is signal-to-noise ratio.
+gene list sorting mode: Controls whether real or absolute metric values are used for gene ranking.
+gene list ordering mode: Specifies ascending or descending order for gene ranking.
+max gene set size: Integer parameter limiting maximum gene set size after filtering, default is 500.
+min gene set size: Integer parameter limiting minimum gene set size after filtering, default is 15.
+collapsing mode for probe sets: Determines how multiple probes for a single gene are collapsed, options include Max_probe (default), Median_of_probes, Mean_of_probes.
+normalization mode: Method for normalizing enrichment scores across gene sets, options are meandiv (default) or None.
+randomization mode: Method for phenotype label permutation, options are no_balance (default) or equalize_and_balance.
+Here are the input and output files for the GSEA GenePattern module:
+Input Files:
+Expression dataset is a GCT or RES file containing gene expression measurements for samples
+Gene sets database is a GMT, GMX, or GRP file containing predefined sets of genes with biological significance
+Phenotype labels is a CLS file defining categorical or continuous phenotype labels for samples
+Chip platform is an optional CHIP file mapping probe identifiers to gene symbols
+Output Files:
+Enrichment Report archive is a ZIP file containing comprehensive GSEA analysis results
+Enrichment Report is an HTML file with PNG images visualizing gene set enrichment analysis
+Optional SVG images provide high-resolution visualizations of enrichment results
+Optional GCT files contain datasets backing heatmap images for further analysis
+Here are the chunks for the GSEA module documentation:
+GSEA is a computational method for interpreting genome-wide gene expression data by evaluating cumulative changes in groups of genes.
+GSEA focuses on analyzing sets of genes with related biological functions, rather than individual genes with the largest expression changes.
+The method ranks all genes in a dataset based on their differential expression or correlation with a phenotype of interest.
+GSEA calculates an enrichment score for each gene set by tracking how frequently its genes appear at the top or bottom of the ranked gene list.
+The enrichment score reflects the degree to which genes in a set are overrepresented at the extremes of the gene ranking.
+Statistical significance is determined through a permutation test, where phenotype labels are randomly shuffled to generate a null distribution of enrichment scores.
+GSEA can analyze both categorical phenotypes (like tumor vs. normal) and continuous phenotypes (like gene expression levels across a time series).
+The method helps identify coordinated changes in gene expression that might be missed by traditional single-gene analysis approaches.
+GSEA uses gene sets from databases like Molecular Signatures Database (MSigDB) or user-provided gene set collections.
+The module allows customization of analysis parameters like permutation type, gene ranking metric, and gene set size filtering.
+Normalized enrichment scores (NES) are calculated to enable comparison across gene sets of different sizes.
+False Discovery Rate (FDR) q-values are used to adjust for multiple hypothesis testing when analyzing many gene sets.
+The GSEA GenePattern module provides a computational framework for systematically exploring biological pathways and gene set behaviors in expression data.

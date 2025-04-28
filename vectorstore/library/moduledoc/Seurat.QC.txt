@@ -1,0 +1,45 @@
+Seurat.QC is on version 4.
+A description of Seurat.QC is GenePattern module which implements the QC steps for Seurat. This is typically the first step in the Seurat Suite modules (unless you are doing batch correction, then you want to run Seurat.BatchCorrection)..
+Seurat.QC is a GenePattern module written by Edwin Juárez and Jonathan Zamora.
+Seurat.QC can be categorized as Single-Cell RNA-Seq, Quality Control.
+Seurat.QC has the following parameters: input_file, column_name, pattern, first_feature, second_feature, third_feature, file_name, export_txt.
+The Seurat.QC GenePattern module is a critical first step in single-cell RNA sequencing data analysis for quality control and initial preprocessing.
+Seurat.QC helps researchers quickly assess the quality of single-cell datasets by generating diagnostic visualizations and preparing data for downstream analysis.
+The Seurat.QC module supports input files from 10x genomics and HCA (Human Cell Atlas) in formats like .tar.gz, .zip, and .loom.
+Seurat.QC can generate violin plots of key features like mitochondrial gene percentage, helping researchers identify potentially low-quality or stressed cells.
+The module uses Seurat version 4.0.3 and is designed to work seamlessly with other modules in the Seurat suite for comprehensive single-cell data analysis.
+Seurat.QC allows researchers to specify custom patterns for identifying mitochondrial genes, typically labeled with prefixes like "MT-".
+The output of Seurat.QC includes an .rds file with the preprocessed dataset, a PDF with quality control plots, and optionally a .txt file for further analysis.
+Seurat.QC is particularly useful for filtering out low-quality cells based on metrics like total gene count, mitochondrial gene percentage, and unique molecular identifier (UMI) counts.
+The module is part of a broader bioinformatics workflow for single-cell RNA sequencing data analysis, enabling researchers to clean and prepare data for more advanced analyses.
+Seurat.QC can be integrated into larger computational pipelines, making it a flexible tool for researchers working with single-cell transcriptomics data.
+Seurat.QC module helps identify and filter single-cell RNA sequencing data quality control metrics.
+input_file: File (type: .tar.gz, .zip, .loom), contains raw single-cell data from 10x or HCA, required, supports specific file formats for single-cell analysis.
+column_name: String, specifies column name for mitochondrial gene percentage, optional, default often "percent.mt", helps track cellular stress and quality.
+pattern: String, defines pattern for identifying mitochondrial genes, optional, default often "MT-", used for gene filtering and quality assessment.
+first_feature: String, name of first feature for violin plot visualization, optional, typically from matrix.mtx file columns, helps understand data distribution.
+second_feature: String, name of second feature for violin plot visualization, optional, typically from matrix.mtx file columns, supports multi-feature quality assessment.
+third_feature: String, name of third feature for violin plot visualization, optional, can be left blank, provides additional data visualization options.
+file_name: String, basename for output files, required, determines naming convention for generated files.
+export_txt: Boolean, controls creation of text file compatible with other modules, optional, default may vary, can cause memory issues with large datasets.
+Seurat.QC module input file is a compressed single-cell dataset in .tar.gz, .zip, or .loom format containing raw single-cell data from 10x genomics or HCA.
+Seurat.QC module input supports specifying column names for mitochondrial gene percentage tracking.
+Seurat.QC module input allows selection of three features for violin plot visualization from matrix columns.
+Seurat.QC module output includes a preprocessed Seurat object saved as a .rds file for downstream analysis.
+Seurat.QC module output generates a PDF file containing quality control plots and visualizations.
+Seurat.QC module optionally creates a .txt file with a dense matrix representation of the preprocessed single-cell data.
+Input file contains raw single-cell gene expression data with cell-by-gene matrix and associated metadata.
+Input file supports 10x genomics data formats and .loom files from the Human Cell Atlas (HCA) project.
+Output .rds file is a serialized R object containing the Seurat object with quality control and preprocessing steps applied.
+Output PDF file visualizes key quality control metrics like feature distributions and mitochondrial gene percentages.
+Optional output .txt file provides a dense matrix representation compatible with other single-cell analysis modules.
+Seurat.QC is a GenePattern module designed for quality control of single-cell RNA sequencing data using Seurat version 4.0.3.
+The module supports input files in .tar.gz, .zip, or .loom formats, specifically for 10x genomics data and Human Cell Atlas (HCA) .loom files.
+Seurat.QC allows users to specify a column name for mitochondrial gene percentage, typically labeled as "percent.mt".
+Users can define a pattern to identify mitochondrial genes, commonly using the prefix "MT-" for human datasets.
+The module generates violin plots for three user-selected features from the input single-cell RNA sequencing dataset.
+Seurat.QC produces three primary output files: an .rds file with the preprocessed Seurat object, a .pdf file with quality control plots, and an optional .txt file with a dense matrix.
+The module is designed as the first step in the Seurat suite of analysis modules, preparing data for downstream processing like clustering and visualization.
+Seurat.QC is implemented in R version 4.0.2 and distributed under a modified BSD license.
+The module can be used across different computing platforms and operating systems, making it versatile for various research environments.
+Researchers can use Seurat.QC to perform initial quality assessment and filtering of single-cell RNA sequencing data before more advanced analyses.

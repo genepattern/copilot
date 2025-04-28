@@ -1,0 +1,52 @@
+SelectFeaturesColumns is on version .
+A description of SelectFeaturesColumns is Takes a 'column slice' from a .res, .gct, .snp, .cn, .odf, or .cls file. This module generates a new file based on features (columns) selected from an existing file. For example, a res file can be produced containing only the tumor samples from a larger res file containing data for both tumor and normal samples..
+SelectFeaturesColumns is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+SelectFeaturesColumns can be categorized as GeneListSelection.
+SelectFeaturesColumns has the following parameters: input, columns, list, output.
+The SelectFeaturesColumns module in GenePattern allows researchers to extract specific columns from various bioinformatics file formats.
+The SelectFeaturesColumns module supports multiple file types including .res, .gct, .snp, .cn, .odf, and .cls files.
+SelectFeaturesColumns enables precise selection of features or samples by their numerical index, starting from zero.
+Researchers can use SelectFeaturesColumns to isolate specific experimental conditions, such as extracting only tumor samples from a mixed dataset.
+The SelectFeaturesColumns module provides flexibility in data subsetting by allowing both direct column number specification and list-based selection.
+In bioinformatics workflows, SelectFeaturesColumns helps streamline data preparation by enabling targeted feature extraction.
+SelectFeaturesColumns is particularly useful for reducing large datasets to focus on specific experimental groups or conditions of interest.
+The module preserves the original file structure and metadata while allowing precise column selection.
+Researchers can use SelectFeaturesColumns to create smaller, more manageable datasets for downstream analysis.
+The SelectFeaturesColumns module operates independently of specific computational platforms, running on any OS with Java support.
+input: filename, string, input file path for .res, .gct, .snp, .cn, .odf, or .cls file to slice columns from, required, no default value
+columns: string, specifies which columns/features to extract from input file, optional (must provide either columns or list), zero-indexed column selection (e.g. 0-3, 5, 9)
+list: filename, string, text file containing column identifiers to select, optional (must provide either columns or list), one identifier per line
+output: filename, string, output file path for extracted columns, required, supports .res, .gct, .snp, .cn, .odf, .cls file formats
+SelectFeaturesColumns module allows extracting specific columns from input data files
+SelectFeaturesColumns supports zero-indexed column selection for precise feature extraction
+SelectFeaturesColumns can extract columns using explicit column numbers or a list file
+SelectFeaturesColumns preserves original file structure when extracting columns
+SelectFeaturesColumns works with multiple genomic and data file formats
+SelectFeaturesColumns requires either column numbers or a list file for feature selection
+SelectFeaturesColumns module supports input files in .res, .gct, .snp, .cn, .odf, or .cls formats.
+Input file contains multiple columns representing different features or samples.
+Input file includes header rows with descriptions and accession information.
+Input file can contain numeric or categorical data across multiple columns.
+Input file uses zero-based indexing for column selection.
+Input file may have multiple data columns per feature.
+Input file supports selection of specific columns using numeric indices.
+Input list file can specify column selection by providing identifiers.
+Output file maintains the same file format as the input file.
+Output file contains only the selected columns from the input file.
+Output file preserves header and description rows.
+Output file reduces the number of columns based on user-specified selection.
+Output file retains the original data structure and formatting.
+Module allows flexible column selection through direct indexing or list file.
+Module supports various genomic and experimental data file types.
+Module provides a simple mechanism for extracting specific features or samples.
+SelectFeaturesColumns is a GenePattern module for extracting specific columns from various genomic data file formats.
+The SelectFeaturesColumns module allows researchers to slice and subset genomic data files by selecting specific features or samples.
+This module supports multiple file types including .res, .gct, .snp, .cn, .odf, and .cls files for column extraction.
+Users can specify columns to extract using either numeric indices (starting at zero) or by providing a list file with column identifiers.
+The module preserves the original file structure and metadata while extracting only the specified columns of interest.
+For example, a researcher could use SelectFeaturesColumns to extract only tumor sample columns from a mixed tumor and normal sample dataset.
+The module is flexible, allowing selection of single columns, ranges of columns, or specific non-contiguous columns.
+SelectFeaturesColumns requires either a 'columns' parameter specifying column indices or a list file with column identifiers.
+The output file will contain the same row structure as the input file, but only with the selected columns/features.
+This module is platform-independent, written in Java, and can run on any operating system with a Java runtime environment.
+The module is particularly useful for genomic data preprocessing, sample selection, and focused analysis of specific experimental conditions.

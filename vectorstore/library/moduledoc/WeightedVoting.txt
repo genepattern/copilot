@@ -1,0 +1,53 @@
+WeightedVoting is on version .
+A description of WeightedVoting is The weighted voting algorithm makes a weighted linear combination of relevant "marker" or "informative" features obtained in the training set to provide a classification scheme for new samples. Target classes (classes 0 and 1) can be for example defined based on a phenotype such as morphological class or treatment outcome..
+WeightedVoting is a GenePattern module written by Ken Ross, Joshua Gould (Broad Institute).
+WeightedVoting can be categorized as Prediction.
+WeightedVoting has the following parameters: train.filename, train.class.filename, saved.model.filename, model.file, test.filename, test.class.filename, num.features, feature.list.filename, pred.results.file.
+The WeightedVoting module is a machine learning classifier for predicting sample classes based on gene expression data.
+The WeightedVoting module uses a weighted voting algorithm to classify biological samples into distinct groups.
+In the WeightedVoting module, each feature (like a gene) "votes" for a particular class prediction based on its signal-to-noise statistic.
+The WeightedVoting module can select informative features either through an automated signal-to-noise calculation or by using a user-provided feature list.
+The WeightedVoting module calculates decision boundaries between class means to determine how features contribute to classification.
+The WeightedVoting module can create predictive models from training data, test existing models, or perform both training and testing in a single run.
+The WeightedVoting module is particularly useful in cancer research for molecular classification and predicting treatment outcomes.
+The WeightedVoting module's prediction confidence is calculated by the relative margin of victory between competing class votes.
+The WeightedVoting module can save generated models for future use on additional test datasets.
+The WeightedVoting module requires input files including training data, class labels, and optionally a specified number of features or feature list.
+The WeightedVoting module is based on seminal work by Golub and colleagues in molecular cancer classification using gene expression data.
+train.filename: Dataset, training data file, required for training, .gct/.res/.odf format, ignored if saved model used
+train.class.filename: Class file for training data, required for training, .cls format, ignored if saved model used
+saved.model.filename: Input Weighted Voting model file, optional, .odf format, Weighted Voting Prediction Model type
+model.file: Output Weighted Voting model file name, required for saving model, .odf format, Weighted Voting Prediction Model type
+test.filename: Test data file name, optional, .gct/.res/.odf format, Dataset type
+test.class.filename: Class file for test data, optional, .cls format
+num.features: Number of signal-to-noise selected features, required if no feature list filename specified, determines feature selection method
+feature.list.filename: Specific features to use for prediction, optional, allows manual feature selection
+pred.results.file: Name of prediction results output file, optional but recommended, .odf format, Prediction Results type
+WeightedVoting module uses signal-to-noise statistic for feature selection
+WeightedVoting algorithm computes decision boundaries between class means
+WeightedVoting predicts class by weighted voting mechanism
+WeightedVoting calculates prediction confidence through vote margin
+WeightedVoting similar to Naïve Bayes classification approach
+WeightedVoting supports training, testing, and model saving functionalities
+WeightedVoting module input file: training data file (.gct, .res, .odf) containing gene expression measurements
+WeightedVoting module input file: training class file (.cls) specifying class labels for training samples
+WeightedVoting module input file: saved model file (.odf) containing a pre-trained Weighted Voting prediction model
+WeightedVoting module input file: test data file (.gct, .res, .odf) containing gene expression measurements for prediction
+WeightedVoting module input file: test class file (.cls) specifying actual class labels for test samples
+WeightedVoting module input file: feature list file specifying specific features to use for prediction
+WeightedVoting module output file: prediction model file (.odf) containing trained Weighted Voting classifier parameters
+WeightedVoting module output file: prediction results file (.odf) containing predicted class labels and prediction confidence
+WeightedVoting module input parameter: number of signal-to-noise selected features for classification
+WeightedVoting module supports three primary workflow modes: train a model, test with saved model, or train and test in one run
+WeightedVoting is a machine learning classification algorithm for predicting sample classes based on gene expression data.
+The WeightedVoting module uses a signal-to-noise statistic to select informative features for classification.
+Each feature in the WeightedVoting algorithm "votes" for a class prediction based on its signal-to-noise score and distance from class means.
+The WeightedVoting algorithm calculates decision boundaries by finding the midpoint between class means for each feature.
+WeightedVoting can create a predictive model from training data, test an existing model, or perform both training and testing in one step.
+The algorithm computes feature weights using the formula Sx = (µ0 - µ1)/( σ0 + σ1), where µ represents class means and σ represents standard deviations.
+WeightedVoting predicts a sample's class by aggregating weighted votes from selected informative features.
+The confidence of a WeightedVoting prediction is calculated as the relative margin of victory between winning and losing class votes.
+WeightedVoting requires input files including training data, training class labels, and optionally a feature list or number of features to select.
+The module can output a saved prediction model and/or prediction results for test data.
+WeightedVoting is inspired by similar classification approaches like Naïve Bayes and was developed for molecular cancer classification.
+The algorithm was originally described in seminal papers by Golub et al. and Slonim et al. in molecular classification research.

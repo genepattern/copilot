@@ -1,0 +1,51 @@
+DownloadURL is on version 1.0.
+A description of DownloadURL is Downloads text from a URL and saves it to a file. This can be useful when a pipeline is using the same URL as input to multiple steps in the pipeline and the user only wants to retrieve the URL once. A user has the option to provide a file type by using the appropriate extension in the output file name, otherwise the file will be classified as "Other"..
+DownloadURL is a GenePattern module written by GenePattern (gp-help@broad.mit.edu).
+DownloadURL can be categorized as Preprocess&Utility.
+DownloadURL has the following parameters: URL, output.file.
+The DownloadURL GenePattern module is a utility for retrieving files from web-based sources in bioinformatics workflows.
+The DownloadURL module allows researchers to download files from remote URLs directly into their computational environment.
+DownloadURL can retrieve files from various protocols like HTTP, HTTPS, and FTP for use in scientific data analysis.
+The module is particularly useful in GenePattern pipelines where the same remote file needs to be accessed multiple times.
+DownloadURL helps prevent redundant downloads by allowing researchers to cache files locally during computational workflows.
+Researchers can specify custom output filenames and extensions when using the DownloadURL module to organize downloaded data.
+The module supports downloading diverse file types like genomic datasets, reference files, and computational resources.
+DownloadURL operates across multiple computing platforms, making it a flexible tool for bioinformatics data retrieval.
+The module can download files from scientific repositories, public databases, and institutional file servers.
+Biologists and computational researchers can use DownloadURL to streamline data acquisition processes in complex analysis pipelines.
+The DownloadURL module automatically handles file transfer protocols, reducing manual intervention in data retrieval.
+Researchers can integrate DownloadURL into automated workflows to dynamically fetch the latest research datasets.
+The module provides a standardized approach to downloading files across different computational environments in bioinformatics.
+DownloadURL supports downloading files of various sizes, from small reference files to large genomic datasets.
+The module can be used in conjunction with other GenePattern modules to create comprehensive bioinformatics analysis pipelines.
+URL: string, The URL to retrieve the file from, required, no default value
+DownloadURL module retrieves content from a specified web address
+output.file: string, The name of the output file to save downloaded content, required, no default value
+DownloadURL module allows specifying a destination filename for the downloaded resource
+output.file extension determines file type classification in DownloadURL module
+If no specific extension provided, file will be classified as "Other" type
+DownloadURL module supports downloading files from various protocols like HTTP, HTTPS, and FTP
+Return value from DownloadURL module is an R list containing a pointer to the output file
+DownloadURL module is useful for pipeline scenarios where the same URL needs to be retrieved multiple times
+DownloadURL module operates across platforms and requires Java JVM level 1.3 or higher
+DownloadURL module is categorized as a Preprocess & Utility task type in GenePattern
+DownloadURL module downloads a file from a specified URL and saves it locally.
+Input URL parameter is a web address pointing to the file to be downloaded.
+Output file is a local file saved with the name specified by the user.
+DownloadURL module supports downloading files from various protocols like HTTP, HTTPS, and FTP.
+The output file can have any file extension, which helps determine the file type.
+DownloadURL module is useful for retrieving files once for use in multiple pipeline steps.
+The module returns an R list containing a pointer to the downloaded output file.
+DownloadURL supports downloading text files, data files, and other file types from web sources.
+The module works across different platforms and Java versions.
+DownloadURL can retrieve files from public repositories like FTP servers.
+DownloadURL module is a utility for retrieving files from web-based URLs and saving them locally in GenePattern.
+The DownloadURL module allows researchers to download files from remote locations like FTP servers or web repositories.
+DownloadURL supports downloading files from various internet protocols including HTTP, HTTPS, and FTP.
+The module requires two primary parameters: a source URL and a desired output filename for the downloaded content.
+DownloadURL can automatically detect file types based on the extension provided in the output filename.
+The module is designed to be platform-independent, running on any operating system with Java 1.3 or higher.
+DownloadURL is particularly useful in computational biology pipelines that require retrieving datasets from remote sources.
+The module returns an R list containing a pointer to the downloaded file after successful retrieval.
+DownloadURL helps streamline data acquisition by allowing single downloads that can be reused across multiple pipeline steps.
+The module supports downloading various file types including text files, genomic datasets, and other research-related resources.

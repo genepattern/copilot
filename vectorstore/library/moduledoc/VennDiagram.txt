@@ -1,0 +1,41 @@
+VennDiagram is on version .
+A description of VennDiagram is Displays a Venn diagram illustrating set overlap. See the file format section of the GenePattern documentation for a description of the grp file format..
+VennDiagram is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+VennDiagram can be categorized as Visualization.
+VennDiagram has the following parameters: feature.list.one, feature.list.two, feature.list.three.
+The VennDiagram GenePattern module is a powerful visualization tool for comparing set overlaps in biological datasets.
+The VennDiagram module allows researchers to graphically represent intersections between two or three different sets of features, such as genes or experimental conditions.
+In genomics research, the VennDiagram module can help identify shared or unique elements across different experimental groups or gene lists.
+Biologists can use the VennDiagram module to quickly understand commonalities and differences between gene expression profiles, protein interactions, or other biological datasets.
+The module supports input files in .txt or .grp format, which are standard file types for listing biological features like gene names or identifiers.
+Researchers can use the VennDiagram module to compare gene lists from different experimental conditions, such as diseased versus healthy tissue samples.
+The VennDiagram module provides a clear, visual representation of set overlaps, making it easier to communicate complex biological relationships to colleagues and in scientific publications.
+In computational biology, the VennDiagram module serves as a quick and intuitive way to perform set-based comparisons across multiple datasets.
+The module is particularly useful in fields like genomics, proteomics, and systems biology, where understanding shared and unique features is crucial for scientific discovery.
+Undergraduate biology students can use the VennDiagram module to learn about set theory and data visualization in biological research contexts.
+feature.list.one: File, Required, Input text or group file containing the first set of features to be compared in the VennDiagram module.
+feature.list.one: Supports .txt and .grp file formats for specifying the initial set of features.
+feature.list.one: Must be a valid file with a list of unique identifiers or gene names.
+feature.list.two: File, Required, Input text or group file containing the second set of features to be compared in the VennDiagram module.
+feature.list.two: Supports .txt and .grp file formats for specifying the second set of features.
+feature.list.two: Must be a valid file with a list of unique identifiers or gene names.
+feature.list.three: File, Optional, Input text or group file containing the third set of features to be compared in the VennDiagram module.
+feature.list.three: Supports .txt and .grp file formats for specifying the third set of features.
+feature.list.three: Can be left empty if only two sets are to be compared in the VennDiagram.
+VennDiagram module input file: feature.list.one is a text or group file containing a list of features or identifiers.
+VennDiagram module input file: feature.list.two is a text or group file containing a list of features or identifiers.
+VennDiagram module input file: feature.list.three is a text or group file containing a list of features or identifiers.
+VennDiagram module input files: all input files follow the GenePattern .grp file format with one feature or identifier per line.
+VennDiagram module output: a graphical Venn diagram visualization showing the overlap between the three input feature lists.
+VennDiagram module output: the Venn diagram will display the number of unique and shared features across the three input lists.
+VennDiagram module output: the visualization will use different colored regions to represent each input feature list.
+The VennDiagram module is a GenePattern tool for visualizing set overlaps between three different feature lists.
+The VennDiagram module allows researchers to compare three distinct sets of features, such as gene lists, to understand their intersections and unique elements.
+The module requires three input files, each containing a list of features (genes, proteins, or other biological entities) in either .txt or .grp file formats.
+The VennDiagram module generates a graphical representation showing the overlapping and non-overlapping regions between the three input feature lists.
+Users can use this module to quickly identify shared and unique elements across multiple experimental or computational datasets.
+The input files must follow the standard GenePattern group (.grp) file format, which typically contains a simple list of identifiers.
+The visual output helps researchers understand the relationships and commonalities between different sets of biological features at a glance.
+The module is particularly useful in comparative genomics, transcriptomics, and other fields where set-based comparisons are important.
+Researchers can use the VennDiagram module to explore similarities and differences between gene expression profiles, protein interactions, or other biological data types.
+The tool provides a simple, intuitive way to represent complex set relationships without requiring advanced computational skills.

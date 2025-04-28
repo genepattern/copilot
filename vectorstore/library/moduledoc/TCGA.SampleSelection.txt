@@ -1,0 +1,43 @@
+TCGA.SampleSelection is on version 0.14.
+A description of TCGA.SampleSelection is Retrieve TCGA data from Broad FireBrowse and perform sample selection on the basis of expression levels for specific genes of interest for analysis using GSEA tools. Queries cBioPortal for TCGA samples meeting criteria of mRNA expression z-scores relative to all samples (log RNA Seq V2 RSEM) greater than and less than user supplied thresholds. Outputs a GCT file containing TPM (Transcripts per Million) normalized RNA-seq quantifications suitable for ssGSEA, and a CLS file annotating samples as High or Low expression of the gene of interest..
+TCGA.SampleSelection is a GenePattern module written by Anthony S. Castanza, Barbara A. Hill.
+TCGA.SampleSelection can be categorized as TCGA, Gene Expression, Sample Selection, Bioinformatics.
+TCGA.SampleSelection has the following parameters: TCGA Collection, Gene Symbol, High Expression, Low Expression, Output Type, MSigDB Version.
+The TCGA.SampleSelection module allows researchers to retrieve and filter TCGA cancer genomics data based on specific gene expression criteria.
+The TCGA.SampleSelection module enables precise sample selection from The Cancer Genome Atlas (TCGA) based on gene expression z-scores.
+This GenePattern module queries cBioPortal to identify cancer samples with specific mRNA expression levels for a user-defined gene of interest.
+The TCGA.SampleSelection module can classify samples into "high" and "low" expression groups based on user-specified standard deviation thresholds from the mean expression.
+Researchers can use the TCGA.SampleSelection module to generate normalized RNA-seq quantification data in Transcripts Per Million (TPM) format, suitable for downstream analyses like ssGSEA.
+The module supports multiple TCGA cancer study cohorts, allowing users to select specific tumor types for their genomic investigation.
+TCGA.SampleSelection provides output files including a GCT file with gene expression values and a CLS file annotating samples as high or low expression.
+The module integrates with MSigDB versioning, ensuring compatibility with gene set databases for comprehensive genomic research.
+Biologists can use TCGA.SampleSelection to stratify patient samples based on gene expression, facilitating more targeted cancer research and potential biomarker identification.
+The module's flexible thresholding allows researchers to define precise expression cutoffs for sample selection across different genomic studies.
+TCGA.SampleSelection module requires selection of a TCGA study cohort for sample analysis.
+Gene Symbol parameter specifies the HGNC gene to use for sample classification in the TCGA.SampleSelection module.
+High Expression parameter defines the z-score threshold for classifying samples as "high" expression in the TCGA.SampleSelection module, with a default value of 1.
+Low Expression parameter defines the z-score threshold for classifying samples as "low" expression in the TCGA.SampleSelection module, with a default value of -1.
+Output Type parameter allows selection of RNA quantification format (TPM or raw counts) in the TCGA.SampleSelection module.
+MSigDB Version parameter enables specification of gene symbol lookup version for the TCGA.SampleSelection module, with 'latest' as the default option.
+Here are the input and output file descriptions for the TCGA.SampleSelection module:
+TCGA.SampleSelection module requires a TCGA Collection as an input parameter specifying the tumor types to query.
+The module uses a Gene Symbol parameter to identify the specific gene for expression analysis.
+High and Low Expression parameters define z-score thresholds for classifying gene expression levels.
+Output GCT file contains gene expression values in TPM or raw counts for samples meeting expression thresholds.
+The output CLS file annotates samples as "High" or "Low" expression based on the specified gene and z-score criteria.
+MSigDB Version parameter ensures consistent gene symbol mapping across analysis workflows.
+The module queries cBioPortal to retrieve RNA-seq expression data for the specified TCGA collection.
+Gene expression values are normalized using Transcripts per Million (TPM) method for ssGSEA compatibility.
+The output files enable downstream analysis using GSEA tools with precisely selected sample populations.
+Sample classification is based on z-scores relative to the entire sample population for the specified gene.
+TCGA.SampleSelection module retrieves cancer genomic data from TCGA repositories to enable gene expression analysis.
+The module allows researchers to query cBioPortal for tumor samples based on specific gene expression z-score thresholds.
+Users can specify a TCGA cancer cohort and a target gene symbol to filter samples with high or low expression levels.
+High and low expression are defined by z-scores relative to the mean expression across all samples, with default thresholds of +1 and -1 standard deviations.
+The module outputs two key files: a GCT file with gene expression values and a CLS file classifying samples as high or low expression.
+Expression quantification can be output as either Transcripts Per Million (TPM) or raw RNA-seq counts, supporting different downstream analysis methods.
+The module integrates with MSigDB gene set databases, allowing users to specify a compatible version for gene symbol lookup and consistency.
+TCGA.SampleSelection is implemented in R and packaged in a Docker container for reproducible computational environments.
+The module supports multiple MSigDB versions (7.1 and higher) and can automatically query for the latest version.
+Researchers can use this module to perform preliminary sample selection and stratification for further gene set enrichment analysis (GSEA).
+The tool is particularly useful for identifying cohorts of cancer samples with differential expression of genes of interest.

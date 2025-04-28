@@ -1,0 +1,53 @@
+tximport.DESeq2 is on version 1.
+A description of tximport.DESeq2 is Imports RNA-seq quantifications using the tximport package and outputs files for downstream analysis performing differential expression analysis if sample information is provided..
+tximport.DESeq2 is a GenePattern module written by Charlotte Soneson (tximport), Mike Love (DESeq2), Anthony S. Castanza (Module Wrapper).
+tximport.DESeq2 can be categorized as RNA-seq, Differential Expression, Quantification.
+tximport.DESeq2 has the following parameters: Quantifications, Sample Info, Quant Type, Transcriptome Database, Output Normalized Counts, Output TPM, output file base, Reverse Sign, Annotate DEGs, Split Identifiers, Min Count Filter, random seed.
+The tximport.DESeq2 module is a powerful bioinformatics tool for processing and analyzing RNA-sequencing data.
+The tximport.DESeq2 module can import quantification data from multiple RNA-seq analysis pipelines like RSEM, Salmon, Sailfish, and Kallisto.
+With the tximport.DESeq2 module, researchers can normalize RNA-seq count data using DESeq2's sophisticated statistical methods.
+The tximport.DESeq2 module enables differential gene expression analysis by comparing gene expression levels between different experimental conditions or phenotypes.
+The module can generate normalized count matrices and transcripts per million (TPM) files compatible with downstream analysis tools like GSEA and ssGSEA.
+The tximport.DESeq2 module allows researchers to annotate differentially expressed genes with gene symbols when a transcriptome database is provided.
+Users of the tximport.DESeq2 module can filter out low-expression genes to focus on more biologically meaningful transcriptional changes.
+The module provides flexibility in calculating fold change direction, allowing researchers to specify the comparison order between phenotypes.
+Researchers can use the tximport.DESeq2 module to convert complex RNA-seq quantification data into standardized, analysis-ready formats.
+The tximport.DESeq2 module integrates multiple computational biology tools to provide a comprehensive RNA-seq data processing workflow.
+Quantifications: Input files from RNA-seq quantification tools, containing sample-specific gene expression data, required parameter for tximport.DESeq2 module.
+Sample Info: Optional tab-delimited file mapping sample IDs to phenotypes, used for differential expression analysis in tximport.DESeq2 module.
+Quant Type: Specifies the specific RNA-seq quantification tool used to generate the input data in tximport.DESeq2 module.
+Transcriptome Database: GTF/GFF3 format file describing the transcriptome used for quantification in Salmon/Sailfish/Kallisto for tximport.DESeq2 module.
+Output Normalized Counts: Boolean parameter to compute and output DESeq2 normalized count matrix in tximport.DESeq2 module, ideal for GSEA compatibility.
+Output TPM: Boolean parameter to extract and output transcripts per million (TPM) quantifications in tximport.DESeq2 module, suitable for ssGSEA.
+output file base: Base name for output files in tximport.DESeq2 module, with automatic file extension addition.
+Reverse Sign: Optional parameter to control the direction of log2 fold change calculation in differential expression analysis for tximport.DESeq2 module.
+Annotate DEGs: Boolean parameter to add gene symbols to differential expression results when Sample Info and Transcriptome Database are provided in tximport.DESeq2 module.
+Split Identifiers: Parameter to handle gene identifiers that combine reference ID and gene symbol in tximport.DESeq2 module.
+Min Count Filter: Filtering parameter to remove low/non-expressed genes in tximport.DESeq2 module, default is genes with ≥1 count across all samples.
+random seed: Integer parameter to ensure reproducibility of random number operations in tximport.DESeq2 module.
+tximport.DESeq2 module input: Quantifications files from RNA-seq pipelines like RSEM, Salmon, Sailfish, or Kallisto with sample-specific extensions.
+tximport.DESeq2 module input: Optional Sample Info tab-delimited text file mapping sample IDs to phenotypes and containing optional covariate information.
+tximport.DESeq2 module input: Transcriptome Database in GTF/GFF3 format for Salmon/Sailfish/Kallisto quantification data annotation.
+tximport.DESeq2 module output: Normalized Counts GCT file containing DESeq2 normalized gene expression matrix.
+tximport.DESeq2 module output: TPM GCT file containing transcripts per million gene expression quantifications.
+tximport.DESeq2 module output: CLS file representing categorical phenotype information for GSEA analysis.
+tximport.DESeq2 module output: Differential Expression text file with statistical results of gene expression comparisons between phenotypes.
+tximport.DESeq2 module input files require exact sample ID matching between quantification files and sample information.
+tximport.DESeq2 module supports multiple quantification file formats including .genes.results, .quant.sf, .abundance.h5, and .abundance.tsv.
+tximport.DESeq2 module can split complex gene identifiers into reference ID and gene symbol when requested.
+The tximport.DESeq2 module is a computational tool for processing RNA-seq quantification data
+The module can import quantification files from multiple RNA-seq analysis pipelines like RSEM, Salmon, Sailfish, and Kallisto
+tximport.DESeq2 can generate normalized count matrices compatible with downstream analysis tools like GSEA and ssGSEA
+The module supports optional differential expression analysis using DESeq2 when a sample information file is provided
+Users can specify quantification input files from different RNA-seq quantification tools with matching sample identifiers
+The module can output normalized count matrices and transcripts per million (TPM) quantifications in GCT file format
+tximport.DESeq2 allows optional gene annotation by providing a transcriptome database file
+The module supports advanced parameters like reversing log2 fold change calculation direction and identifier splitting
+Users can filter low-expression genes using a minimum count threshold parameter
+The module generates multiple output files including normalized counts, TPM matrices, and differential expression results
+tximport.DESeq2 is implemented in R and packaged in a Docker container for consistent computational environments
+The module uses established bioinformatics packages like tximport by Charlotte Soneson and DESeq2 by Mike Love
+Differential expression analysis can incorporate additional covariates beyond the primary phenotype factor
+The module supports gzip-compressed input files for transcriptome databases and quantification files
+Output files are designed to be directly compatible with popular gene set analysis tools like GSEA and ssGSEA
+The module provides a random seed parameter to ensure reproducibility of computational analyses

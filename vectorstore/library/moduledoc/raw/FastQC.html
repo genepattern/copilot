@@ -1,0 +1,159 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>FastQC (v1) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/FastQC/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Generates a QC report on raw sequence data.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Brabaham Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>Marc-Danie Nazaire, gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>0.10.1</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<div>The FastQC module runs the <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC quality control tool </a>developed at Brabaham instititute. FastQC takes as input the raw sequencing data (short read data contained within a FastQ, BAM or SAM file) produced by an NGS sequencing platform and produces a quality control report which can identify problems that might have originated either in the sequencer or during library preparation.  FastQC's analysis is performed by a series of analysis modules.  The report provides a quick overview that presents a status (normal, slightly abnormal, very unusual) for each quality analysis module.   For each quality analysis module the report contains a graph or table presenting corresponding quality statistics.  </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th style="width: 110px;">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file <span style="color:red;">*</span></td>
+<td>A raw sequence file - .fastq, .sam, .bam.</td>
+</tr>
+<tr>
+<td>input format</td>
+<td>Bypasses the normal sequence file format detection and forces the program to use the specified format. Valid formats are bam,sam,bam_mapped,sam_mapped and fastq</td>
+</tr>
+<tr>
+<td>contaminant file </td>
+<td>Specifies a non-default file which contains the list of contaminants to screen overrepresented sequences against. The file must contain sets of named contaminants in the form name[tab]sequence. Lines prefixed with a hash will be ignored.</td>
+</tr>
+<tr>
+<td>kmer size <span style="color:red;">*</span></td>
+<td>Specifies the length of Kmer to look for in the Kmer content module. Specified Kmer length must be between 2 and 10. Default length is 5.</td>
+</tr>
+<tr>
+<td>extract output</td>
+<td>Whether to output an uncompressed version of the report. Set this to yes to view the report directly from within GenePattern.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>input file<br/>
+	A raw sequence file in FASTQ, SAM, or BAM format.</li>
+<li>contaminant file<br/>
+	A tab delimited file in the following format name[tab]sequence. Header lines starting with "#" are ignored.</li>
+</ol>
+<div style="margin-left: 40px;border: 1px solid gray">
+<table border="0" cellpadding="1" cellspacing="1" style="width: 700px;">
+<tbody>
+<tr>
+<td colspan="2"># This is an example contaminant file</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>Illumina Single End Adapter</td>
+<td>1</td>
+<td>GATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG</td>
+</tr>
+<tr>
+<td>Illumina Single End Adapter</td>
+<td>2</td>
+<td>CAAGCAGAAGACGGCATACGAGCTCTTCCGATCT</td>
+</tr>
+<tr>
+<td>Illumina Single End PCR Primer</td>
+<td>1</td>
+<td>AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-left: 40px;">
+<p> </p>
+</div>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;input.file_basename&gt;_fastqc.zip<br/>
+	A zip file containing an HTML report. </li>
+</ol>
+<h2>Example Data</h2>
+<p>An example of a report from a good Illumina dataset can be found <a href="ftp://gpftp.broadinstitute.org/example_data/modules/FastQC/v1/output/illumina/good/fastqc_report.html" target="_blank">here</a>.</p>
+<p>An example of a report from a bad Illumina dataset can be found <a href="ftp://gpftp.broadinstitute.org/example_data/modules/FastQC/v1/output/illumina/bad/fastqc_report.html" target="_blank">here</a>.</p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2017-03-17</td>
+<td>Production release</td>
+</tr>
+<tr>
+<td>.5</td>
+<td>2014-05-13</td>
+<td>Beta Release</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

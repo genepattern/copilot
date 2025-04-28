@@ -1,0 +1,58 @@
+SetFCSKeywords is on version 2.
+A description of SetFCSKeywords is Sets keyword/value(s) in a Flow Cytometry Standard (FCS) file. Specific metadata information can be stored in FCS data files as part of the TEXT segment in the form of keyword/value pairs..
+SetFCSKeywords is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca).
+SetFCSKeywords can be categorized as Flow Cytometry.
+SetFCSKeywords has the following parameters: Input FCS data file, Keywords input file, Output FCS file name.
+The SetFCSKeywords module allows researchers to modify metadata in Flow Cytometry Standard (FCS) files by adding or updating keyword/value pairs.
+SetFCSKeywords is a specialized bioinformatics tool for annotating flow cytometry data files with additional descriptive information.
+The module can insert custom metadata like experimental details, instrument settings, sample descriptions, and other contextual information into FCS file headers.
+Researchers can provide keyword/value pairs through either a CSV file with two columns or a text file containing a formatted FCS TEXT segment chunk.
+SetFCSKeywords helps maintain comprehensive documentation of flow cytometry experiments by allowing flexible metadata annotation directly within the data file.
+The module preserves the original FCS file's event data and parameters while only modifying the TEXT segment containing metadata.
+SetFCSKeywords follows the FCS 3.1 File Standard, ensuring compatibility with flow cytometry data analysis software and repositories.
+Potential metadata additions include acquisition date, instrument details, operator name, sample identification, channel configurations, and custom experimental notes.
+The module prevents modifications that would compromise the structural integrity of the FCS file, providing a safeguard against accidental data corruption.
+SetFCSKeywords is particularly useful for researchers who need to standardize or enhance metadata across multiple flow cytometry datasets.
+The module supports adding multiple keywords in a single operation, streamlining the process of comprehensive file annotation.
+SetFCSKeywords can be integrated into larger bioinformatics workflows for systematic flow cytometry data management and preprocessing.
+input.fcs:
+file type is the input FCS data file where keyword/value pairs will be modified
+keywords.txt/csv:
+file containing keyword/value pairs to add or modify in the FCS file
+can be CSV with two columns (Keyword, Value)
+can be text file with FCS TEXT segment chunk
+contains metadata about the flow cytometry experiment
+output.fcs:
+filename for the resulting FCS data file after keyword modifications
+contains all original events and parameters
+includes new or updated keyword/value pairs
+SetFCSKeywords module allows adding custom metadata to flow cytometry FCS files
+module supports adding experimental details like acquisition date
+module can replace existing keyword values in the FCS file
+keywords can include instrument details, sample information, experimental conditions
+module ensures FCS file consistency when modifying keywords
+supports flexible input formats for keyword specification
+module works with FCS 3.1 file standard specifications
+module can handle up to 1,000,000 events in the flow cytometry file
+module requires Java 1.6 or higher to run
+SetFCSKeywords module input and output file descriptions:
+Input FCS data file is a Flow Cytometry Standard (FCS) file containing cytometry event data with existing metadata
+Keywords input file is either a CSV with two columns (Keyword and Value) or a text file containing FCS TEXT segment keyword/value pairs
+Keywords input file can include metadata like acquisition date, instrument details, sample description, or custom information
+Input FCS file can contain up to 1,000,000 events with 24 parameters stored in floating point data type
+Input keywords file must follow FCS TEXT segment formatting rules with specific delimiter characters
+Output FCS file contains all original events and parameters from input file with new or updated keyword/value pairs
+Output FCS file maintains the same file structure and data integrity as the input file
+Output FCS file includes additional or modified metadata specified in the keywords input file
+Keywords input file must not break FCS file consistency or introduce invalid metadata
+Input and output FCS files are compatible with FCS 3.1 file standard specifications
+SetFCSKeywords is a GenePattern module for modifying metadata in Flow Cytometry Standard (FCS) files by adding or updating keyword/value pairs.
+The SetFCSKeywords module allows researchers to programmatically edit metadata stored in the TEXT segment of FCS files.
+Metadata in FCS files can include information like data acquisition date, cell description, instrument details, sample identification, and custom experimental annotations.
+The module supports two input formats for keyword/value pairs: a CSV file with Keyword and Value columns, or a text file containing a raw FCS TEXT segment chunk.
+FCS TEXT segments use a delimiter character (any ASCII character) to separate keywords and values, with delimiters appearing at the start and end of each value.
+The SetFCSKeywords module ensures FCS file consistency by preventing modifications that would break the file's structural integrity.
+The module can handle large FCS files, with estimated maximum memory usage of 1.8 GB and a runtime of 30 seconds for files with 1,000,000 events.
+Users can add new keywords, update existing keyword values, or insert custom metadata into FCS files using this GenePattern module.
+The module follows the FCS 3.1 File Standard, which defines the technical specifications for flow cytometry data file formatting.
+SetFCSKeywords is implemented in Java and is platform-independent, running on any operating system with Java 1.6 or higher.

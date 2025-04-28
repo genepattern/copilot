@@ -1,0 +1,46 @@
+TmapToGct is on version .
+A description of TmapToGct is Converts a TMAP file to GCT file format. This module extracts expression data from a TMAP and writes it to a GCT file. Expression data in the TMAP file is in units of Fragments Per Kilobase of exon model per Million mapped fragments (FPKM)..
+TmapToGct is a GenePattern module written by GenePattern Help (gp-help@broadinstitute.org).
+TmapToGct can be categorized as RNA-seq.
+TmapToGct has the following parameters: input.file, row.labels, row.descriptions, filter.rows, output.prefix.
+The TmapToGct module is a GenePattern tool for converting RNA-seq expression data from TMAP to GCT file format.
+The TmapToGct module helps researchers transform complex Cufflinks-generated TMAP files into standardized GCT files for downstream analysis.
+TmapToGct specifically converts expression measurements from Fragments Per Kilobase of exon model per Million mapped fragments (FPKM) into a more universally readable format.
+The module allows researchers to select different identifier types for row labels and descriptions, including reference gene names, transcript IDs, and Cufflinks-generated identifiers.
+TmapToGct provides flexibility in data processing by offering an optional row filtering mechanism to exclude rows marked with a "-" in the input file.
+The module is platform-independent, meaning it can run on various operating systems and computer architectures without modification.
+TmapToGct is particularly useful in RNA-seq data analysis workflows, bridging data from initial transcript quantification to downstream computational genomics tools.
+The output of TmapToGct is a standardized GCT file that can be easily imported into other bioinformatics software and analysis platforms.
+By converting TMAP files to GCT, the TmapToGct module helps researchers maintain data integrity and compatibility across different computational genomics environments.
+The module's ability to select different identifiers makes it adaptable to various experimental designs and research questions in gene expression analysis.
+TmapToGct module requires input file for TMAP to GCT conversion.
+TmapToGct module allows selection of row labels from multiple identifier columns.
+TmapToGct module supports reference gene name as default row label selection.
+TmapToGct module provides option to filter rows with "-" label.
+TmapToGct module uses FPKM (Fragments Per Kilobase of exon model per Million mapped fragments) expression units.
+TmapToGct module converts Cufflinks TMAP file format to standard GCT file format.
+TmapToGct module allows customization of row descriptions from multiple identifier columns.
+TmapToGct module generates output file with specified prefix.
+TmapToGct module supports flexible identifier selection for row names and descriptions.
+TmapToGct module is designed for RNA-seq data processing.
+TmapToGct module input file is a TMAP file produced by Cufflinks.
+TMAP file is a tab-delimited format containing RNA-seq expression data.
+TMAP file contains expression values in Fragments Per Kilobase of exon model per Million mapped fragments (FPKM).
+TMAP file includes multiple identifier columns like reference gene name, reference transcript ID, Cufflinks gene ID.
+TmapToGct module input file contains RNA-seq transcript expression information from sequencing experiments.
+TmapToGct module output file is a GCT format file for gene expression data.
+GCT file is a tab-delimited format used in GenePattern for representing expression datasets.
+GCT file contains expression values converted from FPKM in the input TMAP file.
+GCT file includes row names and descriptions selected from the input TMAP file's identifier columns.
+GCT file can be configured to include or exclude specific rows based on the filter.rows parameter.
+Output GCT filename is determined by the output.prefix parameter in the TmapToGct module.
+The TmapToGct module converts expression data from TMAP to GCT file format for genomic analysis.
+The TmapToGct module translates files from Cufflinks' TMAP format into the standard GCT file format used in bioinformatics.
+TMAP files contain RNA-seq expression data measured in Fragments Per Kilobase of exon model per Million mapped fragments (FPKM).
+The TmapToGct module allows users to select different identifier types for row labels and descriptions, including reference gene names and transcript IDs.
+Users can choose from multiple identifier types like Reference gene name, Cufflinks gene ID, and Major isoform ID when generating the output GCT file.
+The module provides flexibility in filtering rows, with an option to exclude rows marked with a "-" in the input file.
+The TmapToGct module generates a new .gct file with the user-specified output prefix, containing the converted expression data.
+This module supports RNA-seq data analysis and is compatible with any CPU and operating system.
+The output GCT file preserves the original FPKM expression measurements from the input TMAP file.
+The TmapToGct module is designed to facilitate data transformation between different genomic file formats for downstream analysis.

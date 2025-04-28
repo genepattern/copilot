@@ -1,0 +1,48 @@
+ExtractComparativeMarkerSelection is on version 4.
+A description of ExtractComparativeMarkerSelection is Creates a derived dataset and feature list file from the results of ComparativeMarkerSelection. ExtractComparativeMarkerSelection creates dataset and feature list files based on the results of ComparativeMarkerSelection and filter criteria that you specify..
+ExtractComparativeMarkerSelection is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broadinstitute.org.
+ExtractComparativeMarkerSelection can be categorized as Gene List Selection.
+ExtractComparativeMarkerSelection has the following parameters: comparative marker selection filename, dataset.filename, statistic, min, max, number of neighbors, base output name.
+The ExtractComparativeMarkerSelection module helps researchers extract and filter gene markers from comparative analysis results.
+ExtractComparativeMarkerSelection allows biologists to systematically select genes of interest based on statistical criteria from comparative marker analysis.
+The module can filter genes using multiple strategies, including setting minimum and maximum statistical thresholds or selecting a specific number of top and bottom performing genes.
+ExtractComparativeMarkerSelection is particularly useful for identifying differentially expressed genes between experimental conditions or biological states.
+Researchers can use this GenePattern module to create refined gene lists and derived datasets that highlight the most significant molecular differences.
+The module requires input from a previous ComparativeMarkerSelection analysis, making it part of a larger gene expression analysis workflow.
+ExtractComparativeMarkerSelection supports multiple input file formats like .gct, .res, and .odf, providing flexibility in data processing.
+By allowing users to specify filtering criteria, the module helps researchers focus on the most biologically relevant gene markers.
+The module generates two primary outputs: a derived dataset and a feature list file, which can be used in downstream bioinformatics analyses.
+ExtractComparativeMarkerSelection is platform-independent and can run on any operating system with Java 1.4 or higher.
+The module is designed to work within the GenePattern computational genomics environment, facilitating complex gene expression data analysis.
+Biologists can use ExtractComparativeMarkerSelection to systematically narrow down large gene expression datasets to the most statistically significant markers.
+comparative marker selection filename:string:Specifies the results file from ComparativeMarkerSelection in .odf format:required:no default
+dataset.filename:string:The source dataset file from which markers were originally selected, can be .gct, .res, or .odf format:required:no default
+statistic:string:The statistical measure to use for filtering features, only considered if min and/or max are specified:optional:no default
+min:numeric:Minimum threshold value for the specified statistic to select features:optional:no default
+max:numeric:Maximum threshold value for the specified statistic to select features:optional:no default
+number of neighbors:integer:Number of top and bottom features to select based on statistical score:optional:no default
+base output name:string:Base filename prefix for generating output dataset and feature list files:required:no default
+ExtractComparativeMarkerSelection input and output files:
+Input: comparative marker selection filename is an .odf file containing results from ComparativeMarkerSelection statistical analysis
+Input: dataset.filename is a .gct, .res, or .odf file representing the original dataset from which markers were selected
+Input: statistic parameter specifies which statistical measure to use for feature filtering
+Input: min parameter defines the minimum threshold for feature selection
+Input: max parameter defines the maximum threshold for feature selection
+Input: number of neighbors parameter determines how many top and bottom ranked features to extract
+Input: base output name defines the prefix for generated output files
+Output: derived dataset file contains a subset of features from the original dataset based on specified filtering criteria
+Output: derived feature list file is a text file listing selected features, with one feature name per line
+Output: feature list follows a simple text format with each line representing a single feature identifier
+Output: derived dataset preserves the original dataset structure but includes only filtered features
+Output: output files are generated using the base output name specified by the user
+ExtractComparativeMarkerSelection is a GenePattern module for filtering and extracting features from comparative marker selection results.
+The module allows researchers to create a derived dataset and feature list based on statistical criteria from ComparativeMarkerSelection analysis.
+Users can filter features using two primary methods in ExtractComparativeMarkerSelection: statistical thresholds or selecting top/bottom performing features.
+ExtractComparativeMarkerSelection supports filtering by specifying a statistic and defining minimum and maximum allowable values for that statistic.
+The module can alternatively select features by choosing a specific number of top and bottom performing features based on their test statistic scores.
+If both statistical thresholds and number of neighbors are specified, ExtractComparativeMarkerSelection prioritizes the number of neighbors parameter.
+When no filter parameters are provided, ExtractComparativeMarkerSelection will include all features from the original ComparativeMarkerSelection results.
+The module requires input files including the ComparativeMarkerSelection results and the original dataset from which markers were selected.
+ExtractComparativeMarkerSelection generates two primary outputs: a derived dataset file and a derived feature list file.
+The feature list produced by ExtractComparativeMarkerSelection is a text file with one feature name listed per line.
+This GenePattern module is platform-independent, supporting any CPU and operating system with Java JVM 1.4 or higher.

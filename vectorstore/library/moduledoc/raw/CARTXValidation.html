@@ -1,0 +1,124 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>CARTXValidation (v3) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/CARTXValidation/3?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Tree-based regression and classification with leave-one-out  cross validation</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Joshua Gould, D. R. Mani</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong>gp-help@broadinstitute.org</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Summary</h2>
+<div>
+	CART builds classification and regression trees for predicting continuous dependent variables (regression) and categorical predictor variables (classification) (Breiman, et al., 1984). It works by recursively splitting the feature space into a set of non-overlapping regions (rectangles in the case of continuous features; subsets of values, in the case of categorical features), and by then predicting the most likely value of the dependent variable within each region. A classification tree represents a set of nested logical if-then conditions on the values of the features variables that allows for the prediction of the value of the dependent categorical variable based on the observed values of the feature variables. A regression tree also represents a set of nested logical if-then conditions on the features variables, but these are used to predict the value of a continuous response variable instead. </div>
+<h2>
+	References</h2>
+<div>
+	Breiman, L., Friedman, J. H., Olshen, R. A., &amp; Stone, C. J. (1984). Classification and regression trees. Monterey, CA: Wadsworth &amp; Brooks/Cole Advanced Books &amp; Software. </div>
+<div>
+	 </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>
+				Name</th>
+<th>
+				Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+				data filename <span style="color:red;">*</span></td>
+<td>
+				The data file - .gct, .res</td>
+</tr>
+<tr>
+<td>
+				cls filename <span style="color:red;">*</span></td>
+<td>
+				The class file - .cls</td>
+</tr>
+<tr>
+<td>
+				prediction results file <span style="color:red;">*</span></td>
+<td>
+				The name of the output file for prediction results</td>
+</tr>
+</tbody>
+</table>
+<p>
+<span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+<span style="font-size:18px;">Output Files</span></h2>
+<ol>
+<li>
+		&lt;prediction.results.file&gt;<br/>
+		The prediction results</li>
+</ol>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Prediction</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>2014-01-14</td>
+<td>Modified to output classification tree information for each iteration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

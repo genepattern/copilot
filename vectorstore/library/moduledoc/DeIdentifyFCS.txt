@@ -1,0 +1,50 @@
+DeIdentifyFCS is on version 1.
+A description of DeIdentifyFCS is De-identify FCS data files. Before sharing your FCS files outside of your organization, you might want to remove sensitive information from the file. This module helps remove unwanted text segment information, e.g., a patient ID, while leaving the event data intact..
+DeIdentifyFCS is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca).
+DeIdentifyFCS can be categorized as Flow Cytometry.
+DeIdentifyFCS has the following parameters: Input FCS data file, Remove keywords, Is.regular expression used, Output FCS file name.
+The DeIdentifyFCS GenePattern module helps researchers remove sensitive patient information from flow cytometry data files while preserving the core cellular event data.
+DeIdentifyFCS allows researchers to selectively remove specific text segment keywords from FCS (Flow Cytometry Standard) files to protect patient privacy.
+The DeIdentifyFCS module is particularly useful when sharing flow cytometry data across research institutions or in collaborative studies where patient confidentiality must be maintained.
+Researchers can remove individual keywords or use regular expressions to match and delete multiple keywords matching specific patterns, such as patient identifiers.
+The module preserves the original cellular measurement data while eliminating potentially sensitive metadata like patient names, hospital identifiers, or other personally identifiable information.
+DeIdentifyFCS operates by targeting the text segment of FCS files, which contains metadata about the sample, without altering the core event data representing cellular measurements.
+To identify keywords for removal, researchers can first use companion GenePattern modules like ExtractFCSKeywords or PreviewFCS to explore the metadata present in their FCS files.
+The module supports case-insensitive and pattern-based keyword removal, allowing flexible and comprehensive de-identification strategies for flow cytometry datasets.
+DeIdentifyFCS generates an output file with the same cellular data as the original file but with specified keywords removed, along with a log file documenting the removed keywords.
+The module is designed to work across different platforms and requires only Java 1.6 or higher, making it widely accessible to researchers using various computational environments.
+Input FCS data file: file path, required parameter for specifying the FCS file to be de-identified in the DeIdentifyFCS module.
+Remove keywords: string, required parameter for specifying exact keyword names to remove from the FCS file's text segment in the DeIdentifyFCS module.
+Is.regular expression used: boolean, required parameter determining whether Remove keywords should be treated as a literal list or a regular expression pattern in the DeIdentifyFCS module, default is false.
+Output FCS file name: string, required parameter specifying the name of the de-identified output FCS file in the DeIdentifyFCS module, with a default naming convention based on input filename.
+Allows removal of sensitive patient information from FCS flow cytometry data files while preserving event data.
+Supports removing multiple keywords through direct list or regular expression matching.
+Provides flexibility in keyword removal with case-insensitive and pattern-based search options.
+Generates an output file with specified keywords removed from the original FCS file's text segment.
+Creates a stdout.txt file documenting which keywords were successfully removed during the de-identification process.
+Supports flow cytometry data file processing across different platforms and Java environments.
+Here are the input and output file descriptions for the DeIdentifyFCS module:
+Input FCS data file is a flow cytometry standard (FCS) file containing cell event data and text segment metadata
+Input FCS file contains multiple parameters describing cell measurements and sample information
+Input FCS file follows the FCS 3.1 file standard with potential sensitive patient identification information
+Input FCS file can have up to 1,000,000 events and 24 parameters stored in floating point data type
+Input FCS file may include keywords related to patient or sample identification
+Output de-identified FCS file contains identical cell event data as input file
+Output de-identified FCS file removes specified text segment keywords
+Output de-identified FCS file preserves all original measurement data
+Output de-identified FCS file name follows pattern <original_filename>.deidentified.<extension>
+Output stdout.txt file lists removed keywords
+Output stdout.txt file indicates which keywords were successfully removed
+Output stdout.txt file notes any keywords that could not be removed
+Output stdout.txt file provides summary of de-identification process
+DeIdentifyFCS is a GenePattern module designed to remove sensitive information from flow cytometry FCS data files while preserving cell event data.
+The DeIdentifyFCS module helps researchers anonymize patient or sample-specific metadata in FCS files before sharing data externally.
+Users can remove specific keywords from the FCS file's text segment by providing exact keyword names or using regular expression patterns.
+The module supports removing single or multiple keywords through a comma-separated list or advanced regular expression matching.
+Regular expression options include case-insensitive searches and pattern matching for keywords containing specific text or numeric sequences.
+DeIdentifyFCS generates a new de-identified FCS file with the same event data but with specified keywords removed from the text segment.
+The module produces two output files: the de-identified FCS file and a stdout.txt log detailing which keywords were successfully removed.
+To identify keywords for removal, users are recommended to first use the ExtractFCSKeywords or PreviewFCS modules to explore the file's metadata.
+The module requires GenePattern version 3.2.0 or higher and Java 1.6 or later, and is compatible with any CPU and operating system.
+Performance is estimated based on processing FCS files with 1,000,000 events, with a maximum RAM usage of 10 MB and runtime of 10 seconds.
+The module follows the FCS 3.1 File Standard, which provides guidelines for flow cytometry data file formatting and metadata management.

@@ -1,0 +1,45 @@
+ConvertToMAGETAB is on version .
+A description of ConvertToMAGETAB is A module to export data from GenePattern in MAGE-TAB format. MAGE-TAB is a standard for the representation of microarray expression data..
+ConvertToMAGETAB is a GenePattern module written by Marc-Danie Nazaire.
+ConvertToMAGETAB can be categorized as Preprocess & Utilities.
+ConvertToMAGETAB has the following parameters: input.file, cls.file, sample.reference.label, feature.reference.label, intensity.type.label, output.prefix.
+The ConvertToMAGETAB GenePattern module is a specialized tool for transforming microarray data into the standardized MAGE-TAB format.
+The ConvertToMAGETAB module helps researchers convert genomic data files from GCT or RES formats into a standardized microarray data representation.
+MAGE-TAB is an international standard for representing microarray experimental data, ensuring consistent and reproducible data sharing across research platforms.
+The ConvertToMAGETAB module can generate multiple file types including a data matrix file, sample and data relationship format (SDRF) file, and other supporting documentation.
+Researchers can use the ConvertToMAGETAB module to prepare microarray data for submission to public repositories that require standardized file formats.
+The module requires an input microarray data file (GCT or RES) and optionally accepts a class file (CLS) to provide additional experimental context.
+Users must specify reference labels for samples, features, and intensity types when using the ConvertToMAGETAB module to ensure accurate data translation.
+The ConvertToMAGETAB module supports cross-platform data sharing by converting proprietary file formats into a universally recognized standard.
+Bioinformaticians can use the ConvertToMAGETAB module as part of a data preprocessing pipeline to standardize microarray experimental datasets.
+The module is particularly useful for researchers preparing to publish microarray data or share experimental results with the broader scientific community.
+ConvertToMAGETAB module requires an input file in GCT or RES format for microarray data conversion.
+ConvertToMAGETAB module accepts an optional CLS file to provide additional sample classification information.
+sample.reference.label parameter specifies the type of samples in the first row of the MAGE-TAB matrix, with a default of "Hybridization REF".
+feature.reference.label parameter identifies the type of features in the second row of the MAGE-TAB matrix, defaulting to "CompositeElement REF".
+intensity.type.label parameter describes the nature of intensity values in the input file, such as "Ratios" or "Expression Ratios".
+output.prefix parameter determines the naming convention for generated MAGE-TAB files, typically using the input file's basename by default.
+The ConvertToMAGETAB module supports converting microarray data to the standardized MAGE-TAB format for improved data interoperability.
+The module generates multiple file types including SDRF (Sample and Data Relationship Format) when a CLS file is provided.
+MAGE-TAB conversion helps researchers share and exchange microarray expression data using a standardized international format.
+The module can process input files from various microarray platforms and experimental designs.
+ConvertToMAGETAB module input file: GCT file containing microarray expression data in a tabular matrix format.
+ConvertToMAGETAB module input file: RES file containing microarray expression data in a tabular matrix format.
+ConvertToMAGETAB module optional input file: CLS file containing sample classification or grouping information.
+ConvertToMAGETAB module output file: MAGE-TAB data matrix file in TXT format representing the converted expression data.
+ConvertToMAGETAB module optional output file: Sample and Data Relationship Format (SDRF) file describing sample relationships and metadata.
+ConvertToMAGETAB module output file naming convention uses the specified output prefix parameter to generate output filenames.
+ConvertToMAGETAB module generates MAGE-TAB compatible files that can be imported using MAGETABImportViewer.
+ConvertToMAGETAB module requires specification of sample reference label to identify sample type in the output files.
+ConvertToMAGETAB module requires specification of feature reference label to identify feature type in the output files.
+ConvertToMAGETAB module requires specification of intensity type label to describe the nature of intensity values in the input data.
+The ConvertToMAGETAB module is a GenePattern utility for transforming microarray data into MAGE-TAB format.
+ConvertToMAGETAB converts microarray expression data files from GCT or RES formats into standardized MAGE-TAB data representation.
+MAGE-TAB is a structured format for representing microarray experimental data, consisting of four distinct file types: Investigation Description Format (IDF), Array Design Format (ADF), Sample and Data Relationship Format (SDRF), and raw/processed data files.
+The ConvertToMAGETAB module requires an input microarray data file (GCT or RES) and optionally accepts a corresponding class (CLS) file for additional sample classification.
+Users must specify key reference labels during conversion, including sample reference, feature reference, and intensity type labels to accurately map data elements.
+The module generates a MAGE-TAB data matrix file, with optional generation of an SDRF file if a CLS file is provided.
+While the conversion process does not automatically create IDF and ADF files, users can use external tools like Annotare to further annotate the generated SDRF file.
+The module supports flexible input parameters, allowing customization of sample and feature references to match specific experimental designs.
+ConvertToMAGETAB is platform-independent, written in Java, and can run on any CPU and operating system.
+The module is designed to facilitate standardized data exchange and interoperability in microarray research by converting proprietary formats to a community-accepted standard.

@@ -1,0 +1,69 @@
+AuDIT is on version 6.
+A description of AuDIT is Multiple reaction monitoring-mass spectrometry (MRM-MS) of peptides with stable isotope-labeled internal standards (SIS) is a quantitative assay for measuring proteins in complex biological matrices. The AuDIT module implements an algorithm that, in an automated manner, identifies inaccurate transition data based on the presence of interfering signal or inconsistent recovery between replicate samples..
+AuDIT is a GenePattern module written by D. R. Mani, The Broad Institute.
+AuDIT can be categorized as Proteomics.
+AuDIT has the following parameters: data file, skyline export, pvalue threshold, cv threshold, all pairs, output intermediate results, output prefix.
+The AuDIT GenePattern module is a specialized tool for analyzing multiple reaction monitoring mass spectrometry (MRM-MS) data to detect inaccurate or imprecise peptide transitions.
+AuDIT automates the process of identifying problematic peptide transition data in mass spectrometry experiments, reducing the need for manual expert review.
+The AuDIT module uses two statistical approaches to evaluate MRM-MS data: comparing relative product ion intensities and calculating coefficient of variation across sample replicates.
+AuDIT works with exported data from various mass spectrometry data processing software packages, including Skyline and MultiQuant.
+The module requires input data containing both analyte and stable isotope-labeled internal standard (SIS) peptide measurements for accurate analysis.
+AuDIT generates an output file that classifies peptide transitions as 'good' or 'bad' based on statistical thresholds for p-value and coefficient of variation.
+The module is particularly useful in proteomics research for improving the accuracy and reliability of quantitative peptide measurements in complex biological samples.
+AuDIT helps researchers quickly identify transitions with potential interference or inconsistent recovery across sample replicates.
+The GenePattern implementation of AuDIT allows researchers to easily integrate this advanced statistical analysis into their standard mass spectrometry data workflow.
+AuDIT requires peptides to have at least three transitions for robust statistical evaluation, ensuring more reliable data assessment.
+The module can handle different data formats, including direct exports from Skyline and other mass spectrometry data processing software.
+AuDIT's automated approach significantly reduces the time and potential human error associated with manual review of mass spectrometry transition data.
+data file (string): Input file with pre-processed MRM data in CSV format, required for AuDIT module.
+skyline export (string): Indicates whether the input data file is a Skyline CSV export, with options "yes" or "no", specifying data column structure.
+pvalue threshold (float): Statistical significance threshold for determining transition quality, must be between 0 and 1 inclusive.
+cv threshold (float): Coefficient of variation threshold for assessing transition precision and reliability.
+all pairs (boolean): Option to calculate all possible pairs of relative ratios for a transition in AuDIT analysis.
+output intermediate results (boolean): Flag to generate files with intermediate computational results from AuDIT module.
+output prefix (string): File name prefix used for generating output files from AuDIT analysis, required parameter.
+Here are the input and output file descriptions for the AuDIT module:
+Input File (data file):
+Comma-delimited CSV file containing pre-processed MRM-MS data from mass spectrometry software
+Input File Columns (non-Skyline export):
+Sample identifier for unique sample/concentration
+Replicate number for sample
+Peptide name or sequence
+Transition identifier
+Analyte peak area
+Internal standard peak area
+Input File Columns (Skyline export):
+Sample derived from SampleName
+Peptide sequence
+Replicate name
+Fragment ion
+Precursor charge
+Product charge
+Light peak area
+Heavy peak area
+Output File Columns:
+Peptide name
+Sample identifier
+Transition identifier
+Multiple testing corrected p-value
+Transition status (good/bad)
+Coefficient of variation
+CV status (good/bad)
+Final transition assessment (good/bad)
+Input File Requirements for AuDIT:
+Requires both analyte and internal standard measurements
+Peptides must have 3 or more transitions
+Unique transition IDs for each sample/peptide/replicate combination
+Legitimate peak area values for both analyte and internal standard
+The AuDIT module is a computational tool for analyzing multiple reaction monitoring mass spectrometry (MRM-MS) peptide data.
+AuDIT automates the detection of inaccurate and imprecise transitions in mass spectrometry peptide quantification experiments.
+The module uses two statistical approaches to evaluate MRM-MS data quality: comparing product ion intensities and calculating coefficient of variation.
+AuDIT compares relative product ion intensities between analyte and stable isotope-labeled internal standard (SIS) peptides using a t-test.
+The module flags transitions as potentially problematic if their p-value exceeds a user-defined threshold, indicating significant differences between analyte and standard peptide signals.
+AuDIT calculates the coefficient of variation across replicate samples to assess the consistency and precision of peptide transition measurements.
+Transitions with excessive variation are marked as unsuitable for quantitative analysis based on a user-specified coefficient of variation threshold.
+The module can process data exported from various mass spectrometry data processing software packages, including Skyline and MultiQuant.
+AuDIT requires input data to include both analyte and internal standard peak areas, with at least three transitions per peptide.
+The module generates an output file categorizing each peptide transition as "good" or "bad" based on statistical and variation criteria.
+AuDIT significantly reduces the time required for manual data review and improves the overall accuracy of mass spectrometry-based protein quantification.
+The tool is implemented in R and can be used across different computing platforms to streamline proteomics data analysis workflows.

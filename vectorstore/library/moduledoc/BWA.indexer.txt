@@ -1,0 +1,44 @@
+BWA.indexer is on version 2.
+A description of BWA.indexer is Creates a BWT index from a sequence FASTA file for use with the BWA 0.7.4 aligners. This module takes a sequence files in FASTA format, and outputs a set of 5 files in a ZIP archive. These files together constitute the index..
+BWA.indexer is a GenePattern module written by Heng Li, Broad Institute.
+BWA.indexer can be categorized as RNA-seq.
+BWA.indexer has the following parameters: fasta file, algorithm, output prefix.
+The BWA.indexer module is a critical bioinformatics tool for preparing genomic sequences for alignment analysis.
+The BWA.indexer creates a Burrows-Wheeler Transform (BWT) index from DNA sequence data stored in FASTA format.
+The BWA.indexer generates five specialized index files that enable rapid genomic sequence alignment using the BWA (Burrows-Wheeler Aligner) algorithm.
+The BWA.indexer supports two different indexing algorithms: IS (for smaller genomes) and bwtsw (for larger genomes like the human genome).
+The BWA.indexer requires a FASTA file as input and produces a ZIP archive containing the index files necessary for subsequent alignment processes.
+The BWA.indexer is particularly useful in next-generation sequencing workflows, especially for RNA-seq and genomic mapping experiments.
+The BWA.indexer can handle genomes of varying sizes, with different memory and computational requirements depending on the chosen indexing algorithm.
+The BWA.indexer is compatible with BWA versions 0.6.x and 0.7.x, but not with older versions like 0.5.x, which have different indexing formats.
+The BWA.indexer was developed by researchers at the Wellcome Trust Sanger Institute and the Broad Institute, key centers in genomic research.
+The BWA.indexer is a crucial preprocessing step that enables fast and accurate short read alignment in genomic research and clinical sequencing applications.
+fasta_file: file, Required input FASTA file for BWA indexer containing DNA sequences to be indexed.
+algorithm: string, Required parameter specifying BWT index construction method, with two options: "is" (faster, smaller genomes) or "bwtsw" (supports whole human genome).
+output_prefix: string, Required parameter defining the base filename for generated index files in the output ZIP archive.
+is algorithm: Uses linear-time suffix array construction method, requires 5.27*N memory, works best for databases under 2GB.
+bwtsw algorithm: Supports whole human genome indexing, requires more computational resources, works with databases larger than 10MB.
+BWA indexer generates five index files packaged in a ZIP archive for use with BWA alignment tools.
+Index files are not backwards compatible across different BWA versions, with compatibility varying between 0.5.x, 0.6.x, and 0.7.x releases.
+Indexing human genome sequences requires approximately 5GB memory and takes around 3 hours using the bwtsw algorithm.
+BWA.indexer input FASTA file contains DNA sequences in standard FASTA format with header lines starting with '>' followed by sequence identifier and sequence data.
+BWA.indexer input FASTA file must contain valid DNA sequences using standard nucleotide characters A, T, C, G.
+BWA.indexer input FASTA file can represent genomic sequences from any organism or genetic source.
+BWA.indexer output ZIP archive contains five index files generated using specified BWT indexing algorithm.
+BWA.indexer output .amb file contains sequence length and other metadata about the indexed sequences.
+BWA.indexer output .ann file contains annotation information for the indexed sequences.
+BWA.indexer output .bwt file contains the Burrows-Wheeler transformed sequence data.
+BWA.indexer output .pac file contains the packed representation of the original sequence.
+BWA.indexer output .sa file contains the suffix array index for rapid sequence alignment.
+BWA.indexer output index files are specific to BWA version 0.6.x and newer alignment algorithms.
+BWA.indexer output ZIP archive enables efficient genomic sequence indexing for subsequent alignment processes.
+BWA.indexer is a GenePattern module for creating a Burrows-Wheeler Alignment (BWA) index from DNA sequence FASTA files.
+The BWA.indexer module generates a compressed index used for rapid genomic sequence alignment.
+BWA.indexer supports two indexing algorithms: IS (for smaller genomes) and bwtsw (for larger genomes like the human genome).
+The IS algorithm requires 5.27*N memory and works best for databases smaller than 2GB, while bwtsw can handle whole genome indexing.
+BWA.indexer produces a ZIP archive containing five essential index files with extensions .amb, .ann, .bwt, .pac, and .sa.
+The module was developed collaboratively by the Wellcome Trust Sanger Institute and the Broad Institute.
+Indexing the human genome with the bwtsw algorithm requires approximately 5GB of memory and takes around 3 hours to complete.
+BWA.indexer is compatible with BWA version 0.6.x and 0.7.x index files, but not with older 0.5.x versions.
+The module is based on the BWA algorithm developed by Heng Li and Richard Durbin, which uses the Burrows-Wheeler Transform for efficient sequence alignment.
+Users must provide a FASTA file containing DNA sequences and specify an output file prefix when using the BWA.indexer module.

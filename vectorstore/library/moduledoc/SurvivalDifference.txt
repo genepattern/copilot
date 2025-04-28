@@ -1,0 +1,49 @@
+SurvivalDifference is on version .
+A description of SurvivalDifference is Tests for survival differences based on cls files. Once a genomics marker or predictive model for clinical outcome is built, the next step is to test whether it really predicts outcome of new cohorts, or whether it has better predictive ability compared to already known clinical markers/predictive models. SurvivalDifference tests if there is a difference between two or more survival curves based on sample classes defined by genomic data..
+SurvivalDifference is a GenePattern module written by Yujin Hoshida (Broad Institute), gp-help@broad.mit.edu.
+SurvivalDifference can be categorized as Survival Analysis.
+SurvivalDifference has the following parameters: input, input cls file, time field, censor field, cls field, test type, subgroup, output filename.
+The SurvivalDifference module in GenePattern is a powerful tool for comparing survival curves across different sample classes in biomedical research.
+The SurvivalDifference module helps researchers statistically analyze whether different groups have significantly different survival outcomes.
+This module is particularly useful in cancer research, where understanding how different genetic or clinical characteristics impact patient survival is crucial.
+The SurvivalDifference module can perform two primary statistical tests: the log-rank test and the generalized Wilcoxon test for comparing survival curves.
+Researchers can use the SurvivalDifference module to compare survival times between groups defined by genomic data, clinical markers, or predictive models.
+The module requires input files containing survival time, censoring status, and class information for each patient or sample.
+SurvivalDifference allows researchers to specify specific subgroups for comparison, providing flexibility in analyzing complex datasets.
+The output of the SurvivalDifference module includes a summary of statistical test results, helping researchers interpret survival differences between groups.
+This module is part of the broader GenePattern platform, which provides computational tools for genomic and clinical data analysis.
+The SurvivalDifference module can help validate predictive models and identify potential prognostic markers in medical research.
+Researchers can use this module to test hypotheses about how different genetic or clinical characteristics might impact patient survival times.
+The module supports both categorical and continuous survival data, making it versatile for various types of biomedical research.
+SurvivalDifference is implemented in R, leveraging established statistical libraries for robust survival analysis.
+The module can handle multiple classes and complex experimental designs, making it suitable for advanced survival analysis studies.
+By comparing survival curves, researchers can gain insights into potential risk factors and prognostic indicators in disease progression.
+input: file, Required, SurvivalDifference module requires clinical survival data file containing survival time and censoring status
+input cls file: file, Optional, Specifies class information for survival analysis in SurvivalDifference module
+time field: string, Optional, Identifies column name for survival time in SurvivalDifference module, defaults to "time"
+censor field: string, Optional, Identifies column name for event/censoring status in SurvivalDifference module, defaults to "status"
+cls field: string, Optional, Specifies class field name in survival data file for SurvivalDifference module
+test type: string, Optional, Determines statistical test method in SurvivalDifference module, choices include log-rank test (default) and generalized Wilcoxon test
+subgroup: string, Optional, Allows specification of specific classes to compare in SurvivalDifference module analysis
+output filename: string, Optional, Defines name for output file in SurvivalDifference module, defaults to automatically generated filename with "_SurvivalDifferenceTest.txt" suffix
+SurvivalDifference module input survival data file contains patient identifiers, class labels, censoring status, and survival time.
+SurvivalDifference module input .cls file specifies class labels for grouping patients in survival analysis.
+SurvivalDifference module input survival data file uses tab-delimited text format with columns for case ID, class, censoring status, and survival time.
+SurvivalDifference module input survival data file requires numeric survival time values in the time field.
+SurvivalDifference module input survival data file uses binary censoring status (0 or 1) to indicate event occurrence.
+SurvivalDifference module output file contains statistical test results for survival curve comparisons.
+SurvivalDifference module output file includes log-rank or generalized Wilcoxon test statistics.
+SurvivalDifference module output file provides p-values for survival difference between specified patient groups.
+SurvivalDifference module input files support flexible class definition through .cls file or class field in survival data file.
+SurvivalDifference module handles survival data analysis across different patient cohorts or genomic classifications.
+The SurvivalDifference module tests for statistically significant differences in survival curves between sample groups defined by genomic data.
+SurvivalDifference is a statistical analysis tool for comparing survival outcomes across different patient classes or subgroups.
+The module uses two primary statistical tests: the log-rank test and the generalized Wilcoxon test to assess survival differences.
+SurvivalDifference requires input files containing clinical survival data, including time-to-event and censoring information.
+The module allows researchers to specify specific subgroups for comparison, enabling targeted survival analysis.
+SurvivalDifference can help validate genomic markers or predictive models by testing their ability to predict clinical outcomes.
+The input data for SurvivalDifference must include case identifiers, class labels, censoring status, and survival time.
+SurvivalDifference supports flexible input through either a separate class file (.cls) or a class field within the survival data file.
+The log-rank test in SurvivalDifference is the default statistical method for comparing survival curves between groups.
+SurvivalDifference generates an output file summarizing the statistical results of the survival analysis.
+The module is implemented in R and can be run on any computational platform with R 2.5 or later installed.

@@ -1,0 +1,59 @@
+Seurat.Preprocessing is on version 4.0.
+A description of Seurat.Preprocessing is GenePattern module which implements the preprocessing steps for Seurat. The Seurat.Preprocessing Module aims to provide a way to integrate the multiple steps in the preprocessing of single-cell datasets. The resultant preprocessed dataset can then be used for downstream analyses and visualizations (such as Seurat.Clustering)..
+Seurat.Preprocessing is a GenePattern module written by Edwin Juárez and Jonathan Zamora.
+Seurat.Preprocessing can be categorized as Single-cell RNA-seq, Preprocessing, Seurat.
+Seurat.Preprocessing has the following parameters: input_rds, column_name, pattern, file_name, keep_scale_data, first_feature, second_feature, third_feature, min_n_features, max_n_features, max_percent_mitochondrial, norm_method, scale_factor, feat_sel_method, num_features, num_to_label, numpcs, vdl_num_dims, vdhm_num_dims, cells.
+The Seurat.Preprocessing module is a critical tool for preparing single-cell RNA sequencing data for downstream analysis in bioinformatics.
+The Seurat.Preprocessing module helps researchers filter and normalize raw single-cell transcriptomics data to prepare it for further investigation.
+This GenePattern module implements key preprocessing steps using the Seurat R package, including quality control, normalization, and initial dimensionality reduction.
+The module allows researchers to set specific filtering parameters like minimum and maximum number of genes per cell, and maximum percentage of mitochondrial genes.
+Seurat.Preprocessing can generate quality control visualizations like violin plots to help researchers understand the distribution of key features in their single-cell dataset.
+The module supports multiple normalization methods to standardize gene expression across cells, which is crucial for accurate downstream analysis.
+Researchers can use Seurat.Preprocessing to select top variable features, reducing computational complexity while preserving the most informative genes in the dataset.
+The output of Seurat.Preprocessing is an RDS file that can be directly used in subsequent Seurat modules like Seurat.Clustering for further single-cell analysis.
+By performing principal component analysis (PCA), the module helps reduce the dimensionality of complex single-cell transcriptomics data.
+Seurat.Preprocessing is particularly useful for preparing single-cell RNA sequencing data from technologies like 10x Genomics, Drop-seq, and other high-throughput platforms.
+The module is flexible, allowing researchers to customize preprocessing steps based on the specific characteristics of their biological samples.
+input_rds: RDS file type, input Seurat object created by Seurat.QC module, required for Seurat.Preprocessing module processing
+column_name: String type, specifies column name for mitochondrial gene percentage, often named percent.mt, optional parameter
+pattern: String type, defines pattern for labeling mitochondrial genes, typically "MT-", optional parameter for gene identification
+file_name: String type, basename for output files, required for naming preprocessed dataset files
+keep_scale_data: Boolean type, determines whether to preserve scaled data slot for specified assays, default is FALSE, optional parameter for data preservation
+first_feature: String type, first feature for violin plot visualization, typically from matrix.mtx file, optional parameter for QC plotting
+second_feature: String type, second feature for violin plot visualization, typically from matrix.mtx file, optional parameter for QC plotting
+third_feature: String type, third feature for violin plot visualization, typically from matrix.mtx file, optional parameter for QC plotting
+min_n_features: Integer type, minimum number of genes expressed in a cell for inclusion, required for cell filtering
+max_n_features: Integer type, maximum number of genes expressed in a cell for inclusion, required for cell filtering
+max_percent_mitochondrial: Float type, maximum percentage of mitochondrial genes allowed in a cell, required for cell filtering
+norm_method: String type, specifies normalization method, optional parameter with default method in Seurat
+scale_factor: Numeric type, scaling value applied after normalization, optional parameter with default in Seurat
+feat_sel_method: String type, method for feature selection, recommended to keep default unless expert knowledge exists
+num_features: Integer type, number of top features to select during feature selection, optional parameter
+num_to_label: Integer type, number of top features to label in visualizations, optional parameter
+numpcs: Integer type, number of principal component dimensions to visualize, default is 50, optional parameter
+vdl_num_dims: Integer type, number of PCA dimensions for visualization, optional parameter
+vdhm_num_dims: Integer type, number of dimensions for dimensional reduction heatmap, optional parameter
+cells: Integer type, number of top cells to plot, optional parameter for visualization
+Seurat.Preprocessing module input file: input_rds is a Seurat RDS file containing single-cell RNA sequencing data.
+Seurat.Preprocessing module input file: column_name specifies the column representing mitochondrial gene percentage, typically named "percent.mt".
+Seurat.Preprocessing module input parameter: pattern defines the label for mitochondrial genes, often using "MT-" prefix.
+Seurat.Preprocessing module output file: <file_name>.rds contains the preprocessed Seurat object with normalized and filtered single-cell data.
+Seurat.Preprocessing module output file: <your_output_file_name>.pdf includes visualization plots of preprocessing quality control steps.
+Seurat.Preprocessing module input parameter: min_n_features sets the minimum number of genes that must be expressed in a cell to be included in analysis.
+Seurat.Preprocessing module input parameter: max_n_features defines the maximum number of genes allowed per cell.
+Seurat.Preprocessing module input parameter: max_percent_mitochondrial sets the threshold for maximum mitochondrial gene percentage in a cell.
+Seurat.Preprocessing module normalization parameter: norm_method specifies the normalization technique for single-cell data.
+Seurat.Preprocessing module dimension reduction parameter: num_features determines the number of top features selected during preprocessing.
+Seurat.Preprocessing is a GenePattern module for preprocessing single-cell RNA sequencing datasets using Seurat version 4.0.3.
+The module helps researchers prepare single-cell data for downstream analysis by performing critical preprocessing steps.
+Seurat.Preprocessing allows filtering of cells based on gene expression and mitochondrial gene percentages.
+Users can specify minimum and maximum numbers of genes per cell during the Seurat.Preprocessing filtering process.
+The Seurat.Preprocessing module enables normalization of gene expression data using customizable methods and scaling factors.
+Seurat.Preprocessing performs dimensionality reduction through Principal Component Analysis (PCA) with configurable parameters.
+The module generates quality control plots to help researchers visualize key preprocessing metrics during single-cell data preparation.
+Seurat.Preprocessing outputs an RDS file containing the preprocessed dataset for use in subsequent Seurat analysis modules.
+The module supports flexible configuration of mitochondrial gene labeling through pattern matching during Seurat.Preprocessing.
+Seurat.Preprocessing can preserve scaled data for advanced analyses by setting the keep_scale_data parameter to TRUE.
+The module allows selection and labeling of top features during the Seurat.Preprocessing workflow.
+Researchers can customize the number of principal components visualized in the Seurat.Preprocessing dimensional reduction steps.
+Seurat.Preprocessing is implemented in R version 4.0.2 and distributed under a modified BSD license.

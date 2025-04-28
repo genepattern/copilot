@@ -1,0 +1,48 @@
+CompareSpectra is on version 2.
+A description of CompareSpectra is Filters the two spectra to remove noise and matrix signal (by restricting spectra to between low.Da and high.Da), and determines similarity by computing the maximum of the cross correlation function..
+CompareSpectra is a GenePattern module written by D. R. Mani (Broad Institute), gp-help@broadinstitute.org.
+CompareSpectra can be categorized as Proteomics.
+CompareSpectra has the following parameters: spectrum1.filename, spectrum2.filename, output.file, low.Da, high.Da.
+The CompareSpectra GenePattern module is a specialized tool for comparing mass spectrometry spectra in proteomics research.
+CompareSpectra allows researchers to quantitatively compare two mass spectrometry spectra by computing their maximum cross-correlation.
+The CompareSpectra module helps filter out noise and matrix signals by allowing researchers to specify minimum and maximum mass-to-charge (M/Z) ranges.
+CompareSpectra is designed to work with CSV-formatted spectrum files, making it compatible with many standard proteomics data collection platforms.
+The module generates an output file (ODF format) containing the maximum cross-correlation value between the two input spectra.
+CompareSpectra is particularly useful for identifying similarities between protein or peptide mass spectrometry profiles across different experimental conditions.
+Researchers can use CompareSpectra to compare spectra from different samples, helping to detect potential protein modifications or structural variations.
+The CompareSpectra module runs in R and is platform-independent, making it accessible to researchers using various computational environments.
+By allowing precise M/Z range filtering, CompareSpectra helps researchers focus on specific regions of interest within mass spectrometry data.
+CompareSpectra provides a quantitative method for comparing spectral similarities, which can be crucial in proteomics research for identifying protein relationships.
+spectrum1.filename: string, input CSV file containing the first spectrum data, required, no default value
+The CompareSpectra module requires a CSV file representing the first spectrum for comparison
+spectrum2.filename: string, input CSV file containing the second spectrum data, required, no default value
+The CompareSpectra module requires a CSV file representing the second spectrum for comparison
+output.file: string, output ODF file name to store cross-correlation results, required, no default value
+The CompareSpectra module generates an output file with the maximum cross-correlation between spectra
+low.Da: numeric, minimum mass-to-charge (M/Z) value to include in spectrum analysis, optional, no default value specified
+The CompareSpectra module filters spectrum data to exclude values below this threshold
+high.Da: numeric, maximum mass-to-charge (M/Z) value to include in spectrum analysis, optional, no default value specified
+The CompareSpectra module filters spectrum data to exclude values above this threshold
+CompareSpectra module spectrum1.filename is a CSV file containing mass spectrometry spectral data with m/z and intensity values.
+CompareSpectra module spectrum2.filename is a CSV file containing mass spectrometry spectral data with m/z and intensity values.
+CompareSpectra module output.file is an ODF (Output Data File) containing the maximum cross-correlation value between the two input spectra.
+CompareSpectra module input CSV files typically have two columns representing mass-to-charge ratio (m/z) and corresponding intensity values.
+CompareSpectra module input CSV files represent raw mass spectrometry data used for comparing spectral similarity.
+CompareSpectra module output ODF file provides a numerical measure of spectral correlation between the two input spectra.
+CompareSpectra module CSV input files should contain numeric data representing mass spectrometric measurements.
+CompareSpectra module ODF output file is a simple text or structured file format storing the cross-correlation result.
+CompareSpectra module helps researchers compare two mass spectrometry spectra by filtering and calculating their similarity.
+The CompareSpectra module is designed to analyze and compare mass spectrometry spectral data across different samples.
+The module requires two input spectrum files in CSV format for comparison.
+Users can specify a minimum and maximum mass-to-charge (M/Z) range to filter out noise and matrix signals.
+The module calculates similarity between spectra using maximum cross-correlation as the primary metric.
+The output is an ODF (Output Data File) containing the maximum cross-correlation value between the two spectra.
+The module is implemented in R programming language and is platform-independent.
+Developed by D. R. Mani at the Broad Institute, the module is specifically targeted at proteomics research.
+Version 2 of the module improved input file parsing and modified default output file settings.
+The module helps researchers identify spectral similarities across different experimental conditions or samples.
+Cross-correlation analysis allows quantitative assessment of spectral resemblance beyond visual comparison.
+Filtering spectra by mass-to-charge range helps remove background noise and focus on relevant molecular signals.
+The module supports flexible mass spectrometry data analysis across different experimental protocols.
+Researchers can use this module to compare peptide or protein spectra with high computational precision.
+The module's platform independence allows widespread use across different computational environments.

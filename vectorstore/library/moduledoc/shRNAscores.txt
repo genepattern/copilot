@@ -1,0 +1,51 @@
+shRNAscores is on version .
+A description of shRNAscores is Collapses replicate array measurements and compare each cell line to a reference array. Returns a .gct file of shRNA scores per cell line..
+shRNAscores is a GenePattern module written by Barbara Weir.
+shRNAscores can be categorized as RNAi.
+shRNAscores has the following parameters: gct, array info, reference, annotation, output prefix.
+The shRNAscores GenePattern module is a computational tool for analyzing short hairpin RNA (shRNA) screening data.
+The shRNAscores module helps researchers quantify and compare gene knockdown effects across different cell lines.
+This module can generate three different scoring metrics for shRNA screening experiments: fold change, signal-to-noise ratio, and adjusted fold change.
+The shRNAscores module requires three input files: a preprocessed .gct data file, an array annotation file, and an shRNA annotation file.
+The module is designed to work within the GenePattern computational biology platform, enabling standardized analysis of RNAi screening data.
+Researchers can use shRNAscores to compare the effects of gene knockdowns across multiple experimental conditions or cell lines.
+The signal-to-noise calculation in shRNAscores helps researchers distinguish meaningful gene expression changes from background noise.
+By generating multiple scoring metrics, shRNAscores provides researchers with flexible options for interpreting shRNA screening results.
+The module outputs three different .gct files representing different scoring approaches: signal-to-noise, fold change, and adjusted fold change.
+shRNAscores is particularly useful for large-scale functional genomics studies investigating gene function through RNA interference.
+The module can handle complex experimental designs with multiple replicates and different reference conditions.
+Researchers in cancer biology, developmental biology, and functional genomics can leverage shRNAscores for systematic gene knockdown analysis.
+The shRNAscores module is implemented in R, making it compatible with various computational platforms and research environments.
+By standardizing shRNA screening data analysis, shRNAscores helps improve reproducibility and comparability of RNAi screening experiments.
+gct: file type, input pre-processed array data from dCHIP in .gct format, REQUIRED, no default value
+array info: file type, array annotation from makeArrayInfo module, one array per row with annotations in columns, REQUIRED, no default value
+reference: string, specifies which array to compare other lines against, allows partial or total match to Array_timepoint column, DEFAULT=DNA, optional
+annotation: file type, shRNA annotation file in .chip format, use TRChuV2.chip for 55K pool, REQUIRED, no default value
+output prefix: string, prefix for output file names, DEFAULT=test, optional
+shRNAscores module allows comparing cell line arrays to a reference array
+shRNAscores module generates three scoring schemes: fold change, signal to noise, and adjusted fold change
+Input requires pre-processed array data with replicate measurements of shRNAs
+Module calculates fold change by subtracting reference replicate sum from cell line replicate sum
+Signal to noise score divides fold change by standard deviation of cell line and reference replicates
+Adjusted fold change normalizes fold change by reference replicates' standard deviation
+Module outputs multiple .gct files with different scoring metrics for each cell line
+Module designed for RNAi screening and comparative analysis of shRNA array data
+Here are the input and output files for the shRNAscores module in atomic, semantically distinct chunks:
+shRNAscores input .gct data file contains pre-processed replicate arrays with shRNAs as rows and array columns.
+shRNAscores array annotation file contains metadata about each array with one array per row and annotations in columns.
+shRNAscores shRNA annotation file is a .chip file containing detailed information about the shRNA probes, recommended TRChuV2.chip for 55K pool.
+shRNAscores signal to noise output file is a .gct format file with cell lines as columns and shRNAs as rows, containing signal to noise calculated scores.
+shRNAscores fold change output file is a .gct format file with cell lines as columns and shRNAs as rows, containing fold change calculated scores.
+shRNAscores adjusted fold change output file is a .gct format file with cell lines as columns and shRNAs as rows, containing adjusted fold change calculated scores.
+shRNAscores sample annotation output file is a text file containing annotation information for the cell lines found in the output data files.
+The shRNAscores module is a computational tool for analyzing short hairpin RNA (shRNA) screening data.
+The shRNAscores module collapses replicate measurements from genetic screening experiments to generate comparative scores across cell lines.
+The module generates three distinct scoring metrics: fold change, signal-to-noise ratio, and adjusted fold change.
+Fold change in shRNAscores is calculated by subtracting the sum of reference replicates from the sum of cell line replicates.
+Signal-to-noise ratio in shRNAscores is calculated by dividing fold change by the combined standard deviation of cell line and reference replicates.
+Adjusted fold change in shRNAscores normalizes fold change by dividing by the reference replicates' standard deviation, with mean centering and a minimum value of 1.
+The shRNAscores module requires three input files: a preprocessed .gct data file, an array annotation file, and an shRNA annotation file.
+The module produces four output files: signal-to-noise data, fold change data, adjusted fold change data, and a sample annotation file.
+The shRNAscores module is designed for RNAi screening analysis and can run on any computational platform with R installed.
+The module was developed by Barbara Weir in August 2010 for comparative analysis of genetic screening data.
+The shRNAscores module is particularly useful for researchers conducting large-scale genetic screens using shRNA libraries.

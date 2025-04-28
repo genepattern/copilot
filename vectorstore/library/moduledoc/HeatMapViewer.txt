@@ -1,0 +1,47 @@
+HeatMapViewer is on version 14.
+A description of HeatMapViewer is A configurable heat map viewer that provides users with several options for manipulating and visualizing array-based data. The HeatMapViewer displays values in a heat map format where by default the largest values are displayed as the reddest (hot), the smallest values are displayed as the bluest (cool), and intermediate values are a lighter color of either blue or red..
+HeatMapViewer is a GenePattern module written by Marc-Danie Nazaire, The Broad Institute.
+HeatMapViewer can be categorized as Visualization, Heatmap, Data Analysis.
+HeatMapViewer has the following parameters: dataset.
+The HeatMapViewer module in GenePattern is a powerful visualization tool for displaying complex genomic data in a color-coded matrix format.
+The HeatMapViewer allows researchers to transform numerical data into an intuitive visual representation of gene expression patterns.
+In the HeatMapViewer, larger values are typically displayed in red (hot colors), while smaller values are shown in blue (cool colors), creating an immediate visual understanding of data variation.
+The HeatMapViewer supports both row-relative and global color scaling, enabling flexible visualization strategies for different types of genomic datasets.
+Users of the HeatMapViewer can choose between continuous color gradients and discrete color mappings to represent data values.
+The HeatMapViewer module allows researchers to add feature and sample labels using GMX and CLS files, enhancing the interpretability of complex genomic data.
+With the HeatMapViewer, scientists can search for specific features or samples within the heat map, facilitating detailed data exploration.
+The HeatMapViewer supports saving visualizations in SVG and PNG formats, making it easy to include heat map representations in scientific presentations and publications.
+The HeatMapViewer is particularly useful for analyzing gene expression data, showing patterns of up and down-regulation across different experimental conditions.
+Researchers can use the HeatMapViewer to quickly identify clusters, trends, and outliers in large-scale genomic datasets.
+The HeatMapViewer's flexible color and scaling options make it adaptable to various types of array-based data beyond just gene expression.
+dataset: input file type, the dataset to display in heat map format, a .gct file, required by HeatMapViewer module
+HeatMapViewer requires a dataset input to generate a visual representation of data
+The dataset parameter specifies the primary data source for creating the heat map visualization
+Dataset must be in .gct file format to be compatible with the HeatMapViewer module
+Input dataset contains the numerical values that will be transformed into color-coded heat map representation
+HeatMapViewer module requires a GCT file as the primary input dataset.
+The input GCT file contains numerical expression data with rows representing features and columns representing samples.
+The GCT file is a tab-delimited text file with a specific header structure in the first few lines.
+HeatMapViewer supports optional feature labels through a GMX file format.
+The GMX file allows color-based annotation of features in the heat map visualization.
+HeatMapViewer supports optional sample labels through a CLS file format.
+The CLS file enables color-based annotation of samples in the heat map visualization.
+The module can generate output images in SVG and PNG formats.
+The output image represents the heat map visualization of the input dataset.
+The heat map uses color gradients to represent numerical values, with red indicating high values and blue indicating low values.
+Users can customize the color scheme through module options like global or relative color scaling.
+The module supports discrete or gradient color mapping for data representation.
+The heat map can be saved with configurable visual parameters like color selection and scaling method.
+HeatMapViewer is a configurable visualization module for displaying array-based data in a heat map format.
+The HeatMapViewer uses color intensity to represent data values, with red indicating high values and blue indicating low values.
+The module allows users to choose between row-relative and global color scaling methods for converting numerical data to colors.
+Users can select between continuous color gradients and discrete color mapping in the HeatMapViewer module.
+The HeatMapViewer supports adding feature labels using GMX files, which can color-annotate specific features in the heat map.
+Sample labels can be added to the HeatMapViewer using CLS files, allowing color-based annotation of individual samples.
+The module enables saving heat map visualizations in SVG and PNG image formats with some size limitations.
+HeatMapViewer provides a search functionality to find specific features or samples within the heat map.
+The module is implemented using JavaScript and jQuery, making it compatible across different platforms and operating systems.
+The HeatMapViewer has undergone multiple version updates to improve compatibility and fix various technical issues since its initial release.
+The heat map visualization allows users to represent three-dimensional data (samples, features, and values) in a compact and visually intuitive format.
+Users can customize color schemes and color selection in the HeatMapViewer to highlight different aspects of their dataset.
+The module supports case-sensitive and case-insensitive searching of features and samples within the heat map visualization.

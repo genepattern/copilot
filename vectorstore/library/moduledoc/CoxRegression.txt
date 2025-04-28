@@ -1,0 +1,73 @@
+CoxRegression is on version 1.0.
+A description of CoxRegression is Cox regression using clinical data and .cls file. Once a genomics marker or predictive model for clinical outcome is built, this module tests whether it associates with outcome of new cohorts, or has better predictive ability compared to already known clinical markers/predictive models..
+CoxRegression is a GenePattern module written by Yujin Hoshida (Broad Institute) gp-help@broad.mit.edu.
+CoxRegression can be categorized as Survival Analysis.
+CoxRegression has the following parameters: input surv data, input cls file, output file, time, status, variable continuous, variable category, variable interaction terms, strata, input subgroup, variable selection.
+The CoxRegression module in GenePattern is a powerful tool for survival analysis in biomedical research.
+The CoxRegression module allows researchers to analyze time-to-event data using Cox proportional hazards modeling.
+CoxRegression can help determine how different clinical and genomic variables impact survival outcomes in patient populations.
+The module requires input files including survival time data, censoring status, and optional clinical variables in a tab-delimited format.
+CoxRegression can handle both continuous variables like age and categorical variables like gender or disease subtype.
+Researchers can use the CoxRegression module to assess the statistical significance of potential prognostic markers.
+The module generates comprehensive statistical outputs including hazard ratios, p-values, and model fit statistics.
+CoxRegression supports advanced analysis techniques like interaction term modeling and variable selection strategies.
+The module is particularly useful in cancer research for understanding factors that influence patient survival and disease progression.
+CoxRegression can help identify which clinical or molecular features are most predictive of patient outcomes.
+The module leverages R statistical programming language to perform complex survival data analyses.
+Researchers can use CoxRegression to compare the predictive power of different clinical markers or genomic signatures.
+The module allows stratification of analyses to explore survival differences within specific patient subgroups.
+CoxRegression provides a standardized approach to survival analysis within the GenePattern computational biology platform.
+The module requires basic understanding of survival analysis and biostatistical concepts to interpret results effectively.
+input surv data: filename (string) - Clinical data file containing survival time and censor status in .txt format. Required.
+input cls file: filename (string) - Class information file in .cls format. Required.
+output file: filename (string) - Name for the output result file. Required.
+time: string - Column name for survival time field in input data. Default is "time". Optional.
+status: string - Column name for censor field in input data. Default is "status". Optional.
+variable continuous: string - Comma-separated list of continuous dependent variables (e.g., age) from input data. Optional.
+variable category: string - Comma-separated list of categorical dependent variables (e.g., gender) from input data or cls file. Optional.
+variable interaction terms: string - Interaction variables separated by colon and sets separated by comma. Optional.
+strata: string - Perform fit for each strata. Default is unspecified. Optional.
+input subgroup: string - Analyze specific data subset by specifying variable and value. Optional.
+variable selection: string - Method for entering dependent variables into model. Options include "no", "Stepwise selection", "Forward selection", "Backward selection". Default is "no". Optional.
+CoxRegression module requires two primary input files: a clinical data file and a class file.
+Clinical data input file (surv.txt):
+- Tab-delimited text file
+- First row contains column headers
+- First column is sample identifier
+- Columns include survival time, censor status, and clinical variables
+- Sample variables can be continuous (e.g., age) or categorical (e.g., sex)
+- Matches sample order with class file
+Class input file (surv.cls):
+- Contains phenotype labels for each sample
+- Used to categorize samples into groups
+- Matches sample order with clinical data file
+Output file (CoxRegression_result.txt):
+- Contains Cox regression analysis results
+- Includes statistical metrics like coefficients, hazard ratios
+- Provides p-values and model fit statistics
+- Helps assess association between variables and time-to-event data
+Survival time column:
+- Represents duration until event occurs
+- Typically measured in days, weeks, or months
+- Named flexibly by user (default: "time")
+Censor status column:
+- Binary indicator of event occurrence
+- "1" indicates event happened
+- "0" indicates no event or censored data
+- Named flexibly by user (default: "status")
+The CoxRegression module is a statistical tool for analyzing survival data using Cox proportional hazards regression.
+The CoxRegression module helps researchers assess how different variables relate to time-to-event outcomes in clinical studies.
+Cox regression allows scientists to examine the impact of multiple variables on survival time, accounting for censored data.
+The module requires two primary input files: a clinical data file and a class information file (.cls) with matching sample orders.
+Input data must include a sample identifier, survival time, censoring status, and additional clinical variables.
+Continuous variables like age can be included as predictive factors in the Cox regression analysis.
+Categorical variables such as gender or clinical classification can also be incorporated into the survival model.
+The module supports advanced statistical techniques like interaction terms between variables.
+Researchers can perform stratified analyses to examine survival patterns within specific subgroups.
+Variable selection methods include no selection, stepwise, forward, and backward selection approaches.
+The output provides comprehensive statistical results, including coefficients, hazard ratios, p-values, and model fit statistics.
+Key statistical tests reported include likelihood ratio, Wald, and score (logrank) tests.
+The module uses Efron's approximation for handling tied survival times.
+Results can help researchers understand the prognostic significance of clinical and molecular variables.
+The CoxRegression module is implemented in R and compatible with multiple computing platforms.
+Interpreting the results requires basic knowledge of biostatistics and survival data analysis techniques.

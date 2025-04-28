@@ -1,0 +1,56 @@
+CellFie is on version .
+A description of CellFie is A GenePattern module for computing metabolic task scores from gene expression data using genome-scale metabolic models..
+CellFie is a GenePattern module written by .
+CellFie can be categorized as Metabolic Analysis, Gene Expression, Computational Biology.
+CellFie has the following parameters: Data, SampleNumber, ReferenceModel, ThresholdingApproach, PercentileOrValue, GlobalCutoff, LocalThresholdType, LowerBound, UpperBound.
+The CellFie GenePattern module is a computational tool for analyzing metabolic task activity using gene expression data.
+CellFie allows researchers to quantify metabolic task performance across different biological samples using genome-scale metabolic models.
+The CellFie module supports multiple input file formats including .mat, .csv, and .xlsx for gene expression datasets.
+CellFie requires users to specify the number of samples, species-specific genome-scale metabolic model, and gene expression thresholding parameters.
+The module provides advanced thresholding approaches, including global and local methods for defining gene activity levels.
+CellFie generates multiple output files including task scores, binary task scores, and detailed metabolic task performance information.
+Users can assess metabolic task activity across different experimental conditions using the CellFie GenePattern module.
+The module supports multiple species-specific genome-scale metabolic models, enabling broad comparative metabolic analysis.
+CellFie helps researchers understand cellular metabolic capabilities by translating gene expression data into metabolic task performance metrics.
+The GenePattern implementation of CellFie provides a user-friendly interface for complex metabolic network analysis.
+Researchers can use CellFie to investigate metabolic differences between cell types, conditions, or experimental treatments.
+The module's output files provide comprehensive information about metabolic task scores and the underlying gene expression data.
+CellFie enables quantitative assessment of metabolic potential using computational systems biology approaches.
+The module supports both percentile-based and absolute value thresholding methods for defining gene activity.
+Researchers can download and analyze CellFie results directly through the GenePattern web interface.
+Data - File type: .mat, .csv, or .xlsx - Required input for gene expression matrix - Contains gene expression data for analysis in CellFie module
+SampleNumber - Integer type - Required parameter - Specifies the number of samples present in the uploaded gene expression dataset
+ReferenceModel - String type - Required parameter - Specifies the species-specific genome-scale metabolic model to be used for metabolic task score computation
+Thresholding Approach - String type - Optional parameter with default setting - Determines whether gene activity threshold is global (same for all genes) or local (gene-specific)
+Percentile Or Value - String type - Optional parameter - Defines threshold as either a strict numeric value or a percentile of expression value distribution
+Global Cutoff - Numeric type - Conditional parameter - Required if global thresholding approach is selected - Defines the gene activity threshold value
+Local Threshold Type - String type - Conditional parameter - Required if local thresholding approach is selected - Determines method of calculating gene-specific threshold (mean or minmaxmean)
+LowerBound - Numeric type - Conditional parameter - Required for minmaxmean local thresholding - Specifies lower bound for gene activity threshold
+UpperBound - Numeric type - Conditional parameter - Required for minmaxmean local thresholding - Specifies upper bound for gene activity threshold
+Here are the input and output files for the CellFie GenePattern module:
+Input Files:
+Gene expression matrix can be .mat, .csv, or .xlsx file containing gene expression data
+Mat files require a structure variable with "genes" cell field containing NCBI Entrez gene IDs
+Mat files require a "value" double field with gene expression matrix
+CSV/XLSX files need rows as genes, columns as samples
+First column must be NCBI Entrez gene IDs
+First header row starts with "genes" followed by sample names
+CellFie input files must have no missing values or 'NA'/'nan' entries
+Output Files:
+stdout.txt contains job log information for the CellFie GenePattern module
+taskInfo.csv describes the 195 metabolic tasks assessed in the analysis
+score.csv provides matrix of metabolic task activity quantifications
+score_binary.csv contains binary version of metabolic task score matrix
+detailScoring.csv includes detailed metabolic task scoring information
+Cellfieout.mat is a Matlab file with task information and score matrices
+The CellFie GenePattern module is a computational tool for analyzing metabolic task activity using gene expression data.
+CellFie requires a gene expression matrix with NCBI Entrez gene IDs as input, which can be in .mat, .csv, or .xlsx format.
+Users must specify the number of samples and select a species-specific genome-scale metabolic reference model for analysis.
+The module uses thresholding approaches to determine which genes are considered active in the experimental dataset.
+Default thresholding uses a local method with lower and upper bounds set at the 25th and 75th percentiles of gene expression.
+Users can choose between global or local thresholding methods, with options to define thresholds by strict values or percentiles.
+The CellFie module generates six output files, including a task information file, a metabolic task score matrix, and a binary score matrix.
+The detailScoring.csv output provides comprehensive information about essential reaction scores for each sample.
+The module supports multiple genome-scale models and allows customization of gene activity thresholds.
+CellFie can help researchers understand metabolic activity across different experimental conditions by integrating transcriptomic data with metabolic network models.
+The tool is designed to be user-friendly, with a web interface on the GenePattern platform that guides users through the analysis process.

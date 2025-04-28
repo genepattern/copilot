@@ -1,0 +1,77 @@
+SubMap is on version .
+A description of SubMap is Maps subclasses between two data sets. It searches for matching pairs of subclasses between two independent microarray data sets using Gene Set Enrichment Analysis (GSEA). The mapping result is represented as a subclass association (SA) matrix filled with p-values for each subclass association..
+SubMap is a GenePattern module written by Yujin Hoshida (Broad Institute).
+SubMap can be categorized as Clustering, Microarray Analysis.
+SubMap has the following parameters: datasetA, datasetB, classA, classB, num marker genes, num perm, num perm fisher, weighted score type, null distribution, p value correction, cluster rows, cluster columns, nominal p value matrix, create legend, random seed, output filename.
+The SubMap module in GenePattern is a powerful tool for comparing and mapping subclasses between two independent microarray datasets.
+SubMap helps researchers identify common subtypes across different gene expression studies by comparing subclass characteristics.
+The SubMap module uses Gene Set Enrichment Analysis (GSEA) to measure similarity between subclasses from different datasets.
+SubMap generates a subclass association (SA) matrix that represents the statistical relationships between subclasses from two different datasets.
+By clustering the SA matrix, researchers can visualize the global structure and correspondence of subclasses observed across different studies.
+SubMap is particularly useful for integrating microarray data from independent studies that may have different experimental platforms or conditions.
+The module requires input datasets with common gene identifiers and corresponding class label files to perform subclass mapping.
+SubMap can handle various types of subclass information, including those derived from unsupervised clustering or clinical phenotypes.
+The module provides flexibility in statistical analysis through parameters like number of marker genes, permutations, and p-value correction methods.
+SubMap generates multiple output files, including a summary of results, SA matrices, and heatmap visualizations of subclass associations.
+The default settings in SubMap use a relatively large number of permutations to compute more accurate p-values compared to the SubMapBrowser module.
+Researchers can use SubMap to identify potential common subtypes across different disease datasets, facilitating cross-study comparisons.
+The module is particularly valuable in cancer research, where identifying consistent molecular subtypes across different patient cohorts is crucial.
+SubMap helps overcome challenges in combining microarray datasets by providing a statistically robust method for subclass comparison.
+The module's output can help researchers understand the underlying biological similarities and differences between different gene expression studies.
+datasetA: file, Input dataset A (gct) with common gene ID with dataset B, required, must remove spaces from sample names
+datasetB: file, Input dataset B (gct) with common gene ID with dataset A, required, must remove spaces from sample names
+classA: file, Input class label A (cls), third line must be numeric, required, class labels start at 1
+classB: file, Input class label B (cls), third line must be numeric, required, class labels start at 1
+num marker genes: integer, Number of marker genes to be mapped, optional, default is 100, recommended to use default
+num perm: integer, Number of random permutations for enrichment score, optional, default is 100, larger number increases p-value accuracy
+num perm fisher: integer, Number of random permutations for Fisher's statistics, optional, default is 1000, recommended to use default
+weighted score type: boolean, Weight enrichment by correlation vector, optional, default is yes, recommended unless familiar with GSEA
+null distribution: string, Null distribution method, optional, default is "pool", choices include "pool" and "each"
+p value correction: string, P-value correction method, optional, default is Bonferroni, choices include Bonferroni and FDR
+cluster rows: boolean, Cluster dataset A's subclass in SA matrix heatmap, optional, default is yes
+cluster columns: boolean, Cluster dataset B's subclass in SA matrix heatmap, optional, default is yes
+nominal p value matrix: boolean, Create heatmap for nominal-p matrix, optional, default is yes
+create legend: boolean, Create legend for heatmap, optional, default is yes
+random seed: integer, Random seed for permutations, optional, default is 47365321
+output filename: string, Name of output files for SA matrices and results, required
+SubMap module input files:
+datasetA is a GCT format gene expression matrix with gene identifiers shared between datasets
+datasetA requires removal of spaces from sample names
+datasetA contains gene expression measurements across samples
+datasetB is a GCT format gene expression matrix with gene identifiers shared between datasets
+datasetB requires removal of spaces from sample names
+datasetB contains gene expression measurements across samples
+classA is a CLS format file with numeric class labels for samples in datasetA
+classA requires sequential numeric labels starting from 1
+classA represents subclass or phenotype information for samples in datasetA
+classB is a CLS format file with numeric class labels for samples in datasetB
+classB requires sequential numeric labels starting from 1
+classB represents subclass or phenotype information for samples in datasetB
+SubMap module output files:
+<output.filename>_SubMapResult.txt contains a summary of SubMap analysis results
+<output.filename>_SubMapResult.txt provides overview of subclass mapping outcomes
+<output.filename>_<Bonferroni, FDR>_SAmatrix.gct contains the subclass association matrix
+<output.filename>_<Bonferroni, FDR>_SAmatrix.gct stores p-values for subclass associations
+<output.filename>_<Bonferroni, FDR>_SAmatrix.png is a heatmap visualization of the subclass association matrix
+<output.filename>_<Bonferroni, FDR>_SAmatrix.png graphically represents subclass relationships
+<output.filename>_nominal_p_matrix_<AonB, BonA>.gct contains nominal p-value matrices
+<output.filename>_nominal_p_matrix_<AonB, BonA>.gct stores raw p-values before correction
+<output.filename>_nominal_p_matrix_<AonB, BonA>.png is a heatmap of nominal p-value matrices
+<output.filename>_nominal_p_matrix_<AonB, BonA>.png visualizes nominal p-value relationships
+legend.png provides a legend for the heatmap visualizations
+legend.png explains color coding and interpretation of heatmap results
+SubMap is a computational method for comparing and mapping subclasses between two independent microarray datasets.
+SubMap helps researchers identify common subtypes across different gene expression studies by comparing sample subclasses.
+The module uses Gene Set Enrichment Analysis (GSEA) to measure similarity between subclasses from different datasets.
+SubMap generates a subclass association (SA) matrix filled with p-values representing the statistical significance of subclass relationships.
+The module requires two input datasets (datasetA and datasetB) with common gene identifiers and corresponding class label files.
+SubMap automatically extracts the intersection of genes between the two input datasets to ensure comparability.
+The module allows customization of parameters like number of marker genes, permutations, and statistical correction methods.
+SubMap can help researchers understand the reproducibility and consistency of molecular subtypes across independent studies.
+The default settings use 100 marker genes and 100 random permutations to compute enrichment scores.
+SubMap produces multiple output files, including a summary of results, SA matrix, and heatmap visualizations.
+The module can cluster subclasses from both datasets to reveal global structures and correspondence between molecular subtypes.
+SubMap is particularly useful for comparing disease subtypes or molecular classifications across different gene expression platforms.
+The method addresses challenges in combining microarray datasets due to platform-specific biases and technical variations.
+Researchers can adjust parameters like p-value correction method (Bonferroni or False Discovery Rate) to suit their analysis needs.
+SubMap provides a systematic approach to identifying common molecular subtypes across independent genomic studies.

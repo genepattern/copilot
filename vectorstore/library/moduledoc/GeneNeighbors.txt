@@ -1,0 +1,55 @@
+GeneNeighbors is on version 1.0.
+A description of GeneNeighbors is Select features that most closely resemble or differ from another feature. The GeneNeighbors module calculates the nearest neighbors for a particular gene (or other continuous vector pseudo-gene) by trying to find other genes whose expression values follow similar trends for the samples..
+GeneNeighbors is a GenePattern module written by Ken Ross (Broad Institute).
+GeneNeighbors can be categorized as GeneListSelection.
+GeneNeighbors has the following parameters: Dataset, gene.accession, num.neighbors, marker.list.file, marker.dataset.file, distance.metric, filter.data, min.threshold, max.threshold, min.fold.diff, min.abs.diff.
+The GeneNeighbors module helps researchers identify genes with similar expression patterns across multiple samples.
+The GeneNeighbors module calculates the nearest neighbors for a specific gene by comparing its expression values across different samples.
+Users can specify the number of nearest neighbors they want to find for a particular gene using the num.neighbors parameter.
+GeneNeighbors supports four different distance metrics for comparing gene expression: Cosine, Euclidean, Manhattan, and Pearson correlation.
+The Cosine distance metric measures the similarity between gene expression vectors by calculating the angle between them in a multi-dimensional space.
+The Euclidean distance metric calculates the straight-line distance between gene expression vectors in a multi-dimensional space.
+The Manhattan distance metric measures the total absolute difference between gene expression values across all samples.
+The Pearson correlation metric assesses the linear relationship between two gene expression profiles, indicating how closely they trend together.
+GeneNeighbors produces an output table with two columns: the gene identifier and its calculated distance score relative to the reference gene.
+The results from GeneNeighbors can be further visualized using complementary GenePattern modules like GeneListSignificanceViewer and HeatMapViewer.
+Researchers can use GeneNeighbors to identify genes with similar expression patterns, which can provide insights into potential functional relationships or shared biological processes.
+The module allows filtering of data based on minimum and maximum thresholds to focus on genes with significant expression levels.
+GeneNeighbors is particularly useful in cancer research, where identifying genes with similar expression patterns can help understand molecular classification and potential biomarkers.
+The module is part of the GenePattern suite, a comprehensive bioinformatics platform for analyzing genomic data.
+dataset: Dataset type, input dataset in .gct, .res, or .odf format, required parameter for GeneNeighbors module.
+gene.accession: String type, reference gene identifier from dataset to find neighbors for, required parameter in GeneNeighbors module.
+num.neighbors: Integer type, specifies number of nearest neighbors to find, default value is 50, optional parameter in GeneNeighbors module.
+marker.list.file: String type, output filename for analysis results in .odf format, required parameter in GeneNeighbors module.
+marker.dataset.file: String type, output filename for raw data of selected markers in .gct format, required parameter in GeneNeighbors module.
+distance.metric: String type, metric for finding neighbors, default is Pearson Correlation, choices include Cosine Distance, Euclidean Distance, Manhattan Distance, Pearson Correlation.
+filter.data: Boolean type, determines whether values below thresholds will be ignored, default value is no, optional parameter in GeneNeighbors module.
+min.threshold: Numeric type, minimum threshold for data filtering, default value is 20, optional parameter in GeneNeighbors module.
+max.threshold: Numeric type, maximum threshold for data filtering, default value is 20000, optional parameter in GeneNeighbors module.
+min.fold.diff: Numeric type, minimum fold difference for filtering genes, default value is 5, optional parameter in GeneNeighbors module.
+min.abs.diff: Numeric type, minimum absolute difference for filtering genes, default value is 50, optional parameter in GeneNeighbors module.
+GeneNeighbors module input and output file descriptions:
+Input Dataset: Gene expression data file in .gct, .res, or .odf format containing gene expression values across samples
+Reference Gene Accession: Identifier for the specific gene to find neighbors for within the input dataset
+Marker List File Output: Tab-delimited .odf file containing two columns with gene identifiers and calculated distance scores
+Marker Dataset File Output: .gct format file with raw expression data for the top selected neighbor genes
+Distance Metric Input: Selection of distance calculation method (Cosine, Euclidean, Manhattan, or Pearson)
+Filtering Parameters: Optional thresholds for minimum/maximum gene expression values and fold difference
+Neighbor Number Input: Integer specifying how many nearest neighbor genes to identify (default 50)
+Marker List File Contents: Ranked list of genes with their calculated distance/similarity to reference gene
+Marker Dataset File Contents: Expression matrix subset containing only the top selected neighbor genes
+GeneNeighbors is a computational method for identifying genes with similar expression patterns across multiple samples.
+The GeneNeighbors module calculates similarity between genes using different distance metrics like Cosine, Euclidean, Manhattan, and Pearson correlation.
+Users can specify a reference gene and the number of nearest neighbors they want to find based on expression similarity.
+The algorithm compares expression values across all samples to determine how closely different genes' expression trends match.
+Distance metrics quantify the similarity between gene expression profiles using mathematical calculations involving sample-wise comparisons.
+The Cosine distance metric measures the angular separation between gene expression vectors in multi-dimensional sample space.
+The Euclidean distance calculates the straight-line geometric distance between gene expression profiles across samples.
+Manhattan distance measures the total absolute difference in expression values between genes across all samples.
+Pearson correlation assesses the linear relationship between two genes' expression patterns, accounting for variations in scale.
+GeneNeighbors produces an output table ranking genes by their similarity score to the reference gene, ordered from most to least similar.
+The module allows filtering of genes based on expression thresholds and fold differences to focus on biologically meaningful similarities.
+Results can be visualized using complementary tools like GeneListSignificanceViewer and HeatMapViewer for further analysis.
+The algorithm is based on computational methods developed in cancer classification research for identifying gene expression patterns.
+GeneNeighbors works with various input file formats like .gct and .res, making it flexible for different gene expression datasets.
+The module is implemented in Java and can run on multiple operating systems, requiring Java JVM version 1.5 or higher.

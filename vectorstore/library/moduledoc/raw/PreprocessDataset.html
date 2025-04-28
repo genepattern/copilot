@@ -1,0 +1,198 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>PreprocessDataset (v6) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/PreprocessDataset/6?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Performs several preprocessing steps on a res, gct, or odf input file</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Joshua Gould, Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<p><span style="font-size:14px;"><span style="line-height: 18px;">Most analyses of gene expression data derived from microarray experiments begins with preprocessing of the expression data.  Preprocessing removes platform noise and genes that have little variation so the subsequent analysis can identify interesting variations, such as the differential expression between tumor and normal tissue.  GenePattern provides the PreprocessDataset module for this purpose.  While the module's default parameter values are tailored to Affymetrix expression arrays, we provide guidelines below for its use with Illumina expression arrays.  <em>This module has limited applicability to gene expression data derived from RNA-seq experiments and typically is not employed in RNA-Seq analysis workflows.</em></span></span></p>
+<h2>Description</h2>
+<p><span style="font-size:14px;"><span style="line-height: 18px;">This module performs a variety of pre-processing operations including </span><span style="line-height: 18px;">thresholding/ceiling, variation filtering, normalization and log2 transform.  It may be applied to datasets in .gct, .res, or .odf formatted files.</span></span></p>
+<p><span style="font-size:14px;">The algorithm conducts the following steps in order.  Each step is optional, controlled by the module's parameter settings.</span></p>
+<ol>
+<li><span style="font-size:14px;"><em>Set floor and ceiling values.</em>  Any expression value lower than the floor value is set to the floor value.  Any expression value higher than the ceiling value is set to the ceiling value.</span></li>
+<li><span style="font-size:14px;"><em>Sample-count threshold filtering.</em> Remove a gene if the number of samples with values greater than a specified expression threshold is less than a specified sample count threshold.  A gene whose expression profile contains insufficient values greater than a specified threshold may be an indication of poor-quality data.</span></li>
+<li><span style="font-size:14px;"><em>Variation filtering.  </em>Remove a gene if the variation of its expression values across the samples does not meet a minimum threshold.  The module uses two measures of variation: fold change (MAX/MIN) and delta (MAX - MIN).  If a gene's fold change is less than a specified minimum fold change OR its delta is less than a specified minimum delta, the gene will be removed from the data set. Genes with little variation across samples are unlikely to be biologically relevant to the downstream analysis.</span></li>
+<li><span style="font-size:14px;"><em>Row normalization or log2 transform.  </em>If row normalization is enabled, a gene's expression values across all samples are normalized.  Row normalization adjusts gene expression values to remove systematic variation between microarray experiments.  If log2 transform is enabled, each expression value is converted to the log base 2 of the value. When using ratios to compare gene expression between samples, this transformation brings up- and down-regulated genes to the same scale.  For example, ratios of 2 and 0.5, indicating two-fold changes for up- and down-regulated expression, respectively, become +1 and -1.  Row normalization and log2 transform are mutually exclusive: one cannot take the log2 of zero-centered data due to the presence of negative values.</span></li>
+</ol>
+<p><span style="font-size:14px;">If thresholding and filtering are disabled, then rows may be selected for inclusion by random sampling (without replacement).  The <em>row sampling rate</em> parameter specifies the fraction of genes that will be selected.  If r<em>ow sampling rate</em> is set to 1, all genes will be selected.</span></p>
+<h2>Applicability to RNA-Seq Derived Expression Data</h2>
+<p><span style="font-size:14px;">As mentioned in the introduction, this module has limited applicability to expression data derived from RNA-Seq experiments. DNA microarrys have a limited dynamic range for detection due to high background levels arising from cross hybridization and signal saturation.  RNA-Seq data, on the other hand, have very low background signal and a higher dynamic range of expression levels.  Due to RNA-Seq's larger dynamic range, setting floor and ceiling values is unnecessary, as is sample-count threshold filtering.</span></p>
+<p><span style="font-size:14px;">Variation filtering is also of questionable value when working with expression data derived from RNA-seq experiments.  Because RNA-seq expression data is derived from read counts, researchers view gene or transcript expression measurements as legitimate <span style="line-height: 18px;">regardless of their level of variability and</span><span style="line-height: 18px;"> may not want to eliminate genes or transcripts from consideration in the downstream analysis.  Unlike microarray data, there are no default values for min fold change or min delta that would generally apply to RNA-seq derived expression data; thus, rather than eliminate features due to levels of variability below arbitrary thresholds, the current practice is to skip variation filtering and retain all features in RNA-seq derived expression data.</span></span></p>
+<p><span style="font-size:14px;">In order to derive transcript or gene expression levels from RNA-Seq read counts, the counts must be normalized to remove biases arising from differences in transcript length and differences in sequencing depth between samples.  For example, longer transcripts will produce more sequencing fragments, and thus more counts, than shorter transcripts.  Similarly, differences in sequencing depth will be reflected in read counts.  FPKM normalization (fragments per kilobase of transcript per million mapped fragments) divides transcript counts by the transcript length and total read count to eliminate these inherent biases.  We assume that GCT-formatted expression data derived from RNA-seq experirments is in units of FPKM (or RPKM for data derived from single-ended sequencing experiments) and has therefore undergone normalization and does not require PreprocessDataset normalization.</span></p>
+<p><span style="font-size:14px;">For downstream analyses that employ correlation metrics (e.g. clustering, feature selection) it may be useful to log transform the data first.  Due to the wide dynamic range of RNA-Seq data, highly expressed outliers could dominate the calculated correlations and log transforming the data would be one approach to working around this issue (see [Adiconis, X.].  However, if the expression data is to be log transformed, it would first be necessary to add a small number (e.g., 1) to each expression value.  When calculating correlation, this would give more weight to genes with lower expression values.  An alternative approach to the outlier issue not requiring log transformation of the data would be to use a rank correlation metric such as Spearman correlation.</span></p>
+<h2>Setting Thresholds and Filters with Illumina Expression Data</h2>
+<p><span style="font-size:14px;">While this module has default values which pertain to Affy expression data, it may also be effectively used with Illumina expression data, after first running that data through IlluminaNormalizer and changing the default values in this module to better suit Illumina data. Suggested values are as follows (with thanks to Yujin Hoshida of the Broad Institute):</span></p>
+<ul>
+<li><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">Use a floor value a little above background signal.  You can determine the background signal by calculating the mean signal across all the </span><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">negative control probes across all samples.  If you are using IlluminaExpressionFileCreator, these values can be found in the "controls" GCT along with the other controls.  If the negative control probe signals are not available, you can instead use the 20 or so gene probes with the lowest mean signal (across all samples).  This should be calculated using the expression levels *before* background correction.</span></span></li>
+<li><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">no ceiling (ie 0)</span></span></li>
+<li><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">fold change <span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">3 - 5</span></span></span></li>
+<li><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">min delta 300 - 500 after</span></span><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;"> cubic spline normalization in Illumina<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">Normalizer, or probe filtering based on CV (coefficient of variation)*.  It is recommended that you turn off the PreprocessDataset normalization and variation filter options and use IlluminaNormalizer instead.</span></span></span></span></li>
+</ul>
+<p><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; line-height: normal;">*There is currently no module in GenePattern for this last method, probe filtering based on CV, however Yujin has plans to release his own module for this purpose to GPARC (<a href="http://gparc.org" target="_blank">http://gparc.org</a>)</span></span></span></span></p>
+<h2>References</h2>
+<p class="p1">Kuehn, H., Liberzon, A., Reich, M. and Mesirov, J. P. 2008. Using GenePattern for Gene Expression Analysis. Current Protocols in Bioinformatics. 22:7.12.1–7.12.39.</p>
+<p class="p1">Adiconis, X., Borges-Rivera, D., et al., Comparative analysis of RNA sequencing methods for dergraded or low-input samples. Nature Methods 10, 623-629 (2013).</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped" id="module_params_table">
+<thead>
+<tr>
+<th style="width: 95px;">Name</th>
+<th style="width: 95px;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input filename <span style="color:red;">*</span></td>
+<td>Input filename - .res, .gct, .odf - Dataset cannot have any missing values.</td>
+</tr>
+<tr>
+<td>threshold and filter </td>
+<td>Flag controlling whether to apply thresholding and variation filter.  The default value is <em>yes</em>.</td>
+</tr>
+<tr>
+<td>floor </td>
+<td>Value for floor threshold. <em>The default value is 20, but this only applies to Affymetrix microarray data; the value is not appropriate for expression data derived from RNA-seq experiments or alternative microarray platforms. For Illumina data this should be set to a value a little above the background signal.</em></td>
+</tr>
+<tr>
+<td>ceiling </td>
+<td>Value for ceiling threshold.  <em>The default value is 20,000, but this only applies to Affymetrix microarray data; the value is not appropriate for expression data derived from RNA-seq experiments or alternative microarray platforms. For Illumina data this should be set to 0</em></td>
+</tr>
+<tr>
+<td>min fold change </td>
+<td>Minimum fold change for variation filter.  <em>The default value is 3, but this only applies to Affymetrix microarray data; the value is not appropriate for expression data derived from RNA-seq experiments or alternative microarray platforms. For Illumina data this should be set between 3 and 5.</em></td>
+</tr>
+<tr>
+<td>min delta </td>
+<td>Minimum delta for variation filter.  <em>The default value is 100, but this only applies to Affymetrix microarray data; the value is not appropriate for expression data derived from RNA-seq experiments or alternative microarray platforms. For Illumina data this should be set to between 300 and 500 (assuming you've run your data through IlluminaNormalizer and used cubic spline normalization.</em></td>
+</tr>
+<tr>
+<td>num outliers to exclude </td>
+<td>Number of outliers per row to ignore when calculating row min and max for variation filter.  If this value is set to <em>n</em>, then then the n smallest and the <em>n</em> largest expression values will ignored.</td>
+</tr>
+<tr>
+<td>row normalization </td>
+<td>Perform row normalization. Row normalization and log2 transform are mutually exclusive.</td>
+</tr>
+<tr>
+<td>row sampling rate </td>
+<td>Sample rows without replacement to obtain this fraction of the total number of rows</td>
+</tr>
+<tr>
+<td>threshold for removing rows </td>
+<td>Threshold for removing rows. Row normalization and log2 transform are mutually exclusive.</td>
+</tr>
+<tr>
+<td>number of columns above threshold </td>
+<td>Remove row if this number of columns not &gt;= given threshold</td>
+</tr>
+<tr>
+<td>log2 transform </td>
+<td>Apply log2 transform after all other preprocessing steps.  </td>
+</tr>
+<tr>
+<td>output file format </td>
+<td>Output file format</td>
+</tr>
+<tr>
+<td>output file <span style="color:red;">*</span></td>
+<td>Output file name</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>input filename<br/>
+	A <a href="/cancer/software/genepattern/file-formats-guide#GCT">GCT</a>, <a href="/cancer/software/genepattern/file-formats-guide#RES">RES</a>, or <a href="/cancer/software/genepattern/file-formats-guide#ODF">ODF</a> file containing expression data with no missing values.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>output file<br/>
+	A <a href="/cancer/software/genepattern/file-formats-guide#GCT">GCT</a> or <a href="/cancer/software/genepattern/file-formats-guide#RES">RES</a> file containing the filtered, preprocessed expression data.</li>
+</ol>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Preprocess &amp; Utilities</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>2016-02-11</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2013-12-02</td>
+<td>Update to new html doc</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2013-11-11</td>
+<td>Adds support for Illumina; performs log transform; deprecates max sigma binning</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2005-05-26</td>
+<td>Changed default value of ceiling to 20000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2005-05-26</td>
+<td>Added additional filtering options</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

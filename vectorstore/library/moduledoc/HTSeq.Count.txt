@@ -1,0 +1,52 @@
+HTSeq.Count is on version 3.0.
+A description of HTSeq.Count is Takes alignment files in SAM/BAM format and a feature file in GTF/GFF format, name sorts the alignment file(s) and calculates the number of reads mapping to each feature. Can optionally produce output in GCT format..
+HTSeq.Count is a GenePattern module written by Barbara Hill, GenePattern Team; Guy Bottu, VIB BioinformaticsCore.
+HTSeq.Count can be categorized as RNA-Seq, Sequencing, Bioinformatics, Read Counting.
+HTSeq.Count has the following parameters: input file, sample names, GTF file, strandedness, output file, output format, min qual, mode, count nonunique, count secondary, count supplementary, id type, gene name, feature type.
+The HTSeq.Count GenePattern module is a powerful tool for quantifying gene expression from RNA-sequencing data by counting mapped reads.
+HTSeq.Count allows researchers to transform raw sequencing alignment files into meaningful gene expression counts using genomic feature annotations.
+The module can process multiple input SAM or BAM alignment files simultaneously, making it efficient for large-scale gene expression studies.
+HTSeq.Count provides flexible options for handling reads that overlap multiple genomic features, including union, intersection-strict, and intersection-nonempty modes.
+Researchers can customize read counting by specifying strand-specificity, minimum read quality, and whether to count secondary or supplementary alignments.
+The module supports different identification strategies for features, allowing users to count reads based on gene_id, gene_name, or other GTF/GFF attributes.
+HTSeq.Count generates output files that include read counts for each gene, with additional summary statistics about read assignment and alignment quality.
+The module is particularly useful in RNA-seq experiments for quantifying gene expression levels across different samples or experimental conditions.
+HTSeq.Count can handle various genomic feature types beyond genes, such as exons, making it adaptable to different research questions like alternative splicing analysis.
+The GenePattern implementation of HTSeq.Count provides a user-friendly interface for biologists without extensive computational skills to perform complex read counting analyses.
+input file: SAM/BAM format, input alignment files for read counting, required parameter
+sample names: Text file with sample names, optional parameter for Excel or GCT format output
+valid file: GTF/GFF file with gene model annotations, required parameter
+strandedness: Determines strand-specific read counting, options are none/forward/reverse, default is none
+output file: Output filename for count results, required parameter
+output format: Choose between raw HTSeq format or GCT, required parameter
+min qual: Minimum quality threshold for accepting reads, default is 0
+mode: Method for handling reads overlapping multiple features, options include union/intersection-strict/intersection-nonempty, default is union
+count nonunique: Whether to count reads with non-unique alignments, options are yes/no, default is no
+count secondary: Whether to count secondary alignments, options are yes/no, default is no
+count supplementary: Whether to count supplementary alignments, options are yes/no, default is no
+id type: GTF/GFF attribute used to group features, default is gene_id
+gene name: Optional user-friendly gene name attribute
+feature type: Name in GTF/GFF file identifying features to count, default is exon
+HTSeq.Count input SAM/BAM alignment file containing mapped sequencing reads in standard SAM or BAM format
+HTSeq.Count input GTF/GFF annotation file containing genomic feature annotations like exon locations in GTF or GFF format
+HTSeq.Count optional sample names text file listing sample names corresponding to input alignment files in order
+HTSeq.Count output raw count file containing number of reads mapping to each genomic feature in tabular format
+HTSeq.Count output GCT file containing read counts formatted for gene expression matrix analysis
+HTSeq.Count output summary text file with statistics about read counting like unassigned reads and alignment quality
+HTSeq.Count input alignment files must be name-sorted before read counting analysis
+HTSeq.Count supports single and paired-end sequencing read alignment files
+HTSeq.Count can handle gzipped input annotation files
+HTSeq.Count allows configurable strand-specificity for read counting
+HTSeq.Count provides multiple modes for handling reads overlapping multiple genomic features
+HTSeq.Count can optionally count reads with multiple alignments or ambiguous feature assignments
+HTSeq.Count is a GenePattern module for counting mapped sequencing reads aligned to genomic features.
+HTSeq.Count takes SAM/BAM alignment files and a GTF/GFF annotation file as input to quantify read counts per genomic feature.
+The module was developed by Simon Anders at EMBL Heidelberg and uses the HTSeq Python library for processing high-throughput sequencing data.
+HTSeq.Count can handle different modes of read counting when reads overlap multiple genomic features, including union, intersection-strict, and intersection-nonempty modes.
+The module allows users to specify strandedness parameters to control how reads are counted relative to feature strand orientation.
+HTSeq.Count can optionally handle non-unique read alignments and secondary/supplementary alignments through configurable parameters.
+The output of HTSeq.Count is a tabular file with read counts per gene or feature, including summary statistics about read assignment.
+Users can specify minimum read quality thresholds and choose which GTF/GFF attributes to use for feature identification and naming.
+The module supports multiple input files, allowing simultaneous read counting across different samples or experimental conditions.
+HTSeq.Count can produce output in raw HTSeq format or GCT format, with options for adding sample names and additional annotation columns.
+The module has undergone multiple version updates, with the current version using Docker containerization and Python 3 compatibility.

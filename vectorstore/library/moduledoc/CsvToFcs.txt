@@ -1,0 +1,63 @@
+CsvToFcs is on version 2.
+A description of CsvToFcs is Converts Flow Cytometry data in a comma-separated values (CSV) file to a Flow Cytometry Standard (FCS) file..
+CsvToFcs is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+CsvToFcs can be categorized as Data Format Conversion.
+CsvToFcs has the following parameters: Input.CSV.data.file, Output.FCS.file.name, Range, Data.type.
+The CsvToFcs GenePattern module allows conversion of comma-separated values (CSV) files to Flow Cytometry Standard (FCS) file formats.
+The CsvToFcs module enables researchers to transform data between two common cytometry file formats, facilitating data interoperability and analysis.
+Flow cytometry data often requires conversion between file types for compatibility with different analysis software and research workflows.
+The CsvToFcs module can automatically detect and set appropriate data ranges and types when converting files, reducing manual data preprocessing steps.
+Parameter names in the input CSV can include both short and full names, which are preserved during the FCS file conversion process.
+The CsvToFcs module supports multiple range and data type configuration options, allowing flexible conversion strategies for different research needs.
+By default, the CsvToFcs module attempts to select optimal settings based on the input data's characteristics, minimizing manual intervention.
+The module uses a 32-bit floating point data type when floating point numbers are detected in the source CSV file.
+When integer data is present, the CsvToFcs module selects the smallest bit representation (8, 16, or 32 bits) that can capture all data points.
+Researchers can explicitly specify range and data type parameters in the CsvToFcs module to customize the conversion process.
+The CsvToFcs module is compatible with the FCS 3.0 file standard, ensuring broad compatibility with flow cytometry analysis tools.
+Bioinformaticians and cytometry researchers can use the CsvToFcs module to standardize and prepare data for advanced analysis pipelines.
+The module is platform-independent and requires only Java 1.6 or higher, making it widely accessible across different computational environments.
+Input.CSV.data.file
+- Type: File
+- Description: CsvToFcs module requires a CSV file containing flow cytometry data to convert
+- Required: Yes
+- Default: None
+Output.FCS.file.name
+- Type: File
+- Description: CsvToFcs module generates an output FCS file name for the converted flow cytometry data
+- Required: Yes
+- Default: None
+Range
+- Type: String
+- Description: CsvToFcs module parameter specifying the range for data values in the resulting FCS file
+- Options: auto (default), auto-exact, BD, or explicit integer value
+- Description: Determines how the $PnR keyword is set in the FCS file
+- Default: auto (lowest power of 2 greater than largest data value)
+Data.type
+- Type: String
+- Description: CsvToFcs module parameter specifying the data type for the resulting FCS file
+- Options: auto (default), integer, floating point
+- Description: Determines how the $DATATYPE keyword is set in the FCS file
+- Default: auto (32-bit floating point if floating point numbers detected, otherwise lowest bit integer type)
+Here are the input and output file descriptions for the CsvToFcs module:
+Input CSV file contains flow cytometry data with parameter names in the header, potentially including two-part names separated by a colon.
+CSV file header can include parameter names like "FL1-H:CD4", where the part before the colon represents the short name and the part after represents the full name.
+Input CSV file can contain floating point or integer data values representing flow cytometry measurements.
+Input CSV file must have a consistent structure with column headers and data values.
+Output FCS file is a Flow Cytometry Standard (FCS) 3.0 format file containing converted flow cytometry data.
+Output FCS file includes parameter metadata like short names ($PnN), full names ($PnS), and data range ($PnR).
+Output FCS file data type can be automatically determined or explicitly set to integer or floating point.
+Output FCS file preserves the original measurement values from the input CSV file.
+Output FCS file range can be automatically calculated or set to specific values like BD instrument standard (262,144).
+Output FCS file is compatible with standard flow cytometry analysis tools and software.
+Here are the chunks for the CsvToFcs module documentation:
+CsvToFcs is a GenePattern module that converts Flow Cytometry data from CSV to FCS file format.
+The module allows conversion of comma-separated values (CSV) files into Flow Cytometry Standard (FCS) files for analysis.
+CSV parameter names can include two parts separated by a colon, which will be split into short name ($PnN) and full name ($PnS) in the resulting FCS file.
+The module automatically determines the best data type and range settings based on the input CSV file's contents.
+By default, the module uses 32-bit floating point data type if floating point numbers are detected, otherwise using the lowest integer bit representation.
+Range ($PnR) can be set to auto, auto-exact, BD standard, or a custom integer value to define the data range in the output FCS file.
+Data type ($DATATYPE) can be automatically determined, set to integer (rounding floating point values), or explicitly set to 32-bit floating point.
+The output is an FCS 3.0 file containing events from the input CSV, with configurable range and data type parameters.
+The module requires Java 1.6 or higher and is platform-independent, running on any CPU and operating system.
+CsvToFcs was developed by Josef Spidlen and supports flexible conversion of cytometry data between file formats.
+The module follows the International Society for Advancement of Cytometry's FCS file standard specifications.

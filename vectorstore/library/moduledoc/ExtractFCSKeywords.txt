@@ -1,0 +1,56 @@
+ExtractFCSKeywords is on version 2.
+A description of ExtractFCSKeywords is Extracts keyword(s) value(s) from a Flow Cytometry Standard (FCS) file. This module can be used to extract and save the information in all keyword/value pair(s) so that it can be added back later. The keywords value pairs can either be stored as a CSV file (default) or as an FCS text segment chunk in a text file..
+ExtractFCSKeywords is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca).
+ExtractFCSKeywords can be categorized as Flow Cytometry.
+ExtractFCSKeywords has the following parameters: Input FCS data file, Keywords output mode, Keywords output file name.
+The ExtractFCSKeywords module is a specialized tool for extracting metadata from Flow Cytometry Standard (FCS) files.
+ExtractFCSKeywords allows researchers to preserve critical metadata that might be lost during file format conversions.
+The module can extract keyword/value pairs that contain important experimental information like date of acquisition, instrument details, and sample characteristics.
+ExtractFCSKeywords supports two output formats: a CSV file with keyword and value columns, or a text file maintaining the original FCS text segment format.
+This GenePattern module is particularly useful in flow cytometry research for maintaining the contextual information associated with cellular measurement data.
+ExtractFCSKeywords can help researchers track experimental details that are crucial for reproducibility and comprehensive data interpretation.
+The module is designed to work with FCS 3.1 file standards, ensuring compatibility with modern flow cytometry data formats.
+ExtractFCSKeywords requires Java 1.6 or higher and can run on any operating system, making it widely accessible to researchers.
+The module can process large FCS files with up to 1,000,000 events, with an estimated maximum memory usage of 1.2 GB.
+ExtractFCSKeywords is part of the GenePattern flow cytometry module suite, designed to support advanced cytometric data analysis workflows.
+input_file:
+- File type: FCS data file
+- Purpose: Source file from which keyword/value pairs will be extracted in ExtractFCSKeywords module
+- Required: Yes
+- Default: None
+keywords_output_mode:
+- Type: Selection
+- Purpose: Determines format for storing extracted keywords in ExtractFCSKeywords module
+- Options: CSV file (default), Text file with FCS text segment chunk
+- Required: No
+- Default: CSV file
+keywords_output_file_name:
+- Type: String
+- Purpose: Specifies name for output file containing keyword/value pairs in ExtractFCSKeywords module
+- Behavior: Uses input FCS filename by default
+- File extension: Automatically set to .csv or .txt based on output mode
+- Required: No
+- Default: Input filename
+Here are the input and output file descriptions for the ExtractFCSKeywords module:
+Input FCS file is a Flow Cytometry Standard (FCS) file containing metadata keywords and flow cytometry measurement data.
+Input FCS file contains keyword/value pairs in the TEXT segment with information about data acquisition, instrument settings, sample details, and experimental metadata.
+Input FCS file follows the FCS 3.1 file standard with structured metadata and event measurement data.
+Output CSV file contains two columns with extracted keyword names and their corresponding values from the input FCS file.
+Output CSV file provides a tabular representation of all metadata keywords present in the original FCS file.
+Output text file contains the raw FCS TEXT segment chunk with original keyword formatting when selected in output mode.
+Output text file preserves the exact keyword/value pair structure from the input FCS file's TEXT segment.
+Output file extension will be .csv or .txt depending on the selected keywords output mode.
+Output file name defaults to the input FCS filename if not explicitly specified by the user.
+ExtractFCSKeywords is a module designed to extract metadata from Flow Cytometry Standard (FCS) files.
+The ExtractFCSKeywords module helps preserve critical metadata that can be lost during file format conversions.
+Flow cytometry data files contain important metadata stored as keyword/value pairs in the TEXT segment of the file.
+Metadata in FCS files can include information about data acquisition, cell descriptions, instrument settings, and sample characteristics.
+The module allows extraction of keyword/value pairs in two output formats: CSV or FCS text segment chunk.
+ExtractFCSKeywords supports processing large FCS files with up to 1,000,000 events and 24 parameters.
+The module requires Java 1.6 or higher and can run on any CPU and operating system.
+Users can specify which keywords they want to extract from the input FCS file.
+The default output is a CSV file with two columns: one for keywords and one for their corresponding values.
+ExtractFCSKeywords helps researchers preserve and transfer important experimental metadata across different file formats.
+The module is part of the GenePattern flow cytometry analysis toolkit.
+Extracted metadata can include details like acquisition date, instrument type, operator name, and sample identification.
+The module supports the FCS 3.1 file standard, ensuring compatibility with modern flow cytometry data formats.

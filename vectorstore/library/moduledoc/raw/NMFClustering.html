@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>NMFClustering (v3) | NMFClustering</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="NMFClustering (v3)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="NMF consensus clustering implementation for SDSC Expanse GPU nodes" />
+<meta property="og:description" content="NMF consensus clustering implementation for SDSC Expanse GPU nodes" />
+<link rel="canonical" href="https://genepattern.github.io/NMFClustering/v3/" />
+<meta property="og:url" content="https://genepattern.github.io/NMFClustering/v3/" />
+<meta property="og:site_name" content="NMFClustering" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="NMFClustering (v3)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"NMF consensus clustering implementation for SDSC Expanse GPU nodes","headline":"NMFClustering (v3)","url":"https://genepattern.github.io/NMFClustering/v3/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/NMFClustering/assets/css/style.css?v=eebd7f0b793370078e2551e3684027057706e4a1">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/NMFClustering/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://genepattern.github.io/NMFClustering/">NMFClustering</a></h1>
+      
+
+      <h1 id="nmfclustering-v3">NMFClustering (v3)</h1>
+
+<p><strong>Description</strong>: Non-negative Matrix Factorization Consensus Clustering</p>
+
+<p><strong>Authors</strong>: Pablo Tamayo (Broad Institute)  with
+contributions from Jean-Philippe Brunet(Broad Institute), Kenneth Yoshimoto (San Diego Supercomputing Center) and Ted Liefeld (University of California San Diego). Parallel NMF Implementation from https://github.com/bioinfo-cnb/bionmf-gpu</p>
+
+<p><strong>Contact</strong>: <a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help">Geneattern Help Forum</a></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Non-negative matrix factorization (NMF) is an unsupervised learning algorithm [1]
+that has been shown to identify molecular patterns when applied to gene expression data [2].
+Rather than separating gene clusters based on distance computation, NMF detects contextdependent patterns of gene expression in complex biological systems.</p>
+
+<p>The basic principle of dimensionality reduction via matrix factorization operates as follows:
+given an N x M data matrix A with non-negative entries, the NMF algorithm iteratively
+computes an approximation, A ~ WH, where W is an N x k matrix, H is a k x M matrix, and
+both are constrained to have positive entries. For DNA microarrays, N, the number of genes,
+is typically in the thousands. M, the number of experiments, rarely exceeds a hundred, while
+k, the number of classes to be determined depends on the heterogeneity of the dataset. The
+algorithm starts with randomly initialized matrices of the appropriate size, W and H. These are
+iteratively updated to minimize the Euclidean distance between V and WH or a divergence
+norm [3]. The program also computes row and column factor memberships according to
+maximum amplitudes. This membership information is also used to sort the output matrices
+according the row and column membership (the row and columns are then relabeled:
+&lt;name&gt;_f&lt;NMF factor&gt;.</p>
+
+<!-- appropriate papers should be cited here -->
+<h2 id="references">References</h2>
+<ol>
+  <li>Lee, D.D and Seung, H.S. (1999), ‘Learning the parts of objects by nonnegative matrix factorization’, Nature 401, 788-793.</li>
+  <li>Jean-Philippe Brunet, Pablo Tamayo, Todd Golub, Jill Mesirov (2004). Matrix
+Factorization for Molecular Pattern Recognition, PNAS 101, 4164-4169.</li>
+  <li>Lee, D.D., and Seung, H.S., (2001), ‘Algorithms for Non-negative Matrix
+Factorization’, Adv. Neural Info. Proc. Syst. 13, 556-562.</li>
+  <li>E. Mejía-Roa, D. Tabas-Madrid, J. Setoain, C. García, F. Tirado and A. Pascual-Montano. NMF-mGPU: Non-negative matrix factorization on multi-GPU systems. BMC Bioinformatics 2015, 16:43. doi:10.1186/s12859-015-0485-4 [http://www.biomedcentral.com/1471-2105/16/43]</li>
+</ol>
+
+<h2 id="source-links">Source Links</h2>
+<ul>
+  <li><a href="https://github.com/genepattern/NMFClustering">The GenePattern NMFClustering source repository</a></li>
+  <li>NMFClustering uses the <a href="https://github.com/bioinfo-cnb/bionmf-gpu">NMF-mGPU implementation</a></li>
+</ul>
+
+<h2 id="parameters">Parameters</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description <!--short description--></th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dataset.filename *</td>
+      <td>Input dataset (gct)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>k.initial *</td>
+      <td>Initial value of K.</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>k.final *</td>
+      <td>Final value of K.</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>num.clusterings *</td>
+      <td>Number of clusterings to perform for each value of K.</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>max.num.iterations *</td>
+      <td>The maximum number of iterations to perform for each clustering run for each value of K. This number may not be reached depending on the stability of the clustering solution and the settings of stop convergence and stop frequency.</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <td>random.seed *</td>
+      <td>Random seed used to initialize W and H matrices by the random number generator. e.g. 4585, 4567, 5980. This may be set to provide repeatable results for given parameter inputs even though the algorithm is properly random.</td>
+      <td>123456789</td>
+    </tr>
+    <tr>
+      <td>output.file.prefix *</td>
+      <td>Prefix to prepend to all output file names.</td>
+      <td><dataset.filename_basename></dataset.filename_basename></td>
+    </tr>
+    <tr>
+      <td>stop.convergence *</td>
+      <td>How many “no change” checks are needed to stop NMF iterations before max iterations is reached (convergence). Iterations will stop after this many “no change” checks report no changes.</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>stop.frequency *</td>
+      <td>Frequency of “no change” checks. NMFConsensus will check for changes every ‘stop frequency’ iterations.</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*  required</p>
+
+<h2 id="input-files">Input Files</h2>
+<ol>
+  <li>dataset.filename<br />
+Input dataset in GCT format.</li>
+</ol>
+
+<h2 id="output-files">Output Files</h2>
+
+<ol>
+  <li>consensus.k.#.gct (for each value of K): consensus matrix for k=#</li>
+</ol>
+
+<h2 id="example-data">Example Data</h2>
+
+<p>Input:<br />
+<a href="https://github.com/genepattern/NMFClustering/blob/develop/data/BRCA_DESeq2_normalized_20783x40.gct">BRCA_DESeq2_normalized_20783x40.gct</a></p>
+
+<p>Output:</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>This version only runs on the San Diego Super Computer Expanse cluster.</p>
+
+<h2 id="license">License</h2>
+
+<p><code class="language-plaintext highlighter-rouge">NMFClustering</code> is distributed under a modified BSD license available at <a href="https://github.com/genepattern/NMFClustering/blob/develop/LICENSE">https://github.com/genepattern/NMFClustering/blob/develop/LICENSE</a></p>
+
+<h2 id="version-comments">Version Comments</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Release Date</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>December 7, 2021</td>
+      <td>Initial version for team use.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/genepattern/NMFClustering/edit/develop/docs/v3/index.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

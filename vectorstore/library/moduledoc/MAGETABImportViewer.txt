@@ -1,0 +1,49 @@
+MAGETABImportViewer is on version 2.
+A description of MAGETABImportViewer is A visualizer to import data in MAGE-TAB format into GenePattern. The MAGETABImportViewer imports data in MAGE-TAB format into the GenePattern .gct or .cls file formats..
+MAGETABImportViewer is a GenePattern module written by Marc-Danie Nazaire, gp-help@broadinstitute.org.
+MAGETABImportViewer can be categorized as Visualization, Data Import, Microarray.
+MAGETABImportViewer has the following parameters: sdrf file, data files.
+The MAGETABImportViewer is a GenePattern module for importing microarray data from MAGE-TAB formatted files.
+The MAGETABImportViewer allows researchers to convert complex MAGE-TAB microarray data into standardized GenePattern file formats.
+The MAGETABImportViewer can generate two primary file types: .gct (expression dataset) and .cls (class label) files from MAGE-TAB data.
+The MAGETABImportViewer supports importing data from major repositories like ArrayExpress and Gene Expression Omnibus (GEO).
+The MAGETABImportViewer uses a wizard-style interface to guide users through the data import and conversion process step-by-step.
+For .gct file generation, the MAGETABImportViewer allows users to select specific samples and choose appropriate quantitation types from the source data.
+The MAGETABImportViewer requires a .sdrf file and data matrix files, which can be packaged together in a single .zip file for input.
+When generating .cls files, the MAGETABImportViewer enables researchers to assign phenotypic or clinical classes to individual samples.
+The MAGETABImportViewer supports both single-channel and two-channel microarray data import and conversion.
+The MAGETABImportViewer ensures that only numerical quantitation types are selected to maintain compatibility with downstream GenePattern analysis modules.
+The MAGETABImportViewer provides a flexible interface for researchers to customize their data import and transformation process.
+Here's the detailed parameter description formatted for vector store ingestion:
+sdrf file:
+MAGE-TAB sample and data relationship file in .txt format
+Required parameter for MAGETABImportViewer module
+Contains metadata about experimental samples and their relationships
+data files:
+Compressed .zip archive containing MAGE-TAB data matrix files
+Required parameter for MAGETABImportViewer module
+Must include derived data matrix files referenced in the .sdrf file
+Files should have matching row names to enable sample merging across multiple matrices
+Here are the input and output file descriptions for the MAGETABImportViewer module:
+MAGETABImportViewer input file: SDRF file is a tab-delimited text file describing sample and data relationships in MAGE-TAB format.
+MAGETABImportViewer input file: Data matrix files are text files containing quantitative measurement data for microarray experiments.
+MAGETABImportViewer input file: Zip archive containing SDRF and data matrix files for importing MAGE-TAB data.
+MAGETABImportViewer output file: GCT file is a tab-delimited expression matrix file with gene names, sample names, and expression values.
+MAGETABImportViewer output file: CLS file is a text file containing sample class labels for phenotype or clinical attribute classification.
+MAGETABImportViewer supports importing microarray data from ArrayExpress and Gene Expression Omnibus repositories using MAGE-TAB format.
+MAGETABImportViewer requires row names to match across multiple data matrix files for merging samples into a single GCT file.
+MAGETABImportViewer allows users to select specific samples and quantitation types during the import process.
+MAGETABImportViewer uses a wizard interface to guide users through file conversion and selection steps.
+MAGETABImportViewer supports single-channel and two-channel microarray data import and conversion.
+MAGETABImportViewer is a GenePattern module for importing microarray data from MAGE-TAB formatted files.
+The MAGETABImportViewer module allows researchers to convert complex microarray data files into standardized GenePattern file formats.
+MAGE-TAB is a standard file format used for storing microarray experimental metadata and data from repositories like ArrayExpress and Gene Expression Omnibus.
+The module requires an .sdrf file and data matrix files compressed in a single .zip archive as input.
+Users can generate two types of output files: .gct (expression dataset) and .cls (class label) files through an interactive wizard interface.
+For .gct file generation, users can select specific samples and choose appropriate quantitation types representing signal or intensity values.
+The .cls file generation process allows researchers to assign phenotypic or clinical labels to samples based on metadata from the original MAGE-TAB files.
+The module uses a parsing library from Limpopo to process MAGE-TAB files and extract relevant experimental information.
+MAGETABImportViewer supports both single-channel and two-channel microarray data processing.
+The module ensures that only numerical quantitation types are selected to maintain compatibility with downstream GenePattern analysis tools.
+Users can preview and modify their sample and class selections before finalizing the output files.
+The wizard interface provides step-by-step guidance for importing and transforming microarray experimental data.

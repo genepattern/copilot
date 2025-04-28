@@ -1,0 +1,44 @@
+CollapseDataset is on version 2.2.x.
+A description of CollapseDataset is Collapses expression values from multiple input ids that map to a single target gene to a single value on a per-sample basis. CollapseDataset utilizes Probe Set ID to Gene Symbol mappings from a CHIP file to create a new data set where all probe set expression values for a given gene have been collapsed into a single expression value for each sample..
+CollapseDataset is a GenePattern module written by Aravind Subramanian, Pablo Tamayo, David Eby; Broad Institute.
+CollapseDataset can be categorized as Gene List Selection.
+CollapseDataset has the following parameters: dataset file, chip platform, collapse mode, output.file.name, omit features with no symbol match.
+The CollapseDataset module in GenePattern helps researchers consolidate multiple probe measurements for a single gene into one representative value.
+CollapseDataset is a GenePattern module designed to simplify complex gene expression datasets by reducing multiple probe measurements to a single gene representation.
+The CollapseDataset module supports multiple methods of collapsing probe sets, including taking the maximum, median, mean, sum, or absolute maximum expression value.
+CollapseDataset uses a CHIP file to map probe set identifiers to standardized gene symbols, enabling more consistent and interpretable gene expression analysis.
+The primary use of CollapseDataset is to prepare microarray or gene expression data for downstream analyses like Gene Set Enrichment Analysis (GSEA).
+CollapseDataset helps reduce noise and potential inflation of gene set enrichment scores by consolidating multiple probes that target the same gene.
+The module can handle different input file formats including GCT, RES, and GSEA-specific TXT files, providing flexibility for researchers.
+CollapseDataset allows researchers to choose how multiple probes for a single gene are collapsed, with options like maximum value (default) or median value.
+By default, the CollapseDataset module removes features without a gene symbol match, helping to clean and standardize gene expression datasets.
+The module is particularly useful in genomics and transcriptomics research where multiple probes might exist for a single gene across different platforms.
+CollapseDataset supports both human and mouse gene symbol mappings through predefined CHIP files from the MSigDB project.
+Researchers can use CollapseDataset to prepare data for comparative studies, reducing technical variability introduced by multiple probe measurements.
+The module is part of the broader GSEA toolkit and is implemented in Java, making it compatible with multiple computational platforms.
+dataset file: File type, required input containing expression data in GCT, RES, or GSEA-specific TXT format for CollapseDataset module.
+chip platform: Required dropdown selection or file upload specifying probe-to-gene symbol mapping annotations for the expression array in CollapseDataset module.
+collapse mode: Required parameter determining how multiple probes for a single gene are consolidated in CollapseDataset module, with options including Max_probe (default), Median_of_probes, Mean_of_probes, Sum_of_probes, Abs_max_of_probes, and Remap_only.
+output.file.name: Optional advanced parameter allowing users to rename the result file in CollapseDataset module, with default naming based on input file and collapse mode.
+omit features with no symbol match: Optional advanced boolean parameter in CollapseDataset module that determines whether probes/genes without gene symbols are excluded (default true) or included in the output dataset.
+CollapseDataset module requires an input expression dataset file in GCT, RES, or GSEA-specific TXT format.
+The input dataset file contains gene expression measurements across multiple samples with probe set identifiers.
+The input CHIP platform file defines symbol-to-gene mappings for a specific microarray or genomic platform.
+The CHIP file contains mappings between probe set identifiers and corresponding HUGO gene symbols.
+CollapseDataset produces a collapsed output dataset file always in GCT format.
+The output GCT file contains gene expression values collapsed from multiple probes to a single gene symbol representation.
+The output file uses gene symbols as identifiers instead of multiple probe set IDs.
+The collapse mode determines how multiple probe values for a single gene are consolidated (max, median, mean, sum, absolute max).
+The output dataset reduces probe redundancy and prepares data for downstream gene set enrichment analysis.
+The output file retains the original sample columns but consolidates probe measurements per gene.
+The module can optionally exclude features without gene symbol matches based on user configuration.
+The CollapseDataset module is a GenePattern utility for consolidating multiple probe set measurements for a single gene into a single representative value.
+The CollapseDataset module helps researchers reduce complexity in gene expression datasets by mapping multiple probe measurements to a single gene symbol.
+CollapseDataset allows users to choose how multiple probe measurements are collapsed, including using maximum, median, mean, sum, or absolute maximum values.
+The module requires two primary input files: an expression dataset file and a chip platform annotation file that defines gene symbol mappings.
+CollapseDataset supports multiple input file formats including GCT, RES, and GSEA-specific TXT files, with output always generated in GCT format.
+The collapsing process helps eliminate probe set redundancy that could potentially inflate gene set enrichment analysis scores.
+By default, the module excludes probes or genes without matching gene symbols, though this behavior can be modified through an advanced parameter.
+The CollapseDataset module is particularly useful for preparing gene expression data for downstream analyses like gene set enrichment analysis (GSEA).
+The module provides multiple collapsing modes to accommodate different research needs and data characteristics, such as Max_probe, Median_of_probes, and Sum_of_probes.
+CollapseDataset is built on the GSEA code base and supports common microarray platforms through pre-loaded chip annotation files from the MSigDB project.

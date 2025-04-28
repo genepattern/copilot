@@ -1,0 +1,57 @@
+OpenCRAVAT is on version 1.
+A description of OpenCRAVAT is OpenCRAVAT is a software package that performs genomic variant interpretation including variant impact, annotation, and scoring. It has a modular architecture with a wide variety of analysis modules that are developed both by the CRAVAT team and the broader variant analysis community..
+OpenCRAVAT is a GenePattern module written by Karchin Lab, Johns Hopkins University, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+OpenCRAVAT can be categorized as Genomic Variant Analysis, Annotation, Cancer Informatics.
+OpenCRAVAT has the following parameters: data file, Cravat username, Cravat password, Annotations.
+The OpenCRAVAT GenePattern module enables comprehensive genomic variant interpretation and annotation through a web-based platform.
+The OpenCRAVAT GenePattern module allows researchers to submit genetic variant lists for detailed computational analysis.
+This module supports multiple input file formats including VCF, tab-delimited text, 23andMe, Ancestry, and dbSNP variant files.
+The OpenCRAVAT GenePattern module currently supports only genome variants in GRCh38 coordinates, with plans to expand to older genome versions.
+Researchers can select multiple annotation modules across categories like clinical relevance and variant effect prediction using the OpenCRAVAT module.
+The module generates comprehensive output files including a CSV zip file with detailed variant annotations and an interactive HTML results browser.
+The OpenCRAVAT GenePattern module is developed by the Karchin Lab at Johns Hopkins University in collaboration with In Silico Solutions.
+Researchers must create a login to use the OpenCRAVAT GenePattern module, which provides access to a wide variety of genomic variant analysis tools.
+The module's modular architecture allows for continuous expansion of analysis capabilities through community-developed and team-developed modules.
+The OpenCRAVAT GenePattern module is particularly useful for cancer-related variant interpretation and comprehensive genomic research.
+data file
+- Type: File
+- Description: OpenCRAVAT input file in supported formats like VCF
+- Required: Yes
+- Default: None
+Cravat username
+- Type: String
+- Description: Login credential for accessing OpenCRAVAT server
+- Required: Yes
+- Default: None
+Cravat password
+- Type: String
+- Description: Password associated with OpenCRAVAT server login
+- Required: Yes
+- Default: None
+Annotations
+- Type: Multi-select list
+- Description: Selection of annotation modules to run on submitted variants
+- Description: Modules grouped by categories like clinical relevance and variant effect prediction
+- Description: Same module can appear in multiple categories
+- Required: No
+- Default: None
+OpenCRAVAT module input file is a variant file in VCF, TXT, 23andMe, Ancestry, or dbSNP format containing genomic variant information.
+OpenCRAVAT module input file must be in GRCh38 genome coordinates.
+OpenCRAVAT module requires a valid username and password for the OpenCRAVAT server.
+OpenCRAVAT module output is a zip file containing comma-separated results files with variant annotations.
+OpenCRAVAT module output zip file includes a variant.csv file with one line per submitted variant.
+OpenCRAVAT module output includes an HTML file for interactive results browsing.
+OpenCRAVAT module input file should contain genomic variant data for analysis.
+OpenCRAVAT module supports multiple annotation modules for variant interpretation.
+OpenCRAVAT module generates comprehensive variant annotation results.
+OpenCRAVAT module processes variants using various analysis modules from the CRAVAT team and community.
+The OpenCRAVAT GenePattern module is a computational tool for comprehensive genomic variant analysis developed by the Karchin Lab at Johns Hopkins University.
+OpenCRAVAT is a software package designed to perform in-depth interpretation of genetic variants through impact assessment, annotation, and scoring.
+The module supports multiple input file formats including VCF, tab-delimited text, 23andMe, Ancestry, and dbSNP, with current support limited to GRCh38 genome coordinates.
+OpenCRAVAT uses a modular architecture that allows for diverse variant analysis modules developed by both the CRAVAT team and the broader research community.
+The module requires a user login to the OpenCRAVAT server and allows selection of multiple annotation modules across different categories like clinical relevance and variant effect prediction.
+Output from the OpenCRAVAT module includes a zipped CSV file with detailed variant annotations and an interactive HTML results browser for exploring variant data.
+The tool was funded by the National Cancer Institute's ITCR program and developed in collaboration with In Silico Solutions.
+The primary scientific publication describing OpenCRAVAT was published in JCO Clinical Cancer Informatics in 2020 by Pagel et al., detailing its integrated informatics approach to cancer-related variant analysis.
+The module is designed to be used with GenePattern version 3.9.11 or later in a dockerized environment, ensuring consistent and reproducible computational analysis.
+Annotation modules in OpenCRAVAT can be selected from multiple categories, allowing researchers to customize their variant interpretation workflow based on specific research questions.

@@ -1,0 +1,44 @@
+StageFiles is on version 2.
+A description of StageFiles is A utility for users to stage and share a common input file for use by modules within a pipeline. In some GenePattern pipelines, the input files for processing are the same. When executing these pipelines, users will have to specify and upload the input file several times. This module allows users to stage and share a common input file for use by modules within a pipeline..
+StageFiles is a GenePattern module written by Adrian Png, apng@bccrc.ca.
+StageFiles can be categorized as Utility, Flow Cytometry.
+StageFiles has the following parameters: Input file, Output file name.
+The StageFiles GenePattern module is a utility for preparing and sharing input files across multiple modules in a GenePattern pipeline.
+The StageFiles module allows researchers to upload a single input file that can be used by multiple subsequent modules without requiring repeated file uploads.
+This module is particularly useful in flow cytometry and bioinformatics workflows where the same raw data file needs to be processed through multiple analysis steps.
+StageFiles helps streamline computational biology pipelines by reducing redundant file upload steps and ensuring consistent file access across different processing modules.
+The module supports various file types, including FCS (Flow Cytometry Standard) files commonly used in flow cytometry data analysis.
+StageFiles can handle large input files, with performance tested on files containing up to 1,000,000 events and 24 parameters stored in FCS 3.0 format.
+The module requires minimal computational resources, with a maximum RAM usage of 50 MB and a runtime of approximately 10 seconds.
+Users can optionally specify a custom output filename for the staged file, providing flexibility in file naming and organization.
+The staged file created by StageFiles is an exact duplicate of the input file, ensuring data integrity throughout the pipeline processing.
+StageFiles is compatible with GenePattern version 3.2.0 and later, making it accessible to researchers using modern bioinformatics platforms.
+The module's file staging mechanism adapts to different server settings, with options to move or reference the input file based on configuration.
+input file|file|StageFiles module allows users to upload a file to be used by other modules in a pipeline|required
+output file name|string|Specifies the desired filename for the staged file in the StageFiles module|optional
+StageFiles module allows sharing a common input file across multiple pipeline modules without repeated uploads
+StageFiles helps streamline file management in GenePattern pipelines by staging files centrally
+The module supports file staging for flow cytometry and other data processing workflows
+StageFiles can handle various file types and sizes, with estimated maximum memory usage of 50 MB
+The module is compatible with GenePattern version 3.2.0 and Java 1.5 or higher
+StageFiles provides flexibility in file naming and can adapt to different server configuration modes
+The module is designed to simplify file sharing and reduce redundant file uploads in complex data analysis pipelines
+StageFiles module input file is a generic file that can be uploaded to the GenePattern server for use in a pipeline.
+The input file can be of any file type or format, depending on the specific pipeline requirements.
+StageFiles module allows users to stage a single input file that will be shared across multiple modules in a pipeline.
+The input file is specified by the user during module execution and can represent various data types like FCS files, spreadsheets, or other computational input.
+StageFiles module output is an exact duplicate of the input file, staged on the GenePattern server for subsequent pipeline module processing.
+The output file retains the original file's content, format, and data, with potential filename modifications based on server settings.
+The output filename may be prefixed with "staged" if the input and output filenames are identical and the server is in "move" mode.
+The staged file becomes accessible to other modules within the same pipeline, facilitating file sharing and reducing redundant uploads.
+The module supports file staging for flow cytometry data, with performance estimated for FCS files containing up to 1,000,000 events.
+The staged file can be used by subsequent modules in a GenePattern pipeline without requiring additional file uploads by the user.
+The StageFiles module is a utility in the GenePattern Flow Cytometry Suite for sharing common input files across pipeline modules.
+The StageFiles module allows users to upload a single input file that can be used by multiple modules within the same GenePattern pipeline.
+Without this module, users would need to repeatedly upload the same input file for each module in a pipeline, which is inefficient and time-consuming.
+The module supports processing FCS (Flow Cytometry Standard) files with up to 1,000,000 events and 24 parameters stored in FCS 3.0 floating point data type.
+StageFiles has minimal resource requirements, with a maximum RAM usage of 50 MB and a maximum runtime of 10 seconds.
+Users can specify an optional output filename for the staged file, which will be duplicated and made accessible to other modules in the pipeline.
+The final output filename depends on the GenePattern server's "input.file.mode" setting, which can prefix the filename with "staged" if in "move" mode.
+The module requires GenePattern version 3.2.0 or higher and Java version 1.5 or higher to function.
+Installation of the StageFiles module can be done by installing from the StageFiles.zip file or through an appropriate GenePattern module repository.

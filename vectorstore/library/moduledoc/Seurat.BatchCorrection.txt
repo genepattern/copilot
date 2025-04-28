@@ -1,0 +1,60 @@
+Seurat.BatchCorrection is on version 3.
+A description of Seurat.BatchCorrection is The Seurat.BatchCorrection Module integrates (corrects for batch effects) multiple single-cell datasets and identifies shared cell states that are present across different datasets, regardless of their origin. Once the Module integrates these datasets, the returned object will contain a new Assay that holds an integrated/batch-corrected expression matrix for all cells..
+Seurat.BatchCorrection is a GenePattern module written by Jonathan Zamora and Edwin F. Juárez, UCSD.
+Seurat.BatchCorrection can be categorized as Single-cell analysis, Batch correction, Seurat.
+Seurat.BatchCorrection has the following parameters: input_files, use_batch_names, ncomps, nCount_RNA, nFeature_RNA, output_file_name.
+The Seurat.BatchCorrection module helps researchers integrate single-cell RNA sequencing data from multiple experiments or batches.
+Seurat.BatchCorrection addresses the challenge of batch effects, where technical variations between different experimental runs can obscure biological signals.
+The Seurat.BatchCorrection module uses principal component analysis (PCA) to mathematically align gene expression data across different datasets.
+Researchers can use Seurat.BatchCorrection to compare cell populations across different experiments, even when the original data were generated under slightly different conditions.
+The Seurat.BatchCorrection module can handle multiple input file formats, including text files and Seurat R objects containing single-cell gene expression matrices.
+Seurat.BatchCorrection generates visualization outputs like UMAP plots and violin plots to help researchers understand how different batches of data are integrated.
+The module allows users to specify the number of principal components used in batch correction, providing flexibility in data integration strategies.
+Seurat.BatchCorrection is part of the broader Seurat software ecosystem, which is widely used in single-cell transcriptomics research.
+The module can correct batch effects while preserving the underlying biological variation in single-cell RNA sequencing datasets.
+Seurat.BatchCorrection is particularly useful for meta-analysis studies that combine data from multiple experiments or research groups.
+The module outputs both an integrated Seurat object and visualization PDFs, making downstream analysis and interpretation easier for researchers.
+Seurat.BatchCorrection implements advanced statistical methods to harmonize gene expression data across different experimental batches.
+Researchers can use Seurat.BatchCorrection to compare cell types and states across different datasets, even when the original experiments had technical differences.
+The module is designed to be user-friendly, with default parameters that work well for many single-cell RNA sequencing datasets.
+Seurat.BatchCorrection helps researchers overcome one of the major challenges in single-cell genomics: comparing data generated under different experimental conditions.
+input_files: File type, required parameter for Seurat batch correction module that accepts gene expression matrices as .txt or .rds files.
+input_files: Must contain cell IDs as columns and genes as rows for each batch of single-cell data.
+input_files: Recommended to pre-process 10x Genomics or compressed files using Seurat.QC module first.
+use_batch_names: Boolean parameter, default is TRUE for Seurat batch correction module.
+use_batch_names: Automatically maps input files to sequential batch numbers starting from Batch 1.
+use_batch_names: When set to FALSE, batch names will be set to original input file names.
+ncomps: Integer parameter, default is 50 for Seurat batch correction module.
+ncomps: Specifies number of principal components used in Principal Component Analysis for batch correction.
+ncomps: Determines dimensionality reduction strategy for integrating single-cell datasets.
+nCount_RNA: Boolean parameter, default is TRUE for Seurat batch correction module.
+nCount_RNA: Controls generation of violin plot showing number of molecular counts per cell.
+nCount_RNA: Helps visualize molecular detection distribution across single-cell datasets.
+nFeature_RNA: Boolean parameter, default is TRUE for Seurat batch correction module.
+nFeature_RNA: Controls generation of violin plot showing number of genes detected per cell.
+nFeature_RNA: Helps assess gene detection variability across different single-cell datasets.
+output_file_name: String parameter, default is 'batch_correction_results' for Seurat batch correction module.
+output_file_name: Determines base name for output .pdf and .rds files.
+output_file_name: Allows customization of output file naming convention.
+Seurat.BatchCorrection module input files are gene expression matrices in .txt, .rds, or 10x Genomics format.
+Input files must have columns representing cell IDs and rows representing genes.
+Input files can be single-cell RNA sequencing data from multiple batches or experiments.
+Input files should be preprocessed using Seurat.QC module if in compressed or 10x Genomics format.
+Seurat.BatchCorrection module supports multiple input files representing different biological conditions or experimental batches.
+Seurat.BatchCorrection module requires input files to be compatible with single-cell RNA sequencing data standards.
+Seurat.BatchCorrection module produces a batch_correction_log.txt file documenting script execution processes.
+Output .rds file contains integrated and batch-corrected expression matrix for all input cells.
+Output .pdf file includes UMAP plot and violin plots of integrated Seurat objects.
+Output .pdf file first page displays a batch mapping table showing input file to batch number correspondence.
+Output files are named based on the output_file_name parameter specified during module execution.
+Output files provide comprehensive visualization and data integration results from batch correction process.
+Seurat.BatchCorrection is a GenePattern module for integrating multiple single-cell RNA sequencing datasets.
+The module uses Seurat version 3.2.0 to correct batch effects across different single-cell gene expression experiments.
+Batch correction helps identify shared cell states across datasets by mathematically aligning gene expression profiles from different experimental batches.
+The module requires input files containing gene expression matrices, which can be in .txt or .rds format, representing different experimental batches.
+Users can control the batch correction process by specifying the number of principal components (ncomps) used in the analysis, with a default of 50 components.
+The module generates three key output files: a log file, an integrated Seurat object (.rds), and a visualization PDF showing UMAP plots and batch mapping.
+Violin plots can be generated to show the distribution of molecular and gene counts across cells, which helps assess data quality and integration effectiveness.
+The batch correction algorithm aims to mathematically align cellular transcriptional states across different experiments, reducing technical variability.
+The module is implemented in R 4.0.2 and runs within a specific Docker container designed for single-cell data processing.
+The underlying scientific method is based on the comprehensive single-cell data integration approach published by Stuart et al. in Cell, 2019.

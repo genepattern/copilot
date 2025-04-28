@@ -1,0 +1,47 @@
+MergeFCSDataFiles is on version 1.
+A description of MergeFCSDataFiles is Merge multiple Flow Cytometry Standard (FCS) data files into a single FCS dataset; includes sub-sampling option..
+MergeFCSDataFiles is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+MergeFCSDataFiles can be categorized as Flow Cytometry.
+MergeFCSDataFiles has the following parameters: Input.files, Subsampling.rate, Keep.n.events, Random.seed, Output.file.name.
+The MergeFCSDataFiles GenePattern module allows researchers to combine multiple flow cytometry data files into a single comprehensive dataset.
+The MergeFCSDataFiles module enables merging multiple FCS files containing cellular measurement data from flow cytometry experiments.
+This module is particularly useful for researchers wanting to analyze flow cytometry data across multiple samples or patients in a unified manner.
+The MergeFCSDataFiles module can subsample events from input files, allowing researchers to randomly select a specified percentage or number of events from each dataset.
+When using MergeFCSDataFiles, all input FCS files must have consistent parameter measurements to ensure data compatibility and meaningful merging.
+The MergeFCSDataFiles module requires input files to be provided as a zip file, directory pointer, or text file listing full file paths.
+Researchers can control event selection in the MergeFCSDataFiles module by specifying either a subsampling rate or a fixed number of events to retain from each input file.
+The MergeFCSDataFiles module is designed to handle large flow cytometry datasets, with demonstrated performance on files containing up to 102 input files with 10,000-38,000 events each.
+By using the MergeFCSDataFiles module, scientists can consolidate flow cytometry data for more comprehensive population analysis and clustering studies.
+The MergeFCSDataFiles module supports standard FCS 3.1 file format, ensuring compatibility with modern flow cytometry data standards.
+Input.files, file path, MergeFCSDataFiles module requires input FCS files to merge, specifies source files via zip, directory, or text file listing, required parameter
+Subsampling.rate, numeric, MergeFCSDataFiles module controls percentage of events included from each dataset, ranges from 0-100, default is 100%, mutually exclusive with Keep.n.events
+Keep.n.events, numeric, MergeFCSDataFiles module specifies approximate number of events to retain from each dataset, mutually exclusive with Subsampling.rate, optional parameter
+Random.seed, numeric, MergeFCSDataFiles module sets random number generator seed for event selection, default value is 1234567, controls reproducibility of random sampling
+Output.file.name, string, MergeFCSDataFiles module defines name of merged output FCS file, default is MergedFCSDataFiles.fcs, optional parameter for specifying output filename
+Here are the input and output file descriptions for the MergeFCSDataFiles module:
+Input files for MergeFCSDataFiles module are FCS data files containing flow cytometry measurements.
+FCS files are binary files storing multi-parameter cellular measurement data from flow cytometry experiments.
+Input files can be provided as a zip archive, directory pointer, or text file listing full file paths.
+Input FCS files must have consistent parameter definitions across all files being merged.
+Input files typically contain cellular measurement data with 7-13 parameters per file.
+Input files usually range from 10,000-70,000 cellular events per file.
+Output file for MergeFCSDataFiles module is a single merged FCS data file.
+Merged FCS file contains events from all input files, potentially subsampled based on user parameters.
+Output file preserves original parameter definitions from input files.
+Output file name defaults to MergedFCSDataFiles.fcs if not specified by user.
+Output file size can be significantly larger than input files depending on number of merged datasets.
+Output FCS file follows FCS 3.1 standard for flow cytometry data file formatting.
+Here are the chunks for the MergeFCSDataFiles module documentation:
+MergeFCSDataFiles is a GenePattern module for combining multiple Flow Cytometry Standard (FCS) data files into a single dataset.
+The module allows merging events from multiple FCS files that contain the same parameters.
+MergeFCSDataFiles can be useful for clustering and analyzing flow cytometry data across multiple patient samples.
+The module verifies parameter consistency across input files by checking parameter short names.
+Users can specify a subsampling rate to randomly select a percentage of events from each input dataset.
+Alternatively, users can specify a fixed number of events to include from each input dataset.
+By default, if no subsampling options are selected, all events from all input files are included in the merged output.
+The module requires input files to be provided as a zip file, directory pointer, or text file with full file paths.
+MergeFCSDataFiles supports merging large numbers of FCS files, with example use cases of 48-102 files processed.
+The module is platform-independent and requires Java 1.6 or higher to run.
+Output is a single FCS file containing events from the input datasets, with optional subsampling.
+The random seed can be specified to ensure reproducibility of event selection.
+The module was developed by Josef Spidlen and is part of the GenePattern flow cytometry analysis toolkit.

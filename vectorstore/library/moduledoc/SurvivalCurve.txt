@@ -1,0 +1,62 @@
+SurvivalCurve is on version 3.
+A description of SurvivalCurve is Draws survival curve based on cls file. Once a genomics marker or predictive model for clinical outcome is built, the next step is to test whether it really predicts outcome of new cohorts, or whether it has better predictive ability compared to already known clinical markers/predictive models. "Survival analysis" modules perform such analyses seamlessly after clustering/marker gene/prediction analyses..
+SurvivalCurve is a GenePattern module written by Yujin Hoshida (Broad Institute) gp-help@broadinstitute.org.
+SurvivalCurve can be categorized as Survival Analysis.
+SurvivalCurve has the following parameters: input, input cls file, time field, censor field, cls field, print fit results, line type color assign, manual line type, manual line color, line width, time conversion, max time, surv function lower, surv function higher, curve type, show conf interval, add legend, legend position, output filename.
+The SurvivalCurve GenePattern module is a powerful tool for generating and analyzing survival curves in biomedical research.
+SurvivalCurve allows researchers to visualize the probability of survival over time for different patient groups or experimental conditions.
+The module can create survival curves based on clinical data that includes patient survival times and censoring status.
+SurvivalCurve supports multiple curve types, including standard survival curves, cumulative hazard, and complementary log-log survival curves.
+Researchers can customize the survival curve's appearance by manually or automatically assigning line types, colors, and widths.
+The module can convert survival time units (e.g., from days to years) to facilitate easier interpretation of results.
+SurvivalCurve generates output files including graphical survival curve plots in PNG or PDF formats.
+The module is particularly useful for testing whether genomic markers or predictive models can accurately predict clinical outcomes.
+SurvivalCurve can compare survival distributions across different patient classes or experimental groups.
+The module provides options to display confidence intervals and legends to enhance the interpretability of survival analysis results.
+SurvivalCurve is built using R and can be integrated into broader bioinformatics workflows within the GenePattern platform.
+The module requires input files containing patient identifiers, class information, censoring status, and survival times.
+Researchers can specify custom parameters like time field names, censoring indicators, and maximum observation time.
+SurvivalCurve supports both automatic and manual line type and color assignment for more flexible data visualization.
+The module can generate additional text output files with detailed survival estimation results when requested.
+input: file type, survival data file containing clinical data with survival time and censor status, required, .txt format
+input cls: file type, class information file, optional, .cls format
+time field: string, name of survival time field, optional, default is "time"
+censor field: string, name of censor field where event="1" and no event="0", optional, default is "status"
+cls field: string, name of class field in survival data file, optional, can specify instead of input cls file
+print fit results: boolean, whether to print survival fit results, optional, default is "no"
+line type color assign: string, method to assign line type/color, optional, default is "automatic"
+manual line type: integer, line type(s) to use when manual assignment, optional, values 1-4 representing solid, dashed, dotted, dot-dashed
+manual line color: string, line color(s) to use when manual assignment, optional, supports color names like black, blue, red
+line width: string, thickness of survival curve lines, optional, choices are "thin", "thick", "thickest"
+time conversion: string, how to convert survival time, optional, default is "none", can convert days or months to years
+max time: numeric, maximum time in original scale, optional
+surv function lower: numeric, lower limit of y-axis range, optional, default is 0
+surv function higher: numeric, upper limit of y-axis range, optional, default is 1
+curve type: string, type of survival curve to generate, optional, default is "survival", other options include "event", "cumulative hazard", "complimentary log-log survival"
+show conf interval: boolean, whether to display confidence interval, optional, default is "yes"
+add legend: boolean, whether to show legend, optional, default is "yes"
+legend position: string, location of legend on plot, optional, default is "left-bottom", other options include left-top, right-bottom, right-top
+output filename: string, name for output files, required
+SurvivalCurve module input survival data file contains case identifiers, class labels, censor status, and survival time.
+SurvivalCurve module input survival data file is a tab-delimited text file with columns for case ID, class, censor status, and time.
+SurvivalCurve module input .cls file contains class labels for grouping survival data.
+SurvivalCurve module input .cls file is a simple text file mapping class names or categories.
+SurvivalCurve module output includes a graphical survival curve plot in PNG or PDF format.
+SurvivalCurve module output survival curve plot visualizes survival probability across different groups over time.
+SurvivalCurve module optional text output includes detailed survival analysis statistics and fit summary.
+SurvivalCurve module text output files provide numerical details about survival curve estimation and statistical significance.
+SurvivalCurve module input survival data requires numeric time values representing survival duration.
+SurvivalCurve module input censor field uses binary encoding (0 or 1) to indicate event occurrence or censoring.
+SurvivalCurve is a GenePattern module for generating survival curves from clinical and genomic data.
+SurvivalCurve helps researchers test whether a genomic marker or predictive model can predict clinical outcomes across different patient cohorts.
+The module uses survival analysis techniques to create visual representations of patient survival data over time.
+SurvivalCurve requires input files containing patient identifiers, survival times, censoring status, and optional class information.
+The module can automatically or manually assign line types and colors to differentiate survival curves for different patient groups.
+SurvivalCurve supports multiple curve types including standard survival, event, cumulative hazard, and complementary log-log survival curves.
+Users can customize the survival curve output by specifying axis ranges, time conversion, confidence interval display, and legend placement.
+The module generates output files including a survival curve plot in PNG or PDF format and optional text summaries of survival estimates.
+SurvivalCurve is built using R 2.7 and can run on any CPU and operating system.
+The module allows researchers to visually compare survival patterns across different patient classes or experimental conditions.
+Survival data input requires specific formatting with case ID, class, censoring status, and survival time columns.
+SurvivalCurve draws from established survival analysis literature, including works by Therneau, Lumley, Venables, and Ripley.
+The module provides flexibility in analyzing censored survival data, which is common in medical and clinical research.

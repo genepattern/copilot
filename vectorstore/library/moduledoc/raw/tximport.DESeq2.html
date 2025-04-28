@@ -1,0 +1,125 @@
+<section aria-labelledby="file-name-id-wide file-name-id-mobile" class="Box-sc-g0xbh4-0 fGqKFv"><div class="Box-sc-g0xbh4-0 eoaCFS js-snippet-clipboard-copy-unpositioned undefined" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto"><a href="/genepattern/tximport.DESeq2/blob/main/docs/v1/GPlogo.png" rel="noopener noreferrer" target="_blank"><img alt="" src="/genepattern/tximport.DESeq2/raw/main/docs/v1/GPlogo.png" style="max-width: 100%;"/></a></p>
+<div class="markdown-heading" dir="auto"><h1 class="heading-element" dir="auto" tabindex="-1">tximport.DESeq2 Documentation</h1><a aria-label="Permalink: tximport.DESeq2 Documentation" class="anchor" href="#tximportdeseq2-documentation" id="user-content-tximportdeseq2-documentation"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><strong>Description:</strong> Imports RNA-seq quantifications using the tximport package and outputs files for downstream analysis performing differential expression analysis if sample information is provided.</p>
+<p dir="auto"><strong>Author(s):</strong> Charlotte Soneson (tximport), Mike Love (DESeq2). <br/> Wrapped as a module by Anthony S. Castanza, Mesirov Lab, UCSD School of Medicine.</p>
+<p dir="auto"><strong>Contact:</strong> <a href="/genepattern/tximport.DESeq2/blob/main/docs/genepattern.org/help">genepattern.org/help</a></p>
+<p dir="auto"><strong>Summary</strong> : Imports RNA-seq quantifications using the tximport package and outputs a DESeq2 "normalized counts" file in .GCT format suitable for use with GSEA, and/or a TPM .GCT suitable for ssGSEA.</p>
+<p dir="auto">If a Sample Info file is provided containing assignments of samples to phenotypes, gene level differential expression will be calculated using DESeq2 for the two phenotypes.</p>
+<p dir="auto">Parameters:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantifications</td>
+<td>Output files from the respective pipeline. Files must be named with the sample ID and the appropriate extension for the quantification tool. <br/> Examples:".genes.results" files output from RSEM: Sample_1.genes.results <br/> ".quant.sf" or ".quant.sf.gz" files output from Salmon/Sailfish: Sample_1.quant.sf/Sample_1.quant.sf.gz".abundance.h5" or ".abundance.tsv" files output from Kallisto: Sample_1.abundance.h5/Sample_1.abundance.h5.gz/Sample_1.abundance.tsv/Sample_1.abundance.tsv.gz</td>
+</tr>
+<tr>
+<td>Sample Info</td>
+<td>Optional tab delimited text file containing Sample ID to Phenotype mappings. Sample IDs should match exactly the ID used in the input file (without the file extension). If provided, this file will be used to compute differentially expressed genes using DESeq2. <br/> Covariates can be provided as additional "Factor" columns. The first factor column (the second column in the table) will always be used as the primary factor for the differential expression analysis. <br/> Column headers are recommended with the first column being titled SampleID, and the remaining columns being named by the factor represented (genotype, sex, etc.)</td>
+</tr>
+<tr>
+<td>Quant Type</td>
+<td>The specific quantification tool that generated the data to be imported.</td>
+</tr>
+<tr>
+<td>Transcriptome Database</td>
+<td>For Salmon/Sailfish/Kallisto the transcriptome used to quantify the data must be provided in GTF/GFF3 format.The transcriptome may be provided as a gzip (.gz).This information is ignored for importing RSEM data, but can still be supplied if annotating genes if Annotate DEGs is TRUE.</td>
+</tr>
+<tr>
+<td>Output Normalized Counts</td>
+<td>If TRUE, Compute count normalization with DESeq2 and output the normalized matrix. This is the ideal output for compatibility with GSEA.</td>
+</tr>
+<tr>
+<td>Output TPM</td>
+<td>If TRUE, Transcripts per million (TPM) quantifications will be extracted and output. This is the ideal output for compatibility with ssGSEA.</td>
+</tr>
+<tr>
+<td>output file base</td>
+<td>The base name of the output file(s). File extensions will be added automatically.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>Advanced</strong> Parameters:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reverse Sign</td>
+<td>If computing differentially expressed genes, by default, Log2(FC) will be calculated for the first Factor level vs the second Factor level (Phenotype_A vs. Phenotype_B). Setting Reverse.Sign = TRUE will reverse the direction of the calculation and Log2(FC) will be calculated for the second Factor level vs the first Factor level (Phenotype_B vs. Phenotype_A).</td>
+</tr>
+<tr>
+<td>Annotate DEGs</td>
+<td>If a Sample Info file and a Transcriptome Database have been provided, setting Annotate DEGs to TRUE will attempt to add gene symbols to the computed differential expression analysis.Note: This does not affect the .GCT files which will still output only the underlying Gene IDs.</td>
+</tr>
+<tr>
+<td>Split Identifiers</td>
+<td>Some pipelines produce a gene label that combines a reference ID and a Gene Symbol joined by an underscore (e.g. ENSG00000141510_TP53). <br/> <strong>TRUE</strong> will attempt to split these into the reference ID and the Gene Symbol. The reference ID will be used as the NAME column of the GCT and the Gene Symbol will be used as the Description. <br/> <strong>FALSE</strong> will leave the identifiers as-is.</td>
+</tr>
+<tr>
+<td>Min Count Filter</td>
+<td>Filtering parameter to remove low/non-expressed genes, by default genes with &amp;gt;=1 count across all samples are kept. Setting Min Count Filter = 0 disables filtering entirely.</td>
+</tr>
+<tr>
+<td>random seed</td>
+<td>Integer used to configure the workspace. Setting this to a constant ensures uniformity for any operations that use random numbers.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>Output File(s):</strong></p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;output file base&gt;.Normalized.Counts.gct</td>
+<td>If Output Normalized Counts is TRUE, this file contains the DESeq2 Normalized counts in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29" rel="nofollow">GCT format</a>.</td>
+</tr>
+<tr>
+<td>&lt;output file base&gt;.TPM.gct</td>
+<td>If Output TPM is TRUE, this file contains the TPM normalization extracted from the input data in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29" rel="nofollow">GCT format</a>.</td>
+</tr>
+<tr>
+<td>&lt;output file base&gt;.cls</td>
+<td>If a Sample Info file is provided the first factor level will be used to construct a <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CLS:_Categorical_.28e.g_tumor_vs_normal.29_class_file_format_.28.2A.cls.29" rel="nofollow">categorical CLS file</a> suitable for use with GSEA.</td>
+</tr>
+<tr>
+<td>&lt;output file base&gt;.Differential.Expression.txt</td>
+<td>If a Sample Info File is provided this result will contain the DESeq2 differential expression analysis results. By default, Log2(FC) will be calculated for the first listed factor level vs the second listed factor level.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>Module Language:</strong> R</p>
+<p dir="auto"><strong>Source Repository:</strong> <a href="https://github.com/genepattern/tximport.DESeq2/releases/tag/v1%0D">https://github.com/genepattern/tximport.DESeq2/releases/tag/v1</a></p>
+<p dir="auto"><strong>Docker image:</strong> genepattern/tximport_deseq2:1.0</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th><strong>Version</strong></th>
+<th><strong>Comment</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Initial release.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>Citation(s):</strong></p>
+<p dir="auto">Soneson C, Love MI, Robinson MD (2015). "Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences." <em>F1000Research</em>, <strong>4</strong>. doi: <a href="https://doi.org/10.12688/f1000research.7563.1" rel="nofollow">10.12688/f1000research.7563.1</a>.</p>
+<p dir="auto">Love MI, Huber W, Anders S (2014). "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2." <em>Genome Biology</em>, <strong>15</strong> , 550. doi: <a href="https://doi.org/10.1186/s13059-014-0550-8" rel="nofollow">10.1186/s13059-014-0550-8</a>.</p>
+</article></div><button hidden=""></button></section>

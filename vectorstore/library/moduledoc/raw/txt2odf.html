@@ -1,0 +1,130 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>txt2odf (v2) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/txt2odf/2?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">This module will turn a TXT file into ComparativeMarkerSelectionViewer-compatible ODF file.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Edwin Juarez</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p><a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help">https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help</a></p>
+<p>Module creator: ejuarez@ucsd.edu</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>This module will turn a TXT file into ComparativeMarkerSelectionViewer-compatible ODF file.</p>
+<p> </p>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Technical notes:</h4>
+<p> </p>
+<ul>
+<li>This module has been tested to run in the Docker container <span style="font-family:courier new,courier,monospace;">genepattern/docker-python36:release-0.2</span> which has build code <span style="font-family:courier new,courier,monospace;">bj4fefqe2da2fnopdywxz3x</span></li>
+<li>To create a conda environment (called <span style="font-family:courier new,courier,monospace;">GP_hierarchical_clustering_env</span>) with the required dependencies download the <span style="font-family:courier new,courier,monospace;">requirements.txt</span> file from the github repository named <span style="font-family:courier new,courier,monospace;">genepattern/docker-python36</span> (here is the url of the file: <a href="https://raw.githubusercontent.com/genepattern/docker-python36/master/requirements.txt">https://raw.githubusercontent.com/genepattern/docker-python36/master/requirements.txt</a>) and run this three commands in the same folder where <span style="font-family:courier new,courier,monospace;">requirements.txt</span> is located:</li>
+</ul>
+<p style="margin-left: 80px;"><span id="cke_bm_457C" style="display: none;"> </span><span style="font-family:courier new,courier,monospace;">conda create --name GP_txt2odf_env pip<br/>
+source activate GP_txt2odf_env<br/>
+pip install -r requirements.tx</span></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th style="width: 109px;">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txt file <span style="color:red;">*</span></td>
+<td>The text file to be reformatted</td>
+</tr>
+<tr>
+<td>prune gct <span style="color:red;">*</span></td>
+<td>
+<p>Whether or not to prune the GCT file to match the TXT file. If you are using the text file created by DESeq2, set this parameter to True.</p>
+</td>
+</tr>
+<tr>
+<td>gct</td>
+<td>
+<p>This is the GCT file which was originally used (e.g., the input to DESeq2). <em>Set prune_gct to True if you want this file pruned.</em></p>
+</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>This is the CLS file which was originally used (e.g., the input to DESeq2).</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Output Files</h2>
+<ol>
+<li>ODF file<br/>
+	Contains the original data, but reformatted to be compatible with ComparativeMarkerSelectionViewer.</li>
+<li>Pruned GCT file<br/>
+	This is a GCT file which contains the same rows as the text file provided.</li>
+</ol>
+<h2>License</h2>
+<p>txt2odf is distributed under a modified BSD license available at <a href="https://raw.githubusercontent.com/genepattern/txt2odf/master/LICENSE">https://raw.githubusercontent.com/genepattern/txt2odf/master/LICENSE</a></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					File format</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Python 3.6</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2018-03-30</td>
+<td>Small text modifications</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-03-21</td>
+<td>First version</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

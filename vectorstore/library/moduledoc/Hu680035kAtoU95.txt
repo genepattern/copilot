@@ -1,0 +1,60 @@
+Hu680035kAtoU95 is on version 1.0.
+A description of Hu680035kAtoU95 is Converts a list of Affymetrix Hu6800/Hu35KsubA probes to the corresponding Affymetrix U95Av2 probes..
+Hu680035kAtoU95 is a GenePattern module written by GenePattern gp-help@broad.mit.edu.
+Hu680035kAtoU95 can be categorized as Preprocess&Utilities.
+Hu680035kAtoU95 has the following parameters: input filename, output.
+The Hu680035kAtoU95 GenePattern module is a probe identifier conversion utility for microarray data.
+The Hu680035kAtoU95 module helps researchers translate probe identifiers from older Affymetrix microarray platforms to the U95Av2 platform.
+This GenePattern module supports multiple input file formats including .pol, .tag, and .grp files containing probe identifiers.
+The Hu680035kAtoU95 module is particularly useful for researchers working with the Global Cancer Map dataset generated on older microarray platforms.
+The module uses a curated lookup table to map probe identifiers between different Affymetrix microarray platforms.
+Researchers can use the Hu680035kAtoU95 module to facilitate cross-platform comparisons of gene expression data.
+The module can handle cases where a single probe maps to multiple probes on the target platform or where no mapping exists.
+The Hu680035kAtoU95 module is designed to be platform-independent and can run on various operating systems and computing environments.
+This GenePattern module is part of a preprocessing workflow for microarray data analysis and platform normalization.
+The Hu680035kAtoU95 module supports output files that maintain the original input file's structure and formatting.
+output
+- Name: output
+- Type: string
+- Description: Specifies the name of the output file where converted probe identifiers will be saved
+- Required: Yes
+- Default: None
+input filename
+- Name: input filename
+- Type: string
+- Description: Path to the input file containing Hu6800 or Hu35KsubA probe identifiers to be converted
+- Required: Yes
+- Default: None
+- Supported formats: .pol, .tag, .grp
+Hu680035kAtoU95 module converts probe identifiers from older Affymetrix microarray platforms to U95Av2 platform
+Input file can contain unique feature identifiers in different tab-delimited formats
+Some probe identifiers may map to multiple U95Av2 probes or have no corresponding features
+Conversion is based on a curated look-up table by Ken Ross
+Module is particularly useful for extrapolating findings from Global Cancer Map datasets
+Supports conversion of probe identifiers for genomic research and analysis
+Handles different input file structures like parametized ordered lists, group files, and tag files
+Provides mapping between older and newer Affymetrix microarray platform probe identifiers
+Hu680035kAtoU95 module input file formats:
+.pol file is a tab-delimited file with columns for ranking, unique feature identifier, feature description, and ranking value
+.tag file is a tab-delimited file with unique feature identifiers in the first column and feature descriptions in the second column
+.grp file contains only unique feature identifiers per row
+Hu680035kAtoU95 module output file formats:
+.pol output file contains rank of query feature, U95Av2 feature identifier, U95Av2 feature description, and original query feature identifier
+.tag output file contains U95Av2 feature description with query feature identifier concatenated in the second column
+.grp output file contains U95Av2 feature identifiers corresponding to input identifiers
+Hu680035kAtoU95 module supports conversion between Affymetrix microarray platform identifiers
+Some input probe identifiers may map to multiple U95Av2 probes
+Some input probe identifiers may have no corresponding U95Av2 features
+Conversion is based on a curated lookup table by Ken Ross
+Hu680035kAtoU95 module is useful for extrapolating findings from Hu6800 and Hu35KsubA platforms to U95Av2 platform
+Module supports conversion for Global Cancer Map (GCM) dataset analysis
+Hu680035kAtoU95 is a GenePattern module for converting microarray probe identifiers between different Affymetrix platforms.
+The module translates probe identifiers from Hu6800 and Hu35KsubA microarray platforms to their corresponding probes on the U95Av2 platform.
+This module supports three input file formats: .pol (parametrized ordered list), .tag (tab-delimited), and .grp (simple list) files containing probe identifiers.
+The conversion is based on a curated look-up table created by Ken Ross, enabling researchers to map older microarray probe identifiers to newer platform probes.
+The module is particularly useful for researchers working with the Global Cancer Map dataset, which was originally generated using Hu6800 and Hu35KsubA platforms.
+Some probe identifiers may map to multiple U95Av2 probes, while others might not have any corresponding features on the new platform.
+The module was developed to support research published in key papers by Ramaswamy et al. on cancer molecular signatures and multiclass cancer diagnosis.
+The output files maintain the same format as the input files, with additional columns showing the mapped U95Av2 probe identifiers.
+This module is platform-independent and can run on any operating system with a Perl interpreter, making it widely accessible to researchers.
+The module is designed as a preprocessing utility to facilitate cross-platform microarray data analysis and comparison.

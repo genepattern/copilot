@@ -1,0 +1,179 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>BWA.indexer (v2) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/BWA.indexer/2?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Creates a BWT index from a sequence FASTA file for use with the BWA 0.7.4 aligners.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Heng Li, Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>
+	gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>BWA 0.7.4</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Summary</h2>
+<p>
+	The BWA.indexer builds a BWT index from a set of DNA sequences. This module takes a sequence files in FASTA format, and outputs a set of 5 files in a ZIP archive. These files together constitute the index. For more information on the FASTA format, see the NIH description here at <a href="http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml">http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml</a>.</p>
+<p>
+	This document is adapted from the BWA documentation for release 0.7.4.  For more information about BWA.indexer, see the <a href="http://bio-bwa.sourceforge.net/">BWA project site</a>. BWA.indexer was developed at the Wellcome Trust Sanger Institute and the Broad Institute.</p>
+<p>
+<strong>Note: </strong>Index files created with BWA version 0.5.x or earlier are <strong>not</strong> compatible with the aligners of version 0.6.x and newer.  Likewise, the BWA 0.6.x and newer index files are not compatible with the 0.5.x aligners.  The BWA 0.7.x aligners are able to use index files created with 0.6.x, however.</p>
+<h2>
+	Memory Requirements</h2>
+<p>
+	With the bwtsw algorithm, 5GB memory is required for indexing complete human genome sequences.</p>
+<h2>
+	Speed</h2>
+<p>
+	Indexing the human genome sequences takes 3 hours with bwtsw algorithm. Indexing smaller genomes with IS algorithms is faster, but requires more memory.</p>
+<h2>
+	References</h2>
+<p>
+	BWA manual page: <a href="http://bio-bwa.sourceforge.net/bwa.shtml">http://bio-bwa.sourceforge.net/bwa.shtml</a>.</p>
+<p>
+	Li H, Durbin R. Fast and accurate short read alignment with Burrows-Wheeler Transform. <em>Bioinformatics</em>. 2009;25:1754-1760. [PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/19451168">19451168</a>] (<a href="http://www.ncbi.nlm.nih.gov/pubmed/19451168">http://www.ncbi.nlm.nih.gov/pubmed/19451168</a>)</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>
+				Name</th>
+<th>
+				Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+				fasta file <span style="color:red;">*</span></td>
+<td>
+				A sequence fasta file</td>
+</tr>
+<tr>
+<td>
+				algorithm <span style="color:red;">*</span></td>
+<td>
+<p>
+					The algorithm to use for constructing the BWT index.  The options are:</p>
+<ul>
+<li>
+						is: The IS linear-time algorithm for constructing a suffix array. It requires 5.27*N memory, where N = database size.  IS is moderately fast, but does not work with databases larger than 2GB. </li>
+<li>
+						bwtsw: The algorithm implemented in BWT-SW. This method works with the whole human genome, but it does not work with databases smaller than 10MB and it is usually slower than IS.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+				output prefix <span style="color:red;">*</span></td>
+<td>
+				A prefix for the output file name.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Input Files</h2>
+<ol>
+<li>
+		fasta file<br/>
+		A single file containing sequences in FASTA format to be indexed.  For more information on the FASTA format, see the NIH description here at <a href="http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml">http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml</a>.</li>
+</ol>
+<h2>
+	Output Files</h2>
+<p>
+	&lt;output.prefix&gt;.zip</p>
+<p>
+	Five files comprise the index, and are output in a ZIP archive (&lt;output prefix&gt;.zip).  The file names are in the following formats:</p>
+<ul>
+<li>
+<p>
+			&lt;output prefix&gt;.amb</p>
+</li>
+<li>
+<p>
+			&lt;output prefix&gt;.ann</p>
+</li>
+<li>
+<p>
+			&lt;output prefix&gt;.bwt</p>
+</li>
+<li>
+<p>
+			&lt;output prefix&gt;.pac</p>
+</li>
+<li>
+<p>
+			&lt;output prefix&gt;.sa</p>
+</li>
+</ul>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					C;Perl</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2014-07-17</td>
+<td>Updated to BWA 0.7.4 and switched to HTML-based doc</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2011-05-02</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+ExprToGct is on version .
+A description of ExprToGct is Converts an EXPR file to GCT format. This module converts a file in EXPR format to GCT format. The EXPR file format is a tab-delimited format produced by the Cufflinks module. The ExprToGct module extracts expression data from an EXPR file and writes it to a GCT file..
+ExprToGct is a GenePattern module written by GenePattern Help (gp-help@broadinstitute.org).
+ExprToGct can be categorized as Data Format Conversion.
+ExprToGct has the following parameters: input.file, output.prefix.
+The ExprToGct GenePattern module is a data format conversion tool for transforming expression data files.
+The ExprToGct module converts EXPR files, which contain RNA sequencing expression measurements, into the standardized GCT file format.
+The module specifically translates Fragments Per Kilobase of exon model per Million mapped fragments (FPKM) values from Cufflinks RNA-seq analysis into a universal expression matrix format.
+ExprToGct enables researchers to convert transcript or gene expression data between different computational bioinformatics platforms and analysis environments.
+The module preserves critical genomic metadata like chromosome names and genomic coordinates during the file format conversion process.
+ExprToGct supports cross-platform compatibility by transforming expression data into the widely used GCT file format, which is standard in many genomic analysis tools.
+The module allows researchers to standardize expression data from RNA sequencing experiments for downstream computational analysis and visualization.
+By converting EXPR files to GCT, ExprToGct facilitates easier data sharing and integration across different bioinformatics research workflows and software platforms.
+The module operates independently of specific computational platforms, running on any operating system and CPU architecture.
+ExprToGct provides a simple, automated method for researchers to transform raw RNA sequencing expression measurements into a more universally readable format.
+input.file | File | ExprToGct module requires an input file in EXPR format produced by Cufflinks | Required | No default value
+output.prefix | String | ExprToGct module uses this label to name the output GCT file | Required | No default value
+ExprToGct module converts expression data from EXPR format to GCT format
+EXPR files contain Fragments Per Kilobase of exon model per Million mapped fragments (FPKM) values
+ExprToGct extracts transcript or gene ID information from input EXPR file
+First column of EXPR file becomes Name column in output GCT file
+Chromosome name and coordinate information are written to Description column of GCT file
+FPKM values are written to data column of output GCT file
+GCT format is a tab-delimited file used in GenePattern and other bioinformatics tools
+Output file will be named <output.prefix>.gct
+Module supports conversion between different genomic expression data formats
+Conversion process preserves key information from original EXPR file
+ExprToGct module input file (EXPR format):
+A tab-delimited file produced by Cufflinks containing transcript or gene expression data
+ExprToGct module input file contains columns for:
+First column as unique identifier/name
+FPKM (Fragments Per Kilobase of exon model per Million mapped fragments) values
+Chromosome name
+Left and right genomic coordinates
+ExprToGct module output file (GCT format):
+A tab-delimited file describing an expression dataset
+ExprToGct GCT output file includes:
+Row identifiers from first column of input EXPR file
+Chromosome names in Description column
+Left and right genomic coordinates in Description column
+FPKM values in data column
+ExprToGct module GCT file follows standard GenePattern expression matrix format
+ExprToGct output filename follows pattern: <output.prefix>.gct
+ExprToGct converts expression data between EXPR and GCT file formats
+ExprToGct preserves key genomic and expression information during file conversion
+ExprToGct supports cross-compatibility between different bioinformatics analysis tools
+ExprToGct module converts expression data from EXPR format to GCT format for genomic analysis.
+The ExprToGct module transforms Cufflinks-generated EXPR files into a standardized GenePattern file format.
+EXPR files contain Fragments Per Kilobase of exon model per Million mapped fragments (FPKM) for transcripts or genes.
+The module extracts FPKM values and writes them into the data column of the resulting GCT file.
+Chromosome names and genomic coordinates are transferred to the Description column in the GCT output.
+The first column of the EXPR file becomes the Name column (row identifiers) in the generated GCT file.
+GCT format is a tab-delimited file format widely used in genomic expression data analysis tools.
+The ExprToGct module supports cross-platform data conversion, working on any CPU and operating system.
+The output file is named using the specified output prefix with a .gct file extension.
+This module enables researchers to standardize expression data from Cufflinks for further computational analysis.
+The conversion process preserves key genomic and expression information during file format transformation.

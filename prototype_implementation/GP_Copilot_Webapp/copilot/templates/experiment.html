@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        .password-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 56px); /* Adjust for navbar height */
+            background-color: #f9f9f9;
+        }
+
+        .content-container {
+            margin-top: 30px;
+        }
+        .response-box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            height: 100%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://datasets.genepattern.org/images/gp-logo-noshad.png" height="30px" alt="GenePattern Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Back to Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if authenticated %}
+    <!-- Show experiment content if authenticated -->
+    <div class="container content-container">
+        <div class="row">
+            <!-- First Column -->
+            
+            <div class="col-md-6">
+                
+                <form id="experimentForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h6>Your session ID is: <span><input style='width:60%' id="session_id" name="session_id" value="{{ session_id }}"></span>.</h6>
+                    <div class="form-group">
+                        {% comment %} <button type="button" id="switchSessionBtn" class="btn btn-secondary">Switch Session</button> {% endcomment %}
+                        {% comment %} <span id="sessionStatus" style="margin-left: 10px; font-weight: bold;"></span> {% endcomment %}
+                    </div>
+                    {% comment %} <small class="form-text text-muted">
+                        This session ID is also used for your session's vector store. Feel free to change / edit this. <b>Note: remember to copy this somewhere!</b>
+                    </small>
+                     {% endcomment %}
+
+                    <!-- Include session ID as a hidden input -->
+                    
+                    <hr>
+
+                    <!-- Input 1: System Prompt -->
+                    <div class="form-group">
+                        <label for="input1">System Prompt. The default prompt is provided.</label>
+                        <textarea id="input1" name="input1" class="form-control" rows="13" placeholder=''>
+You are a bioinformatics wizard who works for the GenePattern team. Your job is to answer bioinformatics related questions about running a workflow. If an image description is provided, describe the image. 
+            
+Do not describe tools that are not in the vector store, instead respond with "That tool is not currently available in GenePattern. 
+
+Feel free to contact the GenePattern team if you think it would be a good addition to our repository. Email: edh021@cloud.ucsd.edu"
+Provide input file formats when giving instructions on how to run modules or tools. Only give module suggestions for modules in GenePattern.
+Do not tell users to “go to GenePattern and log in”. Answer the following questions using all your knowledge and providing as much detail as possible with step-by-step instructions.
+
+                        </textarea>
+                    </div>
+
+                    <hr>
+                    <!-- Dropdown to select LLM -->
+                    <div class="form-group">
+                        <label for="modelSelect">Select Language Model</label>
+                        <select id="modelSelect" name="modelSelect" class="form-control">
+                            <option value="gpt-4o">GPT-4o</option>
+                            <option value="meta-llama">Meta LLaMA</option>
+                        </select>
+                    </div>
+                    <hr>
+
+                    <!-- File Upload Field -->
+                    <div class="form-group">
+                        <label for="fileUpload">Upload Files</label>
+                        <input type="file" id="fileUpload" name="files" class="form-control-file" multiple>
+                        <small class="form-text text-muted">
+                            Select one or more files to upload. The filenames will be logged with session metadata.
+                        </small>
+
+                        <small style="color: red;">
+                            Note: Only .pdf, .html, .R, .Rmd, .txt files are currently supported.
+                        </small>
+                    </div>
+
+                    <hr>
+                    <!-- File Manager Display -->
+                    <div class="form-group">
+                        <label>Uploaded Files</label>
+                        <div id="fileManager" class="response-box">
+                            <p>Loading files...</p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <!-- Input 3: User Prompt -->
+                    <div class="form-group">
+                        <label for="input3">User Prompt</label>
+                        <textarea id="input3" name="input3" class="form-control" rows="3" placeholder="Enter your question or prompt"></textarea>
+                    </div>
+
+                    <hr>
+                    <!-- Input 4: Paste Image -->
+                    <div class="form-group">
+                        <label for="imagePasteArea">Paste Image</label>
+                        <div id="imagePasteArea" contenteditable="true" style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; min-height: 200px; background-color: #fff;">
+                            Paste your image here (Ctrl+V or Command+V).
+                        </div>
+                        <small class="form-text text-muted">
+                            You can paste an image into this box. The image will be processed as part of your input.
+                        </small>
+                    </div>
+                    <input type="hidden" id="pastedImage" name="pastedImage">
+
+
+                    {% comment %} <!-- Input 5: Multiple HTML Links -->
+                    <div class="form-group">
+                        <label for="inputLinks">Enter Multiple HTML Links</label>
+                        <textarea id="inputLinks" name="inputLinks" class="form-control" rows="5" placeholder="Enter one link per line or separate with commas"></textarea>
+                        <small class="form-text text-muted">
+                            Enter multiple HTML links. Each link should be valid and can be separated by new lines or commas.
+                        </small>
+                    </div> {% endcomment %}
+
+
+                
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+
+            <!-- Second Column -->
+            <div class="col-md-6">
+                <h5>LLM Response</h5>
+                <div class="response-box" id="llmResponse">
+                    <!-- LLM response will be dynamically inserted here -->
+                    <p>No response yet. Please submit your inputs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <!-- Show password input if not authenticated -->
+    <div class="password-container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Enter Password</h5>
+                {% if error %}
+                    <p class="text-danger text-center">{{ error }}</p>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        // Handle form submission
+        document.getElementById("experimentForm").addEventListener("submit", async function (e) {
+            e.preventDefault(); // Prevent form from refreshing the page
+    
+            const formData = new FormData(this);
+            // Show "Loading..." in the response box
+            const responseBox = document.getElementById("llmResponse");
+            responseBox.innerHTML = `<p>Loading...</p>`;
+            const submitButton = this.querySelector('button[type="submit"]');
+
+            submitButton.disabled = true;
+
+            // Send data to the server using Fetch API
+            const response = await fetch("/experiment_llm/", {
+                method: "POST",
+                body: formData
+                
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                // Update the response box with the LLM response
+                document.getElementById("llmResponse").innerHTML = `<p>${data.response}</p>`;
+                submitButton.disabled = false;
+            } else {
+                document.getElementById("llmResponse").innerHTML = `<p class="text-danger">An error occurred while processing your request.</p>`;
+                submitButton.disabled = false;
+            }
+        });
+
+
+        const pasteArea = document.getElementById('imagePasteArea');
+        const pastedImageInput = document.getElementById('pastedImage');
+    
+        pasteArea.addEventListener('paste', (event) => {
+            const items = event.clipboardData.items;
+    
+            for (const item of items) {
+                if (item.type.startsWith('image/')) {
+                    const file = item.getAsFile();
+                    const reader = new FileReader();
+    
+                    reader.onload = function (e) {
+                        // Display the image in the paste area
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '100%';
+                        img.style.height = 'auto';
+                        pasteArea.innerHTML = '';
+                        pasteArea.appendChild(img);
+    
+                        // Save the image as base64 in a hidden input
+                        pastedImageInput.value = e.target.result;
+                    };
+    
+                    reader.readAsDataURL(file);
+                    break;
+                }
+            }
+            event.preventDefault(); // Prevent the default paste behavior
+        });
+
+        // Validate multiple HTML links
+        document.getElementById("experimentForm").addEventListener("submit", function (e) {
+            const linksInput = document.getElementById("inputLinks").value.trim();
+        
+            if (linksInput) {
+                // Split links by commas or new lines
+                const links = linksInput.split(/[\n,]+/).map(link => link.trim());
+        
+                // Validate each link
+                const invalidLinks = links.filter(link => !isValidURL(link));
+        
+                if (invalidLinks.length > 0) {
+                    alert(`Invalid links found:\n${invalidLinks.join('\n')}`);
+                    e.preventDefault(); // Stop form submission
+                }
+            }
+        });
+        
+        // Helper function to validate URLs
+        function isValidURL(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        // Handle file upload
+        document.getElementById("fileUpload").addEventListener("change", async function () {
+            const formData = new FormData();
+            const sessionID = document.getElementById("session_id").value;
+            const fileManager = document.getElementById("fileManager");
+        
+            // Add session ID and files to FormData
+            formData.append("session_id", sessionID);
+            Array.from(this.files).forEach(file => formData.append("files", file));
+        
+            try {
+                // Send files to the file upload API
+                const response = await fetch("/upload_files/", {
+                    method: "POST",
+                    body: formData,
+                });
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Display the updated list of files
+                    fileManager.innerHTML = data.files
+                        .map(file => `
+                            <p>
+                                ${file} 
+                                <button class="btn btn-sm btn-danger" onclick="deleteFile('${file}')">X</button>
+                            </p>
+                        `)
+                        .join('');
+                } else {
+                    const errorData = await response.json();
+                    fileManager.innerHTML = `<p class="text-danger">${errorData.error}</p>`;
+                }
+            } catch (error) {
+                fileManager.innerHTML = `<p class="text-danger">An error occurred: ${error.message}</p>`;
+            }
+        });
+
+
+        
+
+
+        async function fetchFiles() {
+            try {
+                const fileManager = document.getElementById("fileManager");
+                const sessionID = document.getElementById("session_id").value;
+                const response = await fetch("/list_uploaded_files/", {
+                    method: "POST",  // Changed to POST
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "X-CSRFToken": getCSRFToken(),  // Include CSRF Token if needed
+                    },
+                    body: `session_id=${encodeURIComponent(sessionID)}`,  // Send session ID
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    fileManager.innerHTML = data.files.length
+                        ? data.files.map(file => `<p>${file} <button class="btn btn-sm btn-danger" onclick="deleteFile('${file}')">X</button></p>`).join('')
+                        : `<p>No files uploaded yet.</p>`;
+                } else {
+                    fileManager.innerHTML = `<p class="text-danger">Failed to load files.</p>`;
+                }
+            } catch (error) {
+                fileManager.innerHTML = `<p class="text-danger">An error occurred: ${error.message}</p>`;
+            }
+        }
+        // Get CSRF token from Django cookie
+        function getCSRFToken() {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith('csrftoken=')) {
+                        cookieValue = decodeURIComponent(cookie.split('=')[1]);
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            const fileManager = document.getElementById("fileManager");
+            window.deleteFile = async function (fileName) {
+                const sessionID = document.getElementById("session_id").value;
+                if (confirm(`Are you sure you want to delete ${fileName}?`)) {
+                    try {
+                        const response = await fetch("/delete_uploaded_file/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                                "X-CSRFToken": getCSRFToken(),  // 🔹 Include CSRF Token
+                            },
+                            body: `file_name=${encodeURIComponent(fileName)}&session_id=${encodeURIComponent(sessionID)}`,
+                        });
+        
+                        if (response.ok) {
+                            const data = await response.json();
+                            alert(data.message);
+                            fetchFiles();
+                        } else {
+                            const errorData = await response.json();
+                            alert(`Error: ${errorData.message}`);
+                        }
+                    } catch (error) {
+                        alert(`An unexpected error occurred: ${error.message}`);
+                    }
+                }
+            };
+            fetchFiles();
+        });
+
+        document.getElementById("switchSessionBtn").addEventListener("click", function () {
+            document.getElementById("sessionStatus").textContent = "Session switched";
+            fetchFiles();  // Reload the file list after switching sessions
+        });
+
+    </script>
+
+</body>
+</html>

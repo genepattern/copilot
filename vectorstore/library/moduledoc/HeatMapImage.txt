@@ -1,0 +1,55 @@
+HeatMapImage is on version .
+A description of HeatMapImage is Creates a heat map graphic from a dataset. Creates a bmp, eps, jpeg, png, or tiff heat map image file from a dataset. A user–defined color palette can be provided by specifying a color palette file. If no color palette is provided, the default color palette used is: #4500AD #2700D1 #6B58EF #8888FF #C7C1FF #D5D5FF #FFC0E5 #FF8989 #FF7080 #FF5A5A #EF4040 #D60C00.
+HeatMapImage is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+HeatMapImage can be categorized as Visualization.
+HeatMapImage has the following parameters: input, output, output format, column size, row size, show grid, grid color, show row descriptions, show row names, rows to highlight, row highlight color, color scheme, color palette, use.color.gradient.
+The HeatMapImage GenePattern module creates visual representations of complex biological datasets through heat map generation.
+HeatMapImage allows researchers to transform numerical data matrices into color-coded graphical displays for easier pattern recognition.
+The HeatMapImage module supports multiple output image formats including JPEG, PNG, TIFF, BMP, and EPS for flexible visualization.
+HeatMapImage uses a default color palette ranging from deep blues to bright reds to represent data intensity variations.
+Researchers can customize the HeatMapImage color scheme by providing their own color palette file for more nuanced data representation.
+The HeatMapImage module enables users to control individual pixel dimensions of heat map elements for precise visual scaling.
+HeatMapImage supports optional grid overlay and row/column labeling to enhance data interpretability and readability.
+Biologists can use HeatMapImage to visualize gene expression data, showing relative expression levels across different experimental conditions.
+The HeatMapImage module allows researchers to highlight specific rows of interest, drawing attention to critical data points or patterns.
+HeatMapImage provides flexibility in color gradient representation, supporting both linear gradients and discrete color assignments.
+Computational biologists leverage HeatMapImage for comparing gene expression profiles, protein interactions, and other large-scale biological datasets.
+The HeatMapImage module is part of the GenePattern suite, facilitating advanced data visualization for genomic and molecular research.
+input: dataset, file type, required, contains the input data for generating the heat map
+input: specifies the source data file format like .res, .gct, .odf for HeatMapImage module
+output: string, required, defines the filename and path for the generated heat map image
+output format: string, required, specifies the image file type like .jpeg, .png, .tiff, .bmp, .eps for HeatMapImage module
+column size: integer, optional, determines pixel width of each column element in heat map visualization
+row size: integer, optional, determines pixel height of each row element in heat map visualization
+show grid: boolean, optional, controls whether grid lines are displayed between heat map elements
+grid color: string, optional, sets the color of grid lines in the HeatMapImage heat map
+show row descriptions: boolean, optional, toggles visibility of row description text
+show row names: boolean, optional, controls display of row name labels
+rows to highlight: list/array, optional, specifies specific rows to emphasize in the heat map
+row highlight color: string, optional, defines color used to highlight selected rows
+color scheme: string, optional, determines overall color palette for heat map visualization
+color palette: file/list, optional, allows custom color definition for HeatMapImage module
+use color gradient: boolean, optional, switches between linear color gradient or discrete color representation
+HeatMapImage module requires an input dataset file in .res, .gct, or .odf format containing numerical data for visualization.
+HeatMapImage module generates an output image file in .jpeg, .png, .tiff, .bmp, or .eps format representing the heat map visualization.
+Input dataset for HeatMapImage module should contain numerical values representing gene expression, experimental measurements, or matrix data.
+Output image from HeatMapImage module will visually represent input data using color intensity and pixel-based representation.
+Color palette for HeatMapImage module can be custom defined or use default predefined color gradient from blue to red.
+HeatMapImage module supports optional grid display, row descriptions, and row name annotations in the generated heat map image.
+Input dataset for HeatMapImage module can vary in dimensions, supporting multiple rows and columns of numerical data.
+Output image from HeatMapImage module can be configured with custom pixel sizes for row and column elements.
+HeatMapImage module allows highlighting specific rows with custom color to emphasize particular data points.
+Input color palette for HeatMapImage module can be specified as RGB triplets or hexadecimal color values.
+HeatMapImage module creates a visual representation of data using color-coded grid elements
+HeatMapImage generates heat map images from various dataset file formats like .res, .gct, and .odf
+HeatMapImage allows customization of image output including pixel sizes for columns and rows
+HeatMapImage supports multiple output image formats including jpeg, png, tiff, bmp, and eps
+HeatMapImage provides options to display or hide grid lines, row descriptions, and row names
+HeatMapImage enables highlighting specific rows with a custom color
+HeatMapImage uses a default color palette ranging from deep blue to bright red if no custom palette is provided
+HeatMapImage can apply either discrete color assignments or linear color gradients
+HeatMapImage is written in Java and compatible with Java JVM level 1.5
+HeatMapImage was developed by Joshua Gould from the Broad Institute
+HeatMapImage allows users to specify a custom color palette file for more personalized visualization
+HeatMapImage processes input datasets to create a graphical representation of data variations
+HeatMapImage supports flexible configuration of visual elements like grid size and color scheme

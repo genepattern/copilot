@@ -1,0 +1,129 @@
+<section aria-labelledby="file-name-id-wide file-name-id-mobile" class="Box-sc-g0xbh4-0 fGqKFv"><div class="Box-sc-g0xbh4-0 eoaCFS js-snippet-clipboard-copy-unpositioned undefined" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 class="heading-element" dir="auto" tabindex="-1">Seurat.BatchCorrection (v3)</h1><a aria-label="Permalink: Seurat.BatchCorrection (v3)" class="anchor" href="#seuratbatchcorrection-v3" id="user-content-seuratbatchcorrection-v3"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto"><strong>Description</strong>: GenePattern module which implements the batch correction algorithm derived from the Seurat software package (Seurat version 3.2.0).</p>
+<p dir="auto"><strong>Authors</strong>: Jonathan Zamora and Edwin F. Juárez, UCSD</p>
+<p dir="auto"><strong>Contact</strong>: <a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help" rel="nofollow">Forum Link</a></p>
+<p dir="auto"><strong>Algorithm Version</strong>: Seurat 3.2.0</p>
+<hr/>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Summary</h2><a aria-label="Permalink: Summary" class="anchor" href="#summary" id="user-content-summary"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto">The <code>Seurat.BatchCorrection</code> Module integrates (corrects for batch effects) multiple single-cell datasets and identifies shared cell states that are present across different datasets, regardless of their origin. Once the Module integrates these datasets, the returned object will contain a new <em>Assay</em> that holds an integrated/batch-corrected expression matrix for all cells. The resultant batch-corrected expression matrix can then be used for downstream analyses and visualizations.</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">References</h2><a aria-label="Permalink: References" class="anchor" href="#references" id="user-content-references"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto">"Seurat V3 Paper:" Stuart T, Butler A, Hoffman P, Hafemeister C, Papalexi E, Mauck WM 3rd, Hao Y, Stoeckius M, Smibert P, Satija R. Comprehensive Integration of Single-Cell Data. Cell. 2019 Jun 13;177(7):1888-1902.e21. doi: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6687398/" rel="nofollow">10.1016/j.cell.2019.05.031</a>. Epub 2019 Jun 6. PMID: 31178118; PMCID: PMC6687398.</p>
+<p dir="auto"><a href="https://satijalab.org" rel="nofollow">Satija Lab</a></p>
+<p dir="auto"><a href="https://satijalab.org/seurat/" rel="nofollow">Seurat</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto" tabindex="-1">Technical Notes</h3><a aria-label="Permalink: Technical Notes" class="anchor" href="#technical-notes" id="user-content-technical-notes"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">This module runs in the Docker container tagged <a href="https://hub.docker.com/layers/142293536/genepattern/seurat-batchcorrection/3.1/images/sha256-4b85c00f3d14456a59574acd36b9cfa639f6ce33518abcb9994d12c81a724c09?context=explore" rel="nofollow"><code>genepattern/seurat-batchcorrection:3.1</code></a>.</p>
+<p dir="auto">GitHub repository for this module's code &amp; version: <a href="https://github.com/genepattern/Seurat.BatchCorrection/tree/v3">https://github.com/genepattern/Seurat.BatchCorrection/tree/v3</a></p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Parameters</h2><a aria-label="Permalink: Parameters" class="anchor" href="#parameters" id="user-content-parameters"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input_files</td>
+<td>Gene expression matrices (columns are cell IDs and rows are genes) stored in a <code>.txt</code> or one Seurat Object (<code>.rds</code>) file per batch. If your files are in 10x Genomics (Cell Ranger) format or stored in a <code>.tar</code>, or <code>.gz</code> file, please use the <a href="https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:genepattern.org:module.analysis:00416" rel="nofollow">Seurat.QC</a> module to pre-process your data and then use the <code>.txt</code> or <code>.rds</code> output from Seurat.QC in this module. For sample data see <a href="https://datasets.genepattern.org/data/module_support_files/Conos/small_500x500_HNSCC_noribo.txt" rel="nofollow">test data file 1</a> and <a href="https://datasets.genepattern.org/data/module_support_files/Conos/small_500x500_MEL_noribo.txt" rel="nofollow">test data file 2</a>.</td>
+</tr>
+<tr>
+<td>use_batch_names</td>
+<td>(default = TRUE) Map each input file to Batch Numbers beginning with <code>Batch 1</code> and going up to <code>Batch n</code> where <code>n</code> represents the number of input files. When set to FALSE, the batch names will be set to the file names.</td>
+</tr>
+<tr>
+<td>ncomps</td>
+<td>(default = 50) The number of principal components to be used in the Principal Component Analysis (PCA) for batch correction.</td>
+</tr>
+<tr>
+<td>nCount_RNA</td>
+<td>(default = TRUE) Whether or not the batch correction script will produce a violin plot of the number of molecules detected within a cell for our single-cell datasets.</td>
+</tr>
+<tr>
+<td>nFeature_RNA</td>
+<td>(default = TRUE) Whether or not the batch correction script will produce a violin plot of the number of genes detected within each cell of our single-cell datasets.</td>
+</tr>
+<tr>
+<td>output_file_name</td>
+<td>(default = 'batch_correction_results') Base name for the <code>.pdf</code> and <code>.rds</code> output files.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Output Files</h2><a aria-label="Permalink: Output Files" class="anchor" href="#output-files" id="user-content-output-files"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<ol dir="auto">
+<li><code>batch_correction_log.txt</code>
+<ul dir="auto">
+<li>This <code>.txt</code> file contains a log of each process carried out during the batch correction script's execution.</li>
+</ul>
+</li>
+<li><code>output_file_name.rds</code>
+<ul dir="auto">
+<li>This <code>.rds</code> file can be used on another one of GenePattern's Seurat suite modules, such as the <code>Seurat.Clustering</code> module.</li>
+<li>It contains an integrated / batch-corrected expression matrix for all cells present in the input files.</li>
+<li><em>Note</em>: This file inherits its name from the <code>output_file_name</code> parameter listed above.</li>
+</ul>
+</li>
+<li><code>output_file_name.pdf</code>
+<ul dir="auto">
+<li>This <code>.pdf</code> file contains both a UMAP plot and Violin plot of the integrated Seurat Objects that are derived from gene expression datasets.</li>
+<li>Additionally, the first page will display a batch mapping table. In short, this table maps input files to numbered batches, starting at <code>Batch 1</code> and going up to <code>Batch n</code> where n represents the number of input files given to the script.</li>
+<li><em>Note</em>: This file inherits its name from the <code>output_file_name</code> parameter listed above.</li>
+</ul>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">License</h2><a aria-label="Permalink: License" class="anchor" href="#license" id="user-content-license"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto"><code>Seurat.BatchCorrection</code> is distributed under a modified BSD license available at <a href="https://github.com/genepattern/Seurat.BatchCorrection/blob/v3/LICENSE">https://github.com/genepattern/Seurat.BatchCorrection/blob/v3/LICENSE</a>.</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Platform Dependencies</h2><a aria-label="Permalink: Platform Dependencies" class="anchor" href="#platform-dependencies" id="user-content-platform-dependencies"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>CPU Type</th>
+<th>Operating System</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Any</td>
+<td>Any</td>
+<td>R 4.0.2</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Version Comments</h2><a aria-label="Permalink: Version Comments" class="anchor" href="#version-comments" id="user-content-version-comments"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Mar. 12th, 2021</td>
+<td>Input types now include <code>.rds</code>, <code>tsv</code>, and <code>.txt</code> files. Output shows data before the batch correction (in addition to post batch correction).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mar. 3rd, 2021</td>
+<td>Introduced updates to parameters, program structure, and output format.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Nov. 4th, 2020</td>
+<td>Initial Release of <code>Seurat.BatchCorrection</code>.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</article></div><button hidden=""></button></section>

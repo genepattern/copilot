@@ -1,0 +1,54 @@
+ExtractRowNames is on version .
+A description of ExtractRowNames is Extracts the features (e.g. gene accessions) from a dataset into a separate text file.
+ExtractRowNames is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+ExtractRowNames can be categorized as Preprocess & Utilities.
+ExtractRowNames has the following parameters: input.filename, output.file.
+The ExtractRowNames module allows researchers to isolate row identifiers from genomic datasets
+The ExtractRowNames module is a utility tool for extracting feature names from various bioinformatics file formats
+ExtractRowNames can process multiple file types including .res, .gct, and .odf files containing genomic data
+The module is particularly useful for preparing gene lists for downstream analysis in bioinformatics workflows
+ExtractRowNames helps researchers quickly isolate gene accession numbers or other row-level identifiers from complex datasets
+The module supports standardized genomic file formats commonly used in transcriptomics and genomics research
+ExtractRowNames generates a simple text file containing only the row names, facilitating further computational processing
+Researchers can use ExtractRowNames to create focused gene lists for comparative analysis or targeted investigations
+The module operates across different computing platforms, making it versatile for various research environments
+ExtractRowNames provides a straightforward method for extracting feature information without complex data manipulation
+The module is part of the GenePattern suite, which offers comprehensive genomic data analysis tools
+ExtractRowNames can help researchers prepare data for gene expression studies, pathway analysis, and molecular profiling
+The tool supports Java 1.4 and above, ensuring compatibility with most modern computational systems
+ExtractRowNames simplifies the process of isolating gene identifiers from large, complex genomic datasets
+Bioinformaticians can use ExtractRowNames as a preprocessing step in more complex genomic analysis pipelines
+input.filename: string, input file path from which row names will be extracted, required, source file must be .res, .gct, or .odf format
+ExtractRowNames module requires a valid input file containing row names or features to extract
+output.file: string, output text file path where extracted row names will be saved, required, typically a .txt file extension
+ExtractRowNames module will write the extracted row names to this specified output file destination
+row names: typically gene accession identifiers extracted from the input dataset
+ExtractRowNames module focuses on pulling out feature or identifier information from scientific data files
+input file formats: supports .res, .gct, and .odf file types for row name extraction
+ExtractRowNames module can handle multiple standardized scientific data file formats
+extraction purpose: separates row name/feature information from the main dataset
+ExtractRowNames module enables researchers to isolate and work with identifier metadata
+preprocessing utility: helps organize and extract specific metadata from scientific datasets
+ExtractRowNames module serves as a data preparation and transformation tool for genomic or scientific research
+platform independence: works on any CPU, operating system with Java 1.4 or higher
+ExtractRowNames module provides flexible computational environment support
+ExtractRowNames module input file is a dataset file in .res, .gct, or .odf format containing row names or feature identifiers.
+ExtractRowNames module input file typically contains gene expression data with multiple columns and rows representing genes or features.
+ExtractRowNames module input file must have a structured format that includes identifiable row names or accession numbers.
+ExtractRowNames module output file is a plain text (.txt) file containing only the extracted row names or feature identifiers.
+ExtractRowNames module output file will have a single column listing each row name from the original input dataset.
+ExtractRowNames module output file preserves the original order of row names from the input file.
+ExtractRowNames module supports extracting row names from three different file formats: .res, .gct, and .odf.
+ExtractRowNames module requires a valid input file with consistent row name formatting for successful extraction.
+ExtractRowNames module can handle various types of feature identifiers like gene accession numbers, probe IDs, or other unique row labels.
+ExtractRowNames module is designed for preprocessing and preparing gene expression datasets by isolating row name information.
+ExtractRowNames module helps researchers extract feature names like gene accessions from genomic datasets.
+The ExtractRowNames module can process multiple file formats including .res, .gct, and .odf files.
+ExtractRowNames allows users to isolate row names (typically gene identifiers) into a separate text file for further analysis.
+The module requires an input filename containing the original dataset and specifies an output filename for the extracted row names.
+ExtractRowNames is designed as a preprocessing utility that can work across different computational platforms and Java versions.
+The module operates independently of specific CPU architectures or operating systems, providing broad compatibility.
+Users of ExtractRowNames can easily extract gene accession names or other feature identifiers from genomic data files.
+The output of ExtractRowNames is a simple text file containing the extracted row names, which can be used in subsequent bioinformatics workflows.
+ExtractRowNames was previously known as ExtractFeatureListRows, indicating an evolution in the module's naming convention.
+The module supports Java JVM level 1.4, ensuring compatibility with older computational environments in genomic research.

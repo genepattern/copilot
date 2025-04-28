@@ -1,0 +1,210 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>MutSigCV (v1) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/MutSigCV/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Identifies genes that are significantly mutated in cancer genomes, using a model with mutational covariates.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Mike Lawrence, et al., Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>http://www.broadinstitute.org/cancer/cga/mutsig, http://www.broadinstitute.org/cancer/cga/cga_forums, mutsig-help@broadinstitute.org, http://genepattern.org/help</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>MutSigCV 1.3.01</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<p>MutSigCV accepts whole genome or whole exome sequencing data from multiple samples, with information about point mutations, small insertions/deletions, and coverage, and identifies genes that are mutated more often than one would expect by chance.</p>
+<p>Recent cancer genome studies have led to the identification of many cancer genes, and the expectation was that as samples sizes grew, the power to detect cancer driver genes (sensitivity) and distinguish them from the background of random mutations (specificity) would increase as well.  However, it appears that one difficulty with larger sample size is that it increases the rate of detecting highly mutable genes as not simply highly mutable, but also implausibly cancer-related -- that is, it increases the false positive rate.  One reason for this is the use of an average overall mutation rate for a given cancer type for the whole genome.  In a mock case where the genes were given variable mutation frequencies and the dataset was analyzed under the erroneous assumption of a constant genome-wide mutation rate, many of the highly mutable genes were falsely detected as significant.  The problem increases with sample size because the threshold for statistical significance decreases with increased sample size.</p>
+<p>There are strong correlations between somatic mutation frequencies in cancers and both gene expression level and replication time of a DNA region during the cell cycle.  Low-expressed and late-replicating genes, such as olfactory receptor genes and very large genes, make up many of the false positives seen in studies that are trying to identify cancer driver genes.</p>
+<p>MutSigCV corrects for variation by employing patient-specific mutation frequencies and mutation spectra, and gene-specific mutation rates, incorporating expression levels and replication times.  Incorporating these covariate factors into the model substantially reduces the number of false positives in the generated list of significant genes, especially when applied to tumor samples that have high mutation rates.</p>
+<h2>Algorithm</h2>
+<p>A critical component of MutSigCV is the background model for mutations, the probability that a base is mutated by chance.  This model is not constant, but varies due to patient-based factors and genomic position-based factors.  The patient-based factors include:</p>
+<ul>
+<li>overall mutation rate</li>
+<li>overall mutational spectrum (e.g., the percentages of mutations that are transitions of certain types, transversions of certain types, and/or nonsense)</li>
+</ul>
+<p>The genomic position-based factors include:</p>
+<ul>
+<li>gene expression levels</li>
+<li>DNA replication timing</li>
+<li>HiC-based chromatin state estimation (that is, the degree to which the DNA is more or less densely packed, modulating transcriptional access to the genes in a given location)</li>
+</ul>
+<p>The mutational spectrum model does not consider every possible base change on its own, but pools each mutation into categories that consider both sequence context (e.g., was this a mutation of a C that was adjacent to a G?) and functional impact (e.g., did this mutation create a stop codon? was it an indel?).  Indels are counted as Null mutations.</p>
+<p>The following figure shows on the left a set of chromosomes, each from the tumor of a different cancer patient.  Genes are cartooned as colored bands, and somatic mutations are indicated by red triangles.  The mutations from all the tumors can be aggregated together by collapsing as shown, and the total number of mutations per gene can be computed.  Then this tally is converted to a score, and then to a significance level.  A threshold is chosen to control for the False Discovery Rate (FDR), and genes exceeding this threshold are reported as significantly mutated.</p>
+<p><img alt="" height="310" src="/uploaded/content_mutsig_fig1.png" width="640"/></p>
+<h3>Usage</h3>
+<p>The MutSigCV module requires three files:</p>
+<ul>
+<li>MAF mutation file: A <a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format+%28MAF%29+Specification">Mutation Annotation Format (MAF)</a> file is a tab-delimited text file that lists mutations.  The MAF file to be used in MutSigCV requires 2 additional, nonstandard columns, detailed in the <a href="#input_files">Input Files</a> section.  If your MAF does not include these additonal columns it is possible for MutSig to automatically discover this information; for details, see below.  This file could come from an analysis program like <a href="http://www.broadinstitute.org/cancer/cga/mutect">MuTect</a> followed by <a href="http://www.broadinstitute.org/oncotator">Oncotater</a>.</li>
+<li>Coverage file: A tab-delimited file that gives the maximum number of bases covered to adequate depth in order to call mutations.  The coverage is broken down by gene and patient and also by mutation category.  This file derives from processing sample coverage files in <a href="http://genome.ucsc.edu/goldenPath/help/wiggle.html">WIG (wiggle) format</a> output by an analysis program like <a href="http://www.broadinstitute.org/cancer/cga/mutect">MuTect</a>.  If this level of detailed coverage information is not available, a file is available that will allow MutSigCV to operate assuming full coverage.  See the <a href="#input_files">Input Files</a> section for details.</li>
+<li>Covariates file: The covariates table provided in the module (which can also be downloaded from the link in the <a href="#example_data">Example Data</a> section) was derived from multiple data sets.  It has proven useful for analyzing many cancer types, but users can use more specific data if available.</li>
+</ul>
+<p>For information on the contents and required formats of the input files see the <a href="#input_files">Input Files</a> section.</p>
+<p>Note that though MutSigCV was developed for the analysis of somatic mutations, it has also been used successfully with germline mutations.</p>
+<p>It has been observed that MutSigCV may not produce useful results on cancers with low mutation rates (such as pediatric cancers) due to certain internal assumptions made in the code.  While a future version of MutSigCV may add the ability to change these assumptions before running the analysis, at present the GenePattern module is limited to using these defaults.  It is possible to work around these assumptions, though you will need to obtain and modify the MatLab code and run it outside of GenePattern.  Please contact the MutSigCV authors for more details.</p>
+<h2>References</h2>
+<p>Lawrence MS, Stojanov P, Polak P, Kryukov GV, et al. Mutational heterogenieity in cancer and the search for new cancer genes.  <span role="menubar"><em>Nature</em>.</span> 2013 Jun 16. doi: 10.1038/nature12213. (<a href="http://dx.doi.org/10.1038/nature12213">link</a>)</p>
+<p>The Cancer Genome Atlas Research Network. Comprehensive genomic characterization of squamous cell lung cancers. <em>Nature</em>. 2012;489:519-525. (<a href="http://www.nature.com/nature/journal/v489/n7417/full/nature11404.html">link</a>)</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mutation table file <span style="color:red;">*</span></td>
+<td>Mutation list in <a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format">Mutation Annotation Format (MAF)</a>.  For more information on the file format, see the <a href="#input_files">Input Files</a> section.</td>
+</tr>
+<tr>
+<td>coverage table file <span style="color:red;">*</span></td>
+<td>Coverage file in tab-delimited format, containing the number of sequenced bases in each patient, per gene per mutation category.  For more information on the file format, see the <a href="#input_files">Input Files</a> section.</td>
+</tr>
+<tr>
+<td>covariates table file <span style="color:red;">*</span></td>
+<td>Covariates table in a tab-delimited text file. For more information on the file contents and format, see the <a href="#input_files">Input Files</a> section.</td>
+</tr>
+<tr>
+<td>output filename base <span style="color:red;">*</span></td>
+<td>Base name for the output files.</td>
+</tr>
+<tr>
+<td>mutation type dictionary</td>
+<td>The mutation type dictionary to use for automatic category and effect discovery.  This is necessary only if you are using a MAF file without the columns "categ" and "effect".  See the <a href="#input_files">Input Files</a> section for details.</td>
+</tr>
+<tr>
+<td>genome build</td>
+<td>Genome build to use for automatic category and effect discovery.  This is necessary only if you are using a MAF file without the columns "categ" and "effect".  See the <a href="#input_files">Input Files</a> section for details.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2><a id="input_files" name="input_files">Input Files</a></h2>
+<p>Note: gene and sample names must agree across these three files. Similarly, the categ numbers must agree between the mutation and coverage files.</p>
+<ol>
+<li>MAF file</li>
+</ol>
+<p style="margin-left: 40px;">The <a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format">Mutation Annotation Format (MAF)</a> file is a tab-delimited text file that contains information about the mutations detected in the sequencing project. It lists one mutation per row, and the columns (named in the header row) report several pieces of information for each mutation.  One common source for MAF files that have been used in MutSigCV during the algorithm's development was the MuTect tool, followed by annotation of its output using Oncotator.  More information can be found on MuTect here: <a href="http://www.broadinstitute.org/cancer/cga/mutect">http://www.broadinstitute.org/cancer/cga/mutect</a>.    Information about Oncotator can be found here: <a href="http://www.broadinstitute.org/oncotator/">http://www.broadinstitute.org/oncotator</a>.</p>
+<p style="margin-left: 40px;">The MAF file to be used in MutSigCV must have 2 additional, nonstandard columns: effect and categ.  MutSigCV requires only 4 columns of the MAF file (see <a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format+%28MAF%29+Specification">this page</a> for the full MAF specification) and can process a simple tab-delimited file with only these columns if a full MAF is not available.  The columns are:</p>
+<ul>
+<li style="margin-left: 40px;">gene: Name of the gene that the mutation was in  (can also be called "Hugo Symbol")</li>
+<li style="margin-left: 40px;">patient: Identifier for the sample with the mutation (can also be called "Tumor Sample Barcode").</li>
+<li style="margin-left: 40px;">effect: Indicates whether the mutation is located within an exon (or splice site), or outside the coding regions, and whether the mutation is silent or not if it is located in a coding region; this information can be derived from the standard Variant_Classification MAF column.</li>
+<li style="margin-left: 40px;">categ: The mutation category.  Encodes both base context and what type the mutation was.  This column can be derived from three of the columns from a standard MAF file, Variant_Classification, Reference_Allele, and Tumor_Seq_Allele1, along with other genomic information to identify CpG contexts and null mutations.  Each mutation belongs to only one category.  If it is a null mutation or indel, it belongs in the last category.
+	<ol>
+<li>CpG transitions</li>
+<li>CpG transversions</li>
+<li>C:G transitions</li>
+<li>C:G transversions</li>
+<li>A:T transitions</li>
+<li>A:T transversions</li>
+<li>null+indel mutations</li>
+</ol>
+</li>
+</ul>
+<p style="margin-left: 40px;">Note that if your MAF does not contain category and effect information, you can direct MutSigCV to use its preprocessor to automatically organize these columns.  To do so, you need to provide a mutation type dictionary and tell it which genome build to use.  A suitable mutation type dictionary can be found on the public GenePattern server using "Add Path or URL" under "shared_data/example_files/MutSigCV_1.3/mutation_type_dictionary_file.txt".  Category and effect discovery is only available for human genomes hg19 and hg18 at present.</p>
+<ol start="2">
+<li>Coverage file</li>
+</ol>
+<p style="margin-left: 40px;">This file contains information about the sequencing coverage achieved for each gene and patient/tumor. Within each gene-patient bin, the coverage is broken down further according to the mutation category (e.g., A:T basepairs, C:G basepairs), and also according to the effect (silent/nonsilent/noncoding). This tab-delimited file can be produced by processing the sample-level coverage files in <a href="http://genome.ucsc.edu/goldenPath/help/wiggle.html">WIG (wiggle) format</a> output by the MuTect tool.  More information on MuTect can be found here: <a href="http://www.broadinstitute.org/cancer/cga/mutect">http://www.broadinstitute.org/cancer/cga/mutect</a>.  If detailed coverage information is not available, the user can use a “full coverage” file that is available on the GenePattern server.</p>
+<p style="margin-left: 40px;">The columns of the file are:</p>
+<ul>
+<li style="margin-left: 40px;">gene: name of the gene for which this line reports coverage (corresponds to the MAF file's Hugo_Symbol)</li>
+<li style="margin-left: 40px;">effect: silent, nonsilent, or noncoding</li>
+<li style="margin-left: 40px;">categ: number of the category that this line reports coverage for (must match the categ in the mutation table)</li>
+<li style="margin-left: 40px;">&lt;patient_name_1&gt;: number of covered bases for this gene, effect, and category</li>
+<li style="margin-left: 40px;">&lt;patient_name_2&gt;: number of covered bases for this gene, effect, and category</li>
+<li style="margin-left: 40px;">&lt;patient_name_ ...&gt;: number of covered bases for this gene, effect, and category</li>
+</ul>
+<p style="margin-left: 80px;">Note, covered bases will typically contribute fractionally to more than one effect depending on the consequences of mutating to each of three different possible alternate bases.</p>
+<p style="margin-left: 40px;">We recognize that detailed coverage information is not always available.  In such cases, a reasonable approach is to carry out the computation assuming full coverage.  The MutSigCV developers have prepared a file that can be used for this purpose: it is a "full coverage" file, or more accurately a "territory" file: the only information it contributes is a tabulation of how the reference sequence of the human exome breaks down by gene, categ, and effect.  On the GenePattern public server, this file can be found using "Add Path or URL" under "shared_data/example_files/MutSigCV_1.3/exome_full192.coverage.txt".</p>
+<ol start="3">
+<li>Covariate file</li>
+</ol>
+<p style="margin-left: 40px;">This file contains the genomic covariate data for each gene, for example, expression levels and DNA replication times, that will be used in MutSigCV to judge which genes are close to each other in mathematical "covariate space."</p>
+<p style="margin-left: 40px;">In general, the columns of this file are:</p>
+<ul>
+<li style="margin-left: 40px;">gene: name of the gene for which this line reports coverage</li>
+<li style="margin-left: 40px;">COVARIATE1 NAME: value of COVARIATE1 for this gene</li>
+<li style="margin-left: 40px;">COVARIATE2 NAME: value of COVARIATE2 for this gene</li>
+<li style="margin-left: 40px;">COVARIATEnv NAME: value of COVARIATEnv for this gene</li>
+</ul>
+<p style="margin-left: 40px;">For the specific data file supplied in GenePattern, the columns are:</p>
+<ul>
+<li style="margin-left: 40px;">gene: name of the gene for which this line reports coverage</li>
+<li style="margin-left: 40px;">expr: expression level of this gene, averaged across 91 cell lines in the <a href="http://www.broadinstitute.org/software/cprg/?q=node/11">Cancer Cell Line Encylcopedia (CCLE)</a></li>
+<li style="margin-left: 40px;">reptime: DNA replication time of this gene (measured in HeLa cells), ranging from 100 (very early) to 1000 (very late)</li>
+<li style="margin-left: 40px;">hic: chromatin state of this gene (measured from HiC experments in K562 cells) ranging approximately from -50 (very closed) to +50 (very open)</li>
+</ul>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output.filename.base&gt;.sig_genes.txt MutSig report<br/>
+	A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
+	<div>The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.</div>
+</li>
+</ol>
+<h2><a name="example_data"></a>Example Data</h2>
+<p>The data used for the <a href="http://www.nature.com/nature/journal/v489/n7417/full/nature11404.html">TCGA Lung Squamous paper</a> is available here:</p>
+<p style="margin-left:.25in;"><a href="http://software.broadinstitute.org/cancer/cga/sites/default/files/data/tools/mutsig/LUSC.MutSigCV.input.data.v1.0.zip">LUSC.MutSigCV.input.data.v1.0.zip</a></p>
+<h2>Requirements</h2>
+<p>MutSigCV can only be used on the GenePattern public server, as it requires a specialized installation process that prevents distribution via the repository.  Please contact the authors listed above if you have an interest in installing MutSigCV locally. </p>
+<p>Acceptance of the module license is required for its use.  A copy of the license text is available here: <a href="http://www.broadinstitute.org/cancer/cga/sites/default/files/data/tools/mutsig/mutsig_public_license.html">www.broadinstitute.org/cancer/cga/sites/default/files/data/tools/mutsig/mutsig_public_license.html</a></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					MutSig</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					Linux</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					MATLAB 2013a</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2013-06-17</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

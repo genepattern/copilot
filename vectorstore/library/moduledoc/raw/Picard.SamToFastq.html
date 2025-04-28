@@ -1,0 +1,155 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>Picard.SamToFastq (v3) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/Picard.SamToFastq/3?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Convert SAM or BAM files to FASTQ format</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Picard</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong>gp-help@broadinstitute.org</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Summary</h2>
+<div>
+	This module converts a file in SAM format (or its binary equivalent, BAM format) to FASTQ format. SAM is a standard short read alignment that allows aligners to attach custom tags to individual alignments. For more information on the SAM format, see the specification at http://samtools.sourceforge.net. For more information on the FASTQ format, see the <a href="http://maq.sourceforge.net/fastq.shtml">FASTQ specification</a> (<a href="http://maq.sourceforge.net/fastq.shtml">http://maq.sourceforge.net/fastq.shtml</a>). This module implements the SamToFastq function from Picard. For more information, see the Picard Web site: <a href="http://picard.sourceforge.net/">http://picard.sourceforge.net/</a>.</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>
+				Name</th>
+<th>
+				Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+				input file <span style="color:red;">*</span></td>
+<td>
+				The SAM or BAM file</td>
+</tr>
+<tr>
+<td>
+				per read group <span style="color:red;">*</span></td>
+<td>
+				Whether to output a fastq file per read group</td>
+</tr>
+<tr>
+<td>
+				re-reverse bases <span style="color:red;">*</span></td>
+<td>
+				Whether to re-reverse bases and qualities of reads with negative strand flag set</td>
+</tr>
+<tr>
+<td>
+				include non pf reads <span style="color:red;">*</span></td>
+<td>
+				Whether to include non-PF reads</td>
+</tr>
+<tr>
+<td>
+				clipping attribute</td>
+<td>
+				Attribute that stores the position at which the SAM record should be clipped</td>
+</tr>
+<tr>
+<td>
+				clipping action</td>
+<td>
+				Action to take with clipped reads when a clipping attribute is specified</td>
+</tr>
+<tr>
+<td>
+				clipping action quality value</td>
+<td>
+				Value to set base qualities to when clipping action is "change base quality values"</td>
+</tr>
+<tr>
+<td>
+				fastq output prefix 1</td>
+<td>
+				The fastq output file name for single-end fastq or first end of a paired fastq. Only specify when "per read group" is "no".</td>
+</tr>
+<tr>
+<td>
+				fastq output prefix 2</td>
+<td>
+				The second end of a paired fastq. Only specify when "per read group" is "no".</td>
+</tr>
+</tbody>
+</table>
+<p>
+<span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>
+	Output Files</h2>
+<div>
+	1. FASTQ file(s)</div>
+<div style="margin-left: 40px;">
+	The number of FASTQ files depends on the options specified: if the SAM file is for paired-end reads and if the per read group parameter is set to yes. For more information on the FASTQ format, see the specification: <a href="http://maq.sourceforge.net/fastq.shtml">http://maq.sourceforge.net/fastq.shtml</a>.</div>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Data Format Conversion</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>2013-06-21</td>
+<td>Fixed issue with choice parameters not appearing as drop downs</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2012-08-07</td>
+<td>Changed name from SamToFastq to Picard.SamToFastq</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

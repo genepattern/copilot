@@ -1,0 +1,46 @@
+AddNoiseToFCS is on version 2.
+A description of AddNoiseToFCS is Add noise to specified parameters in an FCS data file. The module takes an input FCS data file and adds a specified level of noise to (specified or all) parameters in file. Additionally, it can also remove saturated events, i.e., events with parameter values very close to the maximum range of particular scales..
+AddNoiseToFCS is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+AddNoiseToFCS can be categorized as Flow Cytometry.
+AddNoiseToFCS has the following parameters: Input.FCS.data.file, Output.FCS.file.name, Parameters.to.add.noise.to, Noise.level, Noise, Saturated.events, Random.Seed.
+The AddNoiseToFCS module is a specialized tool for preprocessing flow cytometry data by adding controlled noise to FCS files.
+AddNoiseToFCS helps prevent clustering algorithms from encountering computational errors caused by perfectly aligned or saturated events in flow cytometry datasets.
+The module allows researchers to add noise to specific or all parameters in a flow cytometry data file, which can improve downstream clustering and analysis.
+AddNoiseToFCS provides two primary noise addition methods: proportional noise (which varies based on individual event values) and uniform noise (which depends on parameter ranges).
+Researchers can use AddNoiseToFCS to remove saturated events, which are data points extremely close to the maximum range of a parameter and can cause statistical complications.
+The AddNoiseToFCS module is particularly useful for preparing flow cytometry data for advanced clustering algorithms like FlowClust that are sensitive to event variance.
+By adding a small, controlled amount of noise, AddNoiseToFCS helps prevent clustering algorithms from failing due to zero-variance event groups.
+The module allows users to specify a noise level as a percentage, controlling the maximum amount of noise added to each event in the dataset.
+AddNoiseToFCS supports adding noise to specific parameters by either parameter index or parameter name, providing flexibility in data preprocessing.
+Researchers can use a random seed parameter in AddNoiseToFCS to ensure reproducibility of the noise addition process across multiple analyses.
+The module is designed to work with FCS 3.0 and 3.1 file standards, making it compatible with most modern flow cytometry data formats.
+AddNoiseToFCS can help researchers explore a higher number of potential clusters compared to analyzing the original, unmodified flow cytometry data.
+Input.FCS.data.file: string, required parameter for specifying the source FCS data file to add noise to in the AddNoiseToFCS module.
+Output.FCS.file.name: string, required parameter for naming the output FCS file, with a default of <Input.FCS.data.file_basename>.with_noise.fcs in the AddNoiseToFCS module.
+Parameters.to.add.noise.to: list, optional parameter for selecting specific parameters to add noise to in the AddNoiseToFCS module, which can be specified by index or parameter name.
+Noise.level: numeric, required parameter specifying the maximum noise percentage to add to events in the AddNoiseToFCS module, with a default value of 0.5.
+Noise: string, required parameter in the AddNoiseToFCS module for selecting noise addition method, with options of Proportional (noise based on event value) or Uniform (noise based on parameter range), defaulting to Proportional.
+Saturated.events: string, required parameter in the AddNoiseToFCS module for handling events near the maximum parameter range, with options to remove or keep saturated events, defaulting to Remove saturated events.
+Random.Seed: numeric, optional parameter in the AddNoiseToFCS module for setting the random number generator seed, with a default value of 1234567.
+Here are the input and output file descriptions for the AddNoiseToFCS module:
+Input FCS data file contains raw flow cytometry measurement data with multiple parameters and events
+Input FCS file follows the FCS 3.1 standard file format for flow cytometry data
+Input FCS file can have up to 24 parameters and 1,000,000 events
+Input FCS file typically includes measurements like forward scatter, side scatter, and fluorescence parameters
+Output FCS file contains modified flow cytometry data with added noise and optional saturated event removal
+Output FCS file maintains the same structure as the input FCS file with noise-adjusted parameter values
+Output FCS file name defaults to <input_filename>.with_noise.fcs if not specified
+Output FCS file preserves original file metadata and keywords from the input file
+Output FCS file can have fewer events if saturated events are removed during processing
+Output FCS file is compatible with standard flow cytometry analysis tools and software
+Here are the chunks for the AddNoiseToFCS module documentation:
+AddNoiseToFCS is a GenePattern module designed to add noise to FCS data files for preprocessing in flow cytometry analysis.
+The module helps prevent clustering algorithm errors by adding small amounts of noise to flow cytometry data parameters.
+AddNoiseToFCS can remove saturated events, which are data points very close to the maximum range of a parameter scale.
+The module allows users to specify which parameters to add noise to, with options to apply noise to all parameters except Time.
+Users can choose between proportional noise (varying by parameter value) or uniform noise (based on parameter range) in AddNoiseToFCS.
+The noise level in AddNoiseToFCS is configurable, with a default of 0.5 percent maximum noise per event.
+AddNoiseToFCS can remove events with parameter values within 0.1% of the maximum range, helping to clean noisy or saturated data.
+The module supports specifying a random seed for reproducible noise generation, with a default seed of 1234567.
+AddNoiseToFCS is implemented in Java and is compatible with any CPU and operating system running Java 1.5 or higher.
+The module is particularly useful for preparing flow cytometry data for clustering algorithms like FlowClust that are sensitive to zero-variance dimensions.

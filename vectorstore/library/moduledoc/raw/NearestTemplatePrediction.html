@@ -1,0 +1,216 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>NearestTemplatePrediction (v4) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/NearestTemplatePrediction/4?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Nearest neighbor prediction based on a list of marker genes</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Yujin Hoshida (Broad Institute)</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2 align="left"><strong>Summary</strong></h2>
+<p align="left">This module performs class prediction using a predefined list of marker genes for multiple (≥2) classes [1,2]. Such marker genes are usually selected based on fold change, t-statistic, correlation coefficient, regression coefficient, etc. These numerical values indicate the relative importance of each gene in the list and often help improve accuracy of the class prediction. The module can take such values as “weight” for 2-class prediction (optional). As measures of significance of the prediction for each sample, the module computes nominal p-value, false discovery rate (FDR) [3], and Bonferroni-corrected p-value based on a random resampling-based test.</p>
+<p align="left"> </p>
+<p align="left">Graphic output, including a heatmap of the marker genes, is generated if the users’ graphic device supports “png”. Alternatively, users can run the HeatMapViewer module to generate a heatmap of the marker genes based on the .gct and .cls files output by the NearestTemplatePrediction module.</p>
+<h2><strong>References</strong></h2>
+<ol>
+<li align="left">Hoshida Y, et al. Gene Expression in Fixed Tissues and Outcome in Hepatocellular Carcinoma. N Engl J Med 2008; 359(19):1995-2004.</li>
+<li align="left">Xu L, et al. Gene Expression Changes in an Animal Melanoma Model Correlate with Aggressiveness of Human Melanoma Metastases. Molecular Cancer Research 2008;6:760-769.</li>
+<li align="left">Reiner A, Yekutieli D, Benjamini Y. Identifying differentially expressed genes using false discovery rate controlling procedures. Bioinformatics 2003;19(3):368-75.</li>
+</ol>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input exp filename <span style="color:red;">*</span></td>
+<td>Gene expression data set (.gct)</td>
+</tr>
+<tr>
+<td>input features filename <span style="color:red;">*</span></td>
+<td>List of marker genes (.txt): Probe ID, Gene name, Class (1,2,...), Weight (optional)</td>
+</tr>
+<tr>
+<td>output name <span style="color:red;">*</span></td>
+<td>Name for output files</td>
+</tr>
+<tr>
+<td>distance selection <span style="color:red;">*</span></td>
+<td>Distance metric</td>
+</tr>
+<tr>
+<td>weight genes <span style="color:red;">*</span></td>
+<td>Weight genes? (by statistic, fold change, etc. only for 2 classes)</td>
+</tr>
+<tr>
+<td>num resamplings <span style="color:red;">*</span></td>
+<td># resampling to generate null distribution for distance metric</td>
+</tr>
+<tr>
+<td>GenePattern output <span style="color:red;">*</span></td>
+<td>Create .gct and .cls files for GenePattern</td>
+</tr>
+<tr>
+<td>random seed <span style="color:red;">*</span></td>
+<td>Random seed</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>&lt;input.exp.filename&gt;<br/>
+	Gene expression dataset in GCT format.</li>
+<li>&lt;input.features.filename&gt;<br/>
+<strong>Format for input features file: </strong><br/>
+	Tab-delimited text file. The first row contains column heads. The first column should be based on the same annotation system as the first column of the input gene expression (.gct) file.</li>
+</ol>
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:500px;">
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: top;">
+<p>Gene ID #1<br/>
+			(e.g. Probe ID)</p>
+</td>
+<td style="text-align: center; vertical-align: top;">
+<p>Gene ID #2<br/>
+			(e.g. Probe ID)</p>
+</td>
+<td style="text-align: center; vertical-align: top;">Class<br/>
+			(should be 1, 2, ...)</td>
+<td style="text-align: center; vertical-align: top;">Weight value<br/>
+			(optional)</td>
+</tr>
+<tr>
+<td style="text-align: center;">id1</td>
+<td style="text-align: center;">gene1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4.3</td>
+</tr>
+<tr>
+<td style="text-align: center;">id2</td>
+<td style="text-align: center;">gene2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3.8</td>
+</tr>
+<tr>
+<td style="text-align: center;">id3</td>
+<td style="text-align: center;">gene3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-1.2</td>
+</tr>
+<tr>
+<td style="text-align: center;">id4</td>
+<td style="text-align: center;">gene4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-3.2</td>
+</tr>
+<tr>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+<td style="text-align: center;">...</td>
+</tr>
+</tbody>
+</table>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output name&gt;_prediction_result.xls<br/>
+	Prediction result</li>
+<li>&lt;output name&gt;_features.xls<br/>
+	List of marker genes</li>
+<li>&lt;output name&gt;_heatmap.png<br/>
+	Heatmap of marker genes</li>
+<li>&lt;output name&gt;_FDR_sample_bar.png<br/>
+	Predicted sample labels at FDR &lt; 0.05</li>
+<li>&lt;output name&gt;_FDR.png<br/>
+	Plot of FDR</li>
+<li>&lt;output name&gt;_heatmap_legend.png<br/>
+	Color map for SD –3~+3</li>
+<li>&lt;output name&gt;_sorted.dataset.gct</li>
+<li>&lt;output name&gt;_predicted_(un)sorted.cls</li>
+<li>&lt;output name&gt;_sample_info.txt</li>
+</ol>
+<h2>Example Data</h2>
+<p>Example files from Hoshida, 2008 [1] are available: <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/NearestTemplatePrediction/Train_Liver.gct" style="background-color: rgb(255, 255, 255);">Train_Liver.gct</a>, <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/NearestTemplatePrediction/Hoshida_Survival_signature.txt" style="background-color: rgb(255, 255, 255);">Hoshida_Survival_signature.txt</a></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Prediction</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R-2.15.3</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>2015-12-02</td>
+<td>Updated to use R-3.1 and added HTML documentation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2012-07-23</td>
+<td>Fixed bug in heatmap creation </td>
+</tr>
+<tr>
+<td>2</td>
+<td>2011-03-30</td>
+<td>Fixed errors with creating the images </td>
+</tr>
+<tr>
+<td>1</td>
+<td>2009-04-09</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

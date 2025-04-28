@@ -1,0 +1,57 @@
+ExtractFCSParameters is on version 2.
+A description of ExtractFCSParameters is Extracts specified parameters from a Flow Cytometry Standard (FCS) file. Sometimes, an FCS data file may contain several parameters (data dimensions) that are not relevant for a given analysis. This module allows you to extract specified parameters from an FCS data file and save these in a new FCS data file..
+ExtractFCSParameters is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+ExtractFCSParameters can be categorized as Flow Cytometry.
+ExtractFCSParameters has the following parameters: Input FCS data file, Parameters to extract, Output file name.
+The ExtractFCSParameters module allows researchers to selectively extract specific parameters from flow cytometry data files.
+The ExtractFCSParameters module helps reduce data complexity by allowing targeted extraction of relevant flow cytometry measurements.
+Flow cytometry researchers can use ExtractFCSParameters to focus analysis on specific cellular characteristics like size, granularity, or fluorescence markers.
+The ExtractFCSParameters module supports parameter selection through either numerical indexes or parameter short names like FSC-H, SSC-H, or FL1-A.
+By extracting only needed parameters, the ExtractFCSParameters module can reduce computational processing time and memory requirements for downstream flow cytometry analyses.
+The ExtractFCSParameters module is compatible with FCS 3.1 file standards and can handle large datasets with up to 1,000,000 events and 24 parameters.
+Bioinformaticians and flow cytometry analysts can use ExtractFCSParameters to streamline data preprocessing and focus on specific cellular populations of interest.
+The ExtractFCSParameters module generates a new FCS file containing only the selected parameters while preserving all original events from the source file.
+Researchers using ExtractFCSParameters can customize their flow cytometry data analysis by selectively including or excluding specific measurement dimensions.
+The ExtractFCSParameters module provides flexibility in parameter selection, supporting both numeric ranges (e.g., 1-3) and specific parameter names.
+input_file:
+- Name: Input FCS data file
+- Type: File
+- Description: The source FCS file from which parameters will be extracted in ExtractFCSParameters module
+- Required: Yes
+- Default: None
+parameters_to_extract:
+- Name: Parameters to extract
+- Type: String
+- Description: Specifies which parameters to keep from the input FCS file in ExtractFCSParameters module
+- Description: Can be specified by parameter indexes (e.g., 1-3, 5, 8)
+- Description: Can be specified by parameter short names (e.g., FSC-H, SSC-H, FL1-A)
+- Required: Yes
+- Default: None
+output_file_name:
+- Name: Output file name
+- Type: String
+- Description: Defines the name of the output FCS file in ExtractFCSParameters module
+- Description: If not specified, uses the input file name as the base
+- Required: No
+- Default: Derived from input file name
+ExtractFCSParameters module input and output file descriptions:
+Input FCS file contains raw flow cytometry data with multiple parameters and events recorded in FCS 3.0 or 3.1 file format.
+Input parameter list specifies which parameters to extract, using either numeric indexes or parameter short names like FSC-H or SSC-H.
+Output FCS file contains a subset of parameters from the original input file, preserving all original events but only including selected parameters.
+Output file maintains the standard FCS file structure with reduced parameter dimensionality.
+Input FCS file typically includes multiple measurement channels for cell characteristics like size, granularity, and fluorescence intensity.
+Input parameter list allows flexible selection of specific parameters for focused flow cytometry analysis.
+Output FCS file enables researchers to streamline data for specific analytical workflows by removing irrelevant parameters.
+Output file preserves the original event count and data integrity while reducing computational complexity.
+Input FCS file can contain up to 24 parameters and 1,000,000 events based on module performance estimates.
+Output file size will be smaller than the input file due to reduced parameter count.
+ExtractFCSParameters is a GenePattern module for selectively extracting specific parameters from Flow Cytometry Standard (FCS) data files.
+The ExtractFCSParameters module helps researchers reduce complex flow cytometry datasets by removing irrelevant parameters.
+Users can specify parameters to extract either by numerical index (like 1-3, 5, 8) or by short parameter names (such as FSC-H, SSC-H).
+The module allows researchers to focus on specific cellular characteristics by removing extraneous fluorescence or measurement data.
+Extracted parameters are saved in a new FCS file that retains all original events from the source file.
+The module supports FCS 3.1 file standard and can handle files with up to 1,000,000 events and 24 parameters.
+ExtractFCSParameters requires Java 1.6 or higher and is compatible with any CPU and operating system.
+The module issues warnings if specified parameters cannot be found in the source data file.
+Maximum resource requirements for ExtractFCSParameters include 1.4 GB of RAM and an estimated runtime of 25 seconds.
+The module was developed by Josef Spidlen and is part of the GenePattern flow cytometry analysis toolkit.

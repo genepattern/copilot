@@ -1,0 +1,63 @@
+PredictionResultsViewer is on version 5.
+A description of PredictionResultsViewer is The PredictionResultsViewer is used to view results from testing a predictor where the results can come from either a separate test set (e.g. the KNN or WeightedVoting algorithm) or a cross-validation prediction (e.g., the KNNXValidation or WeightedVotingXValidation algorithms). The prediction results and the model used to obtain them are summarized in the top portion of the panel..
+PredictionResultsViewer is a GenePattern module written by Thorin Tabor (UC San Diego, Broad Institute).
+PredictionResultsViewer can be categorized as JavaScript, Prediction, Visualization.
+PredictionResultsViewer has the following parameters: prediction results file.
+The PredictionResultsViewer module in GenePattern helps researchers visualize and analyze machine learning prediction results.
+The PredictionResultsViewer allows detailed examination of classification model performance across different biological datasets.
+This module can display prediction results from cross-validation or separate test set analyses in machine learning experiments.
+The PredictionResultsViewer generates an interactive visualization showing predicted versus actual class labels for each sample.
+The module creates a comprehensive confusion matrix that summarizes the accuracy of classification predictions across different classes.
+PredictionResultsViewer provides an interactive confidence plot where researchers can explore the reliability of individual predictions.
+Users can adjust the confidence threshold in the PredictionResultsViewer to modify how predictions are interpreted and classified.
+The module allows zooming and exploring prediction results through an interactive JavaScript-based interface.
+PredictionResultsViewer supports multiple visualization formats for machine learning prediction outcomes in biological research.
+The module can handle prediction results from various classification algorithms like KNN and Weighted Voting in GenePattern.
+Researchers can use the PredictionResultsViewer to quickly assess the performance of their machine learning classification models.
+The interactive plot in PredictionResultsViewer allows detailed exploration of individual sample prediction confidences.
+This module provides a user-friendly way to understand complex machine learning prediction results in biological datasets.
+PredictionResultsViewer module requires a prediction results file in .odf format
+Prediction results file is an input file that contains the prediction outcomes
+The file is required and must be in .odf (Ontology Data Format) format
+The file contains details about predicted classes, true classes, and prediction confidences
+The module supports visualization of prediction results from various machine learning algorithms
+Prediction results can come from separate test sets or cross-validation methods
+The module generates an interactive visualization of prediction results
+Visualization includes a summary panel showing model and prediction details
+A table displays sample names, true classes, predicted classes, and prediction confidence
+The confidence threshold can be adjusted to modify error detection
+An interactive confidence plot allows users to explore prediction details
+Users can zoom and interact with the plot by clicking and dragging
+Mousing over plot points reveals sample name and confidence value
+A confusion matrix summarizes predicted versus true classes
+The module supports downloading plot and table elements
+Currently in beta release with known issues and planned feature enhancements
+Supports JavaScript platform and works across different operating systems
+Designed for machine learning and predictive modeling result visualization
+PredictionResultsViewer module requires a prediction results file in .odf format as input.
+The input prediction results file contains prediction details for machine learning classification results.
+The .odf input file includes sample names, true classes, predicted classes, and prediction confidence values.
+PredictionResultsViewer generates an interactive visualization of prediction results.
+The module creates an interactive plot showing prediction confidences for each sample.
+PredictionResultsViewer generates a confusion matrix summarizing predicted versus true classes.
+The module allows users to adjust the no-call confidence threshold interactively.
+PredictionResultsViewer supports visualization of prediction results from cross-validation or separate test set algorithms.
+The module provides sample-level prediction details in an interactive table format.
+PredictionResultsViewer enables zooming and exploring prediction result details through an interactive interface.
+PredictionResultsViewer is a GenePattern module for visualizing machine learning prediction results.
+The PredictionResultsViewer helps researchers analyze the performance of predictive classification models.
+This module can process prediction results from cross-validation or separate test set analyses.
+The module generates an interactive visualization of prediction outcomes with multiple informative components.
+The top panel of the viewer summarizes the prediction model and overall results.
+A detailed table displays individual sample predictions, including true class, predicted class, and prediction confidence.
+Users can adjust the confidence threshold for classification using a "No Call Threshold" parameter.
+The module generates an interactive confusion matrix to summarize predicted versus actual class assignments.
+An interactive confidence plot allows users to explore prediction results graphically.
+Users can mouse over plot points to see detailed information about individual sample predictions.
+The plot supports zooming and resetting to original scale through mouse interactions.
+The module is currently in beta release, indicating potential ongoing development and refinement.
+The visualization supports multiple class prediction scenarios, not just binary classification.
+Prediction confidence is calculated according to the specific machine learning algorithm used.
+The module requires a prediction results file in .odf (Open Data Format) to function.
+JavaScript is required to run the PredictionResultsViewer module.
+The module is platform-independent and can run on any operating system with JavaScript support.

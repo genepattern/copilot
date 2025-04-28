@@ -1,0 +1,55 @@
+SNPViewer is on version .
+A description of SNPViewer is Displays SNP data plotting copy numbers and LOH values. The SNPViewer displays SNP data with samples on the y-axis and SNP data on the x-axis. The main plot shows either copy number or LOH data, with additional features like sample information, genomic information, and sample-based plots..
+SNPViewer is a GenePattern module written by Jim Robinson (Broad Institute).
+SNPViewer can be categorized as Visualizer, SNP Analysis, Genomics.
+SNPViewer has the following parameters: dataset filename, sample info filename, sample list filename, max memory.
+The SNPViewer GenePattern module is a powerful visualization tool for analyzing SNP array data across multiple samples.
+The SNPViewer allows researchers to explore genomic copy number variation and loss of heterozygosity (LOH) across chromosomes and samples.
+The main plot of the SNPViewer displays either copy number or LOH data, with samples represented on the y-axis and genomic positions on the x-axis.
+Users can load SNP data files (typically .cn or .xcn formats) created by other GenePattern modules like SNPFileCreator and CopyNumberDivideByNormals.
+The sample information area allows filtering and sorting of samples based on attributes like tissue type, cell type, or other metadata included in the sample information file.
+The genomic information panel displays cytobands, gene names, gene distribution, and allows users to define regions of interest for further analysis.
+Users can interactively explore the data by zooming into specific chromosomal regions, hovering over data points to see detailed information, and adjusting copy number thresholds.
+The color-coded heat map in the copy number view provides an intuitive visualization of genomic copy number alterations across samples.
+The SNPViewer supports defining and analyzing regions of interest, allowing sorting of samples based on amplification or deletion within specific genomic regions.
+The sample-based plot on the right side of the viewer provides detailed copy number information for a selected sample, showing median and individual copy number values.
+Researchers can export screenshots of the visualization, filter samples, and search for specific genes or samples within the viewer.
+The module is platform-independent, running on any operating system with Java 1.5 or higher, making it widely accessible to researchers.
+dataset filename: String, Optional, Full path and file name for a copy number file (cn or xcn) sorted by chromosome and physical location.
+sample info filename: String, Optional, Full path and file name of the sample information file containing array and sample identifiers.
+sample list filename: String, Optional, Full path and file name of a file listing sample identifiers to load in a specific order.
+max memory: String, Required, Maximum amount of memory available to the SNPViewer, default is 700m, recommended to adjust based on system memory.
+Name (in New Data Group): String, Required, Name for the SNP data group being created.
+Copy # file: String, Required, Full path and file name for a copy number file (cn or xcn) sorted by chromosome and physical location.
+Sample info file: String, Optional, Full path and file name of the sample information file containing array and sample identifiers.
+Sample list file: String, Optional, Full path and file name of a file listing sample identifiers to load in a specific order.
+SNPViewer input file: Copy number file (.cn or .xcn)
+SNPViewer input file: Copy number file must be sorted by chromosome and physical location
+SNPViewer input file: .xcn file format includes genotype information for LOH data
+SNPViewer input file: Sample information file with required columns for Array and Sample identifiers
+SNPViewer input file: Sample list file containing one sample identifier per line
+SNPViewer input file: Sample information file can include additional attribute columns
+SNPViewer input file: Typically created using SNPFileCreator and CopyNumberDivideByNormals modules
+SNPViewer input file: File must use Human Genome assembly of May 2004 (hg17)
+SNPViewer output: Visual display of SNP data with copy number or LOH visualization
+SNPViewer output: Main plot showing samples on y-axis and genomic positions on x-axis
+SNPViewer output: Sample information area with color-coded attribute blocks
+SNPViewer output: Genomic information panel showing cytobands, genes, and distribution
+SNPViewer output: Scrollable chromosome view with zoom capabilities
+SNPViewer output: Sample-based copy number plot for selected samples
+SNPViewer output: Exportable screenshot in encapsulated postscript (.eps) format
+SNPViewer is a GenePattern module for visualizing genomic SNP data across multiple samples.
+The SNPViewer allows exploration of copy number and loss of heterozygosity (LOH) data across chromosomes.
+SNPViewer displays sample data on the y-axis and genomic information on the x-axis.
+The main plot in SNPViewer can toggle between copy number and LOH visualization modes.
+SNPViewer requires input files including copy number data (.cn or .xcn) and optional sample information files.
+The sample information area in SNPViewer uses color-coded blocks to represent sample attributes.
+Genomic information in SNPViewer includes cytobands, gene names, gene distribution, and regions of interest.
+Users can define and interact with regions of interest in the SNPViewer interface.
+The SNPViewer copy number plot uses a color-coded heat map to represent copy number variations.
+A scroll bar in SNPViewer allows navigation and zooming across chromosomal regions.
+Sample-based plots in SNPViewer provide detailed copy number information for selected samples.
+The SNPViewer menu bar offers options for data loading, view customization, and sample filtering.
+SNPViewer's toolbar provides tools for chromosome selection, plot mode switching, and region definition.
+The module supports visualization of SNP data from the Human Genome assembly of May 2004 (hg17).
+SNPViewer requires Java 1.5 and can run on any CPU and operating system.

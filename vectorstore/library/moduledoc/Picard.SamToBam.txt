@@ -1,0 +1,43 @@
+Picard.SamToBam is on version 2.
+A description of Picard.SamToBam is Converts a SAM file to a BAM file. This module implements the SamFormatConverter function from Picard. SAM (Sequence Alignment/Map) file format is a generic nucleotide alignment format that describes the alignment of query sequences or sequencing reads to a reference sequence or assembly. BAM is the binary version of the SAM format..
+Picard.SamToBam is a GenePattern module written by Picard Tools.
+Picard.SamToBam can be categorized as Data Format Conversion.
+Picard.SamToBam has the following parameters: input.file, output.prefix.
+The Picard.SamToBam module is a critical bioinformatics tool for converting SAM alignment files to their compressed binary equivalent (BAM).
+The Picard.SamToBam module transforms text-based sequence alignment files into a more compact, computationally efficient format.
+SAM files contain detailed information about how sequencing reads align to a reference genome, representing each alignment as a text record.
+BAM files are the binary, compressed version of SAM files, which significantly reduces file size and improves computational processing speed.
+The Picard.SamToBam module is essential for genomic data preprocessing, enabling more efficient storage and analysis of sequencing alignment data.
+Researchers use the Picard.SamToBam module to prepare alignment files for downstream analyses like variant calling, gene expression studies, and genome mapping.
+The module supports conversion across different sequencing platforms and alignment strategies, making it a versatile tool in bioinformatics workflows.
+Picard.SamToBam leverages Java technology, ensuring broad compatibility across different computational environments and operating systems.
+The conversion process maintains all original alignment information, ensuring no data loss during the SAM to BAM transformation.
+Bioinformaticians rely on Picard.SamToBam as a standard preprocessing step in next-generation sequencing data analysis pipelines.
+The module is part of the broader Picard toolkit, which provides numerous utilities for manipulating high-throughput sequencing data.
+Picard.SamToBam helps researchers manage large genomic datasets by reducing file sizes and improving computational efficiency.
+input.file|File|SAM file to be converted from SAM to BAM format in Picard.SamToBam module|Required|No default value
+output.prefix|String|Label used to name the output BAM file in Picard.SamToBam module|Required|No default value
+Picard.SamToBam module converts genomic alignment files from text-based SAM to compressed binary BAM format
+SAM files contain sequence alignment information representing how DNA reads map to a reference genome
+BAM files are the compressed binary equivalent of SAM files, enabling more efficient storage and processing of genomic alignment data
+The Picard.SamToBam module uses Picard's SamFormatConverter function to perform the file format transformation
+Conversion preserves all alignment and sequence information from the original SAM file in the new BAM file format
+The output BAM file will be named using the specified output.prefix parameter with a .bam file extension
+Picard.SamToBam input file is a SAM (Sequence Alignment/Map) format text file containing nucleotide alignment data.
+Picard.SamToBam input file contains alignment records describing how sequencing reads map to a reference genome.
+Picard.SamToBam input file follows the SAM specification with columns for read name, flags, reference sequence, position, mapping quality, and other alignment details.
+Picard.SamToBam output file is a BAM (Binary Alignment/Map) format binary file containing the same alignment information as the input SAM file.
+Picard.SamToBam output file is a compressed, indexed binary version of the SAM file for more efficient storage and processing.
+Picard.SamToBam output filename is generated using the specified output prefix with a .bam file extension.
+Picard.SamToBam output file preserves all alignment information from the input SAM file in a compact binary representation.
+Picard.SamToBam supports conversion between text-based SAM and binary BAM alignment file formats.
+Picard.SamToBam is a data format conversion module that transforms SAM files into BAM files.
+The Picard.SamToBam module converts sequence alignment files from text-based SAM format to compressed binary BAM format.
+SAM files contain detailed information about how DNA sequencing reads align to a reference genome, including mapping coordinates and alignment quality.
+BAM files are the binary, compressed version of SAM files, which makes them more storage-efficient and faster to process in bioinformatics pipelines.
+The Picard.SamToBam module uses Java and can run on any operating system and CPU architecture.
+This module requires two input parameters: the input SAM file and an output file prefix for naming the resulting BAM file.
+The conversion process preserves all alignment information from the original SAM file, just changing the file's encoding from text to binary.
+Picard.SamToBam is part of the Picard Tools suite, which provides various utilities for manipulating high-throughput sequencing data.
+The module implements the SamFormatConverter function, which handles the technical details of SAM to BAM file transformation.
+Researchers and bioinformaticians use this module as a standard preprocessing step when working with next-generation sequencing alignment data.

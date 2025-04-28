@@ -1,0 +1,48 @@
+STREAM.Preprocess is on version .
+A description of STREAM.Preprocess is STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. STREAM.Preprocess is used to normalize and filter single-cell transcriptomic data and format it for analysis using the STREAM pipeline..
+STREAM.Preprocess is a GenePattern module written by Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+STREAM.Preprocess can be categorized as Single-cell Analysis, Preprocessing, Transcriptomics.
+STREAM.Preprocess has the following parameters: data file, cell label file, cell label color file, output filename, min percent genes, min count genes, min num cells, min percent cells, min count cells, expression cutoff, normalize, log transform, remove mitochondrial genes.
+STREAM.Preprocess is a GenePattern module designed for preprocessing single-cell transcriptomic data before trajectory analysis.
+The STREAM.Preprocess module helps researchers clean and prepare single-cell RNA sequencing data for advanced computational analysis.
+STREAM.Preprocess allows filtering of cells based on multiple metrics like minimum number of genes expressed and minimum read counts per cell.
+The module can normalize gene expression data by library size, which helps account for variations in sequencing depth across different cells.
+STREAM.Preprocess supports logarithmic transformation of gene expression data, which can help normalize the distribution of expression values.
+The module can remove mitochondrial genes from the dataset, which can be important for reducing technical noise in single-cell RNA sequencing data.
+STREAM.Preprocess generates an output file in a specialized AnnData pickle format that can be directly used in subsequent steps of the STREAM analysis pipeline.
+The module is particularly useful for preparing single-cell data from complex biological systems like developmental trajectories or cellular differentiation studies.
+Researchers can use STREAM.Preprocess to set specific thresholds for gene and cell filtering, allowing customized data cleaning strategies.
+The module is part of the broader STREAM toolkit, which is designed for reconstructing and visualizing complex cellular trajectories from single-cell omics data.
+data file: file type, required input for STREAM.Preprocess module containing single-cell transcriptomic data in csv, tsv, or pkl format.
+cell label file: optional tsv file containing labels for cells in the dataset.
+cell label color file: optional tsv file specifying hex color codes for cell labels in STREAM visualizations.
+output filename: required parameter specifying the prefix for output files from STREAM.Preprocess module.
+min percent genes: filtering parameter defining minimum percentage of genes that must be expressed to retain a cell.
+min count genes: filtering parameter specifying minimum number of read counts required for each gene.
+min num cells: filtering parameter determining minimum number of cells that must express a gene to keep it.
+min percent cells: filtering parameter defining minimum percentage of cells that must express a gene.
+min count cells: filtering parameter specifying minimum number of read counts required for a single cell.
+expression cutoff: threshold value used to determine if a gene is considered 'expressed' based on expression level.
+normalize: boolean parameter to enable or disable data normalization in STREAM.Preprocess.
+log transform: boolean parameter to apply logarithmic transformation to the dataset.
+remove mitochondrial genes: boolean parameter to remove mitochondrial genes from the analysis.
+STREAM.Preprocess input data file is a CSV, TSV, or STREAM pkl file containing single-cell transcriptomic gene expression data.
+STREAM.Preprocess input cell label file is a TSV file mapping cell identifiers to categorical labels.
+STREAM.Preprocess input cell label color file is a TSV file containing hexadecimal color codes corresponding to cell label categories.
+STREAM.Preprocess output file is a STREAM AnnData extended pickle (.pkl) file containing preprocessed single-cell transcriptomic data.
+STREAM.Preprocess input data file contains raw gene expression measurements for individual cells.
+STREAM.Preprocess cell label file enables grouping and visualization of cells by biological or experimental categories.
+STREAM.Preprocess cell label color file provides custom color mapping for cell label visualization.
+STREAM.Preprocess output pkl file is formatted for subsequent STREAM analysis modules.
+STREAM.Preprocess can filter cells based on gene expression percentage, read counts, and other metrics.
+STREAM.Preprocess can normalize, log transform, and remove mitochondrial genes from the input data.
+STREAM.Preprocess is a GenePattern module for preprocessing single-cell transcriptomic data before trajectory analysis.
+The module is designed to normalize and filter single-cell RNA sequencing data to prepare it for downstream trajectory reconstruction.
+STREAM.Preprocess can filter cells based on metrics like minimum number of genes expressed and minimum read counts per cell.
+The module can also filter genes based on criteria such as minimum number of cells expressing a gene and minimum percentage of cell expression.
+STREAM.Preprocess allows normalization of raw gene expression values by library size and optional logarithmic transformation.
+The module provides an option to remove mitochondrial genes from the dataset during preprocessing.
+STREAM.Preprocess generates an output file in AnnData extended pickle (.pkl) format for subsequent analysis in the STREAM pipeline.
+The preprocessing steps help reduce noise and focus on the most informative genes and cells for trajectory reconstruction.
+STREAM.Preprocess was developed by Huidong Chen from Massachusetts General Hospital and is part of the STREAM single-cell analysis toolkit.
+The module is based on research published in Nature Communications, demonstrating its scientific validation for single-cell trajectory analysis.

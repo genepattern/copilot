@@ -1,0 +1,53 @@
+CummeRbund.GeneSetReport is on version 1.
+A description of CummeRbund.GeneSetReport is CummeRbund is a visualization package designed to help you navigate through Cuffdiff RNA-Seq differential expression analysis results. It allows visualization of RNA-Seq data by aggregating, indexing, and creating publication-ready figures. This specific module (GeneSetReport) allows focusing on a specific list of genes to be visualized..
+CummeRbund.GeneSetReport is a GenePattern module written by Loyal Goff, MIT Computer Science and Artificial Intelligence Lab.
+CummeRbund.GeneSetReport can be categorized as RNA-seq, Visualization, Differential Expression.
+CummeRbund.GeneSetReport has the following parameters: cuffdiff input, geneset file, selected condition, output format, feature level, report as aggregate, log transform.
+The CummeRbund.GeneSetReport module is a specialized bioinformatics tool for visualizing RNA-seq differential expression data from Cuffdiff experiments.
+The CummeRbund.GeneSetReport allows researchers to generate multiple visualization plots for a predefined set of genes from RNA-seq data.
+This GenePattern module can create several types of graphical representations, including dendrograms, expression bar plots, expression line plots, heatmaps, scatter plots, and volcano plots.
+The CummeRbund.GeneSetReport is designed to work specifically with Cuffdiff output files, requiring the entire job folder as input rather than individual files.
+Researchers can use the CummeRbund.GeneSetReport to examine gene expression patterns across different experimental conditions and samples.
+The module allows users to specify a custom list of genes for focused visualization, making it useful for investigating specific gene sets of interest.
+CummeRbund.GeneSetReport can generate plots at different feature levels, including genes, isoforms, transcription start sites, and coding sequences.
+The visualization outputs can help researchers identify patterns of gene expression, statistical significance, and fold changes between different experimental conditions.
+This module is part of a collaborative effort between MIT's Computational Biology group and Harvard's Rinn Lab, focusing on advanced RNA-seq data analysis.
+The CummeRbund.GeneSetReport requires R 2.15 and includes multiple supporting R packages for comprehensive data visualization and analysis.
+Researchers can use the module to create publication-ready figures that illustrate complex RNA-seq expression data in an accessible and informative manner.
+The module supports both aggregate sample analysis and individual replicate visualization, providing flexibility in data interpretation.
+cuffdiff.input (File, Required): Input containing Cuffdiff job results, previous CummeRbund job, or cuffData.db database file for RNA-seq analysis visualization
+geneset.file (File, Required): Text file listing genes to be analyzed, supporting gene symbols, gene IDs, isoform IDs, TSS group IDs, or CDS IDs for CummeRbund report generation
+selected.condition (String, Optional): Comma-separated list of specific conditions/samples to include in plots, using names from original Cuffdiff job
+output.format (String, Required): Specifies the output file format for CummeRbund visualization results
+feature.level (String, Required): Determines the biological feature level for reporting (genes, isoforms, transcription start sites, or coding sequences)
+report.as.aggregate (Boolean, Optional): Controls visualization of individual replicates versus aggregate condition values, defaulting to aggregate sample representation
+log.transform (Boolean, Optional): Determines whether FPKM values should be log-transformed for visualization, affecting plot scaling and representation in CummeRbund analysis
+Here are the input and output files for the CummeRbund.GeneSetReport module:
+Input Files:
+CummeRbund.GeneSetReport requires a Cuffdiff job folder containing all Cuffdiff output files
+CummeRbund.GeneSetReport needs a text file with a list of genes, one gene per line
+Genes can be represented by gene symbol, gene ID, isoform ID, TSS group ID, or CDS ID
+Output Files:
+cuffData.db is an RSQLite database created from the original Cuffdiff job
+GeneSet.Dendrogram shows Jensen-Shannon distances between conditions for the gene list
+GeneSet.ExpressionBarplot displays FPKM values with confidence intervals for the gene list
+GeneSet.ExpressionPlot creates a line plot of FPKM values across samples
+GeneSet.Heatmap generates a clustered heatmap of FPKM values for the gene list
+GeneSet.Scatter produces pairwise scatter plots comparing FPKM values between samples
+GeneSet.Volcano plots fold change and statistical significance for pairwise condition comparisons
+stdout.txt and stderr.txt provide logs of the module's execution process
+CummeRbund.GeneSetReport is a GenePattern module for visualizing RNA-Seq differential expression data from Cuffdiff analysis.
+The module helps researchers explore gene expression patterns across different experimental conditions using multiple visualization techniques.
+CummeRbund.GeneSetReport requires a complete Cuffdiff job output or a pre-generated database file as input.
+Users must provide a text file containing a list of genes they want to analyze in the CummeRbund.GeneSetReport module.
+The module can generate multiple types of visualizations, including dendrograms, expression bar plots, expression line plots, heatmaps, scatter plots, and volcano plots.
+CummeRbund.GeneSetReport allows researchers to examine gene expression at different feature levels, such as genes, isoforms, transcription start sites, or coding sequences.
+The module can report gene expression data either at the aggregate sample level or at the individual replicate level.
+Visualization outputs include confidence intervals and FPKM (Fragments Per Kilobase of transcript per Million mapped reads) values to help interpret gene expression changes.
+CummeRbund.GeneSetReport is designed to create publication-ready figures that help researchers quickly understand complex RNA-Seq data.
+The module was developed collaboratively by computational biology researchers at MIT and Harvard University.
+CummeRbund.GeneSetReport requires R version 2.15.3 and automatically checks for and installs necessary supporting R packages.
+The module can generate pairwise comparisons between different experimental conditions to highlight significant gene expression changes.
+Researchers can control various visualization parameters, such as log transformation of expression values and output file format.
+The module produces a database file (cuffData.db) that can be reused for faster subsequent analyses.
+CummeRbund.GeneSetReport is particularly useful for exploring relationships between conditions and identifying genes with significant expression differences.

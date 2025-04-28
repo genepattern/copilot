@@ -1,0 +1,166 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>CummeRbund.GeneSetReport (v1) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/CummeRbund.GeneSetReport/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Cuffdiff visualization package providing plots based on a user-provided list of genes. </p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Loyal Goff, MIT Computer Science and Artificial Intelligence Lab</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>2.0.0</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>CummeRbund is a visualization package designed to help you navigate through the many inter-related files produced from a Cuffdiff RNA-Seq differential expression analysis and visualize the relevant results.  CummeRbund helps promote rapid analysis of RNA-Seq data by aggregating, indexing, and allowing you to easily visualize and create publication-ready figures of your RNA-Seq data. </p>
+<div>CummeRbund works with the output of the Cuffdiff module, processing its output files into a database to be used for reporting and plotting.  The results are indexed to speed up access to specific feature data (genes, isoforms, transcript start sites, coding sequences, etc.) and preserve the various relationships between these features. Creation of this database means that the expression values and other results are stored in a rapidly accessible form, quickly searchable for future use in the other CummeRbund reporting modules or downloadable for direct use in CummeRbund with R for custom reports.  For more details about CummeRbund, see the <a href="http://compbio.mit.edu/cummeRbund/">website</a> and <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>.</div>
+<div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">CummeRbund is a collaborative effort between the <a href="http://compbio.mit.edu/">Computational Biology group</a> led by Manolis Kellis at MIT's <a href="http://www.csail.mit.edu/">Computer Science and Artificial Intelligence Laboratory</a>, and the <a href="http://www.rinnlab.com/">Rinn Lab</a> at the Harvard University department of <a href="http://www.scrb.harvard.edu/">Stem Cells and Regenerative Medicine</a> - See more at: http://compbio.mit.edu/cummeRbund/#sthash.dunKB0RP.dpuf</div>
+<div> </div>
+<div>There are four CummeRbund modules available, each allowing you to examine your Cuffdiff results from a different perspective.  All of the modules allow reporting at either the aggregate or the replicate level and can present quantification metrics at the level of genes, isoforms, transcription start sites, or coding sequences.  The CummeRbund.QcReport provides high-level visualizations allowing for comparisons across all conditions and all genes - for example, to look at the distribution of expression values across conditions - to spot similarities and differences and to see the relationship between conditions.</div>
+<div> </div>
+<div>The other modules allow you to focus on specific conditions and/or genes.  The CummeRbund.SelectedConditionReport provides visualizations across all genes, but limited to a specific set of conditions so that you can compare individual condition pairs.  The CummeRbund.GeneSetReport allows you to focus on a specific list of genes to be visualized, while the CummeRbund.SelectedGeneReport is focused on a single user-chosen gene.  Both the GeneSetReport and the SelectedGeneReport can be further constrained to a selected set of conditions.  The plots provided by each module differs based on the slice of data to be examined; the visualization possible vary due to reasons of both performance and practicality of visual presentation.</div>
+<p>CummeRbund is a collaborative effort between the <a href="http://compbio.mit.edu/">Computational Biology group</a> led by Manolis Kellis at MIT's <a href="http://www.csail.mit.edu/">Computer Science and Artificial Intelligence Laboratory</a>, and the <a href="http://www.rinnlab.com/">Rinn Lab</a> at the Harvard University department of <a href="http://www.scrb.harvard.edu/">Stem Cells and Regenerative Medicine</a>.  This document is adapted from the <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">CummeRbund manual</a> for release 2.0.0.</p>
+<h2>Usage</h2>
+<p>Unlike most modules in GenePattern, the CummeRbund reporting modules require the entire output of a Cuffdiff job as they work with not just one or two files but rather with all of the Cuffdiff output files.  Simply drag the top-level Cuffdiff job folder into the 'cuffdiff.input' parameter from the 'Jobs' tab ('Recent Jobs' in versions of GenePattern before 3.8.0) or from the Job Results page.  The CummeRbund modules can also be directly accessed from the context menu of jobs in either of these locations.  Remember, you are submitting the entire job folder and not just a single file.</p>
+<p>Alternatively, once a given job has been run through any one of the CummeRbund reporting modules, a reusable database file named <em>cuffData.db</em> will be produced that can be submitted in place of the Cuffdiff job for other CummeRbund reports.  You can use this file for job submission via all of the usual GenePattern mechanisms or you can submit the entire CummeRbund job folder for a subsequent CummeRbund job in the same way as described above for Cuffdiff jobs.  You are highly encouraged to reuse these database files wherever possible as your jobs will run much quicker and use less storage space than by starting from scratch with a Cuffdiff job.</p>
+<p>CummeRbund.GeneSetReport will produce a variety of result files in the form of both plots and text tables; these are described further in the Output Files section below.  You can use the <em>feature.level</em> parameter to control whether these should be generated at the level of genes, isoforms, transcription start sites (TSS), or coding sequences (CDS).</p>
+<p>The <em>report.as.aggregate</em> parameter controls whether reporting should be done for individual replicates or aggregate condition/sample values.  The default is to use aggregate sample values.  Note that some result files are always generated for aggregate samples regardless of this setting.</p>
+<p>For more information on using RNA-seq modules in GenePattern, see the <a href="http://www.broadinstitute.org/modules/RNA-seq">RNA-seq Analysis</a> page.</p>
+<h2>References</h2>
+<p>Trapnell C, Hendrickson D,Sauvageau S, Goff L, Rinn JL, Pachter L. <a href="http://www.nature.com/nbt/journal/v31/n1/full/nbt.2450.html">Differential analysis of gene regulation at transcript resolution with RNA-seq</a>. <em>Nature Biotechnology</em>. 2013;31:46-53.</p>
+<h3>Links</h3>
+<p>CummeRbund <a href="http://compbio.mit.edu/cummeRbund/">website</a> and <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cuffdiff input <span style="color:red;">*</span></td>
+<td>A Cuffdiff job, a previous CummeRbund job, or a cuffData.db file from a previous CummeRbund job</td>
+</tr>
+<tr>
+<td>geneset file <span style="color:red;">*</span></td>
+<td>A text file containing the list of genes for this report, one per line.  Each of these can be represented by a gene symbol (short name), gene ID, isoform_id, tss_group_id, or cds_id.  Note that excessively long gene lists may negatively impact both the visual clarity of the plots and the time needed to generate them.</td>
+</tr>
+<tr>
+<td>selected condition</td>
+<td>Specifies the conditions (samples) to be used in the plots.  This should be a comma-separated list of conditions, using the same names as in the upstream <span class="s1">Cuffdiff</span> job; leave this blank to use all conditions.  If blank, no pairwise comparison plots will be generated.</td>
+</tr>
+<tr>
+<td>output format <span style="color:red;">*</span></td>
+<td>The output file format.</td>
+</tr>
+<tr>
+<td>feature level <span style="color:red;">*</span></td>
+<td>Feature level for the report.</td>
+</tr>
+<tr>
+<td>report as aggregate <span style="color:red;">*</span></td>
+<td>
+<p class="p1">Controls whether reporting should be done for individual replicates or aggregate condition/sample values.  The default is to use aggregate sample values.  Note that the Cluster, Scatter and Volcano plots always show aggregate samples.</p>
+</td>
+</tr>
+<tr>
+<td>log transform <span style="color:red;">*</span></td>
+<td>Whether or not to log transform the FPKM values. Note that the FPKM values are always log transformed for the Volcano plots and that the Scatter plot will use a log2 rather than log10 transformation. For the Expression Plot and Expression Barplot, this directs that the y-axis will be drawn on a log10 scale.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>&lt;cuffdiff.input&gt; (required)<br/>
+	A Cuffdiff job, a previous CummeRbund job, or a cuffData.db file from a previous CummeRbund job.  Unlike most modules in GenePattern, the CummeRbund reporting modules require the entire output of a Cuffdiff job as they work with not just one or two files but rather with all of the Cuffdiff output files.  Simply drag the top-level Cuffdiff job folder into the 'cuffdiff.input' parameter from the 'Jobs' tab ('Recent Jobs' in versions of GenePattern before 3.8.0) or from the Job Results page.  The CummeRbund modules can also be directly accessed from the context menu of jobs in either of these locations.  Remember, unless you use a cuffData.db file, you are submitting the entire job folder and not just a single file.</li>
+<li>&lt;geneset.file&gt; (required)<br/>
+	A text file containing the list of genes for this report, one per line.  Each of these can be represented by a gene symbol (short name), gene ID, isoform_id, tss_group_id, or cds_id.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>cuffData.db<br/>
+	The RSQLite database created from the original Cuffdiff job.  This file can be used in other CummeRbund jobs to avoid the need for extra computation and storage, in which case the new job will instead hold a link back to the file from the original job.</li>
+<li>GeneSet.Dendrogram<br/>
+	A dendrogram based on Jensen-Shannon distances between conditions for the given list of genes, across all samples (or replicates) in the Cuffdiff dataset.  Dendrograms can provide insight into the relationships between conditions for various genesets (e.g. significant genes used to draw relationships between conditions).</li>
+<li>GeneSet.ExpressionBarplot<br/>
+	A barplot of the FPKM values (Fragments Per Kilobase of transcript per Million mapped read) with confidence intervals, calculated for the given list of genes across all samples (or replicates) in the Cuffdiff dataset.  The value for each replicate is noted as a black dot along the confidence interval, while the top of the bar represents the value for a given aggregate sample.  See <a href="http://cufflinks.cbcb.umd.edu/howitworks.html#hqua">this explanation from the Cufflinks website</a> and the <a href="http://cufflinks.cbcb.umd.edu/faq.html#fpkm">this entry from the Cufflinks FAQ</a> for more information about FPKM values.</li>
+<li>GeneSet.ExpressionPlot<br/>
+	A line plot of the FPKM values with confidence intervals, calculated for the the given list of genes across all samples (or replicates) in the Cuffdiff dataset.  The value for each replicate is noted as a dot of matching color along the confidence interval, while the aggregate sample value is noted as a black dot within the confidence interval.  At this time, the line plots can only display tracking IDs rather than gene symbols.</li>
+<li>GeneSet.Heatmap<br/>
+	A heatmap of FPKM values for the list of genes across all samples (or replicates) in the Cuffdiff dataset.  The rows and columns are re-ordered based on clustering by the Jensen-Shannon distance.</li>
+<li>GeneSet.Scatter<br/>
+	These files hold a set of scatter plots with smooth-fit regression lines, showing the pairwise comparisons of FPKM values for the given gene list, for each sample against all other samples.  For each pairwise comparison two plots will be made, with the samples in the pair exchanging the X-axis and the Y-axis positions so that you may choose the comparison you prefer in each case.</li>
+<li>GeneSet.Volcano<br/>
+	These files hold a set of volcano plots of showing the pairwise comparisons for the given gene list, for each sample against all other samples.  The volcano plot is a useful visualization to compare fold change between any two conditions and significance (log fold change in expression vs. -log P-values).  Those points that are found on either the far top-left or top-right sides of the plot represent values that display both large magnitude fold changes as well as high statistical significance.</li>
+<li>stdout.txt (and stderr.txt)<br/>
+	A log of output (and errors) produced during the database creation and plotting process.  In case of an error, check both of these files for more details.  The module has been designed to skip those plots where it encounters a problem along the way, continuing on to the next; if a given plot is missing, it should be noted in one of these files along with a reason if one could be determined.</li>
+</ol>
+<h2>Example Data</h2>
+<p>There is an example reusable database file available <a href="ftp://gpftp.broadinstitute.org/module_support_files/cummeRbund/cuffData.db">on our FTP site</a>.  This was generated using the example data and workflow from the <a href="http://www.nature.com/nbt/journal/v31/n1/full/nbt.2450.html">Differential analysis of gene regulation at transcript resolution with RNA-seq</a> article referenced above, by Trapnell, et al.</p>
+<h2>Requirements</h2>
+<p>CummeRbund.GeneSetReport requires R 2.15.  When installing this module, GenePattern will automatically check for the presence of this exact version of R and will not proceed without it.  See the section of our <a href="http://www.broadinstitute.org/cancer/software/genepattern/gp_guides/administrators-guide/sections/using-the-r-installer-plug-in">Administrator's Guide on the R Installer plug-in</a> for details.  Installing this module requires a number of supporting R packages from CRAN and Bioconductor; it will also check for their presence and automatically install any that are missing in the process.  These packages will be installed in a separate area specific to GenePattern and will not affect any other R library on the machine.</p>
+<p><span class="im">Please install R2.15.3 instead of R2.15.2 before installing the module. </span><span class="im">The GenePattern team has confirmed test data reproducibility for this module using R2.15.3 compared to R2.15.2 and can only provide limited support for other versions. The GenePattern team recommends R2.15.3, which fixes significant bugs in R2.15.2, and which must be installed and configured independently as discussed in <a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-different-versions-of-r" style="background-image: none; background-attachment: scroll; background-color: rgb(255, 255, 255); background-position: 0% 0%; background-repeat: repeat;" target="_blank"><em>Using Different Versions of R</em></a> and <em><a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-the-r-installer-plug-in" style="background-image: none; background-attachment: scroll; background-position: 0% 0%; background-repeat: repeat;" target="_blank">Using the R Installer Plug-in</a></em>. These sections also provide patch level fixes that are necessary when additional installations of R are made and considerations for those who use R outside of GenePattern.</span></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.21</td>
+<td>2015-10-13</td>
+<td>Updated to make use of the R package installer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

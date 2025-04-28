@@ -1,0 +1,56 @@
+Read_group_trackingToGct is on version v1.
+A description of Read_group_trackingToGct is Converts a Cufflinks read_group_tracking file into GenePattern's GCT format for use in downstream modules. The module extracts quantification values (such as FPKM) from Cuffdiff read_group_tracking files and can optionally map tracking IDs to gene symbols..
+Read_group_trackingToGct is a GenePattern module written by David Eby, Broad Institute.
+Read_group_trackingToGct can be categorized as RNA-seq, Data Format Conversion, Preprocess & Utilities.
+Read_group_trackingToGct has the following parameters: input file, output file name, expression value column, screen out errors, output value for errors, gtf file, feature level for symbol lookup, choose gct column for mapping, report naming conflict details, override attribute name for lookup, override attribute name for retrieval.
+The Read_group_trackingToGct module converts Cufflinks read_group_tracking files into GenePattern's GCT format for downstream bioinformatics analysis.
+The Read_group_trackingToGct module enables conversion of RNA-seq quantification data from Cufflinks tracking files to a standardized GCT format.
+This module allows researchers to extract different types of expression quantification values, including raw fragments, scaled fragments, and FPKM (fragments per kilobase per million mapped reads).
+The Read_group_trackingToGct module can optionally map tracking IDs to gene symbols using a provided GTF file, improving the interpretability of the output data.
+By default, the module screens out expression values with non-OK quantification status, ensuring data quality for downstream analysis.
+The Read_group_trackingToGct module generates not just a GCT file, but also a companion CLS file and a summary report detailing quantification status.
+This module is particularly useful for preparing RNA-seq data for further analysis in GenePattern modules like ConsensusClustering and NMFConsensus.
+The Read_group_trackingToGct module provides flexibility in handling different feature levels, including genes, isoforms, transcription start sites, and coding sequences.
+Researchers can customize the mapping process by specifying different attribute names for lookup and retrieval in the GTF file using the Read_group_trackingToGct module.
+The module helps address complexities in RNA-seq data quantification, such as handling tracking IDs that may not directly map to gene symbols.
+input file: File path, Required, Specifies the Cufflinks read_group_tracking file to be converted into GCT format.
+output file name: String, Required, Defines the name for the output GCT file.
+expression value column: String, Required, Specifies which column to use for extracting expression values from the read_group_tracking file.
+screen out errors: Boolean, Optional, Determines whether to exclude features with non-OK quantification status, default is to screen out errors.
+output value for errors: String, Optional, Controls the value written for features with non-OK quantification status when not screening out errors.
+gtf file: File path, Optional, Provides a GTF file for mapping tracking IDs to gene symbols.
+feature level for symbol lookup: String, Required if GTF provided, Selects the feature level (gene, isoform, tss, cds) for mapping gene symbols.
+choose gct column for mapping: String, Optional, Explicitly sets which GCT column to use when writing retrieved symbols.
+report naming conflict details: Boolean, Optional, Controls whether detailed naming conflict information is included in the summary report.
+override attribute name for lookup: String, Optional, Allows overriding the attribute name used for ID lookup in the GTF.
+override attribute name for retrieval: String, Optional, Allows overriding the attribute name used for symbol retrieval in the GTF.
+Here are the input and output files for the Read_group_trackingToGct module:
+Input file: read_group_tracking file containing Cufflinks quantification data
+Input file format is tab-delimited text with tracking IDs, quantification values, and status for each replicate
+Input file contains expression measurements like FPKM, raw_frags, scaled fragments for genes, isoforms, transcription start sites, or coding sequences
+Input file includes a status column indicating quantification success (OK, LOWDATA, HIDATA, FAIL)
+Optional input file: GTF annotation file for mapping tracking IDs to gene symbols
+GTF file contains feature attributes like gene_id, gene_name, transcript_id
+GTF file used to provide gene symbol mappings for tracking IDs in read_group_tracking file
+Output file: GCT format expression matrix file
+GCT file contains gene/feature names, expression values across samples/replicates
+GCT file can include FPKM or other quantification values based on user selection
+GCT file may map tracking IDs to gene symbols if GTF file is provided
+Output file: Companion CLS file
+CLS file contains condition/class information for samples
+CLS file represents Cufflinks experimental conditions and replicates
+Output file: Summary text file
+Summary file reports statistics on non-OK quantification status
+Summary file provides details about tracking IDs and samples with quantification issues
+Read_group_trackingToGct module converts Cufflinks read_group_tracking files to GCT format for downstream gene expression analysis.
+The module extracts quantification values like FPKM from Cufflinks output files for further processing in GenePattern.
+Read_group_trackingToGct can handle different quantification types including raw_frags, internal_scaled_frags, external_scaled_frags, and FPKM.
+The module screens out quantification errors by default, removing features with non-OK status across sequenced samples.
+Read_group_trackingToGct can optionally map tracking IDs to gene symbols using a provided GTF file.
+The module supports mapping at different feature levels: gene, isoform, transcription start sites, and coding sequences.
+Read_group_trackingToGct handles complex GTF mapping scenarios, including cases with no matching or multiple matching gene symbols.
+Users can customize GTF mapping by specifying attribute names for lookup and retrieval.
+The module generates a GCT output file, a companion CLS file, and a summary report detailing quantification status.
+Read_group_trackingToGct is designed to work with Cufflinks RNA-seq data processing workflows.
+The module provides flexibility in handling different quantification value types and mapping strategies.
+Read_group_trackingToGct supports preprocessing of RNA-seq data for downstream analysis in GenePattern modules.

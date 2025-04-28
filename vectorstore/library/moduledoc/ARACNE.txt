@@ -1,0 +1,57 @@
+ARACNE is on version 1.0.
+A description of ARACNE is ARACNE (Algorithm for the Reconstruction of Accurate Cellular Networks) is an algorithm which reverse engineers a gene regulatory network from microarray gene expression data. ARACNE uses mutual information(MI), an information theoretical measure, to compute the correlation between pairs of genes and infer a best-fit network of probable interactions..
+ARACNE is a GenePattern module written by Marc-Danie Nazaire (Broad Institute).
+ARACNE can be categorized as Reverse Engineering.
+ARACNE has the following parameters: dataset.file, hub.gene, hub.genes.file, transcription.factor.file, kernel.width, mi.threshold, p.value, dpi.tolerance, mean.filter, cv.filter, output.file.
+The ARACNE GenePattern module is an algorithm for reconstructing gene regulatory networks from microarray expression data.
+ARACNE helps biologists understand complex gene interactions by mapping potential regulatory relationships between genes.
+The ARACNE module uses mutual information (MI) as a statistical method to quantify gene interactions and connectivity.
+ARACNE calculates the mutual information between every pair of genes in a dataset to create an initial network adjacency matrix.
+The module allows researchers to specify a specific "hub gene" or set of hub genes to focus the network reconstruction analysis.
+ARACNE can incorporate transcription factor information to refine the network reconstruction and remove indirect interactions.
+The module uses a Data Processing Inequality (DPI) tolerance to remove potentially spurious or indirect gene interactions.
+Researchers can set parameters like kernel width, mutual information threshold, and DPI tolerance to customize the network reconstruction.
+The ARACNE module generates an adjacency matrix output file (.adj) that describes the potential interactions between genes.
+ARACNE is particularly useful for systems biology and computational biology researchers studying gene regulatory networks.
+The module can filter out non-informative genes using mean expression and coefficient of variance parameters.
+ARACNE helps translate large-scale gene expression data into interpretable network models of cellular interactions.
+The algorithm was originally developed to reconstruct regulatory networks in mammalian cellular contexts.
+Researchers can use ARACNE to generate hypotheses about gene interactions and potential regulatory mechanisms.
+The module is flexible and can be applied to various types of gene expression datasets across different biological systems.
+dataset.file | String | Input dataset file in .res or .gct format | Required | No default
+hub.gene | String | Name of a single gene to reconstruct network interactions for | Optional | No default
+hub.genes.file | String | Text file containing subset of genes to reconstruct network interactions for | Optional | No default
+transcription.factor.file | String | Text file listing genes encoding transcription factors | Optional | No default
+kernel.width | Float | Width of Gaussian Kernel Estimator affecting density function smoothness | Optional | Default is 0.15
+mi.threshold | Float | Threshold for mutual information estimate to be considered statistically significant | Optional | No default
+p.value | Float | Significance level for mutual information estimate | Optional | Default is 1 (no threshold)
+dpi.tolerance | Float | Percentage of mutual information estimation considered sampling error | Optional | Recommended between 0 and 0.15
+mean.filter | Float | Minimum mean expression value to retain genes | Optional | No default
+cv.filter | Float | Minimum coefficient of variance to retain genes | Optional | No default
+output.file | String | Name of output adjacency matrix file in .adj format | Required | No default
+Here are the input and output file descriptions for the ARACNE module:
+ARACNE input file (dataset.file): Gene expression data in .res or .gct format containing expression measurements for multiple genes across different samples
+ARACNE hub.genes.file: A plain text file listing specific genes for network interaction reconstruction, with one gene name per line
+ARACNE transcription.factor.file: A text file containing names of genes encoding transcription factors, with one gene name per line
+ARACNE output file (.adj): A symmetric adjacency matrix file with gene interactions and mutual information (MI) scores, including a header with module parameters and gene interaction details
+ARACNE input file contains gene expression measurements used to compute mutual information between gene pairs for network reconstruction
+ARACNE hub.gene parameter allows specifying a single gene for network interaction analysis as an alternative to the hub.genes.file
+ARACNE transcription factor file helps refine network reconstruction by identifying potential regulatory genes for more precise interaction modeling
+ARACNE output file provides a comprehensive representation of gene interactions with corresponding mutual information scores and module execution parameters
+ARACNE input dataset supports multiple file formats (.res, .gct) to accommodate different gene expression data representations
+ARACNE output file uses a symmetric matrix format where gene interaction strengths are bidirectional and represented by mutual information values
+ARACNE is an algorithm for reconstructing gene regulatory networks from microarray gene expression data.
+ARACNE uses mutual information (MI) to compute correlations between gene pairs and infer potential interactions.
+The ARACNE algorithm calculates mutual information between all gene pairs and creates an initial adjacency matrix.
+MI thresholding is applied to remove gene pairs with MI scores below a specified threshold, reducing potential false interactions.
+The Data Processing Inequality (DPI) tolerance further refines the network by removing indirect interactions between genes.
+ARACNE can focus on a specific hub gene or set of hub genes for network reconstruction.
+Users can optionally provide a transcription factor file to improve the specificity of the network reconstruction.
+The kernel width parameter controls the smoothness of the probability density function estimation in the algorithm.
+MI threshold and p-value parameters allow users to control the statistical significance of gene interactions.
+The DPI tolerance parameter helps remove potential false positive interactions, typically set between 0 and 0.15.
+Mean and coefficient of variance filters can be used to remove non-informative genes from the analysis.
+The output is an adjacency matrix file (.adj) containing gene interactions and their mutual information scores.
+The ARACNE module is implemented in Java and can run on any platform with Java JVM 1.5 or higher.
+The algorithm is particularly useful for understanding transcriptional regulatory networks in biological systems.
+ARACNE has been applied to various biological contexts, including studies of mammalian cellular networks and human B cells.

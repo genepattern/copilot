@@ -1,0 +1,48 @@
+Lu.Getz.Miska_Nature.June.2005.mouse.lung is on version .
+A description of Lu.Getz.Miska_Nature.June.2005.mouse.lung is Normal/tumor classifier and kNN prediction of mouse lung samples.
+Lu.Getz.Miska_Nature.June.2005.mouse.lung is a GenePattern module written by Gad Getz (Broad Institute), gp-help@broad.mit.edu.
+Lu.Getz.Miska_Nature.June.2005.mouse.lung can be categorized as Cancer, Classification, MicroRNA.
+Lu.Getz.Miska_Nature.June.2005.mouse.lung has the following parameters: .
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module is a specialized bioinformatics tool for classifying mouse lung tissue samples as normal or tumor.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module uses k-nearest neighbor (kNN) machine learning algorithm to predict tissue type.
+In the Lu.Getz.Miska_Nature.June.2005.mouse.lung module, researchers selected 131 microRNA markers that effectively distinguish between normal and tumor samples.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module leverages microRNA expression data to perform tissue classification with high accuracy.
+Using the Lu.Getz.Miska_Nature.June.2005.mouse.lung module, researchers achieved 100% accuracy in predicting mouse lung sample types using Euclidean distance and k=3.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module demonstrates the potential of microRNA expression profiles in cancer classification and diagnosis.
+In the Lu.Getz.Miska_Nature.June.2005.mouse.lung module, 129 out of 131 selected markers were over-expressed in normal samples, while only 2 were over-expressed in tumor samples.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module uses log2 transformed mouse and human expression data for prediction.
+Researchers used the Lu.Getz.Miska_Nature.June.2005.mouse.lung module to explore different distance metrics like Euclidean and cosine distance in sample classification.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module is part of a broader research effort to understand microRNA expression in cancer diagnostics.
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module focuses on a normal/tumor classifier for mouse lung samples
+The module uses a k-nearest neighbors (kNN) algorithm to predict sample classification
+The analysis involves selecting markers that best differentiate normal and tumor samples
+131 markers were identified with a p-value < 0.05 after Bonferroni correction
+129 out of 131 markers are over-expressed in normal samples
+2 out of 131 markers are over-expressed in tumor samples
+The prediction uses log2 transformed mouse and human expression data
+Euclidean distance was used as the primary distance metric for sample comparison
+The kNN algorithm used k=3 nearest neighbors for classification
+The method achieved 100% accuracy in classifying mouse lung samples
+One mouse tumor sample (T_MLUNG_5) showed occasional classification variability
+Different distance metrics can capture different aspects of the miRNA expression data
+The analysis is based on a study published in Nature in June 2005
+The research was conducted by Lu, Getz, Miska, and colleagues
+The module provides a method for classifying normal and tumor samples using miRNA expression profiles
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module input file: Training dataset containing miRNA expression profiles from normal and tumor samples across multiple tissues
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module input file: Log2 transformed human miRNA expression data used for training the classifier
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module input file: Log2 transformed mouse miRNA expression data for prediction
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module input file: Raw miRNA expression data for feature selection and marker identification
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module output file: Predicted phenotype (normal or tumor) for each mouse lung sample
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module output file: List of 131 selected markers with statistical significance for distinguishing normal and tumor samples
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module output file: Detailed prediction results showing classification of mouse lung samples
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module output file: Distance metrics and k-nearest neighbor classification results
+Lu.Getz.Miska_Nature.June.2005.mouse.lung module is a computational method for classifying normal versus tumor lung samples using microRNA expression data.
+The module uses a k-nearest neighbors (kNN) machine learning algorithm to predict lung sample phenotypes based on microRNA expression profiles.
+Researchers first selected training samples from multiple tissues including lung, colon, kidney, prostate, uterus, and breast with known normal and tumor classifications.
+The Lu.Getz.Miska_Nature.June.2005.mouse.lung module identified 131 microRNA markers that effectively distinguish between normal and tumor samples.
+Of the 131 selected markers, 129 were over-expressed in normal samples and only 2 were over-expressed in tumor samples.
+The module uses Euclidean distance as the primary metric for measuring similarity between samples in the microRNA expression space.
+Using k=3 nearest neighbors and Euclidean distance, the Lu.Getz.Miska_Nature.June.2005.mouse.lung module achieved 100% accuracy in classifying mouse lung samples.
+Different distance metrics like cosine distance captured different aspects of the microRNA expression data, potentially revealing nuanced biological information.
+The module demonstrates the potential of microRNA expression profiles as a tool for distinguishing between normal and tumor tissue samples.
+This computational approach provides a systematic method for analyzing microRNA data to classify tissue samples based on their molecular characteristics.

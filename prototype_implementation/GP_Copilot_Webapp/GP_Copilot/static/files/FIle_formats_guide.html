@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GenePattern</title>
+  <link href="/assets/application-7c97ad6a24f80d9c928138c2ac572434.css" media="all" rel="stylesheet" />
+  <script src="/assets/application-5423078b8e7692e56ee364316b3dbbf6.js"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="aXtfWERF+6EjOYeAISNNn7jGC261mdeAk+vEMzfNhsA=" name="csrf-token" />
+</head>
+<body style="background-image: none;">
+
+	
+	<div class="gp-content-header fluid">
+	<div class="container">
+		<h1>File Formats Guide <a class="btn btn-sm btn-info print-tip" href="/file-formats-guide" title="Toggle Print View"><span class='glyphicon glyphicon-print'></span></a> </h1>
+	</div>
+</div>
+<div class="container bs-docs-container">
+	<div class="row">
+			<div class="col-md-12">
+		<br />
+			<h1 id="creating-input-files">Creating Input Files</h1>
+
+<p>When you run an analysis module, visualization module, or pipeline, GenePattern displays the parameters for the selected modules. Often, one or more of these parameters are input files, which must have a particular format; for example, you might need to supply a gct or res file. For more information about a particular file format, select it from the list at the right.</p>
+
+<p>This section provides general information to help you create properly formatted files for GenePattern.</p>
+
+<ul>
+	<li><a href="#_Creating_Input_Files_Tab">Transforming Plain Text Files</a></li>
+	<li><a href="#_Creating_Input_Files_GCT">Creating GCT/RES Files</a></li>
+	<li><a href="#_Creating_Input_Files_Utility">Converting and Processing Files</a></li>
+	<li><a href="#_Creating_Input_Files_CDT">Converting CDT to GCT Files</a></li>
+</ul>
+
+<p>Several video tutorials are also available:</p>
+
+<ul>
+	<li><a href="http://www.youtube.com/watch_popup?v=_zpH-DgE33U">Converting Expression Data into a GenePattern Input File Format</a></li>
+	<li><a href="http://www.youtube.com/watch?v=sgsVie2HNQY">Converting Between MAGE-TAB and GenePattern Expression File Formats</a></li>
+	<li><a href="http://www.youtube.com/watch?v=ZTrfuGrgk-s">Converting Illumina Expression Data Into the GenePattern GCT format</a></li>
+	<li><a href="http://www.youtube.com/watch?v=z6l26iwHAKE">Importing Data from caArray to GenePattern</a></li>
+	<li><a href="http://www.youtube.com/watch?v=Q1e_kyyYAJ0">Exporting Datasets from InsilicoDB to GenePattern</a></li>
+	<li><a href="http://www.youtube.com/watch?v=xlscEpEcZdU">Imputing Missing Values in GenePattern</a></li>
+</ul>
+
+<p>Additional resources are available from our partnered site&nbsp;<strong><a href="http://www.genomespace.org/" style="background-color: rgb(255, 255, 255);" target="_blank">GenomeSpace</a></strong>. Their <a href="http://www.genomespace.org/support/guides/user-guide/sections/convert-file-formats" target="_blank">Convert file formats</a> page lists supported file conversions, descriptions of file types, and an email to request new file format converters. Check their <a href="http://www.genomespace.org/blog/" target="_blank">blog</a> for newly added&nbsp;converters.</p>
+
+<h2><a name="_Creating_Input_Files_Tab"></a><a id="plaintext" name="plaintext"></a>Transforming Plain Text Files</h2>
+
+<p>Although different GenePattern modules require different file formats, all of the files are <em>plain text files</em>. Plain text differs from rich text as described in&nbsp;<a href="http://en.wikipedia.org/wiki/Plain_text#Plain_text_and_rich_text" style="background-color: rgb(255, 255, 255);" target="_blank">Wikipedia</a>,&nbsp;and these cannot be interchanged.</p>
+
+<p>Data within files are parsed&nbsp;in various ways, e.g.&nbsp;tab-delimited, space-delimited, comma-separated, or one item per&nbsp;line.&nbsp;Most gene expression data is tab-delimited and you can&nbsp;open&nbsp;the file in a&nbsp;spreadsheet or database program&nbsp;that allows you to export the data into a plain text file. To transvert&nbsp;a plain text file to a specific format, e.g. GCT or CLS, the contents must conform to the attributes of the format as described and have the correct file extension. Required attributes&nbsp;include a specific delimiter, e.g. tab, specific usage for select cells, e.g.&nbsp;headings and&nbsp;numeric&nbsp;tallies, and/or&nbsp;unique sample and probe identifiers. File extensions appended to the end of a file&nbsp;are recognized by GenePattern modules,&nbsp;start with a period, and are typically three letters, e.g. <em>dataset1.gct</em> or<em> dataset1.cls</em>.</p>
+
+<p>Multiple modules exist under <a href="http://www.broadinstitute.org/modules?utf8=%E2%9C%93&amp;taskType=Data+Format+Conversion&amp;env=" target="_self">Data Format Conversion</a> and <a href="http://www.broadinstitute.org/modules?utf8=%E2%9C%93&amp;taskType=Preprocess+%26+Utilities&amp;env=" target="_self">Preprocess &amp; Utilities</a> that transform plain text files to specific formats, e.g. <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00339:0.15" target="_blank">Read_group_trackingToGct</a>,&nbsp;help create supporting files from such expression files,&nbsp;e.g. <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.visualizer:00261:3" target="_blank">ClsFileCreator</a>, or process files in desired ways, e.g. <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00067:1" target="_blank">UniquifyLabels</a> and <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00285:1" target="_blank">SelectFileMatrix</a>.&nbsp;</p>
+
+<p>Alternatively, you may <strong>manually transform&nbsp;files to format-specific plain text files</strong> using the following steps:</p>
+
+<ol>
+	<li>
+	<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Open the data file in a text editor or spreadsheet editor.</div>
+
+	<ul>
+		<li>Keep in mind some spreadsheet programs&nbsp;convert&nbsp;gene symbols to dates, e.g.&nbsp;Excel converts&nbsp;MARCH1 to 1-Mar, as well as introduce other irreversible auto-formatting conversions as&nbsp;described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" style="background-color: rgb(255, 255, 255);" target="_blank">Zeeberg, et al (2004)</a>.&nbsp;Avoid these&nbsp;conversion by using Excel&#39;s&nbsp;<em>Text Import Wizard, </em>e.g. via&nbsp;<em>File</em>&gt;<em>Import</em>. In the third step of the&nbsp;<em>Text Import Wizard,&nbsp;</em>highlight&nbsp;the column(s)&nbsp;and select <em>Text</em> as&nbsp;the <em>Column data format</em>&nbsp;instead of the default <em>General</em>.</li>
+		<li>Use Excel&#39;s&nbsp;<em>Text Import Wizard</em> to convert&nbsp;space delimited files to spreadsheet format, i.e. select&nbsp;<em>Delimiters</em>&gt;<em>Space,</em>&nbsp;and to split labels separated by a longbar&nbsp;(|) into two columns, i.e. select&nbsp;<em>Delimiters</em>&gt;<em>Other: </em>and type&nbsp;| in the textbox.</li>
+	</ul>
+	</li>
+	<li>
+	<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Make the necessary changes that&nbsp;conform to&nbsp;file format attributes described on this page and save as a plain text file.</div>
+
+	<ul>
+		<li>Excel&#39;s&nbsp;<em>Save As</em>&gt;<em>Tab delimited text&nbsp;</em>and&nbsp;<em>Comma Separated Values</em>&nbsp;save&nbsp;as plain text&nbsp;with TXT and CSV extensions, respectively.</li>
+		<li>For a space-delimited file, open the CSV file with a text editor and&nbsp;find and replace each comma with a space.</li>
+		<li>Mac&#39;s&nbsp;TextEdit defaults to rich text format. Change this for the current document by&nbsp;selecting&nbsp;<em>Format</em>&gt;<em>Make Plain Text,</em>&nbsp;and for future documents by setting&nbsp;<em>TextEdit</em>&gt;<em>Preferences</em>&gt;<em>Format</em>&nbsp;to&nbsp;<em>Plain text</em>.</li>
+	</ul>
+	</li>
+	<li>
+	<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Change the file extension to the&nbsp;appropriate extension, e.g. GCT or CLS.&nbsp;</div>
+
+	<ul>
+		<li>In Mac OS, to&nbsp;change the file extension, right-click on the file&gt;<em>Get Info</em>, expand <em>Name &amp; Extension</em> section, uncheck <em>Hide extension</em> option, then change the extension in the box provided.</li>
+	</ul>
+	</li>
+</ol>
+
+<p>In turn, open these plain text format&nbsp;files&nbsp;using&nbsp;(1) the&nbsp;<em>Open with&nbsp;</em>function and selecting a text editor, (2) adding a .txt extension to the end and doubling-clicking, or (3) importing into a spreadsheet program, e.g. Excel.</p>
+
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a name="_Creating_Input_Files_GCT"></a>Creating GCT/RES Files</h2>
+
+<p>GenePattern provides several modules for creating GCT and/or RES files from gene expression data from various sources. For information about these modules:</p>
+
+<ol>
+	<li>Login to the public GenePattern server:&nbsp;<a href="http://genepattern.broadinstitute.org/gp/" onclick="return openModuleWindow(this, event);">http://genepattern.broadinstitute.org/gp/</a>.<br />
+	If you do not have a GenePattern account, you can register on the login page.</li>
+	<li>Review the&nbsp;<a href="http://genepattern.broadinstitute.org/gp/pages/protocols/GctResFiles.html" onclick="return openModuleWindow(this, event);">GCT and RES Files</a>&nbsp;page of the GenePattern protocols.</li>
+</ol>
+
+<h2><a name="_Creating_Input_Files_Utility"></a>Converting and Processing Files</h2>
+
+<p>The <a href="/modules">Modules</a> page of the GenePattern web site provides a complete list of the modules and pipelines available from the Broad Institute. Modules in the <a href="/modules?taskType=Data+Format+Conversion">Data Format Conversion</a> category convert files from one format to another. Modules in the <a href="/modules?taskType=Preprocess+%26+Utilities">Preprocess &amp; Utilities category</a> provide methods for importing and working with data files.</p>
+
+<h2><a name="_Creating_Input_Files_CDT"></a>Converting CDT to GCT Files</h2>
+
+<p>One common question from GenePattern users is how to convert a cdt file to a gct file. Following is a brief tutorial that walks you through this process by converting <a href="/tutorial/linkedFiles/sample.cdt">sample.cdt</a> to <a href="/tutorial/linkedFiles/sample.imputed.gct">sample.imputed.gct</a>:</p>
+
+<ol>
+	<li>Save the <a href="/tutorial/linkedFiles/sample.cdt">sample.cdt</a> file to your local drive and open it in Microsoft Excel.<br />
+	<img src="/uploaded/content_file_formats_exer_1.gif" /></li>
+	<li>Delete the CLID and GWEIGHT columns. The gct file format allows for only two columns of annotations.<br />
+	<img src="/uploaded/content_file_formats_exer_2.gif" /></li>
+	<li>Delete the second row, which contains array identifiers (AID). The gct file format allows for only one row of identifiers.<br />
+	<img src="/uploaded/content_file_formats_exer_3.gif" /></li>
+	<li>Add two header rows at the top of the file:
+	<ul>
+		<li>In the first row, first cell, enter: #1.2</li>
+		<li>In the second row, first cell, enter the number of data rows: 1553</li>
+		<li>In the second row, second cell, enter the number of data columns: 44</li>
+	</ul>
+	<br />
+	<img src="/uploaded/content_file_formats_exer_4.gif" /></li>
+	<li>Save the modified file as a text (tab delimited) file with the name sample.gct.&nbsp;</li>
+	<li>Verify that your new .gct file matches the <a href="http://www.broadinstitute.org/gp_guides/file-formats/sections/gct" target="_blank">requirements</a> of a gct file in GenePattern.</li>
+	<li>Your original cdt file contained cells that were missing data. Most GenePattern modules require that all cells in a gct file contain data. Use the GenePattern analysis module ImputeMissingValues.KNN to add the missing data to your gct file. The module will take sample.gct as the input file, impute the missing data, and generate a <a href="/tutorial/linkedFiles/sample.imputed.gct">sample.imputed.gct</a> file.</li>
+</ol>
+
+<h1 id="ATR">ATR</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>ATR files will be created by the HierarchicalClustering module. This is a format defined at Stanford for their Hierarchical Clustering program.&nbsp; Note that the HierarchicalClustering module will also generate a CDT file.</p>
+
+<p>The ATR (<b>a</b>rray <b>tr</b>ee) file records the order in which the arrays (columns) were joined during clustering.</p>
+
+<p><img alt="" src="/uploaded/content_atr_file_ex.jpg?1362413072" style="width: 316px; height: 176px;" /></p>
+
+<h1 id="CBS">CBS</h1>
+
+<p style="line-height: 18.1818180084229px;"><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p style="line-height: 18.1818180084229px;">CBS files are created by the CBS module. A CBS (<strong>c</strong>ircular <strong>b</strong>inary <strong>s</strong>egmentation) file&nbsp;is&nbsp;a tab-delimited text file with six columns: the sample id, the chromosome number, the map position of the start of the segment, the map position of the end of the segment, the number of markers in the segment, and the average value in the segment. The first row contains column headers and the second row onwards contains data values.</p>
+
+<p style="line-height: 18.1818180084229px;"><span style="line-height: 18.1818180084229px;">Sample CBS&nbsp;file:&nbsp;</span><a href="https://dm.genomespace.org/datamanager/file/Home/SpaceCadet/CBS/mynah.sorted.cbs.txt">mynah.sorted.cbs.txt</a></p>
+
+<h1 id="CDT">CDT</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>CDT files are created by the HierarchicalClustering module. This is a format defined at Stanford for their Hierarchical Clustering program. The CDT (<b>c</b>lustered <b>d</b>ata <b>t</b>able) file contains the original data, but reordered, to reflect the clustering. An additional column and/or row is added if clustering is performed on genes and/or arrays. The additional column/row contains a unique identifier for each row/column that is linked to the description of the tree structure in the GTR/ATR file also generated by the module:</p>
+
+<ul>
+	<li>if you clustered by genes, a GTR file (gene tree)</li>
+	<li>if you clustered by samples, an ATR file (array tree)</li>
+</ul>
+
+<p>These tree files reflect the history of how the cluster was built, and can be used to reconstruct the tree(s).<br />
+<img alt="" src="/uploaded/content_cdt_file_ex.jpg?1362412903" style="width: 100%;" /></p>
+
+<h1 id="CEL">CEL</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>Affymetrix image analysis software generates CEL files, which store information about the probes on a chip and the intensity values for the probes. GenePattern modules, such as ExpressionFileCreator and SNPFileCreator, take CEL files as input and generate data files that can be read by subsequent GenePattern modules. More information on this format is available <a href="http://www.stat.lsa.umich.edu/%7Ekshedden/Courses/Stat545/Notes/AffxFileFormats/cel.html">here</a>.</p>
+
+<h1 id="CHIP">CHIP</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The CHIP file format contains annotation about a microarray (used with GSEA module). It lists the features (i.e probe sets) used in the microarray along with their mapping to gene symbols (when available). While this file is not used directly in the GSEA algorithm, it is used to annotate the output results and may also be used to collapse each probe set in the expression dataset to a single gene vector.<br />
+<br />
+Chip annotation files can be specified in a tab-delimited file format (*.chip) or in a comma-separated file format (*.csv). The formats are identical other than the separation character (tab or comma). Typically, you use the tab-delimited (*.chip) file format.<br />
+<br />
+The CHIP file format is organized as follows:<br />
+<img src="/uploaded/content_file_chip_format_snapshot.gif" /></p>
+
+<ol>
+	<li>The first line contains column headings that identify the content of each column in the remainder of the file. The file must contain three column headings:
+	<ul>
+		<li>Probe Set ID</li>
+		<li>Gene_Symbol</li>
+		<li>Gene_Title</li>
+	</ul>
+	These three columns can appear in any order. The file may contain additional columns, which will be ignored.
+
+	<ul>
+		<li>For example:<br />
+		Probe Set ID Gene_Symbol Gene_Title</li>
+	</ul>
+	</li>
+	<li>The rest of the data file contains data for each probe set ID used in the microarray.
+	<ul>
+		<li>Line format:<br />
+		(probe set id) (tab) (gene symbol) (tab) (gene title)</li>
+		<li>For example:<br />
+		205699_at MAP2K6 mitogen-activated protein kinase kinase 6</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Sample CHIP file: <a href="/tutorial/linkedFiles/HG_U133A_annot.chip">HG_U133A_annot.chip</a></p>
+
+<h1 id="CLM"><span style="color: inherit; font-family: inherit; line-height: 1.1;">CLM</span></h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The CLM file format is a tab-delimited file format that describes the samples in a zipped collection of CEL or IDAT files (used with the ExpressionFileCreator and IlluminaExpressionFileCreator modules, respectively).<br />
+<br />
+Each row of the CLM format describes a CEL file in the zip file:</p>
+
+<ul>
+	<li>Line format:<br />
+	(CEL file name) (tab) (sample name) (tab) (class)</li>
+	<li>For example:<br />
+	cat_a.CEL sample_cat_a tumor</li>
+</ul>
+
+<ol>
+	<li>The first column contains the CEL file name (file extension is optional).</li>
+	<li>The second column contains a sample name for the CEL file data.</li>
+	<li>The third column contains a phenotype class name for the CEL file data.</li>
+</ol>
+
+<p>Sample CLM file: <a href="/tutorial/linkedFiles/sample.clm">sample.clm</a></p>
+
+<h1 id="CLS">CLS</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The CLS file format defines phenotype (class or template) labels and associates each sample in the expression data with a label. It uses spaces or tabs to separate the fields. The CLS file format differs somewhat depending on whether you are defining categorical or continuous phenotypes:</p>
+
+<ul>
+	<li>Categorical labels define discrete phenotypes, e.g.&nbsp;normal versus&nbsp;tumor.</li>
+	<li>Continuous phenotypes are used for time series experiments or to define the profile of a gene of interest, e.g.&nbsp;gene neighbors.</li>
+</ul>
+
+<p><strong>Note:</strong> Most GenePattern modules are intended for use with categorical phenotypes. Therefore, unless the module documentation explicitly states otherwise, a CLS file should define categorical labels.&nbsp;GenePattern&#39;s&nbsp;<a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.visualizer:00261:3" style="background-color: rgb(255, 255, 255);">ClsFileCreator</a>&nbsp;module provides a guided wizard to create a&nbsp;CLS file from .gct or .res files.</p>
+
+<h3>Categorical labels</h3>
+
+<p>Categorical labels define discrete phenotypes (for example, normal vs tumor). For categorical labels, the CLS file format is organized as follows: <img src="/uploaded/content_file_cls_format_snapshot.gif" style="width: 736px; height: 401px;" /></p>
+
+<ol>
+	<li>The first line of a CLS file contains numbers indicating the number of samples and number of classes. The number of samples should correspond to the number of samples in the associated RES or GCT data file.
+	<ul>
+		<li>Line format:<br />
+		(number of samples) (space) (number of classes) (space) 1</li>
+		<li>For example:<br />
+		58 2 1</li>
+	</ul>
+	</li>
+	<li>The second line in a CLS file contains names for the class numbers. The line should begin with a pound sign (#) followed by a space.
+	<ul>
+		<li>Line format:<br />
+		# (space) (class 0 name) (space) (class 1 name)</li>
+		<li>For example:<br />
+		# cured fatal/ref</li>
+	</ul>
+	</li>
+	<li>The third line contains a class label for each sample. The class labels are sequential numbers beginning with zero. The first label used (0) is assigned to the first class named on the second line; the second unique label (1) is assigned to the second class named; and so on. (<strong>NOTE:</strong> While&nbsp;most GenePattern modules adhere to this rule of&nbsp;0 as the first class,&nbsp;some modules (such as GSEA)&nbsp;do not. Check the documentation for the module you are using if you are unsure.)<br />
+	The number of class labels specified on this line should be the same as the number of samples specified in the first line. The number of unique class labels specified on this line should be the same as the number of classes specified in the first line.
+	<ul>
+		<li>Line format:<br />
+		(sample 1 class) (space) (sample 2 class) (space) ... (sample N class)</li>
+		<li>For example:<br />
+		0 0 ... 1</li>
+	</ul>
+	</li>
+</ol>
+
+<p>CLS file for sample RES file (categorical labels): <a href="/tutorial/linkedFiles/all_aml_test.cls">all_aml_test.cls</a></p>
+
+<h3>Continuous labels</h3>
+
+<p>Continuous phenotypes are used for time series experiments or to define the profile of a gene of interest (gene neighbors). A CLS file that defines continuous labels can contain one or more labels. The following example shows a CLS file that defines two continuous labels:</p>
+
+<pre>
+#numeric
+#AFFX-BioB-5_st
+206.0 31.0 252.0 -20.0 -169.0 -66.0 230.0 -23.0 67.0 173.0 -55.0 -20.0 469.0 -201.0 -117.0 
+-162.0 -5.0 -86.0 350.0 74.0 -215.0 193.0 506.0 183.0 350.0 113.0 -17.0 29.0 247.0 -131.0 
+358.0 561.0 24.0 524.0 167.0 -56.0 176.0 320.0
+#AFFX-BioDn-5
+75.0 142.0 32.0 109.0 -38.0 -80.0 62.0 39.0 196.0 -42.0 199.0 49.0 171.0 327.0 115.0 
+-71.0 85.0 80.0 270.0 182.0 208.0 -94.0 292.0 233.0 34.0 0.0 59.0 233.0 48.0 466.0 -7.0 
+-96.0 297.0 38.0 208.0 -15.0 30.0 357.0
+</pre>
+
+<ol>
+	<li>The first line contains the text &quot;#numeric&quot; which indicates that the file defines continuous labels.</li>
+	<li>The remainder of the file defines the continuous phenotypes. For each phenotype:
+	<ol>
+		<li>The first line defines the name of the phenotype; for example, #AFFX-BIOB-5_st.</li>
+		<li>The second line contains a value for each sample in the .gct file. Typically, your word processor wraps the second line of the phenotype definition, as shown in the example.</li>
+	</ol>
+	</li>
+</ol>
+
+<p>For a continuous phenotype label, the values for the samples define the phenotype profile. The relative change in the values defines the relative distance between points in the phenotype profile. In the example shown above, the phenotype profile is the expression profile for a gene: the sample values for the two phenotype labels are gene expression values. For a time series experiment, you would choose sample values that define the desired expression profile. The example shown below assumes that you have five samples taken at 30 minute intervals. The first phenotype label defines a phenotype profile that shows steadily increasing gene expression; the second defines a profile that shows an initial peak and then gradual decrease:</p>
+
+<pre>
+#numeric
+#IncreasingProfle
+30 60 90 120 150
+#PeakProfle
+5 20 15 10 5
+</pre>
+
+<h1 id="CN"><span style="color: inherit; font-family: inherit; line-height: 1.1;">CN</span></h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>This is a tab-delimited file format that contains SNP copy numbers. It contains one row for each SNP and one column for each SNP array: the raw copy number value. It is organized as follows:</p>
+
+<ol>
+	<li>The first line contains a list of labels identifying the SNP arrays.
+	<ul>
+		<li>Line format:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) (array_1_name) (tab) ... (array_N_name)</li>
+		<li>For example:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49068 (tab) ... MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49084</li>
+	</ul>
+	</li>
+	<li>The rest of the SNP file contains one row of data for each SNP.
+	<ul>
+		<li>Line format:<br />
+		(snp) (tab) (chromosome) (tab) (position) (tab) (array_1_cn) (tab) ... (array_N_cn)</li>
+		<li>For example:<br />
+		SNP_A-4249904 (tab) 17 (tab) 41420045 (tab) 2.265 (tab) ... 1.735</li>
+	</ul>
+	</li>
+</ol>
+
+<p><strong>Note:</strong> Sort the SNPs by chromosome and physical position (low to high). Most GenePattern modules, as well as many external tools, require sorted data.</p>
+
+<p>Sample CN file: <a href="/tutorial/linkedFiles/mynah.sorted.cn">mynah.sorted.cn</a></p>
+
+<h1 id="FCS">FCS</h1>
+
+<p style="line-height: 18.1818180084229px;">Flow Cytometry Standard (FCS) files are used by&nbsp;<a href="http://www.broadinstitute.org/modules?utf8=%E2%9C%93&amp;taskType=Flow+Cytometry&amp;env=" target="_self">GenePattern&#39;s numerous flow cytometry data analysis and data processing modules</a>. The&nbsp;<a href="http://isac-net.org/" target="_blank">International Society for Advancement of Cytometry</a>&nbsp;(<a href="http://isac-net.org/" target="_blank">ISAC</a>) provides detailed resources outlining&nbsp;<a href="http://isac-net.org/Resources-for-Cytometrists/Data-Standards/Data-File-Standards/Flow-Cytometry-Data-File-Format-Standards.aspx" target="_blank">flow cytometry data file format standards</a>, including for updated&nbsp;FCS formats, as well as example data transformations.</p>
+
+<p style="line-height: 18.1818180084229px;">Check module documentation to see which&nbsp;versions of FCS files the module accepts. For example, the&nbsp;<a href="http://www.broadinstitute.org/FLAME" target="_self">FLAME suite modules</a>&nbsp;accept FCS v2.0, FCS&nbsp;v3.0, and TXT files.&nbsp;</p>
+
+<p style="line-height: 18.1818180084229px;">In addition to analysis modules, GenePattern offers a number of modules that allow for FCS data manipulation that&nbsp;include&nbsp;<a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00174">CsvToFcs</a>, <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00175">FcsToCsv</a>, <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00180">ExtractFCSParameters</a>, <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00190">FCSNormalization</a>, <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00191">CompensateFCS</a>, and <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00185">PreviewFCS</a>.</p>
+
+<h1 id="FPKM_tracking"><span style="color: inherit; font-family: inherit; line-height: 1.1;">FPKM_tracking&nbsp;and Read_group_tracking&nbsp;</span></h1>
+
+<p>FPKM_tracking, Count_tracking, and&nbsp;Read_group_tracking&nbsp;files are output by the Cufflinks suite modules, which include Cufflinks and Cuffdiff.&nbsp;For more information on each of these and other Cufflinks suite&nbsp;file types,&nbsp;see the&nbsp;<a href="http://cole-trapnell-lab.github.io/cufflinks/file_formats/" style="background-color: rgb(255, 255, 255);" target="_blank">Cufflinks website</a>. You can convert these to GCT format using <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00250:5" target="_blank">Fpkm_trackingToGct</a> or <a href="http://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00339:0.15" target="_blank">Read_group_trackingToGct </a>modules.</p>
+
+<p><strong>FPKM_tracking files</strong> contain RNA-seq estimated expression values in Fragments Per Kilobase of transcript per Million mapped reads (FPKM) and&nbsp;use a generic format to output estimated expression values. Each FPKM tracking file has the following format:</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td valign="top"><strong>Column number</strong></td>
+			<td valign="top"><strong>Column name</strong></td>
+			<td valign="top"><strong>Example</strong></td>
+			<td valign="top"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td valign="top">1</td>
+			<td valign="top">tracking_id</td>
+			<td valign="top"><tt>TCONS_00000001</tt></td>
+			<td valign="top">A unique identifier describing the object (gene, transcript, CDS, primary transcript)</td>
+		</tr>
+		<tr>
+			<td valign="top">2</td>
+			<td valign="top">class_code</td>
+			<td valign="top"><tt>=</tt></td>
+			<td valign="top">The <tt>class_code</tt> attribute for the object, or &quot;-&quot; if not a transcript, or if <tt>class_code</tt> isn&#39;t present</td>
+		</tr>
+		<tr>
+			<td valign="top">3</td>
+			<td valign="top">nearest_ref_id</td>
+			<td valign="top"><tt>NM_008866.1</tt></td>
+			<td valign="top">The reference transcript to which the class code refers, if any</td>
+		</tr>
+		<tr>
+			<td valign="top">4</td>
+			<td valign="top">gene_id</td>
+			<td valign="top"><tt>NM_008866</tt></td>
+			<td valign="top">The <tt>gene_id</tt>(s) associated with the object</td>
+		</tr>
+		<tr>
+			<td valign="top">5</td>
+			<td valign="top">gene_short_name</td>
+			<td valign="top"><tt>Lypla1</tt></td>
+			<td valign="top">The <tt>gene_short_name</tt>(s) associated with the object</td>
+		</tr>
+		<tr>
+			<td valign="top">6</td>
+			<td valign="top">tss_id</td>
+			<td valign="top"><tt>TSS1</tt></td>
+			<td valign="top">The <tt>tss_id</tt> associated with the object, or &quot;-&quot; if not a transcript/primary transcript, or if <tt>tss_id</tt> isn&#39;t present</td>
+		</tr>
+		<tr>
+			<td valign="top">7</td>
+			<td valign="top">locus</td>
+			<td valign="top"><tt>chr1:4797771-4835363</tt></td>
+			<td valign="top">Genomic coordinates for easy browsing to the object</td>
+		</tr>
+		<tr>
+			<td valign="top">8</td>
+			<td valign="top">length</td>
+			<td valign="top"><tt>2447</tt></td>
+			<td valign="top">The number of base pairs in the transcript, or &#39;-&#39; if not a transcript/primary transcript</td>
+		</tr>
+		<tr>
+			<td valign="top">9</td>
+			<td valign="top">coverage</td>
+			<td valign="top"><tt>43.4279</tt></td>
+			<td valign="top">Estimate for the absolute depth of read coverage across the object</td>
+		</tr>
+		<tr>
+			<td valign="top">10</td>
+			<td valign="top">q0_FPKM</td>
+			<td valign="top"><tt>8.01089</tt></td>
+			<td valign="top">FPKM of the object in sample 0</td>
+		</tr>
+		<tr>
+			<td valign="top">11</td>
+			<td valign="top">q0_FPKM_lo</td>
+			<td valign="top"><tt>7.03583</tt></td>
+			<td valign="top">the lower bound of the 95% confidence interval on the FPKM of the object in sample 0</td>
+		</tr>
+		<tr>
+			<td valign="top">12</td>
+			<td valign="top">q0_FPKM_hi</td>
+			<td valign="top"><tt>8.98595</tt></td>
+			<td valign="top">the upper bound of the 95% confidence interval on the FPKM of the object in sample 0</td>
+		</tr>
+		<tr>
+			<td valign="top">13</td>
+			<td valign="top">q0_status</td>
+			<td valign="top"><tt>OK</tt></td>
+			<td valign="top">Quantification status for the object in sample 0. Can be one of OK (deconvolution successful), LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL, when an ill-conditioned covariance matrix or other numerical exception prevents deconvolution.</td>
+		</tr>
+		<tr>
+			<td valign="top">14</td>
+			<td valign="top">q1_FPKM</td>
+			<td valign="top"><tt>8.55155</tt></td>
+			<td valign="top">FPKM of the object in sample 1</td>
+		</tr>
+		<tr>
+			<td valign="top">15</td>
+			<td valign="top">q1_FPKM_lo</td>
+			<td valign="top"><tt>7.77692</tt></td>
+			<td valign="top">the lower bound of the 95% confidence interval on the FPKM of the object in sample 0</td>
+		</tr>
+		<tr>
+			<td valign="top">16</td>
+			<td valign="top">q1_FPKM_hi</td>
+			<td valign="top"><tt>9.32617</tt></td>
+			<td valign="top">the upper bound of the 95% confidence interval on the FPKM of the object in sample 1</td>
+		</tr>
+		<tr>
+			<td valign="top">17</td>
+			<td valign="top">q1_status</td>
+			<td valign="top"><tt>9.32617</tt></td>
+			<td valign="top">the upper bound of the 95% confidence interval on the FPKM of the object in sample 1. Can be one of OK (deconvolution successful), LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL, when an ill-conditioned covariance matrix or other numerical exception prevents deconvolution.</td>
+		</tr>
+		<tr>
+			<td valign="top">3<em>N</em> + 12</td>
+			<td valign="top">q<em>N</em>_FPKM</td>
+			<td valign="top"><tt>7.34115</tt></td>
+			<td valign="top">FPKM of the object in sample <em>N</em></td>
+		</tr>
+		<tr>
+			<td valign="top">3<em>N</em> + 13</td>
+			<td valign="top">q<em>N</em>_FPKM_lo</td>
+			<td valign="top"><tt>6.33394</tt></td>
+			<td valign="top">the lower bound of the 95% confidence interval on the FPKM of the object in sample <em>N</em></td>
+		</tr>
+		<tr>
+			<td valign="top">3<em>N</em> + 14</td>
+			<td valign="top">q<em>N</em>_FPKM_hi</td>
+			<td valign="top"><tt>8.34836</tt></td>
+			<td valign="top">the upper bound of the 95% confidence interval on the FPKM of the object in sample <em>N</em></td>
+		</tr>
+		<tr>
+			<td valign="top">3<em>N</em> + 15</td>
+			<td valign="top">q<em>N</em>_status</td>
+			<td valign="top"><tt>OK</tt></td>
+			<td valign="top">Quantification status for the object in sample <em>N</em>. Can be one of OK (deconvolution successful), LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL, when an ill-conditioned covariance matrix or other numerical exception prevents deconvolution.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Cuffdiff calculates the expression and fragment count for each transcript, primary transcript, and gene in each replicate prior to differential expression calculations. The results are output in read group&nbsp;tracking files at the level of genes, isoforms, transcription start sites, and coding sequences<strong>.&nbsp;</strong>Each <strong>Read_group_tracking file</strong> has the following format:</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>Column number</strong></td>
+			<td><strong>Column name</strong></td>
+			<td><strong>Example</strong></td>
+			<td><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>tracking_id</td>
+			<td>TCONS_00000001</td>
+			<td>A unique identifier describing the object (gene, transcript, CDS, primary transcript)</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>condition</td>
+			<td>Fibroblasts</td>
+			<td>Name of the condition</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>replicate</td>
+			<td>1</td>
+			<td>Name of the replicate of the condition</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>raw_frags</td>
+			<td>170.21</td>
+			<td>The estimate number of (unscaled) fragments originating from the object in this replicate</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>internal_scaled_frags</td>
+			<td>4905.63</td>
+			<td>Estimated number of fragments originating from the object, after transforming to the internal common count scale (for comparison between replicates of this condition.)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>external_scaled_frags</td>
+			<td>99.21</td>
+			<td>Estimated number of fragments originating from the object, after transforming to the external common count scale (for comparison between conditions)</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>FPKM</td>
+			<td>201.334</td>
+			<td>FPKM of this object in this replicate</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>effective_length</td>
+			<td>5988.24</td>
+			<td>The effective length of the object in this replicate. Currently a reserved, unreported field.</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>status</td>
+			<td>OK</td>
+			<td>Quantification status for the object. Can be one of OK (deconvolution successful), LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL, when an ill-conditioned covariance matrix or other numerical exception prevents deconvolution.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1 id="GCT" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">GCT</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The GCT file format is a tab delimited file format that describes an expression dataset. The main differences between RES and GCT file formats are the RES file format (1) contains labels for each gene&#39;s absent (A) versus present (P) calls as generated by Affymetrix&#39;s GeneChip software and (2) does not allow missing expression values. Although the GCT file format allows missing values, only a few modules (such as CART, GSEA and HierarchicalClustering) can be run against an expression dataset that is missing values. Most modules do not allow missing expression values.</p>
+
+<p>The GCT file is organized as follows:<br />
+<img src="/uploaded/content_file_gct_format_snapshot.gif" style="width: 100%;" /></p>
+
+<ol>
+	<li>The first line contains the version string and is always the same for this file format. Therefore, the first line must be as follows:
+	<ul>
+		<li>#1.2</li>
+	</ul>
+	</li>
+	<li>The second line contains numbers indicating the size of the data table that is contained in the remainder of the file. Note that the name and description columns are not included in the number of data columns.
+	<ul>
+		<li>Line format:<br />
+		(# of data rows) (tab) (# of data columns)</li>
+		<li>For example:<br />
+		7129 58</li>
+	</ul>
+	</li>
+	<li>The third line contains a list of identifiers for the samples associated with each of the columns in the remainder of the file.
+	<ul>
+		<li>Line format:<br />
+		Name (tab) Description (tab) (sample 1 name) (tab) (sample 2 name) (tab) ... (sample N name)</li>
+		<li>For example:<br />
+		Name Description DLBC1_1 DLBC2_1 ... DLBC58_0</li>
+	</ul>
+	</li>
+	<li>The remainder of the data file contains data for each of the genes. There is one line for each gene and one column for each of the samples. The first two fields in the line contain name and descriptions for the genes (names and descriptions can contain spaces since fields are separated by tabs). The number of lines should agree with the number of data rows specified on line 2.
+	<ul>
+		<li>Line format:<br />
+		(gene name) (tab) (gene description) (tab) (col 1 data) (tab) (col 2 data) (tab) ... (col N data)</li>
+		<li>For example:<br />
+		AFFX-BioB-5_at AFFX-BioB-5_at (endogenous control) -104 -152 -158 ... -44</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Occasionally, GCT files are organized in a transposed structure where the columns represent genes and the rows represent samples. The user should take care to check the organization of the file to ensure that the correct preprocessing is performed on the file. See sample *.gct files that come with the distribution for complete examples of the format.</p>
+
+<p>Sample GCT file:&nbsp;<a href="/tutorial/linkedFiles/allaml.dataset.gct">allaml.dataset.gct</a></p>
+
+<h1>&nbsp;</h1>
+
+<h1 id="GLAD">GLAD</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>This is a tab-delimited file format that contains the output results of the GLAD module. The GLAD module, a SNP analysis module, runs the R package Gain and Loss analysis of DNA (GLAD), which detects altered regions in the genomic pattern. The GLAD file format is organized as follows:</p>
+
+<ol>
+	<li>The first line contains a list of labels identifying the columns.
+	<ul>
+		<li>Line format:<br />
+		Sample (tab) Chromosome (tab) Start.bp (tab) End.bp (tab) Num.SNPs (tab) Seg.CN</li>
+	</ul>
+	</li>
+	<li>The rest of the file contains one row of data for each altered chromosomal region.
+	<ul>
+		<li>Line format:<br />
+		(sample) (tab) (chromosome) (tab) (startPosition) (tab) (endPosition) (tab) (numberOfSNPs) (tab) (regionCN)</li>
+		<li>For example:<br />
+		MYNAH_p_Affy_plate_9_Mapping250K_Sty_A02_49084 (tab) 17 (tab) 41419603 (tab) 36581538 (tab) 6427 (tab) 2.06</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Sample GLAD file: <a href="/tutorial/linkedFiles/mynah.glad">mynah.glad</a></p>
+
+<h1 id="GMT" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">GMT</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The GMX and GMT file formats are tab-delimited file formats that describe gene sets (used with the GSEA module). In the GMX format, each column represents a gene set; in the GMT format, each row represents a gene set. The GMX format is convenient for storing a relatively small number of gene sets (&lt;256) and is easier to edit. The GMT format is more convenient for storing larger databases of gene sets. The GMT format contains a row for each gene set:<br />
+<br />
+<img src="/uploaded/content_file_gmt_format_snapshot.gif" /></p>
+
+<ul>
+	<li>Line format:<br />
+	(gene set name) (tab) (description) (tab) (gene 1) (tab) (gene 2) (tab) ... (gene N)</li>
+	<li>For example:<br />
+	GNF2_SPTA1 na ALS2CR3 KLF1 SLC6A8 ... CA1</li>
+</ul>
+
+<ol>
+	<li>The first column contains the gene set name. Duplicate names are not allowed.</li>
+	<li>The second column contains the gene set description. GSEA uses the description field to determine what hyperlink to provide in the report for the gene set description: if the description is na, GSEA provides a link to the named gene set in MSigDB; if the description is a URL, GSEA provides a link to that URL.</li>
+	<li>The remaining columns list the genes in the gene set.</li>
+</ol>
+
+<p>Sample GMT file:&nbsp;<a href="/tutorial/linkedFiles/export_gnf.GENE_SYMBOL.gmt">export_gnf.GENE_SYMBOL.gmt</a></p>
+
+<h1 id="GMX" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">GMX</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The GMX and GMT file formats are tab-delimited file formats that describe gene sets (used with the GSEA module). In the GMX format, each column represents a gene set; in the GMT format, each row represents a gene set. The GMX format is convenient for storing a relatively small number of gene sets (&lt;256) and is easier to edit. The GMT format is more convenient for storing larger databases of gene sets. The GMX format contains a column for each gene set:<br />
+<br />
+<img src="/uploaded/content_file_gmx_format_snapshot.gif" /></p>
+
+<ul>
+	<li><strong>Column</strong> format:<br />
+	(gene set name) (tab) (description) (tab) (gene 1) (tab) (gene 2) (tab) ... (gene N)</li>
+	<li>For example:<br />
+	GNF2_SPTA1 na ALS2CR3 KLF1 SLC6A8 ... CA1</li>
+</ul>
+
+<ol>
+	<li>The first line contains the gene set name. Duplicate names are not allowed.</li>
+	<li>The second line contains the gene set description. GSEA uses the description field to determine what hyperlink to provide in the report for the gene set description: if the description is na, GSEA provides a link to the named gene set in MSigDB; if the description is a URL, GSEA provides a link to that URL.</li>
+	<li>The remaining lines list the genes in the gene set.</li>
+</ol>
+
+<p>Sample GMX file: <a href="/tutorial/linkedFiles/export_gnf.GENE_SYMBOL.gmx">export_gnf.GENE_SYMBOL.gmx</a></p>
+
+<h1 id="GRP">GRP</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The GRP file format contains a single gene set in a simple newline-delimited text format. Typically, you use the GMT or GMX file formats to create gene sets, rather than using the GRP file format. The GRP format contains a line for each gene, one gene per line. Lines that start with a pound sign (#) are ignored.<br />
+<br />
+<img src="/uploaded/content_file_grp_format_snapshot.gif" /></p>
+
+<p>Sample GRP file: <a href="/tutorial/linkedFiles/my_gene_set.grp">my_gene_set.grp</a></p>
+
+<h1 id="GTR">GTR</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>GTR files will be created by the HierarchicalClustering module. This is a format defined at Stanford for their Hierarchical Clustering program.&nbsp; Note that the HierarchicalClustering module will also generate a CDT file.</p>
+
+<p>The GTR (<b>g</b>ene <b>tr</b>ee) file records the order in which the genes (rows) were joined during clustering.</p>
+
+<p><img alt="" src="/uploaded/content_gtr_file_ex.jpg?1362413237" style="width: 379px; height: 464px;" /></p>
+
+<h1 id="LOH">LOH</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>This is a tab-delimited file format that contains the output results of the LOH module. The LOH module, a SNP analysis module, detects loss of heterozigosity (LOH). The LOH file format is organized as follows:</p>
+
+<ol>
+	<li>The first line contains a list of labels identifying the paired samples.
+	<ul>
+		<li>Line format:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) (pair_1_name) (tab) ... (pair_N_name)</li>
+		<li>For example:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) SM-12VZ (tab) SM-12W1</li>
+	</ul>
+	</li>
+	<li>The rest of the SNP file contains one row of data for each probe.
+	<ul>
+		<li>Line format:<br />
+		(snp) (tab) (chromosome) (tab) (position) (tab) (pair_1_loh) (tab) ... (pair_N_loh)</li>
+		<li>For example:<br />
+		SNP_A-1855068 (tab) 17 (tab) 41089766 (tab) R (tab) R</li>
+	</ul>
+	LOH call values are:
+
+	<ul>
+		<li>L (LOH): AB in normal and A or B in tumor</li>
+		<li>R (Retention): AB in both normal and tumor or No Call in normal and AB in tumor</li>
+		<li>C (Conflict): A or B in normal and AB in tumor</li>
+		<li>N (Non-informative call): A or B in normal, or No Call in normal or tumor</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Sample LOH file: <a href="/tutorial/linkedFiles/mynah.loh">mynah.loh</a></p>
+
+<h1 id="MAF">MAF</h1>
+
+<p><a href="http://www.broadinstitute.org/modules/docs/MutSigCV#input_files" target="_self">MutSigCV</a> and <a href="http://www.broadinstitute.org/modules/docs/ABSOLUTE#Input_Files" target="_self">ABSOLUTE</a> modules utilize Mutation Annotation Format (MAF) files. A MAF file is a tab-delimited plain-text file that notates mutation or variation against a reference genome. The file lists one mutation per row, gives information about the mutation in the columns, and has a header row that labels the columns. The National<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format" target="_blank"> </a>Cancer<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format" target="_blank"> </a>Institute&#39;s<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format" target="_blank"> </a>wiki<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format" target="_blank"> </a>on<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format" target="_blank"> </a>TCGA (The Cancer Genome Atlas)&nbsp;gives&nbsp;<a href="https://wiki.nci.nih.gov/display/TCGA/Mutation+Annotation+Format+%28MAF%29+Specification" target="_blank">format specifications</a>.&nbsp;</p>
+
+<p>GenePattern modules utilizing MAF files require specific mutation information columns with specific column header labels. See the <em>Input Files</em> section of documentation for each&nbsp;module for the necessary columns. For example,&nbsp;MutSigCV MAF files must contain two nonstandard columns of <em>effect </em>and <em>categ</em>&nbsp;in addition to the columns <em>gene</em> and <em>patient</em>. A tab-delimited plain-text file containing only these four columns is sufficient to run the&nbsp;module.</p>
+
+<h1 id="MAGE-TAB-MAGE-ML">MAGE-TAB and MAGE-ML</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The MAGE-TAB and MAGE-ML file formats are defined by the Functional Genomics Data Society (FGED, formerly MGED) to create standards for the representation of microarray expression data to facilitate the exchange of microarray information between different data systems. More information about and sample files in the FGED-based formats are available <a href="http://www.mged.org/Workgroups/MAGE/mage.html" target="_blank">here</a>.</p>
+
+<h1 id="ODF" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">ODF</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The Ouput Description Format (ODF) is similar to the RES or GCT file formats for datasets. The main difference is in the header. The body of data still contains the expression level values for each gene in each sample. Thus the main data block (after the header lines) is a matrix of values. The columns are defined by a name and optionally a description. The rows have a name (name of the gene for instance) and a description (description of the gene). The columns contain the expression values for each gene in a sample. If the first gene in the data block is a particular Tyrosine Kinase then each of the samples contained in each of the columns will have expressions values for that particular Tyrosine Kinase in the first row.</p>
+
+<p><strong>Note:</strong>&nbsp;This ODF format is specific to GenePattern. It is not an Open Document Format (ODF) for Office Applications as defined by the Organization for the Advancement of Structured Information Standards (OASIS).</p>
+
+<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">ODF Header for Datasets</h3>
+
+<p>The following example shows the header lines of an ODF file. The first five lines are required.<em>The line numbers are shown for easy reference, they should not be included in your file.</em></p>
+
+<p>1.&nbsp;&nbsp;&nbsp;ODF 1.0<br />
+2.&nbsp;&nbsp;&nbsp;HeaderLines=7<br />
+3.&nbsp;&nbsp;&nbsp;Model= Dataset<br />
+4.&nbsp;&nbsp;&nbsp;DataLines= 3<br />
+5.&nbsp;&nbsp;&nbsp;COLUMN_TYPES: String String float float float *<br />
+6.&nbsp;&nbsp;&nbsp;COLUMN_DESCRIPTIONS: Sample from DFCI Sample from UK Sample from Children&#39;s<br />
+7.&nbsp;&nbsp;&nbsp;COLUMN_NAMES: Name Description Sample 1 Biopsy_2 Biopsy_4<br />
+8.&nbsp;&nbsp;&nbsp;RowNamesColumn=0<br />
+9.&nbsp;&nbsp;&nbsp;RowDescriptionsColumn=1</p>
+
+<p>Lines 1 and 2 are required first and second lines. They must both be present in the header and be the first and second lines. They signify that this is an ODF formatted file (of type 1.0) and indicate the number of header lines that follow before the main data block (in this case 7 more). Line 3, required to be somewhere in the header of an ODF file, defines this ODF file as containing Dataset data. Line 4 is required somewhere in the header file. It indicates the number of data rows present in the data block. Line 5 is required somewhere in the header file for any ODF file that has a main data block. It defines the type of data in each column. Line 6 is a tab-delimited list of descriptions for each column. Line 7 is a tab-delimited list of names for the columns. Line 8 defines which column will have the row names, and Line 9 defines which column will contain the row descriptions.</p>
+
+<p><strong>Note:</strong>&nbsp;Following are a few notes about the ODF Header:</p>
+
+<ul>
+	<li>The first element of each header line will be a key word. The keyword defines/describes what kind of meta data will be found on the rest of that line.</li>
+	<li>A remark is a human readable comment that is skipped by the parser. This line starts with the &quot;#&quot; character and can contain any type of text since it is not parsed. Note that remarks are not counted as header lines and the user can insert them &quot;by hand&quot;.</li>
+	<li>The number of data lines can be quite large. For example, the U133A chip measures the expression values for about 20,000 human genes. A Dataset created from several samples using the U133A gene chip could have a large value for the DataLines tag.</li>
+	<li>The COLUMN_NAMES:, COLUMN_DESCRIPTIONS:, and COLUMN_TYPES: lists must have the same number of elements. Also the number of elements must be equal to the number of columns in the main data block.</li>
+	<li>The COLUMN_NAMES:, and&nbsp; COLUMN_DESCRIPTIONS: could be empty, that is simply contain the proper number of tabs but no text.</li>
+</ul>
+
+<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Main Data Block</h3>
+
+<p>The following example shows the first few lines of the main data block:</p>
+
+<p>1000_at&nbsp;&nbsp;&nbsp; X60188 HSERK1 Human ERK1 mRNA&nbsp;&nbsp;&nbsp; 145.3&nbsp;&nbsp; 240.37823&nbsp;&nbsp;&nbsp; 158.66888<br />
+1001_at&nbsp;&nbsp;&nbsp; X60957 HSTIEMR Human tie mRNA&nbsp;&nbsp;&nbsp; 20.5&nbsp;&nbsp;&nbsp; 31.139397&nbsp;&nbsp;&nbsp; 14.053186<br />
+1002_f_at&nbsp; X65962 HSCP450 H.sapiens mRNA&nbsp;&nbsp;&nbsp; -9.6&nbsp;&nbsp;&nbsp; 118.06088&nbsp;&nbsp;&nbsp; -8.287777</p>
+
+<p>The main data block must be consistent with the header. The first COLUMN_NAMES element is &quot;Name&quot;. This label is associated with the first column (values: 1000_at, 1001_at, and 1002_f_at). The second column&#39;s label is &quot;Description&quot; which is associated with the second column of the main data block. The next three columns are floating point numbers that represent the gene expression values for each of the samples.</p>
+
+<p><strong>Note:</strong>&nbsp;The first two columns are just text data, and next three columns only contain floating point values. This is consistent with the &quot;String, String, float, float, float&quot; elements in the COLUMN_TYPES: list.</p>
+
+<p>Sample ODF file:&nbsp;<a href="/tutorial/linkedFiles/all_aml_train.preprocessed0.odf">all_aml_train.preprocessed0.odf</a></p>
+
+<h1 id="PCL" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">PCL</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>PCL files may be used as input for the GSEA module. This is a format defined at Stanford for their CDNA expression data. More information on this format is available <a href="http://genome-www5.stanford.edu/help/formats.shtml#pcl" target="_blank">here</a>.</p>
+
+<h1 id="POL" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">POL</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The POL file format represents a Parameter-Ordered List. This format is a tab-delimited file with 4 columns, consisting of the following:</p>
+
+<ol>
+	<li>A ranking (an integer corresponding to the rank of the feature)</li>
+	<li>Unique feature identifier</li>
+	<li>Feature description</li>
+	<li>Distance metric (value upon which the rank position is based)</li>
+</ol>
+
+<p>If you don&#39;t have a distance metric, you can use the rank in column 4 as well. Lines from a sample pol file are shown below:</p>
+
+<pre>
+0	X59798_at	CCND1 Cyclin D1	0.0
+1	S69272_s_at	Cytoplasmic antiproteinase	465.5319538
+2	U37012_at	Cleavage and polyadenylation specificity factor	493.1997567
+3	X69910_at	P63 mRNA for transmembrane protein	493.5331802
+4	U53347_at	Neutral amino acid transporter B mRNA	515.3552173
+5	M80899_at	AHNAK AHNAK nucleoprotein (desmoyokin)	539.9990741
+</pre>
+
+<h1 id="RES" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">RES</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The RES file format is a tab delimited file format that describes an expression dataset. The main differences between RES and GCT file formats are the RES file format (1) contains labels for each gene&#39;s absent (A) versus present (P) calls as generated by Affymetrix&#39;s GeneChip software and (2) does not allow missing expression values. The file is organized as follows:<br />
+<img src="/uploaded/content_file_res_format_snapshot.gif" /></p>
+
+<ol>
+	<li>The first line contains a list of labels identifying the samples associated with each of the columns in the remainder of the file. Two tabs (\t\t) separate the sample identifier labels because each sample contains two data values (an expression value and a present/marginal/absent call).
+	<ul>
+		<li>Line format:<br />
+		Description (tab) Accession (tab) (sample 1 name) (tab) (tab) (sample 2 name) (tab) (tab) ... (sample N name)</li>
+		<li>For example:<br />
+		Description Accession DLBC1_1 DLBC2_1 ... DLBC58_0</li>
+	</ul>
+	</li>
+	<li>The second line contains a list of sample descriptions. Currently, GenePattern ignores these descriptions.
+	<ul>
+		<li>Line format:<br />
+		(tab) (sample 1 description) (tab) (tab) (sample 2 description) (tab) (tab) ... (sample N description)</li>
+		<li>For example, our RES file creation tool places the sample data file name and scale factors in this row:<br />
+		MG2000062219AA MG2000062256AA/scale factor=1.2172 ... MG2000062211AA/scale factor=1.1214</li>
+	</ul>
+	</li>
+	<li>The third line contains a number indicating the number of rows in the data table that is contained in the remainder of the file. Note that the name and description columns are not included in the number of data columns.
+	<ul>
+		<li>Line format:<br />
+		(# of data rows)</li>
+		<li>For example:<br />
+		7129</li>
+	</ul>
+	</li>
+	<li>The rest of the data file contains data for each of the genes. There is one row for each gene and two columns for each of the samples. The first two fields in the row contain the description and name for each of the genes (names and descriptions can contain spaces since fields are separated by tabs). The description field is optional but the tab following it is not. Each sample has two pieces of data associated with it: an expression value and an associated Absent/Marginal/Present (A/M/P) call. The A/M/P calls are generated by microarray scanning software (such as Affymetrix&#39;s GeneChip software) and are an indication of the confidence in the measured expression value. Currently, GenePattern ignores the Absent/Marginal/Present call.
+	<ul>
+		<li>Line format:<br />
+		(gene description) (tab) (gene name) (tab) (sample 1 data) (tab) (sample 1 A/P call) (tab) (sample 2 data) (tab) (sample 2 A/P call) (tab) ... (sample N data) (tab) (sample N A/P call)</li>
+		<li>For example:<br />
+		AFFX-BioB-5_at (endogenous control) AFFX-BioB-5_at -104 A -152 A ... -44 A</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Sample RES file: <a href="/tutorial/linkedFiles/all_aml_test.res">all_aml_test.res</a><a name="gct"></a></p>
+
+<h1 id="sample-information-file">Sample Information File</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The sample information file is a tab-delimited format that describes a set of SNP arrays. The column labels in the first row define the information provided for each array; each subsequent row describes one SNP array. The sample information file is organized as follows:</p>
+
+<ol>
+	<li>The first line contains the column labels. A sample information file can contain any number of columns and the column labels are arbitrary. However, SNP modules may require specific labels, as discussed below.
+	<ul>
+		<li>Line format:<br />
+		Label-1 (tab) Label-2 (tab) ... Label-n</li>
+		<li>For example:<br />
+		Array (tab) Sample (tab) Type (tab) Ploidy(numeric) (tab) Gender (tab) Paired (tab) Platform</li>
+	</ul>
+	</li>
+	<li>The remainder of the sample information file contains a line of information for each SNP sample. Where data is unavailable, columns may be empty.
+	<ul>
+		<li>Line format:<br />
+		Col-1- data (tab) Col-2-data (tab) ... Col-N-data</li>
+		<li>For example:<br />
+		S004274N_250S_123005 (tab) S004274N (tab) Normal (tab) 2 (tab) (tab) (tab) 250K_Sty</li>
+	</ul>
+	</li>
+</ol>
+
+<p>A sample information file can contain any number of columns and the column labels are arbitrary. A SNP analysis module, however, may require a sample information file to include specific column labels. For example, the SNP module CopyNumberDivideByNormals requires a sample information file that includes two columns, Sample and Ploidy(numeric). Following is a list of commonly used column labels:</p>
+
+<ul>
+	<li>Array: Identifier for the SNP array.</li>
+	<li>Sample: Identifier for the biological sample used to generate the SNP array data.</li>
+	<li>Type: Brief description of the biological sample.</li>
+	<li>Ploidy(numeric): Integer value, where ploidy=2 indicates a normal sample.</li>
+	<li>Gender: Identifier that indicates the gender of the biological sample donor. For a sample from a male donor, Gender=M; from a female donor, Gender=F.</li>
+	<li>Paired: Value that identifies normal-target pairs. For the normal sample, Paired=Yes; for the target sample, Paired is set to the sample name of the paired normal sample.</li>
+	<li>Platform: SNP chip used to generate the array.</li>
+</ul>
+
+<p><strong>Note:</strong> When a SNP module requires a sample information file to include specific column labels, the module documentation lists the required column labels. Specify required column labels exactly: they are case-sensitive and space-sensitive.</p>
+
+<p>Sample .txt file: <a href="/tutorial/linkedFiles/250K_Sampleinfofile.txt">250K_Sampleinfofile.txt</a></p>
+
+<h2><a name="_Create_Sample_Info"></a>Creating a Sample Information File</h2>
+
+<p>The following steps outline how to copy exactly sample identifiers from Excel data and tranpose them from horizonal to vertical.</p>
+
+<ol>
+	<li>In Excel, <em>Select </em>entire row containing sample names and <em>Copy</em>. Open a new workbook, <em>Paste Special</em>&gt;<em>Transpose</em>.</li>
+	<li>If starting from a RES file, to remove blank rows, <em>Select</em> relevant column(s), then click <em>Edit</em>&gt;<em>Go To</em>&gt;<em>Special button</em>&gt;<em>Blanks</em> option and click <em>OK</em>. Blank rows will be selected. Choose <em>Edit</em>&gt;<em>Delete</em>&gt;<em>Entire row</em> option and click <em>OK</em>.</li>
+</ol>
+
+<p style="margin-left: 40px;"><img alt="" height="247" src="/uploaded/content_combat-sif.jpg" width="488" /></p>
+
+<ol start="3">
+	<li>Label row headings exactly as specified for module, fill in cells, and save as tab delimited text (.txt).&nbsp; For example, ComBat module labels first three cells of Row 1: &ldquo;Array&rdquo;, &ldquo;Sample&rdquo;, and &ldquo;Batch&rdquo;.</li>
+</ol>
+
+<h1 id="SNP">SNP</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>This is a tab-delimited file format that contains SNP array data. The SNPFileCreator module can create non-allele-specific SNP files or allele-specific SNP files. A SNP file contains one row for each SNP and two or three columns for each SNP array. Non-allele-specific files contain two columns for each SNP array: the intensity value and the call. Allele-specific files contain three columns for each SNP array: the intensity value for allele A, the intensity value for allele B, and the call. <strong>Note: </strong> Not all SNP modules accept allele-specific SNP files.</p>
+
+<p>The first line of a SNP file contains a list of labels identifying the SNP arrays.&nbsp;The rest of the SNP file contains one row of data for each probe. Each row contains the probe intensity values and the SNP calls generated by the SNP microarray scanning software,&nbsp;such as Affymetrix&#39;s GeneChip software, as shown in the examples below.</p>
+
+<p><img alt="" src="/uploaded/content_sl_snpfileexample_2015-05-21.png" style="width: 100%;" /></p>
+
+<ol>
+	<li>Non-allele-specific files contain two columns per sample.
+	<ul>
+		<li>Line format:<br />
+		SNP&nbsp;(tab) Chromosome&nbsp;(tab) PhysicalPosition&nbsp;(tab)&nbsp;array_1_name&nbsp;(tab)&nbsp;array_1_name Call&nbsp;(tab)...array_N_name&nbsp;(tab)&nbsp;array_N_name Call ...</li>
+		<li>Example header row:<br />
+		SNP&nbsp;(tab)&nbsp;Chromosome&nbsp;(tab)&nbsp;PhysicalPosition&nbsp;(tab) 100H_primary_GBM_101N (tab) 100H_primary_GBM_101N Call (tab) 100H_primary_GBM_56 &nbsp;(tab) 100H_primary_GBM_56&nbsp;Call&nbsp;</li>
+	</ul>
+	</li>
+	<li><span style="line-height: 1.428571429;">Allele-specific files contain three columns per sample--an intensity value for each of the two alleles and a call.</span>
+	<ul>
+		<li>Line format:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) array_1_name_Allele_A (tab) array_1_name_Allele_B (tab) array_1_name Call ...</li>
+		<li>Example header row:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) 1100H_primary_GBM_101N_Allele_A (tab) 100H_primary_GBM_101N_Allele_B (tab) 100H_primary_GBM_101N Call&nbsp;</li>
+	</ul>
+	</li>
+</ol>
+
+<p><span style="line-height: 1.428571429;">Sample SNP file: </span><a href="/tutorial/linkedFiles/gistic_subset.snp" style="line-height: 1.428571429; background-color: white;">gistic_subset.snp</a><span style="line-height: 1.428571429;">, </span><a href="/tutorial/linkedFiles/gistic_subset_allele_specific.snp" style="line-height: 1.428571429; background-color: white;">gistic_subset_allele_specific.snp</a></p>
+
+<h1 id="TXT" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">TXT</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in&nbsp;<a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The TXT format is a tab delimited file format that describes an expression dataset. It can be used with the GSEA module and is organized as follows:<br />
+<br />
+<img src="/uploaded/content_file_txt_format_snapshot.gif" /></p>
+
+<ol>
+	<li>The first line contains the labels Name and Description followed by the identifiers for each sample in the dataset. The Description is optional.
+	<ul>
+		<li>Line format:<br />
+		Name(tab)Description(tab)(sample 1 name)(tab)(sample 2 name) (tab) ... (sample N name)</li>
+		<li>Example:<br />
+		Name Description DLBC1_1 DLBC2_1 ... DLBC58_0</li>
+	</ul>
+	</li>
+	<li>The remainder of the file contains data for each of the genes. There is one line for each gene. Each line contains the gene name, gene description, and a value for each sample in the dataset. If the first line contains the Description label, include a description for each gene. If the first line does not contain the Description label, do not include descriptions for any gene. Gene names and descriptions can contain spaces since fields are separated by tabs.
+	<ul>
+		<li>Line format:<br />
+		(gene name) (tab) (gene description) (tab) (col 1 data) (tab) (col 2 data) (tab) ... (col N data)</li>
+		<li>Example:<br />
+		AFFX-BioB-5_at AFFX-BioB-5_at (endogenous control) -104 -152 -158 ... -44</li>
+	</ul>
+	</li>
+</ol>
+
+<h1 id="XCN">XCN</h1>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>This is a tab-delimited file format that is similar to the SNP file format, but contains SNP copy numbers rather than SNP intensity values. It contains one row for each SNP and two columns for each SNP array: the raw copy number value and the call value. It is organized as follows:</p>
+
+<ol>
+	<li>The first line contains a list of labels identifying the SNP arrays.
+	<ul>
+		<li>Line format:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) (array_1_name) (tab) (array_1_name) Call (tab) ... (array_N_name) (tab) (array_N_name) Call</li>
+		<li>For example:<br />
+		SNP (tab) Chromosome (tab) PhysicalPosition (tab) MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49068 (tab) MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49068 Call (tab) ... MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49084 (tab) MYNAH_p_Affy_plate_9_Mapping250K_Sty_A01_49084 Call</li>
+	</ul>
+	</li>
+	<li>The rest of the SNP file contains one row of data for each probe, including the raw copy number value and the SNP calls generated by SNP microarray scanning software (such as Affymetrix&#39;s GeneChip software). Some modules, such as the SNPViewer module, require the data sorted by chromosome and physical position.
+	<ul>
+		<li>Line format:<br />
+		(snp) (tab) (chromosome) (tab) (position) (tab) (array_1_cn) (tab) (array_1_call) (tab) ... (array_N_cn) (tab) (array_N_call)</li>
+		<li>For example:<br />
+		SNP_A-4249904 (tab) 17 (tab) 41420045 (tab) 2.265 (tab) AB (tab) ... 1.735 (tab) AA</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Sample SNP file: <a href="/tutorial/linkedFiles/mynah.sorted.xcn">mynah.sorted.xcn</a></p>
+
+<p style="line-height: 18.1818180084229px;">&nbsp;</p>
+
+<h1 id="RNK">RNK</h1>
+
+<p>&nbsp;</p>
+
+<p><strong>Note</strong>: If you are using Excel to edit GenePattern files, be sure to save the file as a tab-delimited text file and supply the correct file extension. You can specify the file name in quotes to prevent Excel from appending .txt to the file name. Also, note that Excel&#39;s auto-formatting can introduce errors in gene names, as described in <a href="http://www.biomedcentral.com/1471-2105/5/80/" target="_blank">Zeeberg, et al (2004)</a>.</p>
+
+<p>The RNK file contains a single, rank ordered gene list (<em>not</em> gene set) in a simple newline-delimited text format. It is used when you have a pre-ordered ranked list that you want to analyze with GSEA. For instance, you might have used your favorite tTest-like statistic to produce a ranked ordered gene list from your dataset which you now want to test for enrichment. Order of lines does not matter. It is important, however, that the second column will have numeric values - they will be used to rank order genes by GSEA.</p>
+
+<p><img alt="image:rnk_format_snapshot.gif" border="0" height="554" src="https://software.broadinstitute.org/cancer/software/gsea/wiki/images/5/55/Rnk_format_snapshot.gif" width="350" /></p>
+
+
+		</div>
+	</div>
+</div>
+
+	
+	<script>
+//<![CDATA[
+
+		$(".collapse").collapse("show");
+
+//]]>
+</script></body>
+</html>

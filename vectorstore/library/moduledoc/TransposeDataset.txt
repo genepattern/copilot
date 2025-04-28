@@ -1,0 +1,44 @@
+TransposeDataset is on version 2.
+A description of TransposeDataset is Transposes a dataset much like a matrix can be transposed, the rows become the columns and the columns become the rows..
+TransposeDataset is a GenePattern module written by GenePattern Team (Broad Institute), gp-help@broad.mit.edu.
+TransposeDataset can be categorized as Preprocess&Utilities.
+TransposeDataset has the following parameters: input.filename, output.file.format, ouput.file.name.
+The TransposeDataset module in GenePattern allows researchers to quickly swap rows and columns in genomic datasets, facilitating different analytical perspectives.
+TransposeDataset is a utility module that mathematically inverts the orientation of a data matrix, transforming rows into columns and columns into rows.
+In gene expression analysis, TransposeDataset can help researchers reorient data to prepare it for different types of statistical or visualization techniques.
+The TransposeDataset module supports multiple input file formats including .res, .gct, and .odf, providing flexibility for researchers working with various genomic data types.
+TransposeDataset can be particularly useful when preparing data for clustering algorithms or when comparing gene expression across different experimental conditions.
+By changing the orientation of a dataset, TransposeDataset enables researchers to examine biological data from alternative perspectives, potentially revealing hidden patterns or relationships.
+The module is platform-independent, running on any operating system with Java 1.4 or higher, making it widely accessible to bioinformatics researchers.
+TransposeDataset supports output in .gct and .odf formats, allowing researchers to choose the most appropriate file type for downstream analysis.
+In microarray studies, TransposeDataset can help researchers quickly reorganize gene expression data to compare samples or genes more effectively.
+The TransposeDataset module is a simple but powerful tool for data manipulation in genomic research, enabling researchers to quickly reorient complex biological datasets.
+TransposeDataset module requires input filename parameter for dataset file
+TransposeDataset module allows specifying output file format as .gct or .odf
+TransposeDataset module needs output filename for transposed dataset
+TransposeDataset module transposes rows and columns like a matrix transformation
+TransposeDataset module supports input file types including .res, .gct, and .odf
+TransposeDataset module generates a new dataset with rows and columns swapped
+TransposeDataset module is a preprocessing utility for data manipulation
+TransposeDataset module works across different platforms and Java versions
+TransposeDataset module can be used to reorganize tabular scientific data
+TransposeDataset module produces output in either .gct or .odf file formats
+TransposeDataset module input file is a dataset file in .res, .gct, or .odf format containing rows and columns of data to be transposed.
+TransposeDataset module input file contains numerical or categorical data with rows representing features or samples and columns representing samples or features.
+TransposeDataset module input file can be a gene expression matrix, where rows are genes and columns are samples.
+TransposeDataset module output file is a transposed dataset in .gct or .odf format with original rows and columns swapped.
+TransposeDataset module output file preserves the original data values but rearranges them so that rows become columns and columns become rows.
+TransposeDataset module output file maintains the same data type and structure as the input file, just with a different orientation.
+TransposeDataset module supports multiple input file formats including .res, .gct, and .odf for flexible data transposition.
+TransposeDataset module allows users to change the perspective of their dataset by interchanging rows and columns.
+TransposeDataset module is useful for data preprocessing and reformatting in genomic and computational biology workflows.
+TransposeDataset module is a data transformation tool that switches rows and columns in a dataset.
+The TransposeDataset module allows researchers to flip the orientation of a data matrix, converting rows into columns and columns into rows.
+The module supports multiple input file formats including .res, .gct, and .odf files.
+Users can specify the desired output file format as either .gct or .odf when transposing their dataset.
+The TransposeDataset module is platform-independent and can run on any operating system with Java 1.4 or higher.
+This module is classified as a preprocessing and utility tool for data manipulation in genomic and computational biology workflows.
+The TransposeDataset module is developed by the GenePattern Team at the Broad Institute, providing a simple yet powerful data transformation utility.
+The module enables researchers to quickly reorient their datasets without manual data manipulation, saving time in data preprocessing steps.
+Transposing datasets can be crucial for aligning data for comparative analysis, statistical modeling, or preparing data for downstream computational processes.
+The TransposeDataset module requires minimal computational resources and can handle datasets of varying sizes and complexities.

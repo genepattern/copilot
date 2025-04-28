@@ -1,0 +1,50 @@
+Picard.SamToFastq is on version 3.
+A description of Picard.SamToFastq is This module converts a file in SAM format (or its binary equivalent, BAM format) to FASTQ format. SAM is a standard short read alignment that allows aligners to attach custom tags to individual alignments..
+Picard.SamToFastq is a GenePattern module written by Picard Contact: gp-help@broadinstitute.org.
+Picard.SamToFastq can be categorized as Data Format Conversion.
+Picard.SamToFastq has the following parameters: input file, per read group, re-reverse bases, include non pf reads, clipping attribute, clipping action, clipping action quality value, fastq output prefix 1, fastq output prefix 2.
+The Picard.SamToFastq module is a critical bioinformatics tool for converting sequencing alignment files between different formats.
+Picard.SamToFastq allows researchers to transform SAM or BAM alignment files into the more universally readable FASTQ format.
+The module is particularly useful when transitioning between different sequencing analysis pipelines that require specific file formats.
+Picard.SamToFastq can handle both single-end and paired-end sequencing read data during the conversion process.
+Researchers can use this module to extract raw sequencing reads from alignment files, which is essential for downstream analysis like de novo assembly or re-alignment.
+The module provides flexible options for handling read groups, allowing conversion of entire sequencing datasets or specific subsets of reads.
+Picard.SamToFastq can optionally re-reverse bases and qualities for reads aligned to the negative strand, ensuring accurate representation of original sequencing data.
+Bioinformaticians can use this module to preprocess alignment files, removing alignment-specific metadata and returning to the original sequencing read format.
+The module supports optional filtering of reads based on quality metrics, such as excluding non-passing filter (non-PF) reads from the output.
+Picard.SamToFastq is implemented in Java, making it highly portable across different computational platforms and operating systems.
+Researchers can use this module as part of larger genomic data processing workflows, bridging different stages of sequencing data analysis.
+The module provides granular control over read clipping, allowing users to modify read lengths or base qualities during the conversion process.
+Picard.SamToFastq module helps convert SAM or BAM alignment files to FASTQ format
+input file is a required parameter specifying the source SAM or BAM file to convert
+re-reverse bases is an optional boolean parameter to reverse bases and qualities for reads with negative strand flag
+include non pf reads is an optional boolean parameter to include reads that did not pass quality filtering
+clipping attribute specifies the SAM tag storing the position where reads should be clipped
+clipping action determines how clipped reads are processed when a clipping attribute is present
+clipping action quality value sets base quality values when clipping action changes base qualities
+fastq output prefix 1 defines the output filename for single-end or first-end paired FASTQ files
+fastq output prefix 2 defines the output filename for second-end paired FASTQ files
+per read group is an optional boolean parameter to control whether output files are generated per read group
+Picard.SamToFastq supports conversion between standard genomic file formats for bioinformatics processing
+module requires Java runtime and works across different operating systems and CPU architectures
+conversion process preserves read alignment metadata and allows flexible handling of read quality and clipping
+Picard.SamToFastq module requires a SAM or BAM input file containing sequencing alignment data.
+Picard.SamToFastq input file is a standard SAM or BAM alignment file with read group information and alignment metadata.
+Picard.SamToFastq input file contains individual read alignments with potential custom tags and alignment details.
+Picard.SamToFastq can generate single-end or paired-end FASTQ output files depending on input configuration.
+Picard.SamToFastq output FASTQ files contain raw sequencing read sequences and quality scores.
+Picard.SamToFastq output FASTQ files follow standard FASTQ format with four-line read entries.
+Picard.SamToFastq can optionally generate separate FASTQ files for each read group in the input alignment file.
+Picard.SamToFastq output FASTQ files can include options for re-reversing bases and handling non-passing filter reads.
+Picard.SamToFastq can modify base qualities and clip reads based on specified attributes during conversion.
+Picard.SamToFastq supports flexible output file naming for single-end and paired-end sequencing data.
+The Picard.SamToFastq module converts SAM or BAM alignment files to FASTQ format for downstream sequencing analysis.
+Picard.SamToFastq is a data format conversion tool that transforms standard genomic alignment files into raw sequencing read files.
+The module can handle both single-end and paired-end sequencing read data from SAM/BAM input files.
+Users can specify whether to re-reverse bases for reads aligned to the negative strand during the conversion process.
+Picard.SamToFastq allows optional filtering of reads, including the ability to include or exclude non-passing filter (non-PF) reads.
+The module provides advanced clipping options, allowing users to specify how reads should be processed when clipping attributes are present.
+Picard.SamToFastq supports generating separate FASTQ files for different read groups when processing multiplexed sequencing data.
+Users can customize base quality values during read clipping, providing flexibility in read preprocessing.
+The module is implemented in Java and can run on any operating system with a compatible Java runtime environment.
+Picard.SamToFastq is particularly useful for preparing sequencing data for further analysis, such as de novo assembly or alternative alignment workflows.

@@ -1,0 +1,71 @@
+RNASeQC is on version .
+A description of RNASeQC is Calculates metrics on aligned RNA-seq data. This module calculates standard RNA-seq related metrics, such as depth of coverage, ribosomal RNA contamination, continuity of coverage, and GC bias..
+RNASeQC is a GenePattern module written by David S. Deluca (Broad Institute).
+RNASeQC can be categorized as RNA-seq, Sequencing, Metrics.
+RNASeQC has the following parameters: bam.files, sample.info.file, single.end, annotation.gtf, annotation.gtf.file, reference.sequence, reference.sequence.index, reference.sequence.dictionary, num.genes, transcript.type.field, rRNA.interval.file, rRNA.aligned.file, transcript.end.length, transcript.level.metrics, gc.content.file, num.downsampling.reads, correlation.comparison.file, output.prefix.
+The RNASeQC GenePattern module is a powerful tool for analyzing RNA-sequencing data metrics.
+RNASeQC is a GenePattern module designed to calculate comprehensive metrics for RNA-sequencing experiments.
+The RNASeQC module provides detailed quality control and characterization of RNA-seq data by analyzing aligned BAM files.
+RNASeQC calculates multiple important metrics including total read numbers, mapping rates, and read distribution across genomic regions.
+The module generates metrics about read mapping, such as the number of unique reads, mapping rates, and the proportion of reads mapping to different genomic features.
+RNASeQC can quantify rRNA contamination by calculating the rate of reads mapping to ribosomal RNA regions.
+The module provides strand specificity metrics to help researchers understand the directionality of RNA sequencing libraries.
+RNASeQC calculates RPKM (Reads Per Kilobase Million) values to normalize transcript expression levels across different samples.
+The module can generate coverage metrics for the top, middle, and bottom expressed transcripts in a dataset.
+RNASeQC can perform GC content stratification to analyze how GC bias might affect sequencing results.
+The module produces an HTML report with comprehensive visualizations and detailed metrics about the RNA-seq experiment.
+RNASeQC requires preprocessed BAM files with specific characteristics, including coordinate sorting and read group information.
+The module can handle both single-end and paired-end RNA-seq data, providing flexibility for different experimental designs.
+RNASeQC integrates with the GenePattern platform, allowing easy access and execution of RNA-seq quality control analysis.
+The module generates multiple output files, including metrics files, coverage plots, and a detailed HTML report for comprehensive data interpretation.
+Here are the parameter descriptions for the RNASeQC module:
+bam.files (required, file): An indexed BAM file or zipped set of BAM files to analyze, with specific requirements for read group information and platform compatibility.
+sample.info.file (optional, file): A tab-delimited TXT file containing sample ID, sample file name, and notes to label samples in output results.
+single.end (optional, boolean): Indicates whether the BAM file contains single-end reads. Default is yes.
+annotation.gtf (optional, file): A genome annotation to use for analysis, required if no annotation file is uploaded.
+annotation.gtf.file (optional, file): A GTF format genome annotation file that can be uploaded if not in the standard dropdown list.
+reference.sequence (required, file): The reference genome sequence in FASTA format, with required accompanying index and dictionary files.
+reference.sequence.index (optional, file): The FAI index file for the reference sequence if not in the same directory as the FASTA file.
+reference.sequence.dictionary (optional, file): The DICT dictionary file for the reference sequence if not in the same directory as the FASTA file.
+num.genes (required, integer): Number of top-expressed genes to calculate metrics for. Default is 1000, requiring at least 3GB memory.
+transcript.type.field (optional, string): Specifies the column in the GTF file indicating transcript type, used to identify rRNA transcripts.
+rRNA.interval.file (optional, file): A GATK format .list file containing genomic coordinates of rRNA regions.
+rRNA.aligned.file (optional, file): A SAM file containing ribosomal RNA reads for estimating rRNA content.
+transcript.end.length (required, integer): Length of transcript end (3' or 5') for analysis. Available values are 10, 50, and 100. Default is 50.
+transcript.level.metrics (optional, boolean): Whether to calculate transcript-level metrics in addition to sample-level metrics. Default is no.
+gc.content.file (optional, file): A tab-delimited file with transcript names and their GC content for additional stratified results.
+num.downsampling.reads (optional, integer): Number of reads to randomly sample when calculating metrics.
+correlation.comparison.file (optional, file): A GCT expression data file for calculating expression value correlations.
+output.prefix (required, string): A prefix to use for output file names.
+Here are the input and output files for the RNASeQC module in atomic, semantically distinct chunks:
+RNASeQC requires an indexed, coordinate-sorted BAM file with read group information
+RNASeQC input BAM file must have duplicate reads flagged
+RNASeQC requires a BAM index file (.BAI) located in the same folder as the BAM file
+RNASeQC needs a reference sequence in FASTA format with accompanying .FAI and .DICT files
+RNASeQC can accept an optional sample info file in tab-delimited TXT format with sample ID and filename
+RNASeQC can use an optional genome annotation file in GTF format
+RNASeQC can accept an optional rRNA interval file in GATK .LIST format or a SAM file with rRNA reads
+RNASeQC can use an optional GC content file with transcript names and GC percentages in tab-delimited format
+RNASeQC output is a ZIP archive containing multiple files and folders with detailed RNA-seq metrics
+RNASeQC ZIP archive includes an index.html file with comprehensive RNA-seq analysis summary
+RNASeQC output contains coverage metrics files for high, medium, and low expression transcripts
+RNASeQC generates per-base depth of coverage files in the output archive
+RNASeQC creates transcript-level metric files if specified in parameters
+RNASeQC output includes RPKM (Reads Per Kilobase Million) expression files
+RNASeQC generates HTML and PNG plots visualizing coverage and expression metrics
+RNASeQC can create optional GC content stratified analysis files in the output archive
+RNASeQC is a computational module for analyzing RNA sequencing data metrics.
+The RNASeQC module calculates comprehensive metrics for RNA-seq experiments.
+RNASeQC provides detailed quantitative analysis of aligned RNA sequencing reads.
+This module requires preprocessed BAM files with specific formatting requirements like coordinate sorting and read group information.
+RNASeQC generates metrics including total read count, mapping rates, duplication rates, and RNA contamination percentages.
+The module calculates transcript-level metrics like intragenic, exonic, intronic, and intergenic read mapping rates.
+RNASeQC can generate coverage metrics for top, middle, and bottom expressed transcripts in an RNA-seq dataset.
+The module provides visualization of read coverage across transcript lengths, helping assess sequencing uniformity.
+RNASeQC can stratify transcript analysis by GC content, revealing potential biases in sequencing.
+The module outputs a comprehensive HTML report with detailed RNA-seq quality control statistics.
+RNASeQC calculates RPKM (Reads Per Kilobase Million) values to normalize transcript expression levels.
+The module can estimate library complexity and detect potential technical artifacts in RNA-seq data.
+RNASeQC supports analysis of both single-end and paired-end RNA sequencing experiments.
+The module requires input files including a BAM file, reference genome, and genome annotation in GTF format.
+RNASeQC can generate transcript-level metrics to provide granular insight into RNA sequencing data.

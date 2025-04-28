@@ -1,0 +1,59 @@
+NearestTemplatePrediction is on version 4.
+A description of NearestTemplatePrediction is Nearest neighbor prediction based on a list of marker genes. This module performs class prediction using a predefined list of marker genes for multiple (≥2) classes. Such marker genes are usually selected based on fold change, t-statistic, correlation coefficient, regression coefficient, etc..
+NearestTemplatePrediction is a GenePattern module written by Yujin Hoshida (Broad Institute).
+NearestTemplatePrediction can be categorized as Prediction, Gene Expression, Classification.
+NearestTemplatePrediction has the following parameters: input exp filename, input features filename, output name, distance selection, weight genes, num resamplings, GenePattern output, random seed.
+The NearestTemplatePrediction module is a powerful bioinformatics tool for class prediction using marker genes.
+NearestTemplatePrediction enables researchers to predict sample classifications based on predefined gene expression signatures.
+The module can handle multiple classes (two or more) in gene expression prediction tasks.
+NearestTemplatePrediction uses marker genes selected through various statistical methods like fold change, t-statistic, and correlation coefficients.
+The module computes multiple statistical measures of prediction significance, including nominal p-value, false discovery rate (FDR), and Bonferroni-corrected p-values.
+NearestTemplatePrediction generates graphical outputs like heatmaps to visualize marker gene expression patterns.
+The module allows optional weighting of genes, which can improve prediction accuracy, especially for two-class problems.
+NearestTemplatePrediction requires input files in GCT format for gene expression data and a text file listing marker genes.
+The module performs prediction using a nearest neighbor approach, comparing input samples to predefined gene expression templates.
+NearestTemplatePrediction can be used in various research contexts, such as cancer classification, disease subtyping, and molecular profiling.
+The module supports random resampling to generate null distributions for distance metrics, enhancing statistical robustness.
+NearestTemplatePrediction outputs include prediction results, feature lists, heatmaps, and statistical significance plots.
+The module is flexible and can be applied across different biological systems and research questions involving gene expression classification.
+NearestTemplatePrediction module requires input gene expression data in GCT format.
+NearestTemplatePrediction module needs a list of marker genes in a text file with specific column requirements.
+Input features file must have gene identifiers matching the gene expression dataset's annotation system.
+Input features file requires columns for Gene ID, Class (1, 2, etc.), and optional Weight value.
+NearestTemplatePrediction module allows specifying a distance metric for prediction calculation.
+Users can choose to weight genes based on statistical significance or fold change.
+NearestTemplatePrediction module supports multiple resampling iterations to generate null distribution.
+Module can create GenePattern-compatible output files for further analysis.
+Random seed parameter enables reproducible random number generation in the prediction process.
+NearestTemplatePrediction module generates multiple output files including prediction results and visualizations.
+Output files include Excel spreadsheets, heatmaps, and statistical plots.
+Module produces a prediction result file with sample-level classification information.
+Heatmap outputs provide visual representation of marker gene expression patterns.
+NearestTemplatePrediction module calculates statistical significance measures like FDR and p-values.
+Module supports prediction across multiple classes (two or more) using marker gene lists.
+NearestTemplatePrediction input gene expression dataset is a .gct file containing gene expression measurements across samples.
+NearestTemplatePrediction input features file is a tab-delimited .txt file listing marker genes with probe IDs, gene names, class assignments, and optional weight values.
+NearestTemplatePrediction output prediction result file is an Excel spreadsheet (.xls) containing detailed prediction results for each sample.
+NearestTemplatePrediction output features file lists the marker genes used in the prediction analysis with their characteristics.
+NearestTemplatePrediction output heatmap is a PNG image visualizing the expression of marker genes across samples.
+NearestTemplatePrediction output FDR sample bar plot shows predicted sample labels at a false discovery rate less than 0.05.
+NearestTemplatePrediction output FDR plot visualizes the false discovery rate distribution.
+NearestTemplatePrediction output heatmap legend is a PNG image showing the color scale for standard deviation from -3 to +3.
+NearestTemplatePrediction output sorted dataset is a .gct file with genes and samples potentially reordered based on the analysis.
+NearestTemplatePrediction output predicted class file is a .cls file containing the predicted class labels for samples.
+NearestTemplatePrediction output sample information file provides additional details about the samples and prediction results.
+NearestTemplatePrediction is a computational method for predicting sample classes using marker gene lists.
+The module performs class prediction by comparing gene expression data against predefined marker gene signatures.
+It supports prediction for multiple classes (two or more) using a nearest neighbor approach.
+The algorithm can incorporate gene weights based on statistical measures like fold change or correlation coefficients.
+NearestTemplatePrediction computes multiple statistical significance metrics including nominal p-value, false discovery rate, and Bonferroni-corrected p-values.
+The module generates graphical outputs like heatmaps to visualize marker gene expression across predicted sample classes.
+Input requires a gene expression dataset in GCT format and a marker gene list with probe IDs, gene names, and class assignments.
+The marker gene list can optionally include weight values to improve prediction accuracy.
+NearestTemplatePrediction outputs include prediction results, marker gene lists, statistical visualizations, and sorted datasets.
+The module uses a random resampling approach to generate null distributions for distance metric calculations.
+Developed by Yujin Hoshida at the Broad Institute, the method has been applied in cancer research contexts like hepatocellular carcinoma studies.
+The algorithm supports flexible distance metric selection for comparing gene expression profiles.
+NearestTemplatePrediction can help researchers classify biological samples based on gene expression signatures.
+The module provides multiple visualization options to help interpret prediction results.
+Implemented in R, the module is platform-independent and can be used across different computational environments.

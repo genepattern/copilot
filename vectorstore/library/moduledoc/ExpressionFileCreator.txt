@@ -1,0 +1,53 @@
+ExpressionFileCreator is on version 13.
+A description of ExpressionFileCreator is Creates a RES or GCT file from a set of Affymetrix CEL files. For IVT arrays only; use AffySTExpressionFileCreator for ST arrays..
+ExpressionFileCreator is a GenePattern module written by Joshua Gould, David Eby.
+ExpressionFileCreator can be categorized as Preprocess & Utilities.
+ExpressionFileCreator has the following parameters: input file, method, quantile normalization, background correct, compute present absent calls, normalization method, value to scale to, clm file, annotate probes, cdf file, output file.
+The ExpressionFileCreator GenePattern module is a powerful tool for converting raw Affymetrix microarray data from CEL files into standardized expression matrices.
+ExpressionFileCreator can transform raw microarray data using multiple computational algorithms like MAS5, RMA, GCRMA, and dChip.
+The module allows researchers to convert complex Affymetrix CEL file archives into structured gene expression datasets suitable for downstream analysis.
+ExpressionFileCreator supports generating output files in either GCT or RES formats, providing flexibility for different research workflows.
+By using a CLM file, researchers can customize sample names, reorder columns, and add phenotypic class information to their expression matrices with the ExpressionFileCreator module.
+The ExpressionFileCreator module provides options for probe annotation, allowing researchers to add gene symbol and description information to their expression data.
+ExpressionFileCreator can perform quantile normalization and background correction, helping to standardize and improve the quality of microarray expression data.
+Researchers can use the ExpressionFileCreator module to generate present/absent calls, providing additional insight into gene expression reliability.
+The ExpressionFileCreator module is specifically designed for Affymetrix IVT arrays, with limitations on newer array types like ST arrays.
+ExpressionFileCreator requires R 2.15.3 and integrates multiple bioinformatics packages to process microarray data efficiently.
+input.file (File, Required): ZIP archive containing Affymetrix CEL files for analysis, must be flat with no subdirectories.
+method (String, Required): Specifies the algorithm for processing CEL files, including MAS5, RMA, GCRMA, and dChip.
+quantile.normalization (Boolean, Optional): Determines whether to apply quantile normalization for GCRMA and RMA methods, default is typically true.
+background.correct (Boolean, Optional): Controls background correction for RMA algorithm, default is typically true.
+compute.present.absent.calls (Boolean, Optional): Determines whether to generate Present/Absent calls for probe sets.
+normalization.method (String, Optional): Specifies normalization method for MAS5 algorithm, such as median/mean scaling.
+value.to.scale.to (Numeric, Optional): Specific value used for median/mean scaling when normalization method is applied.
+clm.file (File, Optional): Tab-delimited text file mapping CEL files to sample names and phenotype classes.
+annotate.probes (Boolean, Optional): Controls whether to add gene symbol and description annotations to probe sets.
+cdf.file (File, Optional): Custom CDF file for alternative probe set definitions, defaults to internal CDF if not provided.
+output.file (String, Required): Base name for generated output files like GCT or RES.
+Here are the input and output file descriptions for the ExpressionFileCreator module:
+Input ZIP file contains Affymetrix CEL files for processing in the ExpressionFileCreator module
+ZIP file must be flat with no subdirectories and only contain CEL files
+ZIP file should avoid special characters in filenames, using underscores instead
+CLM file is an optional tab-delimited text file mapping scan names to sample names and classes in the ExpressionFileCreator module
+CLM file allows reordering and selecting subset of scans from input ZIP file
+CDF file is an optional custom annotation file for probe mapping in the ExpressionFileCreator module
+CDF file can provide alternate probe definitions for specific array types
+GCT output file contains gene expression matrix with intensity values per probe set from ExpressionFileCreator
+GCT file includes gene names, descriptions, and normalized expression values
+RES output file contains gene expression matrix with additional present/absent call information from ExpressionFileCreator
+RES file provides more detailed probe set expression data compared to GCT
+CLS output file contains sample class labels when CLM file is provided in ExpressionFileCreator module
+CLS file describes phenotypic classes for samples in expression dataset
+ExpressionFileCreator is a GenePattern module for converting Affymetrix CEL files into standardized gene expression matrices.
+The ExpressionFileCreator module processes raw Affymetrix microarray data from CEL files into normalized expression datasets.
+This module supports multiple expression normalization algorithms including MAS5, RMA, GCRMA, and dChip for processing microarray data.
+The module can generate either GCT or RES file formats containing gene expression intensity values for each probe set.
+Users can provide an optional CLM file to customize sample names, reorder columns, and add phenotype class information to the output.
+The module works specifically with Illumina IVT arrays and does not support newer Affymetrix ST arrays or exon arrays.
+ExpressionFileCreator requires R 2.15.3 and several specialized bioinformatics R packages for microarray data processing.
+The module can optionally annotate probes with gene symbols and descriptions during the expression file creation process.
+Quantile normalization can be applied to RMA and GCRMA algorithms to standardize expression data across multiple samples.
+Background correction is available for RMA algorithm to reduce technical variation in microarray signal intensity measurements.
+The module can compute Present/Absent calls to indicate the reliability of gene expression measurements for each probe set.
+ExpressionFileCreator removes log2 transformation from GCRMA and RMA algorithms before generating the final expression file.
+Users must provide a flat ZIP file containing CEL files, with no subdirectories or additional file types included.

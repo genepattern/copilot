@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CollapseDataset (v2.2.x) | CollapseDataset</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="CollapseDataset (v2.2.x)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A GenePattern module for running GSEA’s CollapseDataset utility" />
+<meta property="og:description" content="A GenePattern module for running GSEA’s CollapseDataset utility" />
+<link rel="canonical" href="https://gsea-msigdb.github.io/collapsedataset-gpmodule/v2/" />
+<meta property="og:url" content="https://gsea-msigdb.github.io/collapsedataset-gpmodule/v2/" />
+<meta property="og:site_name" content="CollapseDataset" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CollapseDataset (v2.2.x)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A GenePattern module for running GSEA’s CollapseDataset utility","headline":"CollapseDataset (v2.2.x)","url":"https://gsea-msigdb.github.io/collapsedataset-gpmodule/v2/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/collapsedataset-gpmodule/assets/css/style.css?v=900d6a8b7466a24566c37fb184a69e901c082525">
+    <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+    <script src="/collapsedataset-gpmodule/assets/js/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>CollapseDataset</h1>
+        <p>A GenePattern module for running GSEA's CollapseDataset utility</p>
+      </header>
+
+    <div class="wrapper">
+      <nav>
+        <ul><b>TABLE OF CONTENTS</b></br></br></ul>
+      </nav>
+      <section>
+        <h1 id="collapsedataset-v22x">CollapseDataset (v2.2.x)</h1>
+
+<p><strong>Author:</strong> Aravind Subramanian, Pablo Tamayo, David Eby; Broad
+Institute</p>
+
+<p><strong>Contact:</strong></p>
+
+<ul>
+  <li>gp-help@broadinstitute.org</li>
+  <li><a href="http://software.broadinstitute.org/cancer/software/genepattern/contact">http://software.broadinstitute.org/cancer/software/genepattern/contact</a></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<p>Collapses expression values from multiple input ids that map to a single target gene to a single value on a per-sample basis.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>CollapseDataset utilizes Probe Set ID to Gene Symbol mappings from a CHIP file to create 
+a new data set where all probe set expression values for a given gene have been collapsed 
+into a single expression value for each sample. It does this for all probe sets in the 
+original data set. You can choose the method of determining which value will represent all 
+probes in a probe set for a given gene: the maximum expression value for the probe set, the 
+median value, or the sum of all values. The new data set uses gene symbols as the gene 
+identifier format. Collapsing the probe sets eliminates multiple probes, which can inflate 
+gene set enrichment scores, and facilitates the biological interpretation of the gene set 
+enrichment analysis results.</p>
+
+<h2 id="references">References</h2>
+
+<p>This version of the module is based on the GSEA v4.3.x code base. See the 
+<a href="https://www.gsea-msigdb.org/gsea/">GSEA Website</a> for more details.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<ol>
+  <li><em>dataset file</em><span style="color:red;">*</span>:  This is a file in either 
+ <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29&quot;">GCT</a>
+ or <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RES:_ExpRESsion_.28with_P_and_A_calls.29_file_format_.28.2A.res.29">RES</a>
+ format that contains the expression dataset.
+ <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#TXT:_Text_file_format_for_expression_dataset_.28.2A.txt.29">GSEA-specific TXT format</a> files are also accepted.</li>
+  <li><em>chip platform</em> <span style="color:red;">*</span>: This drop-down allows you to specify 
+ the chip annotation file, which lists each probe on a chip and its matching HUGO gene symbol, 
+ used for the expression array. The chip files listed here are from the 
+ <a href="https://www.gsea-msigdb.org/gsea/downloads.jsp">GSEA website</a>. If you used a file not listed 
+ here, you will need to provide it 
+ (in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CHIP:_Chip_file_format_.28.2A.chip.29">CHIP</a> format) 
+ using ‘Upload your own file’.  Please see the <a href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/MSigDB_v7.0_Release_Notes">MSigDB 7.0 Release Notes</a>
+ for information about symbol remapping.</li>
+  <li><em>collapse mode</em> <span style="color:red;">*</span>: Collapsing mode for sets of multiple probes for a single gene. Selects the expression values to use for the single probe that will represent all probe sets for the gene. Options are:
+    <ul>
+      <li>Max_probe (default): For each sample, use the maximum expression value for the probe set. That is, if there are three probes that map to a single gene, the expression value that will represent the collapsed probe set will be the maximum expression value from those three probes.</li>
+      <li>Median_of_probes: For each sample, use the median expression value for the probe set.</li>
+      <li>Mean_of_probes: For each sample, use the mean expression value for the probe set.</li>
+      <li>Sum_of_probes: For each sample, sum all the expression values of the probe set.</li>
+      <li>Abs_max_of_probes: For each sample, use the expression value for the probe set with the maximum <strong>absolute value</strong>.  Note that each value retains its original sign but is chosen based on absolute value.
+In other words, the largest magnitude value is used.  While this method is useful with computational-based input datasets it is generally <strong>not recommended</strong> for use with quantification-based expression 
+measures such as counts or microarray fluorescence.</li>
+      <li>Remap_only: Remap symbols from one namespace to another without collapsing (an error will occur if multiple source genes map to a single destination gene).</li>
+    </ul>
+  </li>
+</ol>
+
+<p><span style="color:red;">*</span> = required</p>
+
+<h2 id="advanced-parameters">Advanced Parameters</h2>
+
+<ol>
+  <li>
+    <p><em>output.file.name</em>:
+ Optionally, rename the result file to a user-supplied name.  By default, this will be &lt;dataset.file_basename&gt;_collapsed (for any of the collapsing modes) or 
+ &lt;dataset.file_basename&gt;_remapped (for Remap_only).</p>
+  </li>
+  <li>
+    <p><em>omit features with no symbol match</em>: 
+ By default (<em>true</em>), the new dataset excludes probes/genes that have no gene symbols. Set to <em>false</em> 
+ to have the new dataset contain all probes/genes that were in the original dataset.</p>
+  </li>
+</ol>
+
+<h2 id="input-files">Input Files</h2>
+
+<ol>
+  <li><em>dataset file:</em>  This file contains the expression dataset in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29&quot;">GCT</a> 
+or <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RES:_ExpRESsion_.28with_P_and_A_calls.29_file_format_.28.2A.res.29">RES</a> format that contains the 
+expression dataset.
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#TXT:_Text_file_format_for_expression_dataset_.28.2A.txt.29">GSEA-specific TXT format</a> files are also accepted.</li>
+  <li><em>chip platform:</em> This file defines symbol-to-gene mappings for a platform, possibly along with annotations, in 
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CHIP:_Chip_file_format_.28.2A.chip.29">CHIP</a> format.
+The drop-down provides files from the <a href="https://www.gsea-msigdb.org">MSigDB project</a> for common platforms, but custom files may also be provided.</li>
+</ol>
+
+<h2 id="output-files">Output Files</h2>
+
+<ol>
+  <li><em>The collapsed data set (GCT):</em> After collapsing, the resulting files are always produced in GCT format even if they had a different input format.</li>
+</ol>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<p>Input files with spaces or special characters in their file names may cause errors.</p>
+
+<h2 id="platform-dependencies">Platform Dependencies</h2>
+
+<p><strong>Task Type:</strong>  Gene List Selection</p>
+
+<p><strong>CPU Type:</strong>  any</p>
+
+<p><strong>Operating System:</strong>  any</p>
+
+<p><strong>Language:</strong>  Java</p>
+
+<h2 id="version-comments">Version Comments</h2>
+
+<ul>
+  <li><strong>2.2.0</strong> (2022-10-2): Updated to Human MSigDB v2022.1.Hs and Mouse MSigDB 2022.1.Mm.</li>
+  <li><strong>2.1.5</strong> (2022-9-15): Updated to Human MSigDB v2022.1.Hs. Direct support for Mouse MSigDB 2022.1.Mm is not yet available.</li>
+  <li><strong>2.1.4</strong> (2022-3-22): Removed Log4J entirely from the code base. Fixed weighted_p1.5 computation.  Added min dataset size warnings.</li>
+  <li><strong>2.1.3</strong> (2022-1-20): Updated to Log4J 2.17.1.</li>
+  <li><strong>2.1.2</strong> (2022-1-12): Fixed a typo in the command line.</li>
+  <li><strong>2.1.1</strong> (2021-12-23): Updated with the GSEA Desktop 4.2.1 code base. Updated to Log4J 2.17.0. TXT file parser bug fix.</li>
+  <li><strong>2.1.0</strong> (2021-12-17): Updated with the GSEA Desktop 4.2.0 code base with numerous bug fixes. Adds the Abs_max_of_probes collapse mode. Fixes some issues handling datasets with missing values. Improved warnings and logging. Adds an output file name parameter. Fixed bugs in weighted_p1.5 scoring.</li>
+  <li><strong>2.0.2</strong> (2021-03-22): Fixed minor typo.</li>
+  <li><strong>2.0.1</strong> (2021-03-22): Minor doc updates</li>
+  <li><strong>2.0.0</strong> (2021-01-14): Switched to the GSEA code base. Added new collapse.mode options and omit.features.with.no.symbol.match parameter.</li>
+</ul>
+
+<p>Copyright © 2003-2022 Broad Institute, Inc., Massachusetts Institute of
+Technology, and Regents of the University of California. All rights
+reserved.</p>
+
+
+      </section>
+      <footer>
+        
+        <p><small>Theme adapted from <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

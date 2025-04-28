@@ -1,0 +1,49 @@
+ConcatenateFilelist is on version 1.
+A description of ConcatenateFilelist is Concatenates a list of files into a single large file. This module takes a list of files and appends all of them into one large file..
+ConcatenateFilelist is a GenePattern module written by Peter Carr, Marc-Dane Nazaire, gp-help@broadinstitute.org.
+ConcatenateFilelist can be categorized as Preprocess & Utilities.
+ConcatenateFilelist has the following parameters: filelist, num header lines, output filename.
+The ConcatenateFilelist module in GenePattern is a utility tool for merging multiple text files into a single comprehensive file.
+ConcatenateFilelist allows researchers to combine multiple data files with a consistent structure, such as gene expression datasets or annotation tables.
+The module is particularly useful when working with large-scale genomic or transcriptomic datasets that are split across multiple files.
+ConcatenateFilelist can help streamline data preprocessing by consolidating related files without manual intervention.
+Researchers can specify the number of header lines to preserve, ensuring that metadata or column headers are not duplicated in the final output.
+The module is platform-independent, running on any operating system and CPU architecture, making it versatile for different computational environments.
+ConcatenateFilelist is designed specifically for text files and will not work with binary file formats like images or compressed archives.
+In bioinformatics workflows, ConcatenateFilelist can be used to merge results from multiple sequencing runs, microarray experiments, or computational analyses.
+The module is particularly helpful when preparing data for downstream statistical analysis or visualization in tools like R, Python, or specialized genomic software.
+ConcatenateFilelist supports reproducible research by providing a standardized method for file consolidation across different computational platforms.
+filelist: string, path to a text file containing a list of file paths to concatenate, required, ConcatenateFilelist module requires this input
+ConcatenateFilelist module needs a text file with paths of files to be combined
+The filelist parameter specifies which files will be merged into a single output file
+num header lines: integer, specifies the number of header lines to preserve in the concatenated file, optional, default is likely 0
+ConcatenateFilelist module allows control over header line handling during file concatenation
+Header lines will be included only once in the final output file
+output filename: string, name of the output file where concatenated content will be saved, required, ConcatenateFilelist module needs this to specify destination
+ConcatenateFilelist module uses this parameter to determine the name and location of the merged file
+The output file will contain contents from all input files in the specified filelist
+ConcatenateFilelist module requires a text file listing file paths to concatenate.
+The input filelist contains absolute or relative paths to files that will be merged.
+The input filelist must be a plain text file with one file path per line.
+ConcatenateFilelist module supports specifying header line handling during file concatenation.
+The num header lines parameter controls how header rows are processed in the output file.
+The output filename parameter determines the name of the merged result file.
+The output file contains the concatenated contents of all input files specified in the filelist.
+The output file preserves the order of files as listed in the input filelist.
+ConcatenateFilelist module does not support concatenating binary files.
+The module will include header lines only once in the final output file based on the num header lines setting.
+The output file is a plain text file containing merged contents from input files.
+The module works across different platforms and operating systems.
+ConcatenateFilelist is a preprocessing utility module in the GenePattern suite.
+The ConcatenateFilelist module is a utility tool for combining multiple text files into a single comprehensive file.
+The ConcatenateFilelist module allows researchers to merge multiple text-based files into one consolidated output file.
+This module is designed to work with text files and cannot concatenate binary file formats.
+Users must provide a text file containing file paths that specify which files should be merged together.
+The module allows specification of header lines, which will be included only once in the final concatenated file.
+Users can control the number of header lines to preserve during the file concatenation process.
+The ConcatenateFilelist module requires specifying an output filename where the merged file will be saved.
+This module is platform-independent, running on any CPU and operating system using Java.
+The module was initially developed in September 2012 as version 1 by researchers at the Broad Institute.
+The ConcatenateFilelist module is categorized as a preprocessing and utility tool for data manipulation in genomic research.
+Researchers can use this module to streamline file management and consolidate multiple text-based data sources.
+The module provides a simple mechanism for combining files without complex data transformation requirements.

@@ -1,0 +1,39 @@
+mzXMLToCSV is on version .
+A description of mzXMLToCSV is Converts an mzXML file to a zip file of csv files. A csv file contains one M/Z and intensity pair per line separated by a comma. mzXML is a common file format for proteomic data. GenePattern modules that accept csv files as input include ProteomicsAnalysis, CompareSpectra, and Peaks..
+mzXMLToCSV is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+mzXMLToCSV can be categorized as Proteomics.
+mzXMLToCSV has the following parameters: input filename, output file.
+The mzXMLToCSV GenePattern module is a specialized tool for converting mass spectrometry data files from mzXML format to CSV format.
+The mzXMLToCSV module helps researchers transform complex proteomic data into a more accessible, comma-separated format.
+Mass spectrometry researchers use the mzXMLToCSV module to convert raw instrument data into a format that can be easily analyzed by other bioinformatics tools.
+The mzXMLToCSV module creates a zip file containing multiple CSV files, each representing a different aspect of the mass spectrometry data.
+GenePattern's mzXMLToCSV module supports downstream proteomics analysis by converting data into a standardized, machine-readable format.
+The mzXMLToCSV module is particularly useful for researchers working with proteomic datasets who need to process mass spectrometry files for further computational analysis.
+Scientists can use the mzXMLToCSV module to prepare mass spectrometry data for comparison, visualization, and statistical analysis in other bioinformatics platforms.
+The mzXMLToCSV module helps bridge the gap between raw mass spectrometry instrument output and computational analysis tools in proteomics research.
+Researchers in fields like clinical proteomics, drug discovery, and systems biology can leverage the mzXMLToCSV module to standardize their mass spectrometry data.
+The mzXMLToCSV module supports interoperability between different proteomics software tools by converting data into a universal CSV format.
+input.filename: File, mzXMLToCSV module requires an input mzXML file to convert, required parameter with no default value.
+input.filename: Specifies the source file for conversion from mzXML format, critical for mzXMLToCSV module processing.
+input.filename: Must be a valid mzXML file containing proteomic spectral data for transformation.
+output.filename: File, mzXMLToCSV module generates a zip file containing converted CSV files, required parameter with no default value.
+output.filename: Defines the destination file where converted spectral data will be stored in CSV format.
+output.filename: Resulting zip file will contain comma-separated spectral intensity and M/Z pair data.
+mzXMLToCSV module converts an mzXML input file to a collection of CSV files.
+Input file for mzXMLToCSV is a raw mzXML proteomics data file containing mass spectrometry scan information.
+Input mzXML file represents complex mass spectrometry experimental data with multiple scan events and spectral measurements.
+mzXML input file contains hierarchical XML-structured mass spectrometry scan data with detailed instrument and experimental metadata.
+Output of mzXMLToCSV is a compressed ZIP archive containing multiple CSV files representing individual mass spectrometry scans.
+Each output CSV file from mzXMLToCSV contains mass-to-charge (M/Z) and intensity values separated by a comma.
+Output CSV files from mzXMLToCSV represent individual mass spectrometry scans with simplified two-column data format.
+ZIP archive output from mzXMLToCSV allows easy extraction and processing of individual scan data as comma-separated files.
+Converted CSV files can be directly used by other GenePattern proteomics modules like ProteomicsAnalysis and CompareSpectra.
+mzXMLToCSV is a GenePattern module designed to convert complex proteomic mass spectrometry data files from mzXML format to more accessible CSV format.
+The mzXMLToCSV module transforms raw mass spectrometry data into a comma-separated format that can be easily processed by other bioinformatics tools.
+mzXMLToCSV takes an input mzXML file, which is a standard XML-based file format used in proteomics to store mass spectrometry experimental data.
+The module generates a zip file containing multiple CSV files, where each CSV file represents a set of mass-to-charge (M/Z) and intensity measurements from the original mzXML data.
+Each line in the generated CSV files contains a single M/Z and intensity pair, separated by a comma, making the data easily readable by other proteomics analysis tools.
+The mzXMLToCSV module is compatible with other GenePattern proteomics modules like ProteomicsAnalysis, CompareSpectra, and Peaks.
+The module is platform-independent, running on any CPU and operating system with Java JVM 1.4 or higher.
+Developed by Joshua Gould at the Broad Institute, the mzXMLToCSV module provides a crucial data transformation step in proteomics research workflows.
+The module simplifies data conversion for researchers working with mass spectrometry data, enabling easier analysis and integration with other bioinformatics tools.

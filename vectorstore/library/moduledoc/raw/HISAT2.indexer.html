@@ -1,0 +1,133 @@
+<div class="gp-content-header fluid">
+<a class="navbar-brand gp-logo" href="https://www.genepattern.org/#"><img alt="Gplogo2" src="./index_files/gplogo2-35ed5cd91ea682efc86cbb05604fff14.png"/></a>
+<div class="container">
+<h1>HISAT2.indexer (v1)</h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">The HISAT2.indexer generates genome indexes for the HISAT2.aligner module. HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome). </p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong></p><p>Wrapped as a Genepattern module<br/>by Ted Liefeld</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong></p><p>Ted Liefeld, jliefeld at cloud.ucsd dot edu</p>
+<p></p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>2.1.0</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Introduction</h2>
+<p>HISAT2.indexer uses HISAT2's hisat2-build script to build a HISAT2 index from a set of DNA sequences. It outputs a set of 6 files with suffixes .1.ht2, .2.ht2, .3.ht2, .4.ht2, .5.ht2, .6.ht2, .7.ht2, and .8.ht2. In the case of a large index these suffixes will have a ht2l termination. These files together constitute the index: they are all that is needed to align reads to that reference. The original sequence FASTA files are no longer used by HISAT2 once the index is built.</p>
+<h2 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Algorithm</h2>
+<p>Use of Karkkainen's blockwise algorithm allows hisat2-build to trade off between running time and memory usage. By default, hisat2-build will automatically search for the settings that yield the best running time without exhausting memory. The HISAT2 index is based on the <a href="http://en.wikipedia.org/wiki/FM-index">FM Index</a> of Ferragina and Manzini, which in turn is based on the <a href="http://en.wikipedia.org/wiki/Burrows-Wheeler_transform">Burrows-Wheeler transform</a>. The algorithm used to build the index is based on the <a href="http://portal.acm.org/citation.cfm?id=1314852">blockwise algorithm</a> of Karkkainen. </p>
+<h2 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>References</h2>
+<p><a href="http://dl.acm.org/citation.cfm?id=2674828" style="background-color: rgb(255, 255, 255);">Sirén et al. 2014</a></p>
+<p><a href="https://ccb.jhu.edu/software/hisat2/index.shtml">https://ccb.jhu.edu/software/hisat2/index.shtml</a></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index name prefix*</td>
+<td>The name prefix of the resulting index files and of the zip file which contains them.</td>
+</tr>
+<tr>
+<td>fasta file</td>
+<td><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">One or more FASTA files (or a zip file containing one or more FASTA files) containing the reference sequences to be aligned to</span><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">. E.g., </span><code style='font-family: "Courier New", Courier, monospace, fixed; font-size: 12.8px; padding: 0px; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255); margin: 0px;'>&lt;reference_in&gt;</code><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;"> might be </span><code style='font-family: "Courier New", Courier, monospace, fixed; font-size: 12.8px; padding: 0px; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255); margin: 0px;'>chr1.fa,chr2.fa,chrX.fa,chrY.fa</code><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">.</span></td>
+</tr>
+<tr>
+<td>gtf file</td>
+<td>Optional GTF file with information about exons. If present this will run extract_exons.py and extrac_splice_sites.py on the GTF file and then add the splice sites and exons to the index</td>
+</tr>
+<tr>
+<td>dry run*</td>
+<td>When true, the module only prints the hisat command-line that would be sent to the program's standard output file (stdout.txt) but does not execute the alignment.  Useful for testing or generating a command line to run HISAT2 outside of GenePattern.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>fasta file<br/>
+<span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">One or more FASTA files (or a zip file containing one or more FASTA files) containing the reference sequences to be aligned to</span><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">. E.g., </span><code style='margin: 0px; padding: 0px; font-size: 12.8px; font-family: "Courier New", Courier, monospace, fixed; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);'>&lt;reference_in&gt;</code><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;"> might be </span><code style='margin: 0px; padding: 0px; font-size: 12.8px; font-family: "Courier New", Courier, monospace, fixed; color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);'>chr1.fa,chr2.fa,chrX.fa,chrY.fa</code><span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">.<br/>
+	Example FASTA input files can be found at <a href="https://datasets.genepattern.org/data/test_data/Hisat2/reads_1.fa">reads_1.fa</a>, and <a href="https://datasets.genepattern.org/data/test_data/Hisat2/reads_2.fa">reads_2.fa</a></span></li>
+<li>gtf file<br/>
+<span style="color: rgb(68, 68, 68); font-family: Verdana, Arial, sans-serif; font-size: 12.8px;">A GTF file containing splice site gene annotations.<br/>
+	An example input gtf file can be found at <a href="https://datasets.genepattern.org/data/test_data/Hisat2/Homo_sapiens_hg19_UCSC.gtf">Homo_sapiens_hg19_UCSC.gtf</a>.</span></li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>genome.zip<br/>
+	A zip file containing the 6 index files created by the indexer, suitable for use with the Hisat2Aligner module.</li>
+</ol>
+<h2 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Requirements</h2>
+<p>This module is implemented using a Docker container to provide the environment.  </p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.9</td>
+<td>2022-01-18</td>
+<td>Updated name and doc location</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>2021-10-14</td>
+<td>Renamed from HISAT2Indexer to HISAT2.indexer and documentation ported to GitHub pages.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-10-25</td>
+<td>Initial production release</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

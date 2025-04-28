@@ -1,0 +1,335 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>Trimmomatic (v2) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/Trimmomatic/2?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Provides a variety of options for trimming Illumina FASTQ files of adapter sequences and low-quality reads.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Anthony Bolger et al, Usadel Lab, Rheinsch - Westfalische Technische Hochschule Aachen </p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>0.32</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<div class="column">
+<p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="line-height: 18px;">The GenePattern Trimmomatic module conducts quality-based trimming and filtering of FASTQ-formatted short read data produced by Illumina sequencers.   The module can also be used to remove adapters and other Illumina technical sequences from the read sequences.   The module operates on both paired end or single end data. With paired end data the tool will maintain correspondence of read pairs and also use the additional information contained in paired reads to better find adapter sequences contaminating the read data.   The module wraps the </span><a href="http://www.usadellab.org/cms/?page=trimmomatic" style="line-height: 18px;" target="_blank">Trimmomatic command line tool</a><span style="line-height: 18px;">  [Bolger, et al., 2014].  Using the command line tool, a user specifies which trimming/filtering operations to employ and how the selected operations are to be ordered.   The GenePattern Trimmomatic module directly exposes through its GUI six of the most frequently used trimming/flitering operations and enforces a particular relative ordering, supporting the most common usage scenarios.   Through an extra.steps parameter, GenePattern users may directly specify Trimmomatic command line options and thus gain access to the underlying tool's full range of functionality.</span></p>
+<p> </p>
+</div>
+<h2><a name="usage">Usage</a></h2>
+<p><span style="font-size:14px;">The goal of FASTQ trimming and filtering is to remove low-quality base calls from reads, and to remove detrimental artifacts introduced into the reads by the sequencing process.  The removal of low quality reads and contaminating sequences will improve processing by downstream tools such as aligners.  The tool provides operations to detect and remove known adapter fragments (<em>adapter.clip</em>), remove low-quality regions from the start and end of the reads (<em>trim.leading</em> and <em>trim.trailing</em>), drop short reads (<em>min.read.length</em>), as well as operations with different quality-filtering strategies for removing low-quality bases within the reads (<em>max.info</em> and <em>sliding.window</em>).</span></p>
+<p>Trimmomatic works with Illumina FASTQ files using phred33 or phred64 quality scores. The appropriate setting depends on the Illumina pipeline used. The default is phred33, which matches modern Illumina pipelines.  <strong>Correct specification of the phred encoding is critical to successful trimming.<em>  </em></strong>The tool will incorrectly interpret the quality values in the FASTQ if the wrong encoding is specified.</p>
+<p><span style="font-size:14px;">The following operations are available directly from the module parameters.  They will be executed in the following order, though all operations are optional:</span></p>
+<ol>
+<li><span style="font-size:14px;"><em>adapter.clip</em></span></li>
+<li><span style="font-size:14px;"><em>trim.leading</em></span></li>
+<li><span style="font-size:14px;"><em>trim.trailing</em></span></li>
+<li><em>max.info</em></li>
+<li><span style="font-size:14px;"><em>sliding.window</em></span></li>
+<li><em>min.read.length</em></li>
+</ol>
+<p>In order to simplify the workflow in GenePattern, these operations always execute in the above order when specified through the module parameters.  This order allows for the most common example workflows and also matches the general recommendations of the Trimmomatic documentation.  The underlying trimming engine is much more flexible; if you have the need for that increased flexibility, it can be accessed through the <em>extra.steps</em> parameter.</p>
+<p>A typical usage scenario involves operations 1, 2, 3, and 6 along with either the <em>max.info</em> or <em>sliding.window</em> operation (using both of these together is not recommended).  The <em>adapter.clip</em> step is done first as the known adapter sequences are more likely to be recognized within the original read than in one that has been modified by another trimming step.  The <em>trim.leading</em> and <em>trim.trailing</em> happen next and are often used with a very low phred threshold to quickly remove the special Illumina 'low-quality regions' at the start and end of the reads as a precursor to the subsequent, more sophisticated <em>max.info</em> and <em>sliding.window</em> quality-filtering operations.  Finally, the <em>min.read.length</em> step is used to drop any read shorter than a desired length.</p>
+<p><a href="http://www.broadinstitute.org/modules/docs/FastQC/1" target="_blank">FastQC</a>, used for quality assessment of the raw reads, includes an analysis of overrepresented sequences.  When conducting this analysis, FastQC also checks to see whether any overrepresented sequences correspond to known Illumina adapter and primer sequences.  If the resulting Overrepresented Sequences report flags matches with known adapter or primer sequences, these can be removed by using the <em>adapter.clip</em> step.</p>
+<p>Of the two quality-filtering operations, <em>max.info</em> is newer and more sophisticated, and is recommended over the older <em>sliding.window</em> strategy by the Trimmomatic authors.  One important feature of <em>max.info</em> is that it can be tuned to be more strict or tolerant based on the expected downstream use, where 'strict' applications favor stronger alignment accuracy (e.g., are more sensitive to base mismatches) and 'tolerant' applications favor longer reads (where downstream tools or analysis can tolerate or correct for larger numbers of mismatches or indels).  Reference-based RNA-Seq would tend to be in the former category while assembly or variant finding would be in the latter.  <strong><em>sliding.window</em>, however, remains an affective method for quality-based trimming of RNA-Seq short reads; its input parameters are more easily interpreted than <em>max.info'</em>s and there are established guidelines for their settings.</strong>   </p>
+<p>The module can also be used to convert into a specific phred encoding through the <em>convert.phred.scores</em> parameter.  At least one processing step must be chosen, either from operations 1-6, <em>convert.phred.scores</em> or <em>extra.steps</em>.</p>
+<p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:14px;"><span id="docs-internal-guid-4380626c-cddb-a01b-7cde-e9c48f1214d1"><span style="font-family: Arial; vertical-align: baseline; white-space: pre-wrap;">For single-ended data, a single input file is specified and the module will create a single output file of trimmed/filtered reads.   </span></span><span style="font-family: Arial; white-space: pre-wrap; line-height: 18px;">For paired-end data, two input files, one for each mate of the paired-end reads, are specified and the module will create four output files, two for the ‘paired’ output where both reads survived the processing, and two for the corresponding ‘unpaired’ output containing reads where only one of two paired reads survived trimming/filtering.</span></span></p>
+<p>Details of each of the available steps are explained below in turn.  For reference, the underlying operations are listed as well; these are further described in the Trimmomatic <a href="ftp://gpftp.broadinstitute.org/module_support_files/Trimmomatic_0.32/TrimmomaticManual_V0.32.pdf">manual</a>.</p>
+<ol>
+<li><em>adapter.clip</em><br/>
+	This step cuts adapter and other specified sequences; it corresponds to the ILLUMINACLIP operation. The Trimmomatic <a href="ftp://gpftp.broadinstitute.org/module_support_files/Trimmomatic_0.32/TrimmomaticManual_V0.32.pdf">manual</a> contains a detailed discussion of how this mode works and how to specify your own adapter sequences; we encourage you to read that document for more details.  This is the most complex of all the available trimming steps, so please check that documentation if there is any confusion.  The illustrations are particularly informative.  Bolger(2014) contains an even more detailed explanation.<br/>
+<br/>
+	While adapter contamination could result in the appearance of technical sequences anywhere in a RNA-seq read, the most common cause of Illumina adapter contamination is the sequencing of a cDNA read fragment that is shorter than the read length.  In this scenario, the initial bases in the read will contain valid data, but when the end of the fragment is reached, the sequencer continues to read through the adapter, leading to a partial or full adapter sequence at the 3’ end of the read.  This is known as “adapter read-through”.   Adapter read-through is more likely to occur when employing longer read lengths, such as is possible with the Illumina MiSeq sequencing system.<br/>
+<br/>
+	Trimmomatic combines two approaches to detect technical sequences.  The first, referred to as ‘simple mode’, conducts a local alignment of technical sequences (adapter sequences are specified in an adapter sequence file provided to the module - see<em> adapter.clip.sequence.file</em> in the Parameters section) against a read.  If the alignment score exceeds a user-defined threshold (<em>adapter.clip.simple.clip.threshold </em>parameter), the portion of the read that aligns to the technical sequence plus the remainder of the read after the alignment (towards the 3’ direction) are trimmed from the read.  Simple mode can detect any technical sequence at any location within the read; however, the user-defined threshold must be set sufficiently high to prevent false positives.  Thus, ‘simple mode’ cannot detect the short overlaps between a read and technical sequence which often arise in cases of adapter read-through.<br/>
+<br/>
+	Trimmomatic’s second approach to technical sequence detection, referred to as “palindrome mode”, is specifically designed to detect the common adapter read-through scenario.  Palindrome mode can only be used with paired-end data.  When a read-through occurs, both reads in a pair will contain an equal number of valid bases (i.e., not from adapter sequences) followed by contaminating sequence from opposite adapters.  The valid sequence in each of the pair’s reads will be reverse complements.  Trimmomatic’s palindrome mode uses these characteristics to identify contaminating technical sequences arising from adapter read-through with high sensitivity and specificity.  Operating in the palindrome mode, Trimmomatic prepends the Illumina adapter sequences to their respective reads in the paired-end data.  The resulting sequences are then globally aligned against one another.  A high scoring alignment (greater than <em>adapter.clip.palindrome.threshold</em>) indicates that the first parts of each read are reverse complements of one another and the remaining parts of the reads match their respective adapters.  Read bases matching the adapters are removed.<br/>
+<br/>
+	Trimmomatic uses a “seed and extend” method for alignment detection and scoring in both the simple and palindrome modes.  Initial sequence comparisons are done using 16 base fragments from each sequence.  If the number of mismatches between seeds from the two sequences are less than or equal to a specified threshold (see seed <em>adapter.clip.seed.mismatches</em> in Parameters section), the full alignment scoring algorithm is run.<br/>
+<br/>
+	Parameters relevant to this operation are: <em>adapter.clip.sequence.file</em>, <em>adapter.clip.seed.mismatches</em>, <em>adapter.clip.palindrome.clip.threshold</em>, <em>adapter.clip.simple.clip.threshold</em>, <em>adapter.clip.min.length</em> and <em>adapter.clip.keep.both.reads</em>.  The <em>adapter.clip.sequence.file, adapter.clip.seed.mismatches, </em>a<em>dapter.clip.plaindrome.clip.threshold, </em>and <em>adapter.clip.simple.clip.threshold</em> parameters must all be specified in order to enable this step (though note that a<em>dapter.clip.plaindrome.clip.threshold</em> will not be used for single-ended data).  <br/>
+	 </li>
+<li><em>trim.leading</em><br/>
+	This step will remove low quality bases from the beginning of the reads, controlled by the <em>trim.leading.quality.threshold</em> parameter.  As long as a base has a quality value below this threshold the based is removed and the next base will be investigated.  This step corresponds to the LEADING operation and the threshold parameter represents a phred score.  A low <strong>value of 3</strong> can be used to remove only special Illumina 'low quality regions'  (marked with a score of 2), while <strong>a value in the range of 10-15</strong> can be used for a deeper quality-based trimming (15 being more conservative in terms of required quality).  The table below translates phred quality scores (ranging from 10 to 15) to base call error probabilities.
+	<table border="1" cellpadding="1" cellspacing="1" style="width: 250px;">
+<thead>
+<tr>
+<th scope="col">Phred Quality score (standard Sanger variant)</th>
+<th scope="col">base call error probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td>12</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td>13</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>14</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.03</td>
+</tr>
+</tbody>
+</table>
+<br/>
+	 </li>
+<li><em>trim.trailing</em><br/>
+	This step will remove low quality bases from the end of the reads, controlled by the <em>trim.trailing.quality.threshold</em> parameter.  As long as a base has a quality score below this threshold the based is removed and the next base will be investigated (moving in the 3' to 5' direction).  This step corresponds to the TRAILING operation and the threshold parameter represents a phred score.  As with <em>trim.leading</em>, this approach can also be used to remove the special Illumina 'low quality segment' regions or for a quality-based trimming using the same values described above.<br/>
+	 </li>
+<li><em>max.info</em><br/>
+	This step performs an "adaptive quality" trimming, balancing the benefits of retaining longer reads against the costs of retaining bases with errors; it corresponds to the MAXINFO operation.  The discussion in Bolger(2014) provides a detailed description of <em>max.info</em> trimming and contrasts it with the <em>sliding.window</em> approach and suggests that <em>max.info</em> quality trimming should outperform (increased number of uniquely aligned reads) <em>sliding.window</em>.  However,  sliding.window is simpler, with established recommendations for input parameter values.  T<strong>he simultaneous use of <em>sliding.window</em> and <em>max.info </em></strong><strong>is not recommended</strong>.<br/>
+<br/>
+	Maximum Information Quality Trimming is an adaptive approach to quality-based trimming where the criterion for retaining the remaining bases in a read becomes increasingly more strict as one progresses through that read.  The motivation for the adaptive approach is that, in many scenarios, the incremental value of retaining a red's additional bases is related to the read length.  Very short reads are of little value since they are likely to align to multiple locations in a reference sequence; thus, it is beneficial to retain lower-quality reads early in a read so that the trimmed read is long enough to be informative,  However, beyond a certain length, retaining additional bases is less beneficial and could even be detrimental if the retention of low-quality reads leads to the read becoming unmappable.  Parameters relevant to this operation are <em>max.info.target.length</em> and <em>max.info.strictness</em>; both must be specified to enable <em>max.info</em> quality trimming.<br/>
+	 </li>
+<li><em>sliding.window</em><br/>
+	This step performs a "sliding window" trimming, cutting once the average quality within the window fals below a threshold; it corresponds to the SLIDINGWINDOW operation.  By considering multiple reads, a single poor quality base will not cause removal of high quality data later in the read.  The <em>sliding.window.size</em> parameter controls the size of this window (in bases) while the <em>sliding.window.quality.threshold</em> specifies the required average quality (as a phred value).  Both parameters must be specified to enable this step; typical examples use a <strong>4-base wide window, cutting when average quality drops below 15</strong>.  <strong>The use of <em>sliding.window</em> at the same time as <em>max.info </em></strong><strong>is not recommended</strong>.<br/>
+	 </li>
+<li><em>min.read.length</em><br/>
+	This step removes reads that fall below the minimum length specified by the <em>min.read.length</em> parameter.  It should normally be used after all other processing steps, which is why it is presented last in this predefined list.  This step corresponds to the MINLEN operation.</li>
+</ol>
+<h2>Use of the <em>extra.steps</em> parameter</h2>
+<p>Finally, any trimming operations specified in the <em>extra.steps</em> parameter will be performed <strong>after</strong> those in the above predefined list.  Such operations must be specified using the exact syntax found in the Trimmomatic <a href="ftp://gpftp.broadinstitute.org/module_support_files/Trimmomatic_0.32/TrimmomaticManual_V0.32.pdf">manual</a>; use spaces to separate multiple operations.  This allows you to perform operations in a different order than the list above, or to access other operations not presented here.  Even when using <em>extra.steps</em>, <strong>it is still recommended that <em>adapter.clip</em> (ILLUMINACLIP) be performed first and that MINLEN be performed last</strong>.  Note that because ILLUMINACLIP requires a file parameter it is highly inconvenient to use through <em>extra.steps</em> due to the need to specify a server-side file path.  For this reason, it is best to use the <em>adapter.clip</em> parameters rather than specifying ILLUMINACLIP through <em>extra.steps</em>.</p>
+<p>Trimmomatic supports three other trimming operations not presented in the predefined list above:</p>
+<ol>
+<li><strong>CROP</strong>: removes bases from the end of the read regardless of quality, leaving the read with (maximally) the specified length after cropping.  Later steps might of course further shorten the read.  Note that the parameter governs the <strong>total length</strong> rather than the number of bases to remove; this is in contrast to HEADCROP.</li>
+<li><strong>HEADCROP</strong>: removes the specified number of bases from the start of the read, regardless of quality.  Note that the parameter governs the <strong>number of bases to remove</strong> rather than the total length; this is in contrast to CROP</li>
+<li><strong>AVGQUAL</strong>: Drop the read if the average quality is below the specified level.</li>
+</ol>
+<p>CROP and HEADCROP were left out of the above predefined list as their use is somewhat at odds with the other quality-based and adaptive approaches.  Certain trimming strategies simply want to cut a certain number of bases from the start and/or end of every read and nothing more.  Use these operations through <em>extra.steps</em> if that is your goal.</p>
+<p>AVGQUAL was left out because its use is not well documented in the Trimmomatic manual, making it unclear where to place it in the overall order and leaving its use harder to explain.  Our understanding is that it is similar to the <em>sliding.window</em> approach but always applied at the level of the entire read.  As such, it is probably best to use <strong>only one</strong> of AVGQUAL or <em>sliding.window</em>.</p>
+<h2>Examples</h2>
+<p>The parameter setting recommendations are largely based on the Trimmomatic manual and the example included near the end.  For paired-end data, the corresponding settings for this example would be:</p>
+<ul>
+<li><em>input.file.1</em> and <em>input.file.2</em>:  your paired-end FASTQs</li>
+<li><em>adapter.clip.sequence.file</em>: TruSeq3-PE.fa (<strong>Note</strong>: you need to choose this according to your platform)</li>
+<li><em>adapter.clip.seed.mismatches</em>: 2</li>
+<li><em>adapter.clip.plaindrome.clip</em>: 30</li>
+<li><em>adapter.clip.simple.clip</em>: 10</li>
+<li><em>leading.trim.quality.threshold</em>: 3 (for trimming the special Illumina "low quality segment" regions)</li>
+<li><em>trailing.trim.quality.threshold</em>: 3  (as above)</li>
+<li><em>sliding.window.size</em>: 4</li>
+<li><em>sliding.window.quality.threshold</em>: 15</li>
+<li><em>min.read.length</em>: 36</li>
+</ul>
+<p>For single-ended data you would (obviously) provide only <em>input.file.1</em> and leave <em>input.file.2</em> blank, and use TruSeq3-SE.fa as the <em>adapter.clip.sequence.file</em> (again, adjusted according to your platform.  The <em>adapter.clip.palindrome.clip </em>value of 30 should still be specified, though it will be ignored for this usage.</p>
+<p>Bolger(2014) provides several examples of the use of a Maximum Information approach.  It used the following settings for a 'strict' alignment application:</p>
+<ul>
+<li><em>input.file.1</em> and <em>input.file.2</em>:  your paired-end FASTQs</li>
+<li><em>adapter.clip.sequence.file</em>: TruSeq3-PE.fa (<strong>Note</strong>: you need to choose this according to your platform)</li>
+<li><em>adapter.clip.seed.mismatches</em>: 2</li>
+<li><em>adapter.clip.plaindrome.clip</em>: 30</li>
+<li><em>adapter.clip.simple.clip</em>: 12</li>
+<li><em>leading.trim.quality.threshold</em>: 3 </li>
+<li><em>trailing.trim.quality.threshold</em>: 3</li>
+<li><em>max.info.target.length</em>: 40</li>
+<li><em>max.info.strictness</em>: 0.999</li>
+<li><em>min.read.length</em>: 36</li>
+</ul>
+<p>Finally, here is an example using <em>extra.steps</em> to perform a simple trimming of reads past the 45th base, followed by removal of the first 5 bases, and then dropping any reads with length under 36:</p>
+<ul>
+<li><em>input.file.1</em> and <em>input.file.2</em>:  your paired-end FASTQs</li>
+<li><em>extra.steps</em>: CROP:45 HEADCROP:5 MINLEN:36</li>
+</ul>
+<p>Note that we are not recommending the last example as a ideal trimming approach.  It is simply illustrative of the use of <em>extra.steps</em> and some of the additional Trimmomatic operations.</p>
+<h2>References</h2>
+<p>Trimmomatic <a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank">website</a><br/>
+Trimmomatic <a href="ftp://gpftp.broadinstitute.org/module_support_files/Trimmomatic_0.32/TrimmomaticManual_V0.32.pdf" target="_blank">manual</a>.  This documentation was adapted largely based on this documentation.<br/>
+Bolger, A. M., Lohse, M., &amp; Usadel, B. (2014). Trimmomatic: A flexible trimmer for Illumina Sequence Data. <a href="http://bioinformatics.oxfordjournals.org/content/early/2014/04/01/bioinformatics.btu170" target="_blank">Bioinformatics, btu170</a>.<br/>
+Lohse M, Bolger AM, Nagel A, Fernie AR, Lunn JE, Stitt M, Usadel B. RobiNA: a user-friendly, integrated software solution for RNA-Seq-based transcriptomics. <a href="http://nar.oxfordjournals.org/content/40/W1/W622.long" target="_blank">Nucleic Acids Res. 2012 Jul;40(Web Server issue):W622-7</a>.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th style="width: 90px;">Name</th>
+<th style="width: 90px;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file 1 <span style="color:red;">*</span></td>
+<td>The input FASTQ to be trimmed. For paired-end data, this should be the forward ("*_1" or "left") input file.</td>
+</tr>
+<tr>
+<td>input file 2 </td>
+<td>The reverse ("*_2" or "right") input FASTQ of paired-end data to be trimmed.</td>
+</tr>
+<tr>
+<td>output filename base <span style="color:red;">*</span></td>
+<td>A base name to be used for the output files.</td>
+</tr>
+<tr>
+<td>adapter clip sequence file </td>
+<td>A FASTA file containing the adapter sequences, PCR sequences, etc. to be clipped. This parameter is required to enable adapter clipping. Files are provided for several <span class="s1">Illumina</span> pipelines but you can also provide your own; see the manual for details.  <strong>Be sure to choose a PE file for paired-end data and an SE file for single-end data. </strong> See the manual for details on creating your own adapter sequence file.</td>
+</tr>
+<tr>
+<td>adapter clip seed mismatches </td>
+<td>Specifies the maximum mismatch count which will still allow a full match to be performed. <strong>A value of 2 is recommended</strong>. This parameter is required to enable adapter clipping.</td>
+</tr>
+<tr>
+<td>adapter clip palindrome clip threshold </td>
+<td>Specifies how accurate the match between the two 'adapter ligated' reads must be for PE palindrome read alignment. This is the log10 probability against getting a match by random chance; <strong>values around 30 or more are recommended</strong>. This parameter is required to enable adapter clipping.</td>
+</tr>
+<tr>
+<td>adapter clip simple clip threshold </td>
+<td>Specifies how accurate the match between any adapter etc. sequence must be against a read as a log10 probability against getting a match by random chance;<strong> values between 7-15 are recommended.</strong> This parameter is required to enable adapter clipping.</td>
+</tr>
+<tr>
+<td>adapter clip min length </td>
+<td>In addition to the alignment score, palindrome mode can verify that a minimum length of adapter has been detected. If unspecified, this defaults to 8 bases, for historical reasons. However, since palindrome mode has a very low false positive rate, this can be safely reduced, even down to 1, to allow shorter adapter fragments to be removed.</td>
+</tr>
+<tr>
+<td>adapter clip keep both reads <span style="color:red;">*</span></td>
+<td>Controls whether to keep both forward and reverse reads when trimming in <span class="s1">palindrome</span> mode. The reverse read is the same as the forward but in reverse complement and so carries no additional information. The default is "yes" (retain the reverse read) which is useful when downstream tools cannot handle a combination of paired and unpaired reads.</td>
+</tr>
+<tr>
+<td>trim leading quality threshold </td>
+<td>Remove low quality bases from the beginning. As long as a base has a value below this threshold the base is removed and the next base will be investigated.  See the <a href="#usage"><strong>Usage</strong></a> section above for recommendations.</td>
+</tr>
+<tr>
+<td>trim trailing quality threshold </td>
+<td>Remove low quality bases from the end. As long as a base has a value below this threshold the base is removed and the next trailing base will be investigated.  See the <a href="#usage"><strong>Usage</strong></a> section above for recommendations.</td>
+</tr>
+<tr>
+<td>max info target length</td>
+<td>This parameter specifies the read length which is likely to allow the location of the read within the target sequence to be determined.  A typical value for target length is 40. </td>
+</tr>
+<tr>
+<td>max info strictness  </td>
+<td>This value, which should be set between 0 and 1, specifies the balance between preserving as much read length as possible vs. removal of incorrect bases. A low value of this parameter (&lt;0.2) favors longer reads, while a high value (&gt;0.8) favors read correctness. Both <em>max.info.target.length</em> and <em>max.info.strictness</em> are required for the Max Info quality trim.  Examples presented in [Bolger, 2014] employ a value of 0.4 for "tolerant" applications and values from 0.9 all the way up to 0.999 for "strict" applications.   </td>
+</tr>
+<tr>
+<td>sliding window size  </td>
+<td>Perform a sliding window trimming, cutting once the average quality within the window falls below a threshold. By considering multiple bases, a single poor quality base will not cause the removal of high quality data later in the read. This parameter specifies the number of bases to average across.  See the <a href="#usage"><strong>Usage</strong></a> section above for recommendations.</td>
+</tr>
+<tr>
+<td>sliding window quality threshold</td>
+<td>Specifies the average quality required for the sliding window trimming. Both <em>sliding.window.size</em> and <em>sliding.window.quality.threshold</em> are required to enable the sliding window trimming. See the <a href="#usage"><strong>Usage</strong></a> section above for recommendations.</td>
+</tr>
+<tr>
+<td>min read length </td>
+<td>Remove reads that fall below the specified minimal length.</td>
+</tr>
+<tr>
+<td>extra steps </td>
+<td>Extra steps to be performed after any other processing. These must be specified in exactly the format described in the Trimmomatic manual; see the documentation for details. This is recommended for advanced users only.</td>
+</tr>
+<tr>
+<td>phred encoding <span style="color:red;">*</span></td>
+<td>Allows you to specify the phred quality encoding. The default is phred33, which matches modern Illumina pipelines.</td>
+</tr>
+<tr>
+<td>convert phred scores </td>
+<td>Convert phred scores into a particular encoding. Leave this blank for no conversion.</td>
+</tr>
+<tr>
+<td>create trimlog <span style="color:red;">*</span></td>
+<td>Create a log of the trimming process. This gives details on what operations were performed, etc. but can be quite lengthy.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>&lt;<em>input.file.1</em>&gt;<br/>
+	The input FASTQ to be trimmed.  For paired-end data, this should be the forward ("*_1") input file.  Data compressed with gzip or bzip2 is also accepted and will be automatically detected based on the .bz2 or .gz extension.</li>
+<li>&lt;<em>input.file.2</em>&gt;<br/>
+	The reverse ("*_2" or "right") input FASTQ to be trimmed.  Data compressed with gzip or bzip2 is also accepted and will be automatically detected based on the .bz2 or .gz extension.</li>
+<li>&lt;<em>adapter.clip.sequence.file</em>&gt;<br/>
+	A FASTA file containing the adapter sequences, PCR sequences, etc. to be clipped. This parameter is required to enable adapter clipping. Files are provided for several Illumina pipelines but you can also provide your own; see the manual for details.  <strong>Be sure to choose a PE file for paired-end data and an SE file for single-ended data</strong>.</li>
+</ol>
+<h2>Output Files</h2>
+<p>Use the <em>output.filename.base</em> to specify a base to be used in naming for the output files that will be created.  By default, this will be the name of <em>input.file.1</em> with the both the FASTQ (.fq or .fastq) and compression (.gz or .bz2) extensions removed.  Also, if this name (minus extensions) ends in "_1", then this will also be removed to avoid producing output files with confusing names.  For example, if <em>input.file.1</em> is "my_reads_1.fastq.bz2" (presumably paired with "my_reads_2.fastq.bz2") then the module will use "my_reads" as the <em>output.filename.base</em> when creating output files.  The names in the list below reflect this naming scheme.</p>
+<p>Output FASTQ files will normally use the .fq extension, though if the original <em>input.file.1</em> used the .fastq extension then this will be used instead.  The names in the list below will use .fq with no compression extension, for the sake of uniformity.</p>
+<p>FASTQ files compressed using either gzip or bzip2 are supported and are automatically identified by use of the .gz or .bz2 file extensions.  <strong>Note:</strong> we have seen severe issues with Trimmomatic hanging indefinitely when asked to bz2-compress output and so this feature has been disabled; there are no issues with .bz2 input.  If the input file is compressed (as either .gz or .bz2) then the output will be as well (though always using gzip).</p>
+<ol>
+<li>&lt;<em>output.filename.base</em>&gt;_1P.fq and &lt;<em>output.filename.base</em>&gt;_2P.fq<br/>
+	FASTQ files holding the paired forward and reverse reads (respectively) where both reads in the pair survived all specified trimming steps.  These files are only produced with paired-ended input.</li>
+<li>&lt;<em>output.filename.base</em>&gt;_1U.fq and &lt;<em>output.filename.base</em>&gt;_2U.fq<br/>
+	FASTQ files holding the "unpaired" forward and reverse reads (respectively) where only one read in the pair survived all specified trimming steps but the partner read did not; this surviving read is placed in the corresponding unpaired output FASTQ.  These files are only produced with paired-ended input.</li>
+<li>&lt;<em>output.filename.base</em>&gt;-trimmed.fq<br/>
+	A FASTQ file holding the single-ended reads which survived all specified trimming steps.  This file is only produced with single-ended input.  </li>
+<li>&lt;<em>output.filename.base</em>&gt;.trimlog.txt<br/>
+	A log of the trimming process giving details on what operations were performed and how they applied to each of the reads, etc.  This can be quite lengthy and is not produced by default.  To create this file, set the <em>create.trimlog</em> parameter to "yes".</li>
+<li>cmdline.log<br/>
+	Shows the equivalent command-line call of Trimmomatic that was performed by the module.</li>
+</ol>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					Linux, Mac</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>2016-11-01</td>
+<td>configured convert.phred.scores parameter to expose blank option in pipeline designer</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2014-09-23</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,49 @@
+RenameFile is on version 1.
+A description of RenameFile is Creates a result file with the contents of the input but with a new name. Where possible, this is done without copying the file but instead by simply making a link. While it is possible to run this with a submitted file, the common use will be to change the name of a result file or a previously uploaded file. Note that the original file will still be present in its original location..
+RenameFile is a GenePattern module written by David Eby.
+RenameFile can be categorized as Preprocess & Utilities.
+RenameFile has the following parameters: input file, output filename, screen filename, force copy.
+The RenameFile GenePattern module helps resolve filename compatibility issues in bioinformatics workflows
+The RenameFile module allows researchers to modify problematic filenames that might cause errors in downstream computational analyses
+RenameFile can create a new file with the same content as the original, using a filesystem link to minimize disk space usage
+The module is particularly useful for handling files with special characters like spaces or slashes that can disrupt computational processing
+RenameFile provides an option to automatically screen out potentially problematic characters from filenames, replacing them with underscores
+Researchers can use RenameFile to prepare files for modules that have strict naming conventions or character restrictions
+The module allows precise control over output filename, enabling users to manually specify exact naming requirements
+RenameFile is a preprocessing utility that helps standardize file naming across complex bioinformatics pipelines
+The module can work with files of any type, making it versatile for different research contexts and data formats
+RenameFile does not modify the original file, instead creating a new file with the desired name and identical content
+Bioinformaticians can use RenameFile to ensure file compatibility across different computational platforms and analysis tools
+The module offers a flexible approach to file renaming without requiring full file re-upload or reprocessing of upstream workflow steps
+RenameFile module input.file: file, the input file to be renamed, required, can be any file type except directory
+RenameFile module input.file represents the source file that will have its name changed while preserving original content
+RenameFile module input.file is a mandatory parameter for the file renaming process
+RenameFile module output.filename: string, the new name to be given to the output file, required
+RenameFile module output.filename allows users to specify the desired name for the renamed file
+RenameFile module output.filename determines the final name of the file after renaming
+RenameFile module screen.filename: boolean, automatically screens out problematic characters in the filename, default is true
+RenameFile module screen.filename helps prevent issues with special characters that might cause problems in file processing
+RenameFile module screen.filename replaces problematic characters with underscores to ensure compatibility
+RenameFile module force.copy: boolean, forces a full file copy instead of creating a filesystem link, default is false
+RenameFile module force.copy ensures a complete file duplication when linking is not possible or desired
+RenameFile module force.copy provides an option to create a new physical copy of the file rather than a link
+RenameFile module input file is any file type that needs renaming.
+RenameFile module input file can be a result file or previously uploaded file.
+RenameFile module input file cannot be a directory.
+RenameFile module output file will have identical contents to the input file.
+RenameFile module output file will have a new filename specified by the user.
+RenameFile module output file is created using a filesystem link when possible.
+RenameFile module output file can have problematic characters automatically screened out.
+RenameFile module supports creating a full file copy instead of a link using the force.copy parameter.
+RenameFile module can handle files with special characters by replacing them with underscores.
+RenameFile module allows complete user control over the output filename.
+RenameFile module helps solve filename compatibility issues in computational biology workflows
+RenameFile addresses problems with special characters like spaces or slashes in filenames that can disrupt computational processing
+RenameFile creates a new file with the same content as the original, using a filesystem link to minimize disk space usage
+The module can automatically screen out problematic characters in filenames to improve compatibility with downstream analysis tools
+RenameFile is particularly useful for renaming result files or previously uploaded files without requiring full reprocessing
+The module provides options to force a full file copy or manually control the output filename
+RenameFile works across different platforms and does not operate on directory inputs
+The module uses a hard link mechanism to create the renamed file, preserving the original file's location and content
+RenameFile can help prevent filename parsing errors that might cause computational biology workflows to fail
+The module is designed to be a flexible preprocessing utility for managing file naming challenges in scientific computing

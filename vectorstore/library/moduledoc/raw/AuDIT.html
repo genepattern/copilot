@@ -1,0 +1,178 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>AuDIT (v6) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/AuDIT/6?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Automated Detection of Inaccurate and Imprecise Transitions in MRM Mass Spectrometry</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>D. R. Mani, The Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<div>Multiple reaction monitoring-mass spectrometry (MRM-MS) of peptides with stable isotope-labeled internal standards (SIS) is a quantitative assay for measuring proteins in complex biological matrices. These assays can be highly precise and quantitative, but the frequent occurrence of interferences require that MRM-MS data be manually reviewed by an expert, a time intensive process that is subject to human error. The AuDIT module implements an algorithm that, in an automated manner, identifies inaccurate transition data based on the presence of interfering signal or inconsistent recovery between replicate samples. </div>
+<p>The algorithm for Automated Detection of Inaccurate and imprecise Transitions (AuDIT) in SID-MRM-MS data greatly reduces the time required for manual, subjective inspection of data, improves the overall accuracy of data analysis, and is easily implemented into the standard data analysis workflow. AuDIT currently works with exported results from MRM-MS data processing software packages.</p>
+<h2>Algorithm</h2>
+<div>The algorithm objectively evaluates MRM-MS data using two orthogonal approaches. First, it compares the relative product ion intensities of the analyte peptide to those of the SIS peptide and uses a t-test (in conjunction with a pvalue threshold) to determine if they are significantly different. Then, coefficient of variation is calculated from the ratio of analyte and SIS peak areas from sample replicates, with those transitions having excessive variation flagged as being unsuitable. </div>
+<div>The algorithm for Automated Detection of Inaccurate and imprecise Transitions (AuDIT) in SID-MRM-MS data greatly reduces the time required for manual, subjective inspection of data, improves the overall accuracy of data analysis, and is easily implemented into the standard data analysis workflow. AuDIT currently works with exported results from MRM-MS data processing software packages.</div>
+<h2>References</h2>
+<div>Susan E Abbatiello, D. R. Mani, Hasmik Keshishian, Steven A. Carr. Automated Detection of Inaccurate and Imprecise Transitions in Quantitative Assays of Peptides by Multiple Reaction Monitoring Mass Spectrometry. Clinical Chemistry 56:2 (2010).</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data file <span style="color:red;">*</span></td>
+<td>input file with pre-processed MRM data in csv format</td>
+</tr>
+<tr>
+<td>skyline export <span style="color:red;">*</span></td>
+<td>if "yes", data file is a Skyline csv export including following columns: Sample (usually derived from SampleName, having identical value for all its replicates), PeptideSequence, ReplicateName, FragmentIon, PrecursorCharge, ProductCharge, light Area, heavy Area. When "no", input must contain sample, replicate, peptide, transition.id, area, IS.area in that order.</td>
+</tr>
+<tr>
+<td>pvalue threshold <span style="color:red;">*</span></td>
+<td>p-value threshold above which transition is quantification-worthy. Must be a value between 0 and 1 inclusive.</td>
+</tr>
+<tr>
+<td>cv threshold <span style="color:red;">*</span></td>
+<td>threshold for coefficient of variation below which transition is quantification-worthy</td>
+</tr>
+<tr>
+<td>all pairs <span style="color:red;">*</span></td>
+<td>calculate all possible pairs of relative ratios for a transition</td>
+</tr>
+<tr>
+<td>output intermediate results <span style="color:red;">*</span></td>
+<td>create files with intermediate results</td>
+</tr>
+<tr>
+<td>output prefix <span style="color:red;">*</span></td>
+<td>file name prefix used for output file(s)</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<div>The input file specified by <em>data file</em> is a comma delimited (csv) file that is derived from software used to pre-process raw MRM-MS data. The preprocessing software could be vendor provided (e.g., MultiQuant from Applied Biosystems) or universal (e.g., Skyline from the MacCoss Lab, University of Washington). When the “skyline export” parameter is set to “no”, AuDIT is agnostic to the pre-processing software used, as long as the following columns are present in the input file, in the specified order: </div>
+<ol>
+<li><em>Sample</em>: The actual sample ID (excluding replicate notation). This is usually derived from the SampleName column output by MRM processing  software. Sample must be unique for different concentrations (if any), and must be the same for all replicates of that sample. In other words, for a given peptide and transition, the value in the Sample column must be identical for all the replicates. </li>
+<li><em>Replicate</em>: Replicate number for the Sample. </li>
+<li><em>Peptide</em>: Peptide name and/or sequence for the peptide that is being monitored. </li>
+<li><em>Transition.ID</em>: An indication of the transition being monitored. This may be a number or some other notation (e.g., b- or y-fragment number with charge state). While different peptides may have the same transition.id, these must be unique for a given peptide. </li>
+<li><em>Area</em>: Integrated peak area for the analyte for the specified peptide and transition. </li>
+<li><em>IS.Area</em>: Integrated peak area for the SIS for the specified peptide and transition. </li>
+</ol>
+<div>The input file must contain a column header and the names used in the column header must appear as listed above. </div>
+<div>When <em>skyline export</em> is set to “yes”, AuDIT assumes that the column naming used is Skyline specific. The following columns must be present: PeptideSequence, ReplicateName, FragmentIon, PrecursorCharge, ProductCharge, light Area, heavy Area. In addition, the Sample column must be derived from the Skyline SampleName column, to satisfy the conditions stated above (for skyline export = “no”). When the input data set is treated as a skyline export, the columns can be in any order (and interspersed with other columns), as long as they are present in the data set (with those exact names). When using N15, or other variants of reference standards, the appropriate light or heavy area column may need to be renamed. </div>
+<div>Notes: </div>
+<ul>
+<li>AuDIT requires both an analyte and an internal standard (IS) to be measured – i.e., both <em>Area</em> and <em>IS.Area</em> must be present, and have legitimate values.</li>
+<li>Rows in the input table that represent only an IS transition must be removed. Data from both analyte and IS transitions must be integrated into a single row in the input file. </li>
+<li>The <em>Sample</em> field should not contain the transition id. This will result in errors since a given “sample” will then have only one transition. </li>
+<li>AuDIT requires that peptides have 3 or more transitions. </li>
+<li>For a given sample and peptide replicate, transition ids must not be replicated. Thus, for a (sample, peptide, replicate) combination, if <em>n</em> transitions are recorded, the resulting <em>n Transition.ID</em>s must be unique. For skyline exports, this will be automatically handled by AuDIT, using the FragmentIon, PrecursorCharge and ProductCharge columns.</li>
+</ul>
+<h2>Output Files</h2>
+<div>The output file generated on successful completion of AuDIT has the following columns: </div>
+<ol>
+<li><em>peptide</em>: The Peptide column from the input data. </li>
+<li><em>sample</em>: The Sample column from the input data. </li>
+<li><em>transition.id</em>: The Transition.ID column from input data. For skyline exports, this will be a concatenation of the FragmentIon and PrecursorCharge columns. </li>
+<li><em>pvalue.final</em>: The multiple testing corrected t-test p-value for the transition under consideration. </li>
+<li><em>status</em>: This column is the result of applying the p-value threshold to pvalue.final, and is ‘good’ if pvalue.final &gt; p-value threshold; the transition is marked ‘bad’ otherwise </li>
+<li><em>cv</em>: The calculated coefficient of variation for the replicates of this peptide/transition. </li>
+<li><em>cv.status</em> :Whether the CV is less than the CV threshold; ‘good’ if CV is less than threshold, ‘bad’ otherwise. </li>
+<li><em>final.call</em>: The final decision on whether the transition under consideration is imprecise or has interferences. The final.call is ‘good’ if both status and cv.status are ‘good’. If either status or cv.status is ‘bad’, final.call is ‘bad’. </li>
+</ol>
+<h2>Example Data</h2>
+<div>Example input data from MultiQuant processed data is available in <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-multiquant-data.csv">site56-7.1-multiquant-data.csv</a>. Data from Skyline pre-processing is in <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/skyline-export-data.csv">skyline-export-data.csv</a>. Results from running AuDIT on these datasets are available in <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-multiquant-data-results.csv">site56-7.1-multiquant-data-results.csv</a> and <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/skyline-export-data-results.csv">skyline-export-data-results.csv</a>.</div>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Proteomics</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R 2.5</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>2013-08-16</td>
+<td>Fixed bug which caused "arguments imply differing number of rows" error</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2011-09-21</td>
+<td>Adjusted default values in manifest</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2011-12-02</td>
+<td>Improved error for when no peptides with 3 or more transitions were found and added note to doc</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2011-09-23</td>
+<td>Handles large dataset and data with different number of transitions for each peptide.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2010-04-20</td>
+<td>Improvements for handling data with missing values and data input validation</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2009-12-19</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

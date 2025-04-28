@@ -1,0 +1,71 @@
+STAR.aligner is on version 2.5.3a.
+A description of STAR.aligner is STAR (Spliced Transcripts Alignment to a Reference) is a fast RNA-seq reads to genome mapper. It differs from other mappers as TopHat in that it gains speed at the expense of consuming more RAM and that it incorporates transcriptome annotation at the indexing build stage rather than at the analysis stage..
+STAR.aligner is a GenePattern module written by Guy Bottu, V.I.B.-B.I.T.S. (GenePattern interface); Alexander Dobin, Cold Spring Harbor Laboratory (STAR software).
+STAR.aligner can be categorized as RNA-seq, Alignment, Bioinformatics.
+STAR.aligner has the following parameters: star index, reads pair 1, reads pair 2, max reads to align, align read end to end, max number mismatches, max fraction mistaches, min overhang annotated read, min overhang not annotated read, min intron length, max intron length, mates max gap, secondary mapping mismatches range, max multimapping, min report canonical junction overhang, min report noncanonical junction overhang, map only reported juntions, tow pass, detect chimeric transcripts, output unmapped reads, quantify genes, output wiggle file, wiggle signal, output format, HI flag, output prefix.
+The STAR.aligner is a specialized RNA-seq read alignment tool in the GenePattern bioinformatics platform.
+STAR.aligner uses an ultrafast algorithm to map RNA sequencing reads to a reference genome with high precision.
+The STAR.aligner can detect both annotated and novel splice junctions during the alignment process.
+STAR.aligner supports two-pass alignment mode, which allows for more sensitive detection of splice junctions across multiple samples.
+The STAR.aligner can handle both single-end and paired-end sequencing data in fastA and fastQ formats.
+STAR.aligner generates multiple output files including alignment logs, mapped read files, splice junction information, and optional gene quantification data.
+The STAR.aligner can produce visualization-friendly output like wiggle files for genome browsers such as IGV and UCSC.
+STAR.aligner allows users to customize alignment parameters like maximum mismatches, intron length, and mapping specificity.
+The module supports chimeric transcript detection and can output reads that map to multiple genomic locations.
+STAR.aligner is particularly useful for RNA-seq experiments involving complex transcriptomes with multiple splice variants.
+star index: File type, required, prebuilt genome index or user-uploaded ZIP file for alignment reference
+reads pair 1: File type, required, unpaired reads or first mate in fastA/fastQ format, can include multiple files
+reads pair 2: File type, optional, second mate for paired-end reads, must match order of first mate files
+max reads to align: Integer, optional, limits number of reads processed, useful for testing, minimum value is 1
+align read end to end: Boolean, optional, controls read alignment strategy, default is no soft clipping
+max number mismatches: Integer, optional, maximum mismatches per read, default is 10, minimum is 0
+max fraction mismatches: Float, optional, proportion of mismatches to read length, default is 0.3, range 0-1
+min overhang annotated read: Integer, optional, minimum splice junction mapping length for annotated junctions, default is 3
+min overhang not annotated read: Integer, optional, minimum splice junction mapping length for novel junctions, default is 5
+min intron length: Integer, optional, minimum intron size, gaps smaller considered deletions, default is 21
+max intron length: Integer, optional, maximum intron size, default 500000, mammalian genome specific
+mates max gap: Integer, optional, maximum distance between mate pair reads, default 500000
+secondary mapping mismatches range: Integer, optional, allows reporting secondary mappings with additional mismatches, default is 0
+max multimapping: Integer, optional, maximum number of genome locations for read mapping, default is 10
+two pass: Boolean, optional, enables two-pass alignment mode for improved junction detection, default is no
+detect chimeric transcripts: Boolean, optional, identifies transcripts spanning multiple genomic regions, default is no
+output unmapped reads: Boolean, optional, generates file with reads that could not be mapped, default is no
+quantify genes: Boolean, optional, produces gene read count table, default is no
+output wiggle file: Optional, generates genomic signal visualization file in different formats
+output format: Specifies output file format, options include SAM, unsorted BAM, sorted BAM
+output prefix: String, optional, defines prefix for output file names
+Here are the input and output files for the STAR.aligner module:
+Input Files:
+STAR index is a compressed genome index file in ZIP format for alignment reference
+Reads pair 1 contains unpaired reads or first mate reads in fastA or fastQ format
+Reads pair 2 contains second mate reads in fastA or fastQ format matching first mate file order
+Output Files:
+<basename>.Log.out contains program parameter overview
+<basename>.Log.final.out summarizes mapping process statistics
+<basename>.Log.progress.out tracks mapping progress minute-by-minute
+<basename>.Aligned.out.sam contains read-to-genome mappings in SAM format
+<basename>.Aligned.out.bam contains read mappings in binary BAM format
+<basename>.SJ.out.tab lists de novo predicted splice junctions
+<basename>.Chimeric.out.sam contains chimeric transcript read mappings
+<basename>.Unmapped.out.mate1 stores unmapped read sequences
+<basename>.Aligned.toTranscriptome.out.bam maps reads to transcriptome coordinates
+<basename>.ReadsPerGene.out.tab quantifies reads mapped per gene
+<basename>.Signal.Unique.str1.out.bg/wig contains unique read signal for strand 1
+<basename>.Signal.Unique.str2.out.bg/wig contains unique read signal for strand 2
+<basename>.Signal.UniqueMultiple.str1.out.bg/wig contains multi-mapping read signal for strand 1
+<basename>.Signal.UniqueMultiple.str2.out.bg/wig contains multi-mapping read signal for strand 2
+STAR.aligner is a fast RNA-seq read alignment tool that maps sequencing reads to a reference genome.
+STAR.aligner uses an uncompressed suffix array to quickly find perfect sequence matches between reads and the genome.
+The STAR.aligner algorithm extends initial perfect matches into "seed" alignments, allowing for mismatches and gaps.
+STAR.aligner can detect novel splice junctions and chimeric transcripts during the alignment process.
+STAR.aligner supports a two-pass alignment mode that first detects novel junctions and then re-maps reads using the discovered junctions.
+The STAR.aligner module can use shared memory to optimize computational efficiency when multiple runs use the same genome index.
+STAR.aligner requires a pre-built genome index and input sequencing reads in FASTQ or FASTA format.
+STAR.aligner can handle both single-end and paired-end sequencing data.
+The module allows users to control alignment parameters like maximum mismatches, intron length, and multi-mapping behavior.
+STAR.aligner generates multiple output files, including alignment mappings, splice junction information, and optional gene quantification.
+The module can produce wiggle files for visualization of RNA-seq signal across the genome.
+STAR.aligner supports output in various formats including SAM, BAM, and sorted BAM.
+The tool is particularly optimized for mammalian genome alignments but can be adapted for other organisms.
+STAR.aligner can optionally detect and report chimeric transcripts during the alignment process.
+The module provides detailed logging files that track the alignment process and mapping statistics.

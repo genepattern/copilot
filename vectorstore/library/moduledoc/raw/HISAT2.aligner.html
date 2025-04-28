@@ -1,0 +1,340 @@
+<div class="gp-content-header fluid">
+<a class="navbar-brand gp-logo" href="https://www.genepattern.org/#"><img alt="Gplogo2" src="./index_files/gplogo2-35ed5cd91ea682efc86cbb05604fff14.png"/></a>
+<div class="container">
+<h1>Hisat2.aligner (v1)</h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome).
+
+Please refer to <a href="https://ccb.jhu.edu/software/hisat2/index.shtml">https://ccb.jhu.edu/software/hisat2/index.shtml</a> for details of the algorithm.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong><br/>Wrapped as a module for GenePattern<br/> by Ted Liefeld</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong>
+<br/>Ted Liefeld, jliefeld at cloud.ucsd dot edu
+</p>
+<p></p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>2.1.0</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<title></title>
+<h2>Introduction</h2>
+<p>HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome).</p>
+<h2>Algorithm</h2>
+<p>Based on an extension of BWT for graphs <a href="http://dl.acm.org/citation.cfm?id=2674828">[Sirén et al. 2014]</a>, we designed and implemented a graph FM index (GFM), an original approach and its first implementation to the best of our knowledge. In addition to using one global GFM index that represents a population of human genomes, HISAT2 uses a large set of small GFM indexes that collectively cover the whole genome (each index representing a genomic region of 56 Kbp, with 55,000 indexes needed to cover the human population). These small indexes (called local indexes), combined with several alignment strategies, enable rapid and accurate alignment of sequencing reads. This new indexing scheme is called a Hierarchical Graph FM index (HGFM). </p>
+<h2>References</h2>
+<p><a href="http://dl.acm.org/citation.cfm?id=2674828" style="background-color: rgb(255, 255, 255);">Sirén et al. 2014</a></p>
+<p>https://ccb.jhu.edu/software/hisat2/index.shtml</p>
+<p> </p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<title></title>
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<th colspan="2">Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index*</td>
+<td>Directory or zip file containing a Hisat2 genome index to be aligned to.</td>
+</tr>
+<tr>
+<td>reads pair 1*</td>
+<td>Unpaired reads file or first mate for paired reads. One or more files containing reads in FASTA or FASTQ format (bz2 and gz compressed files are supported).</td>
+</tr>
+<tr>
+<td>reads pair 2*</td>
+<td>Second mate for paired reads. Zero or more files in FASTA or FASTQ format (bz2 and gz compressed files are supported).</td>
+</tr>
+<tr>
+<td>input format*</td>
+<td>The format of the input reads files.  May be fastQ, fastA, raw (one sequence per line) or Illumina qseq format.</td>
+</tr>
+<tr>
+<td>quality value scale*</td>
+<td>Whether to use the Solexa, Phred 33, Phred 64 quality value scale</td>
+</tr>
+<tr>
+<td>integer quality value</td>
+<td>Quality values are represented in the read input file as space-separated ASCII integers, e.g., 40 40 30 40..., rather than ASCII characters, e.g., II?I.... Integers are treated as being on the Phred quality scale unless "Solexa" is also specified for the &lt;quality value scale&gt;.</td>
+</tr>
+<tr>
+<td>mate orientations*</td>
+<td>The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. </td>
+</tr>
+<tr>
+<td>novel splice sites infile</td>
+<td> An optional list of known splice sites, which HISAT2 makes use of to align reads with small anchors. (This is the output of novel splice sites - See Supplementary Output)<br/>
+			 </td>
+</tr>
+<tr>
+<td colspan="2"><strong>Output</strong></td>
+</tr>
+<tr>
+<td>output prefix*</td>
+<td>The prefix to use for the output file name.</td>
+</tr>
+<tr>
+<td>dry run*</td>
+<td>When true, the module only prints the hisat command-line that would be used to the program's standard output file (stdout.txt) but does not execute the alignment.  Useful for testing or generating a command line to run HISAT2 outside of GenePattern.</td>
+</tr>
+<tr>
+<td colspan="2"><strong>Advanced Customization of Run</strong></td>
+</tr>
+<tr>
+<td>max reads to align*</td>
+<td>Align the first # reads or read pairs from the input (after the `-s`/`--skip` reads or pairs have been skipped), then stop. Mainly useful for testing.</td>
+</tr>
+<tr>
+<td>ignore read qualities*</td>
+<td>When calculating a mismatch penalty, always consider the quality value at the mismatched position to be the highest possible, regardless of the actual value. I.e. input is treated as though all quality values are high. This is also the default behavior when the input doesn't specify quality values</td>
+</tr>
+<tr>
+<td>align*</td>
+<td>Align unpaired reads against the forward reference strand only, the reverse-complement (Crick) reference strand only, or both.</td>
+</tr>
+<tr>
+<td>min mismatch penalty*</td>
+<td>Sets the minimum (`MN`) mismatch penalty. A number less than or equal to &lt;max mismatch penalty&gt; (`MX`) and greater than or equal to `MN` is subtracted from the alignment score for each position where a read character aligns to a reference character, the characters do not match, and neither is an `N`. If &lt;ignore read qualities&gt; is specified, the number subtracted quals `MX`. Otherwise, the number subtracted is `MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) )` where Q is the Phred quality value. Default: `MX` = 6, `MN` = 2.</td>
+</tr>
+<tr>
+<td>max mismatch penalty*</td>
+<td>Sets the maximum (`MX`)  mismatch penalty. A number less than or equal to `MX` and greater than or equal to &lt;min mismatch penalty&gt; (`MN`) is subtracted from the alignment score for each position where a read character aligns to a reference character, the characters do not match, and neither is an `N`. If &lt;ignore read qualities&gt; is specified, the number subtracted quals `MX`. Otherwise, the number subtracted is `MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) )` where Q is the Phred quality value. Default: `MX` = 6, `MN` = 2.</td>
+</tr>
+<tr>
+<td>soft clipping*</td>
+<td>Allow or disallow soft clipping.</td>
+</tr>
+<tr>
+<td>min softclip penalty*</td>
+<td>Sets the minimum (MN) penalty for soft-clipping per base. A number less than or equal to the max softclip penalty (MX) and greater than or equal to MN is subtracted from the alignment score for each position. The number subtracted is MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) ) where Q is the Phred quality value. Default: MX = 2, MN = 1.</td>
+</tr>
+<tr>
+<td>max softclip penalty*</td>
+<td>Sets the maximum (MX) penalty for soft-clipping per base. A number less than or equal to MX and greater than or equal to the min softclip penalty (MN) is subtracted from the alignment score for each position. The number subtracted is MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) ) where Q is the Phred quality value. Default: MX = 2, MN = 1.</td>
+</tr>
+<tr>
+<td>min n ceil*</td>
+<td>Sets the minimum value in a linear function governing the maximum number of ambiguous characters (usually `N`s and/or `.`s) allowed in a read as a function of read length. </td>
+</tr>
+<tr>
+<td>max n ceil*</td>
+<td>Sets a maximum in a linear function governing the maximum number of ambiguous characters (usually `N`s and/or `.`s) allowed in a read as a function of read length. </td>
+</tr>
+<tr>
+<td>ambiguous read penalty*</td>
+<td>Sets penalty for positions where the read, reference, or both, contain an ambiguous character such as `N`. </td>
+</tr>
+<tr>
+<td>read gap open penalty*</td>
+<td>Sets the read gap open penalty. A read gap of length N gets a penalty of `` + N * ``. </td>
+</tr>
+<tr>
+<td>read gap extend penalty*</td>
+<td>Sets the read gap extend penalty. A read gap of length N gets a penalty of `` + N * ``. </td>
+</tr>
+<tr>
+<td>reference gap open penalty</td>
+<td>Sets the reference gap open penalty. A read gap of length N gets a penalty of `` + N * ``. </td>
+</tr>
+<tr>
+<td>reference gap extend penalty*</td>
+<td><span style="background-color: rgb(249, 249, 249);">Sets the reference gap extend penalty. A read gap of length N gets a penalty of `` + N * ``. </span></td>
+</tr>
+<tr>
+<td>spliced alignments*</td>
+<td>Disables spliced alignments if set to 'no'.</td>
+</tr>
+<tr>
+<td>penalty for canonical splice sites*</td>
+<td>Sets the penalty for each pair of canonical splice sites (e.g. GT/AG). </td>
+</tr>
+<tr>
+<td>penalty for non-canonical splice sites</td>
+<td>Sets the penalty for each pair of non-canonical splice sites (e.g. non-GT/AG). </td>
+</tr>
+<tr>
+<td>min score align*</td>
+<td>Sets minimum on the function governing the minimum alignment score needed for an alignment to be considered "valid" (i.e. good enough to report). This is a function of read length. For instance, specifying 0 sets the minimum-score function f to f(x) = 0 + -0.6 * x, where x is the read length and -0.6 is the max score align value. </td>
+</tr>
+<tr>
+<td>max score align*</td>
+<td>Sets maximum on the function governing the minimum alignment score needed for an alignment to be considered "valid" (i.e. good enough to report). This is a function of read length. For instance, specifying -0.6 sets the minimum-score function f to f(x) = 0.1 + -0.6 * x, where x is the read length and 0.1 is the min score align value. </td>
+</tr>
+<tr>
+<td>minimum fragment length for paired alignment*</td>
+<td>
+<p>The minimum fragment length for valid paired-end alignments. This option is valid only with no spliced alignment. E.g. if 60 is specified and a paired-end alignment consists of two 20-bp alignments in the appropriate orientation with a 20-bp gap between them, that alignment is considered valid (as long as the maximum fragment length is also satisfied). A 19-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the constraint is applied with respect to the untrimmed mates.</p>
+<p>The larger the difference between minimum and maximum fragment lengths, the slower HISAT2 will run. This is because larger differences scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), HISAT2 is very efficient. </p>
+</td>
+</tr>
+<tr>
+<td>maximum fragment length for paired alignment*</td>
+<td>
+<p>The maximum fragment length for valid paired-end alignments. This option is valid only with no spliced alignment. E.g. if 100 is specified and a paired-end alignment consists of two 20-bp alignments in the appropriate orientation with a 60-bp gap between them, that alignment is considered valid (as long as the minimum fragment length is also satisfied). A 61-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the constraint is applied with respect to the untrimmed mates.</p>
+<p>The larger the difference between minimum and maximum fragment lengths, the slower HISAT2 will run. This is because larger differences scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), HISAT2 is very efficient. </p>
+</td>
+</tr>
+<tr>
+<td>unpaired alignments for paired reads*</td>
+<td>By default, when `hisat2` cannot find a concordant or discordant alignment for a pair, it then tries to find alignments for the individual mates. This option disables that behavior. </td>
+</tr>
+<tr>
+<td>discordant alignments for paired reads*</td>
+<td>By default, `hisat2` looks for discordant alignments if it cannot find any concordant alignments. A discordant alignment is an alignment where both mates align uniquely, but that does not satisfy the paired-end constraints (`--fr`/`--rf`/`--ff`, `-I`, `-X`). This option disables that behavior.</td>
+</tr>
+<tr>
+<td>max seeds extended*</td>
+<td>HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2 tries to extend seeds to full-length alignments. In HISAT2, --max-seeds is used to control the maximum number of seeds that will be extended. HISAT2 extends up to these many seeds and skips the rest of the seeds. Large values for <span style="background-color: rgb(249, 249, 249);">&lt;max seeds extended&gt;</span>` may improve alignment sensitivity, but HISAT2 is not designed with large values for<span style="background-color: rgb(249, 249, 249);">&lt;max seeds extended&gt;</span> in mind, and when aligning reads to long, repetitive genomes large &lt;max seeds extended&gt; can be very, very slow.</td>
+</tr>
+<tr>
+<td>max primary alignments*</td>
+<td>HISAT2 searches for up to N distinct, primary alignments for each read, where N equals the integer specified with this parameter. Primary alignments mean alignments whose alignment score is equal or higher than any other alignments. It is possible that multiple distinct alignments have the same score. That is, if `2` is specified, HISAT2 will search for at most 2 distinct alignments. The alignment score for a paired-end alignment equals the sum of the alignment scores of the individual mates. Each reported read or pair alignment beyond the first has the SAM 'secondary' bit (which equals 256) set in its FLAGS field.</td>
+</tr>
+<tr>
+<td>secondary alignments</td>
+<td>Report secondary alignments.</td>
+</tr>
+<tr>
+<td colspan="2"><strong>Parameters with default values for long mammalian introns</strong></td>
+</tr>
+<tr>
+<td>min penalty long introns with canonical splice sites*</td>
+<td>Sets the minimum in a natural log penalty function for long introns with canonical splice sites so that alignments with shorter introns are preferred to those with longer ones.</td>
+</tr>
+<tr>
+<td>max penalty long introns with canonical splice sites*</td>
+<td>Sets the maximum in a natural log penalty function for long introns with canonical splice sites so that alignments with shorter introns are preferred to those with longer ones.</td>
+</tr>
+<tr>
+<td>min penalty long introns with noncanonical splice sites*</td>
+<td>Sets the minimum in a natural log penalty function for long introns with noncanonical splice sites so that alignments with shorter introns are preferred to those with longer ones. </td>
+</tr>
+<tr>
+<td>max penalty long introns with noncanonical splice sites*</td>
+<td>Sets the maximum in a natural log penalty function for long introns with noncanonical splice sites so that alignments with shorter introns are preferred to those with longer ones. </td>
+</tr>
+<tr>
+<td>minimum intron length*</td>
+<td>Sets minimum intron length. </td>
+</tr>
+<tr>
+<td>maximum intron length</td>
+<td>Sets maximum intron length. </td>
+</tr>
+<tr>
+<td colspan="2"><strong>Supplementary Output</strong></td>
+</tr>
+<tr>
+<td>novel splice sites</td>
+<td>Optional: output file for novel splice sites found.</td>
+</tr>
+<tr>
+<td>mapped reads</td>
+<td>Optional: write unpaired reads that align at least once to a file.</td>
+</tr>
+<tr>
+<td>unmapped reads</td>
+<td>Write paired-end reads that align concordantly at least once to file(s).</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<title></title>
+<h2>Input Files</h2>
+<ol>
+<li>
+<div>RNA-seq reads files in FASTA/FASTQ format (can be gzip or bzip2 compressed) For more information on the FASTA format, see the NIH description here: </div>
+<div><a href="http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml">http://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml</a>. For more information on the FASTQ format, 6 see the specification here: <a href="http://nar.oxfordjournals.org/content/early/2009/12/16/nar.gkp1137.full">http://nar.oxfordjournals.org/content/early/2009/12/16/nar.gkp1137.full</a>.  Example FASTA input files can be found at <a href="https://datasets.genepattern.org/data/test_data/Hisat2/reads_1.fa">reads_1.fa</a> and <a href="https://datasets.genepattern.org/data/test_data/Hisat2/reads_2.fa">reads_2.fa</a>.</div>
+</li>
+<li>
+<div>Custom HISAT2 index (optional, if the prebuilt indexes do not include the genome you need) </div>
+<div>This file is a genome reference index. You must create this file using HISAT2 (HISAT2 2.0 or higher) and can use the HISAT2Indexer GenePattern module for this.   A large and growing number of hosted genomes are selectable from the parameter, possibly allowing you to avoid this step.  An example HISAT2 index for the sample FASTA files (above) can be found at <a href="https://datasets.genepattern.org/data/test_data/Hisat2/22_20-21M_snp.zip">22_20-21M_snp.zip</a></div>
+</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output prefix&gt;.sam 
+	<div>A list of read alignments in SAM format. This file can be used as input for Cufflinks. BAM is the binary equivalent of SAM, a compact short read alignment format. For more information on the SAM/BAM formats, see the specification at: <br/>
+<a href="http://samtools.sourceforge.net/" target="_blank">http://samtools.sourceforge.net</a>.</div>
+</li>
+</ol>
+<h2>Requirements</h2>
+<p>This module is implemented using a Docker container to provide the environment.  </p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Sequence Analysis</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					docker</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					ubuntu</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.5</td>
+<td>2022-01-18</td>
+<td>Updated name and doc location</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>2021-10-14</td>
+<td>Renamed from HISAT2Aligner to HISAT2.aligner and ported documentation into github pages.</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>2021-01-25</td>
+<td>Update module name and mate orientation dropdown descriptions</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-10-25</td>
+<td>Initial production release</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

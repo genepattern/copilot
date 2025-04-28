@@ -1,0 +1,102 @@
+HierarchicalClustering is on version 6.
+A description of HierarchicalClustering is Agglomerative hierarchical clustering of genes/experiments. Clustering of gene expression data is geared toward finding genes that are expressed or not expressed in similar ways under certain conditions. Given a set of items to be clustered, agglomerative hierarchical clustering recursively merges items with other items or with the result of previous merges, according to the distance between each pair of items..
+HierarchicalClustering is a GenePattern module written by Joshua Gould, Broad Institute.
+HierarchicalClustering can be categorized as Clustering, Gene Expression, Bioinformatics.
+HierarchicalClustering has the following parameters: input filename, column distance measure, row distance measure, clustering method, log transform, row center, row normalize, column center, column normalize, output base name.
+The HierarchicalClustering module is a powerful bioinformatics tool for analyzing gene expression data through clustering techniques.
+HierarchicalClustering enables researchers to discover patterns and similarities in complex biological datasets by grouping genes or samples based on their expression profiles.
+The module uses agglomerative hierarchical clustering, which recursively merges the most similar items into a tree-like structure called a dendrogram.
+HierarchicalClustering can cluster either genes (rows) or samples (columns) using various distance metrics like Pearson correlation, Euclidean distance, and Spearman's rank correlation.
+The module offers preprocessing options including log transformation, centering, and normalization to prepare data for more accurate clustering analysis.
+HierarchicalClustering generates multiple output files, including a CDT file with reordered data and GTR/ATR files describing the clustering hierarchy.
+The clustering method in HierarchicalClustering can be configured using different linkage strategies like complete-linkage, single-linkage, centroid-linkage, and average-linkage.
+HierarchicalClustering is particularly useful in genomics for identifying co-expressed genes, understanding gene regulatory networks, and exploring complex biological relationships.
+Researchers can use HierarchicalClustering to visualize and analyze large-scale gene expression datasets from microarray or RNA-seq experiments.
+The module provides flexibility in data preprocessing and distance metric selection, making it adaptable to various types of biological data analysis.
+input filename
+- Type: String
+- Description: HierarchicalClustering module requires an input data file
+- Required: Yes
+- Specifies the source data file for clustering analysis
+column distance measure
+- Type: String
+- Description: HierarchicalClustering method for calculating distance between columns/samples
+- Required: Yes
+- Default: Pearson correlation
+- Determines how similarity between samples is computed during clustering
+row distance measure
+- Type: String
+- Description: HierarchicalClustering method for calculating distance between rows/genes
+- Required: Yes
+- Default: No row clustering
+- Determines how similarity between genes is computed during clustering
+clustering method
+- Type: String
+- Description: HierarchicalClustering algorithm for merging clusters
+- Required: Yes
+- Default: Pairwise complete-linkage
+- Defines the strategy for combining clusters during hierarchical clustering
+log transform
+- Type: Boolean
+- Description: HierarchicalClustering preprocessing option to transform data
+- Required: No
+- Default: No
+- Determines whether data is log-transformed before clustering
+row center
+- Type: Boolean
+- Description: HierarchicalClustering preprocessing option to center row values
+- Required: No
+- Default: No
+- Subtracts row-wise mean or median from data values
+row normalize
+- Type: Boolean
+- Description: HierarchicalClustering preprocessing option to normalize row values
+- Required: No
+- Default: No
+- Scales row values to have unit variance
+column center
+- Type: Boolean
+- Description: HierarchicalClustering preprocessing option to center column values
+- Required: No
+- Default: No
+- Subtracts column-wise mean or median from data values
+column normalize
+- Type: Boolean
+- Description: HierarchicalClustering preprocessing option to normalize column values
+- Required: No
+- Default: No
+- Scales column values to have unit variance
+output base name
+- Type: String
+- Description: HierarchicalClustering base filename for output files
+- Required: Yes
+- Defines the prefix for generated clustering result files
+HierarchicalClustering module input file is a gene expression data file in .gct, .res, or .pcl format.
+Input file contains numerical expression measurements for genes across multiple samples or conditions.
+Input file typically includes gene identifiers, sample names, and corresponding expression values.
+HierarchicalClustering module requires a structured tabular input with consistent data formatting.
+HierarchicalClustering module can process gene expression data with varying preprocessing requirements.
+HierarchicalClustering module produces a CDT file containing clustered original data.
+CDT file reorders input data to reflect the hierarchical clustering results.
+CDT file maintains original data structure but reorganizes rows and columns based on clustering.
+CDT file serves as a primary output for visualizing clustered gene expression patterns.
+HierarchicalClustering module generates an ATR file for column (sample) clustering.
+ATR file describes the order of node merging during column clustering process.
+ATR file represents the hierarchical structure of sample relationships.
+ATR file can be used for further visualization and analysis of sample clustering.
+HierarchicalClustering module generates a GTR file for row (gene) clustering.
+GTR file describes the order of node merging during gene clustering process.
+GTR file represents the hierarchical structure of gene relationships.
+GTR file can be used for further visualization and analysis of gene clustering.
+HierarchicalClustering is a computational method for discovering groups of similar genes or samples in biological data.
+The HierarchicalClustering module performs agglomerative hierarchical clustering to organize gene expression data.
+Hierarchical clustering recursively merges the most similar items into a tree-like structure called a dendrogram.
+The module can cluster rows (genes) or columns (samples) using various distance metrics like Pearson correlation, Euclidean distance, and Spearman's rank correlation.
+HierarchicalClustering offers preprocessing options including log transformation, centering, and normalization of data.
+The clustering method determines how distances between clusters are calculated, with options like complete-linkage, single-linkage, and average-linkage.
+Output files from HierarchicalClustering include a CDT file with reordered data and ATR/GTR files describing the clustering hierarchy.
+The module is designed to help researchers identify patterns and relationships in large-scale gene expression datasets.
+HierarchicalClustering supports multiple distance measures to accommodate different types of biological data and research questions.
+Preprocessing steps like log transformation and normalization can help improve the quality and interpretability of clustering results.
+The clustering method chosen can significantly impact the resulting groupings of genes or samples in the analysis.
+HierarchicalClustering is particularly useful for exploring complex biological datasets with many variables and potential hidden patterns.

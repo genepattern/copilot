@@ -1,0 +1,90 @@
+Multiplot Studio is on version 1.1.
+A description of Multiplot Studio is Interactive, scatter-plot visualization tool for analyzing differential gene expression. Multiplot Studio is a complete redesign of the original Multiplot which is intended to correct a number of its shortcomings, add increased functionality and streamline the overall analysis process..
+Multiplot Studio is a GenePattern module written by Scott P. Davis (Tempero Pharmaceuticals), in collaboration with Christophe Benoist (Harvard Medical School).
+Multiplot Studio can be categorized as Visualizer, Gene Expression, Data Analysis.
+Multiplot Studio has the following parameters: dataFile, classFile.
+Multiplot Studio is a powerful GenePattern module for interactive scatter plot visualization and analysis of differential gene expression data.
+The Multiplot Studio module allows researchers to create complex, multi-dimensional visualizations of genomic datasets with extensive customization options.
+Multiplot Studio supports multiple input file formats including GCT, CSV, and CLS files, enabling flexible data import from various experimental sources.
+Users can create up to four simultaneous plots within the Multiplot Studio interface, allowing comparative analysis across different data transformations and calculations.
+The module provides advanced calculation options including fold change, t-test p-values, ANOVA, and other statistical metrics that can be applied across replicates or experimental classes.
+Multiplot Studio enables sophisticated data point selection through multiple mouse modes, including rectangular, elliptical, polygonal, and freehand selection techniques.
+The module supports comprehensive annotation capabilities, allowing researchers to add text labels, fold change markers, and custom graphical elements to plots.
+Filters and highlights in Multiplot Studio can be created based on calculation-based or identifier-based criteria, providing powerful data subset exploration tools.
+Multiplot Studio includes a flexible data table and heatmap view that allows researchers to examine original source data alongside plot visualizations.
+The module supports multiple export options, including workspace saving, plot image generation, and subset data extraction for further analysis.
+Here are the parameter descriptions for the Multiplot Studio module:
+dataFile (Required, File): Primary input dataset in GCT, MSDATA, or CSV format containing gene expression or experimental data.
+classFile (Optional, File): Class file defining sample populations and groupings. Provides additional calculation options when included.
+Platform Details:
+- Task Type: Visualizer
+- CPU Type: Any
+- Operating System: Any
+- Language: Java (version 1.7+)
+Data File Requirements:
+- GCT: Standard GenePattern dataset format
+- CSV: Must contain unique identifiers in first two columns
+- Supports numerical and text data columns
+- Automatically rearranges columns with numerical data first
+Multiplot Studio enables interactive scatter plot visualization for analyzing differential gene expression across complex datasets.
+The module allows flexible data exploration through:
+- Multiple plot generation
+- Advanced calculation scopes
+- Customizable data point selection
+- Text annotations
+- Filters and highlights
+- Heatmap visualization
+Key features include comprehensive data transformation, statistical calculations, and intuitive visual exploration of genomic data.
+Here are the input and output files for the Multiplot Studio module, formatted in embedding-friendly chunks:
+Multiplot Studio input file: GCT (*.GCT)
+- GenePattern dataset file containing gene expression data
+- Contains numerical gene expression measurements
+- Standard format with header rows and columns of gene/sample data
+Multiplot Studio input file: CSV (*.CSV)
+- Comma-separated value file with gene expression data
+- Contains numerical and text data columns
+- Must have unique identifiers in first row and column
+- Flexible data format compared to GCT
+Multiplot Studio input file: CLS (*.CLS)
+- Defines sample/population class assignments
+- Specifies which samples belong to which experimental groups
+- Used for population-based calculations and analysis
+Multiplot Studio input file: TXT (*.TXT)
+- Plain text file containing probe ID or gene symbol lists
+- Used for creating highlights and filters
+- One identifier per line
+Multiplot Studio output file: MSDATA (*.MSDATA)
+- Compressed binary workspace file
+- Contains all analysis settings, data, and configurations
+- Self-contained file for saving and restoring analysis state
+Multiplot Studio output file: PNG (*.PNG)
+- Plot or heatmap image file
+- Raster graphics format
+- User-specified resolution
+Multiplot Studio output file: SVG (*.SVG)
+- Scalable vector graphics plot image
+- Resolution-independent format
+- Suitable for publication-quality graphics
+Multiplot Studio output file: CSV (*.CSV)
+- Exported subset of plotted data values
+- Contains primary/secondary IDs and X/Y axis values
+Multiplot Studio output file: GCT (*.GCT)
+- Subset of original dataset
+- Contains original columns for selected rows
+Here are the chunks for the Multiplot Studio module documentation:
+Multiplot Studio is an interactive scatter-plot visualization tool for analyzing differential gene expression.
+The module was developed by Scott P. Davis from Tempero Pharmaceuticals in collaboration with Christophe Benoist from Harvard Medical School.
+Multiplot Studio is a complete redesign of the original Multiplot, intended to correct shortcomings and add increased functionality.
+The module supports multiple input file formats including GCT, CSV, CLS, and MSDATA files for gene expression data analysis.
+Users can create up to four simultaneous plots with various customization options for data visualization.
+The module allows complex calculations like fold change, t-test p-values, ANOVA, and other statistical measurements across different sample populations.
+Multiplot Studio provides advanced filtering and highlighting capabilities to identify and visualize specific gene expression patterns.
+The tool supports multiple mouse interaction modes including zooming, panning, selection, and annotation of data points.
+Users can customize plot appearances, including axis labels, titles, grid lines, and color schemes.
+The module enables text annotations and fold change marker lines to be added directly to plots for enhanced data interpretation.
+Advanced shading options allow users to represent additional data dimensions through color gradients.
+Multiplot Studio supports exporting plot images, data subsets, and entire workspace configurations for further analysis.
+The tool automatically handles different data types like signal, ratio, p-values, and log2 transformed data.
+Users can create highlights and filters based on calculation-based or identifier-based criteria.
+The module provides a dynamic distribution plot to help users determine appropriate thresholds for data filtering.
+Multiplot Studio includes a data table and heatmap view for detailed examination of selected data subsets.

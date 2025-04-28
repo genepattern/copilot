@@ -1,0 +1,43 @@
+ReorderByClass is on version .
+A description of ReorderByClass is Reorders a data file and a class file so that all samples of the same class occur together..
+ReorderByClass is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broadinstitute.org.
+ReorderByClass can be categorized as Preprocess & Utilities.
+ReorderByClass has the following parameters: dataset.filename, class.filename, dataset.file.output.name, class.file.output.name.
+The ReorderByClass GenePattern module helps researchers reorganize genomic datasets to group samples by their biological classification.
+ReorderByClass allows scientists to visually and analytically align data samples that share similar characteristics or experimental conditions.
+The ReorderByClass module can take various input file formats like .res, .gct, and .odf for genomic datasets.
+ReorderByClass requires a corresponding class file (.cls) that defines the categorical groupings of samples in the dataset.
+By reordering columns, ReorderByClass facilitates easier visual comparison and statistical analysis of samples within the same class.
+The module is particularly useful for preparing data for downstream analyses like clustering, differential expression, or machine learning approaches.
+ReorderByClass operates independently of specific computational platforms, running on any operating system with Java 1.4 or higher.
+Researchers can use ReorderByClass to improve the interpretability of large-scale genomic and transcriptomic datasets.
+The module generates two output files: a reordered dataset file and a correspondingly reordered class file.
+ReorderByClass supports bioinformatics workflows by providing a simple preprocessing step for organizing complex experimental data.
+dataset.filename: String, input dataset file path, required, supports .res, .gct, .odf file formats in ReorderByClass module
+class.filename: String, input class file path, required, used to specify class information for ReorderByClass module
+dataset.file.output.name: String, output filename for reordered dataset, required, specifies destination of processed data in ReorderByClass module
+class.file.output.name: String, output filename for reordered class file, required, defines where reordered class information will be saved in ReorderByClass module
+ReorderByClass module helps reorganize dataset columns to group samples by their class
+ReorderByClass ensures samples with same classification are positioned together in output files
+ReorderByClass supports multiple input file formats for flexible data preprocessing
+ReorderByClass provides utility for reorganizing complex datasets with class-based sorting
+ReorderByClass operates independently of specific CPU or operating system constraints
+ReorderByClass module input dataset file is a gene expression matrix with samples as columns and genes as rows.
+ReorderByClass module input dataset file can be in .res, .gct, or .odf file format.
+ReorderByClass module input dataset file contains numerical expression values for each gene across multiple samples.
+ReorderByClass module input class file defines the class/group membership for each sample in the dataset.
+ReorderByClass module input class file is in .cls file format with categorical labels for samples.
+ReorderByClass module output dataset file contains the same gene expression data as input, but with columns reordered by class.
+ReorderByClass module output dataset file preserves original gene and expression values, only changing column order.
+ReorderByClass module output class file contains the same class labels as input, but reordered to match the new dataset column order.
+ReorderByClass module output class file ensures class labels align with reordered dataset columns.
+The ReorderByClass module helps researchers reorganize genomic datasets to group samples with the same biological classification together.
+The ReorderByClass module allows scientists to rearrange columns in a dataset and corresponding class file to improve data visualization and analysis.
+ReorderByClass takes two primary input files: a dataset file (which can be in .res, .gct, or .odf format) and a corresponding class file (.cls).
+The module is designed to maintain the relationship between data points and their biological classifications during the reordering process.
+ReorderByClass produces two output files: a reordered dataset file and a reordered class file that maintain their original data integrity.
+This GenePattern module is platform-independent, running on any operating system and CPU architecture with Java 1.4 or higher installed.
+The module is categorized as a preprocessing and utility tool, useful for data organization and preparation before more complex genomic analyses.
+Researchers can use ReorderByClass to group samples by their biological characteristics, which can help in identifying patterns or trends within specific classes.
+The module is developed by Joshua Gould from the Broad Institute, ensuring professional-grade data manipulation for genomic research.
+ReorderByClass supports multiple dataset file formats, providing flexibility for researchers working with different types of genomic data files.

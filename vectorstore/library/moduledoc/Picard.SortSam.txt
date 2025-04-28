@@ -1,0 +1,55 @@
+Picard.SortSam is on version 4.
+A description of Picard.SortSam is Sorts a SAM or BAM file in a specified order. This module sorts and indexes a SAM or BAM file. It can convert between SAM and BAM formats and generate an index file for coordinate-sorted BAM outputs..
+Picard.SortSam is a GenePattern module written by Picard team.
+Picard.SortSam can be categorized as Preprocess & Utilities.
+Picard.SortSam has the following parameters: input file, sort order, output format, output prefix.
+Picard.SortSam is a crucial bioinformatics module for organizing sequencing alignment data files.
+Picard.SortSam allows researchers to systematically arrange SAM and BAM files based on different sorting criteria.
+The Picard.SortSam module can sort alignment files by chromosome and start position, which is essential for downstream genomic analysis.
+Picard.SortSam supports sorting by read names (queryname), enabling different types of computational genomics workflows.
+The Picard.SortSam module can convert between SAM and BAM file formats, providing flexibility in data processing pipelines.
+Picard.SortSam generates an index file automatically when outputting coordinate-sorted BAM files, which accelerates subsequent computational operations.
+The Picard.SortSam module is implemented in Java and can run on multiple computing platforms, making it widely accessible to researchers.
+Picard.SortSam is a preprocessing utility that helps standardize sequencing alignment data before more complex computational analyses.
+The Picard.SortSam module is particularly useful in genomics, transcriptomics, and other high-throughput sequencing research domains.
+Picard.SortSam allows researchers to organize large sequencing datasets systematically, improving computational efficiency and data management.
+input file:file:Specifies the input SAM or BAM file to be sorted in Picard.SortSam module
+input file:type:Required parameter that accepts SAM or BAM file formats
+input file:description:The genomic alignment file that will undergo sorting process in Picard.SortSam module
+sort order:parameter:Defines how reads will be arranged in the output file in Picard.SortSam module
+sort order:type:String with predefined options (coordinate, queryname, unsorted)
+sort order:description:Determines the organizational strategy for reads in the sorted file
+sort order:default:coordinate
+sort order:options:Allows sorting by chromosome position, read ID, or maintaining original order
+output format:parameter:Specifies the desired output file type in Picard.SortSam module
+output format:type:String with two possible values (SAM or BAM)
+output format:description:Controls whether the sorted file will be in text or binary format
+output format:default:BAM
+output format:requirement:Mandatory parameter in Picard.SortSam module
+output prefix:parameter:Defines the base name for the output sorted file in Picard.SortSam module
+output prefix:type:String
+output prefix:description:Determines the naming convention for the sorted alignment file
+output prefix:requirement:Required parameter in Picard.SortSam module
+Picard.SortSam input file is a SAM or BAM alignment file containing genomic sequencing reads.
+Picard.SortSam input file follows the SAM/BAM specification with read alignment information including chromosome, position, sequence, and quality scores.
+Picard.SortSam input file can be either text-based SAM or binary BAM format representing genomic sequencing data.
+Picard.SortSam output file is a sorted version of the input alignment file based on specified sort order.
+Picard.SortSam output file can be either SAM or BAM format depending on user-selected output format parameter.
+Picard.SortSam output file maintains original read alignment information but reorders entries based on coordinate or query name.
+Picard.SortSam generates a BAM index file (.bai) when output is coordinate-sorted BAM format.
+Picard.SortSam BAM index file enables rapid random access to specific genomic regions in the sorted alignment file.
+Picard.SortSam output filename includes user-specified prefix and sorted file extension.
+Picard.SortSam supports sorting by coordinate, query name, or leaving file unsorted based on user selection.
+Picard.SortSam is a GenePattern module for sorting SAM or BAM genomic alignment files.
+The Picard.SortSam module allows researchers to reorganize genomic alignment files based on different sorting criteria.
+Picard.SortSam can convert between SAM and BAM file formats during the sorting process.
+The module supports three primary sorting orders: coordinate (chromosomal position), queryname (read IDs), and unsorted.
+Coordinate sorting is the default sorting method in the Picard.SortSam module.
+When outputting a BAM file sorted by coordinates, Picard.SortSam automatically generates an index file (.bai).
+The Picard.SortSam module requires Java version 1.6 or higher to run.
+Picard.SortSam can run on any operating system and CPU architecture.
+The output file from Picard.SortSam will be named with the specified output prefix and the chosen file format.
+Sorting genomic alignment files is crucial for downstream analysis like variant calling and genome visualization.
+The module implements the SortSam function from the Picard tools, a widely used bioinformatics software suite.
+Picard.SortSam handles both SAM (text) and BAM (binary) alignment file formats seamlessly.
+The module is classified as a preprocessing and utility tool in the GenePattern workflow.

@@ -1,0 +1,48 @@
+ClsFileCreator is on version 4.
+A description of ClsFileCreator is A tool to create a class label (CLS) file. The CLS file format defines phenotype (class or template) labels and associates each sample in the expression data with a label..
+ClsFileCreator is a GenePattern module written by Marc-Danie Nazaire(Broad Institute), Thorin Tabor (Broad Institute & UCSD).
+ClsFileCreator can be categorized as File Creation, Bioinformatics, Data Preprocessing.
+ClsFileCreator has the following parameters: input file.
+The ClsFileCreator GenePattern module is a tool for generating class label (CLS) files from gene expression datasets.
+ClsFileCreator helps researchers organize and annotate sample groups in genomic data analysis.
+The ClsFileCreator module provides a wizard-based interface for creating CLS files in GenePattern.
+ClsFileCreator allows users to assign phenotypic or experimental condition labels to individual samples in a gene expression dataset.
+The ClsFileCreator module supports GCT file formats for input and generates standardized CLS files for downstream bioinformatics analysis.
+ClsFileCreator enables researchers to define categorical information about samples, such as disease state, treatment group, or tissue type.
+The module provides a user-friendly interface for mapping sample labels in genomic experiments.
+ClsFileCreator is particularly useful for preparing data for machine learning and statistical analysis in genomics.
+The module allows flexible labeling of samples across different experimental conditions or phenotypic groups.
+ClsFileCreator supports creating class label files that can be used in various bioinformatics tools and pipelines.
+The module helps standardize sample annotation in gene expression research.
+ClsFileCreator can generate CLS files that are compatible with multiple downstream analysis platforms.
+The module provides a systematic approach to organizing and categorizing genomic samples.
+ClsFileCreator supports researchers in preparing data for comparative and differential expression analyses.
+The module enables precise mapping of experimental conditions to individual samples in gene expression datasets.
+input.file: file type, GCT file containing dataset for class label creation, required parameter for ClsFileCreator module
+ClsFileCreator module requires a specific input file format to generate class labels
+Input dataset must be in GCT file format for successful class label processing
+The input file is essential for defining sample phenotype or class labels
+GCT file provides the source data from which class labels will be extracted or assigned
+ClsFileCreator uses the input file to map samples to their corresponding phenotypic categories
+ClsFileCreator module requires a GCT input file containing gene expression data.
+The input GCT file must be in standard GenePattern GCT file format with sample and gene expression measurements.
+ClsFileCreator generates a CLS file that defines phenotype or class labels for samples in the input dataset.
+The output CLS file contains categorical labels associating each sample with a specific class or phenotype.
+CLS files are typically used in machine learning and statistical analysis of gene expression data.
+The module provides a wizard-based interface for interactively creating class label assignments.
+Users can specify class labels and map them to specific samples through a step-by-step process.
+The final output can be saved directly to the GenePattern Files Tab or downloaded by the user.
+ClsFileCreator supports creating class labels for various types of genomic and expression data analysis.
+The module is platform-independent and can run on any operating system with JavaScript support.
+ClsFileCreator is a GenePattern module for creating class label (CLS) files from gene expression datasets.
+The ClsFileCreator module helps researchers assign phenotype labels to samples in a gene expression experiment.
+ClsFileCreator uses a wizard-based interface to guide users through the process of generating CLS files.
+The module specifically works with GCT file formats to create class label annotations for gene expression data.
+ClsFileCreator allows users to specify class labels and map them to individual samples in a dataset.
+The module provides flexibility in saving the generated CLS file either within the GenePattern platform or for local download.
+ClsFileCreator supports creating phenotype labels that can be used in downstream computational biology analyses.
+The module is designed to be platform-independent, running on any operating system with JavaScript support.
+ClsFileCreator requires a GCT input file as the source for generating class label annotations.
+The module has undergone multiple version updates to improve compatibility and user experience.
+ClsFileCreator was developed by researchers at the Broad Institute and UCSD to streamline class label file creation.
+The module provides a user-friendly interface for associating experimental samples with specific phenotypic categories.

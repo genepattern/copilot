@@ -1,0 +1,43 @@
+Amaretto is on version v00378.
+A description of Amaretto is An algorithm to identify pancancer driver genes by integrating DNA copy number, DNA methylation, and gene expression data into modules..
+Amaretto is a GenePattern module written by Gevaert Lab, Stanford.
+Amaretto can be categorized as Cancer Research, Genomics, Bioinformatics.
+Amaretto has the following parameters: expression file, copy number file, methylation file, number of modules, percent genes.
+The Amaretto GenePattern module is a computational tool for identifying pancancer driver genes across multiple molecular data types.
+Amaretto integrates DNA copy number, DNA methylation, and gene expression data to discover cancer-related gene modules.
+The Amaretto module uses a three-step algorithmic approach to identify potential cancer driver genes and their regulatory networks.
+Amaretto first identifies candidate cancer driver genes by comparing tumor genomic and epigenetic alterations to normal tissue using methods like GISTIC and MethylMix.
+The Amaretto module models relationships between genomic, epigenetic, and transcriptomic data at the individual gene level.
+Amaretto creates gene expression modules that connect identified cancer driver genes with their downstream target genes using linear regression and elastic net regularization.
+The Amaretto module can process data from large cancer genomics repositories like The Cancer Genome Atlas (TCGA).
+Amaretto generates multiple output files including lists of genes, regulators, module memberships, and regulatory program data.
+The Amaretto module is particularly useful for researchers studying pan-cancer gene regulation and potential cancer driver mechanisms.
+Amaretto supports computational analysis of complex molecular interactions across different cancer types and molecular platforms.
+The Amaretto module requires input files in GCT format for gene expression, copy number, and methylation data.
+Researchers can use the Amaretto module to identify potential therapeutic targets and understand complex gene regulatory networks in cancer.
+expression file: file, Required, GenePattern Amaretto module requires a gene expression file in GCT format for analysis
+copy number file: file, Required, GenePattern Amaretto module needs a copy number data file in GCT format for genomic analysis
+methylation file: file, Required, GenePattern Amaretto module requires a methylation data file in GCT format for epigenetic analysis
+number of modules: integer, Required, Specifies the total number of gene expression modules to generate in the Amaretto analysis
+percent genes: float, Required, Determines the percentage of most variably expressed genes to use in the Amaretto module analysis
+Amaretto module gene expression input file is a GCT format file containing normalized gene expression data across samples.
+Amaretto module copy number input file is a GCT format file containing DNA copy number alterations across genomic regions.
+Amaretto module methylation input file is a GCT format file containing DNA methylation status for genes across samples.
+Amaretto module AllGenes_amaretto.tsv output file lists all genes analyzed in the pancancer driver gene identification process.
+Amaretto module AllRegulators_amaretto.tsv output file lists identified regulatory genes from the analysis.
+Amaretto module ModuleData_amaretto.gct output file contains comprehensive data for each identified gene module.
+Amaretto module ModuleMembership_amaretto.tsv output file shows gene assignments to specific modules.
+Amaretto module RegulatoryProgramData_amaretto.tsv output file contains detailed regulatory program information.
+Amaretto module RegulatoryPrograms_amaretto.tsv output file lists the identified regulatory programs.
+Amaretto module Expression_module_<number>.pdf output file provides a visualization plot for a specific gene expression module.
+The AMARETTO module is a computational method for identifying pancancer driver genes across multiple molecular data types.
+AMARETTO integrates DNA copy number, DNA methylation, and gene expression data to discover cancer-related gene modules.
+The first step of AMARETTO identifies candidate cancer driver genes by comparing tumor genomic and epigenetic alterations to normal tissue using tools like GISTIC and MethylMix.
+AMARETTO's second step models relationships between genomic and transcriptomic data at the individual gene level to refine cancer driver gene selection.
+The third step of AMARETTO uses identified cancer driver genes to decompose global gene expression data into co-expressed gene modules with associated regulatory programs.
+AMARETTO employs linear regression with elastic net regularization to model the regulatory connections between cancer driver genes and their downstream target genes.
+The module supports downloading and processing TCGA (The Cancer Genome Atlas) data from the Broad Institute's Firehose platform.
+AMARETTO requires input files for gene expression, copy number, and methylation data, all in GCT file format.
+The module generates multiple output files including lists of genes, regulators, module memberships, and visualization plots of gene modules.
+AMARETTO was developed by the Gevaert Lab at Stanford to capture genetically and epigenetically deregulated cancer driver genes across different cancer types.
+The algorithm is designed to identify pancancer gene modules that may be associated with specific biological responses like smoking or antiviral mechanisms.

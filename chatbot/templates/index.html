@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenePattern Copilot</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light bg-opacity-10">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" alt="GenePattern" width="200px" class="d-inline-block align-text-top">
+            </a>
+        </div>
+        <div class="mr-item"></div>
+        <form class="form-inline container-fluid conversation-form">
+            <select id="llm-models" class="model-dropdown">
+            </select>
+          <button class="btn btn-outline-success ms-auto me-0" type="submit">New Conversation</button>
+        </form>
+    </nav>
+    <div class="chat-container bg-light bg-opacity-10">
+        <div class="chat-box" id="chat-box">
+            <div class="message bot">
+                <p>Hello! You can ask me questions about GenePattern, including how to run specific workflows, about
+                    particular modules or which parameters to set.</p>
+            </div>
+        </div>
+        <div class="input-area">
+            <textarea id="user-input" class="text-bg-dark bg-light bg-opacity-10" placeholder="Type your query..." rows="1"></textarea>
+            <button id="send-button" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom bg-light bg-opacity-10 text-bg-dark ">
+        <div class="container text-center opacity-50 my-2">&copy; 2025 Regents of the University of California & Broad Institute</div>
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

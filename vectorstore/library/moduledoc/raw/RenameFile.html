@@ -1,0 +1,115 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>RenameFile (v1) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/RenameFile/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Creates a result file with the contents of the input but with a new name.  Where possible, this is done without copying the file but instead by simply making a link.  While it is possible to run this with a submitted file, the common use will be to change the name of a result file or a previously uploaded file. Note that the original file will still be present in its original location.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>David Eby</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<p>Many GenePattern modules have trouble with files that have names containing certain special characters - like spaces or slashes - because these characters have special meaning to the programming language or underlying tool used by the module.  For example, space characters in filenames can trick the module into cutting the filename short at the point of the space, recognizing "my file.txt" as two items, "my" and "file.txt", rather than one single item.  RenameFile gives you a way to give the file a new name without requiring it to be re-uploaded or reprocessed by upstream steps.  While it is possible to submit new files directly to RenameFile, it is most useful with files that are already present on the server. <strong>RenameFile does not operate on directory inputs.</strong></p>
+<p>Strictly speaking, the module does not rename the existing file but instead produces a new file with a different name that has the same content.  It uses a filesystem link (a <a href="http://en.wikipedia.org/wiki/Hard_link">hard link</a>) where possible in order to avoid use of extra disk space, but will create a full copy if linking is not possible.  Use the <em>force.copy</em> parameter (off by default) in order to require a new full copy be made.</p>
+<p><span style="font-size:14px;">Use of the <em>screen.filename</em> feature (on by default) will cause the module to attempt to screen many common problematic characters out of the provided filename, replacing them with underscores.  <strong>Note that this is not an exhaustive list as any particular module can have its own peculiar issues.</strong>  Instead, this is just a list which the GenePattern team suspects will cause issues.  You can completely control the filename by turning off this parameter and providing the desired name to the <em>output.filename </em>parameter, including or omitting any character as desired.</span></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file <span style="color:red;">*</span></td>
+<td>Input file to be renamed</td>
+</tr>
+<tr>
+<td>output filename <span style="color:red;">*</span></td>
+<td>The name to give the output file</td>
+</tr>
+<tr>
+<td>screen filename <span style="color:red;">*</span></td>
+<td>Automatically screen out problematic characters in the filename</td>
+</tr>
+<tr>
+<td>force copy <span style="color:red;">*</span></td>
+<td>Force a copy to be made rather than a link.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>input.file<br/>
+	The file to be given a new name.  This can be a file of any type, but note that <strong>RenameFile does not operate on directory inputs.</strong></li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>output.filename<br/>
+<span style="font-size:14px;">A new file is produced having the same content as <em>input.file</em> and named <em>output.filename</em> (optionally with special characters screened out of the name).</span></li>
+</ol>
+<h2>Requirements</h2>
+<p>On the Windows platform, filesystem links may not work correctly unless used with NTFS filesystemes on Windows 2000 and newer, with GenePattern set to Run as Administrator.  File copies will be made otherwise.</p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Preprocess &amp; Utilities</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Perl</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2014-03-19</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

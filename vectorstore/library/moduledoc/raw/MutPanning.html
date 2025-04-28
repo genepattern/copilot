@@ -1,0 +1,195 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>MutPanning (v2.0) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/MutPanning/2.0?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">MutPanning is designed to detect rare cancer driver genes from aggregated whole-exome sequencing data. Most approaches detect cancer genes based on their mutational excess, i.e. they search for genes with an increased number of nonsynonymous mutations above the background mutation rate. MutPanning further accounts for the nucleotide context around mutations and searches for genes with an excess of mutations in unusual sequence contexts that deviate from the characteristic sequence context around passenger mutations.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Felix Dietlein et al., Dana-Farber Cancer Institute and Broad Institute (algorithm), John Liefeld (module)</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>Felix Dietlein (dietlein@broadinstitute.org) for algorithm questions.<br/>
+Ted Liefeld (jliefeld@cloud.ucsd.edu) for module questions.</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong>v2</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<div>MutPanning analyzes aggregated DNA sequencing data of tumor patients to identify genes that are likely to be functionally relevant, based on their abundance of nonsynonymous mutations or their increased number of mutations in unusual nucleotide contexts that deviate from the background mutational process. </div>
+<div> </div>
+<div>The name MutPanning is inspired by the words "mutation" and "panning". The goal of the MutPanning algorithm is to discover new tumor genes in aggregated sequencing data, i.e. to "pan" the few tumor-relevant driver mutations from the abundance of functionally neutral passenger mutations in the background. Previous approaches for cancer gene discovery were mostly based on mutational recurrence, i.e. they detected cancer genes based on their excess of nonsynonymous mutation above the local background mutation rate.  Further, they search for mutations that occur in functionally important genomic positions, as predicted by bioinformatical scores). These approaches are highly effective in tumor types, for which the average background mutation rate (i.e., the total mutational burden) is low or moderate.</div>
+<div> </div>
+<div>The ability to detect driver genes can be increased by considering the nucleotide context around mutations in the statistical model. MutPanning utilizes the observation that most passenger mutations are surrounded by characteristic nucleotide sequence contexts, reflecting the background mutational process active in a given tumor. In contrast, driver mutations are localized towards functionally important positions, which are not necessarily surrounded by the same nucleotide contexts as passenger mutations. Hence, in addition to mutational excess, MutPanning searches for genes with an excess of mutations in unusual sequence contexts that deviate from the characteristic sequence context around passenger mutations. That way, MutPanning actively suppresses mutations in its test statistics that are likely to be passenger mutations based on their surrounding nucleotide contexts. Considering the nucleotide context is particularly useful in tumor types with high background mutation rates and high nucleotide context specificity (e.g., melanoma, bladder, endometrial, or colorectal cancer).</div>
+<div> </div>
+<h2>Algorithm</h2>
+<div>Most passenger mutations occur in characteristic nucleotide contexts that reflect the mutational process active in a given tumor. MutPanning searches for mutations in “unusual” nucleotide contexts that deviate from this background mutational process. In these positions, passenger mutations are rare and mutations are thus a strong indicator of the shift of driver mutations towards functionally important positions.</div>
+<div> </div>
+<div>The main steps of MutPanning are as follows (adopted from Dietlein et al.): </div>
+<div>(i) Model the mutation probability of each genomic position in the human exome depending on its surrounding nucleotide context and the regional background mutation rate. </div>
+<div>(ii) Given a gene with n nonsynonymous mutations, use a Monte Carlo simulation approach to simulate a large number of random “scenarios” in which n or more nonsynonymous mutations are randomly distributed along the same gene . </div>
+<div>(iii) Compare the number and positions of mutations in each random scenario with the observed mutations in gene . Based on these comparisons, derive a p-value for the gene. </div>
+<div>(iv) Combine this p-value with additional statistical components that account for insertions and deletions, the abundance of deleterious mutations, and mutational clustering.</div>
+<div> </div>
+<div>The following figure (adopted from Dietlein et al.) illustrates how MutPanning works.</div>
+<div> </div>
+<div><img alt="" src="https://datasets.genepattern.org/images/MutPanning_Dietlen_Fig1.png" style="width: 1095px; height: 376px;"/></div>
+<h2>Usage</h2>
+<div>You can run the algorithm for multiple cancer types at the same time. All you need to run MutPanning is a mutation file (*.maf) and a sample file (*.txt):</div>
+<div>- Mutation File (*.maf): mutations that you would like to include in the analysis (<a href="http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf">example mutation file</a>)</div>
+<div>- Sample File (*.txt): contains sample IDs and assocates them with cancer types <a href="http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt">(example sample file)</a></div>
+<div> </div>
+<div>If you are unsure about the file formats, please see the description of these files in the parameters or download exemplary files below. Unless you are familiar with the MutPanning algorithm, we recommend running MutPanning with standard parameters. MutPanning was only tested to run with standard parameters.</div>
+<div> </div>
+<h2>References</h2>
+<div>Dietlein F, Weghorn D, Taylor-Weiner A, Richters A, et al. Identification of cancer driver genes based on nucleotide context. Under review. (preprint available on biorxiv)</div>
+<p> </p>
+<h2>License</h2>
+<p>Distributed under the BSD-3<a href="https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt">-</a>Clause<a href="https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt"> </a>open<a href="https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt"> </a>source<a href="https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt"> </a>license.  A copy of the license text is available at <a href="https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt">https://github.com/genepattern/docker-mutpanning/blob/develop/LICENSE.txt</a></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mutation file*</td>
+<td>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;">The <strong>mutation file</strong>  should be a tab-delimited standard *.maf format and contain the following columns: <strong>Hugo_Symbol</strong> (gene name), <strong>Chromosome</strong>, <strong>Start_Position</strong> (<wbr/>according to Hg19), <strong>End_Position</strong> (according to Hg19), <strong>Strand</strong> (1 or -1), <strong>Variant_Classification</strong> <wbr/>(e.g. Missense_Mutation, Nonsense_Mutation, In_Frame_Del, Silent, etc.), <strong>Variant_Type</strong> (e.g. SNP, DEL, INS, etc.), <strong>Reference_Allele</strong> (reference nucleotide in Hg19), <strong>Tumor_Seq_Allele1</strong> (<wbr/>allele A in tumor), <strong>Tumor_Seq_Allele2</strong> (allele B in tumor), <strong>Tumor_Sample_Barcode</strong>.  Names in column <strong>Tumor_Sample_Barcode</strong> should exactly match the names in the sample file (case-sensitive). If you are unsure about the file format, you can download an example <a href="http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf">here</a>. Make sure that <strong>Variant_Classification</strong> and <strong>Variant_Type</strong> are annotated by exactly the same terms/names as in the exemplary mutation file (case-sensitive, hyphenation, underscores, etc.)</span></p>
+</td>
+</tr>
+<tr>
+<td>sample annotation file*</td>
+<td>
+<p><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The <strong>sample annotation file</strong> should be a tab-delimited *.txt file that contains at least two columns labeled <strong>Sample</strong> and <strong>Cohort</strong>. The Sample column contains unique sample name for each sample in the maf file. No duplicates allowed, all samples in the mutation file must be listed in the sample file. The cohort column contains the subcohort (e.g. cancer type) to which the sample belongs (case-sensitive). If you are unsure about the file format, you can download an exemplary sample file </span><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;"><a href="http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt">here</a>.</span></span></p>
+</td>
+</tr>
+<tr>
+<td>min samples per cluster*</td>
+<td>Minimum number of samples needed per nucleotide context cluster. Unless you are familiar with the MutPanning algorithm, we recommend running MutPanning with standard parameters (default value 3).</td>
+</tr>
+<tr>
+<td>min mutations per cluster*</td>
+<td>Minimum number of mutations needed per nucleotide context cluster. Unless you are familiar with the MutPanning algorithm, we recommend running MutPanning with standard parameters (default value 1000).</td>
+</tr>
+<tr>
+<td>min samples Bayesian model*</td>
+<td>Minimum number of samples needed to calibrate the Bayesian background model. Unless you are familiar with the MutPanning algorithm, we recommend running MutPanning with standard parameters (default value 100).</td>
+</tr>
+<tr>
+<td>min mutations Bayesian model*</td>
+<td>Minimum number of mutations needed to calibrate the Bayesian background model. Unless you are familiar with the MutPanning algorithm, we recommend running MutPanning with standard parameters (default value 5000).* - required</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>
+<p><strong>mutation file </strong>(<a href="http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf">example mutation file</a>)</p>
+<p><span style="font-size:14px;"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">This file lists the positions of all somatic mutations in your cohort. This file should follow the standard mutation annotation format. Several mutation callers (e.g. MuTect) report their somatic mutations in this file format. Each row corresponds to an individual mutation, which is annotated by the following colums.</span></span><br style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"/>
+	 </p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Hugo_Symbol</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The nomenclature of the symbol in Hugo nomenclature (</span><a data-saferedirecturl="https://www.google.com/url?q=http://genenames.org&amp;source=gmail&amp;ust=1566591971005000&amp;usg=AFQjCNHPUkO6aecP0bXcNyCfoNvkJV-qGg" href="http://genenames.org/" style="color: rgb(17, 85, 204); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);" target="_blank">genenames.org</a><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">).</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Chromosome</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The chromosome, on which the mutation was found. Please use X and Y for the sex chromosomes and not 23 and 24.</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Start_Position</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The start position of the mutation (Hg19).</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">End_Position</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The end position of the mutation (Hg19).</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Strand</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The strand on which the mutation was detected (both 1/-1 or +/- nomenclature are fine).</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Variant_Classification</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><wbr style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"/><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The functional class of the mutation (e.g. Silent, Missense_Mutations etc.). Please use the standard nomenclature used in MAF files. If you are unsure about the file format, please see the exemplary files below.</span></p>
+<p><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;"><strong>Variant_Type</strong> The type of the mutation, such as single base substitution (SNP), insersions (INS) or deletions (DEL). Please use the standard nomenclature used in MAF files. If you are unsure about the file format, please see the exemplary files below.</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Reference_Allele</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The nucleotide expected in the Hg19 reference genome. Please note that if this mutation does not with the in the Hg19 genome, this mutation is ignored.</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Tumor_Seq_Allele1</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The alternative nucleotide 1 found in the reads. </span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Tumor_Seq_Allele2</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">The alternative nucleotide 2 found in the reads. Typically, either of these nucleotides is the reference allele (allele A), whereas the other column contains the alternative read (allele B). Different callers handle differently how they assign these columns. MutPanning will first look in Tumor_Seq_Allele1 whether this equals the reference allele. If so, will take the change in the second Tumor_Seq_Allele column as alternative read.</span></p>
+<p><strong><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Tumor_Sample_Barcode</span></strong><b style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"> </b><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">Th</span><wbr style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"/><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif;">e name of the tumor sample. These identifies have to be unique and be exactly the same as in the sample annotation file (case-sensitive).</span></p>
+<p> </p>
+</li>
+<li>
+<p><strong>sample.annotation.file </strong>(<a href="http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt">example sample annotation file</a>)</p>
+<p>This file organizes samples into subcohorts, e.g. cancer types. Samples in each subcohort are analyzed together for mutational significance. Each row in this file corresponds to an individual sample, which is annotated by the following columns.</p>
+<p><strong>Sample</strong> The same sample identifier as used in the mutation annotation file (case-sensitive). Note that these sample identifiers must be unique. Avoid special characters.</p>
+<p><strong>Cohort</strong> The cohort name, in which the samples should be analyzed together for significance. This is typically the cancer type, but you can also group your samples by other criteria (e.g., subtypes of cancer types or combine different cancer types together).</p>
+</li>
+</ol>
+<p> </p>
+<h2>Output Files</h2>
+<ol>
+<li>
+<p><strong>MutPanning.zip</strong></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;">The output of MutPanning is a zipped folder, which contains a mutational significance report for each subcohort (e.g. cancer type). If the cohort size is too small to calibrate the Bayesian background model (typically for cancer types with a very low background mutation rate, cf. parameters), the folder contains two analysis reports, based on the Bayesian model and a uniform background model. </span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;">Each significance report is a tab-delimited txt file, which lists genes in descending order according to their mutational significance. Each row corresponds to an individual gene, which is annotated by the following columns:</span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>Name</b><span style="white-space: pre-wrap;"><b> </b>Gene name</span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>TargetSize</b><b style="white-space: pre-wrap;"> </b><span style="white-space: pre-wrap;">The nonsynonymous target size of the gene corrected for nucleotide context bias (sum of likelihood coefficients of nonsynonymous positions). </span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>TargetSizeSyn<span style="white-space: pre-wrap;"> </span></b><span style="white-space: pre-wrap;">The synonymous target size of the gene corrected for nucleotide context bias (sum of likelihood coefficients of synonymous positions).</span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>Count</b><span style="white-space: pre-wrap;"><b> </b>Number of nonsynonymous mutations </span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>CountSyn</b><span style="white-space: pre-wrap;"><b> </b>Number of synonymous mutations</span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>Significance</b><b style="white-space: pre-wrap;"> </b><span style="white-space: pre-wrap;">Mutational significance of the gene according to MutPanning. This p-value considers the excess of nonsynonymous mutations, the increased number of mutations in unusual nucleotide contexts, as well as insertions and deletions.</span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><span style="font-size:14px;"><b>FDR </b>The MutPanning p-value corrected for multiple hypothesis testing (q-value, Benjamini-Hochberg procedure).</span></p>
+</li>
+</ol>
+<h2>Example Data</h2>
+<p><br/>
+If you are unsure about the file formats, you can download exemplary the following exemplary files:<br/>
+    <a href="http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt">Sample File</a><br/>
+    <a href="http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf">Mutation File</a></p>
+<p> </p>
+<h2>Requirements</h2>
+<div>MutPanning can be completely run as an module on GenePattern. Alternatively, it can be run locally on MacOS and Windows computers (8GB memory, 2 GHz CPU, 2 cores, 400MB free disk space required).</div>
+<div> </div>
+<p> </p>
+<p> </p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Tutorial</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					Any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					Docker</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java, Python</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2019-08-27</td>
+<td>Changing version number to 2.0 so that module and algorithm version numbers align</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

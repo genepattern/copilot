@@ -1,0 +1,63 @@
+ExtractFCSDataset is on version 2.
+A description of ExtractFCSDataset is Extracts one or more Flow Cytometry Standard (FCS) data sets from an FCS data file. Typically, there is only one data set per data file. However, in certain cases, there may be more than one data set in an FCS data file. This module extracts one or more data sets from a data file and stores them in one or more FCS data files so that there is one data set per data file..
+ExtractFCSDataset is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca).
+ExtractFCSDataset can be categorized as Flow Cytometry.
+ExtractFCSDataset has the following parameters: Input data file, Output file name, Dataset indexes.
+The ExtractFCSDataset module allows extraction of individual datasets from complex Flow Cytometry Standard (FCS) files.
+The ExtractFCSDataset module helps researchers separate multiple datasets contained within a single FCS file.
+Flow cytometry researchers can use ExtractFCSDataset to prepare data for analysis when standard software cannot handle multi-dataset FCS files.
+The ExtractFCSDataset module supports specifying exact dataset indexes for extraction using comma and hyphen-separated notation.
+By default, the ExtractFCSDataset module will extract all datasets if no specific indexes are provided.
+The ExtractFCSDataset module generates new FCS files with single datasets, ensuring compatibility with downstream analysis tools.
+ExtractFCSDataset can handle large files with up to 1,000,000 events and 24 parameters in a single extraction process.
+Researchers using the ExtractFCSDataset module should ensure their input files are list mode datasets for successful extraction.
+The ExtractFCSDataset module is particularly useful in flow cytometry research where data preprocessing is critical for accurate analysis.
+The module automatically generates output filenames based on the input file, adding dataset index information for easy tracking.
+ExtractFCSDataset supports flexible dataset selection through its index specification system, allowing precise data extraction.
+Bioinformaticians can integrate the ExtractFCSDataset module into larger data processing pipelines for flow cytometry research.
+Input data file:
+- Type: File
+- Description: ExtractFCSDataset module requires an input FCS data file containing one or more flow cytometry datasets
+- Required: Yes
+- Default: None
+Output file name:
+- Type: String
+- Description: ExtractFCSDataset module generates output filename for extracted dataset
+- Description: Uses input filename as default, appends dataset index
+- Required: No
+- Default: Input filename with _datasetIndex appended
+Dataset indexes:
+- Type: String/List
+- Description: ExtractFCSDataset module specifies which datasets to extract from input file
+- Description: First dataset has index 1, second dataset index 2
+- Description: Supports comma and hyphen separated index ranges
+- Description: Example format "1,6-9,3,12-15" extracts multiple specific datasets
+- Description: Extracts all datasets if no indexes provided
+- Required: No
+- Default: All datasets
+ExtractFCSDataset module requires valid list mode datasets
+ExtractFCSDataset module reports error for non-existent or invalid datasets
+ExtractFCSDataset module generates separate output files for each extracted dataset
+ExtractFCSDataset module supports flexible dataset extraction specifications
+ExtractFCSDataset module works across different platforms and Java environments
+Here are the input and output file descriptions for the ExtractFCSDataset module:
+Input FCS data file is a Flow Cytometry Standard (FCS) file containing one or more flow cytometry datasets with event measurements.
+Input FCS file contains multiple parameters representing cellular measurements like fluorescence intensity, scatter properties, and other flow cytometry experimental data.
+Input FCS file can store multiple datasets within a single file, with each dataset representing a distinct experimental measurement or population.
+Input FCS file follows the FCS 3.1 file standard specification for flow cytometry data representation.
+Output FCS files are individual files extracted from the original input FCS file, with each file containing a single dataset.
+Output FCS files are named using the original input filename with an appended dataset index (e.g., name_datasetIndex.fcs).
+Output FCS files preserve the original data structure and parameters of the extracted dataset from the input file.
+Output FCS files ensure compatibility with flow cytometry analysis tools that require single-dataset files.
+Output FCS files can be generated for specific dataset indexes specified by the user or for all datasets in the input file.
+ExtractFCSDataset is a specialized module for extracting individual datasets from Flow Cytometry Standard (FCS) files.
+The ExtractFCSDataset module helps researchers separate multiple datasets within a single FCS file.
+This module allows extraction of specific datasets from an FCS file by specifying their index numbers.
+The module supports extracting datasets using a flexible indexing system, such as "1,6-9,3,12-15" to select multiple non-contiguous datasets.
+ExtractFCSDataset is designed to work with FCS 3.1 file standard, enabling compatibility with flow cytometry data analysis workflows.
+The module can handle large datasets, with estimated memory usage of 1.7 GB for files with up to 1,000,000 events and 24 parameters.
+ExtractFCSDataset ensures that each output file contains only one list mode dataset, improving compatibility with other flow cytometry analysis tools.
+The module is platform-independent, running on any CPU and operating system with Java 1.6 or higher installed.
+Users can extract all datasets from an FCS file if no specific indexes are provided.
+An error will be generated if a specified dataset cannot be found or is not a valid list mode dataset.
+The default output filename is derived from the input file, with dataset index appended (e.g., name_datasetIndex.fcs).

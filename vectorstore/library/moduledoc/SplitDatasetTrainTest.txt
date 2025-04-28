@@ -1,0 +1,46 @@
+SplitDatasetTrainTest is on version .
+A description of SplitDatasetTrainTest is Partitions a dataset into one or more train/test sets. The partitioning is done using either a percentage split or cross-validation approach. The percentage split option splits a dataset according to the specified percentage into a train and a test file. The cross-validation method partitions the samples into k-folds partitions. Each of the k-folds partitions are used as the test dataset and the remaining k-1 folds are used as the train dataset. If the option to stratify the splits is selected the class template is used in order to split the different classes evenly between a train/test set..
+SplitDatasetTrainTest is a GenePattern module written by Stefano Monti (Broad Institute), Marc-Danie Nazaire (Broad Institute), gp-help@broad.mit.edu.
+SplitDatasetTrainTest can be categorized as Preprocess & Utilities.
+SplitDatasetTrainTest has the following parameters: input.dataset.file, cls.file, split.method, stratified, folds, percentage.split.proportion, seed, output.prefix.
+The SplitDatasetTrainTest GenePattern module is a crucial tool for preparing machine learning datasets in bioinformatics research.
+The SplitDatasetTrainTest module allows researchers to divide biological datasets into training and testing subsets for predictive modeling.
+When using percentage split mode, SplitDatasetTrainTest can allocate a specific proportion of data (e.g., 70% training, 30% testing) for machine learning experiments.
+The cross-validation approach in SplitDatasetTrainTest enables researchers to create multiple train/test splits, which helps assess model performance and generalizability.
+SplitDatasetTrainTest supports stratified splitting, ensuring that class distributions remain consistent across training and testing datasets.
+The module can handle different file formats like .gct and .res, making it versatile for various genomic and transcriptomic datasets.
+Researchers can control the randomization of dataset splits in SplitDatasetTrainTest by setting a specific random seed for reproducibility.
+SplitDatasetTrainTest generates multiple output files with a user-defined prefix, allowing easy tracking and management of different dataset splits.
+The module is particularly useful in cancer classification, gene expression analysis, and other machine learning applications in computational biology.
+By providing flexible splitting options, SplitDatasetTrainTest helps researchers create robust training and testing datasets for predictive modeling.
+input.dataset.file | File | SplitDatasetTrainTest module requires an input dataset file in .gct or .res format | Required | No default
+cls.file | File | Class template file in .cls format used for stratification | Optional | No default
+split.method | String | Determines whether dataset is split using percentage split or cross-validation approach | Required | No default
+stratified | Boolean | Indicates whether splits should be created while maintaining class distribution | Optional | Default is false
+folds | Integer | Number of train/test fold partitions to generate when using cross-validation | Conditional | Default is 2 when cross-validation selected
+percentage.split.proportion | Float | Proportion of data allocated to training set when using percentage split method | Conditional | Default is 0.8
+seed | Integer | Random number generator seed for reproducible dataset splitting | Optional | Default is system-generated random seed
+output.prefix | String | Prefix used for naming generated train/test dataset files | Required | No default
+SplitDatasetTrainTest module input dataset file is a gene expression matrix in .gct or .res format containing numerical expression values for genes and samples.
+SplitDatasetTrainTest module class template file is a .cls file specifying the class labels for each sample in the input dataset.
+SplitDatasetTrainTest module supports percentage split method to divide dataset into train and test subsets based on a specified proportion.
+SplitDatasetTrainTest module supports cross-validation method to generate multiple train/test splits by partitioning data into k-folds.
+SplitDatasetTrainTest module can perform stratified splitting to ensure balanced class representation across train and test sets.
+SplitDatasetTrainTest module generates output train and test files with naming convention output.prefix.{trn,tst}.n.{gct|res,cls}.
+SplitDatasetTrainTest module allows setting a random seed to ensure reproducible data splitting.
+SplitDatasetTrainTest module output files maintain the same format as the input dataset (.gct or .res) and class template (.cls).
+SplitDatasetTrainTest module can generate multiple train/test splits based on the number of folds specified.
+SplitDatasetTrainTest module preserves the original data structure and gene/sample identifiers in the output files.
+SplitDatasetTrainTest is a GenePattern module designed to partition biological datasets into training and testing subsets for machine learning analysis.
+The SplitDatasetTrainTest module allows researchers to divide their genomic or transcriptomic data into separate training and testing sets.
+The module supports two primary splitting strategies: percentage-based splitting and cross-validation splitting.
+In percentage-based splitting, users can specify what proportion of their dataset should be allocated to training versus testing.
+Cross-validation splitting divides the dataset into k-folds, where each fold can serve as a test set while the remaining folds become the training set.
+The module offers a stratification option that ensures class distributions remain consistent across training and testing subsets.
+The stratification feature is particularly useful for maintaining balanced representation of different biological classes during dataset partitioning.
+Users can specify a random seed to ensure reproducibility of the dataset splitting process.
+The module generates output files with a user-defined prefix, creating multiple train and test datasets for different splits.
+The SplitDatasetTrainTest module supports both .gct and .res file formats for input datasets.
+A corresponding .cls file containing class labels is required to perform stratified splitting.
+The module is implemented in R and can run on any computational platform, making it widely accessible for genomic research.
+The output files are named systematically, with each split indexed numerically for easy tracking and analysis.

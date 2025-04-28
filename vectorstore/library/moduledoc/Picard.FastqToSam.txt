@@ -1,0 +1,47 @@
+Picard.FastqToSam is on version 2.
+A description of Picard.FastqToSam is Converts a FASTQ file to a SAM or BAM file. This module implements the FastqToSam function from Picard. It can convert a single FASTQ file or two FASTQ files for paired-end reads, creating a SAM or BAM file with optional read group information..
+Picard.FastqToSam is a GenePattern module written by Picard team.
+Picard.FastqToSam can be categorized as Data Format Conversion.
+Picard.FastqToSam has the following parameters: fastq file, fastq file 2, quality format, read group name, sample name, library name, platform unit, platform, sort order, output format, output file.
+The Picard.FastqToSam module is a critical bioinformatics tool for converting raw sequencing data from FASTQ format to SAM/BAM format.
+The Picard.FastqToSam module allows researchers to transform unaligned sequencing reads into a standardized file format for downstream genomic analysis.
+Picard.FastqToSam supports both single-end and paired-end sequencing data conversion, providing flexibility for different experimental designs.
+The module can handle various quality encoding formats including Solexa, Illumina, and Standard, accommodating different sequencing platform outputs.
+Picard.FastqToSam enables researchers to add critical metadata like sample name, library name, and platform information during the file conversion process.
+The module allows users to specify output file format as either SAM (text-based) or BAM (binary), with BAM being the default and more storage-efficient option.
+Picard.FastqToSam is particularly useful in genomic preprocessing workflows, serving as an essential initial step before alignment, variant calling, or other downstream analyses.
+The module supports compressed FASTQ files, allowing direct processing of gzipped sequencing data without prior decompression.
+Picard.FastqToSam helps standardize sequencing data by converting raw reads into a format compatible with most bioinformatics analysis tools and pipelines.
+The module is platform-independent, running on any operating system with Java 1.6 or higher, making it widely accessible to researchers.
+fastq_file: String, Required input FASTQ file for single-end or first read in paired-end sequencing in Picard.FastqToSam module.
+fastq_file_2: String, Optional input FASTQ file for second read in paired-end sequencing in Picard.FastqToSam module.
+quality_format: String, Required parameter specifying quality value encoding in FASTQ file, with options Solexa, Illumina, Standard, defaulting to Standard in Picard.FastqToSam module.
+read_group_name: String, Optional parameter for specifying read group name in Picard.FastqToSam module.
+sample_name: String, Required parameter for inserting sample name into read group header in Picard.FastqToSam module.
+library_name: String, Optional parameter for inserting library name into LB attribute in read group header in Picard.FastqToSam module.
+platform_unit: String, Optional parameter for inserting platform unit (often run_barcode.lane) into read group header in Picard.FastqToSam module.
+platform: String, Optional parameter for specifying platform type (e.g., Illumina, SOLiD) in read group header in Picard.FastqToSam module.
+sort_order: String, Required parameter for specifying output SAM or BAM file sort order, defaulting to coordinate in Picard.FastqToSam module.
+output_format: String, Required parameter for specifying output file format (SAM or BAM), defaulting to BAM in Picard.FastqToSam module.
+output_file: String, Required parameter for specifying output file name prefix in Picard.FastqToSam module.
+Picard.FastqToSam module input file: FASTQ file containing raw sequencing reads with DNA sequence and quality scores.
+Picard.FastqToSam module input file: Optional second FASTQ file for paired-end sequencing reads.
+Picard.FastqToSam module input file: Quality format specification (Solexa, Illumina, or Standard) describing how quality scores are encoded.
+Picard.FastqToSam module output file: SAM or BAM file containing converted sequencing read data with read group and metadata information.
+Picard.FastqToSam module input parameter: Read group name for identifying sequencing run metadata.
+Picard.FastqToSam module input parameter: Sample name to be inserted into read group header.
+Picard.FastqToSam module input parameter: Library name to be inserted into read group header.
+Picard.FastqToSam module input parameter: Platform unit (run barcode and lane) to be inserted into read group header.
+Picard.FastqToSam module input parameter: Platform type (e.g., Illumina) to be inserted into read group header.
+Picard.FastqToSam module input parameter: Sort order specification for output file (default is coordinate sorting).
+Picard.FastqToSam module input parameter: Output file format selection (SAM or BAM).
+Picard.FastqToSam is a data format conversion module that transforms raw sequencing data from FASTQ to SAM or BAM format.
+The Picard.FastqToSam module converts single-end or paired-end FASTQ sequencing files into standardized alignment files.
+This module supports multiple quality encoding formats including Solexa, Illumina, and Standard quality scoring systems.
+Picard.FastqToSam allows users to specify critical metadata like sample name, library name, platform type, and read group information during file conversion.
+The module can output files in either SAM (text) or BAM (binary) formats, with coordinate sorting as the default option.
+Picard.FastqToSam requires Java version 1.6 or higher and is compatible with any operating system and CPU architecture.
+The module handles both compressed (gzipped) and uncompressed FASTQ input files for maximum flexibility.
+Picard.FastqToSam is essential for preparing raw sequencing data for downstream bioinformatics analysis like alignment, variant calling, and genome reconstruction.
+The module enables researchers to standardize sequencing data by adding critical metadata and converting between different file formats.
+Picard.FastqToSam supports paired-end sequencing data by allowing input of two separate FASTQ files representing forward and reverse reads.

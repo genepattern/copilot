@@ -1,0 +1,74 @@
+MetageneProjection is on version .
+A description of MetageneProjection is Project one or more data sets onto the metagene representation of another data set, using the metagene projection methodology described by Tamayo et al (2007). A major challenge in interpreting DNA microarray data is the noise inherent in analyzing tens of thousands of genes across a small number of samples. This module helps address this by describing genes in terms of a small number of metagenes, reducing noise and emphasizing relevant biological correlations..
+MetageneProjection is a GenePattern module written by Pablo Tamayo (Broad Institute) tamayo@broadinstitute.org, with contributions from Marc-Danie Nazaire, gp-help@broadinstitute.org.
+MetageneProjection can be categorized as Projection, Gene Expression, Microarray Analysis.
+MetageneProjection has the following parameters: model gct file, model cls file, model preprocessing file, test gct file, test cls file, test preprocessing file, num characters, identifier, k projection, algorithm, number of iterations, seed, post projection normalization, heatmap row norm, heatmap color scheme, confidence threshold, phenotype plotting colors, phenotype plotting symbols, symbol scaling, kernel, cost, gamma, theta, lambda, model set refinement.
+The MetageneProjection module helps reduce noise in microarray data by transforming complex gene expression datasets into a simplified representation called metagenes.
+The MetageneProjection module uses non-negative matrix factorization (NMF) to compress gene expression data into a smaller number of representative patterns called metagenes.
+By reducing tens of thousands of genes to a few metagenes, researchers can more easily compare gene expression patterns across different datasets, platforms, and even species.
+The MetageneProjection module allows cross-platform and cross-species analysis by projecting gene expression data into a lower-dimensional space defined by metagenes.
+Metagene projection helps researchers identify robust, invariant expression patterns that might be obscured by noise in traditional gene-by-gene analyses.
+The module generates several output visualizations, including heat maps, 2D biplots, and hierarchical trees that help researchers understand the relationships between samples and metagenes.
+MetageneProjection can be used to compare gene expression patterns across different biological conditions, such as comparing leukemia subtypes or different stages of disease progression.
+The module requires both a model dataset and optional test datasets, with each dataset consisting of a gene expression file (.gct) and a phenotype file (.cls).
+Researchers can adjust parameters like the number of metagenes, normalization methods, and projection algorithms to customize the analysis for their specific research questions.
+The MetageneProjection module supports multiple matrix factorization algorithms, including Non-Negative Matrix Factorization (NMF), Sparse NMF, and Principal Component Analysis (PCA).
+By using support vector machine (SVM) classification, the module can help refine the model dataset and potentially identify outliers in the gene expression data.
+The module is particularly useful for analyzing small sample sizes with high-dimensional data, a common challenge in genomics and molecular biology research.
+Here's the detailed parameter description for the MetageneProjection module:
+model gct file: File type (.gct), contains gene expression data for the model dataset, required for metagene projection analysis
+model cls file: File type (.cls), contains phenotype class information for the model dataset, required for defining sample groups
+model preprocessing file: Text file specifying preprocessing parameters for the model dataset, helps standardize data before projection
+test gct file: File type (.gct), contains gene expression data for test datasets, optional parameter for comparative analysis
+test cls file: File type (.cls), contains phenotype class information for test datasets, optional parameter for comparative analysis
+test preprocessing file: Text file specifying preprocessing parameters for test datasets, ensures consistent data processing
+num characters: Integer parameter controlling phenotype label length for classification prediction, default is 9 characters
+identifier: Text string to prefix output file names, helps organize and distinguish analysis results
+k projection: Integer specifying number of metagenes to generate, default is 3, determines dimensionality reduction
+algorithm: Selection of matrix factorization method for metagene projection, default is Non-Negative Matrix Factorization with divergence
+number of iterations: Integer defining computational iterations for matrix factorization, default is 2000
+seed: Integer for random number generation, ensures reproducibility of results, default is 1234
+post projection normalization: Boolean parameter to scale projected data points, default is yes
+heatmap row norm: Boolean parameter to standardize heatmap rows, default is no
+heatmap color scheme: Selection of color palette for visualization, default is reddish color map
+confidence threshold: Numeric value determining classification confidence, default is 0.3
+phenotype plotting colors: Text file mapping colors to sample groups for visualization
+phenotype plotting symbols: Text file mapping symbols to sample groups for visualization
+symbol scaling: Numeric parameter adjusting symbol size in plots, default is 1
+kernel: String parameter selecting SVM kernel function, default is "radial"
+cost: Numeric parameter for SVM classification, default is 1
+gamma: Numeric parameter for radial basis function kernel, default is 0.05
+theta: Smoothing parameter for non-smooth NMF algorithm, default is 0
+lambda: Sparsity parameter for sparse NMF algorithm, default is 0
+model set refinement: Boolean parameter to use SVM for outlier removal, default is yes
+Here are the input and output files for the MetageneProjection module:
+Input Files:
+Model .gct file contains gene expression data for the reference dataset
+Model .cls file contains phenotype/class labels for the model dataset
+Test .gct file contains gene expression data for test/comparison datasets
+Test .cls file contains phenotype/class labels for test datasets
+Preprocessing parameter file defines data preprocessing settings for model and test datasets
+Output Files:
+*.model.H.gct contains metagene-by-sample matrix representing metagene expression levels
+*.model.W.gct contains gene-by-metagene matrix describing gene contributions to metagenes
+*.all.H.gct contains projected metagene expression levels for all model and test samples
+*.all.H.cls contains merged phenotype labels for all samples
+*.heatmap.jpeg visualizes metagene expression levels as a heat map
+*.2D.proj.jpeg creates a 2D biplot of projected data
+*.htree.jpeg generates a hierarchical clustering tree of projected data
+*.pred.gct contains SVM classification prediction results
+*.pred.txt provides detailed SVM prediction results
+*.H.mem.txt lists sample assignments to metagene clusters
+Here are the chunks for the MetageneProjection module documentation:
+The MetageneProjection module addresses noise challenges in microarray data analysis by reducing gene expression data to a smaller set of metagenes.
+Metagenes represent major, invariant expression patterns across a large number of genes, reducing noise and emphasizing biological correlations.
+The module uses non-negative matrix factorization (NMF) to project gene expression data onto a small number of metagenes, as described by Tamayo et al (2007).
+Metagene projection allows for cross-platform and cross-species analysis by comparing data sets in a lower-dimensional, more robust metagene space.
+The module requires a model data set and optionally one or more test data sets, each consisting of a gene expression (.gct) file and a phenotype class (.cls) file.
+Gene names or probe identifiers must be common across model and test data sets to enable matching and analysis.
+The MetageneProjection module generates multiple output files, including matrices describing metagene contributions and expression levels, heat maps, biplots, and hierarchical trees.
+The module can project data using different algorithms, including Non-Negative Matrix Factorization (NMF), Non-smooth NMF, Sparse NMF, and Principal Component Analysis (PCA).
+Users can customize preprocessing parameters, normalization methods, and visualization options like color schemes and symbol scaling.
+The module includes support vector machine (SVM) classification to refine the model data set and predict phenotype classifications based on metagene expression.
+Researchers can use the output files to explore gene expression patterns, identify correlations between samples, and potentially discover new biological insights.
+The MetageneProjection method is particularly useful for analyzing small sample sizes across complex biological datasets with high gene expression variability.

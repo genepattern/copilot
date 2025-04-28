@@ -1,0 +1,182 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>Read_group_trackingToGct (v1) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/Read_group_trackingToGct/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Converts a Cufflinks read_group_tracking file into GCT format </p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>David Eby, Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Introduction</h2>
+<p>This module will convert files in the Cufflinks <em>read_group_tracking</em> format into GenePattern's GCT format for use in downstream modules.</p>
+<p>The Cuffdiff module performs a quantification step as a precursor to running its differential expression calculations.  This provides independent FPKM and other quantification values for each replicate of each condition in the dataset, which are thus suitable as input to existing GenePattern modules for analysis and visualization such as ConsensusClustering, NMFConsensus, and so on.  Cuffdiff stores these in several <em>read_group_tracking</em> files at the level of genes, isoforms, transcription start sites (tss_group), and coding sequences (cds), each named appropriately for the feature information it holds.</p>
+<h2>Usage</h2>
+<p>The module will extract FPKM values by default, but it can also extract any of the other available types of quantification values as well:</p>
+<ul>
+<li>raw_frags:  The estimate number of (unscaled) fragments originating from the object in this replicate</li>
+<li>internal_scaled_frags:  Estimated number of fragments originating from the object, after transforming to the internal common count scale (for comparison between replicates of this condition.)</li>
+<li>external_scaled_frags:  Estimated number of fragments originating from the object, after transforming to the external common count scale (for comparison between conditions)</li>
+<li>FPKM (the default):  FPKM of this object in this replicate</li>
+</ul>
+<p>Within the <em>read_group_tracking</em> file, Cuffdiff gives a status for the quantification calculation result per tracking ID and replicate:</p>
+<ul>
+<li>OK:  deconvolution successful</li>
+<li>LOWDATA:  too complex or shallowly sequenced</li>
+<li>HIDATA:  too many fragments in locus</li>
+<li>FAIL:  when an ill-conditioned covariance matrix or other numerical exception prevents deconvolution</li>
+</ul>
+<p>In practical terms, any value associated with a non-OK status represents a quantification error and so will be either screened out of the resulting GCT or else replaced with an "NA".  The default is to screen as most downstream modules cannot handle "NA" values.  <strong>Note that doing so requires that all values for the entire feature be screened - even those with OK status - rather than just those for affected replicates.</strong></p>
+<p>See <a href="http://cufflinks.cbcb.umd.edu/manual.html#read_group_tracking_format">this section of the Cufflinks manual</a> for a full explanation of the <em>read_group_tracking</em> format, which is the source of the above description.</p>
+<h3>GTF Name Mapping</h3>
+<p>Depending on your prior workflow, your read_group_tracking files may contain internal Cufflinks tracking_id references rather than gene symbols; this is particularly the case if you used the merged.gtf file from Cuffmerge as an input to Cuffdiff.  These tracking_ids refer to entries in the GTF file supplied to Cuffdiff and will take the form of XLOC_00001 for genes, TCONS_00000001 for isoforms, TSS1 for tss references, and P1 for cds references.  Each line of the GTF will contain several named attributes that show the tracking_ids associated with that particular feature.  While you can open your GTF to look up these references, you may find it more convenient to have them mapped to gene symbols in the GCT so that these are available in any downstream processing.  </p>
+<p>The module can optionally perform this mapping for you.  To do so, you must supply it with the <strong>same GTF</strong> used in running Cuffdiff and tell it the feature level - gene, isoform, tss, cds - of the read_group_tracking file to be converted.  The feature-level selection controls how the module will look up tracking_ids in the GTF and which column to use when writing them to the GCT.  By default, it behaves like this:</p>
+<ul>
+<li>At the <strong>gene level</strong>: the <strong>gene_id</strong> attribute is used to look up tracking_ids, and the corresponding <strong>gene_name</strong> will be used in the GCT Name column.  The Description column is left blank.</li>
+<li>At the <strong>isoform level</strong>: the <strong>transcript</strong><strong>_id</strong> attribute is used to look up tracking_ids, and the corresponding <strong>gene_name</strong> will be used in the GCT Description column.  The Name column will hold the tracking_id value.</li>
+<li>At the <strong>tss level</strong>: the <strong>tss</strong><strong>_id</strong> attribute is used to look up tracking_ids, and the corresponding <strong>gene_name</strong> will be used in the GCT Description column.  The Name column will hold the tracking_id value.</li>
+<li>At the <strong>cds level</strong>: the <strong>p</strong><strong>_id</strong> attribute is used to look up tracking_ids, and the corresponding <strong>gene_name</strong> will be used in the GCT Description column.  The Name column will hold the tracking_id value.</li>
+</ul>
+<p>By default, the GCT columns are chosen this way because of the way tracking_ids generally map to the corresponding features.  At the gene level, a single tracking_id will correspond to one gene (with a few possible exceptions discussed below) and so it is generally safe to use the gene symbol in place of the tracking_id in the GCT.  At the other feature levels, multiple tracking_ids may correspond to the same gene and so it is not possible to use these as the Name as it must be unique in the GCT; thus the tracking_id is used as the GCT Name and the gene symbol is given as the Description.  You can use the <em>choose gct column for mapping</em> parameter to override this choice.</p>
+<p>Note that it is possible for the GTF to map a tracking_id to either no gene symbol at all or, alternatively, to multiple gene symbols.  In either of these cases, the module will perform no mapping and instead will use the tracking_id in the GCT Name column with a blank Description.  The module will also list these in the summary report, either as counts or with details (controlled by the <em>report naming conflict details</em> parameter).  </p>
+<p>If no matching gene symbol was found it may indicate a novel feature, while if multiple matching gene symbols were found it may indicate overlapping features in the annotation.  To investigate these further, we recommend that you look them up in the GTF for more information.  For a given gene_id, multiple features may be present, including protein-coding sequence, ncRNAs, etc.  These features may be differentiated through the associated gene_name or nearest_ref attributes, and it may be useful to trace these back to the reference annotation supplied to Cuffmerge.  Also consider continuing analyses at a more detailed feature level to differentiate expression of these features.</p>
+<p>You can use the <em>override attribute name for lookup</em> and <em>override attribute name for retrieval</em> if you have special mapping requirements or non-standard attributes in the GTF.  To use these, both must be supplied and should contain the attribute name exactly as it appears in the GTF.  For example, you could map transcription start sites to the nearest feature reference by setting these to <strong>tss_id</strong> and <strong>nearest_ref</strong>, respectively, assuming that the latter is present in your GTF and you are using a tss-level read_group_tracking file.</p>
+<p>Note that all parameters described in this section are ignored if no GTF file is supplied.</p>
+<h2>References</h2>
+<p>Cufflinks <a href="http://cufflinks.cbcb.umd.edu/">website</a> and <a href="http://cufflinks.cbcb.umd.edu/manual.html">manual</a>, particularly <a href="http://cufflinks.cbcb.umd.edu/manual.html#read_group_tracking_format">this section</a>.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped" id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file <span style="color:red;">*</span></td>
+<td>The read_group_tracking file to be converted into GCT format.</td>
+</tr>
+<tr>
+<td>output file name <span style="color:red;">*</span></td>
+<td>The name to be given to the GCT output file.</td>
+</tr>
+<tr>
+<td>expression value column <span style="color:red;">*</span></td>
+<td>The column to use for extracting expression values.</td>
+</tr>
+<tr>
+<td>screen out errors <span style="color:red;">*</span></td>
+<td>Set to 'yes' to exclude from the GCT file any feature having at least one non-OK quantification status across all of the sequenced samples.</td>
+</tr>
+<tr>
+<td>output value for errors <span style="color: red;">*</span></td>
+<td>This parameter controls what expression value to write to a GCT file in those cases where a feature's expression estimate carries a non-OK quantification status.  The parameter is only relevant to your final GCT when 'screen out errors' is set to 'no'.  We strongly recommend treating these as missing values (select 'NA' or 'blank').</td>
+</tr>
+<tr>
+<td>gtf file</td>
+<td>An optional GTF file.  If provided, this should be the same file that you provided to Cuffdiff. You can use this to map tracking IDs in the read_group_tracking file to gene symbols for output in the GCT.  Make sure that you set the feature level to match your read_group_tracking file.</td>
+</tr>
+<tr>
+<td>feature level for symbol lookup <span style="color: red;">*</span></td>
+<td>Select the feature level of the read_group_tracking file for mapping gene symbols from a GTF. This is ignored if no GTF is provided.</td>
+</tr>
+<tr>
+<td>choose gct column for mapping <span style="color: red;">*</span></td>
+<td>Use this to explicitly set the GCT column to use when writing symbols retrieved from the GCT. This is automatic by default, meaning that retrieved symbols go into the Name column for gene-level files and into the Description column for other feature levels.</td>
+</tr>
+<tr>
+<td>report naming conflict details <span style="color: red;">*</span></td>
+<td>Include the naming conflict details in the summary report, rather than just giving counts of the issues. This is ignored if no GTF is provided.</td>
+</tr>
+<tr>
+<td>override attribute name for lookup</td>
+<td>Use this to override the name of the attribute to search against to look up IDs when mapping with a GTF (gene_id, for example). Type in the attribute name exactly as it appears in the GTF.  The retrieval override must also be provided if this parameter is set.</td>
+</tr>
+<tr>
+<td>override attribute name for retrieval</td>
+<td>Use this to override the name of the attribute to retrieve on match when mapping with a GTF (gene_name, for example). Type in the attribute name exactly as it appears in the GTF.  The lookup override must also be provided if this parameter is set.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>&lt;input.file&gt; (required)<br/>
+	The file in <em>read_group_tracking</em> format to be converted to GCT.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>&lt;output.file.name&gt;<br/>
+	The GCT resulting from the extraction of the expression values in the source file.</li>
+<li>&lt;output.file.name_basename&gt;.cls<br/>
+	A companion CLS file created using the Cufflinks conditions as classes, with replicates treated as samples within the class.</li>
+<li>&lt;output.file.name_basename&gt;.summary.txt<br/>
+	A report giving summary statistics on the values with non-OK quantification status found during processing, both by feature (tracking_id) and by column (sample or condition/replicate).</li>
+</ol>
+<h2>Example Data</h2>
+<p>A short example input file is available from <a href="ftp://gpftp.broadinstitute.org/example_data/modules/Read_group_trackingToGct/genes.read_group_tracking">our FTP site</a>.  This is a truncated example to illustrate the input format and is intended to be used for test purposes only.</p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					RNA-seq, Data Format Conversion, Preprocess &amp; Utilities</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Java</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.15</td>
+<td>2014-10-01</td>
+<td>Beta Release</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,50 @@
+ImputeMissingValuesKNN is on version .
+A description of ImputeMissingValuesKNN is Imputes missing data for each gene with missing values by finding k nearest neighbors using a Euclidean metric. For genes with missing values, it identifies k nearest neighbors based on non-missing coordinates, and imputes missing elements by averaging non-missing elements of neighbors. If all neighbors are missing for an element, it uses the overall column mean..
+ImputeMissingValuesKNN is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+ImputeMissingValuesKNN can be categorized as Missing Value Imputation.
+ImputeMissingValuesKNN has the following parameters: data.filename, k, rowmax, colmax, output.file.
+The ImputeMissingValuesKNN module is a computational tool for handling missing data in gene expression datasets.
+The ImputeMissingValuesKNN module uses k-nearest neighbors to estimate missing values in biological datasets.
+In gene expression research, missing data can occur due to technical limitations, experimental errors, or measurement challenges.
+The ImputeMissingValuesKNN module finds similar genes (neighbors) based on their existing data points to estimate missing values.
+The module uses Euclidean distance as a metric to determine which genes are most similar when imputing missing data.
+When imputing missing values, the ImputeMissingValuesKNN module looks at the k most similar genes and averages their non-missing values.
+If all neighboring genes have missing values for a specific data point, the ImputeMissingValuesKNN module uses the overall column mean.
+The module allows researchers to set parameters like the number of neighbors (k) and maximum percentage of missing data allowed in rows and columns.
+ImputeMissingValuesKNN is particularly useful in microarray and RNA-seq data analysis where complete datasets are crucial for downstream statistical analyses.
+The module helps maintain data integrity by providing a systematic approach to handling incomplete biological datasets.
+Researchers can use ImputeMissingValuesKNN to prepare gene expression data for further computational and statistical investigations.
+The module is compatible with GenePattern's computational environment and can be integrated into larger bioinformatics workflows.
+data.filename: String type parameter in ImputeMissingValuesKNN module representing the input data file containing missing values stored as NA in .gct format.
+data.filename: Required parameter specifying the source of gene expression data to be processed for missing value imputation.
+k: Integer parameter in ImputeMissingValuesKNN module defining the number of nearest neighbors used during imputation process.
+k: Required parameter controlling the neighborhood size for calculating missing value estimates.
+rowmax: Numeric parameter in ImputeMissingValuesKNN module setting the maximum percentage of missing data allowed in any single row.
+rowmax: Controls row-level data filtering by specifying a threshold for acceptable missing data percentage.
+colmax: Numeric parameter in ImputeMissingValuesKNN module setting the maximum percentage of missing data allowed in any single column.
+colmax: Controls column-level data filtering by specifying a threshold for acceptable missing data percentage.
+output.file: String type parameter in ImputeMissingValuesKNN module specifying the name of the output file in .gct format.
+output.file: Required parameter defining the destination for the imputed gene expression data after processing.
+ImputeMissingValuesKNN module input data file is a .gct format gene expression matrix with missing values represented as NA.
+ImputeMissingValuesKNN module requires a numeric input file containing gene expression measurements across multiple samples.
+The input .gct file for ImputeMissingValuesKNN contains gene identifiers in the first column and sample/condition identifiers in the first row.
+ImputeMissingValuesKNN input file must have missing values represented as NA or blank cells in the gene expression matrix.
+ImputeMissingValuesKNN output file is a .gct format gene expression matrix with missing values imputed using k-nearest neighbors method.
+The output .gct file from ImputeMissingValuesKNN contains the same gene and sample identifiers as the input file, with missing values replaced.
+ImputeMissingValuesKNN output file preserves the original matrix structure while filling in missing values through nearest neighbor averaging.
+The output file from ImputeMissingValuesKNN includes imputed values calculated based on the k-nearest neighbors specified in the module parameters.
+ImputeMissingValuesKNN generates a complete gene expression matrix where missing values are estimated using neighboring gene expression profiles.
+The ImputeMissingValuesKNN module is a computational method for handling missing data in gene expression datasets.
+The module uses a k-nearest neighbors (KNN) approach to estimate missing values in a gene expression matrix.
+For each gene with missing values, the module finds k most similar genes based on Euclidean distance across available data points.
+The KNN imputation method calculates distances only using coordinates where the target gene is not missing.
+When calculating neighbor distances, the module can handle partially missing neighbor data by averaging distances from non-missing coordinates.
+Missing values are imputed by taking the average of non-missing values from the k nearest neighbor genes.
+If all neighbors are missing for a specific data point, the module uses the overall column mean for that gene block.
+The module requires a GCT file as input, which represents a gene expression matrix with missing values denoted as NA.
+Users can specify the number of neighbors (k) to use in the imputation process, controlling the similarity-based estimation.
+The module allows setting maximum thresholds for missing data in rows and columns to filter out genes or samples with excessive missing information.
+The output is a new GCT file with missing values replaced by estimated values based on the KNN algorithm.
+This imputation method helps maintain the overall statistical properties of the gene expression dataset while filling in missing data points.
+The algorithm is implemented in R and can run on any computational platform with R installed.
+The method is based on statistical techniques developed by researchers like Hastie, Tibshirani, and colleagues in the late 1990s and early 2000s.

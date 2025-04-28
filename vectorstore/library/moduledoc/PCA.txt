@@ -1,0 +1,66 @@
+PCA is on version 4.2.
+A description of PCA is Performs a principal components analysis. This implementation is an adaptation of the MultiExperiment Viewer PCA analysis (mev.tm4.org)..
+PCA is a GenePattern module written by GenePattern Team https://www.genepattern.org/contact, Dana-Farber Cancer Institute.
+PCA can be categorized as Dimension Reduction.
+PCA has the following parameters: input_filename, compute_pcs_of, output_file.
+The PCA GenePattern module performs Principal Components Analysis to reduce high-dimensional biological data into more interpretable components.
+The PCA module allows researchers to transform complex genomic datasets into simplified representations that capture maximum variance.
+Principal Components Analysis in GenePattern can be applied to both rows (features) and columns (samples) in a dataset, providing flexibility in data exploration.
+The module supports multiple input file formats including .res, .gct, and .odf, making it versatile for different types of genomic and transcriptomic data.
+PCA in GenePattern helps researchers identify the most significant sources of variation in large-scale biological datasets, such as gene expression microarrays.
+The module generates multiple output matrices including eigenvalues, eigenvectors, and principal components matrices, enabling comprehensive data analysis.
+By reducing data dimensionality, the PCA GenePattern module helps researchers visualize complex biological relationships that might be obscured in high-dimensional spaces.
+The module is particularly useful in genomics for identifying underlying patterns in gene expression, clustering samples, and understanding biological heterogeneity.
+Researchers can use the PCA GenePattern module to compress large datasets while retaining the most important information, facilitating more efficient downstream analyses.
+The implementation is adapted from the MultiExperiment Viewer (mev.tm4.org), providing a robust and well-established approach to principal components analysis.
+input_filename
+- String type parameter for PCA module
+- Specifies the input data file for principal components analysis
+- Supports .res, .gct, and .odf file formats
+- Required parameter with no default value
+compute_pcs_of
+- String type parameter for PCA module
+- Determines whether principal components are computed for rows (features) or columns (samples)
+- Allows user to choose analysis perspective
+- Required parameter with no default value
+output_file
+- String type parameter for PCA module
+- Defines the base filename/stub for generated output files
+- Used to create output matrix and result files
+- Required parameter with no default value
+Principal components analysis module allows flexible data dimensionality reduction
+PCA module supports multiple input file formats for scientific data analysis
+Computation can be performed on either feature rows or sample columns
+Output files include eigenvalues, eigenvectors, and principal components matrices
+Module developed by GenePattern team for microarray and biological data analysis
+Supports Java-based computational environment for scientific research
+Enables dimension reduction and data summarization techniques
+Provides flexible analysis options for researchers and data scientists
+PCA module input file is a gene expression matrix in .res, .gct, or .odf format containing numerical data representing gene expression levels across samples.
+PCA module input file typically contains rows representing genes and columns representing experimental samples or conditions.
+PCA module input file requires numerical values representing expression measurements, with no missing data or non-numeric entries.
+PCA module allows computing principal components across rows (features/genes) or columns (samples/conditions) based on user selection.
+PCA module generates multiple output files including eigenvalue matrix representing variance explained by each principal component.
+PCA module produces eigenvector matrix showing the contribution of original features to each principal component.
+PCA module creates a principal components matrix mapping original data into reduced dimensional space.
+PCA module generates a stdout.txt file containing runtime information and computational details.
+PCA module output files provide a comprehensive representation of data dimensionality reduction and variance structure.
+PCA module can handle various gene expression file formats including .res, .gct, and .odf for flexible analysis.
+PCA module developed by GenePattern team at Dana-Farber Cancer Institute for microarray data analysis.
+PCA module implements principal components analysis based on MultiExperiment Viewer computational approach.
+Here's the documentation broken into embedding-friendly chunks:
+PCA module performs principal components analysis on biological data matrices
+PCA is an adaptation of the MultiExperiment Viewer (mev.tm4.org) analysis technique
+PCA can analyze rows (features) or columns (samples) in a biological dataset
+Input files for PCA can be in .res, .gct, or .odf formats
+PCA helps summarize complex microarray experimental data
+Reference paper by Raychaudhuri et al. describes PCA application in sporulation time series
+PCA module is developed by the GenePattern Team at Dana-Farber Cancer Institute
+PCA module runs on Java JVM version 1.3 and supports any CPU and operating system
+PCA module returns eigenvalues, eigenvectors, and principal components matrices
+PCA is a dimension reduction technique that simplifies complex biological data
+PCA helps identify the most significant variations in biological datasets
+PCA can transform high-dimensional data into a lower-dimensional representation
+The module allows users to choose whether to compute principal components on rows or columns
+Output includes multiple matrices (s, t, u) and a stdout text file
+PCA is particularly useful for analyzing microarray and genomic experimental data

@@ -1,0 +1,56 @@
+STREAM.SeedEPGStructure is on version .
+A description of STREAM.SeedEPGStructure is STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. This module is used to seed the initial elastic principal graph prior to starting the trajectory learning process..
+STREAM.SeedEPGStructure is a GenePattern module written by Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+STREAM.SeedEPGStructure can be categorized as Single-cell Analysis, Trajectory Inference, Clustering.
+STREAM.SeedEPGStructure has the following parameters: data file, output filename, percent neighbor cells, num clusters, damping, preference percentile, max clusters, clustering, num components, component x, component y, figure height, figure width, figure legend num columns.
+The STREAM.SeedEPGStructure module is a critical component of single-cell trajectory reconstruction in the STREAM computational pipeline.
+STREAM.SeedEPGStructure helps initialize the elastic principal graph structure for analyzing complex cellular differentiation pathways.
+The module uses clustering algorithms like k-means, affinity propagation, or spectral clustering to identify initial cellular groupings in low-dimensional space.
+STREAM.SeedEPGStructure constructs a minimum spanning tree based on cluster centroids, which serves as the initial structural framework for trajectory inference.
+This module is particularly useful for understanding developmental processes, stem cell differentiation, and cellular state transitions in single-cell transcriptomic and epigenomic datasets.
+The STREAM.SeedEPGStructure module helps researchers visualize and explore complex branching trajectories in biological systems with high computational precision.
+By providing an optimized initial graph structure, STREAM.SeedEPGStructure improves the speed and quality of subsequent trajectory learning algorithms.
+The module is designed to work within the broader STREAM pipeline, allowing researchers to interactively explore single-cell data transformation and differentiation processes.
+STREAM.SeedEPGStructure uses an elastic energy term and mean squared distance to create penalties for edge stretching and branch bending during graph construction.
+The module supports multiple clustering methods, giving researchers flexibility in how they initially segment and structure their single-cell data.
+data file: File type, A STREAM pkl file containing an annotated AnnData matrix of gene expression data, Required input for STREAM.SeedEPGStructure module.
+output filename: String type, The output filename prefix for generated files, Required parameter for STREAM.SeedEPGStructure module.
+percent neighbor cells: Numeric type, Percentage of points used as neighbors for spectral clustering in STREAM.SeedEPGStructure module, Required parameter.
+num clusters: Integer type, Number of clusters when using Spectral Clustering or K-Means in STREAM.SeedEPGStructure module, Required parameter.
+damping: Float type, Damping factor for affinity propagation clustering between 0.5 and 1, Used in STREAM.SeedEPGStructure module.
+preference percentile: Numeric type, Percentile of input similarities for affinity propagation in STREAM.SeedEPGStructure module, Between 0 and 100.
+max clusters: Integer type, Maximum number of clusters for Spectral Clustering or K-Means in STREAM.SeedEPGStructure module.
+clustering: String type, Method used to infer initial nodes in STREAM.SeedEPGStructure module, Options include affinity propagation, K-Means clustering, Spectral Clustering.
+num components: Integer type, Number of components to be plotted in STREAM.SeedEPGStructure module, Required parameter.
+component x: String type, Component used for x-axis in STREAM.SeedEPGStructure module plotting.
+component y: String type, Component used for y-axis in STREAM.SeedEPGStructure module plotting.
+figure height: Numeric type, Height of matplotlib graphs in STREAM.SeedEPGStructure module, Default is 8.
+figure width: Numeric type, Width of matplotlib plots in STREAM.SeedEPGStructure module, Default is 8.
+figure legend num columns: Integer type, Number of columns in the legend for STREAM.SeedEPGStructure module plots, Required parameter.
+STREAM.SeedEPGStructure module input file is a STREAM pkl file containing an annotated AnnData matrix of gene expression data.
+The input file is a pickle (.pkl) format containing single-cell transcriptomic data with annotations.
+The input file represents preprocessed single-cell data prepared for trajectory inference.
+The input file contains normalized and dimensionality-reduced single-cell gene expression measurements.
+The input file includes cell metadata and dimensionality reduction coordinates for trajectory analysis.
+STREAM.SeedEPGStructure module output file is a STREAM AnnData extended pickle (.pkl) file with trajectory initialization results.
+The output file contains the initial elastic principal graph structure for trajectory learning.
+The output file preserves the original single-cell data with added trajectory initialization information.
+The output file includes clustering results and minimum spanning tree structure used for trajectory seeding.
+The output file can be directly used as input for subsequent STREAM trajectory inference steps.
+STREAM.SeedEPGStructure module may generate an optional variable genes plot as a PNG image.
+The variable genes plot visualizes genes plotted against a fitted curve.
+The plot is generated when the variable gene selection option is activated.
+The plot provides insights into gene expression patterns across the inferred trajectory.
+The plot helps researchers understand gene dynamics during cellular differentiation.
+STREAM.SeedEPGStructure is a GenePattern module for initializing elastic principal graph structures in single-cell trajectory analysis.
+The module is part of the STREAM pipeline for reconstructing complex cellular differentiation trajectories from single-cell data.
+STREAM.SeedEPGStructure uses clustering methods like k-means, affinity propagation, or spectral clustering to identify initial cell group centroids.
+The module constructs a minimum spanning tree based on clustered cell centroids to provide an initial structural framework for trajectory inference.
+Elastic principal graphs are data approximation structures with vertices and edges that minimize mean squared distance to data points.
+The module includes an elastic energy term that penalizes edge stretching and branch bending during trajectory reconstruction.
+STREAM.SeedEPGStructure helps improve the quality and convergence speed of trajectory inference by providing a more informed initial graph structure.
+The module can process single-cell transcriptomic and epigenomic data to map cellular differentiation paths.
+Users can customize clustering parameters like neighbor percentage, number of clusters, and clustering method in STREAM.SeedEPGStructure.
+The output is a STREAM-compatible pickle file containing the initialized elastic principal graph structure for further trajectory analysis.
+STREAM.SeedEPGStructure was developed by Huidong Chen at Massachusetts General Hospital and is part of a comprehensive single-cell trajectory reconstruction toolkit.
+The module supports visualization of the initial graph structure with configurable plot parameters like component selection and figure dimensions.

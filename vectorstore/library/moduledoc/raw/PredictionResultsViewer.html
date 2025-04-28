@@ -1,0 +1,174 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>PredictionResultsViewer (v5) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/PredictionResultsViewer/5?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Visualizes prediction results in JavaScript</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Thorin Tabor (UC San Diego, Broad Institute)</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p><a href="https://groups.google.com/forum/#!forum/genepattern-help" target="_blank">https://groups.google.com/forum/#!forum/genepattern-help</a></p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2 style="text-align: center;"><img alt="" src="/uploaded/content_predresviewer9999.png" style="width: 800px; height: 501px;"/></h2>
+<h2> </h2>
+<h2>Summary:</h2>
+<p>The PredictionResultsViewer is used to view results from testing a predictor where the results can come from either a separate test set (e.g. the KNN or WeightedVoting algorithm) or a cross-validation prediction (e.g., the KNNXValidation or WeightedVotingXValidation algorithms). The prediction results and the model used to obtain them are summarized in the top portion of the panel. Details of the prediction results for each of the samples are shown in the table at the bottom of this panel.</p>
+<p>The first column in the table gives the sample name (datapoint). The second column gives the true class from the class template file and the third column gives the predicted class. The fourth column gives the Confidence associated with the predicted class (see algorithm documentation for a description of its calculation.) The fifth column indicates when the prediction is an error or no call is made.</p>
+<p>The confidence threshold for making a call and potential errors can be adjusted by entering a number into the No Call Threshold box and pressing the Update button. The confusion matrix displays a table that summarizes the predicted classes against the true classes. </p>
+<p>The viewer includes an interactive plot of the confidence in the prediction results. Mousing over a point in the plot displays the sample name and confidence value, as well as the color associated with its predicted class. Users can zoom in and out of the plot by clicking and dragging the mouse. The scale of the plot can be reset to its original value by double-clicking in the plot. </p>
+<h2>References</h2>
+<p>[appropriate papers cited]</p>
+<h2>Known Issues/Coming Features:</h2>
+<table align="left" border="0" cellpadding="0" cellspacing="0" style="width:500px;" width="329">
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+<tbody>
+<tr height="20">
+<td height="20" style="height:20px;width:73px;"><strong>Key*</strong></td>
+<td style="width:256px;"><strong>Summary</strong></td>
+</tr>
+<tr data-issuekey="GPAT-2232" height="20" rel="95949">
+<td height="20" style="height:20px;width:73px;">GPAT-2232</td>
+<td style="width:256px;">Known Issue: Downloaded PNG plot is truncated</td>
+</tr>
+<tr data-issuekey="GPAT-2230" height="38" rel="95947">
+<td height="38" style="height:38px;width:73px;">GPAT-2230</td>
+<td style="width:256px;">New Feature: Display link to dataset in use</td>
+</tr>
+<tr data-issuekey="GPAT-2231" height="38" rel="95948">
+<td height="38" style="height:38px;width:73px;">GPAT-2231</td>
+<td style="width:256px;">New Feature: Allow for naming of downloaded png file &amp; more formats</td>
+</tr>
+<tr data-issuekey="GPAT-2316" height="38" rel="97463">
+<td height="38" style="height:38px;width:73px;">GPAT-2316</td>
+<td style="width:256px;">Known Issue: Download PNG doesn't work in Edge or Safari</td>
+</tr>
+<tr data-issuekey="GPAT-2317" height="38" rel="97464">
+<td height="38" style="height:38px;width:73px;">GPAT-2317</td>
+<td style="width:256px;">Known issue: Zooming on the table causes the data summary table to truncate</td>
+</tr>
+<tr data-issuekey="GPAT-2241" height="38" rel="96023">
+<td height="38" style="height:38px;width:73px;">GPAT-2241</td>
+<td style="width:256px;">New Feature:  Allow download of confusion matrix</td>
+</tr>
+<tr data-issuekey="GPAT-2242" height="20" rel="96024">
+<td height="20" style="height:20px;width:73px;">GPAT-2242</td>
+<td style="width:256px;">New Feature Saving of table elements</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>*for internal use</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prediction results file <span style="color:red;">*</span></td>
+<td>Prediction results - .odf</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>Prediction Results File<br/>
+	Prediction results file in <a href="/cancer/software/genepattern/file-formats-guide#ODF" target="_blank">.odf format.​</a></li>
+</ol>
+<h2>Example Data</h2>
+<p><a href="https://software.broadinstitute.org/cancer/software/genepattern/data/protocols/all_aml_test.cart.pred.odf" target="_blank">https://software.broadinstitute.org/cancer/software/genepattern/data/protocols/all_aml_test.cart.pred.odf</a></p>
+<h2>Requirements</h2>
+<p>JavaScript</p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					javascript</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					JavaScript</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.10</td>
+<td>2017-10-06</td>
+<td>JavaScript implementation of PredictionResultsViewer - with fix for bug in class labels</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2007-09-14</td>
+<td>Fixes bug in plot. </td>
+</tr>
+<tr>
+<td>3</td>
+<td>2006-05-18</td>
+<td>Fixes display when results contain more than 2 classes </td>
+</tr>
+<tr>
+<td>2</td>
+<td>2005-06-08</td>
+<td>Added labels to confusion matrix &amp;amp; annotated for GP 1.4 </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

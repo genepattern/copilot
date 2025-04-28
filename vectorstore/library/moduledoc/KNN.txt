@@ -1,0 +1,54 @@
+KNN is on version .
+A description of KNN is The k-nearest-neighbor algorithm classifies a sample by assigning it the label most frequently represented among the k nearest samples. Target classes for prediction (classes 0 and 1) can be defined based on a phenotype such as morphological class or treatment outcome. The class predictor is uniquely defined by the initial set of samples and marker genes..
+KNN is a GenePattern module written by Joshua Korn, Joshua Gould (Broad Institute).
+KNN can be categorized as Prediction.
+KNN has the following parameters: train.filename, train.class.filename, saved.model.filename, model.file, test.filename, class.filename, num.features, feature.selection, min.std, feature.list.filename, num.neighbors, weighting.type, distance.measure, pred.results.file.
+The KNN GenePattern module is a powerful machine learning tool for classification in bioinformatics using the k-nearest neighbors algorithm.
+The KNN module can classify biological samples based on gene expression data by comparing them to known training samples.
+The KNN module allows researchers to predict sample classes using gene expression profiles with flexible distance and weighting metrics.
+In the KNN module, samples are classified by finding the k most similar samples in a training dataset and assigning the most common class label.
+The KNN module supports multiple distance measures including cosine and euclidean distance for comparing gene expression profiles.
+Researchers can use the KNN module to perform feature selection, choosing the most informative genes for classification.
+The KNN module provides options for weighting neighbor contributions, including unweighted, rank-based, and distance-based weighting strategies.
+Scientists can use the KNN module to build predictive models for various biological classifications like disease states, treatment outcomes, or morphological classes.
+The KNN module allows saving trained models for subsequent application to new datasets, enhancing reproducibility and workflow efficiency.
+Confidence in KNN predictions is calculated as the proportion of neighboring samples voting for the assigned class.
+The KNN module can handle different input file formats including .gct, .res, and .odf for gene expression and class data.
+Researchers can specify the number of neighbors and feature selection parameters to optimize the KNN classification model.
+train.filename: String, training data file name, required for training, .gct, .res, .odf file type
+train.class.filename: String, class file for training data, required for training, .cls file type
+saved.model.filename: String, input KNN model file, optional, .odf file type for KNN Prediction Model
+model.file: String, output KNN model file name, required for saving model, .odf file type for KNN Prediction Model
+test.filename: String, test data file name, required for testing, .gct, .res, .odf file type
+class.filename: String, class file for test data, required for testing, .cls file type
+num.features: Integer, number of selected features if no feature list filename specified, required for feature selection
+feature.selection.statistic: String, statistic used for feature selection, optional
+min.std: Float, minimum standard deviation for feature selection, optional
+feature.list.filename: String, file specifying features to use for prediction, optional
+num.neighbors: Integer, number of neighbors for KNN algorithm, required
+weighting.type: String, method for weighting neighbor votes, required
+distance.measure: String, method for calculating distance between data points, required
+pred.results.file: String, name of prediction results output file, required for output, .odf file type
+KNN module uses training data file in .gct, .res, or .odf format containing gene expression measurements.
+KNN module requires a training class file in .cls format specifying class labels for training samples.
+KNN module can generate an output model file in .odf format representing the trained KNN prediction model.
+KNN module accepts a test data file in .gct, .res, or .odf format for making predictions on new samples.
+KNN module can use a test class file in .cls format to evaluate prediction accuracy.
+KNN module generates a prediction results file in .odf format containing predicted classes and confidence scores.
+KNN module supports optional feature selection using a feature list file specifying genes to use for prediction.
+KNN module allows specifying number of neighbors, weighting type, and distance measure for classification.
+KNN module can save trained models for later reuse on additional test datasets.
+KNN module supports multiple weighting strategies including unweighted, rank-based, and distance-based neighbor voting.
+The KNN module implements a k-nearest neighbors classification algorithm for predicting class labels in biological datasets.
+The KNN module allows classification of samples by finding the k most similar training instances based on gene expression data.
+KNN uses a distance metric (cosine or euclidean) to determine the similarity between data points in a high-dimensional feature space.
+The module supports three primary modes of operation: training a model, testing with a saved model, or performing simultaneous training and testing.
+KNN can weight neighbor contributions using unweighted voting, rank-based weighting, or distance-based weighting strategies.
+Feature selection in the KNN module can be performed by specifying a number of features or providing a predefined feature list.
+The algorithm predicts class labels by majority vote among the k nearest neighbors, with confidence calculated as the proportion of votes for the winning class.
+KNN is particularly useful in molecular classification tasks, such as cancer subtype prediction based on gene expression profiles.
+The module was developed by researchers at the Broad Institute to enable machine learning-based predictive modeling in genomic research.
+Input data for the KNN module typically includes gene expression datasets in .gct, .res, or .odf formats, along with corresponding class label files.
+The KNN implementation allows flexible parameterization, including the number of neighbors, weighting type, and distance measure.
+Prediction results can be output to a file, providing class assignments and confidence scores for test samples.
+The module is platform-independent and requires Java 1.4 or higher, making it widely accessible for computational biology researchers.

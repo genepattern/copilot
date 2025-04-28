@@ -1,0 +1,44 @@
+CNToXCN is on version v.1.
+A description of CNToXCN is Converts a CN file to an XCN file. This module converts a CN file (a tab-delimited file format that contains SNP copy numbers) to an XCN file (a tab-delimited file format that contains SNP copy numbers and also Call information)..
+CNToXCN is a GenePattern module written by GenePattern Team, gp-help@broadinstitute.org.
+CNToXCN can be categorized as SNP Analysis.
+CNToXCN has the following parameters: cn file, output prefix.
+The CNToXCN GenePattern module is a specialized tool for converting copy number data files in genomic research.
+The CNToXCN module transforms CN files into XCN files, adding additional genomic annotation information during the conversion process.
+This module is particularly useful in SNP (Single Nucleotide Polymorphism) analysis workflows within bioinformatics research.
+The CNToXCN module requires two primary input parameters: a source CN file and an output file prefix for the resulting XCN file.
+The module generates an output file with a ".nocalls.xcn" extension, which contains expanded copy number data with potential additional genomic context.
+The CNToXCN module is platform-independent, capable of running on any operating system and CPU architecture.
+Written in Perl, the CNToXCN module provides a standardized method for genomic data file transformation in research settings.
+The module is designed to support researchers working with copy number variation (CNV) data, facilitating data format interoperability.
+Researchers can use the CNToXCN module to prepare genomic data for downstream analysis in various bioinformatics pipelines.
+The module's simple conversion process makes it accessible to researchers with intermediate computational biology skills.
+cn file:file:Input CN file containing SNP copy numbers:required:no default value
+output prefix:string:Prefix for naming the output XCN file:required:no default value
+CNToXCN module converts tab-delimited CN file to XCN file format
+CNToXCN module handles SNP copy number data transformation
+CNToXCN module generates output file with .nocalls.xcn extension
+CNToXCN module supports cross-platform file conversion
+CNToXCN module processes SNP analysis data
+CNToXCN module written in Perl programming language
+CNToXCN module can be used on any operating system
+CNToXCN module compatible with any CPU architecture
+CNToXCN module input file: A tab-delimited CN file containing SNP copy number data.
+CNToXCN module input file: The CN file must include copy number information for genetic analysis.
+CNToXCN module input file: Typically contains columns representing SNP identifiers and their corresponding copy number values.
+CNToXCN module output file: An XCN file with the extension .nocalls.xcn generated using the specified output prefix.
+CNToXCN module output file: The XCN file includes additional call information alongside the original copy number data.
+CNToXCN module output file: Maintains the tab-delimited format of the input CN file with expanded annotation.
+CNToXCN module output file: Preserves the original SNP copy number information while adding call-related metadata.
+CNToXCN module file conversion: Transforms a basic copy number file into an enhanced format with supplementary genetic analysis information.
+CNToXCN module file processing: Adds call annotations to the existing copy number data without altering the core numerical information.
+CNToXCN module file transformation: Converts input CN file to an XCN file with expanded genetic context and analysis potential.
+The CNToXCN module is a GenePattern tool for converting copy number data files from CN to XCN format.
+The CNToXCN module transforms tab-delimited SNP copy number files to include additional call information.
+The module requires two input parameters: a source CN file and an output file prefix.
+The CNToXCN module is designed to work across different computing platforms and operating systems.
+The module is implemented in Perl and supports SNP copy number analysis workflows.
+The output of the CNToXCN module is an XCN file with the naming convention <output prefix>.nocalls.xcn.
+The CNToXCN module helps researchers standardize and enhance copy number data for further genetic analysis.
+The module was developed by the GenePattern Team at the Broad Institute to facilitate genomic data processing.
+The initial version (v.1) of the CNToXCN module provides basic file format conversion capabilities for genetic researchers.

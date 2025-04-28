@@ -1,0 +1,51 @@
+Hisat2.aligner is on version 1.
+A description of Hisat2.aligner is HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome)..
+Hisat2.aligner is a GenePattern module written by Ted Liefeld.
+Hisat2.aligner can be categorized as Sequence Analysis.
+Hisat2.aligner has the following parameters: input index, reads pair 1, reads pair 2, input format, quality value scale, novel splice sites infile, output prefix.
+The Hisat2.aligner is a powerful bioinformatics tool for aligning next-generation sequencing reads to reference genomes.
+Hisat2.aligner can align both DNA and RNA sequencing reads with high speed and sensitivity.
+The Hisat2.aligner uses a novel Hierarchical Graph FM index (HGFM) to efficiently map sequencing reads to genomic regions.
+Hisat2.aligner supports multiple input read formats including FASTA, FASTQ, and compressed file types like .gz and .bz2.
+The Hisat2.aligner can handle both single-end and paired-end sequencing read data.
+Hisat2.aligner allows detailed customization of alignment parameters like mismatch penalties, gap penalties, and splice site handling.
+The Hisat2.aligner is particularly useful for RNA-seq data, with specialized options for spliced alignment of transcriptomic reads.
+Hisat2.aligner can generate output files in SAM format, which can be used for downstream genomic analysis tools.
+The module supports alignment to multiple reference genome indexes, including pre-built human genome collections.
+Hisat2.aligner provides advanced options for controlling alignment sensitivity, such as limiting the number of seed extensions and primary alignments.
+The Hisat2.aligner can detect and report novel splice sites during the alignment process.
+Hisat2.aligner is implemented as a Docker container, ensuring consistent performance across different computational environments.
+input index: Directory or zip file: Contains Hisat2 genome index for alignment: Required parameter for Hisat2.aligner module.
+reads pair 1: Unpaired reads file or first mate for paired reads: Contains sequencing reads in FASTA or FASTQ format: Required parameter for Hisat2.aligner module.
+reads pair 2: Second mate for paired reads: Contains sequencing reads in FASTA or FASTQ format: Optional parameter for paired-end sequencing in Hisat2.aligner module.
+input format: Specifies format of input reads files: Can be fastQ, fastA, raw, or Illumina qseq: Required parameter for Hisat2.aligner module.
+quality value scale: Defines quality value representation: Includes Solexa, Phred 33, Phred 64 options: Required parameter for Hisat2.aligner module.
+integer quality value: Indicates quality values represented as space-separated ASCII integers: Optional parameter for Hisat2.aligner module.
+mate orientations: Specifies upstream/downstream mate orientations for paired-end alignment: Required parameter for Hisat2.aligner module.
+novel splice sites infile: Optional list of known splice sites for improved read alignment: Optional parameter for Hisat2.aligner module.
+output prefix: Defines prefix for output file names: Required parameter for Hisat2.aligner module.
+dry run: When true, prints hisat command-line without executing alignment: Optional parameter for testing in Hisat2.aligner module.
+Here are the input and output files for the Hisat2.aligner module:
+Hisat2.aligner input index file is a directory or zip file containing a Hisat2 genome index for alignment.
+Hisat2.aligner reads pair 1 input is an unpaired reads file or first mate for paired reads in FASTA or FASTQ format.
+Hisat2.aligner reads pair 2 input is the second mate for paired reads in FASTA or FASTQ format.
+Hisat2.aligner novel splice sites input is an optional list of known splice sites to help align reads with small anchors.
+Hisat2.aligner input files support compressed formats like bz2 and gz.
+Hisat2.aligner input reads can be in FASTA, FASTQ, raw, or Illumina qseq format.
+Hisat2.aligner output SAM file contains read alignments in SAM format.
+Hisat2.aligner novel splice sites output file lists novel splice sites found during alignment.
+Hisat2.aligner mapped reads output file contains unpaired reads that align at least once.
+Hisat2.aligner unmapped reads output file contains paired-end reads that align concordantly at least once.
+Hisat2.aligner is a computational tool for mapping next-generation sequencing reads to genomic references.
+Hisat2.aligner uses a novel graph FM index (GFM) approach for rapid and accurate read alignment.
+The Hisat2.aligner module supports alignment of both DNA and RNA sequencing reads.
+Hisat2.aligner can align reads to a single reference genome or a population of human genomes.
+Hisat2.aligner implements a Hierarchical Graph FM index (HGFM) using 55,000 small genomic region indexes.
+Hisat2.aligner supports multiple input read formats including FASTA, FASTQ, and compressed file types.
+Hisat2.aligner allows customization of alignment parameters like mismatch penalties, gap penalties, and splice site handling.
+Hisat2.aligner can perform both paired-end and single-end read alignments.
+Hisat2.aligner generates output in SAM format, which can be used for downstream genomic analysis.
+Hisat2.aligner provides options for controlling alignment sensitivity and specificity through advanced parameter settings.
+Hisat2.aligner can detect and report novel splice sites during RNA-seq read alignment.
+Hisat2.aligner supports multiple quality value scales including Solexa, Phred 33, and Phred 64.
+Hisat2.aligner is implemented as a Docker container for consistent computational environment.

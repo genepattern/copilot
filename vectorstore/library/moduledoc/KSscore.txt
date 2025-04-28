@@ -1,0 +1,62 @@
+KSscore is on version 1.0.
+A description of KSscore is Computes the KS score for a set of genes within an ordered list. This task returns a numeric value ('KS score') representing the positional distribution of a set of query genes (i.e. 'tags') within an ordered list of genes..
+KSscore is a GenePattern module written by Justin Lamb (Broad Institute) justin@broad.mit.edu.
+KSscore can be categorized as Statistical Methods.
+KSscore has the following parameters: input filename, query filename, output.
+The KSscore GenePattern module is a statistical tool for analyzing gene set enrichment in ordered gene lists.
+The KSscore module helps researchers identify whether a specific set of genes is concentrated at the top or bottom of a ranked gene list.
+The KSscore module uses the Kolmogorov-Smirnov statistical method to compute a score representing gene set distribution.
+In the KSscore module, users provide two key input files: a ranked gene list (.pol file) and a query gene set file.
+The KSscore module calculates a numeric score that indicates how significantly a gene set appears at the top or bottom of a ranked list.
+A high KSscore suggests that the query genes are clustered near the top or bottom of the ordered list, indicating potential biological significance.
+Researchers can use the KSscore module to explore gene expression patterns, identify enriched gene sets, and discover potential functional relationships.
+The KSscore module is particularly useful in genomics and transcriptomics research for understanding gene expression dynamics.
+By performing permutation tests, the KSscore module can help determine the statistical significance of gene set enrichment.
+The KSscore module can be applied to various biological contexts, such as cancer research, developmental biology, and comparative genomics.
+The module's output includes detailed information about gene positions, scores, and statistical parameters for further analysis.
+Bioinformaticians and computational biologists can use the KSscore module as part of more complex gene set enrichment workflows.
+The KSscore module is platform-independent and can be run on multiple operating systems and computational environments.
+input.filename: string, required, the .pol file containing the ordered list of genes with their rankings and values
+query.filename: string, required, the query gene set file containing one unique identifier per line
+output: string, required, name of the output file where results will be saved (a .pol extension will be automatically appended)
+server: string, optional, default server for running the analysis, defaults to defaultServer
+KSscore module computes a statistical measure of gene set enrichment at the top of an ordered list
+KSscore determines how concentrated a set of query genes are near the top of a ranked gene list
+KSscore uses the Kolmogorov-Smirnov non-parametric rank statistic to evaluate gene set positioning
+KSscore helps researchers understand if specific genes are significantly clustered at the beginning of a ranked list
+KSscore can identify potential biological significance by examining gene distribution patterns
+KSscore provides a running sum calculation to assess gene set enrichment
+KSscore allows for permutation testing to validate statistical significance of gene set positioning
+KSscore supports multiple analysis strategies like random gene set selection or list shuffling
+KSscore generates output files and reports showing detailed gene positioning and statistical metrics
+KSscore module input file: .pol file containing an ordered list of genes in tab-delimited format
+KSscore module input file: first column represents ranking of genes
+KSscore module input file: second column contains unique feature identifiers
+KSscore module input file: third column includes text description of each feature
+KSscore module input file: fourth column contains the value used for ranking
+KSscore module query input file: text file with one unique gene identifier per line
+KSscore module query input file: contains the set of genes to be analyzed for distribution
+KSscore module output file: .pol file with ranked query genes
+KSscore module output file: first column shows rank of query genes
+KSscore module output file: second column lists unique gene identifiers
+KSscore module output file: third column provides gene descriptions
+KSscore module output file: fourth column indicates position of gene in ordered list
+KSscore module output: STDOUT report with statistical details about gene distribution
+KSscore module output: includes number of genes in ordered list and query set
+KSscore module output: reports positive and negative scores for gene distribution
+KSscore module output: provides KS score and running sum values
+The KSscore module computes a statistical measure of gene set enrichment using the Kolmogorov-Smirnov non-parametric rank statistic.
+The KSscore module analyzes the positional distribution of a query gene set within an ordered list of genes.
+The module requires two input files: a .pol file with a ranked gene list and a query file containing gene identifiers.
+The KSscore calculates a running sum statistic that measures how concentrated the query genes are at the top of the ordered list.
+A high KS score indicates that the query genes are clustered near the top of the ranked gene list.
+The module can be used to assess gene set enrichment by comparing the KS score to randomized permutations of the gene list.
+The KSscore is particularly useful in identifying patterns of gene expression across different experimental conditions.
+The statistical method is based on the Kolmogorov-Smirnov test, a non-parametric approach to comparing distributions.
+The module returns multiple outputs, including a parameterized ordered list and detailed statistical reports.
+The KSscore can be applied to various genomic datasets to identify meaningful gene expression patterns.
+The module was developed by Justin Lamb at the Broad Institute to support gene expression analysis.
+The implementation is written in Perl and can run on any computational platform with a Perl interpreter.
+The KSscore method allows researchers to quantitatively assess the significance of gene set clustering within ranked lists.
+The module provides flexibility in analyzing gene expression data through permutation and randomization techniques.
+The KSscore can be used in various biological contexts, including cancer research and gene expression profiling.

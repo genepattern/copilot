@@ -1,0 +1,52 @@
+SelectFeaturesRows is on version .
+A description of SelectFeaturesRows is This module generates a file containing only a subset of features represented in the input file. The user specifies the features (i.e. 'rows') to include in the new file, and the order in which they appear, by providing a text file that contains one unique feature identifier per line..
+SelectFeaturesRows is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+SelectFeaturesRows can be categorized as GeneListSelection.
+SelectFeaturesRows has the following parameters: input.filename, list filename, output.
+The SelectFeaturesRows GenePattern module allows researchers to extract specific rows from genomic or molecular datasets based on feature identifiers.
+SelectFeaturesRows enables precise subsetting of large genomic datasets by allowing users to specify exactly which rows they want to retain.
+In bioinformatics research, SelectFeaturesRows can help focus analysis on genes or features of particular interest by filtering out irrelevant data.
+The module supports multiple file formats including .res, .gct, .snp, .cn, and .odf, making it versatile across different types of genomic and molecular data.
+Users provide a text file with feature identifiers to select, with one identifier per line, which determines which rows will be included in the output file.
+SelectFeaturesRows is particularly useful in scenarios like candidate gene selection, biomarker identification, or narrowing down large-scale genomic screens.
+The module preserves the original data structure while allowing researchers to create a more targeted dataset for downstream analysis.
+By enabling precise row selection, SelectFeaturesRows supports more focused and efficient computational analysis in genomics and molecular biology research.
+The module operates independently of specific computational platforms, running on any operating system with Java support, enhancing its accessibility.
+Researchers can use SelectFeaturesRows to create custom gene lists, extract specific experimental conditions, or prepare datasets for specialized downstream analyses.
+input.filename: File, input file containing data to slice, required, no default value
+SelectFeaturesRows module requires an input file in .res, .gct, .snp, .cn, or .odf format
+Input file must contain features or rows that can be selectively extracted
+Input file serves as the source dataset for feature selection
+list: File, text file specifying rows to select, required, no default value
+SelectFeaturesRows module uses list to determine which features to extract
+List file must contain one unique feature identifier per line
+List determines the subset of rows to include in output file
+List controls the order of features in the output file
+output: File, output filename for selected features, required, no default value
+SelectFeaturesRows module generates a new file with selected features
+Output file will be in same format as input file (.res, .gct, .snp, .cn, .odf)
+Output file contains only the rows specified in the list file
+Output file preserves the original data structure and format of input file
+SelectFeaturesRows module input file is a data matrix with feature identifiers in the first column.
+SelectFeaturesRows module input file supports .res, .gct, .snp, .cn, and .odf file formats.
+SelectFeaturesRows module requires a list file with one feature identifier per line specifying rows to extract.
+SelectFeaturesRows list file is a plain text file containing unique feature identifiers.
+SelectFeaturesRows output file contains only the specified rows from the input data matrix.
+SelectFeaturesRows output file preserves the original file format of the input file (.res, .gct, .snp, .cn, .odf).
+SelectFeaturesRows output file maintains the column structure of the original input file.
+SelectFeaturesRows output file includes only the rows matching identifiers in the list file.
+SelectFeaturesRows output file allows user-specified row order based on the list file sequence.
+SelectFeaturesRows module supports extracting a subset of features from genomic and molecular data files.
+SelectFeaturesRows is a GenePattern module for extracting specific rows from genomic data files
+SelectFeaturesRows allows users to subset genomic data files by specifying a list of feature identifiers
+The module supports multiple file formats including .res, .gct, .snp, .cn, and .odf
+Users provide an input file and a text file listing the specific feature identifiers they want to extract
+SelectFeaturesRows enables precise selection of rows based on unique identifiers
+The module is designed to work across different computational platforms and operating systems
+SelectFeaturesRows is written in Java and can run on any CPU architecture
+The module helps researchers focus on specific features of interest from larger genomic datasets
+SelectFeaturesRows preserves the order of features as specified in the input identifier list
+The module is particularly useful for targeted analysis of genomic data subsets
+SelectFeaturesRows requires two primary inputs: the original data file and a list of desired feature identifiers
+The output is a new file containing only the selected rows from the original dataset
+This module is part of the GenePattern suite of bioinformatics data processing tools

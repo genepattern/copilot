@@ -1,0 +1,89 @@
+FcsToCsv is on version 3.
+A description of FcsToCsv is Converts a Flow Cytometry Standard (FCS) file to a comma-separated values (CSV) file.
+FcsToCsv is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+FcsToCsv can be categorized as Data Format Conversion.
+FcsToCsv has the following parameters: Input.FCS.data.file, Output.CSV.file.name, Use.full.names, Output.keywords.file.name, Output.keywords.mode, Channel.to.scale.conversion, Precision.
+The FcsToCsv GenePattern module is a specialized tool for converting Flow Cytometry Standard (FCS) files into CSV format for broader data analysis.
+FcsToCsv allows researchers to transform complex flow cytometry data files into a more universally readable comma-separated values format.
+The module enables conversion of flow cytometry data while preserving parameter names and event information across different analytical platforms.
+FcsToCsv can extract both the numerical data and associated metadata from an original FCS file, providing flexibility in downstream data processing.
+By default, the module converts channel values from logarithmic to linear scale, making the data more accessible for standard statistical analysis.
+Researchers can choose between short or full parameter names during the CSV conversion process using the Use.full.names parameter in FcsToCsv.
+The FcsToCsv module supports optional keyword extraction, allowing users to preserve additional metadata that might not directly transfer to the CSV format.
+Users can select between regular (32-bit) and double (64-bit) precision data representation when converting FCS files using the FcsToCsv module.
+The FcsToCsv module is particularly useful for researchers wanting to analyze flow cytometry data in software packages that do not natively support FCS file formats.
+By converting FCS to CSV, the FcsToCsv module facilitates data sharing, visualization, and analysis across different computational environments and research platforms.
+Input.FCS.data.file:
+- Type: File
+- Description: FcsToCsv module requires an input FCS file to convert to CSV
+- Required: Yes
+- Default: None
+Output.CSV.file.name:
+- Type: String
+- Description: FcsToCsv module specifies the name of the resulting output CSV file
+- Required: Yes
+- Default: None
+Use.full.names:
+- Type: Boolean
+- Description: FcsToCsv module determines parameter naming strategy in CSV output
+- Required: No
+- Default: true
+- Options:
+- true: Use combination of short and long parameter names
+- false: Use short parameter names only
+Output.keywords.file.name:
+- Type: String
+- Description: FcsToCsv module defines filename for storing extracted FCS file keywords
+- Required: No
+- Default: Based on input file name
+Output.keywords.mode:
+- Type: String
+- Description: FcsToCsv module specifies format for storing extracted keywords
+- Required: No
+- Default: CSV
+- Options:
+- CSV: Store as CSV file
+- FCS: Store in FCS text segment format
+- None: Do not extract keyword/value pairs
+Channel.to.scale.conversion:
+- Type: Boolean
+- Description: FcsToCsv module controls conversion of log channel values to linear scale
+- Required: No
+- Default: true
+- Options:
+- true: Convert channel to linear scale
+- false: No conversion, store as in original FCS file
+Precision:
+- Type: Boolean
+- Description: FcsToCsv module determines numeric precision for data storage
+- Required: No
+- Default: false
+- Options:
+- false: Regular 32-bit precision
+- true: Double 64-bit precision
+Here are the input and output files for the FcsToCsv module:
+Input FCS data file contains raw flow cytometry measurement data in the Flow Cytometry Standard (FCS) file format
+Input FCS file includes multiple parameters measured for each cellular event with potential log-scaled channel values
+Input FCS file stores biological measurement data typically from flow cytometry experiments
+Input FCS file contains metadata keywords describing experimental conditions and instrument settings
+Output CSV file contains converted flow cytometry data with events represented as rows and parameters as columns
+Output CSV file uses comma-separated values format with linear-scaled parameter measurements
+Output CSV file includes parameter names derived from FCS file header information
+Output keywords file stores metadata extracted from the original FCS file's text segment
+Output keywords file can be generated in CSV or native FCS text segment format
+Output keywords file preserves experimental context and instrument configuration details not directly included in CSV data
+Optional output file captures additional contextual information about the flow cytometry measurement
+Conversion process transforms log-scaled channel values to linear scale by default
+Conversion supports both 32-bit (default) and 64-bit floating point precision representations
+Conversion maintains parameter names based on user-selected full name or short name preference
+Here are the chunks for the FcsToCsv module documentation:
+FcsToCsv is a GenePattern module that converts Flow Cytometry Standard (FCS) files to comma-separated values (CSV) files.
+The module helps researchers transform flow cytometry data into a more universally accessible format for analysis in various software tools.
+FcsToCsv converts FCS files by extracting data events and creating a CSV table with columns representing flow cytometry parameters.
+By default, the module converts channel values from log scale to linear scale using 32-bit floating point precision.
+The module allows users to specify whether to use full parameter names or short names when creating the CSV file.
+Users can optionally extract and store FCS file metadata keywords in a separate file using different output formats like CSV or FCS text segment.
+The conversion process preserves the original data structure, with each row representing an individual event and columns representing measured parameters.
+FcsToCsv supports both regular (32-bit) and double (64-bit) precision for data conversion, with 32-bit being sufficient for most applications.
+The module is platform-independent, written in Java, and can be used on any operating system with Java 1.5 or higher.
+Researchers can use FcsToCsv to prepare flow cytometry data for downstream analysis in tools that may not natively support FCS file formats.

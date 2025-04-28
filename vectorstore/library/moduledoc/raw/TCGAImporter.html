@@ -1,0 +1,174 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>TCGAImporter (v6) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/TCGAImporter/6?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">This module imports data from TCGA by taking in a GDC manifest file, downloading the files listed on that manifest, renaming them to be human-friendly, and compiling them into a GCT file to be computer-friendly.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Edwin Juarez</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p><a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help">https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help</a></p>
+<p><a href="http://genepattern.org/help">genepattern.org/help</a></p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>This module imports data from TCGA by taking in a GDC manifest file, downloading the files listed on that manifest, renaming them to be human-friendly, and compiling them into a GCT file to be computer-friendly.</p>
+<p>Remember that you will need to download a manifest file and a metadata file from the GDC data portal (<a href="https://portal.gdc.cancer.gov/">https://portal.gdc.cancer.gov/</a>). To dowload these two files follow these intructions: <a href="https://github.com/genepattern/TCGAImporter/blob/master/how_to_download_a_manifest_and_metadata.pdf">https://github.com/genepattern/TCGAImporter/blob/master/how_to_download_a_manifest_and_metadata.pdf</a></p>
+<p>If you'd like a more comprehensive tutorial of the GDC website, you can find it here: <a href="https://docs.gdc.cancer.gov/Data_Portal/Users_Guide/Getting_Started/">https://docs.gdc.cancer.gov/Data_Portal/Users_Guide/Getting_Started/</a></p>
+<p> </p>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Version comments:</h4>
+<ul>
+<li>Version 5.0: Utilizes the new Docker container (0.2)</li>
+<li>Version 4.0: Improved performance of translating gene names.</li>
+<li>Version 3.2: Changed module name (from download_from_gdc to TCGAImporter) and updated code to read metadata files dowloaded after February 2018 (following GDC's metadata reformatting), this is backwards compatible.</li>
+</ul>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'> </h4>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Functionality yet to be implemented:</h4>
+<ul>
+<li>Parse copy number variation</li>
+</ul>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'> </h4>
+<h4 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);'>Technical notes:</h4>
+<ul>
+<li>This module has been tested to run in the Docker container <span style="font-family:courier new,courier,monospace;">genepattern/docker-download-from-gdc:0.2</span> which has build code <span style="font-family:courier new,courier,monospace;">b2l3ixgs675rmow9n3dhgfp</span></li>
+<li>To create a conda environment (called <span style="font-family:courier new,courier,monospace;">GP_dfgdc_env</span>) with the required dependencies download the <span style="font-family:courier new,courier,monospace;">requirements.txt</span> file from the github repository named <span style="font-family:courier new,courier,monospace;">genepattern/docker-python36</span> (here is the url of the file: <a href="https://raw.githubusercontent.com/genepattern/docker-python36/master/requirements.txt">https://raw.githubusercontent.com/genepattern/docker-python36/master/requirements.txt</a>) and run this three commands in the same folder where <span style="font-family:courier new,courier,monospace;">requirements.txt</span> is located:</li>
+</ul>
+<p style="margin-left: 80px;"><span id="cke_bm_457C" style="display: none;"> </span><span style="font-family:courier new,courier,monospace;">conda create --name GP_dfgdc_env pip<br/>
+source activate GP_dfgdc_env<br/>
+pip install -r requirements.txt</span></p>
+<p style="margin-left: 40px;"><span style="font-family:arial,helvetica,sans-serif;">Note that you will need to have the GDC download client on the same folder. If you don't know what this means, read more here:  </span><a href="https://docs.gdc.cancer.gov/Data_Portal/Users_Guide/Getting_Started/">https://docs.gdc.cancer.gov/Data_Portal/Users_Guide/Getting_Started</a></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<p> </p>
+<table id="module_params_table">
+<thead>
+<tr>
+<th style="width: 109px;">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imanifest <span style="color:red;">*</span></td>
+<td>The relative path of the manifest used to download the data. This file is obtained from the GDC data portal (<a href="https://portal.gdc.cancer.gov/" style="background-color: rgb(255, 255, 255);">https://portal.gdc.cancer.gov/</a>).</td>
+</tr>
+<tr>
+<td>metadata <span style="color:red;">*</span></td>
+<td>
+<p>The metadata file obtained from obtained from the GDC data portal (https://portal.gdc.cancer.gov/)</p>
+</td>
+</tr>
+<tr>
+<td>output_file_name <span style="color:red;">*</span></td>
+<td>
+<p> </p>
+<p>The base name to use for output files. E.g., if you type "TCGA_dataset" then the GCT file will be named "TCGA_dataset.gct"</p>
+</td>
+</tr>
+<tr>
+<td>gct <span style="color:red;">*</span></td>
+<td>whether or not to create a gct file
+			<p> </p>
+</td>
+</tr>
+<tr>
+<td>translate_gene_id <span style="color: rgb(255, 0, 0);">*</span></td>
+<td>Whether or not to translate ENSEMBL IDs (e.g., ENSG00000012048) to Hugo Gene Symbol (e.g., BRCA1)</td>
+</tr>
+<tr>
+<td>cls <span style="color: rgb(255, 0, 0);">*</span></td>
+<td>Whether or not to translate create a cls file separating Normal and Tumor classes based on TCGA Sample ID.</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Output Files</h2>
+<p> </p>
+<ol>
+<li>GCT file (if gct was set to True)<br/>
+	Contains all the data downloaded from GDC.</li>
+<li>TXT files (if gct was set to False)<br/>
+	Contains the data download from GDC scattered in mulitple files.</li>
+<li>CLS<br/>
+	Created if cls was set to True. This CLS file contain the classification of the samples into either normal tissue or cancer tissue based on the TCGA ID.</li>
+</ol>
+<h2>License</h2>
+<p>TCGAImporter is distributed under a modified BSD license available at <a href="https://raw.githubusercontent.com/genepattern/TCGAImporter/master/LICENSE">https://raw.githubusercontent.com/genepattern/TCGAImporter/master/LICENSE</a></p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Download dataset</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Python 3.6</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>2018-08-07</td>
+<td>Using the new docker container</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2018-08-06</td>
+<td>Fixing small bugs and increasing performance of gene name translation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2018-05-16</td>
+<td>Renaming the module from download_from_gdc to TCGAImporter</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2018-04-16</td>
+<td>preparing for prebuild</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-04-16</td>
+<td>Initial version</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

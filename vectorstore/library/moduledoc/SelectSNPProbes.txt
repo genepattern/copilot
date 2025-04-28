@@ -1,0 +1,45 @@
+SelectSNPProbes is on version .
+A description of SelectSNPProbes is Filter a file to retain only SNP probes..
+SelectSNPProbes is a GenePattern module written by GenePattern Team, gp-help@broadinstitute.org.
+SelectSNPProbes can be categorized as SNP Analysis.
+SelectSNPProbes has the following parameters: input file, output prefix.
+The SelectSNPProbes GenePattern module is a specialized bioinformatics tool designed to filter genetic probe data files to retain only SNP-specific probes.
+The SelectSNPProbes module helps researchers isolate single nucleotide polymorphism (SNP) probe information from complex genomic datasets.
+SelectSNPProbes can process multiple input file formats, including CN, XCN, SNP, and BSNP, making it versatile for different genetic analysis workflows.
+The module is particularly useful in genomic research where researchers need to focus specifically on genetic variations represented by SNP probes.
+SelectSNPProbes generates an output file with only SNP probe data, allowing for more targeted downstream genetic analysis and interpretation.
+The module is platform-independent, meaning it can run on various operating systems and computer architectures without modification.
+Researchers in fields like population genetics, pharmacogenomics, and personalized medicine can use SelectSNPProbes to streamline their genetic data processing pipelines.
+The SelectSNPProbes module is part of the GenePattern suite, which provides standardized computational tools for genetic and genomic data analysis.
+By filtering out non-SNP probes, SelectSNPProbes helps reduce computational complexity and focus analysis on genetic variation markers.
+The module is designed to be user-friendly, requiring only an input file and an output prefix to generate a filtered SNP probe dataset.
+input file:file:SelectSNPProbes module requires an input file containing genomic data.
+input file:type:The input file can be in CN, XCN, SNP, or BSNP format.
+input file:requirement:Required parameter for the SelectSNPProbes module.
+input file:description:Specifies the source genomic data file to be filtered for SNP probes.
+output prefix:type:String
+output prefix:requirement:Required parameter for the SelectSNPProbes module.
+output prefix:description:Defines the prefix that will be used to name the output file.
+output prefix:usage:Helps create a unique and identifiable output filename for the filtered SNP probe data.
+output file:type:Filtered genomic data file
+output file:description:Contains only SNP probe data from the original input file.
+output file:naming:Will be named as <output.prefix>.snpsonly.<input.file_extension>
+output file:content:Retains only the rows or entries corresponding to SNP probes from the original dataset.
+SelectSNPProbes module requires an input file containing genomic probe data in CN, XCN, SNP, or BSNP format.
+SelectSNPProbes module generates an output file with only SNP probe data, preserving the original file extension.
+Input file for SelectSNPProbes module must contain probe information with multiple potential genomic data formats.
+SelectSNPProbes output file will have the same structure as the input file, but filtered to include only SNP-specific probes.
+The input file for SelectSNPProbes can represent different types of genomic probe data, including copy number and SNP variations.
+SelectSNPProbes output filename will include the specified output prefix and the original input file's extension.
+The input file for SelectSNPProbes may contain mixed probe types before filtering for SNP-specific probes.
+SelectSNPProbes module allows filtering of genomic probe data across multiple file format types to isolate SNP-specific information.
+SelectSNPProbes is a GenePattern module designed to filter genetic probe data files to retain only SNP-specific probes.
+The SelectSNPProbes module helps researchers isolate single nucleotide polymorphism (SNP) probe information from broader genetic datasets.
+The module can process input files in multiple genetic data formats including CN, XCN, SNP, and BSNP file types.
+Users must provide two required parameters: an input genetic data file and an output file name prefix.
+The module will generate a new output file with a naming convention of <output.prefix>.snpsonly.<input.file_extension>.
+This module is platform-independent and can run on any operating system or CPU architecture.
+The underlying implementation of SelectSNPProbes is written in Perl programming language.
+The primary purpose of SelectSNPProbes is to streamline genetic analysis by extracting only SNP-related probe data from complex genetic datasets.
+Researchers can use this module to focus their analysis specifically on single nucleotide polymorphism information.
+The module is part of the SNP Analysis module type in the GenePattern computational genomics toolkit.

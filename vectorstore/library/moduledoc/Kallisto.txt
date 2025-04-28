@@ -1,0 +1,62 @@
+Kallisto is on version 2.0.
+A description of Kallisto is An implementation of Kallisto, intended to be used for RNA quantitation against a human index, Gencode release 37 (GRCh38.p13), or a mouse index, Gencode release M26 (GRCm39)..
+Kallisto is a GenePattern module written by Edwin Juarez, Thorin Tabor.
+Kallisto can be categorized as RNA Quantification, Transcriptomics.
+Kallisto has the following parameters: fastq.files, transcriptome, bias, include.overhang, read.direction, output.filename, bootstrap.samples, seed, quantify.reads, fragment.length, fragment.sd, pseudobam, genomebam, gtf.file, chromosome.file.
+The Kallisto GenePattern module is a powerful tool for RNA-seq quantification and transcript abundance estimation.
+Kallisto enables precise pseudoalignment of RNA sequencing reads to reference transcriptomes for human and mouse genomic data.
+The module can perform sequence-based bias correction during read alignment, improving quantification accuracy.
+Kallisto supports both single-end and paired-end RNA sequencing data, with flexible parameters for fragment length and standard deviation estimation.
+Users can generate transcript-level abundance estimates in multiple file formats, including H5, TSV, and CSV, facilitating downstream analysis.
+The module provides bootstrap sampling to estimate uncertainty in transcript quantification, with a default of 2 bootstrap samples.
+Kallisto can generate normalized gene-level and raw estimated count data, supporting various downstream transcriptomic analyses.
+The module integrates with Sleuth for gene-level aggregation and provides options for generating pseudoalignment BAM files.
+Researchers can specify strand-specific read directions and perform quantification with customizable parameters like seed value and bias correction.
+The Kallisto GenePattern module supports both human (Gencode release 37) and mouse (Gencode release M26) transcriptome indices.
+Output files include detailed abundance estimates, run information, and log files to support comprehensive RNA-seq data interpretation.
+The module is particularly useful for researchers studying gene expression, transcript isoforms, and quantitative transcriptomics.
+fastq.files: Input files, type string array, required, specifies FASTQ or FASTQ.gz files for RNA sequencing quantitation in Kallisto module
+transcriptome: Target genome selection, type string, required, chooses between Human or Mouse reference transcriptome for pseudoalignment
+bias: Sequence bias correction flag, type boolean, required, determines whether to perform sequence-based bias correction in Kallisto module
+include.overhang: Read overhang handling, type boolean, required, controls inclusion of reads where fragment's unobserved portion is predicted outside transcript
+read.direction: Strand-specific read orientation, type string, required, specifies read directionality for strand-specific RNA sequencing data
+output.filename: Output file base name, type string, required, defines prefix for generated output files in Kallisto module
+bootstrap.samples: Bootstrap iterations, type integer, required, sets number of bootstrap samples for uncertainty estimation, default is 2
+seed: Random number generator seed, type integer, required, ensures reproducibility of bootstrap sampling, default is 42
+quantify.reads: Single-end read quantification, type boolean, required, enables quantification of single-end sequencing reads
+fragment.length: Average fragment length, type float, optional, estimates mean fragment length for sequencing library
+fragment.sd: Fragment length standard deviation, type float, optional, provides variation estimate for fragment length distribution
+pseudobam: Pseudoalignment BAM output, type boolean, required, controls generation of transcriptome pseudoalignment BAM file
+genomebam: Genome-projected BAM output, type boolean, required, enables projection of pseudoalignments to genome-sorted BAM file
+gtf.file: Gene annotation file, type string, optional, provides transcriptome information for genome BAM projection
+chromosome.file: Chromosome information, type string, optional, contains chromosome names and lengths for BAM file generation
+Kallisto module input files:
+fastq files containing raw sequencing reads in FASTQ or FASTQ.gz format
+transcriptome index file for human or mouse genome
+GTF file containing transcriptome information (optional)
+chromosome file with chromosome names and lengths (optional)
+Kallisto module output files:
+RNASeq_quant/<output_filename>_abundance.h5 containing transcript-level abundance data
+RNASeq_quant/<output_filename>_abundance.tsv with transcript-level abundance in tabular format
+RNASeq_quant/<output_filename>_normalized_gene_level.csv with normalized gene-level abundance
+RNASeq_quant/<output_filename>_raw_estimated_counts.csv containing raw gene-level estimated counts
+RNASeq_quant/<output_filename>_transcript_level.csv with transcript-level abundance details
+RNASeq_quant/run_info.json documenting Kallisto parameters used in the run
+module_log.txt listing commands executed by the Kallisto module
+stdout.txt containing non-essential messages from Kallisto
+stderr.txt potentially showing errors or processing details from the Kallisto run
+Kallisto is a computational method for quantifying RNA sequencing transcript abundance using pseudoalignment.
+Kallisto performs rapid transcript quantification by using k-mer based pseudoalignment instead of traditional alignment algorithms.
+The Kallisto module supports quantification against human (Gencode release 37) and mouse (Gencode release M26) transcriptomes.
+Kallisto uses a k-mer length of 31 and generates transcript-level abundance estimates through an Expectation-Maximization (EM) algorithm.
+The module can perform sequence-based bias correction to improve quantification accuracy of RNA-seq data.
+Kallisto supports both single-end and paired-end RNA sequencing read quantification.
+The module generates multiple output files including transcript abundance files, normalized gene-level abundance, and raw estimated counts.
+Kallisto uses bootstrap sampling to estimate uncertainty in transcript abundance measurements, with a default of 2 bootstrap samples.
+The module integrates Sleuth for gene-level aggregation and normalization of transcript abundance estimates.
+Kallisto can generate pseudoalignment BAM files for visualization and further downstream analysis.
+The module supports strand-specific RNA-seq library preparation protocols through read direction parameters.
+Kallisto's pseudoalignment approach allows for faster computational processing compared to traditional alignment methods.
+The module provides flexibility in specifying fragment length and standard deviation for more accurate quantification.
+Kallisto can handle compressed FASTQ files directly, reducing preprocessing requirements.
+The module includes options for setting random seed to ensure reproducibility of quantification results.

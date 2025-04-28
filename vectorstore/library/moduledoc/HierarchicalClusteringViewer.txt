@@ -1,0 +1,42 @@
+HierarchicalClusteringViewer is on version 12.
+A description of HierarchicalClusteringViewer is Views results of hierarchical clustering. This visualizer provides a tree view (dendrogram) of the results of the HierarchicalClustering module. The dendrogram provides a graphical view of the distance between clusters identified by the algorithm, as well as a heat map of the associated data..
+HierarchicalClusteringViewer is a GenePattern module written by Marc-Danie Nazaire, Broad Institute.
+HierarchicalClusteringViewer can be categorized as Visualization, Clustering.
+HierarchicalClusteringViewer has the following parameters: cdt file, gtr file, atr file.
+The HierarchicalClusteringViewer module is a powerful visualization tool for exploring complex biological datasets through hierarchical clustering.
+The HierarchicalClusteringViewer helps researchers understand relationships and patterns within gene expression data by creating visual representations of clustered data.
+The module generates a dendrogram that graphically displays the distances between different clusters in a dataset, allowing scientists to identify similarities and differences across genes or samples.
+HierarchicalClusteringViewer can create heat maps that represent data values using color intensity, with red typically indicating higher values and blue indicating lower values.
+The module supports both row-relative and global color scaling methods, enabling researchers to customize how data values are transformed into visual representations.
+HierarchicalClusteringViewer allows users to rotate dendrograms and explore cluster relationships by flipping branches, providing interactive data exploration capabilities.
+The module can perform biclustering by simultaneously clustering both rows (genes) and columns (samples), revealing complex multidimensional relationships in biological datasets.
+HierarchicalClusteringViewer supports additional annotation features like feature and sample labels, which can be added using specialized file formats to provide more context to the visualization.
+Users of the HierarchicalClusteringViewer can save their visualizations in SVG and PNG formats, facilitating easy integration of clustering results into scientific presentations and publications.
+The module is particularly useful in genomics, transcriptomics, and other fields where understanding complex relationships within large datasets is crucial for scientific discovery.
+cdt file, file, HierarchicalClusteringViewer requires clustered data table containing original data reordered into clusters, required parameter
+gtr file, file, HierarchicalClusteringViewer contains distance measures between gene (row) clusters, at least one of gtr or atr file is required
+atr file, file, HierarchicalClusteringViewer contains distance measures between sample (column) clusters, at least one of gtr or atr file is required
+HierarchicalClusteringViewer requires three primary input files from the HierarchicalClustering module.
+CDT file contains the original clustered data table with rows and columns reordered based on clustering results.
+GTR file records the hierarchical clustering order and distance measures for gene (row) clusters.
+ATR file records the hierarchical clustering order and distance measures for sample (column) clusters.
+HierarchicalClusteringViewer supports optional GMX files for feature label annotations.
+HierarchicalClusteringViewer supports optional CLS files for sample label annotations.
+HierarchicalClusteringViewer can output heat map images in SVG and PNG formats.
+The CDT file is a tab-delimited text file containing numerical data with genes/features as rows and samples as columns.
+The GTR file contains a hierarchical tree structure representing gene clustering relationships and distances.
+The ATR file contains a hierarchical tree structure representing sample clustering relationships and distances.
+The GMX file is a text file defining feature sets with labels and optional color annotations.
+The CLS file is a text file defining sample classifications with optional color annotations.
+The output PNG/SVG image represents the clustered heat map with optional feature and sample labels.
+The HierarchicalClusteringViewer module visualizes results from hierarchical clustering analysis.
+The module generates a dendrogram showing the hierarchical relationships between clusters in a dataset.
+HierarchicalClusteringViewer requires three potential input files: a CDT file with clustered data, a GTR file with gene cluster distances, and an ATR file with sample cluster distances.
+The module creates a heat map representation of the data, with color intensity representing value magnitudes across the dataset.
+Users can choose between row-relative and global color scaling methods in the HierarchicalClusteringViewer.
+The heat map can use either a continuous color gradient or discrete color mapping in the HierarchicalClusteringViewer.
+HierarchicalClusteringViewer allows users to rotate dendrogram branches by right-clicking on cluster nodes.
+The module supports adding feature and sample labels through GMX and CLS files respectively.
+Users can save heat map visualizations from the HierarchicalClusteringViewer in SVG or PNG formats.
+The HierarchicalClusteringViewer includes a search function to locate specific features or samples within the heat map.
+The module is platform-independent and runs using JavaScript and Java technologies.

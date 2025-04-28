@@ -1,0 +1,53 @@
+GctToPcl is on version 1.0.
+A description of GctToPcl is Converts files in GenePattern's gct format to Stanford's pcl format. The pcl and gct file formats are very similar. The key difference is that pcl files support 'weights', while gct files are unweighted. The conversion from gct to pcl sets all weight values in the resulting pcl file to 1..
+GctToPcl is a GenePattern module written by Jeremy Hubble (Stanford).
+GctToPcl can be categorized as Data Format Conversion.
+GctToPcl has the following parameters: input.filename, output.filename.
+The GctToPcl module is a specialized data format conversion tool in the GenePattern bioinformatics platform for transforming genetic expression data files.
+The GctToPcl module converts genetic expression data from GenePattern's .gct file format to Stanford's .pcl file format.
+The primary difference between .gct and .pcl formats is the support for 'weights' in .pcl files, which are set to 1 during conversion.
+GctToPcl is useful for researchers who need to standardize genetic expression data files across different bioinformatics platforms and analysis tools.
+The module is platform-independent and can run on any operating system with a Perl interpreter.
+GctToPcl is part of a broader set of file conversion tools in GenePattern, complemented by the PclToGct module for reverse conversions.
+Researchers in genomics, transcriptomics, and computational biology can use GctToPcl to prepare data for downstream analysis and visualization.
+The module preserves the core genetic expression data during format conversion, ensuring data integrity and compatibility.
+GctToPcl supports researchers working with gene expression microarray and RNA-seq datasets by facilitating file format interoperability.
+The module is designed to be simple to use, requiring only input and output filename parameters for successful conversion.
+input.filename: string, source GCT file to convert to PCL format, required, no default value
+input.filename: specifies the input file in GenePattern's gct format for the GctToPcl module
+input.filename: contains the path and filename of the original genetic data file to be transformed
+output.filename: string, name of PCL file to output, required, no default value
+output.filename: defines the destination filename for the converted PCL format file
+output.filename: determines where the transformed genetic data will be saved after conversion
+GctToPcl module converts genetic data files between two similar but distinct file formats
+GctToPcl handles transformation from GenePattern's gct format to Stanford's pcl format
+GctToPcl sets all weight values in the resulting PCL file to 1 during conversion
+GctToPcl preserves the core genetic data structure while adapting to PCL file specifications
+Conversion process ensures data integrity and compatibility between different genetic data representations
+Conversion supports researchers working with genetic data across different computational platforms
+Conversion maintains the essential genetic information while adapting file format requirements
+GctToPcl module converts input GCT file to PCL file format
+Input file is a GCT format file containing gene expression data
+Input GCT file includes gene names, sample identifiers, and expression measurements
+Input file typically has a header with file version and dimension information
+GctToPcl module requires a source GCT file as primary input
+Output file is a PCL format file with gene expression data
+Output PCL file includes gene names, sample identifiers, and expression measurements
+Output PCL file sets all weight values to 1 during conversion
+Output filename is specified by user parameter
+PCL file format supports additional 'weights' column not present in GCT format
+Conversion preserves gene and sample identifiers across file formats
+GctToPcl module performs lossless data transformation between file formats
+Input and output files contain numerical gene expression data
+File conversion supports standardization of gene expression data representations
+GctToPcl module converts GenePattern's gct file format to Stanford's pcl file format
+The GctToPcl module is designed to transform genetic data files between two similar but distinct formats
+GctToPcl sets all weight values in the resulting pcl file to 1 during conversion
+The key difference between gct and pcl formats is that pcl files support 'weights' while gct files are unweighted
+GctToPcl requires an input gct filename and generates an output pcl filename
+The module was authored by Jeremy Hubble from Stanford and released in September 2008
+GctToPcl is a data format conversion task that can run on any CPU or operating system
+The conversion process is implemented in Perl and does not have specific Java JVM requirements
+Users can reverse the conversion process using the complementary PclToGct module
+The module references Stanford's pcl file format documentation and Broad's GCT file format specifications
+GctToPcl preserves the core genetic data structure while adding a uniform weight of 1 to the converted file

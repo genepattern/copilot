@@ -1,0 +1,50 @@
+WeightedVotingXValidation is on version .
+A description of WeightedVotingXValidation is The weighted voting algorithm makes a weighted linear combination of relevant "marker" or "informative" genes obtained in the training set to provide a classification scheme for new samples. Target classes (classes 0 and 1) can be for example defined based on a phenotype such as morphological class or treatment outcome..
+WeightedVotingXValidation is a GenePattern module written by Ken Ross (Broad Institute), gp-help@broad.mit.edu.
+WeightedVotingXValidation can be categorized as Prediction.
+WeightedVotingXValidation has the following parameters: data.filename, class.filename, pred.results.file, feature.summary.file, num.features.
+The WeightedVotingXValidation module is a machine learning classifier for gene expression data that uses a weighted voting algorithm to predict sample classes.
+The WeightedVotingXValidation module helps researchers classify biological samples based on gene expression patterns by identifying the most informative genes.
+WeightedVotingXValidation uses a signal-to-noise statistic to select marker genes that best distinguish between two classes of biological samples.
+In the WeightedVotingXValidation method, each selected gene "votes" for a particular class based on its expression level and statistical characteristics.
+The WeightedVotingXValidation algorithm calculates a confidence score for its predictions by comparing the votes for the winning and losing classes.
+WeightedVotingXValidation employs a leave-one-out cross-validation approach to test the reliability of its classification model.
+The module was originally developed for molecular cancer classification, helping researchers predict cancer subtypes or treatment outcomes.
+WeightedVotingXValidation can be used in various biological contexts, such as distinguishing between different disease states or experimental conditions.
+The algorithm behind WeightedVotingXValidation is similar to the Naïve Bayes classification method, making it a robust machine learning approach.
+Researchers can use WeightedVotingXValidation to identify key genes that are most important for distinguishing between different biological classes.
+data.filename: string, input data file name in GCT, RES, or ODF format, required, no default value
+Weighted Voting module requires a data file containing gene expression measurements
+class.filename: string, input class file defining target classes, required, no default value
+Specifies the class labels for training samples in the Weighted Voting classification task
+pred.results.file: string, output file path for prediction results in ODF format, optional, no default value
+Stores the classification predictions from the Weighted Voting cross-validation process
+feature.summary.file: string, output file path for feature summary in ODF format, optional, no default value
+Contains details about selected marker genes and their signal-to-noise statistics in the Weighted Voting model
+num.features: integer, number of top features to select using signal-to-noise statistic, required, no default value
+Determines how many genes are used as informative markers in the Weighted Voting classification algorithm
+Weighted Voting module selects the most discriminative genes based on signal-to-noise ratio
+The algorithm computes a signal-to-noise statistic for each gene to identify the most informative features
+Weighted Voting uses a voting mechanism where each selected gene casts a vote for the predicted class
+The final prediction is determined by the aggregate weighted votes of the selected marker genes
+Cross-validation is performed by iteratively leaving out one sample and training on the remaining data
+WeightedVotingXValidation module requires a gene expression data file in GCT, RES, or ODF format containing gene expression measurements.
+WeightedVotingXValidation module needs a class file in CLS format defining the binary classification labels for training samples.
+WeightedVotingXValidation module generates a prediction results file in ODF format containing classification predictions for each sample.
+WeightedVotingXValidation module produces a feature summary file in ODF format listing the selected marker genes and their signal-to-noise statistics.
+WeightedVotingXValidation module input data file should contain gene expression values with genes as rows and samples as columns.
+WeightedVotingXValidation module class file must specify two classes (0 and 1) corresponding to different phenotypes or treatment outcomes.
+WeightedVotingXValidation module prediction results file includes predicted class labels, voting scores, and prediction confidence for each sample.
+WeightedVotingXValidation module feature summary file provides details about the most informative genes selected for classification.
+WeightedVotingXValidation module performs leave-one-out cross-validation to assess the classifier's performance.
+WeightedVotingXValidation module uses signal-to-noise statistic to select the most discriminative genes for classification.
+The WeightedVotingXValidation module is a machine learning classifier for gene expression data that predicts sample classes using a weighted voting algorithm.
+The module uses signal-to-noise statistic (Sx) to select informative marker genes from training data.
+For each gene, the WeightedVotingXValidation calculates a decision boundary (Bx) halfway between class means.
+During prediction, each gene in the WeightedVotingXValidation module casts a vote based on its signal-to-noise statistic and the gene's deviation from the decision boundary.
+The WeightedVotingXValidation module determines the final class prediction by summing these votes and using the sign of the total vote.
+The prediction confidence in the WeightedVotingXValidation is calculated as the relative margin of victory between winning and losing vote totals.
+The WeightedVotingXValidation uses leave-one-out cross-validation, iteratively training on all but one sample and testing on the left-out sample.
+The module was originally developed for molecular cancer classification based on gene expression data from pioneering work by Golub and colleagues.
+The WeightedVotingXValidation algorithm is mathematically similar to the Naïve Bayes classification method.
+The module requires input files for gene expression data, class labels, and allows specification of the number of features to select.

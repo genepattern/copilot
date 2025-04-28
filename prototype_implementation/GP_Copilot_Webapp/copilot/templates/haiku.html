@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% block title %}
+    GP Copilot: Haiku
+{% endblock title %}
+    
+{% block head %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    #thumbnail-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+
+    #preview {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+{% endblock head %}
+    
+
+
+{% block model_type %}
+    Claude 3.5 Haiku
+{% endblock model_type %}
+
+{% block chatheader %}
+<div class="chat-header">
+    <h1>GenePattern Copilot</h1>
+    <p>Try out our AI-powered helper for GenePattern! It uses OpenAI's GPT-4o LLM and retrieval augmented generation.</p>
+    <small><b>Disclaimer:</b> This data is being sent to OpenAI, so do not share personal information through this chatbot.</small>
+</div>
+{% endblock chatheader %}
+    
+
+
+{% block content %}
+
+
+{% endblock content %}
+    
+
+</html>

@@ -1,0 +1,71 @@
+Peaks is on version .
+A description of Peaks is Performs peak detection using digital convolution (moving-window) filters. The input spectrum is subjected to the following filters (in sequence): smoothing (low-pass) filter, adaptive background correction (unsharp masking) filter, and high-pass filter. The function returns a table with the original spectrum and the result of applying the filters..
+Peaks is a GenePattern module written by D. R. Mani (Broad Institute), gp-help@broad.mit.edu.
+Peaks can be categorized as Proteomics.
+Peaks has the following parameters: spectrum.filename, low.Da, high.Da, percentile, smoothing.size, adaptive.background.correction.strength, adaptive.background.correction.size, high.pass.filter.strength, high.pass.filter.factor, output.file.
+The Peaks GenePattern module is a specialized tool for detecting and analyzing spectral peaks in proteomics data.
+The Peaks module uses digital filtering techniques to identify significant peaks in mass spectrometry spectra.
+Peaks applies a series of computational filters to raw spectral data, including smoothing, background correction, and high-pass filtering.
+The module helps researchers identify meaningful molecular signals by reducing noise and highlighting important spectral features.
+Peaks is particularly useful in proteomics research for discovering potential biomarkers and understanding complex protein spectra.
+The module allows customization of filtering parameters like smoothing size, background correction strength, and peak detection thresholds.
+Peaks can process spectrum data from CSV files, making it compatible with various mass spectrometry data collection platforms.
+The module outputs a comprehensive file containing both the original and filtered spectra, enabling detailed comparative analysis.
+Peaks is designed to work across different computational platforms, supporting broad accessibility for proteomics researchers.
+The filtering approach in Peaks helps distinguish genuine molecular signals from background noise in complex spectral datasets.
+Researchers can use Peaks to standardize peak detection processes and improve reproducibility in proteomics experiments.
+The module's adaptive background correction helps normalize spectra across different experimental conditions and instrument variations.
+Peaks supports quantitative analysis by providing a systematic method for identifying and characterizing spectral peaks.
+The module's high-pass filtering can help emphasize subtle but potentially significant molecular variations in spectral data.
+Peaks integrates seamlessly with the GenePattern computational biology platform, facilitating advanced proteomics data analysis workflows.
+Peaks module spectrum.filename: Input spectrum data file in CSV format; required parameter for loading spectral data.
+Peaks module low.Da: Minimum mass-to-charge (M/Z) value to include in spectral analysis; numeric parameter defining lower boundary of spectral range.
+Peaks module high.Da: Maximum mass-to-charge (M/Z) value to include in spectral analysis; numeric parameter defining upper boundary of spectral range.
+Peaks module percentile: Threshold for peak detection after applying filters; determines which spectral features are considered significant peaks; default value is 0.65.
+Peaks module smoothing.size: Size of the digital smoothing filter used to reduce noise in spectral data; determines window size for low-pass filtering; default value is 21.
+Peaks module adaptive.background.correction.strength: Intensity of background noise reduction in spectral data; controls unsharp masking filter strength; default value is 0.75.
+Peaks module adaptive.background.correction.size: Window size for adaptive background correction filter; determines spatial extent of background noise reduction; default value is 21.
+Peaks module high.pass.filter.strength: Intensity of high-pass filtering to emphasize spectral peaks; controls peak enhancement; default value is 10.
+Peaks module high.pass.filter.factor: Scaling factor for high-pass filter; modulates peak detection sensitivity; default value is 5.
+Peaks module output.file: Filename for saving processed spectral data and detected peaks; optional parameter for result storage.
+Peaks module input file spectrum.filename:
+CSV file containing mass spectrometry spectral data with m/z and intensity values
+Peaks module input file format requirements:
+Comma-separated values with two columns representing mass-to-charge ratio and signal intensity
+Peaks module output file (odf):
+Tabular file containing original spectrum data and filtered peak-detected spectrum results
+Peaks module output file columns:
+Original m/z values from input spectrum
+Original intensity values from input spectrum
+Smoothed spectrum intensities after low-pass filter
+Background-corrected spectrum intensities
+High-pass filtered spectrum intensities
+Detected peak locations and intensities
+Peaks module input file content expectations:
+Numerical data representing mass spectrometry signal measurements
+Typically generated from proteomics or metabolomics experiments
+Represents spectral intensity across different mass-to-charge ratios
+Peaks module output file purpose:
+Provides comprehensive view of spectral data processing
+Enables visualization of signal filtering and peak detection steps
+Supports downstream analysis of mass spectrometry data
+Peaks module file encoding:
+Plain text format
+UTF-8 or ASCII character encoding
+Human-readable tabular structure
+Peaks module data processing:
+Applies sequential digital filters to input spectrum
+Smooths signal using moving window
+Corrects background intensity
+Identifies significant spectral peaks
+Peaks module is a computational tool for detecting spectral peaks in mass spectrometry data using digital filtering techniques.
+Peaks module applies a sequence of digital filters to process spectral data for identifying significant signal peaks.
+The Peaks module uses three primary digital filters: a smoothing (low-pass) filter, an adaptive background correction filter, and a high-pass filter.
+Peaks module requires a spectrum data file in CSV format as input, with parameters to define mass-to-charge (M/Z) range and filtering characteristics.
+The smoothing filter in the Peaks module reduces noise by averaging signal intensities over a specified window size, typically 21 data points.
+Adaptive background correction in the Peaks module uses an unsharp masking technique to enhance local signal variations against background noise.
+The high-pass filter in the Peaks module emphasizes high-frequency signal components, helping to isolate potential peak regions.
+Peaks module allows users to set a percentile threshold (default 0.65) to determine which filtered signal regions are considered significant peaks.
+The output of the Peaks module is an ODF file containing the original spectrum data and the filtered, peak-detected spectrum.
+Peaks module is implemented in R and is platform-independent, making it versatile for proteomics data analysis across different computational environments.
+The module was developed by D. R. Mani at the Broad Institute, with applications in medical diagnosis and biomarker discovery.

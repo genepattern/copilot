@@ -1,0 +1,63 @@
+DAPPLE is on version .
+A description of DAPPLE is Disease Association Protein-Protein Link Evaluator. DAPPLE looks for significant physical connectivity among proteins encoded by genes in loci associated with disease according to protein-protein interactions reported in the literature..
+DAPPLE is a GenePattern module written by .
+DAPPLE can be categorized as Protein Interaction, Network Analysis, Genomic Analysis.
+DAPPLE has the following parameters: input_type, plot, regulatory_region.
+The DAPPLE GenePattern module is a computational tool for analyzing protein-protein interactions in disease-associated genomic regions.
+DAPPLE stands for Disease Association Protein-Protein Link Evaluator, designed to explore potential biological mechanisms underlying genetic variations.
+DAPPLE can accept multiple input types including gene lists, SNPs, genomic regions, and gene-region combinations.
+The module uses the InWeb database, which contains 428,430 protein interactions, to construct protein interaction networks.
+DAPPLE builds direct and indirect interaction networks from proteins encoded by input genes or regions.
+The module statistically assesses network connectivity using a node-label permutation method to determine significant protein interactions.
+DAPPLE generates multiple output files including network statistics, seed protein scores, and genes to prioritize for further investigation.
+The underlying hypothesis of DAPPLE is that causal genetic variants affect common biological mechanisms detectable through protein-protein interactions.
+DAPPLE can help researchers identify potential functional connections between genes in disease-associated genomic regions.
+The module uses adaptive permutation, stopping network analysis at 100 permutations if statistical significance is not achieved.
+DAPPLE defines genomic regions using linkage disequilibrium data from HapMap and 1000 Genomes Project.
+The tool is particularly useful for exploring potential biological mechanisms in immune-mediated and complex genetic diseases.
+DAPPLE can help prioritize candidate genes within large genomic regions associated with specific diseases.
+The module provides visualization of direct and indirect protein interaction networks.
+DAPPLE considers high-confidence protein interactions defined by rigorous signal-to-noise thresholds.
+Here's a detailed breakdown of the parameters for the DAPPLE module:
+Input Type: List of genes, type is string, represents gene symbols to be analyzed in DAPPLE network, required parameter
+Input Type: List of SNPs, type is string, must be from HapMap or 1KG databases, defines wingspan region around genes, required parameter
+Input Type: List of genomic regions, type is string, includes region ID, chromosome, left and right boundaries, required parameter
+Input Type: Gene-regions, type is string, combines gene symbols with region identifiers, allows grouping of genes, optional parameter
+Plot Parameter: Boolean, determines whether network visualization is generated, default is false, optional parameter
+Regulatory Region Extension: Integer, defines gene footprint extension for regulatory sequence, default is 50kb, optional parameter
+Interaction Database: String, specifies protein-protein interaction source, uses InWeb database by default, not user-configurable
+Permutation Threshold: Float, sets statistical significance cutoff at P < 0.1, adaptive permutation method used, default is built-in
+Network Connectivity Parameters: List of network statistics measured, includes direct/indirect connections and binding degrees, automatically calculated
+Seed Protein Scoring: Calculates individual protein connectivity significance using node-label permutation method, automatically performed
+Confidence Interaction Threshold: Predefined in InWeb database, uses high-confidence non-self interactions, not user-configurable
+Here are the input and output files for the DAPPLE module:
+Input Files:
+Gene list input file containing gene symbols, one per line
+SNP list input file containing SNP identifiers, one per line
+Genomic region input file with chromosome, start, and end coordinates
+Gene-region input file mapping genes to specific regions
+Output Files:
+FILE_summary contains network connectivity parameter values
+FILE_NetStats provides permutation p-values for network statistics
+FILE_SeedScores lists individual protein connectivity p-values
+FILE_GenesToPrioritize identifies genes with corrected p-value < 0.05
+FILE_CIscores shows p-values for common protein interactors
+FILE_directConnections lists direct protein network connections
+FILE_plot visualizes the protein interaction network
+FILE_MissingGenes indicates genes not found in interaction database
+FILE_permuted* contains permuted parameter values
+DAPPLE is a computational method for analyzing protein-protein interactions in disease-associated genomic regions.
+DAPPLE stands for Disease Association Protein-Protein Link Evaluator, designed to investigate physical connectivity among proteins encoded by disease-related genes.
+The core hypothesis of DAPPLE is that causal genetic variations affect specific underlying biological mechanisms detectable through protein-protein interactions.
+DAPPLE can accept four types of input: lists of genes, SNPs, genomic regions, or gene-region combinations.
+The module uses the InWeb database, which contains 428,430 reported protein interactions, with 169,810 considered high-confidence interactions across 12,793 proteins.
+DAPPLE builds direct and indirect interaction networks from proteins encoded by input genes and assesses network connectivity statistically.
+The method uses a node-label permutation approach to evaluate the significance of protein network connections.
+DAPPLE generates multiple output files, including summary statistics, network parameters, seed protein scores, and prioritized genes.
+The module defines genomic regions using linkage disequilibrium data from HapMap or 1000 Genomes Project resources.
+DAPPLE's most recent version uses adaptive permutation, stopping analysis at 100 permutations if network parameters do not meet significance thresholds.
+The method aims to propose candidate genes in large genomic loci by analyzing protein interaction networks.
+DAPPLE was originally developed to investigate protein interactions in immune-mediated disease genomic regions.
+The module extends gene regions by default to include 50kb of regulatory sequence around gene footprints.
+DAPPLE combines protein interaction data from multiple sources, including MINT, BIND, IntAct, and KEGG databases.
+The method assigns probabilistic scores to protein interactions based on experimental context and publication frequency.

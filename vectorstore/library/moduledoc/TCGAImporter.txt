@@ -1,0 +1,49 @@
+TCGAImporter is on version 6.
+A description of TCGAImporter is This module imports data from TCGA by taking in a GDC manifest file, downloading the files listed on that manifest, renaming them to be human-friendly, and compiling them into a GCT file to be computer-friendly..
+TCGAImporter is a GenePattern module written by Edwin Juarez.
+TCGAImporter can be categorized as Download dataset.
+TCGAImporter has the following parameters: imanifest, metadata, output_file_name, gct, translate_gene_id, cls.
+The TCGAImporter GenePattern module is a specialized tool for downloading and processing cancer genomics data from the Cancer Genome Atlas (TCGA).
+The TCGAImporter module allows researchers to download complex genomic datasets from the National Cancer Institute's comprehensive cancer genomics repository.
+TCGAImporter requires two key input files: a manifest file and a metadata file, both obtained from the GDC (Genomic Data Commons) data portal.
+The TCGAImporter module can translate complex gene identifiers like ENSEMBL IDs into more readable Hugo Gene Symbols, making data more accessible to researchers.
+TCGAImporter can generate multiple output file types, including GCT files for computational analysis and CLS files that classify samples as normal or tumor tissue.
+The module is designed to work across different computing platforms, supporting multiple operating systems and running in Python 3.6 environments.
+TCGAImporter is particularly useful for cancer research, enabling researchers to quickly download and standardize large-scale genomic datasets from TCGA.
+The module includes options to customize data processing, such as choosing whether to generate GCT files or translate gene identifiers.
+TCGAImporter is part of the GenePattern suite of bioinformatics tools, designed to make complex genomic data analysis more accessible to researchers.
+The module is distributed under a modified BSD license, making it freely available for both academic and potentially commercial research applications.
+imanifest: string, path to the manifest file from GDC data portal, required for TCGAImporter module
+The manifest file is crucial for specifying which data files to download from TCGA
+metadata: string, path to the metadata file from GDC data portal, required for TCGAImporter module
+The metadata file provides additional context and information about the downloaded data files
+output_file_name: string, base name for output files in TCGAImporter module, required
+Determines the naming convention for generated output files like GCT and CLS files
+gct: boolean, controls whether a GCT file is created in TCGAImporter module, optional with default value
+Determines if the downloaded data will be compiled into a single, computer-friendly GCT format file
+translate_gene_id: boolean, controls translation of ENSEMBL IDs to Hugo Gene Symbols in TCGAImporter module, optional
+Enables conversion of complex gene identifiers to more readable human gene names
+cls: boolean, controls creation of a classification file in TCGAImporter module, optional
+Generates a file that separates samples into Normal and Tumor classes based on TCGA Sample ID
+TCGAImporter module requires a GDC manifest file as input, which lists files to be downloaded from the TCGA database.
+The manifest file is a text-based file containing unique identifiers for specific TCGA data files.
+TCGAImporter module requires a metadata file as input, which provides additional details about the files listed in the manifest.
+The metadata file is typically a JSON or CSV format containing sample and file-level information from the GDC data portal.
+The output GCT file from TCGAImporter contains all downloaded TCGA data in a standardized, tabular format.
+The GCT file includes gene expression data with genes as rows and samples as columns, formatted for easy computational analysis.
+The optional CLS file created by TCGAImporter classifies samples as either normal tissue or cancer tissue based on TCGA sample identifiers.
+The CLS file is a simple text file that provides a binary classification of samples for downstream analysis.
+If GCT generation is disabled, TCGAImporter will output multiple text files containing the raw downloaded data.
+These text files preserve the original format of the downloaded TCGA data files before any transformation.
+TCGAImporter is a GenePattern module designed to import data from The Cancer Genome Atlas (TCGA) by processing manifest and metadata files.
+The TCGAImporter module allows researchers to download genomic data files from the GDC data portal.
+Users must obtain a manifest file and metadata file from the GDC data portal before using the TCGAImporter module.
+The TCGAImporter module can translate ENSEMBL gene identifiers to standard Hugo Gene Symbols during data import.
+The module can generate a GCT (Gene Cluster Text) file containing downloaded genomic data in a standardized format.
+TCGAImporter can optionally create a CLS file that classifies samples as normal or tumor tissue based on TCGA sample identifiers.
+The module is implemented in Python 3.6 and can run on any operating system with compatible computational infrastructure.
+TCGAImporter supports downloading various types of genomic data, with future plans to implement copy number variation parsing.
+The module requires the GDC download client to be present in the same directory for successful data retrieval.
+Users can specify parameters like input manifest, metadata file, output file name, and options for gene ID translation and file generation.
+TCGAImporter is distributed under a modified BSD license and is part of the GenePattern computational genomics toolkit.
+The module has undergone multiple version updates to improve performance and compatibility with GDC metadata formats.

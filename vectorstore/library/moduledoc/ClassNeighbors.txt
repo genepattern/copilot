@@ -1,0 +1,53 @@
+ClassNeighbors is on version 1.0.
+A description of ClassNeighbors is Select genes that most closely resemble a profile. The ClassNeighbors tool performs marker analysis that helps the user determine which genes are most closely correlated with a class template and how significant that correlation is for each gene..
+ClassNeighbors is a GenePattern module written by Ken Ross (Broad Institute) kross@broad.mit.edu.
+ClassNeighbors can be categorized as GeneListSelection.
+ClassNeighbors has the following parameters: data.filename, class.filename, marker.gene.list.file, marker.data.set.file, num.neighbors, num.permutations, user.pval, min.threshold, max.threshold, min.fold.diff, min.abs.diff, mean.or.median, ttest.or.snr.
+The ClassNeighbors GenePattern module is a powerful tool for identifying genes most closely correlated with a specific biological class or phenotype.
+ClassNeighbors helps researchers identify marker genes that distinguish between two different biological conditions or classes.
+The module uses statistical methods like Signal-to-Noise Ratio (SNR) or t-Test to rank genes based on their differential expression between classes.
+ClassNeighbors performs a permutation test to assess the statistical significance of the identified marker genes, controlling for both gene ranking and inter-gene correlations.
+The module can filter genes based on variation, removing genes that do not show substantial differences across samples.
+ClassNeighbors is particularly useful in cancer research, helping to identify genes that can distinguish between tumor and normal tissue samples.
+The algorithm produces a detailed output table with 12 columns, including gene expression statistics, permutation test results, and gene identifiers.
+Researchers can customize the analysis by setting parameters like the number of neighbors, permutation iterations, and significance thresholds.
+ClassNeighbors can be integrated with other GenePattern modules like HeatMapViewer to visualize the results of the marker gene analysis.
+The module is based on seminal work in molecular classification by researchers like Golub and colleagues, who pioneered gene expression-based cancer classification.
+ClassNeighbors provides a systematic approach to identifying genes that are most informative for distinguishing between different biological classes or conditions.
+The module's flexibility allows researchers to apply it to various biological questions, from cancer research to studying developmental processes.
+data.filename: String, input data file path, required, specifies the gene expression dataset file format (.res, .gct, or .odf)
+class.filename: String, input class file path, required, defines the class labels for samples (.cls or .odf)
+marker.gene.list.file: String, output filename for analysis results, required, stores the marker gene analysis output (.odf)
+marker.data.set.file: String, output filename for marker data, required, contains the selected marker gene data (.gct)
+num.neighbors: Integer, number of top genes to find, optional, default is 50, determines how many genes are most correlated with each class
+num.permutations: Integer, number of permutations in statistical test, optional, default is 100, used to assess statistical significance of gene rankings
+user.pval: Float, user-defined significance value, optional, default is 0.5, sets the custom p-value threshold for permutation test
+min.threshold: Numeric, minimum data value threshold, optional, default is 10, sets lower bound for data preprocessing
+max.threshold: Numeric, maximum data value threshold, optional, default is 16000, sets upper bound for data preprocessing
+min.fold.diff: Numeric, minimum fold difference for gene filtering, optional, default is 5, removes genes with low variation
+min.abs.diff: Numeric, minimum absolute difference for gene filtering, optional, default is 50, removes genes with low variation
+mean.or.median: String, selection of statistical measure, optional, default is mean, chooses between mean and median for feature selection
+ttest.or.snr: String, statistical method selection, optional, default is signal-to-noise ratio, chooses between t-test and signal-to-noise ratio for gene ranking
+Here are the input and output files for the ClassNeighbors module:
+ClassNeighbors input data file is a gene expression matrix in .res, .gct, or .odf format containing gene expression measurements across samples.
+ClassNeighbors input class file is a .cls or .odf file defining sample class labels for two distinct groups to compare.
+ClassNeighbors marker gene list output file is an .odf file containing ranked genes with statistical significance metrics for each class.
+ClassNeighbors marker data set output file is a .gct format file with raw expression data for the selected marker genes.
+ClassNeighbors input data file contains numerical gene expression values with genes as rows and samples as columns.
+ClassNeighbors input class file contains binary class labels indicating which samples belong to each group being compared.
+ClassNeighbors marker gene list output file includes columns for gene name, class correlation, signal-to-noise score, mean values, standard deviations, and permutation test significance levels.
+ClassNeighbors marker data set output file preserves the original expression data format for the subset of selected marker genes.
+ClassNeighbors input files must have consistent sample ordering to enable proper class comparison and statistical analysis.
+ClassNeighbors output files provide a comprehensive summary of genes most correlated with the specified class distinction.
+ClassNeighbors is a computational method for identifying genes most correlated with a specific biological class or phenotype.
+The ClassNeighbors module helps researchers find marker genes that distinguish between two different biological conditions.
+ClassNeighbors uses statistical methods like Signal-to-Noise Ratio (SNR) and t-Test to rank genes based on their differential expression between classes.
+The module performs a permutation test to assess the statistical significance of the identified marker genes, controlling for both gene ranking and inter-gene correlations.
+ClassNeighbors generates an output table with 12 columns, including class label, statistical scores, mean and standard deviation for each class, and permutation-based significance levels.
+The algorithm includes data preprocessing options like thresholding and variation filtering to improve the quality of gene selection.
+ClassNeighbors can help researchers identify genes that are most characteristic of a particular biological state, such as tumor versus normal tissue.
+The module allows users to specify the number of neighbors (genes) to analyze and the number of permutations for statistical testing.
+Users can choose between using mean or median values and between Signal-to-Noise Ratio or t-Test for feature selection.
+The algorithm preserves the correlation structure of the original data during the permutation process, ensuring robust statistical inference.
+ClassNeighbors is particularly useful in molecular classification studies, such as cancer research, where identifying distinguishing gene markers is crucial.
+The module can be used to discover genes that are significantly different between two biological classes, helping to understand underlying molecular mechanisms.

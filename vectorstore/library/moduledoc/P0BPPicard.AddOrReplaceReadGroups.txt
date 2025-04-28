@@ -1,0 +1,47 @@
+P0BPPicard.AddOrReplaceReadGroups is on version 3.
+A description of P0BPPicard.AddOrReplaceReadGroups is Replaces all read groups in the input file with a new read group and assigns all reads to this read group in the output..
+P0BPPicard.AddOrReplaceReadGroups is a GenePattern module written by Picard team, HUgp-help@broadinstitute.orgUH.
+P0BPPicard.AddOrReplaceReadGroups can be categorized as Preprocess & Utilities.
+P0BPPicard.AddOrReplaceReadGroups has the following parameters: input.file, read.group.id, read.group.library, read.group.platform, read.group.platform.unit, read.group.sample.name, read.group.sequencing.center.name, read.group.description, output.prefix.
+The P0BPPicard.AddOrReplaceReadGroups module is a crucial bioinformatics tool for managing metadata in sequencing files.
+The P0BPPicard.AddOrReplaceReadGroups module allows researchers to standardize and annotate read group information in SAM/BAM sequencing files.
+This Picard module helps track the provenance and experimental details of sequencing data by replacing or adding comprehensive read group metadata.
+The P0BPPicard.AddOrReplaceReadGroups module is essential for maintaining data quality and traceability in large-scale genomic research projects.
+Researchers use the P0BPPicard.AddOrReplaceReadGroups module to ensure consistent metadata across different sequencing runs and platforms.
+The module requires specification of key metadata like library type, sequencing platform, sample name, and platform unit for comprehensive read group annotation.
+P0BPPicard.AddOrReplaceReadGroups is particularly useful when preparing sequencing data for downstream analysis tools that require standardized read group information.
+The module supports both SAM and BAM file formats, making it versatile for different sequencing data types and research workflows.
+Bioinformaticians use P0BPPicard.AddOrReplaceReadGroups to clean and standardize sequencing metadata before performing complex genomic analyses.
+The P0BPPicard.AddOrReplaceReadGroups module is a critical preprocessing step in genomic data analysis, ensuring data integrity and traceability.
+input.file | File | Specifies the input BAM or SAM file to be processed by Picard.AddOrReplaceReadGroups | Required | No default value
+read.group.id | String | Unique identifier for the new read group to be assigned to all reads | Required | No default value
+read.group.library | String | Identifies the DNA preparation library for the sequencing data | Required | No default value
+read.group.platform | String | Specifies the sequencing platform used (e.g., Illumina, SOLID) | Required | No default value
+read.group.platform.unit | String | Identifies the platform-specific unit like run barcode | Required | No default value
+read.group.sample.name | String | Name of the biological sample associated with the reads | Required | No default value
+read.group.sequencing.center.name | String | Name of the sequencing center that generated the data | Optional | No default value
+read.group.description | String | Optional descriptive text about the read group | Optional | No default value
+output.prefix | String | Prefix for the output SAM or BAM file containing the modified read groups | Required | No default value
+Picard.AddOrReplaceReadGroups module requires a SAM or BAM input file containing sequencing read data.
+Input file is a standard SAM or BAM format genomic alignment file with existing read group information.
+Input file must contain complete sequencing read alignment records with header and alignment details.
+Input file can be generated from high-throughput sequencing platforms like Illumina, SOLID, or other next-generation sequencing technologies.
+Output file is a modified SAM or BAM file with replaced read group information specified by user parameters.
+Output file maintains the same genomic alignment data as input file but with updated read group metadata.
+Output file preserves original read alignment positions, mapping quality, and other core sequencing information.
+Output file filename is determined by the user-specified output prefix parameter.
+Output file format matches the input file format (SAM or BAM).
+Read group parameters like library, platform, sample name are used to annotate the new read group in the output file.
+The module supports processing of genomic alignment files across different sequencing platforms and experimental designs.
+Picard.AddOrReplaceReadGroups is a module for modifying read group information in SAM/BAM files.
+The module allows replacement of all existing read groups with a single new read group in a sequencing data file.
+Picard.AddOrReplaceReadGroups requires input of a BAM or SAM format file for processing.
+The module mandates specification of several key read group attributes like library, platform, platform unit, and sample name.
+Picard.AddOrReplaceReadGroups is designed to standardize read group metadata across sequencing datasets.
+The module supports adding read group information critical for downstream genomic analysis workflows.
+Picard.AddOrReplaceReadGroups operates using Java and is compatible with multiple operating systems and CPU architectures.
+The module generates an output SAM or BAM file with the newly specified read group information.
+Picard.AddOrReplaceReadGroups is particularly useful for preparing sequencing data for duplicate marking and other processing steps.
+The module requires a minimum Java version of 1.6 for execution.
+Picard.AddOrReplaceReadGroups allows optional specification of additional metadata like sequencing center name and description.
+The module ensures consistent read group representation across different sequencing experiments and platforms.

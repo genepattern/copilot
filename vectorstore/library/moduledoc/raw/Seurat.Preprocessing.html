@@ -1,0 +1,178 @@
+<section aria-labelledby="file-name-id-wide file-name-id-mobile" class="Box-sc-g0xbh4-0 fGqKFv"><div class="Box-sc-g0xbh4-0 eoaCFS js-snippet-clipboard-copy-unpositioned undefined" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 class="heading-element" dir="auto" tabindex="-1">Seurat.Preprocessing (v4.0)</h1><a aria-label="Permalink: Seurat.Preprocessing (v4.0)" class="anchor" href="#seuratpreprocessing-v40" id="user-content-seuratpreprocessing-v40"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto"><strong>Description</strong>: GenePattern module which implements the preprocessing steps for Seurat. You may need to run this module multiple times if you want to change the filtering step.</p>
+<p dir="auto"><strong>Author</strong>: Edwin Juárez and Jonathan Zamora</p>
+<p dir="auto"><strong>Contact</strong>: <a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!forum/genepattern-help" rel="nofollow">Forum Link</a></p>
+<p dir="auto"><strong>Algorithm Version</strong>: Seurat 4.0.3</p>
+<hr/>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Summary</h2><a aria-label="Permalink: Summary" class="anchor" href="#summary" id="user-content-summary"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto">The <code>Seurat.Preprocessing</code> Module aims to provide a way to integrate the multiple stemps in the preprocessing of single-cell datasets. The resultant preprocessed dataset  can then be used for downstream analyses and visualizations (such as Seurat.Clustering).</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">References</h2><a aria-label="Permalink: References" class="anchor" href="#references" id="user-content-references"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto"><a href="https://satijalab.org" rel="nofollow">Satija Lab</a></p>
+<p dir="auto"><a href="https://satijalab.org/seurat/" rel="nofollow">Seurat</a></p>
+<p dir="auto"><a href="https://github.com/genepattern/Seurat.Preprocessing/tree/v4">Module's GitHub repository</a></p>
+<p dir="auto"><a href="https://hub.docker.com/layers/genepattern/seurat-suite/4.0.3/images/sha256-8d3f5fcae1cf4034cfc9aa87a2e3ea352b89073c948a4fa885670a1eebf16721?context=repo" rel="nofollow">Module's Docker container</a></p>
+<div class="markdown-heading" dir="auto"><h3 class="heading-element" dir="auto" tabindex="-1">Technical Notes</h3><a aria-label="Permalink: Technical Notes" class="anchor" href="#technical-notes" id="user-content-technical-notes"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Parameters</h2><a aria-label="Permalink: Parameters" class="anchor" href="#parameters" id="user-content-parameters"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input_rds</td>
+<td>RDS file created by Seurat.QC</td>
+</tr>
+<tr>
+<td>column_name</td>
+<td>column name of percent mitochondrial genes. Note: not all datasets have this column, those who do often times name it percent.mt].</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>what pattern to use to label mitochondrial genes [often times this is annotated as MT-].</td>
+</tr>
+<tr>
+<td>file_name</td>
+<td>Basename of the file to be saved.</td>
+</tr>
+<tr>
+<td>keep_scale_data</td>
+<td>Preserve the <code>scale.data</code> slot for the assays specified. If set to <code>TRUE</code>, the scaled data can be used for further analyses (such as in <code>Seurat.BatchCorrection</code> and <code>Seurat.Clustering</code>). Note that this will produce a larger output size for the <code>.rds</code> object.</td>
+</tr>
+<tr>
+<td><strong>QC Parameters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>first_feature</td>
+<td>[For QC plots] First feature to plot as a violin plot [typically one of the columns in the matrix.mtx file. Sometimes named features.tsv].</td>
+</tr>
+<tr>
+<td>second_feature</td>
+<td>[For QC plots] Second feature to plot as a violin plot [typically one of the columns in the matrix.mtx file. Sometimes named features.tsv].</td>
+</tr>
+<tr>
+<td>third_feature</td>
+<td>[For QC plots] Third feature to plot as a violin plot [typically one of the columns in the matrix.mtx file. Sometimes named features.tsv]. Leave blank if you don't want this to be plotted.</td>
+</tr>
+<tr>
+<td>min_n_features</td>
+<td>[For filtering] Min number of Genes that need to be expressed in a cell to be included</td>
+</tr>
+<tr>
+<td>max_n_features</td>
+<td>[For filtering] Max number of Genes that can to be expressed in a cell to be included.</td>
+</tr>
+<tr>
+<td>max_percent_mitochondrial</td>
+<td>[For filtering] Maximum percent of Genes that are labeled as mitochondrial a cell to be included.</td>
+</tr>
+<tr>
+<td><strong>Normalization &amp; Dimension Reduction parameters</strong></td>
+<td>advanced parameters</td>
+</tr>
+<tr>
+<td>norm_method</td>
+<td>Method for normalization.</td>
+</tr>
+<tr>
+<td>scale_factor</td>
+<td>Scaling to be applied after normalization.</td>
+</tr>
+<tr>
+<td>feat_sel_method</td>
+<td>Method for feature selection. You should probably not change this unless you really know what you are doing.</td>
+</tr>
+<tr>
+<td>num_features</td>
+<td>Number of top features color during feature selection.</td>
+</tr>
+<tr>
+<td>num_to_label</td>
+<td>Number of top features to label.</td>
+</tr>
+<tr>
+<td>numpcs</td>
+<td>Number of PCA dimensions to visualize (default=50).</td>
+</tr>
+<tr>
+<td>vdl_num_dims</td>
+<td>Number of PCA dimensions to visualize.</td>
+</tr>
+<tr>
+<td>vdhm_num_dims</td>
+<td>Number of dimensions for the dimensional reduction heatmap.</td>
+</tr>
+<tr>
+<td>cells</td>
+<td>Number of top cells to plot.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Output Files</h2><a aria-label="Permalink: Output Files" class="anchor" href="#output-files" id="user-content-output-files"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<ol dir="auto">
+<li><code>&lt;file_name&gt;.rds</code> [typically <code>seurat_preprocessed_dataset.rds</code>]
+<ul dir="auto">
+<li>The <code>.rds</code> file can be used on another one of GenePattern's Seurat suite modules, such as the <code>Seurat.Clustering</code> module.</li>
+</ul>
+</li>
+<li><code>&lt;your_output_file_name&gt;.pdf</code> [typically <code>Rplots.pdf</code>]
+<ul dir="auto">
+<li>The <code>.pdf</code> file which contains plots of the preprocessing steps.</li>
+</ul>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">License</h2><a aria-label="Permalink: License" class="anchor" href="#license" id="user-content-license"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<p dir="auto"><code>Seurat.Preprocessing</code> is distributed under a modified BSD license available at <a href="https://github.com/genepattern/Seurat.Preprocessing/blob/develop/LICENSE">https://github.com/genepattern/Seurat.Preprocessing/blob/develop/LICENSE</a></p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Platform Dependencies</h2><a aria-label="Permalink: Platform Dependencies" class="anchor" href="#platform-dependencies" id="user-content-platform-dependencies"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>CPU Type</th>
+<th>Operating System</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Any</td>
+<td>Any</td>
+<td>R 4.0.2</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Version Comments</h2><a aria-label="Permalink: Version Comments" class="anchor" href="#version-comments" id="user-content-version-comments"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<hr/>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.0</td>
+<td>2021-07-15</td>
+<td>Updating to Seurat 4.0.3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2020-11-16</td>
+<td>Initial Release of <code>Seurat.Preprocessing</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</article></div><button hidden=""></button></section>

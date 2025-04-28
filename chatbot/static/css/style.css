@@ -1,0 +1,123 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.navbar > .conversation-form {
+    display: block;
+    text-align: right;
+}
+
+.model-dropdown {
+    width: 200px;
+    display: inline-block;
+    height: 38px;
+    position: relative;
+    top: 2px;
+    background-color: transparent;
+    color: gray;
+    text-align: right;
+    border: none;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.model-dropdown:disabled {
+    cursor: not-allowed;
+}
+
+.chat-container {
+    width: 80%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensures children don't overflow rounded corners */
+    height: 80vh; /* Limit height */
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling */
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word; /* Prevents long words from overflowing */
+}
+
+.message.user {
+    background-color: #0b5ed7;
+    color: #ffffff;
+    align-self: flex-end; /* Doesn't work directly here, need flex container */
+    margin-left: auto; /* Pushes user messages to the right */
+}
+
+.message.bot {
+    background-color: rgba(248, 249, 250, 0.1);
+    color: #ffffff;
+    align-self: flex-start; /* Doesn't work directly here, need flex container */
+    margin-right: auto; /* Pushes bot messages to the left */
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message p:last-child {
+    margin: 0;
+}
+
+.input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    resize: none; /* Disable manual resizing */
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+/* Rating buttons */
+.rating-buttons {
+    margin-top: 8px;
+}
+
+.rating-buttons.alert {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+.rating-buttons button {
+    color: #fff !important;
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important;
+    --bs-bg-opacity: 0.1;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 3px 6px;
+    margin-left: 5px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.rating-buttons button.thumb-up:hover,
+.rating-buttons button.thumb-down:hover {
+    --bs-bg-opacity: 0.2;
+}

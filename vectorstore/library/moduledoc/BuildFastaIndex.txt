@@ -1,0 +1,45 @@
+BuildFastaIndex is on version .
+A description of BuildFastaIndex is Indexes a reference sequence in FASTA format. The index file is given the extension FAI..
+BuildFastaIndex is a GenePattern module written by Picard team, HUgp-help@broadinstitute.orgUH.
+BuildFastaIndex can be categorized as Preprocess & Utilities.
+BuildFastaIndex has the following parameters: fasta.file, output.prefix.
+The BuildFastaIndex module is a crucial bioinformatics tool for preparing reference genome sequences for downstream analysis.
+BuildFastaIndex creates an index file (.fai) that allows rapid random access to specific regions of large genomic sequence files.
+The .fai index enables efficient retrieval of genomic sequences without loading entire multi-gigabyte FASTA files into memory.
+BuildFastaIndex supports both standard and compressed (gz) FASTA file formats, providing flexibility in input file types.
+The module is particularly useful in genomic sequencing workflows like alignment, variant calling, and genome annotation.
+BuildFastaIndex generates a lightweight companion file that contains metadata about sequence lengths and offsets within the original FASTA file.
+Researchers can use the BuildFastaIndex module to prepare reference genomes for tools like BWA, SAMtools, and other high-throughput sequencing pipelines.
+The module works across different computational platforms, supporting Windows, Mac, and Linux operating systems.
+BuildFastaIndex is essential for managing large genomic datasets, enabling faster and more memory-efficient computational processing.
+Bioinformaticians use BuildFastaIndex as a preprocessing step to optimize computational performance in genomic research workflows.
+The module can handle multi-sequence FASTA files, creating an index that maps each sequence's location and length within the file.
+BuildFastaIndex is part of the Picard toolkit, a widely used collection of tools for manipulating high-throughput sequencing data.
+fasta.file: File, Required, Specifies the input FASTA sequence file to be indexed, supports gzip compression.
+fasta.file represents the source sequence file for BuildFastaIndex module processing.
+fasta.file can be a standard or compressed FASTA format genomic sequence file.
+output.prefix: String, Required, Defines the base filename for generating the output index file.
+output.prefix determines the naming convention for the generated FAI index file.
+output.prefix allows users to control the output file's naming and storage location.
+BuildFastaIndex module requires a FASTA sequence file as input.
+The input FASTA file contains genomic or sequence data with a standard header line starting with '>' followed by sequence information.
+BuildFastaIndex module generates a FASTA index (.fai) file as output.
+The .fai index file contains metadata about the reference sequence, including sequence name, length, offset, and line length.
+The input FASTA file can be uncompressed or gzip compressed (.gz).
+The output .fai file enables rapid random access to specific regions of large reference sequence files.
+The BuildFastaIndex module supports indexing FASTA files for any genomic or sequence data.
+The module can process FASTA files from various sources like genome assemblies, transcriptomes, or protein sequences.
+The .fai index file is a plain text file with tab-separated columns describing sequence characteristics.
+The BuildFastaIndex module works across different computational platforms and operating systems.
+BuildFastaIndex is a computational module designed to create an index for reference genome sequences stored in FASTA format.
+The BuildFastaIndex module generates a companion .FAI index file for a given FASTA sequence file.
+The module supports input of both standard and gzip-compressed FASTA files.
+The .FAI index file enables rapid random access to specific genomic regions without reading the entire sequence file.
+BuildFastaIndex can process FASTA files from any organism or genetic source.
+The module is platform-independent, running on any operating system and CPU architecture.
+The index generation is implemented in C++ and Perl, ensuring high-performance computational efficiency.
+The output .FAI file contains metadata about sequence lengths, offsets, and line structures within the original FASTA file.
+BuildFastaIndex is typically used as a preprocessing step for genomic analysis workflows that require quick sequence retrieval.
+The module was developed by the Picard team at the Broad Institute, a leader in computational genomics tools.
+Users can specify a custom output prefix for the generated index file to organize their computational results.
+The module supports indexing of multi-sequence FASTA files, creating a comprehensive index for complex genomic reference datasets.

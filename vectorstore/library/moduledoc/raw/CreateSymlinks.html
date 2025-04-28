@@ -1,0 +1,97 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>CreateSymlinks (v1) <a class="btn btn-sm btn-info print-tip" href="/modules/docs/CreateSymlinks/1?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<p style="font-size: 1.2em; margin-top: 20px;">Creates symlinks to the input files in the job results directory. This is intended to be a helper module for creating scatter-gather pipelines.  Note that this module is not supported on Windows.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Marc-Danie Nazaire, Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p><span style="color: rgb(34, 34, 34);">gp-help@broadinstitute.org</span></p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>This module creates symlinks to the input files in the output directory. This module is intended as a utility module to be used in scatter-gather pipelines which require that the files that need to be scattered are all in the same directory.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input files <span style="color:red;">*</span></td>
+<td>One or more input files</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Input Files</h2>
+<ol>
+<li>One or more files</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>Symlinks to all the input files in the job output directory</li>
+</ol>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Preprocess &amp; Utilities</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					Linux; Mac</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Perl</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2014-07-17</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

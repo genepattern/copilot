@@ -1,0 +1,58 @@
+MutPanning is on version 2.0.
+A description of MutPanning is MutPanning is designed to detect rare cancer driver genes from aggregated whole-exome sequencing data. It analyzes mutations by accounting for the nucleotide context around mutations and searches for genes with an excess of mutations in unusual sequence contexts that deviate from the characteristic sequence context around passenger mutations..
+MutPanning is a GenePattern module written by Felix Dietlein et al., Dana-Farber Cancer Institute and Broad Institute (algorithm), John Liefeld (module).
+MutPanning can be categorized as Cancer Research, Genomics, Mutation Analysis.
+MutPanning has the following parameters: mutation file, sample annotation file, min samples per cluster, min mutations per cluster, min samples Bayesian model, min mutations Bayesian model.
+The MutPanning GenePattern module is a computational tool for detecting rare cancer driver genes from whole-exome sequencing data.
+MutPanning goes beyond traditional mutation detection by analyzing the nucleotide context surrounding genetic mutations.
+The MutPanning algorithm searches for genes with an excess of mutations in unusual sequence contexts that deviate from typical passenger mutation patterns.
+MutPanning is particularly useful for analyzing tumor types with high background mutation rates, such as melanoma, bladder, endometrial, and colorectal cancers.
+The module requires two primary input files: a mutation file (*.maf) and a sample annotation file (*.txt) to perform its analysis.
+MutPanning uses a Monte Carlo simulation approach to assess the statistical significance of mutations in specific genes across different cancer types.
+The algorithm considers multiple factors including mutation count, nucleotide context, insertions and deletions, and the abundance of deleterious mutations.
+MutPanning generates an output file that ranks genes by their mutational significance, helping researchers identify potential cancer driver genes.
+The module was developed by researchers at Dana-Farber Cancer Institute and the Broad Institute to improve cancer gene discovery methods.
+MutPanning is designed to distinguish between passenger mutations and potentially functional driver mutations by analyzing their surrounding genetic context.
+The module can analyze multiple cancer types simultaneously, providing a comprehensive approach to identifying rare cancer-related genetic variations.
+MutPanning's approach is particularly valuable for understanding genetic mutations in cancers with complex mutational processes and high background mutation rates.
+mutation file*: File type (*.maf), contains detailed mutation data, required, includes gene name, chromosome, position, mutation type, and sample identifier.
+sample annotation file*: File type (*.txt), maps samples to cohorts/cancer types, required, must have Sample and Cohort columns with unique, case-sensitive identifiers.
+min samples per cluster: Integer parameter, specifies minimum samples needed per nucleotide context cluster, default is 3, recommended to use standard parameters.
+min mutations per cluster: Integer parameter, specifies minimum mutations needed per nucleotide context cluster, default is 1000, recommended to use standard parameters.
+min samples Bayesian model: Integer parameter, minimum samples needed to calibrate Bayesian background model, default is 100, recommended to use standard parameters.
+min mutations Bayesian model: Integer parameter, minimum mutations needed to calibrate Bayesian background model, default is 5000, recommended to use standard parameters.
+MutPanning requires precise input file formatting with specific column requirements for mutation and sample annotation files.
+MutPanning analyzes mutations across different cancer types to identify potential driver genes.
+The module uses Monte Carlo simulation to assess mutational significance of genes.
+Nucleotide context is a key factor in distinguishing driver from passenger mutations in the MutPanning algorithm.
+The algorithm suppresses mutations likely to be passenger mutations based on surrounding nucleotide contexts.
+Here are the input and output file descriptions for the MutPanning module:
+Input Files:
+Mutation file (*.maf) contains detailed somatic mutation data with gene, chromosome, position, mutation type, and sample information
+Sample annotation file (*.txt) maps sample identifiers to cancer type or cohort for analysis grouping
+Mutation file requires specific columns including Hugo_Symbol, Chromosome, Start_Position, Variant_Classification, and Tumor_Sample_Barcode
+Sample annotation file requires Sample and Cohort columns with unique sample identifiers
+Mutation file uses standard Mutation Annotation Format with precise nomenclature for mutation types
+Sample annotation file allows grouping samples by cancer type or other research-defined subcohorts
+Output Files:
+MutPanning.zip contains mutational significance reports for each analyzed subcohort
+Each report is a tab-delimited text file ranking genes by mutational significance
+Report columns include gene name, target size, mutation counts, significance p-value, and false discovery rate
+Significance report provides comprehensive analysis of potential cancer driver genes
+Output enables identification of genes with unusual mutation patterns across different cancer types
+Significance values account for nucleotide context, mutation frequency, and statistical modeling
+MutPanning is a computational method for detecting rare cancer driver genes from whole-exome sequencing data.
+MutPanning goes beyond traditional mutation detection by analyzing the nucleotide context surrounding mutations.
+The algorithm aims to distinguish driver mutations from passenger mutations by examining unusual sequence contexts.
+MutPanning uses a Monte Carlo simulation approach to assess the statistical significance of mutations in specific genes.
+The method is particularly useful for cancer types with high background mutation rates, like melanoma and colorectal cancer.
+MutPanning requires two input files: a mutation file (*.maf) and a sample annotation file (*.txt).
+The mutation file must contain detailed information about each genetic mutation, including gene name, chromosome, position, and mutation type.
+The sample annotation file associates samples with specific cancer types or cohorts for analysis.
+MutPanning models mutation probability based on surrounding nucleotide context and regional background mutation rates.
+The algorithm generates a significance report for each analyzed cohort, ranking genes by their potential as cancer drivers.
+MutPanning considers multiple statistical components, including nonsynonymous mutations, insertions/deletions, and mutational clustering.
+The method can analyze multiple cancer types simultaneously by processing different cohorts in the sample annotation file.
+MutPanning's output includes a detailed report with gene-level mutational significance and false discovery rate.
+The algorithm was developed by researchers at Dana-Farber Cancer Institute and the Broad Institute.
+MutPanning is distributed under the BSD-3-Clause open-source license and can be run on various computing platforms.

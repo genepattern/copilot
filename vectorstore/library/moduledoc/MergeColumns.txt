@@ -1,0 +1,43 @@
+MergeColumns is on version .
+A description of MergeColumns is Creates a new merged dataset from a list of datasets. Common features (rows) in the datasets are retained while others are discarded..
+MergeColumns is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+MergeColumns can be categorized as Preprocess & Utilities.
+MergeColumns has the following parameters: input filename1, input filename2, zip filename, output.
+The MergeColumns GenePattern module allows researchers to combine multiple datasets by matching and merging columns across different data files.
+MergeColumns is useful for consolidating genomic, transcriptomic, or other biological datasets that share common identifiers.
+The MergeColumns module can merge files in various formats including .res, .gct, .snp, .cn, .xcn, .odf, and .cls file types.
+When using MergeColumns, only rows with common features across input datasets are retained in the final merged output.
+The MergeColumns module automatically determines the output file format, defaulting to .gct if input files have different formats.
+Researchers can use MergeColumns to combine gene expression data, copy number variation data, or clinical annotation files in a streamlined manner.
+MergeColumns supports merging two files directly or can process multiple files through a zip file input.
+The module is platform-independent and can run on any operating system with Java support.
+Bioinformaticians use MergeColumns to integrate data from different experiments, platforms, or research studies.
+MergeColumns helps researchers create comprehensive datasets by aligning and combining columns from multiple sources.
+input (filename1): String type parameter. First file to merge in MergeColumns module. Specifies the initial dataset for merging. Required parameter with no default value.
+input (filename2): String type parameter. Second file to merge in MergeColumns module. Specifies the additional dataset for merging. Required parameter with no default value.
+zip: String type parameter. Zip file containing files to merge in MergeColumns module. Optional alternative to specifying individual input files. No default value.
+output: String type parameter. Specifies the name of the merged file in MergeColumns module. Required parameter with no default value.
+MergeColumns module supports merging datasets with common features while discarding non-common rows.
+Supported input file formats include .res, .gct, .snp (non-allele-specific), .cn, .xcn, .odf, and .cls files.
+If input files have different formats, the output file will default to GCT format.
+Module is platform-independent, running on any CPU and operating system using Java.
+MergeColumns module requires input files in various genomic data formats like .res, .gct, .snp, .cn, .xcn, .odf, or .cls.
+First input file for MergeColumns module must be a genomic dataset file with rows representing features and columns representing samples.
+Second input file for MergeColumns module must be another genomic dataset file with compatible feature and sample structure.
+Optional zip file input for MergeColumns module can contain multiple files to be merged simultaneously.
+MergeColumns module output is a merged dataset file retaining common features across input files.
+Output file from MergeColumns module will be in .gct format if input files have different original formats.
+MergeColumns module output preserves the original data structure and values from input files.
+Merged dataset from MergeColumns module will only include rows (features) that are common across all input files.
+Input files for MergeColumns module should have consistent feature identification to enable accurate merging.
+MergeColumns module supports merging genomic datasets with similar structural characteristics.
+MergeColumns module helps researchers combine multiple genomic datasets by aligning and merging columns based on common features.
+The MergeColumns module allows merging of different genomic data file types like .res, .gct, .snp, .cn, .xcn, .odf, and .cls files.
+MergeColumns retains only the common rows across input datasets during the merging process.
+When input files have different formats, the MergeColumns module defaults to generating a .gct output file format.
+The MergeColumns module is designed as a preprocessing utility for genomic data analysis.
+MergeColumns requires either direct input files or a zip file containing the datasets to be merged.
+The module is platform-independent, running on any CPU and operating system using Java.
+MergeColumns allows researchers to consolidate multiple genomic datasets efficiently for downstream analysis.
+The module automatically handles alignment and column merging across different genomic data file types.
+MergeColumns provides a flexible solution for combining genomic datasets with different structures and formats.

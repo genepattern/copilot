@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GSEA (v20.4.x) | GSEA GenePattern Module Documentation</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="GSEA (v20.4.x)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A GenePattern module for running the GSEA method" />
+<meta property="og:description" content="A GenePattern module for running the GSEA method" />
+<link rel="canonical" href="https://gsea-msigdb.github.io/gsea-gpmodule/v20/" />
+<meta property="og:url" content="https://gsea-msigdb.github.io/gsea-gpmodule/v20/" />
+<meta property="og:site_name" content="GSEA GenePattern Module Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GSEA (v20.4.x)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A GenePattern module for running the GSEA method","headline":"GSEA (v20.4.x)","url":"https://gsea-msigdb.github.io/gsea-gpmodule/v20/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/gsea-gpmodule/assets/css/style.css?v=8212d5f7dbe176209d1edb5746a49d487a8cceaa">
+    <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+    <script src="/gsea-gpmodule/assets/js/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>GSEA GenePattern Module Documentation</h1>
+        <p>A GenePattern module for running the GSEA method</p>
+      </header>
+
+    <div class="wrapper">
+      <nav>
+        <ul><b>TABLE OF CONTENTS</b></br></br></ul>
+      </nav>
+      <section>
+        <h1 id="gsea-v204x">GSEA (v20.4.x)</h1>
+
+<p>Gene Set Enrichment Analysis</p>
+
+<p><strong>Author:</strong> Aravind Subramanian, Pablo Tamayo, David Eby; Broad
+Institute</p>
+
+<p><strong>Contact:</strong></p>
+
+<p><a href="https://groups.google.com/forum/#!forum/gsea-help">See the GSEA forum</a>
+for GSEA questions.</p>
+
+<p><a href="http://software.broadinstitute.org/cancer/software/genepattern/contact">Contact the GenePattern
+team</a>
+for GenePattern issues.</p>
+
+<p><strong>GSEA Version:</strong> 4.3.<em>x</em></p>
+
+<h2 id="description">Description</h2>
+
+<p>Evaluates a genomewide expression profile and determines whether <em>a
+priori</em> defined sets of genes show statistically significant, cumulative
+changes in gene expression that are correlated with a phenotype. The
+phenotype may be categorical (e.g., tumor vs. normal) or continuous
+(e.g., a numerical profile across all samples in the expression
+dataset).</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Gene Set Enrichment Analysis (GSEA) is a powerful analytical method for
+interpreting gene expression data. It evaluates cumulative changes in
+the expression of groups of multiple genes defined based on prior
+biological knowledge. It first ranks all genes in a data set, then
+calculates an enrichment score for each gene set, which reflects how
+often members of that gene set occur at the top or bottom of the ranked
+data set (for example, in expression data, in either the most highly
+expressed genes or the most underexpressed genes).</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Microarray experiments profile the expression of tens of thousands of
+genes over a number of samples that can vary from as few as two to
+several hundreds. One common approach to analyzing these data is to
+identify a limited number of the most interesting genes for closer
+analysis. This usually means identifying genes with the largest changes
+in their expression values based on a t-test or similar statistic, and
+then picking a significance cutoff that will trim the list of
+interesting genes down to a handful of genes for further research.</p>
+
+<p>Gene Set Enrichment Analysis (GSEA) takes an alternative approach to
+analyzing genomic data: it focuses on cumulative changes in the
+expression of multiple genes as a group, which shifts the focus from
+individual genes to groups of genes. By looking at several genes at
+once, GSEA can identify pathways whose several genes each change a small
+amount, but in a coordinated way. This approach helps reflect many of
+the complexities of co-regulation and modular expression.</p>
+
+<p>GSEA therefore takes as input two distinct types of data for its
+analysis:</p>
+
+<ul>
+  <li>the gene expression data set</li>
+  <li><em>gene sets</em>, where each set is comprised of a list of genes whose
+grouping together has some biological meaning; these gene sets can
+be drawn from the <a href="http://www.gsea-msigdb.org/gsea/msigdb/index.jsp">Molecular Signatures Database
+(MSigDB)</a> or can be
+from other sources</li>
+</ul>
+
+<p>The GSEA GenePattern module uses either categorical or continuous
+phenotype data for its analysis. In the case of a categorical
+phenotype, a dataset would contain two different classes of samples,
+such as “tumor” and “normal.” In the case of a continuous phenotype, a
+dataset would contain a numerical value for each sample. Examples of
+numerical profiles include the expression level of a specific gene or a
+measure of cell viability over the course of a time series experiment.
+The GSEA desktop application, available on the <a href="http://www.gsea-msigdb.org/gsea/index.jsp">GSEA
+website</a>, has additional
+functionalities. For instance, the GSEA desktop application can conduct
+an enrichment analysis against a ranked list of genes, or analyze the
+leading-edge subsets within each gene set. Many of these capabilities
+are also available in separate GP modules (see GSEAPreranked and
+GSEALeadingEdgeViewer).</p>
+
+<p><strong>If you are using GSEA on RNA-seq data, please read <a href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Using_RNA-seq_Datasets_with_GSEA">these
+guidelines</a>.</strong></p>
+
+<h2 id="algorithm">Algorithm</h2>
+
+<p>GSEA first ranks the genes based on a measure of each gene’s
+differential expression with respect to the two phenotypes (for example,
+tumor versus normal) or correlation with a continuous phenotype. Then
+the entire ranked list is used to assess how the genes of each gene set
+are distributed across the ranked list. To do this, GSEA walks down the
+ranked list of genes, increasing a running-sum statistic when a gene
+belongs to the set and decreasing it when the gene does not. A
+simplified example is shown in the following figure.</p>
+
+<p><img src="/gsea-gpmodule/v20/content_gseapic1.png" alt="" /></p>
+
+<p>The enrichment score (ES) is the maximum deviation from zero encountered
+during that walk. The ES reflects the degree to which the genes in a
+gene set are overrepresented at the top or bottom of the entire ranked
+list of genes. A set that is not enriched will have its genes spread
+more or less uniformly through the ranked list. An enriched set, on the
+other hand, will have a larger portion of its genes at one or the other
+end of the ranked list. The extent of enrichment is captured
+mathematically as the ES statistic.</p>
+
+<p><img src="/gsea-gpmodule/v20/content_gseapic2.png" alt="" /></p>
+
+<p>Next, GSEA estimates the statistical significance of the ES by a
+permutation test. To do this, GSEA creates a version of the data set
+with phenotype labels randomly scrambled, produces the corresponding
+ranked list, and recomputes the ES of the gene set for this permuted
+data set. GSEA repeats this many times (1000 is the default) and
+produces an empirical null distribution of ES scores. Alternatively,
+permutations may be generated by creating “random” gene sets (genes
+randomly selected from those in the expression dataset) of equal size to
+the gene set under analysis.</p>
+
+<p>The nominal p-value estimates the statistical significance of a single
+gene set’s enrichment score, based on the permutation-generated null
+distribution. The nominal p-value is the probability under the null
+distribution of obtaining an ES value that is as strong or stronger than
+that observed for your experiment under the permutation-generated null
+distribution.</p>
+
+<p>Typically, GSEA is run with a large number of gene sets. For example,
+the MSigDB collection and subcollections each contain hundreds to
+thousands of gene sets. This has implications when comparing enrichment
+results for the many sets:</p>
+
+<p>The ES must be adjusted to account for differences in the gene set sizes
+and in correlations between gene sets and the expression data set. The
+resulting normalized enrichment scores (NES) allow you to compare the
+analysis results across gene sets.</p>
+
+<p>The nominal p-values need to be corrected to adjust for multiple
+hypothesis testing. For a large number of sets (rule of thumb: more than
+30), we recommend paying attention to the False Discovery Rate (FDR)
+q-values: consider a set significantly enriched if its NES has an FDR
+q-value below 0.25.</p>
+
+<p>For more information, see <a href="http://www.gsea-msigdb.org/gsea">http://www.gsea-msigdb.org/gsea</a>.</p>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<h3 id="file-names">File names</h3>
+
+<p>Input expression datasets with the character ‘-‘ or spaces in their file
+names causes GSEA to error.</p>
+
+<h3 id="cls-files">CLS Files</h3>
+
+<p>The GSEA GenePattern module interprets the sample labels in categorical
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CLS:_Categorical_.28e.g_tumor_vs_normal.29_class_file_format_.28.2A.cls.29">CLS</a>
+files by their order of appearance, rather than via their numerical
+value, unlike some other GenePattern modules. For example, in the CLS
+file below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>13 2 1
+# resistant sensitive
+1 1 1 1 1 1 1 1 0 0 0 0 0
+</code></pre></div></div>
+
+<p>Most other GenePattern modules would interpret the first 8 samples to be
+sensitive and the remaining 5 to be resistant. However, GSEA assigns
+resistant to the first 8 samples and sensitive to the rest. This is
+because GSEA assigns the first name in the second line to the first
+symbol found on the third line.</p>
+
+<p>If the sample labels are in numerical order, as below, no difference in
+behavior will be noted.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>13 2 1
+# resistant sensitive
+0 0 0 0 0 1 1 1 1 1 1 1 1 
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p>Subramanian A, Tamayo P, Mootha VK, Mukherjee S, Ebert BL, Gillette MA,
+Paulovich A, Pomeroy SL, Golub TR, Lander ES, Mesirov JP. Gene set
+enrichment analysis: A knowledge-based approach for interpreting
+genome-wide expression profiles. <em>PNAS</em>. 2005;102(43);15545-15550.
+(<a href="http://www.pnas.org/content/102/43/15545.full.pdf.html">Link</a>)</p>
+
+<p>Mootha VK, Lindgren CM, Eriksson K-F, Subramanian A, Sihag S, Lehar J,
+Puigserver P, Carlsson E, Ridderstrale M, Laurila E, Houstis N, Daly MJ,
+Patterson N, Mesivor JP, Golub TR, Tamayo P, Spiegelman B, Lander ES,
+Hirschhorn JN, Altshuler D, Groop LC.  PGC-1-α responsive genes involved
+in oxidative phosphorylation are coordinately downregulated in human
+diabetes. <em>Nat Genet</em>. 2003;34:267-273.
+(<a href="http://www.nature.com/ng/journal/v34/n3/full/ng1180.html">Link</a>)</p>
+
+<p>GSEA User Guide:
+<a href="http://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideFrame.html">http://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideFrame.html</a></p>
+
+<p>GSEA website: <a href="http://www.gsea-msigdb.org/">http://www.gsea-msigdb.org/</a></p>
+
+<p>This version of the module is based on the GSEA v4.1.x code base. See
+the <a href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/GSEA_v4.1.x_Release_Notes">Release
+Notes</a>
+for new features and other notable changes.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<ul>
+  <li><strong>Expression dataset</strong><span style="color:red;">*</span>
+    <ul>
+      <li>This is a file in either <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29">GCT</a> or <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RES:_ExpRESsion_.28with_P_and_A_calls.29_file_format_.28.2A.res.29">RES</a> format that contains the expression dataset.
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#TXT:_Text_file_format_for_expression_dataset_.28.2A.txt.29">GSEA-specific TXT format</a> files are also accepted.</li>
+    </ul>
+  </li>
+  <li><strong>Gene sets database</strong><span style="color:red;">*</span>
+    <ul>
+      <li>This parameter’s drop-down allows you to select gene sets from the <a href="http://www.gsea-msigdb.org/gsea/msigdb/index.jsp">Molecular Signatures Database (MSigDB)</a> on the GSEA website. This drop-down provides access to only the most current version of MSigDB. You can also upload your own gene set file(s) in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29">GMT</a>, <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMX:_Gene_MatriX_file_format_.28.2A.gmx.29">GMX</a>, or <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GRP:_Gene_set_file_format_.28.2A.grp.29">GRP</a> format.
+If you want to use files from an earlier version of MSigDB you will need to download them from the archived releases on the <a href="http://www.gsea-msigdb.org/gsea/downloads.jsp">website</a>.</li>
+    </ul>
+  </li>
+  <li><strong>Number of permutations</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Specifies the number of permutations to perform in assessing the statistical significance of the enrichment score. It is best to start with a small number, such as 10, in order to check that your analysis will complete successfully (e.g., ensuring you have gene sets that satisfy the minimum and maximum size requirements and that the collapsing genes to symbols works correctly). After the analysis completes successfully, run it again with a full set of permutations. The recommended number of permutations is 1000. (Default: 1000)</li>
+    </ul>
+  </li>
+  <li><strong>Phenotype labels</strong><span style="color:red;">*</span>
+    <ul>
+      <li>A phenotype label file defines categorical or continuous-valued phenotypes and for each sample in your expression dataset assigns a label or numerical value for the phenotype. This is a tab-delimited text file in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CLS:_Categorical_.28e.g_tumor_vs_normal.29_class_file_format_.28.2A.cls.29">CLS</a> format.</li>
+      <li>A categorical phenotype CLS file should contain only two labels, such as tumor and normal.</li>
+      <li>A continuous phenotype CLS file may define one or more continuous-valued phenotypes. Each phenotype definition includes a profile, assigning a numerical value to each sample in the expression dataset.</li>
+      <li>GSEA interprets CLS files differently than many GenePattern modules. See the Known Issue for more details.</li>
+    </ul>
+  </li>
+  <li><strong>Target profile</strong>
+    <ul>
+      <li>Name of the target phenotype for a continuous phenotype CLS. This parameter must be left blank in the case of a categorical CLS file.</li>
+    </ul>
+  </li>
+  <li><strong>Collapse dataset</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Select whether to collapse each probe set in the expression dataset into a single vector for the gene, which gets identified by its gene symbol. It is also possible to remap symbols from one namespace to another without collapsing (an error will occur if multiple source genes map to a single destination gene).</li>
+      <li><em>No_Collapse</em> will use the dataset as-is, with its native feature identifiers. When you select this option, the chip annotation file (<em>chip platform</em> parameter) is ignored and you must specify a gene set file (<em>gene sets database file</em> parameter) that identify genes using the same feature (gene or probe) identifiers as is used in your expression dataset.</li>
+      <li>Default: <em>Collapse</em></li>
+    </ul>
+  </li>
+  <li><strong>Permutation type</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Type of permutations to perform in assessing the statistical significance of the enrichment score. Options are:
+        <ul>
+          <li>phenotype (default): Random phenotypes are created by shuffling the phenotype labels on the samples. For each random phenotype, GSEA ranks the genes and calculates the enrichment score for all gene sets. These enrichment scores are used to create a distribution from which the significance of the actual enrichment score (for the actual expression data and gene set) is calculated. This is the recommended method when there are at least 7 samples in each phenotype.</li>
+          <li>gene_set: Random gene sets, size matched to the actual gene set, are created and their enrichment scores calculated. These enrichment scores are used to create a null distribution from which the significance of the actual enrichment score (for the actual gene set) is calculated. This method is useful when you have too few samples to do phenotype permutations (that is, when you have fewer than 7 samples in any phenotype).</li>
+        </ul>
+      </li>
+      <li>Phenotype permutation is recommended whenever possible. The phenotype permutation shuffles the phenotype labels on the samples in the dataset; it does not modify gene sets. Therefore, the correlations between the genes in the dataset and the genes in a gene set are preserved across phenotype permutations. The gene_set permutation creates random gene sets; therefore, the correlations between the genes in the dataset and the genes in the gene set are not preserved across gene_set permutations. Preserving the gene-to-gene correlation across permutations provides a more biologically reasonable (more stringent) assessment of significance.</li>
+    </ul>
+  </li>
+  <li><strong>Chip platform</strong>
+    <ul>
+      <li>This drop-down allows you to specify the chip annotation file, which lists each probe on a chip and its matching HUGO gene symbol, used for the expression array. This parameter is required if *collapse dataset8 is set to true. The chip files listed here are from the <a href="http://www.gsea-msigdb.org/gsea/downloads.jsp">GSEA website</a>. If you used a file not listed here, you will need to provide it (in <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CHIP:_Chip_file_format_.28.2A.chip.29">CHIP</a> format) using ‘Upload your own file’.</li>
+      <li>Please see the <a href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/MSigDB_v7.0_Release_Notes">MSigDB 7.0 Release Notes</a> for information about symbol remapping.</li>
+    </ul>
+  </li>
+  <li><strong>Scoring scheme</strong><span style="color:red;">*</span>
+    <ul>
+      <li>The enrichment statistic. This parameter affects the running-sum statistic used for the enrichment analysis, controlling the value of p used in the enrichment score calculation. Options are:
+        <ul>
+          <li>classic Kolmorogorov-Smirnov: p=0</li>
+          <li>weighted (default): p=1; a running sum statistic that is incremented by the absolute value of the ranking metric when a gene belongs to the set (see the <a href="http://www.pnas.org/content/102/43/15545.full.pdf.html">2005 PNAS paper</a> for details).</li>
+          <li>weighted_p2: p=2</li>
+          <li>weighted_p1.5: p=1.5</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Metric for ranking genes</strong><span style="color:red;">*</span>
+    <ul>
+      <li>GSEA ranks the genes in the expression dataset and then analyzes that ranked list of genes. Use this parameter to select the metric used to score and rank the genes. The default metric for ranking genes is the <em>signal-to-noise ratio</em>. To use this metric, your expression dataset must contain at least three (3) samples for each phenotype. For descriptions of the ranking metrics, see <a href="http://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm#_Metrics_for_Ranking">Metrics for Ranking Genes</a> in the GSEA User Guide.</li>
+    </ul>
+  </li>
+  <li><strong>Gene list sorting mod</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Specifies whether to sort the genes using the real (default) or absolute value of the gene-ranking metric score.</li>
+    </ul>
+  </li>
+  <li><strong>Gene list ordering mode</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Specifies the direction in which the gene list should be ordered (ascending or descending).</li>
+    </ul>
+  </li>
+  <li><strong>Max gene set size</strong><span style="color:red;">*</span>
+    <ul>
+      <li>After filtering from the gene sets any gene not in the expression dataset, gene sets larger than this are excluded from the analysis. Default: 500</li>
+    </ul>
+  </li>
+  <li><strong>Min gene set size</strong><span style="color:red;">*</span>
+    <ul>
+      <li>After filtering from the gene sets any gene not in the expression dataset, gene sets smaller than this are excluded from the analysis. Default: 15</li>
+    </ul>
+  </li>
+  <li><strong>Collapsing mode for probe sets with more than one match</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Collapsing mode for sets of multiple probes for a single gene. Used only when the <em>collapse dataset</em> parameter is set to <em>Collapse</em>. Select the expression values to use for the single probe that will represent all probe sets for the gene. Options are:
+        <ul>
+          <li>Max_probe (default): For each sample, use the maximum expression value for the probe set. That is, if there are three probes that map to a single gene, the expression value that will represent the collapsed probe set will be the maximum expression value from those three probes.</li>
+          <li>Median_of_probes: For each sample, use the median expression value for the probe set.</li>
+          <li>Mean_of_probes: For each sample, use the mean expression value for the probe set.</li>
+          <li>Sum_of_probes: For each sample, sum all the expression values of the probe set.</li>
+          <li>Abs_max_of_probes: For each sample, use the expression value for the probe set with the maximum <strong>absolute value</strong>. Note that each value retains its original sign but is chosen based on absolute value. In other words, the largest magnitude value is used. While this method is useful with computational-based input datasets it is generally <strong>not recommended</strong> for use with quantification-based expression measures such as counts or microarray fluorescence.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Normalization mode</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Method used to normalize the enrichment scores across analyzed gene sets. Options are:
+        <ul>
+          <li>meandiv (default): GSEA normalizes the enrichment scores as described in <a href="http://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm#_Normalized_Enrichment_Score">Normalized Enrichment Score (NES)</a> in the GSEA User Guide.</li>
+          <li>None: GSEA does not normalize the enrichment scores.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Randomization mode</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Method used to randomly assign phenotype labels to samples for phenotype permutations. ONLY used for phenotype permutations. Options are:
+        <ul>
+          <li>no_balance (default): Permutes labels without regard to number of samples per phenotype. For example, if your dataset has 12 samples in phenotype_a and 10 samples in phenotype_b, any permutation of phenotype_a has 12 samples randomly chosen from the dataset.</li>
+          <li>equalize_and_balance: Permutes labels by equalizing the number of samples per phenotype and then balancing the number of samples contributed by each phenotype. For example, if your dataset has 12 samples in phenotype_a and 10 samples in phenotype_b, any permutation of phenotype_a has 10 samples: 5 randomly chosen from phenotype_a and 5 randomly chosen from phenotype_b.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Omit features with no symbol match</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Used only when <em>collapse dataset</em> is set to <em>Collapse</em>. By default (<em>true</em>), the new dataset excludes probes/genes that have no gene symbols. Set to <em>false</em> to have the new dataset contain all probes/genes that were in the original dataset.</li>
+    </ul>
+  </li>
+  <li><strong>Make detailed gene set report</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Create detailed gene set report (heat map, mountain plot, etc.) for each enriched gene set. Default: true</li>
+    </ul>
+  </li>
+  <li><strong>Median for class metrics</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Specifies whether to use the median of each class, instead of the mean, in the <em>metric for ranking genes</em>. Default: false</li>
+    </ul>
+  </li>
+  <li><strong>Number of markers</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Number of features (gene or probes) to include in the butterfly plot in the Gene Markers section of the gene set enrichment report. Default: 100</li>
+    </ul>
+  </li>
+  <li><strong>Plot graphs for the top sets of each phenotype</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Generates summary plots and detailed analysis results for the top x genes in each phenotype, where x is 20 by default. The top genes are those with the largest normalized enrichment scores. Default: 20</li>
+    </ul>
+  </li>
+  <li><strong>Random seed</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Seed used to generate a random number for phenotype and gene_set permutations. Timestamp is the default. Using a specific integer valued seed generates consistent results, which is useful when testing software.</li>
+    </ul>
+  </li>
+  <li><strong>Save random ranked lists</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Specifies whether to save the random ranked lists of genes created by phenotype permutations. When you save random ranked lists, for each permutation, GSEA saves the rank metric score for each gene (the score used to position the gene in the ranked list). Saving random ranked lists is <strong>very memory intensive</strong>; therefore, this parameter is set to false by default.</li>
+    </ul>
+  </li>
+  <li><strong>Output file name</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Name of the output file. The name cannot include spaces. Default: &lt;expression.dataset_basename&gt;.zip</li>
+    </ul>
+  </li>
+  <li><strong>Create svgs</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Whether to create SVG images (compressed) along with PNGs. Saving PNGs requires <strong>a lot of storage</strong>; therefore, this parameter is set to false by default.</li>
+    </ul>
+  </li>
+  <li><strong>Selected gene sets</strong>
+    <ul>
+      <li>Semicolon-separated list of gene sets from the provided gene sets database files (GMT/GMX/GRP). If you are using multiple files then you <strong>must</strong> prefix each selected gene set with its file name followed by ‘#’ (like “my_file1.gmt#selected_gene_set1,my_file2.gmt#selected_gene_set2”). With a single file only the names are necessary. Leave this blank to select all gene sets.</li>
+    </ul>
+  </li>
+  <li><strong>Alt delim</strong>
+    <ul>
+      <li>Optional alternate delimiter character for gene set names instead of comma for use with selected.gene.sets. If used, a semicolon is recommended.</li>
+    </ul>
+  </li>
+  <li><strong>Create gcts</strong><span style="color:red;">*</span>
+    <ul>
+      <li>Whether to save the dataset subsets backing the GSEA report heatmaps as GCT files; these will be subsets of your original dataset corresponding only to the genes of the heatmap.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><span style="color:red;">*</span> = required</p>
+
+<h2 id="input-files">Input Files</h2>
+
+<ol>
+  <li><em>expression
+dataset:</em> <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29">GCT</a>
+or
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RES:_ExpRESsion_.28with_P_and_A_calls.29_file_format_.28.2A.res.29">RES</a>
+file</li>
+</ol>
+
+<p>This file contains the expression dataset.</p>
+
+<ol>
+  <li><em>gene sets
+database:</em> <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29">GMT</a>,
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMX:_Gene_MatriX_file_format_.28.2A.gmx.29">GMX</a>,
+or
+<a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GRP:_Gene_set_file_format_.28.2A.grp.29">GRP</a>
+file.</li>
+</ol>
+
+<p>Gene set files, either your own or from the listed MSigDB files.</p>
+
+<ol>
+  <li><em>phenotype
+labels:</em> <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#Phenotype_Data_Formats">CLS</a>
+file</li>
+</ol>
+
+<p>The GSEA module supports two kinds of class (CLS) files: categorical
+phenotype and continuous phenotype.</p>
+
+<p>A categorical phenotype CLS file must define a single phenotype having
+two categorical labels, such as tumor and normal.</p>
+
+<p>A continuous phenotype CLS may define multiple phenotypes. Each
+phenotype definition assigns a numerical value for each sample. This
+series of values defines the phenotype profile. For example,</p>
+
+<ul>
+  <li>For a continuous phenotype representing the expression levels of a
+gene of interest, the value for each sample is the expression value
+of the gene.</li>
+  <li>For a continuous phenotype representing cell viability in a time
+series experiment, the value for each sample is a measure of cell
+viability at a distinct time in the experiment.</li>
+</ul>
+
+<p>4. <em>chip platform:</em> an
+optional <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#CHIP:_Chip_file_format_.28.2A.chip.29">CHIP</a>
+file may be provided if you do not select a <em>chip platform</em> from the
+drop-down</p>
+
+<h2 id="output-files">Output Files</h2>
+
+<ol>
+  <li>Enrichment Report archive: ZIP</li>
+</ol>
+
+<p>ZIP file containing the result files. For more information on
+interpreting these results, see <a href="http://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm#_Interpreting_GSEA_Results">Interpreting GSEA
+Results</a>
+in the GSEA User Guide. Note that in prior versions the ZIP bundle was
+created as the only output file. This behavior has been changed to give
+direct access to the results without the need for a download.</p>
+
+<ol>
+  <li>Enrichment Report: HTML and PNG images</li>
+</ol>
+
+<p>The GSEA Enrichment Report. As above, see the GSEA User Guide for more
+info.</p>
+
+<ol>
+  <li>Optional SVG images (compressed)</li>
+</ol>
+
+<p>Identical to the PNGs in the Enrichment Report, but in SVG format for
+higher resolution. These are GZ compressed to reduce space usage; they
+can be decompressed using ‘gunzip’ on Mac or Linux and 7-Zip on Windows</p>
+
+<ol>
+  <li>Optional GCTs</li>
+</ol>
+
+<p>The datasets backing all the heatmap images from the Enrichment Report
+for use in external visualizers or analysis tools. These will have the
+same name as the corresponding image but instead with a GCT extension.
+When Collapse or Remap_Only is set, the collapsed dataset is also saved 
+as a GCT. These files will be created if the Create GCTs option is true.</p>
+
+<h2 id="platform-dependencies">Platform Dependencies</h2>
+
+<p><strong>Task Type:</strong><br />
+Gene List Selection</p>
+
+<p><strong>CPU Type:</strong><br />
+any</p>
+
+<p><strong>Operating System:</strong><br />
+any</p>
+
+<p><strong>Language:</strong><br />
+Java</p>
+
+<h2 id="version-comments">Version Comments</h2>
+
+<ul>
+  <li><strong>20.4.0</strong> (2022-10-2): Updated to Human MSigDB v2022.1.Hs and Mouse MSigDB 2022.1.Mm.</li>
+  <li><strong>20.3.6</strong> (2022-9-15): Updated to Human MSigDB v2022.1.Hs. Direct support for Mouse MSigDB 2022.1.Mm is not yet available</li>
+  <li><strong>20.3.5</strong> (2022-3-22) Removed Log4J entirely from the code base. Fixed weighted_p1.5 computation. Added min dataset size warnings.</li>
+  <li><strong>20.3.4</strong> (2022-1-20): Updated Log4J to 2.17.1.
+_ <strong>20.3.3</strong> (2022-1-19): Updated to MSigDB v7.5.1.</li>
+  <li><strong>20.3.2</strong> (2022-1-12): Updated to MSigDB v7.5.</li>
+  <li><strong>20.3.1</strong> (2021-12-23): Updated with the GSEA Desktop 4.2.1 code base. Updated to Log4J 2.17.0. TXT file parser bug fix.</li>
+  <li><strong>20.3.0</strong> (2021-12-17): Updated with the GSEA Desktop 4.2.0 code base with numerous bug fixes. Adds the Abs_max_of_probes collapse mode. Fixed some issues handling datasets with missing values. Added the Spearman metric. Fixed issue with the min-sample check with gene_set permutation mode. Improved warnings and logging. Changed the FDR q-value scale on the NES vs Significance plot. Fixed bugs in weighted_p1.5 scoring.</li>
+  <li><strong>20.2.4</strong> (2021-4-22): Fixed minor typo.</li>
+  <li><strong>20.2.3</strong> (2021-4-2): Updated to MSigDB v7.4.</li>
+  <li><strong>20.2.2</strong> (2021-3-22): Updated to MSigDB v7.3.</li>
+  <li><strong>20.2.1</strong> (2020-10-27): Fixed a bug in the Collapse Sum mode.</li>
+  <li><strong>20.2.0</strong> (2020-9-23): Updated to MSigDB v7.2. Updated to use dedicated Docker container.</li>
+  <li><strong>20.1.0</strong> (2020-7-30): Updated to use the GSEA v4.1.0 code base.</li>
+  <li><strong>20.0.5</strong> (2020-4-2): Updated to use the GSEA v4.0.3 code base. Updated to give access to MSigDB v7.1.</li>
+  <li><strong>20.0.4</strong> (2019-11-19): Minor documentation update.</li>
+  <li><strong>20.0.3</strong> (2019-10-24): Updated to use the GSEA v4.0.2 code base. Updated to give access to MSigDB v7.0. OpenJDK 11 port. Java code moved into the GSEA Desktop code base.</li>
+  <li><strong>19.0.26</strong> (2019-10-10): Updated to use the GSEA v3.0 open-source code base. Updated to give access to MSigDB v6.2. Unified the Gene Set DB selector parameters and better downloading of MSigDB files. Added selected.gene.sets, alt.delim, creat.gcts and create.svgs parameters. Better temp file clean-up and other internal code improvements.</li>
+  <li><strong>18</strong> (2017-05-18): Updated to give access to MSigDB v6.0</li>
+  <li><strong>17</strong> (2016-02-04) Updated to give access to MSigDB v5.1</li>
+  <li><strong>16</strong> (2015-12-03): Updating the GSEA jar to deal with an issue with FTP access. Fixes an issue for GP@IU.</li>
+  <li><strong>15</strong> (2015-06-16): Add built-in support for MSigDB v5.0, which includes new hallmark gene sets.</li>
+  <li><strong>14</strong> (2013-06-14): Update the gene sets database list and the GSEA Java library, added support for continuous phenotypes.</li>
+  <li><strong>13</strong> (2012-09-20): Updated and sorted the chip platforms list, changed default value of num permutations to 1000, and updated the GSEA java library.</li>
+  <li><strong>12</strong> (2011-04-08): Fixed parsing of gene sets database file names which contain @ and # symbols and added gene sets containing entrez ids.</li>
+  <li><strong>11</strong> (2010-11-05): Fixed parsing of chip platform file names which contain @ and # symbols.</li>
+  <li><strong>10</strong> (2010-10-01): Updated selections for the gene sets database parameter to reflect those available in MSigDB version 3.</li>
+</ul>
+
+<p>Copyright © 2003-2022 Broad Institute, Inc., Massachusetts Institute of
+Technology, and Regents of the University of California. All rights
+reserved.</p>
+
+
+
+      </section>
+      <footer>
+        
+        <p><small>Theme adapted from <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

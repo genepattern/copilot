@@ -1,0 +1,70 @@
+Classification and Regression Trees (CART) is on version .
+A description of Classification and Regression Trees (CART) is CART builds classification and regression trees for predicting continuous dependent variables (regression) and categorical predictor variables (classification) (Breiman, et al., 1984). It works by recursively splitting the feature space into a set of non-overlapping regions (rectangles in the case of continuous features; subsets of values, in the case of categorical features), and by then predicting the most likely value of the dependent variable within each region..
+Classification and Regression Trees (CART) is a GenePattern module written by Joshua Gould, gp-help@broad.mit.edu.
+Classification and Regression Trees (CART) can be categorized as Prediction.
+Classification and Regression Trees (CART) has the following parameters: train.data.filename, train.cls.filename, saved.model.filename, model.output.file, test.data.filename, test.cls.filename, pred.results.file, tree.output.file.
+The CART GenePattern module is a powerful tool for building predictive models using decision tree algorithms in bioinformatics.
+CART can create classification trees to predict categorical outcomes based on multiple input features.
+CART can create regression trees to predict continuous numerical outcomes from complex datasets.
+The CART module allows researchers to recursively split feature spaces into non-overlapping regions for predictive modeling.
+CART can handle missing values in biological datasets, making it robust for real-world genomic and molecular data analysis.
+The module supports training models on one dataset and testing them on separate validation datasets.
+CART generates visual decision tree plots that help researchers understand the logical decision pathways in their predictive models.
+The module can save trained models for subsequent reuse on additional test datasets in bioinformatics research.
+CART is particularly useful for analyzing complex biological relationships where linear models might not capture intricate interactions.
+The module supports both .gct and .res file formats, common in genomic and transcriptomic data analysis.
+CART can predict outcomes in scenarios like disease classification, gene expression patterns, or molecular trait prediction.
+The algorithm works by creating nested logical conditions that segment data into predictive subgroups based on input features.
+Researchers can use CART to identify key features that most strongly influence a particular biological outcome or classification.
+The module provides flexibility in model creation, allowing training, testing, or combined train/test workflows.
+CART's decision tree approach makes complex predictive models more interpretable compared to black-box machine learning techniques.
+train.data.filename: string, required for training, specifies the input training data file in .gct or .res format for CART model creation
+train.data.filename: contains the feature matrix used to build the predictive CART model
+train.data.filename: can be ignored if a pre-saved model is being used
+train.cls.filename: string, required for training, specifies the training class file in .cls format for CART model
+train.cls.filename: contains the categorical or continuous target variable labels for the training data
+train.cls.filename: can be ignored if a pre-saved model is being used
+saved.model.filename: string, optional input parameter for loading a pre-existing CART model
+saved.model.filename: allows reuse of a previously trained classification or regression tree model
+saved.model.filename: enables prediction on new data without retraining
+model.output.file: string, required for training, specifies the filename for saving the trained CART model
+model.output.file: stores the learned decision tree structure and splitting rules
+model.output.file: enables model persistence and future reuse
+test.data.filename: string, optional parameter for applying the CART model to new data
+test.data.filename: contains the feature matrix for prediction or model evaluation
+test.data.filename: must be in .gct or .res format
+test.cls.filename: string, optional parameter containing true labels for the test dataset
+test.cls.filename: used for model performance assessment and validation
+test.cls.filename: must be in .cls format
+pred.results.file: string, optional output parameter for storing prediction results
+pred.results.file: contains the predicted labels or continuous values from the CART model
+pred.results.file: generated when test data is provided
+tree.output.file: string, required parameter for generating a visual representation of the decision tree
+tree.output.file: produces a plot showing the tree structure and splitting criteria
+tree.output.file: helps in understanding the model's decision-making process
+CART module input and output file descriptions:
+train.data.filename: Gene expression matrix in .gct or .res format containing feature measurements for training
+train.cls.filename: Class label file in .cls format defining categorical target variable for training data
+saved.model.filename: Serialized CART predictive model file generated from previous training
+test.data.filename: Gene expression matrix in .gct or .res format containing feature measurements for testing
+test.cls.filename: Class label file in .cls format defining categorical target variable for test data
+model.output.file: Serialized CART predictive model file generated during training
+pred.results.file: Tabular file containing predicted class labels or continuous values for test samples
+tree.output.file: Graphical visualization of decision tree structure showing feature splits and decision rules
+CART module is a machine learning tool for building predictive models using decision trees
+CART can create classification trees for categorical predictions and regression trees for continuous variable predictions
+The CART module recursively splits feature space into non-overlapping regions to make predictions
+CART can handle missing values and allows testing models on separate training and test datasets
+The module supports three primary modes: Train, Test with saved model, and Train/Test
+Training data requires both a data file (.gct or .res) and a class file (.cls)
+CART creates decision trees by establishing nested logical if-then conditions based on feature variables
+The module can output prediction results, decision tree plots, and saved prediction models
+CART is based on the seminal work of Breiman, Friedman, Olshen, and Stone from 1984
+The module is implemented in R and can run on any CPU platform
+CART handles both categorical and continuous features by creating different types of splits
+Users can specify input training data, class files, and optionally a saved model for predictions
+The module generates output files including prediction results and decision tree visualizations
+CART's decision trees represent complex decision-making processes through hierarchical branching logic
+The module allows flexible model creation and testing across different datasets
+CART can predict both categorical outcomes and continuous numerical values
+The module supports saving models for future use on additional test datasets

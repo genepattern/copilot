@@ -1,0 +1,57 @@
+STREAM.VisualizeTrajectories is on version .
+A description of STREAM.VisualizeTrajectories is STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. STREAM.VisualizeTrajectories is used to generate the subway and stream plots for a computed graph structure..
+STREAM.VisualizeTrajectories is a GenePattern module written by Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+STREAM.VisualizeTrajectories can be categorized as Single-cell Analysis, Trajectory Reconstruction, Visualization.
+STREAM.VisualizeTrajectories has the following parameters: data file, output filename, root, percentile dist, preference, color by, subway factor, factor num win, factor min win, factor width, create cell plots, log view, factor zoom in, create gene plots, genes, figure height, figure width, figure legend num columns.
+STREAM.VisualizeTrajectories is a GenePattern module for visualizing complex single-cell trajectory data from transcriptomic and epigenomic experiments.
+The STREAM.VisualizeTrajectories module helps researchers explore and map cellular differentiation pathways using advanced computational visualization techniques.
+This module can generate multiple types of visualizations, including subway plots, stream plots, and flat tree plots that represent cellular developmental trajectories.
+STREAM.VisualizeTrajectories allows researchers to color and annotate cells based on different parameters like cell labels or branch identification.
+The module requires a preprocessed STREAM pickle file containing annotated single-cell gene expression data as input.
+Researchers can customize visualization parameters like figure dimensions, color schemes, and plot preferences using the module's extensive configuration options.
+STREAM.VisualizeTrajectories is particularly useful for studying complex biological processes like stem cell differentiation and developmental biology.
+The module can generate gene-specific plots that show expression patterns across different cellular trajectories and developmental branches.
+By using sliding window and distance calculation techniques, STREAM.VisualizeTrajectories provides nuanced representations of cellular transition states.
+This GenePattern module is part of the broader STREAM pipeline, which enables comprehensive single-cell trajectory reconstruction and exploration.
+The visualization outputs from STREAM.VisualizeTrajectories can help researchers identify key transition points and gene expression patterns during cellular development.
+STREAM.VisualizeTrajectories module requires a pkl file containing annotated single-cell gene expression data.
+The data file parameter is a required input for the STREAM.VisualizeTrajectories module.
+The output filename parameter is a required string prefix for generated output files in the STREAM.VisualizeTrajectories module.
+The root parameter specifies the starting node in the STREAM.VisualizeTrajectories module trajectory analysis.
+The percentile dist parameter determines the percentile of cell distances used for calculating branch distances in the subway map visualization.
+The preference parameter allows specifying preferred nodes that will be positioned at the top of the subway plot in the STREAM.VisualizeTrajectories module.
+The color by parameter controls cell coloration in the STREAM.VisualizeTrajectories module visualization, with options like 'label' or 'branch'.
+The subway factor parameter adjusts the distances between branches in the subway map plot.
+The factor num win parameter sets the number of sliding windows in the STREAM.VisualizeTrajectories module visualization.
+The factor min win parameter calculates sliding window size based on the shortest branch in the STREAM.VisualizeTrajectories module.
+The factor width parameter controls the ratio between length and width of the stream plot.
+The create cell plots parameter is a boolean that determines whether cell plots are generated in the STREAM.VisualizeTrajectories module.
+The log view parameter enables logarithmic transformation of cell number width in the stream plot.
+The factor zoom in parameter adjusts zooming for thin branches when log view is enabled.
+The create gene plots parameter is a boolean that determines whether gene plots are created in the STREAM.VisualizeTrajectories module.
+The genes parameter is a comma-delimited list of genes to plot in the STREAM.VisualizeTrajectories module.
+The figure height parameter sets the height of matplotlib graphs, with a default of 8.
+The figure width parameter sets the width of matplotlib plots, with a default of 8.
+The figure legend num columns parameter controls the number of columns in the plot legend.
+STREAM.VisualizeTrajectories input file is a STREAM pkl file containing an annotated AnnData matrix of gene expression data.
+STREAM.VisualizeTrajectories input file is in extended pickle (.pkl) format storing single-cell transcriptomic data.
+STREAM.VisualizeTrajectories input file contains gene expression information for single cells across different cellular states.
+STREAM.VisualizeTrajectories output file is a STREAM pkl file with updated AnnData matrix after trajectory visualization.
+STREAM.VisualizeTrajectories output file preserves the original single-cell data with added trajectory visualization information.
+STREAM.VisualizeTrajectories generates stream plot images showing gene expression across cellular trajectories.
+STREAM.VisualizeTrajectories creates subway map plot images representing cellular differentiation paths.
+STREAM.VisualizeTrajectories produces a flat tree plot showing gene expression across different trajectory branches.
+STREAM.VisualizeTrajectories output plot images are in PNG format with high-resolution visualization of single-cell data.
+STREAM.VisualizeTrajectories allows customization of plot appearance through parameters like figure height, width, and legend columns.
+STREAM.VisualizeTrajectories is a GenePattern module for reconstructing and visualizing complex single-cell trajectories from transcriptomic and epigenomic data.
+The module is part of the STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) computational pipeline developed by Huidong Chen and colleagues.
+STREAM.VisualizeTrajectories generates subway and stream plots to help researchers explore branching cellular differentiation pathways.
+The module requires a preprocessed STREAM pickle file containing an annotated AnnData matrix of gene expression data as input.
+Users can customize visualization parameters like root node selection, branch preferences, and cell coloring strategies.
+The module can generate cell plots and gene plots to show expression patterns across different trajectory branches.
+Output includes visualization files like stream plots, subway map plots, and a flat tree representation of cellular trajectories.
+The visualization method is based on computational analysis of single-cell transcriptomic data to map cellular differentiation processes.
+Researchers can specify specific genes of interest to visualize their expression patterns across different branches of the cellular trajectory.
+The module provides flexible plotting options, including control over figure dimensions, legend formatting, and logarithmic view of cell distributions.
+STREAM.VisualizeTrajectories was originally published in a Nature Communications paper by Chen et al. in 2019.
+The module is particularly useful for studying complex biological processes like hematopoietic stem cell differentiation.

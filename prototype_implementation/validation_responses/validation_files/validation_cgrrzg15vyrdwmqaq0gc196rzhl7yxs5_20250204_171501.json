@@ -1,0 +1,14 @@
+{
+    "DateTime": "2025-02-04T17:15:01.056541",
+    "ModelType": "gpt-4o",
+    "SystemPrompt": "You are a bioinformatics wizard who works for the GenePattern team. Your job is to answer bioinformatics related questions about running a workflow. If an image description is provided, describe the image. \r\n            \r\nDo not describe tools that are not in the vector store, instead respond with \"That tool is not currently available in GenePattern. \r\n\r\nFeel free to contact the GenePattern team if you think it would be a good addition to our repository. Email: edh021@cloud.ucsd.edu\"\r\nProvide input file formats when giving instructions on how to run modules or tools. Only give module suggestions for modules in GenePattern.\r\nDo not tell users to \u201cgo to GenePattern and log in\u201d. Answer the following questions using all your knowledge and providing as much detail as possible with step-by-step instructions.\r\n\r\n                        ",
+    "DocumentStoreVersion": [
+        "manifest",
+        "readme",
+        "documentation",
+        "wrapper scripts"
+    ],
+    "ImageDescription": "No image provided",
+    "UserPrompt": "test\r\n",
+    "Response": "It seems like you've entered \"test\" as your question, and there is no image provided for description. If you have any specific bioinformatics-related questions or need assistance with running a workflow in GenePattern, please feel free to ask! I'm here to help with detailed instructions and guidance on using GenePattern modules."
+}

@@ -1,0 +1,53 @@
+CARTXValidation is on version 3.
+A description of CARTXValidation is Tree-based regression and classification with leave-one-out cross validation. CART builds classification and regression trees for predicting continuous dependent variables (regression) and categorical predictor variables (classification). It works by recursively splitting the feature space into non-overlapping regions and predicting the most likely value of the dependent variable within each region..
+CARTXValidation is a GenePattern module written by Joshua Gould, D. R. Mani.
+CARTXValidation can be categorized as Prediction.
+CARTXValidation has the following parameters: data filename, cls filename, prediction results file.
+The CARTXValidation module is a powerful machine learning tool for building predictive models using classification and regression trees.
+CARTXValidation enables researchers to perform leave-one-out cross-validation for complex biological datasets.
+The CARTXValidation module uses the CART (Classification and Regression Trees) algorithm to recursively split feature spaces into predictive regions.
+CARTXValidation can handle both continuous and categorical variables for building predictive models in biological research.
+The module creates classification trees that represent nested logical conditions for predicting categorical dependent variables.
+CARTXValidation generates regression trees to predict continuous response variables based on observed feature values.
+The module supports multiple input file formats including .gct and .res for data and .cls for class labels.
+CARTXValidation provides a comprehensive approach to model validation through leave-one-out cross-validation techniques.
+The module is implemented in R and can run on multiple operating systems and CPU architectures.
+CARTXValidation helps researchers understand complex relationships between biological variables through tree-based modeling.
+The module follows the foundational work of Breiman et al. in classification and regression tree methodology.
+CARTXValidation is particularly useful for predicting outcomes in genomic, clinical, and biological research contexts.
+The module allows researchers to build predictive models that can identify key features driving biological phenomena.
+CARTXValidation provides detailed output files that include prediction results and classification tree information.
+The module is currently in beta release, indicating ongoing development and potential future improvements.
+data: filename, string, input data file in .gct or .res format, required
+cls: filename, string, input class file in .cls format, required
+prediction_results_file: filename, string, output file for prediction results, required
+CARTXValidation module requires a data file to specify input features
+CARTXValidation uses a class file to define target variable for classification or regression
+CARTXValidation generates prediction results in a specified output file
+CARTXValidation supports both classification and regression tree modeling
+CARTXValidation performs leave-one-out cross-validation for model assessment
+CARTXValidation builds tree-based models that recursively split feature space
+CARTXValidation predicts values within non-overlapping regions of feature space
+CARTXValidation can handle continuous and categorical predictor variables
+CARTXValidation creates logical if-then conditions to predict dependent variables
+CARTXValidation is based on the classification and regression tree (CART) algorithm
+CARTXValidation module requires a data file in .gct or .res format containing feature measurements.
+CARTXValidation module requires a class file in .cls format specifying categorical or continuous target variable.
+CARTXValidation module generates a prediction results file with model predictions and cross-validation performance metrics.
+The input data file for CARTXValidation contains numerical feature measurements across samples.
+The input class file for CARTXValidation defines the target variable for classification or regression prediction.
+The output prediction results file from CARTXValidation includes predicted values for each sample in the cross-validation.
+CARTXValidation input data file can represent gene expression, molecular, or other quantitative measurements.
+The CARTXValidation class file maps samples to their corresponding categorical or continuous target values.
+CARTXValidation output file provides model performance metrics like accuracy, error rates, and prediction confidence.
+The input files for CARTXValidation must be tab-delimited text files with consistent sample identifiers.
+The CARTXValidation module is a machine learning tool for building predictive classification and regression trees using leave-one-out cross-validation.
+CARTXValidation uses a recursive splitting algorithm to divide feature space into non-overlapping regions for predicting categorical or continuous variables.
+In classification trees, CARTXValidation creates logical if-then conditions to predict categorical dependent variables based on feature values.
+In regression trees, CARTXValidation creates logical if-then conditions to predict continuous response variables based on feature values.
+The CARTXValidation module is based on the Classification and Regression Trees (CART) methodology developed by Breiman et al. in 1984.
+CARTXValidation requires two input files: a data file (.gct or .res) and a class file (.cls) for training the predictive model.
+The CARTXValidation module performs leave-one-out cross-validation, where each data point is used once as a test set while the remaining points train the model.
+CARTXValidation outputs prediction results in a specified file, allowing users to evaluate the model's performance.
+The module is implemented in R and can run on any operating system and CPU architecture.
+CARTXValidation is currently in beta release, indicating that the module and documentation may be subject to future modifications.

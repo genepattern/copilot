@@ -1,0 +1,64 @@
+Salmon.Alevin.Quant is on version 0.6.
+A description of Salmon.Alevin.Quant is Quantification and analysis of 3' tagged-end single-cell sequencing data using Salmon's Alevin (v1.5.2) function. Quantify gene expression from single-cell sequencing experiments using the Alevin module of the pseudo-alignment based method "Salmon"..
+Salmon.Alevin.Quant is a GenePattern module written by Avi Srivastava, COMBINE Lab, Department of Computer Science, University of Maryland. Wrapped as a module by Anthony S. Castanza, Mesirov Lab, UCSD School of Medicine..
+Salmon.Alevin.Quant can be categorized as Single-cell RNA-seq, Quantification, Transcriptomics.
+Salmon.Alevin.Quant has the following parameters: Barcodes, Reads, Transcriptome Index, Chemistry, Library Type, TgMap, Output Basename.
+The Salmon.Alevin.Quant module is a computational tool for quantifying gene expression in single-cell RNA sequencing experiments.
+The Salmon.Alevin.Quant module enables precise measurement of gene expression levels from single-cell RNA sequencing data.
+Salmon.Alevin.Quant uses the Alevin algorithm, which is specifically designed to handle cellular barcodes and unique molecular identifiers (UMIs) in single-cell sequencing data.
+The module supports multiple single-cell RNA sequencing chemistry platforms, including Drop-Seq, 10x Chromium v2, and 10x Chromium v3.
+Salmon.Alevin.Quant requires input files including cellular barcode sequences, raw read sequences, and a transcriptome index for accurate gene expression quantification.
+The module generates compressed output files containing detailed gene expression quantification results for downstream analysis in single-cell research.
+Salmon.Alevin.Quant is particularly useful for researchers studying gene expression heterogeneity across individual cells in complex biological systems.
+The module leverages pseudo-alignment techniques to efficiently and accurately estimate gene abundances from single-cell RNA sequencing data.
+Salmon.Alevin.Quant is integrated into the GenePattern computational genomics platform, facilitating easier access for bioinformatics researchers.
+The module supports automatic generation of transcript-to-gene mapping, simplifying the preprocessing steps for gene expression analysis.
+Salmon.Alevin.Quant can process multiple input files simultaneously, providing flexibility in handling complex single-cell sequencing experiments.
+The module is implemented as a shell script and is available through a Docker container, ensuring reproducibility and ease of deployment.
+Salmon.Alevin.Quant module parameter descriptions:
+Barcodes: File type (FASTQ), contains cellular barcodes and UMI raw sequences, required parameter for Salmon.Alevin.Quant module.
+Barcodes are essential for identifying individual cells in single-cell sequencing experiments.
+Barcodes must be gzipped and match read files by base filename with _R1 suffix.
+Multiple barcode files can be processed if order matches read files.
+Reads: File type (FASTQ), contains raw read sequences, required parameter for Salmon.Alevin.Quant module.
+Read files capture the actual genetic sequence information for quantification.
+Reads must be gzipped and match barcode files by base filename with _R2 suffix.
+Multiple read files can be processed if order matches barcode files.
+Transcriptome Index: File type (.tar.gz), output from Salmon.Indexer module, required parameter for Salmon.Alevin.Quant module.
+Transcriptome index provides reference genome mapping information for accurate quantification.
+Enables efficient pseudo-alignment of sequencing reads to known transcripts.
+Chemistry: Categorical parameter specifying single-cell sequencing platform, required for Salmon.Alevin.Quant module.
+Supports multiple sequencing technologies like Drop-Seq, 10x Chromium v2/v3, CITE-Seq, CEL-Seq.
+Determines how barcodes and reads are interpreted during quantification.
+Library Type: Orientation parameter for barcodes and reads, required for Salmon.Alevin.Quant module.
+ISR (Inward, Stranded, Reverse) recommended as default for Drop-seq and Chromium chemistries.
+Ensures correct interpretation of sequencing library preparation method.
+TgMap: File type (TSV or GTF), transcript to gene mapping, required parameter for Salmon.Alevin.Quant module.
+Two-column file linking transcripts to corresponding genes.
+Can be manually created TSV or automatically generated from GTF file.
+Critical for accurate gene expression quantification.
+Output Basename: String parameter specifying output file naming, required for Salmon.Alevin.Quant module.
+Default value is "alevin.output" if not specified.
+Determines naming convention for quantification results files.
+Salmon.Alevin.Quant module input and output file descriptions:
+Barcodes input file: Gzipped FASTQ file containing cellular barcodes and UMI sequences with _R1 suffix
+Reads input file: Gzipped FASTQ file containing raw read sequences with _R2 suffix
+Transcriptome Index input file: Compressed tar.gz file containing indexed transcriptome from Salmon.Indexer module
+TgMap input file: Tab-separated two-column file mapping transcripts to genes, with no header
+Output file: Gzipped tar.gz archive containing Alevin quantification results for single-cell RNA sequencing data
+Barcodes and reads files must share base filename and be in matching order
+Transcriptome index file must be generated by compatible indexing pipeline
+TgMap file can alternatively be a GTF file for automatic transcript-gene mapping
+Output file contains quantification results from Salmon Alevin single-cell RNA analysis
+Input files are typically from single-cell RNA sequencing experiments using platforms like Drop-Seq or 10x Chromium
+Output file provides gene expression quantification for single-cell transcriptome analysis
+Salmon.Alevin.Quant is a computational method for quantifying gene expression from single-cell RNA sequencing data using pseudo-alignment.
+The module processes single-cell sequencing data by analyzing cellular barcodes and unique molecular identifiers (UMIs) to accurately measure gene expression levels.
+Salmon.Alevin.Quant supports multiple single-cell RNA sequencing chemistry platforms, including Drop-Seq, 10x Chromium v2, and v3, enabling flexible analysis across different experimental protocols.
+The module requires input files including cellular barcode sequences, raw read sequences, a transcriptome index, and a transcript-to-gene mapping file to perform quantification.
+Salmon.Alevin.Quant uses a pseudo-alignment approach to efficiently map sequencing reads to a reference transcriptome, which is computationally faster than traditional alignment methods.
+The module generates quantification results that provide gene expression estimates at the single-cell level, allowing researchers to analyze transcriptional profiles across individual cells.
+Developed by researchers from the COMBINE Lab at the University of Maryland, Salmon.Alevin.Quant represents a state-of-the-art computational approach for single-cell RNA sequencing analysis.
+The module supports gzipped input files and can process multiple sequencing files simultaneously, providing flexibility in handling different experimental datasets.
+Salmon.Alevin.Quant implements advanced computational techniques to correct for technical biases and provide accurate gene expression quantification from single-cell RNA sequencing data.
+The module is designed to be user-friendly, with clear parameter specifications and support for various single-cell sequencing chemistry platforms.

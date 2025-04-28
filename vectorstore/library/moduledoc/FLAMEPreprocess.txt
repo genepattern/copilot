@@ -1,0 +1,116 @@
+FLAMEPreprocess is on version .
+A description of FLAMEPreprocess is Performs preprocessing of .fcs or .txt flow cytometric data files. FLAME (FLow analysis with Automated Multivariate Estimation) uses finite mixture model clustering techniques with novel algorithms and models to identify and characterize discrete populations in flow cytometric data. The module performs column/channel selection, bi-exponential transformation, optional live-cell gating, and optional data transformation..
+FLAMEPreprocess is a GenePattern module written by Xinli Hu (Broad Institute), gp-help@broad.mit.edu.
+FLAMEPreprocess can be categorized as Flow Cytometry, Preprocessing, Data Transformation.
+FLAMEPreprocess has the following parameters: dataset, file type, data scale, remove dead, channels, channel names, scatter channels, transformation, logicle cofactor, arsinh cofactor, output.prefix.
+The FLAMEPreprocess module is a specialized tool for preprocessing flow cytometry data files in GenePattern.
+FLAMEPreprocess is part of a comprehensive flow cytometry analysis pipeline designed to prepare raw data for advanced population identification.
+The module can handle both .fcs and .txt file formats, allowing flexibility in data input sources like FlowJo exports.
+FLAMEPreprocess enables users to select specific channels/antibodies for analysis by specifying channel numbers and corresponding names.
+The module supports bi-exponential transformation of flow cytometry data, which helps normalize and spread out cellular intensity measurements.
+FLAMEPreprocess offers optional live-cell gating by clustering Forward- and Side-Scatter intensities and removing events with lowest scatter intensities.
+Users can choose between different data transformations like logicle, arsinh, or no transformation, with adjustable cofactors to tune the transformation.
+The module is particularly useful for analyzing cell populations in controlled settings like cell lines, with caution recommended for more complex samples like whole blood.
+FLAMEPreprocess generates a preprocessed zip file that serves as input for subsequent modules in the FLAME flow cytometry analysis workflow.
+The module supports both 4-decade and 18-bit data scales, accommodating different flow cytometry instrument configurations.
+Researchers typically use FLAMEPreprocess in conjunction with other FLAME modules to perform comprehensive flow cytometry data analysis.
+dataset:
+- Type: .zip file
+- Description: Contains flow cytometric data files in .txt or .fcs format
+- Required: Yes
+- Supports .fcs (2.0 or 3.0) or .txt files with fluorescent intensity matrix
+- Must be all .txt or all .fcs files
+file type:
+- Type: String
+- Description: Specifies input sample data file format
+- Required: No
+- Default: fcs
+- Options: fcs or txt
+data scale:
+- Type: String
+- Description: Indicates original data measurement scale
+- Required: No
+- Default: 18-bit
+- Options: 18-bit or 4-decade
+remove dead:
+- Type: String
+- Description: Attempts to remove dead cells from samples
+- Required: No
+- Default: No
+- Options: Yes or No
+- Works best with single cell type samples
+channels:
+- Type: Comma-separated list of integers
+- Description: Specifies which columns/antibodies to keep
+- Required: Yes
+- Example: 1, 2, 3, 7
+channel names:
+- Type: Comma-separated list of strings
+- Description: Corresponds to selected channel numbers
+- Required: Yes
+- Example: FSC, SSC, CD4, CD45RA
+scatter channels:
+- Type: Comma-separated list of integers
+- Description: Channel/antibody names for scatter measurements
+- Required: No
+- Default: 1, 2
+transformation:
+- Type: String
+- Description: Specifies data transformation method
+- Required: No
+- Default: logicle
+- Options: logicle, arsinh, all, or none
+logicle cofactor:
+- Type: Numeric
+- Description: Tunes logicle transformation
+- Required: No
+- Default: 3
+- Range: Greater than 0, less than 10
+arsinh cofactor:
+- Type: Numeric
+- Description: Tunes arsinh transformation
+- Required: No
+- Default: 250
+- Range: Between 0 and a few thousand
+output.prefix:
+- Type: String
+- Description: Prefix for output files
+- Required: No
+- Allows custom naming of preprocessed sample files
+Here are the input and output file descriptions for the FLAMEPreprocess module:
+Input Files:
+A .zip file containing flow cytometry data files in .fcs or .txt format
+Flow cytometry files must be either all .fcs or all .txt, not mixed
+.fcs files can be version 2.0 or 3.0
+.txt files must contain a matrix of fluorescent intensities
+.txt files require a header row with color/antibody names
+.txt files should be space or tab delimited
+Input File Characteristics:
+Each row represents data for a single cell
+Each column represents a different color/antibody
+Columns include scatter channels like FSC and SSC
+Columns include fluorescence channels for specific markers
+Output Files:
+A zip file containing preprocessed flow cytometry data files
+Preprocessed files include selected channels
+Files may be transformed using logicle or arsinh methods
+Optional removal of dead cell events
+Transformed data prepared for further FLAME module processing
+Output File Characteristics:
+Maintains original file structure
+Contains only selected channels specified by user
+Potentially transformed data values
+Potentially filtered to remove dead cells
+Compatible with subsequent FLAME module processing
+The FLAMEPreprocess module is a specialized tool for preprocessing flow cytometry data files.
+FLAMEPreprocess performs preprocessing operations on flow cytometric data, including channel selection and data transformation.
+The module supports both .fcs and .txt file formats for input flow cytometry data.
+Users can specify which channels/antibodies to retain during preprocessing by providing channel numbers and corresponding names.
+The module offers bi-exponential transformation of raw flow cytometry data, supporting both 4-decade and 18-bit data scales.
+Optional live-cell gating can be performed by removing cells with lowest scatter intensities, though this works best with cell lines rather than complex cell populations.
+Data transformation options include logicle, arsinh, or no transformation, with user-configurable cofactors that control the spread of data points.
+The module is part of a larger FLAME (FLow analysis with Automated Multivariate Estimation) pipeline for advanced flow cytometry data analysis.
+Preprocessing results are output as a zip file containing transformed data files, which can be used in subsequent FLAME analysis modules.
+The module is recommended to be used in conjunction with the FLAMEPreviewTransformation module to determine optimal transformation parameters.
+Gating is typically performed externally in tools like FlowJo, with preprocessed data exported as .txt files for compatibility.
+The underlying method is based on finite mixture model clustering techniques for identifying discrete cell populations.

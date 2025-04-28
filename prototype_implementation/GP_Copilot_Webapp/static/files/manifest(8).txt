@@ -1,0 +1,38 @@
+#PredictionResultsViewer
+JVMLevel=1.6
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.visualizer\:00019\:999999999
+version=Bug fix for S3 files
+
+author=Thorin Tabor (UC San Diego, Broad Institute)
+commandLine=prediction_results_viewer.html ? <prediction.results.file>
+cpuType=any
+description=Visualizes prediction results in JavaScript
+fileFormat=
+language=Javascript
+name=PredictionResultsViewer
+os=any
+src.repo=https://github.com/genepattern/PredictionResultsViewer.git
+
+p1_MODE=IN
+p1_TYPE=FILE
+p1_default_value=
+p1_description=Prediction results - .odf
+p1_fileFormat=Prediction Results
+p1_name=prediction.results.file
+p1_optional=
+p1_prefix_when_specified=
+p1_type=java.io.File
+p1_value=
+
+pipelineModel=
+privacy=public
+quality=preproduction
+requiredPatchLSIDs=urn\:lsid\:broadinstitute.org\:plugin\:GenePattern_3_9_1\:0.1,
+requiredPatchURLs=http\://software.broadinstitute.org/webservices/gpModuleRepository/download/dev/patch/?file\=/GenePattern_3_9_1/broadinstitute.org\:plugin/GenePattern_3_9_1/0.1/GenePattern_3_9_1.zip
+
+serializedModel=
+taskType=javascript
+taskDoc=doc.html
+userid=
+
+publicationDate=07/13/2021 11\:11 

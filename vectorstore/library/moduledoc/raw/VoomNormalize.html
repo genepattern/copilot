@@ -1,0 +1,119 @@
+<section aria-labelledby="file-name-id-wide file-name-id-mobile" class="Box-sc-g0xbh4-0 fGqKFv"><div class="Box-sc-g0xbh4-0 eoaCFS js-snippet-clipboard-copy-unpositioned undefined" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 class="heading-element" dir="auto" tabindex="-1">VoomNormalize (v1.2)</h1><a aria-label="Permalink: VoomNormalize (v1.2)" class="anchor" href="#voomnormalize-v12" id="user-content-voomnormalize-v12"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Preprocess RNA-Seq count data in a GCT file so that it is suitable for use in GenePattern analyses.</p>
+<p dir="auto"><strong>Authors:</strong> Arthur Liberzon, David Eby, Edwin Juárez.</p>
+<p dir="auto"><strong>Contact:</strong> <a href="http://genepattern.org/help" rel="nofollow">http://genepattern.org/help</a></p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Introduction</h2><a aria-label="Permalink: Introduction" class="anchor" href="#introduction" id="user-content-introduction"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">This module is used to preprocess RNA-Seq data into a form suitable for use downstream in other GenePattern analyses such as GSEA, ComparativeMarkerSelection, NMFConsensus, as well as GENE-E and other visualizers.  Many of these tools were originally designed to handle microarray data - particularly from Affymetrix arrays - and so we must be mindful of that origin when preprocessing data for use with them.</p>
+<p dir="auto">The module does this by using a mean-variance modeling technique [1] to transform the dataset to fit an approximation of a normal distribution, with the goal of thus being able to apply classic normal-based microarray-oriented statistical methods and workflows.</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Algorithm</h2><a aria-label="Permalink: Algorithm" class="anchor" href="#algorithm" id="user-content-algorithm"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">This modeling technique is called 'voom' and is part of the 'limma' package of Bioconductor [1] [2].  Use of this method requires the user to supply raw read counts as produced by HTSeq or RSEM.  These counts should not be normalized and also should not be RPKM or FPKM values.  The MergeHTSeqCounts module in GenePattern is capable of producing a suitable GCT from HTSeq output.</p>
+<p dir="auto">The module first performs a filtering pass on the dataset to remove any features (rows) without at least 1 read per million in <em>n</em> of the samples, where <em>n</em> is the size of the smallest group of replicates (recommended in [3]).  Note that this not a simple threshold on the count but rather a filtering using CPM (counts per million) values calculated just for this purpose.  The raw values are still used for variance modeling; these CPM values are only used for filtering and then subsequently discarded.  The module will automatically determine the smallest group of samples (<em>n</em>) based on their classifications in the user-supplied CLS file.</p>
+<ul dir="auto">
+<li>The threshold level can be adjusted using the <em>expression.value.filter.threshold</em>  advanced parameter, though the default value follows the recommendations from [1] and [3] and should suffice for most users.</li>
+</ul>
+<p dir="auto">Next, the module performs normalization of the dataset using Trimmed Mean of M-values (TMM) [4] on the raw counts of any remaining features that pass the filter.  Finally, the module performs the mean-variance transformation to approximate a normal distribution using the 'voom' method of the 'limma' package, returning a new dataset with values in logCPM (log2 counts per million) that can be used with classic normal-based microarray-oriented statistical methods and workflows.</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">References</h2><a aria-label="Permalink: References" class="anchor" href="#references" id="user-content-references"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol dir="auto">
+<li>Law CW, Chen Y, Shi W and Smyth GK (2014). "voom: precision weights unlock linear model analysis tools for RNA-seq read counts." <em>Genome Biology</em>, <em>15</em>*:R29 ([link][30])</li>
+<li>Smythe GK (2015). "Package 'limma'" [documentation][31] from Bioconductor 3.0.</li>
+<li>Anders S, McCarthy DJ, Chen Y, Okoniewski M, Smyth GK, Huber W, Robinson MD (2013). " Count-based differential expression analysis of RNA sequencing data using R and Bioconductor." <em>Nat. Protocols</em>, <strong>8</strong>, 1765-1786. ([link][32])</li>
+<li>Robinson, MD, and Oshlack, A (2010). A scaling normalization method for differential expression analysis of RNA-seq data. <em>Genome Biology</em> <strong>11</strong>, R25</li>
+<li>Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W and Smyth GK (2015). "limma powers differential expression analyses for RNA-sequencing and microarray studies." <em>Nucleic Acids Research</em>, <strong>43</strong>(7), pp. e47.</li>
+<li>Robinson MD, McCarthy DJ and Smyth GK (2010). edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. <em>Bioinformatics</em> <strong>26</strong>, 139-140</li>
+<li>Chen Y, McCarthy DJ, Robinson MD and Smyth GK (2015). "Package 'edgeR'" [Users Guide][33] from Bioconductor 3.0.</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Parameters</h2><a aria-label="Permalink: Parameters" class="anchor" href="#parameters" id="user-content-parameters"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file *</td>
+<td>A GCT file containing raw RNA-Seq counts, such as is produced by MergeHTSeqCounts</td>
+</tr>
+<tr>
+<td>cls file *</td>
+<td>A categorical CLS file specifying the phenotype classes for the samples in the GCT file.</td>
+</tr>
+<tr>
+<td>output file *</td>
+<td>Output file name</td>
+</tr>
+<tr>
+<td>expression value filter threshold *</td>
+<td>Threshold to use when filtering CPM expression values; rows are kept only if the values (in CPM) for all columns are greater than this threshold</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<ul dir="auto">
+<li>- required</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Input Files</h2><a aria-label="Permalink: Input Files" class="anchor" href="#input-files" id="user-content-input-files"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol dir="auto">
+<li>&lt;input.file&gt;<br/>
+A GCT file containing raw read counts for your RNA-Seq data.</li>
+<li>&lt;cls.file&gt;<br/>
+A categorical CLS file specifying the phenotype classes for the samples in the GCT.</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Output Files</h2><a aria-label="Permalink: Output Files" class="anchor" href="#output-files" id="user-content-output-files"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol dir="auto">
+<li>&lt;output.file&gt;  (by default, &lt;input.file_basename&gt;.preprocessed.gct<br/>
+A GCT file containing the preprocessed dataset.  Note that this may have fewer rows than the original GCT due to the filter.</li>
+<li>log2_&lt;output.file&gt;  (by default, log2_&lt;input.file_basename&gt;.preprocessed.gct<br/>
+A GCT file containing the log2 normalized &amp; preprocessed dataset.  Note that this may have fewer rows than the original GCT due to the filter.</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Example Data</h2><a aria-label="Permalink: Example Data" class="anchor" href="#example-data" id="user-content-example-data"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Input:</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><a href="https://datasets.genepattern.org/gpftp/example_data/modules/PreprocessReadCounts/input/MergedHTSeqCounts_GSE52778.gct" rel="nofollow">https://datasets.genepattern.org/gpftp/example_data/modules/PreprocessReadCounts/input/MergedHTSeqCounts_GSE52778.gct</a></p>
+</li>
+<li>
+<p dir="auto"><a href="https://datasets.genepattern.org/gpftp/example_data/modules/PreprocessReadCounts/input/MergedHTSeqCounts_GSE52778.cls" rel="nofollow">https://datasets.genepattern.org/gpftp/example_data/modules/PreprocessReadCounts/input/MergedHTSeqCounts_GSE52778.cls</a></p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Requirements</h2><a aria-label="Permalink: Requirements" class="anchor" href="#requirements" id="user-content-requirements"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">The module requires R-3.1.3 with the 'getopt_1.20.0' and 'optparse_1.3.2' packages from CRAN and the 'limma' and 'edgeR' packages from Bioconductor 3.0.</p>
+<p dir="auto">Those packages are available in the Docker container <a href="https://hub.docker.com/r/genepattern/voomnormalize:1.0" rel="nofollow">https://hub.docker.com/r/genepattern/voomnormalize:1.0</a></p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Platform Dependencies</h2><a aria-label="Permalink: Platform Dependencies" class="anchor" href="#platform-dependencies" id="user-content-platform-dependencies"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><strong>Task Type:</strong>
+Preprocess &amp; Utilities</p>
+<p dir="auto"><strong>CPU Type:</strong>
+any</p>
+<p dir="auto"><strong>Operating System:</strong>
+any</p>
+<p dir="auto"><strong>Language:</strong>
+R3.1.3</p>
+<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto" tabindex="-1">Version Comments</h2><a aria-label="Permalink: Version Comments" class="anchor" href="#version-comments" id="user-content-version-comments"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2020-08-17</td>
+<td>Output now generates a log2 normalized and anti-logged counts (algorithm by default computes the log2)</td>
+</tr>
+<tr>
+<td>0.9</td>
+<td>2019-01-29</td>
+<td>Renaming module to VoomNormalize</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td>2015-11-24</td>
+<td>Prerelease building towards Beta</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">©2006-2020 Regents of the University of California, Broad Institute, MIT</p>
+</article></div><button hidden=""></button></section>

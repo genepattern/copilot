@@ -1,0 +1,67 @@
+HISAT2.indexer is on version 1.
+A description of HISAT2.indexer is The HISAT2.indexer generates genome indexes for the HISAT2.aligner module. HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome)..
+HISAT2.indexer is a GenePattern module written by Ted Liefeld.
+HISAT2.indexer can be categorized as Genomics, Indexing, Alignment.
+HISAT2.indexer has the following parameters: index name prefix, fasta file, gtf file, dry run.
+The HISAT2.indexer module is a critical bioinformatics tool for preparing genome reference indexes for next-generation sequencing alignment.
+The HISAT2.indexer generates specialized genome index files that enable rapid and accurate mapping of sequencing reads to reference genomes.
+HISAT2.indexer uses an advanced algorithm based on the FM Index and Burrows-Wheeler transform to create compact, efficient genomic reference indexes.
+The module can process multiple FASTA files representing different chromosomes or genomic regions to create a comprehensive reference index.
+HISAT2.indexer can optionally incorporate gene annotation information from GTF files to enhance the index with splice site and exon data.
+The module produces a set of 6-8 index files with .ht2 extensions that collectively represent a complete genomic reference for alignment purposes.
+HISAT2.indexer allows researchers to create custom genome indexes for various organisms and genomic assemblies with high computational efficiency.
+The module's underlying algorithm automatically optimizes memory usage and computational performance during index generation.
+HISAT2.indexer is particularly useful for preparing indexes for RNA-seq and DNA sequencing alignment across different genomic contexts.
+The module is implemented within the GenePattern platform, providing a user-friendly interface for generating genomic reference indexes.
+HISAT2.indexer module requires several parameters for generating genome indexes:
+index name prefix: String, required, specifies the name prefix for resulting index files and zip file.
+fasta file: File, required, contains reference DNA sequences to be aligned, can be multiple FASTA files or a zip file with FASTA files.
+gtf file: File, optional, contains gene annotation information about exons and splice sites.
+dry run: Boolean, optional, when true prints the HISAT2 command-line without executing the alignment, useful for testing.
+Each chunk focuses on a specific aspect of the HISAT2.indexer module parameter:
+HISAT2.indexer requires a prefix name for generating index files.
+HISAT2.indexer needs reference DNA sequences in FASTA format.
+Optional GTF file provides additional genomic annotation information.
+Dry run parameter allows testing the module without actual index generation.
+HISAT2.indexer creates index files for genomic sequence alignment.
+Index files are critical for subsequent read mapping processes.
+HISAT2.indexer supports multiple input sequence files.
+Prefix name determines the output index file naming convention.
+GTF file can enhance index with splice site and exon information.
+Dry run mode helps validate command-line configuration.
+HISAT2.indexer input files:
+Fasta file contains DNA reference sequences for genome indexing in FASTA format
+GTF file contains optional splice site and gene annotation information in GTF format
+HISAT2.indexer output files:
+genome.zip contains 6-8 index files with .ht2 or .ht2l file extensions
+Index files represent compressed genome reference for HISAT2 alignment
+Each index file represents a different part of the genome index structure
+Index files are generated using Karkkainen's blockwise algorithm
+Index files are based on FM Index and Burrows-Wheeler transform
+Index files replace original FASTA sequences for read alignment
+Index files enable fast and sensitive genomic read mapping
+HISAT2.indexer file characteristics:
+Fasta input supports multiple chromosome or reference sequence files
+Fasta files can be individual or compressed in a zip archive
+GTF file is optional but provides additional genomic annotation
+Output index files are automatically generated with specified prefix
+Index files are platform-independent and can be used across different systems
+Index files compress genome information for efficient computational processing
+HISAT2.indexer file processing:
+Indexer uses hisat2-build script to generate genome indexes
+Indexer automatically optimizes memory usage and processing time
+Indexer can generate standard or large (ht2l) index file formats
+Indexer supports both DNA and RNA sequencing reference genome preparation
+HISAT2.indexer is a GenePattern module for generating genome indexes for next-generation sequencing read alignment.
+The HISAT2.indexer uses the hisat2-build script to create genomic indexes from DNA sequence FASTA files.
+The module generates 6-8 index files with .ht2 or .ht2l suffixes that represent a complete genomic reference index.
+HISAT2.indexer uses Karkkainen's blockwise algorithm to optimize memory usage and running time during index generation.
+The index is based on the FM Index, which utilizes the Burrows-Wheeler transform for efficient genomic sequence representation.
+Users must provide a name prefix for the index files and one or more FASTA files containing reference genomic sequences.
+An optional GTF file can be included to add splice site and exon information to the genomic index.
+The module supports a "dry run" option that allows users to preview the command-line execution without actually running the indexing process.
+The output is a zip file containing the generated index files, which can be directly used with the HISAT2.aligner module.
+The indexing process is implemented using a Docker container to ensure consistent computational environment and dependencies.
+The module supports both DNA and RNA sequencing read alignment across human genome populations.
+HISAT2.indexer is designed to be memory-efficient and can automatically select optimal settings for index generation.
+The module is part of the HISAT2 alignment suite, which is known for its speed and sensitivity in genomic read mapping.

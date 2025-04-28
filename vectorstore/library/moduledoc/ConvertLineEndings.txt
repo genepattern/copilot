@@ -1,0 +1,45 @@
+ConvertLineEndings is on version 1.1.
+A description of ConvertLineEndings is Converts line endings to the host operating system's line endings. This task converts the line endings contained in a file to the line endings used by perl on the host operating system..
+ConvertLineEndings is a GenePattern module written by Joshua Gould (Broad Institute), gp-help@broad.mit.edu.
+ConvertLineEndings can be categorized as Preprocess, Utility.
+ConvertLineEndings has the following parameters: input.filename, output.file.
+The ConvertLineEndings module helps resolve cross-platform text file compatibility issues in bioinformatics workflows.
+ConvertLineEndings is a utility module that automatically adjusts text file line endings to match the host operating system's standard.
+Different operating systems (Windows, Mac, Linux) use different line ending characters, which can cause compatibility problems when sharing files between systems.
+The ConvertLineEndings module is particularly useful when working with Perl-based bioinformatics tools that require consistent line ending formats.
+Researchers can use ConvertLineEndings to ensure text files like sequence data, annotation files, or configuration scripts are correctly formatted for their specific computing environment.
+The module supports conversion of line endings for any non-binary text file, making it a versatile preprocessing tool in genomic data analysis pipelines.
+By standardizing line endings, ConvertLineEndings helps prevent potential errors or parsing issues that can arise from inconsistent file formatting across different computing platforms.
+Bioinformatics workflows often involve transferring data between different systems, making the ConvertLineEndings module a critical utility for maintaining file compatibility.
+The module is particularly valuable in collaborative research environments where team members might be using different operating systems and computational platforms.
+ConvertLineEndings operates transparently, requiring minimal user intervention to resolve potential line ending compatibility challenges.
+ConvertLineEndings module helps convert line endings across different operating systems.
+input.filename: string, specifies the source file to be converted, required, represents the input file with potentially incompatible line endings.
+input.filename enables specifying which file needs line ending transformation in the ConvertLineEndings module.
+output.file: string, defines the destination file after line ending conversion, required, represents the output file with standardized line endings.
+output.file provides the target location for the line-ending-converted file in the ConvertLineEndings module.
+ConvertLineEndings module ensures compatibility of text files across different operating system environments.
+The module automatically detects and transforms line endings to match the host operating system's standard.
+Line ending conversion is crucial for maintaining text file readability and compatibility between different computing platforms.
+Perl is the primary language used for implementing this line ending conversion process.
+The module supports conversion for non-binary file formats, ensuring broad applicability across various text file types.
+ConvertLineEndings module input file is a text file with potentially non-native line endings.
+ConvertLineEndings module input file can be any non-binary text file format like CSV, TXT, or log files.
+ConvertLineEndings module input file may have line endings from different operating systems like Windows (CRLF) or Unix (LF).
+ConvertLineEndings module output file contains the same content as the input file with line endings converted to the host operating system's standard.
+ConvertLineEndings module output file will use the native line ending format of the server's operating system.
+ConvertLineEndings module output file preserves all original text content from the input file.
+ConvertLineEndings module is designed to prepare files for Perl script execution across different operating systems.
+ConvertLineEndings module ensures compatibility by standardizing line ending formats.
+ConvertLineEndings module uses a support script called to_host.pl to perform the line ending conversion.
+ConvertLineEndings module can handle text files from various sources and operating system environments.
+The ConvertLineEndings module helps convert text file line endings to match the host operating system's line ending format.
+The ConvertLineEndings module is designed to resolve line ending compatibility issues when working with Perl-based tasks.
+ConvertLineEndings ensures that input files have consistent line endings across different computing environments.
+This module is particularly useful when transferring text files between operating systems with different line ending conventions.
+The ConvertLineEndings module takes an input file and produces an output file with standardized line endings.
+ConvertLineEndings supports any non-binary file format as input, making it versatile for various text-based data processing tasks.
+The module is platform-independent and can run on any CPU and operating system.
+ConvertLineEndings uses a Perl script (to_host.pl) to perform the line ending conversion process.
+This utility module is classified as a preprocessing and utility tool in the GenePattern workflow.
+ConvertLineEndings helps researchers and bioinformaticians maintain file compatibility across different computing environments.

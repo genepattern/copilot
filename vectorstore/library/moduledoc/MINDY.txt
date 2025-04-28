@@ -1,0 +1,58 @@
+MINDY is on version 1.0.
+A description of MINDY is The MINDY (Modulator Inference by Network Dynamics) algorithm computationally infers genes that modulate the activity of a transcription factor at post-transcriptional levels. It uses mutual information (MI) to measure the mutual dependence of the transcription factor (TF) and its target gene..
+MINDY is a GenePattern module written by Marc-Danie Nazaire (Broad Institute).
+MINDY can be categorized as Pathway Analysis.
+MINDY has the following parameters: input.file, modulator.list, dpi.transcription.factor.list, transcription.factor, sample.percentage, conditional.mi.threshold, conditional.mi.p.value, dpi.tolerance, unconditional.mi.threshold, unconditional.mi.p.value, output.file.
+The MINDY GenePattern module is a computational tool for inferring gene modulators of transcription factor interactions.
+MINDY uses mutual information (MI) to analyze how genes might modulate transcription factor-target gene relationships.
+The MINDY algorithm computes three key measurements: unconditional MI, conditional MI, and conditional MI difference.
+MINDY helps researchers understand post-transcriptional gene regulation by identifying potential modulator genes.
+The module requires input files including gene expression data, a list of potential modulator genes, and a target transcription factor.
+MINDY calculates how the expression of modulator genes affects the interaction between a transcription factor and its target gene.
+The algorithm can determine whether a modulator gene enhances or inhibits a transcription factor-target gene interaction.
+MINDY generates a result file showing conditional mutual information differences for each target-modulator gene pair.
+The module is particularly useful in studying complex gene regulatory networks in biological systems.
+MINDY can help researchers identify novel regulatory relationships that are not apparent through traditional analysis methods.
+The algorithm was originally developed for studying interactions in human B lymphocytes but can be applied to other biological contexts.
+MINDY uses statistical thresholds to filter and validate potential gene modulators, reducing false positive results.
+The module is part of the GenePattern suite, making it accessible to researchers with varying computational backgrounds.
+MINDY can process large-scale gene expression datasets to systematically explore gene regulatory interactions.
+The algorithm applies Data Processing Inequality (DPI) to remove indirect transcriptional interactions and improve result specificity.
+MINDY module parameter descriptions:
+input.file: File type (string), specifies the input data file in .res or .gct format, required for MINDY analysis.
+modulator.list: File type (string), contains potential modulator genes for transcription factor interaction, more genes increase computational time, optional parameter.
+dpi.transcription.factor.list: File type (string), lists annotated transcription factors for Data Processing Inequality (DPI) network reconstruction, helps remove indirect interactions.
+transcription.factor: String type, specifies the specific transcription factor being analyzed in the MINDY algorithm.
+sample.percentage: Numeric type (float), determines the percentage of samples used to calculate modulator gene expression states, required parameter.
+conditional.mi.threshold: Numeric type (float), filters target genes based on conditional mutual information score, default is no threshold set.
+conditional.mi.p.value: Numeric type (float), significance level for conditional mutual information, ranges from 0 to 1, default value is 1.
+dpi.tolerance: Numeric type (float), percentage of mutual information score considered sampling error, typically between 0 and 0.15.
+unconditional.mi.threshold: Numeric type (float), filters target genes based on unconditional mutual information score, default is no threshold set.
+unconditional.mi.p.value: Numeric type (float), significance level for unconditional mutual information, ranges from 0 to 1, default value is 1.
+output.file: String type, specifies the name of the output file in .mindy format, required parameter for storing MINDY analysis results.
+Here are the input and output file descriptions for the MINDY module:
+MINDY input file is a gene expression dataset in .res or .gct format containing gene expression measurements across samples.
+MINDY modulator.list is a plain text file with one gene name per line, representing potential modulator genes to analyze.
+MINDY dpi.transcription.factor.list is a plain text file containing gene names of known transcription factors, one per line.
+MINDY input file contains gene expression data with rows representing genes and columns representing samples.
+MINDY modulator.list contains candidate genes that might modulate transcription factor interactions.
+MINDY dpi.transcription.factor.list helps filter indirect transcription factor interactions using Data Processing Inequality.
+MINDY output file is a .mindy text file containing conditional mutual information scores between transcription factors, targets, and modulators.
+MINDY output file first two lines specify the transcription factor and sample percentage used in analysis.
+MINDY output file contains a matrix of conditional mutual information difference scores for each target-modulator pair.
+MINDY output file scores indicate whether a modulator enhances, inhibits, or does not affect transcription factor-target interactions.
+The MINDY module is a computational method for inferring gene modulators of transcription factor interactions.
+MINDY uses mutual information (MI) to measure the relationship between a transcription factor and its target gene.
+The MINDY algorithm calculates three key metrics: unconditional MI, conditional MI, and conditional MI difference.
+Unconditional MI measures the overall mutual dependence between a transcription factor and target gene across all samples.
+Conditional MI measures the mutual dependence between a transcription factor and target gene in specific subsets of samples.
+Conditional MI difference quantifies how the interaction between a transcription factor and target gene changes based on modulator gene expression.
+A statistically significant conditional MI difference suggests that a modulator gene influences the transcription factor-target gene interaction.
+The MINDY module requires input files specifying potential modulator genes, transcription factors, and gene expression data.
+Users can set thresholds for unconditional and conditional mutual information to filter results.
+The Data Processing Inequality (DPI) can be applied to remove indirect transcriptional interactions.
+The output is a .mindy file showing conditional MI differences for each target-modulator pair.
+Positive scores indicate the modulator enhances the transcription factor-target interaction.
+Negative scores suggest the modulator inhibits the transcription factor-target interaction.
+The MINDY algorithm was originally developed for studying modulators of transcriptional interactions in human B lymphocytes.
+The module is implemented in Java and can run on any platform with Java JVM 1.5 or higher.

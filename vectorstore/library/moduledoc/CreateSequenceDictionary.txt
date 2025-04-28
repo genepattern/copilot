@@ -1,0 +1,82 @@
+CreateSequenceDictionary is on version .
+A description of CreateSequenceDictionary is Reads FASTA or FASTA.GZ files containing reference sequences, and writes them as a SAM file containing a sequence dictionary..
+CreateSequenceDictionary is a GenePattern module written by Picard team.
+CreateSequenceDictionary can be categorized as Preprocess & Utilities.
+CreateSequenceDictionary has the following parameters: reference.sequence.file, genome.assembly, uri, truncate.names.at.white.space, num.sequences, output.file.
+The CreateSequenceDictionary module is a bioinformatics tool for generating reference sequence metadata from FASTA files.
+CreateSequenceDictionary helps researchers convert raw genomic sequence data into a standardized dictionary format for downstream computational analysis.
+The CreateSequenceDictionary module transforms FASTA sequence files into a structured SAM-format sequence dictionary containing essential sequence metadata.
+CreateSequenceDictionary allows researchers to extract and record critical genomic sequence information like sequence name, length, and assembly identifier.
+The CreateSequenceDictionary module supports processing both standard FASTA files and compressed FASTA.GZ files as input.
+CreateSequenceDictionary can optionally truncate sequence names at whitespace, enabling more concise sequence identifiers.
+The module enables researchers to limit sequence dictionary generation to a specified number of sequences using the num.sequences parameter.
+CreateSequenceDictionary generates a .DICT output file that serves as a standardized reference for genomic sequence information in bioinformatics pipelines.
+The CreateSequenceDictionary module is part of the Picard toolkit, a widely used collection of bioinformatics utilities for manipulating high-throughput sequencing data.
+CreateSequenceDictionary supports optional genome assembly and URI metadata fields, providing additional context for genomic sequence references.
+The module is platform-independent, running on any operating system with Java 1.6 or higher installed.
+CreateSequenceDictionary is particularly useful in preparing reference genomes for alignment, variant calling, and other next-generation sequencing analyses.
+CreateSequenceDictionary module reference sequence file parameter:
+Input reference FASTA or FASTA.GZ file containing genomic sequences for dictionary creation
+Type is file path
+Required parameter for CreateSequenceDictionary module
+Must be a valid FASTA or compressed FASTA file
+CreateSequenceDictionary module genome assembly parameter:
+Optional parameter to specify genome assembly identifier
+Populates the AS field in sequence dictionary entry
+Provides metadata about genome version or reference
+Not required for basic dictionary generation
+CreateSequenceDictionary module URI parameter:
+Optional parameter specifying path to sequence reference
+Populates the UR field in sequence dictionary entry
+Defaults to absolute path of input FASTA file if not specified
+Provides location information for reference sequence
+CreateSequenceDictionary module truncate names parameter:
+Optional boolean parameter controlling sequence name parsing
+When enabled, uses first word from FASTA header line as sequence name
+Default behavior preserves full FASTA header
+Allows simplified sequence naming strategy
+CreateSequenceDictionary module num sequences parameter:
+Optional integer parameter limiting number of sequences processed
+Allows partial dictionary generation from large reference files
+Provides control over dictionary creation scope
+Can reduce processing time for large genome references
+CreateSequenceDictionary module output file parameter:
+Required parameter specifying output dictionary file name
+Default filename derived from input reference sequence file
+Must have .dict file extension
+Stores sequence dictionary in SAM format header
+CreateSequenceDictionary input files:
+Reference FASTA or FASTA.GZ file containing genomic sequence data
+FASTA file with sequence names, sequences, and optional descriptions
+Genomic sequence file that can be compressed or uncompressed
+Text file following standard FASTA format specifications
+CreateSequenceDictionary output files:
+DICT file in SAM format containing sequence dictionary metadata
+Sequence dictionary with sequence names, lengths, and assembly information
+Header-based file describing genomic reference sequence characteristics
+Text file with structured information about input genomic sequences
+CreateSequenceDictionary optional parameters:
+Genome assembly identifier for sequence dictionary entry
+URI path specification for reference sequence location
+Option to truncate sequence names at whitespace
+Limit on number of sequences to process in dictionary creation
+CreateSequenceDictionary file format details:
+FASTA input uses '>' character to denote sequence headers
+SAM-based DICT output includes sequence metadata fields
+Sequence dictionary contains standardized genomic reference information
+Supports compressed and uncompressed input sequence files
+CreateSequenceDictionary technical specifications:
+Java-based module requiring minimum Java 1.6
+Compatible with any CPU and operating system
+Utilizes Picard framework for sequence dictionary generation
+Supports preprocessing and utility genomic sequence operations
+The CreateSequenceDictionary module is a bioinformatics tool for converting reference genome sequences into a standardized dictionary format.
+CreateSequenceDictionary module reads FASTA files containing genomic reference sequences and generates a sequence dictionary in SAM format.
+The module transforms raw sequence data into a structured format that includes metadata like sequence name, length, and genome assembly identifier.
+CreateSequenceDictionary supports input of both standard FASTA files and compressed GZIP FASTA files.
+The output file is a DICT file, which follows SAM format specifications and provides a standardized way to represent genomic sequence information.
+Users can optionally specify genome assembly information, URI paths, and control sequence name truncation during dictionary creation.
+The module is part of the Picard toolkit and requires Java 1.6 or higher to run.
+The sequence dictionary is crucial for genomic alignment and analysis workflows, providing a consistent reference for bioinformatics tools.
+CreateSequenceDictionary can process multiple sequences and allows users to limit the number of sequences processed using the num.sequences parameter.
+The module works across different computing platforms, supporting any CPU and operating system with compatible Java runtime.

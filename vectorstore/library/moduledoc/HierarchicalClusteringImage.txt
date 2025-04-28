@@ -1,0 +1,54 @@
+HierarchicalClusteringImage is on version 4.
+A description of HierarchicalClusteringImage is Creates an image of the dendrogram generated from HierarchicalClustering. Coloring of nodes in the dendrogram is supported..
+HierarchicalClusteringImage is a GenePattern module written by Joshua Gould (Broad Institute).
+HierarchicalClusteringImage can be categorized as Image Creators.
+HierarchicalClusteringImage has the following parameters: cdt filename, gtr filename, atr filename, input dataset, output, output format, column size, row size, show grid, grid color, show row descriptions, show row names, color scheme, color palette, use.color.gradient.
+The HierarchicalClusteringImage module in GenePattern creates visual representations of hierarchical clustering results for biological datasets.
+The HierarchicalClusteringImage module generates dendrogram images that show how genes or samples are related based on their similarity.
+In bioinformatics, the HierarchicalClusteringImage module helps researchers visualize complex relationships between biological entities like genes or experimental samples.
+The module can create dendrograms with customizable visual parameters such as grid display, row descriptions, and color schemes.
+HierarchicalClusteringImage supports multiple input file formats including .res, .gct, and .odf for flexible data visualization.
+Users can specify custom color palettes in the HierarchicalClusteringImage module to highlight specific clusters or relationships in their data.
+The module allows researchers to control image resolution by setting pixel sizes for rows and columns in the dendrogram visualization.
+HierarchicalClusteringImage can generate output images in multiple formats including JPEG, PNG, TIFF, and BMP for easy integration into scientific presentations.
+The module requires either a gene tree (gtr) or array tree (atr) file to generate the hierarchical clustering visualization.
+Researchers use HierarchicalClusteringImage to identify patterns, groupings, and relationships in complex biological datasets across various research domains.
+The module's color gradient options allow for nuanced representation of data similarity and clustering relationships in biological research.
+HierarchicalClusteringImage provides a standardized method for visualizing clustering results across different types of biological experiments and datasets.
+cdt filename: string, input file containing clustered data table, required, original data reordered
+gtr filename: string, input file recording gene (row) clustering order, conditionally required with atr filename
+atr filename: string, input file recording sample (column) clustering order, conditionally required with gtr filename
+input dataset: string, input data file in .res, .gct, or .odf format, required
+output: string, output image filename with .jpeg, .png, .tiff, or .bmp extension, required
+output format: string, specifies desired image file format, required
+column size: integer, horizontal pixel size of each element, optional
+row size: integer, vertical pixel size of each element, optional
+show grid: boolean, determines whether grid lines are displayed between elements, optional
+grid color: string, specifies color of grid lines, optional
+show row descriptions: boolean, controls visibility of row descriptions, optional
+show row names: boolean, controls visibility of row names, optional
+color scheme: string, defines method of coloring dendrogram elements, optional
+color palette: string, file containing custom color definitions, optional
+use.color.gradient: boolean, determines whether linear color gradient or discrete colors are used, optional
+HierarchicalClusteringImage module input file: cdt filename is a clustered data table containing original data reordered after clustering.
+HierarchicalClusteringImage module input file: gtr filename is a gene tree file recording the order in which genes (rows) were joined during hierarchical clustering.
+HierarchicalClusteringImage module input file: atr filename is an array tree file recording the order in which samples (columns) were joined during hierarchical clustering.
+HierarchicalClusteringImage module input file: input dataset can be in .res, .gct, or .odf file formats containing the original data to be clustered.
+HierarchicalClusteringImage module input file: color palette is an optional file with hex color codes or RGB triplets defining custom node colors for the dendrogram.
+HierarchicalClusteringImage module output file: the final image file can be in .jpeg, .png, .tiff, or .bmp format showing the hierarchical clustering dendrogram.
+HierarchicalClusteringImage module color specification allows adding a color column to gtr or atr files to manually set node colors with hex codes.
+HierarchicalClusteringImage module default color palette includes 12 predefined hex color codes ranging from deep blue to bright red.
+HierarchicalClusteringImage module supports optional parameters like column/row sizes, grid display, row name visibility, and color gradient options.
+HierarchicalClusteringImage is a GenePattern module that generates a visual representation of a dendrogram from hierarchical clustering data.
+The module creates an image showing how genes or samples are grouped based on their similarity during clustering.
+Users can customize the dendrogram visualization by specifying color palettes and node colors through additional files.
+The module supports multiple output image formats including JPEG, PNG, TIFF, and BMP.
+Node colors can be defined by adding a color column to the gene tree (gtr) or array tree (atr) files using hex color codes.
+A default color palette is provided if no custom palette is specified, ranging from deep blues to bright reds.
+The module allows users to control visual parameters like column and row element sizes, grid display, and row name visibility.
+HierarchicalClusteringImage requires either a gene tree (gtr) or array tree (atr) file to generate the dendrogram visualization.
+The module is written in Java and compatible with Java JVM level 1.5, making it platform-independent.
+Version 4 of the module removed non-functional parameters and discontinued support for EPS output format.
+Users can specify whether to use a linear color gradient or discrete colors for the dendrogram visualization.
+The input dataset can be in .res, .gct, or .odf file formats, providing flexibility in data source.
+Grid display can be toggled on or off, with users able to specify a custom grid color if desired.

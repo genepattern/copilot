@@ -1,0 +1,51 @@
+SNPFileSorter is on version .
+A description of SNPFileSorter is Sorts SNPs by chromosome and physical location. Sorting the SNPs is a prerequisite for using certain other tools, such as SNPViewer. The input file can be any of the following GenePattern files: .snp, .xcn, .cn, or .loh. The output file is the input GenePattern file, sorted by chromosome and physical location..
+SNPFileSorter is a GenePattern module written by David Twomey, gp-help@broad.mit.edu.
+SNPFileSorter can be categorized as SNP Analysis.
+SNPFileSorter has the following parameters: snp filename, output file.
+The SNPFileSorter module is a critical tool for organizing genomic variant data by chromosomal position.
+The SNPFileSorter helps researchers systematically arrange genetic variation information in a standardized format.
+SNPFileSorter can process multiple genetic file types including .snp, .xcn, .cn, and .loh files containing genomic variant information.
+The module automatically sorts genetic variants by chromosome and physical location, which is essential for downstream genomic analysis.
+SNPFileSorter removes rows without genome location information, ensuring only mappable genetic variants are retained in the output file.
+The module generates a sorted output file that can be directly used in other genomic analysis tools like SNPViewer.
+SNPFileSorter is particularly useful for researchers working with large-scale genetic variation datasets across different chromosomes.
+By standardizing variant positioning, the SNPFileSorter enables more accurate comparative and computational genomic analyses.
+The module operates independently of specific computational platforms, making it widely accessible across different research environments.
+SNPFileSorter provides detailed logging, creating stdout.txt and stderr.txt files to track which genetic variant rows were processed or excluded.
+SNPFileSorter module requires an input SNP file for sorting genomic data.
+SNPFileSorter input file can be .snp, .xcn, .cn, or .loh file format.
+SNPFileSorter input parameter is a filename representing the genomic data file to be sorted.
+SNPFileSorter input parameter is of type filename and is required.
+SNPFileSorter output parameter specifies the name of the sorted output file.
+SNPFileSorter output parameter allows custom naming of the sorted genomic data file.
+SNPFileSorter output parameter defaults to input-file.sorted.snp if not specified.
+SNPFileSorter output parameter is of type filename and is optional.
+SNPFileSorter module will ignore rows without genome location information during sorting.
+SNPFileSorter creates stdout.txt listing ignored rows during processing.
+SNPFileSorter creates stderr.txt with error messages for ignored rows.
+SNPFileSorter sorts genomic data by chromosome and physical location.
+SNPFileSorter is compatible with any CPU and operating system.
+SNPFileSorter is implemented in R programming language.
+SNPFileSorter is designed for SNP analysis tasks in genomic research.
+SNPFileSorter module input file is a GenePattern SNP file with genomic location data.
+SNPFileSorter module input file can be in .snp, .xcn, .cn, or .loh format.
+SNPFileSorter module input file contains genomic feature information with chromosome and physical location.
+SNPFileSorter module input file rows without genome location information will be excluded from output.
+SNPFileSorter module output file is the input file sorted by chromosome and physical location.
+SNPFileSorter module output file preserves the original file format of the input file.
+SNPFileSorter module generates a stdout.txt file listing rows that were ignored during sorting.
+SNPFileSorter module generates a stderr.txt file with error messages for ignored rows.
+SNPFileSorter module default output filename is input-file.sorted.snp.
+SNPFileSorter module can handle multiple GenePattern SNP file formats for sorting.
+SNPFileSorter is a computational genomics module designed to organize genetic variant data by chromosomal position.
+The SNPFileSorter module helps researchers systematically arrange genetic variant information across different chromosomes.
+This module can process multiple file types including .snp, .xcn, .cn, and .loh genetic data formats.
+SNPFileSorter automatically removes rows from input files that lack genomic location information.
+The module generates a sorted output file with genetic variants organized by chromosome and physical location.
+By default, the output file is named with the input filename plus a ".sorted.snp" extension.
+SNPFileSorter is particularly useful as a preprocessing step for downstream genetic analysis tools like SNPViewer.
+The module is platform-independent and can run on any operating system or CPU architecture.
+SNPFileSorter requires no manual chromosome sorting, automating a potentially time-consuming data organization task.
+Researchers using SNPFileCreator to generate initial sorted .snp files do not need to re-sort their genetic variant data.
+The module provides stdout.txt and stderr.txt files to track which rows were processed or ignored during sorting.

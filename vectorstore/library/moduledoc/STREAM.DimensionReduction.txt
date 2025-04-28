@@ -1,0 +1,75 @@
+STREAM.DimensionReduction is on version .
+A description of STREAM.DimensionReduction is STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. STREAM.DimensionReduction is used to reduce the dimensionality of the dataset to be used in the downstream analysis..
+STREAM.DimensionReduction is a GenePattern module written by Huidong Chen, Massachussets General Hospital, wrapped as a module by Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+STREAM.DimensionReduction can be categorized as Single-cell Analysis, Dimension Reduction, Transcriptomics.
+STREAM.DimensionReduction has the following parameters: data file, output filename, percent neighbor cells, num components to keep, feature, method, num components to plot, component x, component y, figure height, figure width.
+The STREAM.DimensionReduction module is a critical step in single-cell data analysis for reducing high-dimensional gene expression data to more manageable representations.
+STREAM.DimensionReduction helps address the "curse of dimensionality" in single-cell transcriptomics by projecting complex cellular data into lower-dimensional spaces.
+The module uses Modified Locally Linear Embedding (MLLE) as its default dimensionality reduction technique, which can transform hundreds of gene expression dimensions into just 2-3 components.
+STREAM.DimensionReduction supports multiple dimensionality reduction methods, including Modified Locally Linear Embedding (MLLE), spectral embedding, UMAP, and principal component analysis (PCA).
+For biological processes with simple trajectories, the STREAM.DimensionReduction module recommends using just two components to represent cellular data.
+The module allows researchers to choose between using variable genes, top principal components, or all genes for the dimensionality reduction process.
+STREAM.DimensionReduction generates output files that include a pickle file with the reduced dimensional representation and a standard deviation dot plot visualizing the reduced dimensions.
+The module is particularly useful in single-cell transcriptomics and epigenomics research for exploring complex cellular differentiation and developmental trajectories.
+Large datasets can be processed more efficiently by adjusting the percent neighbor cells parameter, which can significantly speed up the dimensionality reduction computation.
+STREAM.DimensionReduction is part of the broader STREAM pipeline, designed to help researchers reconstruct, explore, and map single-cell omics data.
+The module is implemented within the GenePattern computational environment, making it accessible to researchers with varying levels of computational expertise.
+data file: File type (pkl), contains annotated AnnData matrix, required input for STREAM dimension reduction module.
+data file is a critical input representing the single-cell gene expression dataset to be processed.
+data file must be in STREAM's specialized pickle format for single-cell analysis.
+output filename: String type, prefix for output files, required parameter.
+output filename determines the naming convention for generated result files.
+output filename helps organize and identify specific analysis outputs.
+percent neighbor cells: Float type, percentage of neighboring cells used in dimension reduction, optional with default of 0.1.
+percent neighbor cells controls the local neighborhood size in dimensionality reduction algorithms.
+percent neighbor cells impacts computational speed and local structure preservation.
+num components to keep: Integer type, number of dimensions to retain after reduction, optional with default of 3.
+num components to keep determines the final dimensionality of the reduced dataset.
+num components to keep balances information retention and computational complexity.
+feature: String type, specifies gene selection strategy, optional with choices ['var_genes', 'top_pcs', 'all'].
+feature determines which genes are used for dimension reduction.
+feature allows flexible gene selection based on variability or principal components.
+method: String type, specifies dimension reduction algorithm, optional with choices ['mlle', 'umap', 'pca'].
+method selects the mathematical approach for projecting data to lower dimensions.
+method allows users to choose between different non-linear and linear dimensionality reduction techniques.
+num components to plot: Integer type, number of components to visualize, optional parameter.
+num components to plot controls the dimensionality of output visualization.
+num components to plot helps users explore reduced-dimensional representations.
+component x: Integer type, specifies x-axis component for plotting, optional parameter.
+component x determines which reduced dimension is displayed horizontally.
+component x allows customization of dimensional visualization.
+component y: Integer type, specifies y-axis component for plotting, optional parameter.
+component y determines which reduced dimension is displayed vertically.
+component y allows customization of dimensional visualization.
+figure height: Integer type, sets plot height in matplotlib, optional with default of 8.
+figure height controls vertical size of output visualization.
+figure height enables user-friendly figure sizing.
+figure width: Integer type, sets plot width in matplotlib, optional with default of 8.
+figure width controls horizontal size of output visualization.
+figure width enables user-friendly figure sizing.
+STREAM.DimensionReduction module input file is a STREAM pkl file containing an annotated AnnData matrix of gene expression data.
+The input file is in Python pickle (.pkl) format, storing single-cell transcriptomic data with gene expression measurements.
+The input file contains a matrix where each row represents a single cell and each column represents gene expression levels.
+The input file includes metadata annotations about the cells, such as cell type or experimental conditions.
+The input file is typically preprocessed to include only relevant genes or normalized expression values.
+STREAM.DimensionReduction module output file is a new STREAM AnnData extended pickle (.pkl) file with reduced dimensionality.
+The output file contains the original single-cell data projected into a lower-dimensional space using methods like Modified Locally Linear Embedding (MLLE).
+The output file preserves the original cell metadata and annotations from the input file.
+The output file includes the reduced dimensional representation, typically with 2-3 components by default.
+The output file is designed to be used in subsequent steps of the STREAM single-cell trajectory analysis pipeline.
+The module also generates a standard deviation dot plot image file showing the variation across reduced dimensions.
+The dot plot image provides a visual representation of the variance captured by each reduced dimension.
+The plot helps researchers understand the information retention in the dimensionality reduction process.
+The image is saved with a .png file extension and uses matplotlib for visualization.
+The plot can help in selecting the appropriate number of components for further analysis.
+STREAM.DimensionReduction is a computational method for reducing the high-dimensional complexity of single-cell gene expression data.
+The module helps transform complex cellular gene expression data from hundreds of dimensions to a more manageable 2-3 dimensional representation.
+STREAM.DimensionReduction uses Modified Locally Linear Embedding (MLLE) as its default dimensionality reduction technique.
+The module can project cells into a lower-dimensional space, which helps researchers better understand cellular similarities and relationships.
+Alternative dimensionality reduction methods in STREAM.DimensionReduction include spectral embedding, UMAP, and principal component analysis (PCA).
+For biological processes with simple trajectories, STREAM.DimensionReduction recommends using just two components for visualization.
+The module can process input data from a STREAM-formatted pickle file containing an annotated AnnData matrix of gene expression measurements.
+STREAM.DimensionReduction allows researchers to choose between using variable genes, top principal components, or all genes for the reduction process.
+The module generates an output pickle file and can produce visualization plots showing the standard deviation across reduced dimensions.
+By reducing data dimensionality, STREAM.DimensionReduction helps mitigate the "curse of dimensionality" problem in single-cell data analysis.
+For large datasets, STREAM.DimensionReduction recommends using spectral embedding and lowering the percentage of neighbor cells to improve computational efficiency.

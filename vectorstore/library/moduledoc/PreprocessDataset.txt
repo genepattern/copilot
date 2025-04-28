@@ -1,0 +1,71 @@
+PreprocessDataset is on version 6.
+A description of PreprocessDataset is Performs several preprocessing steps on a res, gct, or odf input file. This module performs pre-processing operations including thresholding/ceiling, variation filtering, normalization and log2 transform for gene expression datasets..
+PreprocessDataset is a GenePattern module written by Joshua Gould, Broad Institute.
+PreprocessDataset can be categorized as Preprocess & Utilities.
+PreprocessDataset has the following parameters: input filename, threshold and filter, floor, ceiling, min fold change, min delta, num outliers to exclude, row normalization, row sampling rate, threshold for removing rows, number of columns above threshold, log2 transform, output file format, output file.
+The PreprocessDataset module is a critical tool for preparing microarray gene expression data for downstream analysis in GenePattern.
+PreprocessDataset helps remove platform noise and low-variation genes from expression datasets before further computational investigation.
+The module can process input files in .gct, .res, or .odf formats, making it versatile for different microarray platforms.
+PreprocessDataset performs several key preprocessing steps, including setting floor and ceiling values to control expression data range.
+The module can filter genes based on sample count thresholds, removing genes with insufficient expression across samples.
+Variation filtering in PreprocessDataset removes genes with minimal expression differences across experimental conditions using fold change and delta metrics.
+PreprocessDataset can normalize gene expression data across rows to remove systematic variations between microarray experiments.
+The log2 transformation feature of PreprocessDataset helps standardize expression ratios, bringing up- and down-regulated genes to comparable scales.
+While primarily designed for microarray data, PreprocessDataset has limited applicability to RNA-seq expression datasets.
+For Illumina expression data, PreprocessDataset requires careful parameter adjustment, typically after running the IlluminaNormalizer module.
+The module allows researchers to set custom thresholds for floor, ceiling, fold change, and delta values to suit specific experimental needs.
+PreprocessDataset is part of the broader GenePattern suite of bioinformatics tools for gene expression analysis.
+The module supports random sampling of genes if no other filtering methods are selected, allowing flexible data subset generation.
+PreprocessDataset is particularly useful in preparing data for downstream analyses like clustering, differential expression, and feature selection.
+The module helps researchers focus on biologically meaningful gene expression variations by removing low-information or noisy data points.
+input filename: string, Required input file for PreprocessDataset module, must be .res, .gct, or .odf format with no missing values
+threshold and filter: boolean, Optional flag to control application of thresholding and variation filter, default is yes
+floor: numeric, Optional threshold value for minimum expression level, default is 20 for Affymetrix data, should be adjusted for other platforms
+ceiling: numeric, Optional threshold value for maximum expression level, default is 20,000 for Affymetrix data, should be adjusted for other platforms
+min fold change: numeric, Optional minimum fold change for variation filter, default is 3 for Affymetrix data, should be adjusted for other platforms
+min delta: numeric, Optional minimum delta for variation filter, default is 100 for Affymetrix data, should be adjusted for other platforms
+num outliers to exclude: integer, Optional number of outliers to ignore when calculating row min and max for variation filter
+row normalization: boolean, Optional flag to perform row normalization, mutually exclusive with log2 transform
+row sampling rate: float, Optional fraction of rows to sample without replacement, default is 1 (all rows)
+threshold for removing rows: numeric, Optional threshold value for row removal
+number of columns above threshold: integer, Optional minimum number of columns that must be above threshold to retain a row
+log2 transform: boolean, Optional flag to apply log2 transform after preprocessing, mutually exclusive with row normalization
+output file format: string, Optional specification of output file format
+output file: string, Required output filename for preprocessed data
+PreprocessDataset module input file is a gene expression dataset in .gct, .res, or .odf format.
+Input file must contain expression data with no missing values.
+Input file represents gene expression measurements across multiple samples.
+PreprocessDataset module supports microarray and RNA-seq expression data files.
+PreprocessDataset input file contains gene expression values in a tabular format.
+Input file can represent data from Affymetrix or Illumina expression platforms.
+PreprocessDataset input file typically includes gene identifiers and expression measurements.
+Input file should have consistent formatting with no blank or null cells.
+PreprocessDataset supports input files with multiple samples and gene expression values.
+Input file can contain raw or preprocessed expression data before further analysis.
+PreprocessDataset module output file is a filtered and preprocessed gene expression dataset.
+Output file format is either .gct or .res file type.
+Output file contains preprocessed gene expression values after filtering and transformation.
+PreprocessDataset output file includes genes that pass specified thresholds and filters.
+Output file may have reduced number of genes compared to input file.
+PreprocessDataset output file can include log2 transformed expression values.
+Output file preserves original gene identifiers and sample information.
+PreprocessDataset output file represents cleaned and normalized expression data.
+Output file is ready for downstream analysis like clustering or differential expression.
+PreprocessDataset output file reflects applied preprocessing parameters.
+PreprocessDataset module is a crucial tool for preprocessing gene expression microarray data before downstream analysis.
+The PreprocessDataset module performs several key preprocessing steps on gene expression datasets.
+This module can handle input files in .gct, .res, or .odf formats, making it versatile for different microarray platforms.
+The module's default parameters are specifically tailored for Affymetrix expression arrays, but can be adapted for other platforms like Illumina.
+PreprocessDataset applies optional preprocessing steps including thresholding, filtering, normalization, and log2 transformation.
+Floor and ceiling thresholding sets extreme expression values to predefined minimum and maximum limits to reduce noise.
+Sample-count threshold filtering removes genes with insufficient expression values across samples, potentially indicating poor data quality.
+Variation filtering eliminates genes with minimal expression variation across samples, focusing analysis on more biologically relevant genes.
+Row normalization adjusts gene expression values to remove systematic variations between microarray experiments.
+Log2 transformation converts expression values to log scale, which helps standardize up- and down-regulated gene expression comparisons.
+The module has limited applicability to RNA-Seq data due to fundamental differences in data generation and characteristics between microarrays and sequencing.
+For RNA-Seq data, many preprocessing steps like floor/ceiling thresholding and variation filtering are less relevant or unnecessary.
+PreprocessDataset allows random sampling of rows if other filtering methods are disabled, providing flexibility in data selection.
+The module is particularly useful for preparing microarray data for downstream analyses like clustering, feature selection, and differential expression studies.
+When working with Illumina data, users are recommended to use IlluminaNormalizer first and adjust PreprocessDataset parameters accordingly.
+The module provides granular control over preprocessing through parameters like minimum fold change, delta, and outlier exclusion.
+PreprocessDataset is implemented in Java and can run on any operating system and CPU architecture.

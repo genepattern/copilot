@@ -1,0 +1,47 @@
+ConvertToMAGEML is on version 2.0.
+A description of ConvertToMAGEML is Converts a res, gct, or odf dataset file to a MAGE-ML file. MAGE-ML is a standard for the representation of microarray expression data. The result files contain an XML file and an external data file. By default these files are packaged into a zip file..
+ConvertToMAGEML is a GenePattern module written by Joshua Gould.
+ConvertToMAGEML can be categorized as Preprocess&Utilities.
+ConvertToMAGEML has the following parameters: input.filename, output.file.base.name, create.zip.file.
+The ConvertToMAGEML module is a GenePattern utility for transforming microarray dataset files into MAGE-ML standardized format.
+ConvertToMAGEML allows researchers to convert common microarray data file types like .res, .gct, and .odf into a standardized XML-based representation.
+MAGE-ML (Microarray Gene Expression Markup Language) is an important standard for representing and sharing microarray experimental data across different research platforms.
+The ConvertToMAGEML module helps ensure data interoperability by creating a consistent XML structure that captures the essential details of microarray experiments.
+Researchers can use ConvertToMAGEML to prepare microarray datasets for submission to public repositories or for sharing with collaborators who may use different analysis platforms.
+The module provides flexibility in output, allowing users to generate either a zipped file containing MAGE-ML files or separate XML and data files.
+ConvertToMAGEML supports multiple input file formats, making it a versatile tool for researchers working with different microarray data generation platforms.
+By converting data to MAGE-ML, researchers can improve the long-term preservation and accessibility of their microarray experimental results.
+The module is part of the GenePattern suite, which provides a comprehensive set of bioinformatics tools for genomic data analysis and preprocessing.
+ConvertToMAGEML operates across different computing platforms, requiring only a Java 1.4 runtime environment, which makes it widely accessible to researchers.
+ConvertToMAGEML module requires input.filename parameter to specify the source dataset file (gct, res, or odf) for conversion.
+input.filename is a string type parameter representing the path to the microarray data file to be converted.
+input.filename is a required parameter in the ConvertToMAGEML module for specifying the input microarray dataset.
+input.filename supports different microarray data file formats including gct, res, and odf for MAGE-ML conversion.
+ConvertToMAGEML module uses output.file.base.name parameter to define the base name for output MAGE-ML files.
+output.file.base.name is a string type parameter determining the naming convention for generated XML and data files.
+output.file.base.name is a required parameter that controls the naming of converted MAGE-ML output files.
+output.file.base.name allows users to specify a custom base filename for the converted microarray dataset.
+create.zip.file parameter in ConvertToMAGEML module controls whether the output files are packaged into a zip archive.
+create.zip.file is a boolean type parameter determining the packaging method for converted MAGE-ML files.
+create.zip.file is an optional parameter with a default behavior of creating a zip file containing MAGE-ML outputs.
+create.zip.file allows users to choose between zipped or unzipped output file formats for MAGE-ML conversion.
+ConvertToMAGEML module input file: A microarray dataset file in res, gct, or odf format containing gene expression data.
+ConvertToMAGEML module input file: The input file must contain gene expression measurements, gene identifiers, and potentially sample metadata.
+ConvertToMAGEML module input filename parameter: Specifies the path and name of the source microarray dataset file to be converted.
+ConvertToMAGEML module output file: An XML file in MAGE-ML format representing the standardized microarray expression data.
+ConvertToMAGEML module output file: An external data file that accompanies the MAGE-ML XML file with additional dataset information.
+ConvertToMAGEML module output zip file: An optional compressed archive containing the MAGE-ML XML and external data files.
+ConvertToMAGEML module output filename parameter: Defines the base name for the generated MAGE-ML output files.
+ConvertToMAGEML module supports conversion of microarray data into a standardized MAGE-ML format for interoperability.
+ConvertToMAGEML module generates XML representation compliant with MGED (Microarray Gene Expression Data) standards.
+ConvertToMAGEML module allows researchers to transform proprietary microarray dataset formats into a universal XML structure.
+ConvertToMAGEML is a GenePattern module designed to transform microarray dataset files into MAGE-ML standard XML format.
+The module can convert three specific microarray file types: res, gct, and odf files into a standardized XML representation.
+MAGE-ML is a formal standard for representing microarray gene expression data developed by the Microarray Gene Expression Working Group.
+The ConvertToMAGEML module allows researchers to standardize their microarray data files into a consistent, machine-readable XML format.
+When processing files, the module generates both an XML file and an external data file, which can optionally be packaged into a compressed zip archive.
+The module requires Java Runtime Environment version 1.4 or higher and is compatible with multiple operating systems and computer architectures.
+Users specify an input filename, desired output filename, and can choose whether to create a zip file containing the converted data.
+The conversion process ensures that complex microarray experimental data can be shared and interpreted consistently across different research platforms.
+By converting proprietary or lab-specific file formats to MAGE-ML, researchers improve data interoperability and facilitate broader scientific collaboration.
+The module supports multiple input file types, making it a flexible tool for standardizing microarray gene expression datasets.

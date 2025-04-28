@@ -1,0 +1,77 @@
+MapChipFeatures is on version 2.
+A description of MapChipFeatures is Changes (maps) the features (gene names) of a data set. This module takes a RES file and produces an output RES file with the same numeric data but with the features mapped to a different probe, feature, or gene set..
+MapChipFeatures is a GenePattern module written by GenePattern Team, gp-help@broadinstitute.org.
+MapChipFeatures can be categorized as Preprocess, Utility.
+MapChipFeatures has the following parameters: input filename, lookup table filename, table format, direction, output prefix.
+MapChipFeatures is a GenePattern module designed to map gene features across different microarray platforms.
+MapChipFeatures allows researchers to convert probe names from one microarray chip to equivalent probe names on another chip.
+The module takes a RES file as input and produces an output RES file with the same numeric data but with features mapped to a different set of identifiers.
+MapChipFeatures uses a lookup table to perform feature mapping, which can be in two-, three-, or four-column formats.
+The lookup table allows one-to-one correspondence between original feature names and new feature names across different microarray platforms.
+MapChipFeatures supports both "direct" and "reverse" lookup directions, enabling flexible feature mapping strategies.
+The module is particularly useful when comparing gene expression data across different microarray platforms or chip versions.
+MapChipFeatures can help researchers standardize gene identifiers across different experimental datasets or annotation systems.
+The module is compatible with various microarray annotation files, including CHIP files from sources like the GSEA FTP site.
+MapChipFeatures preserves the original numeric expression data while only changing the feature identifiers in the output file.
+The module automatically generates an output file with a "fea" suffix added to the original filename.
+MapChipFeatures is a preprocessing utility that can be integrated into larger bioinformatics analysis pipelines.
+The module is platform-independent and can be used on any operating system with Perl support.
+input filename:
+- Type: Filename
+- Description: MapChipFeatures module requires an input gene expression file in RES format
+- Required: Yes
+- Default: None
+lookup table filename:
+- Type: Filename
+- Description: MapChipFeatures module uses a tab-delimited text file containing feature mapping information
+- Required: Yes
+- Default: None
+table format:
+- Type: Selection
+- Description: MapChipFeatures module allows specifying the lookup table structure (2-column or 4-column)
+- Required: Yes
+- Default: None
+- Options: 2-column, 4-column
+direction:
+- Type: Selection
+- Description: MapChipFeatures module determines the mapping direction for feature translation
+- Required: Yes
+- Default: None
+- Options: direct, reverse
+output prefix:
+- Type: String
+- Description: MapChipFeatures module generates output filename with specified prefix
+- Required: No
+- Default: Uses input filename and appends "fea" before file extension
+MapChipFeatures module input and output file descriptions:
+Input file 1: RES file containing gene expression data with original feature names
+Input file 1 is a tab-delimited file with numeric gene expression measurements and original feature/probe names
+Input file 2: Lookup table for feature mapping
+Input file 2 is a tab-delimited text file with two, three, or four columns mapping original features to new features
+Lookup table contains two header lines and feature mapping data starting on the third row
+Supports direct and reverse mapping between feature sets
+Output file: Mapped RES file
+Output file contains identical numeric data as input RES file
+Output file has new feature names based on lookup table mapping
+Output filename appends "fea" before original file extension
+Example: input "foo.res" becomes "foo.fea.res"
+Lookup table format options:
+Two-column format: Original feature to new feature direct mapping
+Three-column format: Probe set ID, new feature name, gene title (only first two columns used)
+Four-column format: Accession mappings with additional annotation columns (only first and third columns used)
+MapChipFeatures is a GenePattern module designed to map gene or probe names across different chip platforms.
+The MapChipFeatures module allows researchers to convert feature names in a gene expression dataset from one naming convention to another.
+The module requires two primary input files: a gene expression RES file and a lookup table that defines the mapping between different feature names.
+The lookup table can have two, three, or four columns, providing flexibility in how feature name mappings are specified.
+The module supports both "direct" and "reverse" lookup directions, allowing researchers to map features in either forward or backward directions.
+The lookup table must have two header lines that are ignored by the module, with actual mapping data starting on the third row.
+In a two-column lookup table, each row represents a one-to-one correspondence between original and new feature names.
+In a three-column lookup table, only the first two columns are used, with the third column containing optional descriptive information.
+In a four-column lookup table, only the first and third columns are used for mapping, with other columns containing additional annotations.
+The module preserves the original numeric data in the RES file, changing only the feature names or identifiers.
+The output file is generated with the same name as the input file, but with "fea" inserted before the file extension.
+This module is particularly useful for researchers working with microarray data from different platforms or wanting to standardize gene identifiers.
+The module can help resolve discrepancies in gene naming conventions across different chip types or annotation databases.
+Researchers can obtain lookup tables from sources like the GSEA FTP site, which provides comprehensive annotation files.
+The MapChipFeatures module is platform-independent and can run on any CPU or operating system.
+The module is written in Perl and is classified as a preprocessing and utility tool in the GenePattern suite.

@@ -1,0 +1,44 @@
+ExtractColumnNames is on version 1.0.
+A description of ExtractColumnNames is Lists the sample descriptors from a .res file. This task reads the sample descriptors (ie column headers) from a .res file and produces a numbered listing of these. The numbers assigned to samples by this utility are used to specify 'column slices' in the SelectFeaturesColumns tool..
+ExtractColumnNames is a GenePattern module written by Justin Lamb (Broad Institute), gp-help@broad.mit.edu.
+ExtractColumnNames can be categorized as GeneListSelection.
+ExtractColumnNames has the following parameters: output, input filename.
+The ExtractColumnNames GenePattern module helps researchers extract and list column headers from .res files, which are common in genomic data analysis.
+The ExtractColumnNames module provides a simple way to view sample descriptors in genomic datasets, enabling researchers to understand the structure of their experimental data.
+By generating a numbered list of column names, ExtractColumnNames facilitates downstream analysis tasks like column selection and data subset manipulation.
+The module is particularly useful for researchers working with large genomic datasets who need to quickly understand the composition and labeling of their experimental samples.
+ExtractColumnNames can help biologists identify specific sample types, experimental conditions, or patient metadata within complex genomic research files.
+The module serves as a preparatory tool for more advanced data processing steps in bioinformatics workflows, such as feature selection or comparative analysis.
+Researchers can use the output of ExtractColumnNames to inform subsequent data filtering, subsetting, or comparative analyses in GenePattern or other bioinformatics platforms.
+The ExtractColumnNames module is platform-independent, running on any operating system with Perl support, making it widely accessible to genomics researchers.
+By providing a simple text output of column names, ExtractColumnNames helps researchers maintain data transparency and traceability in complex genomic research projects.
+The module's simplicity makes it an essential utility for undergraduate and graduate researchers working with genomic datasets in computational biology.
+ExtractColumnNames module requires an output parameter to specify the name of the output text file where column names will be listed.
+ExtractColumnNames module requires an input filename parameter to specify the source .res file from which sample descriptors will be extracted.
+The output parameter in ExtractColumnNames is a string representing the desired name for the output file, which will automatically have a .txt extension added.
+The input filename parameter in ExtractColumnNames is a string representing the full path or filename of the .res file containing sample descriptors to be processed.
+ExtractColumnNames module generates a numbered list of sample descriptors from the input .res file, which can be used for column slice selection in other tools.
+The output file created by ExtractColumnNames will contain a sequential list of column headers from the source .res file.
+ExtractColumnNames is designed to help users identify and enumerate sample descriptors for further data manipulation tasks.
+The module supports extraction of column names across different platforms and does not have specific system requirements.
+ExtractColumnNames was previously known as ExtractFeatureListColumns, indicating an evolution in the tool's naming convention.
+The module is part of the GeneListSelection task type, suggesting its utility in genomic or genetic research data processing.
+ExtractColumnNames module input file is a .res file containing sample descriptors or column headers.
+ExtractColumnNames module input file contains data with column headers representing sample information.
+ExtractColumnNames module input file is typically used in genomic or gene expression analysis workflows.
+ExtractColumnNames module output file is a .txt file with a numbered list of sample descriptors.
+ExtractColumnNames module output file provides a sequential listing of column names from the input .res file.
+ExtractColumnNames module output file can be used to specify column slices in subsequent GenePattern analysis tools.
+ExtractColumnNames module generates a human-readable text file with indexed sample names.
+ExtractColumnNames module preserves the original order of column headers in the output listing.
+ExtractColumnNames module creates a simple reference for identifying and selecting specific columns in genomic datasets.
+ExtractColumnNames is a GenePattern module designed to extract and list column headers from a .res file.
+The ExtractColumnNames module helps researchers identify and enumerate sample descriptors in genomic data files.
+This module takes a .res file as input and generates a text file with a numbered list of column headers.
+The output file can be used to specify column selections in other GenePattern tools like SelectFeaturesColumns.
+The module was originally developed by Justin Lamb at the Broad Institute in 2003.
+The module requires two parameters: an input .res filename and an output filename for the column list.
+ExtractColumnNames is written in Perl and is platform-independent, running on any CPU and operating system.
+The module is classified as a GeneList Selection task in the GenePattern workflow.
+No additional support files are needed to run the ExtractColumnNames module.
+The module was previously named ExtractFeatureListColumns before being renamed.

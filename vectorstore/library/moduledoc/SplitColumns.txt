@@ -1,0 +1,53 @@
+SplitColumns is on version 1.
+A description of SplitColumns is Splits columns in a file containing a data matrix into a separate file. This module will either use the Unix cut command if available or Perl..
+SplitColumns is a GenePattern module written by Marc-Dane Nazaire, gp-help@broadinstitute.org.
+SplitColumns can be categorized as Preprocess & Utilities.
+SplitColumns has the following parameters: input file, split columns, additional columns, output prefix.
+The SplitColumns GenePattern module allows researchers to extract specific columns from a tab-delimited data matrix file.
+The SplitColumns module can separate individual columns from complex multi-column datasets for further analysis.
+Researchers can use SplitColumns to isolate specific data columns of interest, such as gene expression values or experimental measurements.
+The SplitColumns module supports flexible column selection, including individual columns, ranges of columns, and open-ended ranges like "4-" to select all columns from column 4 onward.
+SplitColumns generates separate output files for each selected column, with filenames including the output prefix and column number.
+The module works across multiple platforms including Mac and Linux operating systems, making it versatile for different computational environments.
+SplitColumns can be particularly useful in genomics and transcriptomics research for parsing large datasets into more manageable subsets.
+Bioinformaticians can use the SplitColumns module as a preprocessing step to prepare data for downstream analysis like statistical modeling or visualization.
+The module provides flexibility by allowing researchers to include additional columns in each output file beyond the primary column of interest.
+SplitColumns leverages either Unix cut commands or Perl scripting, ensuring broad compatibility and reliable performance across different computational systems.
+input file:file:SplitColumns module requires a text file containing a data matrix in tab-delimited format.
+input file:type:File path
+input file:description:Specifies the source data matrix to be split into separate column files
+input file:required:Yes
+split columns:type:String
+split columns:description:Defines which columns to extract from the input file
+split columns:options:Comma-separated column numbers or ranges (e.g., 2,4,11-17)
+split columns:default:All columns if left blank
+split columns:example:4- splits all columns starting from column 4
+additional columns:type:String
+additional columns:description:Specifies subset of extra columns to include in each output file
+additional columns:options:Comma-separated column numbers or ranges
+additional columns:required:No
+output prefix:type:String
+output prefix:description:Defines the prefix for generated output files
+output prefix:required:Yes
+output prefix:example:Prefix will be used in filename like <output.prefix>_<column_number>.splitcol.txt
+SplitColumns module requires an input data matrix file with tab-delimited format containing multiple columns of data.
+The input file for the SplitColumns module is a tab-delimited text file containing a multi-column data matrix.
+The input file can contain any type of numerical or categorical data arranged in columns.
+The SplitColumns module generates output files with a naming convention of <output.prefix>_<column_number>.splitcol.txt.
+Each output file contains data from a specific column of the original input file, potentially including additional specified columns.
+The output files preserve the original data format and structure, just with reduced column count.
+Users can specify which columns to extract using the "split columns" parameter, with flexible range selection options.
+The module supports extracting single columns, multiple discrete columns, or column ranges from the input data matrix.
+Additional columns can be included in each output file through the "additional columns" parameter.
+The output files are text files with tab-delimited format, matching the input file's original structure.
+The SplitColumns module works on Mac and Linux platforms using Unix or Perl processing.
+SplitColumns module is a data preprocessing tool for splitting columns from a tab-delimited data matrix into separate files.
+SplitColumns allows users to extract specific columns from a data matrix by specifying column numbers or ranges.
+The SplitColumns module supports flexible column selection, including individual columns, ranges, and open-ended ranges like "4-" to select all columns from column 4 onward.
+SplitColumns can optionally include additional columns in each output file to provide context or related information.
+The module generates output files with a naming convention of <output.prefix>_<column_number>.splitcol.txt.
+SplitColumns uses either Unix cut command or Perl for column extraction, ensuring broad compatibility across different computing environments.
+The module is designed for preprocessing and utility tasks in data analysis workflows, particularly in genomic and biological research contexts.
+SplitColumns is compatible with Mac and Linux operating systems and can run on any CPU architecture.
+The module was initially developed in September 2012 and provides a simple, flexible method for column-based data extraction.
+Users can specify columns to split using comma-separated lists or ranges, making it adaptable to various data matrix structures.

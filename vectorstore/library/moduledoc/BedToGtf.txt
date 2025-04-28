@@ -1,0 +1,48 @@
+BedToGtf is on version .
+A description of BedToGtf is Converts a BED file to GTF or GFF format. BED format is used to define genome annotations and genomic regions. It contains 3 required fields: the name of the chromosome, the starting position of the feature on the chromosome, and the end position of the feature..
+BedToGtf is a GenePattern module written by Marc-Danie Nazaire and Boel Brynedal, gp-help@broadinstitute.org.
+BedToGtf can be categorized as Preprocess & Utilities.
+BedToGtf has the following parameters: bed.file, output.format, output.prefix.
+The BedToGtf module converts genomic coordinate files between different annotation formats for bioinformatics analysis.
+The BedToGtf module allows researchers to transform BED files into standardized genomic annotation formats like GTF and GFF.
+BED files contain basic genomic region information including chromosome name, start position, and end position for genomic features.
+The BedToGtf module requires input BED files with at least 12 columns to generate a complete GTF file conversion.
+Researchers use the BedToGtf module to standardize genomic annotation data across different bioinformatics tools and platforms.
+The BedToGtf module supports conversion to two primary genomic annotation formats: GTF (Gene Transfer Format) and GFF (General Feature Format).
+Genomic researchers utilize the BedToGtf module to prepare annotation data for downstream analyses like gene expression studies and genome mapping.
+The BedToGtf module preserves all original information from the input BED file during the format conversion process.
+Bioinformaticians can use the BedToGtf module to ensure compatibility between different genomic data processing and visualization tools.
+The BedToGtf module is platform-independent and requires only Java 1.5 or higher to execute, making it widely accessible.
+bed.file | File | BedToGtf module requires input BED file with at least 12 columns for GTF file creation | Required | No default value
+output.format | String | Specifies output file format as either GTF or GFF in BedToGtf module | Required | No default value
+output.prefix | String | Defines prefix for output filename in BedToGtf module | Required | Default is input bed file basename
+Converts genomic annotation data from BED format to GTF or GFF format
+Requires input BED file with comprehensive genomic feature information
+Supports transformation of genome annotation data between different file formats
+Enables standardized representation of genomic features across bioinformatics platforms
+Preserves original genomic coordinate and feature information during file format conversion
+Provides flexibility in specifying output file format for downstream genomic analysis
+Allows researchers to adapt genomic annotation data to specific computational tool requirements
+Supports interoperability between different genomic data processing pipelines
+Here are the input and output file descriptions for the BedToGtf module:
+BedToGtf module requires a BED format input file with genomic feature annotations
+Input BED file contains chromosome name, start position, end position, and optional additional fields
+Input BED file needs at least 12 columns to generate a complete GTF file
+BedToGtf module output is a converted GTF or GFF format file
+Output GTF/GFF file contains transformed genomic feature information from the input BED file
+Output file format determined by user-specified output.format parameter
+Output file name uses user-defined output.prefix or defaults to input file basename
+GTF format includes detailed genomic feature descriptions with start, end, and frame information
+GFF format provides similar genomic feature annotations with standardized structural details
+BedToGtf conversion preserves original genomic feature information during format transformation
+BedToGtf is a computational genomics module that converts genomic annotation files between different formats.
+The BedToGtf module transforms BED files, which define genomic regions and annotations, into GTF or GFF formats.
+BED files contain essential genomic location information including chromosome name, start position, and end position.
+BED files can include up to 12 columns of data, with optional fields like feature name, score, strand, and exon information.
+The module supports conversion to GTF (Gene Transfer Format) and GFF (General Feature Format), which provide detailed sequence feature descriptions.
+BedToGtf requires an input BED file with at least 12 columns to successfully generate a GTF file.
+Users must specify the desired output format (GTF or GFF) and provide an output file name prefix.
+The conversion process is based on the BED to GFF converter from Galaxy Tools, a well-established bioinformatics platform.
+The module is platform-independent, running on any operating system with Java version 1.5 or higher.
+This module is classified as a preprocessing and utility tool for genomic data manipulation.
+The output file preserves all original BED file information in the newly specified format.

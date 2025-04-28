@@ -1,0 +1,55 @@
+ScanpyUtilities is on version 1.3.3.
+A description of ScanpyUtilities is Scanpy is a scalable toolkit for analyzing single-cell gene expression data. It includes preprocessing, visualization, clustering, pseudotime and trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells..
+ScanpyUtilities is a GenePattern module written by Tom Sherman, Fertig Lab, Johns Hopkins University; Ted Liefeld, Mesirov Lab, UCSD School of Medicine.
+ScanpyUtilities can be categorized as Single-cell RNA-seq, Data Analysis, Preprocessing, Clustering, Visualization.
+ScanpyUtilities has the following parameters: data file, output basename, genome, annotate, cells min counts, cells max counts, cells min genes, cells max genes, genes min counts, genes max counts, genes min cells, genes max cells, cell type marker file, gene annotation database, normalize, n high variance genes, computer tsne.
+The ScanpyUtilities GenePattern module is a powerful tool for single-cell RNA sequencing data analysis in the bioinformatics ecosystem.
+ScanpyUtilities enables comprehensive preprocessing of single-cell gene expression datasets using the Scanpy Python package.
+The module can handle large single-cell datasets with over one million cells, making it suitable for complex genomic research.
+ScanpyUtilities supports multiple input file formats including h5, h5ad, loom, and mtx, providing flexibility for researchers.
+The module offers cell and gene filtering capabilities, allowing researchers to remove low-quality or uninformative cells and genes from their datasets.
+ScanpyUtilities includes normalization steps using scran methods, which help standardize gene expression data across different cells and samples.
+The module can perform dimensionality reduction techniques like UMAP and t-SNE, which are critical for visualizing complex single-cell transcriptomic data.
+ScanpyUtilities integrates the Garnett R package for automated cell type identification using predefined marker gene lists.
+The module is designed to offload computational intensive single-cell preprocessing tasks to more powerful computing resources.
+ScanpyUtilities generates annotated output files with additional metadata about gene and cell counts, enabling deeper downstream analysis.
+The module supports both human (org.Hs.eg.db) and mouse (org.Mm.eg.db) gene annotation databases for comprehensive research.
+ScanpyUtilities is particularly useful in immunology, developmental biology, and cancer research where single-cell resolution is critical.
+data file: File type, required parameter for single-cell data input in h5ad, loom, mtx, or h5 formats for ScanpyUtilities module.
+output basename: String type, required parameter specifying the base filename for the output h5ad file in ScanpyUtilities module.
+genome: String type, optional parameter used when converting 10x formatted HDF5 files, specifying the name of the dataset in the file for ScanpyUtilities module.
+annotate: Boolean type, required parameter determining whether to add count information to the data file in ScanpyUtilities module, with default options of True/False.
+cells min counts: Numeric type, optional parameter for filtering out cells with fewer total counts than specified threshold in ScanpyUtilities module.
+cells max counts: Numeric type, optional parameter for filtering out cells with more total counts than specified threshold in ScanpyUtilities module.
+cells min genes: Numeric type, optional parameter for filtering out cells with fewer than specified number of expressed genes in ScanpyUtilities module.
+cells max genes: Numeric type, optional parameter for filtering out cells with more than specified number of expressed genes in ScanpyUtilities module.
+genes min counts: Numeric type, optional parameter for filtering out genes with fewer total counts than specified threshold in ScanpyUtilities module.
+genes max counts: Numeric type, optional parameter for filtering out genes with more total counts than specified threshold in ScanpyUtilities module.
+genes min cells: Numeric type, optional parameter for filtering out genes expressed in fewer than specified number of cells in ScanpyUtilities module.
+genes max cells: Numeric type, optional parameter for filtering out genes expressed in more than specified number of cells in ScanpyUtilities module.
+cell type marker file: File type, optional parameter providing a text file describing marker genes for each cell type in ScanpyUtilities module.
+gene annotation database: String type, optional parameter specifying the annotation database for gene name conversion, with options like "org.Hs.eg.db" or "org.Mm.eg.db" in ScanpyUtilities module.
+normalize: Boolean type, required parameter determining whether to perform normalization in ScanpyUtilities module, with default options of True/False.
+n high variance genes: Numeric type, optional parameter for subsetting to the top N highly variable genes in ScanpyUtilities module.
+compute tsne: Boolean type, optional parameter determining whether to compute t-SNE dimensionality reduction in ScanpyUtilities module.
+ScanpyUtilities module input file: Single-cell counts data file in h5, h5ad, loom, or mtx format containing gene expression measurements for individual cells.
+ScanpyUtilities module input file: Cell type marker file in text format describing marker genes for each cell type, compatible with the R package garnett.
+ScanpyUtilities module output file: H5AD file containing processed single-cell data with potential annotations like count information, filtered cells and genes, and dimensionality reduction results.
+ScanpyUtilities module input parameter: Genome specification for 10x formatted HDF5 files, such as 'GRCh38', used during data conversion.
+ScanpyUtilities module input parameter: Gene annotation database like "org.Hs.eg.db" or "org.Mm.eg.db" for converting gene names to gene IDs.
+ScanpyUtilities module output: Annotated single-cell data with additional metrics like n_counts, log_counts, n_genes for cells and genes.
+ScanpyUtilities module output: Normalized single-cell data using size factors computed by scran and log(D+1) transformation.
+ScanpyUtilities module output: Dimensionality reduction results including optional UMAP and t-SNE embeddings.
+ScanpyUtilities module output: Clustered single-cell data generated using PCA, neighborhood computation, and Louvain clustering.
+The ScanpyUtilities module is a GenePattern tool for single-cell RNA sequencing data analysis using the Scanpy Python package.
+The ScanpyUtilities module supports preprocessing of single-cell gene expression datasets with scalable computational methods.
+ScanpyUtilities can handle large single-cell datasets, potentially processing over one million cells efficiently.
+The module supports multiple input file formats including h5, h5ad, loom, and mtx for single-cell count data.
+ScanpyUtilities includes cell and gene filtering capabilities to remove low-quality or uninformative data points from the analysis.
+The module can perform cell type identification using the Garnett R package and a provided marker gene file.
+ScanpyUtilities includes normalization steps using scran for computing size factors and log-transformation of data.
+The module supports dimension reduction techniques like PCA, UMAP, and t-SNE for visualizing single-cell data.
+ScanpyUtilities can annotate data files by adding count information for genes and cells.
+The module is designed to work with both human (org.Hs.eg.db) and mouse (org.Mm.eg.db) gene annotation databases.
+ScanpyUtilities follows a standard single-cell RNA-seq preprocessing workflow with automated cell type labeling.
+The module is particularly useful for offloading computational tasks to more powerful computing resources.

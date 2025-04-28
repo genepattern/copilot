@@ -1,0 +1,55 @@
+GlobalAlignment is on version 1.0.
+A description of GlobalAlignment is Pairwise alignments of two DNA sequences by dynamic programming. Three dynamic programming algorithms are implemented: Global/Needleman-Wunsch, Local/Smith-Waterman, and Iterative Local..
+GlobalAlignment is a GenePattern module written by Michael Kamal (Broad Institute) kamal@broad.mit.edu.
+GlobalAlignment can be categorized as Sequence Analysis.
+GlobalAlignment has the following parameters: query_fasta_filename, subject_fasta_filename, match, mismatch, gapOpen, gapExtend, minSize, minScore, output_file.
+The GlobalAlignment module in GenePattern is a powerful tool for performing pairwise sequence alignments using dynamic programming algorithms.
+The GlobalAlignment module implements three key sequence alignment strategies: global, local, and iterative local alignment techniques.
+Global alignment (Needleman-Wunsch) attempts to align entire sequences from end to end, finding the most similar overall sequence match.
+Local alignment (Smith-Waterman) identifies the most similar subsequences within two larger sequences, focusing on regions of highest similarity.
+Iterative local alignment is a more complex approach that greedily finds multiple non-overlapping local alignments by recursively searching sequence regions.
+The module allows researchers to specify custom scoring parameters like match rewards, mismatch penalties, and gap opening/extension costs.
+GlobalAlignment supports DNA sequence comparisons using standard FASTA file formats, treating uppercase and lowercase characters identically.
+The module is particularly useful in comparative genomics, helping researchers identify sequence homology, evolutionary relationships, and conserved genetic regions.
+In bioinformatics research, GlobalAlignment can help detect genetic variations, map gene similarities, and understand molecular evolutionary processes.
+The alignment algorithms implemented in GlobalAlignment are fundamental to understanding sequence relationships across different organisms or genetic variants.
+Researchers can use GlobalAlignment to explore sequence conservation, identify potential functional genetic regions, and study genetic diversity.
+The module's flexible scoring parameters allow fine-tuned alignment strategies tailored to specific research questions and sequence characteristics.
+GlobalAlignment is platform-independent, running on any system with a Java Virtual Machine, making it widely accessible to researchers.
+The module only considers forward sequence orientations, focusing on direct sequence comparisons without reverse complement searching.
+By supporting multiple alignment strategies, GlobalAlignment provides researchers with versatile tools for in-depth genetic sequence analysis.
+query_fasta_filename: string, input query sequence file in FASTA format, required, no default value
+subject_fasta_filename: string, input subject sequence file in FASTA format, required, no default value
+match: integer, scoring value for matching bases, required, no default value
+mismatch: integer, negative scoring value for mismatched bases, required, no default value
+gapOpen: integer, negative cost for opening a gap in sequence alignment, required, no default value
+gapExtend: integer, negative cost for extending an existing gap in sequence alignment, required, no default value
+minSize: integer, minimum subregion size for iterative local alignment, optional for iterative local method, no default value
+minScore: integer, minimum acceptable alignment score for iterative local method, optional for iterative local method, no default value
+output_file: string, text file to write alignment results, required, no default value
+GlobalAlignment module input and output file descriptions:
+Query FASTA file is a single-record DNA sequence file containing valid sequence characters A, T, G, C, and N
+Subject FASTA file is a single-record DNA sequence file containing valid sequence characters A, T, G, C, and N
+Input sequences are case-insensitive and treat uppercase and lowercase letters identically
+Input sequences can contain N characters representing unknown bases
+Input FASTA files must contain only one sequence record per file
+Output alignment file is a text file containing detailed alignment results
+Output alignment file includes alignment score, aligned sequences, and alignment details
+Output alignment file format is plain text with human-readable alignment information
+Match score parameter determines positive scoring for matching nucleotides
+Mismatch score parameter determines negative scoring for non-matching nucleotides
+Gap open score parameter determines penalty for initiating a gap in the alignment
+Gap extension score parameter determines penalty for continuing an existing gap
+Minimum size parameter (Iterative Local only) specifies smallest subregion to analyze
+Minimum score parameter (Iterative Local only) specifies lowest acceptable alignment score
+GlobalAlignment is a computational biology module for performing pairwise DNA sequence alignments using dynamic programming algorithms.
+The GlobalAlignment module implements three distinct dynamic programming alignment strategies: global (Needleman-Wunsch), local (Smith-Waterman), and iterative local alignment.
+The module uses standard affine scoring parameters including match, mismatch, gap opening, and gap extension scores to evaluate sequence similarity.
+Input sequences for GlobalAlignment must be provided as separate single-record FASTA files containing valid DNA characters (A, T, G, C, N), with case-insensitive processing.
+The GlobalAlignment module only considers forward orientation alignments and does not perform reverse complement searching.
+The iterative local alignment approach in GlobalAlignment finds non-overlapping local alignments through a greedy, recursive process of identifying and excluding high-scoring regions.
+For meaningful alignment results in GlobalAlignment, the scoring parameters should follow specific constraints: gap opening cost should be less than gap extension cost.
+The GlobalAlignment module supports flexible scoring parameters, allowing researchers to customize match, mismatch, and gap penalties for different alignment scenarios.
+GlobalAlignment is implemented in Java and is platform-independent, capable of running on any operating system with a Java Virtual Machine.
+The module requires input of two FASTA files, along with numerical parameters for match, mismatch, gap opening, and gap extension scores.
+Output from the GlobalAlignment module is a text file containing detailed information about the computed sequence alignments.

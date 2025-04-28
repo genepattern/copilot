@@ -1,0 +1,189 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>HeatMapViewer (v14) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/HeatMapViewer/14?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">A configurable heat map viewer that provides users with several options for manipulating and visualizing array-based data</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Marc-Danie Nazaire, The Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<p>The HeatMapViewer displays values in a heat map format where by default the largest values are displayed as the reddest (hot), the smallest values are displayed as the bluest (cool), and intermediate values are a lighter color of either blue or red. This is a very convenient way to display three-dimensional data (samples, features, and values). It was created using<a href="http://jheatmap.github.io/jheatmap/" target="_blank"> jHeatmap</a></p>
+<h2>Options</h2>
+<p>There are a number of options controlling the appearance of the heat map that can be set by clicking the <em>Options </em>button: </p>
+<ul>
+<li>You can choose between radio buttons for Row <em>Relative</em> and <em>Global</em> color schemes. When the relative choice is selected, the heat map converts values to colors using the mean, minimum, and maximum values in each row. When the global choice is selected the heat map converts values to colors using the mean, minimum, and maximum values in the entire dataset.</li>
+<li>You can choose between the radio buttons <em>Use Color Gradient</em> and <em>Use Discrete Colors</em>. The heat map uses linear color gradient to convert values to colors when the <em>Use Color Gradient</em> button is selected, while a discrete color map is used if the <em>Use Discrete Colors</em> button is selected. A color picker is provided for selecting colors. When specifying discrete colors there is no limit on the number of colors that can added.</li>
+</ul>
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Add/Edit Labels</h2>
+<ul>
+<li><span style="font-size: 24px; line-height: 1.1;">Feature Labels</span>
+<ul>
+<li>
+<p>To load feature labels, select <em>Features </em>and load a GMX file. A complete description of this format is available on the <a href="http://www.broadinstitute.org/file-formats-guide#GMX">GenePattern website</a>. </p>
+</li>
+<li>
+<p>Feature labels use color to annotate features in the heat map</p>
+</li>
+<li>
+<p>A color bar appears next to each feature in the feature set in the table.</p>
+</li>
+<li>Select <em>Edit&gt;Feature Labels</em> to edit the color or close the feature set.</li>
+</ul>
+</li>
+<li>
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Sample Labels</h2>
+<ul>
+<li>
+<p>Sample labels use color to annotate samples in the heat map.</p>
+</li>
+<li>
+<p>Create a CLS file. A complete description of this format is available on the <a href="http://www.broadinstitute.org/gp_guides/file-formats">GenePattern website</a>.</p>
+</li>
+<li>
+<p>A color bar appears below each sample name<span style="display: none;"> </span></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Saving Images</h2>
+<p>Users can save the heat map image to a file by selecting the <em>Save Image button</em>. Supported formats are SVG and PNG. There is a size limit when saving in png format.​ An error will be displayed if the file is too largeto save as PNG.</p>
+<h2>Find </h2>
+<p>To find a feature or sample in the heat map, select <em>Search </em>button and enter the text and whether to search among the features or the samples and also if the case should be case-insensitive. </p>
+<h2> </h2>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataset <span style="color:red;">*</span></td>
+<td>The dataset to display - .gct</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					javascript</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					Javascript/jQuery</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>2014-06-16</td>
+<td>Updated to improve compatibility with Java 7 security updates</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2016-02-18</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2013-06-21</td>
+<td>Fixes Java 7 launching issues.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2010-08-04</td>
+<td>Fixed bug with incorrect scores listed for features in the Nearest Neighbors table</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2010-03-18</td>
+<td>Fixed bug in calculating standard deviation for centroid plot.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2007-09-05</td>
+<td>Fixed bug in color scheme legend dialog. Added gene neighbors analysis. </td>
+</tr>
+<tr>
+<td>6</td>
+<td>2007-08-13</td>
+<td>Additional additional plots, keyboard shortcuts, and ability to label samples from sample info file.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2006-10-05</td>
+<td>Plot selected samples only in profile plot</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2006-09-25</td>
+<td>Added eps output file format</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2006-08-08</td>
+<td>Save row names with image</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2005-06-07</td>
+<td>Annotated for GP 1.4.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2004-12-22</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

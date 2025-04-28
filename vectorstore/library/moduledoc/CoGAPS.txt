@@ -1,0 +1,91 @@
+CoGAPS is on version 00376.
+A description of CoGAPS is Gene Association in Pattern Sets (GAPS) infers underlying patterns in a matrix of measurements that can be interpreted as arising from the multiplication of two lower dimensional matrices. The approach is a general form of matrix factorization using a stochastic algorithm, focused primarily on gene expression analysis..
+CoGAPS is a GenePattern module written by Fertig Lab.
+CoGAPS can be categorized as Bioinformatics, Gene Expression, Matrix Factorization.
+CoGAPS has the following parameters: Input file, Output file, num iterations, standard deviation input file, standard deviation decimal value, start at, stop at, step, seed.
+The CoGAPS GenePattern module is a powerful computational tool for matrix factorization and pattern discovery in gene expression data.
+CoGAPS can identify underlying biological patterns in complex transcriptomic datasets using a sophisticated Markov chain Monte Carlo algorithm.
+The CoGAPS module allows researchers to decompose gene expression matrices into biologically meaningful patterns and weight distributions.
+CoGAPS implements a stochastic matrix factorization approach that can reveal coordinated gene activity across different experimental conditions.
+The module can process multiple input file formats including GCT, MTX, and Seurat RDS objects for flexible gene expression analysis.
+CoGAPS generates multiple output files including pattern matrices, weight distributions, and statistical visualizations of pattern discovery.
+The algorithm can systematically search pattern spaces by allowing users to define start, stop, and step parameters for pattern number exploration.
+CoGAPS is particularly useful for identifying transcriptional programs and understanding complex gene regulatory networks.
+The module provides statistical Z-score calculations to assess the significance of gene set activities within discovered patterns.
+Researchers can use CoGAPS to uncover latent biological processes that might not be apparent through traditional differential expression analysis.
+The GenePattern implementation of CoGAPS allows for easy integration with other computational biology workflows and analysis pipelines.
+CoGAPS can be applied beyond gene expression data, with potential applications in spectral imaging and other matrix factorization problems.
+The module includes built-in visualization capabilities, generating chi-squared plots to help researchers evaluate pattern space exploration.
+CoGAPS supports custom standard deviation inputs, allowing for more precise uncertainty modeling in gene expression datasets.
+The algorithm is implemented in both R and C++, providing computational efficiency and statistical robustness for large-scale genomic analyses.
+input file:
+Type: File
+Description: CoGAPS module requires a gene expression profile file
+Required: Yes
+Supported formats: gct, mtx, rds (seurat objects)
+output file:
+Type: String
+Description: Base name for generating all output files in the CoGAPS analysis
+Required: Yes
+Default: None
+num iterations:
+Type: Integer
+Description: Total number of iterations to run in the CoGAPS matrix factorization algorithm
+Required: No
+Default: Not specified in documentation
+standard deviation input file:
+Type: File
+Description: Optional file containing standard deviation estimates for each gene expression value
+Required: No
+Must match input file rows and columns
+standard deviation decimal value:
+Type: Float
+Description: Multiplier used to estimate standard deviation when no separate standard deviation file is provided
+Required: No
+Default: Not specified in documentation
+start at:
+Type: Integer
+Description: Beginning number of patterns to search in the pattern space
+Required: No
+Default: Not specified in documentation
+stop at:
+Type: Integer
+Description: Maximum number of patterns to search in the pattern space
+Required: No
+Default: Not specified in documentation
+step:
+Type: Integer
+Description: Increment size between start and stop patterns during pattern space search
+Required: No
+Default: Not specified in documentation
+seed:
+Type: Integer
+Description: Seed value for pseudo-random number generator to ensure reproducibility
+Required: No
+Default: Not specified in documentation
+CoGAPS module input files:
+Gene expression data file containing transcriptomic measurements in gct, mtx, or rds format
+Standard deviation input file containing estimated standard deviations for each gene expression measurement
+Standard deviation decimal value as a multiplier for generating standard deviation estimates
+CoGAPS module output files:
+Chi-squared plot for pattern search space visualization
+Distribution of weights matrix with mean values
+Standard deviation matrix for distribution of weights
+Pattern matrix representing inferred biological patterns
+Standard deviation matrix for pattern matrix
+PDF visualization of chi-squared values and pattern analysis results
+CoGAPS is a computational method for matrix factorization of gene expression data using a Markov chain Monte Carlo (MCMC) approach.
+The CoGAPS module allows researchers to decompose gene expression matrices into underlying biological patterns.
+CoGAPS seeks to represent a data matrix D as the product of two lower-dimensional matrices: a pattern matrix P and a distribution matrix A.
+The algorithm assumes an atomic prior distribution for matrices A and P, which means most matrix elements are expected to be zero.
+CoGAPS uses a stochastic sampling approach to infer the most likely pattern and distribution matrices that reconstruct the original gene expression data.
+The module allows users to specify a range of pattern numbers to search, helping identify the optimal number of underlying biological patterns.
+CoGAPS can handle different input file formats including gct, mtx, and Seurat RDS objects for gene expression data.
+The algorithm computes standard deviations for the pattern and distribution matrices, providing uncertainty estimates for the inferred patterns.
+CoGAPS can compute Z-scores and p-values to assess the statistical significance of gene set activities within the discovered patterns.
+The method was originally developed for microarray data but can be applied to various types of high-dimensional data beyond gene expression.
+The implementation combines R and C++ for computational efficiency, using the Rcpp package for integration.
+Users can specify the number of iterations, allowing control over the computational complexity and precision of the matrix factorization.
+The module generates multiple output files, including matrices of mean patterns, standard deviations, and visualizations of pattern search results.
+CoGAPS is particularly useful for discovering coordinated gene expression patterns and understanding underlying biological processes.
+The algorithm is flexible and can be applied to various domains beyond gene expression, such as spectral imaging and other matrix decomposition problems.

@@ -1,0 +1,42 @@
+test\nWatching for file changes with StatReloader
+Performing system checks...
+
+Assistant is retrieved!
+System check identified no issues (0 silenced).
+August 01, 2024 - 18:32:53
+Django version 4.0.6, using settings 'GP_Copilot.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[01/Aug/2024 18:33:13] "GET / HTTP/1.1" 200 11008
+[01/Aug/2024 18:33:18] "POST /chatbot/ HTTP/1.1" 200 59
+Performing system checks...
+
+Assistant is retrieved!
+System check identified no issues (0 silenced).
+August 01, 2024 - 18:33:13
+Django version 4.0.6, using settings 'GP_Copilot.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+/srv/copilot
+4502556820558558084
+None
+2024-08-01 18:33:18.217008
+Watching for file changes with StatReloader
+[01/Aug/2024 18:35:35] "GET / HTTP/1.1" 200 11008
+[01/Aug/2024 18:35:36] "GET / HTTP/1.1" 200 11008
+[01/Aug/2024 18:35:40] "POST /chatbot/ HTTP/1.1" 200 59
+Performing system checks...
+
+Assistant is retrieved!
+System check identified no issues (0 silenced).
+August 01, 2024 - 18:35:32
+Django version 4.0.6, using settings 'GP_Copilot.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+/srv/copilot
+3960990697469360103
+/srv/copilot
+5994704825751208781
+None
+2024-08-01 18:35:40.609896

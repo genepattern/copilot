@@ -1,0 +1,59 @@
+CummeRbund.QcReport is on version 1.
+A description of CummeRbund.QcReport is CummeRbund is a visualization package designed to help you navigate through the many inter-related files produced from a Cuffdiff RNA-Seq differential expression analysis and visualize the relevant results. It helps promote rapid analysis of RNA-Seq data by aggregating, indexing, and allowing you to easily visualize and create publication-ready figures of your RNA-Seq data..
+CummeRbund.QcReport is a GenePattern module written by Loyal Goff, MIT Computer Science and Artificial Intelligence Lab.
+CummeRbund.QcReport can be categorized as RNA-seq, Visualization, Differential Expression.
+CummeRbund.QcReport has the following parameters: cuffdiff input, output format, feature level, report as aggregate, log transform, pca x, pca y, attempt.to.merge.names.
+The CummeRbund.QcReport module is a GenePattern tool for visualizing and analyzing RNA-Seq differential expression data from Cuffdiff experiments.
+The CummeRbund.QcReport module helps researchers generate high-level quality control visualizations for RNA-Seq data across multiple experimental conditions.
+This module can produce various plots and statistical summaries to help researchers understand the overall structure and variability of their gene expression data.
+The CummeRbund.QcReport can generate box plots showing the distribution of FPKM (Fragments Per Kilobase of transcript per Million mapped reads) values across different experimental samples.
+The module creates a dendrogram that illustrates the relationships between different experimental conditions based on gene expression patterns.
+CummeRbund.QcReport generates density plots to help researchers visualize the distribution of log-transformed FPKM values across all samples in an experiment.
+The module can produce multidimensional scaling (MDS) plots to help researchers understand the similarities and differences between experimental samples.
+CummeRbund.QcReport creates principal component analysis (PCA) plots to identify the main sources of variation in gene expression data.
+The module generates a dispersion plot to evaluate the quality of statistical modeling in RNA-Seq data by comparing mean counts to estimated dispersion.
+CummeRbund.QcReport produces a squared coefficient of variation (SCV) plot to assess the variability between replicate measurements in an RNA-Seq experiment.
+The module can create a heatmap showing pairwise similarities between experimental conditions using Jensen-Shannon distance metrics.
+CummeRbund.QcReport generates text files listing differentially expressed genes, isoforms, and other genomic features that pass statistical significance thresholds.
+The module is designed to work specifically with Cuffdiff output files, creating a comprehensive database for downstream analysis and visualization.
+cuffdiff.input (File, Required): Input for CummeRbund module, which can be a Cuffdiff job folder, previous CummeRbund job, or cuffData.db database file containing Cuffdiff analysis results.
+output.format (String, Optional): Specifies the file format for output visualizations and reports, with default settings for different output types.
+feature.level (String, Optional): Determines the biological feature level for analysis, including genes, isoforms, transcript start sites, or coding sequences.
+report.as.aggregate (Boolean, Optional): Controls whether results are reported using aggregate sample values or individual replicates, with default set to aggregate samples.
+log.transform (Boolean, Optional): Determines whether FPKM values should be log transformed for visualization, with specific exceptions for certain plot types.
+pca.x (Integer, Optional): Specifies which principal component to display on the x-axis of the PCA plot, must differ from pca.y.
+pca.y (Integer, Optional): Specifies which principal component to display on the y-axis of the PCA plot, must differ from pca.x.
+attempt.to.merge.names (Boolean, Optional): Instructs the module to attempt merging gene names into text reports when tracking IDs are present, particularly useful when using Cuffmerge merged GTF files.
+Here are the input and output files for the CummeRbund.QcReport module:
+Input Files:
+CummeRbund.QcReport requires a Cuffdiff job folder containing all Cuffdiff output files as the primary input.
+The input can also be a previous CummeRbund job folder or a cuffData.db database file.
+The input must include all Cuffdiff output files to enable comprehensive RNA-seq analysis visualization.
+Output Files:
+cuffData.db is an RSQLite database created from the original Cuffdiff job for future reuse.
+QC.Boxplot visualizes FPKM value summary statistics across all samples using a box plot.
+QC.Dendrogram shows relationships between conditions using Jensen-Shannon distances.
+QC.Density plots log10 FPKM value distributions across samples.
+QC.DimensionalityReduction.mds provides a multidimensional scaling projection of expression estimates.
+QC.DimensionalityReduction.pca performs principal component analysis on expression data.
+QC.Dispersion compares mean counts against estimated dispersion.
+QC.FPKM.SCV plots squared coefficient of variation between replicate FPKM values.
+QC.JSDistanceHeatmap.Samples displays pairwise condition similarities using a heatmap.
+QC.sig_diffExp_genes.txt lists differentially expressed genes passing significance thresholds.
+QC.sig_promoter_data.txt contains significant promoter distribution test data.
+QC.sig_splicing_data.txt includes significant splicing distribution test data.
+QC.sig_relCDS_data.txt provides significant relative coding sequence distribution test data.
+stdout.txt and stderr.txt log module execution output and potential errors.
+CummeRbund.QcReport is a GenePattern module for visualizing and analyzing RNA-Seq differential expression data from Cuffdiff.
+The module helps researchers explore complex RNA-Seq results by generating multiple quality control and statistical visualization plots.
+CummeRbund.QcReport processes entire Cuffdiff job output folders to create a comprehensive database of gene expression information.
+The module can generate visualizations at different feature levels including genes, isoforms, transcript start sites, and coding sequences.
+CummeRbund.QcReport produces multiple plot types including boxplots, dendrograms, density plots, and dimensionality reduction visualizations.
+The module allows researchers to compare expression patterns across different experimental conditions using techniques like multidimensional scaling and principal component analysis.
+CummeRbund.QcReport can generate statistical reports on differentially expressed genes, promoter data, splicing information, and coding sequence distributions.
+The visualization package was developed collaboratively by computational biology researchers at MIT and Harvard University.
+The module requires R version 2.15 and automatically checks for and installs necessary supporting R packages.
+CummeRbund.QcReport can work with either individual Cuffdiff job outputs or previously generated database files to speed up analysis.
+The module provides flexibility in visualization by allowing log transformation of expression values and aggregation of replicate data.
+Researchers can control the level of detail in reports through parameters like feature level and reporting aggregation settings.
+The output includes both graphical plots and text-based reports to support comprehensive RNA-Seq data exploration.

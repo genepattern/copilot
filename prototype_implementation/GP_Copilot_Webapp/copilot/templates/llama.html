@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    GP Copilot: LLaMA
+{% endblock title %}
+
+
+{% block head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock head %}
+{% block model_type %}
+    LLaMA 3.3 70B 
+{% endblock model_type %}
+
+{% block chatheader %}
+<div class="chat-header">
+
+    <h1>GenePattern Copilot</h1>
+    <p>Try out our AI-powered helper for GenePattern! It uses META's LLaMA 3.2-Vision LLM and retrieval augmented generation.</p>
+    <small><b>Disclaimer:</b> This data is being sent to AWS Amazon Bedrock, so do not share personal information through this chatbot.</small>
+
+</div>
+{% endblock chatheader %}

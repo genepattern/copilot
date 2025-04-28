@@ -1,0 +1,51 @@
+NMFClustering is on version 3.
+A description of NMFClustering is Non-negative Matrix Factorization Consensus Clustering. NMF is an unsupervised learning algorithm that identifies molecular patterns in gene expression data by detecting context-dependent patterns of gene expression in complex biological systems..
+NMFClustering is a GenePattern module written by Pablo Tamayo (Broad Institute), with contributions from Jean-Philippe Brunet (Broad Institute), Kenneth Yoshimoto (San Diego Supercomputing Center), and Ted Liefeld (University of California San Diego).
+NMFClustering can be categorized as Clustering, Bioinformatics, Gene Expression Analysis.
+NMFClustering has the following parameters: dataset.filename, k.initial, k.final, num.clusterings, max.num.iterations, random.seed, output.file.prefix, stop.convergence, stop.frequency.
+The NMFClustering module is a powerful unsupervised machine learning technique for analyzing gene expression data.
+NMFClustering uses non-negative matrix factorization to identify molecular patterns in complex biological datasets.
+Unlike traditional clustering methods, NMFClustering does not rely on distance computations between genes.
+The NMFClustering module can decompose large gene expression matrices into smaller, more interpretable matrices representing underlying biological patterns.
+NMFClustering is particularly useful for identifying context-dependent gene expression patterns that might be missed by traditional clustering approaches.
+The module allows researchers to explore different numbers of potential gene clusters by varying the K parameter from initial to final values.
+NMFClustering generates consensus matrices that help researchers understand the stability and reproducibility of identified gene clusters.
+The algorithm starts with randomly initialized matrices and iteratively updates them to minimize the difference between original and reconstructed data matrices.
+NMFClustering is especially valuable for analyzing microarray and RNA-seq datasets with high-dimensional gene expression data.
+Researchers can use NMFClustering to discover potential molecular subtypes in complex diseases like cancer.
+The module provides flexibility in parameter tuning, including controlling maximum iterations, convergence criteria, and random seed initialization.
+NMFClustering can help identify co-expressed gene groups that might represent shared biological functions or regulatory mechanisms.
+The module is particularly useful in cancer research for identifying molecular subgroups within tumor samples.
+NMFClustering can reveal non-linear relationships between genes that traditional linear clustering methods might overlook.
+The algorithm is computationally intensive and designed to run on high-performance computing environments like supercomputer clusters.
+dataset.filename | File | NMFClustering requires a GCT format input dataset file | Required | No default value
+k.initial | Integer | NMFClustering specifies the initial number of clusters to start with | Required | Default is 2
+k.final | Integer | NMFClustering defines the final number of clusters to evaluate | Required | Default is 5
+num.clusterings | Integer | NMFClustering determines how many clustering iterations to perform for each K value | Required | Default is 20
+max.num.iterations | Integer | NMFClustering sets maximum iterations for each clustering run at each K value | Required | Default is 2000
+random.seed | Integer | NMFClustering uses a random seed to initialize matrices for reproducible results | Required | Default is 123456789
+output.file.prefix | String | NMFClustering prepends this prefix to all output file names | Required | No default value
+stop.convergence | Integer | NMFClustering defines number of "no change" checks needed to halt iterations | Required | Default is 40
+stop.frequency | Integer | NMFClustering sets frequency of checking for changes during iterations | Required | Default is 10
+NMFClustering module input file is a gene expression dataset in GCT format containing non-negative numerical values representing gene expression levels.
+NMFClustering module input file contains rows representing genes and columns representing experimental samples or conditions.
+NMFClustering module requires input file to have numerical values that are non-negative for proper matrix factorization.
+NMFClustering module generates consensus matrix output files named consensus.k.#.gct for each specified clustering value of K.
+NMFClustering module consensus matrix output files represent clustering results with rows and columns representing samples or genes.
+NMFClustering module output files contain numerical values representing consensus clustering membership probabilities.
+NMFClustering module input file typically contains thousands of genes and fewer than a hundred experimental samples.
+NMFClustering module output files are sorted and relabeled based on row and column factor memberships.
+NMFClustering module input file should be preprocessed to ensure data quality and non-negative values.
+NMFClustering module generates multiple output files corresponding to different clustering configurations.
+NMFClustering is an unsupervised machine learning algorithm for dimensionality reduction and pattern detection in gene expression data.
+NMFClustering uses Non-negative Matrix Factorization (NMF) to decompose complex biological datasets into interpretable components.
+The core mathematical principle of NMFClustering involves approximating a non-negative data matrix A as a product of two non-negative matrices W and H.
+NMFClustering iteratively updates initial random matrices W and H to minimize the Euclidean distance between the original data and the matrix approximation.
+For gene expression data, NMFClustering typically processes matrices with thousands of genes (N) and fewer than a hundred experiments (M).
+The algorithm determines the number of classes (k) based on the heterogeneity of the input dataset, with users specifying initial and final k values.
+NMFClustering performs multiple clusterings for each k value to generate a consensus matrix that represents the stability of gene expression patterns.
+The module allows users to control convergence by setting parameters like maximum iterations, stop frequency, and number of "no change" checks.
+NMFClustering uses a random seed to initialize matrices, enabling reproducible results across different computational runs.
+The algorithm is particularly useful for identifying context-dependent molecular patterns that traditional distance-based clustering methods might miss.
+NMFClustering outputs consensus matrices that can help researchers understand underlying gene expression patterns in complex biological systems.
+The module is distributed under a modified BSD license and is designed to run on high-performance computing environments like the San Diego Supercomputer Expanse cluster.

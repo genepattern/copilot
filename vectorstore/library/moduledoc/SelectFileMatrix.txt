@@ -1,0 +1,90 @@
+SelectFileMatrix is on version 1.
+A description of SelectFileMatrix is Select a matrix from a delimited file. This module takes a delimited text file as input and creates a subset matrix file based on user-specified parameters. It can be used to extract data from a tab-, space-, or comma-separated input file in multiple ways, from a single cell or an individual row/column to a rectangular matrix or a discontinuous selection of partial rows and columns..
+SelectFileMatrix is a GenePattern module written by David Eby (Broad Institute), gp-help@broadinstitute.org.
+SelectFileMatrix can be categorized as Preprocess & Utilities.
+SelectFileMatrix has the following parameters: input file, output file base name, start row, end row, start column, end column, delimiter, column select, row select, output rejects.
+The SelectFileMatrix GenePattern module is a versatile tool for extracting and manipulating data from delimited text files in bioinformatics research.
+SelectFileMatrix allows researchers to precisely select specific rows and columns from large data matrices, such as gene expression datasets.
+The module supports multiple delimiter types including tab, comma, and space-separated files, making it flexible for different data formats commonly used in genomic research.
+Researchers can use SelectFileMatrix to extract subsets of data by specifying exact row and column indices, ranges, or individual selections using intuitive parameter settings.
+SelectFileMatrix is particularly useful for focusing analysis on specific samples, genes, or experimental conditions within large genomic datasets.
+The module preserves the original ordering of data during selection, ensuring that the relative positions of selected elements remain consistent with the input file.
+With the optional output.rejects parameter, SelectFileMatrix can simultaneously generate a separate file containing the unselected data for comprehensive record-keeping.
+SelectFileMatrix is valuable in preprocessing steps of genomic data analysis, allowing researchers to quickly isolate and work with targeted subsets of complex experimental data.
+The module is platform-independent and written in Java, making it widely accessible across different computational environments in bioinformatics research.
+Researchers can use SelectFileMatrix to prepare data for downstream analyses like clustering, differential expression studies, or pathway investigations by extracting relevant data subsets.
+input file:
+SelectFileMatrix module requires an input file as a delimited text file.
+SelectFileMatrix module uses this file as the source for matrix selection.
+Input file must be a text file with consistent delimiters.
+output file base name:
+SelectFileMatrix module generates output filename based on this parameter.
+Output filename will have appropriate extension (.csv or .txt).
+Base name allows user to specify custom output filename.
+start row:
+SelectFileMatrix module allows specifying the starting row for matrix selection.
+Row indexing begins at 1.
+If not specified, selection starts from the first row of the file.
+Enables partial matrix extraction from input file.
+end row:
+SelectFileMatrix module allows specifying the ending row for matrix selection.
+Row indexing begins at 1.
+If not specified, selection extends to the last row of the file.
+Enables partial matrix extraction from input file.
+start column:
+SelectFileMatrix module allows specifying the starting column for matrix selection.
+Column indexing begins at 1.
+If not specified, selection starts from the first column of the file.
+Enables partial matrix extraction from input file.
+end column:
+SelectFileMatrix module allows specifying the ending column for matrix selection.
+Column indexing begins at 1.
+If not specified, selection extends to the last column of the file.
+Enables partial matrix extraction from input file.
+delimiter:
+SelectFileMatrix module supports tab, comma, and space as column delimiters.
+Same delimiter used for input and output files.
+Default delimiter is tab.
+Multiple consecutive delimiter characters treated as empty columns.
+column select:
+SelectFileMatrix module allows selecting specific columns by index or range.
+Can specify individual columns or column ranges.
+Start/end column parameters may further limit selection.
+Enables flexible column extraction.
+row select:
+SelectFileMatrix module allows selecting specific rows by index or range.
+Can specify individual rows or row ranges.
+Start/end row parameters may further limit selection.
+Enables flexible row extraction.
+output rejects:
+SelectFileMatrix module can generate a separate file for non-selected items.
+Reject file named with base filename and .REJECT extension.
+Provides option to track excluded data.
+SelectFileMatrix module input and output file descriptions:
+Input file is a delimited text matrix with multiple possible formats (tab, comma, or space-separated)
+Input file contains numeric or text data organized in rows and columns
+Input file can have optional header rows describing column names or data characteristics
+Input file supports flexible selection of rows and columns using various indexing methods
+Input file can be in formats like GCT, RES, or generic delimited text files
+Output file contains the selected subset of the input matrix
+Output file preserves original data ordering and relative positioning
+Output file uses the same delimiter as the input file (tab, comma, or space)
+Output file can include only selected rows and columns based on user parameters
+Output file name is generated with a base name and appropriate file extension
+Optional reject file contains unselected rows and columns from the input matrix
+Reject file maintains the original ordering of unselected data
+Reject file uses the same delimiter and format as the output file
+Reject file is generated when the output.rejects parameter is set to true
+SelectFileMatrix is a GenePattern module for extracting specific subsets of data from delimited text files.
+The SelectFileMatrix module allows precise matrix selection from input files using multiple indexing strategies.
+Users can select matrix subsets using row and column boundary indices, individual index selections, or selection ranges.
+The module supports tab, comma, and space-delimited input files for flexible data extraction.
+Row and column selections can be specified using parameters like start.row, end.row, column.select, and row.select.
+The module preserves the original data ordering when extracting matrix subsets, maintaining relative positions of selected elements.
+SelectFileMatrix can optionally generate a reject file containing data elements not meeting the selection criteria.
+The module works with various file formats like GCT and RES, though it does not modify file headers or adjust embedded row counts.
+Users can combine boundary selectors with individual or range selections to create complex matrix extraction strategies.
+The module is platform-independent, written in Java, and can run on any operating system and CPU architecture.
+SelectFileMatrix indexes rows and columns starting from 1, allowing intuitive selection of matrix elements.
+The output file will use the same delimiter as the input file, maintaining consistent data formatting.
+Multiple consecutive delimiter characters are treated as creating empty columns in the matrix selection process.

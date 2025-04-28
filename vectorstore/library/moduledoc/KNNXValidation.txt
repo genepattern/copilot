@@ -1,0 +1,48 @@
+KNNXValidation is on version .
+A description of KNNXValidation is K-nearest neighbors classification with leave-one-out cross-validation. The k-nearest-neighbor algorithm classifies a sample by assigning it the label most frequently represented among the k nearest samples..
+KNNXValidation is a GenePattern module written by Joshua Korn, Joshua Gould (Broad Institute).
+KNNXValidation can be categorized as Prediction.
+KNNXValidation has the following parameters: data.filename, class.filename, num.features, feature.selection, min.std, num.neighbors, weighting.type, distance.measure, pred.results.file, feature.summary.file.
+The KNNXValidation module is a powerful machine learning tool for classification in bioinformatics using k-nearest neighbors algorithm.
+The KNNXValidation module allows researchers to predict sample classes based on gene expression data using a k-nearest neighbors approach.
+KNNXValidation performs leave-one-out cross-validation, iteratively testing the model by leaving out one sample at a time for validation.
+The KNNXValidation module supports multiple distance metrics like cosine and euclidean distance for comparing gene expression profiles.
+KNNXValidation enables flexible neighbor weighting strategies, including unweighted voting, rank-based weighting, and distance-based weighting.
+The module allows feature selection to identify the most informative genes for classification using various statistical methods.
+KNNXValidation can be used for molecular classification tasks, such as distinguishing cancer subtypes or predicting treatment outcomes.
+The module generates output files with prediction results and a summary of selected features for further analysis.
+KNNXValidation is particularly useful in genomics for building predictive models from gene expression datasets with limited sample sizes.
+The module implements a non-parametric classification approach that does not require assumptions about the underlying data distribution.
+KNNXValidation can save trained models for subsequent application to new test datasets, enhancing reproducibility and model reuse.
+The module supports various input file formats like .gct, .res, and .odf for gene expression and class label data.
+data.filename: Dataset, input data file (.gct, .res, .odf), required, specifies the input data for KNNXValidation module
+class.filename: Dataset, class file (.cls), required, defines target classes for prediction in KNNXValidation
+num.features: Integer, number of selected features for KNNXValidation classification, required
+feature.selection.statistic: String, statistical method for feature selection in KNNXValidation, optional
+min.std: Float, minimum standard deviation for feature selection in KNNXValidation, optional
+num.neighbors: Integer, number of neighbors used in KNN algorithm, required
+weighting.type: String, method for weighting neighbor contributions in KNNXValidation, optional
+distance.measure: String, metric for calculating distance between data points (cosine or euclidean), optional
+pred.results.file: String, output filename for prediction results (.odf), optional
+feature.summary.file: String, output filename for feature summary (.odf), optional
+KNNXValidation module uses a data file containing gene expression measurements in .gct, .res, or .odf format.
+KNNXValidation module requires a class file in .cls format defining target classes for prediction.
+KNNXValidation module generates a prediction results file in .odf format containing classification outcomes.
+KNNXValidation module produces a feature summary file in .odf format listing selected features used in classification.
+KNNXValidation module input data file contains gene expression values across multiple samples and features.
+KNNXValidation module class file specifies binary class labels (0 and 1) for training samples.
+KNNXValidation module prediction results file includes predicted class, confidence, and other classification metrics.
+KNNXValidation module feature summary file documents the most informative genes selected for classification.
+KNNXValidation module supports multiple distance measures including cosine and euclidean for neighbor selection.
+KNNXValidation module allows different neighbor weighting strategies like unweighted, rank-based, and distance-based weighting.
+The KNNXValidation module is a k-nearest neighbors classification algorithm for predicting sample classes based on gene expression data.
+The KNNXValidation module uses a machine learning approach to classify samples by finding the most similar k neighboring data points.
+In the KNNXValidation module, samples are classified by the majority class among their k nearest neighbors in the training dataset.
+The KNNXValidation module allows three types of neighbor weighting: unweighted, weighted by rank, or weighted by reciprocal distance.
+The KNNXValidation module supports two distance metrics for calculating neighbor similarity: cosine and euclidean distance.
+The KNNXValidation module performs leave-one-out cross-validation by iteratively training on all but one sample and testing on the left-out sample.
+The KNNXValidation module requires input files including a data file with gene expression measurements and a class file defining sample classifications.
+The KNNXValidation module allows users to specify the number of features to use and the feature selection statistic for dimensionality reduction.
+The KNNXValidation module outputs prediction results and a feature summary file detailing the selected features used in classification.
+The KNNXValidation module was developed by researchers at the Broad Institute for molecular classification of biological samples.
+The KNNXValidation module is based on seminal works in machine learning and pattern recognition by researchers like Golub, Slonim, Cover, and Hart.

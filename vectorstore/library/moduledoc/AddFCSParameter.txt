@@ -1,0 +1,49 @@
+AddFCSParameter is on version 2.
+A description of AddFCSParameter is Adds parameters and their values to a Flow Cytometry Standard (FCS) data file. This module inserts a calculated value for each event directly into an FCS file..
+AddFCSParameter is a GenePattern module written by Josef Spidlen (jspidlen@bccrc.ca), gp-help@broadinstitute.org.
+AddFCSParameter can be categorized as Flow Cytometry.
+AddFCSParameter has the following parameters: Input fcs data file, Input csv file, Output file name.
+The AddFCSParameter module allows researchers to add calculated parameters directly to Flow Cytometry Standard (FCS) data files.
+AddFCSParameter enables biologists to insert new computational measurements into existing flow cytometry datasets without modifying the original raw data.
+The module supports adding multiple new parameters simultaneously through a comma-separated values (CSV) file with precise event-level mapping requirements.
+AddFCSParameter requires that the CSV file have exactly the same number of rows as events in the original FCS file, ensuring complete parameter coverage.
+Users can specify both short and long names for new flow cytometry parameters using a colon-separated naming convention in the CSV header.
+The AddFCSParameter module is particularly useful for researchers who need to integrate derived computational measurements directly into their flow cytometry analysis workflow.
+AddFCSParameter operates across multiple computing platforms, being implemented in Java and compatible with various operating systems and hardware configurations.
+The module maintains the original FCS file structure while allowing flexible insertion of calculated parameters for downstream analysis and visualization.
+AddFCSParameter supports large-scale flow cytometry datasets, with tested performance on files containing up to 1,000,000 events and multiple new parameters.
+Researchers can use AddFCSParameter to standardize parameter naming and integrate complex computational measurements into their flow cytometry data files.
+The module follows international cytometry data standards, ensuring compatibility with broader scientific data exchange protocols.
+AddFCSParameter provides a flexible solution for researchers who need to augment flow cytometry datasets with computed parameters without manual data manipulation.
+Input fcs data file | File | Specifies the input Flow Cytometry Standard (FCS) file to which parameters will be added | Required | No default
+Input csv file | File | Contains additional parameter values to be inserted into the FCS file | Required | No default
+Output file name | String | Defines the name of the output FCS file | Optional | Uses input file name as base
+AddFCSParameter module requires a CSV file with parameter values matching the number of events in the input FCS file
+AddFCSParameter module supports adding multiple parameters in a single CSV file
+CSV file first row must contain parameter names, which can include short and long names separated by a colon
+Each column in the CSV file represents a new parameter to be added to the FCS file
+AddFCSParameter module ensures every event in the FCS file has a corresponding value in the CSV file
+AddFCSParameter module is compatible with FCS 3.0 file format and floating point data type
+AddFCSParameter module supports adding calculated values directly to FCS files for tools that only read FCS files
+AddFCSParameter module recommends keeping original FCS files unmodified and storing calculated values externally
+AddFCSParameter module input and output file descriptions:
+Input FCS data file is a Flow Cytometry Standard (FCS) file containing cytometry event data with existing parameters.
+Input CSV file contains calculated parameter values to be added to the FCS file, with parameter names in the first row and one value per event in subsequent rows.
+Output FCS data file is an updated FCS file with the original events and parameters plus newly added parameters from the CSV file.
+The input CSV file must have exactly one row for parameter names and one row per event matching the total number of events in the input FCS file.
+The input CSV file can specify both short and long parameter names using a colon separator in the header row.
+The input CSV file supports adding multiple parameters simultaneously by including multiple columns.
+The output FCS file preserves all original FCS file characteristics while incorporating the new calculated parameters.
+The input FCS file can contain up to 24 parameters and 1,000,000 events based on module performance estimates.
+The output FCS file will be in the same format as the input file, typically FCS 3.0 with floating point data type.
+AddFCSParameter is a GenePattern module for adding calculated parameters to Flow Cytometry Standard (FCS) data files.
+The module allows insertion of new parameter values into an existing FCS file using a CSV file as the source of calculated values.
+Each new parameter must have a calculated value for every single event in the original FCS file.
+The CSV file can specify both short and long names for parameters using a colon separator, like "FL1-H:CD4".
+Multiple parameters can be added simultaneously by including multiple columns in the CSV file.
+The module is designed to be compatible with tools that only read FCS files directly, though keeping calculated values in external files is recommended.
+The module supports adding parameters to FCS files with up to 1,000,000 events and 24 parameters.
+AddFCSParameter requires Java 1.5 or higher and can run on any CPU or operating system.
+The module was developed by Josef Spidlen and is part of the flow cytometry module suite in GenePattern.
+The output is a new FCS file containing all original events and parameters, plus the newly calculated parameters.
+The CSV file must have a header row specifying parameter names, followed by one row per event with calculated values.

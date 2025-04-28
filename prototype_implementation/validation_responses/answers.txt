@@ -1,0 +1,1264 @@
+
+
+Subject: Re: [genepattern-help:1919] RNASeq TPM and inter-sample variability
+ in ssGSEA
+
+Hello,
+Thank you very much for the exhaustive explanation. I followed your
+recommendations about first executing ssGSEA and then check if batch effect
+was still there with the resulting scores. Samples do not cluster together
+by batch if I proceed this way.
+
+One more question. Is there any link with example files to run the "combine
+mode" with up- or down-regulated genes, i.e. gene set format for pairings
+of up- and down-regulated gene sets, and also how to set the "combine mode"
+option (differences between combine.replace and combine.add) in ssGSEA?
+Should I open a new thread?
+
+Thanks you very much in advance.
+
+
+ --------------
+
+Subject: Re: Comparative Marker Selection generated similar p-values
+
+Hello, 
+
+It looks like some of our data has been deleted so I can't actually look at 
+your jobs.
+
+In general though, if you are seeing similar values this may mean that you 
+need to do more stringent preprocessing.
+
+This tutorial is a little out of date in its screenshots but the analysis 
+remains the same and may provide some pointers for 
+you: http://software.broadinstitute.org/cancer/software/genepattern/tutorial
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2928] Error in rep("null", max.Ng * max.size.G)
+ : invalid 'times' argument
+
+Hi,
+
+It worked!
+
+Thank you so much for your help, I really appreciate it!
+
+
+
+
+
+
+
+
+ --------------
+
+Subject: Re: Log-transformation by default?
+
+Hello,
+
+I am glad that you find GenePattern useful!
+
+By default, ComparativeMarkerSelection does not log-transform your data, 
+you would need to change the "log2 transform" parameter in that module to 
+change that.
+
+Here is a link to the documentation if you want to take a closer 
+look: http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/PreprocessDataset/6
+
+Let me know if that helps!
+
+ --------------
+
+Subject: Re: Can not posting on group
+
+Hello, 
+
+I've responded to your original post 
+here: https://groups.google.com/g/genepattern-help/c/DW_TKDluALc
+
+
+
+
+
+ --------------
+
+Subject: Re: error in cellfie output
+
+Hi,
+
+I apologize for the late response. I made the CellFie module and will get 
+in touch with the CellFie algorithm developers about this issue. Would you 
+mind sharing the parameters you used? Alternatively, if you could re-run 
+the job and send me the job number, that would be great too! 
+
+
+
+
+
+ --------------
+
+Subject: Re: Keep on getting 500 Internal Error When logging in
+
+
+
+We have resolved the issue.
+
+Please let us know if you continue to have any trouble.
+
+
+
+
+ --------------
+
+
+Ah, yes, thank you!
+ --------------
+
+Subject: Re: Can ssGSEA be used with RNA-seq data?
+
+Hello,
+
+You can run ssGSEA using RNA-Seq data. This would generally work if your 
+samples raw counts are not too different from one another. If counts vary 
+too much, you may consider normalizing your data (e.g., so that they are 
+between 0 and 1). 
+
+Additionally, I would advise you to run your raw RNASeq counts through the 
+module PreprocessReadCounts first. This module was designed to transform 
+RNA-Seq data into the type of distribution that modules such as ssGSEA 
+would expect. You can read the documentation of PreprocessReadCounts here: 
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/PreprocessReadCounts/1
+
+Perhaps you can run three different jobs trying these approaches looking 
+for results that you can confirm are biologically significant.
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:3084] new to RNAseq advanced analysis and Gene
+ pattern comparative module
+
+That sounds great I will check it out thanks for help
+
+
+
+ --------------
+
+Subject: Re: Eror message while running DiffEx tool in GenePattern
+
+Hello,
+What GP modules did you use to convert your GEO imported file to gct and 
+cls?
+
+
+
+
+ --------------
+
+Subject: Re: dendrogram in hierarchicalclustering viewer
+
+
+The short answer is, yes.
+
+More information can be found by looking into dendrograms: 
+https://en.wikipedia.org/wiki/Dendrogram
+
+
+
+
+
+
+ --------------
+
+Subject: Re: GSEA Problem
+
+Hi,
+
+The key error is here:  BadParamException: After pruning, none of the gene 
+sets passed size thresholds  
+This is caused by a couple of potential things, the most common are not 
+using the whole dataset, GSEA is indented to be run on all expressed genes 
+so having a highly restricted gene list can cause issues with the gene set 
+size thresholds.
+Another common cause is not collapsing the data using the correct CHIP 
+file. Your input identifiers need to match exactly the identifiers used in 
+MSigDB if not collapsing, or need to exactly match the identifiers in the 
+first column of the selected CHIP file if collapsing.
+I recomend checking your input files to see if either of these conditions 
+applies. And if not, we can take a closer look.
+
+ --------------
+
+Subject: Re: 208195. ComparativeMarkerSelection
+
+
+I was able to run the module without error by changing the "GST" extension 
+to "gct", can you try this and let me know if it helps?
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:3147] ssGSEA download function
+
+Clicking "Save file" will "save a copy of the file to your local
+computer".  It does not use the word 'download' but thats what it will do.
+
+Hope this helps
+
+
+ --------------
+
+Subject: Re: Issues on GISTIC of GenePattern
+
+Hello,
+
+I'm so sorry that you've not received any help yet.
+
+Are you still having difficulty with GISTIC in GenePattern?
+
+We'll be happy to see what we can do to help.
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:3215] Re: Cross chromosomes error in GISTIC2.0
+ v. 6.15.30 unsing GenePattern public server
+
+Thank you I will check this.
+
+ --------------
+
+Subject: Re: [gp-team] Registration Issues
+
+Hi
+
+Sorry about the captcha issue.  I cannot replicate it so my suspicion is
+that there is a network issue between you and the captcha server.  Since
+you have effectively verified yourself with this email anyway, I created an
+account for you using the username "hersheymy" (as in your email as my mail
+server presents it) with your email account.  You can use the forgot
+password link to have a temporary password emailed to you and then you can
+reset the password to your own choice.
+
+hope this helps,
+
+
+
+
+ --------------
+
+Subject: Re: [gp-team] GenePattern Local Server
+
+Hello,
+
+I suggest following this post in our help forum.
+
+https://groups.google.com/forum/#!topic/genepattern-help/tsHqGVHnYD0
+
+
+
+ --------------
+
+Subject: Re: trouble with GEOImporter
+
+Hello, 
+
+It looks like GeoImporter is not correctly configured to run on the Indiana 
+University server. I've notified the system administrator there. In the 
+meantime, you are welcome to run this module on our public GenePattern 
+server - cloud.genepattern.org.
+
+Please let us know if you have any trouble.
+
+
+
+
+ --------------
+
+Subject: Re: Sharing data files in Genepattern repository?
+
+Hello,
+
+We are currently working on a better way to share data files along with 
+their associated notebooks. 
+
+In the meantime, if your data files can't be made public, I would recommend 
+picking a secure channel of your choice and using it to distribute files to 
+your users - perhaps an internal file system, private FTP server or Dropbox 
+account. From inside a notebook, you can then programmatically access the 
+data files using whatever authentication mechanism that channel provides. 
+
+I wish I had a better solution than this at the moment, but our long-term 
+solution to this is still being implemented.
+
+
+
+ --------------
+
+Subject: Re: MultiplotStudio my files names
+
+Hello, 
+
+This appears to be an off-by-one error in your gct files.
+
+You have 1508*3 *rows of data. The top 3 rows are header data, and 
+therefore not counted.
+
+Please let me know if this helps to resolve your issue.
+
+
+
+
+ --------------
+
+Subject: Error in ComparativeMarkerSelection
+
+Hi, Sir,
+
+I encounter the following error when I run ComparativeMarkerSelection
+
+org.broadinstitute.io.matrix.ParseException: All values on the 3rd lines 
+must be numbers.
+    at 
+org.broadinstitute.io.matrix.cls.ClsParser.processData(ClsParser.java:246)
+    at org.broadinstitute.io.matrix.cls.ClsParser.read(ClsParser.java:137)
+    at org.broadinstitute.io.matrix.cls.ClsParser.parse(ClsParser.java:106)
+    at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:56)
+    at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:42)
+    at org.broadinstitute.io.IOUtil.readCls(IOUtil.java:464)
+    at 
+org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1646)
+    at 
+org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+Unable to parse phenotype.cls.
+java.lang.NullPointerException
+    at 
+org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1691)
+    at 
+org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+
+The job number is 423538
+
+However, I could run desktop GSEA using these two files I upload to 
+GenePattern.
+
+Thanks for your generous support
+
+ --------------
+
+Subject: Re: Input data for Multiplot
+
+Hello Rosy,
+
+Here is the link to the GCT format. 
+https://www.genepattern.org/file-formats-guide#GCT
+
+Please let us know if you need any further assistance.
+
+
+
+
+ --------------
+
+Subject: Re: ssGSEA geneset sizes
+
+Hi,
+
+There is indeed a max threshold of 2000 members for a gene set in the code 
+(min is 2, FWIW).  I'm not sure why that's a hard-coded setting rather than 
+a parameter but will check with the method author.
+
+Unfortunately there's not a lot that could be done to workaround this, past 
+the obvious step of limiting the size of your gene sets.  The code is 
+available as open-source and you could modify it for local use (either as a 
+GP module or in an R session), but we have no active plans for adding new 
+features to this modules just now.
+
+
+ --------------
+
+Subject: Re: Duplicate Scan Names
+
+Hello, 
+
+It seems there are a number of things going wrong here, so we'll start with 
+the low-hanging fruit.
+
+
+The zip file you use for input to job 280198 is invalid - which is likely 
+the reason that you are getting an error saying it couldn't find CEL files.
+ 
+
+Again, the zip file for the cel input is invalid. Additionally, your clm 
+file looks to have Windows line endings as well as additional Windows 
+formatting encoded. I would suggest copying just re-creating the file in 
+Notepad (rather than Word or WordPad) and saving it as an ANSI txt file.
+(I might also suggest downloaded a text editor like Sublime Text which 
+allows you to more easily create files with Unix (IE non-Windows) friendly 
+line endings 
+<https://stackoverflow.com/questions/39680585/how-do-configure-sublime-to-always-convert-to-unix-line-endings-on-save>
+)
+ 
+
+The CEL file zip is still invalid.
+The CLM is also still incorrectly formatted.
+The CDF should be a file, not a zip - this looks like a whole library when what 
+is being asked for is a single .cdf file. 
+<https://www.genepattern.org/modules/docs/ExpressionFileCreator/13> - It 
+looks like you can navigate through this zip library and extract just the 
+430A CDF 
+(C:\Users\<yourUsername>\Downloads\moe430_libraryfile.zip\CD_MOE430\Full\MOE430A\LibFiles\MOE430A.CDF
+
+Try fixing your CEL zips (I'm not sure what you were using to zip, so I'm 
+not sure I can suggest anything to help, but be sure you can unzip on your 
+local computer before uploading),  reformatting your CLM, and providing 
+just the .cdf file and let us know how it goes.
+
+All the best
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:1415] Need help with error "package
+ com.apple.laf not in java.desktop"
+
+,
+Thanks a lot for your help. It works now.
+
+
+
+
+ --------------
+
+Subject: Re: ssGSEA for scRNA data
+
+Hello Rini, 
+
+Unfortunately, we do not currently recommend the existing module for 
+scRNASeq data.
+Adapting the method for this data is an active area of research in our lab, 
+however, and we will let you know as soon as that is ready for public 
+release.
+
+
+
+
+ --------------
+
+Subject: Re: CEL file not found
+
+
+Hello, 
+
+I'm so sorry it has taken us so long to respond. 
+
+Are you still having trouble with ExpressionFileCreator? If so, please send 
+a recent job id and we'll take a look right away.
+
+
+
+
+ --------------
+
+Subject: Re: must be str, not float
+
+Hello,
+
+I changed the names of the headers of your GCT file and the module ran 
+successfully. You can see the results here:
+
+https://cloud.genepattern.org/gp/pages/index.jsf?jobid=156324
+
+Particularly the fields "NAME" and "Description" had a different title, 
+here's the description of the GCT file format: 
+https://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+I think your use case shows that in the next release of the we should allow 
+for different words to be in those fileds or at the very least print a more 
+informative error code. I have created a ticket to evaluate those 
+alternatives.
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2636] Arm plot or plot using samples from 2 groups
+
+These were usually done by taking two Gistic outputs, horizontal flipping
+one and manually flipping or adding back the axis labels.
+
+You could also generate your own plots by using the scores.gistic file in
+the output.
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:182] GSEA job errors
+
+Thank you, this fixed my problem!
+
+
+ --------------
+
+Subject: Re: RANK normalization
+
+Hello, 
+
+I would suggest reviewing the section in the documentation titled: 
+Adjusting the Dataset Before Ranking
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/RankNormalize/2
+
+
+
+
+ --------------
+
+Subject: Re: GSEA // ssGSEA // combat
+
+Hello,
+
+Data should always be properly normalized for between-sample comparisons 
+before running GSEA, batch correction via tools like combat is should 
+definitely be performed if you suspect that there may be batch effects in 
+your data.
+We can't really speak to the specifics of your underlying dataset, if the 
+fold changes are around 1, that's just what your data is. 
+
+Without knowing more about what exactly you are using as input for 
+GSEA/ssGSEA I can't really say if the results of that analysis are "sold" 
+or not, but assuming you've followed all the recommended procedures for 
+data processing for GSEA (between sample normalization - normalized counts 
+- for standard GSEA, or within-sample normalization - TPM - for ssGSEA, use 
+of the data for all genes not just DEGs, permutation type appropriate for 
+sample number - for standard GSEA, etc.), I don't see why it wouldn't be.
+
+
+
+ --------------
+
+Subject: Re: Parameters used in my previous Job 526322
+
+Hi,
+
+I have emailed the parameters to the email associated with the GenePattern 
+account that ran this job.
+
+Hope this helps,
+
+
+p.s. When you download jobs results, if you either download the entire job 
+(as a zip) or individually download the gp_execution_log.txt file, that 
+file contains all your parameters, execution times, etc
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2123] Re: Docker Error
+
+Thanks for getting back to me. I tried again the next day (the same job)
+and it worked. The failure happened on several jobs, for example 381977
+<https://cloud.genepattern.org/gp/pages/index.jsf?jobResults=userId%3Dizzyca#>
+.
+
+
+
+
+ --------------
+
+Subject: Re: Why lesion file contains redundant regions not included in
+ segmentation file
+
+
+I've just released the latest version of GISTIC in beta on the public 
+GenePattern server. 
+
+Please try your analysis again, and see if the same issues exist for you.
+
+
+
+ --------------
+
+Subject: Re: GenePattern cloud error
+
+Hello, 
+
+My sincere apologies for taking so long to respond. 
+
+A new version of MutSigCV has been installed which addresses this issue.
+
+Please let us know if you have any other questions or comments.
+
+
+
+
+
+
+ --------------
+
+Subject: Re: GISTIC2.0 error
+
+, thank you so much for your quick response!! That fixed it, I am able 
+to successfully complete jobs now!
+
+
+
+
+
+ --------------
+
+Subject: Error when using custom gene set
+
+Hello, 
+I have been trying to run a ssGSEA analysis using a custom gene set (Job 
+#335430
+) but I keep getting and error I am really not familiar with. 
+
+Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+Calls: ssGSEA.cmdline
+Execution halted
+
+When I use the the same input gct file with a a reference gene set from 
+MsigDB the analysis works correctly. I think I formatted my custom 
+reference gene set correctly.
+
+Any help would be really appreciated! 
+
+
+ --------------
+
+Subject: Re: Problem with Cufflinks/CuffDIff
+
+Hi,
+
+I don't have an answer for you. I am seeing the same error on the GP@IU 
+server with one of my test data sets. I'll pass this along to the GP Team 
+and get back to you when we have a better understanding of the problem.
+
+ --------------
+
+Subject: Re: [gp-team] how to email genepatterns public help formum?
+
+Hi
+
+This is a google group so you need to use the web page to post to the
+forum.  I don't think that you can do it just via email.
+
+The page is at https://groups.google.com/forum/#!forum/genepattern-help
+
+Hope this helps
+
+
+ --------------
+
+Subject: Re: PCA viewer problems in IE
+
+Hi,
+
+I am in a similar situation. I downloaded the Visualizer Launcher and 
+followed the instruction to enter my GenePattern ID and password followed 
+by the Job ID. However, there was only a brief 'flash' of PCAViewer on the 
+status bar and then the app quits.
+
+I realised that you mentioned in your post that PCA Viewer require Java 3D. 
+I am on Mac OS X 10.10.5 and how do I install Java 3D as required?
+
+
+ --------------
+
+Subject: Re: [genepattern-help:1505] SQL server
+
+
+
+it is possible to use your favorite database tools to talk to the
+Genepattern database like any other.  If you are administrator you can get
+the database connection details from the configuration files.
+
+For quick checks into the DB there is a page available only to
+administrators at */gp/sql.jsp which will let you execute SQL against the
+database.  It is pretty limited but useful for small/simple queries that
+don't involve blobs/clobs or other complex data types.
+
+
+
+ --------------
+
+Subject: Re: Subscripted assignment dimension mismatch.
+
+Hi,
+
+I took a quick look but am not familiar enough with MutSigCV to be able to 
+help with this.  I suggest you contact the authors of the method at mutsig-help@broadinstitute.org 
+and ask them.
+
+Hope this helps,
+
+
+ --------------
+
+Subject: RE: [genepattern-help:2697] difficulties running ssGSEA
+
+
+--></style></head><body lang=EN-US link=blue vlink="#954F72" style='word-wrap:break-word'><div class=WordSection1><p class=MsoNormal>Hi Vijay,<br><br>The issue might be with the quotes and commas in the gene set names in your file, I’d recommend removing those and trying again</p><p class=MsoNormal><o:p>&nbsp;</o:p></p><p class=MsoNormal>-Anthony<o:p></o:p></p><p class=MsoNormal><o:p>&nbsp;</o:p></p><p class=MsoNormal>Anthony S. Castanza, PhD<o:p></o:p></p><p class=MsoNormal>Curator, Molecular Signatures Database<o:p></o:p></p><p class=MsoNormal>Mesirov Lab, Department of Medicine<o:p></o:p></p><p class=MsoNormal>University of California, San Diego<o:p></o:p></p><p class=MsoNormal><o:p>&nbsp;</o:p></p><div style='mso-element:para-border-div;border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in 0in 0in'><p class=MsoNormal style='border:none;padding:0in'><b>From: </b><a href="mailto:vijayp2011@gmail.com">Vijay Putatunda</a><br><b>Sent: </b>Tuesday, May 23, 2023 2:48 PM<br><b>To: </b><a href="mailto:genepattern-help@googlegroups.com">GenePattern Help Forum</a><br><b>Subject: </b>[genepattern-help:2697] difficulties running ssGSEA</p></div><p class=MsoNormal><o:p>&nbsp;</o:p></p><p class=MsoNormal>hello,<o:p></o:p></p><div><p class=MsoNormal>I am trying to run ssGSEA, but am encountering the following error:<o:p></o:p></p></div><div><p class=MsoNormal><span style='color:black'>Error in vector(length = gene.set.size, mode = &quot;character&quot;) : invalid 'length' argument Calls: ssGSEA.cmdline Execution halted</span></p></div><div><p class=MsoNormal><o:p>&nbsp;</o:p></p></div><div><p class=MsoNormal><span style='color:black'>I know my gct file works because I was able to run the GSEA hallmark gene set. I am not sure what is wrong with my gmt file (attached). Could you please advise?
+
+
+ --------------
+
+Subject: Re: GSEA preranked error message.
+
+Hi,
+
+Your RNK file contains several genes with an associated metric value of 
+"#NAME?" which looks like it's probably an error stemming from Excel 
+conversion or something similar.  The error message is saying that GSEA 
+Preranked is unable to convert these.
+
+It might be worthwhile to go back to your original data to see if these 
+have strange values.  You can just filter these out of the file.
+
+It's a fairly common for Excel to automatically alter cells where it thinks 
+the value looks like some other data type (turning them into dates, for 
+example).  It's best to be *very* careful when manipulating scientific data 
+in Excel.
+
+ --------------
+
+Subject: Re: [genepattern-help:1594] Re: Name color in heatmapimage module
+
+Hi,
+    Thanks. Yes I am aware of the documentation. As you pointed out it has
+only a color palette option not the colors for annotation of columns. I was
+wondering if there is any way you can specify that in the module.
+Thanks,
+
+
+
+
+ --------------
+
+Subject: Re: Is the Modules repository down?
+
+Hello, 
+
+Thank you for bringing that to our attention. I've restarted the server and 
+that page should be correctly populated now.
+
+Please let us know if you notice any other irregularities.
+
+
+
+
+
+ --------------
+
+Subject: Re: DESEQ2 down_genes_report contains ID two times where
+ up_genes_report not
+
+Hello
+Yes, it does look like there is a bug there - thanks for catching that!
+
+I'll pass this along to the module author and we'll see about getting this 
+fixed.
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2183] Issue with custom color palette in
+ HierarchicalClusteringImage module
+
+Ahh, so simple!  Thank you!!
+
+ --------------
+
+Subject: Re: PreprocessReadCounts module not available
+
+Hi, 
+
+The module is still there, it has just been renamed more accurately to 
+VoomNormalize. I will see that this is added to the description so that it 
+shows up when you search for PreprocessReadCounts.
+
+Thank you for contacting us!
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:3184] Mutect2
+
+Hi,
+
+We're currently reviewing the available mutation detection tools, including
+Mutect2, for inclusion in GenePattern. For now, if you are interested in
+using Mutect2, it is available in Galaxy.
+
+ --------------
+
+Subject: Re: [gp-team] 502 bad gateway error
+
+The server is available again now.  PLease let us know if you have any 
+further problems
+
+
+
+
+
+ --------------
+
+Subject: GSEA with NanoString data
+
+Hello, 
+
+I have been reading your blog with interest and came across a problem, 
+which I still cannot solve yet. We have performed a nanostring analysis in 
+T cells from two groups of tumor patients looking on around 600 genes. Now 
+we are wondering if it is valid to perform a pathway analysis within this 
+gene set using GSEA.
+
+As I have understood so far, GSEA was initially designed for the analysis 
+of microarray and mRNA seq data, where the gene sets are much bigger than 
+in a nanstring analysis. Now in one of your comments, you posted that the 
+gene set used by nanostring analysis is too small and therefore using GSEA 
+is not valid in this case. However, another comment stated, that when 
+adjusting the reference gene list to your used gene list, it would be 
+possible to perform GSEA. To further explain our data, we are comparing two 
+patient groups with each other and have a healthy donor control, for all 
+groups the same gene set was analysed, we have calculated the t-statistics/ 
+log-fold change with the Software nanostring provided. Furthermore we were 
+wondering whether it would be an additional benefit to rather use a 
+preranked gene list for the analysis.
+
+Many thanks for your help in advance!
+
+
+ --------------
+
+Subject: Re: [genepattern-help:3155] ExpressionFileCreator Error
+
+Hi,
+
+Can you describe the problems you are having? Also, if you were using the
+public GenePattern server, can you provide the ID of the
+ExpressionFileCreator job that's producing the problem?
+
+ --------------
+
+Subject: Inconsistent results with GSEA
+
+Hi. I am writing because I found a slightly inconsistent reporting of the 
+results in two GSEA runs I made through the GENEPATTERN suite 
+(https://cloud.genepattern.org/).
+
+The first run was done on November 6, 2019 using the MsigDB 7.0
+The second run was done today using the MsigDB v7.1.
+
+In the enclosed two png files where you can see that the reported figures 
+of ES, NES, etc., are slightly different. I was wondering if this lack of 
+reproducibility is due do the fact that I did something different, besided 
+using two different MSigDB versions. I apologize in advance if I am missing 
+something big here.
+
+I enclose also the rpt files of both runs.  
+
+Thanks in advance.
+
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2395] how to generate GSEA plots with ssGSEA?
+
+Hi,
+
+Unfortunately the ssGSEA module does not produce an analogue of the
+traditional GSEA mountain plot and there isn't a way to get it to do so.
+The standard presentation of ssGSEA results generally seem to be a
+heatmap/clustered heatmap of some sort.
+
+Sorry we couldn't be of more help here
+
+
+
+
+ --------------
+
+Subject: MergeHTseq
+
+Hi, 
+
+I ran HTseq count from my samples and now I would like to merge them in 1 
+file but it doesn't work.
+I put the screenshot of the failed jobs.
+
+Thanks for your help
+
+ --------------
+
+Subject: Re: Gistic error (multiple) source?
+
+Hi,
+
+I actually believe I may have resolved the error. I believe it was caused 
+by creating from .seg files from my cnvkit *.call.cns files rather than the 
+*.cns files themselves. I re-ran the new .seg files and no errors occurred. 
+I appreciate your response though!
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2640] Deletion and amplification q plots axis
+
+One more thing.   If you want to use a lower q-value cutoff, this is an
+adjustable parameter in additional settings.
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:54] Re: Qualimap bamqc custom module fails with
+ X11 errors
+
+This Qualimap doc lists java and R/3.1 as requirements. My first guess: 
+you need to configure the R environment for your GP server.
+I suggest adding some debugging statements to your wrapper script.
+   which Rscript
+   Rscript --version
+   # to compare your local to your GP server runtime environment
+   env | sort
+
+FYI, once this is working ... you don't necessarily need to run a 
+wrapper to set a java flag. This module command line will have the same 
+effect:
+    commandLine=<java> -Djava.awt.headless ...
+
+
+
+ --------------
+
+The problem is simply that your job exceeded the default 2-hour time limit
+for the job.  Try increasing the runtime in the job options section below
+the gistic parameters.
+ --------------
+
+Subject: Re: SLAMS
+
+Hello, 
+
+Unfortunately, we do not have a specific module for SLAMS. 
+
+It appears that SAM has been archived 
+here: https://statweb.stanford.edu/~tibs/SAM/
+
+And you might find the procedure described in this GenomeSpace recipe 
+<http://www.genomespace.org/support/guides/recipes/sections/identify-copy-number-variation-associated-expression-signatures-using-stepwise-linkage-analysis-of-microarray-signatures> 
+helpful. Note, however, that the Genomespace project has ended and this 
+recipe can therefore only serve as an archival reference.
+
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:2723] Gistic public server doesn't work
+
+Dear,
+
+Many thanks for your response. I tried today and it is working again. But I 
+had problem the whole yesterday to run and I was getting the notification 
+that the job aborted after 5 seconds of running. 
+Now everything seems fine. Many thanks!
+
+Regards,
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:1746] ssGSEA Nanostring input expression data
+
+
+Thanks for the kind reply again. I hear your points. Very valid.
+
+In my project as the 800 genes in the targeted panel are selected
+immune-related genes, I am using MSigDB C7 immunologic signature which has
+4800 gene sets. After setting a minimal 3 overlapping genes (from my input
+data) in each gene set, there are still 3800 genes available for analysis.
+So hopefully this would be less of a concern, but your points are very well
+taken. I will make sure to fully disclose the limitation in the publication.
+
+
+ --------------
+
+Subject: Re: Parallel CBS error
+
+Thanks. Let me know whenever you update PCBS compatibility for v3 
+of CBS.
+
+
+
+ --------------
+
+Subject: Re: GEOImporter module output file log2 transformed or not
+
+Hello Scorpio,
+
+You would have to check the source data.
+
+If it is not log transformed, you can use PreprocessDataset to do so, or 
+simply indicate the state in ComparativeMarkerSelection.
+
+
+
+
+ --------------
+
+Subject: Re: [gp-team] 502 Bad Gateway
+
+Hello,
+
+Yes, we are experiencing an unplanned outage. I have just post to social
+media (thank you for the reminder - I was busy debugging). We are actively
+working to get the server back up ASAP. I will post again in the forum
+<https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!forum/genepattern-help>
+and
+on Twitter <https://twitter.com/GenePattern> and Facebook
+<https://www.facebook.com/GenePattern-159999027359395/>, as soon as I have
+more information.
+
+Apologies
+
+
+
+ --------------
+
+Subject: Re: What to do after downloaing visualizer
+
+Hello,
+
+I'm afraid I'm not entirely sure what you are trying to do. Why did you 
+download the visualizer? and how did you download it? 
+
+Any other information you can provide to describe your goal would be much 
+appreciated.
+
+
+
+
+ --------------
+
+Subject: Re: Input format for ABSOLUTE using sequencing data
+
+Hi,
+
+Thank you so much for the prompt reply!
+
+I've read the website you mentioned as well, and it says without using 
+HAPSEG, I can also supply a tab delimited segmentation file to ABSOLUTE as 
+input. It's necessary for me because I'm testing my tool for segmentation 
+as well. Now I'm still confused about what  "*Num_Probes*" and "
+*Segment_Mean*" should be for sequencing data. I would be really appreciate 
+for your answer!
+
+
+ --------------
+
+Subject: Re: GSEA analysis
+
+Hello Giovanni, 
+
+I would suggest posting this request in the GSEA forum 
+<https://groups.google.com/forum/#!forum/gsea-help>, as you will get 
+insight there from the GSEA developers and community.
+
+All the best
+-Barbara
+
+
+
+
+
+ --------------
+
+Subject: Re: [genepattern-help:1100] Re: Help running ABSOLUTE in GenePattern
+
+Thanks for getting back to me,
+
+No worries about the delay, I can see the GenePattern users keep you guys
+pretty busy. I have actually managed to get ABSOLUTE running pretty well.
+
+I will look forward to a future release of newer version, but have what I
+need for now!
+
+
+
+ --------------
+
+Subject: Re: running MUTSIG
+
+Hello, 
+
+How are you searching for this file?
+
+If you click on "Add Path or URL" for the coverage file parameter, you 
+should see a pop up like this, where you can navigate to the file.
+
+If you are running on our AWS server, cloud.genepattern.org, you will need 
+to provide this 
+url instead: ftp://gpftp.broadinstitute.org/module_support_files/MutSigCV_1.4/exome_full192.coverage.txt
+
+
+
+
+
+ --------------
+
+Subject: Re: HeatMapImage color scale legend
+
+Hello, 
+
+Unfortunately, there is no legend output available for this module, and as 
+it is a legacy module, we will not be adding that feature.
+
+All current and future development for the viewing of heatmaps is and will 
+be in the HeatMapViewer module. 
+
+As for row max/min vs global - this can be set in the HeatMapImage module.
+
+
+
+
+ --------------
+
+Subject: Re: Trouble with Differential Expression tutorial
+
+Hello, 
+
+Thank you for drawing our attention to this out-of-date documentation.
+
+The ComparativeMarkerSelectionViewer has been rewritten in JavaScript to 
+avoid exactly the sorts of Java errors mentioned in the current version of 
+the tutorial.In fact, since that was written, Java applets have been 
+discontinued in browsers.
+
+To that end, the viewer now displays in the browser window, as you noted. 
+As it is also new code, it no longer supports ftp or .res files.
+
+To continue with the tutorial you can use this 
+link https://software.broadinstitute.org/cancer/software/genepattern/data/all_aml/all_aml_train.gct.
+
+I've added a ticket for this tutorial to be updated. Our apologies for the 
+confusion.
+
+
+
+
+
+ --------------
+
+Subject: GISTIC error: Cell contents reference from a non-cell array object
+
+Hello,
+
+I am trying to run GISTIC 2.0 with my segmentation and marker files (Job ID 1666689) 
+and the program issues this error:
+
+*{ ??? Cell contents reference from a non-cell array object.*
+
+*Error in ==> gene_score_permutations at 114*
+
+*Error in ==> compute_stats at 83*
+
+*Error in ==> run_focal_gistic at 206*
+
+*Error in ==> run_gistic20 at 127*
+
+*Error in ==> run_gistic2_from_seg at 225*
+
+*Error in ==> gp_gistic2_from_seg at 97*
+
+*}  *
+**
+*Cell contents reference from a non-cell array object.*
+*MATLAB:cellRefFromNonCell*
+
+
+The 'stdout.txt' file contains the following:
+
+*GISTIC version 2.0.22*
+*Conv:.*
+*Conv:.*
+*Warning: No display specified.  You will not be able to display graphics 
+on the screen.*
+
+Do you know what could be the reason for the error?
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and 
+what went wrong):
+
+Job ID if run on a publicly available server.
+
+If not on Public Server, please share your input files, if possible. If you 
+need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup 
+dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum 
+or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the 
+upper right hand corner of the module input page or here: 
+http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - 
+http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - 
+http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - 
+http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - 
+http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide -  
+<https://groups.google.com/a/broadinstitute.org/forum/goog_853188425>
+http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - 
+http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+
+ --------------
+
+Subject: Re: Does GISTIC look for genes or cytobands?
+
+
+My apologies for this late reply and that the GenePattern team is unable to 
+answer this question - it is unfortunately outside our area of expertise.
+
+I would suggest posting in the GISTIC forum which is monitored by the 
+authors and community at large.
+
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+All the best
+
+
+
+ --------------

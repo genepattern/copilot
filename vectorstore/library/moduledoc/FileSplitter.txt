@@ -1,0 +1,49 @@
+FileSplitter is on version 1.
+A description of FileSplitter is Splits the lines in a text file into multiple files. Takes a text file as input and splits the lines of the input file into the desired number of output files..
+FileSplitter is a GenePattern module written by Peter Carr, gp-help@broadinstitute.org.
+FileSplitter can be categorized as Preprocess & Utilities.
+FileSplitter has the following parameters: inputFile, numFiles, numLines.
+The FileSplitter GenePattern module allows researchers to divide large text files into smaller, more manageable chunks for computational processing.
+The FileSplitter module is useful for breaking down large genomic datasets that are too large to process in a single computational run.
+Bioinformaticians can use the FileSplitter module to prepare input files for parallel computing workflows, distributing computational load across multiple processors or machines.
+The FileSplitter module supports two primary splitting strategies: splitting by total number of output files or by maximum lines per output file.
+When splitting files by number of files, the FileSplitter module will attempt to create roughly equal-sized chunks of data across the specified number of output files.
+The FileSplitter module generates output files with a consistent naming convention, appending a numerical index to the original filename to distinguish between split segments.
+Researchers working with large sequencing datasets like RNA-seq or whole genome sequencing can use the FileSplitter module to prepare data for downstream analysis tools.
+The FileSplitter module is platform-independent, running on any operating system with a Java runtime environment, making it highly versatile for different computational infrastructures.
+Computational biologists can leverage the FileSplitter module to manage memory constraints by breaking large files into smaller, more memory-efficient chunks.
+The FileSplitter module provides flexibility in file splitting, allowing users to specify either the total number of output files or the maximum number of lines per output file.
+inputFile: String, required parameter for FileSplitter module that specifies the text file to be split into multiple output files.
+numFiles: Integer, optional parameter for FileSplitter module that defines the maximum number of output files to create, must be >= 1.
+numLines: Integer, optional parameter for FileSplitter module that sets the maximum number of lines per output file, must be >= 1, can be overridden by file size division.
+FileSplitter module takes a single input text file and divides its contents across multiple output files.
+Output files are named with the original input file's base name and a numerical suffix.
+Output files are generated in numerical order, starting from file index 0.
+FileSplitter module works across different CPU types and operating systems.
+FileSplitter module is classified as a preprocessing and utility module.
+FileSplitter module is implemented in Java programming language.
+Module supports flexible file splitting strategies using numFiles and numLines parameters.
+Module allows users to control output file count and line distribution.
+Module generates predictably named output files based on input file characteristics.
+Here are the input and output file descriptions for the FileSplitter module:
+FileSplitter input file is a text file containing lines of data to be split.
+FileSplitter input file can be any plain text file with multiple lines of content.
+FileSplitter input file format is a standard text file with no specific structural requirements.
+FileSplitter numFiles parameter determines the maximum number of output files to create.
+FileSplitter numLines parameter specifies the maximum number of lines per output file.
+FileSplitter output files are named with the input file's base name and a numerical suffix.
+FileSplitter output files are text files containing chunks of lines from the original input file.
+FileSplitter output files are generated in numerical order, starting from 0.
+FileSplitter output files preserve the original line order from the input file.
+FileSplitter output files will have an equal or near-equal number of lines based on the input parameters.
+The FileSplitter module is a utility tool for dividing large text files into multiple smaller files.
+The FileSplitter module allows users to split a single input text file into multiple output files based on specified parameters.
+The FileSplitter module can split files by specifying either the maximum number of output files or the maximum number of lines per output file.
+The FileSplitter module generates output files with a naming convention of <inputFile.base_name>_<file#>.txt, where file# starts from 0.
+The FileSplitter module is platform-independent, running on any CPU and operating system using Java.
+The input file parameter requires a text file as the source for splitting.
+The numFiles parameter determines the maximum number of output files to create, which must be an integer greater than or equal to 1.
+The numLines parameter specifies the maximum number of lines allowed in each output file, also requiring an integer value greater than or equal to 1.
+When both numFiles and numLines are set, the FileSplitter module will prioritize the maximum number of files.
+The FileSplitter module is classified as a preprocessing and utility tool in the GenePattern module ecosystem.
+The initial version of the FileSplitter module was released on November 7, 2012.

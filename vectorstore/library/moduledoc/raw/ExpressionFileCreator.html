@@ -1,0 +1,298 @@
+<div class="gp-content-header fluid">
+<div class="container">
+<h1>ExpressionFileCreator (v13) <small class="text-danger">BETA</small> <a class="btn btn-sm btn-info print-tip" href="/modules/docs/ExpressionFileCreator/13?print=yes" title="Toggle Print View"><span class="glyphicon glyphicon-print"></span></a></h1>
+</div>
+</div><div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="bs-callout bs-callout-danger">
+<h4>This module is currently in beta release.  The module and/or documentation may be incomplete.</h4>
+</div>
+<p style="font-size: 1.2em; margin-top: 20px;">Creates a RES or GCT file from a set of Affymetrix CEL files.  For IVT arrays only; use AffySTExpressionFileCreator for ST arrays.</p>
+<div class="row">
+<div class="col-sm-4">
+<p><strong>Author: </strong>Joshua Gould, David Eby  Broad Institute</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Contact: </strong><p>gp-help@broadinstitute.org</p>
+</p>
+</div>
+<div class="col-sm-4">
+<p><strong>Algorithm Version: </strong></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Summary</h2>
+<div>The ExpressionFileCreator module creates a gene expression dataset from a ZIP archive containing individual Affymetrix CEL files. The conversion is done using one of  the following algorithms:</div>
+<ul>
+<li>the standard Affymetrix probe mAlgorithm <a href="http://www.biomedcentral.com/1471-2105/8/273">MAS5</a></li>
+<li>the <a href="http://biostatistics.oxfordjournals.org/content/4/2/249.long">RMA (Robust Multi-array Average) algorithm</a></li>
+<li>the <a href="http://www.chem.agilent.com/Library/technicaloverviews/Public/GCRMA_Probe_Summarization.pdf">GCRMA algorithm</a> (link to PDF)</li>
+<li>the <a href="https://sites.google.com/site/dchipsoft/">dChip algorithm</a></li>
+</ul>
+<div>The result is a matrix containing one intensity value per probe set, in the GCT or RES file format. Samples can be annotated by specifying a CLM file. A CLM file allows you to change the name of the samples in the expression matrix, reorder the columns, select a subset of the scans in the input ZIP file, and create a class label file in the CLS format. By default, sample names are taken from the CEL file names contained in the ZIP file. A CLM file allows you to specify the sample names explicitly. Additionally, the columns in the expression matrix are reordered so that they are in the same order as the scan names appear in the  CLM file. For example, the input  ZIP file contains the files scan1.cel, scan2.cel, and scan3.cel. The CLM file could contain the following text:</div>
+<div style="margin-left: 40px;">scan3     sample3    tumor</div>
+<div style="margin-left: 40px;">scan1     sample1    tumor</div>
+<div style="margin-left: 40px;">scan2     sample2    normal</div>
+<div>The column names in the expression matrix would be: sample3, sample1, sample2. Additionally, only scan names in the CLM file will be used to construct the GCT or RES file; scans not present in the CLM file will be ignored.</div>
+<div> </div>
+<div><strong>Note:</strong>  A number of newer Affymetrix array types are <strong>not current supported</strong> by ExpressionFileCreator, including the 1.1, 2.0, 2.1 ST arrays, Exon arrays, and HTA 2.0 arrays.  This is the case even if a CDF file is provided.  Please use the AffySTExpressionFileCreator module for these arrays instead.</div>
+<h2>References</h2>
+<p>Affymetrix. Affymetrix Microarray Suite User Guide, version 5. Santa Clara, CA:Affymetrix, 2001.</p>
+<div>Irizarry RA, Hobbs B, Collin F, Beazer-Barclay YD, Antonellis KJ, Scherf U, Speed TP. Exploration, normalization, and summaries of high density oligonucleotide array probe level data. Biostatistics. 2003;4:249-264.</div>
+<div> </div>
+<div>Li C, Wong WH. Model-based analysis of oligonucleotide arrays: expression index computation and outlier detection. Proc Natl Acad Sci USA. 2001;98:31-36.3</div>
+<div> </div>
+<div>Li C, Wong WH. Model-based analysis of oligonucleotide arrays: model validation, design issues and standard error application. Genome Biology. 2011;2:research0032-research0032.11.</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2>Parameters</h2>
+<table class="table table-striped" id="module_params_table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input file <span style="color:red;">*</span></td>
+<td>A zip file of CEL files</td>
+</tr>
+<tr>
+<td>method <span style="color:red;">*</span></td>
+<td>The method to use. Note that dchip and MAS5 will not work with ST arrays.</td>
+</tr>
+<tr>
+<td>quantile normalization </td>
+<td>(GCRMA and RMA only) Whether to normalize data using quantile normalization</td>
+</tr>
+<tr>
+<td>background correct </td>
+<td>(RMA only) Whether to background correct using RMA background correction</td>
+</tr>
+<tr>
+<td>compute present absent calls </td>
+<td>Whether to compute Present/Absent calls</td>
+</tr>
+<tr>
+<td>normalization method </td>
+<td>(MAS5 only) The normalization method to apply after expression values are computed. The column having the median of the means is used as the reference unless the parameter value to scale to is given.</td>
+</tr>
+<tr>
+<td>value to scale to </td>
+<td>(median/mean scaling only) The value to scale to.</td>
+</tr>
+<tr>
+<td>clm file </td>
+<td>A tab-delimited text file containing one scan, sample, and class per line</td>
+</tr>
+<tr>
+<td>annotate probes <span style="color:red;">*</span></td>
+<td>Whether to annotate probes with the gene symbol and description</td>
+</tr>
+<tr>
+<td>cdf file </td>
+<td>Custom CDF file. Leave blank to use default internally provided CDF file (custom cdf file is not implemented for GCRMA).</td>
+</tr>
+<tr>
+<td>output file <span style="color:red;">*</span></td>
+<td>The base name of the output file(s)</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red;">*</span> - required</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Input Files</h2>
+<ol>
+<li>input.file<br/>
+	A ZIP bundle containing the CEL files to be analyzed.  Note that this ZIP must be flat, containing no subdirectories, and should also contain no files other than CEL files (including 'dot' files on UNIX/Mac).  Special characters (especially spaces) in the file names of both the ZIP bundle and its contents may cause problems.  We recommend replacing these with underscores instead.  See this <a href="http://www.broadinstitute.org/cancer/software/genepattern/FAQ#zipFails">FAQ entry</a> for more information.</li>
+<li>clm.file<br/>
+	An optional <a href="http://www.broadinstitute.org/cancer/software/genepattern/file-formats-guide#CLM">CLM file</a> to describe samples (name and phenotype class) and their mapping to CEL files.</li>
+<li>cdf.file<br/>
+	An alternate CDF file to use for the analysis.  This is optional.</li>
+</ol>
+<h2>Output Files</h2>
+<ol>
+<li>
+<div>GCT file (if present/absent calls are NOT computed) or RES file (if present/absent </div>
+<div>calls ARE computed)</div>
+</li>
+<li>
+<div>CLS file (if a CLM file is supplied)</div>
+</li>
+</ol>
+<h2>Requirements</h2>
+<div>ExpressionFileCreator requires R 2.15.3 with the following packages, each of which will automatically download and install when the module is installed:</div>
+<div>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+<tbody>
+<tr>
+<td>boot_1.3-7</td>
+<td>IRanges_1.16.2</td>
+<td>spatial_7.3-5</td>
+</tr>
+<tr>
+<td>class_7.3-5</td>
+<td>Biobase_2.18.0</td>
+<td>BiocGenerics_0.4.0</td>
+</tr>
+<tr>
+<td>cluster_1.14.3</td>
+<td>AnnotationDbi_1.20.1</td>
+<td>affyio_1.26.0</td>
+</tr>
+<tr>
+<td>foreign_0.8-51</td>
+<td>zlibbioc_1.4.0</td>
+<td>preprocessCore_1.20.0</td>
+</tr>
+<tr>
+<td>KernSmooth_2.23-8</td>
+<td>Matrix_1.0-9</td>
+<td>affy_1.36.0</td>
+</tr>
+<tr>
+<td>lattice_0.20-10</td>
+<td>mgcv_1.7-21</td>
+<td>Biostrings_2.26.2</td>
+</tr>
+<tr>
+<td>MASS_7.3-22</td>
+<td>nlme_3.1-105</td>
+<td>gcrma_2.30.0</td>
+</tr>
+<tr>
+<td>DBI_0.2-5</td>
+<td>nnet_7.3-5</td>
+<td>makecdfenv_1.36.0</td>
+</tr>
+<tr>
+<td>RSQLite_0.11.2</td>
+<td>rpart_3.1-55</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div> </div>
+<div><span class="im">Please install R2.15.3 instead of R2.15.2 before installing the module. </span><span class="im">The GenePattern team has confirmed test data reproducibility for this module using R2.15.3 compared to R2.15.2 and can only provide limited support for other versions. The GenePattern team recommends R2.15.3, which fixes significant bugs in R2.15.2, and which must be installed and configured independently as discussed in <a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-different-versions-of-r" style="background-image: none; background-attachment: scroll; background-color: rgb(255, 255, 255); background-position: 0% 0%; background-repeat: repeat;" target="_blank"><em>Using Different Versions of R</em></a> and <em><a href="http://www.broadinstitute.org/cancer/software/genepattern/administrators-guide#using-the-r-installer-plug-in" style="background-image: none; background-attachment: scroll; background-position: 0% 0%; background-repeat: repeat;" target="_blank">Using the R Installer Plug-in</a></em>. These sections also provide patch level fixes that are necessary when additional installations of R are made and considerations for those who use R outside of GenePattern.</span></div>
+<div>
+<h2>Notes</h2>
+<ul>
+<li>The MAS5 and dChip algorithms are based on their Bioconductor implementations. Therefore the results obtained from these algorithms will differ slightly from their official implementations.</li>
+<li>The GCRMA and RMA algorithms produce values that are in log2 but ExpressionFileCreator removes the log2 transformation before generating the result file.</li>
+<li>ST 1.1+ and ST exon arrays are not currently supported.  Please use AffySTExpressionFileCreator instead.</li>
+<li>The underlying Affymetrix R package used by ExpressionFileCreator v12 fixes a bug in the dChip algorithm implementation.  Unfortunately, this means that dChip expression files created with previous versions are not directly comparable with newly created dChip files.  It is our strong recommendation that you discard older dChip results and re-create the expression files with the new version.</li>
+</ul>
+<h2>Arrays Supported:</h2>
+<div>For a list of arrays supported by R2.15 please see<a href="http://http://bioconductor.org/packages/2.10/data/annotation/" target="_blank"> http://bioconductor.org/packages/2.10/data/annotation/</a></div>
+<div>Alternatively, you can provide a CDF file with your job to process other array types.</div>
+</div>
+<div>
+<h2>Common Errors</h2>
+<div>Check the GenePattern FAQ regarding errors you may encounter:  <a href="http://www.broadinstitute.org/cancer/software/genepattern/doc/faq" target="_blank">http://www.broadinstitute.org/cancer/software/genepattern/doc/faq</a></div>
+</div>
+<p> </p>
+</div>
+</div>
+<h2>Platform Dependencies</h2>
+<div class="row">
+<div class="col-md-3">
+<p><strong>Task Type:</strong><br/>
+					Preprocess &amp; Utilities</p>
+</div>
+<div class="col-md-3">
+<p><strong>CPU Type:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Operating System:</strong><br/>
+					any</p>
+</div>
+<div class="col-md-3">
+<p><strong>Language:</strong><br/>
+					R 2.15</p>
+</div>
+</div>
+<h2>Version Comments</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12.3</td>
+<td>2016-02-02</td>
+<td>Updated to make use of the R package installer. Fixes a bug in failing to remove downloaded annotation files.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2013-10-31</td>
+<td>Updated to R 2.15</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2013-02-14</td>
+<td>Updated to include Affy Annotation CSVs from Feb 2012 </td>
+</tr>
+<tr>
+<td>10</td>
+<td>2012-04-06</td>
+<td>updated to use new csv, removed tiger versions, renamed leopard version, removed extraneous R scripts, edited to point to correct packages, updated Affyio package to one that's build for R2.8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2012-01-26</td>
+<td> Fixed memory corruption bug when reading some CDF files and with annotating probes when some annotations are missing</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2008-10-29</td>
+<td>Read latest Affymetrix CEL file format</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2008-09-10</td>
+<td>Added option to provide custom CDF file</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2008-02-19</td>
+<td> Added option to provide custom CDF file and Updated for R 2.5.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2006-11-13</td>
+<td>Fixes scaling bug</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2006-07-20</td>
+<td>Added gcRMA and dChip algorithms</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2006-06-19</td>
+<td>Added gcRMA and dChip algorithms</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2005-09-16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
