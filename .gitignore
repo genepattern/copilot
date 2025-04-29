@@ -23,6 +23,7 @@ chatbot/migrations/
 vectorstore/chroma/*
 gcp.json
 .ipynb_checkpoints/
+scratch/
 
 
 # OS or Editor-specific files
