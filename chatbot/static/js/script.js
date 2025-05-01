@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load LLM models
     async function loadModels(default_model = 'us.meta.llama3-3-70b-instruct-v1:0') {
-        const models = await fetch(`/api/llm-models/`, {
+        const models = await fetch(`/api/models/`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         }).then(r => r.json());

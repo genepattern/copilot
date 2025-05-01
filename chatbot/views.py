@@ -13,6 +13,19 @@ from .serializers import (
 from .services import handle_chat_message
 
 
+class ModelsAPIView(views.APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        """
+        API endpoint to retrieve the list of available models.
+        GET: List all available LLM models.
+        """
+        models = LlmModel.objects.all()
+        serializer = LlmModelSerializer(models, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class ChatAPIView(views.APIView):
     """
     API endpoint for handling chat interactions.
