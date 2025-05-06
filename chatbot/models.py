@@ -19,7 +19,7 @@ class SystemPrompt(models.Model):
     """Which system prompt was used along with a query"""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    name = models.CharField(max_length=100, unique=True, help_text="Human-friendly identifier for the prompt")
+    name = models.CharField(max_length=100, help_text="Human-friendly identifier for the prompt")
     version = models.FloatField(default=1)
     prompt = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
