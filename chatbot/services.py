@@ -52,6 +52,7 @@ class ConversationState(MessagesState):
     conversation_id: str
     model_id: str
     prompt: str
+    raw_query: str
     query: str
     context: List
     answer: str
@@ -102,16 +103,49 @@ def answer_question(state: ConversationState):
     return { "messages": response, "answer": response.content }
 
 
+def summarize_question(state: ConversationState, llm_summarization=True):
+    """Summarize the question asked by the user"""
+
+    # Check if LLM summarization is enabled
+    if not llm_summarization: return { "query": state["raw_query"] }
+
+    model_id = state["model_id"]
+    if model_id not in instance().llms:
+        raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
+
+    started_at = datetime.now()
+    system_prompt = SystemPrompt.objects.get(name="Summarize Question", version=1.0)
+    system = SystemMessage(content=(system_prompt.prompt + '\n\n'))
+    full_prompt = [system] + [HumanMessage(content=(state["raw_query"]))]
+    response = instance().llms[model_id].invoke(full_prompt)
+    state["query"] = response.content
+    ended_at = datetime.now()
+
+    state["steps"].append({
+        'llm_model': state["model_id"],
+        'system_prompt': system_prompt.prompt,
+        'call_id': 'summarize_question',
+        'step_input': state["raw_query"],
+        'step_output': response.content,
+        'started_at': started_at,
+        'ended_at': ended_at,
+    })
+
+    return { "query": response.content }
+
+
 def build_langgraph():
     """Build and compile the LangGraph for handling conversations"""
     workflow = StateGraph(ConversationState)
 
     # Add nodes
+    workflow.add_node("summarize_question", summarize_question)
     workflow.add_node("retrieve_documents", retrieve_documents)
     workflow.add_node("answer_question", answer_question)
 
     # Define edges
-    workflow.add_edge(START, "retrieve_documents")
+    workflow.add_edge(START, "summarize_question")
+    workflow.add_edge("summarize_question", "retrieve_documents")
     workflow.add_edge("retrieve_documents", "answer_question")
     workflow.add_edge("answer_question", END)
 
@@ -166,7 +200,7 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, system
     if system_prompt_id:  # TODO: Handle requesting specific version or (id vs name)
         try: system_prompt = SystemPrompt.objects.filter(name=system_prompt_id).order_by('-version').first()
         except SystemPrompt.DoesNotExist: return None, "Requested system prompt not found"
-    else: system_prompt = SystemPrompt.objects.all().first()  # Default to first model  # TODO: Better default handling
+    else: system_prompt = SystemPrompt.objects.filter(name="General").order_by('-version').first()
 
     # Handle case where *no* system prompts are found
     if not system_prompt: return None, "No suitable model found or configured."
@@ -176,7 +210,8 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, system
         conversation_id=conversation.id,
         model_id=model_id,
         prompt=system_prompt.prompt,
-        query=user_query,
+        raw_query=user_query,
+        query="",
         steps=[],
         messages=[],
         context=[],
