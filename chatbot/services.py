@@ -1,12 +1,21 @@
+import asyncio
 from datetime import datetime
+
+from asgiref.sync import async_to_sync
 from dotenv import load_dotenv
 from django.conf import settings
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_mcp_adapters.client import MultiServerMCPClient
+from langchain_mcp_adapters.tools import load_mcp_tools
 from langgraph.graph import START, StateGraph, END, MessagesState
 from typing import List
+
+from langgraph.prebuilt import ToolNode, tools_condition
+from mcp import StdioServerParameters, stdio_client, ClientSession
+
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 
 
@@ -24,7 +33,8 @@ class ServiceHelper:
             llms[model.model_id] = init_chat_model(model.model_id, model_provider=model.provider_id, temperature=0.1)
         return llms
 
-    def load_vector_store(self):
+    @staticmethod
+    def load_vector_store():
         """Load the vector store and embeddings"""
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         vector_store = Chroma(
@@ -34,10 +44,27 @@ class ServiceHelper:
         )
         return vector_store
 
+    @staticmethod
+    async def load_mcp_tools():
+        """Load the GenePattern MCP client"""
+        try:
+            mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
+            client = MultiServerMCPClient({
+                "genepattern": {
+                    "transport": "streamable_http",
+                    "url": mcp_url
+                },
+            })
+            return await client.get_tools(server_name="genepattern")
+        except Exception as e:
+            print(f"Could not connect to MCP server: {e}")
+            return []
+
     def __init__(self):
-        load_dotenv()                                   # Load environment variables (especially API keys)
-        self.llms = self.load_llms()                    # Initialize LLM models
-        self.vector_store = self.load_vector_store()    # Load vector store
+        load_dotenv()                                       # Load environment variables (especially API keys)
+        self.llms = self.load_llms()                        # Initialize LLM models
+        self.vector_store = self.load_vector_store()        # Initialize the vector store
+        self.tools = async_to_sync(self.load_mcp_tools)()   # Load MCP tools asynchronously
 
 
 def instance():
@@ -57,6 +84,38 @@ class ConversationState(MessagesState):
     context: List
     answer: str
     steps: List
+
+
+def genepattern_mcp(state: ConversationState):
+    started_at = datetime.now()
+    model_id = state["model_id"]
+    if model_id not in instance().llms:
+        raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
+
+    if len(state["messages"]) == 0: state["messages"] = [HumanMessage(content=state["raw_query"])]
+
+    print('---------------------------------------------------')
+    print(state)
+
+    response = instance().llms[model_id].bind_tools(instance().tools).invoke(state["messages"])
+
+    print(response)
+
+    state["messages"].append(response)
+    return {"messages": state["messages"]}
+
+    # docs = instance().vector_store.similarity_search(state["query"])
+    # ended_at = datetime.now()
+    # state["steps"].append({
+    #     'llm_model': state["model_id"],
+    #     'system_prompt': state["prompt"],
+    #     'call_id': 'genepattern_mcp',
+    #     'step_input': state["prompt"],
+    #     'step_output': "\n\n".join(doc.page_content for doc in docs),
+    #     'started_at': started_at,
+    #     'ended_at': ended_at,
+    # })
+    # return {"context": docs}
 
 
 def retrieve_documents(state: ConversationState):
@@ -134,8 +193,8 @@ def summarize_question(state: ConversationState, llm_summarization=True):
     return { "query": response.content }
 
 
-def build_langgraph():
-    """Build and compile the LangGraph for handling conversations"""
+def build_rag_graph():
+    """Build and compile the LangGraph for handling conversations with RAG"""
     workflow = StateGraph(ConversationState)
 
     # Add nodes
@@ -152,6 +211,32 @@ def build_langgraph():
     # Compile the graph
     app = workflow.compile()
     return app
+
+
+def build_mcp_graph():
+    """Build and compile the LangGraph for handling conversations with MCP"""
+    workflow = StateGraph(ConversationState)
+
+    # Add nodes
+    workflow.add_node("summarize_question", summarize_question)
+    workflow.add_node("genepattern_mcp", genepattern_mcp)
+    workflow.add_node(ToolNode(instance().tools))
+
+    # Define edges
+    workflow.add_edge(START, "genepattern_mcp")
+    workflow.add_conditional_edges("genepattern_mcp", tools_condition)
+    workflow.add_edge("tools", "genepattern_mcp")
+    workflow.add_edge("genepattern_mcp", END)
+
+    # Compile the graph
+    app = workflow.compile()
+    return app
+
+
+def build_langgraph(rag=False):
+    """Build and compile the LangGraph for handling conversations"""
+    if rag: return build_rag_graph()
+    else: return build_mcp_graph()
 
 
 # Compile graph once, when module loads
