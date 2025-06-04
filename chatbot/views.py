@@ -1,3 +1,5 @@
+from adrf.views import APIView as AsyncAPIView
+from asgiref.sync import sync_to_async
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, views, viewsets
@@ -26,16 +28,27 @@ class ModelsAPIView(views.APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class ChatAPIView(views.APIView):
+class ChatAPIView(AsyncAPIView):
     """
     API endpoint for handling chat interactions.
     POST: Send a new message (creates a conversation if needed).
     """
     permission_classes = [AllowAny]
 
-    def post(self, request, *args, **kwargs):
+    def validate_and_get_data(self, serializer):
+        if serializer.is_valid(): return serializer.validated_data
+        else: return None
+
+    @sync_to_async
+    def serialize_output(self, serializer): return serializer.data
+
+    @sync_to_async
+    def serialize_errors(self, serializer): return serializer.errors
+
+    async def post(self, request, *args, **kwargs):
         serializer = ChatInputSerializer(data=request.data)
-        if serializer.is_valid():
+        data = await sync_to_async(self.validate_and_get_data)(serializer)
+        if data:
             user = request.user
             conversation_id = serializer.validated_data.get('conversation_id')
             user_query = serializer.validated_data['query']
@@ -43,8 +56,8 @@ class ChatAPIView(views.APIView):
             html = serializer.validated_data.get('html')
 
             # Call the service layer to handle the logic
-            query_instance, error_message = handle_chat_message(user=user, conversation_id=conversation_id,
-                                                                user_query=user_query, model_id=model_id)
+            query_instance, error_message = await handle_chat_message(user=user, conversation_id=conversation_id,
+                                                                      user_query=user_query, model_id=model_id)
 
             # Check if there was an error in processing
             if error_message: return Response({ "error": error_message }, status=status.HTTP_400_BAD_REQUEST)
@@ -52,12 +65,14 @@ class ChatAPIView(views.APIView):
             # Return the newly created query object
             if query_instance:
                 output_serializer = QuerySerializer(query_instance, context={ 'request': request, 'html': html })
-                return Response(output_serializer.data, status=status.HTTP_201_CREATED)
+                data = await self.serialize_output(output_serializer)
+                return Response(data, status=status.HTTP_201_CREATED)
 
             # Should not happen if error_message is handled, but as a fallback
             else: return Response({"error": "Failed to process chat message."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        errors = await self.serialize_errors(serializer)
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ConversationDetailView(generics.RetrieveAPIView):

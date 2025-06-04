@@ -1,7 +1,5 @@
-import asyncio
 from datetime import datetime
-
-from asgiref.sync import async_to_sync
+from asgiref.sync import sync_to_async
 from dotenv import load_dotenv
 from django.conf import settings
 from langchain.chat_models import init_chat_model
@@ -9,13 +7,9 @@ from langchain_chroma import Chroma
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain_mcp_adapters.tools import load_mcp_tools
 from langgraph.graph import START, StateGraph, END, MessagesState
 from typing import List
-
 from langgraph.prebuilt import ToolNode, tools_condition
-from mcp import StdioServerParameters, stdio_client, ClientSession
-
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 
 
@@ -25,11 +19,52 @@ _instance = None
 class ServiceHelper:
     """Helper class to manage LLM services and singleton instance"""
 
+    def __init__(self, llms=None, vector_store=None, graph=None, tools=None):
+        self.llms = llms or {}
+        self.vector_store = vector_store
+        self.graph = graph
+        self.tools = tools or []
+
     @staticmethod
-    def load_llms():
+    async def async_orm_wrapper(func, **kwargs):
+        """Asynchronous ORM wrapper to call a function with kwargs"""
+        result = await sync_to_async(
+            lambda: func(**kwargs),
+            thread_sensitive=True  # set False if it's thread-safe
+        )()
+        return result
+
+    @staticmethod
+    async def async_orm_create(model_cls, **kwargs):
+        """Asynchronous ORM get method to fetch a single object"""
+        return await ServiceHelper.async_orm_wrapper(model_cls.objects.create, **kwargs)
+
+    @staticmethod
+    async def async_orm_get(model_cls, **kwargs):
+        """Asynchronous ORM get method to fetch a single object"""
+        return await ServiceHelper.async_orm_wrapper(model_cls.objects.get, **kwargs)
+
+    @staticmethod
+    async def async_orm_filter(model_cls, **kwargs):
+        """Asynchronous ORM get method to fetch a single object"""
+        return await ServiceHelper.async_orm_wrapper(model_cls.objects.filter, **kwargs)
+
+    @staticmethod
+    async def async_orm_filter_sort_first(model_cls, sort, **kwargs):
+        """Fetch the first object matching the filter and sort criteria"""
+        return await ServiceHelper.async_orm_wrapper(lambda **x: model_cls.objects.filter(**kwargs).order_by(sort).first(), **kwargs)
+
+    @staticmethod
+    @sync_to_async
+    def get_enabled_llms():
+        return list(LlmModel.objects.filter(disabled=False))
+
+    @staticmethod
+    async def load_llms():
         """Load all LLM models from the database and initialize them."""
         llms = {}
-        for model in LlmModel.objects.filter(disabled=False):
+        models = await ServiceHelper.get_enabled_llms()
+        for model in models:
             llms[model.model_id] = init_chat_model(model.model_id, model_provider=model.provider_id, temperature=0.1)
         return llms
 
@@ -47,6 +82,7 @@ class ServiceHelper:
     @staticmethod
     async def load_mcp_tools():
         """Load the GenePattern MCP client"""
+        # TODO: Finish implementation
         try:
             mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
             client = MultiServerMCPClient({
@@ -60,17 +96,19 @@ class ServiceHelper:
             print(f"Could not connect to MCP server: {e}")
             return []
 
-    def __init__(self):
-        load_dotenv()                                       # Load environment variables (especially API keys)
-        self.llms = self.load_llms()                        # Initialize LLM models
-        self.vector_store = self.load_vector_store()        # Initialize the vector store
-        self.tools = async_to_sync(self.load_mcp_tools)()   # Load MCP tools asynchronously
+    async def create(self):
+        load_dotenv()                                   # Load environment variables (especially API keys)
+        self.llms = await self.load_llms()              # Initialize LLM models
+        self.vector_store = self.load_vector_store()    # Initialize the vector store
+        self.graph = await build_langgraph()            # Build the LangGraph for RAG
+        self.tools = await self.load_mcp_tools()        # Load MCP tools asynchronously
+        return self
 
 
-def instance():
+async def instance():
     """Singleton instance for LLM services"""
     global _instance
-    if _instance is None: _instance = ServiceHelper()
+    if _instance is None: _instance = await ServiceHelper().create()
     return _instance
 
 
@@ -86,7 +124,8 @@ class ConversationState(MessagesState):
     steps: List
 
 
-def genepattern_mcp(state: ConversationState):
+async def genepattern_mcp(state: ConversationState):
+    # TODO: Finish implementation
     started_at = datetime.now()
     model_id = state["model_id"]
     if model_id not in instance().llms:
@@ -97,7 +136,7 @@ def genepattern_mcp(state: ConversationState):
     print('---------------------------------------------------')
     print(state)
 
-    response = instance().llms[model_id].bind_tools(instance().tools).invoke(state["messages"])
+    response = await instance().llms[model_id].bind_tools(instance().tools).ainvoke(state["messages"])
 
     print(response)
 
@@ -118,10 +157,11 @@ def genepattern_mcp(state: ConversationState):
     # return {"context": docs}
 
 
-def retrieve_documents(state: ConversationState):
+async def retrieve_documents(state: ConversationState):
     """Retrieve relevant documents from the vector store based on the query"""
     started_at = datetime.now()
-    docs = instance().vector_store.similarity_search(state["query"])
+    helper = await instance()  # Get the singleton instance of ServiceHelper
+    docs = helper.vector_store.similarity_search(state["query"])
     ended_at = datetime.now()
     state["steps"].append({
         'llm_model': state["model_id"],
@@ -135,10 +175,11 @@ def retrieve_documents(state: ConversationState):
     return { "context": docs }
 
 
-def answer_question(state: ConversationState):
+async def answer_question(state: ConversationState):
     """Answer the question using the retrieved documents and the LLM"""
     model_id = state["model_id"]
-    if model_id not in instance().llms:
+    helper = await instance()  # Get the singleton instance of ServiceHelper
+    if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
     context = "\n\n".join(doc.page_content for doc in state["context"])
@@ -148,7 +189,7 @@ def answer_question(state: ConversationState):
     full_prompt = [system] + history + [HumanMessage(content=("\n\n" + state["query"]))]
 
     started_at = datetime.now()
-    response = instance().llms[model_id].invoke(full_prompt)
+    response = await helper.llms[model_id].ainvoke(full_prompt)
     ended_at = datetime.now()
     state["steps"].append({
         'llm_model': state["model_id"],
@@ -162,21 +203,22 @@ def answer_question(state: ConversationState):
     return { "messages": response, "answer": response.content }
 
 
-def summarize_question(state: ConversationState, llm_summarization=True):
+async def summarize_question(state: ConversationState, llm_summarization=True):
     """Summarize the question asked by the user"""
 
     # Check if LLM summarization is enabled
     if not llm_summarization: return { "query": state["raw_query"] }
 
     model_id = state["model_id"]
-    if model_id not in instance().llms:
+    helper = await instance()  # Get the singleton instance of ServiceHelper
+    if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
     started_at = datetime.now()
-    system_prompt = SystemPrompt.objects.get(name="Summarize Question", version=1.0)
+    system_prompt = await ServiceHelper.async_orm_get(SystemPrompt, name="Summarize Question", version=1.0)
     system = SystemMessage(content=(system_prompt.prompt + '\n\n'))
     full_prompt = [system] + [HumanMessage(content=(state["raw_query"]))]
-    response = instance().llms[model_id].invoke(full_prompt)
+    response = await helper.llms[model_id].ainvoke(full_prompt)
     state["query"] = response.content
     ended_at = datetime.now()
 
@@ -193,7 +235,7 @@ def summarize_question(state: ConversationState, llm_summarization=True):
     return { "query": response.content }
 
 
-def build_rag_graph():
+async def build_rag_graph():
     """Build and compile the LangGraph for handling conversations with RAG"""
     workflow = StateGraph(ConversationState)
 
@@ -213,14 +255,15 @@ def build_rag_graph():
     return app
 
 
-def build_mcp_graph():
+async def build_mcp_graph():
     """Build and compile the LangGraph for handling conversations with MCP"""
+    helper = await instance()  # Get the singleton instance of ServiceHelper
     workflow = StateGraph(ConversationState)
 
     # Add nodes
     workflow.add_node("summarize_question", summarize_question)
     workflow.add_node("genepattern_mcp", genepattern_mcp)
-    workflow.add_node(ToolNode(instance().tools))
+    workflow.add_node(ToolNode(helper.tools))
 
     # Define edges
     workflow.add_edge(START, "genepattern_mcp")
@@ -233,14 +276,10 @@ def build_mcp_graph():
     return app
 
 
-def build_langgraph(rag=False):
+async def build_langgraph(rag=True):
     """Build and compile the LangGraph for handling conversations"""
-    if rag: return build_rag_graph()
-    else: return build_mcp_graph()
-
-
-# Compile graph once, when module loads
-graph = build_langgraph()
+    if rag: return await build_rag_graph()
+    else: return await build_mcp_graph()
 
 
 def assemble_answer(answer):
@@ -254,7 +293,7 @@ def assemble_answer(answer):
     raise ValueError("Invalid answer format. Expected a string, tuple or list of strings")
 
 
-def handle_chat_message(user, conversation_id, user_query, model_id=None, system_prompt_id=None):
+async def handle_chat_message(user, conversation_id, user_query, model_id=None, system_prompt_id=None):
     """ Handles an incoming chat message"""
 
     start_time = datetime.now()         # Note start time
@@ -262,20 +301,16 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, system
 
     # 1. Get the existing conversation or lazily create one
     if conversation_id:
-        try: conversation = Conversation.objects.get(id=conversation_id)
+        try: conversation = await ServiceHelper.async_orm_get(Conversation, id=conversation_id)
         except Conversation.DoesNotExist: return None, "Conversation not found or access denied"
     else:
-        conversation = Conversation.objects.create(user=user)
+        conversation = await ServiceHelper.async_orm_create(Conversation, user=user)
         conversation_id = conversation.id  # Get the new ID
 
     # 2. Select LLM Model
-    if model_id:
-        try: llm_model = LlmModel.objects.get(model_id=model_id)
-        except LlmModel.DoesNotExist: return None, "Requested model id not found"
-    else:
-        model_id = settings.DEFAULT_LLM_MODEL
-        try: llm_model = LlmModel.objects.get(model_id=model_id)
-        except LlmModel.DoesNotExist: return None, "Requested model id not found"
+    if not model_id: model_id = settings.DEFAULT_LLM_MODEL
+    try: llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
+    except LlmModel.DoesNotExist: return None, "Requested model id not found"
 
     # Handle case where *no* models are found
     if not llm_model: return None, "No suitable model found or configured."
@@ -283,9 +318,9 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, system
 
     # 3. Select System Prompt
     if system_prompt_id:  # TODO: Handle requesting specific version or (id vs name)
-        try: system_prompt = SystemPrompt.objects.filter(name=system_prompt_id).order_by('-version').first()
+        try: system_prompt = await ServiceHelper.async_orm_filter_sort_first(SystemPrompt, '-version', name=system_prompt_id)
         except SystemPrompt.DoesNotExist: return None, "Requested system prompt not found"
-    else: system_prompt = SystemPrompt.objects.filter(name="General").order_by('-version').first()
+    else: system_prompt = await ServiceHelper.async_orm_filter_sort_first(SystemPrompt, '-version', name="General")
 
     # Handle case where *no* system prompts are found
     if not system_prompt: return None, "No suitable model found or configured."
@@ -304,20 +339,23 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, system
     )
 
     # # 5. Run the LangGraph
-    final_state = graph.invoke(initial_state)
+    helper = await instance()  # Get the singleton instance of ServiceHelper
+    final_state = await helper.graph.ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database
     end_time = datetime.now()
-    query_num = conversation.queries.count() + 1
-    answer = final_state.get('answer', "Error: No response generated."),  # "I can't let you do that, Dave."
+    query_num = await sync_to_async(conversation.queries.count)() + 1
+    answer = final_state.get('answer', "Error: No response generated."),
     answer = assemble_answer(answer)
 
-    query_instance = Query.objects.create(conversation=conversation, query_num=query_num, llm_model=llm_model,
-                                          started_at=start_time, ended_at=end_time, raw_query=user_query, response=answer)
+    query_instance = await ServiceHelper.async_orm_create(Query, conversation=conversation, query_num=query_num,
+                                                          llm_model=llm_model, started_at=start_time, ended_at=end_time,
+                                                          raw_query=user_query, response=answer)  #Query.objects.create(conversation=conversation, query_num=query_num, llm_model=llm_model, started_at=start_time, ended_at=end_time, raw_query=user_query, response=answer)
 
     # # Save steps taken during the graph execution
     for i, step in enumerate(final_state.get('steps', [])):
-        Step.objects.create(
+        await ServiceHelper.async_orm_create(
+            Step,
             query=query_instance,
             step_num=i + 1,
             llm_model=llm_model,
