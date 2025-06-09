@@ -1,19 +1,24 @@
+import asyncio
 from datetime import datetime
 from asgiref.sync import sync_to_async
 from dotenv import load_dotenv
 from django.conf import settings
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.graph import START, StateGraph, END, MessagesState
 from typing import List
 from langgraph.prebuilt import ToolNode, tools_condition
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
+import logging
+
+logger = logging.getLogger(__name__) # Use __name__ for module-specific logger
 
 
 _instance = None
+_instance_lock = asyncio.Lock()
 
 
 class ServiceHelper:
@@ -82,33 +87,34 @@ class ServiceHelper:
     @staticmethod
     async def load_mcp_tools():
         """Load the GenePattern MCP client"""
-        # TODO: Finish implementation
         try:
             mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
             client = MultiServerMCPClient({
-                "genepattern": {
-                    "transport": "streamable_http",
-                    "url": mcp_url
-                },
+                "genepattern": {"transport": "streamable_http", "url": mcp_url},
             })
-            return await client.get_tools(server_name="genepattern")
+            tools = await client.get_tools()
+            return tools
         except Exception as e:
-            print(f"Could not connect to MCP server: {e}")
+            logger.error(f"Could not connect to MCP server or load tools: {e}", exc_info=True)
             return []
 
     async def create(self):
-        load_dotenv()                                   # Load environment variables (especially API keys)
-        self.llms = await self.load_llms()              # Initialize LLM models
-        self.vector_store = self.load_vector_store()    # Initialize the vector store
-        self.graph = await build_langgraph()            # Build the LangGraph for RAG
-        self.tools = await self.load_mcp_tools()        # Load MCP tools asynchronously
+        load_dotenv()
+        self.llms = await self.load_llms()
+        self.vector_store = self.load_vector_store()
+        self.tools = await self.load_mcp_tools()
+        try: self.graph = await build_langgraph(self)  # Pass 'self' (the ServiceHelper instance)
+        except Exception as e:
+            logger.error(f"Error building LangGraph: {e}", exc_info=True)
+            raise
         return self
 
 
 async def instance():
     """Singleton instance for LLM services"""
     global _instance
-    if _instance is None: _instance = await ServiceHelper().create()
+    async with _instance_lock:
+        if _instance is None: _instance = await ServiceHelper().create()
     return _instance
 
 
@@ -125,36 +131,38 @@ class ConversationState(MessagesState):
 
 
 async def genepattern_mcp(state: ConversationState):
-    # TODO: Finish implementation
+    logger.debug("\n--- Entering genepattern_mcp ---")
     started_at = datetime.now()
+    helper = await instance()
     model_id = state["model_id"]
-    if model_id not in instance().llms:
+
+    if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
-    if len(state["messages"]) == 0: state["messages"] = [HumanMessage(content=state["raw_query"])]
+    if not state["messages"]:
+        state["messages"] = [HumanMessage(content=state["query"])]
 
-    print('---------------------------------------------------')
-    print(state)
+    model_with_tools = helper.llms[model_id].bind_tools(helper.tools)
+    response = await model_with_tools.ainvoke(state["messages"])
+    ended_at = datetime.now()
 
-    response = await instance().llms[model_id].bind_tools(instance().tools).ainvoke(state["messages"])
-
-    print(response)
-
+    state["steps"].append({
+        'llm_model': state["model_id"],
+        'system_prompt': state["prompt"],
+        'call_id': 'genepattern_mcp',
+        'step_input': str(state["messages"]),
+        'step_output': str(response),
+        'started_at': started_at,
+        'ended_at': ended_at,
+    })
     state["messages"].append(response)
-    return {"messages": state["messages"]}
 
-    # docs = instance().vector_store.similarity_search(state["query"])
-    # ended_at = datetime.now()
-    # state["steps"].append({
-    #     'llm_model': state["model_id"],
-    #     'system_prompt': state["prompt"],
-    #     'call_id': 'genepattern_mcp',
-    #     'step_input': state["prompt"],
-    #     'step_output': "\n\n".join(doc.page_content for doc in docs),
-    #     'started_at': started_at,
-    #     'ended_at': ended_at,
-    # })
-    # return {"context": docs}
+    if response.tool_calls:
+        first_tool_call = response.tool_calls[0]
+        tool_name = first_tool_call.get('name')
+        logger.info(f"LLM wants to call a tool: {tool_name}")
+
+    return {"messages": state["messages"], "steps": state["steps"]}
 
 
 async def retrieve_documents(state: ConversationState):
@@ -255,31 +263,30 @@ async def build_rag_graph():
     return app
 
 
-async def build_mcp_graph():
+async def build_mcp_graph(helper_instance):
     """Build and compile the LangGraph for handling conversations with MCP"""
-    helper = await instance()  # Get the singleton instance of ServiceHelper
     workflow = StateGraph(ConversationState)
 
-    # Add nodes
     workflow.add_node("summarize_question", summarize_question)
     workflow.add_node("genepattern_mcp", genepattern_mcp)
-    workflow.add_node(ToolNode(helper.tools))
+    workflow.add_node("answer_question", answer_question)
+    workflow.add_node("tools", ToolNode(helper_instance.tools))
 
-    # Define edges
-    workflow.add_edge(START, "genepattern_mcp")
-    workflow.add_conditional_edges("genepattern_mcp", tools_condition)
+    workflow.add_edge(START, "summarize_question")
+    workflow.add_edge("summarize_question", "genepattern_mcp")
+    workflow.add_conditional_edges("genepattern_mcp", tools_condition,
+                                   { "tools": "tools", "__end__": "answer_question" }, )
     workflow.add_edge("tools", "genepattern_mcp")
-    workflow.add_edge("genepattern_mcp", END)
+    workflow.add_edge("answer_question", END)
 
-    # Compile the graph
     app = workflow.compile()
     return app
 
 
-async def build_langgraph(rag=True):
+async def build_langgraph(helper_instance, rag=False):
     """Build and compile the LangGraph for handling conversations"""
     if rag: return await build_rag_graph()
-    else: return await build_mcp_graph()
+    else: return await build_mcp_graph(helper_instance)
 
 
 def assemble_answer(answer):
