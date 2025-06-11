@@ -5,17 +5,18 @@ from dotenv import load_dotenv
 from django.conf import settings
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
-from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.graph import START, StateGraph, END, MessagesState
-from typing import List
+from typing import List, Dict
 from langgraph.prebuilt import ToolNode, tools_condition
+from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage # Ensure these are imported
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 import logging
 
-logger = logging.getLogger(__name__) # Use __name__ for module-specific logger
 
+logger = logging.getLogger(__name__)
 
 _instance = None
 _instance_lock = asyncio.Lock()
@@ -24,94 +25,121 @@ _instance_lock = asyncio.Lock()
 class ServiceHelper:
     """Helper class to manage LLM services and singleton instance"""
 
-    def __init__(self, llms=None, vector_store=None, graph=None, tools=None):
+    def __init__(self, llms=None, vector_store=None, graphs=None, tools=None):
+        """
+        Initializes the ServiceHelper.
+        Args:
+            llms (dict): Dictionary of initialized LLM models.
+            vector_store: Initialized vector store instance.
+            graphs (dict): Dictionary of pre-built LangGraph instances.
+            tools (list): List of available tools for the LLM.
+        """
         self.llms = llms or {}
         self.vector_store = vector_store
-        self.graph = graph
+        self._graph: Dict[str, StateGraph] = graphs or {}
         self.tools = tools or []
+
+    def graph(self, method: str) -> StateGraph:
+        """
+        Retrieves a compiled LangGraph instance by its method name.
+        Args:
+            method (str): The method name ('rag', 'mcp', 'raw') of the graph to retrieve.
+        Returns:
+            StateGraph: The compiled LangGraph instance.
+        Raises:
+            ValueError: If the requested method is not found.
+        """
+        graph_instance = self._graph.get(method)
+        if not graph_instance:
+            valid_methods = list(self._graph.keys())
+            raise ValueError(f"Invalid method '{method}'. Valid methods are: {valid_methods}")
+        return graph_instance
 
     @staticmethod
     async def async_orm_wrapper(func, **kwargs):
-        """Asynchronous ORM wrapper to call a function with kwargs"""
-        result = await sync_to_async(
+        """Asynchronous ORM wrapper to call a function with kwargs."""
+        return await sync_to_async(
             lambda: func(**kwargs),
-            thread_sensitive=True  # set False if it's thread-safe
+            thread_sensitive=True
         )()
-        return result
 
     @staticmethod
     async def async_orm_create(model_cls, **kwargs):
-        """Asynchronous ORM get method to fetch a single object"""
+        """Asynchronous ORM create method."""
         return await ServiceHelper.async_orm_wrapper(model_cls.objects.create, **kwargs)
 
     @staticmethod
     async def async_orm_get(model_cls, **kwargs):
-        """Asynchronous ORM get method to fetch a single object"""
+        """Asynchronous ORM get method to fetch a single object."""
         return await ServiceHelper.async_orm_wrapper(model_cls.objects.get, **kwargs)
 
     @staticmethod
     async def async_orm_filter(model_cls, **kwargs):
-        """Asynchronous ORM get method to fetch a single object"""
+        """Asynchronous ORM filter method."""
         return await ServiceHelper.async_orm_wrapper(model_cls.objects.filter, **kwargs)
 
     @staticmethod
     async def async_orm_filter_sort_first(model_cls, sort, **kwargs):
-        """Fetch the first object matching the filter and sort criteria"""
-        return await ServiceHelper.async_orm_wrapper(lambda **x: model_cls.objects.filter(**kwargs).order_by(sort).first(), **kwargs)
+        """Fetch the first object matching the filter and sort criteria."""
+        return await ServiceHelper.async_orm_wrapper(
+            lambda **x: model_cls.objects.filter(**kwargs).order_by(sort).first(), **kwargs
+        )
 
     @staticmethod
     @sync_to_async
     def get_enabled_llms():
+        """Retrieves a list of enabled LLM models from the database."""
         return list(LlmModel.objects.filter(disabled=False))
 
     @staticmethod
     async def load_llms():
-        """Load all LLM models from the database and initialize them."""
+        """Load all enabled LLM models from the database and initialize them."""
         llms = {}
         models = await ServiceHelper.get_enabled_llms()
         for model in models:
-            llms[model.model_id] = init_chat_model(model.model_id, model_provider=model.provider_id, temperature=0.1)
+            llms[model.model_id] = init_chat_model(
+                model.model_id, model_provider=model.provider_id, temperature=0.1
+            )
         return llms
 
     @staticmethod
     def load_vector_store():
-        """Load the vector store and embeddings"""
+        """Load the vector store and embeddings."""
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        vector_store = Chroma(
+        return Chroma(
             collection_name="moduledoc",
             embedding_function=embeddings,
             persist_directory="./vectorstore/chroma",
         )
-        return vector_store
 
     @staticmethod
     async def load_mcp_tools():
-        """Load the GenePattern MCP client"""
+        """Load the GenePattern MCP client and its tools."""
         try:
             mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
             client = MultiServerMCPClient({
                 "genepattern": {"transport": "streamable_http", "url": mcp_url},
             })
-            tools = await client.get_tools()
-            return tools
+            return await client.get_tools()
         except Exception as e:
             logger.error(f"Could not connect to MCP server or load tools: {e}", exc_info=True)
             return []
 
     async def create(self):
+        """Asynchronously creates and configures the ServiceHelper instance."""
         load_dotenv()
         self.llms = await self.load_llms()
         self.vector_store = self.load_vector_store()
         self.tools = await self.load_mcp_tools()
-        try: self.graph = await build_langgraph(self)  # Pass 'self' (the ServiceHelper instance)
+        try: self._graph = await build_langgraph(self)
         except Exception as e:
-            logger.error(f"Error building LangGraph: {e}", exc_info=True)
+            logger.error(f"Error building LangGraphs: {e}", exc_info=True)
             raise
         return self
 
 
 async def instance():
-    """Singleton instance for LLM services"""
+    """Singleton instance accessor for LLM services."""
     global _instance
     async with _instance_lock:
         if _instance is None: _instance = await ServiceHelper().create()
@@ -131,6 +159,7 @@ class ConversationState(MessagesState):
 
 
 async def genepattern_mcp(state: ConversationState):
+    """Node to interact with the LLM and GenePattern tools via MCP."""
     logger.debug("\n--- Entering genepattern_mcp ---")
     started_at = datetime.now()
     helper = await instance()
@@ -158,17 +187,16 @@ async def genepattern_mcp(state: ConversationState):
     state["messages"].append(response)
 
     if response.tool_calls:
-        first_tool_call = response.tool_calls[0]
-        tool_name = first_tool_call.get('name')
+        tool_name = response.tool_calls[0].get('name')
         logger.info(f"LLM wants to call a tool: {tool_name}")
 
     return {"messages": state["messages"], "steps": state["steps"]}
 
 
 async def retrieve_documents(state: ConversationState):
-    """Retrieve relevant documents from the vector store based on the query"""
+    """Node to retrieve relevant documents from the vector store."""
     started_at = datetime.now()
-    helper = await instance()  # Get the singleton instance of ServiceHelper
+    helper = await instance()
     docs = helper.vector_store.similarity_search(state["query"])
     ended_at = datetime.now()
     state["steps"].append({
@@ -184,50 +212,87 @@ async def retrieve_documents(state: ConversationState):
 
 
 async def answer_question(state: ConversationState):
-    """Answer the question using the retrieved documents and the LLM"""
+    """
+    Node to generate a final answer using the LLM and context.
+    This node is designed to handle being called from different graph paths.
+    """
     model_id = state["model_id"]
-    helper = await instance()  # Get the singleton instance of ServiceHelper
+    helper = await instance()
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
-    context = "\n\n".join(doc.page_content for doc in state["context"])
-    system = SystemMessage(content=(state["prompt"] + "\n\n" + context + "\n\n"))
+    context = "\n\n".join(doc.page_content for doc in state.get("context", []))
+    system_content = f"{state['prompt']}\n\n{context}\n\n"
+    system = SystemMessage(content=system_content)
 
-    history = [message for message in state["messages"] if message.type in ("human", "ai")]
-    full_prompt = [system] + history + [HumanMessage(content=("\n\n" + state["query"]))]
+    history = state.get("messages", [])
+
+    # CORRECTED check for tool-related messages
+    has_tool_messages = any(
+        (isinstance(msg, AIMessage) and msg.tool_calls) or isinstance(msg, ToolMessage)
+        for msg in history # This is now correctly inside the generator expression for any()
+    )
+
+    # Bind tools to the model if there's history that might contain tool messages,
+    # or if this is the MCP path. This ensures tool_config is always passed if relevant.
+    # IMPORTANT: Ensure 'method_id' is added to ConversationState in handle_chat_message
+    # if it's not already, for state['method_id'] to be available.
+    if has_tool_messages or state.get('method_id') == 'mcp': # Use .get() for safety
+        llm_to_use = helper.llms[model_id].bind_tools(helper.tools)
+    else:
+        llm_to_use = helper.llms[model_id]
+
+    if not history:
+        full_prompt = [system, HumanMessage(content=state['query'])]
+    else:
+        full_prompt = [system] + history
+        # Ensure the conversation ends with a HumanMessage for models requiring it.
+        # This is crucial after tool calls/results or if the LLM's last turn was not a final answer.
+        # We append a final user message to prompt the LLM to give the concluding answer.
+        if not full_prompt or not isinstance(full_prompt[-1], HumanMessage):
+            full_prompt.append(HumanMessage(content=f"Based on the conversation above, please provide the final answer to my original question: {state['raw_query']}"))
 
     started_at = datetime.now()
-    response = await helper.llms[model_id].ainvoke(full_prompt)
+    response = await llm_to_use.ainvoke(full_prompt) # Use the potentially tool-bound LLM
     ended_at = datetime.now()
     state["steps"].append({
         'llm_model': state["model_id"],
         'system_prompt': state["prompt"],
         'call_id': 'answer_question',
-        'step_input': state["prompt"],
+        'step_input': str(full_prompt),
         'step_output': response.content,
         'started_at': started_at,
         'ended_at': ended_at,
     })
-    return { "messages": response, "answer": response.content }
+    return {"answer": response.content}
+
+# No changes needed for assemble_answer as its structure is already good.
+
+
+async def summarize_question_for_raw_graph(state: ConversationState):
+    """
+    A specific async node for the raw graph to call summarize_question
+    with llm_summarization=False and await its result.
+    """
+    return await summarize_question(state, llm_summarization=False)
 
 
 async def summarize_question(state: ConversationState, llm_summarization=True):
-    """Summarize the question asked by the user"""
+    """Node to summarize the user's raw query."""
 
     # Check if LLM summarization is enabled
-    if not llm_summarization: return { "query": state["raw_query"] }
+    if not llm_summarization: return {"query": state["raw_query"]}
 
     model_id = state["model_id"]
-    helper = await instance()  # Get the singleton instance of ServiceHelper
+    helper = await instance()
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
     started_at = datetime.now()
     system_prompt = await ServiceHelper.async_orm_get(SystemPrompt, name="Summarize Question", version=1.0)
-    system = SystemMessage(content=(system_prompt.prompt + '\n\n'))
-    full_prompt = [system] + [HumanMessage(content=(state["raw_query"]))]
+    system = SystemMessage(content=f"{system_prompt.prompt}\n\n")
+    full_prompt = [system, HumanMessage(content=state["raw_query"])]
     response = await helper.llms[model_id].ainvoke(full_prompt)
-    state["query"] = response.content
     ended_at = datetime.now()
 
     state["steps"].append({
@@ -243,8 +308,8 @@ async def summarize_question(state: ConversationState, llm_summarization=True):
     return { "query": response.content }
 
 
-async def build_rag_graph():
-    """Build and compile the LangGraph for handling conversations with RAG"""
+async def build_rag_graph() -> StateGraph:
+    """Build and compile the LangGraph for RAG."""
     workflow = StateGraph(ConversationState)
 
     # Add nodes
@@ -259,12 +324,11 @@ async def build_rag_graph():
     workflow.add_edge("answer_question", END)
 
     # Compile the graph
-    app = workflow.compile()
-    return app
+    return workflow.compile()
 
 
-async def build_mcp_graph(helper_instance):
-    """Build and compile the LangGraph for handling conversations with MCP"""
+async def build_mcp_graph(helper_instance: ServiceHelper) -> StateGraph:
+    """Build and compile the LangGraph for MCP tool usage."""
     workflow = StateGraph(ConversationState)
 
     workflow.add_node("summarize_question", summarize_question)
@@ -279,17 +343,35 @@ async def build_mcp_graph(helper_instance):
     workflow.add_edge("tools", "genepattern_mcp")
     workflow.add_edge("answer_question", END)
 
-    app = workflow.compile()
-    return app
+    return workflow.compile()
 
 
-async def build_langgraph(helper_instance, rag=False):
-    """Build and compile the LangGraph for handling conversations"""
-    if rag: return await build_rag_graph()
-    else: return await build_mcp_graph(helper_instance)
+async def build_raw_graph() -> StateGraph:
+    """Build and compile the LangGraph for direct answering."""
+    workflow = StateGraph(ConversationState)
+
+    # Use the specific async helper node that awaits summarize_question
+    workflow.add_node("summarize_question", summarize_question_for_raw_graph)
+    workflow.add_node("answer_question", answer_question)
+    workflow.add_edge(START, "summarize_question")
+    workflow.add_edge("summarize_question", "answer_question")
+    workflow.add_edge("answer_question", END)
+
+    return workflow.compile()
+
+
+async def build_langgraph(helper_instance: ServiceHelper) -> Dict[str, StateGraph]:
+    """Build and compile all LangGraphs and return them in a dictionary."""
+    rag_graph, mcp_graph, raw_graph = await asyncio.gather(
+        build_rag_graph(),
+        build_mcp_graph(helper_instance),
+        build_raw_graph()
+    )
+    return { 'rag': rag_graph, 'mcp': mcp_graph, 'raw': raw_graph }
 
 
 def assemble_answer(answer):
+    """Assembles the final answer from potentially complex LLM outputs."""
     if isinstance(answer, str): return answer
     if isinstance(answer, tuple) or isinstance(answer, str):
         if all(isinstance(item, str) for item in answer):
@@ -300,8 +382,8 @@ def assemble_answer(answer):
     raise ValueError("Invalid answer format. Expected a string, tuple or list of strings")
 
 
-async def handle_chat_message(user, conversation_id, user_query, model_id=None, system_prompt_id=None):
-    """ Handles an incoming chat message"""
+async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None):
+    """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
 
     start_time = datetime.now()         # Note start time
     if user.is_anonymous: user = None   # Anonymous users should be null
@@ -322,6 +404,9 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
     # Handle case where *no* models are found
     if not llm_model: return None, "No suitable model found or configured."
     model_id = llm_model.model_id
+
+    # 2.5 Select LLM Method
+    if not method_id: method_id = settings.DEFAULT_LLM_METHOD
 
     # 3. Select System Prompt
     if system_prompt_id:  # TODO: Handle requesting specific version or (id vs name)
@@ -347,7 +432,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
 
     # # 5. Run the LangGraph
     helper = await instance()  # Get the singleton instance of ServiceHelper
-    final_state = await helper.graph.ainvoke(initial_state)
+    final_state = await helper.graph(method_id).ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database
     end_time = datetime.now()

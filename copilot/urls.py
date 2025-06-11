@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from chatbot.views import ChatInterfaceView
+from chatbot.views import ChatInterfaceView, TestInterfaceView
 
 urlpatterns = [
     # GenePattern Copilot webapp
     path('', ChatInterfaceView.as_view(), name='chat-interface'),
+
+    # Method test view
+    path('test/', TestInterfaceView.as_view(), name='test-interface'),
 
     # Copilot admin interface
     path('admin/', admin.site.urls),

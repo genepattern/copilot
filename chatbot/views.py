@@ -53,11 +53,12 @@ class ChatAPIView(AsyncAPIView):
             conversation_id = serializer.validated_data.get('conversation_id')
             user_query = serializer.validated_data['query']
             model_id = serializer.validated_data.get('model_id')
+            method_id = serializer.validated_data.get('method_id')
             html = serializer.validated_data.get('html')
 
             # Call the service layer to handle the logic
             query_instance, error_message = await handle_chat_message(user=user, conversation_id=conversation_id,
-                                                                      user_query=user_query, model_id=model_id)
+                                                                      user_query=user_query, model_id=model_id, method_id=method_id)
 
             # Check if there was an error in processing
             if error_message: return Response({ "error": error_message }, status=status.HTTP_400_BAD_REQUEST)
@@ -115,9 +116,16 @@ class ResponseRatingView(views.APIView):
 
 class ChatInterfaceView(TemplateView):
     """
-    Serves the main HTML chat interface. Requires user to be logged in.
+    Serves the main chat interface.
     """
     template_name = 'index.html'
+
+
+class TestInterfaceView(TemplateView):
+    """
+    Serves the test chat interface.
+    """
+    template_name = 'test.html'
 
 
 class LlmModelViewSet(viewsets.ModelViewSet):

@@ -61,6 +61,7 @@ class ChatInputSerializer(serializers.Serializer):
     conversation_id = serializers.UUIDField(required=False, allow_null=True, help_text="Omit to start a new conversation")
     query = serializers.CharField(max_length=10000, help_text="The user's query")
     model_id = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="Specific model id to use")
+    method_id = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="Specific method to use")
     html = serializers.BooleanField(default=False, help_text="Return HTML response, otherwise return Markdown")
 
     # Future Use?: Allow specifying a system prompt version or ID
@@ -71,6 +72,15 @@ class ChatInputSerializer(serializers.Serializer):
         if value and not LlmModel.objects.filter(model_id=value).exists():
             raise serializers.ValidationError(f"LLM Model with id '{value}' not found.")
         return value
+
+    def validate_method_id(self, value):
+        """Normalize and validate method_id"""
+        if value is None: return value
+        normalized = value.strip().lower()
+        allowed = {'rag', 'mcp', 'raw'}
+        if normalized not in allowed:
+            raise serializers.ValidationError(f"Invalid method_id '{value}'. Must be one of {sorted(allowed)}.")
+        return normalized
 
 
 class QueryRatingSerializer(serializers.Serializer):
