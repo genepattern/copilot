@@ -131,7 +131,7 @@ class ServiceHelper:
         self.llms = await self.load_llms()
         self.vector_store = self.load_vector_store()
         self.tools = await self.load_mcp_tools()
-        try: self._graph = await build_langgraph(self)
+        try: self._graph = await build_langgraph(self.tools)
         except Exception as e:
             logger.error(f"Error building LangGraphs: {e}", exc_info=True)
             raise
@@ -327,14 +327,14 @@ async def build_rag_graph() -> StateGraph:
     return workflow.compile()
 
 
-async def build_mcp_graph(helper_instance: ServiceHelper) -> StateGraph:
+async def build_mcp_graph(tools) -> StateGraph:
     """Build and compile the LangGraph for MCP tool usage."""
     workflow = StateGraph(ConversationState)
 
     workflow.add_node("summarize_question", summarize_question)
     workflow.add_node("genepattern_mcp", genepattern_mcp)
     workflow.add_node("answer_question", answer_question)
-    workflow.add_node("tools", ToolNode(helper_instance.tools))
+    workflow.add_node("tools", ToolNode(tools))
 
     workflow.add_edge(START, "summarize_question")
     workflow.add_edge("summarize_question", "genepattern_mcp")
@@ -360,11 +360,11 @@ async def build_raw_graph() -> StateGraph:
     return workflow.compile()
 
 
-async def build_langgraph(helper_instance: ServiceHelper) -> Dict[str, StateGraph]:
+async def build_langgraph(tools) -> Dict[str, StateGraph]:
     """Build and compile all LangGraphs and return them in a dictionary."""
     rag_graph, mcp_graph, raw_graph = await asyncio.gather(
         build_rag_graph(),
-        build_mcp_graph(helper_instance),
+        build_mcp_graph(tools),
         build_raw_graph()
     )
     return { 'rag': rag_graph, 'mcp': mcp_graph, 'raw': raw_graph }
