@@ -13,6 +13,8 @@
         html, body {
             height: 100%;
             margin: 0;
+            display: flex;
+            flex-direction: column;
         }
         .container-fluid {
             display: flex;
@@ -23,6 +25,7 @@
             padding: 15px;
             background-color: #f8f9fa;
             border-bottom: 1px solid #e9ecef;
+            flex-shrink: 0; /* Prevent from shrinking */
         }
         .content-columns {
             flex-grow: 1;
@@ -43,12 +46,36 @@
             font-weight: bold;
             display: none; /* Hidden by default */
         }
+        .rating-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the radio buttons */
+            gap: 10px; /* Space between radios */
+            font-size: 0.9em;
+            color: #555;
+            flex-shrink: 0; /* Prevent from shrinking */
+        }
+        .rating-row label {
+            margin-bottom: 0; /* Align label with radio button */
+            cursor: pointer;
+            padding: 2px 5px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .rating-row input[type="radio"] {
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        .rating-row label:hover {
+            background-color: #e9ecef;
+        }
         .response-box {
             background-color: #f1f1f1;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
-            max-height: 100%;
+            flex-grow: 1; /* Allow response box to take available height */
             overflow-y: auto;
             white-space: pre-wrap; /* Preserves whitespace and wraps text */
             word-wrap: break-word; /* Breaks long words */
@@ -59,6 +86,7 @@
             border-radius: 5px;
             margin-bottom: 10px;
             font-style: italic;
+            flex-shrink: 0; /* Prevent from shrinking */
         }
         /* Style for the dropdown */
         .model-dropdown {
@@ -71,19 +99,24 @@
             justify-content: center;
             align-items: center;
             min-height: 50px; /* Give it some height to center spinner */
+            flex-shrink: 0; /* Prevent from shrinking */
+        }
+        .top-right-buttons {
+            display: flex;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row chat-input-row align-items-center">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="input-group">
                     <input type="text" class="form-control" id="questionInput" placeholder="Type your question here..." aria-label="Question input">
                     <button class="btn btn-primary" type="button" id="sendButton">Send</button>
                 </div>
             </div>
-            <div class="col-md-4 d-flex align-items-center justify-content-end">
+            <div class="col-md-5 d-flex align-items-center justify-content-end">
                 <select id="llm-models" class="form-select model-dropdown">
                     <option value="gpt-4o-mini">GPT-4o</option>
                     <option value="mistral.mistral-large-2402-v1:0">Mistral</option>
@@ -92,70 +125,97 @@
                     <option value="us.meta.llama3-3-70b-instruct-v1:0">Llama</option>
                     <option value="us.deepseek.r1-v1:0">DeepSeek</option>
                 </select>
-                <div class="form-check form-switch">
+                <div class="form-check form-switch me-3">
                     <input class="form-check-input" type="checkbox" id="revealToggle">
                     <label class="form-check-label" for="revealToggle">Reveal</label>
+                </div>
+                <div class="top-right-buttons">
+                    <button class="btn btn-secondary btn-sm" id="downloadTsvButton" title="Download History">
+                        <i class="fas fa-download"></i> TSV
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="row content-columns flex-grow-1">
-            <div class="col-md-4">
-                <h5 class="response-header" id="header-col1">Method: </h5>
-                <div id="responseCol1">
-                    <div class="spinner-container" id="spinner1" style="display: none;">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+            <div class="col-md-4 d-flex flex-column" id="column-rag" data-method="rag">
+                <h5 class="response-header" id="header-col-rag">Method: RAG</h5>
+                <div class="rating-row" id="rating-row-rag"></div>
+                <div class="spinner-container" id="spinner-rag" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
+                <div id="responseContent-rag"></div>
             </div>
-            <div class="col-md-4">
-                <h5 class="response-header" id="header-col2">Method: </h5>
-                <div id="responseCol2">
-                    <div class="spinner-container" id="spinner2" style="display: none;">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+            <div class="col-md-4 d-flex flex-column" id="column-mcp" data-method="mcp">
+                <h5 class="response-header" id="header-col-mcp">Method: MCP</h5>
+                <div class="rating-row" id="rating-row-mcp"></div>
+                <div class="spinner-container" id="spinner-mcp" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
+                <div id="responseContent-mcp"></div>
             </div>
-            <div class="col-md-4">
-                <h5 class="response-header" id="header-col3">Method: </h5>
-                <div id="responseCol3">
-                    <div class="spinner-container" id="spinner3" style="display: none;">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+            <div class="col-md-4 d-flex flex-column" id="column-raw" data-method="raw">
+                <h5 class="response-header" id="header-col-raw">Method: RAW</h5>
+                <div class="rating-row" id="rating-row-raw"></div>
+                <div class="spinner-container" id="spinner-raw" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
+                <div id="responseContent-raw"></div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
         const questionInput = document.getElementById('questionInput');
         const sendButton = document.getElementById('sendButton');
         const revealToggle = document.getElementById('revealToggle');
         const llmModelsDropdown = document.getElementById('llm-models');
-        const responseCols = [
-            document.getElementById('responseCol1'),
-            document.getElementById('responseCol2'),
-            document.getElementById('responseCol3')
-        ];
-        const headerCols = [
-            document.getElementById('header-col1'),
-            document.getElementById('header-col2'),
-            document.getElementById('header-col3')
-        ];
-        const spinners = [ // Array to hold references to spinner elements
-            document.getElementById('spinner1'),
-            document.getElementById('spinner2'),
-            document.getElementById('spinner3')
-        ];
+        const downloadTsvButton = document.getElementById('downloadTsvButton');
 
-        const methods = ['rag', 'mcp', 'raw'];
+        // Map method names to their respective DOM elements
+        const responseCols = {
+            rag: document.getElementById('column-rag'),
+            mcp: document.getElementById('column-mcp'),
+            raw: document.getElementById('column-raw')
+        };
+        const headerCols = {
+            rag: document.getElementById('header-col-rag'),
+            mcp: document.getElementById('header-col-mcp'),
+            raw: document.getElementById('header-col-raw')
+        };
+        const spinners = {
+            rag: document.getElementById('spinner-rag'),
+            mcp: document.getElementById('spinner-mcp'),
+            raw: document.getElementById('spinner-raw')
+        };
+        const responseContentDivs = {
+            rag: document.getElementById('responseContent-rag'),
+            mcp: document.getElementById('responseContent-mcp'),
+            raw: document.getElementById('responseContent-raw')
+        };
+        const ratingRows = {
+            rag: document.getElementById('rating-row-rag'),
+            mcp: document.getElementById('rating-row-mcp'),
+            raw: document.getElementById('rating-row-raw')
+        };
+
+        const methods = ['rag', 'mcp', 'raw']; // Consistent order for iterating
+
+        // In-memory storage for all chat history
+        const chatHistory = [];
+        // Object to hold data for the current chat interaction
+        let currentChatEntry = {
+            question: '',
+            rag: { conversation_id: null, response: '', rating: null },
+            mcp: { conversation_id: null, response: '', rating: null },
+            raw: { conversation_id: null, response: '', rating: null }
+        };
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -164,11 +224,11 @@
             }
         }
 
-        async function sendQuery(query, method_id, columnElement, spinnerElement) {
+        async function sendQuery(query, method_id) {
             const selectedModelId = llmModelsDropdown.value;
+            const spinnerElement = spinners[method_id];
 
-            // Show spinner for this column
-            spinnerElement.style.display = 'flex'; // Use flex to center the spinner
+            spinnerElement.style.display = 'flex';
 
             const payload = {
                 "query": query,
@@ -180,88 +240,254 @@
             try {
                 const response = await fetch('/api/chat/', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
                 const data = await response.json();
                 return data;
             } catch (error) {
-                console.error('Error:', error);
-                return { query: query, response: `Error: ${error.message}`, ended_at: new Date().toISOString() };
+                console.error(`Error for ${method_id}:`, error);
+                return { conversation_id: null, query: query, response: `Error: ${error.message}`, ended_at: new Date().toISOString() };
             } finally {
-                // Hide spinner regardless of success or failure
                 spinnerElement.style.display = 'none';
             }
         }
 
-        function displayResponse(columnElement, query, responseText) {
-            // Remove previous content (only query/response, not the spinner)
-            // We need to keep the spinner div, so clear its *children* if needed.
-            // A safer approach is to manage display of spinner and content.
-            // Let's clear the content *below* the header/spinner.
-            const contentDiv = columnElement; // Or a dedicated content div if you want more structure
+        async function fetchConversation(conversationId) {
+            try {
+                const response = await fetch(`/api/conversations/${conversationId}/`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching conversation:', error);
+                return null;
+            }
+        }
 
-            // Clear previous query/response boxes if they exist
+        function initRatings(method, initialRating = null) {
+            const ratingContainer = ratingRows[method];
+            ratingContainer.innerHTML = 'Rating: '; // Clear previous radios
+            for (let i = 1; i <= 5; i++) {
+                const radioId = `rating-${method}-${i}`;
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.id = radioId;
+                input.name = `rating-${method}`; // Group by method
+                input.value = i;
+                input.classList.add('form-check-input');
+                if (initialRating === i) {
+                    input.checked = true;
+                }
+                input.addEventListener('change', (event) => {
+                    setRating(method, parseInt(event.target.value));
+                });
+
+                const label = document.createElement('label');
+                label.htmlFor = radioId;
+                label.textContent = i;
+                label.classList.add('form-check-label', 'ms-1');
+
+                ratingContainer.appendChild(input);
+                ratingContainer.appendChild(label);
+            }
+        }
+
+        function setRating(method, rating) {
+            currentChatEntry[method].rating = rating;
+            updateUrlParams();
+        }
+
+        function displayResponse(method, query, responseText, conversationId, rating = null) {
+            const contentDiv = responseContentDivs[method];
+
+            // Clear previous content (query/response boxes)
             let currentQueryBox = contentDiv.querySelector('.query-box');
             let currentResponseBox = contentDiv.querySelector('.response-box');
             if (currentQueryBox) currentQueryBox.remove();
             if (currentResponseBox) currentResponseBox.remove();
 
-
             const queryBox = document.createElement('div');
             queryBox.classList.add('query-box');
             queryBox.innerHTML = `<strong>You:</strong> ${query}`;
-            contentDiv.appendChild(queryBox); // Append, so it's below the header/spinner
+            contentDiv.appendChild(queryBox);
 
             const responseBox = document.createElement('div');
             responseBox.classList.add('response-box');
             responseBox.innerHTML = `<strong>Bot:</strong> ${responseText}`;
-            contentDiv.appendChild(responseBox); // Append, so it's below the question
+            contentDiv.appendChild(responseBox);
+
+            // Set data attribute for conversation ID
+            responseCols[method].dataset.conversationId = conversationId;
+
+            // Initialize and set ratings
+            initRatings(method, rating);
         }
 
         function clearColumns() {
-            responseCols.forEach((col, index) => {
-                // Ensure spinners are hidden and content is cleared
-                spinners[index].style.display = 'none'; // Hide spinner
-                let currentQueryBox = col.querySelector('.query-box');
-                let currentResponseBox = col.querySelector('.response-box');
-                if (currentQueryBox) currentQueryBox.remove();
-                if (currentResponseBox) currentResponseBox.remove();
+            Object.values(responseContentDivs).forEach(col => {
+                col.innerHTML = ''; // Clear all content inside responseContent divs
             });
-            headerCols.forEach(header => header.textContent = 'Method: ');
+            Object.values(spinners).forEach(spinner => spinner.style.display = 'none');
+            Object.values(headerCols).forEach(header => header.textContent = 'Method: ');
+            Object.values(ratingRows).forEach(row => row.innerHTML = ''); // Clear rating radios
+            
+            // Reset currentChatEntry
+            currentChatEntry = {
+                question: '',
+                rag: { conversation_id: null, response: '', rating: null },
+                mcp: { conversation_id: null, response: '', rating: null },
+                raw: { conversation_id: null, response: '', rating: null }
+            };
+            updateUrlParams(); // Clear URL parameters as well
         }
 
-        // Function to synchronize header visibility with the toggle
         function syncRevealToggle() {
-            headerCols.forEach(header => {
-                if (revealToggle.checked) {
-                    header.style.display = 'block';
+            Object.values(headerCols).forEach(header => {
+                header.style.display = revealToggle.checked ? 'block' : 'none';
+            });
+        }
+
+        function parseUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const parsed = {};
+            params.forEach((value, key) => {
+                if (key.endsWith('_rating')) {
+                    parsed[key] = value === 'null' ? null : parseInt(value);
                 } else {
-                    header.style.display = 'none';
+                    parsed[key] = value;
                 }
             });
+            return parsed;
         }
 
+        function updateUrlParams() {
+            const params = new URLSearchParams();
+            if (currentChatEntry.question) {
+                params.set('question', currentChatEntry.question);
+            }
+            if (currentChatEntry.rag.conversation_id) {
+                params.set('rag', currentChatEntry.rag.conversation_id);
+            }
+            if (currentChatEntry.mcp.conversation_id) {
+                params.set('mcp', currentChatEntry.mcp.conversation_id);
+            }
+            if (currentChatEntry.raw.conversation_id) {
+                params.set('raw', currentChatEntry.raw.conversation_id);
+            }
+
+            // Always include ratings, even if null, to allow clearing them via URL
+            params.set('rag_rating', currentChatEntry.rag.rating === null ? 'null' : currentChatEntry.rag.rating);
+            params.set('mcp_rating', currentChatEntry.mcp.rating === null ? 'null' : currentChatEntry.mcp.rating);
+            params.set('raw_rating', currentChatEntry.raw.rating === null ? 'null' : currentChatEntry.raw.rating);
+            
+            const newUrl = `${window.location.pathname}?${params.toString()}`;
+            window.history.replaceState({}, '', newUrl);
+        }
+
+        async function restoreStateFromUrl() {
+            const params = parseUrlParams();
+            
+            if (params.question) {
+                questionInput.value = params.question;
+                currentChatEntry.question = params.question; // Set current chat entry
+            }
+
+            const restoreTasks = [];
+
+            for (const method of methods) {
+                const conversationId = params[method];
+                const rating = params[`${method}_rating`];
+
+                if (conversationId) {
+                    restoreTasks.push((async () => {
+                        const data = await fetchConversation(conversationId);
+                        if (data) {
+                            // Method names in headerCols are 'rag', 'mcp', 'raw'
+                            headerCols[method].textContent = `Method: ${method.toUpperCase()}`;
+                            displayResponse(method, data.question, data.response, data.conversation_id, rating);
+                            currentChatEntry[method].conversation_id = data.conversation_id;
+                            currentChatEntry[method].response = data.response;
+                            currentChatEntry[method].rating = rating;
+                        }
+                    })());
+                } else {
+                    // If no conversation ID, but a rating is present, initialize ratings for the method
+                    if (rating !== undefined && rating !== null) {
+                         initRatings(method, rating);
+                         currentChatEntry[method].rating = rating;
+                    }
+                }
+            }
+            await Promise.all(restoreTasks);
+            updateUrlParams(); // Ensure URL reflects restored state accurately
+        }
+
+        function downloadTsv() {
+            if (chatHistory.length === 0) {
+                alert("No chat history to download!");
+                return;
+            }
+
+            let tsvContent = "Question\tRAG Response\tRAG Rating\tMCP Response\tMCP Rating\tRAW Response\tRAW Rating\n";
+
+            chatHistory.forEach(entry => {
+                const escapeTsv = (text) => {
+                    // Replace tabs, newlines with spaces and escape double quotes
+                    if (text === null || text === undefined) return '';
+                    return String(text).replace(/\t/g, ' ').replace(/\n/g, ' ').replace(/"/g, '""');
+                };
+
+                tsvContent += `${escapeTsv(entry.question)}\t`;
+                tsvContent += `${escapeTsv(entry.rag.response)}\t${escapeTsv(entry.rag.rating)}\t`;
+                tsvContent += `${escapeTsv(entry.mcp.response)}\t${escapeTsv(entry.mcp.rating)}\t`;
+                tsvContent += `${escapeTsv(entry.raw.response)}\t${escapeTsv(entry.raw.rating)}\n`;
+            });
+
+            const blob = new Blob([tsvContent], { type: 'text/tab-separated-values' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'chatbot_comparison_history.tsv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // --- Event Listeners ---
         sendButton.addEventListener('click', async () => {
             const question = questionInput.value.trim();
             if (question === '') return;
 
-            clearColumns(); // Clear previous responses and hide all spinners
+            clearColumns(); // Clear previous responses, ratings, and hide spinners
             questionInput.value = ''; // Clear input box
+
+            currentChatEntry.question = question; // Set the question for the current entry
 
             const shuffledMethods = [...methods];
             shuffleArray(shuffledMethods);
 
-            // Use Promise.all to send requests concurrently
-            const tasks = shuffledMethods.map(async (method, index) => {
-                headerCols[index].textContent = `Method: ${method.toUpperCase()}`; // Set header immediately
-                const responseData = await sendQuery(question, method, responseCols[index], spinners[index]);
-                displayResponse(responseCols[index], responseData.query, responseData.response);
+            const tasks = shuffledMethods.map(async (method) => {
+                // Set header immediately, using the correct key (method name)
+                headerCols[method].textContent = `Method: ${method.toUpperCase()}`;
+                const responseData = await sendQuery(question, method);
+                
+                // Store response data in currentChatEntry
+                currentChatEntry[method].conversation_id = responseData.conversation;
+                currentChatEntry[method].response = responseData.response;
+
+                displayResponse(method, responseData.query, responseData.response, responseData.conversation_id);
+                updateUrlParams(); // Update URL with returned state
             });
 
             await Promise.all(tasks); // Wait for all requests to complete
+
+            // Add the completed entry to history and update URL
+            chatHistory.push({ ...currentChatEntry }); // Push a copy of the current state
+            updateUrlParams();
         });
 
         questionInput.addEventListener('keypress', (e) => {
@@ -271,10 +497,13 @@
         });
 
         revealToggle.addEventListener('change', syncRevealToggle);
+        downloadTsvButton.addEventListener('click', downloadTsv);
 
-        // Call syncRevealToggle when the page loads to synchronize state
-        document.addEventListener('DOMContentLoaded', syncRevealToggle);
-
+        // --- Initial Page Load ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            syncRevealToggle(); // Synchronize header visibility
+            await restoreStateFromUrl(); // Restore state from URL parameters
+        });
     </script>
 </body>
 </html>

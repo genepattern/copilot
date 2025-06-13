@@ -14,12 +14,13 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage # Ensure these are imported
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 import logging
+from django.apps import apps
 
 
 logger = logging.getLogger(__name__)
 
-_instance = None
-_instance_lock = asyncio.Lock()
+# _instance = None
+# _instance_lock = asyncio.Lock()
 
 
 class ServiceHelper:
@@ -140,10 +141,14 @@ class ServiceHelper:
 
 async def instance():
     """Singleton instance accessor for LLM services."""
-    global _instance
-    async with _instance_lock:
-        if _instance is None: _instance = await ServiceHelper().create()
-    return _instance
+    # Get the AppConfig instance
+    app_config = apps.get_app_config('chatbot')
+
+    # Use the lock and instance from the AppConfig
+    async with app_config._instance_lock:
+        if app_config.service_helper_instance is None:
+            app_config.service_helper_instance = await ServiceHelper().create()
+    return app_config.service_helper_instance
 
 
 class ConversationState(MessagesState):
