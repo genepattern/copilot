@@ -5,29 +5,31 @@ from dotenv import load_dotenv
 from django.conf import settings
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
-from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.graph import START, StateGraph, END, MessagesState
 from typing import List, Dict
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage # Ensure these are imported
+from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 import logging
-from django.apps import apps
-
+import torch
+import threading
 
 logger = logging.getLogger(__name__)
 
-# _instance = None
-# _instance_lock = asyncio.Lock()
+# Global variables for caching expensive-to-load, immutable resources, initialized when first imported
+_cached_llms = None
+_cached_vector_store = None
+_cached_tools = None
+_cached_graphs = None
+
+# A simple, synchronous lock for global cache initialization, prevents race conditions
+_cache_lock = threading.Lock()
 
 
 class ServiceHelper:
-    """Helper class to manage LLM services and singleton instance"""
-
-    def __init__(self, llms=None, vector_store=None, graphs=None, tools=None):
-        """
+    """
         Initializes the ServiceHelper.
         Args:
             llms (dict): Dictionary of initialized LLM models.
@@ -35,21 +37,14 @@ class ServiceHelper:
             graphs (dict): Dictionary of pre-built LangGraph instances.
             tools (list): List of available tools for the LLM.
         """
-        self.llms = llms or {}
+
+    def __init__(self, llms, vector_store, graphs, tools):
+        self.llms = llms
         self.vector_store = vector_store
-        self._graph: Dict[str, StateGraph] = graphs or {}
-        self.tools = tools or []
+        self._graph: Dict[str, StateGraph] = graphs
+        self.tools = tools
 
     def graph(self, method: str) -> StateGraph:
-        """
-        Retrieves a compiled LangGraph instance by its method name.
-        Args:
-            method (str): The method name ('rag', 'mcp', 'raw') of the graph to retrieve.
-        Returns:
-            StateGraph: The compiled LangGraph instance.
-        Raises:
-            ValueError: If the requested method is not found.
-        """
         graph_instance = self._graph.get(method)
         if not graph_instance:
             valid_methods = list(self._graph.keys())
@@ -93,7 +88,7 @@ class ServiceHelper:
         return list(LlmModel.objects.filter(disabled=False))
 
     @staticmethod
-    async def load_llms():
+    async def _load_llms():
         """Load all enabled LLM models from the database and initialize them."""
         llms = {}
         models = await ServiceHelper.get_enabled_llms()
@@ -104,9 +99,19 @@ class ServiceHelper:
         return llms
 
     @staticmethod
-    def load_vector_store():
+    def _load_vector_store():
         """Load the vector store and embeddings."""
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        device = "cpu"
+        if torch.cuda.is_available():
+            device = "cuda"
+            logger.info("CUDA (NVIDIA GPU) is available, using 'cuda' device for embeddings.")
+        else:
+            logger.info("No NVIDIA GPU (CUDA) detected, using 'cpu' device for embeddings.")
+
+        embeddings = HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2",
+            model_kwargs={'device': device} # Pass the determined device
+        )
         return Chroma(
             collection_name="moduledoc",
             embedding_function=embeddings,
@@ -114,7 +119,7 @@ class ServiceHelper:
         )
 
     @staticmethod
-    async def load_mcp_tools():
+    async def _load_mcp_tools():
         """Load the GenePattern MCP client and its tools."""
         try:
             mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
@@ -126,29 +131,46 @@ class ServiceHelper:
             logger.error(f"Could not connect to MCP server or load tools: {e}", exc_info=True)
             return []
 
-    async def create(self):
-        """Asynchronously creates and configures the ServiceHelper instance."""
-        load_dotenv()
-        self.llms = await self.load_llms()
-        self.vector_store = self.load_vector_store()
-        self.tools = await self.load_mcp_tools()
-        try: self._graph = await build_langgraph(self.tools)
-        except Exception as e:
-            logger.error(f"Error building LangGraphs: {e}", exc_info=True)
-            raise
-        return self
+    @classmethod
+    async def create_instance(cls):
+        """Asynchronously creates and configures a new ServiceHelper instance,
+        using globally cached resources if available.
+        """
+        global _cached_llms, _cached_vector_store, _cached_tools, _cached_graphs
 
+        # Use a synchronous lock to guard the global cache initialization block.
+        with _cache_lock:
+            load_dotenv()
 
-async def instance():
-    """Singleton instance accessor for LLM services."""
-    # Get the AppConfig instance
-    app_config = apps.get_app_config('chatbot')
+            # Lazy load and cache LLMs
+            if _cached_llms is None:
+                logger.info("Initializing and caching LLMs...")
+                _cached_llms = await cls._load_llms()
+            llms = _cached_llms
 
-    # Use the lock and instance from the AppConfig
-    async with app_config._instance_lock:
-        if app_config.service_helper_instance is None:
-            app_config.service_helper_instance = await ServiceHelper().create()
-    return app_config.service_helper_instance
+            # Lazy load and cache Vector Store
+            if _cached_vector_store is None:
+                logger.info("Initializing and caching vector store...")
+                _cached_vector_store = cls._load_vector_store()
+            vector_store = _cached_vector_store
+
+            # Lazy load and cache MCP Tools
+            if _cached_tools is None:
+                logger.info("Initializing and caching MCP tools...")
+                _cached_tools = await cls._load_mcp_tools()
+            tools = _cached_tools
+
+            # Lazy build and cache LangGraphs
+            if _cached_graphs is None:
+                logger.info("Building and caching LangGraphs...")
+                try:
+                    _cached_graphs = await build_langgraph(tools)
+                except Exception as e:
+                    logger.error(f"Error building LangGraphs during caching: {e}", exc_info=True)
+                    raise
+            graphs = _cached_graphs
+
+        return cls(llms=llms, vector_store=vector_store, graphs=graphs, tools=tools)
 
 
 class ConversationState(MessagesState):
@@ -167,7 +189,7 @@ async def genepattern_mcp(state: ConversationState):
     """Node to interact with the LLM and GenePattern tools via MCP."""
     logger.debug("\n--- Entering genepattern_mcp ---")
     started_at = datetime.now()
-    helper = await instance()
+    helper = await ServiceHelper.create_instance()
     model_id = state["model_id"]
 
     if model_id not in helper.llms:
@@ -201,7 +223,7 @@ async def genepattern_mcp(state: ConversationState):
 async def retrieve_documents(state: ConversationState):
     """Node to retrieve relevant documents from the vector store."""
     started_at = datetime.now()
-    helper = await instance()
+    helper = await ServiceHelper.create_instance()
     docs = helper.vector_store.similarity_search(state["query"])
     ended_at = datetime.now()
     state["steps"].append({
@@ -222,7 +244,7 @@ async def answer_question(state: ConversationState):
     This node is designed to handle being called from different graph paths.
     """
     model_id = state["model_id"]
-    helper = await instance()
+    helper = await ServiceHelper.create_instance() # Get a ServiceHelper instance with cached resources
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
@@ -232,17 +254,12 @@ async def answer_question(state: ConversationState):
 
     history = state.get("messages", [])
 
-    # CORRECTED check for tool-related messages
     has_tool_messages = any(
         (isinstance(msg, AIMessage) and msg.tool_calls) or isinstance(msg, ToolMessage)
-        for msg in history # This is now correctly inside the generator expression for any()
+        for msg in history
     )
 
-    # Bind tools to the model if there's history that might contain tool messages,
-    # or if this is the MCP path. This ensures tool_config is always passed if relevant.
-    # IMPORTANT: Ensure 'method_id' is added to ConversationState in handle_chat_message
-    # if it's not already, for state['method_id'] to be available.
-    if has_tool_messages or state.get('method_id') == 'mcp': # Use .get() for safety
+    if has_tool_messages or state.get('method_id') == 'mcp':
         llm_to_use = helper.llms[model_id].bind_tools(helper.tools)
     else:
         llm_to_use = helper.llms[model_id]
@@ -252,13 +269,11 @@ async def answer_question(state: ConversationState):
     else:
         full_prompt = [system] + history
         # Ensure the conversation ends with a HumanMessage for models requiring it.
-        # This is crucial after tool calls/results or if the LLM's last turn was not a final answer.
-        # We append a final user message to prompt the LLM to give the concluding answer.
         if not full_prompt or not isinstance(full_prompt[-1], HumanMessage):
             full_prompt.append(HumanMessage(content=f"Based on the conversation above, please provide the final answer to my original question: {state['raw_query']}"))
 
     started_at = datetime.now()
-    response = await llm_to_use.ainvoke(full_prompt) # Use the potentially tool-bound LLM
+    response = await llm_to_use.ainvoke(full_prompt)
     ended_at = datetime.now()
     state["steps"].append({
         'llm_model': state["model_id"],
@@ -270,8 +285,6 @@ async def answer_question(state: ConversationState):
         'ended_at': ended_at,
     })
     return {"answer": response.content}
-
-# No changes needed for assemble_answer as its structure is already good.
 
 
 async def summarize_question_for_raw_graph(state: ConversationState):
@@ -289,7 +302,7 @@ async def summarize_question(state: ConversationState, llm_summarization=True):
     if not llm_summarization: return {"query": state["raw_query"]}
 
     model_id = state["model_id"]
-    helper = await instance()
+    helper = await ServiceHelper.create_instance()
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
@@ -390,8 +403,8 @@ def assemble_answer(answer):
 async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None):
     """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
 
-    start_time = datetime.now()         # Note start time
-    if user.is_anonymous: user = None   # Anonymous users should be null
+    start_time = datetime.now()
+    if user.is_anonymous: user = None  # Anonymous users should be null
 
     # 1. Get the existing conversation or lazily create one
     if conversation_id:
@@ -435,8 +448,8 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         answer=""
     )
 
-    # # 5. Run the LangGraph
-    helper = await instance()  # Get the singleton instance of ServiceHelper
+    # 5. Run the LangGraph
+    helper = await ServiceHelper.create_instance()
     final_state = await helper.graph(method_id).ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database
@@ -447,9 +460,9 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
 
     query_instance = await ServiceHelper.async_orm_create(Query, conversation=conversation, query_num=query_num,
                                                           llm_model=llm_model, started_at=start_time, ended_at=end_time,
-                                                          raw_query=user_query, response=answer)  #Query.objects.create(conversation=conversation, query_num=query_num, llm_model=llm_model, started_at=start_time, ended_at=end_time, raw_query=user_query, response=answer)
+                                                          raw_query=user_query, response=answer)
 
-    # # Save steps taken during the graph execution
+    # Save steps taken during the graph execution
     for i, step in enumerate(final_state.get('steps', [])):
         await ServiceHelper.async_orm_create(
             Step,
@@ -465,4 +478,4 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         )
 
     # 7. Return the created Query object
-    return query_instance, None  # Return query instance and no error message
+    return query_instance, None
