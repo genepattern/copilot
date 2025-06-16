@@ -15,9 +15,9 @@ print("Loading embeddings...")
 device = "cpu"
 if torch.cuda.is_available():
     device = "cuda"
-    logger.info("CUDA (NVIDIA GPU) is available, using 'cuda' device for embeddings.")
+    print("CUDA (NVIDIA GPU) is available, using 'cuda' device for embeddings.")
 else:
-    logger.info("No NVIDIA GPU (CUDA) detected, using 'cpu' device for embeddings.")
+    print("No NVIDIA GPU (CUDA) detected, using 'cpu' device for embeddings.")
 
 embeddings = HuggingFaceEmbeddings(
     model_name="all-MiniLM-L6-v2",
