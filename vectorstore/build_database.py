@@ -4,6 +4,7 @@
 # Builds a new chroma vector store from the summarized library
 #################################################################################
 
+import torch
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import DirectoryLoader, UnstructuredMarkdownLoader
@@ -11,7 +12,20 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Set the embeddings model
 print("Loading embeddings...")
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+device = "cpu"
+if torch.cuda.is_available():
+    device = "cuda"
+    logger.info("CUDA (NVIDIA GPU) is available, using 'cuda' device for embeddings.")
+else:
+    logger.info("No NVIDIA GPU (CUDA) detected, using 'cpu' device for embeddings.")
+
+embeddings = HuggingFaceEmbeddings(
+    model_name="all-MiniLM-L6-v2",
+    model_kwargs={
+        'device': device,
+        'from_tf': True # <--- CRITICAL FIX: Load from TensorFlow weights
+    }
+)
 
 # Create the vector store
 vector_store = Chroma(
