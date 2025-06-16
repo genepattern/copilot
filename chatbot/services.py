@@ -110,7 +110,7 @@ class ServiceHelper:
 
         embeddings = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2",
-            model_kwargs={'device': device} # Pass the determined device
+            model_kwargs={ 'device': device, 'from_tf': True } # Pass the determined device
         )
         return Chroma(
             collection_name="moduledoc",
