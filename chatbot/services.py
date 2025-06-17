@@ -13,7 +13,6 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 import logging
-import torch
 import threading
 
 logger = logging.getLogger(__name__)
@@ -101,17 +100,7 @@ class ServiceHelper:
     @staticmethod
     def _load_vector_store():
         """Load the vector store and embeddings."""
-        device = "cpu"
-        if torch.cuda.is_available():
-            device = "cuda"
-            logger.info("CUDA (NVIDIA GPU) is available, using 'cuda' device for embeddings.")
-        else:
-            logger.info("No NVIDIA GPU (CUDA) detected, using 'cpu' device for embeddings.")
-
-        embeddings = HuggingFaceEmbeddings(
-            model_name="all-MiniLM-L6-v2",
-            model_kwargs={ 'device': device, 'from_tf': True } # Pass the determined device
-        )
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         return Chroma(
             collection_name="moduledoc",
             embedding_function=embeddings,
