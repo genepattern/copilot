@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from markdown import markdown
+from markdown_it import MarkdownIt
 from rest_framework import serializers
 from .models import Conversation, Query, LlmModel, Step
 
@@ -36,7 +36,8 @@ class QuerySerializer(serializers.ModelSerializer):
 
     @staticmethod
     def markdown_to_html(markdown_text):
-        html = markdown(markdown_text, extensions=['extra', 'smarty'])
+        parser = MarkdownIt()
+        html = parser.render(markdown_text)
         soup = BeautifulSoup(html, 'html.parser')
         for a in soup.find_all('a', href=True): a['target'] = '_blank'
         return str(soup)
