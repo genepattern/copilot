@@ -118,6 +118,7 @@ orjson==3.10.16
 ormsgpack==1.9.1
 overrides==7.7.0
 packaging==24.2
+pandas==2.3.0
 pillow==11.2.1
 posthog==3.25.0
 propcache==0.3.1

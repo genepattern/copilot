@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Your apps
-    'chatbot.apps.ChatbotConfig',  # Add your chatbot app
+    'chatbot.apps.ChatbotConfig',
+    'validation',
 ]
 
 MIDDLEWARE = [

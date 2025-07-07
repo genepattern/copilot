@@ -9,6 +9,9 @@ urlpatterns = [
     # Method test view
     path('test/', TestInterfaceView.as_view(), name='test-interface'),
 
+    # Validation results page
+    path('validation/', include('validation.urls', namespace='validation')),
+
     # Copilot admin interface
     path('admin/', admin.site.urls),
 
