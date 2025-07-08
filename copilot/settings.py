@@ -95,6 +95,13 @@ DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+BASE_GENEPATTERN_URL = os.getenv('BASE_GENEPATTERN_URL', 'https://cloud.genepattern.org/gp')  # Default to GP cloud
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'copilot.auth.GenePatternAuthenticationBackend',
+)
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
