@@ -1,10 +1,12 @@
 from adrf.views import APIView as AsyncAPIView
 from asgiref.sync import sync_to_async
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, views, viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Conversation, Query, LlmModel
 from .serializers import (
     ConversationSerializer,
@@ -120,6 +122,11 @@ class ChatInterfaceView(TemplateView):
     """
     template_name = 'index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
 
 class TestInterfaceView(TemplateView):
     """
@@ -131,3 +138,30 @@ class TestInterfaceView(TemplateView):
 class LlmModelViewSet(viewsets.ModelViewSet):
     queryset = LlmModel.objects.all()
     serializer_class = LlmModelSerializer
+
+
+class LoginAPIView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                return Response({
+                    'success': True,
+                    'username': user.username,
+                    'is_staff': user.is_staff
+                })
+
+        return Response({'success': False, 'error': 'Invalid credentials'},
+                        status=status.HTTP_401_UNAUTHORIZED)
+
+
+class LogoutAPIView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({'success': True})

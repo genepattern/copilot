@@ -265,3 +265,119 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadModels();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // Handle login form submission
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append('username', document.getElementById('username').value);
+            formData.append('password', document.getElementById('password').value);
+
+            try {
+                const response = await fetch('/api/login/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    loginModal.hide();
+                    updateUIForLoggedInUser(data.username, data.is_staff);
+                } else {
+                    document.getElementById('loginError').textContent = data.error;
+                    document.getElementById('loginError').classList.remove('d-none');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+            }
+        });
+    }
+
+    // Handle logout
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+
+            try {
+                const response = await fetch('/api/logout/', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    updateUIForLoggedOutUser();
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+    }
+
+    function updateUIForLoggedInUser(username, isStaff) {
+        const navbarNav = document.querySelector('.navbar-nav.ms-auto');
+        const adminLink = isStaff ? '<li><a class="dropdown-item" target="_blank" href="/admin/">Admin</a></li>' : '';
+
+        navbarNav.innerHTML = `
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    ${username}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    ${adminLink}
+                    <li><a class="dropdown-item" href="#" id="logoutBtn">Sign out</a></li>
+                </ul>
+            </div>
+        `;
+
+        // Re-attach logout event listener
+        document.getElementById('logoutBtn').addEventListener('click', logoutBtn.onclick);
+    }
+
+    function updateUIForLoggedOutUser() {
+        const navbarNav = document.querySelector('.navbar-nav.ms-auto');
+        navbarNav.innerHTML = `
+            <button type="button" class="btn btn-outline-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Sign in
+            </button>
+        `;
+    }
+
+    // Update the getCookie function to also check the meta tag
+    function getCookie(name) {
+        // First try to get from meta tag
+        if (name === 'csrftoken') {
+            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+            if (csrfMeta) {
+                return csrfMeta.getAttribute('content');
+            }
+        }
+
+        // Fallback to cookie
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});

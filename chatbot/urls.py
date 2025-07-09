@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import ChatAPIView, ConversationDetailView, ResponseRatingView, LlmModelViewSet, ModelsAPIView
+from .views import (ChatAPIView, ConversationDetailView, ResponseRatingView, LlmModelViewSet, ModelsAPIView,
+                    LoginAPIView, LogoutAPIView)
 from rest_framework import routers
 
 
@@ -10,6 +11,10 @@ router = routers.DefaultRouter()
 router.register(r'llm-models', LlmModelViewSet, basename='llm-models')
 
 urlpatterns = [
+    # API endpoint to handle user login and logout
+    path('login/', LoginAPIView.as_view(), name='login'),
+    path('logout/', LogoutAPIView.as_view(), name='logout'),
+
     # API endpoint to retrieve the list of available models
     path('models/', ModelsAPIView.as_view(), name='models'),
 

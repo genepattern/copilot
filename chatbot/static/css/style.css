@@ -121,3 +121,103 @@ body {
 .rating-buttons button.thumb-down:hover {
     --bs-bg-opacity: 0.2;
 }
+
+/* Dark theme for login modal */
+.modal-content {
+    background-color: #2b2b2b;
+    color: #e9ecef;
+    border: 1px solid #495057;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    background-color: #343a40;
+    color: #fff;
+    border-bottom: 1px solid #495057;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #fff;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    color: #adb5bd;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+.modal-body {
+    background-color: #2b2b2b;
+    padding: 24px;
+}
+
+.form-label {
+    color: #e9ecef;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    background-color: #495057;
+    border: 1px solid #6c757d;
+    border-radius: 6px;
+    color: #e9ecef;
+    padding: 10px 12px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    background-color: #495057;
+    border-color: #0d6efd;
+    color: #e9ecef;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+}
+
+#loginError {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    margin-top: 12px;
+}
+
+.modal-footer {
+    background-color: #343a40;
+    border-top: 1px solid #495057;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 24px;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.modal-footer .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
