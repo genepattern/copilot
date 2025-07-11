@@ -98,8 +98,8 @@ DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 BASE_GENEPATTERN_URL = os.getenv('BASE_GENEPATTERN_URL', 'https://cloud.genepattern.org/gp')  # Default to GP cloud
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
     'copilot.auth.GenePatternAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 AUTH_PASSWORD_VALIDATORS = [

@@ -63,6 +63,7 @@ class ChatInputSerializer(serializers.Serializer):
     query = serializers.CharField(max_length=10000, help_text="The user's query")
     model_id = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="Specific model id to use")
     method_id = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="Specific method to use")
+    api_key = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="GenePattern API key for authenticated MCP calls")
     html = serializers.BooleanField(default=False, help_text="Return HTML response, otherwise return Markdown")
 
     # Future Use?: Allow specifying a system prompt version or ID

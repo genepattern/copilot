@@ -7,7 +7,7 @@ from rest_framework import generics, status, views, viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Conversation, Query, LlmModel
+from .models import Conversation, Query, LlmModel, UserProfile
 from .serializers import (
     ConversationSerializer,
     QuerySerializer,
@@ -56,11 +56,21 @@ class ChatAPIView(AsyncAPIView):
             user_query = serializer.validated_data['query']
             model_id = serializer.validated_data.get('model_id')
             method_id = serializer.validated_data.get('method_id')
+            api_key = serializer.validated_data.get('api_key')
             html = serializer.validated_data.get('html')
+
+            # If the call doesn't specify an API key, check the user profile
+            if not api_key and user.is_authenticated:
+                try:
+                    profile = await sync_to_async(UserProfile.objects.get)(user=user)
+                    api_key = profile.gp_api_key
+                    print(f'-------- API KEY IS {api_key}')
+                except UserProfile.DoesNotExist: pass  # Profile doesn't exist, no API key available
 
             # Call the service layer to handle the logic
             query_instance, error_message = await handle_chat_message(user=user, conversation_id=conversation_id,
-                                                                      user_query=user_query, model_id=model_id, method_id=method_id)
+                                                                      user_query=user_query, model_id=model_id,
+                                                                      method_id=method_id, api_key=api_key)
 
             # Check if there was an error in processing
             if error_message: return Response({ "error": error_message }, status=status.HTTP_400_BAD_REQUEST)
@@ -151,10 +161,15 @@ class LoginAPIView(APIView):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
+
+                # Store API key in user profile
+                profile, created = UserProfile.objects.get_or_create(user=user)
+
                 return Response({
                     'success': True,
                     'username': user.username,
-                    'is_staff': user.is_staff
+                    'is_staff': user.is_staff,
+                    'api_key': profile.gp_api_key if hasattr(profile, 'gp_api_key') else None
                 })
 
         return Response({'success': False, 'error': 'Invalid credentials'},
@@ -163,5 +178,13 @@ class LoginAPIView(APIView):
 
 class LogoutAPIView(APIView):
     def post(self, request):
+        # Clear API key from user profile if user is authenticated
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                profile.gp_api_key = None
+                profile.save(update_fields=['gp_api_key'])
+            except UserProfile.DoesNotExist: pass  # Profile doesn't exist, nothing to clear
+
         logout(request)
         return Response({'success': True})

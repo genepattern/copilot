@@ -172,6 +172,7 @@ class ConversationState(MessagesState):
     context: List
     answer: str
     steps: List
+    api_key: str = None
 
 
 async def genepattern_mcp(state: ConversationState):
@@ -236,6 +237,10 @@ async def answer_question(state: ConversationState):
     helper = await ServiceHelper.create_instance() # Get a ServiceHelper instance with cached resources
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
+
+    # Add API key to context if provided
+    if state.get('method_id') == 'mcp' and state.get("api_key"):
+        context += f"\n\nGenePattern API Key: {state['api_key']}"
 
     context = "\n\n".join(doc.page_content for doc in state.get("context", []))
     system_content = f"{state['prompt']}\n\n{context}\n\n"
@@ -389,7 +394,7 @@ def assemble_answer(answer):
     raise ValueError("Invalid answer format. Expected a string, tuple or list of strings")
 
 
-async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None):
+async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None, api_key=None):
     """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
 
     start_time = datetime.now()
@@ -434,7 +439,8 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         steps=[],
         messages=[],
         context=[],
-        answer=""
+        answer="",
+        api_key=api_key
     )
 
     # 5. Run the LangGraph

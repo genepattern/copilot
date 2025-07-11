@@ -1,3 +1,29 @@
+function getCookie(name) {
+    // First try to get from cookie
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+
+    // Fallback to meta tag only if cookie not found
+    if (!cookieValue && name === 'csrftoken') {
+        const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        if (csrfMeta) {
+            return csrfMeta.getAttribute('content');
+        }
+    }
+
+    return cookieValue;
+}
+window.getCookie = getCookie; // Make it globally accessible
+
 document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const userInput = document.getElementById('user-input');
@@ -145,12 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
             html: true
         };
 
+        // Include API key if available
+        if (localStorage.getItem('gp_api_key')) {
+            payload.api_key = localStorage.getItem('gp_api_key');
+        }
+
         try {
             const response = await fetch('/api/chat/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
+                    'X-CSRFToken': getCookie('csrftoken')
                 },
                 body: JSON.stringify(payload)
             });
@@ -294,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.success) {
                     loginModal.hide();
                     updateUIForLoggedInUser(data.username, data.is_staff);
+                    if (data.api_key) localStorage.setItem('gp_api_key', data.api_key); // Store API key in localStorage
                 } else {
                     document.getElementById('loginError').textContent = data.error;
                     document.getElementById('loginError').classList.remove('d-none');
@@ -308,22 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async function(e) {
             e.preventDefault();
-
-            try {
-                const response = await fetch('/api/logout/', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': getCookie('csrftoken')
-                    }
-                });
-
-                const data = await response.json();
-                if (data.success) {
-                    updateUIForLoggedOutUser();
-                }
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
+            await do_logout();
         });
     }
 
@@ -343,8 +360,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // Re-attach logout event listener
-        document.getElementById('logoutBtn').addEventListener('click', logoutBtn.onclick);
+        // Re-attach logout event listener to the new element
+        const newLogoutBtn = document.getElementById('logoutBtn');
+        if (newLogoutBtn) {
+            newLogoutBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                await do_logout()
+            });
+        }
     }
 
     function updateUIForLoggedOutUser() {
@@ -356,28 +379,22 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Update the getCookie function to also check the meta tag
-    function getCookie(name) {
-        // First try to get from meta tag
-        if (name === 'csrftoken') {
-            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-            if (csrfMeta) {
-                return csrfMeta.getAttribute('content');
-            }
-        }
-
-        // Fallback to cookie
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+    async function do_logout() {
+        try {
+            const response = await fetch('/api/logout/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
                 }
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                updateUIForLoggedOutUser();
+                localStorage.removeItem('gp_api_key'); // Clear API key from localStorage
             }
+        } catch (error) {
+            console.error('Logout error:', error);
         }
-        return cookieValue;
     }
 });

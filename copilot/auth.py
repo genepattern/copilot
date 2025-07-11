@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from rest_framework import authentication
 from rest_framework import exceptions
+from chatbot.models import UserProfile
 
 
 def connect_to_genepattern(username, password):
@@ -63,6 +64,12 @@ class GenePatternAuthenticationBackend(ModelBackend):
         # Call GenePattern server
         try:
             user, token = connect_to_genepattern(username, password)
+
+            # Store API key in user profile
+            profile, created = UserProfile.objects.get_or_create(user=user)
+            profile.gp_api_key = token
+            profile.save()
+
             return user
         except exceptions.AuthenticationFailed:
             return None
@@ -81,7 +88,9 @@ class GenePatternAuthentication(authentication.BaseAuthentication):
         # Call GenePattern server
         user, token = connect_to_genepattern(username, password)
 
-        # Save the api key in the session
-        request.session['gp_api_key'] = token
+        # Store API key in user profile
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        profile.gp_api_key = token
+        profile.save()
 
         return user, token
