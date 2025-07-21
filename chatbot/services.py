@@ -185,28 +185,38 @@ async def genepattern_mcp(state: ConversationState):
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
+    # Create the initial message if the history is empty
     if not state["messages"]:
         state["messages"] = [HumanMessage(content=state["query"])]
 
+    # For accurate logging, capture the messages that are being sent to the LLM
+    step_input_messages = str(state["messages"])
+
+    # Invoke the LLM
     model_with_tools = helper.llms[model_id].bind_tools(helper.tools)
     response = await model_with_tools.ainvoke(state["messages"])
     ended_at = datetime.now()
 
+    # Log the details of this step
     state["steps"].append({
         'llm_model': state["model_id"],
         'system_prompt': state["prompt"],
         'call_id': 'genepattern_mcp',
-        'step_input': str(state["messages"]),
+        'step_input': step_input_messages,
         'step_output': str(response),
         'started_at': started_at,
         'ended_at': ended_at,
     })
+
     state["messages"].append(response)
 
+    # Log whether a tool call was requested
     if response.tool_calls:
-        tool_name = response.tool_calls[0].get('name')
-        logger.info(f"LLM wants to call a tool: {tool_name}")
+        logger.info(f"LLM wants to call a tool: {response.tool_calls[0].get('name')}")
+    else:
+        logger.info("LLM did not request a tool call, proceeding to answer.")
 
+    # Return the updated state fields
     return {"messages": state["messages"], "steps": state["steps"]}
 
 
@@ -343,16 +353,35 @@ async def build_mcp_graph(tools) -> StateGraph:
     """Build and compile the LangGraph for MCP tool usage."""
     workflow = StateGraph(ConversationState)
 
+    # 1. Add all nodes to the graph
     workflow.add_node("summarize_question", summarize_question)
     workflow.add_node("genepattern_mcp", genepattern_mcp)
     workflow.add_node("answer_question", answer_question)
+
+    # The ToolNode is a pre-built node that executes the tools it's given
     workflow.add_node("tools", ToolNode(tools))
 
+    # 2. Define the graph's flow (edges)
     workflow.add_edge(START, "summarize_question")
     workflow.add_edge("summarize_question", "genepattern_mcp")
-    workflow.add_conditional_edges("genepattern_mcp", tools_condition,
-                                   { "tools": "tools", "__end__": "answer_question" }, )
+
+    # 3. Add the conditional edge for tool calling
+    # After the `genepattern_mcp` node runs, the `tools_condition` function checks
+    # if the last message contains tool calls.
+    workflow.add_conditional_edges(
+        "genepattern_mcp",
+        tools_condition,
+        # If `tools_condition` is TRUE, it routes to the "tools" node.
+        # If `tools_condition` is FALSE, it routes to the "answer_question" node.
+        {"tools": "tools", "__end__": "answer_question"},
+    )
+
+    # 4. Define the loop
+    # After the "tools" node runs, it loops back to the `genepattern_mcp` node
+    # so the LLM can process the tool results.
     workflow.add_edge("tools", "genepattern_mcp")
+
+    # 5. Define the final step
     workflow.add_edge("answer_question", END)
 
     return workflow.compile()
