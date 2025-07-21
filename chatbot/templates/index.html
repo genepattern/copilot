@@ -21,8 +21,12 @@
         </div>
         <div class="mr-item"></div>
         <form class="form-inline container-fluid conversation-form">
-            <select id="llm-models" class="model-dropdown">
+            <select id="llm-methods" class="model-dropdown">
+                <option value="mcp" selected>MCP</option>
+                <option value="rag">RAG</option>
+                <option value="raw">Raw</option>
             </select>
+            <select id="llm-models" class="model-dropdown"></select>
           <button class="btn btn-outline-success ms-auto me-0" type="submit">New Conversation</button>
         </form>
 

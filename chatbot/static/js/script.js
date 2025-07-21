@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
+    const methodSelect = document.getElementById('llm-methods');
     const modelSelect = document.getElementById('llm-models');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -163,11 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
         userInput.value = ''; // Clear input field
         sendButton.disabled = true; // Disable button while processing
         modelSelect.disabled = true; // Disable model selection once a conversation is started
+        methodSelect.disabled = true; // Disable method selection once a conversation is started
 
         const payload = {
             query: queryText,
             conversation_id: currentConversationId, // Send null if it's the first message
             model_id: modelSelect.value || null,    // Use selected model
+            method_id: methodSelect.value || null,  // Use selected method
             html: true
         };
 
@@ -275,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Load LLM models
-    async function loadModels(default_model = 'us.meta.llama3-3-70b-instruct-v1:0') {
+    async function loadModels(default_model = 'us.anthropic.claude-3-5-haiku-20241022-v1:0') {
         const models = await fetch(`/api/models/`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},

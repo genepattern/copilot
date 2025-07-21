@@ -162,9 +162,9 @@ CORS_ALLOW_CREDENTIALS = True
 # GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 # Optional: Define default model IDs or other LangChain configurations here
-DEFAULT_LLM_MODEL = os.getenv('DEFAULT_LLM_MODEL', 'gpt-4o-mini')  # Example
-DEFAULT_LLM_METHOD = os.getenv('DEFAULT_LLM_METHOD', 'rag')  # Example, can be 'rag', 'mcp', 'raw'
-GENEPATTERN_MCP_URL = os.getenv('GENEPATTERN_MCP_URL', 'http://localhost:3000')  # Default to local MCP server
+DEFAULT_LLM_MODEL = os.getenv('DEFAULT_LLM_MODEL', 'us.anthropic.claude-3-5-haiku-20241022-v1:0')  # Example
+DEFAULT_LLM_METHOD = os.getenv('DEFAULT_LLM_METHOD', 'mcp')  # Example, can be 'rag', 'mcp', 'raw'
+GENEPATTERN_MCP_URL = os.getenv('GENEPATTERN_MCP_URL', 'http://localhost:3000/mcp')  # Default to local MCP server
 
 # --- Logging Configuration (Optional but Recommended) ---
 LOGGING = {
