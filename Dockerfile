@@ -5,7 +5,16 @@ RUN apt-get -y update && \
     apt-get -y install wget git bzip2 libcurl4-gnutls-dev gcc nano
 
 # Install GenePattern Copilot
-RUN git clone https://github.com/genepattern/copilot.git /srv/copilot
+COPY . /srv/copilot
+RUN cd /srv/copilot &&  \
+    rm -rf .env &&  \
+    rm -rf gcp.json && \
+    rm -rf chatbot/migrations && \
+    rm -rf .git && \
+    rm -rf .gitignore && \
+    rm -rf .idea && \
+    rm -rf db.sqlite3
+# RUN git clone https://github.com/genepattern/copilot.git /srv/copilot
 WORKDIR /srv/copilot
 RUN pip install -r requirements.txt
 
