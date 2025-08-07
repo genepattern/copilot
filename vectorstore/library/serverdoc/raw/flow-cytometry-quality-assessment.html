@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow Cytometry Quality Assessment</title>
+</head>
+<body>
+<h2>Description</h2>
+
+<p>Quality assessment represents an important part of any data analysis.&nbsp; Quality control tests should be included at the beginning of data analysis and often at other steps of an analytical pipeline to identify differences in samples originating from changes in conditions that are probably not biologically motivated. Generally, these methods establish a quality control criterion to give special consideration to abnormal samples or even exclude these from further analysis. Quality control tests in this suite are largely based on functionality implemented in the flowQ and flowFP R/BioConductor packages. They include tests applicable to both plate-based and single panel flow cytometry data (e.g., fingerprinting, cell number test, time flow test, Probability Density Function (PDF), and medians test of forward and side scatter for cell debris).<br />
+(Click <img src="/uploaded/content_pdf.jpg" /> for documents)</p>
+
+<ul>
+	<li><strong>FCMSinglePanelQC</strong> performs quality control of a single panel from cytometry data. There are four tests available for the analysis of single panel experiments: the cell number control test, the boundary events test, the timeflow test, and the timeline test. <a href="ftp://ftp.broadinstitute.org/pub/genepattern/modules_public_server_doc/FCMSinglePanelQC.pdf" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<ul>
+	<li><strong>PlateQAFCS</strong> performs automated quality assessment of plate-based FCS data. The quality assurance is checked under the assumption that all the samples should share similar properties in the forward scatter (FSC), side scatter (SSC), and time channels. A common use case is to assure that a multiple-well plate of samples was correctly processed by the flow cytometer. <a href="ftp://ftp.broadinstitute.org/pub/genepattern/modules_public_server_doc/PlateQAFCS.pdf" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<ul>
+	<li><strong>FlowFingerprinting</strong> generates a description of the multivariate probability distribution function of flow cytometry data in the form of a fingerprint. As such, it is independent of a presumptive functional form for the distribution, in contrast with model-based methods such as Gaussian Mixture Modeling. It can be used for quality control screening (similar data files have similar fingerprints). In addition, fingerprints may be used as input for data classifiers. <a href="ftp://ftp.broadinstitute.org/pub/genepattern/modules_public_server_doc/FlowFingerprinting.pdf" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+	<li><strong>FCS: </strong>Spidlen J, Moore W, Parks D, Goldberg M, Bray C, Bierre P, Gorombey P, Hyun B, Hubbard M, Lange S, Lefebvre R, Leif RR, Novo D, Ostruszka L, Treister A, Wood J, Murphy RF, Roederer M, Sudar D, Zigon R, Brinkman RR.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/19937951" target="_blank">Data File Standard for Flow Cytometry, Version FCS 3.1.</a> <em>Cytometry A</em>. 2010;77:97&ndash;100.</li>
+	<li><strong>FlowQ: </strong>Le Meur N, Rossini A, Gasparetto M, Smith C, Brinkman RR, Gentleman R.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/17366638" target="_blank">Data quality assessment of ungated flow cytometry data in high throughput experiments.</a>&nbsp; <em>Cytometry A</em>. 2007;71(6):393-403.</li>
+	<li><strong>Fingerprinting: </strong>Rogers WT, Holyst H.<a href="http://www.ncbi.nlm.nih.gov/pubmed/19956416" target="_blank">FlowFP: A bioconductor package for fingerprinting flow cytometric data.</a> <em>Adv Bioinformatics</em>. 2009:193947. Epub 2009 Sep 24.</li>
+	<li><a href="http://www.broadinstitute.org/genepattern/desc/quick_start.html">Quick Start</a> a 10-minute introduction to GenePattern</li>
+</ul>
+</body>
+</html>

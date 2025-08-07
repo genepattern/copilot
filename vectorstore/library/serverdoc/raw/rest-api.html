@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GenePattern REST API</title>
+</head>
+<body>
+<p>GenePattern provides a variety of RESTful web services for programmers looking to integrate GenePattern into a web application. A specification of these services is also available in the form of a Web Application Description Language (WADL) file. This file can be accessed for a particular GenePattern server by using the URL format shown below.</p>
+
+<p><code>http://your_server:your_port/gp/rest/application.wadl</code></p>
+
+<p>A link to the WADL file on the <a href="https://cloud.genepattern.org/gp/">GenePatten public server</a> is <a href="https://cloud.genepattern.org/gp/rest/application.wadl">available here</a>. Note that clicking this link will prompt you for your GenePattern authentication credentials on the public server.</p>
+
+<p>For more information on using GenePattern programmatically, see the <a href="http://www.broadinstitute.org/programmers-guide">Programmer&#39;s Guide</a>.</p>
+
+<h1><a id="authentication" name="authentication"></a>Authentication</h1>
+
+<p>Most resources that are part of the GenePattern REST API require authentication before they can be accessed. Several forms of authentication are accepted and are described below.</p>
+
+<h2><a id="basicauth" name="basicauth"></a>Basic Authentication</h2>
+
+<p>Basic Authentication requires that an <code>Authorization</code> header is added to each request sent to the REST API. The value of this header should include the word <em>Basic</em>, a space and then a string consisting of the user&#39;s GenePattern <code>username:password</code> encoded Base64, compliant with the RFC2045-MIME specification.</p>
+
+<p>For example, if the GenePattern username is <em>Aladdin</em> and the password is <em>OpenSesame</em>, then the authorization header will be as follows:</p>
+
+<p><code>Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l</code></p>
+
+<p>For more information on Basic Authentication see the <a href="https://tools.ietf.org/html/rfc2617">full specification (RFC2617)</a>.</p>
+
+<h2><a id="gpoauth2" name="gpoauth2"></a>GenePattern OAuth2</h2>
+
+<p>The GenePattern REST API provides <a href="http://oauth.net/2/">OAuth2</a> endpoints that allow clients to authenticate with GenePattern. Unlike most resources, the OAuth2 endpoints are intended to be accessed before authentication.</p>
+
+<p>For a complete description of GenePattern&#39;s OAuth2 service, see the <a href="#oauth2">OAuth2 resource</a> below.</p>
+
+<p>For more information on OAuth2 in general, see the <a href="http://tools.ietf.org/html/rfc6749">OAuth2 specification</a>.</p>
+
+<h2><a id="gssso" name="gssso"></a>GenomeSpace Single Sign-On</h2>
+
+<p>As part of the <a href="http://genomespace.org/">GenomeSpace initiative</a>, GenePattern supports single sign-on using GenomeSpace credentials. Before these credentials are valid in GenePattern, however, a user must first associate their GenomeSpace account with their GenePattern account. This can be achieved by clicking on the GenomeSpace icon on the <a href="http://genepattern.broadinstitute.org/gp/pages/login.jsf">login page</a> in the GenePattern web interface, then following the resulting prompts.</p>
+
+<p>Once a user&#39;s GenePattern account and GenomeSpace accounts have been associated, using GenomeSpace credentials with the GenePattern REST API can be accomplished in one of two ways:</p>
+
+<h3>GenomeSpace Basic Authentication</h3>
+
+<p>A user&#39;s GenomeSpace username and password can be passed to GenePattern for verification using Basic Authentication. This uses the exact same process described in <a href="#basicauth">Basic Authentication</a> above, only the user&#39;s GenomeSpace username and password are included instead of their GenePattern username and password.</p>
+
+<p>For more information on Basic Authentication see the <a href="https://tools.ietf.org/html/rfc2617">full specification (RFC2617)</a>.</p>
+
+<h3>GenomeSpace Username and Token</h3>
+
+<p>When authenticating with the <a href="http://www.genomespace.org/support/api/restful-access-to-dm">GenomeSpace RESTful API</a>, a security token is issued. This security token, along with the associated GenomeSpace username, can be used to access the GenePattern REST API. To do this, both pieces of information must be included as headers on each request made to GenePattern&#39;s RESTful web services. The appropriate form of each header is shown below, assuming the username <em>Aladdin</em> and a fictional token.</p>
+
+<p><code>gs-username: Aladdin</code></p>
+
+<p><code>gs-token: ZbxhZGRpbjpPcGVuU2VzYwer=</code></p>
+
+<p>For more information see the <a href="http://www.genomespace.org/support/api/restful-access-to-dm">GenomeSpace API documentation</a>.</p>
+
+<h1><a id="resources" name="resources"></a>Resources</h1>
+
+<p>The GenePattern REST API provides a variety of resources that can be used when calling GenePattern from a web application. Each resource provides a number of endpoints for invoking GenePattern functionality. These resources are described in detail below.</p>
+
+<h2><a id="tasks" name="tasks"></a>Tasks</h2>
+
+<p>Content coming soon</p>
+
+<h2><a id="jobs" name="jobs"></a>Jobs</h2>
+
+<p>Content coming soon</p>
+
+<h2><a id="upload" name="upload"></a>Upload</h2>
+
+<p>Content coming soon</p>
+
+<h2><a id="data" name="data"></a>Data</h2>
+
+<p>Content coming soon</p>
+
+<h2><a id="tags" name="tags"></a>Tags</h2>
+
+<p>The tags resource allows a client to interact with tags in GenePattern. There are two seperate groups of tags covered: job tags and module tags. These are seperate groups of tags and should not be confused when developing using the associated endpoints.</p>
+
+<ul>
+	<li><strong>Job Tags:</strong> Are attached to a job when it is launched, or attached to a job afterward using the GenePattern web application.</li>
+	<li><strong>Module Tags:</strong> Currently the only tag that can be directly applied to modules is pinning the module among a user&#39;s favorites. In the user interface, often a module&#39;s categories or associated suites will be used in a tag-like way as well.</li>
+</ul>
+
+<h3>/gp/rest/v1/tags</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint returns a list of all job tags for the user. Only tags the user has used to tag jobs will appear in the list. Each tag in the list is returned in the following JSON format:</p>
+
+<pre>
+{
+    &quot;value&quot;: &quot;Tag String&quot;
+}</pre>
+
+<h3>/gp/rest/v1/tags/pin</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> application/json</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint is used to pin a module to a user&#39;s favorites. It consumes a JSON input in the following format:</p>
+
+<pre>
+{
+    &quot;user&quot;: &quot;The user&#39;s username&quot;,
+    &quot;lsid&quot;: &quot;This is the LSID of the module being pinned&quot;,
+    &quot;position&quot;: 1.0 // This is the position in the favorites list as a float
+}</pre>
+
+<p>If the pin is successful, a 200 OK response will be returned. If is was unsuccessful, a 500 error response will be returned.</p>
+
+<h3>/gp/rest/v1/tags/repin</h3>
+
+<ul>
+	<li><strong>Method:</strong> PUT</li>
+	<li><strong>Accepts:</strong> application/json</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint is used to move a favorite module in the user&#39;s list from one pinned position to another. It consumes a JSON input in the following format:</p>
+
+<pre>
+{
+    &quot;user&quot;: &quot;The user&#39;s username&quot;,
+    &quot;lsid&quot;: &quot;This is the LSID of the module being unpinned&quot;,
+    &quot;position&quot;: 1.0 // The NEW position of the module will be located at
+}</pre>
+
+<p>If the repin is successful, a 200 OK response will be returned. If is was unsuccessful, an error response will be returned.</p>
+
+<h3>/gp/rest/v1/tags/unpin</h3>
+
+<ul>
+	<li><strong>Method:</strong> DELETE</li>
+	<li><strong>Accepts:</strong> application/json</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint is used to remove (&quot;unpin&quot;) a favorite module from the user&#39;s list. It consumes a JSON input in the following format:</p>
+
+<pre>
+{
+    &quot;user&quot;: &quot;The user&#39;s username&quot;,
+    &quot;lsid&quot;: &quot;This is the LSID of the module being unpinned&quot;,
+    &quot;position&quot;: 1.0 // The position of the module may be included, but is optional
+}</pre>
+
+<p>If the unpin is successful, a 200 OK response will be returned. If is was unsuccessful, an error response will be returned.</p>
+
+<h2><a id="log" name="log"></a>Log</h2>
+
+<p>This resource allows a client to pass information back to the GenePattern server. This information gets written to the server&#39;s log. Information logged in this way can be useful for server administrators when debugging, and in recognizing common error states in the GenePattern client. Best practice is to not invoke this resource unless the client developer also administrates the connected server.</p>
+
+<h3>/gp/rest/v1/log/debug</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> text/plain</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint accepts a text string which gets written to the GenePattern server&#39;s log as a debugging statement. If successful, this endpoint returns a 200 OK response with a blank body.</p>
+
+<h3>/gp/rest/v1/log/error</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> text/plain</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint accepts a text string which gets written to the GenePattern server&#39;s log as an error. If successful, this endpoint returns a 200 OK response with a blank body.</p>
+
+<h3>/gp/rest/v1/log/info</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> text/plain</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint accepts a text string which gets written to the GenePattern server&#39;s log as an informative statement. If successful, this endpoint returns a 200 OK response with a blank body.</p>
+
+<h3>/gp/rest/v1/log/warn</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> text/plain</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint accepts a text string which gets written to the GenePattern server&#39;s log as a warning. If successful, this endpoint returns a 200 OK response with a blank body.</p>
+
+<h2><a id="config" name="config"></a>Config</h2>
+
+<p>This resource is used to query for configuration options set for the user on the GenePattern server. This allows server administrators to set configuration options, and for web apps using the GenePattern REST API to dynamically respond or change behavior based on this configuration. For example, a web app may want to offer different options depending on the version of the server it is connecting to, as newer versions of GenePattern may support newer functionality. The endpoints for this resource are as follows:</p>
+
+<h3>/gp/rest/v1/config/admin</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint can be called to determine if the current user has administrative privileges on the GenePattern server. The response will be in the form of a JSON object with the following format:</p>
+
+<pre>
+{
+    &quot;result&quot;: true or false // A boolean
+}</pre>
+
+<h3>/gp/rest/v1/config/gp-url</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint will return a URL to the GenePattern web application, including the trailing <em>/gp/</em>. For example, it might return <code>http://genepattern.broadinstitute.org/gp/</code> as the URL. This URL will be part of a JSON object with the following format:</p>
+
+<pre>
+{
+    &quot;result&quot;: &quot;The GenePattern URL to the GenePattern web application&quot;
+}</pre>
+
+<h3>/gp/rest/v1/config/gp-version</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint will return the version of the GenePattern server. The response will be a JSON object in the following format:</p>
+
+<pre>
+{
+    &quot;result&quot;: &quot;The GenePattern version number returned as a string, for example &#39;3.9.7&#39;.&quot;
+}</pre>
+
+<h3>/gp/rest/v1/config/property/{propertyName}</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint allows a developer to specify a property in the GenePattern configuration, and it returns the value of this property for the current GenePattern user. For example, making a call to <code>/gp/rest/v1/config/genomeSpaceEnabled</code> will return whether GenomeSpace integration is turned on for the user (by default this will be true for all users). The response will be returned as a JSON object in the following format:</p>
+
+<pre>
+{
+    &quot;result&quot;: &quot;The value of the property returned as a string.&quot;
+}</pre>
+
+<p>If a configuration parameter that does not exist is queried, an empty JSON object will be returned.</p>
+
+<h3>/gp/rest/v1/config/system-message</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET or POST</li>
+	<li><strong>Accepts:</strong> &mdash; or text/html</li>
+	<li><strong>Returns:</strong> text/html or &mdash;</li>
+</ul>
+
+<p>This endpoint can be used to GET or POST a system message for the GenePattern server.</p>
+
+<p>Any valid user can get the current system message. This uses the GET method and returns the message in HTML.</p>
+
+<p>Only users with administrative privileges may post a new system message. This uses the POST method and consumes a body consisting of HTML. For users without administrative privileges this will generate a 401 unauthorized response. Successfully posting a new system message will return a 200 OK response with a blank body.</p>
+
+<h3>/gp/rest/v1/config/user</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint returns the username of the current user. It will be returned in a JSON object with the following format:</p>
+
+<pre>
+{
+    &quot;result&quot;: &quot;The GenePattern username.&quot;
+}</pre>
+
+<h2><a id="oauth2" name="oauth2"></a>OAuth2</h2>
+
+<p>This resource represents GenePattern&#39;s implementation of the OAuth2 protocol. Because of its nature, authentication is not first required before using the associated endpoints. This is different from the other resources in the GenePattern REST API.</p>
+
+<p>For more information on OAuth2 in general, see the <a href="http://tools.ietf.org/html/rfc6749">OAuth2 specification</a>.</p>
+
+<h3>/gp/rest/v1/oauth2/auth</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint is for the client to request authorization from GenePattern to make requests on the user&#39;s behalf. The following GET parameters should be included with the call:</p>
+
+<ul>
+	<li><strong>response_type:</strong> This paremeter should be set to either <em>token</em> or <em>code</em>. Anything else will return an error.
+
+	<ul>
+		<li><strong>code:</strong> Returns an authorization code that the client should return to the server for a token once a user has given permission to access their account. This should be done from a secure connection, because in a later step it will require a client secret, which must be kept confidential. It is recommended that developers never use this option from JavaScript, as by its very nature JavaScript is not particularly secure.</li>
+		<li><strong>token:</strong> Returns an authorization token rather than an access code. Authorization tokens are less secure than access codes, but useful when execution cannot be kept secret.</li>
+	</ul>
+	</li>
+	<li><strong>client_id:</strong> This is the ID of the client accessing the information from GenePattern.</li>
+	<li><strong>redirect_uri:</strong> This is the URI that the response should redirect to if successful.</li>
+	<li><strong>scope:</strong> This is the scope of the access being requested. Currently the only valid scopes are users. As such, this value should be a string consisting if the GenePattern username.</li>
+</ul>
+
+<p>If authorization is successful, the response will be a 302 redirect to the URI provided in the <code>redirect_uri</code> parameter.</p>
+
+<h3>/gp/rest/v1/oauth2/token</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> application/x-www-form-urlencoded</li>
+	<li><strong>Returns:</strong> &mdash;</li>
+</ul>
+
+<p>This endpoint generates and returns to the user an access token that can be included with requests to verify authentication. The following should be included as GET-style parameters or in the POST body:</p>
+
+<ul>
+	<li><strong>grant_type:</strong> This indicates what security method is being used to grant the access token. This should only be one of the following values.
+
+	<ul>
+		<li><strong>authorization_code:</strong> In this case an authorization code that was returned by the <code>/gp/rest/v1/oauth2/auth</code> endpoint is being provided to verify identity</li>
+		<li><strong>password:</strong> In this case a username and password will be provided to verify identity.</li>
+		<li><strong>refresh_token:</strong> This will grant a code that can be used to obtain a new access token. This is currently not implemented, and this option is a placeholder. For now, using this option will always return an error.</li>
+	</ul>
+	</li>
+	<li><strong>code (optional):</strong> If the authorization_code grant_type was chosen, the authorization code must be presented here and must match what was provided to the client.</li>
+	<li><strong>username (optional):</strong> If the password grant_type was selected the username of the user logging in should be included here.</li>
+	<li><strong>password (optional):</strong> If the password grant_type was selected the password of the user logging in should be included here.</li>
+	<li><strong>redirect_uri:</strong> The response will redirect back to this URI after a token is generated. The token will be appended to the URL as a GET parameter or fragment (ex: ?code=AUTH_CODE_HERE or #token=TOKEN_HERE).</li>
+	<li><strong>client_id:</strong> This is the ID of the client accessing the information from GenePattern.</li>
+	<li><strong>client_secret:</strong> This is a secret code provided to the client that no one else knows that can be used to verify the identity of the client. This should only be provided if the calls can be made secretly. It is recommended that thse calls be made through HTTPS and not through JavaScript.</li>
+</ul>
+
+<p>If authorization is successful, the response will be a 302 redirect to the URI provided in the <code>redirect_uri</code> parameter.</p>
+
+<h3>/gp/rest/v1/oauth2/register</h3>
+
+<ul>
+	<li><strong>Method:</strong> POST</li>
+	<li><strong>Accepts:</strong> application/json</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>This endpoint isn&#39;t currently implemented. It is a placeholder for the register call in the OAuth2 specification. All calls to this endpoint currently return an error response.</p>
+
+<h2><a id="disk" name="disk"></a>Disk</h2>
+
+<p>This resource is used to monitor a user&#39;s disk usage. It only contains a single endpoint.</p>
+
+<h3>/gp/rest/v1/disk</h3>
+
+<ul>
+	<li><strong>Method:</strong> GET</li>
+	<li><strong>Accepts:</strong> &mdash;</li>
+	<li><strong>Returns:</strong> application/json</li>
+</ul>
+
+<p>When queried, this endpoint returns the current disk usage and disk quota for the user. The response will be a JSON object in the format shown below:</p>
+
+<pre>
+{
+    &quot;aboveQuota&quot;: true or false, // Whether the user is above the disk quota or not
+    &quot;diskQuota&quot;: {
+        &quot;displayValue&quot;: &quot;Easy-to-read string representing the quota set for the user. Ex: 400 GB&quot;,
+        &quot;numBytes&quot;: 429496729600 // Number of bytes in the disk quota as an integer
+    },
+    &quot;diskUsageFilesTab&quot;: {
+        &quot;displayValue&quot;: &quot;String representing disk taken up by the user&#39;s files tab&quot;,
+        &quot;numBytes&quot;: 429496729600 // Number of bytes taken up by files in the files tab
+    },
+    &quot;diskUsageTmp&quot;: {
+        &quot;displayValue&quot;: &quot;String representing temp space taken up by the user&quot;,
+        &quot;numBytes&quot;: 429496729600 // Number of bytes taken up by the user&#39;s temp space
+    },
+    &quot;diskUsageTotal&quot;: {
+        &quot;displayValue&quot;: &quot;String representing the user&#39;s total disk usage&quot;,
+        &quot;numBytes&quot;: 429496729600 // Number of bytes taken up by the user&#39;s total disk usage
+    },
+    &quot;userid&quot;: &quot;The username of the current user.&quot;
+}</pre>
+
+<h2><a id="runtask" name="runtask"></a>RunTask</h2>
+
+<p>Those exploring the GenePattern WADL file may notice that one additional resource is defined at <code>/gp/rest/RunTask</code>. Unlike the other resources, this one is not versioned.</p>
+
+<p>This is a deprecated resource that still exists for reasons of backward compatibility. We do not recommend using this resource in your development, as it may be removed in an upcoming version of GenePattern. Instead we recommend using the <a href="#tasks">Tasks</a> resource for similar functionality.</p>
+</body>
+</html>

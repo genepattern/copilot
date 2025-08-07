@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spatial Transcriptomics</title>
+</head>
+<body>
+<p>Spatial transcriptomics (ST) is transforming biological research by allowing scientists to map gene expression within tissue architecture, revealing critical insights into cellular organization and interactions. However, the complexity of ST data analysis—requiring programming skills and bioinformatics expertise—poses a barrier for many researchers.</p>
+
+<p>GenePattern provides support for the visualization and analysis of spatially-resolved transcriptomics data, such as
+	those generated with 10X Visium or NanoString CosMx, through the release of the <a href="https://github.com/FridleyLab/spatialGE" target="_blank">spatialGE modules</a>.</p>
+
+<p>To address this challenge, spatialGE provides a user-friendly, open-source solution that simplifies ST data exploration. Designed for accessibility, spatialGE integrates key analytical workflows, including quality control, normalization, domain detection, phenotyping, and spatial analysis, enabling researchers to uncover biologically meaningful patterns with minimal computational expertise.</p>
+
+<p>The tools have been successfully applied to study the tumor microenvironment, identifying spatial gene expression patterns in melanoma metastases and Merkel cell carcinoma samples. By detecting distinct tissue domains, characterizing spatial heterogeneity, and facilitating comparative analysis across samples, spatialGE supports deeper insights into disease mechanisms and cellular interactions.</p>
+
+<p>The following modules are provided.</p>
+
+<figure class="figure">
+	<img class="figure-img img-responsive" src="/uploaded/spatialge-modules.jpg" alt="spatialGE modules" />
+	<figcaption class="figure-caption">For the sake of brevity, all module name are listed without the <em>spatialGE.</em> prefix at the beginning of the name.</figcaption>
+</figure>
+
+<h2>spatialGE.Preprocessing</h2>
+
+<p>Performs data ingestion, filtering, transformation, and pseudobulk operations to prepare data for downstream analysis
+	in platforms such as GeoMx, Visium, and CosMx-SMI. </p>
+<ul>
+	<li>Please refer to the <a href="https://genepattern.github.io/spatialGE.Preprocessing/v1/" target="_blank">spatialGE.Preprocessing documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.STplot</h2>
+
+<p>Generates plots displaying gene expression, cluster memberships and metadata within a spatial context.</p>
+<p>Data should be sent to the module <code>spatialGE.STplot.Launcher</code>, which prompts the user for more input and
+	then launches an appropriately configured <code>spatialGE.STplot</code> analysis.</p>
+<p>Accepts data from <code>spatialGE.Preprocessing</code>, <code>spatialGE.STenrich</code>, <code>spatialGE.STclust</code>
+	and <code>spatialGE.STdiff</code>.</p>
+<ul>
+	<li>Please refer to the <a href="https://github.com/genepattern/spatialGE.STplot.Launcher/blob/main/docs/v1/index.md" target="_blank">spatialGE.STplot.Launcher documentation</a>.</li>
+	<li>Also available is the <a href="https://github.com/genepattern/spatialGE.STplot/blob/main/docs/v1/index.md" target="_blank">spatialGE.STplot documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.SpatialAutocorrelation</h2>
+
+<p>Assesses the level of spatial uniformity in gene expression by calculating Moran’s I and/or Geary’s C and
+	qualitatively explore correlations with sample-level metadata (i.e., tissue type, therapy, disease status). It is
+	used to explore the relationship between a clinical (sample-level) variable of interest and the level of gene
+	expression spatial uniformity within a sample.</p>
+<ul>
+	<li>Please refer to the <a href="https://genepattern.github.io/spatialGE.SpatialAutocorrelation/v1/" target="_blank">spatialGE.SpatialAutocorrelation documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.STenrich</h2>
+
+<p>Detects genes showing spatial expression patterns (e.g., hotspots) and tests if spots/cells with a high average expression of a gene set show evidence of spatial aggregation.</p>
+<ul>
+	<li>Please refer to the <a href="https://genepattern.github.io/spatialGE.STenrich/v1/" target="_blank">spatialGE.STenrich documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.STclust</h2>
+
+<p>Performs clustering analysis on spatial gene expression data.</p>
+<ul>
+	<li>Please refer to the <a href="https://github.com/genepattern/spatialGE.STclust/blob/develop/docs/v1/index.md" target="_blank">spatialGE.STclust documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.STdiff</h2>
+
+<p>Performs differential expression analysis on spatial transcriptomics data. Identifies differentially expressed genes based on spatial and non-spatial models.</p>
+<ul>
+	<li>Please refer to the <a href="https://github.com/genepattern/spatialGE.STdiff/blob/develop/docs/v1/index.md" target="_blank">spatialGE.STdiff documentation</a>.</li>
+</ul>
+
+<h2>spatialGE.STgradient</h2>
+
+<p>Reads the output of <code>spatialGE.STclust</code> and then launches an analysis to test for genes for which there is
+	evidence of expression spatial gradients with respect to a "reference" tissue niche/domain (e.g., higher expression
+	closer to reference tissue niche, lower expression as farther from reference tissue niche).</p>
+<p>Data should be sent to the module <code>spatialGE.STgradient.Launcher</code>, which prompts the user for more input and
+	then launches an appropriately configured <code>spatialGE.STgradient</code> analysis.</p>
+<ul>
+	<li>Please refer to the <a href="https://github.com/genepattern/spatialGE.STgradient.Launcher/blob/main/docs/v1/index.md" target="_blank">spatialGE.STgradient.Launcher documentation</a>.</li>
+	<li>Also available is the <a href="https://github.com/genepattern/spatialGE.STgradient/blob/main/docs/v1/index.md" target="_blank">spatialGE.STgradient documentation</a>.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p><a class="btn btn-success" href="/modules?taskType=Spatial+Transcriptomics">View GenePattern spatial transcriptomics modules</a></p>
+</body>
+</html>

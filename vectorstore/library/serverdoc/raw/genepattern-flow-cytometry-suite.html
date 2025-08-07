@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GenePattern Flow Cytometry Suite</title>
+</head>
+<body>
+<h2>Overview</h2>
+
+<p>The GenePattern flow cytometry suite was developed by the Brinkman lab at the British Columbia Cancer Research Center (BCCRC), who collaborated with the GenePattern team to make these modules publicly available and easily accessible in GenePattern.&nbsp; The suite consists of 34 modules in 3 general categories, discussed below.&nbsp;</p>
+
+<p>The workflow associated with these modules (as described in the forthcoming article) is outlined here:</p>
+
+<p><img alt="" src="/uploaded/content_flowcyt_flowchart.jpg?1352485703" style="height:501px; width:701px" /></p>
+
+<p>Note: The ImmPort modules are designed to work together to process data files and&nbsp; perform density-based clustering for automated population identification of multi-dimensional flow cytometry data based on the FLOCK (FLOw cytometry Clustering without K) algorithm. For more information about these modules, read their associated documentation.&nbsp; In addition, there are two pipelines to facilitate use of the ImmPort modules.</p>
+
+<h2>Categories Within the Suite</h2>
+
+<p>There are three categories of modules within the suite, covering data preprocessing, quality assessment, and gating and clustering.&nbsp; The modules in these suites may span multiple steps of the flow cytometry flowchart.</p>
+
+<h3>Data Preprocessing</h3>
+
+<p>Flow cytometry <a href="/flow-cytometry-data-preprocessing">Data Preprocessing</a> suite includes various utilities for <a href="http://www.ncbi.nlm.nih.gov/pubmed/19937951">FCS</a> data preview and transformations, conversion between spreadsheets (i.e., CSV files) FCS files, merging and sub-sampling data, editing keywords in FCS files and other support tools.</p>
+
+<h3>Quality Assessment</h3>
+
+<p>Flow cytometry <a href="/flow-cytometry-quality-assessment">Quality Assessment</a> suite includes modules implementing various approaches to automatically assess the quality of flow cytometry data. Such an assessment represents an important part of any data analysis, and quality control tests should be included at the beginning of data analysis and often at other steps of an analytical pipeline to identify differences in samples originating from changes in conditions that are probably not biologically motivated. Generally, these methods establish a quality control criterion to give special consideration to abnormal samples or even exclude these from further analysis.</p>
+
+<h3>Gating and Clustering</h3>
+
+<p>Flow cytometry <a href="/flow-cytometry-gating-and-clustering">Gating and Clustering</a> suite includes modules for the application of manually created gates (saved in Gating-ML) on FCS data files and various clustering algorithms developed for the use with flow cytometry data.</p>
+
+<h2>References</h2>
+
+<p>This is the complete list of references for all the modules in the suite.</p>
+
+<ul>
+	<li><strong>FCS: </strong>Spidlen J, Moore W, Parks D, Goldberg M, Bray C, Bierre P, Gorombey P, Hyun B, Hubbard M, Lange S, Lefebvre R, Leif RR, Novo D, Ostruszka L, Treister A, Wood J, Murphy RF, Roederer M, Sudar D, Zigon R, Brinkman RR.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/19937951" target="_blank">Data File Standard for Flow Cytometry, Version FCS 3.1.</a> <em>Cytometry A</em>. 2010;77:97&ndash;100.</li>
+	<li><strong>FlowClust: </strong>Lo K,&nbsp;Brinkman RR,&nbsp;Gottardo R.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/18773465" target="_blank">Automated gating of flow cytometry data via robust model-based clustering.</a>&nbsp;&nbsp;<em>Cytometry A</em>.&nbsp;2008;73(4):321-332.</li>
+	<li><strong>FlowMeans: </strong>Aghaeepour N, Nikolic R, Hoos HH, Brinkman RR.&nbsp; <a href="http://www.ncbi.nlm.nih.gov/pubmed/21182178" target="_blank">Rapid cell population identification in flow cytometry data.</a>&nbsp;<em>Cytometry A</em>.&nbsp;2011;79(1):6-13.</li>
+	<li><strong>FlowMerge: </strong>Finak G, Bashashati A, Brinkman R, Gottardo R.&nbsp; <a href="http://www.ncbi.nlm.nih.gov/pubmed/20049161" target="_blank">Merging mixture components for cell population identification in flow cytometry.</a>&nbsp; <em>Adv Bioinformatics</em>. 2009;247646. Epub 2009 Nov 12.</li>
+	<li><strong>FlowQ: </strong>Le Meur N, Rossini A, Gasparetto M, Smith C, Brinkman RR, Gentleman R.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/17366638" target="_blank">Data quality assessment of ungated flow cytometry data in high throughput experiments.</a>&nbsp; <em>Cytometry A</em>. 2007;71(6):393-403.</li>
+	<li><strong>Fingerprinting: </strong>Rogers WT, Holyst H.<a href="http://www.ncbi.nlm.nih.gov/pubmed/19956416" target="_blank">FlowFP: A bioconductor package for fingerprinting flow cytometric data.</a> <em>Adv Bioinformatics</em>. 2009:193947. Epub 2009 Sep 24.</li>
+	<li><strong>Gating-ML: </strong>Spidlen J, Leif RC, Moore W, Roederer M,&nbsp;International Society for the Advancement of Cytometry Data Standards Task Force, Brinkman RR.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/18773465" target="_blank">Gating-ML: XML-based gating descriptions in flow cytometry.</a>&nbsp;<em>Cytometry&nbsp;A</em>.&nbsp;2008;73A(12):1151-1157.</li>
+	<li><strong>ImmPortFCSConvLogicleTrans (FCSTrans)</strong> Qian Y, Liu Y, Campbell J, Thomson E, Kong YM, Scheuermann, RH. &nbsp;<a href="http://onlinelibrary.wiley.com/doi/10.1002/cyto.a.22037/abstract" target="_blank">FCSTrans: An open source software system for FCS file conversion and data transformation.</a>&nbsp;<em>Cytometry&nbsp;A</em>. 2012:81;353-356. doi: 10.1002/cyto.a.22037</li>
+	<li><strong>ImmPortFLOCK: </strong>Qian Y, Wei C, Eun-Hyung Lee F, Campbell J, Halliley J, Lee JA, Cai J, Kong YM, Sadat E, Thomson E, Dunn P, Seegmiller AC, Karandikar NJ, Tipton CM, Mosmann T, Sanz I, Scheuermann RH. <a href="http://www.ncbi.nlm.nih.gov/pubmed/20839340" target="_blank">Elucidation of seventeen human peripheral blood B-cell subsets and quantification of the tetanus response using a density-based method for the automated identification of cell populations in multidimensional flow cytometry data.</a>&nbsp; <em>Cytometry B Clin Cytom</em>. 2010;78 Suppl 1:S69-82.</li>
+	<li><strong>Logicle: </strong>Moore W,&nbsp;Parks D.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/22411901" target="_blank">Update for the logicle data scale including operational code implementations.</a> <em>Cytometry&nbsp;A</em>. 2012;81(4):273-277.</li>
+	<li><strong>Normalization: </strong>Hahne F,&nbsp;Khodabakhshi AH,&nbsp;Bashashati A,&nbsp;Wong C-J,&nbsp;Gascoyne RD,&nbsp;Weng AP,&nbsp;Seifert-Margolis V,&nbsp;&nbsp;Bourcier K,&nbsp;Asare A,&nbsp;Lumley T,&nbsp;Gentleman R,&nbsp;Brinkman RR. &nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/19899135" target="_blank">Per-channel basis normalization methods for flow cytometry data.</a>&nbsp;&nbsp;<em>Cytometry A</em>. 2010;77(2):121-131.</li>
+	<li><strong>SamSPECTRAL: </strong>Zare H, Shooshtari P, Gupta A, Brinkman RR.&nbsp; <a href="http://www.ncbi.nlm.nih.gov/pubmed/20667133" target="_blank">Data reduction for spectral clustering to analyze high throughput flow cytometry data.</a>&nbsp;<em>BMC Bioinformatics</em>. 2010 Jul 28;11:403.</li>
+</ul>
+</body>
+</html>

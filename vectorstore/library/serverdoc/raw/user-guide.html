@@ -1,0 +1,2222 @@
+<html>
+<head>
+    <title>User Guide</title>
+</head>
+<body>
+<p name="top">Follow us&nbsp;<a href="https://twitter.com/GenePattern" style="background-color: rgb(255, 255, 255);" target="_blank"><img alt="" src="/uploaded/content_twitter-128.png" style="width: 25px; height: 25px;" /></a>&nbsp;<a href="https://www.facebook.com/pages/GenePattern/159999027359395" style="background-color: rgb(255, 255, 255);" target="_blank"><img alt="" src="/uploaded/content_facebook-icon.png" style="width: 25px; height: 25px;" /></a>&nbsp;or&nbsp;<a href="http://www.broadinstitute.org/contact" style="background-color: rgb(255, 255, 255);" target="_blank">j</a><a href="https://groups.google.com/g/genepattern-help" target="_blank">oin our forum</a>&nbsp;to receive updates on GenePattern projects and happenings.</p>
+
+<h3 name="overview" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a id="overview" name="overview"></a>Overview</h3>
+
+<p>GenePattern provides access to a broad array of computational methods used to analyze genomic data&nbsp;in a graphical user interface. Its extendable architecture makes it easy for computational biologists to add analysis and visualization modules. This ensures that GenePattern users have access to a continuously growing repository of new computational methods.</p>
+
+<p>This user guide is targeted to two types of users:&nbsp;(1) those new to GenePattern&nbsp;who will run analyses on the public&nbsp;server&nbsp;and (2) those versed in using GenePattern who will customize the&nbsp;environment, e.g. install private modules,&nbsp;using a locally installed server.&nbsp;Additionally, this user guide assumes you are familiar with the fundamental principles and primary components introduced&nbsp;in the&nbsp;<a href="/concepts" style="background-color: rgb(255, 255, 255);">Concepts</a>&nbsp;guide.&nbsp;</p>
+
+<p style="margin-left: 40px;"><strong>We recommend using the&nbsp;<a href="https://cloud.genepattern.org" target="_blank">GenePattern public server</a>,</strong> especially if you are new to GenePattern. The public server is ready to use from a browser,&nbsp;analyzes your data on a compute farm, provides site support&nbsp;and offers&nbsp;modules that are not available for local installation.&nbsp;</p>
+
+<p><strong>For new users</strong>&nbsp;who will run analyses on the public server, the first four sections of this guide cover&nbsp;the following topics:</p>
+
+<ol>
+	<li><a href="#getting-started">Getting Started</a></li>
+	<li><a href="/user-guide#running-modules-and-pipelines">Running Modules and Pipelines</a></li>
+	<li><a href="#working-with-analysis-results">Working with Analysis Results</a></li>
+</ol>
+
+<p>For users who will install a local server&nbsp;<strong>for advanced customization</strong>, the remaining sections of this guide cover&nbsp;the following topics:</p>
+
+<ol start="5">
+	<li><a href="#starting-your-own-genepattern-server-installing-your-genepattern-server">Starting Your Own GenePattern Server</a></li>
+	<li><a href="#working-with-modules">Working with Modules</a></li>
+	<li><a href="#working-with-pipelines">Working with Pipelines</a></li>
+	<li><a href="#working-with-suites">Working with Suites</a></li>
+	<li><a href="#managing-modules-pipelines-and-suites">Managing Modules, Pipelines, and Suites</a></li>
+</ol>
+
+<p><strong>Other resources</strong> of interest to new users are highlighted&nbsp;below.</p>
+
+<ul>
+	<li><a href="http://www.broadinstitute.org/hardware-requirements-and-software-compatibility" target="_self">System Requirements</a>&nbsp;makes sure you have the right hardware and software to use GenePattern.</li>
+	<li>The&nbsp;<a href="./file-formats-guide" target="_self">File Formats Guide</a>&nbsp;starts by introducing key concepts in using&nbsp;plain text files and describes file formats.&nbsp;</li>
+	<li>The&nbsp;<a href="/FAQ" target="_blank">FAQ page</a>&nbsp;answers common trouble-shooting questions, including instructions for browser and system settings&nbsp;to launch visualizers.</li>
+	<li>Watch additional&nbsp;<a href="https://www.youtube.com/results?search_query=genepattern" target="_self">Video Tutorials</a>&nbsp;covering a variety of topics.&nbsp;&nbsp;</li>
+	<li>For documentation covering&nbsp;GenePattern server v3.5&nbsp;and prior, see the&nbsp;<a href="/previous-versions" target="_self">Previous Versions</a>&nbsp;page.</li>
+	<li>For module specific documentation, use the&nbsp;Documentation&nbsp;link present for the specific&nbsp;<a href="http://www.broadinstitute.org/concepts#_Version_Numbers" target="_self">version</a>&nbsp;of the module&nbsp;loaded.&nbsp;</li>
+	<li>Use&nbsp;the&nbsp;Learn,&nbsp;Resources,&nbsp;and&nbsp;Blog&nbsp;menus at top to access&nbsp;the most current information.&nbsp;
+	<ul>
+		<li>The&nbsp;<a href="http://www.broadinstitute.org/blog" target="_self">Blog</a>&nbsp;provides up-to-date&nbsp;information on a variety of topics including bug fixes and server downtimes.&nbsp;​
+		<ul>
+			<li>​We&#39;ve transferred our previous site&#39;s&nbsp;In-Depth Articles&nbsp;to the Blog. These are brief articles and tutorials written in response to questions from our users or to share information about new GenePattern features, modules or pipelines.</li>
+		</ul>
+		</li>
+		<li>For up-to-date information via Twitter, follow&nbsp;<a href="https://twitter.com/GenePattern" target="_blank">@GenePattern</a>.</li>
+		<li>​<a href="http://www.broadinstitute.org/doc/relnotes/current" target="_self">Release Notes</a>&nbsp;details new version features and bug fixes for users and administrators alike.</li>
+	</ul>
+	</li>
+	<li><u><a href="/programmers-guide">Programmers Guide</a></u>. Guidelines for writing modules and instructions for accessing GenePattern from the Java, MATLAB, and R programming environments.</li>
+	<li><u><a href="/administrators-guide/">Administrators Guide</a></u>. Information on how to configure and secure a local or networked GenePattern server.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h1 id="getting-started" name="getting-started" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Getting Started</h1>
+
+<p>If you have experience&nbsp;using online&nbsp;tools, but are new to GenePattern, we offer basic tutorials to get you quickly&nbsp;oriented.&nbsp;Many users find that this is all they need to begin using GenePattern.&nbsp;</p>
+
+<ul>
+	<li><a href="/quick-start">Quick Start</a>&nbsp;provides a 10-minute overview and video&nbsp;on how to run an analysis and review results.&nbsp;</li>
+	<li>Web tours walk you through the user interface while&nbsp;highlighting features as&nbsp;circled. Click on their links (arrow) to start the&nbsp;Introductory tour of&nbsp;GenePattern&nbsp;or the&nbsp;What&#39;s new in&nbsp;GenePattern&nbsp;web tours&nbsp;after logging into your account.</li>
+</ul>
+
+<p><img alt="" src="/uploaded/content_sl_gpug-webtours.png" style="width: 100%; height: 100%;" /></p>
+
+<p>&nbsp;</p>
+
+<h3 name="getting-started-using-a-genepattern-server" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Using a GenePattern Server</h3>
+
+<p>To use GenePattern, you open a web browser and enter a URL. The URL that you enter is the address of a GenePattern server as shown below.&nbsp;</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p><strong>URL</strong></p>
+			</td>
+			<td>
+			<p><strong>Server</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="https://cloud.genepattern.org/" target="_blank">https://cloud.genepattern.org/</a></p>
+			</td>
+			<td><strong>GenePattern public server</strong>. This URL connects you to the GenePattern server hosted on Amazon AWS.</td>
+		</tr>
+		<tr>
+			<td>
+			<p>The URL for a networked server, for example: http://mycompany.com:8080/gp/</p>
+			</td>
+			<td><strong>GenePattern networked server</strong>. A GenePattern administrator at a company or institution can install a GenePattern server and make it available to you. Use the URL of the networked GenePattern server to connect to that server.&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>For example, to use the GenePattern public server at&nbsp;<a href="https://cloud.genepattern.org/" target="_blank">https://cloud.genepattern.org</a>:&nbsp;</p>
+
+<ol>
+	<li>Open a web browser, such as Firefox, Chrome, or Safari.</li>
+	<li>Enter the URL of the GenePattern public server and&nbsp;<span style="line-height: 1.428571429;">log in with your user name and password.</span>
+	<ul>
+		<li><span style="line-height: 1.428571429;">​</span>If you do not have a GenePattern account, select&nbsp;<em>Click to Register</em>.</li>
+		<li>
+		<p>A local server may not require a password depending on configuration.&nbsp;</p>
+		</li>
+	</ul>
+	</li>
+</ol>
+
+<p style="margin-left: 40px;"><img alt="" src="/uploaded/content_sign-in.jpg" style="width: 517px; height: 201px;" /></p>
+
+<p><strong>Cannot connect to server:</strong>&nbsp;If the web browser cannot connect to the server,&nbsp;it displays such&nbsp;a&nbsp;message.</p>
+
+<ul>
+	<li>If you are using a networked or the public server, wait a few minutes&nbsp;and try again.&nbsp;If the problem persists, contact the particular GenePattern administrator.</li>
+	<li><span style="line-height: 1.428571429;">If you are using your own local server, start the server (see&nbsp;</span><a href="/user-guide#starting-your-own-genepattern-server" style="line-height: 1.428571429; background-color: white;">Starting Your Own GenePattern Server</a><span style="line-height: 1.428571429;">) and try again.</span></li>
+</ul>
+
+<p><strong>To exit from GenePattern</strong>,&nbsp;click your username in the top right corner, and select&nbsp;Sign Out. Alternatively quit the browser.</p>
+
+<h3 id="getting-started-getting-help" name="getting-started-getting-help" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Getting Help</h3>
+
+<p>Search for&nbsp;information with keywords&nbsp;in the top right search box.&nbsp;However, you may find module documentation and website resources do not answer your questions.</p>
+
+<ul>
+	<li>In this case, please direct algorithm-specific questions to the contacts provided in the module documentation or related forums on&nbsp;<a href="https://www.biostars.org/" target="_blank"><u>Biostars</u></a>&nbsp;and&nbsp;<a href="http://seqanswers.com/" target="_blank"><u>SEQanswers</u></a>.</li>
+	<li>For GenePattern server and site questions, or to report potential bugs in modules, <a href="https://groups.google.com/g/genepattern-help" target="_blank">please contact us.</a>&nbsp;&nbsp;</li>
+</ul>
+
+<h1 id="user-interface" name="user-interface" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">User Interface</h1>
+
+<p>When first opened in your browser, GenePattern displays the home page. To return to this page at any time, click the&nbsp;<em>GenePattern</em>&nbsp;icon in the top left (<strong>1</strong>).&nbsp;</p>
+
+<p><img alt="" src="/uploaded/content_sl_gpug_ui_20150619_b.png" style="width: 100%; height: 100%;" /></p>
+
+<p><span style="background-color: rgb(255, 0, 0);">[placeholder I made--may want to replace]**</span></p>
+
+<table border="0" cellpadding="1" cellspacing="1" class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>The&nbsp;<strong>title bar&nbsp;</strong>includes:
+			<ul>
+				<li>GenePattern icon: Click the icon to return to this page.</li>
+				<li>Your username: The username of the person currently logged into GenePattern. Click to access&nbsp;<em>My Settings</em>&nbsp;and to log out.
+				<ul>
+					<li><u><em><a href="#_My_Settings" style="background-color: rgb(249, 249, 249);">My Settings</a></em></u>: Modify your GenePattern account settings. E.g. increase the number of jobs that the Jobs tab displays.</li>
+					<li><em>Sign Out</em>: Click to exit from GenePattern.</li>
+				</ul>
+				</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>The&nbsp;<strong><u><a href="#_Navigation_Bar" style="background-color: rgb(255, 255, 255);">Navigation Bar</a></u></strong><strong>&nbsp;</strong>provides access to other GenePattern pages&nbsp;or features via drop-down menus. To the right, It also shows how much of your GenePattern account&#39;s disk quota you are using.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>The&nbsp;<strong>Tabs Panel</strong>&nbsp;organizes the&nbsp;<em>Modules</em>,&nbsp;<em>Jobs</em>&nbsp;and<em>&nbsp;Files</em>&nbsp;tabs. Click on a tab to display contents below. Certain elements from this panel will slide out another&nbsp;menu to the right of the panel (not pictured).&nbsp;</p>
+
+			<ul>
+				<li><em>Modules&nbsp;</em>tab: access modules and pipelines via search box (<strong>4</strong>), favorite modules, or recent modules.&nbsp;</li>
+				<li><u><a href="#Jobs"><em>Jobs</em></a><a href="#Jobstab">&nbsp;tab</a></u>: lists pending, running and completed jobs by unique job number, module name&nbsp;and result files in reverse chronological order.&nbsp;</li>
+				<li><u><a href="#Filestab"><em>Files</em></a><a href="#Files">&nbsp;tab</a></u>: displays files saved to your account and allows you to upload and download files.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_4.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>The&nbsp;<strong>Modules tab&nbsp;</strong>has you access modules and pipelines via a&nbsp;search box. As you type, e.g. TopHat or RNA-seq, matching choices are displayed in a slide-out menu.&nbsp;</p>
+
+			<ul>
+				<li>Click on a choice to load analysis parameters into the main display pane.</li>
+				<li>Drag a choice from the slide-out menu to add to the&nbsp;<em>Favorite Modules</em>&nbsp;section.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_5.jpg" style="width: 16px; height: 17px;" /></td>
+			<td>
+			<p>The center pane is the main display pane. GenePattern uses this pane to display information and to prompt you for input.&nbsp;&nbsp;Mainly, you will&nbsp;display the module or&nbsp;pipeline to run&nbsp;in this pane. Drag-and-drop files from the&nbsp;<em>Jobs</em>, and&nbsp;<em>Files&nbsp;</em>tabs to the input fields in this main pane. See&nbsp;<u><a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines" target="_self">Running Modules &amp; Pipelines</a></u>&nbsp;for details.&nbsp;</p>
+
+			<p>Initially, the center pane contains a welcome page&nbsp;with the following content:</p>
+
+			<ul>
+				<li>Date-stamped&nbsp;messages that come in two types.&nbsp;Click the x button in the corner to clear the message.
+				<ul>
+					<li>Warning messages or alerts&nbsp;in red.&nbsp;​</li>
+					<li>Updates and other useful information in green.</li>
+				</ul>
+				</li>
+				<li>Links to start&nbsp;Web tours&nbsp;</li>
+				<li>Links to instructions for running common analysis protocols</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="user-interface-job-menu" name="user-interface-job-menu" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a id="Jobs" name="Jobs"></a>Jobs menu</h3>
+
+<p name="user-interface-job-menu"><span style="line-height: 1.428571429;">When you run an analysis, GenePattern displays the job results in the&nbsp;</span><em style="line-height: 1.428571429;">Jobs</em><span style="line-height: 1.428571429;">&nbsp;tab.&nbsp;For the public server, these jobs are run on the hosted server&nbsp;and remain on the servers for a limited time. The Jobs tab&nbsp;</span>lists pending, running and completed jobs by unique job number, module name&nbsp;and result files in reverse chronological order. Use the scroll bar at the right of the panel to see older jobs.</p>
+
+<ul>
+	<li name="user-interface-job-menu"><span style="line-height: 1.428571429;">Results in this tab are purged after a given period of time, depending on the server settings. For the&nbsp;GenePattern Public server, this is one week.&nbsp;</span><span style="line-height: 1.428571429;">​</span>
+
+	<ul>
+		<li name="user-interface-job-menu">To check the date of purge, click the circled (<strong>i</strong>) icon, and select&nbsp;<em>Job Status</em>.&nbsp;</li>
+		<li name="user-interface-job-menu">To save&nbsp;files, download or transfer them to the&nbsp;<em>Files</em>&nbsp;tab.</li>
+	</ul>
+	</li>
+	<li name="user-interface-job-menu"><span style="line-height: 1.428571429;">Additional jobs launched from files within the Jobs tab allow for creation of&nbsp;provenence pipelines.&nbsp;Provenance pipeline creation is only possible from Jobs tab files.</span></li>
+	<li name="user-interface-job-menu"><span style="line-height: 1.428571429;">Access an alternative tabulated view using the navigation bar&#39;s&nbsp;<em>Job Results</em>.</span></li>
+	<li name="user-interface-job-menu"><span style="line-height: 1.428571429;">To increase the number of jobs that display, click on your username in the top right and navigate to&nbsp;<em>My Settings</em>&gt;<em>History&nbsp;</em>and increase the number in the field.</span></li>
+	<li name="user-interface-job-menu"><img alt="" src="/uploaded/content_jobs-tab.jpg" style="width: 311px; height: 137px;" /></li>
+</ul>
+
+<p>Click <strong>job name</strong>&nbsp;to&nbsp;slide out&nbsp;a menu of commands for working with that job. For more information, see&nbsp;<a href="/gp_guides/user-guide/sections/analysis-results.html">Working with Analysis Results</a>.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p>Download</p>
+			</td>
+			<td>
+			<p>Download a zip file containing all analysis result files for this job.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Terminate</p>
+			</td>
+			<td>
+			<p>Stop the job. This menu item appears only while the job is running.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Reload</p>
+			</td>
+			<td>
+			<p>Display the analysis and its parameters in the center pane, with the parameters set to the values used for this analysis job.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Delete</p>
+			</td>
+			<td>
+			<p>Delete the analysis job and its analysis result files from the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Info</p>
+			</td>
+			<td>
+			<p>Display the parameter values and the analysis result files for this job.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>View Java Code<br />
+			View MATLAB Code<br />
+			View R Code</p>
+			</td>
+			<td>
+			<p>Display the command line that you would use to run this job in the Java, MATLAB, or R programming environments. These commands are useful for programmers who want to access GenePattern from one of these programming environments or from their own applications.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p name="user-interface-file-menu">Additional options are available when clicking on individual files from jobs. [insert new table&nbsp;that includes &quot;Create Pipeline&quot;&quot;]</p>
+
+<h3 id="user-interface-file-menu" name="user-interface-file-menu" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a id="Files" name="Files"></a>Files menu</h3>
+
+<p>You can upload and save data from your desktop to your GenePattern server account using the drag-drop feature at the bottom left of the panel. Additionally, you can transfer files from the Jobs tab to the Files tab for longterm storage.&nbsp;For the&nbsp;public server, the storage limit&nbsp;is 30 GB. See <a href="/blog/2014/09/22/change-in-genepattern-data-storage-policy" target="_self">September 22, 2014&#39;s blogpost</a>&nbsp;for details.</p>
+
+<p><img alt="" src="/uploaded/content_files-tab.jpg" style="width: 312px; height: 182px;" /></p>
+
+<p>Click the&nbsp;<strong>file name</strong>&nbsp;to display a menu of commands for working with that file. For more information, see&nbsp;<a href="/gp_guides/user-guide/sections/analysis-results.html">Working with Analysis Results</a>.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p>Delete</p>
+			</td>
+			<td>
+			<p>Delete the file from the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Save</p>
+			</td>
+			<td>
+			<p>Download the file from the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Send to &lt;input-file-parameter&gt;</p>
+			</td>
+			<td>
+			<p>Specify this file as the input file for the selected parameter. (Only appears when a module is selected.)</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Create Pipeline</p>
+			</td>
+			<td>
+			<p>Create a GenePattern pipeline that includes the modules and parameters necessary to reproduce this result file.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><em>List of modules</em></p>
+			</td>
+			<td>
+			<p>List of modules that accept this type of file as an input parameter. Select an analysis to display its parameters in the center pane. This result file is specified as the first input parameter.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="user-interface-navigation-bar" name="user-interface-navigation-bar" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Navigation Bar</h3>
+
+<p>The navigation bar provides access to GenePattern pages and operations.&nbsp;<img alt="" src="/uploaded/content_homepublicservernavbar.jpg?1346363850" style="width: 100%; height: 100%;" /></p>
+
+<p>If you log into another GenePattern server, such as your own local GenePattern server, you may see additional items in the navigation bar, e.g.&nbsp;<em>Administration</em>. These are marked by superscript in the table below.&nbsp;</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p><strong>Modules&nbsp;&amp;&nbsp;Pipelines</strong></p>
+			</td>
+			<td>
+			<p>Display the GenePattern home page.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/pipelines.html">New Pipeline</a></p>
+			</td>
+			<td>
+			<p>Create a pipeline.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/modules.html">New </a><a href="/gp_guides/user-guide/sections/modules.html">Module</a><span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span></p>
+			</td>
+			<td>
+			<p>Create a module.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Install from repository<span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span></a></p>
+			</td>
+			<td>
+			<p>Install a module or pipeline from a&nbsp;repository.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Install from ZIP</a></p>
+			</td>
+			<td>
+			<p>Install a module or pipeline from a ZIP file.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Manage</a></p>
+			</td>
+			<td>
+			<p>Display installed modules or pipelines; delete modules or pipelines.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Suites</strong></p>
+			</td>
+			<td>
+			<p>Display the Manage Suites page.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/suites.html">New</a></p>
+			</td>
+			<td>
+			<p>Create a suite.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Install from </a><a href="/gp_guides/user-guide/sections/managing.html">repository</a><span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span></p>
+			</td>
+			<td>
+			<p>Install a suite from the a&nbsp;repository.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Install from ZIP</a></p>
+			</td>
+			<td>
+			<p>Install a suite from a ZIP file.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/managing.html">Manage</a></p>
+			</td>
+			<td>
+			<p>Display installed suites; delete suites.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Job Results</strong></p>
+			</td>
+			<td>
+			<p>Display the Results Summary page.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/user-guide/sections/analysis-results.html#_Job_Results_Page">Results Summary</a></p>
+			</td>
+			<td>
+			<p>Display jobs run on the server; delete jobs.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Resources</strong></p>
+			</td>
+			<td>
+			<p>Display an overview of the resources.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Report Bugs</p>
+			</td>
+			<td>
+			<p>Display the form you use to contact the GenePattern team to report bugs, provide feedback, or ask questions.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Contact Us</p>
+			</td>
+			<td>
+			<p>Display a form, which you can use to send questions and comments to the GenePattern team.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Downloads</strong></p>
+			</td>
+			<td>
+			<p>Display an overview of the available downloads.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Programming Libraries</p>
+			</td>
+			<td>
+			<p>Download and install GenePattern libraries for use with Java or Python.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Public Datasets</p>
+			</td>
+			<td>
+			<p>Download sample datasets for use with GenePattern.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Administration</strong><span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span></p>
+			</td>
+			<td>
+			<p>Display the Server Settings page.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="/gp_guides/administrators-guide/sections/server-settings.html">Server settings<span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span></a></p>
+			</td>
+			<td>
+			<p>Modify settings that affect the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Help</strong></p>
+			</td>
+			<td>
+			<p>Display the GenePattern home page.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Tutorial</p>
+			</td>
+			<td>
+			<p>Display the&nbsp;<a href="/tutorial/gp_tutorial">Tutorial</a>, which provides a comprehensive hands-on tour of GenePattern.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Video Tutorials</p>
+			</td>
+			<td>
+			<p>Display the list of GenePattern training videos.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>User Guide</p>
+			</td>
+			<td>
+			<p>Display this guide, which describes how to use GenePattern.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Programmers Guide</p>
+			</td>
+			<td>
+			<p>Display the&nbsp;<a href="/gp_guides/programmers-guide">Programmers Guide</a>, which provides guidelines for writing modules and instructions for accessing GenePattern from the Java, MATLAB, and R programming environments.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Module Documentation</p>
+			</td>
+			<td>
+			<p>Display a list of the modules and pipelines installed on your server, with brief descriptions and links to the module/pipeline documentation.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>File Formats</p>
+			</td>
+			<td>
+			<p>Display the&nbsp;<a href="/gp_guides/file-formats/">File Formats Guide</a>, which describes all file formats and provides instructions for creating input files.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Release Notes</p>
+			</td>
+			<td>
+			<p>Display the&nbsp;<a href="/doc/relnotes/current/">Release Notes</a>, which describes new features and known issues in this release.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>FAQ</p>
+			</td>
+			<td>
+			<p>Display the GenePattern list of&nbsp;<a href="/faq/">Frequently Asked Questions</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>About</p>
+			</td>
+			<td>
+			<p>Display the release date and build number of the GenePattern server.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span style="font-size: 10.5px; line-height: 0; position: relative; vertical-align: baseline; top: -0.5em;">1</span>Not available on the public GenePattern server.</p>
+
+<h3 id="user-interface-my-settings" name="user-interface-my-settings" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">My Settings&nbsp;&amp; Log out</h3>
+
+<p>Access account settings&nbsp;or log out by clicking on your user name in the upper right corner.&nbsp;<em>My Settings</em>&nbsp;allows you to change the email, password and visualizer memory associated with the account. Additionally, you can change the number of jobs that display on the Jobs panel&nbsp;under&nbsp;<em>History</em>.</p>
+
+<ul>
+	<li><strong>Change Email</strong>: Change the email address for your GenePattern account on this server. The GenePattern server uses your email address for the following:
+
+	<ul>
+		<li>When you run a module or pipeline, GenePattern sends the job to the GenePattern client and displays the Job Status page. On that page, you can click the&nbsp;<em>email notification</em>&nbsp;check box to have GenePattern send you an email when the job completes.</li>
+		<li>If you forget your password and request a new password, GenePattern sends your new password to this email address.</li>
+	</ul>
+	</li>
+	<li><strong>Change Password</strong>: Change the password for your GenePattern account on this server.&nbsp;<strong>Note</strong>: By default, GenePattern servers are installed without password protection. For information about enabling password protection, see the Administrators guide&#39;s&nbsp;<a href="http://www.broadinstitute.org/administrators-guide#securing-the-server" target="_self">Securing the Server</a>.</li>
+	<li><strong>History</strong>: Use this option to specify the number of recent analyses listed in the&nbsp;Jobs panel&nbsp;on the GenePattern home page.</li>
+	<li><strong>Visualizer Memory</strong>: Specify the Java virtual machine configuration parameters (such as VM memory settings) to be used when running visualization modules. By default, this option is used to specify the amount of memory to allocate when running visualization modules (-Xmx512M).</li>
+</ul>
+
+<h1 id="running-modules-and-pipelines" name="running-modules-and-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Running Modules and Pipelines</h1>
+
+<p>An analysis module runs a single analysis. A pipeline runs a series of analysis modules. Within this guide, although we may refer to a module only, note that concepts apply to pipelines as well.&nbsp;If you are unfamiliar with GenePattern modules and pipelines, see&nbsp;<a href="/concepts" target="_self">Concepts</a>.</p>
+
+<h3 id="running-modules-and-pipelines-running-a-module-or-pipeline" name="running-modules-and-pipelines-running-a-module-or-pipeline" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Running a Module or Pipeline</h3>
+
+<p>You can either load&nbsp;a module and supply it data or click on a data file and select a module to run on it.<br />
+<strong>To load a module and supply its data:</strong></p>
+
+<ol>
+	<li>Start typing the module or&nbsp;pipeline name or analysis category&nbsp;in the search box on the Modules panel.&nbsp;As you type, e.g. HISAT&nbsp;or single-cell&nbsp;, matching choices are displayed in a slide-out menu.&nbsp;</li>
+	<li>
+	<p>Click on a choice to load analysis parameters into the main display pane.&nbsp;</p>
+	</li>
+	<li>
+	<p>Provide data files and fill in parameter fields.&nbsp;See&nbsp;<a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines-setting-parameters" target="_self">Setting Parameters</a>&nbsp;for details.&nbsp;</p>
+
+	<p><img alt="" src="/uploaded/content_screenshot_2024-12-09_at_2_46_05_pm.png" style="width: 800px; height: 282px;" /></p>
+
+	<p>&nbsp;</p>
+
+	<ul>
+		<li>
+		<p>You can (1) Drag-drop files from your computer, from the Files panel.&nbsp;(2)&nbsp;Click the&nbsp;<em>Upload File</em>&nbsp;button to navigate your computer&#39;s file directory and select a file.&nbsp;Or (3) click the&nbsp;<em>Add Path or URL </em>button to enter the URL of the file or to select a file from a&nbsp;shared file&nbsp;system.</p>
+		</li>
+		<li>
+		<p>Parameter fields are typically text boxes that you type into. Some parameters&nbsp;provide drop-down menus to select options from.&nbsp;</p>
+
+		<ul>
+			<li>
+			<p>​Required parameters are asterisked.</p>
+			</li>
+			<li>
+			<p>Default values may be provided but you should adjust parameters to suit your analysis.</p>
+			</li>
+		</ul>
+		</li>
+		<li>
+		<p>​Optionally provide <em>tags</em> or <em>comments</em> for the job. You can modify these after submission.&nbsp; If you add a tag that begins with &quot;name=&quot; or &quot;jobname=&quot;, then (for GenePattern build&nbsp;427 or later)&nbsp;the provided name will be used when displaying the job in both the jobs menu and on the job status page.</p>
+		</li>
+	</ul>
+	</li>
+	<li>Click&nbsp;<em>Run</em>. GenePattern sends the job to the server and displays the Job Status page. How long a job takes to complete depends on the size of your dataset and the analysis that you are running.
+	<ul>
+		<li>You do not have to wait for the job to complete. You can move off of the Job Status page to continue submitting jobs or log out of GenePattern. Your jobs continue to run on the public server.</li>
+		<li>​The <a href="http://www.broadinstitute.org/user-guide#working-with-analysis-results-job-status-page" target="_self">Job Status page</a> provides complete information about the job, including its parameters, input files, output files, and current status.​ Click on elements in blue, e.g. <em>Show Input Parameters</em>, to adjust or show additional options and information.</li>
+	</ul>
+	</li>
+	<li>While submitting other jobs, you can check the status of a previously submitted job on the <em>Jobs panel</em>.&nbsp;Click the Job ID number to slide out a menu of options that include displaying the Job Status page and reloading the job.&nbsp;</li>
+</ol>
+
+<p><strong>Alternatively:&nbsp;</strong></p>
+
+<ol>
+	<li>Click on the file of interest either from the Jobs panel, the Files panel, or the Job Status page.&nbsp;</li>
+	<li>On the slide-out menu, the bottom portion displays all modules that accept the file&nbsp;type. You may need to scroll down to see all the modules. Select one to start an analysis on the file.</li>
+</ol>
+
+<h3 id="running-modules-and-pipelines-licensed-modules-and-pipelines" name="running-modules-and-pipelines-licensed-modules-and-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Licensed Modules and Pipelines</h3>
+
+<p>Some modules or pipelines may have associated end-user license agreements (EULAs).&nbsp;When you first run a licensed module or&nbsp;pipeline, you will be shown a window containing the license terms, where you can read the terms and choose to accept them or not.&nbsp;The license terms will differ depending on the module.</p>
+
+<p><s><img alt="" src="/uploaded/content_sl_gpug_eula2015-06-29_22_18_05.png" style="width: 100%; height: 100%;" /></s></p>
+
+<p>When you click&nbsp;<em>OK</em>&nbsp;to accept the license agreement, your acceptance is logged in our database.&nbsp;You will not be asked to accept the license terms when you use that particular module or&nbsp;pipeline again until and unless a new version of the module/pipeline is released.</p>
+
+<p>If you choose not to accept the license agreement, you will be unable to run the licensed module or pipeline.</p>
+
+<p>To view a license you have already accepted, load the module,&nbsp;click the gear icon and select&nbsp;<em>Properties</em>&nbsp;(<strong>large arrow</strong>). A link to the&nbsp;license may be&nbsp;under <em>License</em> or under <em>Current Files </em>(<strong>boxes</strong>, and&nbsp;<strong>small arrow</strong>). Additionally, module documentation may provide a link to the license.</p>
+
+<p><img alt="" src="/uploaded/content_sl_gpug_eula.png" style="width: 100%; height: 100%;" /></p>
+
+<h3 id="running-modules-and-pipelines-setting-parameters" name="running-modules-and-pipelines-setting-parameters" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Setting Parameters</h3>
+
+<p>When you select a module or pipeline, GenePattern displays its parameters:</p>
+
+<p><img alt="" src="/uploaded/content_ug_cmscallouts.jpg" style="width: 550px; height: 468px;" /></p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><img alt="1" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>Most modules require one or more input files. There are several ways to choose an input file:
+			<ul>
+				<li><strong>Drag and drop a file</strong>. You can drag a file from your desktop or from the Recent Jobs, or Uploads&nbsp;tabs and drop it on the parameter.&nbsp; This option&nbsp;<strong>cannot&nbsp;</strong>be used for extremely large files (2 GB or more).<br />
+				GenePattern uploads the file to the server before running the analysis. The file is stored with the analysis results.</li>
+				<li><strong>Upload a file</strong>. Click the&nbsp;<em>Upload File</em>&nbsp;button.&nbsp; Navigate to the desired file and select it. This option&nbsp;<strong>cannot&nbsp;</strong>be used for extremely large files (2 GB or more).<br />
+				GenePattern uploads the file to the server before running the analysis. The file is stored with the analysis results.</li>
+				<li><strong>Use a previously uploaded file</strong>. From the Uploads pane, click the&nbsp;<img src="/uploaded/content_icon_menu.gif" />&nbsp;icon next to an uploaded file of the desired type and select&nbsp;<span class="brGUI">Send To&nbsp;</span><span class="brvariable">parameter-name</span>. For more information about uploading files, see&nbsp;<a href="#_Uploading_Files">Uploading Files</a>.<br />
+				GenePattern uses the file already stored in the upload directory. A pointer to the file is stored with the analysis results.</li>
+				<li><strong>Use a result file</strong>. From the Recent Jobs pane, click the&nbsp;<img src="/uploaded/content_icon_menu.gif" />&nbsp;icon next to an analysis result file of the desired type and select&nbsp;<span class="brGUI">Send To&nbsp;</span><span class="brvariable">parameter-name</span>. This has the benefit of connecting this analysis to the previous analysis, which can be useful for creating pipelines from an analysis result file.<br />
+				GenePattern uses the analysis result file stored with the previous job. A pointer to the file is stored with the analysis results.</li>
+				<li><strong>Use a file URL</strong>. Click the&nbsp;<em>Add Path or URL</em>&nbsp;button. Copy the URL or FTP address of the file to the entry field.<br />
+				GenePattern uploads the file to the server before running the analysis. When the job completes, it deletes the file and stores the URL with the analysis results. (During file transfers, the analysis job is neither PENDING nor RUNNING; deleting a job while it is in this state does not cancel the file transfer.)</li>
+				<li><strong>Use a file path</strong>. Click the&nbsp;<em>Add Path or URL</em>&nbsp;button. Navigate to the file under the&nbsp;<strong>Or select a file from the file system...</strong>&nbsp;header.&nbsp;<strong>Note</strong>: For security reasons, file paths are disabled on the GenePattern public server; they can be enabled on a local server. For more information, see&nbsp;<a href="#_Using_File_Paths">Using File Paths</a>.<br />
+				GenePattern uses the file identified by the file path. The file path is stored with the analysis results.</li>
+				<li><strong>Use a directory</strong>. Select a directory of files to run the same analysis on several files and select the&nbsp;<em>Batch</em>&nbsp;checkbox. For more information, see&nbsp;<a href="#_Batch_Processing">Batch Processing</a>.</li>
+			</ul>
+
+			<p>In general, uploading a file using drag-and-drop or the&nbsp;<em>Upload</em>&nbsp;<em>File</em>&nbsp;button is fine. However, if you are focused on a particular dataset, it may be faster to&nbsp;<a href="#_Uploading_Files">upload your files&nbsp;</a>to the Uploads tab and then analyze the uploaded files. Just be aware that if you delete the uploaded files, you cannot rerun the analyses. If you have extremely large datasets, consider using file paths. You can save a significant amount of time by avoiding file transfers.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="2" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px;" />&nbsp;<img alt="3" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>Specify other parameter values using the drop-down lists and entry fields:</p>
+
+			<ul>
+				<li><strong>Drop-down list</strong>. Click a value in the list. Ctrl-click (Mac: Command-click) to select multiple values (if allowed).</li>
+				<li><strong>Entry field.&nbsp;</strong>Enter a value in the box. Valid values for the field depend on the module and should be listed in the module documentation.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="4" src="/uploaded/content_callout_4.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>Version of the module. If multiple versions of the module are installed on the server, GenePattern displays the latest version by default. Select a different version from the version number drop-down menu.</td>
+		</tr>
+		<tr>
+			<td><img alt="5" src="/uploaded/content_callout_5.jpg" style="width: 16px; height: 17px;" /></td>
+			<td>
+			<p>The&nbsp;<em>Documentation</em>&nbsp;link displays the module or pipeline documentation.</p>
+
+			<p>The Gear icon&nbsp;<img alt="" height="17" src="/uploaded/content_ug_gearicon.jpg" width="16" />drop-down contains the following links:</p>
+
+			<ul>
+				<li><em>Properties</em>: Display the properties page of the module or pipeline. The module properties page lists the program that implements the analysis. The pipeline properties page lists the modules run by the pipeline.</li>
+				<li><em>Export</em>: Create a zip file that contains the module or pipeline. The zip file can be used to install this module or pipeline on another GenePattern server.</li>
+				<li>Display the code (Java, MATLAB, or R) used to run the module with the parameters that you have entered. This can be a useful starting point for programmers writing code to invoke the module.</li>
+				<li><em>Show Parameter Descriptions</em>&nbsp;checkbox displays or hides the parameter descriptions; selected by default.</li>
+				<li><em>Edit</em>&nbsp;(not shown): Available only for modules that you have created.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="6" src="/uploaded/content_callout_6.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<ul>
+				<li><em>Run</em>&nbsp;button: Start the analysis.</li>
+				<li><em>Reset</em>&nbsp;button: Reset all parameters to their default values.</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="running-modules-and-pipelines-rerunning-an-analysis" name="running-modules-and-pipelines-rerunning-an-analysis" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Rerunning an Analysis</h3>
+
+<ol>
+	<li>Display your analysis jobs in one of two ways:
+	<ul>
+		<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;to display the GenePattern home page, where your most recent jobs are listed in the Jobs tab.</li>
+		<li>Click&nbsp;<em>Job&nbsp;Results&gt;Results Summary</em>&nbsp;to display the Job Results Summary page, which lists all of your analysis jobs.</li>
+	</ul>
+	</li>
+	<li>Click the&nbsp;job that you want to rerun and select&nbsp;<em>Reload Job.&nbsp;</em>The parameters appear in the center pane set to the values that were used for the <span style="background-color:#F0F8FF;">particular&nbsp;selected</span>&nbsp;job.</li>
+	<li><s>&nbsp;</s>Modify the parameter values and click&nbsp;<em>Run</em>.</li>
+</ol>
+
+<h3 id="running-modules-and-pipelines-uploading-files" name="running-modules-and-pipelines-uploading-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Uploading Files</h3>
+
+<p><strong>See the video tutorial</strong>:&nbsp;<a href="http://www.youtube.com/watch?v=A2ZcD7ug2KU" title="Uploads Tab">Using the GenePattern Uploads Tab</a></p>
+
+<p>Files uploaded via module runs stay within the <em>Jobs panel</em>&#39;s associated regularly purged&nbsp;temporary storage cache (<strong>screenshot&nbsp;method 3</strong>). Files uploaded to the <em>Files panel</em>&nbsp;are stored in your account storage (<strong>screenshot methods 1 &amp; 2</strong>).&nbsp;Uploading files to the <em>Files panel</em>&nbsp;provides the following additional&nbsp;benefits:</p>
+
+<ul>
+	<li>To save time, frequently analyzed files can be uploaded once rather than being uploaded each time you run an analysis.&nbsp;</li>
+	<li>Uploaded files (and analysis result files) can be used as the starting point for analysis. Click the file of interest. GenePattern displays a menu listing all modules that accept this type of file as an input file parameter. Select the module or pipeline. GenePattern displays its parameters in the center pane, setting the input file parameter to the file of interest.</li>
+</ul>
+
+<p><img alt="" src="/uploaded/content_sl_gpug_upload.png" style="width: 600px; height: 194px;" /></p>
+
+<p>To upload files to your <em>Files panel</em>:</p>
+
+<ol>
+	<li>Click the <em>Files panel</em> tab to bring it forward.&nbsp;</li>
+	<li>Either drag and drop files from your computer to a folder&nbsp;(<strong>screenshot 1</strong>) or&nbsp;the <em>Drag Files Here</em> box (<strong>screenshot 2</strong>) to select the destination from a file manager.&nbsp;</li>
+	<li>Or click on the destination folder and select <em>Upload Files</em> from the slide-out menu to select&nbsp;from a file manager.</li>
+	<li>A progress bar tracks the upload and tells you when it is complete. Do&nbsp;<em>not</em>&nbsp;close the browser until the upload completes.&nbsp;Upload time depends on the size of your file, the speed of your network connection&nbsp;and a variety of other factors.&nbsp;GenePattern&nbsp;refreshes the page to reflect changes.</li>
+</ol>
+
+<p>To create a new subdirectory in the <em>Files panel</em>:&nbsp;</p>
+
+<ol>
+	<li>Click on the desired parent&nbsp;folder and select <em>Create Subdirectory</em> from the slide-out menu.</li>
+	<li>Enter a&nbsp;name and click&nbsp;<em>Create.</em></li>
+</ol>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-add.jpg?1340831220" style="width: 50px; height: 21px;" /></p>
+			</td>
+			<td>
+			<p>Add files to the applet window. Click the icon to display a file browser from which you can select files. Alternatively, drag-and-drop files directly onto the window.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-remove.jpg?1341243206" style="width: 50px; height: 15px;" /></p>
+			</td>
+			<td>
+			<p>Remove files from the applet window. Click the icon to display a menu from which you can choose to delete selected, pending, finished, failed, or all files from the window.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-pending.jpg?1341243237" style="width: 30px; height: 18px;" /></p>
+			</td>
+			<td>
+			<p>Pending. When you have added files to the window, but have not yet clicked Upload, the files are pending.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-queued.jpg?1341243277" style="width: 30px; height: 16px;" /></p>
+			</td>
+			<td>
+			<p>Queued. When you click Upload, all pending files are added to the applet&#39;s upload queue.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-finished.jpg?1341243295" style="width: 30px; height: 19px;" /></p>
+			</td>
+			<td>
+			<p>Finished. Files that have been successfully uploaded to the GenePattern server are marked as finished.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-failed.jpg?1341243314" style="width: 30px; height: 17px;" /></p>
+			</td>
+			<td>
+			<p>Failed. Files that could not be uploaded to the GenePattern server are marked as failed.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><img alt="" src="/uploaded/content_upload-button.jpg?1341243458" style="width: 30px; height: 30px;" /></p>
+			</td>
+			<td>
+			<p>Upload. Start uploading all pending files.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="running-modules-and-pipelines-deleting-uploaded-files" name="running-modules-and-pipelines-deleting-uploaded-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Deleting Uploaded Files</h3>
+
+<p>For that matter, delete&nbsp;any file in the <em>Jobs</em>, or&nbsp;<em>Files</em><em>&nbsp;panel</em>&nbsp;by clicking on the file and selecting <em>Delete File </em>from the slide-out menu. Similarly, delete a group of files associated with a job by selecting <em>Delete Job</em> or a group of files in a subdirectory by selecting <em>Delete Directory</em>.</p>
+
+<ul>
+	<li>When you delete a file, if a job or pipeline includes a pointer to the file, it can no longer find the file and therefore cannot be reloaded to run.</li>
+</ul>
+
+<h3 id="running-modules-and-pipelines-special-considerations" name="running-modules-and-pipelines-special-considerations" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Special Considerations</h3>
+
+<ul>
+	<li><strong>Disk space:&nbsp;</strong>Uploading files adds the files to your uploads directory on the server&#39;s file system. Your ability to add files to the file system is dependent on the space available and any quotas that may have been set by the server administrators. If you cannot upload files due to disk space, contact the server administrator. If you are using the GenePattern public server, <a href="https://groups.google.com/g/genepattern-help" target="_blank">contact us</a>.</li>
+	<li>
+	<p><strong>Partial uploads:&nbsp;</strong>If an upload fails to complete (because you stopped the upload or because of a server error or network interruption), you will see a message in the main panel highlighted in red.&nbsp;It is possible for a file to upload partially without indicating an error, especially for large files. Check that a file upload completed successfully by confirming the uploaded file size to the original. For&nbsp;<em>Files panel</em>&nbsp;files, hover your mouse over the file to see a tooltip element show the file size. For files within a job, load the<em>&nbsp;Job Status</em>&nbsp;page. File sizes are listed next to the files.&nbsp;To reload the file, delete the partially uploaded file and upload it again.</p>
+	</li>
+	<li>
+	<p><strong>Duplicate names:&nbsp;</strong>The server prevents you from uploading multiple files with the same name. If two different files have the same name, rename the file before uploading it to GenePattern.</p>
+	</li>
+</ul>
+
+<h3 id="running-modules-and-pipelines-using-file-paths" name="running-modules-and-pipelines-using-file-paths" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Using File Paths</h3>
+
+<p><strong>Note</strong>: For security reasons, file paths are not enabled on the GenePattern public server.</p>
+
+<p>When file paths are enabled on a GenePattern server, you can use file paths to identify input files for modules and pipelines. The GenePattern server can directly access the files stored on your local or networked drives; therefore, the files do not have to be transferred to or stored on the GenePattern server. Avoiding file transfers can save significant upload time and avoiding file storage can save significant amounts of disk space. Therefore:</p>
+
+<ul>
+	<li>If you are running your own local server, we recommend that you use file paths rather than uploading files.</li>
+	<li>If you are working with large files (2 GB or more), consider installing a local GenePattern server and enabling file paths on that server.</li>
+</ul>
+
+<p>When file paths are enabled, the module/pipeline run page includes the&nbsp;<em>Add Path or URL&nbsp;</em>option. To use a file path as an input file parameter:</p>
+
+<ol>
+	<li>Select a module or pipeline. The parameters appear in the center pane.</li>
+	<li>Click the&nbsp;<em>Add Path or URL</em>&nbsp;button:<br />
+	<img alt="" src="/uploaded/content_ug_addpathorurl.jpg" style="width: 600px; height: 186px;" /></li>
+	<li>Select a file from a local or networked drive and click&nbsp;<em>Select</em>.<br />
+	<img alt="" src="/uploaded/content_ug_addpathurldialog.jpg" style="width: 394px; height: 160px;" /></li>
+	<li>GenePattern runs the analysis, using the file identified by the file path. The file path, rather than the file, is stored with the analysis results.</li>
+</ol>
+
+<p>The&nbsp;Adminstrators Guide&#39;s <a href="http://www.broadinstitute.org/administrators-guide#ServerFilePaths" target="_self">Server File Paths</a> section&nbsp;provides instructions on how to enable file paths on your GenePattern server.</p>
+
+<h3 id="running-modules-and-pipelines-batch-processing" name="running-modules-and-pipelines-batch-processing" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Batch Processing</h3>
+
+<p><strong>See the video tutorial</strong>:&nbsp;<a href="http://www.youtube.com/watch?v=kojasPD-bqI" title="Batch Execution in GenePattern 3.3.3">Batch Execution in GenePattern 3.3.3</a></p>
+
+<p>Batch processing provides an automated method of running several files through a module or pipeline in parallel.</p>
+
+<ul>
+	<li>Note that some modules by nature accept multiple files for an input parameter for a single job and in these cases, the job should remain unbatched.&nbsp;</li>
+	<li>Batched processing, because it is available only for&nbsp;input file parameters, implies all other parameters are identically applied.</li>
+	<li>To provide multiple input files for a module or pipeline, identify each set of files to be processed by giving them the same name (excluding file extension). For example, to run ComparativeMarkerSelection as a batch job, give each .gct or .res file the same name (excluding file extension) as its matching .cls file. For example: test1.gct, test1.cls, test2.gct, test2.cls. You can place all of the files in one subdirectory or create a separate subdirectory for each input file parameter (for example, one subdirectory for .gct files and another for .cls files). GenePattern processes each set of matching files, ignoring any other files in the directory.</li>
+</ul>
+
+<p><strong>To run a batch job after loading a module:</strong></p>
+
+<p>The key is to check the box labeled <em>Batch</em>, for the input parameter and then to supply the files containing the files, and to supply identically named&nbsp;sets if they are supplied for multiple parameters. GenePattern breaks down a submitted batched job into the multiple component&nbsp;jobs for you.&nbsp;</p>
+
+<ul>
+	<li>As of GenePattern 3.8.0 you can drag in a list of files to batch over, or run over a directory, as before. For more information on dragged in lists, please see the&nbsp;<a href="/doc/relnotes/3.8.0#newfeatures">3.8.0 release notes.</a>&nbsp;</li>
+</ul>
+
+<p><strong>To run a batch job for data files in&nbsp;a directory in the Files panel:</strong></p>
+
+<ol>
+	<li>Place the files to be processed in a folder&nbsp;in the Files panel as described in <a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines-uploading-files" target="_self">Uploading Files</a>.&nbsp;</li>
+	<li>Click on the folder and then select a&nbsp;module or pipeline to run from the slide-out menu. The module loads with the directory in the input field.&nbsp;Check the&nbsp;<em>Batch</em>&nbsp;box.</li>
+	<li>Alternatively, load the module first, check <em>Batch</em>, and&nbsp;specify the subdirectory as an input file parameter for the module or pipeline.&nbsp;</li>
+	<li>Click&nbsp;<em>Run</em>. GenePattern starts one analysis job for each input file or valid set of input files. It then displays all of the jobs in the Job Results Summary page.</li>
+</ol>
+
+<h3 id="running-modules-and-pipelines-using-a-file-path-subdirectory" name="running-modules-and-pipelines-using-a-file-path-subdirectory" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Using a File Path Subdirectory</h3>
+
+<p>This applies to local GenePattern servers enabled to accept file paths. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines-using-file-paths" style="background-color: rgb(255, 255, 255);" target="_self">Using File Paths</a>.</p>
+
+<ol>
+	<li>Verify that the files that you want to run as a batch are in a subdirectory accessible to your local GenePattern server.</li>
+	<li>Select the module or pipeline to run. GenePattern displays the module run page.</li>
+	<li>Check&nbsp;the&nbsp;<em>Batch</em>&nbsp;box for the input file you wish to provide a set of files for.</li>
+	<li>For each input file parameter whose input files are in the subdirectory:
+	<ol start="1" style="list-style-type: lower-alpha;">
+		<li>Click the&nbsp;<em>Add Path or URL</em>&nbsp;button.</li>
+		<li>Enter the file path of the subdirectory.</li>
+	</ol>
+	</li>
+	<li>Enter the remaining parameter values.</li>
+	<li>Click&nbsp;<em>Run</em>.</li>
+</ol>
+
+<h3 id="running-modules-and-pipelines-special-considerations-2" name="running-modules-and-pipelines-special-considerations-2" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Special Considerations</h3>
+
+<ul>
+	<li><strong>Errors in batch submission</strong>: If an error occurs while submitting the batch job, GenePattern redisplays the module run page with an error message. Typical causes for errors include:
+
+	<ul>
+		<li>Invalid input folder in batch. The folder is not found.</li>
+		<li>Invalid input folder in batch. You do not have permission to read this folder.</li>
+		<li>Invalid input folder in batch. The input folder contains no files.</li>
+		<li>Invalid input folder in batch. The input folder contains no files which match the input parameter type.</li>
+	</ul>
+	</li>
+	<li><strong>Sharing batch jobs</strong>: If you share a batch job with a non-administrator GenePattern user, that user can view the job status pages for the jobs but may not be able to view the input files or successfully reload and rerun the jobs. In particular, if you ran the batch job using an uploads subdirectory, the non-administrator user cannot access the files in your uploads directory and, therefore, cannot view the input files or successfully reload and rerun the jobs. If you ran the batch job using a file path subdirectory, whether the non-administrator user can access the files in that subdirectory determines whether the user can view the input files or successfully reload and rerun the jobs.</li>
+	<li><strong>Programming environments</strong>: GenePattern provides a programming interface (with versions for Java, R, and MATLAB) that allows you to submit jobs in parallel. For more information, see the&nbsp;<a href="http://www.broadinstitute.org/programmers-guide">Programmers Guide</a>.</li>
+</ul>
+
+<h1 id="working-with-analysis-results" name="working-with-analysis-results" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Working with Analysis Results</h1>
+
+<p>When you run a module or pipeline, GenePattern runs the analysis job on the GenePattern server. Analysis results are stored on the GenePattern server for a limited period of time. For the&nbsp;public server, this period is&nbsp;by default&nbsp;one week, after which jobs&nbsp;are&nbsp;deleted.</p>
+
+<h3 id="working-with-analysis-results-basic-operations" name="working-with-analysis-results-basic-operations" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Basic Operations</h3>
+
+<p>The following table summarizes ways to work with analysis results:</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="border-style: solid;">
+			<p>Display analysis results</p>
+			</td>
+			<td style="border-style: solid;">
+			<p>Click a job ID number to display the&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-analysis-results-job-status-page" target="_self">Job Status</a>&nbsp;page, which lists the input parameters and analysis results for that analysis job. Recent jobs are also listed on the Jobs panel.&nbsp;<s>GenePattern home page</s>. To display all jobs, click&nbsp;<em>Job Results&gt;Results Summary</em>.)</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-style: solid;">
+			<p><a href="#_Sharing_Analysis_Results">Share analysis results</a></p>
+			</td>
+			<td style="border-style: solid;">
+			<p>By default, analysis results are private. To share results with other GenePattern users, click the&nbsp;<img alt="" src="/uploaded/content_sharingicon.jpg?1346354380" style="width: 48px; height: 20px;" />&nbsp;icon on the Job Status page and modify settings.</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-style: solid;">
+			<p>Save analysis results</p>
+			</td>
+			<td style="border-style: solid;">
+			<p>To save results persistently (beyond the period of time they are stored on the server), download the analysis result files to a more permanent location:</p>
+
+			<ul>
+				<li>To save a single file, click the&nbsp;file and either select&nbsp;<em>Save File </em>to&nbsp;download&nbsp;to your computer or select<em> Copy to Files Tab </em>to save to your account.</li>
+				<li>To save all of the files, click the job and select&nbsp;<em>Download Job</em>. GenePattern creates a zip containing all result files that downloads to your computer.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-style: solid;">
+			<p>Delete analysis results</p>
+			</td>
+			<td style="border-style: solid;">
+			<p>If you no longer need your analysis results, you can delete the files from the server:</p>
+
+			<ul>
+				<li>To delete a single file, click&nbsp;a file and select&nbsp;<em>Delete</em>.</li>
+				<li>To delete all of the files, click&nbsp;a job and select&nbsp;<em>Delete</em>.</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-analysis-results-analysis-result-files" name="working-with-analysis-results-analysis-result-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Analysis Result Files</h3>
+
+<p>When you run a module or pipeline, the files generated by the module/pipeline are stored on the GenePattern server. The module author determines the content and format of the generated files; however, by convention, each module generates the following files:</p>
+
+<ul>
+	<li><strong>Analysis result files</strong>&nbsp;are typically formatted text files that contain the results of the analysis. Most analysis result files are intended to be used as input to subsequent analyses. Although these files can be viewed in a text viewer, the amount of information in the files may make them difficult to read.<br />
+	If an analysis module generates an analysis result file that requires examination and interpretation, there is generally a corresponding visualization module that you can use to display the results. Visualization modules have &ldquo;Viewer&rdquo; in the title. For example:
+	<ul>
+		<li>Results from ComparativeMarkerSelection are viewed using the ComparativeMarkerSelectionViewer</li>
+		<li>Results from modules in the Prediction category are viewed using the PredictionResultsViewer</li>
+		<li>Results from SOMClustering are viewed using the SOMClusteringViewer</li>
+		<li>Gene expression datasets are often viewed using the HeatMapViewer</li>
+		<li>Large, integrated datasets are often viewed using Integrative Genomics Viewer (IGV) &mdash; a high-performance visualization tool that supports a wide variety of data types including sequence alignments, microarrays, and genomic annotations<s>.</s></li>
+	</ul>
+	</li>
+	<li><s>​</s><strong>Execution log files</strong>&nbsp;are text files that describe how the analysis was run. A module might generate one or more of the following log files: Log files can be viewed using a text viewer.
+	<ul>
+		<li><span class="brcode">gp_task_execution_log.txt</span>: contains the parameter values used to run the analysis, which is useful for reproducing analysis results.</li>
+		<li><span class="brcode">stdout.txt</span>: contains &quot;standard output&quot; messages; that is, comments generated as the analysis module runs.</li>
+		<li><span class="brcode">stderr.txt</span>: contains &quot;standard error&quot; messages; that is, information about errors (if any) that occurred during the analysis.</li>
+	</ul>
+	</li>
+</ul>
+
+<h3 id="working-with-analysis-results-job-status-page" name="working-with-analysis-results-job-status-page" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Job Status Page</h3>
+
+<p>When you run a module or pipeline, GenePattern sends the analysis job to the server and displays the Job Status page. This page displays complete information for an analysis job, including its status, input files, parameter values, and (when the job completes) result files. After starting an analysis, you can continue working. You do not have to leave the Job Status page displayed.</p>
+
+<p>GenePattern offers several ways to redisplay a Job Status page:</p>
+
+<ul>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;to display the GenePattern home page, where your most recent jobs are listed in the Jobs panel. Click a job ID number to display the corresponding Job Status page.</li>
+	<li>Click&nbsp;<em>Job Results&gt;Results Summary</em>&nbsp;to display all of your analysis jobs. Click a job ID number to display the corresponding Job Status page.</li>
+	<li>Enter the URL of the Job Status page in your browser:&nbsp;<span class="brcode">http://&lt;server</span>&gt;/gp/pages/index.jsf?jobid=&lt;job<span class="brcode"> number&gt;</span><br />
+	On the GenePattern public server for example:&nbsp;https://cloud.genepattern.org/gp/pages/index.jsf?jobid=396741<br />
+	On a local server for example:&nbsp;<span class="brcode">http://localhost:8080/gp/jobResults/111</span></li>
+</ul>
+
+<p>An&nbsp;<em>Email Reminder&nbsp;</em>check box is visible while the job is running. For long running jobs, select the check box to have GenePattern send you email when the job completes. Continue working in GenePattern or exit from GenePattern. When you receive the email indicating that the job is finished, display the Job Status page to review the analysis results.</p>
+
+<h3 id="working-with-analysis-results-job-results-summary-page" name="working-with-analysis-results-job-results-summary-page" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Job Results Summary Page</h3>
+
+<p>The GenePattern Jobs panel lists your most recent jobs. The Job Results Summary page lists all of your analysis jobs.</p>
+
+<p>To display the Job Results Summary page, click&nbsp;<em>Job Results&gt;Results Summary</em>. If a job is still running, refresh the page periodically to update its status.</p>
+
+<p>To sort the job results, click a column header. You can sort jobs by status, job ID, module name, submission&nbsp;date, or completion date.&nbsp;</p>
+
+<h3 id="working-with-analysis-results-sharing-analysis-results" name="working-with-analysis-results-sharing-analysis-results" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Sharing Analysis Results</h3>
+
+<p>When you run an analysis job, by default&nbsp;it is private;&nbsp;only you and GenePattern administrators&nbsp;can view or delete the job. Sharing job results gives other GenePattern users access to the job, including its input files, parameter values, and result files.</p>
+
+<p>To share job results or modify the share status of a job:</p>
+
+<ol>
+	<li>Display the&nbsp;<a href="#_Job_Status_Page">Job Status</a>&nbsp;page for the job. The share icon indicates whether the job is private&nbsp;<img alt="share icon" src="/uploaded/content_icon_smalllock.gif" style="width: 15px; height: 16px;" />&nbsp;or shared&nbsp;<img alt="shared icon" src="/uploaded/content_icon_smalllockopen.gif" style="width: 20px; height: 16px;" />.</li>
+	<li>Click the share icon. GenePattern displays the share options for the job:<br />
+	Modify the options by choosing which groups should have access and what access they should have.
+	<ul>
+		<li><strong>Which groups have access.</strong>&nbsp;Jobs can be shared with all GenePattern users (Public) or groups of GenePattern users. You must be a member of group to share a job with that group; therefore, the options include only groups of which you are a member.</li>
+		<li><strong>What access.</strong>&nbsp;Groups can be given three levels of access: None, Read Only, Read and Write. Users with read access to a job can download it, rerun it, and view its input parameters, input files, and result files. Users with write access to a job can in addition&nbsp;delete the job or any of its result files.</li>
+	</ul>
+	</li>
+	<li>Click&nbsp;<em>Update Settings</em>&nbsp;to save your changes.</li>
+</ol>
+
+<p><strong>Sharing input files</strong>: In GenePattern, you can specify the output file from one analysis as the input file for a subsequent analysis. For example, you might use the output file from PreprocessDataset as the input file for ComparativeMarkerSelection. In this case, if you share the ComparativeMarkerSelection job, the other user can view the result files but cannot view the input file (which is from the PreprocessDataset job) or rerun the job. To share the ComparativeMarkerSelection job and its input file, either (1) share both the ComparativeMarkerSelection and PreprocessDataset jobs or (2) save the output file from PreprocessDataset, rerun ComparativeMarkerSelection using the saved file, and share the resulting ComparativeMarkerSelection job.</p>
+
+<p><strong>Creating groups</strong>: To create a group or add members to a group, contact the GenePattern administrator. If you are an administrator, see&nbsp;<a href="http://www.broadinstitute.org/administrators-guide#creating-groups-and-administrators" target="_self">Creating Groups and Administrators</a>&nbsp;for more information.</p>
+
+<h1 id="starting-your-own-genepattern-server" name="starting-your-own-genepattern-server" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Starting Your Own GenePattern Server</h1>
+
+<p>We recommend using the&nbsp;<a href="http://genepattern.broadinstitute.org/gp/" target="_blank">GenePattern Public server</a>, especially if you are new to GenePattern. The Public server is ready to use from a browser,&nbsp;analyzes your data on hosted servers, provides site support&nbsp;and offers a number of modules that are not available for local installation.&nbsp;</p>
+
+<p style="margin-left: 40px;">See the&nbsp;<u><a href="/concepts#_Servers" target="_self">Servers section of the&nbsp;Concepts guide</a></u>&nbsp;for background information.&nbsp;</p>
+
+<p>Before you decide to install your own local server, please look over the&nbsp;<u><a href="http://www.broadinstitute.org/administrators-guide" target="_self">Administrator&#39;s Guide</a>.</u></p>
+
+<h3 id="starting-your-own-genepattern-server-installing-your-genepattern-server" name="starting-your-own-genepattern-server-installing-your-genepattern-server" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Installing Your GenePattern Server</h3>
+
+<p>Download and follow instructions for your system on the <a href="https://github.com/genepattern/genepattern-server/releases/latest" target="_blank">GitHub Release page</a>.</p>
+
+<p>You use the same installation instructions regardless of whether you are installing a local GenePattern server for personal use or installing a networked server for use by an institution. The difference is in how you configure the server. If you are installing a local GenePattern server for personal use, the default server configuration is typically sufficient. If you are installing a networked server for use by an institution, see the&nbsp;<a href="/gp_guides/administrators-guide">Administrators Guide</a>&nbsp;for instructions on how modify the default server configuration.</p>
+
+<h3 id="starting-your-own-genepattern-server-using-your-genepattern-server" name="starting-your-own-genepattern-server-using-your-genepattern-server" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">&nbsp;</h3>
+
+<p>&nbsp;</p>
+
+<h1 id="working-with-modules" name="working-with-modules" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Working with Modules</h1>
+
+<p>Analysis and visualization modules are at the heart of GenePattern.&nbsp;<strong>Analysis modules</strong>&nbsp;provide computational methods and tools for gene expression analysis, proteomics data analysis, SNP analysis, RNA-seq analysis, flow cytometry, and data preprocessing and conversion.&nbsp;<strong>Visualization modules</strong>&nbsp;display your data and analysis results graphically. If you are unfamiliar with GenePattern modules and pipelines, see&nbsp;<a href="/concepts" target="_self">Concepts</a>.</p>
+
+<h3 id="working-with-modules-basic-operations" name="working-with-modules-basic-operations" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Basic Operations</h3>
+
+<p>The following table summarizes the different ways you can work with GenePattern modules.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p>Run a module</p>
+			</td>
+			<td>
+			<p>Select a module, enter its parameters, and click&nbsp;<em>Run</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines" target="_self">Running Modules and Pipelines</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="http://www.broadinstitute.org/user-guide#working-with-modules-displaying-module-properties" target="_self">Display module properties</a></p>
+			</td>
+			<td>
+			<p>Module properties include the author, the command line used to invoke the module, and the programs used to execute the module. If a module has an end-user license agreement associated with it, you can view the license via the module properties page.</p>
+
+			<p>To display a module&rsquo;s properties, click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;and select the module. When GenePattern displays the module parameters, click&nbsp;<em>Properties</em>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Send module to other users</p>
+			</td>
+			<td>
+			<p>Zip files provide a convenient way to send modules to other GenePattern users:</p>
+
+			<ul>
+				<li>To export a module to a zip file, click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;and select the module to export. When GenePattern displays the module parameters, click&nbsp;<em>Export</em>.</li>
+				<li>To install a module from a zip file, click&nbsp;<em>Modules &amp; Pipelines&gt;Install from zip</em>.</li>
+			</ul>
+
+			<p>For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-exporting-and-installing-modules-pipelines-using-zip-files" target="_self">Exporting and Installing Modules &amp; Pipelines Using Zip Files</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Install modules from the repository</p>
+			</td>
+			<td>
+			<p>We maintain&nbsp;a repository of modules, pipelines, and suites. To install modules from the repository, click&nbsp;<em>Modules &amp; Pipelines&gt;Install from Repository</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-installing-modules-pipelines-from-the-repository" target="_self">Installing Modules &amp; Pipelines from the Repository</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Create modules</p>
+			</td>
+			<td>
+			<p>An analysis module invokes a program that executes the desired function. To create a module, you must write the program that implements the analysis and then create the GenePattern module that invokes that program. For more information, see&nbsp;<a href="#creating_tasks">Creating Modules</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Edit modules</p>
+			</td>
+			<td>
+			<p>You can edit a module that you have created or copy a public module and edit your copy of the public module. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-modules-editing-modules" target="_self">Editing Modules</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Delete modules</p>
+			</td>
+			<td>
+			<p>To delete a module from your GenePattern server, click&nbsp;<em>Modules &amp; Pipelines&gt;Manage</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites" target="_self">Managing Modules &amp; Pipelines</a>.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-modules-displaying-module-properties" name="working-with-modules-displaying-module-properties" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Displaying Module Properties</h3>
+
+<p>To view the definition of a module, display its properties:</p>
+
+<ol>
+	<li>Load&nbsp;the module to display.</li>
+	<li>Click the gear icon on the right and select&nbsp;<em>Properties</em> from the menu.GenePattern displays the module properties:</li>
+</ol>
+
+<p style="margin-left: 40px;"><img alt="" src="/uploaded/content_sl_gpug_properties2015-06-29_21_43_43.png" style="width: 100%; height: 100%;" /></p>
+
+<ul>
+	<li><strong>Name</strong>. Name of the module.</li>
+	<li><strong>LSID</strong>. The Life Science Identifier (LSID) used to uniquely identify a GenePattern module.</li>
+	<li><strong>Description</strong>. Brief description of the module.</li>
+	<li><strong>Author</strong>. The author&#39;s name and affiliation (company or academic institution).</li>
+	<li><strong>License.&nbsp;</strong>The End-User license agreement for the module. (This is an optional property and will therefore usually be empty.)</li>
+	<li><strong>Privacy</strong>. Modules may be marked as public or private:
+	<ul>
+		<li>Public modules may be accessed by anyone using the GenePattern server.</li>
+		<li>Private modules may be accessed only by the person who installed or created the module (or by an administrator).</li>
+	</ul>
+	</li>
+	<li><strong>Quality level</strong>. One of three terms that indicates the author&rsquo;s confidence in the robustness of the module: development, preproduction, and production.</li>
+	<li><strong>Documentation</strong>. Help file that describes the module and provides instructions for its use.</li>
+	<li><strong>Command line</strong>. Command line used to launch the module. Values enclosed in angle brackets are replaced by specific values before the command executes.</li>
+	<li><strong>Categories</strong>. Category under which to list this module. Categories are used to organize modules and pipelines on the GenePattern home page. Pipelines are always assigned to the category name&nbsp;<em>pipeline</em>.</li>
+	<li><strong>CPU type</strong>. Indicates the type of CPU required to run the module, or&nbsp;<em>any</em>&nbsp;if the module runs on any type of CPU.</li>
+	<li><strong>Operating system</strong>. Indicates the operating system required to run the module, or&nbsp;<em>any</em>&nbsp;if the module runs on any operating system.</li>
+	<li><strong>Language</strong>. Indicates the programming language used to implement the module.</li>
+	<li><strong>min. language version</strong>. Indicates the version of the programming language used to implement the module.</li>
+	<li><strong>Version comment</strong>. Describes changes made to the module in this version.</li>
+	<li><strong>File format(s)</strong>. Lists the file formats of any output files generated by the module.</li>
+	<li><strong>Current files</strong>: Lists the support files packaged with the module, such as executable programs, documentation, and so on.</li>
+	<li><strong>Parameters</strong>: Lists the module parameters, including the file formats of any input files required by the module.</li>
+</ul>
+
+<h3 id="working-with-modules-creating-modules" name="working-with-modules-creating-modules" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Creating Modules</h3>
+
+<p>Only the GenePattern team can create, edit, or install modules on the GenePattern public server. Therefore, to create a module, you must have a local GenePattern server installed (see&nbsp;<a href="/user-guide#starting-your-own-genepattern-server">Starting Your Own </a><a href="http://www.broadinstitute.org/user-guide#starting-your-own-genepattern-server" target="_self">GenePattern</a> Server).</p>
+
+<p>Creating a GenePattern module is a two-step process:</p>
+
+<ol>
+	<li>Find or write a program that executes the desired function. Any program that can be executed from the command line can be run as a GenePattern module. If you are writing the program, you can use any programming language. For example, you can use a compiled language, such as C, to create an executable or use a scripting language, such as Perl, to create a script that is run by an interpreter. The&nbsp;<a href="http://www.broadinstitute.org/programmers-guide">Programmers Guide</a>&nbsp;provides guidelines for writing programs that will be run as GenePattern modules.</li>
+	<li>Use GenePattern to create a module that invokes the program that you have written. It takes just a few minutes to enter the necessary information. Once you have done so, you can run the module. You can decide which parameters from the algorithm to expose to the user and can replace command line parameter names that are hard to remember with names that are self-explanatory. You can also create drop-down list choices for parameters to reduce the possibility of invoking the module with incorrect values.</li>
+</ol>
+
+<p>To create a module that invokes the program that you have written (or otherwise obtained):</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines&gt;New Module</em>. GenePattern displays the module integrator.</li>
+	<li>Define the module.</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to create the module.</li>
+</ol>
+
+<p>For more information about creating modules and using the module integrator, see the&nbsp;<a href="http://www.broadinstitute.org/programmers-guide">Programmers Guide</a>.</p>
+
+<h3 id="working-with-modules-editing-modules" name="working-with-modules-editing-modules" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Editing Modules</h3>
+
+<p>Only the GenePattern team can create, edit, or install modules on the GenePattern public server. Therefore, to edit a module, you must have a local GenePattern server installed (see&nbsp;<a href="/user-guide#starting-your-own-genepattern-server" style="background-color: rgb(255, 255, 255);">Starting Your Own&nbsp;</a><a href="http://www.broadinstitute.org/user-guide#starting-your-own-genepattern-server" target="_self">GenePattern</a>&nbsp;Server).</p>
+
+<p>To edit a module:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines&nbsp;</em>to display the GenePattern home page.</li>
+	<li>Display the module properties page in one of the following ways:
+	<ul>
+		<li>Select a module that you created. When GenePattern displays the module parameters, click&nbsp;<span class="brGUI">Edit</span>. GenePattern displays the module integrator.</li>
+		<li>Select a public module. When GenePattern displays the module parameters, click&nbsp;<span class="brGUI">Properties</span>. When GenePattern displays the module properties, click<em>&nbsp;<span class="brGUI">Clone</span></em>&nbsp;to create a copy of the module. You created the copy, so you can edit it.</li>
+	</ul>
+	</li>
+	<li>Edit the module.</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to create a new version of the module.</li>
+</ol>
+
+<p>For more information about editing modules and using the module integrator, see the&nbsp;<a href="http://www.broadinstitute.org/programmers-guide" style="background-color: rgb(255, 255, 255);">Programmers Guide</a>.</p>
+
+<h1 id="working-with-pipelines" name="working-with-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Working with Pipelines</h1>
+
+<p>A GenePattern pipeline defines a sequential series of modules to be run. Modules run from a pipeline work exactly the same as those run directly from GenePattern. If you are unfamiliar with GenePattern pipelines, see&nbsp;<a href="/concepts" target="_self">Concepts</a>.</p>
+
+<h3 id="working-with-pipelines-basic-operations" name="working-with-pipelines-basic-operations" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Basic Operations</h3>
+
+<p>The following table summarizes the different ways you can work with GenePattern pipelines.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p>Run a pipeline</p>
+			</td>
+			<td>
+			<p>Select a pipeline, enter its parameters, and click&nbsp;<em>Run</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#running-modules-and-pipelines" target="_self">Running Modules and Pipelines</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="http://www.broadinstitute.org/user-guide#working-with-pipelines-displaying-pipeline-properties" target="_self">Display pipeline properties</a></p>
+			</td>
+			<td>
+			<p>Pipeline properties include the pipeline&rsquo;s author, the modules to be run and their parameters. If a pipeline has an end-user license agreement associated with it, you can view the license via the pipeline properties page.</p>
+
+			<p>To display pipeline properties, click&nbsp;<em>Modules &amp; Pipelines</em>, select the pipeline, and click&nbsp;<em>Properties</em>.&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Send pipelines to other users</p>
+			</td>
+			<td>
+			<p>Zip files provide a convenient way to send pipelines to other GenePattern users.</p>
+
+			<ul>
+				<li>To export a pipeline to a zip file, click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;and select the pipeline to export. When the pipeline parameters (if any) appear in the center pane, click&nbsp;<em>Export</em>.</li>
+				<li>To install a pipeline from a zip file: click&nbsp;<em>Modules &amp; Pipelines&gt;Install from zip</em>.</li>
+			</ul>
+
+			<p>For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-exporting-and-installing-modules-pipelines-using-zip-files" target="_self">Exporting and Installing Modules &amp; Pipelines Using Zip Files</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Install pipelines from the repository</p>
+			</td>
+			<td>
+			<p>We maintain&nbsp;a repository of modules, pipelines, and suites. To install pipelines from the repository, click&nbsp;<em>Modules &amp; Pipelines&gt;Install from Repository</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-installing-modules-pipelines-from-the-repository" target="_self">Installing Modules &amp; Pipelines from the Repository</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Create pipelines</p>
+			</td>
+			<td>
+			<p>You can create an empty pipeline and add modules to it, create a pipeline by cloning an existing pipeline, or start with an analysis result file and have GenePattern create a pipeline that recreates that analysis result file. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-pipelines-creating-pipelines" target="_self">Creating Pipelines</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Edit pipelines</p>
+			</td>
+			<td>
+			<p>You can edit a pipeline that you have created or clone a public pipeline and edit your copy of the public pipeline. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-pipelines-editing-pipelines" target="_self">Editing Pipelines</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Delete pipelines</p>
+			</td>
+			<td>
+			<p>To delete a pipeline, click&nbsp;<em>Modules &amp; Pipelines&gt;Manage</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites" target="_self">Managing Modules &amp; Pipelines</a>.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-pipelines-displaying-pipeline-properties" name="working-with-pipelines-displaying-pipeline-properties" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Displaying Pipeline Properties</h3>
+
+<p>To view the definition of a pipeline, display its properties:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;to display the GenePattern home page.</li>
+	<li>Select the pipeline to display.</li>
+	<li>When GenePattern displays the pipeline parameters (if any), click&nbsp;<em>Properties</em>. GenePattern displays the pipeline properties:</li>
+</ol>
+
+<blockquote>
+<p><img alt="" src="/uploaded/content_pipeproppage.jpg?1354134852" style="width: 100%; height: 100%;" /></p>
+</blockquote>
+
+<p>On this page, you can:</p>
+
+<ul>
+	<li>Click&nbsp;<em>open all</em>&nbsp;and&nbsp;<em>close all</em>&nbsp;to show and hide all module parameters.</li>
+	<li>Click the arrow icon next to a module to show/hide its parameters.</li>
+	<li>Click&nbsp;<em>Clone</em>&nbsp;to create your own copy of this pipeline, which you can then edit.</li>
+	<li>Click&nbsp;<em>Run</em>&nbsp;to run the pipeline.</li>
+	<li>Click&nbsp;<em>Edit</em>&nbsp;to edit the pipeline. The&nbsp;<em>Edit</em>&nbsp;button, not shown here, is only available for pipelines that you have created.</li>
+</ul>
+
+<h3 id="working-with-pipelines-creating-pipelines" name="working-with-pipelines-creating-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Creating Pipelines</h3>
+
+<p>You can create a pipeline in several ways: from an analysis result file, from an existing pipeline, or from scratch (beginning with an empty pipeline).</p>
+
+<p>To create a pipeline from an analysis result file:</p>
+
+<ol>
+	<li>Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon next to the analysis result file and select&nbsp;<em>Create Pipeline</em>. GenePattern creates a pipeline that will reproduce the analysis results file and opens the pipeline designer for that pipeline.
+
+	<p>GenePattern adds modules to the pipeline based on the following logic: add the module that created the result file; check the module&rsquo;s input file parameters; if the input file for the module was the output file of a previous module, add the previous module; check that module&rsquo;s input file parameters; continue to walk back through the chain of modules, adding modules to the pipeline, until reaching the initial input file.</p>
+	</li>
+	<li>Edit the pipeline as desired. For more information, see&nbsp;<a href="#_Pipeline_Designer_Form">Pipeline Designer</a>.</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to create the pipeline.</li>
+</ol>
+
+<p>To create a new copy of an existing pipeline:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;and select the pipeline. GenePattern displays the pipeline parameters (if any).</li>
+	<li>Click&nbsp;<em>Properties</em>. GenePattern displays the pipeline definition page.</li>
+	<li>Click&nbsp;<span class="brGUI">Clone</span>&nbsp;to create a copy of the pipeline. GenePattern prompts you to name the new pipeline.</li>
+	<li>Enter a name for the pipeline and click&nbsp;<em>OK</em>. GenePattern displays the pipeline properties for the new pipeline.</li>
+	<li>Click&nbsp;<em>Edit</em>&nbsp;to edit pipeline. GenePattern displays the pipeline designer.</li>
+	<li>Edit the pipeline as desired. For more information, see&nbsp;<a href="#_Pipeline_Designer_Form">Pipeline Designer</a>.</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to create the pipeline.</li>
+</ol>
+
+<p>To create a pipeline from scratch:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines&gt;New Pipeline</em>. GenePattern displays the pipeline designer.</li>
+	<li>Edit the pipeline as desired. For more information, see&nbsp;<a href="#_Pipeline_Designer_Form">Pipeline Designer</a>.</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to create the pipeline.</li>
+</ol>
+
+<h3 id="working-with-pipelines-editing-pipelines" name="working-with-pipelines-editing-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Editing Pipelines</h3>
+
+<p>To edit a pipeline:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;to display the GenePattern home page.</li>
+	<li>Select the pipeline that you want to edit. GenePattern displays the pipeline parameters (if any).</li>
+	<li>Open the pipeline designer in one of two ways:
+	<ul>
+		<li>Click&nbsp;<em>Edit</em>, if it is available. GenePattern displays the pipeline designer.<br />
+		This option is visible only if you created this pipeline on this GenePattern server.</li>
+		<li>Otherwise, create a copy of the pipeline to edit:<br />
+		1. Click&nbsp;<em><span class="brGUI">Properties</span></em>. GenePattern displays the pipeline properties.<br />
+		2. Click&nbsp;<em><span class="brGUI">Clone</span></em>. GenePattern prompts you to name the new pipeline.<br />
+		3. Enter a name for the pipeline and click&nbsp;<em>OK</em>. GenePattern displays the pipeline properties for the new pipeline.<br />
+		4. Click&nbsp;<em>Edit</em>. GenePattern displays the pipeline designer.</li>
+	</ul>
+	</li>
+	<li>Edit the pipeline as desired. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-pipelines-pipeline-designer" target="_self">Pipeline Designer</a>.</li>
+	<li>Click&nbsp;<em><span class="brGUI">Save</span></em>&nbsp;to save the pipeline.</li>
+</ol>
+
+<h3 id="working-with-pipelines-pipeline-designer" name="working-with-pipelines-pipeline-designer" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Pipeline Designer</h3>
+
+<p><strong>See the video tutorial</strong>:&nbsp;<a href="https://www.youtube.com/watch?v=3zMM6Fo1KI4">Exploring the New GenePattern Pipeline Designer</a>.</p>
+
+<p>When you create or edit a pipeline, GenePattern displays the pipeline designer:</p>
+
+<p><img alt="" src="/uploaded/content_editing_pipeline.png" style="width: 100%; height: 100%;" /></p>
+
+<p>From left to right:</p>
+
+<ul>
+	<li><strong>Module selection panel</strong>. Use this panel to add a module or a file to the pipeline.</li>
+	<li><strong>Pipeline diagram</strong>. The center panel displays the pipeline diagram. It shows each module in the pipeline, as well as any input files included in the pipeline. Connections between the modules show the flow of data through the pipeline. Use the diagram to reposition modules/files and to add connections between modules/files.</li>
+	<li><strong>Editing panel</strong>. Use the editing panel to view and edit basic pipeline properties (as shown here) or the properties of the object selected in the diagram.</li>
+</ul>
+
+<p>The pipeline diagram toolbar provides the following options:</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramproperties.jpg?1341579797" style="width: 80px; height: 25px;" /></td>
+			<td>
+			<p>Displays the basic pipeline properties in the Editing Pipeline panel, as shown here. For more information, see&nbsp;<a href="#_Editing_the_Pipeline_Description">Editing Basic Pipeline Properties</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramsave.jpg?1341579843" style="width: 65px; height: 25px;" /></td>
+			<td>
+			<p>Saves your changes without closing the designer.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramsaverun.jpg?1341579866" style="height: 25px; width: 95px;" /></td>
+			<td>
+			<p>Saves your changes, closes the designer and runs the pipeline.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramrevert.jpg?1341579889" style="width: 74px; height: 25px;" /></td>
+			<td>
+			<p>Loads the last saved version of the pipeline, overwriting any unsaved changes.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramhelp.jpg" style="width: 55px; height: 27px;" /></td>
+			<td>Displays this section of the GenePattern documentation.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The remaining topics in this section describe how to use the pipeline designer:</p>
+
+<h3 id="working-with-pipelines-editing-basic-pipeline-properties" name="working-with-pipelines-editing-basic-pipeline-properties" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Editing Basic Pipeline Properties</h3>
+
+<p>To edit basic pipeline properties:</p>
+
+<ol>
+	<li>Click the Edit Properties icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagramproperties.jpg?1341579797" style="width: 70px; height: 22px;" />&nbsp;to display the basic pipeline properties in the editing panel.</li>
+	<li>Edit the pipeline properties.</li>
+	<li>Click&nbsp;<em>Save&nbsp;</em>or&nbsp;<em>Save &amp; Run&nbsp;</em>to save your changes.</li>
+</ol>
+
+<p>The Editing Pipeline panel displays the following properties:</p>
+
+<ul>
+	<li><strong>Version</strong>: At the top right is a drop-down list of versions. By default, you are editing the most recent version of the pipeline. To edit a different version, select that version from the drop-down list.<br />
+	Editing a pipeline creates a new version of the pipeline; it does not change the existing version of the pipeline.</li>
+	<li><strong>LSID</strong>: The Life Science Identifiers (LSIDs) for this pipeline. You cannot create or edit LSIDs. The GenePattern server automatically assigns an LSID to each version of a pipeline.</li>
+	<li><strong>Pipeline Name</strong>: The name of the pipeline. When naming pipelines, note the following:
+	<ul>
+		<li>Pipeline names can include alphanumeric characters, periods (.), and underscores (_).</li>
+		<li>Pipeline names must not include spaces or special characters such as: exclamation points (!), at signs (@), pound signs (#), dollar signs ($), percent signs (%), carets (^), ampersands (&amp;), and asterisks (*).</li>
+		<li>For cross-platform compatibility, avoid the following names: con, prn, aux, nul, com1, com2, com3, com4, lpt1, lpt2, and lpt3. Machines running Windows cannot accept files with these names, regardless of the file extension.</li>
+		<li>GenePattern does not prevent you from using the same name for multiple pipelines; however, using unique names is strongly recommended.</li>
+	</ul>
+	</li>
+	<li><strong>Categories</strong>: Semicolon separated list of tags for the pipeline.</li>
+	<li><strong>Description</strong>: A brief description of the pipeline, which is displayed when a user runs the pipeline or views the pipeline definition.</li>
+	<li><strong>Author</strong>: The author&#39;s name and affiliation (company or academic institution); ideally, the author&#39;s e-mail. If you make this pipeline public, the author field allows other users to credit the author and to contact the author with questions, suggestions, or enhancement ideas.</li>
+	<li><strong>Privacy</strong>: The option to make a pipeline&nbsp;public&nbsp;is limited to authorized users. Select Private (default) or Public. A private pipeline can be accessed only by the person who created or installed the pipeline (or by an administrator); a public pipeline can be seen and run by all users.</li>
+	<li><strong>Version Comment</strong>: A brief description of this version. When GenePattern clients display a drop-down list of versions, the comments for each version are visible in the drop-down list.</li>
+	<li><strong>Documentation</strong>: Documentation is strongly encouraged for public pipelines. As a GenePattern user, when you select a pipeline, GenePattern displays a form that includes the pipeline parameters and a&nbsp;<em>Documentation</em>&nbsp;button. When you click&nbsp;<em>Documentation</em>, GenePattern displays the pipeline documentation. If no documentation file was provided, GenePattern displays a message indicating that no information is available.
+	<p>To supply a help file, click&nbsp;<em>Attach Documentation</em>&nbsp;and select a (previously created) documentation file. GenePattern uploads the documentation file to the server and displays its name in the pipeline properties panel. Only one help file can be attached to the pipeline. To select a different file, click&nbsp;<em>Attach Documentation</em>.</p>
+	</li>
+	<li>
+	<p><strong>License:</strong>&nbsp;To supply a text file containing an end user license agreement to the pipeline, click&nbsp;<em>Attach License</em>.&nbsp; Anyone using the pipeline will be prompted to accept or decline the license terms when they first run the pipeline, and their acceptance will be tracked in our.&nbsp; They will not have to accept the terms again unless and until a new version of the pipeline is created.&nbsp; Only one license file can be attached to the pipeline.&nbsp; To select a different license file, click&nbsp;<em>Attach License</em>.&nbsp; This is an optional property; as such it will often be empty.</p>
+	</li>
+	<li>
+	<p><strong>Prompt When Run</strong>: Most modules in a pipeline have one or more parameters. You can supply values for these parameters or mark them as prompt-when-run. When the pipeline runs, GenePattern prompts the user for all prompt-when-run parameters. By default, GenePattern prompts the user for a parameter by displaying its name and description. Optionally, you can supply alternate text for the prompt. Click&nbsp;<em>Display Prompt When Runs&nbsp;</em>to view all prompt-when-run parameters in the pipeline and, optionally, modify the prompt text.&nbsp;</p>
+	</li>
+</ul>
+
+<h3 id="working-with-pipelines-adding-modules-files" name="working-with-pipelines-adding-modules-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Adding Modules/Files</h3>
+
+<p>To add a module to the pipeline:</p>
+
+<ol>
+	<li>Select the module from the list on the left. The designer adds the module to the diagram.<br />
+	<strong>Tip:</strong>&nbsp;You can select a module in one of two ways:
+
+	<ul>
+		<li>Locate the module in the list and click on it.</li>
+		<li>Start typing the module name in the search box. GenePattern displays module names that include the typed characters. Click the desired module and then click&nbsp;<em>Add</em>.</li>
+	</ul>
+	</li>
+	<li>Drag the module to the desired location.<br />
+	<strong>Tip:&nbsp;</strong>The diagram is read from left to right and from top to bottom, as you would read a book written in English.</li>
+	<li>Click the module to view and edit its properties in the editing panel.</li>
+	<li>Click&nbsp;<em>Save&nbsp;</em>or&nbsp;<em>Save &amp; Run&nbsp;</em>to save your changes.</li>
+</ol>
+
+<p style="margin-left: 40px;"><strong>Note</strong>: If you add a module with an end-user license to your pipeline, users who have not accepted that module&#39;s license terms will be presented with a license-acceptance window before the pipeline will run.</p>
+
+<p>To specify a file as input to a module in the pipeline, you must first add the file to the pipeline diagram. To add a file to the diagram:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Attach File</em>. GenePattern prompts you for the file.</li>
+	<li>Browse for a file. GenePattern adds the file to the diagram.</li>
+	<li>Drag the file to the desired location. You can now use this file as an input file for one or more modules.</li>
+	<li>Click&nbsp;<em>Save&nbsp;</em>or&nbsp;<em>Save &amp; Run&nbsp;</em>to save your changes.</li>
+</ol>
+
+<p>The pipeline diagram uses color to distinguish between <span style="background-color:#FFA500;">files (orange)</span>, <span style="background-color:#9999ff;">modules (purple)</span>, and <span style="background-color:#ff9999;">pipelines (red)</span>. Connections between objects show the flow of data through the pipeline. The following diagram shows a file, a module and a pipeline. The file (all_aml_train.gct) is used as an input file parameter (input.file) for the module. To delete an object and all of its connection, click its&nbsp;<img alt="" src="/uploaded/content_pipeline_delete_icon.jpg?1354822925" style="width: 13px; height: 14px;" />&nbsp;delete icon.</p>
+
+<p><img alt="" src="/uploaded/content_content_pipelinediagramaddingmodules.jpg" style="width: 500px; height: 412px;" /><br />
+&nbsp;</p>
+
+<h3 id="working-with-pipelines-editing-module-properties" name="working-with-pipelines-editing-module-properties" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Editing Module Properties</h3>
+
+<p>To edit a module&#39;s properties:</p>
+
+<ol>
+	<li>Click the module in the pipeline diagram. GenePattern displays its properties in the editing panel.</li>
+	<li>Edit the properties, as shown below.</li>
+	<li>Click&nbsp;<em>Save&nbsp;</em>or&nbsp;<em>Save &amp; Run&nbsp;</em>to save your changes.</li>
+</ol>
+
+<p><img alt="" src="/uploaded/content_content_pipelinediagrameditmoduleprops.jpg" style="width: 100%; height: 100%;" /></p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>By default, a pipeline runs the most recent version of a module. The drop-down list shows all versions of the module that are installed on the GenePattern server. To have the pipeline run a different version of the module, select it from the list.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>The Life Science Identifier (LSID) for this module. You cannot create or edit LSIDs. The GenePattern server automatically assigns an LSID to each version of a module.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>Click the&nbsp;<em>Documentation&nbsp;</em>button to display the module documentation.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_4.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>Warnings shown here must be addressed before you can save the pipeline.&nbsp; GenePattern highlights all parameters affected by the warnings.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_5.jpg" style="width: 16px; height: 17px;" /></td>
+			<td>
+			<p>All module parameters are listed here.&nbsp;<strong>Input file parameters&nbsp;</strong>are critical and are generally listed first. They control the flow of data through the pipeline. For more information, see&nbsp;<a href="#inputFileParameters">Setting Input File Parameters</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_6.jpg?1341583709" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>Click the check box next to a parameter to mark it&nbsp;<strong>prompt-when-run</strong>. When the pipeline runs, GenePattern prompts the user for all prompt-when-run parameters in the pipeline. By default, GenePattern prompts the user for a parameter by displaying its name and description. Optionally, click&nbsp;<em>Set Prompt When Run Display Settings&nbsp;</em>to supply alternate text for the prompt.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_7.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>For most parameters, you enter a value, select a value from a drop-down list, or use the default value supplied by GenePattern.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-pipelines-setting-input-file-parameters" name="working-with-pipelines-setting-input-file-parameters" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Setting Input File Parameters</h3>
+
+<p>In the pipeline diagram, the connections between modules show the flow of data through the pipeline. You modify the flow of data by modifying the input file parameters. The connections in the diagram are a graphical representation of the input file parameter settings. When you click on the module, the editing panel provides a textual representation of the same input file parameter settings.</p>
+
+<p>You can supply the file for an input file parameter in one of three ways:</p>
+
+<ul>
+	<li>Use the output file generated from another module as the input file.</li>
+	<li>Prompt the user to provide an input file.</li>
+	<li>Specify a file as the input file.</li>
+</ul>
+
+<p>The following pipeline diagram uses the ComparativeMarkerSelection module to illustrate the different ways of supplying input file parameters:<span style="line-height: 1.428571429; background-color: rgb(255, 0, 0);">​</span></p>
+
+<p><img alt="" src="/uploaded/content_pipelinediagramparameters.jpg?1346262799" style="width: 100%; height: 100%;" /></p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>For the input.file parameter, use the output file generated by the PreprocessDataset module.</p>
+
+			<ul>
+				<li>Diagram: Displays a connection from the res output of PreprocessDataset to the input.file parameter of ComparativeMarkerSelection.</li>
+				<li>Editing panel: Displays the current value of the input.file parameter as: Receiving res from PreprocessDataset.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>For the cls.file parameter, prompt the user for input.</p>
+
+			<ul>
+				<li>Diagram: Displays the prompt-when-run icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagrampromptwhenrun.jpeg?1346262963" style="width: 15px; height: 15px;" />&nbsp;to indicate that the cls.file parameter has been marked prompt-when-run.</li>
+				<li>Editing panel: Displays the prompt-when-run check box for the cls.file parameter as selected.</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px;" /></td>
+			<td>
+			<p>For the confounding.variable.cls.file, specify the file all_aml_train_confound.cls.</p>
+
+			<ul>
+				<li>Diagram: Displays a connection from the uploaded file, all_aml_train_confound.cls, to the confounding.variable.cls.file parameter of ComparativeMarkerSelection.</li>
+				<li>Editing panel: Displays the current value of the confounding.variable.cls.file as: Receiving all_aml_train_confound.cls from Input File.</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The method you use to set the input file parameter depends on how you plan to supply the file:</p>
+
+<ul>
+	<li>To use the output file generated from another module as the input file, click and drag from the generated file (res output of PreprocessDataset) to the input file parameter (input.file parameter of ComparativeMarkerSelection).&nbsp;<strong>Tip</strong>: When drawing a connection, click and drag from the output icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagramoutputicon.png?1346338418" style="width: 15px; height: 14px;" />&nbsp;to the input icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px;" />.</li>
+	<li>To prompt the user to provide the input file, use either the diagram or editing panel to mark the input file parameter (cls.file) as a prompt-when-run parameter. If the input file parameter already has a connection (that is, you have already specified a file for this parameter), you must delete the connection before you can mark it as a prompt-when-run parameter.
+	<ul>
+		<li>Diagram: Click the input icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px;" />&nbsp;of the input file parameter. When GenePattern displays the Choose Action window, click&nbsp;<em>Prompt When Run</em>.<br />
+		<img alt="" src="/uploaded/content_pipelinedesignerchooseaction.jpg?1346340229" style="width: 376px; height: 147px;" /></li>
+		<li>Editing panel: Click the check box next to the parameter to mark it as prompt-when-run.<br />
+		<img alt="" src="/uploaded/content_pipelinedesignerpwrcheckbox.jpg?1346340340" style="width: 482px; height: 161px;" /></li>
+	</ul>
+	</li>
+	<li>To specify a file as the input file, you must first attach the file to the pipeline diagram:
+	<ul>
+		<li>If you have already attached the file to the pipeline diagram (see&nbsp;<a href="#_Adding_Modules">Adding Modules/Files</a>), click and drag from the attached file (all_aml_train_confound.cls) to the input file parameter (all_aml_train_confound.cls parameter of ComparativeMarkerSelection).</li>
+		<li>If you have not yet attached the file the pipeline diagram, click the input icon&nbsp;<img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px;" />&nbsp;of the input file parameter. When GenePattern displays the Choose Action window, click&nbsp;<em>Attach File</em>. GenePattern prompts you for a file and you browse for the file. GenePattern then adds the file to the diagram and draws the connection from the attached file (all_aml_train_confound.cls) to the input file parameter (all_aml_train_confound.cls parameter of ComparativeMarkerSelection).</li>
+	</ul>
+	</li>
+</ul>
+
+<p>Click&nbsp;<em>Save&nbsp;</em>or&nbsp;<em>Save &amp; Run&nbsp;</em>to save your changes.</p>
+
+<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a id="ReuseInputFile" name="ReuseInputFile"></a><a id="#working-with-pipelines-reusing-a-user-supplied-file" name="#working-with-pipelines-reusing-a-user-supplied-file"></a>Reusing a user-supplied file</h3>
+
+<p>Occasionally, a pipeline requires that the same input file be specified for multiple parameters. For example, consider a pipeline with two modules:</p>
+
+<ol>
+	<li>ComparativeMarkerSelection, with parameters input.file (an expression dataset file) and cls.file (a class file).</li>
+	<li>ExtractComparativeMarkerResults, with parameters comparative.marker.selection.filename (ComparativeMarkerSelection result file) and dataset.filename (the expression dataset file used for ComparativeMarkerSelection).</li>
+</ol>
+
+<p>You want to use the same input file for both the ComparativeMarkerSelection.input.file parameter and the ExtractComparativeMarkerResults.dataset.filename parameter. If the input file that you want to use is either the output file generated from another module (perhaps an expression dataset generated by the PreprocessDataset module) or an uploaded file, this is not a problem. You can connect the file that you want to use to both the ComparativeMarkerSelection.input.file parameter and the ExtractComparativeMarkerResults.dataset.filename parameter.</p>
+
+<p>&nbsp;</p>
+
+<p><span style="background-color: rgb(255, 0, 0);"><img alt="" src="/uploaded/content_convertlineending_hack.png" style="width: 664px; height: 326px;" /></span></p>
+
+<p>However, what happens if you want to prompt the user for the expression dataset file? If you mark the ComparativeMarkerSelection.input.file parameter as a prompt-when-run parameter, you still need an input file for ExtractComparativeMarkerResults.dataset.filename parameter. If you mark both parameters as prompt-when-run, you have to rely on your user to submit the same expression dataset file for both parameters. The workaround is to add the ConvertLineEndings module to your pipeline:</p>
+
+<ol>
+	<li>Add ConvertLineEndings to your pipeline.</li>
+	<li>Mark the ConvertLineEndings.input.filename parameter as prompt-when-run. ConvertLineEndings generates an output file almost identical to the input file; it simply converts the line endings in the file to those used by perl on the host operating system.</li>
+	<li>Use the output file generated by ConvertLineEndings as the input file for both the ComparativeMarkerSelection.input.file parameter and the ExtractComparativeMarkerResults.dataset.filename parameter.</li>
+</ol>
+
+<p>If a module generates multiple output files, you can select the type of output file you want by using the drop-down menu and choosing the output file, e.g. ODF, then clicking the |&gt; symbol to drag it to an input file parameter. Use the drop-down menu again to choose a different file type and connect it to a different module.</p>
+
+<p><img alt="" src="/uploaded/content_selecting_outputs.png" style="width: 614px; height: 350px;" /></p>
+
+<h3 id="working-with-pipelines-reordering-modules" name="working-with-pipelines-reordering-modules" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Reordering Modules</h3>
+
+<p>GenePattern orders modules in a pipeline based on their position in the diagram. The diagram is read from left to right and top to bottom, as you would read a book written in English.</p>
+
+<p>You can reorder the modules in a pipeline by repositioning the modules in the diagram. Similarly, you can insert a module into a pipeline simply by adding it to the diagram and dragging it to the appropriate location. However, in either case, you are changing the flow of the data and, therefore, must delete and recreate any affected connections.</p>
+
+<p>To reposition a module in the pipeline:</p>
+
+<ol>
+	<li>Remove its connections to other modules.</li>
+	<li>Drag the module to its new position.</li>
+	<li>Recreate connections as needed to reflect the flow of data through the modified pipeline.</li>
+</ol>
+
+<h1 id="working-with-suites" name="working-with-suites" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Working with Suites</h1>
+
+<p>GenePattern includes close to 200 analysis and visualization modules, and the list is constantly growing. With so many modules, it&#39;s helpful to have shortcuts for finding your favorites. Suites can help you organize modules in much the same way playlists help you organize music. Each suite is a themed collection of user-selected modules. You can create as many suites as you like.&nbsp; The GenePattern team has created several suites, which are included on the GenePattern public server. For example, the&nbsp;<b>ClusteringSuite</b>&nbsp;contains the HierachicalClustering, KMeansClustering, and SOMClustering modules. If you are unfamiliar with GenePattern suites, see&nbsp;<a href="/tutorial/gp_concepts">Concepts</a>.</p>
+
+<h3 id="user-interface-suites-menu" name="user-interface-suites-menu" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Suites Menu</h3>
+
+<p>Click&nbsp;<em>Suites&gt;Manage&nbsp;</em>to display the currently installed suites:</p>
+
+<p><img alt="" src="/uploaded/content_suites.jpg?1346365731" style="width: 100%; height: 100%;" /></p>
+
+<p>Click the&nbsp;<img src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;icon next to the suite name to display a menu of commands for working with that suite.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p>Edit</p>
+			</td>
+			<td>
+			<p>Available only for suites that you have created. Display the Edit GenePattern Suite page, which you can use to modify your suite.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Delete</p>
+			</td>
+			<td>
+			<p>Delete the suite from the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Export excluding dependents</p>
+			</td>
+			<td>
+			<p>Create a ZIP file that contains the definition of the suite, but not the modules or pipelines in the suite. The ZIP file can be used to install the suite on another GenePattern server.&nbsp;Installing the suite from this ZIP file will not install any modules or pipelines in the suite; they must already be installed on the GenePattern server or be installed separately.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Export including dependents</p>
+			</td>
+			<td>
+			<p>Create a ZIP file that contains the definition of the suite, as well as the modules and/or pipelines in the suite. The ZIP file can be used to install the suite on another GenePattern server.&nbsp;Installing the suite from this ZIP file will also install the modules and pipelines in the suite (unless they are already installed on the GenePattern server).</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-suites-basic-operations" name="working-with-suites-basic-operations" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Basic Operations</h3>
+
+<p>The following table summarizes the different ways you can work with GenePattern suites.</p>
+
+<table class="table table-striped" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+			<p><a href="http://www.broadinstitute.org/user-guide#working-with-suites-displaying-suite-definitions" target="_self">Display suite definitions</a></p>
+			</td>
+			<td>
+			<p>To display the suite definition:</p>
+
+			<ol>
+				<li>Click&nbsp;<em>Suites&gt;Manage</em>.</li>
+				<li>Click the name of the suite that you are interested in.</li>
+			</ol>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Send suites to other users</p>
+			</td>
+			<td>
+			<p>Zip files provide a convenient way to send suites to other GenePattern users.</p>
+
+			<ul>
+				<li>To export a suite to a zip file, click&nbsp;<em>Suites&gt;Manage</em>, click the icon next to a suite to display the suite menu, and select&nbsp;<em>Export Including dependents</em>&nbsp;or&nbsp;<em>Export excluding dependents.</em></li>
+				<li>To install a suite from a zip file: click&nbsp;<em>Suites&gt;Install from zip</em>.</li>
+			</ul>
+
+			<p>For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-exporting-and-installing-modules-pipelines-using-zip-files" target="_self">Exporting and Installing Suites Using Zip Files</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Install suites from the repository</p>
+			</td>
+			<td>
+			<p>We maintain&nbsp;a repository of modules, pipelines, and suites. To install suites from the repository, click&nbsp;<em>Suites&gt;Install from Repository</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-installing-suites-from-the-repository" target="_self">Installing Suites from the Repository</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Create suites</p>
+			</td>
+			<td>
+			<p>To create a suite, click&nbsp;<em>Suites&gt;New</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-suites-creating-suites" target="_self">Creating Suites</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Edit suites</p>
+			</td>
+			<td>
+			<p>You can edit a suite that you have created or copy a public suite and edit your copy of the public suite. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-suites-editing-suites" target="_self">Editing Suites</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Delete suites</p>
+			</td>
+			<td>
+			<p>To delete a suite from your GenePattern server, click&nbsp;<em>Suites&gt;Manage</em>. For more information, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-managing-suites" target="_self">Managing Suites</a>.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="working-with-suites-displaying-suite-definitions" name="working-with-suites-displaying-suite-definitions" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Displaying Suite Definitions</h3>
+
+<p>To display the definition of a suite:</p>
+
+<ol>
+	<li>Click S<em>uites&gt;Manage</em>.</li>
+	<li>Click the name of the suite that you want to display. GenePattern displays the suite definition:</li>
+</ol>
+
+<p><img alt="suite definition" id="_x0000_i1073" src="/uploaded/content_web_client_suite_view.gif" style="width: 100%; height: 100%;" /></p>
+
+<ul>
+	<li><span class="brGUI">Name</span>: The name of the suite.</li>
+	<li><span class="brGUI">Description</span>: A brief description of the suite.</li>
+	<li><span class="brGUI">Author</span>: The author&#39;s name and affiliation (company or academic institution). This is a comment-only field.</li>
+	<li><span class="brGUI">Privacy</span>: Select Private (default) or Public. A private suite may be accessed only by the person who created or installed the suite (or by an administrator); a public suite can be accessed by all users of this GenePattern server.</li>
+	<li><span class="brGUI">Support files</span>: Any files included with the suite. Public suites generally include documentation.</li>
+	<li><span class="brGUI">Modules &amp; Pipelines</span>: The remainder of the definition form lists all of the modules and pipelines that are on your GenePattern server by category. The ClusteringSuite in this figure contains modules from only one category, the Clustering category.</li>
+</ul>
+
+<p>From this page, you can:</p>
+
+<ul>
+	<li>Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon next to the suite name to display the&nbsp;<a href="/gp_guides/user-guide/sections/user-interface#_Suites_Menu">suite menu</a>.</li>
+	<li>Click&nbsp;<em>open all</em>&nbsp;and&nbsp;<em>close all</em>&nbsp;to show and hide the modules and pipelines in all categories.</li>
+	<li>Click the arrow icon next to a category to show/hide the modules and pipelines in that category.</li>
+</ul>
+
+<h3 id="working-with-suites-creating-suites" name="working-with-suites-creating-suites" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Creating Suites</h3>
+
+<p>To create a suite:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Suites&gt;New</em>. GenePattern displays an empty suite definition form.</li>
+	<li>Define the suite by entering values for each field. For descriptions of these fields, see&nbsp;<a href="http://www.broadinstitute.org/user-guide#working-with-suites-displaying-suite-definitions" target="_self">Displaying Suite Definitions</a>.</li>
+	<li>To add modules and pipelines to the suite:
+	<ul>
+		<li>Select the check box next to a module/pipeline to add that module/pipeline to the suite.</li>
+		<li>Select the check box next to a category name to add all modules and pipelines in that category to the suite.</li>
+	</ul>
+	</li>
+	<li>Click&nbsp;<span class="brGUI">Save</span>. GenePattern creates the suite.</li>
+</ol>
+
+<p><img alt="suite definition" src="/uploaded/content_web_client_suite_definition.gif" style="width: 100%; height: 100%;" /></p>
+
+<h3 id="working-with-suites-editing-suites" name="working-with-suites-editing-suites" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Editing Suites</h3>
+
+<p>To view or edit a suite:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Suites&gt;Manage</em>. GenePattern displays the Manage Suites page, which lists the suites on your GenePattern server.</li>
+	<li>To view the suite definition, click the suite name.</li>
+	<li>To edit the suite definition:
+	<ol>
+		<li>Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon next to the suite name and select&nbsp;<em>Edit</em>. This option is available only if you created the suite.</li>
+		<li>Edit the suite definition.</li>
+		<li>Click&nbsp;<span class="brGUI">Save</span>&nbsp;to update the suite definition.</li>
+	</ol>
+	</li>
+</ol>
+
+<h1 id="managing-modules-pipelines-and-suites" name="managing-modules-pipelines-and-suites" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Managing Modules, Pipelines, and Suites</h1>
+
+<p>An analysis module runs a single analysis. A pipeline runs a series of analysis modules. Suites group modules and pipelines into packages that have related functionality, which helps you to organize and work with modules and pipelines. If you are unfamiliar with GenePattern modules, pipelines, and suites, see&nbsp;<em><a href="/tutorial/gp_concepts">Concepts</a></em>.</p>
+
+<p class="p1">Three different GenePattern pages on modules selectively list modules and pipelines based on the source. These sources include the production repository, from zip files, and created on the server. Certain modules on the production repository, e.g. MutSigCV and Birdseed, are currently only available from the public server. The latter&nbsp;is noted on the Modules page discussed next.</p>
+
+<p class="p1" style="margin-left: 40px;"><strong>(1) The Modules page</strong>, accessible from the menubar item&nbsp;<em>Modules</em>&nbsp;or this link: &lt;<a href="https://genepattern.org/modules" target="_blank">https://genepattern.org/modules</a><span style="background-color: rgb(255, 255, 255);">&gt;</span>&nbsp;provides links to module and pipeline documentation and lists modules and pipelines.</p>
+
+<p class="p1" style="margin-left: 40px;"><strong>(2) A server&#39;s Manage page.&nbsp;</strong>For a complete list of modules and pipelines available and their source, sign into the specific public or local GenePattern server and select from the menubar&nbsp;<em>Modules &amp; Pipelines</em>&gt;<em>Manage</em>.&nbsp;You may need to check the box labeled&nbsp;<em>show everyone&rsquo;s modules</em>. This list includes all versions of a module and version comments. Version comments are also at the bottom of a module&rsquo;s documentation as described in&nbsp;<a href="/concepts#_Version_Numbers" target="_self"><em>Version Numbers</em>&nbsp;in the&nbsp;<em>Concepts</em>&nbsp;guide</a>.</p>
+
+<p class="p1" style="margin-left: 40px;"><strong>(3) A local server&#39;s Install page</strong>, accessed from the menubar&#39;s&nbsp;<em>Modules &amp; Pipelines</em>&gt;<em>Install From Repository</em>&nbsp;or this link: &lt;<a href="http://127.0.0.1:8080/gp/pages/taskCatalog.jsf" target="_blank">http://127.0.0.1:8080/gp/pages/taskCatalog.jsf</a>&gt;. From the drop-down menu at top, select from the available&nbsp;repositories to display&nbsp;modules available for installation.&nbsp;</p>
+
+<h3 id="managing-modules-pipelines-and-suites-installing-modules-pipelines-from-the-repository" name="managing-modules-pipelines-and-suites-installing-modules-pipelines-from-the-repository" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Installing Modules &amp; Pipelines from the Repository</h3>
+
+<p>We maintain&nbsp;a repository of modules and pipelines that are freely available to the public. Most of these modules and pipelines are available on the GenePattern public server. To install these modules and pipelines on your local GenePattern server:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines&gt;Install from Repository</em>. GenePattern displays the Install Modules &amp; Pipelines from Repository page, as shown below.</li>
+	<li>Select the repository from which you want to install. By default, the Production Repository is displayed.&nbsp;</li>
+	<li>Select the modules and pipelines to install. Filtering Options are described below.</li>
+	<li>Click&nbsp;<em>Install Checked</em></li>
+</ol>
+
+<p><img alt="Install from Repository" src="/uploaded/content_installfromrepos.png" style="border-width: 1px; border-style: solid; width: 100%; height: 100%;" /></p>
+
+<p>Use the top section of the form to find the modules to install. To update the list of modules/pipelines, select the modules/pipelines to search for and click&nbsp;<em>Update View</em>:</p>
+
+<ul>
+	<li>
+	<p><em>Show new modules</em>: Displays modules and pipelines that are in the repository and not on your server.</p>
+	</li>
+	<li>
+	<p><em>Show updates to currently installed modules</em>: Displays modules and pipelines where the repository contains a more recent version than the version installed on your server.</p>
+	</li>
+	<li>
+	<p><em>Show latest versions of all modules</em>: Displays all modules and pipelines in the repository, whether or not they are installed on your server.</p>
+	</li>
+	<li>
+	<p><em>Operating system</em>: Filters the search results to display only modules and pipelines that run the selected operating system platform(s).</p>
+	</li>
+</ul>
+
+<p><strong>Note:</strong>&nbsp;To install an older version of a module already installed on your server, check the &quot;Show latest versions of all modules&quot; box under Filtering Options, then&nbsp;<em>Update View</em>. This will show all modules in the repository. The checkbox underneath&nbsp;<em>Update View</em>&nbsp;and next to &quot;Name (Version)&quot; allows you to select/deselect all modules in the displayed list. Then you can use the dropdown under the module to select the version you wish to install.</p>
+
+<p>For each module and pipeline, GenePattern displays similar information:</p>
+
+<ul>
+	<li>In the&nbsp;<em>Name (Version)</em>&nbsp;column:
+
+	<ul>
+		<li>Module/pipeline name.</li>
+		<li>Drop-down list of available versions. By default, the most recent version is selected.</li>
+		<li>Brief description of the module/pipeline.</li>
+		<li><em>documentation</em>&nbsp;link, which displays the module/pipeline documentation.</li>
+		<li><em>download zip</em>&nbsp;link, which downloads a zip file of the module/pipeline. Downloading the zip file allows you to examine the source files before installing them on your server. You can then install the module/pipeline from the zip file, as described in&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-exporting-and-installing-suites-using-zip-files" target="_self">Exporting and Installing Suites Using Zip Files</a>.</li>
+	</ul>
+	</li>
+	<li>In the&nbsp;<em>Module type</em>&nbsp;column, the category label assigned to the module/pipeline.</li>
+	<li>In the&nbsp;<em>Details</em>&nbsp;column, the author, size, and operating system requirements for the module/pipeline.&nbsp;</li>
+</ul>
+
+<h3 id="managing-modules-pipelines-and-suites-exporting-and-installing-modules-pipelines-using-zip-files" name="managing-modules-pipelines-and-suites-exporting-and-installing-modules-pipelines-using-zip-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Exporting and Installing Modules &amp; Pipelines Using Zip Files</h3>
+
+<p>Zip files provide a convenient means of sending your modules and pipelines to other GenePattern users. You can export a module or pipeline to a zip file. The zip file can then be used to install the module or pipeline on another GenePattern server.</p>
+
+<p>To export a module or pipeline to a zip file:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines</em>&nbsp;to display the GenePattern home page.</li>
+	<li>In the Modules &amp; Pipelines pane, select the module or pipeline to export. GenePattern displays the analysis parameters (if any).</li>
+	<li>Click the gear icon in the upper right corner of the module page, then select&nbsp;<em>Export</em>.</li>
+	<li>If you are exporting a pipeline, GenePattern displays the following dialog:<br />
+	<img alt="pipeline export prompt" id="_x0000_i1076" src="/uploaded/content_web_client_pipeline_export.gif?1346867980" style="width: 296px; height: 247px;" />
+	<ul>
+		<li>Click&nbsp;<em>Include modules</em>&nbsp;to create a zip file that includes all modules in the pipeline.</li>
+		<li>Click&nbsp;<em>Pipeline only&nbsp;</em>to create a zip file that contains only the pipeline definition. (If you install a pipeline without installing the modules that it uses, when you run the pipeline, GenePattern lists the missing modules and prompts you to edit the pipeline or install the modules.)</li>
+	</ul>
+	</li>
+	<li>GenePattern creates a zip file that contains the module/pipeline and prompts you to save the file to your local drive.</li>
+</ol>
+
+<p>To install a module or pipeline from a zip file:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Modules &amp; Pipelines&gt;Install from zip</em>. GenePattern displays the Install Modules &amp; Pipelines page, as shown below.</li>
+	<li>Select the file to install in one of two ways:
+	<ul>
+		<li>To select a zip file from a directory, click&nbsp;<em>Browse</em>.</li>
+		<li>To select a zip file from a web site, enter the URL for the zip file.</li>
+	</ul>
+	</li>
+	<li>Use the&nbsp;<em>Visible to</em>&nbsp;radio buttons to select a private or public installation:
+	<ul>
+		<li>Your user name: Choose this option for a private installation. Only you (or an administrator) can view and run the module/pipeline.</li>
+		<li>All users (default): Choose this option for public installation. Any user connected to this server can view or run the module/pipeline.</li>
+	</ul>
+	</li>
+	<li>Click&nbsp;<em>Install</em>.</li>
+</ol>
+
+<p><img alt="install from zip" src="/uploaded/content_web_client_install_from_zip.gif?1346868003" style="width: 100%; height: 100%;" /></p>
+
+<h3 id="managing-modules-pipelines-and-suites-managing-modules-pipelines" name="managing-modules-pipelines-and-suites-managing-modules-pipelines" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Managing Modules &amp; Pipelines</h3>
+
+<p>Click&nbsp;<em>Modules &amp; Pipelines&gt;Manage</em>&nbsp;to display the Manage Modules &amp; Pipelines page. From this page, you can</p>
+
+<ul>
+	<li>View the modules/pipelines installed on your GenePattern server. To display only your own modules/pipelines, clear the&nbsp;<em>show everyone&rsquo;s modules</em>&nbsp;check box. To display all modules/pipelines, select the check box. Private modules owned by other users are not visible unless you are an administrator.</li>
+	<li>View the module/pipeline sources - which repository they were installed from, if they were created on the server, or uploaded as a .zip.</li>
+	<li>Delete modules/pipelines from your GenePattern server.<br />
+	<strong>Note</strong>: If the check box next to the module/pipeline is grayed out, you cannot delete it. Typically, this occurs when the module/pipeline is used by another module, pipeline, or suite. To delete the module/pipeline, you must first delete the module, pipeline, or suite that uses it or remove it from that module, pipeline, or suite.</li>
+</ul>
+
+<p><img alt="manage module" src="/uploaded/content_manage_modules.png" style="border-width: 1px; border-style: solid; width: 100%; height: 100%;" /></p>
+
+<h3 id="managing-modules-pipelines-and-suites-installing-suites-from-the-repository" name="managing-modules-pipelines-and-suites-installing-suites-from-the-repository" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Installing Suites from the Repository</h3>
+
+<p>We maintain a repository of suites that are freely available to the public. To install these suites on your GenePattern server:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Suites&gt;Install from Repository</em>. GenePattern displays the Install Suites from Repository page, as shown below.</li>
+	<li>Select the suites to install.<br />
+	Installing a suite installs its modules, if they are not yet installed on the server.</li>
+	<li>Click&nbsp;<em>Install Checked</em>.</li>
+</ol>
+
+<p><img alt="Install Suites from Repository" src="/uploaded/content_web_client_suite_install.gif?1346868084" style="width: 100%; height: 100%;" /></p>
+
+<p>Use the top section of the form to find the suites to install. To update the list of suites, select the suites to search for and click&nbsp;<em>Search</em>:</p>
+
+<ul>
+	<li><em>Search for new suites to install</em>: Displays suites that are in the&nbsp;repository and not on your server.</li>
+	<li><em>Search for updates of the currently installed suites</em>: Displays suites where the&nbsp;repository contains a more recent version than the version installed on your server.</li>
+	<li><em>Search for up to date suites</em>: Displays suites where the repository contains versions not installed on your server.</li>
+</ul>
+
+<p>For each suite, GenePattern displays similar information:</p>
+
+<ul>
+	<li>In the&nbsp;<em>Name (Version)</em>&nbsp;column:
+
+	<ul>
+		<li>Suite name. Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon next to the name to display the&nbsp;<a href="http://www.broadinstitute.org/user-guide#user-interface-suites-menu" target="_self">suites menu</a>.</li>
+		<li>Drop-down list of available versions. By default, the most recent version is selected.</li>
+		<li>One-line description of the suite.</li>
+		<li><em>download zip</em>&nbsp;link, which downloads a zip file of the suite. Downloading the zip file allows you to examine the source files before installing them on your server. You can then install the suite from the zip file, as described in&nbsp;<a href="http://www.broadinstitute.org/user-guide#managing-modules-pipelines-and-suites-exporting-and-installing-suites-using-zip-files" target="_self">Exporting and Installing Suites Using Zip Files</a>.</li>
+	</ul>
+	</li>
+	<li>In the Modules column, a list of the modules and pipelines in the suite.</li>
+</ul>
+
+<h3 id="managing-modules-pipelines-and-suites-exporting-and-installing-suites-using-zip-files" name="managing-modules-pipelines-and-suites-exporting-and-installing-suites-using-zip-files" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Exporting and Installing Suites Using Zip Files</h3>
+
+<p>Zip files provide a convenient means of sending your suites to other GenePattern users. You can export a suite to a zip file. The zip file can then be used to install the suite on another GenePattern server.</p>
+
+<p>To export a suite to a zip file:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Suites&gt;Manage</em>.</li>
+	<li>Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon following the name of the suite that you want to export. GenePattern displays the suite menu.</li>
+	<li>Click one of the following:
+	<ul>
+		<li><em>Export excluding dependents</em>: Creates a zip file that contains the definition of the suite, but not the modules or pipelines in the suite. Installing the suite from this zip file will not install any modules or pipelines in the suite; they must already be installed on the GenePattern server or be installed separately.</li>
+		<li><em>Export Including dependents</em>: Creates a zip file that contains the definition of the suite, as well as the modules and/or pipelines in the suite. Installing the suite from this zip file will also install the modules and pipelines in the suite (unless they are already installed on the GenePattern server).</li>
+	</ul>
+	</li>
+</ol>
+
+<p>To install a suite from a zip file:</p>
+
+<ol>
+	<li>Click&nbsp;<em>Suites&gt;Install from zip</em>.</li>
+	<li>Select the file to install. You can identify the zip file using a file specification or a URL.</li>
+	<li>Use the&nbsp;<em>Visible to</em>&nbsp;radio buttons to select a private or public installation:
+	<ul>
+		<li>Your user name: Choose this option for a private installation. Only you (or an administrator) can view and run the module/pipeline.</li>
+		<li>All users (default): Choose this option for public installation. Any user connected to this server can view or run the module/pipeline.</li>
+	</ul>
+	</li>
+	<li>Click&nbsp;<em>Install</em>.</li>
+</ol>
+
+<p><img alt="install suite from zip" src="/uploaded/content_web_client_suite_install_zip.gif?1346868129" style="width: 100%; height: 100%;" /></p>
+
+<h3 id="managing-modules-pipelines-and-suites-managing-suites" name="managing-modules-pipelines-and-suites-managing-suites" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Managing Suites</h3>
+
+<p>Click&nbsp;<em>Suites&gt;Manage</em>&nbsp;to display the Manage Suites page. From this page, you can</p>
+
+<ul>
+	<li>View the suites installed on your GenePattern server.</li>
+	<li>Delete suites from your GenePattern server. If the check box next to the module/pipeline is grayed out, you cannot delete it. Deleting a suite does not delete its modules.</li>
+	<li>Click the&nbsp;<img alt="menu icon" src="/uploaded/content_icon_menu.gif" style="width: 20px; height: 15px;" />&nbsp;menu icon next to a suite name to display the&nbsp;<a href="http://www.broadinstitute.org/user-guide#user-interface-suites-menu" target="_self">suites menu</a>.</li>
+</ul>
+
+<p><img alt="manage suite" src="/uploaded/content_web_client_suite_manage.gif?1346868175" style="width: 100%; height: 100%;" /></p>
+
+<p>&nbsp;</p>
+
+<h1><a id="globus" name="globus"></a>Working with Globus</h1>
+
+<p>&nbsp;The Globus platform&nbsp;&nbsp;(<a href="https://www.globus.org">www.globus.org</a>) provides&nbsp;researchers with robust file transfer, sharing, and search capabilities within data applications and services, while leveraging advanced identity management, single sign-on, and authorization capabilities.&nbsp; Since GenePattern build 373 (Nov 23,2021) the GenePattern server has integrated with the Globus platform allowing reserachers to login to GenePattern via Globus and to quickly and efficiently transfer large files between a GenePattern server and a researcher&#39;s Globus endpoints.</p>
+
+<h2>Authenticating with Globus</h2>
+
+<p>When Globus is enabled on a GenePattern server it will provide the ability to login to GenePattern using your globus identity, or alternatively linking a globus identity to an existing GenePattern account for the duration of a GenePattern session.</p>
+
+<h3>Logging in to GenePattern with Globus</h3>
+
+<p>On Globus-enabled GenePattern servers you will see the link to login via Globus beneath the usual GenePattern login.&nbsp; To use Globus to login you will click on the &quot;Sign on using your Globus account&quot; link as seen in the image below.</p>
+
+<p><img alt="" src="/uploaded/content_globus_login_1a.png" style="width: 800px; height: 437px;" /></p>
+
+<p>This will then redirect you to the Globus login page.</p>
+
+<p><img alt="" src="/uploaded/content_globus_login_page_2.png" style="width: 800px; height: 447px;" /></p>
+
+<p>You can then continue logging into Globus according to its usual conventions.&nbsp; See the<a href="https://docs.globus.org/how-to/get-started/"> Globus &quot;How To&quot; guide</a> for details about how to login to Globus.&nbsp;</p>
+
+<p>Once Globus has authenticated you it will redirect you to the GenePattern home page.&nbsp; Your account name within GenePattern will be the email address of your primary Globus account.</p>
+
+<h3>Linking a Globus Identity with a GenePattern account</h3>
+
+<p>If you already have a GenePattern account and wish to associate it with your Globus account, you can do that as follows;</p>
+
+<p>1. Login to GenePattern normally using your GenePattern username and password.</p>
+
+<p>2. Click on the &quot;Files&quot; tab on the GenePattern home page.</p>
+
+<p><img alt="" src="/uploaded/content_globus_login_3.png" style="width: 800px; height: 447px;" /></p>
+
+<p>3. Click on the Globus icon next to the Refresh button to open the Globus slide-out menu.</p>
+
+<p><img alt="" src="/uploaded/content_globus_login_3a.png" style="width: 800px; height: 437px;" /></p>
+
+<p>Clicking on the &quot;Login to Globus&quot; or &quot;Transfer from Globus Endpoint&quot; options on the slide-out globus menu will redirect you to the Globus login page.&nbsp;You can then continue logging into Globus according to its usual conventions.&nbsp; See the<a href="https://docs.globus.org/how-to/get-started/">&nbsp;Globus &quot;How To&quot; guide</a>&nbsp;for details about how to login to Globus.&nbsp; &nbsp;Clicking on the &quot;Open the Globus File Manager&quot; will simply open the Globus File Manager but it will not associate your Globus and GenePattern accounts.&nbsp; Similarly clicking on the &quot;Globus Transfer Status&quot; option will open the transfer dialog but will not log in to Globus or link your GenePattern and Globus accounts.&nbsp;</p>
+
+<h2>Viewing your GenePattern-Globus Identity</h2>
+
+<p>1. Open&nbsp;your GenePattern user settings from the settings menu by clicking on the silouette at the top right of the GenePattern page.</p>
+
+<p><img alt="" src="/uploaded/content_globus_logout_1a.png" style="width: 800px; height: 445px;" /></p>
+
+<p>2. Select the &quot;Globus&quot; tab on the settings page.&nbsp; The Globus Preferred identity, primary email, and identity provider will be displayed.&nbsp;</p>
+
+<p><img alt="" src="/uploaded/content_globus_user_settings_2a.png" style="width: 800px; height: 337px;" /></p>
+
+<p>&nbsp;</p>
+
+<h2>Unlinking GenePattern and Globus</h2>
+
+<p>If you wish GenePattern to forget the connection to a Globus account you can do this from the GenePattern user settings page.&nbsp;&nbsp;</p>
+
+<p>1. Open&nbsp;your GenePattern user settings from the settings menu by clicking on the silouette at the top right of the GenePattern page.</p>
+
+<p>2. Select the &quot;Globus&quot; tab on the settings page.&nbsp;</p>
+
+<p><img alt="" src="/uploaded/content_globus_logout_2a.png" style="width: 800px; height: 445px;" /></p>
+
+<p>3. Click the &quot;Clear Globus Association&quot; button to remove the link between your accounts.</p>
+
+<p><strong>NOTE:</strong>&nbsp; If you are still logged into Globus then attempting to use any of the GenePattern-Globus features such as importing or exporting files will cause the link to be reestablished automatically.&nbsp; Therefore you should logout of the Globus File Manager either immediately before or immediately after clearing the association to prevent accidentally reconnecting the accounts.</p>
+
+<p>&nbsp;</p>
+
+<h2>Transferring files between GenePattern and Globus</h2>
+
+<p>Once you have either logged in via Globus or linked your accounts, you have the ability to transfer files between GenePattern and Globus endpoints that are accessible to your globus account.</p>
+
+<h3>Importing files from a Globus Endpoint into GenePattern</h3>
+
+<p>1. Click on the &quot;Files&quot; tab on the GenePattern home page.</p>
+
+<p><img alt="" src="/uploaded/content_globus_login_3.png" style="width: 800px; height: 447px;" /></p>
+
+<p>2. Click on the Globus icon next to the Refresh button to open the Globus slide-out menu.</p>
+
+<p><img alt="" src="/uploaded/content_globus_transfer_out_2a.png" style="width: 800px; height: 437px;" /></p>
+
+<p>3. Click on the &quot;Transfer from Globus Endpoint menu item.&nbsp; This will open the GenePattern directory selector dialog box to allow you to set the destination folder for the incoming file.</p>
+
+<p><img alt="" src="/uploaded/content_globus_transfer_1.png" style="width: 800px; height: 445px;" /></p>
+
+<p>4. Click &quot;Select&quot; on the directory selector dialog. This will open the Globus File Manager to allow you to select a file on a Globus Endpoint.&nbsp; See&nbsp;the<a href="https://docs.globus.org/how-to/get-started/">&nbsp;Globus &quot;How To&quot; guide</a>&nbsp;for details about selecting files in Globus.&nbsp; Once you have selected the desired file to transfer in to GenePattern, click on the &quot;Submit&quot; button.&nbsp; &nbsp;</p>
+
+<p><img alt="" src="/uploaded/content_globus_transfer_2.png" style="width: 800px; height: 445px;" /></p>
+
+<p>5. You will be returned to the GenePattern page and the &quot;GenePattern-Globus Transfers&quot; dialog will be opened to show the status of the transfer.&nbsp; This dialog updates at most once every 30 seconds.&nbsp; When the transfer is complete the file will become available in the directory selected in step 4.&nbsp; If an error occurs you may hover over the status in the transfer dialog to see the error message or go to the Globus File Manager to look for additional information with the &quot;View on Globus&quot; button.</p>
+
+<p><img alt="" src="/uploaded/content_globus_import_final.png" style="width: 800px; height: 445px;" /></p>
+
+<p>&nbsp;</p>
+
+<h3>Exporting a file from GenePattern to a Globus Endpoint</h3>
+
+<p>1. On the GenePattern home page either click on a file on the Files tab or on a result file on the Jobs tab.&nbsp; This will cause the File slider menu to appear</p>
+
+<p><img alt="" src="/uploaded/content_globus_transfer_3a.png" style="width: 800px; height: 546px;" /></p>
+
+<p>2. Click on the &quot;Transfer File to Globus Endpoint&quot; menu item. This will open up the Globus File Manager in a new window.&nbsp; &nbsp;Use the Globus File Manager to select the desired Globus enpoint and directory to transfer the file to. See the<a href="https://docs.globus.org/how-to/get-started/">&nbsp;Globus &quot;How To&quot; guide</a>&nbsp;for details about how select an endpoint or diectory.&nbsp;&nbsp;</p>
+
+<p><img alt="" src="/uploaded/content_globus_export_2.png" style="width: 800px; height: 445px;" /></p>
+
+<p>3. When you click &quot;Submit&quot; you will be sent back to the GenePattern page and the &quot;GenePattern-Globus Transfers&quot; will be opened to show the status of the transfer.&nbsp; This dialog updates at most once every 30 seconds.&nbsp; When the transfer is complete the file will become available in the directory on the remote endpoint selected in step 2.&nbsp; If an error occurs you may hover over the status in the transfer dialog to see the error message or go to the Globus File Manager to look for additional information with the &quot;View on Globus&quot; button.</p>
+
+<p><img alt="" src="/uploaded/content_globus_transfer_4a.png" /></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuDIT</title>
+</head>
+<body>
+<h2>Description</h2>
+
+<p>Multiple reaction monitoring-mass spectrometry (MRM-MS) of peptides with stable isotope-labeled internal standards (SIS) is a quantitative assay for measuring proteins in complex biological matrices. These assays can be highly precise and quantitative, but the frequent occurrence of interferences require that MRM-MS data be reviewed by an expert. The AuDIT module provides an automated method of objectively evaluating MRM-MS data to identify inaccurate transition data based on the presence of interfering signal or inconsistent recovery between replicate samples. AuDIT improves the overall accuracy of data analysis and is easily incorporated into the standard data analysis workflow.</p>
+
+<p>The module implements the Automated Detection of Inaccurate and imprecise Transitions (AuDIT) algorithm developed by Abbatiello et al. (In Press). It first compares the relative product ion intensities of the analyte peptide to those of the SIS peptide and uses a t-test (in conjunction with a p-value threshold) to determine if they are significantly different. It then calculates coefficient of variation from the ratio of analyte and SIS peak areas from sample replicates, flagging transitions having excessive variation as being unsuitable.</p>
+
+<h2>References</h2>
+
+<ul>
+	<li><a href="http://www.clinchem.org/cgi/content/abstract/clinchem.2009.138420v1?papetoc">Automated Detection of Inaccurate and Imprecise Transitions in Quantitative Assays of Peptides by Multiple Reaction Monitoring Mass Spectrometry</a><br />
+	Susan E. Abbatiello, D. R. Mani, Hasmik Keshishian &amp; Steven A. Carr<br />
+	<i>Clinical Chemistry</i>, 2010.</li>
+	<li><a href="/modules/docs/AuDIT" target="_top" type="application-pdf">AuDIT module documentation </a></li>
+	<li><a href="/quick-start">Quick Start</a> a 10-minute introduction to GenePattern</li>
+</ul>
+
+<h2>How to run the module</h2>
+
+<p><strong>Prerequisite:</strong> You will need an input file containing pre-processed MRM data; for example, <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-skyline-data.csv">site56-7.1-skyline-data.csv</a> (subset of columns from ABI 4000 Q TRAP data preprocessed using <a href="http://proteome.gs.washington.edu/software/skyline/">Skyline</a>) or <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-multiquant-data.csv">site56-7.1-multiquant-data.csv</a> (subset of columns from ABI 4000 Q TRAP data preprocessed using <a href="https://products.appliedbiosystems.com/ab/en/US/adirect/ab?cmd=catNavigate2&amp;catID=604994&amp;tab=DetailInfo">MultiQuant</a>). The <a href="/modules/docs/AuDIT" target="_top">AuDIT module documentation</a> describes the required csv (comma-delimited) format.</p>
+
+<ol style="list-style-type: decimal">
+	<li style="list-style-type: decimal">Login to the public GenePattern server: <a href="http://genepattern.broadinstitute.org/gp/">http://genepattern.broadinstitute.org/gp/</a>.<br />
+	If you do not have a GenePattern account, you can register on the login page.
+	<p>Result: GenePattern displays its main page.</p>
+	</li>
+	<li style="list-style-type: decimal">From the list of modules on the left, select the AuDIT module.<br />
+	Look for the module in the Proteomics category or select the <i>All</i> radio button to list the modules alphabetically.
+	<p>Result: GenePattern displays the AuDIT page.</p>
+	</li>
+	<li style="list-style-type: decimal">For the <i>input file</i> parameter, specify the MRM data file; for example, <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-skyline-data.csv">site56-7.1-skyline-data.csv</a> or <a href="ftp://ftp.broadinstitute.org/pub/genepattern/example_files/AuDIT/site56-7.1-multiquant-data.csv">site56-7.1-multiquant-data.csv</a>.<br />
+	To use the example data, select the <i>Specify URL</i> radio button and enter the URL of either example file.
+	<p>Result: GenePattern starts the job and displays the Job Status page.</p>
+	</li>
+	<li style="list-style-type: decimal">When the analysis completes, click the <strong>*-results.csv</strong> result file.
+	<p>Result: GenePattern displays the result file, which lists analysis results for each peptide and each transition.<br />
+	See the <a href="/modules/docs/AuDIT" target="_top">AuDIT module documentation</a> for details.</p>
+	</li>
+</ol>
+</body>
+</html>

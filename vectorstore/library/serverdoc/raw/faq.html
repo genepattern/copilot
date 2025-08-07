@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frequently Asked Questions</title>
+	<meta name="slug" content="FAQ" />
+</head>
+<body>
+<h4><a name="top"></a>General</h4>
+
+<ol>
+	<li><a href="#version">What is the latest version of GenePattern?</a></li>
+	<li><a href="#hardware">Where can I find the hardware and software prerequisites for GenePattern?</a></li>
+	<li><a href="#relnotes">Where can I find the GenePattern release notes?</a></li>
+	<li><a href="#feedback">How can I get help with GenePattern or provide feedback?</a></li>
+	<li><a href="#cite">How do I cite GenePattern?</a></li>
+	<li><a href="#twitter">How can I find out about upcoming workshops or new module releases?</a></li>
+	<li><a href="#cloud">Is there a version of GenePattern that can run in the cloud?</a></li>
+	<li><a href="#sourceCode">Is the source code available?</a></li>
+</ol>
+
+<h4>Public Server</h4>
+
+<ol>
+	<li><a href="#public_memory">What can I do if I my job keeps running out of memory or fails with no error on the public server?</a></li>
+	<li><a href="#jobPending">Why is my GenePattern job stuck in the PENDING state?</a></li>
+	<li><a href="#moduleRunLong">Why is my module taking so long to run?</a></li>
+	<li><a href="#jobFail">Why did my GenePattern job fail?</a></li>
+	<li><a href="#parallelJobs">How do I run several files through a set of modules in parallel?</a></li>
+	<li><a href="#batch">How can I easily run the same analysis on many different data files?</a></li>
+</ol>
+
+<h4>Installation</h4>
+
+<ol>
+	<li><a href="#install">How do I install (uninstall) GenePattern?</a></li>
+	<li><a href="#upgrade">How do I upgrade to the latest version of GenePattern without losing my losing my data (such as jobs, uploaded files and modules)?</a></li>
+	<li><a href="#launchAnywhere">How can I work around a LaunchAnywhere error?</a></li>
+	<li><a href="#international">Does GenePattern support the international settings on my computer?</a></li>
+	<li><a href="#proxy">I am behind a web proxy/firewall and my GenePattern server says it cannot connect to the module repository to load the modules. What do I do?</a></li>
+	<li><a href="#warfile">I want to install GenePattern into our corporate/departmental/other Web server and not have GenePattern run in its own Web server. How do I install it?</a></li>
+	<li><a href="#port">When should I choose to install the GenePattern server on a different port than the default 8080?</a></li>
+	<li><a href="#64BitInstall">How do I install GenePattern on a 64-bit Windows machine if I want to use a version before 3.2.2?</a></li>
+	<li><a href="#launchGP">Why doesn&#39;t clicking StartGenePatternServer launch GenePattern on Linux?</a></li>
+	<li><a href="#LicensedModuleInstall">Why can&#39;t I install a licensed module on my GenePattern server?</a></li>
+	<li><a href="#JavaJDK">I just installed Java 8. Why does my new GenePattern install say I need Java 7+ ?</a></li>
+</ol>
+
+<h4>Configuration</h4>
+
+<ol>
+	<li><a href="#memoryGP">How do I increase the memory allocated to the GenePattern server or client?</a></li>
+	<li><a href="#memoryModule">How do I increase the memory allocated to a module?</a></li>
+	<li><a href="#multiGP">Can I run more than one instance of the GenePattern server on a machine?</a></li>
+	<li><a href="#RemoteServer">How can I set up a GenePattern server for others to use remotely?</a></li>
+	<li><a href="#RemoteMalformedURL">Why do my remote users get malformed URL errors when accessing visualizers?&nbsp;</a></li>
+	<li><a href="#queuing">How do I configure GenePattern to work with a queuing system (or grid engine)?</a></li>
+	<li><a href="#multiIP">How do I configure the GenePattern server on a machine with multiple IP addresses? Can I keep the GenePattern URL from changing when the server hostname changes?</a></li>
+	<li><a href="#timeout">How do I modify the GenePattern session timeout interval?</a></li>
+	<li><a href="#deleteResults">How do I modify how often result files are deleted from my GenePattern server?</a></li>
+	<li><a href="#connectionRefused">I&#39;m getting &#39;error &quot;connection refused&quot;&#39;: what is the problem?</a></li>
+</ol>
+
+<h4>R/Java/Perl</h4>
+
+<ol>
+	<li><a href="#r_interfere">I already have R/Perl/Java on my machine. Will the versions of R/Perl/Java that GenePattern installs interfere with these?</a></li>
+	<li><a href="#rConfigure">Can I configure GenePattern to work with versions of R/Perl/Java other than those installed by GenePattern?</a></li>
+	<li><a href="#rVersionModule">Can my module use a different version of R than GenePattern?</a></li>
+	<li><a href="#rMacInstall">How can I get R to install correctly on my Mac?</a></li>
+</ol>
+
+<h4>File Formats/Uploading Files/Zip Files</h4>
+
+<ol>
+	<li><a href="#cdna">Does GenePattern support cDNA and other 2-channel microarray data?</a></li>
+	<li><a href="#fileFormats">Where can I find information about file formats used by GenePattern?</a></li>
+	<li><a href="#ResGctOdf">How can I convert between RES, GCT, and ODF formats?</a></li>
+	<li><a href="#CLScreate">Is there an easier way to create a CLS file than creating it by hand in a text editor?</a></li>
+	<li><a href="#convertToGP">How do I convert a file to GenePattern format?</a></li>
+	<li><a href="#MAGE">How can I use CEL, MAGE-ML, and MAGE-TAB files in GenePattern?</a></li>
+	<li><a href="#zipHowTo">How do I zip my files for use in GenePattern?</a></li>
+	<li><a href="#uploadBigFile">Why is nothing happening when I try to upload my large file?</a></li>
+	<li><a href="#zipFails">Why did the module I tried fail to run with my ZIP file as input?</a></li>
+	<li><a href="#GEOformat">How do I format my GenePattern output for submission to GEO?</a></li>
+	<li><a href="#zipError">What does &quot;Error in subfiles: subscript out of bounds&quot; mean?</a></li>
+	<li><a href="#CSVfile">What is a CSV file?</a></li>
+	<li><a href="#FileErrors">I keep getting file errors when I run a module. What are common reasons for file errors that I can check?</a></li>
+</ol>
+
+<h4>Modules, Pipelines, and Suites</h4>
+
+<ol>
+	<li><a href="#upgrade">How do I upgrade to the latest version of GenePattern without losing my modules/pipelines/suites?</a></li>
+	<li><a href="#noSuchMod">Why does the &quot;no such module&quot; error occur for a module on the server?</a></li>
+	<li><a href="#moduleNotThere">I have installed a module/pipeline/suite, but I do not see it. What&#39;s wrong?</a></li>
+	<li><a href="#fileNotFound">My pipeline requires an input file, but displays a file-not-found error when I enter a file name. What&#39;s wrong?</a></li>
+	<li><a href="#filePath">Can I use a file path as input for a GenePattern module?</a></li>
+	<li><a href="#filePathIE">Why does the Specify File Path or URL option not work in Internet Explorer?</a></li>
+	<li><a href="#dirInput">Why can&#39;t I use a directory as input for all modules?</a></li>
+	<li><a href="#deprecated_modules">What is the current list of deprecated GenePattern modules?</a></li>
+</ol>
+
+<h4>Clustering Modules</h4>
+
+<ol>
+	<li><a href="#ConsensusClusteringJavaError">Why am I seeing a &quot;Process existed with status code: 138&quot; error when I try to run ConsensusClustering?</a></li>
+</ol>
+
+<h4>Gene List Selection Modules</h4>
+
+<ol>
+	<li><a href="#CMSscores">Why do the scores from ComparativeMarkerSelection and ClassNeighbors differ?</a></li>
+	<li><a href="#CMSmotifs">I have used ComparativeMarkerSelection to construct gene lists representing different experimental conditions. Is there a GenePattern module that can determine if there are upstream non-coding motifs over represented in those gene lists?</a></li>
+	<li><a href="#CMSmissingValueErr">What does a missing value error for ComparativeMarkerSelection mean?</a></li>
+	<li><a href="#CMSclsErr">Why do I receive an error when running my preprocessed GCT file and CLS file in ComparativeMarkerSelection?</a></li>
+	<li><a href="#GSEAnoGeneSetsPassed">Why am I getting the &quot;none of the gene sets passed the size thresholds&quot; error in GSEA?</a></li>
+</ol>
+
+<h4>IGV Modules</h4>
+
+<ol>
+	<li><a href="#RNAseq">How can I pre-process my RNA-seq data for IGV?</a></li>
+	<li><a href="#IGVwithGCT">How can I properly view my GCT or RES file in IGV?</a></li>
+</ol>
+
+<h4>Preprocess Modules</h4>
+
+<ol>
+	<li><a href="#ExpFileCreatorExon">Does ExpressionFileCreator support Exon arrays?</a></li>
+	<li><a href="#BAMindex">Why did I get a warning stating that my index is older than my BAM file?</a></li>
+	<li><a href="#BeadChip">Can I process raw Illumina BeadChip data in GenePattern?</a></li>
+</ol>
+
+<h4>Projection Modules</h4>
+
+<ol>
+	<li><a href="#NMFNegative">How can I run non-negative matrix factorization NMF on data that contains negative values, such as log-ratio or unthresholded Affymetrix data?</a></li>
+</ol>
+
+<h4>RNA-seq Modules</h4>
+
+<ol>
+	<li><a href="#RNAseqGP">How can I use the RNA-seq modules available in GenePattern?</a></li>
+	<li><a href="#RNAseqQual">I am running a large number of RNA sequencing jobs, and I&#39;d like to be able to look at the quality of the data. Is there a tool I could use for this?</a></li>
+	<li><a href="#rnaseq.refgenome">How do I find reference genomes to use in TopHat, Bowtie, or BWA?</a></li>
+	<li><a href="#rnaseq.refgtforfasta">How do I find reference genome annotation files or whole genome files to use with the GenePattern RNA-seq tools?</a></li>
+</ol>
+
+<h4><a id="SNPAnalysis" name="SNPAnalysis">SNP Analysis Modules</a></h4>
+
+<ol>
+	<li><a href="#GISTICerrors">How do I resolve GISTIC errors?</a></li>
+	<li><a href="#GISTICmatrixDim">What does the GISTIC MATLAB error &quot;Matrix dimensions must agree.&quot; mean?</a></li>
+	<li><a href="#GISTICsegErr">I get &quot;??? Attempted to access rl(:,2); index out of bounds because size(rl)=[0,1]&quot; in my stderr file when running GISTIC, what does this mean?</a></li>
+	<li><a href="#GISTICmatrixDim">I get &quot;??? Index exceeds matrix dimensions.&quot; in my stderr file when running GISTIC, what does this mean?</a></li>
+	<li><a href="#GISTICSnp60">Does GISTIC support SNP 6.0 data?</a></li>
+	<li><a href="#GISTICAgilent">Does GISTIC support Agilent data?</a></li>
+	<li><a href="#GISTICinvalidFileId">What does the GISTIC error, &quot;Invalid file identifier&quot; mean?</a></li>
+	<li><a href="#GISTICinstall">How can I install GISTIC_2.0 on my own GenePattern server?</a></li>
+	<li><a href="#GISTICsource">Can you send me the source code for GISTIC?</a></li>
+	<li><a href="#GISTIC_2.0NaNProcessingError">I got this error when running GISTIC_2.0 &quot;<span style="font-family: arial, helvetica, sans-serif; font-size: 13px; line-height: 16px;">All input data were removed after NaN processing&quot;, what does it mean?</span></a></li>
+	<li><a href="#GISTICMarkersFile">How can I create a GISTIC markers file for my segmented data file?</a></li>
+	<li><a href="#TCGAMarkersFile">Is there a markers file I can use with the TCGA level 3 data?</a></li>
+</ol>
+
+<h4>Visualization and Image Creator Modules</h4>
+
+<ol>
+	<li><a href="#heatmapResolution">How do I get a heat map with a high enough resolution for publication?</a></li>
+	<li><a href="#heatmapAnnotation">How can I export a Heat Map image with gene annotations?</a></li>
+	<li><a href="#HierarchicalClusterView">When I do a Hierarchical Clustering analysis, two files are produced, but the Hierarchical Cluster Viewer (JavaTreeView) looks like it needs three files. Do I need another one?</a></li>
+</ol>
+
+<h4>Module Creation/Programming Language Environments</h4>
+
+<ol>
+	<li><a href="#externalDB">How can I retrieve external database information from GenePattern?</a></li>
+	<li><a href="#VisualizerMatlab">My MATLAB figures are not appearing in the MATLAB visualizer I created. Why?</a></li>
+	<li><a href="#shareModule">How can I share a GenePattern module?</a></li>
+	<li><a href="#moduleToPublicServer">How can I make my GenePattern module available on the GenePattern public server?</a></li>
+	<li><a href="#64BitModule">Why can&#39;t I specify a 64-bit platform for a module?</a></li>
+	<li><a href="#progEnvLaunchMod">Where can I find out more about how to launch GenePattern modules from other programming languages?</a></li>
+	<li><a href="#API">Can I use the GenePattern APIs to create a web service that programmatically accesses the GenePattern server?</a></li>
+	<li><a href="#MatlabFail">Why can&#39;t I call my pipeline/module from MATLAB?</a></li>
+</ol>
+
+<h3>Other</h3>
+
+<p>If you haven&#39;t found what you are looking for, please send an email to <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<hr />
+<h2>Frequently Asked Questions</h2>
+
+<h4><a name="version"></a>What is the latest version of GenePattern?</h4>
+
+<p>For information about the latest version of GenePattern and its components, see the <a href="/doc/relnotes/current">Release Notes</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="hardware"></a>Where can I find the hardware and software prerequisites for GenePattern?</h4>
+
+<p>The <a href="/doc/relnotes/current">Release Notes</a> list hardware requirements, supported operating systems, and supported browsers.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="relnotes"></a>Where can I find the GenePattern release notes?</h4>
+
+<p>Click <a href="/doc/relnotes/current">here</a> for the latest release notes.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="feedback"></a>How can I get help with GenePattern or provide feedback?</h4>
+
+<p>In addition to this FAQ, the GenePattern team provides the following online resources:</p>
+
+<ul>
+	<li><a href="/video-tutorials">Video tutorials</a></li>
+	<li><a href="/concepts">Concepts</a> provides a brief introduction to GenePattern and its primary objects: modules, pipelines, suites.</li>
+	<li><a href="/quick-start">Quick Start</a> provides a 10-minute tour of GenePattern.</li>
+	<li>The <a href="/tutorial">Tutorial</a> provides an extended 40-minute hands-on introduction to expression analysis in GenePattern.</li>
+	<li>The <a href="/user-guide">User Guide</a> describes how to run analyses, create pipelines and generally work with GenePattern.</li>
+	<li>The <a href="/administrators-guide">Administrators Guide </a>describes how to configure a local or networked server. If you are using the GenePattern public server, you do not need this information.</li>
+	<li>The <a href="/programmers-guide">Programmers Guide</a> provides guidelines for writing modules and instructions for accessing GenePattern from the Java, MATLAB, and R programming environments.</li>
+	<li>The <a href="/modules">Modules</a> page lists the modules and pipelines available from GenePattern, with links to their documentation.</li>
+	<li>The <a href="/file-formats-guide">File Formats Guide</a> describes all file formats and provides instructions for creating input files.</li>
+	<li>The <a href="/doc/relnotes/current">Release Notes</a> describe new features in the current release.</li>
+</ul>
+
+<p>To provide feedback or ask a question not addressed by the online resources, send email to <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="cite"></a>How do I cite GenePattern?</h4>
+
+<p>To cite GenePattern, please use the following citation:<br />
+Reich M, Liefeld T, Gould J, Lerner J, Tamayo P, Mesirov JP (2006) GenePattern 2.0 <em>Nature Genetics</em> 38 no. 5 (2006): pp500-501 doi:10.1038/ng0506-500.</p>
+
+<p>To cite a GenePattern analysis or visualization module, cite the GenePattern software and the original paper or other source for the module as specified in the module documentation. Documentation for each module is available on the <a href="/modules">Modules</a> page and in GenePattern (click Help when prompted to enter the module&#39;s parameters).</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="public_memory"></a>What can I do if I my job keeps running out of memory or fails with no error on the public server?</h4>
+
+<p>Sometimes jobs with large datasets or parameter settings which cause greater computational load on the system can fail because they ran out of memory. Usually you will get an error message stating that the module ran out of memory, though sometimes this can cause a &quot;silent&quot; failure; meaning that you see that your job failed, but there are no error files. In either case, GenePattern administrators can track down and resolve the problem. GenePattern administrators can assign memory settings on a per user basis, allowing your jobs to run with the required amount of memory for your analysis.</p>
+
+<p>To have an administrator look into your errors and adjust the memory settings for your jobs please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>, making sure to provide your username and job id.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="twitter"></a>How can I find out about upcoming workshops or new module releases?</h4>
+
+<p>You can follow GenePattern on <a href="http://twitter.com/GenePattern">Twitter</a>, <a href="http://www.facebook.com/pages/GenePattern/159999027359395?ref=ts">FaceBook</a>, or our <a href="http://twitter.com/statuses/user_timeline/185695070.rss">RSS feed</a>. Check our Twitter feed in the news items at <a href="http://genepattern.org">genepattern.org</a>, join our <a href="http://www.broadinstitute.org/gp_mail.html">mailing list</a>, or add yourself to the <a href="/genepattern-training-workshops">Workshops notification list</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="cloud"></a>Is there a version of GenePattern that can run in the cloud?</h4>
+
+<p>Yes. The GenePattern team has released a GenePattern Amazon Machine Instance (AMI) which is available on us-east-1.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="install"></a>How do I install (uninstall) GenePattern?</h4>
+
+<p>To install GenePattern, go to <a href="/download">GenePattern Download</a> and follow the instructions for your operating system.</p>
+
+<p>To uninstall GenePattern, use the utility provided as part of the GenePattern installation. If the GenePattern uninstall utility is unavailable, deleting the GenePattern installation folder removes all GenePattern files other than the desktop icons.</p>
+
+<p><strong>Mac users:</strong> If R2.5 is not already installed, GenePattern installs it in the /Library/Frameworks/R.framework/Versions/2.5 folder. Uninstalling GenePattern does not uninstall R. To uninstall R, use the utility provided by R.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="upgrade"></a>How do I upgrade to the latest version of GenePattern without losing my data (such as jobs, uploaded files and modules)?</h4>
+
+<p>Simply install the new version of GenePattern into the same directory as your previous version. Do <strong>not</strong> uninstall first. It is unnecessary and will delete your existing modules, pipelines and suites. When you overwrite the previous version:</p>
+
+<ul>
+	<li>Existing modules, pipelines and suites are preserved.</li>
+	<li>The following settings are read from your existing genepattern.properties file and displayed as default values for your new installation: settings for R, Java, Perl, LSID Authority, proxy settings, HSQL database URL and port, and file purge frequency and time.</li>
+	<li>The default value for the webserver (Tomcat) port used by the GenePattern server is always 8080. If your existing installation uses a different port number, you can specify that port number during the installation.</li>
+	<li>The require.password setting from your existing genepattern.properties file is preserved in your new installation.</li>
+	<li>Backup copies of the following configuration files are created: genepattern.properties[.backup (before GenePattern 3.4) or .save (3.4 and up)], permissionMap.xml[.backup], and userGroups.xml[.backup]. To recreate your previous settings after installing GenePattern, compare the saved files with the newly installed files and modify the new files as necessary. <strong>Do not replace the newly installed configuration files with the saved copies.</strong></li>
+</ul>
+
+<p><strong>User groups:</strong> The userGroups.xml file for GenePattern 3.2 omits the group named Public. In GenePattern 3.2, all users are now in a predefined group named Public. To avoid confusion, <strong>do not recreate the group named Public</strong>.</p>
+
+<p><strong>R versions:</strong> Installing GenePattern 3.1 (or later) installs R2.5 and sets the full path to R2.5. See <a href="/gp_guides/administrators-guide/sections/r-versions">Using Different Versions of R</a> for information on how to create and/or use GenePattern modules written for other versions of R.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="upgrade333"></a>What is the recommended method of upgrading my GenePattern server to 3.3.3 or higher?</h4>
+
+<p>Large uploaded data files or output files will significantly slow down your GenePattern upgrade installation. If you have less than approximately 10 GB of data files either uploaded (via the Upload tab) or output by GenePattern jobs, you can just follow the <a href="/download">GenePattern server installation instructions</a>. However, if you have more than 10 GB of uploaded data files or output files, we suggest that you:</p>
+
+<ol>
+	<li>Move your uploaded files to a non-default location, for instance:
+	<pre>
+mv &lt;GenePatternServer&gt;/Tomcat/temp &lt;GenePatternServer&gt;_data/temp</pre>
+	</li>
+	<li>Edit the following property in both StartGenePatternServer.lax and genepattern.properties:
+	<pre>
+java.io.tmpdir=&lt;GenePatternServer&gt;_data/temp</pre>
+
+	<p>Replace <code>&lt;GenePatternServer&gt;</code> with an actual path.</p>
+	</li>
+	<li>Then follow the <a href="/download">GenePattern server installation instructions</a>.</li>
+</ol>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="sourceCode"></a>Is the source code available?</h4>
+
+<p>Yes. Source code for GenePattern and its modules is available under the GenePattern software license. Source code for the GenePattern Server application is on <a href="https://github.com/genepattern/genepattern-server">GitHub</a>. Source code for most modules is available directly from GenePattern. From the job input form, open the gear menu to &#39;Export&#39; the module or view &#39;Properties&#39; to select source files individually.&nbsp;</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="r_interfere"></a>I already have R/Perl/Java on my machine. Will the versions of R/Perl/Java that GenePattern installs interfere with these?</h4>
+
+<p>No. The R, Perl, and Java installations that come with the GenePattern are installed within the GenePattern directory and do not affect any other versions that you may currently have.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="rConfigure"></a>Can I configure GenePattern to work with versions of R/Perl/Java other than those installed by GenePattern?</h4>
+
+<p>You can configure GenePattern to work with other versions of R/Perl/Java; however, the versions of R, Perl, and Java bundled with GenePattern are the ones that have been fully tested. We cannot guarantee that other versions will work.</p>
+
+<p><strong>Java VM:</strong> If you install a GenePattern server without the Java VM, choosing instead to use a Java VM that you have already installed, ensure that the file tools.jar (provided by SUN seperately from the JRE and JDK) is on your classpath. When you install a GenePattern server with an included VM, the GenePattern installation does this for you. If this file is not on your classpath, when you attempt to install a module that requires the MatlabComponentRuntime (MCR) Installer, the MCR Installer fails.</p>
+
+<p><strong>R versions:</strong> GenePattern modules can be written for any version of R. For details on how to specify which version to use, see <a href="/administrators-guide#using-different-versions-of-r">Using Different Versions of R</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="international"></a>Does GenePattern support the international settings on my computer?</h4>
+
+<p>GenePattern supports the Basic Latin character set. Characters other than those in the Basic Latin character set may not be displayed correctly. Asian character sets are not currently supported.</p>
+
+<p>All analysis and visualization modules support the decimal point (.) as the separator between the integral and fractional parts of a decimal number. Using a decimal comma (,) may cause unexpected behavior in some modules.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="proxy"></a>I am behind a web proxy/firewall and my GenePattern server says it cannot connect to the module repository to load the modules. What do I do?</h4>
+
+<p>If you did not indicate that you were behind a web proxy/firewall when you installed GenePattern, you must update the proxy settings for your server before you can install the modules:</p>
+
+<ol>
+	<li>Start GenePattern (<a href="http://localhost:8080/gp">http://localhost:8080/gp</a> is usually the URL).</li>
+	<li>Click <em>Administration&gt;Server Settings</em> to display the server settings.</li>
+	<li>Click <em>Proxy</em> to display the proxy settings.</li>
+	<li>On the Proxy Settings page, enter the hostname and port of your web proxy server. If you do not know them, contact your IT help desk to get the values. If you need to log into the proxy server, also enter your username and password (these will NOT be saved to a file and will need to be reentered following a server restart next time you want to connect).</li>
+	<li>Click <em>Save</em> to update the proxy settings.</li>
+	<li>Click <em>Modules &amp; Pipelines&gt;Install from Repository</em> to install the modules.</li>
+</ol>
+
+<p>If you still cannot connect to the repository, email us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="warfile"></a>I want to install GenePattern into our corporate/departmental/other Web server and not have GenePattern run in its own Web server. How do I install it?</h4>
+
+<p>You need to use the war file installation. Instructions are available <a href="/installing-genepattern-from-a-war-file">here</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="port"></a>When should I choose to install the GenePattern server on a different port than the default 8080?</h4>
+
+<p>If you already have a server such as Tomcat running on this port, you need to install the GenePattern server on a different port to avoid conflicts.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="64BitInstall"></a>How do I install GenePattern on a 64-bit Windows machine if I want to use a version before 3.2.2?</h4>
+
+<p>When GenePattern is installed on Windows 64-bit systems in the default C:Program Files (x86) directory, modules fail because of some code that is expecting only &quot;C:Program Files&quot; and then truncates that location to &quot;C:Progr ~1&quot;. There is similar bug in ComparativeMarkerSelection. These errors are corrected in the 3.2.2 release of GenePattern. However, if you do not upgrade to release 3.2.2 or after, the work around is to re-install GenePattern in a directory that has no spaces in the name.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RemoteServer"></a>How can I set up a GenePattern server for others to use remotely?</h4>
+
+<p>There are two useful sections of the GenePattern User Guide that explain how to do this:</p>
+
+<ul>
+	<li><a href="/concepts#_Servers">Concepts: Servers</a></li>
+	<li><a href="/administrators-guide">Managing the GenePattern server</a></li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RemoteMalformedURL"></a>Why do my remote users get malformed URL errors when accessing visualizers?</h4>
+
+<div>The downloadable installer makes the assumption that GP will be run on an individual&#39;s PC or laptop and is configured for that. The remote client computer can&#39;t reach the necessary files because they are being served on URLs using the server&#39;s loopback network interface (127.0.0.1). For shared server use, there&#39;s one setting that needs to be changed. Go to the location where GenePattern has been installed on your server and look for the genepattern.properties file in the &quot;resources&quot; directory. Open it with a text editor like emacs or vi. Look for a property named GenePatternURL and replace the 127.0.0.1 part with the network name of that server. You should leave the &#39;:8080/gp&#39; part in place unless you have changed the Tomcat port configuration. Stop and restart the GenePattern server and the URLs should now point to the right location.</div>
+
+<div>
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+</div>
+
+<h4><a name="launchGP"></a>Why doesn&#39;t clicking StartGenePatternServer launch GenePattern on Linux?</h4>
+
+<p>The StartGenePatternServer application only starts the server on Linux machines (on Mac it will start the server and launch a web browser). To access the web client interface for your GenePattern server, click the GenePatternHome.html shortcut icon, or, if you did not install icons in your task bar or on your desktop, GenePatternHome.html can be found at the top level of your GenePattern install directory.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="rMacInstall"></a>How can I get R to install correctly on my Mac?</h4>
+
+<p>Some Mac users have found that the R library is not installing correctly when they try to install GenePattern. Even after making sure that the folder into which GenePattern is installing R has write permissions, upon running a module, they receive the following error message:</p>
+
+<pre>
+java.io.IOException: Cannot run program &quot;/Library/Frameworks/R.framework/Versions/2.5/Resources/bin/R&quot;: error=2,
+No such file or directory while running R command [/Library/Frameworks/R.framework/Versions/2.5/Resources/bin/R,
+--no--save, --quiet, --slave, --no-restore]</pre>
+
+<p>This may be a simple GenePattern server configuration problem. First, check that something is installed at that path. Open the Terminal.app and run the following commands:</p>
+
+<pre>
+ls /Library/Frameworks/R.framework/Versions/2.5
+
+ls /Library/Frameworks/R.framework/Versions</pre>
+
+<p>If there is something installed at this path, then check that the path to R is correctly configured in your GenePattern server. Go to the <i>Administration&gt;Server Settings&gt;Programming Languages</i> GenePattern page and verify that:</p>
+
+<pre>
+R 2.5 Home: /Library/Frameworks/R.framework/Versions/2.5/Resources</pre>
+
+<p>If this is configured correctly, you may be able to correct the problem by manually downloading and installing R 2.5.</p>
+
+<p>If you have further issues installing R, contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="memoryGP">How do I increase the memory allocated to the GenePattern server or client?</a></h4>
+
+<p>See <a href="/administrators-guide#increasing-memory-allocation">Increasing Memory Allocation</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="memoryModule">How do I increase the memory allocated to a module?</a></h4>
+
+<p>See <a href="/administrators-guide#increasing-memory-allocation">Increasing Memory Allocation</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="multiGP">Can I run more than one instance of the GenePattern server on a machine?</a></h4>
+
+<p>Yes. If you are running more than one installation of GenePattern on the same machine, you must make sure that the port numbers for the GenePattern server and the HSQL server are unique to each installation. The Tomcat server listens on two ports, 8080 (requests) and 8005 (shutdown) by default, and the HSQL server listens on port 9001. All 3 ports need to be modified on the second copy of Tomcat. For example, you can set the GenePattern server port to 8080 and 8005 on one install and 8081 and 8086 on the other, and set the HSQL port to 9001 on one and 9002 on the other. You can configure these port numbers when you are installing the server.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="multiIP"></a>How do I configure the GenePattern server on a machine with multiple IP addresses? Can I keep the GenePattern URL from changing when the server hostname changes?</h4>
+
+<p>Choose one hostname for the GenePattern server; for example, http://servername.domainname.edu:8080/gp/. Edit the genepattern.properties file and set the following properties:</p>
+
+<ul>
+	<li><code>GenePatternURL=http\://servername.domainname.edu:8080/gp/</code></li>
+	<li><code>GENEPATTERN_PORT=8080</code></li>
+	<li><code>gpServerHostAddress=servername.domainname.edu</code></li>
+	<li><code>fqHostName=servername.domainname.edu</code></li>
+	<li><code>fullyQualifiedHostName=servername.domainname.edu</code></li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="timeout"></a>How do I modify the GenePattern session timeout interval?</h4>
+
+<p>Session timeout is set in the Tomcat configuration file of the GenePattern server. To modify this setting for a local GenePattern server:</p>
+
+<ol>
+	<li>Edit the Tomcat configuration file in the GenePattern installation directory: GenePatternServer/Tomcat/conf/web.xml.</li>
+	<li>Modify the session-timeout property. Enter a value in minutes, where 0 disables session timeout. For example, to set the timeout to one day:
+	<pre>
+&lt;session-config&gt;
+   &lt;session-timeout&gt;1440&lt;/session-timeout&gt;
+&lt;/session-config&gt;</pre>
+	</li>
+	<li>Save the Tomcat configuration file.</li>
+	<li>Restart the GenePattern server.</li>
+</ol>
+
+<p>On the public GenePattern server, session timeout is set to four hours and cannot be modified by a user.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="queuing"></a>How do I configure GenePattern to work with a queuing system (or grid engine)?</h4>
+
+<p>Queuing systems such as the Load Sharing Facility (LSF) and the Sun Grid Engine (SGE) allow computational resources to be used effectively. If you have such a queuing system installed at your site and you have installed a local GenePattern server, you can configure the GenePattern server to work with the queuing system. For instructions on how to do so, see <a href="/administrators-guide#using-a-queuing-system">Using a Queuing System</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="deleteResults"></a>How do I modify how often result files are deleted from my GenePattern server?</h4>
+
+<p>From your GenePattern server, go to <em>Administration&gt;Server Settings</em> and click <em>File Purge</em> in the menu at the left. From here you can specify when anaylsis result files are deleted from the server:</p>
+
+<ul>
+	<li>Use Purge Jobs After to specify the number of days the server keeps the analysis result files. To prevent the server from automatically deleting the files, set this value to -1.</li>
+	<li>Use Purge Time to specify what time of day (24-hour format) the server deletes the files.</li>
+</ul>
+
+<p>Click <em>Save</em> to save your changes. Click <em>Restore</em> to return to the values set at the installation.</p>
+
+<p>Note: This setting can only be modified on local GenePattern servers for which you have administrative rights. You cannot change this setting on the Public Server.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="connectionRefused"></a>I&#39;m getting &#39;error &quot;connection refused&quot;&#39;: what is the problem?</h4>
+
+<p>A refused connection is most likely due to a proxy issue. If you are behind a proxy or firewall, verify that you have correctly configured GenePattern and/or talked with your local SysAdmin allow GenePattern access to your machine.</p>
+
+<p>To configure a proxy connection in GenePattern please do the following:</p>
+
+<ol>
+	<li>In the GenePatter<span id="cke_bm_89S" style="display: none;">&nbsp;</span>n Web Client, click Administration&gt;Server Settings to display the server settings.</li>
+	<li>Click Proxy to display the proxy settings.</li>
+	<li>On the Proxy Settings page, enter the hostname and port of your web proxy server. If you do not know them, contact your IT help desk to get the values. If you need to log into the proxy server, also enter your username and password (these will NOT be saved to a file and will need to be reentered following a server restart next time you want to connect).</li>
+	<li>Click Save to update the proxy settings.</li>
+</ol>
+
+<p>If this does not resolve the issue, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="filePath"></a>Can I use a file path as input for a GenePattern module?</h4>
+
+<p>If you install your own GenePattern server, the default setting is not to allow input file paths. To change this, if you have administrator privileges on the server, add or edit the following in your genepattern.properties file:</p>
+
+<pre>
+allow.input.file.paths=true</pre>
+
+<p>Then restart your server. This will allow users to input an arbitrary network file path (such as file:///server/directory/file.gct) as the value for an input file parameter. When input file paths are allowed, you can use the server.browse.file.system.root property to set a root directory where the GenePattern server begins browsing for the specified network file path.</p>
+
+<p>Note: On the GenePattern Cloud&nbsp;public server, we prevent users from entering an input file path (file://urls) as an input file for a module in order to better secure the machine running the public server.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="launchAnywhere"></a>How can I work around a LaunchAnywhere error?</h4>
+
+<p>If you tried to install GenePattern on Ubuntu, you may have received an installation error: &quot;An internal LaunchAnywhere application error has occurred and this application cannot proceed. (LAX)&quot; with &quot;java.lang.IllegalArgumentException: Malformed \uxxxx encoding.&quot; in the stack trace.</p>
+
+<p>LaunchAnywhere can interfere with the prompt string formatter PS1. In order to work around this problem, you need to use the following command:</p>
+
+<pre>
+$ export PS1=&quot;&gt;&quot;
+&gt;sudo sh./GPServer.bin
+</pre>
+
+<p>This is not only important for installing GenePattern on Ubuntu, but also launching GenePatternServer. Use the command before the GenePatternServer startup command, like so:</p>
+
+<pre>
+$ export PS1=&quot;&gt;&quot;
+&gt;./StartGenePatternServer
+</pre>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a id="deprecated_modules" name="deprecated_modules">What is the current list of deprecated GenePattern modules?</a></h4>
+
+<p><em>Updated Oct 14, 2021</em></p>
+
+<p><em>Please direct any questions about these modules to our <a href="https://genepattern.org/help" target="_blank">help forum</a>.</em></p>
+
+<p>ABSOLUTE<br />
+ABSOLUTE.review<br />
+ABSOLUTE.summarize<br />
+BlastNPipeline<br />
+BlastParser<br />
+BlastSubtraction<br />
+BlastSubtractionLoop<br />
+BlastXml<br />
+Bowtie.aligner<br />
+Bowtie.indexer<br />
+BWA.Unmapped<br />
+BWAPipeline<br />
+BWASubtraction<br />
+CaArray2.1.0ImportViewer<br />
+CaArray2.3.0ImportViewer<br />
+CaArray2ImportViewer<br />
+caArrayImportViewer<br />
+CatalogueReads<br />
+CBS<br />
+ConcatenateFiles<br />
+Cuffcompare<br />
+Cuffdiff<br />
+Cufflinks<br />
+CufflinksCuffmergePipeline<br />
+Cuffmerge<br />
+ExternalSort<br />
+ExternalSort<br />
+ExtractFullQuery<br />
+ExtractPairsBam<br />
+ExtractUnmapped<br />
+ExtractUnmappedAdapterBlast<br />
+Fasta2FQone<br />
+Fastq2FQone<br />
+FilterLength<br />
+FQone2Fasta<br />
+FQone2Fastq<br />
+GENE-E<br />
+GeneCruiser<br />
+GetUnmappedReads<br />
+GISTICPreprocess<br />
+HAPSEG<br />
+HierarchicalClustering.MATLAB<br />
+HierarchicalClusteringImage.MATLAB<br />
+Lu.Getz.Miska.Nature.June.2005.clustering.ep.mRNA.pipeline<br />
+Lu.Getz.Miska.Nature.June.2005.clustering.ep.miRNA.pipeline<br />
+Lu.Getz.Miska.Nature.June.2005.clustering.ALL.pipeline<br />
+Lu.Getz.Miska.Nature.June.2005.clustering.miGCM218.pipeline<br />
+Lu.Getz.Miska.Nature.June.2005.PDT.miRNA.pipeline<br />
+Lu.Getz.Miska.Nature.June.2005.PDT.mRNA.pipeline<br />
+MAGeCK<br />
+MegaBlastPipeline<br />
+MultiplotPreprocess<br />
+ParallelCBS<br />
+ParsedBlastParser<br />
+PathSeq.BlastN<br />
+PathSeq.BlastX<br />
+PathSeq.BWA.aln<br />
+PathSeq.MegaBlast<br />
+PathSeqPrototype<br />
+PathseqReport<br />
+PNN<br />
+PNNXValidationOptimization<br />
+PostBlastN.All<br />
+PostBlastX.All<br />
+PostMegaBlast.Bacterial<br />
+PostMegaBlast.Ribosomal<br />
+PostSubtraction<br />
+PostSubtraction.Assembly<br />
+PostSubtraction.Contigs<br />
+PostSubtraction.Contigs.Scatter<br />
+PostSubtraction.Contigs.Step<br />
+PostSubtraction.Unmapped -<br />
+PostSubtraction.Unmapped.Scatter<br />
+PostSubtraction.Unmapped.Step<br />
+PreSubtraction<br />
+QualFilter<br />
+RankNormalize<br />
+RemoveDuicates<br />
+RepeatMaskerFormatChange<br />
+RepeatMaskerRead<br />
+SAMTools.FastaIndex<br />
+ScatterBlastSubtraction<br />
+ScatterBWASubtraction<br />
+Sit2Pairs<br />
+SraToFastQ<br />
+Subtraction<br />
+TopHat<br />
+Trinity_r2012.06.08<br />
+UniqueIdentifier</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<p>&nbsp;</p>
+
+<h4><a name="filePathIE"></a>Why does the Specify File Path or URL option not work in Internet Explorer?</h4>
+
+<p>This is a known issue: when users click the <i>Browse Server File System</i> button, the Internet Explorer web browser window (instead of a pop-up window) becomes the file system browser.</p>
+
+<p>If you want to continue using Internet Explorer, you can copy and paste or manually enter the server file path rather than clicking the <i>Browse Server File System</i> button. We recommend using another browser for full functionality.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="cdna">Does GenePattern support cDNA and other 2-channel microarray data?</a></h4>
+
+<p>Yes. Most GenePattern analyses can run on 2-channel or ratio-based data as easily as on single channel or absolute value data. To run 2-channel data in GenePattern, do the following:</p>
+
+<ul>
+	<li>Convert your ratio-based data to a GenePattern <a href="/file-formats-guide#GCT">GCT file</a>. This tab-delimited text file format contains features (genes or probes), samples, and a computed ratio value for each feature in each sample.</li>
+	<li>GenePattern modules cannot analyze files with missing values. If your data has missing values, one way to address the issue is to use the ImputeMissingValues.KNN module to impute the missing values.</li>
+</ul>
+
+<p>Your data is now in a GCT file that can be analyzed by most GenePattern modules. (If you want to use non-negative matrix factorization (NMF) and your data contains negative values, see the NMF note in the Modules &amp; Pipelines section below.)</p>
+
+<p>Ratio values for cDNA data can be computed using a variety of methods. How the ratios are computed determines whether it is possible to create a <a href="/gp_guides/file-formats/sections/cls">class (CLS) file</a> for the cDNA ratio data. For example:</p>
+
+<ul>
+	<li>If ratios for all samples are computed against a common reference, as shown below, each sample can be assigned a distinct class and it is possible to create a class (CLS) file.
+	<p>normal sample (Cy3) / common reference (Cy5) = phenotype 1<br />
+	treated sample (Cy3) / common reference (Cy5) = phenotype 2</p>
+	</li>
+	<li>If ratios are computed by comparing conditions, as shown below, it may not be possible to create a CLS file.
+	<p>normal sample (Cy3) / treated sample (Cy5) = phenotype</p>
+	</li>
+</ul>
+
+<p>If you cannot create a CLS file, you can analyze your data using modules that do not require class files (such as ConsensusClustering), but will not be able to use modules that require the CLS file (such as ComparativeMarkerSelection).</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="fileFormats"></a>Where can I find information about file formats used by GenePattern?</h4>
+
+<p>Information on file formats supported by the modules currently in GenePattern is available in <a href="/file-formats-guide">File Formats</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="ResGctOdf"></a>How can I convert between RES, GCT, and ODF formats?</h4>
+
+<p>Run your file through PreprocessDataset. Select the desired output format for your file. If you only want to convert the file type without filtering, select &quot;no filter&quot; as the choice for the &quot;filter flag&quot; parameter.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="convertToGP"></a>How do I convert a file to GenePattern format?</h4>
+
+<p><a href="/gp_guides/file-formats">File Formats</a> describes the file formats used in GenePattern and, where applicable, suggests methods for converting files to these formats.</p>
+
+<h4><a name="MAGE"></a>How can I use CEL, MAGE-ML, and MAGE-TAB files in GenePattern?</h4>
+
+<p>The ExpressionFileCreator module converts a set of individual CEL files into an expression data set that is usable by GenePattern modules. The MAGEMLImportViewer module imports data in MAGE-ML format into GenePattern, and similarly, the MAGETABImportViewer module imports data in MAGE-TAB format into GenePattern.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="moduleNotThere"></a>I have installed a module/pipeline/suite, but I do not see it. What&#39;s wrong?</h4>
+
+<p>This generally occurs for one of two reasons:</p>
+
+<ul>
+	<li>If the same zip file is installed twice, by two users, the second one overwrites the first one. While the bits are the same (including LSID), the ownership and privacy are subject to change and may end up hiding it from the module&#39;s original installer if the second installer installs it as private.</li>
+	<li>The same suite cannot be installed as a &quot;private&quot; suite for more than one user. If you install a private suite and do not see it, it may already be installed as a private suite by another user.</li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="fileNotFound"></a>My pipeline requires an input file, but displays a file-not-found error when I enter a file name. What&#39;s wrong?</h4>
+
+<p>Pipeline input files with spaces in their names may give file-not-found errors. If this happens, use DOS&#39; &quot;dir /x&quot; command to get the 8.3 version of the directory and filename and use that instead of the long filename. If you are using a Unix-based platform, you may need to quote the filename parameters on the command line definition.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="NMFNegative"></a>How can I run non-negative matrix factorization NMF on data that contains negative values, such as log-ratio or unthresholded Affymetrix data?</h4>
+
+<p>To run NMF on data that contains negative values, you must do the following (using the method of <a href="http://genome.cshlp.org/content/13/7/1706.full">Kim, P. M. &amp; Tidor, B. (2003) <em>Genome Res.</em> <strong>13</strong>, 1706-1718</a>):</p>
+
+<ul>
+	<li>Create one dataset with all negative numbers zeroed</li>
+	<li>Create another dataset with all positive numbers zeroed and the signs of all negative numbers removed</li>
+	<li>Merge the two (eg. by concatenation), resulting in a dataset twice as large as the original, but with positive values only and zeros, hence appropriate for NMF.</li>
+</ul>
+
+<p>To do this in MATLAB, you can execute the following: <code> anew=[max(a,0);-min(a,0)];</code> where <code>a</code> is the original data.<br />
+We are currently developing a GenePattern module to perform this operation as well.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="HierarchicalClusterView"></a>When I do a Hierarchical Clustering analysis, two files are produced, but the Hierarchical Cluster Viewer (JavaTreeView) looks like it needs three files. Do I need another one?</h4>
+
+<p>No, you can use the two files that are created and leave the remaining input box blank. HierarchicalClustering creates a cdt file and one or two additional files: an atr file if you clustered by samples (columns), a gtr file if you clustered by genes (rows), or both atr and gtr files if you clustered by both samples and genes (columns and rows). The JavaTreeView module accepts the two or three files created by HierarchicalClustering.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="heatmapAnnotation"></a>How can I export a Heat Map image with gene annotations?</h4>
+
+<p>The HeatMapViewer module currently does not include gene annotations with the saved image. Use the HeatMapImage module to include gene annotations.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CMSscores"></a>Why do the scores from ComparativeMarkerSelection and ClassNeighbors differ?</h4>
+
+<p>When computing the t-test or signal to noise ratio, ClassNeighbors thresholds the standard deviation to ensure that it is at least twenty percent of the mean. Additionally, if the standard deviation is zero, ClassNeighbors sets it to 0.1.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CMSmotifs"></a>I have used ComparativeMarkerSelection to construct gene lists representing different experimental conditions. Is there a GenePattern module that can determine if there are upstream non-coding motifs over represented in those gene lists?</h4>
+
+<p>Yes. You can use the GSEA module with the c3 (motif) gene sets. The GSEA module is documented on the <a href="/modules">Modules</a> page.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICerrors"></a>How do I resolve GISTIC errors?</h4>
+
+<p>Most errors reported by users running the GISTIC module are caused by a mismatch between the segmentation and markers files. If an error occurs, verify that all markers indicated in the segmentation file appear in the markers file and only those markers indicated by the segmentation file appear in the markers file.</p>
+
+<p>The CBS and GLAD segmentation methods produce GISTIC-friendly marker positions. Partek&#39;s latest <strong>beta version</strong> also produces GISTIC-friendly marker positions. However, if you used an earlier version of the Partek algorithm to create the segmentation file, the algorithm did not report the exact physical position of the first and last markers of the segments. If you run GISTIC on a segmentation file generated using the earlier version of the algorithm, the physical positions of the marker file will not agree with the start or stop positions of the segmentation file. Note that Partek also uses the control probes in the generation of the CN/segmentation.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICmatrixDim"></a>What does the GISTIC MATLAB error &quot;Matrix dimensions must agree.&quot; mean?</h4>
+
+<pre>
+??? Error using ==&gt; plus
+Matrix dimensions must agree.
+Error in ==&gt; make_D_from_seg at 158
+Error in ==&gt; run_gistic_from_seg at 58
+Error in ==&gt; gp_gistic_from_seg at 177
+MATLAB:dimagree</pre>
+
+<p>If you are running GISTIC and get the error above in your stderr.txt file, you should verify that your segmentation file and markers file are exactly matched. Only the markers from the markers file should be indicated in the segmentation file and only those markers indicated by the segments should be in the markers file.</p>
+
+<p>IE seg file should be</p>
+
+<pre>
+1-4
+5-6				</pre>
+
+<p>and markers file should be</p>
+
+<pre>
+1
+2
+3
+4
+5
+6
+</pre>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICsegErr"></a>I get &quot;<em>??? Attempted to access rl(:,2); index out of bounds because size(rl)=[0,1]</em>&quot; in my stderr file when running GISTIC, what does this mean?</h4>
+
+<p>If your run of GISTIC fails with the error below in the stderr.txt file, check your segmentation file format. Please see the sections on the segmentation file format in the <a href="https://genepattern.org/doc/GISTIC_2.0/2.0.23/GISTICDocumentation_standalone.htm">GISTIC documentation</a> for more details and examples.</p>
+
+<pre>
+??? Attempted to access rl(:,2); index out of bounds because size(rl)=[0,1].
+Error in ==&gt; derunlength at 25
+Error in ==&gt; smooth_cbs at 148
+Error in ==&gt; run_gistic_from_seg at 125
+Error in ==&gt; gp_gistic_from_seg at 177
+MATLAB:badsubscript</pre>
+
+<p>If this does not resolve the issue, please contact us on <a href="https://groups.google.com/g/genepattern-help">the GenePattern help forum</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICmatrixDim"></a>I get &quot;<em>??? Index exceeds matrix dimensions.</em>&quot; in my stderr file when running GISTIC, what does this mean?</h4>
+
+<p>If your run of GISTIC fails with the error below in the stderr.txt file, check your markers file format. Please see the sections on the markers file format in the <a href="http://genepattern.broadinstitute.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:3">GISTIC documentation</a> for more details and examples.</p>
+
+<pre>
+??? Index exceeds matrix dimensions.
+Error in ==&gt; check_if_has_header at 13
+Error in ==&gt; make_D_from_seg at 21
+Error in ==&gt; run_gistic_from_seg at 58
+Error in ==&gt; gp_gistic_from_seg at 179
+MATLAB:badsubscript</pre>
+
+<p>If this does not resolve the issue, please contact us on&nbsp;<a href="https://groups.google.com/g/genepattern-help">the GenePattern help forum</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICSnp60"></a>Does GISTIC support SNP 6.0 data?</h4>
+
+<p>Yes, GISTIC supports the Affymetrix Human SNP 6.0 array.</p>
+
+<p>If you have further questions please contact us on&nbsp;<a href="https://groups.google.com/g/genepattern-help">the GenePattern help forum</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="moduleRunLong"></a>Why is my module taking so long to run?</h4>
+
+<p>Some computationally-intense modules can take a day or more to run. Some examples are FLAMEMetacluster, NMFConsensusClustering, GISTIC, and GLAD. In addition, server load can affect queuing times on the GenePattern&nbsp;public server, and this can affect the length of time a module can take to complete.</p>
+
+<p>If your job does not use a computationally-intense module or a large data set, and it takes longer than about 4 hours to complete, please contact us on&nbsp;<a href="https://groups.google.com/g/genepattern-help">the GenePattern help forum</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CMSmissingValueErr"></a>What does a missing value error for ComparativeMarkerSelection mean?</h4>
+
+<p>If you receive the following errors while performing an analysis with ComparativeMarkerSelection:</p>
+
+<pre>
+Error in if (min(p) &lt; 0 || max (p) &gt; 1) \{: missing value where TRUE/FALSE needed Execution halted</pre>
+
+<p>or</p>
+
+<pre>
+ERROR: The estimated pi0 &lt;=0. Check that you have valid p-values or use another lambda method.</pre>
+
+<p>then a gene in your data has insufficient variation in its expression values. Use the PreprocessDataset module with a filter that is more stringent than you have previously used on your data set before running ComparativeMarkerSelection.</p>
+
+<p>If you continue to experience problems, please contact us on&nbsp;<a href="https://groups.google.com/g/genepattern-help">the GenePattern help forum</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICinvalidFileId"></a>What does the GISTIC error, &quot;Invalid file identifier&quot; mean?</h4>
+
+<p>The usual cause of this error is spaces in any of the input file names.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="noSuchMod"></a>Why does the &quot;no such module&quot; error occur for a module on the server?</h4>
+
+<p>If you run an imported pipeline on your own GenePattern server, and you get the error, &quot;No such module [module name]&quot;, when you know you have that module on your server, then the pipeline requires a version of the module that is not on your server. If you return to the pipeline page and click <i>Properties</i>, you can view the modules that are required but not installed. If you install these module versions from the repository, the pipeline will run.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="IGVwithGCT"></a>How can I properly view my GCT or RES file in IGV?</h4>
+
+<p>The default IGV display option for a GCT or RES file is the Heatmap. For the heatmap to make sense, the data must be row-centered, scaled and possibly have a threshold applied.</p>
+
+<p>For complete information, see the blog post about&nbsp;<a href="/blog/2012/08/30/using-igv-through-genepattern">Using IGV Through GenePattern</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="uploadBigFile"></a>Why is nothing happening when I try to upload my large file?</h4>
+
+<p>There are limitations on file upload size. Files uploaded via the Browse button on the module input page must be under 1.2 GB. To use larger files, there are a few options:</p>
+
+<ul>
+	<li>Select <i>Upload files</i> from the blue arrow in the Uploads tab to upload your file. This invokes the large file upload system. Add the files you want to upload to the Java applet and click the upload arrow. This makes your files available in the Uploads tab, and you can set them as input for appropriate GenePattern modules. More information about the Uploads tab can be found in our <a href="/user-guide#user-interface-upload-menu">User Guide</a></li>
+	<li>Download and install GenePattern on a local machine. Put your files on a server that is accessible to your GenePattern server &ndash; that is, on the same file system or via a network share &ndash; and use the file path as input for the GenePattern modules. (Note: you will have to enable file paths on your server.)</li>
+	<li>Put your files on a web-accessible machine or FTP site and specify a URL or FTP address for the input file. Make sure that the machine you use is accessible to the GenePattern server.</li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="zipError"></a>What does &quot;Error in subfiles: subscript out of bounds&quot; mean?</h4>
+
+<p>This error can be produced if there are hidden files or directories in the ZIP archive. This usually occurs on a Mac when using the &quot;Compress&quot; option from the right-click pop-up menu. If this is the case, you may want to use the zip command from the terminal window to zip files instead. If you didn&#39;t Compress on a Mac, then you should check that there are no hidden files in the ZIP archive.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RNAseq"></a>How can I pre-process my RNA-seq data for IGV?</h4>
+
+<p>The recommended format for RNA-seq data in IGV is the BAM file. If you run your SAM or BAM file as the input file for the SortSam module, you can sort and index it, and can convert a SAM file to BAM.</p>
+
+<p>In addition, the IGVTools.sort and IGVTools.index modules can sort and index a SAM file. These modules are currently in beta. If you would like to use them, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="zipFails"></a>Why did the module I tried fail to run with my ZIP file as input?</h4>
+
+<p>If your ZIP file has a directory in it, GenePattern cannot resolve it. Unfortunately, if you generated your ZIP archive using the Finder on the Macintosh OS, the Mac builds a directory structure into your ZIP archive and GenePattern cannot resolve it. To zip on a Mac, use the zip command from a terminal window; for example, if you wanted to create a ZIP archive called &quot;all_foo&quot; that contains the files all_foo.cls and all_foo.gct, you could use the following command:</p>
+
+<pre>
+zip all_foo all_foo.cls all_foo.gct</pre>
+
+<p>Some other reasons that your ZIP file may fail include spaces in the names of the files or hidden files. If you cannot locate the issue with your ZIP file, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="jobFail"></a>Why did my GenePattern job fail?</h4>
+
+<p>The first place to look for the reason is the stderr.txt file, which should be available in the job summary or job status page. This file often contains plain text indicating what went wrong with a job, such as formatting or filtering errors. If you find that this file does not help you resolve the error, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RNAseqGP"></a>How can I use the RNA-seq modules available in GenePattern?</h4>
+
+<p>You can use the RNA-seq modules either on the&nbsp;<a href="http://genepattern.broadinstitute.org/gp/pages/login.jsf"> public server</a> or by installing them on a GenePattern server installed on your machine or a network-accessible server.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RNAseqLocal"></a>If You Choose to Run RNA-seq Modules on Your Own GenePattern Server</h4>
+
+<p>If you have not installed GenePattern on your local machine, instructions for installing a local GenePattern server are provided on the <a href="http://www.broadinstitute.org/download/">Download GenePattern</a> page.</p>
+
+<p>If you have already installed a GenePattern server, select <i>Modules &amp; Pipelines&gt;Install from repository</i>. The page will present all available modules. You only need to select the checkboxes for the modules you want and click <i>Install Checked</i>.</p>
+
+<p><b>Note:</b> The main analysis RNA-seq modules (Bowtie, BWA, Cufflinks, TopHat, and Scripture) currently only run on Macintosh and Linux. If you do not have access to machines with these operating systems, you can use the modules on the GenePattern Cloud public server. The conversion/utility modules that are related to the RNA-seq modules are available for Macintosh, Linux, and Windows.</p>
+
+<p>You may find it helpful to enable your GenePattern server to accept file paths in order to handle large input files that are already present on the system where your local server is installed. To do this, edit genepattern.properties (located in the resources directory under your GenePattern server directory) and make <i>allow.input.file.paths=true</i>. This allows users to input a network file path (such as file:///server/directory/file.gct) as the value for an input file parameter. When this value is set to true, you can define a root directory where the GenePattern server begins browsing for network files by setting <i>server.browse.file.system.root</i> to the root directory you want to specify.</p>
+
+<p>Example: In genepattern.properties, setting <i>server.browse.system.root=/Users/mydata/ngs</i> will cause the browser window to open to <i>/Users/mydata/ngs</i> when a user chooses <i>Specify File Path or URL</i>.&nbsp;</p>
+
+<p>Example: In the config_default.yaml file, setting server.browse.system.root: [ &quot;/Users/mydata/ngs&quot;, &quot;Users/shared&quot;] will add two folders to the browser window.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="jobPending"></a>Why is my GenePattern job stuck in the PENDING state?</h4>
+
+<p>There are a few reasons why this might occur. Jobs are often PENDING because GenePattern is a shared resource. When your job is in the PENDING state, it means that it is waiting in the queue behind other jobs for the GenePattern server to submit the job to the server farm. Jobs that use large files and access them via an external URL may hold up the line while those files are transferred to the GenePattern server, even keeping jobs that normally take a few seconds in PENDING.</p>
+
+<p>The job will run when the queue clears up.</p>
+
+<p>If this is a common issue on your GenePattern server, it is possible to configure it to help reduce the wait. If you want to reconfigure your GenePattern server in this way, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CMSclsErr"></a>Why do I receive an error when running my preprocessed GCT file and CLS file in ComparativeMarkerSelection?</h4>
+
+<p>If you tried to run your preprocessed GCT file and CLS file in ComparativeMarkerSelection, but it gives you the following error:</p>
+
+<pre>
+An error occurred while reading the file ClassFile.cls.
+
+Cause: Header line needs three numbers!</pre>
+
+<p>Make sure your CLS file is space delimited and not tab-delimited. This is the most common cause of this error. If this does not stop the error, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="BAMindex"></a>Why did I get a warning stating that my index is older than my BAM file?</h4>
+
+<p>If you try to run an indexed BAM file through a module and receive a warning that your index file (BAI) is older than your BAM file, it means that the timestamps for these files are out of sync. If you receive this warning, you should index your BAM file by using the SortSam module.</p>
+
+<h4><a name="parallelJobs"></a>How do I run several files through a set of modules in parallel?</h4>
+
+<p>You can do this by <a href="/user-guide#working-with-pipelines-creating-pipelines">creating a pipeline</a> for the jobs you want to run in parallel.</p>
+
+<p>Then you can submit your set of data files to the pipeline as batch job. For more information, see <a href="/user-guide#running-modules-and-pipelines-batch-processing">Batch Processing</a>.</p>
+
+<p>There are additional features that make it easier to work with large input files and to run batches of jobs in parallel:</p>
+
+<ul>
+	<li>The <a href="/user-guide" target="_blank">User Guide</a> describes how to work with large files in GenePattern</li>
+	<li>GenePattern also has a feature (disabled by default) that allows you to access input files on the server&#39;s file system. With this feature turned on, you don&#39;t need to directly upload your input files via the job input form. See <a href="/user-guide#running-modules-and-pipelines-using-file-paths">Using File Paths </a>for details.</li>
+	<li>GenePattern has a programming interface (with versions for Java, R, and MATLAB) that allows you to submit your jobs in parallel. See the <a href="/programmers-guide">Programmers Guide </a>for more details.</li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="zipHowTo"></a>How do I zip my files for use in GenePattern?</h4>
+
+<p>On Windows, you need to select the files to be added to the ZIP archive (hold down the Control or Shift key while selecting to select a group). Then right-click on the group and select WinZip (or whichever zip application you have on your machine). Do not select a folder and zip it &ndash; that will create a directory inside the ZIP archive; if your ZIP archive has a directory in it, GenePattern cannot resolve it.</p>
+
+<p>On Macintosh, if you generate your ZIP archive using the Finder, Mac builds a directory structure into your ZIP archive and GenePattern cannot resolve it. To zip files on a Mac, use the zip command from a terminal window (launched from Applications/Utilities); for example, if you wanted to create a ZIP archive called &quot;all_foo&quot; that contains the files all_foo.cls and all_foo.gct, you could use the following command:</p>
+
+<pre>
+zip all_foo all_foo.cls all_foo.gct</pre>
+
+<p>If you follow these instructions and find that GenePattern does not accept your ZIP file, check for spaces in the names of the files or hidden files in the ZIP archive. If you cannot locate the issue with your ZIP file, please contact us. The GenePattern team plans to develop a ZIP module to help users with creating ZIP archives.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="batch"></a>How can I easily run the same analysis on many different data files?</h4>
+
+<p>As of GenePattern 3.3.3, GenePattern supports batch jobs. To use this feature:</p>
+
+<ol>
+	<li>Select the <i>Uploads</i> tab.</li>
+	<li>Click the arrow next to the uploads directory, name a subdirectory, and click <i>Create</i>.</li>
+	<li>Click the arrow next to your subdirectory and select <i>Upload</i>. This launches the GenePattern file uploader.</li>
+	<li>Click <i>Add</i> in the top of the uploader window and select all the files you want to run as a batch.</li>
+	<li>Click the upload arrow. This will upload all your files into the subdirectory you just made on the GenePattern server. <b>Do not close the uploader window while the file upload is in progress.</b></li>
+	<li>Once the files are uploaded, click the blue arrow next to the directory containing the files, and select the module or pipeline you want to use for your analysis.</li>
+	<li>If there is more than one input file field you need to populate, you can select &quot;send to <parameter> as batch&quot; for those parameters that accept batch inputs. Make sure that all the files for a given analysis, which need to be paired, have the same name; for instance, &quot;file1.gct&quot; would be processed with &quot;file1.cls&quot;.</parameter></li>
+	<li>Run the module.</li>
+</ol>
+
+<p>The module will be run once for each file selected. All the job results for the batch will be listed under a single batch ID.</p>
+
+<p>If you have difficulties with the batch upload function in GenePattern 3.3.3, please contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="dirInput"></a>Why can&#39;t I use a directory as input for all modules?</h4>
+
+<p>While as of GenePattern 3.3.3, GenePattern supports the use of directories as input for modules, not all modules support this function.</p>
+
+<p>A few quick ways to tell if a module does accept directories are:</p>
+
+<ul>
+	<li>Click on the arrow next to a directory in the <i>Uploads</i> tab; the modules listed in that drop-down will accept directories as input.</li>
+	<li>Check the caption under the input parameter; if the module accepts directories as input, it will indicate that here.</li>
+	<li>Check the module documentation (available from the help link in the upper righthand corner of the module&#39;s page); the input parameters section will make it clear if a directory is accepted as input for the module.</li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="ExpFileCreatorExon"></a>Does ExpressionFileCreator support Exon arrays?</h4>
+
+<p>ExpressionFileCreator does not currently support Exon arrays. The GenePattern module development team is working on a module for this.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GEOformat"></a>How do I format my GenePattern output for submission to GEO?</h4>
+
+<p>There are currently no modules in GenePattern for submitting data to GEO. <a href="http://www.ncbi.nlm.nih.gov/geo/info/submission.html">The NCBI has webtools for this purpose, such as GEOarchive.</a></p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="heatmapResolution"></a>How do I get a heat map with a high enough resolution for publication?</h4>
+
+<p>To generate a new heat map image at a resolution near 300 dpi, you can:</p>
+
+<ol>
+	<li>Select the HeatMapImage module in GenePattern.</li>
+	<li>Change both column size and row size to 33 pixels.</li>
+	<li>For best results, change show grid to &quot;no&quot;. (The grid does not scale as much as the column/row size does, and so may look suboptimal for print publication.)</li>
+	<li>Generate your heat map image.<br. li=""> Open your heat map image file in an image manipulation application that can scale images (like Adobe Photoshop or GIMP) and increase the image resolution to 300 dpi. This will reduce the size of the image by about 4 times (thus why you enlarged the image above) and leave it at a resolution of 300 dpi, which is optimal for print publication.</br.></li>
+</ol>
+
+<p>If you already have a heat map image that you cannot for some reason recreate that is at 72 dpi, you can use an image manipulation application that can scale images (like Adobe Photoshop or GIMP) to increase the resolution to 180 dpi. This will shrink the image by half, but 180 dpi is usually the minimum resolution necessary for print publication.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="RNAseqQual"></a>I am running a large number of RNA sequencing jobs, and I&#39;d like to be able to look at the quality of the data. Is there a tool I could use for this?</h4>
+
+<p>Yes: the RNAseQC module in GenePattern calculates standard RNA-seq related metrics, including depth of coverage, ribosomal RNA contamination, continuity of coverage and GC bias. See the module documentation for the recommended data processing workflow for optimal use of this QC analysis.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CLScreate"></a>Is there an easier way to create a CLS file than creating it by hand in a text editor?</h4>
+
+<p>Try the ClsFileCreator module in GenePattern. The ClsFileCreator is a wizard-based tool that can be used to create class label (CLS) files from array data in the GCT or RES file formats.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICinstall"></a>How can I install GISTIC_2.0 on my own GenePattern server?</h4>
+
+<p>To install GISTIC follow the instructions below: Note that you must install on a <b>64-bit linux machine</b>.</p>
+
+<p>To install GISTIC on your 64-bit Linux machine, export it from the public GenePattern Server.<br />
+Select GISTIC from the list of modules. Click the export link to save the module in a zip file.</p>
+
+<p>If you do not already have MATLAB installed, you will need to do so. An executable and instructions can be found on the <a href="https://github.com/genepattern/GISTIC_2.0">GISTIC 2.0 g</a>ithub repository.</p>
+
+<p>Once MATLAB is installed, you will need to add lines like the following to your <font face="courier">&lt;GenePatternServer&gt;/resources/genepattern.properties</font> or <font face="courier">custom.properties file</font>:<br />
+<br />
+<code>MATLAB_LIBRARY=/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/sys/java/jre/glnxa64/jre/lib/amd64\:/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/sys/java/jre/glnxa64/jre/lib/amd64/server\:/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/sys/java/jre/glnxa64/jre/lib/amd64/native_threads\:/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/sys/os/glnxa64\:/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/runtime/glnxa64\:/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/bin/glnxa64</code><br />
+<br />
+and<br />
+<br />
+<code>APPLERES_DIR=/xchip/sqa/Modules/GISTIC/GISTIC2.0_stdAlone/MATLAB_Component_Runtime/v714/X11/app-defaults</code></p>
+
+<p>Then restart your GenePattern Server. (To avoid restarting - enter these via the Administration&gt;Custom page)</p>
+
+<p>Then connect to your GenePattern Server, and import GISTIC from the zip file you just exported.</p>
+
+<p>If you then wish to run it from command line. Please use one of the programming interfaces, as described in the <a href="/programmers-guide">Programmers Guide.</a></p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="externalDB"></a>How can I retrieve external database information from GenePattern?</h4>
+
+<p>The GenePattern server itself does not connect to any database, but modules can and have been written to connect to databases and retrieve data from them including caArray (caArrayImportViewer) and Gene Expression Omnibus (GEOImporter). To connect to any database of your choice, write a simple command-line program to connect to the database and retrieve data into a file format and install this program as a module into GenePattern (see <a href="/programmers-guide#_Creating_Modules">Creating Modules</a>).</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="VisualizerMatlab"></a>My MATLAB figures are not appearing in the MATLAB visualizer I created. Why?</h4>
+
+<p>When creating a matlab visualizer using matlab 7.0 compiled m-code (any release before 7.4), any figures that you create in MATLAB must have the value visible set to on or they will not be drawn to the screen.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="rVersionModule"></a>Can my module use a different version of R than GenePattern?</h4>
+
+<p>GenePattern modules can be written for any version of R. For details on how to specify which version to use, see <a href="/administrators-guide#using-different-versions-of-r">Using Different Versions of R</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="shareModule"></a>How can I share a GenePattern module?</h4>
+
+<p>You can simply make it available in zip format on the web wherever you choose.&nbsp; If you would like to have it on the public GenePattern servers, contact us on our <a href="https://groups.google.com/g/genepattern-help">help forum</a>.&nbsp;</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="64BitModule"></a>Why can&#39;t I specify a 64-bit platform for a module?</h4>
+
+<p>GenePattern does not have a valid CPU Type for 64-bit platforms. So if you try to specify a 64-bit <i>CPU Type</i>, the module will fail on 64-bit platforms, whether or not they are running compatibility mode. You will have to set the <i>CPU Type</i> to &#39;any&#39; and add more information on the appropriate platforms in your documentation. If this does not stop the module from failing on appropriate platforms, contact us at <a href="mailto:gp-help@broadinstitute.org">gp-help(at)broadinstitute.org</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="progEnvLaunchMod"></a>Where can I find out more about how to launch GenePattern modules from other programming languages?</h4>
+
+<p>The reference guide for accessing GenePattern modules from Java, MATLAB, and R is the <a href="/programmers-guide">Programmers Guide</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="API"></a>Can I use the GenePattern APIs to create a web service that programmatically accesses the GenePattern server?</h4>
+
+<p>GenePattern provides a REST API for use by web applications. A WADL file for the REST API can be accessed at the URL below:</p>
+
+<p><code>http://your_server:your_port/gp/rest/application.wadl</code></p>
+
+<p>GenePattern also provides an older SOAP API. This API is deprecated, but is still available. The WSDL file for the GenePattern SOAP API is available at:</p>
+
+<p><code>http://your_server:your_port/gp/services </code></p>
+
+<p>For more information about the programming libraries, see the <a href="/programmers-guide">Programmers Guide</a>.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="MatlabFail"></a>Why can&#39;t I call my pipeline/module from MATLAB?</h4>
+
+<p>A pipeline or module with a period in its name cannot be called from MATLAB.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="CSVfile"></a>What is a CSV file?</h4>
+
+<p>CSV stands for &quot;comma-separated values&quot;. While CSV files will open in Excel or similar spreadsheet applications, it is important to remember that the values in these files are comma-delimited, not space- or tab-delimited.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICsource"></a>Can you send me the source code for GISTIC?</h4>
+
+<p>We do not currently distribute the source code for GISTIC. The executable is available and can be exported from our public GenePattern server.&nbsp; Note that the GISTIC module and executable are currently compiled only for 64-bit Linux.<br />
+<br />
+The GISTIC developers are working on a version that will allow us to distribute the source code, but it is still currently in development.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="moduleToPublicServer"></a>How can I make my GenePattern module available on the GenePattern public server?</h4>
+
+<p>First, please look at <a href="http://www.gparc.org">GenePattern Archive (GParc) </a>to see if this will satisfy your requirements. If it seems that GParc is not the right answer for you, please contact the GenePattern team at gp-help(at)broadinstitute.org to begin discussing the possibility of releasing your module on the GenePattern public server. When you contact us, please provide your code and any documentation you currently have.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GISTICAgilent"></a>Does GISTIC support Agilent data?</h4>
+
+<p>Yes, GISTIC will support Agilent data. However, you must convert your aCGH data into SEG (segmented) format. GenePattern does not currently provide a module for converting Agilent data to SEG format.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="GSEAnoGeneSetsPassed"></a>Why am I getting the &quot;none of the gene sets passed the size thresholds&quot; error in GSEA?</h4>
+
+<p>There are several points you need to check in your gene sets. Check that your gene identifiers are all uppercase if you are not using the collapse to gene symbols option. For other information, please see the <a class="external-link" href="http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/1001" rel="nofollow">error 1001 FAQ for GSEA</a> for the list.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a name="FileErrors"></a>I keep getting file errors when I run a module. What are common reasons for file errors that I can check?</h4>
+
+<p>There are several things you can check in your files that commonly cause file errors:</p>
+
+<ul>
+	<li>Do your files/directories have spaces in their names?
+	<ul>
+		<li>Remove them or replace them with _ (underscore) or periods.</li>
+	</ul>
+	</li>
+	<li>Are there characters such as parentheses or pound signs (#) in your file names?
+	<ul>
+		<li>Remove them or replace them with _ (underscore) or periods.</li>
+	</ul>
+	</li>
+	<li>What type of file is the module expecting? Is your file the correct type?
+	<ul>
+		<li>Check the module documentation for more information.</li>
+	</ul>
+	</li>
+	<li>Does the file have the correct extension for the file type the module is expecting?
+	<ul>
+		<li>Sometimes Excel or similar programs can add a &quot;.txt&quot; or other extension to the file name. Remove it (rename the file on your desktop and delete the .txt extension) and make sure the file name ends with the correct extension.</li>
+	</ul>
+	</li>
+	<li>Is your data delimited in the way the module expects it to be?
+	<ul>
+		<li>Check the module documentation to see if it expects tab-, comma-, or space-delimited data (or something else), then make sure your file is formatted appropriately.</li>
+	</ul>
+	</li>
+	<li>Did you edit your file in Excel or similar program?
+	<ul>
+		<li>Such applications can sometimes add extra spaces or tabs. Open your file in a text-editing application and look for these extra invisible characters that can cause errors.</li>
+	</ul>
+	</li>
+	<li>Do the contents of your file match the expected file format?
+	<ul>
+		<li>Check that your file contains all the expected columns and header information in the expected order for the given format. See <a href="/file-formats-guide">File Formats</a>.</li>
+	</ul>
+	</li>
+</ul>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><strong><a name="ConsensusClusteringJavaError"></a></strong>Why am I seeing a &quot;Process existed with status code: 138&quot; error when I try to run ConsensusClustering?</h4>
+
+<p>The ConsensusClustering module does not work with Java 1.6.0_33 on Macintosh.&nbsp; As a workaround, you can run ConsensusClustering on the GenePattern public server, or on a server that is on a Windows machine or a Macintosh with a Java version other than 1.6.0_33.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><strong><a name="LicensedModuleInstall"></a></strong>Why can&#39;t I install a licensed module on my GenePattern server?</h4>
+
+<p>Licensed modules can only be installed on servers running GenePattern 3.5 or higher. Upgrade your GenePattern server and try again.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><strong><a name="GISTIC_2.0NaNProcessingError"></a></strong>I got this error when running GISTIC_2.0 &quot;<span style="font-family: arial, helvetica, sans-serif; font-size: 13px; line-height: 16px;">All input data were removed after NaN processing&quot;, what does it mean?</span></h4>
+
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: 13px; line-height: 16px;">GISTIC expects that the segments for a sample should cover almost all of its genome, even the regions where the copy number is normal. Any gaps in coverage for any sample are removed from the GISTIC analysis.</span></p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><strong><a name="rnaseq.refgtforfasta"></a></strong>How do I find reference genome annotation files or whole genome files to use with the GenePattern RNA-seq tools?</h4>
+
+<p>Several of the modules also accept reference genome annotation files (GTF files) and/or whole genome FASTA files.&nbsp; A list of these are available from our FTP site in the following locations:</p>
+
+<ul>
+	<li>Reference annotation GTFs: <a href="ftp://ftp.broadinstitute.org/pub/genepattern/rna_seq/referenceAnnotation/gtf/">ftp://ftp.broadinstitute.org/pub/genepattern/rna_seq/referenceAnnotation/gtf/</a></li>
+	<li>Whole genome FASTA files: <a href="ftp://ftp.broadinstitute.org/pub/genepattern/rna_seq/whole_genomes/">ftp://ftp.broadinstitute.org/pub/genepattern/rna_seq/whole_genomes/</a></li>
+</ul>
+
+<p>The modules can usually accept an FTP URL directly wherever a file input is allowed, so there is no need for you to download the reference file; instead, just copy and paste the file&#39;s FTP URL into the file input parameter.</p>
+
+<h4><a name="GISTICMarkersFile"></a>How can I create a GISTIC markers file for my segmented data file?</h4>
+
+<p>The best way to create a markers file for your data ( so that it matches correctly) is to take the first 3 columns from the copy number file you used as input to the segmentation method used to create the seg file for GISTIC.</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a id="TCGAMarkersFile" name="TCGAMarkersFile">Is there a markers file that I can use with the level 3 TCGA data?</a></h4>
+
+<p>The SNP 6.0 markers file used for our TCGA GISTIC analyses is available here: <a href="ftp://ftp.broadinstitute.org/pub/GISTIC2.0/hg19_support/genome.info.6.0_hg19.na31_minus_frequent_nan_probes_sorted_2.1.txt" target="_blank">ftp://ftp.broadinstitute.org/<wbr />pub/GISTIC2.0/hg19_support/<wbr />genome.info.6.0_hg19.na31_<wbr />minus_frequent_nan_probes_<wbr />sorted_2.1.txt</a></p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+
+<h4><a id="JavaJDK" name="JavaJDK">I just installed Java 8. Why does my new GenePattern install say I need Java 7+ ?</a></h4>
+
+<p>It is likely that you installed the Java 8 JRE via your browser, which allows you to run Java apps, but is not sufficient for running GenePattern. You need the Java JDK.<a href="http://http://www.java.com/en/download/manual.jsp"> </a><a href="https://java.com/en/download/manual.jsp">https://java.com/en/download/manual.jsp</a>&nbsp;An easy way to see what jdk you have installed is to bring up a terminal window and type &quot;java -version&quot; (without the quotes).</p>
+
+<p><a class="btn btn-sm btn-warning" href="#top"><span class="glyphicon glyphicon-arrow-up">&nbsp;</span>Back to top</a></p>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

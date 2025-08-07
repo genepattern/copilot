@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow Cytometry Data Preprocessing</title>
+</head>
+<body>
+<h2>Description</h2>
+
+<p>There is significant demand for several data preprocessing steps in the analysis of flow cytometry data. These include data preview and transformations, conversion between spreadsheets (i.e., CSV files), editing keywords in the FCS data file, merging and sub-sampling data, and other tools that are included in the Flow Cytometry Data Preprocessing suite.<br />
+(Click <img src="/uploaded/content_pdf.jpg" /> for documents)</p>
+
+<h3>FCS data preview</h3>
+
+<ul>
+	<li><strong>PreviewFCS</strong> provides structural metadata, parameters, and descriptive statistics about an FCS data file. It can be used to get a quick overview of the contents of an FCS data file,&nbsp;providing&nbsp;a description that includes the number of events, number of parameters, and, for each parameter, the&nbsp;name, full name, minimum, maximum, median, mean, and 1st and 3rd quartiles of the distribution. The format of the output may be selected either as an HTML report or an XML document. <a href="http://genepattern.broadinstitute.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00185" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<h3>Data format conversions</h3>
+
+<ul>
+	<li><strong>CsvToFcs</strong> converts a Comma Separated Values (CSV) file to a Flow Cytometry Standard (FCS) file. <a href="http://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00174" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>FcsToCsv</strong> converts a Flow Cytometry Standard (FCS) file to a Comma Separated Values (CSV) file. <a href="http://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00175" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>ImmPortCSV2TXT</strong> converts a Comma Separated Values (CSV) file to a TXT file.</li>
+</ul>
+
+<h3>Data transformations</h3>
+
+<ul>
+	<li><strong>CompensateFCS</strong> compensates an FCS data file. Before analyzing your flow cytometry data, you usually&nbsp;need to make sure that these are properly compensated. This module can help you compensate your uncompensated&nbsp;data if you have a spillover matrix. The spillover matrix may be part of your FCS already, or it may be provided in an external text file.</li>
+	<li><strong>FCSNormalization</strong> perfoms per-channel normalization of FCS data files. Between-sample variation in high-throughput flow cytometry data poses a significant challenge for analysis of large scale data sets, such as those derived from multi-center clinical trials. It is often hard to match biologically relevant cell populations across samples due to technical variation in sample acquisition and instrumentation differences. Thus normalization of data is a critical step prior to analysis, particularly in large-scale data sets from clinical trials, where group-specific differences may be subtle and patient-to-patient variation common.</li>
+	<li><strong>ImmPortFCSConvLogicleTrans (FCSTrans)</strong> generates numeric data matrices&nbsp;into TXT files from binary FCS files. This module is a GenePattern implementation of FCSTrans method at &nbsp;the&nbsp;Immunology Database and Analysis Portal (ImmPort). The FCSTrans method automatically identifies transformation methods and parameters that generate consistent results with commercial software. The user is not required to select methods or transformation parameters. The module aims to remove the preprocessing obstacle of FCS file conversion and data transformation, and provide a starting point to independent FCM data analysts, statisticians, and software developers.</li>
+	<li><strong>LogicleTransformFCS</strong> performs a Logicle transformation of (selected) parameters in a list mode FCS data file. In most flow cytometry applications, fluorescence signals of interest can range down to essentially zero. &nbsp;After fluorescence compensation, some cell populations will have low means and include events with negative data values. The Logicle display method provides more complete, appropriate, and readily interpretable representations of data that include&nbsp;populations with low-to-zero means (including distributions resulting from fluorescence compensation procedures)&nbsp;than can be produced using either logarithmic or linear displays. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00192:1" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<h3>FCS keywords manipulation</h3>
+
+<ul>
+	<li><strong>DeIdentifyFCS</strong> de-identifies FCS data files by removing the values of specified keywords. An FCS file may contain information about the sample (source) in the text segment of the file. In a clinical environment, before sharing FCS files, you may want to remove this information. This module lets you do so while leaving the rest of the file intact. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00268:1" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>ExtractFCSKeywords</strong> extracts keywords and their values from an FCS TEXT segment. Specific metadata information (data about data) is usually stored in FCS data files as part if the TEXT segment in the form of keyword/value pairs. For example, this may include date and time of data acquisition, description of measured cells, comments, type and/or serial number of cytometer used, name of the operator, tube or plate identification, excitation wavelength and power for measured channels, types and voltages of detectors used, etc. This module can be used to extract and save the information in all keyword/value pair(s) either in a CSV file (default) or as an FCS text segment chunk in a text file. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00181:2" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>SetFCSKeywords</strong> sets keyword value(s) in an FCS TEXT segment. It can be used to add additional or replace existing information stored in a keyword/value pair. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00186:2" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<h3>FCS dataset manipulation</h3>
+
+<ul>
+	<li><strong>AddFCSEventIndex</strong> adds an index&nbsp;to events in an FCS data file. The index is added as a new parameter and it may be used to identify events across different analytical steps later on. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00176:2" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>AddFCSParameter</strong> adds one or more parameters (measurement types) and their values to an FCS data file. The additional parameter values are provided in a CSV spreadsheet. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00198:2" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>AddNoiseToFCS</strong> adds noise to specified (or all) parameters in an FCS data file. Additionally, it can also remove saturated events, i.e., events with parameter values very close to the maximum range of particular scales. This functionality serves as a useful clustering preprocessing step since several clustering algorithms are looking at the variance among events in different directions. Saturated events as well as other &quot;aligned&quot; events may create a group (cluster) with a zero variance in a certain dimension, which causes issues for many model-based clustering algorithms. Using this module can help prevent these issues by removing saturated events and by adding a tiny bit of noise, which is not biologically relevant; however, it minimizes the chances of having a group of perfectly aligned events. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00179:2" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>ExtractFCSDataset</strong> extracts one or more FCS datasets from an FCS data file. Typically, there is only a single dataset per FCS data file. However, in certain cases, there may be more than one data set in an FCS data file. Since most software does not support more than one dataset per FCS datafile, using this module is a workaround to analyze data files with multiple datasets with common tools. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00182:2" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>ExtractFCSParameters</strong> extracts specified parameters (measurement types) from an FCS data file. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00180:2" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>ImmPortColSelection</strong> extracts specified columns from a TXT file generated from an FCS data file to exclude unused fluorescence/scatter parameters/markers from later FCM data analysis.</li>
+	<li><strong>MergeFCSDataFiles</strong> merges multiple FCS data files into a single FCS dataset. It allows you to combine (add) events from multiple FCS data files and save these in a single file (as long as events in all the source files contain the same parameters). This may be useful in certain cases; for example, in using clustering to identify all the possible subpopulations based on samples from several patients. Sub-sampling options are included. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00187:1" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+	<li><strong>RemoveSaturatedFCSEvents</strong> removes saturated events from an FCS data file. Events are considered saturated if their parameter values are on (or very close to, i.e., within 0.1%) the maximum range of particular scales. V&nbsp;Saturated events are usually created when the voltage on the instrument is set too high so that event values fall outside of the recordable scale. These events are commonly recorded with the maximum allowed value, which causes problems for subsequent analysis. <a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00210:1" target="_blank" type="application-pdf"> <img src="/uploaded/content_pdf.jpg" /></a></li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+	<li><strong>FCS: </strong>Spidlen J, Moore W, Parks D, Goldberg M, Bray C, Bierre P, Gorombey P, Hyun B, Hubbard M, Lange S, Lefebvre R, Leif RR, Novo D, Ostruszka L, Treister A, Wood J, Murphy RF, Roederer M, Sudar D, Zigon R, Brinkman RR.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/19937951" target="_blank">Data File Standard for Flow Cytometry, Version FCS 3.1.</a>&nbsp;<em>Cytometry&nbsp;A</em>. 2010;77:97&ndash;100.</li>
+	<li><strong>ImmPortFCSConvLogicleTrans (FCSTrans)</strong> Qian Y, Liu Y, Campbell J, Thomson E, Kong YM, Scheuermann, RH. &nbsp;<a href="http://onlinelibrary.wiley.com/doi/10.1002/cyto.a.22037/abstract" target="_blank">FCSTrans: An open source software system for FCS file conversion and data transformation.</a>&nbsp;<em>Cytometry&nbsp;A</em>. 2012:81;353-356. doi: 10.1002/cyto.a.22037</li>
+	<li><strong>Normalization: </strong>Hahne F,&nbsp;Khodabakhshi AH,&nbsp;Bashashati A,&nbsp;Wong C-J,&nbsp;Gascoyne RD,&nbsp;Weng AP,&nbsp;Seifert-Margolis V,&nbsp;&nbsp;Bourcier K,&nbsp;Asare A,&nbsp;Lumley T,&nbsp;Gentleman R,&nbsp;Brinkman RR. &nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/19899135" target="_blank">Per-channel basis normalization methods for flow cytometry data.</a>&nbsp;&nbsp;<em>Cytometry A</em>. 2010;77(2):121-131.</li>
+	<li><strong>Logicle: </strong>Moore W,&nbsp;Parks D.&nbsp;<a href="http://www.ncbi.nlm.nih.gov/pubmed/22411901" target="_blank">Update for the logicle data scale including operational code implementations.</a> <em>Cytometry&nbsp;A</em>. 2012;81(4):273-277.</li>
+	<li><a href="https://www.genepattern.org/quick-start#gsc.tab=0" target="_blank">Quick Start</a> a 10-minute introduction to GenePattern</li>
+</ul>
+</body>
+</html>

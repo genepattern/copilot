@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RNA-seq Analysis</title>
+</head>
+<body>
+<h2><a id="top" name="top"></a>Overview</h2>
+
+<p>GenePattern offers a set of tools to support a wide variety of RNA-seq analyses, including short-read mapping, identification of splice junctions, transcript and isoform detection, quantitation, differential expression, quality control metrics, visualization, and file utilities. The tools released as GenePattern modules are widely-used. We continue to release new and updated tools as they become available. To be informed when new capabilities are added, check this page or sign up for our <a href="http://x.com/GenePattern">Twitter</a> feed.</p>
+
+<h2>How to Use the RNA-seq Tools</h2>
+
+<p><strong>We</strong>&nbsp;<strong>recommend that you run these modules on a local GenePattern server,</strong> due to the average size of the input files for these modules. You can <a href="https://www.genepattern.org/user-guide#running-modules-and-pipelines-using-an-upload-subdirectory" target="_blank">upload</a> your data, and make use of the new file management features in GenePattern 3.6, but large data will take a while to upload, depending on your connection speed, data size, and current available bandwidth.&nbsp;</p>
+
+<p style="margin-left:40px">COMPATIBILITY NOTE: A number of tools are built for Unix-based (Mac and Linux) systems and will not run on Windows machines. They are the Tuxedo suite tools (Bowtie, TopHat, Cufflinks, Cuffmerge, Cuffcompare, and Cuffdiff) and BWA.</p>
+
+<p>You can install a local GenePattern server by doing the following:</p>
+
+<ol>
+	<li>If you have not downloaded GenePattern and installed it on your local machine, follow the instructions on the <a href="https://github.com/genepattern/genepattern-server">Download GenePattern</a> page.</li>
+	<li>If you have already downloaded and installed a GenePattern server, you can install any of these modules from the GenePattern public repository, avaliable from <em>&nbsp;Modules &amp; Pipelines&gt; Install From Repository</em>, in&nbsp;the navigation bar in your GenePattern server.</li>
+	<li>Enable the browsing of your GenePattern server&#39;s file path. This will allow you to send RNA-seq files to GenePattern modules without uploading them. See <a href="https://www.genepattern.org/user-guide#_Using_File_Paths">these instructions</a> for more details.</li>
+</ol>
+
+<h3>Reference Genomes</h3>
+
+<p>The TopHat, Bowtie, and BWA GenePattern modules provide pre-built reference genome indexes for a number of species. If you need an index for a species that is not hosted, email us at gp-help@broadinstitute.org.</p>
+
+<p>Several of the modules accept reference genome annotation files (GTF files) and/or whole genome FASTA files.</p>
+
+<p>To use one of these files in a GenePattern module, click the <em>Specify URL</em> radio button under the input box for the <em>GTF file</em> parameter, and paste in the URL for the annotation file you want to use.</p>
+
+<h2><a id="tools" name="tools"></a>RNA-seq Tools in GenePattern</h2>
+
+<h3 id="tuxedo" name="tuxedo">Tuxedo Suite</h3>
+
+<p>GenePattern provides support for the Tuxedo suite of Bowtie, Tophat, and Cufflinks, as described in Trapnell et al (2012) (<a href="http://www.nature.com/nprot/journal/v7/n3/full/nprot.2012.016.html">Differential gene and transcript expression analysis of RNA-seq experiments with TopHat and Cufflinks</a>).</p>
+
+<ul>
+	<li>
+	<h4>Bowtie (Version in GenePattern public repository: &nbsp;2.1.0)</h4>
+	</li>
+</ul>
+
+<p style="margin-left:40px">Bowtie is short read aligner geared toward quickly aligning large sets of short DNA sequences (reads) to large genomes. For more information, please refer to the <a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a> documentation. The GenePattern Bowtie modules consist of the following tools:</p>
+
+<ul>
+	<li><strong>Bowtie.aligner</strong>: the Bowtie short-read alignment algorithm</li>
+	<li><strong>Bowtie.indexer</strong>: Bowtie requires an indexed genome to run. The Bowtie.indexer module accepts a FASTA file containing the target genome to which reads will be mapped, and builds the required index files. The GenePattern module provides a large number of pre-built indexes.</li>
+	<li>
+	<h4>Tophat (Version in GenePattern public repository: 2.0.11)</h4>
+	</li>
+</ul>
+
+<p style="margin-left:40px">TopHat is a fast splice junction mapper.&nbsp; TopHat uses Bowtie to map RNA-seq reads to a reference genome, then analyzes the mapping results to identify splice junctions between exons. For more information about the algorithm, please refer to the <a href="https://cole-trapnell-lab.github.io/projects/tophat/">TopHat</a> documentation.</p>
+
+<ul>
+	<li>
+	<h4>Cufflinks (Version in GenePattern public repository: 2.0.2)</h4>
+	</li>
+</ul>
+
+<p style="margin-left:40px">Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-seq samples. It accepts aligned RNA-seq reads and assembles the alignments into a parsimonious set of transcripts. Cufflinks then estimates the relative abundances of these transcripts based on how many reads support each one. For more information, please refer to the <a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a> documentation. Cufflinks contains several accessory tools:</p>
+
+<ul style="margin-left:40px">
+	<li><strong>Cuffcompare </strong>(GenePattern module name: Cufflinks.cuffcompare): Cuffcompare helps analyze the transcribed fragments (transfrags) in an assembly by comparing assembled transcripts to a reference annotation and tracking Cufflinks transcripts across multiple experiments (e.g., across a time course). For more information, please refer to the <a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a> documentation. (Note that this module is currently at Cufflinks version 1.3.0. The update to version 2.1.0 should be available in July. Please contact us for more information)</li>
+	<li><strong>Cuffmerge</strong> (GenePattern module name: Cufflinks.cuffmerge): Cuffmerge merges together several Cufflinks assemblies. It also runs Cuffcompare and automatically filters a number of transfrags that are probably artfifacts.</li>
+	<li><strong>Cuffdiff</strong> (GenePattern module name: Cufflinks.cuffdiff): Cuffdiff identifies significant changes in transcript expression, splicing, and promoter use.</li>
+	<li><strong>Fpkm_trackingToGct</strong>: This module converts a Cufflinks <a href="https://www.genepattern.org/file-formats-guide#FPKM_tracking">FPKM_tracking</a> file to <a href="https://www.genepattern.org/file-formats-guide#GCT">GCT format</a>, which can be used in many other tools in GenePattern. The FPKM_tracking file format is a tab-delimited format produced by <a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>.</li>
+	<li><strong>Read_group_trackingToGct</strong>: This module converts a Cuffdiff v2.0.2 read_group_tracking file to <a href="http://www.broadinstitute.org/gp_guides/file-formats/sections/gct">GCT format</a> and <a href="/gp_guides/file-formats/sections/cls">CLS class file</a>, with option of expression value column selection--raw fragments, internally scaled fragments, externally scaled fragments, or normalized FPKM values.</li>
+</ul>
+
+<h3 id="bwa" name="bwa">BWA (Version in GenePattern: 0.5.9)</h3>
+
+<p>&nbsp;For more information, please refer to the <a href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA</a> documentation. The GenePattern BWA modules consist of the following tools:</p>
+
+<ul>
+	<li><strong>BWA.aln:</strong> This module executes the &quot;aln&quot; alignment option of BWA, which aligns Illumina sequence reads of up to 100 bp.</li>
+	<li><strong>BWA.bwasw</strong>: This module executes the &quot;bwasw&quot; alignment option of BWA, which aligns sequences of 70bp to 1Mbp.</li>
+	<li><strong>BWA.indexer</strong>: This module builds a BWA-compatible index from a set of DNA sequences in FASTA format.&nbsp; For more information, please refer to the <a href="http://bio-bwa.sourceforge.net/bwa.shtml">BWA</a> documentation.</li>
+</ul>
+
+<h3 id="rnaseqc" name="rnaseqc">RNA-SeQC</h3>
+
+<p>This module calculates useful metrics for determining the quality of RNA-seq data such as depth of coverage, rRNA contamination, continuity of coverage, and GC bias.&nbsp; For more information, including a suggested workflow for preprocessing your data files, see the in-depth article about <a href="https://www.genepattern.org/blog/2013/03/05/rna-seq-qc-in-genepattern#gsc.tab=0">RNA-seq QC in GenePattern</a>.</p>
+
+<h3 id="IGV" name="IGV">Integrative Genomics Viewer (IGV)</h3>
+
+<p>IGV is a visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types including sequence alignments, microarrays, and genomic annotations. For more information, please refer to the <a href="http://www.broadinstitute.org/software/igv">IGV</a> documentation.</p>
+
+<h3 id="picard" name="picard"><a id="picard" name="picard"></a>Picard</h3>
+
+<p>The Picard tools are widely-used utilities for manipulating SAM/BAM files, and we have wrapped a number of them for GenePattern.&nbsp; For more information on the SAM/BAM file format, see the <a href="http://samtools.sourceforge.net/">SAMtools page</a>.&nbsp; For more information about the Picard command-line tools, see the <a href="https://broadinstitute.github.io/picard/">Picard site</a>.</p>
+
+<ul>
+	<li><strong>Picard.AddOrReplaceGroups</strong>: This module replaces all read groups in an input SAM or BAM file with a new read group provided by the user and assigns all reads to this read group in the output.</li>
+	<li><strong>Picard.BamToSam</strong>: This module converts a BAM file to a SAM file. BAM is the binary version of SAM.</li>
+	<li><strong>Picard.CreateSequenceDictionary</strong>:This module reads FASTA or FASTA.GZ files containing reference sequences, and writes them as a SAM file containing a sequence dictionary.</li>
+	<li><strong>Picard.FastqToSam</strong>: This module converts a FASTQ file to SAM or BAM format. FASTQ format stores sequences and Phred quality scores in a single file.</li>
+	<li><strong>Picard.MarkDuplicates</strong>: This module examines aligned records in a SAM or BAM file to locate duplicate reads. All records are then written to the output file with the duplicate records flagged.</li>
+	<li><strong>Picard.ReorderSam</strong>: This module reorders reads in a SAM or BAM file to match the contig ordering in a provided reference file, as determined by exact name matching of contigs. Reads mapped to contigs absent from the new reference are dropped.</li>
+	<li><strong>Picard.SamToBam</strong>: This module converts a SAM file to a BAM file. BAM is the binary version of SAM.</li>
+	<li><strong>Picard.SamToFastq</strong>: This module converts a SAM or BAM file to FASTQ format with the Picard file conversion tool. FASTQ format stores sequences and Phred quality scores in a single file.</li>
+	<li><strong>Picard.SortSam</strong>: This module sorts a SAM or BAM file according to a parameter specified by the user and outputs a sorted SAM or BAM file.</li>
+</ul>
+
+<h3 id="samtools" name="samtools">SAMtools</h3>
+
+<p>SAMtools are widely-used utilities for manipulating alignments in the SAM format, including sorting, merging, indexing and generating alignments in a per-position format.&nbsp; We have started to wrap these tools for GenePattern, and will continue to add to the SAMtools modules.&nbsp; For more information on the SAM/BAM file format or about the SAMtools utilities, see the <a href="http://samtools.sourceforge.net/">SAMtools site</a>.</p>
+
+<ul>
+	<li><strong>SamTools.FastaIndex</strong>: This module indexes a reference sequence in FASTA format. The index file is given the extension FAI.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>Legacy Tool</strong></p>
+
+<p id="ExprToGct" name="ExprToGct">ExprToGct: This module converts a file in EXPR format to GCT format. The EXPR file format is a tab-delimited format produced by <a href="https://cole-trapnell-lab.github.io/cufflinks/">Cufflinks</a> version 1 (deprecated in Cufflinks version 2 and higher).</p>
+
+<p><a class="btn btn-xs btn-warning" href="#top">Back to top</a></p>
+</body>
+</html>

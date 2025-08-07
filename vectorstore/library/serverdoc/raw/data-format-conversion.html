@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Format Conversion</title>
+</head>
+<body>
+<p>Analyzing genomic data requires working with vast amounts of inherently noisy data in a variety of data formats, where gene identifiers can vary across platforms. In addition to supporting genomic analysis, GenePattern provides support for simply working with your data files.</p>
+
+<p>GenePattern provides the following support for essential data processing tasks:</p>
+
+<ul>
+	<li>Importing, exporting, and file conversion: GenePattern imports data from a broad array of platforms and formats, including MAGE-ML, mzXML, and the Gene Expression Omnibus (GEO); converts Affymetrix CEL files to GenePattern files and GenePattern files to MAGE-ML format; and converts line endings to the format required by the host operating system.</li>
+	<li>Normalizing, filtering, and imputing values: The preprocessDataset module provides several preprocessing options, including normalization, floor and ceiling thresholding, and variation filtering. If your expression data set is missing values, GenePattern provides support for imputing those values; this can be particularly useful when converting cDNA expression data, which allows missing values, to a formats that do not.</li>
+	<li>Converting gene identifiers and retrieving annotations: GenePattern provides support for converting the gene identifiers used by one microarray chip to those used by another. It provides access to gene annotations through GeneCruiser, which uses Affymetrix probe (gene) identifiers.</li>
+	<li>Working with data sets: GenePattern provides support for working with data sets by allowing you to extract row and column (gene and sample) names, extract rows and columns of data, transpose rows and columns, reorder samples based on phenotypes, or split a single data set into two non-overlapping subsets.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p><a class="btn btn-success" href="/modules?taskType=Preprocess+%26+Utilities">View all current GenePattern preprocessing and utility modules</a></p>
+</body>
+</html>

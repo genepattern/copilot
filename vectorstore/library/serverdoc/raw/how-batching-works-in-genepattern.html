@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How Batching works in GenePattern</title>
+</head>
+<body>
+<p>GenePattern allows you to submit a batch of jobs from the job input form. To enable parameter batching, click the batch checkbox next to one or more input parameters. A batch job is created for each value specified for a batched parameter.</p>
+
+<h3>Batching of a Single&nbsp;Parameter</h3>
+
+<p>Here is an example of batching over the column distance measure parameter in the <a href="http://www.broadinstitute.org/modules/docs/HierarchicalClustering/">HierarchicalClustering</a> module. In this example&nbsp;three values&nbsp;Pearson correlation, Uncentered correlation and Euclidean distance&nbsp;are specified for the column distance measure parameter:</p>
+
+<p><img alt="" src="/uploaded/content_hierarchical_clustering_batch_example.png" style="width: 800px; height: 88px;" /></p>
+
+<p>There will be three batch jobs created:</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:700px;">
+	<tbody>
+		<tr>
+			<td><strong>Parameter Name</strong></td>
+			<td><strong>Batch Job #1</strong></td>
+			<td><strong>Batch Job #2</strong></td>
+			<td><strong>Batch Job #3</strong></td>
+		</tr>
+		<tr>
+			<td>column distance measure</td>
+			<td>Pearson correlation</td>
+			<td>Uncentered correlation</td>
+			<td>Euclidean distance</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h3>Batching of Multiple Parameters</h3>
+
+<p>In the case of batching over multiple batch parameters the values specified for each batch parameter is&nbsp;paired. The pairing of values&nbsp;for&nbsp;batch&nbsp;parameter&nbsp;is based on the order provided on the submit job page except when the values provided are&nbsp;directories.</p>
+
+<p>Here is an example of batching over the chromosome and chromosome sequence file parameters&nbsp;in the <a href="http://www.broadinstitute.org/webservices/gpModuleRepository/download/prod/module/?file=/ScripturePipeline/broad.mit.edu:cancer.software.genepattern.module.pipeline/00012/3/Scripture_pipeline.pdf">Scripture</a> module. In this example two values (chr2 and chr8) are specified to the chromosome parameter. Since batch&nbsp;parameters are paired two values must also be specified for the chromosome sequence file and the values are chr2.fasta and chr8.fasta:</p>
+
+<p><img alt="" src="/uploaded/content_scripture_batch_example_2.png" style="width: 800px; height: 327px;" /></p>
+
+<p>&nbsp;</p>
+
+<p>There will be two&nbsp;batch jobs created with the following values set:</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px;">
+	<tbody>
+		<tr>
+			<td><strong>Parameter Name</strong></td>
+			<td><strong>Batch Job #1</strong></td>
+			<td><strong>Batch Job #2</strong></td>
+		</tr>
+		<tr>
+			<td>chromosome</td>
+			<td>chr2</td>
+			<td>chr8</td>
+		</tr>
+		<tr>
+			<td>chromosome sequence file</td>
+			<td>chr2.fasta</td>
+			<td>chr8.fasta</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h3>Batching of Directories</h3>
+
+<p>For directories the pairing of files&nbsp;is done using the base common name (file name without the extension) of the files.</p>
+
+<p>For example given the following:</p>
+
+<p>A. Four&nbsp;directories gct_files_set1/, gct_files_set2/,&nbsp; cls_files_set1/and cls_files_set2/&nbsp;containing the following files:</p>
+
+<ul>
+	<li>gct_files_set1/all_aml_test.gct</li>
+	<li>gct_files_set1/all_aml_train.gct</li>
+	<li>gct_files_set2/tumor.gct</li>
+	<li>gct_files_set2/normal.gct</li>
+	<li>cls_files_set1/all_aml_test.cls</li>
+	<li>cls_files_set1/all_aml_train.cls</li>
+	<li>cls_files_set2/tumor.cls</li>
+	<li>cls_files_set2/new.cls</li>
+</ul>
+
+<p>B. Here is an example of batching the input file and cls file parameters with directory inputs&nbsp;in the <a href="http://www.broadinstitute.org/modules/docs/ComparativeMarkerSelection">ComparativeMarkerSelection</a> module:</p>
+
+<p><span style="line-height: 1.42857;"><img alt="" src="/uploaded/content_cms_batch_example.png" style="width: 800px; height: 439px;" /><br />
+There will be three&nbsp;batch jobs created with the following values set:</span></p>
+
+<table border="1" cellpadding="6" cellspacing="2" style="width:700px;">
+	<tbody>
+		<tr>
+			<td><strong>Parameter Name</strong></td>
+			<td><strong>Batch Job #1</strong></td>
+			<td><strong>Batch Job #1</strong></td>
+			<td><strong>Batch Job #3</strong></td>
+		</tr>
+		<tr>
+			<td>input file</td>
+			<td>gct_files_set1/all_aml_test.gct</td>
+			<td>gct_files_set1/all_aml_train.gct</td>
+			<td>gct_files_set2/tumor.gct</td>
+		</tr>
+		<tr>
+			<td>cls file</td>
+			<td>cls_files_set1/all_aml_test.cls</td>
+			<td>gct_files_set1/all_aml_train.cls</td>
+			<td>cls_files_set2/tumor.cls</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Notice that the normals.gct and new.cls files were ignored since there were no other files with matching base names (i.e normals.cls or new.gct).</p>
+
+<p>&nbsp;</p>
+
+<p>NOTE: Batching of both non file parameters and file parameters where any of the values specified is a directory is not supported. However, batching of only file parameters where one of the values is a directory is supported.</p>
+</body>
+</html>

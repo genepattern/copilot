@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affymetrix SNP6 Copy Number Inference Pipeline</title>
+</head>
+<body>
+p>The CopyNumberInferencePipeline is a method for analyzing Affymetrix SNP6.0 data files in GenePattern. The modules take Affymetrix SNP6 CEL files and process them in a pipeline that outputs genotype calls, copy number values, and copy number variant (CNV) regions.&nbsp; This page and the pipeline documentation can help you figure out how best to use this tool for your analysis.&nbsp; This pipeline includes a number of modules for data processing and analysis, with branches that allow for some additional analyses, depending on your input and desired output.&nbsp; Note that the segmented output of this pipeline can be used to run GISTIC.</p>
+
+<p>The algorithms that constitute this pipeline were developed by the Cancer Genomics Computation Analysis group of the Broad Institute.</p>
+
+<p>NOTE: If you have data from earlier Affymetrix SNP chips, you should use the SNPFileCreator module and look at the methodology suggested in the GenePattern<span style="color:#000000;"> &quot;</span><a class="protocolLink" href="http://genepattern.broadinstitute.org/gp/pages/protocols/SnpCN.html"><span style="color:#000000;">SNP Copy Number and Loss of Heterozygosity Estimation</span></a><span style="color:#000000;">&quot;</span> protocol, available from the center pane of the main GenePattern page.&nbsp; Do not use the CopyNumberInferencePipeline.</p>
+
+<h2>Summary</h2>
+
+<p>The CopyNumberInferencePipeline accepts a set of raw SNP6 CEL files as input and generates segmented copy number calls for each sample. The copy number calls that are output are relative, and are normalized to make each sample appear to be diploid.&nbsp;</p>
+
+<h2>Workflow Overview</h2>
+
+<p>The general workflow of the CopyNumberInferencePipeline follows this outline:</p>
+
+<ol>
+	<li>Calibrate signal intensities. (SNPFileCreator_SNP6)</li>
+	<li>Compute genotype calls. (Birdseed)</li>
+	<li>Convert signal intensities to copy number calls. (CopyNumberInference)</li>
+	<li>Calculate copy number noise. (CopyNumberNoise)</li>
+	<li>Reduce noise by removing outlier probes. (RemoveCopyNumberOutliers)</li>
+	<li>Reduce noise further by subtracting out variation seen in a pre-defined set of normal samples. (TangentNormalization)</li>
+	<li>Segment the copy number. (ParallelCBS)</li>
+	<li>Calculate the number of segments in the genome and compare against a defined threshold to check for hyper-segmentation. (SegmentationCount)</li>
+</ol>
+
+<p><strong>NOTE: The pipeline is broken into two parts for ease of processing. For the specific workflow as it applies to the two parts of the pipeline, see <a href="/uploaded/content_copynumberinferencepipelineworkflow_diagramly.png?1355775156">this flowchart</a>.</strong></p>
+
+<h2>Input Requirements</h2>
+
+<p>Ideally all the SNP6 chips in the set (A) were processed as part of the same PCR batch and (B) should include 20 or more diploid normals within the PCR batch.&nbsp;</p>
+
+<p>If your input consists only of normal samples, you should select the <em>output with CNVs</em>&nbsp;option when running the pipeline.<br />
+<br />
+If your input is a set of tumor and normal samples, the algorithm will pass with a minimum of ten normal samples. Two considerations for normal samples are (1) that&nbsp;they are derived from true diploid cells, and (2) that they minimize&nbsp;batch effects as detailed below.</p>
+
+<p style="margin-left: 40px;">(1) You may prefer to use blood normal&nbsp;samples over tumor-adjacent tissue samples, as adjacent tissue are sometimes contaminated by tumors&nbsp;or&nbsp;early tumorigenesis events. For this reason, the authors of the pipeline typically use blood normals. Additionally, avoid cell lines as they are often no longer diploid.&nbsp;The normal samples should be unambiguously diploid; otherwise,&nbsp;the analysis&nbsp;can give misleading results.</p>
+
+<p style="margin-left: 40px;">(2) If these ten CEL files are random, the results come out noisier than if they are from the same batch. This is because the algorithm uses the normal samples to help calibrate out batch effects from the tumor samples. If you lack diploid normal samples from the same batch, use normal CEL files from samples that minimize batch effects.&nbsp;For example, normals should be from the same lab as the tumor samples, prepared using the same protocol, and if possible processed with the same batch of reagents, etc.</p>
+
+<p>Due to memory constraints this pipeline is estimated to run with a maximum of about 200 CEL files.</p>
+
+<h2>Workflow Details</h2>
+
+<ol start="1" style="list-style-type: decimal;">
+	<li><strong>Calibrate signal intensities (SNPFileCreator_SNP6)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">This step adjusts the raw intensity values from the SNP6 array so that they can be compared with other arrays that were run within the same PCR batch.&nbsp; The distribution of the probes within each array is forced to follow a normal distribution, using quantile normalization, and this distribution is centered on a common value.&nbsp; In addition, the probes are reduced to a single intensity value for each unique probe sequence.&nbsp; The SNP6 array has only a single copy of each copy number probe; these are located at sites believed to be non-polymorphic.&nbsp; However, the SNP6 array has three replicates of the A allele and three replicates of the B allele for SNP probes.&nbsp; For the copy number probes, no additional work is needed, but for the SNP probes, the three replicates are merged using the median polish algorithm.&nbsp; See the SNPFileCreator_SNP6 module documentation for details.</p>
+
+<ol start="2" style="list-style-type: decimal;">
+	<li><strong>Compute genotype calls (Birdseed)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">The normal samples in the batch are run through the Birdseed genotyping algorithm.&nbsp; In addition to providing genotype calls, this step also computes the cluster centers for the intensities of each probe for the AA, AB, and BB genotypes.&nbsp; By default, a set of prior samples also influence the cluster center locations.&nbsp; The normal samples are assumed to be diploid, and thus the cluster centers should reveal the expected intensity of zero, one, and two copies of each allele of the SNP probes.</p>
+
+<ol start="3" style="list-style-type: decimal;">
+	<li><strong>Convert signal intensities to copy number calls (CopyNumberInference)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">This step converts intensity measurements into a copy number call.&nbsp; It uses different models for the copy number and SNP probes.&nbsp; For the SNP probes, copy number vs. intensity is modeled by a straight line connecting the zero and one copy cluster centers, as given by the Birdseed module.&nbsp; This calibrates out certain batch conditions. Copy number probes cannot calibrate out the batch in this way, so their model is based on a previous X-dosage experiment, where the number of X chromosomes in the cell line were independently measured by karyotyping. This model uses, in addition to the probe intensity, the GC content of the probe, the restriction fragment length, and the average intensity of the normals in the batch.&nbsp; Copy number calls from the SNP and copy number probe models are interleaved together to form a single set of copy number calls.&nbsp;</p>
+
+<ol start="4" style="list-style-type: decimal;">
+	<li><strong>Calculate copy number noise (CopyNumberNoise)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">A noise QC metric is computed based on these copy number calls by examining the size of the step between probes that are adjacent in hg19 probe ordering.&nbsp; The threshold is selected based on examining its distribution, identifying the knee on a q-q plot that separates outliers from the main distribution.</p>
+
+<ol start="5" style="list-style-type: decimal;">
+	<li><strong>Reduce noise by removing outlier probes (RemoveCopyNumberOutliers)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">The copy number calls are de-noised by removing probes that are outliers and replacing them with &quot;NaN&quot;.&nbsp; Although probes that frequently perform poorly were already unconditionally removed, additional probes are identified which have radically different copy number calls than their hg19-adjacent neighbors.&nbsp; Four neighbors upstream and downstream are considered.</p>
+
+<ol start="6" style="list-style-type: decimal;">
+	<li><strong>Reduce noise further by subtracting out variation seen in a pre-defined set of normal samples (TangentNormalization)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">The tangent normalization algorithm substantially further de-noises the signal by subtracting out variation that is also seen within a panel of normals. The default is to use a panel of more than 3000 blood normals from the Cancer Genome Atlas (TCGA), along with the normals that are in the current batch.&nbsp; In a tumor/normal sample set, a QC metric is computed on the normals in the current batch, to exclude those that have obvious broad copy number changes, as are sometimes found in tumor-adjacent normal tissue.&nbsp; Linear regression is used to select a linear combination of normals to subtract from each sample, excluding a fixed set of probes known to have a lot of germline variation.&nbsp; Probes in potential CNV regions do not have the normals subtracted from them, but are simply scaled to roughly match the scaling applied to the non-CNV regions. The list of excluded probes can be found on the properties page for TangentNormalization module.&nbsp;</p>
+
+<ol start="7" style="list-style-type: decimal;">
+	<li><strong>Segment the copy number (ParallelCBS)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">In preparation for segmentation, the probes are sorted based on the order of the specified genome build, hg18 or hg19.&nbsp; And, for the &lsquo;nocnv&rsquo; segmentations, a fixed set of probes are excluded (the same set that tangent normalization excludes due to frequently containing germline CNVs.)</p>
+
+<p style="margin-left: 40px;">The CBS segmentation algorithm identifies regions in the genome that, in spite of noise, probably have a uniform underlying copy number. It compresses the values from a set of adjacent probes into a single value for that interval.&nbsp; The intervals it generates are non-overlapping, and are usually abutting except when a NaN value happens to occur at a segment boundary.&nbsp; CBS can be run independently on either hg18 or hg19 builds, both including the germline CNVs and excluding them (nocnv).&nbsp; If you are using the data to look for somatic alterations, or using an algorithm such as GISTIC to identify somatic alterations that are statistically significant, you will get better results by using the nocnv segmentation results.</p>
+
+<ol start="8" style="list-style-type: decimal;">
+	<li><strong>Calculate the number of segments in the genome and compare against a defined threshold to check for hyper-segmentation (SegmentationCount)</strong></li>
+</ol>
+
+<p style="margin-left: 40px;">Noisy samples exhibit hyper-segmentation, where CBS calls a huge number of segments that is unlikely to reflect the underlying biology.&nbsp; This QC metric counts the total number of segments in the genome, and compares it to a threshold.&nbsp; This threshold is set by examining a q-q plot of its log and identifying the knee, which distinguishes the tail from the main distribution.</p>
+</body>
+</html>

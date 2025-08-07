@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts</title>
+</head>
+<body>
+<p><a name="top"></a>GenePattern provides access to a broad array of computational methods used to analyze genomic data. Its extendable architecture makes it easy for computational biologists to add analysis and visualization modules, which ensures that GenePattern users have access to new methods on a regular basis.</p>
+
+<p>This <strong>Concepts</strong> guide provides a brief introduction to GenePattern. All other GenePattern documentation assumes that you are familiar with the concepts covered here.</p>
+
+<h2 id="_Analysis_and_Visualization">Analysis and Visualization Modules</h2>
+
+<p>Analysis and visualization modules are at the heart of GenePattern:</p>
+
+<ul>
+	<li><strong>Analysis modules</strong> provide computational methods and tools for analysis of genomic data. Analysis modules are run on the GenePattern server.</li>
+	<li><strong>Visualization modules</strong> display analysis results graphically and allow you to manipulate that view interactively. By convention, these modules have &quot;Viewer&quot; in the name. Because visualization modules are interactive, they run on your desktop computer. <strong>Note</strong>: You must have Java 1.5 or later installed on your local computer to use the visualization modules.</li>
+</ul>
+
+<p>Each module includes its own documentation, which is supplied by the module developer. The <a href="/modules">Modules</a> page of the GenePattern web site lists the modules available from the Broad Institute with links to their documentation.</p>
+
+<h2 id="_Pipelines">Pipelines</h2>
+
+<p>Pipelines combine analysis modules, visualization modules, and other pipelines into a single, reusable workflow. Pipelines can be defined to analyze a particular dataset; for example, you might create a pipeline to reproduce published analysis results. Or they can be parameterized, which allows the person running the pipeline to provide datasets and other analysis variables. Often a pipeline runs a progressive series of analyses, where the output from one analysis is used as input for the next.</p>
+
+<p>When you create a pipeline, you select the modules (and pipelines) to be executed by the pipeline. Most modules require one or more parameters. You can specify the parameter values when you create the pipeline, have the pipeline use the output file from one module as the input parameter value for a subsequent module, or prompt the user for parameter values when the pipeline is run.</p>
+
+<p>Pipelines can be used to share analysis methods or to document research. By providing a way to create and distribute an entire computational analysis methodology in a single executable script, pipelines enable a form of <em>in silico</em> reproducible research. Colleagues with access to the same GenePattern server can easily share pipelines. Alternatively, a pipeline can be exported from one GenePattern server and imported into another.</p>
+
+<p>The repository maintained by the Broad Institute includes a number of pipelines that document analysis methodologies published by Broad researchers. The <a href="/modules">Modules</a> page of the GenePattern web site lists the pipelines available from the Broad Institute with links to their documentation.</p>
+
+<h2 id="_Suites">Suites</h2>
+
+<p>Suites group modules and pipelines into convenient packages. For example, if you tend to analyze copy number data, you might find it helpful to create a suite that includes the SNPFileCreator, GISTIC, and other related modules. Suites provide easy access to frequently accessed modules. They also provide a convenient way of collecting a set of modules and pipelines to be shared with other GenePattern users. Colleagues with access to the same GenePattern server can easily share suites. Alternatively, a suite can be exported from one GenePattern server and imported into another.</p>
+
+<p>The repository maintained by the Broad Institute includes a number of suites. The <a href="/suites">Suites</a> page of the GenePattern web site lists them.</p>
+
+<h2 id="_Servers">Servers</h2>
+
+<p>To use GenePattern, you open a web browser and enter a URL. The URL that you enter is the address of a GenePattern server. The web browser provides the user interface. The server runs the analyses and stores the results.</p>
+
+<p>You can use the GenePattern server hosted on AWS,&nbsp;the server hosted at University of California, San Diego (UCSD)&nbsp;or, if you need to administer your own server, you can&nbsp;download and install the GenePattern software. The server hosted on AWS&nbsp;is most often referred to as&nbsp;the <em>public server </em>or the <em>Cloud-hosted server, </em>the server at UCSD is often referred to as&nbsp;<em>GP@UCSD&nbsp;or GenePattern @ UCSD.&nbsp;</em>GenePattern servers which were downloaded and installed by local administrators are known as <em>local servers</em>.</p>
+
+<p><a name="_Servers_Broad"></a>&nbsp;</p>
+
+<h3>Cloud-Hosted Server</h3>
+
+<p>The GenePattern team hosts a publicly available GenePattern server at <a href="http://cloud.genepattern.org/gp/">http://cloud.genepattern.org/gp/</a>&nbsp;via AWS. You can use the Cloud-hosted GenePattern server without installing any software.</p>
+
+<p>Using the Cloud-hosted server has several benefits:</p>
+
+<ul>
+	<li>The GenePattern team maintains the server for you.</li>
+	<li>User accounts are freely available. Just open a web browser and go to <a href="http://cloud.genepattern.org/gp/">http://cloud.genepattern.org/gp/</a>. On the login page, select the <span class="brGUI"><em>Click to register</em> link</span>.</li>
+	<li>Most of the modules and pipelines available from the Broad Institute (see the <a href="/modules">Modules</a> page of the GenePattern web site) are available on the Cloud-hosted server. Several modules are available only on the Cloud-hosted server because they require customized server configuration.(If you are interested in these modules, <a href="/contact" target="_blank">contact us</a> for more information)&nbsp;A small number of modules are not available on the Cloud-hosted server because they run only on the Windows platform; the Broad-hosted server runs under Unix. Some modules may be unavailable due to it being deprecated.&nbsp;</li>
+</ul>
+
+<p><a name="_Servers_Local"></a></p>
+
+<h3>Local Server</h3>
+
+<p>When you download GenePattern, you install a <em>local GenePattern server</em>. You can install a local server on a standalone machine for your personal use or on a networked machine for use by several people or an entire organization. A local GenePattern server shared by several users is sometimes called a <em>networked GenePattern server</em>. Instructions for installing a local GenePattern server are provided on the <a href="http://www.broadinstitute.org/download/">Download GenePattern</a> page.</p>
+
+<p>Using a local server has several benefits:</p>
+
+<ul>
+	<li>You choose which modules and pipelines to install on the server. Modules and pipelines can come from several sources, including the <a href="/modules">module repository </a>hosted by the Broad Institute. Only the GenePattern team can create or install modules on the Broad-hosted server.</li>
+	<li>You can analyze your data without sending it over the internet. Your analyses are run and the results stored on the local GenePattern server.</li>
+	<li>As the server administrator, you control the server configuration. For example, initially a local server does not have password protection. You can easily add password protection by modifying the server configuration.</li>
+	<li>You can configure the GenePattern server to be used by researchers across your organization. This makes it easy for lab groups to use GenePattern to automate their analysis pipelines. It also allows researchers to share new analysis methods simply by adding them to GenePattern as new modules or pipelines.</li>
+</ul>
+
+<h2 id="_Jobs">Jobs</h2>
+
+<p>When you run a module or pipeline in GenePattern, the web browser sends your request to the GenePattern server. The server starts a job to run the analysis. Job results (analysis result files and execution logs) are stored on the GenePattern server for a period of time (by default, one week) and then deleted. The GenePattern home page displays your most recent jobs and the Job Result Summary page displays all of your jobs.</p>
+
+<p>Every job run on the GenePattern server is owned by person who submitted the job. Owners are identified by their GenePattern usernames. Every job is persistent, which means:</p>
+
+<ul>
+	<li>Once you start a job, it continues to run even if you exit from GenePattern.</li>
+	<li>If the GenePattern server is shut down or interrupted while executing a job, when you restart the server the server automatically restarts the interrupted job.</li>
+</ul>
+
+<h2 id="_Permissions">Security and Permissions</h2>
+
+<p>GenePattern provides a flexible architecture that allows a user with server administrator privilege to control access to the server in several ways:</p>
+
+<ul>
+	<li>Access filtering defines which computers (identified by IP address) have access to the GenePattern server.</li>
+	<li>User authentication defines who can log into the GenePattern server. For example, the server might require a username (the default) or a username and password depending on how it is configured.</li>
+	<li>User permissions define which operations the user can perform. For example, a user might have permission to create private pipelines, but not public pipelines.</li>
+	<li>Users can be assigned to groups. Groups serve two functions: (1) permissions are assigned to groups and (2) members of a group can share job result files with other members of the group.</li>
+</ul>
+
+<p>GenePattern servers are generally configured to distinguish between users and administrators. The following table shows the permissions used on the Broad-hosted server and the default permissions for a local server. GenePattern adjusts its user interface based on the permissions assigned to the person logged in; for example, only administrators see the Administration menu. The GenePattern documentation describes all of the GenePattern features. Your permissions determine whether a particular feature is visible.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="col">Server</th>
+			<th scope="col">User Permissions</th>
+			<th scope="col">Administrator Permissions</th>
+		</tr>
+		<tr>
+			<td valign="top">Cloud-hosted server</td>
+			<td valign="top">Run public modules/pipelines
+			<p>Create and run your own pipelines</p>
+
+			<p>Edit/delete your jobs and pipelines</p>
+			</td>
+			<td valign="top">GenePattern team has all permissions
+			<p>GenePattern team can view/delete all jobs, modules, and pipelines</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">Local server, standalone</td>
+			<td valign="top">Same as administrator permissions</td>
+			<td valign="top">All users have all permissions
+			<p>All users can view/delete all jobs, modules, and pipelines</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">Local server, shared*</td>
+			<td valign="top">Run public modules/pipelines
+			<p>Create and run your own pipelines</p>
+
+			<p>Create and run your own modules</p>
+
+			<p>Create public pipelines</p>
+
+			<p>Edit/delete your jobs, modules, and pipelines</p>
+			</td>
+			<td valign="top">All permissions
+			<p>View/delete all jobs, modules, and pipelines</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>* When several users share a local server, the system administrator typically secures the server by assigning only a few users to the Administrators group. When a local server has designated administrators, users and administrators have the default permissions shown here.</p>
+
+<p>For more information about security and permissions, see <a href="http://www.broadinstitute.org/administrators-guide#securing-the-server" target="_self">Securing the Server</a> in the Administrators Guide.</p>
+
+<h2 id="_Version_Numbers">Version Numbers</h2>
+
+<p>GenePattern uses version numbers to uniquely identify objects, such as modules and pipelines. When you create an object, GenePattern automatically assigns it a version number of one (1). When you update the object, GenePattern automatically updates the version number. By carefully versioning each object, GenePattern ensures you can accurately reproduce analysis results.</p>
+
+<p style="margin-left: 40px;">For example, you might create a pipeline that runs two modules: PreprocessDataset version 4 and HierarchicalClustering version 5. If the HierarchicalClustering module is updated (creating HierarchicalClustering version 6), version 1 of your pipeline still runs HierarchicalClustering version 5; thus, ensuring that the pipeline produces the same results each time it is run. However, depending on why you are using the pipeline, you might prefer to have the pipeline run the latest version of an analysis module rather than a specific version. You make that choice when you create or edit&nbsp;the pipeline. For example, you might update the pipeline (creating version 2) to have the pipeline always use the latest version of the HierarchicalClustering module. Now, when you run version 2 of the pipeline it uses HierarchicalClustering version 6. When you run version 1 of the pipeline, it uses HierarchicalClustering version 5.</p>
+
+<p style="margin-left: 40px;">When you view and edit modules or pipelines, GenePattern shows you their version numbers. Typically, you update the latest version of an object, which increments its version number. For example, editing version 1 creates version 2. At times, you may need to edit an older version, which creates a <em>point version</em>. For example, if you have versions 1 and 2, editing version 1 creates version 1.1.</p>
+
+<p>GenePattern implements version numbers using Life Science Identifiers (LSIDs). Thus, object identifiers in GenePattern are sometimes called LSIDs. You can double-check the version you have called using the&nbsp;LSID listed in the web URL. In the example below, the LSID portion pertaining to the module is bolded (00230:8.7), with the release version&nbsp;in red (8.7).</p>
+
+<p style="margin-left: 40px;">http://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:<strong>00230:<span style="color:#FF0000;">8.7</span></strong></p>
+
+<p>GenePattern provides comments to version updates at the very bottom of the module documentation in a section titled <em>Version Comments</em>. Updates may include bug fixes or replacement of a&nbsp;module algorithm with <em>a new algorithm version</em> released by authors. For example, TopHat algorithm v1 and v2 are written by different computational biologists and&nbsp;offer different features, e.g. the version of Bowtie used to align reads. These algorithm versions correspond to GenePattern module versions 1&ndash;5 and 6&ndash;9, respectively.&nbsp;Because algorithms can differ greatly from one version to the next, you may choose to&nbsp;call upon an earlier&nbsp;algorithm version.<strong> </strong>In this case, be sure to use the latest GenePattern module version still encasing the same algorithm version.</p>
+
+<p>When you choose an earlier module version from the module dropdown menu, the <em>Documentation</em> link automatically updates&nbsp;to provide corresponding version documentation. For earlier module versions, these will be downloadable PDF documents. Later module versions open the document in the web browser. If multiple versions offer web-based documentation, the version will be noted next to the module name in the documentation. The documentation web URL addresses may or may not specify a version number, as shown in the examples below for TopHat. If a version is not specified, as in the first example, then the documentation for the latest version of the module is provided.&nbsp;The latest available version may be a version in <strong>beta</strong>, meaning it is still undergoing testing, and this will be marked on the page. If available, beta module documentation may or may not have been updated from the prior version.<br />
+&nbsp;</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td valign="top">http://www.broadinstitute.org/modules/docs/TopHat</td>
+			<td valign="top">Calls the documentation for the <strong>latest version</strong> of the module</td>
+		</tr>
+		<tr>
+			<td valign="top">http://www.broadinstitute.org/modules/docs/TopHat/<span style="color: rgb(255, 0, 0);"><strong>9</strong></span></td>
+			<td valign="top">Calls the documentation for <strong>v9</strong> of the module</td>
+		</tr>
+		<tr>
+			<td valign="top">http://www.broadinstitute.org/modules/docs/TopHat/<span style="color: rgb(255, 0, 0);"><strong>8</strong></span></td>
+			<td valign="top">Calls the documentation for <strong>v8</strong> of the module</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="_Programming_Environments">Programming Environments</h2>
+
+<p>A programmatic interface makes it easy for software programmers to call GenePattern modules from the Java, MATLAB, or R programming environments. For information about the programmatic interface, see the <a href="https://www.genepattern.org/programmers-guide" target="_self">Programmers Guide</a>.</p>
+</body>
+</html>

@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrators Guide</title>
+</head>
+<body>
+<h1 id="about-the-administrators-guide">About the Administrators Guide</h1>
+
+<p><a name="_Managing_the_GenePattern"></a>You can use the GenePattern public server hosted at the Broad Institute, install a local GenePattern server for your own use, or install a networked GenePattern server to be used by several people. <a href="/concepts">Concepts</a> explains the benefits of each approach.</p>
+
+<ul>
+	<li>If you are using the GenePattern public server at <a href="http://cloud.genepattern.org/gp/">http://cloud.genepattern.org/gp/</a>, you do not need to manage the server; the GenePattern team does it for you.</li>
+	<li>If you are installing a local GenePattern server, you will most likely use the default server settings; however, you are the GenePattern server administrator for your server and have full access to configuration options described in this guide.</li>
+	<li>If you are installing a networked GenePattern server for use by several users, read this guide carefully. You are the GenePattern server administrator and will want to configure the server appropriately for your site.</li>
+</ul>
+
+<p>GenePattern can be run standalone on a small machine or separated into its client and server components to take advantage of a more powerful compute server. When you install a GenePattern server, you set basic server configuration options. If you are installing a local GenePattern server for your own use, you generally do not need to modify the server configuration. If you are the server administrator for a networked GenePattern server, you generally want to modify several of the GenePattern configuration options described in this guide.</p>
+
+<h1 id="creating-groups-and-administrators">Creating Groups and Administrators</h1>
+
+<p><a name="_Creating_Groups"></a><strong>Note</strong>: Only the GenePattern team can create groups on the GenePattern public server. To create a group, you must have installed a local GenePattern server (see <a href="/user-guide#starting-your-own-genepattern-server">Starting Your Own GenePattern Server</a>).</p>
+
+<p>The GenePattern configuration file <code>GenePatternServer/resources/userGroups.xml</code> defines groups and group membership. The <a href="/administrators-guide#_Users_and_Groups">Users and Groups</a> server settings page lists all registered users and the groups to which they belong.</p>
+
+<p>To create or modify groups, edit the <code>userGroups.xml</code> file. The XML syntax is simple but must be followed carefully. The rules are as follows:</p>
+
+<ul>
+	<li>Use the <code>&lt;group&gt;</code> element to create a group. You can create any number of groups. The group names must be unique. They should include only alphanumeric characters, periods (.), and underscores (_).</li>
+	<li>Use the <code>&lt;user name&gt;</code> element to add members to a group. You can add any number of users to a group. A user may be in any number of groups. Setting <code>user name = &ldquo;*&rdquo; </code>adds all users to a group.</li>
+	<li><strong>Warning</strong>: Do not delete the administrators group. GenePattern requires it.</li>
+	<li>Anytime you make a change to userGroups.xml you will need to reload the user groups either via the <a href="#_Users_and_Groups">Users and Groups admin page</a> on your server or by rebooting your server. (the former is less disruptive if you are not the only user)</li>
+</ul>
+
+<h2>Creating an Administrators Group</h2>
+
+<p>As shown below, the default <code>userGroups.xml</code> file defines one group, administrators, which includes all GenePattern users. Members of the administrators group have full access to the GenePattern server and all jobs run on the server. Because all users are administrators, the default GenePattern installation has no concept of &ldquo;private&rdquo; data.</p>
+
+<pre>
+&lt;!-- map of users to groups --&gt;
+&lt;userGroups&gt;
+    &lt;group name=&quot;administrators&quot;&gt;
+         &lt;user name=&quot;*&quot;/&gt;
+    &lt;/group&gt;
+&lt;/userGroups&gt;</pre>
+
+<p><strong>To maximize data privacy, minimize the number of users in the administrators group.</strong> For example, add exactly one person to the administrators group and only that one administrator can view all jobs run on the server. Other users can view their own jobs and jobs that have been explicitly <a href="/user-guide#working-with-analysis-results-sharing-analysis-results">shared</a>.</p>
+
+<pre>
+&lt;!-- map of users to groups --&gt;
+&lt;userGroups&gt;
+    &lt;group name=&quot;administrators&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;user name=&quot;jsmith&quot;/&gt;
+    &lt;/group&gt;
+&lt;/userGroups&gt;</pre>
+
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">Creating Other Groups</h2>
+
+<p>To create a new group, add a&nbsp;<code style="font-size: 12.6000003814697px;">&lt;group&gt;</code>&nbsp;element to the&nbsp;<code style="font-size: 12.6000003814697px;">userGroups.xml</code>&nbsp;file. The following edited&nbsp;<code style="font-size: 12.6000003814697px;">userGroups.xml</code>&nbsp;file adds a second user to the administrators group and creates a new group, mjones_lab:</p>
+
+<pre>
+&lt;!-- map of users to groups --&gt;
+&lt;userGroups&gt;
+	&lt;group name=&quot;administrators&quot;&gt;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;user name=&quot;jsmith&quot;/&gt;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;user name=&quot;mjones&quot;/&gt;
+	&lt;/group&gt;
+	&lt;group name=&quot;mjones_lab&quot;&gt;
+		&lt;user name=&quot;mjones&quot;/&gt;
+		&lt;user name=&quot;jdoe&quot;/&gt;
+		&lt;user name=&quot;sfederan&quot;/&gt;
+	&lt;/group&gt;
+&lt;/userGroups&gt;</pre>
+
+<p><strong>Renaming a group does not update shared analysis results.</strong>&nbsp;Members of a group can&nbsp;<a href="/user-guide#working-with-analysis-results-sharing-analysis-results">share analysis results</a>. If you rename a group, from old_name to new_name for example, the users in the old_name group are now in the new_name group. Analysis results that they shared however were shared with the old_name group. Each user who shared job results with the old_name group should&nbsp;<a href="/user-guide#working-with-analysis-results-sharing-analysis-results">edit the share options</a>&nbsp;for the job and share the job results with the new_name group.</p>
+
+<h1 id="modifying-server-settings">Modifying Server Settings</h1>
+
+<p><a name="_Modifying_Server_Settings"></a><a name="top"></a>To modify the configuration of your GenePattern server, use the Server Settings page:</p>
+
+<ol>
+	<li>Click <em>Administration&gt;Server Settings </em>to display the Server Settings page.</li>
+	<li>From the Server Settings pane, select the server setting that you want to modify. GenePattern displays a page of related server configuration options.</li>
+	<li>Modify and save the server configuration options.</li>
+	<li>Optionally, return to step 2 to change additional settings.</li>
+</ol>
+
+<p>The following table summarizes the server settings. For more detail, click a link in the table.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td>
+			<p><a href="#_Access">Access</a></p>
+			</td>
+			<td>
+			<p>Specify which clients have access to the server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Command_Line_Prefix">Command Line Prefix</a></p>
+			</td>
+			<td>
+			<p>Specify commands and qualifiers to be prepended to the command line used to invoke a module or pipeline.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Custom">Custom</a></p>
+			</td>
+			<td>
+			<p>Create new server configuration options.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Database">Database</a></p>
+			</td>
+			<td>
+			<p>Specify configuration options for the GenePattern database.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_File_Purge">File Purge</a></p>
+			</td>
+			<td>
+			<p>Specify how long files remain on the server before being deleted.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_GenePattern_Log">GenePattern Log</a></p>
+			</td>
+			<td>
+			<p>Display the log file for the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Job_Configuration">Job Configuration</a></p>
+			</td>
+			<td>
+			<p>Work with a job queue that you have configured for use with a queuing system, such as the Load Sharing Facility (LSF) and the Sun Grid Engine (SGE).</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Programming_Languages">Programming Languages</a></p>
+			</td>
+			<td>
+			<p>Specify the root directories for the programming languages used by GenePattern and the Java flags to be added to Java command lines executed by the server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Proxy">Proxy</a></p>
+			</td>
+			<td>
+			<p>If your organization has a web proxy between the GenePattern server and the internet, specify the proxy information required to access the internet.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Repositories">Repositories</a></p>
+			</td>
+			<td>
+			<p>Specify the URL used to access the module repository and the suite repository.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Shut_Down_Server">Shut Down Server</a></p>
+			</td>
+			<td>
+			<p>Shut down the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_System_Message">System Message</a></p>
+			</td>
+			<td>
+			<p>Broadcast a message to all users logged into the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Task_Info">Task Info</a></p>
+			</td>
+			<td>
+			<p>Display the LSID of each module and pipeline installed on the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Uploaded_Files">Uploaded Files</a></p>
+			</td>
+			<td>
+			<p>Display the account information and uploaded files of a selected user.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Users_and_Groups">Users and Groups</a></p>
+			</td>
+			<td>
+			<p>Display account information for all users, including the groups to which they belong.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><a href="#_Web_Server_Log">Web Server Log</a></p>
+			</td>
+			<td>
+			<p>Display the log file for the web server used by the GenePattern server.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#ServerFilePaths">Server File Paths</a></td>
+			<td>Enabling file paths on the GenePattern server.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="_Access"></a>Access</h2>
+
+<p>Use the Access page to define which GenePattern clients have access to the GenePattern server. The localhost (127.0.0.1) computer cannot be denied access to the locally installed GenePattern server. This prevents you from inadvertently denying yourself access to the server.</p>
+
+<p>Using the Access page to control which computers have access to the GenePattern server is the simplest way to secure your server. You can also control access to your server based on user authentication and user permissions, as described in <a href="/administrators-guide#securing-the-server">Securing the Server</a>. The Access page filters are applied before any user-specific authentication or permissions are checked. If your computer cannot access the server, you cannot access the server regardless of your username/password or permissions.</p>
+
+<p><img alt="Access" id="_x0000_i1082" src="/uploaded/content_web_client_admin_access.gif" style="border: 1px solid rgb(211, 211, 211); width: 641px; height: 170px;" /></p>
+
+<ul>
+	<li>Click<span class="brGUI"> Standalone</span> to allow only local clients to connect to the server; that is, you can access this GenePattern server only from the computer that it is running on.</li>
+	<li>Click<span class="brGUI"> Any Computer</span> (default) to allow any client to connect to the server.</li>
+	<li>Click<span class="brGUI"> These Domains</span> to allow only clients from specific domains to connect to the server. Enter a comma-separated list of domains or IP addresses in the text box, for example: <span class="brcode">broadinstitute.org,dfci.harvard.edu,mit.edu</span>.<br />
+	GenePattern scans all incoming connection attempts. If they match in whole or in part any domain name or IP address in this list, the server allows access; otherwise, the server redirects the connection to a page indicating that the server does not allow access.</li>
+</ul>
+
+<p>Click <em>Save</em> to save your changes. Click <em>Restore</em> to return to the value set at installation.</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Command_Line_Prefix"></a>Command Line Prefix</h2>
+
+<p>The Command Line Prefix page allows you to prepend text to the command line used to execute a module. You can prepend the same text to all module command lines or prepend text for a specific module.</p>
+
+<p><strong>Note: </strong>Prior to GenePattern 3.2.3 (June 2010), administrators used the command line prefix for connecting to an external queuing system. GenePattern now provides the CommandExecutor interface for that purpose. For more information, see&nbsp;<a href="/administrators-guide#using-a-queuing-system">Using a Queuing System</a>.</p>
+
+<p><img alt="Command Line Prefix" id="_x0000_i1084" src="/uploaded/content_web_client_admin_cmdprefix.gif" style="border: 1px solid rgb(211, 211, 211); width: 650px; height: 662px;" /></p>
+
+<p>To prepend text to all (or most) command lines executed by the GenePattern server:</p>
+
+<ol>
+	<li>Enter the desired commands and qualifiers in the <em>Default Command Prefix</em> field.</li>
+	<li>Click <em>save default</em>. GenePattern displays the updated content of the <em>default</em> prefix. The <em>name/content</em> table in the middle of the form lists the <em>default</em> prefix and its content. The previous illustration shows the <em>default</em> prefix with no content.<br />
+	When GenePattern executes a module or pipeline, it constructs the appropriate command line, prepends the <em>default</em> prefix to that command line, and then executes the command line.</li>
+</ol>
+
+<p>To prepend text only to command lines that invoke specific modules or pipelines:</p>
+
+<ol>
+	<li>In the <em>Add New Prefix</em> field, enter a name for the prefix and the commands and qualifiers to prepend to the command line.</li>
+	<li>Click <em>add prefix</em>. GenePattern creates the new prefix, updates its content, and adds the prefix to the <em>name/content</em> table in the middle of the form.</li>
+	<li>At the bottom of the form, select one or more module(s)/pipeline(s), select your new prefix, and click <em>add mapping</em>. GenePattern adds the prefix information to the <em>module/command prefix name</em> table.<br />
+	When GenePattern executes a module or pipeline listed in the <em>module/command prefix name</em> table, it constructs the appropriate command line, prepends the specified prefix to that command line, and then executes the command line. (When GenePattern executes a module or pipeline <em>not</em> listed in that table, it constructs the appropriate command line, prepends the <em>default</em> prefix to that command line, and then executes the command line.)</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Custom"></a>Custom</h2>
+
+<p>Use the Custom page to define your own configuration options.</p>
+
+<p>When you create a module, the custom configuration options are available as substitution variables in the module command line. For example, if you define a custom property &quot;foo&quot;, you can use &lt;foo&gt; in the command line to pass the value of the custom configuration option to your module. In the Broad repository, for example, the LandmarkMatching and PeakMatch modules use the custom configuration option <span class="HTMLPreformattedChar">pepperPrefix</span>. For more information, see <a href="/programmers-guide#_Creating_Modules">Creating Modules in GenePattern</a>.</p>
+
+<p><img alt="Custom Settings" id="_x0000_i1085" src="/uploaded/content_web_client_admin_custom.gif" style="border: 1px solid rgb(211, 211, 211); width: 659px; height: 220px;" /></p>
+
+<ol>
+	<li>In the <em>name</em> field, enter a name for the configuration option.</li>
+	<li>In the <em>content</em> field, enter a value for the configuration option.</li>
+	<li>Click <em>add setting</em>. GenePattern adds the option to the table at the bottom of the form.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Database"></a>Database</h2>
+
+<p>The GenePattern installation uses an in-memory HSQLDB database. You can optionally use Oracle or MySQL. To switch to a different database, create a &#39;database_custom.properties&#39; file in the resources directory. The &#39;database_default.properties&#39; file can be used as a reference. The &#39;database_example_mysql.properties&#39; and &#39;database_example_oracle.properties&#39; files are good starting points for these respective databases. Make sure to restart your server.</p>
+
+<p>Starting with GenePattern version 3.9.2 the server will automatically initialize the database schema at server startup. This will work with HSQLDB, Oracle, or MySQL. For other databases you must manually initialize your schema. Use the &#39;*.sql&#39; files in the resources directory as a guide.</p>
+
+<h2><a name="_File_Purge"></a>File Purge</h2>
+
+<p>Use the File Purge page to specify when analysis result files are deleted from the server:</p>
+
+<p><img alt="File Purge Settings" src="/uploaded/content_web_client_admin_filepurge.gif" style="border: 1px solid rgb(211, 211, 211); width: 643px; height: 236px;" /></p>
+
+<ul>
+	<li>Use <span class="brGUI">Purge Jobs After</span> to specify the number of days the server keeps the analysis result files. To prevent the server from automatically deleting the files, set this value to -1.</li>
+	<li>Use <span class="brGUI">Purge Time</span> to specify what time of day (24-hour format) the server deletes the files.</li>
+</ul>
+
+<p>Click <em>Save</em> to save your changes. Click <em>Restore</em> to return to the values set at installation.</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_GenePattern_Log"></a>GenePattern Log</h2>
+
+<p>Use the GenePattern Log page to view warnings and messages generated by the GenePattern server. (Use the <a href="#_Web_Server_Log">Web Server Log</a> page to view messages generated by the web server that GenePattern uses.)</p>
+
+<p><img alt="GenePattern Log" src="/uploaded/content_web_client_admin_gplog.gif" style="border: 1px solid rgb(211, 211, 211); width: 641px; height: 173px;" /></p>
+
+<h2><a name="_Locating_Log_Files"></a>Locating Log Files</h2>
+
+<p>There are three log files that administrators might be interested in locating. These are the install log, GenePattern log and webserver log. Each of the log files can be found in the indicated location, relative to the GenePatternServer installation folder.</p>
+
+<ul>
+	<li><strong>Install Log:</strong> Can be located in <em>GenePatternServer/UninstallerData/Logs</em>.</li>
+	<li><strong>GenePattern Log:</strong> Can be located in <em>GenePatternServer/logs</em>.</li>
+	<li><strong>Webserver Log:</strong> Can also be located in <em>GenePatternServer/logs</em>.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Job_Configuration"></a>Job Configuration</h2>
+
+<p>If you have configured your GenePattern system to work with a queuing system, such as the Load Sharing Facility (LSF) and the Sun Grid Engine (SGE), the Job Configuration page helps you control the queue and reload your configuration files. For more information, see <a href="/administrators-guide#using-a-queuing-system">Using a Queuing System</a>.</p>
+
+<p>Use the <strong>Job Configuration </strong>section to control the GenePattern internal job queue:</p>
+
+<ul>
+	<li><strong>Suspend/Resume internal job queue</strong>. When the queuing system fails or requires maintenance, use this option to temporarily halt the internal GenePattern job queue. When the queuing system has been restarted, resume the internal GenePattern job queue.</li>
+	<li><strong>Shut down/Restart job execution engine</strong>. When you modify the .yaml file that configures GenePattern for use with your queuing system, you must reload that configuration file. Rather than stopping and restarting the GenePattern server, you can use this option to stop the job execution engine, click <em>Reload job configuration </em>to reload the configuration file, and then use this option to restart the job execution engine.</li>
+	<li><strong>Reload job configuration</strong>. Used in conjunction with <em>Shut down/Restart job execution engine</em>.</li>
+</ul>
+
+<p>Use the <strong>Command Executors </strong>section to identify each of the command executors currently installed on the GenePattern server.</p>
+
+<p>Use the <strong>Configuration File </strong>section to identify and review the .yaml configuration file currently active on the GenePattern server.</p>
+
+<p><img alt="" src="/uploaded/content_job_configuration.jpg?1341673171" style="width: 550px; height: 351px; " /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Programming_Languages"></a>Programming Languages</h2>
+
+<p>The Programming Languages page contains two sections. After making changes, click <em>Save</em> to save them or <em>Restore</em> to return to the value set at installation.</p>
+
+<p>Use <strong>Programming Language Configurations</strong> to specify the root directories for the programming languages used by GenePattern:</p>
+
+<p><img alt="Programming Language Configurations" src="/uploaded/content_web_client_admin_proglang.gif" style="border: 1px solid rgb(211, 211, 211); width: 620px; height: 203px;" /></p>
+
+<p>When you install GenePattern, you install the programming languages used by GenePattern. If you have alternate programming language installations that you prefer to use, use this page to point to those installations. If you would like to use more recent versions of R, see <a href="/administrators-guide#using-different-versions-of-r">Using Different Versions of R</a>.</p>
+
+<p><a name="_Java_Flag"></a>Use <strong>Programming Language Options</strong> to increase the memory allocated to modules written in Java and R:</p>
+
+<p><img alt="Programming Language Options" src="/uploaded/content_web_client_admin_javaflag.gif" style="border: 1px solid rgb(211, 211, 211); width: 620px; height: 445px;" /></p>
+
+<ul>
+	<li>In the Java VMOptions field, modify the Java -X flag to increase the memory allocated for Java modules run on the server (non-visualizer modules); for example, -Xmx1024M doubles the amount of memory allocated. You can specify up to the maximum memory size of your server machine. Changes take effect when you stop and restart the server.</li>
+	<li>In the Java Visualizer VMOptions field, modify the Java -X flag to increase the memory allocated by default for modules run on the client (visualizer modules). Changes take effect when you next run a visualizer module.<br />
+	GenePattern users can customize the memory allocated to visualizer modules based on the amount of memory available on their desktop PCs. To customize the memory allocated to visualizer modules run on your own desktop: select My Settings, select Visualizer Memory, and modify the Java -X flag to specify the amount of memory to be allocated to visualizer modules run on your desktop.</li>
+	<li>In the R Options field, add the --max-mem-size flag to specify the maximum amount of memory to be used by R modules running on the server; for example, --max-mem-size=1G allocates a gigabyte. You can specify up to the maximum memory size of your server machine. The --max-mem-size flag affects only Windows operating systems. Changes take effect when you stop and restart the server.</li>
+</ul>
+
+<p>You can also increase the amount of memory allocated to the GenePattern server or client. For more information, see <a href="/administrators-guide#increasing-memory-allocation">Increasing Memory Allocation</a>.</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Proxy"></a>Proxy</h2>
+
+<p>If your server is behind a firewall, use the Proxy page to set the HTTP and FTP Proxy information. Without the proxy information, the server cannot download modules, pipelines, or suites from the repository maintained by the Broad Institute. If you do not know the proxy information, contact your systems administrator.</p>
+
+<p><img alt="Proxy Settings" id="_x0000_i1091" src="/uploaded/content_web_client_admin_proxy.gif" style="border: 1px solid rgb(211, 211, 211); width: 641px; height: 332px;" /></p>
+
+<p>Click <em>Save</em> to save your changes. Click <em>Restore</em> to return to the values set at installation.</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Repositories"></a>Repositories</h2>
+
+<p>Use the Repositories page to identify the location of the repository to be accessed by the GenePattern server when you install modules and pipelines or suites from the repository. By default, it points to the module repository maintained by the Broad Institute. For information about implementing a module repository at your site, see the In-Depth Article <a href="/blog/2012/07/11/setting-up-a-module-repository">Setting Up a Module Repository</a>.</p>
+
+<p><img alt="" src="/uploaded/content_modulerespositories.jpg?1346429669" style="width: 600px; height: 334px; " /></p>
+
+<p>Click <em>Save</em> to save your changes. Click <em>Restore</em> to return to the values set at installation. Click <em>Remove</em> to delete the selected URL from the list.</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Shut_Down_Server"></a>Shut Down Server</h2>
+
+<p>You can shut down the GenePattern server by clicking the link on this page. Alternatively, double-click the Stop GenePattern Server icon on your desktop.</p>
+
+<p><img alt="Shut Down Server" id="_x0000_i1093" src="/uploaded/content_web_client_admin_shutdown.gif" style="border: 1px solid rgb(211, 211, 211); width: 639px; height: 129px;" /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_System_Message"></a>System Message</h2>
+
+<p>Use the System Message page to broadcast a message to all users logged into the GenePattern server. The message text that you enter can include simple HTML formatting commands, such as &lt;b&gt; and &lt;em&gt;.</p>
+
+<p><img alt="" src="/uploaded/content_systemmessage.jpg?1341672588" style="width: 550px; height: 362px; " /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Task_Info"></a>Task Info</h2>
+
+<p>The Task Info page lists every module and pipeline installed on the GenePattern server. It can be useful in sorting out the confusion that can occur when modules and pipelines share the same name.</p>
+
+<p>The <em>Clear TaskInfo Cache </em>link clears an internal GenePattern cache, which can be useful for GenePattern development. Clicking the link has no visible impact on GenePattern operations.</p>
+
+<p><img alt="" src="/uploaded/content_taskinfocache.jpg?1341673508" style="width: 550px; height: 229px; " /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Uploaded_Files"></a>Uploaded Files</h2>
+
+<p>The Uploaded Files page displays basic information about a user and their uploaded files (see <a href="/gp_guides/user-guide/sections/running-modules#_Uploading_Files">Uploading Files</a>). By default, the page displays information about the user logged into the GenePattern web client. To view information for another user, enter their username and click <em>Select User</em>.</p>
+
+<p>If a user manually adds or removes files from the Uploads directory on the file server:</p>
+
+<ol>
+	<li>Enter their username and click <em>Select User </em>to display their information.</li>
+	<li>Click <em>Resync Files </em>to update (resynchronize) their uploaded files based on their Uploads directory on the file server.</li>
+	<li>Enter their username and click <em>Select User </em>to display the updated information.</li>
+</ol>
+
+<p>This allows you to synchronize the user interface with the modified uploads directory on the file server without restarting the GenePattern server.</p>
+
+<p><img alt="" src="/uploaded/content_uploadedfiles.jpg?1341673689" style="width: 550px; height: 245px; " /></p>
+
+<p>&nbsp;</p>
+
+<h2><a id="_Users_and_Groups" name="_Users_and_Groups"></a>Users and Groups</h2>
+
+<p>Use the Users and Groups page to view user account information, including the groups to which a user belongs. This page shows only registered users. An administrator can add users to a group (<a href="#_Creating_Groups">Creating Groups and Administrators</a>) before they register, but the users are not listed on this page until they have created a GenePattern account by clicking the <em>Registration</em> link on the GenePattern login page. If you update the userGroups.xml file, click <em>Reload Users and Groups</em> to update (resynchronize) the GenePattern web interface. This allows you to update users and groups without restarting the GenePattern server.</p>
+
+<p>When you start the GenePattern server, the server populates the Uploads tab for each user by reviewing the Uploads directory on the file server. Typically, users add and remove uploaded files from the GenePattern web client interface. If a user adds or removes files from the Uploads directory on the file server, enter their username and click <em>Resync Uploads</em> to update (resynchronize) their Uploads tab based on their Uploads directory on the file server. This allows you to synchronize the user interface with the modified uploads directory on the file server without restarting the GenePattern server.</p>
+
+<p><img alt="" src="/uploaded/content_usersgroups.jpg?1341674994" style="width: 550px; height: 354px; " /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_Web_Server_Log"></a>Web Server Log</h2>
+
+<p>Use the Web Server Log page to view messages generated by the web server that GenePattern uses. (Use the <a href="#_GenePattern_Log">GenePattern Log</a> page to view warnings and messages generated by the GenePattern server.)</p>
+
+<p><img alt="Web Server Log" id="_x0000_i1095" src="/uploaded/content_web_client_admin_weblog.gif" style="border: 1px solid rgb(211, 211, 211); width: 646px; height: 148px;" /></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="ServerFilePaths"></a>Server File Paths</h2>
+
+<p style="margin: 5px 0px 16px; color: rgb(34, 34, 34);">When file paths are enabled on a GenePattern server, GenePattern users can employ the Server File Paths feature to identify module and pipeline input files. &nbsp;With Server File Paths enabled, the GenePattern server can directly access files stored on the server&#39;s local or networked drives; therefore, input files do not have to be transferred to or stored on the GenePattern server. Avoiding file transfers can save significant upload time and avoiding file storage can save significant amounts of disk space.</p>
+
+<p style="margin: 5px 0px 16px; color: rgb(34, 34, 34);">Server File Paths is enabled through settings in the config_custom.yaml file (a text file in&nbsp;<a href="http://en.wikipedia.org/wiki/YAML" style="color: rgb(102, 153, 255);">YAML</a>&nbsp;format located in the GenePatternServer/resources directory). &nbsp;<span style="color: rgb(0, 0, 0);">By default, the&nbsp;</span><span style="font-family:courier new,courier,monospace;"><code style="color: rgb(0, 0, 0);">allow.input.file.paths</code></span><span style="color: rgb(0, 0, 0);">&nbsp;property in the config_custom.yaml&#39;s&nbsp;<span style="font-family:courier new,courier,monospace;">default.properties </span>section is set to false. Set it to true to enable Server File Paths. &nbsp;In addition, set the <span style="font-family:courier new,courier,monospace;">server.browse.file.system.root </span>property to the directory where the server begins browsing for network files. &nbsp;Below is an example yaml entry for these two parameters:</span></p>
+
+<pre style="color: rgb(34, 34, 34); margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 13px; line-height: 1.3em; max-height: 30em; overflow: auto; word-wrap: normal;">
+# example config_yaml entry
+default.properties:
+    # flag to allow users to input arbirtray network file paths as value to input file input parameters
+    server.browse.file.system.root: /xchip/gpbroad/shared_data     </pre>
+
+<p style="margin: 5px 0px 16px; color: rgb(34, 34, 34);">When the user clicks&nbsp;<em>Add Path or URL</em>&nbsp;to select a file from a local or networked drive, GenePattern opens the file selection window to /xchip/gpbroad/shared_data</p>
+
+<p style="margin: 5px 0px 16px; color: rgb(34, 34, 34);">A <span style="font-family:courier new,courier,monospace;">server.browse.file.system.root </span>property definition can also reside in the YAML file&#39;s <span style="font-family:courier new,courier,monospace;">group.properties</span>&nbsp;and/or <span style="font-family:courier new,courier,monospace;">user.properties</span> sections. &nbsp;The group property setting will override the default property setting, and the user property setting will overide the both the&nbsp;default and group settings. &nbsp;In any of these instances (default, group, user), the <span style="font-family:courier new,courier,monospace;">server.brows.file.system.root</span> property may be set to a list of root directories; e.g.,</p>
+
+<pre style="color: rgb(34, 34, 34); margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 13px; line-height: 1.3em; max-height: 30em; overflow: auto; word-wrap: normal;">
+server.browse.file.system.root: [&quot;/xchip/gpbroad/shared_data&quot;, &quot;/xchip/gpbroad/user_data/joe&quot;]</pre>
+
+<p class="p2">This, for example, will lead to the display of a network file navigation tree with two roots: <span style="font-family:courier new,courier,monospace;">shared_data</span> and <span style="font-family:courier new,courier,monospace;">joe</span>.</p>
+
+<h1 id="setting-the-java-version">Setting the Java Version</h1>
+
+<p><a name="_Setting_the_Java_Version"></a>As of Release 3.9.1, the GenePattern server must be configured to run under Java 7&nbsp;or Java 8. Find more details for the latest version of GenePattern&nbsp;in <a href="https://github.com/genepattern/genepattern-server/releases"><em>the GenePattern server release notes</em></a>.</p>
+
+<h3>Mac&nbsp;</h3>
+
+<p>We use Oracle Java SE Development Kit (JDK) 7,&nbsp;and recommend you do the same. Install the JDK and not just the JRE (Java Runtime Environment).</p>
+
+<h3>Windows</h3>
+
+<p>When installed on Windows, using the installer which includes the VM,&nbsp;&nbsp;the GenePattern server is configured for Java 7&nbsp;by default.</p>
+
+<p>To configure the GenePattern server for Java 8:</p>
+
+<ol>
+	<li>Confirm that Java 8&nbsp;is installed.<br />
+	<strong>Tip</strong>: Use the &#39;java -version&#39; command.</li>
+	<li>Stop the GenePattern server.</li>
+	<li>Edit the StartGenePatternServer.lax file and update the location of the Java executable:
+	<blockquote><code># LAX.NL.CURRENT.VM<br />
+	# -----------------<br />
+	# the VM to use for the next launch<br />
+	lax.nl.current.vm=\jre\bin\java.exe</code></blockquote>
+	</li>
+	<li>Edit the StopGenePatternServer.lax file and update the location of the Java executable.</li>
+	<li>Restart the GenePattern server.</li>
+</ol>
+
+<h3>Linux</h3>
+
+<p>When installed on Linux, the GenePattern server is configured for the version of Java in use by your Linux system&nbsp;by default.</p>
+
+<p>To configure the GenePattern server for Java 7 or Java 8, if this is not already the case:</p>
+
+<ol>
+	<li>Confirm that Java 7 or Java 8&nbsp;is installed.<br />
+	<strong>Tip</strong>: Use the &#39;java -version&#39; command.</li>
+	<li>Stop the GenePattern server.</li>
+	<li>Edit the StartGenePatternServer.lax file and update the location of the Java executable:
+	<blockquote><code># LAX.NL.CURRENT.VM<br />
+	# -----------------<br />
+	# the VM to use for the next launch<br />
+	lax.nl.current.vm=&lt;Java&gt;/bin/java</code></blockquote>
+	</li>
+	<li>Edit the StopGenePatternServer.lax file and update the location of the Java executable.</li>
+	<li>Restart the GenePattern server.</li>
+</ol>
+
+<h1 id="using-different-versions-of-r">Using Different Versions of R</h1>
+
+<p><a name="_Using_Different_Versions"></a>Installing GenePattern (version 3.1 and later) installs R 2.5.</p>
+
+<ul>
+	<li>On Windows, R 2.5 is installed within the GenePattern directory and should not impact other installations of R that may be on your computer.</li>
+	<li>On Mac it is installed in the standard location, <code>/Library/Frameworks/R.framework/Versions/2.5</code>.</li>
+	<li>Linux users must install R on their own and point the GenePattern installation to the location of R.</li>
+</ul>
+
+<p>Most of the GenePattern modules available in the Broad Institute repository (<em>Modules &amp; Pipelines&gt;Install from repository</em>) work with R 2.5. However, some GenePattern modules require different versions of R; for example, ComBat v2 requires R 2.7. Unfortunately, R is not backward compatible. If you simply install and run the latest version of R, modules may fail or (worse) may produce invalid results even though they do not fail. &nbsp;Instead, you must have multiple versions of R installed in order to run all of these modules together on the same server.</p>
+
+<h2>Defining R in GenePattern</h2>
+
+<p>In GenePattern, each module definition includes a command line that runs the analysis program. For an R module, the R version is defined by a command line substitution parameter. For example, the &lt;R&gt; parameter is substituted with the full path to the R 2.0.1 executable. The &lt;R2.5&gt; parameter is substituted with the full path to the R 2.5 executable. Similar parameters are used for other versions of R.</p>
+
+<p>GenePattern version 3.1 and later installs R 2.5 and sets the &lt;R2.5&gt; parameter. If you upgraded from GenePattern 3.0, your GenePattern installation also includes R 2.0.1 and sets the &lt;R&gt; parameter.</p>
+
+<p>Newer versions of GenePattern also set the &lt;R2.5_HOME&gt; parameter, pointing to the location of the R 2.5 installation such that Rscript is found at &lt;R2.5_HOME&gt;/bin/Rscript. &nbsp;The GenePattern team is phasing out the use of &lt;R2.5&gt; in favor of &lt;R2.5_HOME&gt; in future module revisions.</p>
+
+<p>For R 2.15 and later, we are transitioning to also allow the selection of the desired Rscript executable through a similar parameter named &lt;R2.15_Rscript&gt;. &nbsp;This allows Windows users, for example, to select the 64-bit version of Rscript instead of the 32-bit executable.</p>
+
+<p><strong>We do not recommend the use R 3.0 or R 3.1 with GenePattern at this time</strong> due to the&nbsp;<a href="#_Using_Different_Versions">issues with compatability and validity</a>&nbsp;covered earlier as we have not fully updated our components to these versions. &nbsp;We are actively looking at these releases for future use.</p>
+
+<h2><a name="adding-recent-versions-of-r"></a>Adding More Recent Versions of R to GenePattern</h2>
+
+<p>To add a different version of R to your GenePattern installation (for example R 2.7 on Mac OS X, for ComBat v. 2):</p>
+
+<ol>
+	<li>Install the required version of R, if necessary. This is covered in detail on the R Project home page. &nbsp;<b>For Mac users, please read the section on &#39;<a href="#using-multiple-versions-of-r-on-mac">Using Multiple Versions of R on Mac OS X</a>&#39; below.</b>
+
+	<ol>
+		<li>Go to <a href="http://www.r-project.org/">http://www.r-project.org/</a> and select a CRAN mirror.</li>
+		<li>Locate either the source code or the binary for the desired version of R. For a binary installation, look for the subdirectory link labeled &#39;old&#39;, which is towards the bottom of the page. &nbsp;The <a href="#where-to-find-r">next section</a> lists the locations of various versions of R used by GenePattern.</li>
+		<li>Follow the installation instructions.</li>
+	</ol>
+	</li>
+	<li>After you install the correct version of R, in whatever manner makes sense to you, you need to configure GenePattern to use that version of R. This is as simple as adding two new substitution parameters to the server settings.
+	<ol>
+		<li>Click <em>Administration&gt;Server Settings </em>and go to the <a href="/gp_guides/administrators-guide/sections/server-settings#_Custom">Custom </a>page.</li>
+		<li>Add a setting for R*_HOME and another for R*, replacing the &#39;*&#39; with an actual version number.
+		<ul>
+			<li>For example, with R 2.7 on Mac OS X the parameters are:
+			<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+				<tbody>
+					<tr>
+						<td><code>R<strong>2.7</strong>_HOME=/Library/Frameworks/R.framework/Versions/<strong>2.7</strong>/Resources<br />
+						R<strong>2.7</strong>=&lt;java&gt; -DR_suppress=&lt;R.suppress.messages.file&gt; -DR_HOME=&lt;R<strong>2.7</strong>_HOME&gt; -Dr_flags=&lt;r_flags&gt; -cp &lt;run_r_path&gt; RunR</code></td>
+					</tr>
+				</tbody>
+			</table>
+			</li>
+			<li>For other platforms, set R2.7_HOME equal to the full path to the installation directory. It must be a directory which contains a &#39;bin&#39; folder, which contains the &#39;R&#39; executable.</li>
+		</ul>
+		</li>
+		<li>For modules requiring R 2.15, it is also necessary to set the &lt;R2.15_Rscript&gt; parameter, pointing to the location of the &#39;Rscript&#39; program on your computer. &nbsp;Setting the &lt;R2.15&gt; parameter is not required as its use is discouraged.
+		<ul>
+			<li>On Mac OS X, the typical setting for the &nbsp;&lt;R2.15_Rscript&gt; parameter would be:<br />
+			<span style="font-family: monospace; background-color: rgb(218, 230, 242);">R2.15_Rscript</span><span style="font-family: monospace; background-color: rgb(218, 230, 242);">=/Library/Frameworks/R.framework/Versions/2.15/</span><span style="font-family: monospace; background-color: rgb(218, 230, 242);">Resources/bin/Rscript</span></li>
+			<li>
+			<p>On Windows, the typical setting would be:<br />
+			<span style="font-family: monospace; background-color: rgb(218, 230, 242);">R2.15_Rscript</span><span style="font-family: monospace; background-color: rgb(218, 230, 242);">=C:/Program Files/R/R-2.15.3/bin/x64/Rscript.exe</span></p>
+			</li>
+		</ul>
+		</li>
+	</ol>
+	</li>
+</ol>
+
+<h2><a name="where-to-find-r"></a>Where to Find Older Versions of R</h2>
+
+<p>CRAN makes older versions of R available through its archives. &nbsp;Archived binary releases are available <a href="https://cran.r-project.org/bin/macosx/">here for Mac</a> and <a href="http://cran.r-project.org/bin/windows/base/old/">here for Windows</a>. &nbsp;Older binary releases are not available for Linux and other platforms. &nbsp;Instead, it is necessary to build from <a href="http://cran.r-project.org/src/base/R-2/">the archived source bundles</a>. &nbsp;In particular, here are direct links to the versions of R required by modules provided in the GenePattern public and beta repositories:</p>
+
+<ul>
+	<li>R 2.5.1: <a href="http://cran.r-project.org/bin/macosx/">Mac</a>, <a href="https://cran.r-project.org/bin/windows/base/">Windows</a>, <a href="http://cran.r-project.org/src/base/R-2/R-2.5.1.tar.gz">source bundle</a></li>
+	<li>R 2.7.2:&nbsp;<a href="http://cran.r-project.org/bin/macosx/">Mac</a>, <a href="https://cran.r-project.org/bin/windows/base/">Windows</a>, <a href="http://cran.r-project.org/src/base/R-2/R-2.7.2.tar.gz">source bundle</a></li>
+	<li>R 2.15.3:&nbsp;<a href="http://cran.r-project.org/bin/macosx/">Mac</a>, <a href="https://cran.r-project.org/bin/windows/base/">Windows</a>, <a href="http://cran.r-project.org/src/base/R-2/R-2.15.3.tar.gz">source bundle</a></li>
+</ul>
+
+<p>There are a number of <a href="http://cran.r-project.org/mirrors.html">CRAN mirrors</a>&nbsp;as well.</p>
+
+<h2><a name="using-multiple-versions-of-r-on-mac"></a>Using Multiple Versions of R on Mac OS X</h2>
+
+<div>
+<div>While it is possible to run multiple versions of R on a Mac, doing so requires more care and effort than on Windows or Linux. &nbsp; In particular, you need to pay careful attention when choosing the R versions that are required and use caution during installation. &nbsp;The order of operations is important and performing steps out of sequence can adversely affect versions already installed on the machine or require backtracking in the process; please read the following before proceeding. &nbsp;The GenePattern team has not fully evaluated all of the possible issues and combinations involved. &nbsp;What follows is our best understanding at present (<em>this document </em><em>last updated Feb. 27, 2015</em>).</div>
+
+<div>&nbsp;</div>
+
+<h3><a name="multiple-r-on-mac-simplest"></a>The Simplest Path</h3>
+
+<div>If you do not plan to be using R outside of GenePattern, then the following steps should cover setting up your Mac for multiple versions of R. &nbsp;Note that the &#39;sudo&#39; commands used below will prompt you for your password to grant administrative access.</div>
+
+<ol>
+	<li>Install R 2.5.1 using the <a href="http://cran.r-project.org/bin/macosx/">CRAN installer</a>. &nbsp;Note that the default security settings on newer versions of Mac OS X may prevent this.<br />
+	Download&nbsp;<a href="ftp://gpftp.broadinstitute.org/plugin_support_files/R_Installer/2.5.1/R_2.5.1_mac_patch.tar.gz">this patch file bundle</a>&nbsp;to modify R 2.5.1 to&nbsp;allow use of other versions of R. &nbsp;After downloading, execute the&nbsp;following from Terminal:
+
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>cd /Library/Frameworks/R.framework/Versions<br />
+				sudo tar -xzvmpf ~/Downloads/R_2.5.1_mac_patch.tar.gz</code></td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+	<li><strong>(Optional)</strong> If you will be using the ComBat module, you will also need to install R 2.7.2. &nbsp;<br />
+	<strong>Before</strong>&nbsp;using the <a href="http://cran.r-project.org/bin/macosx/">CRAN installer</a>, execute the following from Terminal:
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>sudo pkgutil --forget org.r-project.R.framework</code></td>
+			</tr>
+		</tbody>
+	</table>
+	If you do not, the CRAN installer will remove R 2.5.1. &nbsp;It should&nbsp;give you a message similar to &quot;Forgot package&nbsp;&#39;org.r-project.R.framework&#39; on &#39;/&#39;.&quot; &nbsp;After that, use the R 2.7.2&nbsp;CRAN installer as usual.<br />
+	Download <a href="ftp://gpftp.broadinstitute.org/plugin_support_files/R_Installer/2.7.2/R_2.7.2_mac_patch.tar.gz">this patch file bundle</a>&nbsp;to modify R 2.7.2 to&nbsp;allow use of other versions of R. &nbsp;After downloading, execute the&nbsp;following from Terminal:
+
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>cd /Library/Frameworks/R.framework/Versions<br />
+				sudo tar -xzvmpf ~/Downloads/R_2.7.2_mac_patch.tar.gz</code></td>
+			</tr>
+		</tbody>
+	</table>
+	Then set the R2.7_HOME and R2.7 substitution parameters as&nbsp;described above.</li>
+	<li>If you are planning to use ExpressionFileCreator v12+ or another&nbsp;module that requires R 2.15.3, it is recommended that you use the&nbsp;<a href="#using-the-r-installer-plug-in">R Installer Plug-in</a> which will automatically install and&nbsp;configure R 2.15.3 for use with GenePattern. &nbsp;As opportunity&nbsp;permits we will be updating our R 2.15.3 modules to use this&nbsp;plug-in, but if you encounter one which does not then you can use&nbsp;ExpessionFileCreator to trigger the installation.</li>
+</ol>
+
+<div>For most users, this set of instructions should be sufficient. &nbsp;If you skip Step 2 but later decide that you need ComBat, it should be fine to go back and do it later <strong>provided you first use the pkgutil command</strong>. &nbsp;Users who will be working with R outside of GenePattern will need to be aware of a number of additional details. &nbsp;This includes users doing R development, running R scripts, or updating the R installations.</div>
+
+<div>&nbsp;</div>
+
+<h3><a name="multiple-r-on-mac-details"></a>Further Details</h3>
+
+<div>When you install R from CRAN (for example, R 2.7) it becomes the default version of R on your system. &nbsp;This is true even if you had previously installed a newer version of R such as R 2.15. Executing R from a Terminal command line or the R GUI will run the last installed version. &nbsp;Unless other steps are taken, this will affect GenePattern as well.</div>
+
+<div>&nbsp;</div>
+
+<div><a name="mac-r-install-avoid-removal"></a>By default, the CRAN installer will also modify other installed versions, resulting in these possibly being removed or otherwise adversely affected. This is spelled out in a README displayed within the installer (on the second step) and provides instructions to avoid these effects. &nbsp;If you want to run multiple versions of R on the Mac, these instructions apply to you. &nbsp;Before installing an additional version, you will need to execute a &quot;pkgutil --forget&quot; command from the Terminal command line so that the next installer will not touch the existing version of R. &nbsp;Versions of R are bundled as a DMG file (built for OS X Tiger and later) or as a PKG file (for OS X Leopard and later). &nbsp;The correct command depends on the type of bundle that you are installing:</div>
+
+<ul>
+	<li>For R 2.5 (and possibly earlier) to 2.10 (Tiger builds):
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>sudo pkgutil --forget org.r-project.R.framework</code></td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+	<li>For R 2.10 to R 2.15 (Leopard builds):
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>sudo pkgutil --forget org.r-project.R.Leopard.fw.pkg</code></td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+</ul>
+
+<div>Since they are registered differently, installing a Leopard build doesn&#39;t affect an existing Tiger build other than taking over as the default version of R. &nbsp;Likewise, a Tiger install won&#39;t affect a Leopard build other than becoming the default. &nbsp;Note that R 2.10 was transitional, so the correct instructions depend on whether it is installed from the DMG (Tiger) or the PKG (Leopard) file. &nbsp;The command given above for Tiger builds differs from the instructions given in the installer itself. &nbsp;Those instructions applied to earlier versions of Mac OS X (e.g. Tiger) while the above command is the equivalent in GenePattern-supported versions of Mac OS X.</div>
+
+<div>&nbsp;</div>
+
+<div>R 3.0 is the first version that requires OS X Snow Leopard. &nbsp;It comes as a PKG file, gives the same &#39;pkgutil&#39; instructions as the Leopard builds and seems to behave the same way. &nbsp;<strong>We do not recommend the use R 3.0 or R 3.1 with GenePattern at this time</strong>&nbsp;due to the&nbsp;<a href="#_Using_Different_Versions">issues with compatability and validity</a>&nbsp;covered earlier, as we have not fully updated our components to these versions. &nbsp;We are actively looking at these releases for future use.</div>
+
+<div>&nbsp;</div>
+
+<div><a href="http://stat.ethz.ch/pipermail/r-sig-mac/2011-August/008530.html">This posting</a> on the R-SIG-Mac mailing list indicates that the above instructions assume that you are upgrading R (like going from R 2.12 to R 2.15) and that they may not work for installing earlier versions (e.g. installing 2.12 <strong>after</strong>&nbsp;2.15). &nbsp;We have not fully tested the various combinations but we have seen problems based on installation order. &nbsp;We recommend first carefully choosing the versions you need and then installing them in order from oldest to most recent.&nbsp;</div>
+
+<div>&nbsp;</div>
+
+<div><a name="multiple-r-on-mac-req-edits"></a>If you are running R from outside of GenePattern and need to use a different version, you can use the <a href="http://r.research.att.com/">RSwitch</a> program to change which is current. &nbsp;For example, after you install R 2.7 you can use RSwitch to switch back to R 2.15. &nbsp;This is documented in the <a href="http://r.research.att.com/man/RMacOSX-FAQ.html#Why-is-R_002ehome_0028_0029-not-versioned_003f">R for Mac OS X FAQ</a>. &nbsp;There are some additional instructions if you intend to use RSwitch. &nbsp;We don&#39;t havee specific recommendations on this kind of setup but you can find further details in <a href="https://stat.ethz.ch/pipermail/r-sig-mac/2011-August/008530.html">this post</a> on the R-SIG-Mac mailing list.&nbsp;</div>
+
+<div>&nbsp;</div>
+
+<div>The use of RSwitch is not effective for use from GenePattern due to the need to run multiple R versions at the same time. As a workaround, you must edit the installed executable shell scripts. &nbsp;The patch level bundles described above do this for R 2.5.1 and 2.7.2 and the R Installer plug-in does it for R 2.15. &nbsp;If you have other versions of R you will need to make these modifications on your own. &nbsp;In the affected files, replace all hard coded paths to /Library/Frameworks/R.framework/Resources with the actual path to the correct installed version of R as described by <a href="http://stat.ethz.ch/pipermail/r-sig-mac/2011-September/008583.html">this posting</a> from the R-SIG-Mac mailing list. &nbsp;These are the important scripts to modify (not all are present in every version):&nbsp;</div>
+
+<ul>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/bin/R</li>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/bin/R32</li>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/bin/R64</li>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/etc/i386/Makeconf</li>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/etc/x86_64/Makeconf</li>
+	<li>/Library/Frameworks/R.framework/Versions/&lt;your R version&gt;/Resources/etc/ppc/Makeconf</li>
+</ul>
+
+<div>
+<div>Use a plain text editor like vi or emacs to make these changes. &nbsp;It is a good idea to make a backup copy beforehand and to use &#39;sudo&#39; when editing so that the files retain their original permission and ownership settings. &nbsp;Be aware that, according to <a href="https://stat.ethz.ch/pipermail/r-sig-mac/2011-September/008583.html">this R-SIG-Mac posting</a>, there may be some issues with this set-up. &nbsp;If you use R outside of GenePattern, we recommend that you use RSwitch to set your favored version as Current when all these modifications are finished as this seems to be the best way to mitigate those problems.&nbsp;</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<h2>Adding R Version 2.0.1 to GenePattern</h2>
+
+<p>There are some GenePattern modules which rely on R version 2.0.1:</p>
+
+<ul>
+	<li>CoxRegression</li>
+	<li>LogisticRegression</li>
+	<li>MultiplotPreprocess</li>
+	<li>NearestTemplatePrediction</li>
+</ul>
+
+<p>To use these modules on your server you need to add R version 2.0.1. &nbsp;<strong>Note that R 2.0.1 may not be available or may not work properly on newer versions of Windows and Mac OS X</strong>. &nbsp;We are in the process of evaluating how to address this.</p>
+
+<p>To add R2.0.1 to your GenePattern installation:</p>
+
+<ol>
+	<li>Install R2.0.1.</li>
+	<li>In GenePattern, click <em>Administration&gt;Server Settings </em>and go to the <a href="/gp_guides/administrators-guide/sections/server-settings#_Programming_Languages">Programming Languages </a>page.</li>
+	<li>Set the R 2.0.1 Home parameter to the full path of the R2.0.1 installation. This defines the &lt;R&gt; variable.</li>
+	<li>Click <em>Save </em>to update the GenePattern server configuration.</li>
+</ol>
+
+<p>GenePattern can now run modules written for R2.0.1.</p>
+
+<h1 id="using-the-r-installer-plug-in">Using the R Installer Plug-in</h1>
+
+<p>Due to the possibly difficult nature of setting up a GenePattern server to use multiple versions of R, we have created a plug-in to assist in the process. &nbsp;This plug-in only deals with R 2.15 at present; we may expand to cover other versions of R in the future. &nbsp;The plug-in installation is triggered by the installation of a module which declares that it requires R 2.15. &nbsp; At the moment, this is limited to the beta releases of ExpressionFileCreator v12 and RankNormalize v1.3+ (available from our Beta repository). &nbsp;We will update other modules as the opportunity permits (<em>this document last updated Feb. 27, 2015</em>).</p>
+
+<p>The Mac platform is the most tricky in terms of support for multiple versions of R and so that will be the main focus of this guide. &nbsp;As the story is much simpler on Windows and Linux, those platforms will be covered much more briefly.</p>
+
+<h2>Use of the R Installer on Mac OS X</h2>
+
+<p>Due to the way that it is installed, support for use of multiple versions of R on Mac OS X is&nbsp;<a href="/administrators-guide#using-different-versions-of-r">tricky and has a number of issues</a>. &nbsp;It is mainly due to these issues that the GenePattern team created the R Installer Plug-in to simplify the process. &nbsp;The plug-in will go through several possible scenarios to detect and/or install R in a way that works for GenePattern. &nbsp;For the most part, you should not need to worry about those details.</p>
+
+<h3>The Simplest Path</h3>
+
+<p>If you already have a version of R installed in the default location on your Mac, the plug-in will be able to set up R 2.15 for use with GenePattern. &nbsp;This can be any version of R: it could be 2.5.1 or 2.15.3 or any other version. &nbsp;The reasons for this will be discussed below if you are interested; for most users the reasons are not important.</p>
+
+<p>Many users will have already installed R 2.5.1 as it required for several core GenePattern modules (CART, ComparativeMarkerSelection, ConsensusClustering, GEOImporter, NMFConsensus and others). &nbsp;If you think you will be using these modules, you should go ahead and <a href="#multiple-r-on-mac-simplest">install this version of R first</a>. &nbsp;If you do so, then when you later install ExpressionFileCreator the plug-in will automatically download and install R 2.15.3 into the correct location and set it up for use with GenePattern. &nbsp;</p>
+
+<p>Alternatively, if you have already installed R 2.15 (at any patch level) to the default location then the plug-in will detect it and set it up for use with GenePattern. &nbsp;<strong>Note that this makes some minor changes to the installed version of R</strong>. &nbsp;The reasons for this - and its effects - are discussed below; again, for most users the reasons are not important.</p>
+
+<p>The bottom line for most users is that if you&#39;ve already installed either R 2.5.1 or R 2.15 as usual from a CRAN installer, the plug-in will configure things correctly for you. &nbsp;Some possible complications will be discussed in the next section, but you should not need to worry about them unless you use R outside of the context of GenePattern or if you decide to update your R installation.</p>
+
+<h3>Possible Complications</h3>
+
+<p>There are some important considerations if you work with R outside of GenePattern or if you decide to update your version of R:</p>
+
+<ol>
+	<li>On a Mac, installing a newer version of R may result in older&nbsp;versions being removed unless you take <a href="/administrators-guide#mac-r-install-avoid-removal">specific steps</a> to avoid this. &nbsp;As a practical matter, the R 2.15 installers will not remove R 2.5.1.</li>
+	<li><a href="/administrators-guide#multiple-r-on-mac-req-edits">Certain files must be changed</a>&nbsp;in the R installation in order to&nbsp;allow multiple versions to work at the same time. &nbsp;Those changes&nbsp;will be undone if you update R to a different patch level, so it&nbsp;will be necessary to re-apply those by hand. &nbsp;The R 2.15 patch level&nbsp;bundles are available <a href="ftp://gpftp.broadinstitute.org/plugin_support_files/R_Installer/2.15.2/">from the GenePattern FTP site</a>. &nbsp;After installing R 2.15.3, for example, you would download <a href="ftp://gpftp.broadinstitute.org/plugin_support_files/R_Installer/2.15.2/R_2.15.3_mac_patch.tar.gz">R_2.15.3_mac_patch.tar.gz</a>&nbsp;and then open Terminal.app to unpack it. &nbsp;Execute these commands:
+	<table cellpadding="1" cellspacing="1" style="background-color: rgb(218, 230, 242);">
+		<tbody>
+			<tr>
+				<td><code>cd /Library/Frameworks/R.framework/Versions<br />
+				sudo tar -xzvmpf ~/Downloads/R_2.15.3_mac_patch.tar.gz</code></td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+	<li>If you switch between multiple versions of R outside of the&nbsp;context of GenePattern, you should modify all of your versions of&nbsp;R in a similar way. &nbsp;At&nbsp;this time, we are only providing patch level bundles for the versions of R used by GenePattern. &nbsp;For any other version, <a href="/administrators-guide#multiple-r-on-mac-req-edits">you will need to do this on your own</a>. &nbsp;Please note that the available bundles are version-specific down to the patch level, so don&#39;t try to use them with other versions. &nbsp;Also, the use of a utility like RSwitch may confuse GenePattern unless all versions of R have been so modified.</li>
+	<li>The plug-in backs up the modified files beforehand, so if you&nbsp;want to revert your R installation back to the original state for any reason&nbsp;(such as uninstalling GenePattern, for example) you can delete the&nbsp;modifications and put the originals back in place. &nbsp;Note that doing so will very likely affect the behavior of R modules in GenePattern. &nbsp;The original files are stored alongside the <a href="/administrators-guide#multiple-r-on-mac-req-edits">modified files</a>&nbsp;in&nbsp;the same path location but&nbsp;with the &quot;.orig&quot; extension added (e.g. R64.orig).&nbsp;</li>
+	<li>If you do not install it yourself, the version of R 2.15.3 delivered by the plug-in is not quite a full installation. &nbsp;In particular it is missing the R.app and R64.app GUI applications. &nbsp;Again, this will only those user who want to use R outside of GenePattern. &nbsp;These users should instead <a href="https://cran.r-project.org">install R 2.15.</a>3&nbsp;on their own and allow the plug-in to detect it.</li>
+</ol>
+
+<h2>Using the R Installer on Windows</h2>
+
+<p>Support for use of multiple versions of R on a Windows machine is straightforward. &nbsp;R comes in <a href="/administrators-guide#where-to-find-r">standard click-through installers</a> available from CRAN. &nbsp;Due to the way it is installed, each version is completely isolated and it is possible to have different major and minor R releases, and even different patch-levels, on a Windows machine at the same time: R 3.0.1, R 2.15.2, R 2.15.3, R 2.5.1, etc. can all be present with no issue. &nbsp;This being the case, R installation is left up to the user with the plug-in making only a few final configuration steps. &nbsp;</p>
+
+<p>On a Windows machine, the R Installer Plug-in will attempt to detect R in the standard location. &nbsp;If it does, it will go ahead and configure GenePattern to use it. &nbsp;All you need to do is to obtain and install R 2.15.3 using the default settings, and then install a module like ExpressionFileCreator v12 that needs it.</p>
+
+<p>If you will be installing R to a different location, you will need to take the extra step of <a href="/administrators-guide#adding-recent-versions-of-r">setting a custom property</a>&nbsp;for R2.15_HOME manually on your GenePattern server. &nbsp;This is also required if you decide to run a different patch level of R such as 2.15.3.</p>
+
+<h2>Using the R Installer on Linux</h2>
+
+<p>Support for use of multiple versions of R on Linux is good, though it requires platform-specific steps by the system administrator. &nbsp;Setting up the installations of R varies by Linux distribution; we can&#39;t give general instructions due to the large number of distributions available. &nbsp;You are advised to look to the specific instructions for your platform at either CRAN or your distribution&#39;s support site (or both).</p>
+
+<p>Note that obtaining R through a package management system like apt-get may result in an installation that will be auto-updated to a different version in the future. &nbsp;This can lead to compatibility problems in running your modules and affect reproducibility of your past results. &nbsp;To avoid this you can instead install R from the <a href="/administrators-guide#where-to-find-r">archived source bundles</a> to keep multiple versions available. &nbsp;Please refer to CRAN and your distribution&#39;s support site for more information.</p>
+
+<p>After obtaining and installing the required version of R, you will need to&nbsp;<a href="/administrators-guide#adding-recent-versions-of-r">set a custom property</a>&nbsp; for R2.15_HOME manually on your GenePattern server before installing modules which require it. &nbsp;When the R Installer Plug-in runs, it will check whether this property has been set and verify that it points to an installation of R with the correct major and minor version.</p>
+
+<h2>Possible Plug-in Errors</h2>
+
+<h3>Substitution Variable</h3>
+
+<p>Depending on your version of GenePattern, you may receive an error message similar to:</p>
+
+<p>&nbsp; &nbsp; &nbsp;<span style="color:#ff0000;">no substitution available R2.15_HOME in command line R2.15_HOME/bin/Rscript</span></p>
+
+<p>Certain versions of GenePattern are not able to load all required settings in one pass but may succeed on a second attempt. &nbsp;Try re-installing the module or pipeline as that may resolve the issue. &nbsp;If this error persists, the information in this Admin Guide section and the plug-in output may help you resolve the issue. &nbsp;There are additional details in the <a href="/administrators-guide#using-different-versions-of-r">Using Different Versions of R</a> section of the Admin Guide as well.</p>
+
+<h3>Installation location error (<em>Mac only</em>)</h3>
+
+<p>On a Mac, if you have never installed any version of R you will probably get a message regarding the /Library/Frameworks/R.framework/Versions directory not being present. &nbsp;In Mac OS X Lion (10.7) and above, creating this location requires administrator privileges and can&#39;t be done within GenePattern. &nbsp;This is why the plug-in will work if you&#39;ve already installed some version of R: that previous install will have created the correct location for you. &nbsp;Without that location, the installation attempt will very likely fail and require some manual steps. &nbsp;There are two options. &nbsp;Either choice is fine; you only need to do one or ther other:</p>
+
+<ul>
+	<li>Install R 2.15 manually in the default location so that the plug-in&nbsp;can detect it. &nbsp;This is available from CRAN; see&nbsp;<a href="http://www.broadinstitute.org/gp_guides/administrators-guide/sections/r-versions#where-to-find-r">here</a>&nbsp;for locations.</li>
+	<li>Execute the following commands from a Terminal window:
+	<table cellpadding="1" cellspacing="1" class="table table-condensed">
+		<tbody>
+			<tr>
+				<td><code>sudo mkdir -p /Library/Frameworks/R.framework/Versions<br />
+				sudo chgrp -R admin /Library/Frameworks/R.framework/<br />
+				sudo chmod -R g+w /Library/Frameworks/R.framework/</code></td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+</ul>
+
+<p>Administrative access will be required in either case, and afterward it will be necessary to retry the plug-in installation.</p>
+
+<h3>Version Check</h3>
+
+<p>The R Installer Plug-in will check the configured version of R to make sure it is compatible. &nbsp;There are several problems or conditions that it can detect at this point:</p>
+
+<ul>
+	<li>The installed R version has a different patch level than expected.&nbsp; This is just a warning and will not stop the plug-in&nbsp;installation.</li>
+	<li>The installed R version has a different major or minor number than&nbsp;expected. &nbsp;This is considered an error; the most likely cause is that you have set up R2.15_HOME&nbsp;to use a version of R other than 2.15.</li>
+	<li>The installed version of R can&#39;t execute, results in an error, or&nbsp;returns no output. &nbsp;You may need to re-install R 2.15, but first&nbsp;check to make sure that R2.15_HOME contains no typos.</li>
+</ul>
+
+<h1 id="increasing-memory-allocation">Increasing Memory Allocation</h1>
+
+<p><a name="_Increasing_Memory_Allocation"></a><a name="_Increasing_Memory_Allocation_1"></a>GenePattern allocates memory to the server, to the &quot;client&quot; (the computer you are using to access GenePattern), and to individual modules. When a module fails with an out of memory error, you can try increasing the amount of memory allocated to the server, the client, or the module.</p>
+
+<ul>
+	<li><a href="#modules">Increasing Memory for Modules</a></li>
+	<li><a href="#visualizer">Increasing Memory for Visualizers</a></li>
+	<li><a href="#serverClient">Increasing Memory for the Server and/or Client</a></li>
+</ul>
+
+<h2><a name="modules"></a>Increasing Memory for Modules</h2>
+
+<p>To increase the amount of memory allocated to a module written in Java or R, click <em>Administration&gt;Server Settings</em>. The Programming Languages page (<a href="/administrators-guide#_Programming_Languages">Programming Language Options</a>) provides several options for increasing Java and R memory options.</p>
+
+<p>You can customize memory preferences on a per-module basis. This is useful when some of your modules require more memory than others. If you haven&#39;t already done so, copy the &#39;config_default.yaml&#39; file as &#39;config_custom.yaml&#39;. Then set &#39;config.file=config_custom.yaml&#39; in the genepattern.properties file. These files are in the resources directory of your installation. You need to restart your server for this to take effect. This ensures that your custom configuration will not be inadvertently modified when you install an updated version of GenePattern.</p>
+
+<p>Set custom memory settings in the config_custom.yaml file. This is a text file in <a href="http://en.wikipedia.org/wiki/YAML">YAML</a> format. The &#39;job.memory&#39; property defines the memory requirements for your module, <em>for example job.memory: 512m, job.memory: 2g</em>. This defines the &#39;-Xmx&#39; flag passed to the java command line. It also defines the memory requirements passed along to the queuing system such as LSF or SGE. In the rare case when you want to use a different java memory flag from the queuing system flag, set both &#39;job.memory&#39; and &#39;job.javaXmx&#39;.</p>
+
+<p>You can also customize error handling for completed jobs. When the &#39;job.error_status.stderr&#39; flag is set to &#39;true&#39; the server will interpret a non-empty stderr stream as a failed job. When the &#39;job.error_status.exit_value&#39; flag is set to &#39;true&#39; the server will interpret a non-zero exit code as a failed job.&nbsp;</p>
+
+<pre>
+# example config_yaml entry
+module.properties:
+    # custom memory flags for the ConvertLineEndings module
+    ConvertLineEndings:
+        # single parameter sets both the java flag and the queuing system memory requirements
+        job.memory: 2Gb
+
+    #
+    # advanced flags
+    MyModule:
+        # it is possible to pass one value to the java command line, e.g. java -Xmx1g
+        job.javaXmx: 1g
+        # and a different value to the queuing system
+        job.memory: 2g
+        #
+        # ignore stderr output
+        job.error_status.stderr: false
+        # don&#39;t ignore the exit code
+        job.error_status.exit_value: true
+</pre>
+
+<div>&nbsp;</div>
+
+<div><span style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; line-height: 18px;">A module author can define job preferences in the manifest file for the module. The config_yaml file takes precedence over declarations in the module manifest. The parameters are the same, but don&#39;t forget to use the &#39;=&#39; sign instead of the &#39;:&#39; sign.</span></div>
+
+<pre>
+job.memory=2g
+job.error_status.stderr=false
+job.error_status.exit_value=true</pre>
+
+<h2><a name="visualizer"></a>Increasing Memory for Visualizers</h2>
+
+<p>Many GenePattern modules are run on the server. However, visualizers are applications that run on your computer, rather than on the GenePattern server. This means that you must have Java installed on your computer. For easy debugging, set your Java preferences so that the Java console displays.</p>
+
+<p>The default visualizer memory limit is 512 MB. However, if you find that your visualizer repeatedly runs out of memory, you can try a few things to eliminate that error:</p>
+
+<ul>
+	<li>Increase the visualizer memory limit in My Settings in GenePattern. (Note: In GenePattern 3.2.1, the My Settings options is ignored due to a bug. This bug is corrected in GenePattern 3.2.3 and later.)</li>
+	<li>If you are an administrator and want to make this a global change, go to the genepattern.properties file and set the visualizer_java_flags to a higher value. For 32-bit Windows machines, this will reach a maximum of ~2 GB, but Macintosh, Unix, and 64-bit Windows machines should allow you to make use of a greater portion of your machine&#39;s available memory.</li>
+	<li>Reduce the size of the data you are attempting to load into the viewer.</li>
+</ul>
+
+<h2><a name="serverClient"></a>Increasing Memory for the Server and/or Client</h2>
+
+<p>To increase the amount of memory allocated to the server and/or the client, follow the instructions for your platform:</p>
+
+<h3>Mac OS X</h3>
+
+<ol>
+	<li>Right-click on the file <code>GenePattern/Tomcat/StartGenePatternServer</code> (server) or the <span class="brcode">GenePatternClient/GenePattern Client</span> (client).</li>
+	<li>Select <em>Show Package Contents</em> from the pop-up menu. The Contents directory should open in the finder.</li>
+	<li>In the Contents directory, double-click the <code>Info.plist</code> file. This should open the Property List Editor program.</li>
+	<li>Add the child <code>VMOptions</code> under the <code>Java</code> node.</li>
+	<li>Change the Class of the added <code>VMOptions</code> node to &lsquo;Array&rsquo;.</li>
+	<li>Add the child with Class &#39;String&#39; with the value <code>-Xmx512M</code>. You can replace the value 512 with the maximum amount of memory in MB that you want the GenePattern Client to use.</li>
+</ol>
+
+<h3>Windows and Linux</h3>
+
+<ol>
+	<li>Edit the configuration file <code>GenePatternServer/StartGenePatternServer.lax</code> (server) or <code>GenePatternClient/GenePattern Client.lax</code> (client).</li>
+	<li>In either file, look for the entries noted below and increase these values (for example, double the value) up to the maximum memory size of the machine you are using. (Note: Windows limits the total space available to a process to 2 GB. Some of that is used for overhead, so slightly less is really available to the JRE.)
+	<ul>
+		<li><code>lax.nl.java.option.java.heap.size.initial</code></li>
+		<li><code>lax.nl.java.option.java.heap.size.max </code></li>
+	</ul>
+	</li>
+</ol>
+
+<h1 id="using-a-queuing-system">Using a Queuing System</h1>
+
+<p><a name="queuing_system"></a><a name="_Using_a_Queuing"></a>Queuing systems such as the Load Sharing Facility (LSF) and the Sun Grid Engine (SGE) allow computational resources to be used effectively. If you have installed a queuing system, you can configure the GenePattern server to use it. On a heavily used server, using a queuing system to execute analysis jobs generally improves performance overall, especially for compute-intensive and long-running jobs; however, short jobs might take slightly longer because they must be dispatched to the queuing system.</p>
+
+<p>The GenePattern server includes support for Sun Grid Engine (SGE) and LSF. To configure your server, you need to edit the configuration file and restart the server. Detailed documentation is in the &#39;config_example.yaml&#39; file which is in the resources directory of your local GenePattern installation.</p>
+
+<p>There are three additional ways to configure GenePattern&#39;s interaction with your queuing system; either programmatically or with a command line prefix.</p>
+
+<ul>
+	<li><a href="#JobRunnerAPI">JobRunner API</a>. We strongly recommend (and use) this method. Although it requires a knowledge of Java, this method is more robust than the command line prefix option and simpler to use than the Command Executor Interface. The GenePattern runtime takes care of polling your system for job completion. You must provide hooks for starting a job, cancelling a job, and getting the current status of a running job.</li>
+	<li><a href="#CommandExecutorInterface">CommandExecutor Interface</a>. This API also requires that you write a Java class. Your code is responsible for polling the queuing system and notifying the GenePattern server on job completion or cancellation. The GenePattern runtime has a callback method to call when a job completes.</li>
+	<li><a href="#CommandLinePrefix">Command Line Prefix</a>. Before the 3.2.3 release of GenePattern (June 2010), the command line prefix was the only way to connect to an external queuing system. Although this option requires no Java programming and allows for configuration via a web page, it has significant drawbacks. See <a href="#CommandLinePrefix">Command Line Prefix</a> for details.</li>
+</ul>
+
+<h2><a name="JobRunnerAPI"></a>JobRunner API</h2>
+
+<p>To integrate your queuing system with GenePattern:</p>
+
+<ol>
+	<li>Implement the JobRunner API</li>
+	<li>Deploy the jar file to the GenePattern server.</li>
+	<li>Configure your server.</li>
+	<li>Reload the new configuration.</li>
+</ol>
+
+<p>1. Implement the JobRunner API</p>
+
+<p>A source code snippet from the API is included here. Contact us for the full source code.</p>
+
+<pre>
+interface JobRunner {
+
+    /**
+     * The GenePattern Server calls this when it is ready to submit the job to the queue.
+     * Submit the job to the queue and return immediately.
+     * The drm jobId returned by this method is used as the key into a
+     * lookup table mapping the gp jobId to the drm jobId.
+     *
+     * @return the drm jobId resulting from adding the job to the queue.
+     */
+    String startJob(DrmJobSubmission drmJobSubmission) throws CommandExecutorException;
+
+
+    /**
+     * Get the status of the job.
+     * @param drmJobId
+     * @return
+     */
+    DrmJobStatus getStatus(DrmJobRecord drmJobRecord);
+
+
+    /**
+     * This method is called when the GP server wants to cancel a job before it
+     * has completed on the queuing system.
+     * For example when a user terminates a job from the web ui.
+     *
+     * @param drmJobRecord, contains a record of the job
+     * @return true if the job was successfully cancelled, false otherwise.
+     * @throws Exception
+     */
+    boolean cancelJob(DrmJobRecord drmJobRecord) throws Exception;
+}</pre>
+
+<p>The required Java libraries come with your local install of GenePattern and can be found in the &lt;GenePatternServer&gt;/Tomcat/webapps/gp/WEB-INF/lib directory.</p>
+
+<p>Follow steps 2-4 in the CommandExecutor Interface section below to configure your server.</p>
+
+<h2><a name="CommandExecutorInterface"></a>CommandExecutor Interface</h2>
+
+<p>To use a queuing system with GenePattern:</p>
+
+<ol>
+	<li>Implement the CommandExecutor Java API.</li>
+	<li>Deploy the resulting jar file to the GenePattern server.</li>
+	<li>Configure your server.</li>
+	<li>Reload the new configuration.</li>
+</ol>
+
+<p>Each step is described in detail below.</p>
+
+<h3><a name="UsingGenePatternwithaQueuingSystem-1.ImplementtheCommandExecutorInterface"></a>1. Implement the Command Executor Interface</h3>
+
+<p>The full source for the Command Executor API is included here:</p>
+
+<pre>
+/**
+ * Interface for managing job execution via runtime exec or an external queuing system. This interface is responsible for both initialization and shutdown of external services,
+ * as well as the management of job submission, getting job status, and killing, pausing, and resuming jobs.
+ *
+ * @author pcarr
+ */
+
+public interface CommandExecutor {
+
+&nbsp;   //configuration support
+    /**
+     * [optionally] set a path to a configuration file.
+     */
+    void setConfigurationFilename(String filename);
+
+    /**
+     * [optionally] provide properties.
+     * @param properties
+     */
+    void setConfigurationProperties(CommandProperties properties);
+
+&nbsp;   /**
+     * Start the service, typically called at application startup.
+     */
+    public void start();
+
+&nbsp;   /**
+     * Stop the service, typically called just before application shutdown.
+     */
+    public void stop();
+
+&nbsp;   /**
+     * Request the service to run a GenePattern job. It is up to the service to monitor for job completion and callback to GenePattern when the job is completed.
+     *
+     * @see GenePatternAnalysisTask#handleJobCompletion(int, String, String, int)
+     *
+     * @param commandLine
+     * @param environmentVariables
+     * @param runDir
+     * @param stdoutFile
+     * @param stderrFile
+     * @param jobInfo
+     * @param stdin
+     *
+     * @throws CommandExecutorException when errors occur attempting to submit the job
+     */
+    void runCommand(
+        String commandLine[],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;String, String&gt; environmentVariables,
+	File runDir,
+	File stdoutFile,
+	File stderrFile,
+	JobInfo jobInfo,
+	File stdinFile)
+    throws CommandExecutorException;
+
+&nbsp;   /**
+&nbsp;    * Request the service to terminate a GenePattern job which is running via this service.
+     * @param jobInfo
+    &nbsp;* @throws Exception indicating that the job was not properly terminated.
+    &nbsp;*/
+    void terminateJob(JobInfo jobInfo) throws Exception;
+
+    /**
+     * This method is called on server startup for each RUNNING job for this queue.
+     *
+     * For RuntimeExec, tell the GP server to delete the job results directory and requeue the job.
+     * For other executors, (such as LSF), you may want to ignore this message.
+     * For PipelineExec, you may need to determine the last successfully completed step before resuming the pipeline.
+     *
+     * @return an optional int flag to update the JOB_STATUS_ID in the GP database, ignore if it is less than zero
+     */
+    int handleRunningJob(JobInfo jobInfo) throws Exception;
+}
+
+</pre>
+
+<p>The required Java libraries come with your local install of GenePattern and can be found in the <code>&lt;GenePatternServer&gt;/Tomcat/webapps/gp/WEB-INF/lib directory.</code></p>
+
+<p>The interface accepts requests to start and terminate jobs from the server. You will need to invoke a callback to the GP server when your job has completed.</p>
+
+<p>Example snippet:</p>
+
+<pre>
+<code>try</code> <code>{</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>GenePatternAnalysisTask.handleJobCompletion(jobInfo.getJobNumber(), exitCode, </code><code>null</code><code>, runDir, stdoutFile, stderrFile);</code>
+<code>}</code>
+<code>catch</code> <code>(Exception e) {</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>log.error(</code><code class="java string">&quot;Error handling job completion for job &quot;</code><code>+jobInfo.getJobNumber(), e);</code>
+<code>}</code>
+</pre>
+
+<p>Once you have implemented this interface, create a jar file to deploy to the GP server.</p>
+
+<h3><a name="UsingGenePatternwithaQueuingSystem-2.DeploytotheGenePatternserver"></a>2. Deploy the jar File to the GenePattern Server</h3>
+
+<p>The jar file and all of the dependent libraries must be installed to <code>&lt;GenePatternServer&gt;/Tomcat/webapps/gp/WEB-INF/lib</code>.</p>
+
+<h3><a name="UsingGenePatternwithaQueuingSystem-3.Configureyourserver"></a>3. Configure Your Server</h3>
+
+<p>To configure your server to interact with your queuing system, you must edit the <code>config.yaml</code> file. In a fresh install of GenePattern, there will be two .yaml files found in <code>&lt;GenePatternServer&gt;/resources</code>: <code>config_default.yaml</code> and <code>config_example.yaml</code>. It is <strong>highly recommended that you make a copy of <code>config_default.yaml</code></strong> and name it something like <code>config.yaml</code>. This will give you a working copy of your configuration file, preserving the default and example versions for your future reference. Additionally this will prevent your working copy from getting overwritten during server upgrade.</p>
+
+<p>Edit the <code>config.file</code> property in the <code>&lt;GenePatternServer&gt;/resources/genepattern.properties</code> file to point to your new configuration file. By default, the property looks like this:</p>
+
+<pre>
+<code>config.file=config_default.yaml</code>
+</pre>
+
+<p>For this example, you would edit the property as follows:</p>
+
+<pre>
+<code>config.file=config.yaml</code>
+</pre>
+
+<p>Now, edit your working copy of the configuration file, <code>config.yaml</code>. (The following code snippets come from the <code>config_example.yaml</code> file.)</p>
+
+<p>a) Define an executor in the &quot;executors&quot; section. To do so add an item to the list of &#39;executors&#39; in the yaml document.</p>
+
+<pre>
+<code># a list of command executors</code>
+<code># The executor id, </code><code class="java string">&#39;org.genepattern.server.executor.PipelineExecutor&#39;</code><code>, is reserved </code><code>for</code> <code>the </code><code>default</code> <code>executor which runs all GP pipelines.</code>
+<code># Don&#39;t use </code><code>this</code> <code>as an executor id in </code><code>this</code> <code>file.</code>
+<code># a map of &lt;id&gt;:&lt;obj&gt;, where</code>
+<code>#&nbsp;&nbsp;&nbsp; obj := &lt;classname&gt; | &lt;map&gt;</code>
+<code>#&nbsp;&nbsp;&nbsp; classname := fully qualified classname of a </code><code>class</code> <code>which </code><code>implements</code> <code>the org.genepattern.server.executor.CommandExecutor </code><code>interface</code>
+<code>#&nbsp;&nbsp;&nbsp; map := classname=&lt;classname&gt; [configuration.file: &lt;path_to_config_file&gt; | configuration.properties: &lt;map&gt;] [</code><code>default</code><code>.properties: &lt;map&gt;]</code>
+	<code>executors:</code>
+<code>        # </code><code>default</code> <code>executor </code><code>for</code> <code>all jobs, it is included in GenePattern</code>
+		<code>RuntimeExec: </code>
+			<code>classname: org.genepattern.server.executor.RuntimeCommandExecutor</code>
+			<code>configuration.properties:</code>
+				<code># the total number of jobs to run concurrently</code>
+				<code>num.threads: </code><code class="java value">20</code>
+				<code># the total number of jobs to keep on the queue, not yet implemented</code>
+				<code>#max.pending.jobs: </code><code class="java value">20000</code>
+				<code># nested declaration with configuration file, &lt;id&gt;: { classname: &lt;classname&gt;, configuration: &lt;config_file&gt; }</code>
+		<code>Test:</code>
+			<code>classname: org.genepattern.server.executor.TestCommandExecutor</code>
+			<code>configuration.properties:</code>
+				<code>num.threads: </code><code class="java value">20</code>
+</pre>
+
+<p>b) Configure your server to use your executor.</p>
+
+<pre>
+<code># apply these properties to all jobs</code>
+<code>default</code><code>.properties: </code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;</code><code>executor: Test
+&nbsp;   </code><code>java_flags: -Xmx512m</code>
+								</pre>
+
+<p>c) Optionally, you can use the configuration file to override the default executor on a per module, group or user basis. The following example comes from per module section, more examples can be found in <code>config_example.yaml</code>.</p>
+
+<pre>
+<code># override </code><code>default</code><code>.properties and executor-&gt;</code><code>default</code><code>.properties based on taskname or lsid</code>
+<code># Note: executor-&gt;configuration.properties are intended to be applied at startup and are not overwritten here</code>
+<code>module.properties:</code>
+<code>    CBS:</code>
+<code>        executor: LSF</code>
+<code>        lsf.max.memory: </code><code class="java value">16</code>
+<code>        java_flags: -Xmx16g</code>
+								</pre>
+
+<p><strong>About the .yaml configuration file</strong>: As of GenePattern 3.4.0, you use the .yaml configuration file only to configure GenePattern for use with a queuing system. As you work with the .yaml file, you may notice that it contains several properties that are also defined in the genepattern.properties file. To avoid confusion, leave them set to agree with the genepattern.properties file. GenePattern 3.4.0 reads these properties from the genepattern.properties file, not from the .yaml file. (In a future release, the genepattern.properties file may define the default server settings and the .yaml configuration file may define custom server settings.)</p>
+
+<h3>4. Reload the Configuration</h3>
+
+<p>At this point, you have deployed your command executor, modified the .yaml configuration file to control its use, and modified the <code>&lt;GenePatternServer&gt;/resources/genepattern.properties</code> file to point to the modified .yaml configuration file. Now, stop and restart the GenePattern server to reload the server configuration and begin to use the new command executor.</p>
+
+<p>As you use GenePattern with the queuing system, you may find it useful to modify the configuration. The <em>Administration&gt;Server Settings</em>&gt;<em><a href="#_Job_Configuration">Job Configuration </a></em>page provides several useful tools for controlling the internal GenePattern job queue and reloading the .yaml configuration file. Use this page to confirm which command&nbsp; executors are currently installed and the exact .yaml configuration file currently in use. If you make minor adjustments to the configuration file, such as overriding the command executor used for a module, group or user, you can use the Job Configuration page to reload the configuration file without restarting the GenePattern server. On the other hand, for major changes, such as adding a new command executor, we recommend restarting the server rather than simply reloading the configuration.</p>
+
+<p><img alt="" src="/uploaded/content_job_configuration.jpg" style="width: 550px; height: 351px; " /></p>
+
+<h2><a name="CommandLinePrefix"></a>Command Line Prefix</h2>
+
+<h3>Pros and Cons</h3>
+
+<p>Before the 3.2.3 release of GenePattern (June 2010), the only way to connect to an external queuing system was to use the command line prefix. Although this option requires no Java programming and allows for configuration via a web page, it has significant drawbacks:</p>
+
+<ul>
+	<li>Not suitable for high volume of jobs.</li>
+	<li>Not suitable for long running jobs.</li>
+	<li>User jobs may be terminated and not restarted.</li>
+</ul>
+
+<p>The drawbacks are a result of how the command line prefix works. Each new job requires a dedicated server process which waits for the job to complete. When a user terminates a job, the server process is terminated but the external process launched on the queuing system is not terminated. Similarly, when the GenePattern server shuts down, all server processes halt but the processes running on the external queuing system become orphaned. When the GenePattern server restarts, the jobs are not restarted; the user must restart any unfinished job from the beginning.</p>
+
+<p>If you are using the <a href="#CommandExecutorInterface">CommandExecutor Interface</a>, we recommend that you <strong>not </strong>use the command line prefix. The command line prefix is appended to the module command line before the job is executed by the CommandExecutor. To be more precise:</p>
+
+<ol>
+	<li>The server gets the initial command line from the manifest.</li>
+	<li>The command line prefix is appended to the initial command line.</li>
+	<li>The server resolves all system and user variables and breaks the command line string into tokens.</li>
+	<li>The server calls the CommandExecutor.runCommand.</li>
+</ol>
+
+<h3>Using the Command Line Prefix</h3>
+
+<p>Although this is not the preferred method, you can still use the Command Line Prefix to connect to an external queuing system.</p>
+
+<p>To use the Command Line Prefix to configure the GenePattern server to execute jobs using LSF or SGE:</p>
+
+<ol>
+	<li>Add the GenePatternURL property to the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties</code>, specifying the URL of your server. For example:
+
+	<p><code>GenePatternURL=http://myserver.company.com:8080/gp/</code></p>
+
+	<p>When you run a pipeline, the GenePattern server uses this URL to construct the links to the output files.</p>
+
+	<p>By default, the GenePatternURL property is not set. When you run a pipeline, the GenePattern server derives the URL at run time based on the current IP address of the host server. This is ideal for a user running on a laptop, where the IP address may change at startup. However, if you are using a queuing system, the derived URL is incorrect: it is based on the IP address of the queuing system server rather than the GenePattern server.</p>
+	</li>
+	<li>For Sun Grid Engine modify the R2.5 property in the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties</code>, to quote the &lt;r_flags&gt; options. For example:
+	<p><code>R2.5=&lt;java&gt; -DR_suppress\=&lt;R.suppress.messages.file&gt; -DR_HOME\=&lt;R2.5_HOME&gt;<br />
+	-Dr_flags\=\&quot;&lt;r_flags&gt;\&quot; -cp &lt;run_r_path&gt; RunR</code></p>
+
+	<p>Modify other similar properties (if any) that were added to support additional versions of R.</p>
+	</li>
+	<li>Click <em>Administration&gt;Server Settings </em>and use the <a href="#_Command_Line_Prefix">Command Line Prefix </a>page to have the GenePattern server add the required options to the command line each time it executes a module.</li>
+</ol>
+
+<p>For example, if you are using LSF, modify the Command Line Prefix options as follows:</p>
+
+<ol>
+	<li>Click <em>Administration&gt;Server Settings</em> and select Command Line Prefix. GenePattern displays the <a href="/gp_guides/administrators-guide/sections/server-settings#_Command_Line_Prefix">Command Line Prefix</a> page.</li>
+	<li>Enter the following text in the <em>Default Command Prefix</em> field:<br />
+	<code>bsub -K -o lsf_log.txt</code>
+	<ul>
+		<li>The &ndash;K flag instructs the bsub command to wait for the job to complete before returning.</li>
+		<li>The &ndash;o flag specifies the file to which the job writes standard output and standard error messages.</li>
+	</ul>
+	</li>
+	<li>Optionally, set the environment variables BSUB_QUIET and BSUB_QUIET2 to prevent bsub from printing common job messages to standard out:
+	<ul>
+		<li>Setting BSUB_QUIET prevents bsub from printing the messages &lt;&lt;Job is submitted to default queue &lt;normal&gt;&gt;&gt; and &lt;&lt;Waiting for dispatch&gt;&gt;.</li>
+		<li>Setting BSUB_QUIET2 prevents bsub from printing the message &lt;&lt;Job is finished&gt;&gt;.</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Another alternative is to create a script that sets the environment variables and then executes the job using LSF or SGE. The command prefix would then execute the script. For example:</p>
+
+<ol>
+	<li>Create the shell script to set the variables and execute the job using LSF. The script executes in the jobResults&nbsp;directory for the job; for example, for job&nbsp; 3248,&nbsp;the script executes in the GenePattern /Tomcat/webapps/gp/jobResults/3248/ directory. The following script sets the environment variables, submits the job to the LSF queue, waits for the job to complete, saves stdout to a new&nbsp; file, stdout.txt, and saves stderr to a new file, stderr.txt. By convention, GenePattern considers a job to fail if there is any&nbsp;output to stderr.<br />
+	&nbsp;
+	<pre>
+<code>#!/bin/bash
+#
+# Submit the job to LSF
+# Save lsf out and err files in the jobResults directory.
+# If there is stdout from the job, pipe to stdout of this script.
+# If there is stderr from the job, pipe to stderr of this script.
+lsf_err=.lsf.err;
+cmd_out=cmd.out;
+BSUB_QUIET=
+BSUB_QUIET2=
+export BSUB_QUIET
+export BSUB_QUIET2
+# submit the job and wait (-K) for the job to complete
+bsub -q genepattern -K -o .lsf_%J.out -e $lsf_err $&quot;$@&quot; \&gt;$cmd_out
+# sleep to allow for NFS delay
+sleep 2;
+# If there is stdout from the job, pipe to stdout of this script, then delete the output file
+if [ -e $cmd_out ]
+then
+    cat $cmd_out &gt;&amp;1;
+    rm $cmd_out;
+fi
+# If there is stderr from the job, pipe to stderr of this script then delete stderr file
+if [ -e $lsf_err ]
+then
+    cat $lsf_err &gt;&amp;2;
+    rm $lsf_err;
+fi</code></pre>
+	</li>
+	<li>Click <em>Administration&gt;Server Settings </em>and select Command Line Prefix. GenePattern displays the <a href="#_Command_Line_Prefix">Command Line Prefix</a> page.</li>
+	<li>Enter the following text in the <em>Default Command Prefix</em> field:<br />
+	<code>/fully/qualified/path/to/lsf_default.sh</code></li>
+	<li>The script shown here saves the lsf log file into the job results&nbsp;directory. In GenePattern, the log files are displayed with the other job result files. If you do not want the log files displayed in GenePattern, edit&nbsp;the /resources/genepattern.properties file and set the following property:<br />
+	<code>jobs.FilenameFilter=.lsf*</code></li>
+</ol>
+
+<h1 id="securing-the-server">Securing the Server</h1>
+
+<p>Secure the GenePattern server to control who has access to which operations. Since GenePattern is primarily a web application (including SOAP interfaces) running on a web server, general approaches for securing web servers are applicable to the GenePattern server. In addition, GenePattern provides several security features that can easily be used by non-technical users to control access to the server.</p>
+
+<p>This section describes several ways to secure the GenePattern server:</p>
+
+<ul>
+	<li><a href="#_Access_Filtering">Access Filtering</a></li>
+	<li><a href="#_Password_Protection">Password Protection</a></li>
+	<li><a href="#_User_Accounts">User Accounts</a></li>
+	<li><a href="#_User_Permissions">User Permissions</a></li>
+	<li><a href="#_User_Authentication_and">User Authentication and Authorization</a></li>
+	<li><a href="#_Secure_Sockets_Layer_(SSL)%20Support">Secure Sockets Layer (SSL) Support</a></li>
+</ul>
+
+<h2><a name="access_filtering"></a><a name="_Access_Filtering"></a>Access Filtering</h2>
+
+<p>Use the Access page to define which GenePattern clients have access to the GenePattern server. This is the simplest way to secure your GenePattern server.</p>
+
+<p>Access filtering prevents users from connecting to the GenePattern server unless they come from a known computer. If your computer cannot access the server, you cannot access the server regardless of your username/password or permissions. The localhost (127.0.0.1) computer cannot be denied access to the locally installed GenePattern server. This prevents you from inadvertently denying yourself access to the server.</p>
+
+<p>To use access filtering (as described in <a href="#_Modifying_Server_Settings">Modifying Server Settings</a>):</p>
+
+<ol>
+	<li>Click <em>Administration&gt;Server Settings</em>.</li>
+	<li>Use the Access page to determine which clients have access to your GenePattern server:
+	<p><img alt="Access" id="_x0000_i1096" src="/uploaded/content_web_client_admin_access.gif" style="width: 641px; height: 170px;" /></p>
+
+	<ul>
+		<li>Click<span class="brGUI"> Standalone</span> to allow only local clients to connect to the server; that is, you can access this GenePattern server only from the computer that it is running on.</li>
+		<li>Click<span class="brGUI"> Any Computer</span> (default) to allow any client to connect to the server.</li>
+		<li>Click<span class="brGUI"> These Domains</span> to allow only clients from specific domains to connect to the server. Enter a comma-separated list of domains or IP addresses in the text box, for example: <code>broadinstitute.org,dfci.harvard.edu,mit.edu</code>.<br />
+		GenePattern scans all incoming connection attempts. If they match in whole or in part any domain name or IP address in this list, the server allows access; otherwise, the server redirects the connection to a page indicating that the server does not allow access.</li>
+	</ul>
+	</li>
+</ol>
+
+<h2><a name="_Password_Protection"></a>Password Protection</h2>
+
+<p>By default, the GenePattern server requires only a user name to authenticate a GenePattern user. You can easily add password protection by modifying the GenePattern server properties.</p>
+
+<p>To add password protection, modify the GenePattern server properties:</p>
+
+<ol>
+	<li>Edit the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties.</code></li>
+	<li>Set the requirePassword property to true: requirePassword=true.</li>
+	<li>Save the <code>genepattern.properties</code> file.</li>
+	<li>Restart the GenePattern server.</li>
+</ol>
+
+<p>When you add password protection to the server:</p>
+
+<ul>
+	<li>Existing users are assigned a blank password. The first time a user signs in with a blank password, the GenePattern server requires the user to set the password.</li>
+	<li>New users are required to register before using the GenePattern server. By registering, the user creates a GenePattern account with an associated username, password, and email address.</li>
+	<li>The sign-in screen prompts you for a username and password. If you forget your password, click the <em>Forgot your password? </em>link and GenePattern emails you a temporary password.</li>
+</ul>
+
+<p>Assigning passwords to existing user accounts prevents anyone from inadvertently or intentionally logging into and taking control of another user&rsquo;s account. After adding password protection to the server, set passwords for existing users as follows:</p>
+
+<ol>
+	<li>Select <em>Administration&gt;Server Settings&gt;Users and Groups</em> to list all users registered on the server.</li>
+	<li>Sign into GenePattern using the name of an existing user.</li>
+	<li>When GenePattern prompts you to set a password, select a password for that user.</li>
+	<li>After setting the password, GenePattern displays the Change Email page (<a href="/user-guide#user-interface-my-settings">My Settings</a>). Set the user&rsquo;s email address if it has not been set. This is the address GenePattern uses to send the user a new password if necessary.</li>
+	<li>Sign out and repeat the process for the next user.</li>
+	<li>After setting passwords for all users, let them know that passwords have been set. You do not need to send the users their passwords. Simply ask users to sign into GenePattern and click the <em>Forgot your password? </em>link to have GenePattern send a temporary password.</li>
+</ol>
+
+<h3 id="setting-the-java-version">Anonymous (Un-authenticated) Login</h3>
+
+<p><a id="_Anonymous_users" name="_Anonymous_users"></a>&nbsp;If desired, the GenePattern server can be configured to allow users to run analyses without a password, or even registring a username or email.&nbsp; This is typically necessary only when athe server is part of a journal submission&nbsp;to an academic journal that requires free and anonymous access (e.g. anything from the <a href="https://academic.oup.com/bioinformatics/pages/instructions_for_authors">Oxford University Press</a>&nbsp;which states &quot;Web services must not require mandatory registration by the user. &quot;).</p>
+
+<p>To enable this feature, add the following property into the <span style="font-family:courier new,courier,monospace;">default_properties</span> section of your server&#39;s <span style="font-family:courier new,courier,monospace;">config_custom.yaml</span> file:</p>
+
+<p><code>anonymous.users.allowed: true</code></p>
+
+<p>When this value is present, you will see an additional option to &#39;sign on anonymously&#39; on the login screen to permit anonymous login and use as shown below.</p>
+
+<p><img alt="" src="/uploaded/content_anon_login.png" style="width: 300px; height: 228px;" /></p>
+
+<h3>Globus Login</h3>
+
+<p>It is also possible to use Globus authentication to identify users for your GenePattern server.&nbsp; To do this you must first register your GenePattern server as an &quot;App&quot; with Globus authentication <a href="https://action-provider-tools.readthedocs.io/en/latest/setting_up_auth.html">following these instructions</a>.</p>
+
+<p>On the GenePattern server, you will have to add the following additional configuration items to the <span style="font-family:courier new,courier,monospace;">default_properties</span> section of your server&#39;s <span style="font-family:courier new,courier,monospace;">config_custom.yaml</span>:</p>
+
+<p><code>&nbsp; &nbsp; ###############################<br />
+&nbsp; &nbsp; #<br />
+&nbsp; &nbsp; #&nbsp; Globus OAuth config settings<br />
+&nbsp; &nbsp; #<br />
+&nbsp; &nbsp; ##############################<br />
+&nbsp; &nbsp; oauth.authorize.url: &quot;https://auth.globus.org/v2/oauth2/authorize&quot;<br />
+&nbsp; &nbsp; oauth.client.id: <strong><em>&lt;your Globus oauth client id&gt;</em></strong><br />
+&nbsp; &nbsp; oauth.client.secret: <strong><em>&lt;your Globus oauth secret&gt;</em></strong><br />
+&nbsp; &nbsp; oauth.client.scopes: &quot;urn:globus:auth:scope:transfer.api.globus.org:all urn:globus:auth:scope:auth.globus.org:view_identities openid profile email offline_access&quot;<br />
+&nbsp; &nbsp; authentication.class: org.genepattern.server.webapp.rest.api.v1.oauth.GlobusAuthentication</code></p>
+
+<p>With this configuration and registration complete, your login page will have an additional option, &quot;Sign on using your Globus account&quot;, shown for logging in via Globus as shown below:</p>
+
+<p><img alt="" src="/uploaded/content_anon_login.png" style="width: 300px; height: 228px;" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><a name="_User_Accounts"></a>User Accounts</h2>
+
+<p>By default, users create their own accounts by clicking the <em>Registration</em> link on the GenePattern login page. To configure GenePattern to allow only administrators to create new accounts:</p>
+
+<ol>
+	<li>Shut down the server.</li>
+	<li>Edit the file <code>GenePatternServer/Tomcat/webapps/gp/WEB-INF/web.xml</code>. Remove <code>registerUser.jsf</code> from the <code>no.login.required.redirect.to.home</code> parameter value. After the edits, it looks like this:
+	<pre>
+&lt;init-param&gt;
+    &lt;!-- List of jsf pages that user can access if not logged in. If user requests one of these pages while logged in, he is redirected to the home page. --&gt;
+    &lt;param-name&gt;no.login.required.redirect.to.home&lt;/param-name&gt;
+    &lt;param-value&gt;login.jsf,forgotPassword.jsf&lt;/param-value&gt;
+&lt;/init-param&gt;</pre>
+	Result: A user cannot access the registration page until she has successfully logged into the server.</li>
+	<li>Edit the file <code>GenePatternServer/resources/actionPermissionMap.xml</code>. Add the following line to the &lt;actionPermissionMap&gt;:
+	<p><code>&lt;url link=&quot;registerUser.jsf&quot; permission=&quot;adminServer&quot;/&gt;</code></p>
+	Result: A user must be an administrator to access the registration page.</li>
+	<li>Edit the file <code>GenePatternServer/Tomcat/webapps/gp/pages/login.xhtml</code>. Replace the phrase
+	<p><code>rendered=&quot;#{loginBean.createAccountAllowed and loginBean.showRegistrationLink}&quot;&gt;</code></p>
+	with
+
+	<p><code>rendered=&quot;false&quot;&gt;</code></p>
+	Result: Removes the <em>Click to register</em> link from the login page.</li>
+	<li>Restart the server.</li>
+</ol>
+
+<p>To create an account:</p>
+
+<ol>
+	<li>Login using an administrator account. GenePattern displays the home page.</li>
+	<li>Open the user registration page, registerUser.jsf. For example, if the URL for the GenePattern home page is
+	<p><code>http://127.0.0.1:8080/gp/pages/index.jsf</code></p>
+	change the URL to
+
+	<p><code>http://127.0.0.1:8080/gp/pages/registerUser.jsf</code></p>
+	</li>
+	<li>Create the new user account. You are automatically logged in as that new user.</li>
+	<li>To create another new account, logout of the new user account and login using your administrator account.</li>
+</ol>
+
+<h2><a name="_User_Permissions"></a>User Permissions</h2>
+
+<p>User permissions determine valid actions for the user. Permissions are based on two configuration files in the <code>GenePatternServer/resources</code> directory (the links show the default files):</p>
+
+<ul>
+	<li><a href="/tutorial/linkedFiles/userGroups.xml">userGroups.xml</a> defines user groups, as described in <a href="#_Creating_Groups">Creating Groups and Administrators</a></li>
+	<li><a href="/tutorial/linkedFiles/permissionMap.xml">permissionMap.xml</a> defines which user groups have which permissions</li>
+</ul>
+
+<p>A user who belongs to multiple groups is given the most permissive permissions granted to those groups. For example, an administrator who belongs to other groups retains administrator permissions.</p>
+
+<p><a name="_userGroups.xml"></a><a name="_permissionMap.xml"></a>To assign or modify user permissions, edit the <code>permissionMap.xml</code> file. The XML syntax is simple but must be followed carefully. The rules are as follows:</p>
+
+<ul>
+	<li>To assign permissions to a group, add a <code>&lt;group&gt;</code> element to that permission. A <code>&lt;permission&gt;</code> element may have any number of <code>&lt;group&gt;</code> elements. A <code>&lt;group&gt;</code> element may be listed under any number of <code>&lt;permission&gt;</code> elements.</li>
+	<li>To assign a permission to all groups (and therefore all users), use the syntax <code>&lt;group name=&quot;*&quot;/&gt;</code>.The presence of a group named * means that all groups (and therefore all users) have that permission.</li>
+	<li><strong>Warning</strong>: Do not add or remove <code>&lt;permission&gt;</code> elements. GenePattern uses them to define the permissions that it requires and implements. The permissions are described in the following table.</li>
+</ul>
+
+<p>By default:</p>
+
+<ul>
+	<li>When you install GenePattern, all groups have the following permissions: createPrivatePipeline, createPublicPipeline, createPrivateSuite, createPublicSuite. Administrators have all permissions.</li>
+	<li>On the GenePattern public server, all groups have the following permissions: createPrivatePipeline, createPrivateSuite. Administrators (the <a href="/team">GenePattern team</a>) have all permissions.</li>
+</ul>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td colspan="2">
+			<p><strong>Note</strong>: No explicit permission is required to run public modules/pipelines, or private modules/pipelines that you have created. No explicit permission is required to edit or delete your own modules, pipelines, suites, or jobs.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>createModule</strong></p>
+			</td>
+			<td>
+			<p>Permits creation of a module. Creation refers to any action that adds a module to the server, including create, install from repository, install from zip, and clone.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>createPrivatePipeline</strong></p>
+			</td>
+			<td>
+			<p>Permits creation of a private pipeline (a pipeline visible only to its creator). Creation refers to any action that adds a private pipeline to the server, including create, install from repository, install from zip, and clone. <strong>Note</strong>: To install the modules in a pipeline, you must have createModule permission.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>createPrivateSuite</strong></p>
+			</td>
+			<td>
+			<p>Permits creation of a private suite (a suite visible only to its creator). Creation refers to any action that adds a private suite to the server, including create, install from repository, install from zip, and clone. <strong>Note</strong>: To install the modules in a suite, you must have createModule permission.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>createPublicPipeline</strong></p>
+			</td>
+			<td>
+			<p>Permits creation of a public pipeline. Creation refers to any action that adds a public pipeline to the server, including create, install from repository, install from zip, and clone. <strong>Note</strong>: To install the modules in a pipeline, you must have createModule permission.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>createPublicSuite</strong></p>
+			</td>
+			<td>
+			<p>Permits creation of a public suite. Creation refers to any action that adds a public suite to the server, including create, install from repository, install from zip, and clone. <strong>Note</strong>: To install the modules in a suite, you must have createModule permission.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>adminJobs</strong></p>
+			</td>
+			<td>
+			<p>Permits viewing and deleting jobs and associated files owned by other users. Users with this permission can delete any job on the server. <strong>Typically, only members of the Administrators group are given this permission.</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>adminModules</strong></p>
+			</td>
+			<td>
+			<p>Permits viewing and deleting private modules owned by other users. Permits deleting public modules. <strong>Note</strong>: No explicit permission is required to view public modules.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>adminPipelines</strong></p>
+			</td>
+			<td>
+			<p>Permits viewing and deleting private pipelines owned by other users. Permits deleting public pipelines. <strong>Note</strong>: No explicit permission is required to view public pipelines.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>adminSuites</strong></p>
+			</td>
+			<td>
+			<p>Permits viewing and deleting private suites owned by other users. Permits deleting public suites. <strong>Note</strong>: No explicit permission is required to view public suites.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>adminServer</strong></p>
+			</td>
+			<td>
+			<p>Permits access to <em>Administration&gt;Server Settings</em> and all actions on the Server Settings page, including modifying server settings and shutting down the server. Users with this permission are considered to be GenePattern administrators. On the <a href="/gp_guides/administrators-guide/sections/server-settings#_Users_and_Groups">Users and Groups</a> page, a checkmark in the <em>admin?</em> column indicates that a user has this permission. <strong>Typically, only members of the Administrators group are given this permission.</strong></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="authentication"></a><a name="_User_Authentication_and"></a>User Authentication and Authorization</h2>
+
+<p>You can configure the GenePattern server to <a href="#_Password_Protection">provide password protection</a>, <a href="#_User_Accounts">restrict creation of user accounts</a>, and <a href="#_User_Permissions">assign permissions</a> based on groups. Additional or alternative authentication and authorization mechanisms can be added to the server by an administrator with programming experience. The remainder of this section is written for such a programmer. <strong>Note</strong>: The links in this section display the source code for the default GenePattern installation, which should be used as the starting point for any modifications.</p>
+
+<h3>Authentication</h3>
+
+<p>The authentication filter, <a href="/tutorial/linkedFiles/AuthenticationFilter.java">AuthenticationFilter.java</a>, controls whether a user can log into the server (typically based on username and password). The easiest way to modify GenePattern authentication is by implementing the <a href="/tutorial/linkedFiles/IAuthenticationPlugin.java">IAuthenticationPlugin.java</a> interface:</p>
+
+<ol>
+	<li>Implement the <code>IAuthenticationPlugin</code> interface. Use the <a href="/tutorial/linkedFiles/IAuthenticationPlugin.java">IAuthenticationPlugin.java</a> file as the starting point. Comments in the file provide the specification. For example, create a <code>MyCustomGenePatternAuthentication.java</code> interface.</li>
+	<li>Compile the interface and add it to the classpath for the GenePattern server web application.</li>
+	<li>Modify the <code>authentication.class</code> property in the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties</code>, to point to the new interface. For example:<br />
+	<code>authentication.class=org.genepattern.server.auth.MyCustomGenePatternAuthentication</code></li>
+	<li>Restart the GenePattern server for the changes to take effect.</li>
+</ol>
+
+<p>See <a href="ftp://ftp.broadinstitute.org/pub/genepattern/src/gp-custom-auth.zip">ftp://ftp.broadinstitute.org/pub/genepattern/src/gp-custom-auth.zip</a> for an example project that prepares a custom authentication jar file for deployment to your local GenePattern server.</p>
+
+<p>If the <code>IAuthenticationPlugin</code> interface methods do not provide enough flexibility, you can <a href="#Modifying_the_filters">modify the authentication filter</a>.</p>
+
+<h3>Authorization</h3>
+
+<p>The authorization filter, <a href="/tutorial/linkedFiles/AuthorizationFilter.java">AuthorizationFilter.java</a>, controls which GenePattern operations (web pages) the user can access. As described in <a href="#_User_Permissions_1">User Permissions</a>, permissions are based on two configuration files: <a href="/tutorial/linkedFiles/userGroups.xml">userGroups.xml</a>, which defines user groups, and <a href="/tutorial/linkedFiles/permissionMap.xml"><code>permissionMap.xml</code></a>, which defines which groups have access to which permissions.</p>
+
+<p>Organizations that have user groups defined in an external system can use those groups rather than using the <code>userGroups.xml</code>. To have the authorization filter use external user groups rather than the <code>userGroups.xml</code> file, implement the <a href="/tutorial/linkedFiles/IGroupMembershipPlugin.java"><code>IGroupMembershipPlugin.java</code></a> interface:</p>
+
+<ol>
+	<li>Implement the <code>IGroupMembershipPlugin</code> interface. Use the <a href="/tutorial/linkedFiles/IGroupMembershipPlugin.java"><code>IGroupMembershipPlugin.java</code></a> file as the starting point. Comments in the file provide the specification. For example, create a <code>MyCustomGroupMembershipPlugin.java</code> interface.</li>
+	<li>Compile the interface and add it to the classpath for the GenePattern server web application.</li>
+	<li>Modify the <code>group.membership.class</code> property in the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties</code>, to point to the new interface. For example:<br />
+	<code>group.membership.class=org.genepattern.server.auth.MyCustomGroupMembershipPlugin</code></li>
+	<li>Restart the GenePattern server for the changes to take effect.</li>
+</ol>
+
+<p>To assign permissions to a group authorized through the <code>IGroupMembershipPlugin</code> interface, include the group in the <code>permissionMap.xml</code> file. If the <code>IGroupMembershipPlugin</code> interface methods do not provide enough flexibility, you can <a href="#Modifying_the_filters">modify the authorization filter</a>.</p>
+
+<h3><a name="Modifying_the_filters"></a>Modifying the filters</h3>
+
+<p>The authentication and authorization filters are servlet filters installed in front of the GenePattern web application in the <a href="/tutorial/linkedFiles/web.xml"><code>GenePatternServer/Tomcat/webapps/gp/WEB-INF/web.xml</code></a> file. To implement an alternative authentication (or authorization) filter:</p>
+
+<ol>
+	<li>Write and compile a new <code>ServletFilter</code> that that performs the desired authentication (or authorization).</li>
+	<li>Place the jar file containing the new <code>ServletFilter</code> into the following directory:<br />
+	<code>*/GenePatternServer/Tomcat/webapps/gp/WEB-INF/lib </code></li>
+	<li>Modify the GenePattern server&rsquo;s <code>web.xml</code> document.<br />
+	<code>*/GenePatternServer/Tomcat/webapps/gp/WEB-INF/web.xml</code><br />
+	<strong>Note</strong>: It is important to maintain the existing order of the servlet filters in the <code>web.xml</code> document as they are used in the order they are defined in the document. The Authentication filter must come before the Authorization filter for the Authorization filter to work.</li>
+	<li>Change the definition of the <code>AuthenticationFilter</code> (or <code>AuthorizationFilter</code>) to use the class that you have provided.</li>
+	<li>Add any necessary configuration elements that it requires.</li>
+	<li>Restart the GenePattern server for the changes to take effect.</li>
+</ol>
+
+<p><strong>Note</strong>: If you look at the code for the default Authentication Filter (<a href="/tutorial/linkedFiles/AuthenticationFilter.java">AuthenticationFilter.java</a>), you will see that it allows requests through that have a parameter called <code>jsp_precompile</code> that have come from the <code>localhost</code>. If you do not allow these requests through unauthenticated, you will see a series of errors when you start the GenePattern server as it attempts to precompile the JSP pages. These are <strong>not</strong> fatal errors, but they slow down server response for users the first time that pages are accessed following a server restart.</p>
+
+<h2><a name="_Secure_Sockets_Layer_(SSL) Support"></a>Secure Sockets Layer (SSL) Support</h2>
+
+<p>This section describes how you can modify the GenePattern web application to run on a web server that is configured to use the HTTPS protocol, where essentially the regular http requests are routed through a secure sockets layer (SSL) making them much harder for hackers to access. If you have installed your GenePattern server onto a web server other than the default Tomcat instance it is distributed with, configure your web server according to its instructions and then follow Step 2 below.</p>
+
+<p><strong>Note</strong>: When running under SSL, programming language clients and the GenePattern web client may not be able to connect to your GenePattern server.</p>
+
+<h3>Step 1. Configure Tomcat for SSL support</h3>
+
+<p>Follow the instructions available at <a href="http://tomcat.apache.org/tomcat-5.5-doc/ssl-howto.html" target="_blank">http://tomcat.apache.org/tomcat-5.5-doc/ssl-howto.html</a> to configure the Tomcat instance for using SSL. In doing so, you will modify the Tomcat configuration file, which is located in the <code>GenePatternServer/Tomcat/conf</code> directory.</p>
+
+<h3>Step 2.Configure GenePattern for SSL</h3>
+
+<p>Once the Tomcat (or other web server) has been configured for SSL, modify the GenePattern configuration file, <code>GenePatternServer/resources/genepattern.properties</code>, to ensure that its properties are in synch with the web server:</p>
+
+<ol>
+	<li>Add a new key, <code>java.net.ssl.trustStore=</code>&lt;path to keystore&gt;.<br />
+	This should point to the keystore you created when configuring Tomcat (above) or some keystore that GenePattern can use to establish SSL connections.</li>
+	<li>Modify the value for the key GENEPATTERN_PORT to use the https port you selected when configuring Tomcat (above).</li>
+	<li>Modify the value for the key GenePatternURL to use the https protocol and the https port you selected, for example:<br />
+	<code>http://localhost:8080/gp</code> becomes <code>https://localhost:8443/gp</code></li>
+</ol>
+
+<p>Save the <code>genepattern.properties</code> file and restart your server. Any bookmarked links to your GenePattern server must be updated to the new protocol and port.</p>
+
+<h1 id="changing-the-genepattern-database-hsql-to-oracle">Changing the GenePattern Database (HSQL to Oracle)</h1>
+
+<p><a name="_Changing_the_GenePattern"></a><a name="UsingGenePatternwithaDifferentDatabase-ChangingtheGenePatternDatabase(HSQLtoOracle)"></a>The GenePattern server runs against a database. By default, the GenePattern installation sets up an HSQL database. This section describes how to build and use an Oracle database in place of the HSQL database.</p>
+
+<p>When using Oracle (or another database) you must initialize the database by running the scripts in the <code>&lt;GenePattern_HOME&gt;/resources</code> directory. You or your database administrator must ensure the database is available by JDBC URL from the GenePattern server.</p>
+
+<p><strong>Note</strong>: This procedure has been tested using the default Tomcat 5.5 server (<a class="external-link" href="http://tomcat.apache.org/tomcat-5.5-doc/index.html">Tomcat documentation</a>), which comes with GenePattern.</p>
+
+<ul>
+	<li>Edit the <code>genepattern.properties</code> file
+
+	<pre>
+<code>database.vendor=ORACLE</code>
+<code># optionally, set a different hibernate.configuration file</code>
+<code>hibernate.configuration.file=hibernate.oracle.jndi.cfg.xml</code>
+</pre>
+	</li>
+	<li>Edit <code>META-INF/context.xml</code>
+	<ul>
+		<li>The <code>Tomcat/webapps/gp/META-INF/context.xml</code> file has several example configurations for connecting the GP server to a database.</li>
+		<li>Follow the instructions and examples in the comments. Don&#39;t forget to set the username and passwords correctly, as well as entering the server name and sid into the URL property. The resource name you use in the <code>context.xml</code> file must match the one you use in the hibernate configuration file.</li>
+	</ul>
+	</li>
+	<li>Edit the hibernate configuration file
+	<ul>
+		<li>Edit the <code>hibernate.configuration.file</code> that was set in the <code>genepattern.properties</code> file. This file is loaded relative to the classes directory of your web application. For a default installation the file is here:
+		<ul>
+			<li><code>Tomcat/WEB-INF/classes/hibernate.cfg.xml</code></li>
+		</ul>
+		</li>
+		<li>There are some vendor-specific database settings that must be changed from the default when using Oracle. The specific settings needed are in the comments.</li>
+		<li>Also be sure to change the <code>hibernate.connection.datasource</code> property near the top of the file to point to the correct Resource in <code>context.xml</code>.</li>
+	</ul>
+	</li>
+	<li>Initialize the database schema<br />
+	There is a list of files in the installed resources directory for initializing the DB scheme. Run each of the <code>analysis_oracle-3.X.X.sql</code> scripts in order, by version number, up through the installed version of GenePattern.</li>
+	<li>Start your server<br />
+	Once the GenePattern Server is running, review the <code>genepattern.log</code> file to verify that the server started correctly and was able to connect to the database.</li>
+</ul>
+
+<h1 id="integrating-genepattern-with-existing-tools">Integrating GenePattern with Existing Tools</h1>
+
+<p><a name="integration_guide"></a>This section provides guidance to system administrators interested in integrating GenePattern into the analysis tools at their site. It highlights issues that might arise and how to address them, and provides links to relevant portions of the GenePattern documentation, supplementing that documentation as needed.</p>
+
+<ul>
+	<li><a href="#_Installing_GenePattern">Installing GenePattern</a></li>
+	<li><a href="#_GenePattern_Database">GenePattern Database</a></li>
+	<li><a href="#_Securing_the_GenePattern">Securing the GenePattern Server</a></li>
+	<li><a href="#_Modules">Modules</a></li>
+	<li><a href="#_genepattern.properties">genepattern.properties</a></li>
+</ul>
+
+<p>Typographical conventions:</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Tables like this describe implementation on the GenePattern public server.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="_Installing_GenePattern"></a>Installing GenePattern</h2>
+
+<p>The standard installation procedure uses Install Anywhere to install the server on Windows, Mac, or Linux using a Tomcat web server. To install on a different web server or on another platform, use the WAR file installer. Instructions for both the standard installation and the WAR file installation are on the download page: <a href="/download/">http://www.genepattern.org/download/</a>.</p>
+
+<p>Hardware and software requirements for GenePattern are described in the <a href="/doc/relnotes/current/">Release Notes</a>.</p>
+
+<h2><a name="_GenePattern_Database"></a>GenePattern Database</h2>
+
+<p>The GenePattern server runs against a database. The GenePattern installation creates an HSQL database. For instructions on how to build and use an Oracle database instead, see <a href="/administrators-guide#changing-the-genepattern-database-hsql-to-oracle">Changing the GenePattern Database (HSQL to Oracle)</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>We use an Oracle database for the GenePattern public server.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="securing-the-server"></a>Securing the GenePattern Server</h2>
+
+<p>The following sections briefly summarize how to secure your GenePattern server, including access to the server from client machines, GenePattern user accounts, authentication (e.g., username &amp; password) and authorization (e.g., permissions). For more detail, see <a href="/administrators-guide#securing-the-server">Securing the Server</a>.</p>
+
+<h3><a name="_Access"></a>Access</h3>
+
+<p>By default, any client machine can access a GenePattern server. Optionally, you can configure your GenePattern server to restrict access to selected domains. See <a href="/administrators-guide#_Access_Filtering">Securing the Server.Access Filtering</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Access to the GenePattern public server is not restricted.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_User_Accounts"></a>User Accounts</h3>
+
+<p>A user must have a GenePattern account to log into the GenePattern server. By default, when a user first logs into the server, GenePattern automatically create an account for that username.</p>
+
+<p>To enable registration, in the <code>genepattern.properties</code> file, set <code>require.password=true</code>. This setting adds a registration link (and password prompt) to the GenePattern login page. The first time users log into GenePattern, they must click the registration link to create an account. User account information is stored in the <a href="#_GenePattern_Database">GenePattern Database</a>.</p>
+
+<p>Alternatively, configure the GenePattern server to not allow users to create GenePattern accounts (<code>create.account.allowed=false</code>). In this case, new user accounts must be explicitly created by editing the GenePattern database.</p>
+
+<p>See <a href="/administrators-guide#_Password_Protection">Securing the Server.Password Protection</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Registration (and passwords) are enabled on the GenePattern public server</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_Authentication"></a>Authentication</h3>
+
+<p>Each GenePattern user must register to access the GenePattern server. By default, GenePattern requires only a username for authentication. Optionally, you can configure the GenePattern server to require both a username and a password for authentication. See <a href="/administrators-guide#_Password_Protection">Securing the Server.Password Protection</a>.</p>
+
+<p>GenePattern user authentication is performed by a servlet filter installed in front of the GenePattern web application in its <code>web.xml</code> file. To provide additional or alternative authentication, implement an <code>IAuthenticationPlugin.java</code> interface or modify the servlet filter. See <a href="/pages/20#_User_Authentication_and">Securing the Server.User Authentication and Authorization</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:68.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:410.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>The GenePattern public server hosted at the Broad Institute uses the username and password authentication provided by the GenePattern installation.</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:68.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Collaborator</p>
+			</td>
+			<td style="width:410.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p>A large university uses Kerberos to provide username and password authentication for their network. They wrote their own servlet filter to have the GenePattern server also authenticate using Kerberos.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_Permissions"></a>Permissions</h3>
+
+<p>GenePattern permissions are based on two configuration files:</p>
+
+<ul>
+	<li><code>userGroups.xml</code> defines user groups</li>
+	<li><code>permissionMap.xml</code> defines which user groups have which permissions; the permissions themselves (e.g., CreateModule, adminModules, and so on) are predefined and cannot be added or removed</li>
+</ul>
+
+<p>GenePattern user authorization is performed by a servlet filter installed in front of the GenePattern web application in its <code>web.xml</code> file. By default, users are assigned permissions based on GenePattern groups. To have the authorization filter use external user groups rather than the <code>userGroups.xml</code> file, implement the <code>IGroupMembershipPlugin.java</code> interface. To provide additional or alternative authorization, modify the servlet filter. See <a href="/pages/20#_User_Authentication_and">Securing the Server.User Authentication and Authorization</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>On the GenePattern public server, the following permissions are restricted to a small number of users in the Administrator group:</p>
+
+			<ul>
+				<li>createModule - we restrict this to prevent malicious code on the server</li>
+				<li>createPublicPipeline - we restrict this to prevent proliferation of untested pipelines</li>
+				<li>adminJobs, AdminModules, adminPipelines, adminSuites - we restrict these to preserve privacy</li>
+				<li>adminServer - we restrict this to secure the server</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_SSL"></a>SSL</h3>
+
+<p>For information on how to modify the GenePattern web application to run on a web server that is configured to use the HTTPS protocol, see <a href="/pages/20#_Secure_Sockets_Layer_(SSL)%20Support">Securing the Server.Secure Sockets Layer (SSL) Support</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>The GenePattern public server is not running under SSL.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_Other_Security_Considerations"></a>Other Security Considerations</h3>
+
+<p>We take the following additional steps to secure the machine running the GenePattern public server (these steps may not be necessary on less public servers):</p>
+
+<ul>
+	<li>create an operating system user account with limited permissions from which to run the GenePattern server</li>
+	<li>disable JSP compilation and remove the compiler</li>
+	<li>prevent users from entering an input file path (file:// urls) as an input file for a module.<br />
+	By default allow.input.file.paths=false, preventing users from providing an arbitrary network file path (such as <code>file:///server/directory/file.gct</code>) as the value for an input file parameter. When <code>allow.input.file.paths=true</code>, you can use the <code>server.browse.file.system.root</code> property to set a root directory where the GenePattern server begins browsing for the specified network file path; to do so, edit <code>genepattern.properties</code> and set <code>allow.server.file.paths=true</code></li>
+	<li>prevent LSF log files from being displayed with other job results in GenePattern; to do so, edit <code>genepattern.properties</code> and set <code>jobs.FilenameFilter=.lsf*</code> (further discussion in <a href="#_Running_Modules_in">Running Modules in a Cluster</a>)</li>
+</ul>
+
+<h2><a name="_Modules"></a>Modules</h2>
+
+<p>This section discusses how to install, create, and manage modules.</p>
+
+<h3><a name="_Installing_Modules"></a>Installing Modules</h3>
+
+<p>By default, you install modules, pipelines, and suites from the Broad repository. The module repository contains more than 100 modules and pipelines. Suites are stored in a separate suite repository. For instructions on how to install modules from the repository, see <a href="/gp_guides/user-guide/sections/managing">Managing Modules, Pipelines, and Suites</a>.</p>
+
+<p>The repository is updated regularly. We recommend checking for new modules on a weekly basis.</p>
+
+<p><strong>Create your own repository</strong>: Optionally, you can select an alternate repository from which to install modules, pipelines, and/or suites. See <a href="/gp_guides/administrators-guide/sections/server-settings#_Repositories">Repositories</a>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>At the Broad, we maintain a development repository for modules in development and a production repository for released modules. Only the production repository is available from the GenePattern public server.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_Creating_Modules"></a>Creating Modules</h3>
+
+<p>For instructions on how to create modules, as well as a step-by-step tutorial for creating a module, see the <a href="/programmers-guide">Programmers Guide</a>.</p>
+
+<h3><a name="_Running_Modules_in"></a>Running Modules in a Cluster</h3>
+
+<p>Queuing systems such as the Load Sharing Facility (LSF) and the Sun Grid Engine (SGE) allow computational resources to be used effectively. If you have such a queuing system, you typically want the GenePattern server to use it. For instructions on how to configure the GenePattern server to use a queuing system, see <a href="/gp_guides/administrators-guide/sections/queuing-system">Using a Queuing System</a>.</p>
+
+<p>As described in the instructions, you click <em>Administration&gt;Server Settings </em>and use the <a href="/tutorial/gp_web_client.html#_Command_Line_Prefix">Command Line Prefix</a> page to define the command prefix that runs the module on the cluster. The instructions use the <em>Default Command Prefix</em> field of the Command Line Prefix page to define one command prefix for all modules, which sends all modules to one queue. You can use that same page to define unique command line prefixes for specific modules. This allows you to send different modules to different queues, which helps to address hardware and memory issues. For example, certain modules (such as SNPFileCreator or HierarchicalClustering) require significant amounts of RAM.</p>
+
+<p>The script described in the instructions writes the LSF log file into the job results directory. To prevent GenePattern from displaying the LSF log files with the rest of the job results, edit the <code>genepattern.properties</code> file and set <code>jobs.FilenameFilter=.lsf*</code>.</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>The GenePattern public server uses two queues: one for most modules and one for modules that require large amounts of memory. Modules sent to the &#39;bigmem&#39; queue are run on a cluster of large memory machines. LSF log files are hidden.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3><a name="_Managing_Memory_for"></a>Managing Memory for Modules</h3>
+
+<p>In GenePattern, you manage memory for modules in one of two ways:</p>
+
+<ul>
+	<li>Add appropriate parameters to the command line that executes the module. Click <em>Administration&gt;Server Settings </em>and use the <a href="/gp_guides/administrators-guide/sections/server-settings#_Programming_Languages">Programming Languages</a> page to add memory parameters (e.g., -Xmx512M) for:
+
+	<ul>
+		<li>modules written in Java (Java VMOptions field)</li>
+		<li>modules written in R (R Options field)</li>
+		<li>visualizer modules (Java Visualizer VMOptions field) - Visualizer modules are run on the client machine; therefore, individual users can override this setting by clicking <em><a href="/gp_guides/user-guide/sections/user-interface#_My_Settings">My Settings</a>&gt;Visualizer Memory</em> and specifying the Java Visualizer VMOptions appropriate for their machine.</li>
+	</ul>
+	</li>
+	<li>Override memory parameters on a per-module basis. Create a file, <code>java_flags.properties</code>, in the GenePattern <code>/resources</code> directory. Each line of the file lists the LSID of a module and the memory setting for that module. To find the LSID of a module, in GenePattern, click the module and then click the <em>Properties</em> link. Following is an example file:<br />
+	&nbsp;
+	<pre>
+<code># Here is an example which allocates extra RAM for some of the modules:
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00087=-Xmx2500m
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00086=-Xmx10G
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00085=-Xmx2500m
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00106=-Xmx2500m
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00096=-Xmx2500m
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00094=-Xmx2500m
+
+urn\:lsid\:broadinstitute.org\:cancer.software.genepattern.module.analysis \:00093=-Xmx2500m</code></pre>
+	</li>
+</ul>
+
+<h3><a name="_Modules_that_Require"></a>Modules that Require Extra Memory</h3>
+
+<p>The following modules frequently require additional memory:</p>
+
+<ul>
+	<li>HierarchicalClustering</li>
+	<li>PreprocessDataset</li>
+	<li>SNP Analysis modules
+	<ul>
+		<li>CopyNumberDivideByNormals</li>
+		<li>GISTIC</li>
+		<li>GLAD</li>
+		<li>SNPFileCreator</li>
+		<li>SNPFileSorter</li>
+		<li>SNPMultipleSampleAnalysis</li>
+		<li>XChromosomeCorrect</li>
+	</ul>
+	</li>
+</ul>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:32.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><a name="_Module_Notes"></a><img src="/uploaded/content_icon_gp.gif" style="width: 19px; height: 19px;" /></p>
+			</td>
+			<td style="width:446.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>On the GenePattern public server, these modules are sent to a cluster of large memory machines.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="_genepattern.properties"></a>genepattern.properties</h2>
+
+<p>Most server configuration options are in the <code>genepattern.properties</code> file in the GenePattern resources directory. Most of the options in this file can be set through the GenePattern interface by clicking <em>Administration&gt;Server Settings</em>. For descriptions of the options, see <a href="/gp_guides/administrators-guide/sections/server-settings">Modifying Server Settings</a>.</p>
+
+<p>The options listed in the following table can only be set by editing the <code>genepattern.properties</code> settings. We recommend editing the properties through the GenePattern user interface when possible.</p>
+
+<table border="0" class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:185.4pt;border:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p><code>require.password</code></p>
+
+			<p><code>create.account.allowed</code></p>
+			</td>
+			<td style="width:293.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p>See <a href="#_User_Accounts">User Accounts</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:185.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p><code>GenePatternURL</code></p>
+
+			<p><code>fqHostName</code></p>
+
+			<p><code>fullyQualifiedHostName</code></p>
+
+			<p><code>gpServerHostAddress</code></p>
+			</td>
+			<td style="width:293.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p>See the FAQ: <a href="/doc/faq#35">How do I configure the GenePattern server on a machine with multiple IP addresses?</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:185.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p><code>allow.input.file.paths=true</code></p>
+
+			<p><code>server.browse.file.system.root=/</code></p>
+			</td>
+			<td style="width:293.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p>See <a href="#_Other_Security_Considerations">Other Security Considerations</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:185.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p><code>input.file.mode=path</code></p>
+			</td>
+			<td style="width:293.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Determines how GenePattern handles network file paths:</p>
+
+			<ul>
+				<li><strong>path</strong> (default) leaves the network file in place</li>
+				<li><strong>move</strong> copies the network file to the job directory on the GenePattern server before beginning the job and copies the file back to its original location after the job completes</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:185.4pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0pt 5.4pt 0pt 5.4pt">
+			<p><code>soap.attachment.dir=../temp/attachments</code></p>
+			</td>
+			<td style="width:293.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0pt 5.4pt 0pt 5.4pt">
+			<p>Used for the GenePattern SOAP interface. Specify a temporary directory to be used for SOAP messages with attachments.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><a name="_Web_Service_Interface"></a>Web Service Interface</h2>
+
+<p>All GenePattern server functionality is available programmatically. There are two basic access methods:</p>
+
+<ul>
+	<li>Option 1, use one of our programming libraries (Java, MATLAB, or R). The libraries are designed to allow you to use the programming environment as a client, running modules and retrieving results from the GenePattern server. See the <a href="/programmers-guide#gsc.tab=0">Programmers Guide</a> for more information and examples of how to use the libraries.</li>
+	<li>Option 2, use SOAP calls directly to <a href="http://genepattern.broadinstitute.org/gp/services">http://genepattern.broadinstitute.org/gp/services</a>. This is a standard SOAP interface. The SOAP client interacts with the GenePattern interface as it would with any other SOAP interface.</li>
+</ul>
+
+<h1 id="setting-up-a-new-genepattern-ami">Setting Up a New GenePattern AMI</h1>
+
+<p>The following steps are necessary to create a new GenePattern instance from the GenePattern Amazon Machine Image (AMI).</p>
+
+<h3>Create your Amazon account (if you do not already have one)</h3>
+
+<ol>
+	<li>Set up an Amazon Web Services account.
+	<ol style="list-style-type: lower-alpha; ">
+		<li>Go to <a href="http://aws.amazon.com">http://aws.amazon.com</a> and click <em>Sign Up Now</em>. Sign in to an existing Amazon account or create a new one.</li>
+		<li>Go to <a href="http://aws.amazon.com/ec2">http://aws.amazon.com/ec2</a>&nbsp;and click <em>Sign Up Now</em>. After completing sign up, you should be at the EC2 console.</li>
+		<li>In the Navigation menu, click <em>Key Pairs</em>.</li>
+		<li>Click the <em>Create Key Pair</em> button and then save the key pair to a file. Name it something you will remember, like &quot;GenePattern.&quot;&nbsp; This is private key that is used in creating SSH connections to new AMI instances.</li>
+	</ol>
+	</li>
+	<li>Set up your Amazon API credentials.
+	<ol style="list-style-type: lower-alpha; ">
+		<li>Select <em>Account&gt;Security Credentials</em>.</li>
+		<li>Click the <em>X.509 Certificates</em> tab.</li>
+		<li>Click to <em>Create a New Certificate</em>. <strong>Note: </strong>An Amazon account may have two certificates.&nbsp; If your account already has two certificates, you will need to use one of them, or delete one and create a new one.</li>
+		<li>Download the private key and certificate, and save them in a known location, for example. ~/.ec2/prikey.pem and ~/.ec2/cert.pem.</li>
+		<li>Make sure these files have the correct security, otherwise using them for SSH will not work: chmod 600 ~/.ec2/*.pem</li>
+	</ol>
+	</li>
+</ol>
+
+<h3>Create a new instance of the GenePattern AMI</h3>
+
+<ol>
+	<li>Go to the AMI creation link: <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-71ba771c">https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-71ba771c</a></li>
+	<li>If you are not already logged in, log into Amazon Web Services.</li>
+	<li>If Amazon prompts you for a region, select <em>us-east-1a</em>, as the GenePattern AMI has only been made available for that region.</li>
+	<li>Follow the steps in the wizard.
+	<ul>
+		<li>Make sure to select the Key Pair you just created.</li>
+		<li>Feel free to use the default Security Group.&nbsp; This group should have port 8080 open by default.&nbsp; If you are using a custom security group, make sure that port 8080 is open.</li>
+	</ul>
+	</li>
+	<li>The new instance will appear in your list of instances in the AWS Management Console.</li>
+	<li>SSH into the new GenePattern AMI instance using username and password &quot;genepattern&quot;.</li>
+	<li>Edit /home/genepattern/GenePatternServer/resources/genepattern.properties by changing GenePatternURL to point to the instance URL.
+	<ul>
+		<li>If you are using your own domain name, you will need to point the domain name at the Amazon Public DNS address.&nbsp; Your domain name provider should have more information on how to do that.</li>
+		<li>If you are not using a domain name, the address you will need to enter is the Amazon Public DNS.&nbsp; This can be found by selecting the newly-created GenePattern instance in the EC2 console.</li>
+	</ul>
+	</li>
+</ol>
+
+<h3>Mounting EBS storage for use with GenePattern (optional)</h3>
+
+<p>Note: If one opts not to set up EBS storage, files will be saved on the GenePattern instance&#39;s file system.&nbsp; This file system is sufficient only for a small number of GenePattern files.</p>
+
+<ol>
+	<li>Create the EBS
+	<ol style="list-style-type: lower-alpha; ">
+		<li>Go to <a href="http://aws.amazon.com/ec2">http://aws.amazon.com/ec2</a>&nbsp;and sign in.</li>
+		<li>Select <em>Volumes&gt;Create Volume</em>.</li>
+		<li>When the dialog box appears, enter the size of the EBS volume you want to create. We recommend at least 100 GB for GenePattern.&nbsp; If you are asked for a snapshot, select <em>No Snapshot</em>.&nbsp; This EBS has to be in the same availability zone as the GenePattern instance (<em>us-east-1a</em>).</li>
+		<li>Note the ID of the EBS once created. You will need this shortly.</li>
+	</ol>
+	</li>
+	<li>Attach the EBS to the GenePattern Instance
+	<ol style="list-style-type: lower-alpha; ">
+		<li>Under <em>Volumes</em>, select the EBS volume that you have just created.</li>
+		<li>Click <em>Attach Volume</em> and select your GenePattern instance from the list.</li>
+		<li>Click <em>Attach</em> and wait several minutes for the volume to finish attaching.</li>
+		<li>Note the device name of the attached EBS.</li>
+	</ol>
+	</li>
+	<li>Mount the EBS in the GenePattern Instance
+	<ol style="list-style-type: lower-alpha; ">
+		<li>SSH into your GenePattern instance using username and password &quot;genepattern&quot;.</li>
+		<li>Confirm that the EBS has finished attaching by running &quot;cat /proc/partitions&quot; and making sure the attached name appears in the list.</li>
+		<li>If you need to format the EBS, run &quot;sudo /sbin/fdisk ATTACHED&quot; where &quot;ATTACHED&quot; is the attached name you were shown for the EBS, for example &quot;/dev/sdk&quot;. Follow the prompts. This should give you a partition name, for example &quot;/dev/sdk1&quot;. Make note of this.</li>
+		<li>If you need to partition the EBS (you will need to partition the EBS unless you are using a pre-existing EBS), run &quot;sudo /sbin/mkfs -t ext3 PARTITION&quot; where &quot;PARTITION&quot; is the partition name you were just given.</li>
+		<li>To mount the partition, run &quot;sudo mount PARTITION /home/genepattern/GenePatternServer/data&quot; where &quot;PARTITION&quot; is the partition name you were just given.</li>
+	</ol>
+	</li>
+</ol>
+
+<h3>Start your GenePattern AMI</h3>
+
+<ol>
+	<li>You can start GenePattern by running: /home/genepattern/GenePatternServer/StartGenePatternServer</li>
+	<li>You can view your GenePattern instance by navigating to http://ADDRESS:8080/gp where ADDRESS is the domain name in use or the Amazon Public DNS address.</li>
+	<li>GenePattern log files can be found at: /home/genepattern/GenePatternServer/Tomcat/logs/</li>
+</ol>
+
+<h1 id="setting-up-a-new-genepattern-ami"><a id="docker" name="docker">Running GenePattern in a Docker container&nbsp;</a></h1>
+
+<p>Since the GenePattern server (as of 2017) primarily uses <a href="http://www.docker.com">Docker</a> to encapsulate the runtime environments for its modules, <a href="http://www.docker.com">Docker</a> is required to run any modules of recent vintage.&nbsp; Therefore <a href="http://www.docker.com">Docker</a> is essential on a GenePattern server host whether or not the server itself is run inside a <a href="http://www.docker.com">Docker</a> container. For information about <a href="http://www.docker.com">Docker</a> itself, see the <a href="https://www.docker.com">official docker website</a> for documentation and tutorials. The following section details considerations and&nbsp;steps used to run GenePattern in <a href="http://www.docker.com">Docker</a> on a Macintosh OSX&nbsp;computer.&nbsp; For running in <a href="http://www.docker.com">Docker</a> on other operating systems, similar issues and approaches should be viable.&nbsp;</p>
+
+<p>When running the GenePattern server in Docker, or with Docker modules, you should consider the security issues involved.&nbsp; When modules are sent to the Docker&nbsp;demon on the host, the module containers could potentially write files to any parts of the host disk drives that have been mounted to them as the root user.&nbsp; In the case of Genepattern, this typically means the TaskLib, Users and JobResults directories.&nbsp; For this reason many IT organizations do not like to allow Docker on internal servers.&nbsp; This can be mitigated by using Singularity instead of Docker for the module images which has been done in practice, but as of this writing (May 2020) we have not yet developed and documented a simple automated system for doing so.&nbsp; This security risk&nbsp;will be mitigated in the future as it is possible to both run the Docker demon under a user account, and to set up networking without privileged mode, when running Docker on Linux.&nbsp; We will update these instructions once that is available on Macintosh OSX.&nbsp;&nbsp;</p>
+
+<p>Running modules on the host Docker demon&nbsp;has the advantage that each module runs in its own seperate container allowing better utilization of compute resources and, if a docker swarm or other distributed docker system is in play, module executions can easily be distributed to multiple computers or virtual machines.</p>
+
+<h3>Windows10 Setup Instructions</h3>
+
+<p>For Windows10, installation of docker requires WSL (Windows Subsystem for Linux) version 2 as described in the <a href="https://docs.docker.com/docker-for-windows/install/">Docker documentation</a>.&nbsp; To use the start-genepattern.sh script described below, you will also need to make sure that your default WSL distribution is also version 2.&nbsp; To check run&nbsp;&quot;<span style="font-family:courier new,courier,monospace;">wsl -l -v</span>&quot;.&nbsp;</p>
+
+<p>e.g.</p>
+
+<p><span style="font-size:16px;"><span style="font-family:courier new,courier,monospace;"><span style="color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">C:\Users\liefe&gt; wsl -l -v</span><br style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);" />
+<span style="color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">&nbsp; NAME &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; STATE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; VERSION</span><br style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);" />
+<span style="color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">* Ubuntu &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Running &nbsp; &nbsp; &nbsp; &nbsp; 2</span><br style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);" />
+<span style="color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">&nbsp; docker-desktop-data &nbsp; &nbsp;Running &nbsp; &nbsp; &nbsp; &nbsp; 2</span><br style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);" />
+<span style="color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);">&nbsp; docker-desktop &nbsp; &nbsp; &nbsp; &nbsp; Running &nbsp; &nbsp; &nbsp; &nbsp; 2</span></span></span></p>
+
+<p>If your default is using version 1, you can change it using the following 2 commands.&nbsp; This assumes your default distribution is Ubuntu.</p>
+
+<p><span style="font-family:courier new,courier,monospace;">wsl set-version Ubuntu 2</span></p>
+
+<p><span style="font-family:courier new,courier,monospace;">wsl set-default-version 2</span></p>
+
+<p>Once this is done you can start wsl at a Powershell prompt</p>
+
+<p><span style="font-family:courier new,courier,monospace;">wsl</span></p>
+
+<p>and follow the instructions for linux/MacOS platforms below.&nbsp;</p>
+
+<p><strong>Note:</strong>&nbsp;The &quot;<span style="font-family:courier new,courier,monospace;">start-genepattern.sh</span>&quot; script (see below) <em><strong>will not run properly in Powershell</strong></em> due to the different slashes used for file system paths between Windows and Linux.&nbsp; You must either start wsl first and execute it there, or use &quot;<span style="font-family:courier new,courier,monospace;">bash .\start-genepattern.sh</span>&quot; at a Powershell prompt which will use bash within WSL to execute the script rather than Powershell itself.</p>
+
+<p>&nbsp;</p>
+
+<h3>Overview of running GenePattern Server in Docker</h3>
+
+<p>When running GenePattern Server from a docker container, it is assumed that this is desired to be a persistent GenePattern installation.&nbsp; Therefore the details of jobs run and analysis output files are kept external to the docker container.&nbsp; This allows them to remain accessible even if the server container is deleted, and to be connected to updated versions of the container as they become available.&nbsp; The directories that are kep external are</p>
+
+<ol>
+	<li>users - where uploaded user files are kept</li>
+	<li>jobResults - where job output files are kept</li>
+	<li>taskLib - where module code for legacy (pre-docker) modules is kept</li>
+	<li>resources - where configuration files are kept.&nbsp; Also holds the GenePattern database if the default HSQL database is used.</li>
+</ol>
+
+<p>Latest versions of scripts and example configuration files referenced below are available at&nbsp;<a href="https://github.com/genepattern/genepattern-server/tree/develop/docker">https://github.com/genepattern/genepattern-server/tree/develop/docker</a>&nbsp;</p>
+
+<p>When running the GenePattern server in docker,&nbsp; the following configuration changes are made (relative to the default installation using the installer);</p>
+
+<ul>
+	<li>&quot;<span style="font-family:courier new,courier,monospace;">&lt;genepattern_home&gt;/resources/wrapper_scripts/run-with-docker.sh</span>&quot; is set as the default command-line prefix.</li>
+	<li>&quot;<span style="font-family:courier new,courier,monospace;">job.docker.bind_src</span>&quot; is set to your local <span style="font-family:courier new,courier,monospace;">&lt;genepattern_home&gt;</span> directory.&nbsp; This directory (and its sub directories) will be writable to the GenePattern server and module containers.</li>
+	<li>&quot;<span style="font-family:courier new,courier,monospace;">job.docker.bind_dst</span>&quot; is set to &quot;<span style="font-family:courier new,courier,monospace;">/opt/genepattern</span>&quot;.&nbsp; This is the mounting point for your &quot;<span style="font-family:courier new,courier,monospace;">&lt;genepattern_home&gt;</span>&quot; directory within the module containers.</li>
+</ul>
+
+<h3>Steps for running&nbsp;GenePattern in docker on a host computer</h3>
+
+<p>The following steps&nbsp;were developed on a Macintosh OSX laptop.&nbsp; The scripts should work on&nbsp;most Linux installations with the bash shell installed, but the scripts can be customized as needed for other environments. We recommend that Windows users run the GenePattern server container from <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank">WSL</a>*</p>
+
+<ol>
+	<li>Decide on&nbsp;the GenePattern server container version you wish to run.&nbsp; GenePattern server containers are <a href="https://hub.docker.com/repository/docker/genepattern/genepattern-server">publicly available in dockerhub</a> and use a versioning system that matches the github releases for the project.</li>
+</ol>
+
+<p style="margin-left: 40px;"><img alt="" src="/uploaded/content_screen_shot_2020-05-28_at_9_44_33_am.png" style="width: 400px; height: 270px;" /></p>
+
+<p style="margin-left: 40px;">Copy or make note of the version tag you have selected, e.g.&nbsp;v3.9_21.04.05_b325</p>
+
+<ol start="2">
+	<li>Create a root server directory for the GenePattern installation.&nbsp; All GenePattern files and folders will be created in or below this directory.</li>
+	<li>Copy the <a href="https://github.com/genepattern/genepattern-server/blob/develop/docker/start-genepattern.sh">start-genepattern.sh</a> script from the <a href="https://github.com/genepattern/genepattern-server/tree/develop/docker">GenePattern github repository</a>&nbsp;into your root server directory.</li>
+	<li>Run the start-genepattern.sh script.&nbsp; This script will pull the Docker image, create the directories, customize the config_custom.yaml for the server, and create a docker container with the necessary port mappings and volume mounts.&nbsp; The desired GenePattern server tag should be passed in with the -v or --version flag.
+	<ul>
+		<li>e.g.&nbsp;</li>
+	</ul>
+	</li>
+</ol>
+
+<p><span style="font-family:courier new,courier,monospace;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ./start-genepattern.sh -v v3.9_21.04.05_b325</span></p>
+
+<p style="margin-left: 40px;">The container name will be &quot;<span style="font-family:courier new,courier,monospace;">genepattern</span>&quot; but can be editted by changing the variable at the top of the script.</p>
+
+<ol start="5">
+	<li>Login to the GenePattern server at http://127.0.0.1:8080/gp and complete the installation.&nbsp; You will need to register your server and then install modules etc as per a non-Docker installation.&nbsp;</li>
+</ol>
+
+<p>Following installation, the server can be stopped via the usual docker command (e.g. &quot;docker stop genepattern&quot;).&nbsp; Restarting the container can be done via re-running the start-genepattern.sh script or via the docker start command.&nbsp; When re-running the start-genepattern.sh script, it will check for a running container or a pre-existing but stopped GenePattern container rather than creating an installation.&nbsp;</p>
+
+<p>*<em>If you choose to run GenePattern in Docker from Windows (not using WSL) you will need to alter the Docker run command. The steps to do so are as follows:</em></p>
+
+<ol>
+	<li><i>Run steps 1-4 as above (NB your server will not start)</i></li>
+	<li><em>copy the <code>docker run</code> command from the second to the last line of the start-genepattern.sh script.&nbsp;</em></li>
+	<li><i>In a terminal or notepad...etc replace all instances of $PWD in the run command with the Unix version of your root server directory for GenePattern. E.G. If you created a root server directory <tt>C:\Users\Me\gp_home </tt>the Unix version would be /c/Users/Me/gp_home</i></li>
+	<li><i>Replace <code>$name</code> with &quot;<tt>genepattern</tt>&quot; and <code>$VERSION</code> with the version of the GenePattern server Docker container you created when you first ran the start-genepattern.sh script</i>&nbsp;- <em>it will look like this</em>:
+	<pre class="c-mrkdwn__pre" data-stringify-type="pre" style="box-sizing: inherit; margin-top: 4px; margin-bottom: 4px; padding: 8px; --saf-0:rgba(var(--sk_foreground_low,29,28,29),0.13); font-size: 12px; line-height: 1.50001; font-variant-ligatures: none; white-space: pre-wrap; overflow-wrap: break-word; word-break: normal; tab-size: 4; border: 1px solid var(--saf-0); border-radius: 4px; background-image: ; background-position-x: ; background-position-y: ; background-size: ; background-repeat-x: ; background-repeat-y: ; background-attachment: ; background-origin: ; background-clip: ; counter-reset: list-0 0 list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(29, 28, 29); font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace !important;">
+docker run -v /c/Users/Me/gp_home:/c/Users/Me/gp_home -v /var/run/docker.sock:/var/run/docker.sock -w /c/Users/Me/gp_home -v /c/Users/Me/gp_home/resources:/opt/genepattern/resources  -v /c/Users/Me/gp_home/taskLib:/opt/genepattern/taskLib -v /c/Users/Me/gp_home/jobResults:/opt/genepattern/jobResults -v /c/Users/Me/gp_home/users:/opt/genepattern/users  -p 8888:8888 -p 8080:8080  -d --name &quot;genepattern&quot; genepattern/genepattern-server:v3.9_21.07_b352 /opt/genepattern/StartGenePatternServer</pre>
+	</li>
+	<li><em>Run that command in the terminal (preferably PowerShell) and then navigate to 127.0.0.1:8080/gp in a browser window.</em></li>
+</ol>
+
+<h4>Changing the server version container</h4>
+
+<p>When you wish to upgrade the version of the GenePattern server container, you will want to save your users, uploaded files, job results and configuration.&nbsp; This is also built into the <a href="http://github.com/genepattern/genepattern-server/blob/develop/docker/start-genepattern.sh">start-genepattern.sh</a> script&nbsp; which will preserve and reuse the following files (if run in the same directory as&nbsp; the previous version).</p>
+
+<ul>
+	<li>&quot;users&quot; directory</li>
+	<li>&quot;jobResults&quot; directory</li>
+	<li>&quot;tasklib&quot; directory</li>
+	<li>resources/genepattern.properties</li>
+	<li>resources/database_custom.properties</li>
+	<li>resources/config_custom.yaml</li>
+	<li>resources/userGroups.xml</li>
+	<li>resources/PermissionsMap.xml</li>
+	<li>resources/GenepatternDB.properties</li>
+	<li>resources/GenePatternDB.script</li>
+</ul>
+
+<p>The process to update the Genepattern server to a newer version of the container is as follows;</p>
+
+<ol>
+	<li>Stop the running server&nbsp;</li>
+</ol>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:courier new,courier,monospace;">docker stop genepattern</span></p>
+
+<ol start="2">
+	<li>Remove the old container</li>
+</ol>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:courier new,courier,monospace;">docker rm genepattern</span></p>
+
+<ol start="3">
+	<li>Start a new container with the disired version using the start-genepattern.sh script and desired new tag (where the new tag replaces the v3.9_21.04.05_b325 in the following command &nbsp;&nbsp;</li>
+</ol>
+
+<p><span style="font-family:courier new,courier,monospace;">&nbsp; &nbsp; &nbsp; &nbsp; start-genepattern.sh -v v3.9_21.04.05_b325</span></p>
+
+<ol start="4">
+	<li>Login to the GenePattern server at http://127.0.0.1:8080/gp and commence using it.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h2><a id="GenePatternAndGlobus" name="GenePatternAndGlobus">Integrating GenePattern with Globus</a></h2>
+
+<p><span style="font-size:14px;"><em><span style="color:#696969;">See how to use Globus in GenePattern in the</span>&nbsp;<a href="https://www.genepattern.org/user-guide#globus">User Guide</a>.</em></span></p>
+
+<p>One option for getting data to a GenePattern server is to integrate it with a <a href="https://www.globus.org/">Globus</a> endpoint and to use the Globus network to transfer data betweeen other Globus endpoints, and the GenePattern server. When operating in this manner, GenePattern will use a mapped collection on the endpoint.&nbsp; Since GenePattern accounts do not map to the underlying unix system, the configuration of the Globus collection and GenePattern server is not typical for Globus setups.</p>
+
+<p>In broad strokes, the integration looks like this:</p>
+
+<ol>
+	<li>A Globus endpoint is created, if necessary.&nbsp; On that endpoint a guest collection is created.</li>
+	<li>The GenePattern server to connect is registered with Globus auth.</li>
+	<li>When transfers are to be made
+	<ol>
+		<li>GenePattern creates an directory for the user on the guest collection.</li>
+		<li>GenePattern creates an ACL for the Globus user on the guest collection directory, permitting read or write as needed.</li>
+		<li>GenePattern initates the transfer on behalf of the user</li>
+		<li>GenePattern removes the ACL after the transfer completes</li>
+		<li>GenePattern moves the transferred files out of the guest collection and into GenePatterns working directories</li>
+	</ol>
+	</li>
+</ol>
+
+<p>The reason for the guest collection and ACL creation/destruction is that the number of ACL&#39;s is limited to no more than a few thousand, while GenePattern has tens of thousands of users.&nbsp; Therefore we cannot assign permanent ACL entries.</p>
+
+<h4>Create a Globus endpoint and guest collection</h4>
+
+<p>See the Globus documentation for creating an endpoint at&nbsp;<a href="https://www.globus.org/globus-connect">https://www.globus.org/globus-connect</a>.</p>
+
+<p>See the Globus documentation for creating a guest collection at&nbsp;<a href="https://docs.globus.org/how-to/create-collections-posix/#:~:text=Click%20the%20Shares%20tab%20and,Click%20Allow.">https://docs.globus.org/how-to/create-collections-posix/#:~:text=Click%20the%20Shares%20tab%20and,Click%20Allow.</a></p>
+
+<h4>Register the GenePattern server with Globus auth</h4>
+
+<p>See the globus developer documentation at&nbsp;<a href="https://docs.globus.org/api/auth/developer-guide/#:~:text=Globus%20requires%20client%20applications%20(apps,app%20registration%20responsibilities%20to%20others.">https://docs.globus.org/api/auth/developer-guide/#:~:text=Globus%20requires%20client%20applications%20(apps,app%20registration%20responsibilities%20to%20others</a>.</p>
+
+<h4>Configure GenePattern to use Globus</h4>
+
+<p>Here is an example configuration for a GenePattern server that will use a globus connect endpoint on the same host machine.</p>
+
+<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">
+<p>&nbsp; ###############################<br />
+&nbsp; &nbsp; #<br />
+&nbsp; &nbsp; #&nbsp; Globus OAuth config settings<br />
+&nbsp; &nbsp; #<br />
+&nbsp; &nbsp; ##############################<br />
+&nbsp; &nbsp; oauth.authorize.url: &quot;https://auth.globus.org/v2/oauth2/authorize&quot;<br />
+&nbsp; &nbsp; oauth.client.id: &quot;xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb&quot;<br />
+&nbsp; &nbsp; oauth.client.secret: &quot;your client secret here&quot;<br />
+&nbsp; &nbsp; oauth.client.scopes: &quot;urn:globus:auth:scope:transfer.api.globus.org:all urn:globus:auth:scope:auth.globus.org:view_identities openid profile email offline_access&quot;<br />
+&nbsp; &nbsp; authentication.class: org.genepattern.server.webapp.rest.api.v1.oauth.GlobusAuthentication</p>
+</div>
+
+<p>In this configuration example, the following configuration items are required.</p>
+
+<p><strong>oauth.authorize.url</strong>:&nbsp; &nbsp; &nbsp;This is always&nbsp;&quot;https://auth.globus.org/v2/oauth2/authorize&quot;</p>
+
+<p><strong>oauth.client.id</strong>:&nbsp; &nbsp; &nbsp; This is the client ID created when your GenePattern server was registered with Globus</p>
+
+<p><strong>oauth.client.secret</strong>:&nbsp; &nbsp;This is the client ID created when your GenePattern server was registered with Globus.</p>
+
+<p><strong>oauth.client.scopes</strong>:&nbsp; These are always &quot;urn:globus:auth:scope:transfer.api.globus.org:all urn:globus:auth:scope:auth.globus.org:view_identities openid profile email offline_access&quot; and reflect the details the GenePattern server needs to allow login through Globus, set up the ACLs and transfer files in Globus on behalf of the users.</p>
+
+<p><strong>authentication.class</strong>: This is always &quot;org.genepattern.server.webapp.rest.api.v1.oauth.GlobusAuthentication&quot; and tells the GenePattern server that it must allow Globus for authentication as well as the normal GenePattern authentication.&nbsp; Note that users need accounts both with GenePattern and with Globus to use this. Users may create new GenePattern accounts by logging into GenePattern through Globus with a Globus Identity, or they can map a Globus identity to a GenePattern account in the GenePattern User Profile pages.</p>
+
+<p>In addition you need to tell GenePattern where your endpoint is, the type of endpoint (local or S3) and where to find the files. For a local Globus Personal Connect endpoint, you need these three additional configuration parameters.</p>
+
+<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">&nbsp; &nbsp; ###############<br />
+&nbsp; &nbsp; # # globus connect endpoint using a globus connect personal endpoint<br />
+&nbsp; &nbsp; ###############<br />
+&nbsp; &nbsp; globus.local.endpoint.id: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx&quot;<br />
+&nbsp; &nbsp; globus.local.endpoint.root: &quot;/Users/myusername/GlobusEndpoint/GenePatternLocal/&quot;<br />
+&nbsp; &nbsp; globus.local.endpoint.type: &quot;localfile&quot;</div>
+
+<p><strong>globus.local.endpoint.id</strong>: This is the Globus endpoint ID as can be found in https://app.globus.org&nbsp;</p>
+
+<p><strong>globus.local.endpoint.root</strong>: This is the path to the guest collection in the file system. In the example it is &quot;/Users/myusername/GlobusEndpoint/GenePatternLocal/&quot; but it should match the path to the guest collection on your Globus Connect endpoint guest collection. The user running the GenePattern server must have read/write permissions on this directory.&nbsp;</p>
+
+<p><strong>globus.local.endpoint.type</strong>: For a Globus endpoint on the local file system this should be &quot;localfile&quot;. For an example using an S3 backed endpoint see below.</p>
+
+<p>For an S3 backed endpoint, the additional parameters are slightly different. Note that an S3 backed endpoint can only be used on a GenePattern server that uses&nbsp;&quot;org.genepattern.server.executor.awsbatch.AWSS3ExternalFileManager&quot; as the external file manager class.</p>
+
+<div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">&nbsp; &nbsp; ################<br />
+&nbsp; &nbsp; # root = path on the endpoint, root.s3 is the actual S3 path of the endpoint<br />
+&nbsp; &nbsp; ###############<br />
+&nbsp; &nbsp; globus.local.endpoint.id: &quot;zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz&quot;<br />
+&nbsp; &nbsp; globus.local.endpoint.root: &quot;/tedslaptop/&quot;<br />
+&nbsp; &nbsp; globus.local.endpoint.root.s3: &quot;s3://MyBucketName/GlobusConnectSharedRoot/GenePatternLocal/&quot;<br />
+&nbsp; &nbsp; globus.local.endpoint.type: &quot;S3&quot;</div>
+
+<p><strong>globus.local.endpoint.id</strong>: This is the Globus endpoint ID as can be found in https://app.globus.org&nbsp;</p>
+
+<p><strong>globus.local.endpoint.root.s3</strong>: This defines the S3 url and directory path that is used for the guest collection of the S3 backed endpoint. In the example the bucket is named &quot;MyBucketName&quot; and should be changed to match a bucket you own or have read/write access to. The path to the (virtual) directory on S3 in the example is &quot;GlobusConnectSharedRoot/GenePatternLocal/&quot; and should be changed to what ever path you want to use as a key prefix for objects transferred in from Globus.&nbsp;</p>
+
+<p><strong>globus.local.endpoint.type</strong>: For an S3 backed endpoint, this should simply be &quot;S3&quot;.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

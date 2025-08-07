@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gene Expression Analysis</title>
+</head>
+<body>
+<p>GenePattern also supports several <a href="/desc/conversion.html">data conversion</a> tasks, such as filtering and normalizing, which are standard prerequisites for genomic data analysis.</p>
+
+<h2 id="diff">Differential Analysis/Marker Selection</h2>
+
+<p>Differential analysis, also known as marker selection, is the search for genes that are differentially expressed in distinct phenotypes. GenePattern can assess differential expression using either the signal-to-noise ratio or t-test statistic.</p>
+
+<p>GenePattern provides the following support for differential analysis:</p>
+
+<ul>
+	<li>Comparative Marker Selection ranks the genes based on the value of the statistic being used to assess differential expression and uses permutation testing to compute the significance (nominal p-value) of the rank assigned to each gene.<br />
+	<br />
+	Due to the number of genes tested against the null hypothesis of no differential expression, many genes are likely to have significant p-values by chance alone. The analysis adjusts for multiple hypotheses testing using a number of statistical approaches, including false discovery rate (FDR) and family-wise error rate (FWER). You can control the ranking based on the statistic most appropriate for your data.</li>
+	<li>Class Neighbors helps you identify genes whose expression pattern is strongly correlated with a phenotype. This analysis, developed by scientists at the Broad Institute, defines an idealized expression pattern corresponding to a gene that is uniformly high in one class and uniformly low in the other. [It] tests whether there is an unusually high density of genes nearby (that is, similar to) this idealized pattern, as compared to equivalent random patterns. [Golub T.R., Slonim D.K., et al. Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring, Science, 531-537 (1999). <a href="http://www.sciencemag.org/cgi/content/abstract/286/5439/531">http://www.sciencemag.org/cgi/content/abstract/286/5439/531</a>]</li>
+	<li>Heat Map Viewer shows you differential expression by displaying gene expression values in a heat map format. Each colored cell in the heat map represents the gene expression value for a probe in a sample. The largest gene expression values are displayed in red (hot), the smallest values in blue (cool), and intermediate values in shades of red (pink) or blue.</li>
+</ul>
+
+<p><a class="btn btn-success" href="/modules?taskType=Gene+List+Selection">View all current GenePattern marker selection modules</a></p>
+
+<h2 id="pred">Class Prediction (Supervised Learning)</h2>
+
+<p>Supervised learning, also known as class prediction, is the search for a gene expression signature that predicts class (phenotype) membership. The basic methodology for class prediction is to start with two data sets, a training set and test set; use your training data set to build a classifier (class predictor) based on your chosen classification method; and use your test data set to test the classifier.</p>
+
+<p>GenePattern provides the following support for class prediction:</p>
+
+<ul>
+	<li>GenePattern supports class prediction based on several classification methods, including classification and regression trees (CART), K-nearest neighbors (KNN), probabilistic neural network (PNN), Weighted Voting, and Support Vector Machines (SVM). Most of the class prediction methods supported by GenePattern have been used in research published by scientists at the Broad Institute.</li>
+	<li>For each classification method, GenePattern also supports class prediction based on leave-one-out cross-validation. For small data sets, rather than creating training and test data sets, cross-validation divides a data set into n folds. For each fold, the analysis trains on n-1 folds and tests on the remaining fold. After iteratively training and testing all folds, the analysis combines the results to determine the classifier.</li>
+	<li>GenePattern provides a tool for splitting a single data set into non-overlapping training and test data sets.</li>
+</ul>
+
+<p><a class="btn btn-success" href="/modules?utf8=%E2%9C%93&amp;taskType=Prediction">View all current GenePattern class prediction modules</a></p>
+
+<h2 id="disc">Class Discovery (Unsupervised Learning)</h2>
+
+<p>Unsupervised learning, also known as class discovery, is the search for a biologically relevant unknown taxonomy identified by a gene expression signature or a biologically relevant set of co-expressed genes.</p>
+
+<p>The basic methodology for class discovery is clustering: you cluster the data based on your chosen clustering method and then validate the clusters through gene annotations, enrichment analysis (are the clusters enriched by genes from functionally important categories, pathways, or processes), or by replicating the results in other data sets. GenePattern provides the following support for clustering:</p>
+
+<ul>
+	<li>GenePattern supports several traditional clustering methods, including consensus clustering, hierarchical clustering, and self-organizing maps (SOM clustering).</li>
+	<li>For validating clusters, GenePattern provides tools for retrieving annotations and for splitting a single data set into non-overlapping training and test data sets.</li>
+</ul>
+
+<p>Clustering is the traditional method for class discovery. GenePattern also supports the following less traditional methods:</p>
+
+<ul>
+	<li>Non-negative matrix factorization (NMF) is an algorithm used in various fields, such as text mining and music analysis, to decompose multivariate data. Research published by scientists at the Broad Institute shows how NMF can be used for class discovery. [<a href="http://www.pnas.org/cgi/content/abstract/101/12/4164">http://www.pnas.org/cgi/content/abstract/101/12/4164</a>]</li>
+	<li>Principal components analysis (PCA) is a statistical technique used in various fields, such as face recognition and image compression, to determine the key variables in a multidimensional data set that can explain the differences in observations.</li>
+</ul>
+
+<p><a class="btn btn-success" href="/modules?taskType=Clustering">View all current GenePattern clustering modules</a></p>
+
+<h2 id="path">Pathway Analysis</h2>
+
+<p>Pathway analysis is the search for sets of genes differentially expressed in distinct phenotypes. GenePattern provides the following support for pathway analysis:</p>
+
+<ul>
+	<li>KSscore computes a Kolmogorov-Smirnov non-parametric rank statistic representing the positional distribution of a set of genes within an ordered list of genes. You can use this analysis to examine the enrichment of a set of genes at the top of an ordered list; the KSscore is high when the genes in the gene set appear near the top of the ordered list.</li>
+	<li>Gene Set Enrichment Analysis (GSEA) determines whether an a priori defined set of genes shows statistically significant, concordant differences between two biological states (e.g. phenotypes). The GSEA software packages the method, making it easy to run the analysis and review the results.</li>
+	<li>In addition, GenePattern provides tools for retrieving annotations that aid in understanding gene sets and gene set enrichment results.</li>
+</ul>
+
+<h2>Data Formats</h2>
+
+<p>Gene expression analysis modules are designed for easy access:</p>
+
+<ul>
+	<li>All analysis modules read and write data using standard GenePattern <a href="/file-formats-guide">file formats</a>, which are tab-delimited or comma-delimited text files.</li>
+	<li>GenePattern provides support for <a href="/data-format-conversion.html">data conversion</a>, including support for converting to and from MAGE-ML documents.</li>
+	<li>If you consistently convert between different file formats, you can write a simple converter and add it to GenePattern as a new module.</li>
+	<li>The GenePattern server provides links to a GenePattern library for the Java, MATLAB, and R programming environments, which allow application developers to read and write all GenePattern standard file formats.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p><a class="btn btn-success" href="/modules/">View all current GenePattern modules</a></p>
+</body>
+</html>

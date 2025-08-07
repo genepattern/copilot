@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Variant and Copy Number Analysis</title>
+</head>
+<body>
+<p>High-density single nucleotide polymorphism (SNP) arrays allow for the analysis of SNPs, copy number alterations (amplifications and deletions), and loss of heterozygosity (LOH) detection. GenePattern provides the following support for the analysis of SNP microarray data:</p>
+
+<ul>
+	<li>Scaling of the data to normalize intensity levels across microarray chips.</li>
+	<li>Probe-level modeling to determine an intensity value for each SNP based on the intensity levels of the probes in each probe set.</li>
+	<li>Copy number (CN) calculation to determine the copy number of a target SNP. The calculation, which divides the intensity value of the target SNP by the intensity value of the normal SNP, is also called CN normalization or normalization with respect to normals.</li>
+	<li>Smoothing based on the R package GLAD (Gain and Loss Analysis of DNA), which detects the altered regions in the genomic pattern and assigns a status (normal, gained or lost) to each chromosomal region.</li>
+	<li>Additional analyses to support detection and visualization of LOH and CN alterations.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p><a class="btn btn-success" href="/modules?taskType=SNP+Analysis">View current GenePattern SNP analysis modules</a></p>
+</body>
+</html>

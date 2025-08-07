@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proteomics</title>
+</head>
+<body>
+<p><a name="top"></a>GenePattern provides the following support for the analysis of proteomic data:</p>
+
+<h2 id="audit" name="audit">AuDIT</h2>
+
+<p>Multiple reaction monitoring-mass spectrometry (MRM-MS) of peptides with stable isotope-labeled internal standards (SIS) is a quantitative assay for measuring proteins in complex biological matrices. These assays can be highly precise and quantitative, but the frequent occurrence of interferences require that MRM-MS data be manually reviewed by an expert. The <a href="audit">AuDIT</a> module implements an algorithm that, in an automated manner, identifies inaccurate transition data based on the presence of interfering signal or inconsistent recovery between replicate samples. AuDIT reduces the time required for manual, subjective inspection of data, improves the overall accuracy of data analysis, and is easily implemented into the standard data analysis workflow.</p>
+
+<h2 id="esp" name="esp">ESP Predictor</h2>
+
+<p>Development of targeted MS-based assays for detecting and quantifying changes in protein levels requires identification of peptides to use as quantitative surrogates for each candidate protein. The enhanced signature peptide predictor (<a href="/esppredictor">ESPPredictor</a> module) provides a means of predicting such &#39;signature peptides&#39; from sequence alone.</p>
+
+<h2 id="lc-ms" name="lc-ms">ProteoArray (LC-MS)</h2>
+
+<p>GenePattern&#39;s ProteoArray module provides the following support for the analysis of LC-MS data:</p>
+
+<ul>
+	<li>For a series of LC-MS experiments in mzXML format, GenePattern provides the ability to detect and align features across runs. This module is provided by Brian Piening of the Fred Hutchinson Cancer Research Center.</li>
+</ul>
+
+<h2 id="seldi_maldi" name="seldi_maldi">SELDI/MALDI</h2>
+
+<p>GenePattern provides the following support for the analysis of SELDI/MALDI data:</p>
+
+<ul>
+	<li>Quality assessment of the input spectrum as a function of the area under the spectrum and the area under the spectrum after removing the noise component of the signal.</li>
+	<li>Peak detection using digital convolution (moving window) filters, which applies smoothing, background correction, and peak enhancement filters to the spectrum before identifying final peak locations.</li>
+	<li>Spectra comparison, which filters the noise from two spectra and then compares the spectra using a cross correlation function.</li>
+	<li>A proteomics pipeline provides automated processing of SELDI/MALDI data. In addition to quality assessment and peak detection, the pipeline incorporates a range of normalization methods and sophisticated peak alignment algorithms for matching peaks across multiple samples. Starting with spectra from a set of samples, the pipeline outputs matched peaks as features, and normalized intensities of these peaks for each sample. Several aspects of the pipeline are fully customizable.</li>
+	<li>Integration with other GenePattern analysis modules. By representing peaks as features, the peak detection and proteomics pipeline modules create output files similar to those used as input for the modules that support <a href="/gene-expression-analysis">gene expression analysis</a>. Analyses such as clustering, classification, and differential marker selection are based on pattern recognition and applicable to the analysis of both proteomic data and gene expression data.</li>
+</ul>
+
+<p>The modules for the analysis of SELDI/MALDI data are based on work published by Mani and Gillette in <em>Proteomic Data Analysis: Pattern Recognition for Medical Diagnosis and Biomarker Discovery</em> (Mehmed Kantardzic and Jozef Zurada (Eds.) Next Generation of Data Mining Applications, Wiley-IEEE Press).</p>
+
+<h2>Data Formats</h2>
+
+<p>Proteomics analysis modules are designed for easy access:</p>
+
+<ul>
+	<li>All proteomics modules read and write data using mzXML or comma-separated value (csv) files. Generally, mzXML files tend to be used for LC-MS data and csv files for SELDI/MALDI data.</li>
+	<li>GenePattern provides support for <a href="/data-format-conversion">data conversion</a>, including support for converting to and from mzXML files.</li>
+	<li>If you consistently convert between different file formats, you can write a simple converter and add it to GenePattern as a new module.</li>
+</ul>
+
+<h2>Modules</h2>
+
+<p><a class="btn btn-success" href="/modules?taskType=Proteomics">View current GenePattern proteomics modules</a></p>
+</body>
+</html>

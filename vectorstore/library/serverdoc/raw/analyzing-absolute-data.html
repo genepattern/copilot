@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyzing ABSOLUTE Data</title>
+</head>
+<body>
+<p>When ABSOLUTE data are output by the ABSOLUTE.summarize module, there are several files:</p>
+
+<ul>
+	<li>The *_summary.PP-calls_tab.txt file, which is a tab-delimited table detailing the called results, also known as the calls file.</li>
+	<li>The *_summary.PP-modes.data.RData file, which contains all information used to generate the other output files and is also known as the modes file.</li>
+	<li>The *_summary.PP-modes.plots.pdf file, which contains plots of all of the purity/ploidy modes; it is only produced if the <em>plot modes</em> parameter is set to TRUE.</li>
+	<li>The *.ABSOLUTE_UNCALLED_PLOT.pdf file, which contains a plot for every uncalled result.</li>
+</ul>
+
+<p>Two key output files for the manual analyst review are the plots PDF and the calls file.</p>
+
+<h2>Plots</h2>
+
+<p>The plots file shows the purity/ploidy plot, model scores, and candidate interpretations of the copy profile for the top three models for each sample.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="width:295px;">
+			<p><strong>Description</strong></p>
+			</td>
+			<td style="width:295px;">
+			<p><strong>Plot</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:295px;">
+			<p>Purity/ploidy: This graph shows where the top 12 potential models plot in terms of fraction of cancer nuclei (purity) and cancer genome ploidy.&nbsp; Dotted lines denote potential solutions that share either <em>b</em>, the copy ratio associated with zero somatic copies (from upper left to lower right) or &delta;<sub>&nu;</sub>, the spacing between consecutive integer copy levels (from lower left to upper right). &nbsp;</p>
+
+			<p>The colors in the model-based evaluation models match their representations on this graph.</p>
+			</td>
+			<td style="width:295px;">
+			<p><img alt="" src="/uploaded/content_purityploidyplot.jpg" style="width: 193px; height: 199px; float: left;" /></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:295px;">
+			<p>Model scores:&nbsp; This graph shows the model-based evaluation of the top 3 models. &nbsp;These represent the log-likelihood score of each solution in terms of the model fit of the observed copy ratios to integer absolute copy numbers and plausibility of the proposed karyotype.&nbsp; The higher-scoring solution (green) is identified by the combination of fit and karyotype log-likelihood values.</p>
+			</td>
+			<td style="width:295px;">
+			<p><img alt="" src="/uploaded/content_modelscoreplot.jpg" style="width: 174px; height: 171px;" /></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:295px;">
+			<p>Candidate interpretations of copy profiles: These graphs show the interpretations of somatic DNA alterations on an absolute scale for the three most likely models.</p>
+			</td>
+			<td style="width:295px;">
+			<p><img alt="" src="/uploaded/content_abs_copy_ratio_options.jpg" style="width: 249px; height: 664px;" /></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:295px;">
+			<p>Allelic fractions may be reinterpreted as average allelic copies per cancer cell (multiplicity), potentially revealing subclonal point mutations.</p>
+			</td>
+			<td style="width:295px;">
+			<p><img alt="" src="/uploaded/content_abs_ssnv_allelic_fraction.jpg" style="width: 205px; height: 194px;" /></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Calls File</h2>
+
+<p>The calls file is the output of the ABSOLUTE.summarize module, and is the file that the analyst will mark up to accept or override the solutions supplied by ABSOLUTE.</p>
+
+<p>Create this annotation by:</p>
+
+<ol>
+	<li>Opening the file in Excel or your favorite spreadsheet-editing application.</li>
+	<li>Adding a column to the left side of the *_summary.PP-calls_tab.txt file from the ABSOLUTE.summarize module.&nbsp;</li>
+	<li>To keep the default solution, leave the corresponding cell in the new column blank.&nbsp; To override the default solution, enter your selected solution number in the corresponding cell of the new column.</li>
+	<li>Save the update as a tab-delimited text file.</li>
+</ol>
+
+<h2>Tips on Selecting Solutions</h2>
+
+<p><a href="http://www.broadinstitute.org/cancer/cga/sites/default/files/data/tools/absolute/ABSOLUTE%20training.pptx"><img alt="" src="/uploaded/content_powerpoint_icon_remake_by_windowsuser9000-d8e3sdn.png" style="width: 20px; height: 20px;" />Download the&nbsp;PowerPoint (PPTX) of example plots and model calls</a>&nbsp;provided&nbsp;by the <a href="http://www.broadinstitute.org/cancer/cga/Home">Broad Cancer Genome Analysis (CGA) group</a>.</p>
+
+<p>Analysis of the data from ABSOLUTE is highly dependent on your data and your knowledge of your data.&nbsp;Here we outline&nbsp;some guidelines&nbsp;to help start.&nbsp; Keeping these concepts in mind, you should be able to figure out most of the reasons for the model calls in the examples provided in the linked slides above.</p>
+
+<ul>
+	<li><strong>Keep it simple.&nbsp; After considering all the model information, opt for the simplest solution.</strong></li>
+</ul>
+
+<p style="margin-left: 40px;">If two models appear to be identical in terms of fit and other criteria, opt for the simpler, more likely one -- for instance, the mostly-normal genome number versus the doubled or tripled genome.</p>
+
+<ul>
+	<li><strong>Each copy number peak should be under an integral number.</strong></li>
+</ul>
+
+<p style="margin-left: 40px;">The integral numbers reflect the state of the genome.&nbsp; 1=haploid, 2=diploid, 3=triploid, etc.</p>
+
+<p style="margin-left: 40px;"><strong><img alt="" src="/uploaded/content_abs_copyrat_peaks.jpg" style="width: 245px; height: 475px;" /></strong></p>
+
+<ul>
+	<li><strong>The peaks should generally be at easy-to-get-to numbers (e.g., 1, 2, 4).</strong></li>
+</ul>
+
+<p style="margin-left: 40px;">Triploid is harder to achieve than tetraploid, because doubling is easier than parts.&nbsp; This is not to say that triploidy doesn&#39;t happen, but in the interest of the simpler model, the tallest peaks should be at the easier-to-achieve numbers.</p>
+
+<ul>
+	<li><strong>The bottom peak for copy number should be close to zero.</strong></li>
+</ul>
+
+<p style="margin-left: 40px;">Zero indicates an absence of copies, which is simpler than some middle number.</p>
+
+<p style="margin-left: 40px;"><img alt="" src="/uploaded/content_abs_copyrat_peakatzero.jpg" style="width: 245px; height: 222px;" /></p>
+
+<ul>
+	<li><strong>The alpha/2 line for the SSNV allelic fraction plot should divide the peak representing the highest SSNV allelic fraction.</strong></li>
+</ul>
+
+<p style="margin-left: 40px;"><img alt="" src="/uploaded/content_abs_ssnv_peaksplit.jpg" style="width: 205px; height: 194px;" /></p>
+
+<p>&nbsp;</p>
+</body>
+</html>

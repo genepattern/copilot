@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Differential Expression Tutorial</title>
+	<meta name="slug" content="tutorial" />
+</head>
+<body>
+<p><strong>See the video tutorial</strong>: <a href="http://www.youtube.com/watch_popup?v=PIrLJADpAzY">Getting Started </a>(5 minutes)<br />
+<em><span style="color:grey">Note that this video tutorial was created with GenePattern 3.2</span></em></p>
+
+<p>The GenePattern Tutorial introduces you to GenePattern by providing step-by-step instructions for analyzing gene expression. It takes approximately 40 minutes to complete.<br />
+<em><span style="color:grey">Note that this hands on tutorial was created with GenePattern 3.8.0</span></em></p>
+
+<p>All of the information you need to successfully complete this tutorial is contained in the tutorial. For users who like additional discussion along the way, the tutorial includes pointers to more information in other GenePattern guides. Feel free to follow these links or to ignore them, depending on your learning style.</p>
+
+<h2 id="_Introduction">Introduction</h2>
+
+<h3><a name="_Prerequisites"></a>Prerequisites</h3>
+
+<p>To follow the hands-on instructions in this tutorial, you must have access to the following:</p>
+
+<ul>
+	<li>A GenePattern server, such as the public GenePattern server available at <a href="https://cloud.genepattern.org/" target="_blank">https://cloud.genepattern.org/</a>.</li>
+	<li>The server must have the following GenePattern analysis modules installed: ComparativeMarkerSelection, ComparativeMarkerSelectionViewer, ExtractComparativeMarkerSelection, and HeatMapViewer.</li>
+	<li>The following example data files: <a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">all_aml_train.gct</a>, <a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.cls" target="_blank">all_aml_train.cls</a>, <a href="https://datasets.genepattern.org/data/all_aml/all_aml_test.gct" target="_blank">all_aml_test.gct</a>, and <a href="https://datasets.genepattern.org/data/all_aml/all_aml_test.cls" target="_blank">all_aml_test.cls</a>.</li>
+</ul>
+
+<h3><a name="_Scientific_Scenario"></a>Scientific Scenario</h3>
+
+<p>The gene expression dataset used in the tutorial is from <a href="http://www.sciencemag.org/content/286/5439/531.abstract">Golub and Slonim et al. (1999)</a>, which used clustering and prediction algorithms to find genes that distinguish between two subtypes of leukemia, ALL and AML. The dataset consists of 38 bone marrow samples (27 ALL, 11 AML) obtained from acute leukemia patients.</p>
+
+<p>For the purposes of this tutorial, your goal is to identify <strong>marker genes</strong> for the two subtypes of leukemia:</p>
+
+<ol>
+	<li>You use the ComparativeMarkerSelection (version 9) analysis to find the genes in the dataset file that are most closely correlated with the two subtypes of leukemia.</li>
+	<li>You use the ComparativeMarkerSelectionViewer (version 4) to examine the results of that analysis.</li>
+	<li>You use the ExtractComparativeResults (version 3) analysis to create a new dataset that contains the marker genes that you have identified.</li>
+	<li>You use the HeatMapViewer (version 10) to examine the expression levels of the marker genes and to confirm that the marker genes are clearly differentially expressed in the two subtypes of leukemia.</li>
+</ol>
+
+<p><strong>Note</strong>: If you are using a different version of any analysis, follow the instructions as closely as possible, but be aware that your results might not match those shown in the tutorial.</p>
+
+<h2 id="_Starting_GenePattern">Starting GenePattern</h2>
+
+<p>To start GenePattern:</p>
+
+<ol>
+	<li>Open a web browser, such a Firefox, Chrome, or Safari.</li>
+	<li>Enter the URL of the GenePattern server that you want to use. For example, to use the public GenePattern server, enter <a href="https://cloud.genepattern.org/" target="_blank">https://cloud.genepattern.org/</a>.<br />
+	The login page appears.</li>
+	<li>Enter your user name and password. If you do not have a GenePattern account, select <em>Click to register</em>.<br />
+	Whether a GenePattern server requires passwords depends on how it is configured. The public GenePattern server requires passwords. By default, a local GenePattern server does not.</li>
+	<li>Click <em>Sign In</em>. The GenePattern home page appears.</li>
+</ol>
+
+<p><strong>Note</strong>: Your home page may look slightly different depending on your GenePattern server, browser, and operating system. For this picture, we are using out public GenePattern server, Chrome and Windows 7.</p>
+
+<p><img alt="" src="/uploaded/content_tutorialmainpage_380.png" style="width: 800px; height: 482px; border-width: 1px; border-style: solid;" /></p>
+
+<p>&nbsp;</p>
+
+<table width="740">
+	<tbody>
+		<tr>
+			<td><img alt="1" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>Click the GenePattern icon to return to this home page at any time.</td>
+		</tr>
+		<tr>
+			<td><img alt="2" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The upper right corner shows your user name.</td>
+		</tr>
+		<tr>
+			<td><img alt="3" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The navigation bar provides access to other pages.</td>
+		</tr>
+		<tr>
+			<td><img alt="4" src="/uploaded/content_callout_4.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The Modules &amp; Pipelines provides access to the analyses that you can run. Enter the first few characters of a module or pipeline name in the search box to locate that analysis. Click the Browse Modules&nbsp;button to list them alphabetically, by category or by suite. You will also find your Favorite Modules in this panel, as well as Recent Modules you have used.</td>
+		</tr>
+		<tr>
+			<td><img alt="5" src="/uploaded/content_callout_5.jpg" style="width: 16px; height: 17px; " /></td>
+			<td>The center pane is the main display pane, which GenePattern uses to display information and to prompt you for input.</td>
+		</tr>
+		<tr>
+			<td><img alt="6" src="/uploaded/content_callout_6.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The Jobs tab lists the most recent analyses that you have run and their results files. The Files tab lists files that you have copied to the GenePattern server. When you start GenePattern for the first time, these tabs are empty.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>For more information</strong>: see <a href="/user-guide#user-interface">User Interface</a> in the <em>GenePattern User Guide</em>.</p>
+
+<h2 id="_Running_Analyses">Running Analyses</h2>
+
+<p>Now that you have started GenePattern, you are ready to analyze your data. In this section, you learn how to:</p>
+
+<ul>
+	<li>Run the ComparativeMarkerSelection analysis to find marker genes -- the genes in the dataset that are most closely correlated with the two phenotypes (ALL and AML) in the dataset.</li>
+	<li>Run the ComparativeMarkerSelectionViewer to examine the ComparativeMarkerSelection analysis results.</li>
+	<li>Run the ExtractComparativeResults analysis to create a smaller dataset that contains only the marker genes.</li>
+	<li>Run the HeatMapViewer to examine the expression levels of the marker genes.</li>
+</ul>
+
+<h3><a name="_Running_Comparative_Marker_Selection"></a>Running ComparativeMarkerSelection</h3>
+
+<p>Run the ComparativeMarkerSelection analysis to find the genes in the dataset that are most closely correlated with the two phenotypes (ALL and AML) in the dataset. To run the ComparativeMarkerSelection analysis:</p>
+
+<ol>
+	<li>In the Modules &amp; Pipelines panel, click &quot;Browse Modules&quot;, select Gene List Selection, and then select the ComparativeMarkerSelection analysis. Alternatively, type the first few characters of the module name into the search box to quickly locate the module and then select it. GenePattern displays the ComparativeMarkerSelection parameters.<br />
+	<img alt="" src="/uploaded/content_cms_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 476px;" /></li>
+	<li>For information about the module and its parameters, click <em>Documentation</em>.</li>
+	<li>For the <em>input file</em> parameter, select <code>all_aml_train.gct</code>&nbsp;(<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>).
+	<ul>
+		<li>To use a downloaded copy of the file, drag it from your file system and drop it on the <em>input file </em>parameter.</li>
+		<li>To use the file URL, select the <em>Add Path or URL</em> button, enter the URL of the file, and click <em>Select</em>.</li>
+	</ul>
+	</li>
+	<li>For the <em>cls filename</em> parameter, select <code>all_aml_train.cls</code> (<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.cls">https://datasets.genepattern.org/data/all_aml/all_aml_train.cls</a>).</li>
+	<li>Click <em>Run</em> to start the analysis. GenePattern sends the analysis job to the server and displays the Job Status page. After a minute or two, the status icon changes from running <img alt="running" src="/uploaded/content_icon_run.gif?1346865168" style="width: 15px; height: 15px; " /> to complete <img alt="complete" src="/uploaded/content_icon_complete.gif?1346865234" style="width: 15px; height: 15px; " />. (for information on the Pending state see the&nbsp;<a href="/doc/relnotes/3.9.0">3.9.0 release notes</a>)<br />
+	<img alt="" src="/uploaded/content_cmscomplete_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 297px;" /><br />
+	Analysis results are stored on the GenePattern server. The text shown in red tells you when the analysis results will be deleted. To save your analysis results, copy the files from the GenePattern server to your own directories, as described later in this tutorial.</li>
+	<li>Click <em>Return to Modules &amp; Pipelines Start</em> to return to the home page.</li>
+</ol>
+
+<p><strong>For more information</strong>: see <a href="/user-guide#working-with-analysis-results">Running Modules and Pipelines</a>.</p>
+
+<h3><a name="_ReviewResult"></a>Reviewing Result Files</h3>
+
+<p>When you return to the GenePattern home page, the Jobs tab shows the analysis job that you ran and the associated analysis results files:</p>
+
+<p><img alt="" src="/uploaded/content_jobs_380.png" style="width: 347px; height: 110px; border-width: 1px; border-style: solid;" /></p>
+
+<ol>
+	<li>Click the job name or number. GenePattern redisplays the status page. On the Job Status page, click <em>Return to Modules &amp; Pipelines Start</em> to return to the home page.</li>
+	<li>Click the icon next to the analysis job to display commands that you use to work with the job:
+	<table width="729">
+		<tbody>
+			<tr>
+				<td valign="top">Download</td>
+				<td valign="top">Downloads a zip file containing all analysis results files for this job.</td>
+			</tr>
+			<tr>
+				<td>Reload</td>
+				<td>Displays the analysis and its parameters, with the parameters set to the values used for this analysis job.</td>
+			</tr>
+			<tr>
+				<td>Delete</td>
+				<td>Deletes the analysis job and its analysis results files from the GenePattern server.</td>
+			</tr>
+			<tr>
+				<td>Info</td>
+				<td>Displays the parameter values and the analysis results files for this job.</td>
+			</tr>
+			<tr>
+				<td>View Java Code<br />
+				View&nbsp;MATLAB&nbsp;Code<br />
+				View R Code</td>
+				<td>Displays the command line that you would use to run this job in the Java, MATLAB, or R programming environments. These commands are useful for programmers who want to access GenePattern from one of these programming environments or from their own applications.</td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+	<li>Click the icon next to an analysis results file to display commands that you use to work with the file:
+	<table width="726">
+		<tbody>
+			<tr>
+				<td>Delete</td>
+				<td>Deletes the file from the GenePattern server.</td>
+			</tr>
+			<tr>
+				<td>Save</td>
+				<td>Downloads the file from the GenePattern server.</td>
+			</tr>
+			<tr>
+				<td>Create Pipeline</td>
+				<td>Creates a GenePattern pipeline that reproduces this analysis results file. Pipelines are discussed later in this tutorial.</td>
+			</tr>
+			<tr>
+				<td><em>List of analyses</em></td>
+				<td>Lists analyses that commonly use this type of file as an input parameter.<br />
+				Select an analysis to display its parameters with this results file specified as the first input parameter.</td>
+			</tr>
+		</tbody>
+	</table>
+	</li>
+	<li>Click the analysis results file, <code>all_aml_train.comp.marker.odf</code>, to display it in a text viewer. The amount of information it contains makes the file difficult to understand. This file, like most analysis results file, is not intended to be viewed as a text file, but rather intended to be used as input to subsequent analyses.</li>
+	<li>Click the <em>Back</em> button in your web browser to return to the home page.</li>
+</ol>
+
+<p><strong>For more information</strong>: see <a href="/gp_guides/user-guide/sections/analysis-results">Working with Analysis Results</a></p>
+
+<h3><a name="_Running_CMSViewer"></a>Running the ComparativeMarkerSelectionViewer</h3>
+
+<p>After running the ComparativeMarkerSelection analysis, run the ComparativeMarkerSelectionViewer to examine the analysis results. To run the ComparativeMarkerSelectionViewer:</p>
+
+<ol>
+	<li>In the Jobs tab, click the<img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to your <code>all_aml_train.comp.marker.odf</code> results file.</li>
+	<li>Select <em>ComparativeMarkerSelectionViewer</em>. GenePattern displays the ComparativeMarkerSelectionViewer parameters. The <em>comparative marker selection filename</em> parameter is automatically set to the <code>all_aml_train.comp.marker.odf</code> results file.</li>
+	<li>For the <em>dataset filename</em> parameter, select the <code>all_aml_train.gct</code>&nbsp;file (<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>).<br />
+	<img alt="" height="235" src="/uploaded/content_tut_cmsv.jpg" width="501" /></li>
+	<li>Click <em>Run</em>. GenePattern displays the Job Status page.
+	<p class="MsoListContinue">&nbsp;</p>
+	</li>
+	<li>If the security message appears, accept the risk and click <em>Run</em> to continue.
+	<p>The ComparativeMarkerSelectionViewer appears:</p>
+
+	<p><img alt="" src="/uploaded/content_cmsviewer_380.png" style="width: 750px; height: 647px;" /></p>
+	</li>
+	<li>In the ComparativeMarkerSelectionViewer:
+	<ul>
+		<li>The <em>Score</em> column shows the value of the metric used to correlate gene expression and phenotype. A high score indicates correlation with the first phenotype (upregulated in ALL) and a low score indicates correlation with the second phenotype (upregulated in AML).</li>
+		<li>The middle columns, FDR through FWER, provide different ways to measure the significance of the score. The lower the value the more significant the result. For example, you might choose to measure significance using the false discovery rate (FDR) and set a significance cutoff of FDR &lt; .05. Using this measure, you would focus on genes with the lowest and highest scores, where the measure of significance for the score was an FDR &lt; .05.</li>
+	</ul>
+	</li>
+	<li>In GenePattern, click <em>Return to Modules &amp; Pipelines Start</em> to return to the home page.</li>
+</ol>
+
+<h3><a name="_running_ECMS"></a>Running ExtractComparativeMarkerResults</h3>
+
+<p>Now that you have examined the ComparativeMarkerSelection analysis results, you want to create a new dataset that contains only the most promising marker genes from the results file for further analysis. To run the ExtractComparativeResults analysis:</p>
+
+<ol>
+	<li>In the Jobs tab, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to the ComparativeMarkerSelection results file, <code>all_aml_train.comp.marker.odf</code>.</li>
+	<li>Select <em>ExtractComparativeMarkerResults</em>. GenePattern displays the ExtractComparativeMarkerResults parameters. The <em>comparative marker selection filename</em> parameter is automatically set to the <code>all_aml_train.comp.marker.odf</code> results file.</li>
+	<li>For the <em>dataset filename</em> parameter, select the <code>all_aml_train.gct</code>&nbsp;file (<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>).</li>
+	<li>Enter the following parameter values to extract the top 100 features (genes) in the analysis results file:
+	<ul>
+		<li class="indented">For the <i>statistic</i>&nbsp;parameter, select Rank.</li>
+		<li class="indented">For the <em>max</em> field, enter 100.</li>
+	</ul>
+
+	<p class="MsoListContinue"><img alt="" src="/uploaded/content_extractcms_380.png" style="width: 750px; height: 505px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+	<li>Click <em>Run</em>. GenePattern displays the Job Status page. After a few seconds, the status icon changes from running <img alt="running" src="/uploaded/content_icon_run.gif" style="width: 15px; height: 15px; " /> to complete <img alt="complete" src="/uploaded/content_icon_complete.gif" style="width: 15px; height: 15px; " />and GenePattern displays the analysis results files.&nbsp;&nbsp;(for information on the Pending state see the&nbsp;<a href="/doc/relnotes/3.9.0">3.9.0 release notes</a>)
+	<p class="MsoListContinue"><img alt="" src="/uploaded/content_extractcmscomplete_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 299px;" /></p>
+	</li>
+	<li>Leave the Job Status page displayed.</li>
+</ol>
+
+<h3><a name="_Running_HMV"></a>Running HeatMapViewer</h3>
+
+<p>The HeatMapViewer displays expression values in a color-coded heat map. The largest expression values are displayed in red (hot) and the smallest values are displayed in blue (cool). Intermediate values are displayed in different shades of red and blue. The color-coding provides a quick coherent view of gene expression levels.</p>
+
+<p>To display your new dataset in the HeatMapViewer:</p>
+
+<ol>
+	<li>On the Job Status page, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to the results file from the ExtractComparativeMarkerResults analysis, <code>all_aml_train.comp.marker.filt.gct</code>.</li>
+	<li>Select <em>HeatMapViewer</em>. GenePattern displays the HeatMapViewer parameters. The <em>dataset </em>parameter is automatically set to the <code>all_aml_train.comp.marker.filt.gct</code>&nbsp;results file.
+	<p class="MsoListContinue"><img alt="" src="/uploaded/content_hmv380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 253px;" /></p>
+	</li>
+	<li>Click <em>Run</em>.&nbsp;The HeatMapViewer appears.</li>
+	<li>In GenePattern, click the GenePattern icon in the upper left&nbsp;to return to the home page.</li>
+</ol>
+
+<h2 id="_Using_Pipelines">Using Pipelines</h2>
+
+<p>As you have seen, GenePattern makes it easy to run individual analyses and to review analysis results. Pipelines take this one step further: they make it easy to run multiple analyses. You can define a pipeline to run multiple analyses against a single dataset or to run a sequence of analyses, where the output from one analysis becomes the input for a subsequent analysis. Modules run from a pipeline work exactly the same as those run directly from GenePattern.</p>
+
+<p>In this tutorial, you have run two analyses: ComparativeMarkerSelection and ExtractComparativeMarkerResults. The analysis results file from the first analysis became the input file for the second analysis. Running these two analyses produced a new dataset that contains the 100 genes in your dataset (<code>all_aml_train.gct</code>) that are most closely correlated with phenotypes in your class file (<code>all_aml_train.cls</code>).</p>
+
+<p>In this section, you will:</p>
+
+<ul>
+	<li>Create a pipeline that duplicates your analysis results.</li>
+	<li>Edit the pipeline so that it operates on any set of data (gct&nbsp;and cls) files.</li>
+</ul>
+
+<p><strong>For more information</strong>: see <a href="/user-guide#working-with-pipelines">Working with Pipelines</a> in the <em>GenePattern User Guide</em>.<br />
+<strong>See the video tutorial</strong>: <a href="https://www.youtube.com/watch?v=3zMM6Fo1KI4" target="_blank" title="Exploring the new GenePattern Pipeline Designer">Exploring the New GenePattern Pipeline Designer</a></p>
+
+<h3><a name="_Creating_a_Pipeling_Based_on_prevResult"></a>Creating a Pipeline Based on Previous Results</h3>
+
+<p>You can create a pipeline in one of three ways:</p>
+
+<ul>
+	<li>Clone an existing pipeline.</li>
+	<li>Create an empty pipeline and then add to it the analysis modules that you want the pipeline to run.</li>
+	<li>Create a pipeline based on an analysis results file. In this case, GenePattern uses the following logic to add to the pipeline the analysis modules required to reproduce the analysis results file: add the module that created the result file; check the module&rsquo;s input file parameters; if the input file for the module was the output file of a previous module, add the previous module; check that module&rsquo;s input file parameters; continue to walk back through the chain of modules, adding modules to the pipeline, until reaching the initial input file.</li>
+</ul>
+
+<p>In this tutorial, you want to create a pipeline based on the ExtractComparativeMarkerResults results file:</p>
+
+<ol>
+	<li>In the Jobs tab, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to the results file from the ExtractComparativeMarkerResults analysis, <code>all_aml_train.comp.marker.filt.gct</code>.</li>
+	<li>Select <em>Create Pipeline</em>. GenePattern displays the new pipeline in the pipeline designer.</li>
+</ol>
+
+<p>In this section, you first explore the pipeline designer and then examine the content of the pipeline.</p>
+
+<h4>Pipeline Designer</h4>
+
+<p>Each time you create or edit a pipeline, GenePattern displays the pipeline designer:</p>
+
+<p><img alt="" src="/uploaded/content_extractcms_createpipeline_380.png" style="width: 800px; height: 372px; border-width: 1px; border-style: solid;" /></p>
+
+<p>The pipeline designer comprises three main parts (from left to right):</p>
+
+<ul>
+	<li><strong>Module selection panel</strong>. Use this panel to add a module or a file to the pipeline.</li>
+	<li><strong>Pipeline diagram</strong>. The center panel displays the pipeline diagram. It shows each module in the pipeline, as well as any input files included in the pipeline. Connections between the modules show the flow of data through the pipeline. Click-and-drag to reposition modules/files and to add connections between modules/files.</li>
+	<li><strong>Editing panel</strong>. Use the editing panel to view and edit basic pipeline properties (as shown here) or the properties of the object selected in the diagram.</li>
+</ul>
+
+<p>At the top of the pipeline designer, the toolbar provides the following options:</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramproperties.jpg?1341579797" style="width: 80px; height: 25px; " /></td>
+			<td>
+			<p>Displays the basic pipeline properties in the Editing Pipeline panel, as shown here.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramsave.jpg?1341579843" style="width: 65px; height: 25px; " /></td>
+			<td>
+			<p>Saves your changes without closing the designer, and provides the option to run after saving.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramrevert.jpg?1341579889" style="width: 74px; height: 25px; " /></td>
+			<td>
+			<p>Loads the last saved version of the pipeline, overwriting any unsaved changes.</p>
+			</td>
+		</tr>
+		<tr>
+			<td><img alt="" src="/uploaded/content_pipelinediagramhelp.jpg" style="width: 50px; height: 25px; " /></td>
+			<td>Displays the pipeline designer section of the GenePattern documentation.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Pipeline Content</h4>
+
+<p>The pipeline displayed in the pipeline designer reproduces the ExtractComparativeMarkerResults analysis results file:</p>
+
+<ul>
+	<li>
+	<p>The ComparativeMarkerSelection module has two input files. As shown by the connections in the diagram, the <code>all_aml_train.gct</code>&nbsp;file is the input for the <em>input.file </em>parameter and the <code>all_aml_train.cls</code> file is the input for the <em>cls.file </em>parameter.</p>
+	</li>
+	<li>
+	<p>The ExtractComparativeMarkerResults module also has two input files. The odf output file of the ComparativeMarkerSelection module is the input for the <em>comparative.marker.selection.filename </em>parameter and the <code>all_aml_train.gct</code>&nbsp;file is the input for the <em>dataset.filename</em> parameter.</p>
+	</li>
+</ul>
+
+<p>Click the ExtractComparativeMarkerResults module to display its parameters in the editing panel. Note that all of the parameters are set to the values you used when you initially ran the module; in particular, <i>statistic</i>=rank and <em>max</em>=100.</p>
+
+<h3>Editing Pipeline Properties</h3>
+
+<p>To edit pipeline details:</p>
+
+<ol>
+	<li>Click <img alt="" src="/uploaded/content_pipelinediagramproperties.jpg?1341579797" style="width: 80px; height: 25px; " /> to display the basic pipeline properties in the editing panel. By default, the pipeline name is the job number.</li>
+	<li>Change the pipeline name to MyComparativeMarkerSelection by editing the <em>Pipeline Name</em> field.</li>
+	<li>Provide a category for your pipeline. It can remain in the pipeline category, be move to another category, or be in 2 or more categories. For this tutorial, add the category &quot;Gene List Selection&quot;, as shown in the image below.</li>
+	<li>Enter a brief description for your pipeline and, if you would like, edit the author field to include your email address.
+	<p><img alt="" src="/uploaded/content_extractcms_createpipeline_ii_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 343px;" /></p>
+	</li>
+	<li>Click <img alt="" src="/uploaded/content_pipelinediagramsave.jpg?1341579843" style="width: 65px; height: 25px; " /> to save your changes. Each time you save the pipeline, you create a new version of the pipeline.
+	<p>When GenePattern displays the Pipeline Saved confirmation window, click <em>Close</em> to close the window.</p>
+	</li>
+</ol>
+
+<h3><a name="_Adding_Modules_to_a_Pipeline"></a>Adding Modules to a Pipeline</h3>
+
+<p>The pipeline contains the two analysis modules used to create the analysis results file: ComparativeMarkerSelection and ExtractComparativeMarkerResults. In your original analysis, after creating the analysis results file, you used the HeatMapViewer to review the results.</p>
+
+<p>To add the HeatMapViewer module to your pipeline:</p>
+
+<ol>
+	<li>In the module selection panel (to the left of the diagram), click <em>Browse</em>&nbsp;<em>Modules, </em>select&nbsp;Viewer, and then HeatMapViewer. GenePattern adds the module to the pipeline diagram. You may need to scroll the diagram to see the module.</li>
+	<li>Click-and-drag the HeatMapViewer module to position it below the ExtractComparativeMarkerResults module. Selecting the HeatMapViewer module displays its parameters in the editing panel. The editing panel displays a warning indicating that you have not yet set the required <em>dataset </em>parameter.
+	<p><img alt="" src="/uploaded/content_extractcms_createpipeline_iii_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 304px;" /></p>
+	</li>
+	<li>You want the GCT&nbsp;output file of the ExtractComparativeMarkerResults module to be the input file for <em>dataset</em> parameter of the HeatMapViewer module. So, first you want to select <em>res</em> in the output file format drop-down, then you want to draw a connection from the output file to the input parameter. To draw the connection, click-and-drag from the <img alt="" src="/uploaded/content_pipelinediagramoutputicon.png" style="width: 15px; height: 14px; " /> icon next to the GCT&nbsp;output file of the ExtractComparativeMarkerResults module to the <img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px; " /> input icon next to the <em>dataset</em> parameter of the HeatMapViewer module. GenePattern updates both the diagram and the editing panel:
+	<p><img alt="" src="/uploaded/content_extractcms_createpipeline_iv_380.png" style="width: 750px; height: 374px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+	<li>Click <img alt="" src="/uploaded/content_pipelinediagramsave.jpg" style="width: 65px; height: 25px;" /> to save your changes and then run the pipeline. GenePattern creates a new version of the pipeline, closes the pipeline designer, and displays the pipeline run page.
+	<p><img alt="" src="/uploaded/content_mycmspipeline_380.png" style="width: 750px; height: 171px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+</ol>
+
+<h3><a name="_Running_the_Pipeline"></a>Running the Pipeline</h3>
+
+<p>To run the pipeline:</p>
+
+<ol>
+	<li>Click <em>Run</em>. GenePattern displays the Job Status page, runs each module, and displays the analysis results.
+
+	<p><img alt="" src="/uploaded/content_mycmspipeline_done_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 548px;" /></p>
+	</li>
+	<li>Close the HeatMapViewer.</li>
+	<li>In GenePattern, click the GenePattern logo in the upper left&nbsp;to return to the home page.<br />
+	The Jobs tab shows the pipeline job, which lists each analysis run and its analysis result files.<br />
+	<img alt="" src="/uploaded/content_cmspipelinerecentjob_380.png" style="width: 333px; height: 217px;" /></li>
+</ol>
+
+<h3><a name="_Adding_Parameters"></a>Adding Parameters to a Pipeline</h3>
+
+<p>You have created a pipeline that duplicates your original analysis: it runs the Comparative Marker Selection analysis on the all_aml_train data (gct&nbsp;and cls) files, uses the analysis results as input to the Extract Comparative Marker Results analysis, and then displays the analysis results using the Heat Map Viewer.</p>
+
+<p>You can make the pipeline more generally useful by having it prompt you for the data (gct&nbsp;and cls) files to be analyzed, rather than simply analyzing the all_aml_train data files. To do this, mark the input file parameters as prompt-when-run. When GenePattern runs the pipeline, it will prompt the user to enter values for the prompt-when-run parameters.</p>
+
+<p>To edit the pipeline:</p>
+
+<ol>
+	<li>In the search box at the top of the Modules &amp; Pipelines pane, enter the first few characters of your pipeline name. GenePattern lists module names that contain those characters.</li>
+	<li>Select your pipeline. GenePattern displays the pipeline run page:
+	<p><img alt="" src="/uploaded/content_mycmspipeline_edit_380.png" style="width: 750px; height: 231px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+	<li>Click <em>Edit</em>. GenePattern displays the pipeline designer.</li>
+</ol>
+
+<p>To add parameters to the pipeline, mark the parameters of interest as prompt-when-run:</p>
+
+<ol>
+	<li>Click ComparativeMarkerSelection to display its properties:<br />
+	<img alt="" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px; " /> The <em>input.file</em> parameter is set to <code>all_aml_train.gct</code>.<br />
+	<img alt="" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px; " /> The <em>cls.file</em> parameter is set to <code>all_aml_train.cls.</code>
+
+	<p><img alt="" src="/uploaded/content_mycmspipeline_cmsedit_380.png" style="width: 750px; border-width: 1px; border-style: solid; height: 386px;" /></p>
+	</li>
+	<li>Modify the <em>input.file </em>parameter to mark it prompt-when-run:
+	<p><img alt="" src="/uploaded/content_mycmspipeline_cmsedit_zoom380.png" style="width: 287px; height: 121px;" /></p>
+
+	<p>In the editing panel:</p>
+
+	<ol start="1" style="list-style-type: lower-alpha;">
+		<li>Click the <em>Remove Connection </em>button next to the <em>input.file </em>parameter. GenePattern updates both the diagram and the editing panel.</li>
+		<li>Click the prompt-when-run checkbox next to the <em>input.file </em>parameter. GenePattern updates both the diagram and the editing panel.</li>
+		<li>Optionally, click<em> </em>the <em>Set Prompt When Run Display Settings</em> button to change the text GenePattern will use to prompt the user for input.</li>
+	</ol>
+	</li>
+	<li>Modify the <em>cls.file </em>parameter to mark it prompt-when-run. This time, you will use the diagram to edit the parameter:
+	<ol start="1" style="list-style-type: lower-alpha;">
+		<li>In the diagram, click the <img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px; " /> icon next to the <em>cls.file </em>parameter.<br />
+		<img alt="" src="/uploaded/content_tut_promptforclsclick.jpg" style="width: 450px; height: 291px;" /><br />
+		GenePattern displays the Choose Action window:<br />
+		<img alt="" src="/uploaded/content_tut_plchooseaction1.jpg?1346619646" style="width: 200px; height: 72px; " /></li>
+		<li>Click <em>Remove Connection</em>. GenePattern updates both the diagram and the editing panel.</li>
+		<li>In the diagram, again click the <img alt="" src="/uploaded/content_pipelinediagraminputicon.png" style="width: 15px; height: 14px; " /> icon next to the <em>cls.file </em>parameter. GenePattern displays the Choose Action window:<br />
+		<img alt="" src="/uploaded/content_tut_plchooseaction2.jpg?1346619682" style="width: 200px; height: 71px; " /></li>
+		<li>Click <em>Prompt When Run</em>. GenePattern updates both the diagram and the editing panel.</li>
+		<li>In the editing panel, optionally, click <em>Set Prompt When Run Display Settings</em> to change the text GenePattern will use to prompt the user for input.</li>
+	</ol>
+
+	<p><img alt="" src="/uploaded/content_mycmspipeline_cmseditpwr_380.png" style="width: 750px; height: 308px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+	<li>Click ExtractComparativeMarkerResults to display its properties. The <span style="font-style: italic;">dataset</span><em>.filename</em> parameter is set to <code>all_aml_train.res</code>.</li>
+	<li>Remove the connection between the <span style="font-style: italic;">dataset</span><em>.filename </em>parameter and the <code>all_aml_train.gct</code>&nbsp;file, and then modify the <span style="font-style: italic;">dataset</span><em>.filename </em>parameter to mark it prompt-when-run.
+	<p><img alt="" src="/uploaded/content_mycmspipeline_extcmseditpwr_380.png" style="width: 750px; height: 281px; border-width: 1px; border-style: solid;" /></p>
+	</li>
+	<li>Click <img alt="" src="/uploaded/content_pipelinediagramsave.jpg" style="height: 25px; width: 65px;" /> to save your changes and run the pipeline. GenePattern creates a new version of the pipeline, closes the pipeline designer and displays the pipeline run page.</li>
+</ol>
+
+<h3><a name="_Running_the_Edited_Pipeline"></a>Running the Edited Pipeline</h3>
+
+<p>When you save and run the pipeline, GenePattern displays the pipeline parameters (if any):</p>
+
+<p><img alt="" src="/uploaded/content_mycmspipeline_pwrruntask_380.png" style="width: 800px; height: 429px; border-width: 1px; border-style: solid;" /></p>
+
+<p>To run the edited pipeline:</p>
+
+<ol>
+	<li>For the <em>input file</em> parameter, select <code>all_aml_train.gct</code>&nbsp;(<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>).</li>
+	<li>For the <em>cls file</em> parameter, select <code>all_aml_train.cls</code> (<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.cls" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.cls</a>).</li>
+	<li>For the <em>dataset filename</em> parameter, select <code>all_aml_train.gct</code> again (<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct" target="_blank">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>).</li>
+	<li>Click <em>Run</em>. The Status page appears and GenePattern runs each module. After a few moments, GenePattern displays the HeatMapViewer.</li>
+	<li>Close the HeatMapViewer.</li>
+	<li>In GenePattern, click <em>Return to Modules &amp; Pipelines Start</em> to return to the home page.</li>
+</ol>
+
+<p>The pipeline requires that you enter the same data file (<code>all_aml_train.gct</code>) twice: once for the <em>input file </em>parameter of the ComparativeMarkerSelection module and again for the <em>dataset filename </em>parameter of the ExtractComparativeMarkerResults module. Ideally, you want to enter the data file once and have the pipeline use it for both the ComparativeMarkerSelection and ExtractComparativeMarkerResults modules. For more information on how that can be done, see <a href="/user-guide#ReuseInputFile">Reusing a User-Supplied File</a> in the Working With Pipelines section of the <em>GenePattern User Guide</em>.&nbsp;</p>
+
+<h2 id="_Saving_and_Deleting">Saving and Deleting Result Files</h2>
+
+<p>As described earlier in the tutorial, analyses are run on the GenePattern server and analysis results files are stored on the server. Server storage is temporary and analysis results files are deleted after they have been on the server for a certain length of time (by default, one week).</p>
+
+<p>To save your analysis results files, you must copy each file from the server to a more permanent location. If you do not need your analysis results, you can delete them at any time.</p>
+
+<p>To save an analysis results file:</p>
+
+<ol>
+	<li>In the Recent Jobs pane, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to a results file.</li>
+	<li>Click <em>Save</em>.</li>
+</ol>
+
+<p>To delete an analysis results file:</p>
+
+<ol>
+	<li>In the Recent Jobs pane, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to a results file.</li>
+	<li>Click <em>Delete</em>.</li>
+</ol>
+
+<p>To save or delete a job and all of its analysis results files, click the <img alt="" src="/uploaded/content_smalloptions.gif" style="width: 19px; height: 11px; " /> icon next to the job and click <em>Download</em> or <em>Delete</em>.</p>
+
+<h2 id="_Exiting_from_GenePattern">Exiting from GenePattern</h2>
+
+<p>To exit from GenePattern, click the <em>Sign out</em> link in the top right corner of the title bar and then close the web browser window.</p>
+
+<h2 id="_Learning_More_About">Learning More About GenePattern</h2>
+
+<p>Thank you for taking this time to learn about GenePattern!</p>
+
+<p>As you continue to work with GenePattern, please explore the rest of the site.</p>
+
+<p>We welcome your feedback. If you have suggestions, comments, or questions please <a href="https://groups.google.com/g/genepattern-help" target="_blank">visit our forum&nbsp;</a>.</p>
+</body>
+</html>

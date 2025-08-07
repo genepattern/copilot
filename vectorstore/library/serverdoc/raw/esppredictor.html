@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ESPPredictor</title>
+</head>
+<body>
+<h2>Description</h2>
+
+<p>The ESPPredictor module implements the enhanced signature peptide (ESP) predictor method developed by Fusaro et al. (2009). It provides a means of predicting, from sequence alone, which peptides for any given protein are likely to work well for targeted mass spec assay development.</p>
+
+<h2>References</h2>
+
+<ul>
+	<li><a href="http://www.nature.com/nbt/journal/v27/n2/abs/nbt.1524.html">Prediction of high-responding peptides for targeted protein assays by mass spectrometry</a><br />
+	Vincent A. Fusaro, D. R. Mani, Jill P. Mesirov &amp; Steven A. Carr<br />
+	Nature Biotechnology (2009) 27:190-198.</li>
+	<li><a href="ftp://ftp.broadinstitute.org/pub/genepattern/modules_public_server_doc/ESPPredictor.pdf" target="_top" type="application-pdf">ESPPredictor module documentation <img src="/uploaded/content_pdf.jpg" style="border-width: 0px; border-style: solid;" /></a></li>
+	<li><a href="/quick-start">Quick Start</a> a 10-minute introduction to GenePattern</li>
+</ul>
+
+<h2>How to run the module</h2>
+
+<p><strong>Prerequisite:</strong> You will need a text file that contains a list of peptide sequences, one per line. The <a href="ftp://ftp.broadinstitute.org/pub/genepattern/modules_public_server_doc/ESPPredictor.pdf" target="_top">ESPPredictor module documentation</a> describes one way of creating this list from protein sequences.</p>
+
+<ol style="list-style-type: decimal">
+	<li style="list-style-type: decimal">Login to the public GenePattern server: <a href="http://genepattern.broadinstitute.org/gp/">http://genepattern.broadinstitute.org/gp/</a>.<br />
+	If you do not have a GenePattern account, you can register on the login page.
+	<p>Result: GenePattern displays its main page.</p>
+	</li>
+	<li style="list-style-type: decimal">From the list of modules on the left, select the ESPPredictor module.<br />
+	Look for the module in the Proteomics category or select the <i>All</i> radio button to list the modules alphabetically.
+	<p>Result: GenePattern displays the ESPPredictor page.</p>
+	</li>
+	<li style="list-style-type: decimal">For the <i>input file</i> parameter, specify the list of peptide sequences.
+	<p>Result: GenePattern starts the job and displays the Job Status page.</p>
+	</li>
+	<li style="list-style-type: decimal">When the analysis completes, click the <strong>prediction.txt</strong> result file.
+	<p>Result: GenePattern displays the file, which lists each peptide sequence followed by the probability of its working well in the assay.</p>
+	</li>
+</ol>
+
+<h2>Tips</h2>
+
+<ul>
+	<li>If an error occurs, check the input file. Typically, the error is due to (1) a non-standard amino acid J,U,Z,B,O,X in a sequence or (2) non-visible characters such as spaces or tabs before or after a sequence.</li>
+	<li>Depending on the number of peptide sequences the analysis may take a few seconds (&lt;20 peptides) or many hours (&gt;1,000 peptides). If you do not want to wait, you can continue working or exit from GenePattern. You can always find your jobs: (1) recent jobs are listed on the right side of the GenePattern main page or (2) click <i>Job Results</i> to see all jobs.</li>
+</ul>
+</body>
+</html>

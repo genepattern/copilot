@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Start</title>
+</head>
+<body>
+<p><strong>See the video tutorial</strong>: <a href="http://www.youtube.com/watch_popup?v=PIrLJADpAzY">Getting Started</a><br />
+<em><span style="color:grey">Note that this video tutorial was created with GenePattern 3.2</span> </em></p>
+
+<p>This brief tutorial introduces you to GenePattern by providing step-by-step instructions for running an analysis and viewing the results. In less than 10 minutes you&#39;ll run your first analysis and review the results.<br />
+<em><span style="color:grey">Note that this hands on tutorial was created with GenePattern 3.6</span> </em></p>
+
+<h2 id="start">Start GenePattern</h2>
+
+<p>To start GenePattern:</p>
+
+<ol>
+	<li>Open a web browser, such a Mozilla Firefox, Internet Explorer, or Safari.</li>
+	<li>Enter the URL of the public GenePattern server:<a href="https://cloud.genepattern.org/">https://cloud.genepattern.org/</a>.</li>
+	<li>Enter your user name and password and then click <em>Sign In</em>.<br />
+	If you do not have a GenePattern account, select <em>Click to register</em>.
+	<p>GenePattern displays its home page.</p>
+	</li>
+</ol>
+
+<p><img alt="" height="339" src="/uploaded/content_home_callouts.jpg" width="600" /></p>
+
+<table class="table table-striped" width="740">
+	<tbody>
+		<tr>
+			<td><img alt="1" src="/uploaded/content_callout_1.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>Click the GenePattern icon to return to this home page at any time.</td>
+		</tr>
+		<tr>
+			<td><img alt="2" src="/uploaded/content_callout_2.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The upper right corner shows your user name.</td>
+		</tr>
+		<tr>
+			<td><img alt="3" src="/uploaded/content_callout_3.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The navigation bar provides access to other pages.</td>
+		</tr>
+		<tr>
+			<td><img alt="4" src="/uploaded/content_callout_4.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The Modules &amp; Pipelines panel lists the analyses that you can run. Enter the first few characters of a module or pipeline name in the search box to locate that analysis. Click the <em>all</em> radio button to list the analyses alphabetically.</td>
+		</tr>
+		<tr>
+			<td><img alt="5" src="/uploaded/content_callout_5.jpg" style="width: 16px; height: 17px; " /></td>
+			<td>The center pane is the main display pane, which GenePattern uses to display information and to prompt you for input. Notice the protocols listed here.</td>
+		</tr>
+		<tr>
+			<td><img alt="6" src="/uploaded/content_callout_6.jpg" style="width: 16px; height: 16px; " /></td>
+			<td>The Recent Jobs panel lists the most recent analyses that you have run and their results files. The Uploads panel lists files that you have copied to the GenePattern server. When you start GenePattern for the first time, these panels are empty.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="run">Run an Analysis</h2>
+
+<p>As an example, you will run the ComparativeMarkerSelection analysis. This analysis finds the genes in a dataset file that are most closely correlated with the two classes of samples in that dataset. You will run the analysis on an example dataset, all_aml_train.res, that contains gene expression data from <a href="https://pubmed.ncbi.nlm.nih.gov/10521349/">Golub and Slonim et al. (1999)</a>. In that paper, the authors used clustering and prediction algorithms to find genes that distinguish between two subtypes of leukemia, ALL and AML. The dataset consists of 38 bone marrow samples (27 ALL, 11 AML) obtained from acute leukemia patients.</p>
+
+<p>To run the ComparativeMarkerSelection analysis:</p>
+
+<ol>
+	<li>In the Modules &amp; Pipelines panel, locate and select ComparativeMarkerSelection. One easy way to do this: type the first few characters of the name into the search box and click on ComparativeMarkerSelection when it appears in the list of matching analyses.
+	<p>GenePattern displays the ComparativeMarkerSelection parameters.</p>
+
+	<p><img alt="" height="376" src="/uploaded/content_qs_cms_params.jpg" width="650" /></p>
+	</li>
+	<li>For the <em>input file</em> parameter, click the <em>Add Path or URL</em> button and enter the following URL:<a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct"> </a><a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a><a href="https://software.broadinstitute.org/data/all_aml/all_aml_train.gct" target="_blank"> </a></li>
+	<li>For the <em>cls file</em> parameter, click the <em>Add Path or URL</em> button and enter the following URL: <a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.cls">https://datasets.genepattern.org/data/all_aml/all_aml_train.cls</a>
+	<p><img alt="" src="/uploaded/content_cmsv10_new.png" style="width: 600px; height: 229px;" /></p>
+	</li>
+	<li>Click <em>Run</em> to start the analysis. GenePattern sends the analysis job to the GenePattern server and displays the Job Status page. After a few moments, GenePattern changes the status icon from running <img alt="running" src="/uploaded/content_icon_run.gif" style="width: 21px; height: 21px; " /> to complete <img alt="complete" src="/uploaded/content_icon_complete.gif" style="width: 21px; height: 21px; " /> and displays the analysis results.<br />
+	<img alt="" src="/uploaded/content_cmsv10_status_new.png" style="width: 600px; height: 203px;" /></li>
+</ol>
+
+<h2 id="view">View the Analysis Results</h2>
+
+<p>To examine the results of the ComparativeMarkerSelection analysis, run the ComparativeMarkerSelectionViewer:</p>
+
+<ol>
+	<li>Click the <img alt="menu icon" src="/uploaded/content_icon_menu.gif?1346865649" style="width: 20px; height: 15px; " /> icon next to the all_aml_train.comp.marker.odf results file to display a menu of the commands you can use to work with the file.</li>
+	<li>From the menu, select ComparativeMarkerSelectionViewer.
+	<p>GenePattern displays the ComparativeMarkerSelectionViewer parameters. The <em>comparative marker selection filename</em> parameter is automatically set to the all_aml_train.comp.marker.odf results file.</p>
+	</li>
+	<li>For the <em>dataset filename</em> parameter, click the <em>Add Path or URL</em> button and select the file that you analyzed using the ComparativeMarkerSelection module: <a href="https://datasets.genepattern.org/data/all_aml/all_aml_train.gct">https://datasets.genepattern.org/data/all_aml/all_aml_train.gct</a>&nbsp;.
+	<p><img alt="" src="/uploaded/content_cmsviewer_v9_new.png" style="width: 600px; height: 228px;" /></p>
+	</li>
+	<li>Click <em>Run</em> to start the viewer.<br />
+	&nbsp;</li>
+	<li>The ComparativeMarkerSelectionViewer appears:
+	<p><img alt="" src="/uploaded/content_cmsviewer_view.png" style="width: 600px; height: 250px;" /></p>
+	</li>
+	<li>In the ComparativeMarkerSelectionViewer:
+	<ul>
+		<li>The Score column shows the value of the metric used to correlate gene expression and phenotype. A high score indicates correlation with the first phenotype (upregulated in ALL) and a low score indicates correlation with the second phenotype (upregulated in AML).</li>
+		<li>The middle columns, FDR through FWER, provide different ways to measure the significance of the score. The lower the value the more significant the result. For example, you might choose to measure significance using the false discovery rate (FDR) and set a significance cutoff of FDR &lt; .05. Using this measure, you would focus on genes with the lowest and highest scores, where the measure of significance for the score was an FDR &lt; .05.</li>
+	</ul>
+	</li>
+	<li>In GenePattern, click<em>&nbsp;Modules &amp; Pipelines </em>to return to the home page.</li>
+</ol>
+
+<p>On the home page, the Recent Jobs pane shows the analysis jobs that you have run on the GenePattern server and the associated analysis results files. Click the job name or number for an analysis to redisplay the Job Status page for that job.</p>
+
+<h2 id="exit">Exit from GenePattern</h2>
+
+<p>To exit from GenePattern:</p>
+
+<ol>
+	<li>Click <em>Sign Out</em> in the top right corner of the title bar.</li>
+	<li>Close the web browser window.</li>
+</ol>
+
+<h2 id="help">Learn More about GenePattern</h2>
+
+<p>The following documents provide more information about GenePattern:</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td valign="top"><a href="/concepts">Concepts</a></td>
+			<td valign="top">Introduces GenePattern: its primary objects (modules, pipelines, suites) and its client-server architecture. Other GenePattern documentation assumes that you are familiar with this information.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/video-tutorials">Video Tutorials</a></td>
+			<td valign="top">Lists the GenePattern training videos.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/tutorial">Tutorial</a></td>
+			<td valign="top">Provides a 40 minute hands-on tour of GenePattern.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/user-guide">User Guide</a></td>
+			<td valign="top">Fully describes GenePattern.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/modules">Modules</a></td>
+			<td valign="top">Lists the modules and pipelines available from the Broad Institute, with links to their documentation.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/file-formats-guide">File Formats</a></td>
+			<td valign="top">Describes all file formats and provides instructions for creating input files for GenePattern.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/doc/relnotes/current/">Release Notes</a></td>
+			<td valign="top">Describes new features and known issues in the current release.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a href="/faq/">Frequently Asked Questions</a></td>
+			<td valign="top">Answers commonly asked questions about GenePattern.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>We welcome your feedback. If you have suggestions, comments, or questions please visit our forum&nbsp;<a href="https://groups.google.com/g/genepattern-help">https://groups.google.com/g/genepattern-help</a>.</p>
+</body>
+</html>

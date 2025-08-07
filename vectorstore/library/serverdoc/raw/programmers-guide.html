@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Programmers Guide</title>
+</head>
+<body>
+<h1><a name="Introduction"></a>About the Programmers Guide</h1>
+
+<p>GenePattern provides access to a broad array of computational methods used to analyze genomic data. Its extendable architecture makes it easy for computational biologists to add analysis and visualization modules, which ensures that GenePattern users have access to new computational methods on a regular basis.</p>
+
+<p>If you are new to GenePattern, begin with the basics:</p>
+
+<ul>
+	<li><a href="/concepts">Concepts </a>provides a brief introduction to GenePattern and its primary objects (modules, pipelines, suites). All other GenePattern documentation assumes that you are familiar with these concepts.</li>
+	<li><a href="/quick-start">Quick Start</a> provides a brief hands-on introduction to GenePattern.</li>
+</ul>
+
+<p>This guide assumes that you are a programmer and familiar with GenePattern. As a programmer, you generally work with GenePattern in one of two ways:</p>
+
+<ul>
+	<li><strong>Creating GenePattern modules.</strong> Each GenePattern module invokes a program that executes a desired function. You can use any language to write a program that can then be invoked as a GenePattern module. For more information, see the following sections of this guide:
+
+	<ul>
+		<li><a href="/blog/2012/12/15/creating-a-genepattern-module">Creating Modules</a> describes how to create and edit a GenePattern module.</li>
+		<li><a href="/programmers-guide#_Writing_Modules_for_GenePattern">Writing Modules</a> provides tips for writing code that will be invoked as a GenePattern module.</li>
+	</ul>
+	</li>
+	<li><strong>Accessing GenePattern from Java, MATLAB, R, or Python.</strong> GenePattern libraries for these four&nbsp;programming environments make it easy for your applications to run GenePattern modules and retrieve analysis results. Each library supports arbitrary scripting, access to GenePattern modules via function calls, and development of new methodologies that combine modules in arbitrarily complex combinations. For more information, see the following sections of this guide:
+	<ul>
+		<li><a href="/programmers-guide#_Using_GenePattern_from_Java">Using GenePattern from Java</a></li>
+		<li><a href="/programmers-guide#_Using_GenePattern_from_MATLAB">Using GenePattern from MATLAB</a></li>
+		<li><a href="/programmers-guide#_Using_GenePattern_from_R">Using GenePattern from R</a></li>
+		<li><a href="/programmers-guide#_Using_GenePattern_from_Python">Using GenePattern from Python</a></li>
+	</ul>
+	</li>
+</ul>
+
+<h1><a name="_Creating_Modules"></a>Creating Modules: The Module Integrator</h1>
+
+<p>Only the GenePattern team can create, edit, or install modules on the GenePattern public server. Therefore, to create a module, you must have a local GenePattern server installed (see <a href="/user-guide#starting-your-own-genepattern-server">Starting Your Own GenePattern Server</a>).</p>
+
+<p>Creating a GenePattern module is a multi-step process:</p>
+
+<ol>
+	<li>Find or write a program that executes the desired function. Any program that can be executed from the command line can be run as a GenePattern module. Programs encapsulated in <a href="http://www.docker.com">Docker containers</a> are preferred as Docker handles the management of code dependencies. If you are writing the program and creating the Docker container, you can use any programming language; for example, you can use a compiled language, such as C, to create an executable or use a scripting language, such as Perl, to create a script that is run by an interpreter. For more information, see <a href="/programmers-guide#_Writing_Modules_for_GenePattern">Writing Modules for GenePattern</a>.</li>
+	<li>Use GenePattern to create a module that invokes the program that you have written. It takes just a few minutes to enter the necessary information. You can decide which parameters from the algorithm to expose to the user and can replace command line parameter names that are hard to remember with names that are self-explanatory. You can also create drop-down list choices for parameters to reduce the possibility of invoking the module with incorrect values. This section provides information on how to create and edit modules in GenePattern.</li>
+	<li>Run the module several times, testing it thoroughly before making it available to other GenePattern users.</li>
+</ol>
+
+<p><strong>Malicious code</strong>: By adding a module, a user can execute arbitrary code on the GenePattern server. Because arbitrary code may include malicious code, take precautions to protect your server: for example, employ virus scanner software and restrict access to appropriately privileged (non-root) users. For more information about securing your server, see <a href="/administrators-guide#securing-the-server">Securing the Server</a>.</p>
+
+<h2>Creating a Module</h2>
+
+<p>To create a module in GenePattern:</p>
+
+<ol>
+	<li>Click <em>Modules &amp; Pipelines&gt;New Module</em>. GenePattern displays the module integrator.</li>
+	<li>Enter values for the module properties. For more information, click the Help icon.</li>
+	<li>Click <span class="brGUI">Save</span> to create the module. GenePattern checks the following:
+	<ul>
+		<li>Every parameter not marked as optional is included in the command line.</li>
+		<li>Every parameter in the command line is a parameter, environment variable, or system property.</li>
+		<li>Module parameter names are valid.</li>
+	</ul>
+
+	<p>If no errors are found, GenePattern copies the support files to the server and makes the module available to the GenePattern clients.</p>
+	</li>
+</ol>
+
+<p>The in-depth article <a href="/blog/2012/12/15/creating-a-genepattern-module">Creating a GenePattern Module</a> provides a hands-on tutorial that walks you through the process of creating a GenePattern module.</p>
+
+<h3>Licensed Modules</h3>
+
+<p>Modules can have end-user license agreements (EULAs) attached to them.&nbsp; In order to run a licensed module (either standalone or within a pipeline), users must view and accept the license terms; GenePattern will display the license and prompt the user to accept it.&nbsp; After a user accepts a licensed module&#39;s terms, that user can run the module and GenePattern will not prompt the user to re-accept the license on subsequent runs.&nbsp; However, a user will need to re-accept the license whenever the licensed module is updated to a new version.&nbsp; The GenePattern Server records each acceptance of a licensed module&#39;s terms and reports these records to a database application hosted at the Broad Institute.&nbsp; If this module will only be on your GenePattern server and you need to maintain your own database for the terms agreements, contact the GenePattern development team for assistance.&nbsp;</p>
+
+<p>Academic users can agree to the license and use the module.&nbsp; Commercial users, however, need to contact the GenePattern team to work out terms for use, particularly if commercial users are establishing their own GenePattern server on which to host the licensed module.</p>
+
+<p>The EULA terms need to be in a text document (.txt).&nbsp; You can add a EULA to your module in the module integrator by clicking <em>Add License File</em>.</p>
+
+<h2><a name="_Editing_Modules"></a>Editing Modules</h2>
+
+<p>To edit a module:</p>
+
+<ol>
+	<li>Click <em>Modules &amp; Pipelines</em>&nbsp; to display the GenePattern home page.</li>
+	<li>Open the module integrator in one of the following ways:
+	<ul>
+		<li>Select a module that you created. When GenePattern displays the module parameters, click <span class="brGUI">Edit</span>.</li>
+		<li>Select a public module. When GenePattern displays the module parameters, click <span class="brGUI">Properties</span>. When GenePattern displays the module properties, click <span class="brGUI">Clone</span> to create a copy of the module. Enter a name for the new copy of the module. When GenePattern displays the properties of the new module, click <em>Edit</em>.</li>
+	</ul>
+	</li>
+	<li>Enter values for the module properties. For more information, click the Help icon.</li>
+	<li>Click <span class="brGUI">Save</span> to create a new version of the module.</li>
+</ol>
+
+<h2><a name="_Module_Definition_Page"></a><a name="_Module_Properties"></a> Module Properties</h2>
+
+<p>When you create or edit a module, GenePattern displays its properties in the module integrator. Click the Help icon to display descriptions of each property and its valid values. The help text is provided <a href="/programmers-guide#editingPropertiesHelp">here </a>for your convenience.</p>
+
+<p><img alt="" src="/uploaded/content_mod_int_full.jpg?1354569072" style="width: 750px; height: 763px;" /></p>
+
+<h1><a name="editingPropertiesHelp"></a>Module Integrator Help Text</h1>
+
+<p>When you create or edit a module, GenePattern displays its properties in the module integrator. Click the Help icon to display the following descriptions of each property and its valid values.</p>
+
+<p>&nbsp;</p>
+
+<h2>Creating and Editing Modules</h2>
+
+<p><strong>Note:</strong> Only the GenePattern team can create, edit or install modules on the GenePattern public server. Therefore, to create a module, you must have a local GenePattern server installed.<br />
+<br />
+Creating a GenePattern module is a multi-step process:</p>
+
+<ol>
+	<li>Find or write a program that executes the desired function. Any program that can be executed from the command line can be run as a GenePattern module. If you are writing the program, you can use any programming language; for example, you can use a compiled language, such as C, to create an executable or use a scripting language, such as Perl, to create a script that is run by an interpreter.</li>
+	<li>Use GenePattern to create a module that invokes the program that you have written. It takes just a few minutes to enter the necessary information in the module integrator. You can decide which parameters from the algorithm to expose to the user and can replace command line parameter names that are hard to remember with names that are self-explanatory. You can also create drop-down list choices for parameters to reduce the possibility of invoking the module with incorrect values.</li>
+	<li>Run the module several times, testing it thoroughly before making it available to other GenePattern users.</li>
+</ol>
+
+<p>When you save your changes, the module properties that you have entered are validated as follows:</p>
+
+<ul>
+	<li>Every parameter you have not marked as optional must be listed in the command line.</li>
+	<li>Every command line parameter must be either a parameter, environment variable, or system property.</li>
+	<li>The module name and parameter names must be legal - in general, you should avoid punctuation marks and other special characters.</li>
+</ul>
+
+<p>If everything checks out, the uploaded files are saved in the GenePattern module library and the module registered in the module database. The module and its uploaded files are indexed in the background so that they are available for searching. You can run the module immediately and can share it with others.<br />
+<br />
+The following sections describe each module property in detail:</p>
+
+<ul>
+	<li><a href="#taskLevelAttributes">Title Bar</a></li>
+	<li><a href="#details">Details</a></li>
+	<li><a href="#supportFiles">Support Files</a></li>
+	<li><a href="#Command">Command Line</a></li>
+	<li><a href="#inputParameters">Parameters</a></li>
+</ul>
+
+<p>An example for each property is given based on the Consensus Clustering module, which may be found in the module repository.<br />
+&nbsp;</p>
+
+<hr />
+<p><a name="taskLevelAttributes"></a></p>
+
+<h3>Title Bar</h3>
+
+<p><a name="Name"></a></p>
+
+<h4>Name</h4>
+
+<p>The name of the module will be used in the drop-down module catalog lists and as a directory name on the server with this name. It should be a short but descriptive name, without spaces or punctuation, and may be mixed upper- and lower-case.<br />
+<br />
+ConsensusClustering example: <span class="example">ConsensusClustering</span> <a name="Version"></a></p>
+
+<h4>Version</h4>
+
+<p>Each time you update a module, you create a new version of the module. Typically, you want to edit the most recent version of a module. If you want to edit an earlier version, select that version from the drop-down list of versions.</p>
+
+<h4>Help</h4>
+
+<p>Click Help to display this text.</p>
+
+<h4>Save</h4>
+
+<p>Click Save to save your changes, creating a new version of the module, and remain in the module integrator.</p>
+
+<h4>Save and Run</h4>
+
+<p>Click Save and Run to save your changes, creating a new version of the module, exit from the module integrator and run the module.<br />
+&nbsp;</p>
+
+<hr />
+<p><a name="details"></a></p>
+
+<h3>Details</h3>
+
+<p><a name="LSID"></a></p>
+
+<h4>LSID</h4>
+
+<p>The Life Science Identifier (LSID) used to uniquely identify a GenePattern module. You cannot create or edit LSIDS. They are created automatically by the GenePattern server when a module is saved.<br />
+<br />
+ConsensusClustering example: <span class="example">urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00030:5 </span> <a name="Description"></a></p>
+
+<h4>Description</h4>
+
+<p>The description is where to explain what your module does, and why someone would want to use it. It can be anywhere from a sentence to a short paragraph in length. The description, sometimes in abridged form, is displayed in the pipeline designer module choice list, in generated code when creating scripts from pipelines, and in the web client. It&#39;s a very good way for you to document succinctly why your module exists.<br />
+<br />
+ConsensusClustering example: <span class="example">Resampling-based clustering method</span> <a name="Author"></a></p>
+
+<h4>Author</h4>
+
+<p>Enter the author&#39;s name. If you share this module with others, they will know how to give the author credit and whom to contact with questions, suggestions, or enhancement ideas.<br />
+<br />
+ConsensusClustering example: <span class="example">Stefano Monti</span> <a name="Organization"></a></p>
+
+<h4>Organization</h4>
+
+<p>Enter the author&#39;s affiliation (company or academic institution). If you share this module with others, they will know how to give the author credit and whom to contact with questions, suggestions, or enhancement ideas.<br />
+<br />
+ConsensusClustering example: <span class="example">Broad Institute</span> <a name="VersionComment"></a></p>
+
+<h4>License</h4>
+
+<p>Upload a text file containing the End-User license agreement. Users will be prompted to accept this license before running the module.</p>
+
+<h4>Version Comment</h4>
+
+<p>Enter a brief description of the changes that you have made to the module. When GenePattern clients display a drop-down list of versions, the comments for each version are visible in the drop-down list.<br />
+<br />
+ConsensusClustering example: <span class="example"><i>Added ability to create heatmap images of clusters</i></span> <a name="TaskType"></a></p>
+
+<h4>Module Category</h4>
+
+<p>On the GenePattern home page, modules and pipelines are organized by categories. Pipelines are always assigned to the category name pipeline. When you create/update a module, you can choose an existing category name or create a new category name. If your module fits into an existing category, such as Preprocess &amp; Utilities, select that category from the drop-down list; otherwise, click the New button to add a new category. GenePattern creates the drop-down list of categories dynamically based on the categories of the modules installed on your GenePattern server. If you delete the last module in a given category, that category is removed from the drop-down list. ConsensusClustering example: <span class="example">Clustering</span> <a name="Privacy"></a></p>
+
+<h4>Privacy</h4>
+
+<p>Modules may be marked as either public or private. When a module is first created, the default is to mark it private. When a module is first created, the default is to mark it private.</p>
+
+<ul>
+	<li>Public modules are accessible to everyone who uses the server on which it resides.</li>
+	<li>Private modules may be accessed only by the module&#39;s owner, which is the username that the user logged in with. Private modules are not visible to others building pipelines or running modules. When a module is first created, the default is to mark it private.</li>
+</ul>
+
+<p>ConsensusClustering example: <span class="example">public</span> <a name="Quality"></a></p>
+
+<h4>Quality Level</h4>
+
+<p>The quality level is a simple three-level classification that lets the user know what level of confidence the author has in the robustness of the module. In increasing order of quality expectations, they are: are &quot;development&quot;, &quot;preproduction&quot;, and &quot;production&quot;. Although these terms have no strict definitions, they are useful for setting user expectations. If you make this module public, set the quality level appropriately.<br />
+<br />
+ConsensusClustering example: <span class="example">production</span> <a name="cpu"></a></p>
+
+<h4>CPU Type</h4>
+
+<p>If your module is compiled for a specific platform (Intel, Alpha, PowerPC, etc.), indicate that here. CPU requirements are enforced when the module is run.<br />
+<br />
+ConsensusClustering example: <span class="example">any</span> <a name="os"></a></p>
+
+<h4>Operating System</h4>
+
+<p>If your module requires a specific operating system (Windows, Linux, MacOS, etc.), indicate that here. Operating system requirements are enforced when the module is run.<br />
+<br />
+ConsensusClustering example: <span class="example">any</span> <a name="Language"></a></p>
+
+<h4>Language</h4>
+
+<p>There is no specific language support or requirement enforcement at this time. However, by describing the primary language that a module is implemented in, you give some hints to the prospective user about their system requirements.<br />
+<br />
+ConsensusClustering example: <span class="example">Java</span> <a name="MinLanguage"></a></p>
+
+<h4>min. language level</h4>
+
+<p>If your module requires at least a certain revision of the language runtime environment(eg. <span class="example">1.3.1_07</span>), indicate that here. This is not currently enforced, but provides useful information to the prospective module user.<br />
+<br />
+ConsensusClustering example: <span class="example"><i>none specified</i></span> <a name="OutputDescription"></a></p>
+
+<h4>Docker Image</h4>
+
+<p>Each GenePattern job runs in a docker container. Each module must declare a docker image by setting the job.docker.image property in the manifest file. This is passed as the arg to the docker run command. For production modules this should be a tagged version of an image from a public repository.<br />
+&nbsp; &nbsp; &nbsp;Docker image specification&nbsp;format:&nbsp; &nbsp; IMAGE[:TAG|@DIGEST]<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;e.g.&nbsp; &nbsp; genepattern/docker-java17:0.12</p>
+
+<p>When a module is run, the command line will be passed into the container via a &quot;docker run&quot; command. This will be similar to this pattern for running the program on its own (without GenePattern) in docker;<br />
+&nbsp; $ docker run [OPTIONS] &lt;job.docker.image&gt; &lt;commandLine&gt;<br />
+&nbsp; Note: you shoule NOT include &quot;docker run [OPTIONS]&quot; or the docker image in the module command line.&nbsp; The GenePattern server will format the docker run command and options.&nbsp;&nbsp;</p>
+
+<h4>Output File Formats</h4>
+
+<p>Select the file formats of the output files generated by your module. If your module generates an output file format not included in the list, click New to add that format to the list.<br />
+&nbsp;</p>
+
+<hr />
+<p><a name="supportFiles"></a></p>
+
+<h3>Support Files [obsolete]</h3>
+
+<p><strong>Note on support file obsolescence:</strong> This section on Support Files reflects older (pre-docker) versions of GenePattern.&nbsp; This sections behavior is still supported (as of 3.9.11b377) to support older modules, but the preferred method is now to have all support files provided pre-installed in the docker container.</p>
+
+<p>Any files required by your module, such as scripts, libraries, property files, DLLs, executable programs, etc. must be uploaded to the server. These files may be referenced in the command line field using the <span class="example">&lt;libdir&gt;<i>filename</i></span> nomenclature. There is no upper limit on the number of files which may be uploaded, assuming there is enough space.</p>
+
+<ul>
+	<li>To add a file, click Add Files and select the file to add. When you save the module, GenePattern copies the file to the server and adds it to the Current Files list.</li>
+	<li>To remove a file, select the check box next to the file in the Current Files list. When you save the module, GenePattern removes the file from the server and the Current Files list.</li>
+</ul>
+
+<p>Files that have been uploaded appear as links in this section. You may view or download them by clicking appropriately in your browser.<br />
+<br />
+<strong>Help Files</strong>: Public modules should always include a help file that provides instructions for using the module, a detailed description of each input parameter, a detailed description of each output file (both its format and content), and either an explanation of the algorithm or a reference to the paper, journal or book that explains it.</p>
+
+<ul>
+	<li>To add a help file to your module, include the appropriate text file as the <strong>first</strong> text file in the list of Support Files.</li>
+</ul>
+
+<p>When a user selects your module, GenePattern displays a form that includes the module parameters and a Help button. When the user clicks the Help button, GenePattern examines the list of support files for the module and displays the first file that has a standard documentation file extension. If no documentation file was provided, GenePattern displays a message indicating that no information is available. (By default, the standard documentation file extensions are html, htm, xhtml, pdf, rtf, and txt. You can modify this list of extensions by editing the files.doc property in the GenePattern /resources/genepattern.properties file.)<br />
+<br />
+ConsensusClustering example: <span class="example">Current files: </span> <span class="exampleLink">Acme.jar</span> <span class="exampleLink">archiver.jar</span> <span class="exampleLink">common_cmdline.jar</span> <span class="exampleLink">ConsensusClustering.pdf</span> <span class="exampleLink">file_support.jar</span> <span class="exampleLink">geneweaver.jar</span> <span class="exampleLink">gp-common.jar</span> <span class="exampleLink">ineq_0.2-2.tar.gz</span> <span class="exampleLink">ineq_0.2-2.tgz</span> <span class="exampleLink">jaxb-rt-1.0-ea.jar</span> <span class="exampleLink">my.local.install.r</span> <span class="exampleLink">RunSomAlg.jar</span> <span class="exampleLink">trove.jar</span> <span class="exampleLink">version.txt</span><br />
+&nbsp;</p>
+
+<hr />
+<p><a name="Command"></a></p>
+
+<h3>Command Line</h3>
+
+<p>The crux of adding a module to the GenePattern server is to provide the command line that will be used to launch the module, including substitutions for settings that will be specified differently for each invocation. In the command line field, you will provide a combination of the fixed text and the dynamically-changed text which together constitute the command line for an invocation of the module.<br />
+<br />
+Perhaps the trickiest thing about specifying a command line is making it truly platform-independent. To accomplish this we now use <a href="http://www.docker.com">Docker container images</a>&nbsp;to encapsulate the runtime environment for a module. Older versions of GenePattern would dynamically modify the command line for the server they are on.&nbsp;<br />
+<br />
+<strong>Parameters:</strong> Parameters that require substitution should be enclosed in brackets (ie. &lt;filename&gt;). Every parameter listed in the parameters section must be mentioned in the command line unless its optional field is checked. A default value may be provided and will be used if the user fails to specify a value when invoking the module.<br />
+<br />
+Click the View Argument List button to display a list of the parameters mentioned in the command line. You can change the order of the parameters by dragging them to a new position in the list or by editing the text of the command line.<br />
+<br />
+<strong>Substitution properties:</strong> In addition to parameter names, you may also use environment variables, <a href="https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html" style="white-space: nowrap;" target="_blank">Java system properties</a>, and any properties defined in the %GenePatternInstallDir%/resources/genepattern.properties file. In particular, there are predefined values for &lt;java&gt;, &lt;perl&gt;, and &lt;R&gt;, three languages that are used within various modules that may be downloaded from the module catalog at the public GenePattern website. Useful substitution properties include:<br />
+&nbsp;</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><span class="example">&lt;java&gt;</span></td>
+			<td>path to Java, the same one running the GenePattern server.&nbsp; For Docker images java is assumed to be on the path within the container and will substitute as just &quot;java&quot;.</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;perl&gt;</span></td>
+			<td>path to Perl, installed with GenePattern server on Windows, otherwise the one already installed on your system.&nbsp;For Docker images perl is assumed to be on the path within the container and will substitute as just &quot;perl&quot;.</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;R&gt;</span></td>
+			<td>path to a program that runs R and takes as input a script of R commands. R is installed with GenePatternserver on Windows and MacOS.&nbsp;For Docker images R is assumed to be on the path within the container and will substitute as just &quot;Rscript&quot;.</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;java_flags&gt;</span></td>
+			<td>memory size and other Java JVM settings from the GenePattern/resources/genepattern.properties file</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;libdir&gt;</span></td>
+			<td>directory where the module&#39;s support files are stored</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;job_id&gt;</span></td>
+			<td>job number</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;name&gt;</span></td>
+			<td>name of the module being run</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;<i>filename</i>_basename&gt;</span></td>
+			<td>for each input file parameter, the filename without directory</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;<i>filename</i>_extension&gt;</span></td>
+			<td>for each input file parameter, the extension without filename or directory</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;<i>filename</i>_file&gt;</span></td>
+			<td>for each input file parameter, the input filename without directory</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;path.separator&gt;</span></td>
+			<td>Java classpath delimiters (: or ;), useful for specifying a classpath for Java-based modules</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;file.separator&gt;</span></td>
+			<td>/ or \ for directory delimiter</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;line.separator&gt;</span></td>
+			<td>newline, carriage return, or both for line endings</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;user.dir&gt;</span></td>
+			<td>current directory where the job is executing</td>
+		</tr>
+		<tr>
+			<td><span class="example">&lt;user.home&gt;</span></td>
+			<td>user&#39;s home directory</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Rather than having to customize your module&#39;s command line for the exact location of the language runtime on each computer, you can use the substitution properties. For example,<br />
+<br />
+<span class="example">&lt;java&gt; -cp &lt;libdir&gt;mymodule.jar com.foo.MyModule &lt;arg1&gt;</span><br />
+<br />
+GenePattern will then take care of locating the Java runtime, asking it to begin execution at the <span class="example">MyModule</span> class using code from the uploaded file <span class="example">mymodule.jar</span>.<br />
+<br />
+<strong>Standard input/output:</strong> If your module is designed to accept a standard input stream and/or write to a standard output stream, you can use redirection syntax when describing the command line. To redirect a file to the input stream, enter the text \&lt; followed by the input file parameter. To redirect the standard output or standard error streams to a named file, enter the text \&gt; or \\&gt;&amp; followed by the name of the output file. In the following example, the LogTransform module reads its input from the standard input stream and writes its output to the standard output stream:<br />
+<br />
+<span class="brcode">&lt;perl&gt; &lt;libdir&gt;log_transform.pl \&lt; &lt;input.filename&gt; \&gt; &lt;output.file&gt;</span><br />
+<br />
+<strong>ConsensusClustering example</strong> (actually all on one line):<br />
+<span class="example">&lt;java&gt; &lt;java_flags&gt; -DR_HOME=&lt;R_HOME&gt; -cp &lt;libdir&gt;geneweaver.jar edu.mit.wi.genome.geneweaver.clustering.ConsensusClustering &lt;input.filename&gt; &lt;kmax&gt; &lt;niter&gt; &lt;normalize.type&gt; -N &lt;norm.iter&gt; -S &lt;resample&gt; -t &lt;algo&gt; -L &lt;merge.type&gt; -i &lt;descent.iter&gt; -o &lt;out.stub&gt; -s -d &lt;create.heat.map&gt; -z &lt;heat.map.size&gt; -l1 -v</span><br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+<p><a name="inputParameters"></a></p>
+
+<h3>Parameters</h3>
+
+<p>The input parameters section of the form appears perhaps to be the most daunting. And yet there is little that is required to make a working module declaration. Each parameter in the command line that comes from a user input must have an entry in this section. Otherwise the clients would know nothing about how to prompt the user for input nor could they explain to the user what type of input is expected.<br />
+<br />
+To add one or more parameters, enter the number of parameters to add and click the Add Parameter button. <a name="paramName"></a></p>
+
+<h4>Name</h4>
+
+<p>Each parameter has a name, which can be whatever you like, using letters, numbers, and period as a separator character between &quot;words&quot;. It can be of mixed upper- and lower-case. The name is used inside &lt;brackets&gt; within the command line to indicate that the value of that variable should be substituted at that position within the command line. The name is also used as a label within the web client to prompt the user for the value for that field. And the name is used as a way of identifying which parameter is which for the scripting clients.<br />
+<br />
+ConsensusClustering examples: <span class="example">kmax</span>, <span class="example">input.filename</span> <a name="paramOptional"></a></p>
+
+<h4>Optional</h4>
+
+<p>Some parameters are not required on the command line. These parameters, when left blank by the user when the module is invoked, result in nothing being added to the command line for that parameter. <a name="paramDescription"></a></p>
+
+<h4>Description</h4>
+
+<p>The description field is optional, but is very useful. It allows the module author to provide a more detailed description than the name itself. What is the &quot;kmax&quot; parameter used for? Does it interact with any other parameters? Do you have any advice about what is a reasonable range of settings for it? The description is displayed by the GenePattern clients when they prompt for input for each field.<br />
+<br />
+ConsensusClustering example: <span class="example">Type of clustering algorithm</span> <a name="paramDefault"></a></p>
+
+<h4>Default Value</h4>
+
+<p>Some parameters should have a default value which will be supplied on the module&#39;s command line if no setting is supplied by the user when invoking the module. This is not the same as the defaults defined in the program invoked by the module. Instead, this allows the module author to create a default, even when none exists in the program being invoked by the module.<br />
+<br />
+The default value may use substitution variables, just like the rest of the command line. So a valid default for an output file might be <span class="example">&lt;input.filename_basename&gt;.foo</span>, meaning that the output file will have the same stem as the input.filename parameter, but will have a .foo extension.<br />
+<br />
+Default values for parameters that have a choice list must be either blank or one of the values from the choice list. Any other setting will result in an error message. If no default for a choice list is provided, the first entry on the list will be the default.<br />
+<br />
+ConsensusClustering examples: <span class="example">NMF</span>, <span class="example">5</span>, <span class="example">&lt;input.filename_basename&gt;</span> <a name="paramFlag"></a></p>
+
+<h4>Flag</h4>
+
+<p>Some parameters need to have extra text prefixing them on the command line when they are specified. For example, you might need to write &quot;-F <i>filename</i>&quot; to pass in a filename. The prefix text &quot;-F&quot; or &quot;-F &quot; would be specified here. To insert a space between the flag and the parameter, add the space to the prefix text.<br />
+<br />
+example (with space): <span class="example">-F <i>inputfile</i></span><br />
+example (without space): <span class="example">-F<i>inputfile</i></span> <a name="paramType"></a></p>
+
+<h4>Type</h4>
+
+<p>Declaration of the type of an input parameter allows the client to make a smarter presentation of the input to the user. (As of GenePattern 1.2, all parameters are being treated as either text or input file types). Parameter type choices are:</p>
+
+<ul>
+	<li>Text</li>
+	<li>Input File
+	<p>When you select a parameter type of input file, a drop-down list of file formats appears in the file format column. Select the valid file format(s) for this parameter. If your module requires an input file format not included in the list, scroll back to the Output Description field and click New to add that format to the list. For this type of parameter, when the user enters the name of the file, the GenePattern clients pass along the entire file rather than just the file name.<br />
+	&nbsp;</p>
+	</li>
+	<li>Choice
+	<p>Some parameters are best represented as a drop-down list of choices. By constraining input to those from the list, the user is saved typing and cannot make a mistake by choosing an invalid setting (unless there is a dependency on some other parameter). To enter the choices, click the Edit Choices link and enter the choices in the Edit Choice List window.<br />
+	<br />
+	For each choice enter the value required by the program (Value) and, optionally, a more human-readable value (Display Value). When you exit from the Edit Choice List window, the choices you entered are displayed as a semi-colon delimited set of choices. For example:<br />
+	<br />
+	<span class="example"><font size="-1">hierarchical=Hierarchical clustering;SOM=Self-organizing map;NMF=Non-negative Matrix Factorization;3.14159265=pi</font></span></p>
+
+	<form>
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<td>would create a drop-down list that looks like this:</td>
+				<td><select size="4"><option>Hierarchical clustering</option><option>Self-organizing map</option><option>Non-negative Matrix Factorization</option><option>pi</option></select></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+	</li>
+	<li>Integer</li>
+	<li>Floating Point</li>
+	<li>Directory</li>
+	<li>Password</li>
+</ul>
+
+<h1><a name="_Writing_Modules_for_GenePattern"></a>Writing Modules: Coding for GenePattern</h1>
+
+<p>For a simple example of a GenePattern module, please refer to&nbsp;<a href="https://github.com/genepattern/ExampleModule">https://github.com/genepattern/ExampleModule</a>.</p>
+
+<p>Creating a GenePattern module is a two-step process:</p>
+
+<ol>
+	<li>Use the guidelines provided below to write a program that executes the desired function.</li>
+	<li>Create a GenePattern module that invokes the program that you have written. For more information, see <a href="/programmers-guide#_Creating_Modules">Creating Modules in GenePattern</a>.</li>
+</ol>
+
+<p>When writing a program that will be run as a GenePattern analysis module, keep in mind the following:</p>
+
+<ul>
+	<li><strong>Use the programming language of your choice. </strong>You can write the program in the language of your choice. You can use a compiled language, such as C, to create an executable or you can use a scripting language, such as Perl, to create a script that is run by an interpreter.</li>
+	<li><strong>Write messages to standard error and standard output.</strong> GenePattern modules are run on the server. The user provides arguments and retrieves results, but does not interact during module execution. If necessary, write normal output to standard output (stdout) and error messages to standard error (stderr); avoid writing error messages to standard output. GenePattern captures stdout and stderr in log files, which can be retrieved by the user.</li>
+	<li><strong>Write output files to the current working directory.</strong> When a module completes, GenePattern displays the output files that are in the current working directory. Files written to other locations are not displayed as module output files (otherwise known as analysis result files).</li>
+	<li><strong>Read module data files from &lt;libdir&gt;.</strong> If your module needs to read from any data files which are part of the module (rather than user input), it will need to know the directory where the module lives on the server; that is, <tt>&lt;libdir&gt;</tt>. <em><strong>Note</strong></em> that if using a Docker container you may instead specify the exact path within the container to the support file.</li>
+	<li><strong>Read and write standard GenePattern file formats.</strong> When reading and writing data files, you generally want to use the standard <a href="/file-formats-guide">GenePattern file formats</a>. This makes it easier for users to analyze their data using a combination of GenePattern modules. If you choose to use your own unique file formats, be aware that other GenePattern modules will not be able to read those files.<br />
+	For Java, MATLAB, and R, GenePattern provides libraries that include methods for reading and writing GenePattern files (such as res, gct, and odf files). These libraries are designed for accessing GenePattern from the Java, MATLAB, and R environments, but are also useful when writing modules to be invoked by GenePattern. For instructions on downloading the libraries, see <a href="/programmers-guide#_Using_GenePattern_from_Java">Using GenePattern from Java</a>, <a href="/programmers-guide#_Using_GenePattern_from_MATLAB">Using GenePattern from MATLAB</a>, or <a href="/programmers-guide#_Using_GenePattern_from_R">Using GenePattern from R</a>.</li>
+	<li><strong>Use parameter flags.</strong> When designing the program and its command line, use parameter flags (for example, -f input_file) rather than relying on parameter positions. Parameter flags allow users to build command lines with variable numbers of arguments, which makes it easy to omit optional parameters.</li>
+	<li><strong>Process all parameters as strings.</strong> All command line parameters are passed to your code as strings, even if a parameter is apparently numeric. If your code expects a numeric argument, explicitly convert the string argument to a number; for example, as.integer(arg).</li>
+	<li><strong>Avoid absolute pathnames.</strong> When writing code to be used with GenePattern, avoid absolute pathnames unless you know they are present within your Module&#39;s Docker container. For example, in perl, specify the interpreter on the command line rather than embedding the interpreter in the script; that is, use the command line &quot;<code>perl myscript</code>&quot; rather than including &quot;<code>#!/usr/bin/perl</code>&quot; as the first line of the <code>myscript.pl</code> file unless you are certain of the path within the Docker container of your module.</li>
+	<li><strong>Avoid Windows forbidden filenames.</strong> Machines running Windows cannot accept files with the following names, regardless of the file extension: con, prn, aux, nul, com1, com2, com3, com4, lpt1, lpt2, lpt3. For cross-platform compatibility, avoid files with these names.</li>
+</ul>
+
+<p><strong>Visualization modules are similar to analysis modules.</strong> The only difference between analysis and visualization modules is that analysis modules run on the server machine and visualization modules run on the client machine. Each module is launched in a separate process. An applet is used to launch the visualization module.</p>
+
+<h1><a id="writing-r-modules" name="writing-r-modules"></a>Writing R Modules</h1>
+
+<p>If you are writing R code to be invoked as a GenePattern module, follow the guidelines in <a href="/programmers-guide#_Writing_Modules_for_GenePattern">Writing Modules for GenePattern</a>. This section provides additional information for modules written in R:</p>
+
+<ul>
+	<li><a href="#Adapting_R_Code">Adapting R Code </a></li>
+	<li><a href="#Using_R_Packages">Using R&nbsp;Package</a>s</li>
+	<li><a href="#Supported_R_Versions">Supported R Versions</a></li>
+	<li><a href="#Using_Parameter_Flags">Using Parameter Flags</a></li>
+</ul>
+
+<h2><a name="Adapting_R_Code"></a>Adapting R Code</h2>
+
+<p>When you create a module in GenePattern&nbsp;you specify the command line&nbsp;that invokes the program that performs the desired&nbsp;function. &nbsp;Generally&nbsp;the command line includes arguments&nbsp;such as the&nbsp;parameters for the algorithm&nbsp;and the data file to analyze. &nbsp;This is&nbsp;roughly equivalent to the structure of a UNIX command&nbsp;line call. &nbsp;Since GenePattern on its own has no concept of an R session,&nbsp;your&nbsp;command line must create one to execute your code with its arguments. &nbsp;In the R world, the recommended way to&nbsp;accomplish this&nbsp;is the <a href="http://stat.ethz.ch/R-manual/R-devel/library/utils/html/Rscript.html"><strong>Rscript</strong> utility</a>. &nbsp;</p>
+
+<p>GenePattern simply&nbsp;launches&nbsp;Rscript and hands&nbsp;off the parameters, then waits for the results. &nbsp;It&nbsp;does nothing more than an equivalent UNIX command line call, so your R script&nbsp;must be&nbsp;structured to receive and process these parameters as string values&nbsp;and&nbsp;execute any necessary&nbsp;R functions. &nbsp;One way to do this is to declare any functions, constants, etc. up&nbsp;front in the script, with any processing of command line arguments near the end along with the main R function call.</p>
+
+<p>A full tutorial on&nbsp;Rscript&nbsp;is beyond the scope of this Guide. &nbsp;For more details, see the official Rscript documentation at the link above,&nbsp;or - for your particular version - by typing &#39;?Rscript&#39; within R. &nbsp;Beyond that, please see our <a href="https://github.com/genepattern/RTutorialModule">Tutorial module</a>&nbsp;for example code and usage.</p>
+
+<p>GenePattern provides substitutions to allow you to call Rscript. &nbsp;As an&nbsp;example, the following command line invokes R (version 3.1 in&nbsp;this case) on the <code>myscript.R file</code>, passing <code>input.filename</code> as a single&nbsp;parameter:</p>
+
+<div class="well"><code>commandLine=&lt;R3.1_Rscript&gt; &lt;libdir&gt;myscript.R &lt;input.filename&gt;</code></div>
+
+<h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"><a id="Using_R_Packages" name="Using_R_Packages"></a>Using&nbsp;R Packages</h2>
+
+<p>The GenePattern team maintains a list of R packages to&nbsp;facilitate their use in GenePattern modules. &nbsp;As of GenePattern 3.9.6&nbsp;you can list these packages in a descriptor file&nbsp;named &#39;r.package.info&#39;&nbsp;to be included&nbsp;in&nbsp;your module ZIP bundle. &nbsp;When installing your module,&nbsp;GenePattern will&nbsp;automatically attempt to install these&nbsp;packages if they are not already present. &nbsp;Once installed, the packages will be available to any other module&nbsp;using that version of R. &nbsp;To use them&nbsp;simply include normal &#39;library&#39;&nbsp;calls in your R code as usual. &nbsp;See our <a href="https://github.com/genepattern/RTutorialModule">Tutorial module</a> for an&nbsp;example.</p>
+
+<p>The r.package.info file is a simple text file in comma-separated value&nbsp;format that specifies the name and (optionally) some other attributes&nbsp;of the package for GenePattern to use to identify, download, and&nbsp;install it. &nbsp;</p>
+
+<p>In general, specifying only&nbsp;the first&nbsp;column (package name) is sufficient for basic use as that&nbsp;is&nbsp;enough for GenePattern to identify the package in both its installed&nbsp;package library and in the supported repositories&nbsp;&nbsp;(CRAN and Bioconductor at&nbsp;present). &nbsp;<span style="line-height: 1.42857;">There are times when it&#39;s necessary to pin down a&nbsp;specific package version (due to errors in a CRAN package dependency&nbsp;spec, for example) or even a particular URL (for packages not hosted&nbsp;in one of these two repositories), which is where the other columns&nbsp;come into the picture. &nbsp;These are usually not needed until you are ready to distribute your module to&nbsp;others or run into version issues.</span></p>
+
+<p>The section below gives a short example along with&nbsp;details for the file&#39;s columns and GenePattern&#39;s rules to process them. &nbsp;All package dependencies should be listed, not just the top-level ones, as GenePattern requires a complete list of what needs to be installed and managed. &nbsp;The should be listed in the order they are required, with earlier dependencies listed first.&nbsp;&nbsp;Remember to add the header line&nbsp;as it is required.</p>
+
+<div style="border: 1px solid rgb(204, 204, 204); padding: 5px 10px; background: rgb(238, 238, 238);">
+<p>Here&#39;s a short example based on the declaration in our <a href="https://github.com/genepattern/RTutorialModule">Tutorial&nbsp;module</a>:</p>
+
+<p style="margin-left: 40px;"><code style="font-size: 12.6px;">package,requested_version,archive_name,src_URL,Mac_URL,Windows_URL<br />
+<span class="s1">getopt</span>,1.20.0,CRAN<br />
+<span class="s1">optparse</span>,1.0.2,CRAN<br />
+# Comments are added with the &#39;#&#39; character. &nbsp;Blank lines are ignored<br />
+limma<br />
+edgeR</code></p>
+
+<p class="p1">&nbsp;</p>
+
+<p>The columns have the following meanings:</p>
+
+<table border="1" class="table table-striped">
+	<tbody>
+		<tr>
+			<td style="line-height: 1.42857;"><code>package</code></td>
+			<td style="line-height: 1.42857;">The unadorned package name, e.g. optparse or colorspace, as would be used in a library() or install.packages() call. This is required; the line will be skipped with a non-fatal warning if it&#39;s missing.</td>
+		</tr>
+		<tr>
+			<td style="line-height: 1.42857;"><code>requested_version</code></td>
+			<td style="line-height: 1.42857;">The requested version string of the package, e.g. 1.0.2 or 1.2-4. &nbsp;This should exactly match the package&rsquo;s declared version string as found in CRAN or Bioconductor (e.g. from optparse_1.0.2 or colorspace_1.2-4). &nbsp;This is optional, and its use is not necessary or even recommended except in conjunction with&nbsp;<span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">archive_name</span>; see the notes below for details.</td>
+		</tr>
+		<tr>
+			<td style="line-height: 1.42857;"><span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">archive_name</span></td>
+			<td style="line-height: 1.42857;">A tag indicating which central package repository hosts this package. &nbsp;You can use&nbsp;<strong>CRAN</strong>&nbsp;or&nbsp;<strong>BIOC</strong>&nbsp;to indicate CRAN or Bioconductor respectively, though only the&nbsp;<strong>CRAN</strong>&nbsp;tag has any special meaning. &nbsp;Any other tag is silently ignored. &nbsp;This is also optional but has special meaning in conjunction with&nbsp;<span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 13px; line-height: 18.5714px; background-color: rgb(249, 242, 244);">requested_version</span>; see the notes below for details.</td>
+		</tr>
+		<tr>
+			<td style="line-height: 1.42857;"><span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">src_URL<br />
+			<br />
+			<br />
+			Mac_URL</span><br />
+			<span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">Windows_URL</span></td>
+			<td style="line-height: 1.42857;">The URL of a source package to be used on those platforms which install from source (i.e. Linux). This is optional and its use is not recommended unless you need a package not available in CRAN or Bioconductor. &nbsp;It will be ignored on other platforms.<br />
+			<br />
+			The&nbsp;<span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">Mac_URL</span>&nbsp;and&nbsp;<span style="color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 12.6px; line-height: 18px; background-color: rgb(249, 242, 244);">Windows_URL</span>&nbsp;columns have analogous meanings for the Mac OS X and Windows platforms, though these should point to binary packages for the appropriate platform.<br />
+			<strong>NOTE</strong>: the Windows platform is no longer officially supported.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>GenePattern will check its installed package library and attempt to install&nbsp;based on the following rules:</p>
+
+<ol>
+	<li>If a package with that name is already present then the entry is&nbsp;skipped and nothing is installed, regardless of any specified&nbsp;version.</li>
+	<li>Otherwise, if a URL is specified in the column appropriate for the&nbsp;current platform, that will be used for installation regardless of&nbsp;any other specifications. &nbsp;Currently only ftp and http URLs are&nbsp;supported.</li>
+	<li>Otherwise, if no such URL is specified but (a) the CRAN archive&nbsp;name AND (b) a version string are specified AND (c) we&#39;re&nbsp;installing from source (i.e. on Linux), then Genepattern will construct a&nbsp;CRAN URL to use for installation. &nbsp;The version string should&nbsp;exactly match the way it is specified in the package file name.<br />
+	<strong>NOTE</strong>: there are two possible URL conventions, one for the Archived&nbsp;packages and one for the Current packages.&nbsp;&nbsp;Both URLs are built and tried in turn, starting with the Archived&nbsp;URL since pinned packages in general will not be Current.</li>
+	<li>Otherwise, the package name will be fed into the biocLite installer&nbsp;method which will try to install it from either CRAN or&nbsp;Bioconductor as appropriate. &nbsp;In this case, all other info on the&nbsp;line is considered to be &quot;informational-only&quot; (that is, for&nbsp;documentation purposes) and will not affect installation.&nbsp;<br />
+	<strong>NOTE:</strong>&nbsp;for CRAN, this approach gives a &quot;floating&quot; version which&nbsp;will track their latest available at the time of install. &nbsp;Beware&nbsp;as this can be the source of future issues if/when the package is&nbsp;updated in CRAN.</li>
+</ol>
+</div>
+
+<p>&nbsp;</p>
+
+<p>Note that the packages are shared across all modules for that&nbsp;version of R, so choosing a different version may not be possible (we&nbsp;are considering support for this in the future). &nbsp;In practice, the&nbsp;GenePattern team will pin CRAN packages to a specific version to&nbsp;prevent after-the-fact version drift and conflicts across packages. &nbsp;If you submit a module for use on one of our public servers, we will&nbsp;likely change the r.package.info file to make sure it plays well with&nbsp;existing modules.</p>
+
+<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">What Are the Benefits of This Method?</h3>
+
+<p>With this method of installing R packages there is no need to bundle them in the module ZIP;&nbsp;nor do you write the extra code to install them when the module is first run. &nbsp;It also means that any package installation errors will be detected during the installation of the module, rather than having it seem&nbsp;to install correctly only to&nbsp;fail&nbsp;at run time. &nbsp;Furthermore,&nbsp;GenePattern also checks&nbsp;the packages ahead of each job run,&nbsp;pre-emptively catching any inadvertent changes in the back-end file system. &nbsp;Last&nbsp;but not least, this allows packages to be&nbsp;installed only once per server and then&nbsp;shared between modules&nbsp;rather than being installed&nbsp;for each individual module.</p>
+
+<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);">How to Include an R Package</h3>
+
+<p>The easiest way is to use the entries in the&nbsp;r.package.info file from one or more&nbsp;of our existing modules and/or use our Tutorial&nbsp;module&nbsp;as a template for your own.&nbsp;Note that choosing the correct mix of packages is&nbsp;usually dependent on the version of R you are using, so make sure the r.package.info files come from modules matching that version.</p>
+
+<p>For a list of available R libraries from the GenePattern team, please contact us at gp-help AT broadinstitute DOT org. The current list is available at&nbsp;<i>(Review Note: Peter to provide&nbsp;an updated link when ready...)</i>&nbsp;&nbsp;</p>
+
+<p>Note that in order to use this example module, you will need to install R-3.1.3. For information on how to do so please see&nbsp;<a href="/administrators-guide#using-different-versions-of-r">Using Different Versions of R in GenePattern</a>.</p>
+
+<h2><a id="Supported_R_Versions" name="Supported_R_Versions"></a>Supported R Versions</h2>
+
+<p>We recommend you develop modules with the latest version of R supported by&nbsp;GenePattern (R-3.1.3&nbsp;at the time of this writing, April 2016). &nbsp;Note&nbsp;that for purposes of stability this will usually lag the current&nbsp;version available from CRAN. &nbsp;Older versions of R are also available in&nbsp;GenePattern to support existing modules, but it&#39;s best to avoid these&nbsp;unless you have particular compatibility needs (e.g. porting old&nbsp;code).</p>
+
+<p>Also be aware that there are known issues running multiple versions of R&nbsp;on the Mac platform that have nothing to do with GenePattern. &nbsp;See our&nbsp;<a href="https://www.genepattern.org/administrators-guide#gsc.tab=0" style="background-color: rgb(255, 255, 255);">Administrators Guide</a>&nbsp;for details.</p>
+
+<p>The automatic package installer works with Rscript modules for R &gt;= version 2.14. &nbsp;As of this writing (April 2016):</p>
+
+<ul>
+	<li>&lt;R2.14_Rscript&gt;, &lt;R2.15_Rscript&gt;, &lt;R3.0_Rscript&gt;,&nbsp;&lt;R3.1_Rscript&gt;, and &lt;R3.2_Rscript&gt;&nbsp;are supported on our public servers.</li>
+</ul>
+
+<p>As a note for Administrators: Rscript modules use the built-in run-rscript.sh wrapper script; site-specific customization is defined in the <code>GenePatternServer/resources/custom.properties</code> file.&nbsp;</p>
+
+<div class="well"><code># example custom.properties entry<br />
+R3.1_Rscript=&lt;run-rscript&gt; -v 3.1 --</code></div>
+
+<p>To reverse-engineer for your GP instance, look at the Admin &gt; Server Settings &gt; Custom properties page (which is a view of the <code>GenePatternServer/resources/custom.properties</code> file). &nbsp;Additionally, the wrapper.properties file is a template for manually configuring&nbsp;your server:</p>
+
+<ul>
+	<li><code>GenePatternServer/resources/wrapper_scripts/wrapper.properties</code> &nbsp;(<a href="https://github.com/genepattern/genepattern-server/blob/master/resources/wrapper_scripts/wrapper.properties">also available on&nbsp;GitHub</a>)</li>
+	<li><code>GenePatternServer/resources/wrapper_scripts/run-rscript.sh</code></li>
+</ul>
+
+<p>Circa the 3.9.7 release, these scripts are in use on Broad hosted production servers.</p>
+
+<p>We target the final point-version for each R <em>major.minor</em> line. &nbsp;This is for stability; it&nbsp;can affect the version of Bioconductor, for example. &nbsp;As of this writing, those versions are:</p>
+
+<ul>
+	<li>R-2.14.2, R-2.15.3, R-3.0.3, and R-3.1.3, and&nbsp;R-3.2.5</li>
+</ul>
+
+<p><a name="Using_Parameter_Flags"></a><span style="color: inherit; font-family: inherit; font-size: 30px; line-height: 1.1;">Using Parameter Flags</span></p>
+
+<p>When designing the program and its command line, use parameter flags (for example, -f input_file) rather than relying on parameter positions. &nbsp;Parameter flags allow users to build command lines with variable numbers of arguments, which makes it easy to omit optional parameters. &nbsp;When writing R code, if you have optional input parameters on the command line, you must use named rather than positional parameters in the command line definition.</p>
+
+<p>For example, to write an R function that takes a filename as input, the main function might be:</p>
+
+<div class="well"><code>myfunction &lt;-&nbsp;function(...)<br />
+{<br />
+&nbsp; &nbsp;args &lt;- list(...)<br />
+&nbsp; &nbsp;for(i in 1:length(args)) {<br />
+&nbsp; &nbsp; &nbsp; flag &lt;- substring(args[[i]], 0, 2)<br />
+&nbsp; &nbsp; &nbsp; value &lt;- substring(args[[i]], 3, nchar(args[[i]]))<br />
+&nbsp; &nbsp; &nbsp; if(flag==&#39;-i&#39;)<br />
+&nbsp; &nbsp; &nbsp; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; # code to set variables, etc...<br />
+&nbsp; &nbsp; &nbsp; }<br />
+} </code></div>
+
+<p>There are good alternatives available such as the <strong>optparse</strong> package. &nbsp;See our&nbsp;<a href="https://github.com/genepattern/RTutorialModule">Tutorial module</a>&nbsp;for an example.</p>
+
+<h1><a name="_Writing_MATLAB_Modules_for GenePatt"></a>Writing MATLAB Modules</h1>
+
+<p>If you are writing MATLAB code to be invoked as a GenePattern module, follow the guidelines in <a href="/programmers-guide#_Writing_Modules_for_GenePattern">Writing Modules for GenePattern</a>. In addition, for MATLAB code, you must address licensing and distribution issues, as described in this section:</p>
+
+<ul>
+	<li><a href="#_Two_Approaches:_Direct_and Compiled">Two Approaches: Direct and Compiled</a></li>
+	<li><a href="#_MATLAB_Versions">MATLAB Versions</a></li>
+	<li><a href="#_Adapting_Your_MATLAB_Code">Adapting Your MATLAB Code</a></li>
+	<li><a href="#_Compiling_Your_MATLAB_Code">Compiling Your MATLAB Code</a></li>
+	<li><a href="#_Distributing_Your_MATLAB_Code">Distributing Your MATLAB Code</a></li>
+	<li><a href="#_Example:_Deploying_a_Compiled MATLA">Example: Deploying a Compiled MATLAB Application</a></li>
+</ul>
+
+<h2><a name="_Toc161040938"></a><a name="_Two_Approaches:_Direct_and Compiled"></a>Two Approaches: Direct and Compiled</h2>
+
+<p>You can invoke a MATLAB executable from a GenePattern module using one of two approaches: the direct approach or the compiled approach. Following are brief descriptions of each approach, including its advantages and disadvantages:</p>
+
+<ul>
+	<li><strong>Direct approach</strong>. In the direct approach, the GenePattern module directly invokes the MATLAB executable, which executes your M-code. This approach is best suited for use on a standalone GenePattern server, where you already have a MATLAB license and you will not redistribute the MATLAB-based GenePattern modules to other users who do not have their own MATLAB licenses. The advantages to this approach are: it is the simplest way to getting your M-code running on GenePattern, it can be used for any MATLAB and GenePattern supported platform, and it allows for easier modification of the M-code files as you modify your analysis. The disadvantages of this approach are: it requires a MATLAB license for each concurrent user on the GenePattern server machine and, if you change platforms, you must change the command line because different platforms have different methods of passing arguments to MATLAB.</li>
+	<li><strong>Compiled approach</strong>. In the compiled approach, you use the MATLAB Compiler to generate a standalone executable; the GenePattern module then invokes that executable. The advantages to this approach are: it allows redistribution of the module to other GenePattern users who do not have their own MATLAB license and it can be run on a shared server without needing to get a MATLAB license for each concurrent user. The disadvantages are: it requires you to have a MATLAB Compiler license, it can be used only on platforms supported by the MATLAB Compiler, it must be compiled separately for each platform, and the GenePattern server must have the MATLAB Component Runtime (MCR) installed before it can run the compiler-generated executable.</li>
+</ul>
+
+<p>If you are simply using your M-code on your standalone GenePattern server, the direct approach is simpler; however, if you want to give copies of your M-code to other people or deploy your M-code on a shared GenePattern server, the compiled approach is preferred. The compiled approach may provide slightly better performance for fast running modules since the startup delay will be shorter, but the actual execution time will be approximately the same for either approach.</p>
+
+<h2><a name="_Toc161040939"></a><a name="_MATLAB_Versions"></a>MATLAB Versions</h2>
+
+<p>The instructions in this section are based on the following MATLAB versions:</p>
+
+<ul>
+	<li>MATLAB 7.1 (part of Release 14). Earlier versions of MATLAB use a different (deprecated) mechanism for deployment, which is not compatible with the instructions provided in this guide. For Mac OS X, these instructions were tested using MATLAB 7.2.</li>
+	<li>MATLAB Compiler 4.0 or later. The MATLAB Compiler is currently available on Windows, Unix, and Mac OS X; therefore, these are the only platforms on which you may deploy a compiled MATLAB-based module. For Mac OS X, these instructions were tested using the MATLAB Compiler 4.4.<br />
+	The MATLAB Compiler generates executables only for the platform on which it is executing. For example, if you create a MATLAB executable on Windows, the MATLAB-based module that invokes that executable can only be deployed on a GenePattern server running under Windows. Therefore, you need a MATLAB (and MATLAB Compiler) license for each platform on which you wish to deploy your executable.</li>
+</ul>
+
+<h2><a name="_Toc161040940"></a><a name="_Adapting_Your_MATLAB_Code"></a>Adapting Your MATLAB Code</h2>
+
+<p>When you create a module in GenePattern, you specify the command line that invokes the program that performs the desired function. Generally, the command line includes arguments, such as the parameters for the algorithm and the data file to analyze.</p>
+
+<p>Calling script M-code from a command line is possible, but generally not useful because you cannot pass arguments to the script. To pass arguments to your M-code, create a no-return entry function to serve as the top level call into MATLAB. The following example defines a no-return entry function that accepts two parameters:</p>
+
+<div class="well"><code>function analyzeThis ( filename, whatToWrite )<br />
+... (your M-code here)</code></div>
+
+<p><a href="/programmers-guide#_Writing_Modules_for_GenePattern">Writing Modules for GenePattern</a> provides additional guidelines for writing code that will run as a GenePattern module.</p>
+
+<h2><a name="_Toc161040941"></a><a name="_Compiling_Your_MATLAB_Code"></a>Compiling Your MATLAB Code</h2>
+
+<p>If you do not plan to use the compiled M-code approach, skip this section and continue with <a href="#_Distributing_Your_MATLAB_Code">Distributing Your MATLAB Code</a>.</p>
+
+<p>Compiling your MATLAB M-code into a standalone executable is described in the <a href="http://www.mathworks.com/access/helpdesk/help/toolbox/compiler/" target="_blank">MATLAB Compiler Documentation</a>. Please refer to this documentation to understand all of the options available to you. To summarize the simplest case, from within MATLAB, at the MATLAB prompt, execute the following command:</p>
+
+<div class="well"><code>mcc -m <em>analyzeThis</em></code></div>
+
+<p>where analyzeThis is the name of your entry function. This command generates the following files in your <code>$MATLAB_ROOT/work</code> directory:</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td>analyzeThis (Linux, Mac OS X) <em>or</em><br />
+			analyzeThis.exe (Windows)</td>
+			<td>Executable file</td>
+		</tr>
+		<tr>
+			<td>analyzeThis.ctf</td>
+			<td>Component Framework file</td>
+		</tr>
+		<tr>
+			<td>analyzeThis.c (Linux, Windows)</td>
+			<td>C language Source Code</td>
+		</tr>
+		<tr>
+			<td>analyzeThis.h (Linux, Windows</td>
+			<td>C Language Header file</td>
+		</tr>
+		<tr>
+			<td>analyzeThis_main.c</td>
+			<td>C language Source Code</td>
+		</tr>
+		<tr>
+			<td>analyzeThis_mcc_component_data.c</td>
+			<td>C language Source Code</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Note:</strong> To use the MATLAB compiler on Mac OS X, you must have Xcode 2.2 installed; minimally, the Developer Tools, gcc 4.0, gcc 3.3, Mac OS X SDK, and BSD SDK. These instructions were tested using Xcode 2.2.1.</p>
+
+<h2><a name="_Toc161040942"></a><a name="_Distributing_Your_MATLAB_Code"></a>Distributing Your MATLAB Code</h2>
+
+<p>After writing your MATLAB code, create a GenePattern module that invokes the code that you have written. <a href="/programmers-guide#_Creating_Modules">Creating Modules in GenePattern</a> describes how to create a GenePattern module. This section provides supplemental information for MATLAB:</p>
+
+<ul>
+	<li><a href="#_Direct_Approach_Distribution">Direct Approach Distribution</a></li>
+	<li><a href="#_Compiled_Approach_Distribution">Compiled Approach Distribution</a></li>
+</ul>
+
+<h3><a name="_Toc161040943"></a><a name="_Direct_Approach_Distribution"></a>Direct Approach Distribution</h3>
+
+<p><a href="/programmers-guide#_Creating_Modules">Creating Modules in GenePattern</a> describes how to create a GenePattern module that invokes the code that you have written. This section provides additional information that applies when you are directly calling the MATLAB executable from the GenePattern module:</p>
+
+<ul>
+	<li><a href="#_Windows_Command_Line">Windows Command Line</a></li>
+	<li><a href="#_Preferred_Command_Line">Preferred Command Line</a></li>
+</ul>
+
+<h4><a name="_Windows_Command_Line"></a>Windows Command Line</h4>
+
+<p>On Windows, your GenePattern module definition form can contain a simple command line that calls MATLAB with the -r flag to execute your function; for example:</p>
+
+<div class="well"><code>matlab -nosplash -r &quot;analyzeThis &lt;p1&gt; &lt;p2&gt;&quot;</code></div>
+
+<p>This example invokes MATLAB without the splash screen (<code>-nosplash</code>) and directs it to execute the quoted command, where <code>p1</code> and <code>p2</code> are parameters that you specify in the GenePattern module definition form and that are passed to the MATLAB command line as Strings. MATLAB looks for the function <code>analyzeThis</code> on the MATLAB path; therefore, it is not necessary to upload the function as a support file, although it is recommended.</p>
+
+<p>To ensure that the GenePattern server can call the MATLAB executable, you typically add the MATLAB directory to your PATH system environment variable. (Alternatively, you can enter the full path to the MATLAB executable on the command line, but this makes it more difficult to deploy the module on other GenePattern servers.)</p>
+
+<p>To check that MATLAB is on your path:</p>
+
+<ol>
+	<li>Open a DOS window.</li>
+	<li>Type <code>matlab</code> and press Enter.</li>
+</ol>
+
+<p>If the MATLAB application starts, MATLAB is on your path.</p>
+
+<p>If MATLAB is not on your path, add it:</p>
+
+<ol>
+	<li>Select Start&gt;Settings&gt;Control Panel.</li>
+	<li>Double-click System.</li>
+	<li>Select the Advanced tab.</li>
+	<li>Click the Environment Variables button.</li>
+	<li>Select or create the PATH variable.</li>
+	<li>Add the <code>$MATLAB_ROOT/bin</code> directory to the path.</li>
+</ol>
+
+<p>Open a new DOS window and check again that MATLAB is on your path.</p>
+
+<h4><a name="_Preferred_Command_Line"></a>Preferred Command Line</h4>
+
+<p>On platforms other than Windows, the execution of the command line differs slightly due to variations in the Java Virtual Machines (VMs) that GenePattern is running. If you use the simple <code>matlab</code> command, as described for Windows, the Java VMs on these platforms attempt to parse and quote the command line resulting in MATLAB generating errors in its <code>eval</code> function.</p>
+
+<p>On these platforms, you must use a wrapper Java class to launch MATLAB. This wrapper class also works on Windows and does not rely on the PATH variable, which makes it the preferred method for implementing the direct approach on any platform.</p>
+
+<p>To use the wrapper Java class:</p>
+
+<ol>
+	<li>On the GenePattern module definition form, add the <code>runmatlab.jar</code> file as a support file. To request a copy of this file, send e-mail to <a href="mailto:gp-help@broadinstitute.org">gp-help (at) broadinstitute.org</a>; alternatively, the java source code for the RunMatlab wrapper class is included here: <a href="/tutorial/linkedFiles/RunMatlab.java">RunMatlab.java</a>.</li>
+	<li>Write your command line as follows:
+	<div class="well"><code>&lt;java&gt; -cp &lt;libdir&gt;runmatlab.jar RunMatlab &lt;libdir&gt; analyzeThis &lt;p1&gt; &lt;p2&gt;</code></div>
+
+	<p class="MsoListContinue">Where <code>analyzeThis</code> is the name of your MATLAB entry function name and &lt;p1&gt; and &lt;p2&gt; are the arguments to the function. The <code>RunMatlab</code> class ensures that the arguments are correctly written out and calls MATLAB with the <code>-nosplash</code> and <code>-nodisplay</code> arguments.</p>
+	</li>
+</ol>
+
+<h3><a name="_Toc161040944"></a><a name="_Compiled_Approach_Distribution"></a>Compiled Approach Distribution</h3>
+
+<p><a href="/programmers-guide#_Creating_Modules">Creating Modules in GenePattern</a> describes how to create a GenePattern module that invokes the code that you have written. This section provides additional information that applies when you are compiling your M-code into a standalone executable and invoking that executable from the GenePattern module:</p>
+
+<ul>
+	<li><a href="#_Preparing_the_GenePattern">Preparing the GenePattern Server</a></li>
+	<li><a href="#_Writing_the_Launcher">Writing the Launcher Script</a></li>
+	<li><a href="#_Writing_the_Module">Writing the Module Command Line</a></li>
+	<li><a href="#_Adding_Support_Files">Adding Support Files</a></li>
+	<li><a href="#_Distribution_Licensing">Distribution Licensing</a></li>
+</ul>
+
+<h4><a name="_Preparing_the_GenePattern"></a>Preparing the GenePattern Server</h4>
+
+<p>To run a standalone executable generated by the MATLAB Compiler, the GenePattern server must have the MATLAB Component Runtime (MCR) installed. This is a collection of shared libraries, which contains the runtime code for MATLAB, that is used by the standalone application. If the GenePattern server has MATLAB installed, you do not need to install the MCR; it is already installed.</p>
+
+<p>Full details for installing the MCR can be found in the<a href="http://www.mathworks.com/access/helpdesk/help/toolbox/compiler/" target="_blank"> MATLAB Compiler documentation</a>, in the section titled &quot;Deploying Components to Other Machines&quot;. To summarize this documentation, on the GenePattern server machine, you need to run the MCRInstaller:</p>
+
+<p>On <strong>Windows</strong>, to run the MCRInstaller:</p>
+
+<ol>
+	<li>Copy <code>&lt;matlabroot&gt;\toolbox\compiler\deploy\win32\MRCInstaller.exe</code> to the server machine.</li>
+	<li>Run <code>MCRInstaller.exe</code>.</li>
+</ol>
+
+<p>On <strong>Linux</strong>, to run the MCRInstaller:</p>
+
+<ol>
+	<li>In MATLAB, at the MATLAB prompt, execute the command <code>buildmcr</code>.</li>
+	<li>Copy <code>&lt;matlabroot&gt;/toolbox/compiler/deploy/MCRInstaller.zip</code> to the server machine.</li>
+	<li>On the server machine, unzip <code>MCRInstaller.zip</code> into a directory (<code>&lt;mcr_root&gt;</code>).</li>
+	<li>Update the dynamic library path for the user running the GenePattern server:
+	<div class="well"><code>setenv LD_LIBRARY_PATH<br />
+	&lt;mcr_root&gt;/runtime/glnx86:<br />
+	&lt;mcr_root&gt;/sys/os/glnx86:<br />
+	&lt;mcr_root&gt;/sys/java/jre/glnx86/jre1.4.2/lib/i386/client:<br />
+	&lt;mcr_root&gt;/sys/java/jre/glnx86/jre1.4.2/lib/i386:<br />
+	&lt;mcr_root&gt;/sys/opengl/lib/glnx86:${LD_LIBRARY_PATH}</code></div>
+	</li>
+</ol>
+
+<p>On <strong>Mac OS X</strong>, to run the MCRInstaller:</p>
+
+<ol>
+	<li>In MATLAB, at the MATLAB prompt, execute the command <code>buildmcr</code>.</li>
+	<li>Copy <code>&lt;matlabroot&gt;/toolbox/compiler/deploy/MCRInstaller.zip</code> to the server machine.</li>
+	<li>On the server machine, unzip <code>MCRInstaller.zip</code> into a directory (<code>&lt;mcr_root&gt;</code>).</li>
+	<li>Update the library path for the user running the GenePattern server:
+	<div class="well"><code>setenv DYLD_LIBRARY_PATH<br />
+	&lt;mcr_root&gt;/&lt;ver&gt;/runtime/mac:<br />
+	&lt;mcr_root&gt;/&lt;ver&gt;/sys/os/mac:<br />
+	&lt;mcr_root&gt;/&lt;ver&gt;/bin/mac:<br />
+	/System/Library/Frameworks/JavaVM.framework/JavaVM:<br />
+	/System/Library/Frameworks/JavaEmbedding.framework/JavaEmbedding:<br />
+	/System/Library/Frameworks/JavaVM.framework/Libraries<br />
+	setenv XAPPLRESDIR &lt;mcr_root&gt;/&lt;ver&gt;/X11/app-defaults</code></div>
+	</li>
+</ol>
+
+<h4><a name="_Writing_the_Launcher"></a>Writing the Launcher Script</h4>
+
+<p>When the MATLAB Compiler generates a standalone executable, it also generates a Component Framework (.ctf) file. The .ctf file must be on the path when you run the standalone executable. The easiest way to address this requirement is to create a launcher script (.bat or .sh file) that adds the .ctf file to the PATH or LIBPATH and then runs the standalone executable.</p>
+
+<p><strong>On Windows</strong>, for example, to launch the MATLAB executable <code>analyzeThis.exe</code>, create a launcher script, <code>mllaunch.bat</code>, that contains the following lines:</p>
+
+<div class="well"><code>set LIBDIR=%1<br />
+set PATH=%LIBDIR%;%PATH%<br />
+analyzeThis %2 %3 </code></div>
+
+<p><strong>On Linux</strong>, for example, to launch the MATLAB executable <code>analyzeThis.exe</code>, create a launcher script, mll<code>aunch.sh</code>, that contains the following lines:</p>
+
+<div class="well"><code>#!/bin/csh<br />
+export MCR_ROOT=&lt;path where you installed the files from MCRInstaller.zip&gt;<br />
+export LD_LIBRARY_PATH=$1:$MCR_ROOT/runtime/glnx86:$MCR_ROOT/sys/os/glnx86:\<br />
+$MCR_ROOT/sys/java/jre/glnx86/jre1.4.2/lib/i386/client:\<br />
+$MCR_ROOT/sys/java/jre/glnx86/jre1.4.2/lib/i386:\<br />
+$MCR_ROOT/sys/opengl/lib/glnx86<br />
+&nbsp;<br />
+export PATH=$1:$PATH<br />
+chmod a+x $1/analyzeThis<br />
+analyzeThis $2 $3 </code></div>
+
+<p>The <code>chmod</code> line sets the executable permission on the executable file; by default, the GenePattern server does not set this permission for uploaded files.</p>
+
+<p><strong>On Mac OS X</strong>, for example, to launch the MATLAB executable <code>analyzeThis.exe</code>, create a launcher script, mll<code>aunch.sh</code>, that contains the following lines:</p>
+
+<div class="well"><code>#!/bin/sh<br />
+export MCR_ROOT=/Volumes/os9/gpserv<br />
+export LD_LIBRARY_PATH=$1:/Volumes/os9/matlab7.2/sys/os/mac:<br />
+/Volumes/os9/matlab7.2/bin/mac/<br />
+export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH<br />
+export PATH=$1:$PATH<br />
+chmod a+x $1/writeToFile<br />
+writeToFile $2 &quot;$3&quot; </code></div>
+
+<p>The <code>chmod</code> line sets the executable permission on the executable file; by default, the GenePattern server does not set this permission for uploaded files.</p>
+
+<h4><a name="_Writing_the_Module"></a>Writing the Module Command Line</h4>
+
+<p>On the GenePattern module definition form, write a command line calls the launcher script, passing the &lt;libdir&gt; parameter as the first argument (so that it can be added to the path).</p>
+
+<p><strong>On Windows</strong>, the following command line calls the launcher script, <code>mllaunch.bat</code>:</p>
+
+<div class="well"><code>&lt;libdir&gt;mllaunch.bat &lt;libdir&gt; &lt;param1&gt; &lt;param2&gt;</code></div>
+
+<p><strong>On Linux</strong> or <strong>Mac OS X</strong>, the following command line calls the launcher script, <code>mllaunch.sh</code>:</p>
+
+<div class="well"><code>sh &lt;libdir&gt;mllaunch.sh &lt;libdir&gt; &lt;param1&gt; &lt;param2&gt;</code></div>
+
+<p>In both command lines, the first &lt;libdir&gt; sets the path to the <code>mllaunch</code> script. The second &lt;libdir&gt; is passed as the first argument to the script so that the script can add this directory to the appropriate environment variables. The &lt;param1&gt; and &lt;param2&gt; variables are parameters to the MATLAB application, which you define in the module definition form and specify in the command line as usual.</p>
+
+<h4><a name="_Adding_Support_Files"></a>Adding Support Files</h4>
+
+<p>For the compiled approach, you must specify at least two support files for the MATLAB application: the executable file and .ctf file. If your application requires additional files for its execution, also add those files as support files.</p>
+
+<h4><a name="_Distribution_Licensing"></a>Distribution Licensing</h4>
+
+<p>Should you choose to distribute your MATLAB based module to others, you must ensure you are in compliance with the MATLAB licensing agreement:</p>
+
+<p class="CodeExample"><code>http://www.mathworks.com/company/aboutus/policies_statements/agreement.pdf</code></p>
+
+<p>Following are a few key points for GenePattern developers:</p>
+
+<ul>
+	<li>You may not distribute code that uses MATLAB and that competes with any of The MathWorks products.</li>
+	<li>You may not modify or remove any license file included with the MCR Libraries.</li>
+	<li>Users of your GenePattern modules must be made aware of the MATLAB license agreement in documentation and accept it before installing your modules.</li>
+	<li>Your MATLAB application must have an about box or equivalent &quot;visible&quot; location that includes the legend &quot;MATLAB copyright 1984-yyyy the MathWorks Inc.&quot;, where yyyy is the year you released your module.</li>
+</ul>
+
+<p>Please refer to the MATLAB licensing agreement for exact details. You are responsible for reviewing and complying with the MATLAB software license. The above summary does not exempt you from this responsibility.</p>
+
+<h2><a name="_Toc161040945"></a><a name="_Example:_Deploying_a_Compiled MATLA"></a>Example: Deploying a Compiled MATLAB Application</h2>
+
+<p>This section provides a step-by-step example of deploying a simple M-file application as a GenePattern module on a GenePattern server. Where the instructions are platform specific, the example shows instructions for Windows, Linux, and Mac OS X.</p>
+
+<h3><a name="_Toc161040946"></a>Writing the M-file</h3>
+
+<p>The first step is writing the MATLAB M-file that you want to share. For this example, write a simple application that takes a filename and a String and writes the String out to a file with the given name. This application consists of the following lines:</p>
+
+<div class="well"><code>% write the variable whatToWrite to a file called filename in the current directory<br />
+fid = fopen(filename,&#39;w&#39;);<br />
+fprintf(fid,&#39;#writing to a file\n\n&#39;);<br />
+fprintf(fid,whatToWrite);<br />
+fclose(fid); </code></div>
+
+<h3><a name="_Toc161040947"></a>Adapting the M-file</h3>
+
+<p>To call the M-file from the command line and pass it parameters, you must turn this script into a no-return function. To do this, add a function definition line at the start of the M-file and save the file using the name of the function (for example, writeToFile.m).</p>
+
+<div class="well"><code>function writeToFile( filename, whatToWrite)<br />
+% write the parameter whatToWrite to a file called filename in the current directory<br />
+fid = fopen(filename,&#39;w&#39;);<br />
+fprintf(fid,&#39;#writing to a file\n\n&#39;);<br />
+fprintf(fid,whatToWrite);<br />
+fclose(fid); </code></div>
+
+<h3><a name="_Toc161040948"></a>Compile the M-file</h3>
+
+<p>Within the MATLAB environment, call the MATLAB Compiler to convert this function into an application:</p>
+
+<div class="well"><code>&gt;&gt; mcc -m writeToFile </code></div>
+
+<p>Within the current working directory, this creates a number of files, including the following:</p>
+
+<ul>
+	<li>writeToFile.exe (Windows) or<br />
+	writeToFile (Linux, Mac OS X)</li>
+	<li>writeToFile.ctf</li>
+</ul>
+
+<p><strong>Note:</strong> To use the MATLAB compiler on Mac OS X, you must have Xcode 2.2 installed; minimally, the Developer Tools, gcc 4.0, gcc 3.3, Mac OS X SDK, and BSD SDK. These instructions were tested using Xcode 2.2.1.</p>
+
+<h3><a name="_Toc161040949"></a>Prepare the GenePattern Server</h3>
+
+<p>Install the MATLAB Component Runtime (MCR) on the GenePattern server, if you have not done so already. If the GenePattern server has MATLAB installed, it also has the MCR installed.</p>
+
+<h4>Windows</h4>
+
+<p>To install the MCR:</p>
+
+<ol>
+	<li>Copy <code>&lt;matlabroot&gt;\toolbox\compiler\deploy\win32\MRCInstaller.exe</code> to the GenePattern server machine.</li>
+	<li>At the DOS prompt, or from Windows Explorer, run the following:
+	<div class="well"><code>MCRInstaller.exe</code></div>
+	</li>
+</ol>
+
+<h4>Linux or Mac OS X</h4>
+
+<p>To install the MCR:</p>
+
+<ol>
+	<li>Within the MATLAB environment, create the MCRInstaller zip file:
+	<div class="well"><code>&gt;&gt; buildmcr mcrdir</code></div>
+	This creates a directory, <code>mcrdir</code>, beneath the current working directory and creates a file within that directory called <code>MCRInstaller.zip</code>.</li>
+	<li>Copy the zip file to your GenePattern server (if it is a different machine) and install it into a directory. For example, add a directory, <code>matlab</code>, under the GenePattern server directory and install the library files in <code>MCRInstaller.zip</code> into that directory:<br />
+	&nbsp;
+	<div class="well"><code>cd GenePatternServer<br />
+	mkdir matlab<br />
+	cd matlab<br />
+	cp &lt;path to mcrinstaller.zip&gt;MCRInstaller.zip .<br />
+	unzip MCRInstaller.zip</code></div>
+	</li>
+</ol>
+
+<h3><a name="_Toc161040950"></a>Create the Launcher Script</h3>
+
+<p>Create the launcher script that sets the environment variables and then calls the MATLAB application.</p>
+
+<h4>Windows</h4>
+
+<p>Create the launcher script as a batch file that sets the PATH variable for the environment and then calls the MATLAB application. To do so, in a text editor, create the following <code>mllaunch.bat</code> file:</p>
+
+<div class="well"><code>set LIBDIR=%1<br />
+set PATH=%LIBDIR%;%PATH%<br />
+writeToFile %2 %3</code></div>
+
+<h4>Linux</h4>
+
+<p>Create the launcher script as an .sh file that sets the PATH and LD_LIBRARY_PATH variables for the environment, ensures that the application is executable, and then calls the MATLAB application. To do so, in a text editor, create the following <code>mllaunch.sh</code> file:</p>
+
+<div class="well"><code>#!/bin/csh<br />
+export MCRROOT=/home/username/GenePatternServer/matlab/v70<br />
+export LD_LIBRARY_PATH=$1:$MCRROOT/runtime/glnx86:$MCRROOT/sys/os/glnx86:$MCRROOT/sys/java/ jre/glnx86/jre1.4.2/lib/i386/client:$MCRROOT/sys/java/jre/glnx86/jre1.4.2/lib/i386:$MCRROOT/ sys/opengl/lib/glnx86<br />
+export PATH=$1:$PATH<br />
+chmod a+x $1/testTwo<br />
+writeToFile $2 $3</code></div>
+
+<p>Note that the MCR_ROOT variable is set to the <code>v70</code> directory, which you created by unzipping <code>MCRInstaller.zip</code>.</p>
+
+<h4>Mac OS X</h4>
+
+<p>Create the launcher script as an .sh file that sets the LD_LIBRARY_PATH and DYLD_LIBRARY_PATH variables for the environment, ensures that the application is executable, and then calls the MATLAB application. To do so, in a text editor, create the following <code>mllaunch.sh</code> file:</p>
+
+<div class="well"><code>#!/bin/sh<br />
+export MCR_ROOT=/Volumes/os9/gpserv<br />
+export LD_LIBRARY_PATH=$1:/Volumes/os9/matlab7.2/sys/os/mac:/Volumes/os9/matlab7.2/bin/mac/<br />
+export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH<br />
+export PATH=$1:$PATH<br />
+chmod a+x $1/writeToFile<br />
+writeToFile $2 &quot;$3&quot;</code></div>
+
+<h3><a name="_Toc161040951"></a>Create the GenePattern Module</h3>
+
+<p>Use GenePattern to create a module that executes the launcher script.</p>
+
+<h4>Windows</h4>
+
+<ul>
+	<li>For the command line, enter the following:<br />
+	<code class="MsoListContinue">sh &lt;libdir&gt;mllaunch.bat &lt;libdir&gt; &lt;fname&gt; &lt;txt&gt;</code></li>
+	<li>Define two parameters:
+	<ul>
+		<li>&lt;fname&gt; for the output file name</li>
+		<li>&lt;txt&gt; for the text to write to the file</li>
+	</ul>
+	</li>
+	<li>Include the following support files:
+	<ul>
+		<li>mllaunch.bat</li>
+		<li>whatToWrite.exe</li>
+		<li>whatToWrite.ctf</li>
+	</ul>
+	</li>
+</ul>
+
+<h4>Linux or Mac OS X</h4>
+
+<ul>
+	<li>For the command line, enter the following:
+	<p class="MsoListContinue"><code>sh &lt;libdir&gt;mllaunch.sh &lt;libdir&gt; &lt;fname&gt; &lt;txt&gt;</code></p>
+	</li>
+	<li>Define two parameters:
+	<ul>
+		<li>&lt;fname&gt; for the output file name</li>
+		<li>&lt;txt&gt; for the text to write to the file</li>
+	</ul>
+	</li>
+	<li>Include the following support files:
+	<ul>
+		<li>mllaunch.sh</li>
+		<li>whatToWrite</li>
+		<li>whatToWrite.ctf</li>
+	</ul>
+	</li>
+</ul>
+
+<h3><a name="_Toc161040952"></a>Save the Module and Test It</h3>
+
+<p>Save the module and execute it. The module should create two files:</p>
+
+<ul>
+	<li>A stdout file that contains execution information.</li>
+	<li>A file with the name and text that you specified.</li>
+</ul>
+
+<h3><a name="_Toc161040953"></a>Debugging (Linux Only)</h3>
+
+<p>If the following error appears in the stdout file, you have not correctly set the path to the libraries that you installed from <code>MCRInstaller.zip</code>:</p>
+
+<p class="CodeExample" style="margin-left: 40px;">error while loading shared libraries: libmwmclmcrrt.so.7.0: cannot open shared object file: No such file or directory</p>
+
+<p>Double check the path. If it is correct, you may be using a different Unix shell than the one used in this example. Check that the <code>mllaunch.sh</code> file uses the correct command (<code>export</code> in this example) to set PATH and LD_LIBRARY_PATH.</p>
+
+<h1><a name="_Using_GenePattern_from_Java"></a><a name="Java_doc"></a>Using GenePattern from Java</h1>
+
+<p>Using Java as a GenePattern client allows you to run GenePattern modules and visualizers from within a Java application. This section describes how you can use the GenePattern Java library to run GenePattern analyses as easily as calling a routine. It contains the following topics:</p>
+
+<ul>
+	<li><a href="#_Getting_Started_in_Java">Getting Started in Java</a></li>
+	<li><a href="#_GenePattern_Java_Library">GenePattern Java Library</a></li>
+	<li><a href="#_Running_a_Java">Running a Java Program</a></li>
+	<li><a href="#_Using_LSIDs_from_Java">Using LSIDs from Java</a></li>
+</ul>
+
+<h2><a name="_Toc161040955"></a><a name="_Getting_Started_in_Java"></a>Getting Started in Java</h2>
+
+<p><strong>If you are not familiar with Java,</strong> see the <a href="http://java.sun.com" target="_blank">http://java.sun.com</a> website, which provides downloadable programs, samples, tutorials, and book suggestions.</p>
+
+<h2><a name="_Toc161040956"></a><a name="_GenePattern_Java_Library"></a>GenePattern Java Library</h2>
+
+<p>The GenePattern Java library allows you to invoke a GenePattern module as if it were a local Java method running on your client and to get back from the module a list of result files. A zip file containing the Java library (and Javadoc that describes the API for accessing the server and running modules) is available on your GenePattern server.</p>
+
+<p><strong>To download the GenePattern Java library to your computer:</strong></p>
+
+<ol>
+	<li>Start GenePattern.</li>
+	<li>Select <em>Downloads&gt;Programming Libraries</em>.</li>
+	<li>Under Java, click <em>zip</em> to download the zip file for the GenePattern Java library.</li>
+	<li>After downloading the zip file, unzip it into the directory where you will be doing your Java development.</li>
+</ol>
+
+<h2><a name="_Toc161040957"></a><a name="_Running_a_Java"></a>Running a Java Program</h2>
+
+<p>This section explores a simple Java application that preprocesses a dataset and displays it using the HeatMapViewer. The included code can be copied and pasted into your Java program so that you can try it out, modify it, and create your own solutions.<strong> The full source code of the sample application is available <a href="/tutorial/linkedFiles/MyProgram.java">here</a>.</strong></p>
+
+<p>The first statements in the application initialize various settings, which you must do once in every application that accesses GenePattern. You will need to customize the <em>italicized</em> GenePattern server URL and GenePattern user name (typically, your e-mail address) with values appropriate for your GenePattern server.</p>
+
+<div class="well">
+<pre>
+<strong>import</strong> org.genepattern.matrix.Dataset;
+<strong>import</strong> org.genepattern.client.GPClient;
+<strong>import</strong> org.genepattern.webservice.JobResult;
+<strong>import</strong> org.genepattern.webservice.Parameter;
+<strong>import</strong> org.genepattern.io.IOUtil;</pre>
+
+<pre>
+<strong>import</strong> java.io.File;</pre>
+
+<pre>
+<strong>public</strong> <strong>class</strong> MyProgram
+<strong>{</strong></pre>
+
+<pre>
+<strong>   public</strong> <strong>static</strong> <strong>void</strong> main(String[] args) <strong>throws</strong> Exception
+<strong>   {
+</strong>      GPClient gpClient <strong>= </strong><strong>new</strong> GPClient(&quot;<em>http://localhost:8080</em>&quot;, &quot;<em>your email address&quot;</em>);</pre>
+</div>
+
+<p>After initializing the required settings, the application runs the PreprocessDataset module to preprocess a dataset. This example references the dataset using a publicly-accessible URL, but a filename would be equally valid. When you invoke the <code>runAnalysis</code> method, the GenePattern library invokes the appropriate module on the server, passing all of the input parameters and input files. Control returns to your application when the module completes. (To run a module asynchronously, invoke the <code>runAnalysisNoWait </code>method or use the <code>runAnalysis</code> method in a separate thread.)</p>
+
+<div class="well">
+<pre>
+ String inputDataset <strong>= </strong>&quot;ftp://ftp.broadinstitute.org/pub/genepattern/all_aml/all_aml_train.res&quot;;</pre>
+
+<pre>
+ JobResult preprocess <strong>= </strong>gpClient.runAnalysis(&quot;PreprocessDataset&quot;, </pre>
+
+<pre>
+    <strong>new</strong> Parameter[] <strong>{</strong></pre>
+
+<pre>
+       <strong>new</strong> Parameter(&quot;input.filename&quot;, inputDataset)</pre>
+
+<pre>
+ <strong>}</strong>); </pre>
+</div>
+
+<p>When the module completes, you can query the <code>JobResult</code> object for an array of filenames that are the output from the module. You can download the result files or leave them on the server and refer to them by URL. Referring to result files by URL is especially useful for intermediate results. In this example, the <code>JobResult</code> object named <code>preprocess</code> contains a list of filenames (of length 1, in this case), which the application displays in a heat map:</p>
+
+<div class="well">
+<pre>
+ // view results in a HeatMapViewer visualizer</pre>
+
+<pre>
+ gpClient.runVisualizer(&quot;HeatMapViewer&quot;, </pre>
+
+<pre>
+    <strong>new</strong> Parameter[] <strong>{</strong></pre>
+
+<pre>
+       <strong>new</strong> Parameter(&quot;dataset&quot;, preprocess.getURL(0).toString())
+<strong> }</strong>); </pre>
+</div>
+
+<p>The last statements in the application download the preprocessed data and load it into a matrix for further analysis:</p>
+
+<div class="well">
+<pre>
+ String downloadDirName <strong>= </strong>String.valueOf(preprocess.getJobNumber());</pre>
+
+<pre>
+ // download result files</pre>
+
+<pre>
+ File[] outputFiles = preprocess.downloadFiles(downloadDirName);</pre>
+
+<pre>
+ // load data into matrix for further manipulation</pre>
+
+<pre>
+ Dataset dataset<strong>= </strong>IOUtil.readDataset(outputFiles[0].getPath());</pre>
+
+<pre>
+ <strong>}</strong></pre>
+
+<p><strong>}</strong></p>
+</div>
+
+<p>You can combine GenePattern analyses with any capabilities that the Java environment has to offer. Use Java&#39;s 2-D and 3-D graphics libraries to create graphic output, or summarize and report on the data using your own code. The basic idea to remember is that GenePattern modules create result files and those files are available to the Java application for processing.</p>
+
+<p>For more information:</p>
+
+<ul>
+	<li>See the <a href="/modules">Modules</a> page for a list of the GenePattern modules, with links to their documentation.</li>
+	<li>Use GenePattern to generate the Java code required to run a module or pipeline:
+	<ol>
+		<li>Select a module (or pipeline). GenePattern displays the parameters for the module (pipeline).</li>
+		<li>Optionally, enter the parameter values that you want to use.</li>
+		<li>Use the <em>View Code</em> or <em>Generate Code</em> field (at the bottom of the form) to display the Java code required to execute this module/pipeline with these parameters.</li>
+	</ol>
+	</li>
+</ul>
+
+<h2><a name="_Toc161040958"></a><a name="_Using_LSIDs_from_Java"></a>Using LSIDs from Java</h2>
+
+<p>Life Science Identifiers (LSIDs) can be used instead of module names to identify modules for GenePattern to run. An LSID may be submitted in place of the module name in the methods <code>runAnalysis</code> and <code>runVisualizer</code>. When an LSID is provided that does not include a version, the latest available version of the module identified by the LSID will be used. If a module name is supplied, the latest version of the module with the nearest authority is selected. The nearest authority is the first match in the sequence: local authority, Broad authority, other authority.</p>
+
+<p>If you are unfamiliar with LSIDs and GenePattern versioning, see <a href="/concepts">Concepts</a>.</p>
+
+<h1><a name="_Using_GenePattern_from_MATLAB"></a><a name="Matlab_doc"></a>Using GenePattern from MATLAB</h1>
+
+<p>Using MATLAB as a GenePattern client allows you to run GenePattern modules and to manipulate and visualize the results in a powerful, commercial technical computing application that works on most major platforms. Using GenePattern allows you to invoke methods written in many other languages without having to worry about how to launch them. This section describes how you can use the GenePattern MATLAB library to run GenePattern analyses:</p>
+
+<ul>
+	<li><a href="#_Getting_Started_in_MATLAB">Getting Started in MATLAB</a></li>
+	<li><a href="#_GenePattern_MATLAB_Library">GenePattern MATLAB Library</a></li>
+	<li><a href="#_Running_a_MATLAB">Running a MATLAB Program</a></li>
+	<li><a href="#_Using_LSIDs_from_MATLAB">Using LSIDs from MATLAB</a></li>
+</ul>
+
+<h2><a name="_Toc161040960"></a><a name="_Getting_Started_in_MATLAB"></a>Getting Started in MATLAB</h2>
+
+<p>Resources and documentation for MATLAB are available at <a href="http://www.mathworks.com/" target="_blank">http://www.mathworks.com/.</a></p>
+
+<h2><a name="_Toc161040961"></a><a name="_GenePattern_MATLAB_Library"></a>GenePattern MATLAB Library</h2>
+
+<p>The GenePattern MATLAB library allows you to invoke a GenePattern module as if it were a local MATLAB function running on your client and to get back from the module a list of result files. A zip file containing the MATLAB library is available on your GenePattern server.</p>
+
+<p>To download the GenePattern MATLAB library to your computer:</p>
+
+<ol>
+	<li>Start GenePattern.</li>
+	<li>Select <em>Downloads&gt;Programming Libraries</em>.</li>
+	<li>Under MATLAB, click <em>zip</em> to download the zip file for the GenePattern MATLAB library.</li>
+	<li>After downloading the zip file, unzip it into your <code>MATLAB7/toolboxes</code> directory. If you do not have permission to put files in that directory, unzip into any other directory.</li>
+	<li>After downloading and unzipping the files, add the directories to your MATLAB path:
+	<ol>
+		<li>At a MATLAB prompt, open the pathtool:
+		<div class="well"><code>&gt;&gt;pathtool</code></div>
+		</li>
+		<li>Use the MATLAB pathtool to add the <code>GenePatternServer</code> and <code>GenePatternFileSupport</code> directories, with subfolders, to the MATLAB search path.</li>
+	</ol>
+	</li>
+</ol>
+
+<p><strong>Note</strong>: MATLAB 7.0.4 (R14SP2) and later use Java Virtual Machine (JVM) 1.5. If you are using an earlier version of MATLAB, you must change the JVM that MATLAB is using to JVM 1.5. For instructions, see <a href="http://www.mathworks.com/support/solutions/data/1-1812J.html?solution=1-1812J" target="_blank">http://www.mathworks.com/support/solutions/data/1-1812J.html?solution=1-1812J</a>.</p>
+
+<h2><a name="_Toc161040962"></a><a name="_Running_a_MATLAB"></a>Running a MATLAB Program</h2>
+
+<p>This section explores a simple MATLAB program that runs a module, displays the resulting output, and loads it into a MATLAB matrix for further analysis. The included code can be copied and pasted into your MATLAB client so that you can try it out, modify it, and create your own solutions.</p>
+
+<p>The first statements in the application initialize various settings, which you must do once in every application that accesses GenePattern. You will need to customize the <em>italicized</em> GenePattern server URL, GenePattern user name (typically, your e-mail address) and password (if required) with values appropriate for your GenePattern server.</p>
+
+<div class="well"><code>% Create a GenePattern server proxy instance<br />
+gp = GenePatternServer(&#39;<em>http://localhost:8080</em>&#39;,&#39;<em>my.email@my.domain</em>&#39;, &#39;<em>mypassword</em>&#39;);</code></div>
+
+<p>After initializing the required settings, the application runs the TransposeDataset module to transpose a dataset. This example references the dataset using a publicly-accessible URL, but a filename would be equally valid. As shown below, you can call the GenePattern methods directly or by calling the <code>runAnalysis</code> method. When you call a GenePattern method, such as <code>TransposeDataset</code>, the GenePattern library invokes the module on the server, passing all of the input parameters and input files. Control returns to your application when the module completes. (To run a module asynchronously, invoke the method in a separate thread.)</p>
+
+<div class="well"><code>% input dataset for transpose operation<br />
+params.output_file_name = &#39;transposed.out&#39;<br />
+params.input_filename=&#39;http://www.broadinstitute.org/mpr/publications/projects/Leukemia/<br />
+ALL_vs_AML_train_set_38_sorted.res&#39;<br />
+&nbsp;<br />
+% transpose the dataset<br />
+transposeResult = gp.TransposeDataset(params)<br />
+% alternate call to transpose the dataset<br />
+transposeResult = runAnalysis(gp, &#39;TransposeDataset&#39;, params)</code></div>
+
+<p>When the module completes, it returns a MATLAB structure that contains a list of filenames that are the output from the module. In this example, <code>transposeResult</code> is a structure with a list of filenames (of length 1, in this case). The application displays the results in a file viewer window and also loads them into a matrix so that further manipulation can be performed:</p>
+
+<div class="well"><code>% display the transposed results<br />
+edit &#39;transposed.out.gct&#39;<br />
+&nbsp;<br />
+% now read the output into a matrix<br />
+% so we can do further manipulation in MATLAB<br />
+myData = loadGenePatternExpressionFile(&#39;transposed.out.gct&#39;)</code></div>
+
+<p>You can combine GenePattern analyses with all of the rich functionality of MATLAB. For example, you can use MATLAB&#39;s plotting methods to create graphic output, save modified matrices to files using save, or summarize and report on the data using your own code. The basic idea to remember is that GenePattern modules create result files and those files are available to the MATLAB client for processing.</p>
+
+<p>For a list of the GenePattern modules available on your server, run the <code>listMethods</code> function on your <code>GenePatternServer</code> object. To view the names of the input parameters for a module, use the <code>describeMethod</code> function on your <code>GenePatternServer</code> object, passing it the module name.</p>
+
+<div class="well"><code>% display the available GenePattern modules<br />
+listMethods(gp)<br />
+&nbsp;<br />
+% now look at the parameters for the TransposeDataset module<br />
+describeMethod(gp, &#39;TransposeDataset&#39;)</code></div>
+
+<p>Alternatively, to get the parameters with their default values filled in, use the <code>getMethodParameters</code> function of the <code>GenePatternServer</code> object. This returns a MATLAB structure with named elements for each parameter, filled in with the default value if one exists. After filling in the missing parameters and overriding defaults if desired, this structure can then be passed on to the <code>runAnalysis</code> method.</p>
+
+<div class="well"><code>% display the available GenePattern modules<br />
+params2 = getMethodParameters(gp, &#39;TransposeDataset&#39;)<br />
+params2.input_filename=&#39;http://www.broadinstitute.org/mpr/publications/projects/Leukemia/ALL_vs_AML_train_set_38_sorted.res&#39;<br />
+&nbsp;<br />
+% transpose the dataset<br />
+transposeResult = gp.TransposeDataset(params2)</code></div>
+
+<p>The GenePattern MATLAB library also has convenience methods to read and write GenePattern files (such as res, gct, and odf files). Even if you choose not to look in the library, you can extend the techniques shown above to implement your own analyses.</p>
+
+<p>For more information:</p>
+
+<ul>
+	<li>See the <a href="/modules">Modules</a> page for a list of the GenePattern modules, with links to their documentation.</li>
+	<li>Use GenePattern to generate the MATLAB code required to run a module or pipeline:
+	<ol>
+		<li>Select a module (or pipeline). GenePattern displays the parameters for the module (pipeline).</li>
+		<li>Optionally, enter the parameter values that you want to use.</li>
+		<li>Use the <em>View Code</em> or <em>Generate Code</em> field (at the bottom of the form) to display the MATLAB code required to execute this module/pipeline with these parameters.</li>
+	</ol>
+	</li>
+</ul>
+
+<h2><a name="_Toc161040963"></a><a name="_Using_LSIDs_from_MATLAB"></a>Using LSIDs from MATLAB</h2>
+
+<p>You can use Life Science Identifiers (LSIDs) to identify a module when executing GenePattern code in MATLAB. An LSID may be submitted in place of the module name to <code>getMethodParameters</code> or <code>runAnalysis</code>. When providing an LSID to a method in addition to a module name, the LSID alone is used to determine what module to run. When an LSID is provided that does not include a version, the latest available version of the module identified by the LSID will be used. If you are unfamiliar with LSIDs and GenePattern versioning, see <a href="/concepts">Concepts</a>.</p>
+
+<div class="well"><code>% Example using LSIDs from MATLAB<br />
+params = getMethodParameters(gp, &#39;urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00026:3&#39;); </code>
+
+<p>&nbsp;</p>
+
+<p><code>params.output_file_name = &#39;transposed.out&#39;<br />
+params.input_filename=&#39;http://www.broadinstitute.org/mpr/publications/projects/Leukemia/ALL_vs_AML_train_set_38_sorted.res&#39;<br />
+&nbsp;<br />
+% transpose the dataset<br />
+transposeResult = runAnalysis(gp, &#39;urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00026:3&#39;, params)</code></p>
+</div>
+
+<h1><a name="_Using_GenePattern_from_R"></a><a name="R_doc"></a>Using GenePattern from R</h1>
+
+<p>Using R as a GenePattern client allows you to run GenePattern modules and to manipulate and visualize the results in a powerful, free statistical desktop package that works on most major platforms. Using GenePattern allows you to invoke methods written in many other languages without having to worry about how to launch them or whether you are passing incorrect parameters. This section describes how you can use the GenePattern R library to run GenePattern analyses:</p>
+
+<ul>
+	<li><a href="#_Getting_Started_in_R">Getting Started in R</a></li>
+	<li><a href="#_Accessing_GenePattern_from_R">GenePattern R Library</a></li>
+	<li><a href="#_Running_an_R">Running an R Program</a></li>
+	<li><a href="#_Using_LSIDs_from_R">Using LSIDs from R</a></li>
+</ul>
+
+<h2><a name="_Toc161040965"></a><a name="_Getting_Started_in_R"></a>Getting Started in R</h2>
+
+<p>If you are not familiar with R, see the following resources on the <a href="http://www.r-project.org/" target="_blank">www.r-project.org</a> website:</p>
+
+<ul>
+	<li><a href="http://cran.r-project.org/doc/manuals/R-intro.pdf" target="_blank">An Introduction to R</a> (PDF, approx. 100 pages, 650kB), based on the former &quot;Notes on R&quot;, gives an introduction to the language and how to use R for doing statistical analysis and graphics.</li>
+	<li>A draft of <a href="http://cran.r-project.org/doc/manuals/R-lang.pdf" target="_blank">the R language definition</a> (PDF, approx. 60 pages, 400kB) documents the language; that is, the objects that it works on, and the details of the expression evaluation process, which are useful to know when programming R functions.</li>
+	<li><a href="http://cran.r-project.org/doc/manuals/R-exts.pdf" target="_blank">Writing R Extensions</a> (PDF, approx. 85 pages, 500kB) covers how to create your own packages, write R help files, and the foreign language (C, C++, Fortran, ...) interfaces.</li>
+	<li><a href="http://cran.r-project.org/doc/manuals/R-data.pdf" target="_blank">R Data Import/Export</a> (PDF, approx. 35 pages, 270kB) describes the import and export facilities available either in R itself or via packages which are available from CRAN.</li>
+	<li><a href="http://cran.r-project.org/doc/manuals/R-admin.pdf" target="_blank">R Installation and Administration</a> (PDF, approx. 30 pages, 200kB).</li>
+	<li><a href="http://cran.r-project.org/doc/manuals/fullrefman.pdf" target="_blank">The R Reference Index</a> (PDF, approx. 2200 pages, 12MB) contains all help files of the R standard and recommended packages in printable form.</li>
+</ul>
+
+<h2><a name="_Accessing_GenePattern_from_R"></a>GenePattern R Library</h2>
+
+<p>The GenePattern R package allows you to invoke a GenePattern module as if it were a local R method running on your client and to get back from the module a list of result files. The package requires R version 2.4.1 or greater and the rJava package. The package can be downloaded from your GenePattern server in Windows(.zip), source (.tar.gz), and Mac OS X (.tgz) formats.</p>
+
+<p>To download the GenePattern R package to your computer:</p>
+
+<ol>
+	<li>Start GenePattern.</li>
+	<li>Within GenePattern, select <em>Downloads&gt;Programming Libraries</em>.</li>
+	<li>Click appropriate link to download the GenePattern R package for your operating system.</li>
+	<li>Install the package into your R environment by using the install.packages command:
+	<div class="well"><code>install.packages(&quot;<em>full-path-to-GenePattern-R-package</em>&quot;, type=&quot;source&quot;, repos=NULL)</code></div>
+	</li>
+</ol>
+
+<p><strong>Note:</strong> If you are using a version of R which you cannot modify (because it is a publicly-shared version and you do not have appropriate privilege), you can have it load the GenePattern library by setting the environment variable R_LIBS=&lt;GenePattern install directory&gt;/R/library in your autoexec.bat, .cshrc, .bashrc or other shell startup file. R will then load from its usual location, but will also search for and find the GenePattern library from your installation.</p>
+
+<h2><a name="_Running_an_R"></a><a name="_Running_a_Program_2"></a>Running an R Program</h2>
+
+<p>This section explores a simple R program that runs a module, displays the resulting output, and loads it into an R matrix for further analysis. The included code can be copied and pasted into your R environment so that you can try it out, modify it, and create your own solutions.</p>
+
+<p>The first statements in the application initialize various settings, which you must do once in every application that accesses GenePattern. You will need to customize the <em>italicized</em> GenePattern server URL, GenePattern user name (typically, your e-mail address), and password with values appropriate for your GenePattern server. The gp.login method returns a GPClient object that contains the information required for running modules on a GenePattern server.</p>
+
+<div class="well"><code># Load GenePattern package<br />
+library(GenePattern)<br />
+username &lt;- <em>&quot;your email address&quot;</em><br />
+password &lt;- <em>&quot;your password&quot;</em><br />
+servername &lt;- <em>&quot;http://localhost:8080&quot;</em><br />
+&nbsp;<br />
+# Obtain a GPClient object which references a specific server and user<br />
+gp.client &lt;- gp.login(servername, username, password)</code></div>
+
+<p>After initializing the required settings, the application runs the PreprocessDataset module to preprocess a dataset. This example references the dataset using a publicly-accessible URL, but a filename would be equally valid. When you call an R method, such as <code>run.analysis</code>, the GenePattern package invokes the appropriate module on the server, passing all of the input parameters and input files. Control returns to your application when the module completes. (To run a module asynchronously, use the method runAnalysisNoWait.)</p>
+
+<div class="well"><code># input dataset for preprocess operation<br />
+input.ds &lt;- &quot;ftp://ftp.broadinstitute.org/pub/genepattern/all_aml/all_aml_train.res&quot;<br />
+&nbsp;<br />
+# preprocess the dataset<br />
+preprocess.jobresult &lt;- run.analysis(gp.client, &quot;PreprocessDataset&quot;, input.filename=input.ds)</code></div>
+
+<p>When the module completes, it returns a JobResult object with which you can execute various methods. For example, you can call a method using a JobResult object to get an R list of the filenames that are the output of the module. Afterwards, you can download the files or leave them on the server and refer to them by URL. In this example, we view the results in a heat map:</p>
+
+<div class="well"><code># Obtain the url location of the result and run the visualizer<br />
+preprocess.out.file.url &lt;- job.result.get.url(preprocess.jobresult, 0)<br />
+run.visualizer(gp.client, &quot;HeatMapViewer&quot;, dataset=preprocess.out.file.url)</code></div>
+
+<p>In this example, the application downloads the result file and displays the results in a file viewer window, then also loads the data into a matrix so that further manipulation can be performed in R:</p>
+
+<div class="well"><code># download result files<br />
+download.directory &lt;- job.result.get.job.number(preprocess.jobresult)<br />
+download.directory &lt;- as.character(download.directory)<br />
+preprocess.out.files &lt;- job.result.download.files(preprocess.jobresult, download.directory)<br />
+&nbsp;<br />
+# display the preprocessed result<br />
+preprocessed.out.file &lt;- as.character(preprocess.out.files[1])<br />
+file.show(preprocessed.out.file)<br />
+&nbsp;<br />
+# now read the output into a matrix<br />
+# so we can do further manipulation in R<br />
+data &lt;- read.dataset(preprocessed.out.file)</code></div>
+
+<p>You can combine GenePattern analyses with all of the rich statistical functionality of R. For example, you can use R&#39;s plot and legend methods to create graphic output, output JPEGs of your visualized data using savePlot, save modified matrices to files using save, or summarize and report on the data using your own code. Just remember: GenePattern modules create JobResult objects and those objects are available to the R client for processing.</p>
+
+<p>The GenePattern R package also has methods to read and write GenePattern files (such as res, gct, and cls files), to enable running of multiple modules in parallel, to run modules with input from files that were output from previous modules without moving them from the server, and other utilities. Even if you choose not to look in the library, you can extend the techniques shown above to implement your own analyses.</p>
+
+<p>For more information:</p>
+
+<ul>
+	<li>See the <a href="/modules">Modules</a> page for a list of the GenePattern modules, with links to their documentation.</li>
+	<li>Use GenePattern to generate the R code required to run a module or pipeline:
+	<ol>
+		<li>Select a module (or pipeline). GenePattern displays the parameters for the module (pipeline).</li>
+		<li>Optionally, enter the parameter values that you want to use.</li>
+		<li>Use the <em>View Code</em> or <em>Generate Code</em> field (at the bottom of the form) to display the R code required to execute this module/pipeline with these parameters.</li>
+	</ol>
+	</li>
+</ul>
+
+<h2><a name="_Toc161040968"></a><a name="_Using_LSIDs_from_R"></a>Using LSIDs from R</h2>
+
+<p>You can use Life Science Identifiers (LSIDs) instead of module names to identify modules for GenePattern to run. For R, this is primarily useful when you want to specify a particular version of a module for GenePattern to run. The easiest way to specify a particular version of a module is to specify the LSID as an argument to an R method such as run.analysis in place of the GenePattern module name. For example, the following statement invokes version 1 rather than the latest version of the PreprocesDataset module:</p>
+
+<div class="well"><code>preprocess.jobresult &lt;- run.analysis(gp.client, &quot;urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00020:5&quot;, input.filename=input.ds)</code></div>
+
+<p>If you are unfamiliar with LSIDs and GenePattern versioning, see <a href="/concepts">Concepts</a>.</p>
+
+<p>&nbsp;</p>
+
+<h1><a id="_Using_GenePattern_from_Python" name="_Using_GenePattern_from_Python"></a><a id="Python_doc" name="Python_doc"></a>Using GenePattern from Python</h1>
+
+<p>Using Python as a GenePattern client allows you to run GenePattern modules from a Python script or interactive prompt. This section describes how you can use the GenePattern Python library to run GenePattern analyses as easily as calling a function. It contains the following topics:</p>
+
+<ul>
+	<li><a href="#_Getting_Started_in_Python">Getting Started in Python</a></li>
+	<li><a href="#_Accessing_GenePattern_from_Python">GenePattern Python Library</a></li>
+	<li><a href="#_Running_a_Python">Running a Python Program</a></li>
+	<li><a href="#_Using_LSIDs_from_Python">Using LSIDs from Python</a></li>
+</ul>
+
+<h2><a name="_Toc161040965"></a><a id="_Getting_Started_in_Python" name="_Getting_Started_in_Python"></a>Getting Started in Python</h2>
+
+<p>If you are not familiar with Python, see the following resources on the <a href="https://www.python.org/">https://www.python.org/</a> website:</p>
+
+<ul>
+	<li><a href="https://www.python.org/about/gettingstarted/">Python Beginner&#39;s Guide</a>: A set of tutorials and frequently asked questions regarding Python.</li>
+	<li><a href="https://docs.python.org">Python Documentation</a>: Complete documentation for the Python language and common libraries.</li>
+</ul>
+
+<h2><a id="_Accessing_GenePattern_from_Python" name="_Accessing_GenePattern_from_Python"></a>GenePattern Python Library</h2>
+
+<p>The GenePattern Python package allows you to invoke a GenePattern module as if it were a Python method call. The GenePattern Python package supports both Python 2.7 and Python 3.4 or later. The package can be downloaded from your GenePattern server.</p>
+
+<h3>Method 1: Download from GenePattern</h3>
+
+<p>To download the GenePattern Python package to your computer:</p>
+
+<ol>
+	<li>Start GenePattern.</li>
+	<li>Within GenePattern, select <em>Resources &gt; Programming Libraries</em>.</li>
+	<li>Click appropriate link to download the GenePattern Python package.</li>
+	<li>Extract the ZIP file that was just downloaded.</li>
+	<li>Install the package into your Python environment by running the following command in the same directory in which the files were just unzipped:</li>
+</ol>
+
+<div class="well"><code>python setup.py install</code></div>
+
+<p><strong>Note:</strong> If you do not have the appropriate permissions to install a python module you may need to run this command as an administrator (Windows) or using the sudo command (Linux, Mac).</p>
+
+<h3>Method 2: Install From PIP</h3>
+
+<p>The GenePattern Python package can be installed from the Python Package Index (PIP) by running the following command:</p>
+
+<div class="well"><code>pip install genepattern-python</code></div>
+
+<p><strong>Note:</strong> To install a package you may need administrator permissions, such as running the above command using <em>sudo</em>.</p>
+
+<h2><a id="_Running_a_Python" name="_Running_a_Python"></a><a name="_Running_a_Program_2"></a>Running a Python Program</h2>
+
+<p>This section explores a simple Python program that connects to a GenePattern Server, runs a module and loads the resulting files for further analysis. The included code can be copied and pasted into your Python script or interactve terminal so that you can try it out, modify it or create your own solutions.</p>
+
+<p>The very first thing you will need to do is to import the GenePattern library into your script. This can be achived by entering the following shown below. All methods provided by the GenePattern library can then be accessed from the <em>gp</em> namespace.</p>
+
+<div class="well"><code>import gp</code></div>
+
+<p>The next step in using the GenePattern Python library is to connect to an existing GenePattern server. This will require entering the address of your GenePattern, as well as your username and password credentials. The code below shows an example which connects to a GenePattern server running on the same computer as your Python terminal. Note that the address used must end in <em>/gp</em> for the library to successfully connect to GenePattern. Obviously <em>myusername</em> and <em>mypassword</em> should be changed as appropriate.</p>
+
+<div class="well"><code># Create a GenePattern server proxy instance<br />
+gpserver = gp.GPServer(&#39;<em>http://localhost:8080/gp</em>&#39;,&#39;<em>myusername</em>&#39;, &#39;<em>mypassword</em>&#39;)</code></div>
+
+<p>If you are not aware of which modules are available on the GenePattern server this can be programmatically explored by running the code shown below. This will return a list of GPTask objects, each representing a different module. These GPTask objects will provide the module name, LSID, a description and the version number</p>
+
+<div class="well"><code>task_list = gpserver.get_task_list()</code></div>
+
+<p>If you already know the name or LSID of the module you want to call, you can obtain a GPTask object for it directly by running the code below. This example code obtains a GPTask object for the PreprocessDataset module.</p>
+
+<div class="well"><code>module = gp.GPTask(gpserver, &quot;PreprocessDataset&quot;)&nbsp; # Obtaining GPTask by module name<br />
+module = gp.GPTask(gpserver, &quot;urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00020:5&quot;)&nbsp; # Obtaining GPTask by LSID</code></div>
+
+<p>However you obtain a GPTask object, before this task can be used to run GenePattern jobs its parameters must first be loaded from the GenePattern server. This can be accomplished by running the code shown below.</p>
+
+<div class="well"><code>module.param_load()</code></div>
+
+<p>After loading the parameters they can be explored by calling the code below. This will return a list of GPParam objects. Each GPParam object contains a parameter name, description, type, whether it&#39;s optional and other metadata, as shown below.</p>
+
+<div class="well"><code>params_list = module.get_parameters()&nbsp; # Get the list of GPParam objects<br />
+<br />
+for param in params_list:&nbsp; # Loop through each parameter<br />
+&nbsp;&nbsp;&nbsp; print( param.get_name() )&nbsp; # Print the parameter&#39;s name<br />
+&nbsp;&nbsp;&nbsp; print( param.get_description() )&nbsp; # Print the parameter&#39;s description<br />
+&nbsp;&nbsp;&nbsp; print( param.get_default_value() )&nbsp; # Print the parameter&#39;s default value<br />
+&nbsp;&nbsp;&nbsp; print( param.is_optional() )&nbsp; # Print whether the parameter is optional</code></div>
+
+<p>In order to run a GenePattern job from Python you must first obtain a GPJobSpec object from the correct GPTask object and then set the appropriate parameters for the job. Files can be uploaded by calling <em>GPServer.upload_file()</em>. An example for the PreprocessDataset module is shown below.</p>
+
+<div class="well"><code>job_spec = module.make_job_spec()&nbsp; # Create the GPJobSpec<br />
+uploaded_file = gpserver.upload_file(&quot;file_name&quot;, &quot;/path/to/the/file/file_name&quot;)&nbsp; # Upload the input file<br />
+job_spec.set_parameter(&quot;input.filename&quot;, uploaded_file.get_url())&nbsp; # Attach the input file to the correct parameter<br />
+for param in module.get_parameters():&nbsp; # Loop through all the other parameters and set their default values<br />
+&nbsp;&nbsp;&nbsp; if param.get_name() != &quot;input.filename&quot; and param.get_default_value() != None:&nbsp; # If it&#39;s not the parameter we just set, and if it has a default value<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; job_spec.set_parameter( param.get_name(), param.get_default_value() )&nbsp; # Set the default value</code></div>
+
+<p>Once the GPJobSpec is ready, it can be used to launch a GenePattern job as shown below. This will return a GPJob object representing the job. By default this will halt code execution until the job has finished running on GenePattern. For long running jobs, however, this may not be desirable. By optionally passing in <em>False</em> as a parameter a GPJob object representing the pending or still processing job will be returned and the execution of the program will continue.</p>
+
+<div class="well"><code>job = gpserver.run_job(job_spec)&nbsp; # This will halt execution until the job is complete<br />
+job = gpserver.run_job(job_spec, False)&nbsp; # This will return the job object and continue execution even if the job isn&#39;t finished</code></div>
+
+<p>If the latter option is used, the status of the job can be quaried programmatically by calling the follwing code:</p>
+
+<div class="well"><code>job.is_finished()&nbsp; # Quaries the server and returns True if the job is complete, False otherwise<br />
+job.get_info()&nbsp; # Returns a brief description of the job&#39;s current state</code></div>
+
+<p>Finally, once the job is complete its output files can be obtained by making the call shown below. This will return a list of GPFile objects, each containing methods to download or read the contents of the file.</p>
+
+<div class="well"><code>output_list = job.get_output_files()&nbsp; # Get a list of output files<br />
+for file in output_list:&nbsp; # Loop through each output file<br />
+&nbsp;&nbsp;&nbsp; print( file.get_url() )&nbsp; # Print the URL to the file<br />
+&nbsp;&nbsp;&nbsp; data = file.read()&nbsp; # Read the data in the file</code></div>
+
+<h2><a name="_Toc161040968"></a><a id="_Using_LSIDs_from_Python" name="_Using_LSIDs_from_Python"></a>Using LSIDs from Python</h2>
+
+<p>You can use Life Science Identifiers (LSIDs) instead of module names to identify modules for GenePattern to run. For Python, this is primarily useful when you want to specify a particular version of a module. The easiest way to specify a particular version is to specify the LSID as an argument to a Python method - such as the GPJobSpec constructor - in place of the GenePattern module name. For example, the following statement invokes version 1 rather than the latest version of the PreprocesDataset module:</p>
+
+<div class="well"><code>job_spec = gp.GPJobSpec(gpserver, &quot;urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00020:5&quot;)</code></div>
+
+<p>If you are unfamiliar with LSIDs and GenePattern versioning, see <a href="/concepts">Concepts</a>.</p>
+
+<h2><a id="_Python_Tutorial" name="_Python_Tutorial"></a>GenePattern Python Tutorial</h2>
+
+<p>A tutorial for using the GenePattern Python library, as well as a tutorial for using GenePattern in conjunction with common Python libraries for scientific computing and plotting, are available in the <a href="https://notebook.genepattern.org">GenePattern Notebook Environment</a>. These notebook tutorials can be downloaded from the <a href="https://notebook.genepattern.org/library/#">Example Notebooks</a> page.</p>
+
+<h2><a name="_Toc161040969"></a><a id="_GP_REST_API" name="_GP_REST_API"></a>Accessing GenePattern from the REST API</h2>
+
+<p>This section is currently under construction.&nbsp;</p>
+
+<p>We have documented our current method for download a filtered set of jobs from GenePattern in our <a href="https://groups.google.com/a/broadinstitute.org/forum/#!topic/gp-forum/pN1DpY0hJ7w">Google forum</a>, and will continue to build out this section.&nbsp;</p>
+
+<p>Please <a href="/contact">contact us</a> with any questions.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
