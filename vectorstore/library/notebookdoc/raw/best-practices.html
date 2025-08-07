@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Practices</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+        <h4>Table of contents</h4>
+        <ul>
+        <li><a href="#Notebook-Development-Cycle-1.2">Notebook Development Cycle</a></li>
+        <li><a href="#Ten-Simple-Rules-1.3">Ten Simple Rules</a>
+        <ul>
+        <li><a href="#r1">Rule 1: Tell a Story for an Audience</a></li>
+        <li><a href="#r2">Rule 2: Document the Process, Not Just the Results</a></li>
+        <li><a href="#r3">Rule 3: Add Divisions to Make Steps Clear</a></li>
+        <li><a href="#r4">Rule 4: Modularlize Code</a></li>
+        <li><a href="#r5">Rule 5: Record Dependencies</a></li>
+        <li><a href="#r6">Rule 6: Use Version Control</a></li>
+        <li><a href="#r7">Rule 7: Build a Pipeline</a></li>
+        <li><a href="#r8">Rule 8: Share and Explain Your Data</a></li>
+        <li><a href="#r9">Rule 9: Enable Your Notebooks to Be Read, Run, and Explored</a></li>
+        <li><a href="#r10">Rule 10:Contribute to Reproducible and Open Research</a></li>
+        </ul>
+        </li>
+        </ul>
+        <ul>
+        <li><a href="#Notebook-Sharing-&amp;-Publishing-1.14">Notebook Sharing &amp; Publishing</a></li>
+        </ul>
+        </div>
+        <div class="col-md-6">
+        <p><strong>Note:&nbsp;</strong>This is taken from the publication Rule et al.<span>&nbsp;</span><a href="https://arxiv.org/abs/1810.08055" target="_blank">Ten Simple Rules for Reproducible Research in Jupyter Notebooks</a>. arXiv preprint arXiv:1810.08055 (2018), with additions to incorporate the features of the g2nb environment.</p>
+        </div>
+        </div>
+        <h2>Introduction</h2>
+        <p>Reproducibility of computational studies is a hallmark of scientific methodology. It enables researchers to build with confidence on the methods and findings of others, reuse and extend computational pipelines, and thereby drive scientific progress. Since many experimental studies rely on computational analyses, biologists need guidance on how to set up and document reproducible data analyses or simulations.</p>
+        <p>The detailed and accurate descriptions of scientific methods needed to reproduce research have become increasingly difficult to provide as studies grow in scale, complexity, and reliance on computation. Numerous papers, guides, and anecdotes have highlighted the need for reproducibility in computational research and enumerated best practices [1-3], including guides in the Ten Simple Rules collection [4] and workshop materials developed by the Data Carpentry team [5]. We aim to augment this existing wellspring of advice by addressing the unique challenges and opportunities for reproducibility that arise when using computational notebooks like Jupyter Notebooks for research.</p>
+        <div class="cell text_cell unselected rendered" tabindex="2">
+        <div class="inner_cell">
+        <div class="text_cell_render rendered_html" tabindex="-1">
+        <p>Reproducibility requires both a human- and a machine-readable description of data, software, dependencies, and the computational environment (e.g., hardware or cloud configuration) used to conduct a study along with documentation describing how all the pieces fit together. Whereas analysts previously kept this information in separate data, analysis, result, configuration, and commentary files (which were often difficult to piece together and share), they increasingly use computational notebooks such as Jupyter Notebooks and R Notebooks to combine executable code, rendered visualizations, and descriptive text in a single interactive and portable document. Jupyter Notebook in particular has seen widespread use for tracking and sharing analyses: as of September 2018, there were more than 2.8 million Jupyter Notebooks shared publicly on GitHub (<a href="https://www.github.com/" target="_blank">https://www.github.com</a>) [6], a number of which document academic research [7].</p>
+        <p>Jupyter Notebooks lower many barriers to reproducibility and were designed to support reproducible research by enabling scientists to craft easily shared computational narratives that mix code, results, and text [8, 9]. However, computational notebooks like Jupyter Notebook do not address all barriers to reproducibility, and introduce unique challenges of their own, many of which stem from their interactivity. An informal study [10], proposed by Mietchen, that re-ran Jupyter Notebooks mentioned in publications in PubMedCentral found only a small fraction of the sampled notebooks could be re-run without difficulty due to problems accessing data, unresolved dependencies, and platform differences.</p>
+        <p>In addition to these technical challenges, several studies have identified a lack of clear explanation in notebooks and many users&rsquo; reticence to share what they feel are messy and personal artifacts [7,11]. One analysis of over 1 million Jupyter Notebooks shared publicly on GitHub found that one quarter of the notebooks had no explanatory text, and even in notebooks with text, the explanation tended to provide a high-level description of the analysis steps rather than the reasoning guiding the analysis or an interpretation of results [7]. These studies show that many scientists leverage notebooks&rsquo; interactivity to create analytic playgrounds, but find it difficult to turn them into clear descriptions of research that can be read and re-run by others.</p>
+        <p>The explosive growth of computational notebooks provides a unique opportunity to support reproducible research, but the current lack of clear explanation in many notebooks and some users&rsquo; resistance to sharing their messy notebooks suggests that additional tools, processes, and guidelines may be needed to achieve the vision of well-organized notebooks supporting reproducible research. Given the technical and social barriers to publishing reproducible research in Jupyter Notebooks, we have compiled a set of rules, tips, tools, and example notebooks to help guide Jupyter Notebook authors. While we focus on Jupyter Notebooks, these rules can also be applied to other documents that mix live code and narrative description, aiding in effective dissemination of results. In Fig. 1 we give a preview of the rules applied at different phases of the notebook development cycle.</p>
+        </div>
+        </div>
+        </div>
+        <h2 id="Notebook-Development-Cycle"><a id="Notebook-Development-Cycle-1.2"></a>Notebook Development Cycle</h2>
+        <p><img class="img-fluid" src="http://datasets.genepattern.org/images/notebook_development_cycle.png" width="70%" /></p>
+        <h2 id="Ten-Simple-Rules"><a class="toc-mod-link" id="Ten-Simple-Rules-1.3"></a>Ten Simple Rules</h2>
+        <p><a id="r1"></a></p>
+        <h2 id="Rule-1:-Tell-a-Story-for-an-Audience"><a id="Rule-1:-Tell-a-Story-for-an-Audience-1.4"></a>Rule 1: Tell a Story for an Audience</h2>
+        <p>One key benefit of using Jupyter Notebooks is being able to interleave explanatory text with code and results to create a computational narrative [8]. Rather than only keep sporadic notes, use explanatory text to tell a compelling story that has a beginning that introduces the topic, a middle that describes your steps, and an end that interprets the results. Describe not just what you did, by why you did it, how the steps are connected, and what it all means.</p>
+        <p>How you tell the story will depend on your audience. Do you plan to share your notebook with a non-technical colleague in your lab, analysts at another lab, readers of a particular journal, or the general public? You may need different kinds and levels explanation for each audience. In any case, remember that your primary audience will most likely be your future self. Is your explanation clear enough that you will be able to understand and replicate the analysis a month from now? People often overestimate what they will be able to remember in the future, so err on the side of over-explaining. If you won&rsquo;t be able to replicate the result in the near future, how could anyone else?</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Every g2nb notebook ought to be a "nano paper" with its own motivation/introduction, brief explanation of the methods, interpretation of results, conclusions, and references. E.g., don''t just pile up a bunch of code cells with no context.</p>
+        </div>
+        </div>
+        <p><a id="r2"></a></p>
+        <h2 id="Rule-2:-Document-the-Process,-Not-Just-the-Results"><a id="Rule-2:-Document-the-Process,-Not-Just-the-Results-1.5"></a>Rule 2: Document the Process, Not Just the Results</h2>
+        <p>Computational notebooks&rsquo; interactive nature makes it quick and easy to try out and compare different approaches or parameters &ndash; so quick and easy that we often fail to document those interactive investigations at the time we perform them. Thus, the advice long provided regarding paper lab scientific notebooks becomes even more critical: make sure to document all your explorations, even (or perhaps especially) those that led to dead ends! These will help you remember what you did and why. You can always remove them later if turning your notebook into a pipeline (See Rule 7) or preparing to share it with a different audience (Rule 1).</p>
+        <p>Many notebook users wait to add such explanatory text until the end of an analysis, after they have a solid result. Don&rsquo;t wait &ndash; by that point you may have forgotten why you chose a particular parameter value, where you copied a block of code from, or what you found interesting about an intermediate result. If you do not have time to fully document what you are doing or thinking in the moment, leave short descriptive notes to remind yourself what to add when you get to a good stopping point. While the code needed to reproduce the analysis is automatically captured in your notebook, the reasoning and intuition are not. It is okay if the story in your notebook changes over time; you should still tell a story from the very beginning, even if you don&rsquo;t know the ending yet.</p>
+        <p>Clean, organize, and annotate your notebook after each experiment or meaningful chunk of work (but be sure to track these changes in case of any mistakes &ndash; see Rule 6!). When preparing to publish, if possible avoid manually tweaking figures with desktop publishing tools and instead using plotting libraries with the notebook to produce publication-ready versions of figures and other artifacts to be used in manuscripts. Make sure you include your name as well</p>
+        <p>as contact information for yourself and a future contact in your lab that can answer basic questions about the code. Documenting the beginning and end date of your analysis is also a good idea and can highlight the effort that you have put into the development of the notebook.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Feel free to use Markdown, HTML, or <a href="/basic-features/#rich-text-editor">the Rich Text Editor</a> to add enough context. At minimum, before any analyses, there must be an instruction cell guiding users how to run those analyses</p>
+        <p></p>
+        <p><img alt="" src="/static/media/uploads/screen_shot_2020-02-26_at_2.16.17_pm.png" width="100%" />You can use <a href="/basic-features/#template-cells">template cells</a> to highlight your reasoning or parameter choices to make the process more clear.</p>
+        </div>
+        </div>
+        <p><img alt="" src="/static/media/uploads/screen_shot_2020-02-27_at_2.05.04_pm.png" width="100%" /></p>
+        <h2 id="Rule-3:-Add-Divisions-to-Make-Steps-Clear"><a id="Rule-3:-Add-Divisions-to-Make-Steps-Clear-1.6"></a>Rule 3: Add Divisions to Make Steps Clear</h2>
+        <p>Notebooks are an interactive environment, so it is very easy to write and run one-line cells. This supports experimentation but can leave your notebooks messy and full of short fragments that are hard to follow. Instead, try to make each cell in your notebook perform one meaningful step of the analysis that is easy to understand from the code in the cell or the surrounding markdown description. Modularize your code by cells and label the cells with markdowns above the cell.</p>
+        <p>Think of each cell as being one paragraph, having one function, or accomplishing one task (e.g., create a plot). Avoid long cells (we suggest anything over 100 lines or one page is too long). Put low-level documentation in code comments. Use descriptive markdown headers to organize your notebook into sections that can be used to easily navigate the notebook, and add a table of contents. Split long notebooks into a series of notebooks and keep a top-level index notebook with links to the individual notebooks.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Make use of the Table of Contents (toc2) extension, for an example see <a href="https://notebooks.genepattern.org/services/sharing/notebooks/363/preview/">this introductory notebook</a>.</p>
+        </div>
+        </div>
+        <p><a id="r4"></a></p>
+        <h2 id="Rule-4:-Modularize-Code"><a id="Rule-4:-Modularize-Code-1.7"></a>Rule 4: Modularize Code</h2>
+        <p>It is always good practice to avoid duplicate code, but in notebooks it is especially easy to copy a cell, tweak a few lines, paste the resulting code into a new cell or another notebook, and run it again. This form of experimentation is expedient, but makes notebooks difficult to read and nearly impossible to maintain if you want to change the functionality of or fix a bug in the copied code. Instead, wrap code you are about to copy and reuse in a function, which you can then call from as many cells as desired. If you are going to reuse the code in other projects or notebooks, consider turning it into a module, package, or library &ndash; and following good software development practices like unit testing.</p>
+        <p>Not only does modularization save space, support maintenance, and ease debugging, it also makes it easier to add interactivity. For example, you can tie widgets (ipywidgets,<span>&nbsp;</span><a href="https://ipywidgets.readthedocs.io/en/stable/" target="_blank">https://ipywidgets.readthedocs.io/en/stable/</a>) to functions to support exploration of different parameter values or support interaction with visualizations without needing to modify the code.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Use <a href="https://genepattern.org" target="_blank">GenePattern Analyses</a>, a collection of hundreds of genomic analyses tools, to reduce lengthy code cells into a simplified module</p>
+        <p>Additionally, our <a href="https://gpnotebook-website-docs.readthedocs.io/en/latest/programmatic/#ui-builder">UI Builder</a> transforms any Python or R function into a user-friendly interface</p>
+        </div>
+        </div>
+        <p><a id="r5"></a></p>
+        <h2 id="Rule-5:-Record-Dependencies"><a id="Rule-5:-Record-Dependencies-1.8"></a>Rule 5: Record Dependencies</h2>
+        <p>Reproducing your analysis in the future will require accessing not only your code, but also any dependencies. As is best practice across computational science, manage your dependencies explicitly from the start using a tool such as Conda&rsquo;s environment.yml or pip&rsquo;s requirements.txt, to list all relevant dependencies (including their software versions). Always conduct your work in an environment created only from these dependencies to ensure you do not add undocumented dependencies.</p>
+        <p>In notebooks, you can explicitly print out your dependencies using a notebook extension such as watermark (<a href="https://github.com/rasbt/watermark)" target="_blank">https://github.com/rasbt/watermark)</a>. Listing the versions of critical dependencies</p>
+        <p>in the notebook itself (best done at the bottom) will ensure that, if used in isolation from its environment, the notebook still contains critical information to help readers replicate results.</p>
+        <p><a id="r6"></a></p>
+        <h2 id="Rule-6:-Use-Version-Control"><a id="Rule-6:-Use-Version-Control-1.9"></a>Rule 6: Use Version Control</h2>
+        <p>Version control is a critical adjunct to notebook use, because the interactive nature of notebooks makes it easy to accidentally change or delete important content. Furthermore, since notebooks contain code, and code inevitably contains bugs, being able to determine the history of when a given bug you have discovered was introduced to the code vs when it was fixed &ndash; and thus what analyses it may have affected &ndash; is a key capability in scientific computation. Consult the Ten Simple Rules paper by Perez-Riverol et al. [12] on how to take advantage of Git and GitHub for version control generally. Also follow best practices for organizing your repository for easy version control, for example,<span>&nbsp;</span><a href="http://drivendata.github.io/cookiecutter-data-science/" target="_blank">http://drivendata.github.io/cookiecutter-data-science/</a>.</p>
+        <p>However, be aware that Jupyter Notebooks store both code and specialized and extensive metadata about each cell as a text file in the JSON (JavaScript Object Notation) format. Version control systems compare differences in these JSON files, not differences in the user-friendly notebook GUI (graphical user interface). Because of this, reported differences between versions of a given notebook are usually difficult for users to find and understand, because they are expressed as changes in the abstruse JSON metadata for the notebook. One way to address this issue is to use a notebook-specific diffing tool like nbdime that understands notebook structure and presents diffs in meaningful ways (<a href="https://github.com/jupyter/nbdime)" target="_blank">https://github.com/jupyter/nbdime)</a>. Another is to use a post-save hook to convert notebook files into a format more amenable to comprehensible versioning (<a href="https://www.svds.com/jupyter-notebook-best-practices-for-data-science/)" target="_blank">https://www.svds.com/jupyter-notebook-best-practices-for-data-science/)</a>. For example, you may keep two folders, one with your raw notebooks and one with you notebooks converted to .py files stripped of output; however, remember to version control both, even if you depend on the stripped version to easily see what the versioned changes were!</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>It is also recommemded to use <a href="https://docker.com">Docker</a> to containerize your notebooks to retain critical dependencies and packages</p>
+        </div>
+        </div>
+        <p><a id="r7"></a></p>
+        <h2 id="Rule-7:-Build-a-Pipeline"><a id="Rule-7:-Build-a-Pipeline-1.10"></a>Rule 7: Build a Pipeline</h2>
+        <p>Notebooks documenting initial, exploratory investigations will rarely be widely generalizable, but once a stable analysis approach has been identified, a well-designed notebook can be generalized into a pipeline that easily repeats that analysis using different input data and parameters. With this in mind, design your notebook from the beginning to allow such future repurposing. Place key variable declarations, especially those that will be changed when doing a new analysis, at the top of the notebook rather than burying them somewhere in the middle. Perform preparatory steps, like data cleaning, directly in the notebook, and avoid manual interventions when possible.</p>
+        <p>Because notebooks&rsquo; interactivity make them vulnerable to accidental overwriting or deletion of critical steps by the user, if your analysis runs quickly, make a habit of regularly restarting your kernel and re-running all cells to make sure you did not accidentally delete a step while cleaning your notebook (and if you did, retrieve the code for it from version control). To allow partial execution of complex analyses, break long notebooks into smaller notebooks that focus on one or a few analysis steps. Then, ensure that each notebook stores serialized versions of key intermediate results to disk for subsequent notebooks to use.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Make use of the Genepattern Analysis modules and <a href="https://gpnotebook-website-docs.readthedocs.io/en/latest/programmatic/#ui-builder">UI Builder</a> to create seamless and easy-to-interpret pipelines within a single notebook.</p>
+        <p>Or, try our GenePattern Pipeline Creator through the <a href="https://www.genepattern.org/">GenePattern Web Interface</a> to create and distribute an entire computational analysis methodology in a single executable script</p>
+        <p>The Run All button will run any code or GenePattern cell within a notebook.</p>
+        </div>
+        </div>
+        <p><a id="r8"></a></p>
+        <h2 id="Rule-8:-Share-and-Explain-Your-Data"><a id="Rule-8:-Share-and-Explain-Your-Data-1.11"></a>Rule 8: Share and Explain Your Data</h2>
+        <p>Having access to a clearly-annotated notebook is of little use to reproducibility if the underlying data is locked away. Strive to make your data, or a sample of your data, publicly available along with the notebook. Notebooks make it easy to provide a description of your input data and upstream processing steps, which are essential for interpreting results.</p>
+        <p>Ideally, you will share your entire dataset alongside your notebooks. We realize many datasets are too large or too sensitive to share this way. In these cases, consider breaking down large and complex datasets into tiers such that, even if the raw data is prohibitively large to include alongside your published notebooks or is constrained by privacy or other access issues, reproducibility isn&rsquo;t lost. You can host public copies of medium-sized, anonymized data in a variety of hosting services (e.g., figshare (<a href="https://figshare.com/)" target="_blank">https://figshare.com/)</a>, zenodo (<a href="https://zenodo.org/))" target="_blank">https://zenodo.org/))</a>, and include further processed datasets alongside the notebooks in the final repository. To uniquely and permanently identify datasets, another important aspect of reproducibility, these hosting services provide Digital Object Identifiers (doi). This tiered approach both provides public confidence and allows others to replicate and reuse the latter stages of an analysis even without access to the full, raw dataset.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>The <a href="https://gpnotebook-website-docs.readthedocs.io/en/latest/programmatic/#ui-builder">UI Builder</a> can also be used to import data into a notebook.</p>
+        <p>For a full example, see one of our <a href="https://notebooks.genepattern.org/services/sharing/notebooks/381/preview/">workshop notebooks</a></p>
+        </div>
+        </div>
+        <p><a id="r9"></a></p>
+        <h2 id="Rule-9:-Enable-Your-Notebooks-to-Be-Read,-Run,-and-Explored"><a id="Rule-9:-Enable-Your-Notebooks-to-Be-Read,-Run,-and-Explored-1.12"></a>Rule 9: Enable Your Notebooks to Be Read, Run, and Explored</h2>
+        <p>If you have followed the previous rules, your notebooks should capture your entire process and be easy to read. But how will others access, run, and explore them? There are a number of ways you can support others&rsquo; reuse of your notebooks. First, store your notebooks in a public code repository with a clear README file and a liberal open source license (<a href="https://opensource.org/licenses" target="_blank">https://opensource.org/licenses</a>) granting permission to reuse your code.</p>
+        <p>Beyond granting permission to reuse, consider how you can leverage the unique structure of notebooks to support reading and exploration. At the very least, leave static HTML/PDF versions of all notebooks stored in the final version of the repository accompanying a publication. If in 20 years all other execution technology fails, these are likely to still provide a readable archival record, and with a full dependences list, future users are more likely to be able to recreate the compute environment. You can also use Nbviewer (<a href="https://nbviewer.jupyter.org/" target="_blank">https://nbviewer.jupyter.org/</a>) to provide static views of your executed notebook without needing to convert it to a PDF/HTML document first. GitHub uses this service to render any notebooks on their site, so pushing a notebook to GitHub is another good way to make static views easily available.</p>
+        <p>To support others running your notebooks, consider adding widgets as mentioned in Rule 4 so they can explore your data and new parameters without writing code (ipywidgets). You can use Binder [13] to provide a zero-install environment to run your notebooks in the cloud (<a href="https://mybinder.org/" target="_blank">https://mybinder.org/</a>) using Jupyter Notebook or Jupyter Lab for community members who would find installation a barrier to use. More generally, you can create a Docker image of your environment (<a href="https://docs.docker.com/" target="_blank">https://docs.docker.com/</a>) to ease setup.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>Visit the <a>g2nb Library</a> to see our growing collection of analysis notebooks. Any notebook in the GenePattern Workspace can be easily <a href="/publish-and-sharing/">published to our library or shared via email</a> All published notebooks will come with a single URL accessible for sharing or publication. This URL will send users to a preview of the entire notebook, including any visualizations or results visible when published.</p>
+        </div>
+        </div>
+        <p><a id="r10"></a></p>
+        <h2 id="Rule-10:-Contribute-to-Reproducible-and-Open-Research"><a id="Rule-10:-Contribute-to-Reproducible-and-Open-Research-1.13"></a>Rule 10: Contribute to Reproducible and Open Research</h2>
+        <p>Clearly, the mere use of a computational notebook does not guarantee reproducibility. If the convenience and interactivity of this technology has convinced you to adopt it, take the next step and become an advocate in your lab or workplace in promoting its reproducible use. Ask lab-mates or colleagues to try to run one of your notebooks, and then listen when they explain what went wrong. Try to run their notebooks and let them know if you hit snags. Commit yourself to reproducibility as key element of all your research group&rsquo;s computational work, not a phase performed after an analysis is complete or an afterthought triggered by journal or reviewer demands.</p>
+        <p>Much of the infrastructure underlying reproducible research including Jupyter Notebook, many Python data science libraries, and the R tidyverse are open source. Many are free to use only because (often volunteer) contributors and maintainers dedicate time working on the project. Consider contributing to an open-source code base dedicated to supporting reproducible research or building your own software to support reproducibility in your line of research. (Prli? and Procter [14] discuss considerations, impact, and benefits of contributing to an open source project.) Share and publish your efforts following some of the principles described in this and related Ten Simple Rules papers.</p>
+        <div class="gpbp row">
+        <div class="col-md-1" style="margin: auto;"><img src="/static/images/genepattern.png" width="50px" /></div>
+        <div class="col-md-11">
+        <p>g2nb usage is free and the software is open source under a BSD-style license. Our GenePattern Notebook Workspace and Notebook Library provide a medium for reproducibility by maintaining a dockerized environment with the ability to freely share notebooks and analysis modules between users. Data you are using being freely available (URL)</p>
+        </div>
+        </div>
+        <h5>References from Rule et al.<a href="https://arxiv.org/abs/1810.08055" target="_blank">Ten Simple Rules for Reproducible Research in Jupyter Notebooks</a> arXiv preprint arXiv:1810.08055 (2018)</h5>
+        <ol>
+        <li>
+        <p>Barba LA (2016) The hard road to reproducibility. Science 354, 142. doi: 10.1126/science.354.6308.142.</p>
+        </li>
+        <li>
+        <div><span>Peng RD (2011) Reproducible Research in Computational Science. Science 334, 12261227. doi: 10.1126/science.1213847.</span></div>
+        </li>
+        <li>
+        <div><span>Wilson G, Bryan J, Cranston K, Kitzes J, Nederbragt L, Teal TK (2017) Good enough practices in scientific computing. PLoS Comput Biol. 13(6):e1005510. doi: 10.1371/journal.pcbi.1005510.</span></div>
+        </li>
+        <li>
+        <div><span>Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten simple rules for reproducible computational research. PLoS Comput Biol. 9(10):e1003285. doi: 10.1371/journal.pcbi.1003285.</span></div>
+        </li>
+        <li>
+        <div><span>Reproducible Research using Jupyter Notebooks [Internet] [cited 4 Oct 2018]. Available from: <a href="https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/">https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/</a></span></div>
+        </li>
+        <li>
+        <div><span>Estimate of Public Jupyter Notebooks on GitHub [Internet] [cited 4 Oct 2018]. Available from: <a href="https://github.com/parente/nbestimate">https://github.com/parente/nbestimate</a></span></div>
+        </li>
+        <li>
+        <div><span>Rule A, Tabard A, Hollan JD (2018) Exploration and Explanation in Computational Notebooks. CHI ''18 Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems, ACM New York, NY, USA. doi: 10.1145/3173574.3173606.</span></div>
+        </li>
+        <li>
+        <div><span>P&eacute;rez F, Granger BE (2015) Computational Narratives as the Engine of Collaborative Data Science [Internet] [cited 4 Oct 2018]. Available from: <a href="https://blog.jupyter.org/projectjupyter-computational-narratives-as-the-engine-of-collaborative-data-science2b5fb94c3c58 ">https://blog.jupyter.org/projectjupyter-computational-narratives-as-the-engine-of-collaborative-data-science2b5fb94c3c58 </a></span></div>
+        </li>
+        <li>
+        <div><span>Kluyver T, Ragan-Kelley B, P&eacute;rez F, Granger, B, Bussonnier M, et al. (2016) Jupyter Notebooks&mdash;a publishing format for reproducible computational workflows. Positioning and Power in Academic Publishing: Players, Agents and Agendas 87-90, F. Loizides and B. Schmidt (Eds.). doi: 10.3233/978-1-61499-649-1-87.</span></div>
+        </li>
+        <li>
+        <div><span>Mark Woodbridge, Daniel Sanz, Daniel Mietchen, Ross Mounce (2017) Jupyter Notebooks and reproducible data science [Internet] [cited 4 Oct 2018]. Available from: <a href="https://markwoodbridge.com/2017/03/05/jupyter-reproducible-science.html">https://markwoodbridge.com/2017/03/05/jupyter-reproducible-science.html</a></span></div>
+        </li>
+        <li>
+        <div><span>Kery MB, Radensky M, Arya M, John BE, Myers BA (2018) The Story in the Notebook: Exploratory Data Science using a Literate Programming Tool. CHI ''18 Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems, ACM New York, NY, USA. doi: 10.1145/3173574.3173748.</span></div>
+        </li>
+        <li>
+        <div><span>Perez-Riverol Y, Gatto L, Wang R, Sachsenberg T, Uszkoreit J, et al. (2016) Ten Simple Rules for Taking Advantage of Git and GitHub. PLoS Comput Biol. 14;12(7):e1004947. doi: 10.1371/journal.pcbi.1004947.</span></div>
+        </li>
+        <li>
+        <div><span>Project Jupyter, Bussonnier M, Forde J, Freeman J, Granger B, et al. (2018) Binder 2.0 - Reproducible, interactive, shareable environments for science at scale. Proceedings of the 17th Python in Science Conference 2018, 113-120. doi: 10.25080/Majora-4af1f417011.</span></div>
+        </li>
+        <li>
+        <div><span>Prli? A, Procter JB (2012) Ten Simple Rules for the Open Development of Scientific Software. PLoS Comput Biol. 8(12):e1002802. doi: 10.1371/journal.pcbi.1002802. <br /></span></div>
+        </li>
+        </ol>
+</body>
+</html>

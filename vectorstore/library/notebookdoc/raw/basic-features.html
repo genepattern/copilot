@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Features</title>
+</head>
+<body>
+    <div class="page-toc">
+        <h3 style="text-align: center;">Contents</h3>
+        <ul>
+        <li><a href="#genepattern-cells">Tool Cells</a></li>
+        <ul>
+        <li><a href="#authentication-cells">Authentication Cells</a></li>
+        <li><a href="#analysis-cells">Analysis Cells</a></li>
+        <li><a href="#analysis-jobs">Analysis Jobs</a></li>
+        </ul>
+        <li><a href="#markdown-cells">Markdown Cells</a></li>
+        <li><a href="#template-cells">Template Cells</a></li>
+        <li><a href="#rich-text-editor">Rich Text Editor</a></li>
+        <li><a href="#notebook-projects" title="Notebook Projects">Notebook Projects</a></li>
+        </ul>
+        </div>
+        <h3 id="genepattern-cells">Tool Cells</h3>
+        <p>The g2nb environment provides a number of graphical widgets that make performing analyses easy, even for non-programming users. These widgets take the form of <em>Tool Cells</em> that allow a user to prepare analyses, launch jobs and visualize results.</p>
+        <p>To insert a Tool Cell, open the Toolbox panel on the lefthand side of the interface, then search or browse through the list. When you find the tool you wish to add, simply click on it. The tool will be added to your currently selected notebook.</p>
+        <p>Keyboard Shortcut:<em> G</em></p>
+        <h4 id="authentication-cells">Authentication Cells</h4>
+        <p><span>Authentication cells allows a user to sign into a g2nb-enabled platform, such as Galaxy or GenePattern.</span> They look like a login form with the additional option of selecting which server to sign into.</p>
+        <p><img alt="Galaxy Login" src="/static/media/uploads/galaxy-login.png" width="100%" /></p>
+        <h4 id="analysis-cells">Analysis Cells</h4>
+        <p>After a user has signed in using an Authentication Cell, the next task is usually to insert an Analysis Cell to perform an analysis. To do this, click the <em> Toolbox</em> panel. Search or browse through the list and then click one of the options to insert an Analysis Cell of that type.</p>
+        <p>Every Analysis Cell has a number of parameters, which can be used to upload data and to select other options for the analysis. Once you fill in these parameters, click <em>Run</em> to submit them as a job on the tool''s server.</p>
+        <p>Once the <em>Run</em> button has been clicked, all selected files will upload and then a Job <span>section</span> will be&nbsp;appended below the Analysis Cell to indicate the status of the job in queue (see&nbsp;Analysis Jobs below).</p>
+        <p><img alt="GenePattern Analysis" src="/static/media/uploads/analysis.png" width="100%" /></p>
+        <h4 id="analysis-jobs">Analysis Jobs</h4>
+        <p>Once an analysis is launched, a new section will appear under the analysis cell. This section represents the status of a job that has been submitted to queue for processing. Jobs progress through the states of Pending, Running and finally either to Completed or Error.</p>
+        <p>Once a job has completed or experienced an error, the cell will update to display a list of outputs. These outputs are files that can be displayed in the browser, downloaded, or sent as input to another analysis.</p>
+        <p>If this analysis includes visualization, the visualization will load and appear inside the Job section of the cell.</p>
+        <p>Additional options, such as memory requirements, can be specified when submitting a job. These options are hidden by default, but can be made visible by going to the cell''s Gear <i class="fa fa-cog"></i> menu and selecting <em>Toggle Advanced Options</em>.<img alt="GenePattern Job" src="/static/media/uploads/gp-job.png" width="100%" /></p>
+        <p><img alt="Galaxy Job" src="/static/media/uploads/galaxy-job.png" width="100%" /></p>
+        <h3 id="markdown-cells">Markdown Cells</h3>
+        <p>Markdown cells are another cell type available in the g2nb environment. They allow a notebook author to take notes, document methods or embed images in a notebook document.</p>
+        <p>To insert a markdown cell, first click the <i class="fa fa-plus"></i> <em>Insert a Cell Below</em> button in the notebook''s toolbar, then change the type to Markdown by clicking on the Type dropdown in the toolbar and selecting <em>Markdown</em>.</p>
+        <p><img alt="Markdown Menu" src="/static/media/uploads/markdown.png" width="100%" /></p>
+        <p>Markdown cells allow the user to format text using either <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a> or the <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> syntax. Additionally, we provide a "What You See is What You Get" rich text editor (see the&nbsp;<a href="#rich-text-editor">Rich Text Editor</a>&nbsp;section below).</p>
+        <p>Keyboard Shortcut:<em> M</em></p>
+        <h3 id="rich-text-editor">Rich Text Editor</h3>
+        <p>The Rich Text Editor allows a user to format notes and documentation in a notebook in much the same way that one might use Microsoft Word or Libre Office &mdash; without the need to write a single HTML tag or line of markdown.</p>
+        <p>To use the Rich Text Editor, simply insert a markdown cell (see the instructions above). This opens the Rich Text Editor and displays the <i class="fa fa-play"></i> button, which renders the text.</p>
+        <p>Style the text as desired, and when finished, click the <i class="fa fa-play"></i> button.</p>
+        <p><img alt="Rich Text Editor" src="/static/media/uploads/rich-text.png" width="100%" /></p>
+        <h3 id="notebook-projects">Notebook Projects</h3>
+        <p>The g2nb Workspace allows users to create multiple workspace environments, called &ldquo;projects.&rdquo; Each project allows users to independently install extensions, libraries, data files and other dependencies necessary for their biologic or bioinformatic workflows.</p>
+        <p>Users should be able to leverage notebook projects to keep independent work separate, to manage mutually-conflicting dependencies and to support a diverse array of computational tools.</p>
+        <p>When you sign in, you will be presented with a list of your available projects. You may search, browse or manage your projects from this page.</p>
+        <p>When creating a project, you will be prompted to assign it a name and a description. These may be changed later by editing the project.</p>
+        <p>To launch a project, simply click on it in the list. This will open the project in a new tab. Behind the scenes, the g2nb Workspace launches an independent Jupyter instance. These instances are gracefully suspended after an hour of inactivity, and may be resumed at a later date.</p>
+        <p>Once a project has been launched, you should see the familiar g2nb (JupyterLab) interface. From here you may install libraries, run analyses or perform other work necessary for your research.</p>
+        <p><a href="/publish-and-sharing/">Sharing and publishing projects is described here</a>.</p>
+        <p><img alt="Projects" src="/static/media/uploads/projects.png" width="100%" /></p>
+</body>
+</html>

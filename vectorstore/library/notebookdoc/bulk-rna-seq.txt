@@ -1,0 +1,10 @@
+Hierarchical clustering is a method for grouping genes or samples based on their similarity in RNA-seq data
+The result of hierarchical clustering is a dendrogram, which visually represents the relationships and distances between data points
+Hierarchical clustering helps researchers identify patterns and groups within complex biological datasets
+K-Means clustering is an unsupervised machine learning algorithm used to partition RNA-seq data into distinct groups
+In K-Means clustering, data points are assigned to K clusters based on their proximity to the cluster's central point (centroid)
+The algorithm aims to minimize the distance between data points within each cluster while maximizing the distance between different clusters
+K-Means clustering can help identify co-expressed genes or samples with similar expression profiles in RNA-seq experiments
+The number of clusters (K) is a predefined parameter that researchers must determine before running the analysis
+Preprocessing RNA-seq data is crucial before applying K-Means clustering to ensure accurate and meaningful results
+Visualization techniques are often used to interpret and communicate the results of K-Means clustering in genomic studies

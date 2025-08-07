@@ -1,0 +1,12 @@
+The g2nb community is a global collaborative network of researchers and developers in computational biology and bioinformatics.
+The community's Code of Conduct applies to all project spaces, both online and offline.
+Community members are expected to be open to collaboration and receptive to constructive feedback.
+The community values diversity and aims to create an inclusive environment where anyone can participate and contribute.
+Members are encouraged to be considerate of each other's efforts and work towards the collective good of the community.
+Respectful communication is a core principle, emphasizing courtesy and tact when discussing differing perspectives.
+The community promotes mutual respect for individuals' positions, skills, commitments, and contributions.
+g2nb software is open source and available under a BSD-style license, making it freely accessible to researchers.
+The workspace is not intended for handling protected health information (PHI) or personally identifiable information (PII).
+Community interactions should prioritize creating a positive, supportive, and collaborative environment.
+Members are expected to work within established community processes and guidelines.
+The code of conduct aims to foster a thriving, successful community through mutual understanding and respect.

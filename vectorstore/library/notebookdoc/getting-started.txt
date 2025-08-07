@@ -1,0 +1,12 @@
+g2nb is a cloud-based computational biology platform that integrates Jupyter notebooks with genomics tools from platforms like Galaxy and GenePattern.
+Users can access g2nb through accounts from GenePattern, Google, or Globus.
+The g2nb Workspace provides a centralized environment for managing notebook projects, including personal, public, and shared notebooks.
+The workspace is organized into sections: Your Projects, Public Library, and Shared With Me.
+Public notebooks are categorized into featured, tutorial, community, and workshop notebooks.
+To start a new project, users click "New Project" and provide a name, environment, and optional description.
+Authentication is required for platforms like GenePattern and Galaxy, which is done through authentication cells in the notebook.
+Users can search and select analysis tools from the toolbox panel on the left side of the interface.
+Each analysis tool has configurable parameters for uploading data and selecting analysis options.
+After running an analysis, jobs progress through pending, running, and completed/error states.
+Result files can be viewed, used programmatically in Python, or sent to downstream analyses.
+The platform is designed to make complex bioinformatics workflows accessible to researchers with varying levels of programming expertise.

@@ -1,0 +1,34 @@
+Scalable data tracking library for annotating and storing single-cell and genomic data with efficient memory usage
+Python toolkit for computational molecular biology, providing bioinformatics algorithms and data processing functions
+Interactive data visualization library enabling web-based, dynamic graphical representations of complex datasets
+Clone of computational analysis library with simplified implementation and reduced dependencies
+Support library for GenePattern providing utility functions and computational tools
+Cytoscape network visualization widget for integrating interactive network graphs in Jupyter notebooks
+Shared data modules for coordinating computational biology platform components
+User-friendly widgets for connecting to scientific data platforms
+NASA GeneLab API wrapper for accessing and processing space-related genomic datasets
+Official Jupyter notebook extension for integrating GenePattern computational tools
+Python library for programmatically interacting with GenePattern through REST API calls
+Command line interface and Python library for accessing Human Cell Atlas data coordination platform
+Enhanced text interface output generation for command-line applications
+Jupyter extension for embedding genome visualization tools directly in notebooks
+Interactive HTML widget framework for Jupyter environments
+WYSIWYG markdown and HTML cell editing functionality for Jupyter notebooks
+Community detection algorithm for analyzing network structures and graph connectivity
+Comprehensive 2D plotting library for generating publication-quality scientific visualizations
+Jupyter notebook tool for creating user-friendly computational interfaces
+Network data exchange Python client for accessing biological network databases
+Python package for graph and network manipulation and analysis
+NumPy-aware optimizing compiler for accelerating Python computational performance
+Fundamental package for numerical computing and array manipulation in Python
+Powerful data analysis and manipulation library with time series and statistical capabilities
+Open-source interactive graphing library for creating dynamic, web-based visualizations
+Cytoscape network analysis utility for Python environments
+Python module for reading, manipulating, and writing genomic datasets
+Python interface for embedded R language computational environments
+Scalable toolkit for analyzing and processing single-cell gene expression data
+Image processing routines integrated with scientific Python computational ecosystem
+Machine learning and data mining module for predictive analytics
+Comprehensive scientific computing library for numerical and mathematical operations
+Statistical data visualization library built on matplotlib with pandas integration
+Dimension reduction technique for visualizing high-dimensional datasets using manifold approximation

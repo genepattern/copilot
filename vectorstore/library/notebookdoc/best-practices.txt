@@ -1,0 +1,16 @@
+Here are the chunks for the documentation:
+Reproducibility is a critical hallmark of scientific methodology that enables researchers to build confidently on previous methods and findings.
+Computational notebooks like Jupyter Notebooks allow researchers to combine executable code, visualizations, and descriptive text in a single interactive document.
+Despite their potential, many Jupyter Notebooks lack clear explanations and face technical challenges that prevent easy reproduction of analyses.
+The documentation provides ten simple rules to help researchers create more reproducible and shareable computational notebooks.
+Rule 1 emphasizes telling a compelling narrative that explains not just what was done, but why, connecting steps and interpreting results for a specific audience.
+Rule 2 stresses documenting the entire research process, including explorations that may have led to dead ends, to capture reasoning and intuition.
+Rule 3 recommends modularizing notebooks by creating cells that perform meaningful, discrete analysis steps and using markdown headers to organize content.
+Rule 4 advises converting repeated code into reusable functions or modules to improve maintainability and support interactive exploration.
+Rule 5 highlights the importance of explicitly recording and managing software dependencies to ensure future reproducibility.
+Rule 6 emphasizes using version control to track changes and manage the complex metadata inherent in Jupyter Notebooks.
+Rule 7 suggests designing notebooks as generalizable pipelines that can be easily repeated with different input data and parameters.
+Rule 8 recommends sharing data alongside notebooks, ideally providing public access or creating anonymized data tiers.
+Rule 9 focuses on making notebooks readable, runnable, and explorable through strategies like providing static views and cloud-based execution environments.
+Rule 10 encourages researchers to become advocates for reproducibility and potentially contribute to open-source tools supporting computational research.
+The guidelines aim to transform computational notebooks from personal analysis playgrounds into clear, shareable scientific narratives.

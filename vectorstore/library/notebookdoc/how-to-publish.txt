@@ -1,0 +1,10 @@
+How to publish a project in GenePattern requires selecting the project's gear menu and choosing "Publish"
+A dialog will open prompting for author name, project quality, and a brief description
+After filling out the metadata, clicking "Publish" makes the project publicly available in the Public Library
+The published version represents a specific checkpoint of the project at the time of publication
+Future changes to the project are not automatically reflected in the published version
+To update a published project, users must explicitly choose to update the project in the public library
+Users can modify project metadata like author name and description through the publishing dialog
+The "Update" button allows modifying the published project details
+The "Unpublish" button removes the project from public view
+Project publication is a manual process requiring explicit user action for sharing and updating

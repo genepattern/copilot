@@ -57,7 +57,7 @@ def glean_basics(state: ModuleState):
     }
 
 
-def invoke_with_doc(state, prompt, rag_format=True):
+def invoke_for_module(state, prompt, rag_format=True):
     if rag_format: format_desc = """Format your description in embedding-friendly chunks for ingestion in a chroma 
         vector store. Break the content into atomic, semantically distinct chunks, with and natural language phrasing. 
         Write one chunk per line. Only write the text of the chunk; do not write metadata. Include the name of the 
@@ -75,11 +75,36 @@ def invoke_with_doc(state, prompt, rag_format=True):
     return state
 
 
-def documentize(state: ModuleState):
+def invoke_for_doc(state, prompt, rag_format=True):
+    if rag_format: format_desc = """Format your description in embedding-friendly chunks for ingestion in a chroma 
+        vector store. Break the content into atomic, semantically distinct chunks, with and natural language phrasing. 
+        Write one chunk per line. Only write the text of the chunk; do not write metadata. Do not include any other text."""
+    else: format_desc = ''
+
+    # Get the response and append to messages
+    response = llm.invoke(prompt + ' ' + format_desc + '\n\n' + state["doc"])
+    state["messages"].append(response)
+
+    # Extract documents
+    for line in response.content.split('\n'):
+        if line.strip(): state["documents"].append(line.strip())
+
+    return state
+
+
+def module_documentize(state: ModuleState):
     prompt = """Please give a technically detailed description the following GenePattern module documentation. It should 
     be targeted at someone with an undergraduate level of biological knowledge."""
 
-    state = invoke_with_doc(state, prompt)
+    state = invoke_for_module(state, prompt)
+    return { "messages": state["messages"], "documents": state["documents"] }
+
+
+def server_documentize(state: ModuleState):
+    prompt = """Please give a technically detailed description the following GenePattern documentation. It should 
+    be targeted at someone with an undergraduate level of biological knowledge."""
+
+    state = invoke_for_doc(state, prompt)
     return { "messages": state["messages"], "documents": state["documents"] }
 
 
@@ -89,7 +114,7 @@ def glean_uses(state: ModuleState):
     It should be targeted at someone with an undergraduate level of biological knowledge. Use the knowledge you already 
     possess, as well as that found in the module documentation below."""
 
-    state = invoke_with_doc(state, prompt)
+    state = invoke_for_module(state, prompt)
     return {"messages": state["messages"], "documents": state["documents"]}
 
 
@@ -98,7 +123,7 @@ def glean_parameters(state: ModuleState):
     should include the name of the parameter, its type, a description of what it does, and whether or not it is 
     required. If there are any default values, include those as well."""
 
-    state = invoke_with_doc(state, prompt)
+    state = invoke_for_module(state, prompt)
     return {"messages": state["messages"], "documents": state["documents"]}
 
 
@@ -107,11 +132,11 @@ def glean_formats(state: ModuleState):
     Include the file format, contents and any other relevant information in your description. Describe one input or 
     output per line."""
 
-    state = invoke_with_doc(state, prompt)
+    state = invoke_for_module(state, prompt)
     return {"messages": state["messages"], "documents": state["documents"]}
 
 
-def build_langgraph():
+def build_module_graph():
     """Build and compile the LangGraph for processing module information"""
     workflow = StateGraph(ModuleState)
 
@@ -120,7 +145,7 @@ def build_langgraph():
     workflow.add_node("glean_uses", glean_uses)
     workflow.add_node("glean_parameters", glean_parameters)
     workflow.add_node("glean_formats", glean_formats)
-    workflow.add_node("documentize", documentize)
+    workflow.add_node("documentize", module_documentize)
 
     # Define edges
     workflow.add_edge(START, "glean_basics")
@@ -128,6 +153,22 @@ def build_langgraph():
     workflow.add_edge("glean_uses", "glean_parameters")
     workflow.add_edge("glean_parameters", "glean_formats")
     workflow.add_edge("glean_formats", "documentize")
+    workflow.add_edge("documentize", END)
+
+    # Compile the graph
+    app = workflow.compile()
+    return app
+
+
+def build_server_graph():
+    """Build and compile the LangGraph for processing server documentation"""
+    workflow = StateGraph(ModuleState)
+
+    # Add new nodes
+    workflow.add_node("documentize", server_documentize)
+
+    # Define edges
+    workflow.add_edge(START, "documentize")
     workflow.add_edge("documentize", END)
 
     # Compile the graph
@@ -168,7 +209,7 @@ def write_summary(directory, basename, content):
         file.write(content)
 
 
-def summarize_html(doc):
+def summarize_html(doc, graph):
     initial_state = ModuleState(
         doc=doc,
         name="",
@@ -180,12 +221,18 @@ def summarize_html(doc):
     return final_state.get('name'), contents
 
 
-def summarize_all_doc(read_dir, write_dir):
+# Prepare the summary graph
+module_doc_graph = build_module_graph()
+server_doc_graph = build_server_graph()
+
+
+def summarize_all_doc(graph, read_dir, write_dir):
     if not os.path.isdir(read_dir):
         raise ValueError(f"The path '{read_dir}' is not a valid directory.")
 
     for filename in os.listdir(read_dir):
-        if os.path.exists(os.path.join(write_dir, os.path.basename(filename)[:-5] + '.txt')):
+        base_name = os.path.basename(filename)[:-5]
+        if os.path.exists(os.path.join(write_dir, base_name + '.txt')):
             print(f"Skipping {filename}")
             continue
         if filename.lower().endswith('.html') or filename.lower().endswith('.pdf'):
@@ -193,15 +240,15 @@ def summarize_all_doc(read_dir, write_dir):
             if filename.lower().endswith('.pdf'):
                 content = load_pdf(full_path)
             else: content = load_html(full_path)
-            module_name, summary = summarize_html(content)
-            write_summary(write_dir, module_name, summary)
+            page_name, summary = summarize_html(content, graph)
+            if not page_name: page_name = base_name
+            write_summary(write_dir, page_name, summary)
 
-
-# Prepare the summar0y graph
-graph = build_langgraph()
 
 # Summarize all HTML documentation files
-summarize_all_doc('./library/moduledoc/raw', './library/moduledoc/')
+summarize_all_doc(module_doc_graph, './library/moduledoc/raw', './library/moduledoc/')
+summarize_all_doc(server_doc_graph,'./library/serverdoc/raw', './library/serverdoc/')
+summarize_all_doc(server_doc_graph,'./library/notebookdoc/raw', './library/notebookdoc/')
 
 # TEST WITH ONLY A SINGLE MODULE
 # content = load_html('./library/moduledoc/raw/DESeq2.html')

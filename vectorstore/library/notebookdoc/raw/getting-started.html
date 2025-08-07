@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started</title>
+</head>
+<body>
+    <div class="page-toc">
+        <h3>Contents</h3>
+        <ol>
+        <li><a href="#login-or-register">Login or Register with g2nb</a></li>
+        <ol style="list-style-type: lower-alpha;">
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login to g2nb</a></li>
+        </ol>
+        <li><a href="#using-the-genepattern-notebook-workspace">Using the g2nb Workspace</a></li>
+        <ol style="list-style-type: lower-alpha;">
+        <li><a href="#navigating-the-workspace">Navigating the Workspace</a></li>
+        <ol style="list-style-type: lower-roman;">
+        <li><a href="#files">Files (Personal Workspace)</a></li>
+        <li><a href="#notebook-library">Notebook Library</a></li>
+        </ol>
+        <li><a href="#open-an-existing-notebook">Open an existing notebook</a></li>
+        <li><a href="#create-a-new-notebook">Create a new notebook</a></li>
+        </ol>
+        <li><a href="#using-genepattern-in-a-notebook">Using GenePattern in a notebook</a></li>
+        <ol style="list-style-type: lower-alpha;">
+        <li><a href="#log-into-genepattern">Log into GenePattern</a></li>
+        <li><a href="#begin-an-analysis">Begin an Analysis</a></li>
+        <li><a href="#working-with-results">Working with Results</a></li>
+        <li><a href="#access-in-python">Access in Python</a></li>
+        </ol>
+        </ol>
+        </div>
+        <div class="titles">
+        <p></p>
+        <p dir="auto"><strong>Genomics to Notebook (g2nb)</strong> combines the accessibility and research narrative capabilities of <a href="https://jupyter.org" rel="nofollow">Jupyter</a> with the genomics tools available in <a href="https://usegalaxy.org" rel="nofollow">Galaxy</a>, <a href="https://genepattern.org" rel="nofollow">GenePattern</a>, and other popular bioinformatics platforms, adding many features for ease of use by non-programming scientists.</p>
+        <h3 id="login-or-register">1. Login&nbsp;or register with g2nb</h3>
+        <h4 id="register">A. Login or register</h4>
+        <p>To use the g2nb environment, you will need a GenePattern, Google, or Globus account.&nbsp;If you do not already have one, click here to register to: GenePattern, Google, or Globus.</p>
+        <p>Once you have an account, you can begin using g2nb on the&nbsp;<a href="https://workspace.g2nb.org">g2nb Workspace</a> or click on "Get Started". This option requires no installation and provides the advantage of running your notebooks in the Amazon cloud. If you wish to install the g2nb environment on a local machine, you can follow <a href="https://docs.g2nb.org/en/latest/local-installation/" target="_blank">these instructions</a>.</p>
+        <p><img src="/static/media/uploads/screen_shot_2022-09-09_at_3.56.38_pm.png" width="80%" /></p>
+        <h4 id="login">B.&nbsp;Login to g2nb</h4>
+        <p><span>Open up the <a href="https://workspace.g2nb.org">g2nb Workspace</a> and then log in with your g2nb account.</span></p>
+        <h3 id="using-the-genepattern-notebook-workspace">2.&nbsp;Using the g2nb Workspace</h3>
+        <hr />
+        <h4 id="navigating-the-workspace">A. Navigating the workspace</h4>
+        <h5 id="files">i. Your Projects</h5>
+        <p><span>The<span> </span></span><em>Your Projects</em><span><span> </span>section contains your personal workspace. Listed here are the notebook projects which are private to your account. Here you can create new projects, edit them or launch them as desired. You are also be able to publish and share projects here.</span></p>
+        <p><img alt="Projects" src="/static/media/uploads/projects.png" width="100%" /></p>
+        <h5 id="notebook-library">ii. Public Library</h5>
+        <p><span>The g2nb Workspace provides a library of public notebooks, which can serve as templates or examples when creating your own. These notebooks can be accessed from the<span> </span></span><em>Public Library</em><span><span> </span>section.&nbsp;<a href="/library">Preview Notebook Library</a></span></p>
+        <ul>
+        <li>Public projects are tagged and divided into several different categories. <strong>Featured notebooks</strong> have been selected because they provide templates for relevant bioinformatics and machine learning workflows.</li>
+        <li><span><span><strong>Tutorial notebooks</strong> teach how to use different g2nb features, including advanced programmatic features.</span></span></li>
+        <li><span><span><span><strong>Community notebooks</strong> are those that have been contributed by the g2nb community.</span></span></span></li>
+        <li><span><span><span>Finally,&nbsp;<strong>Workshop notebooks</strong> have been used by the g2nb team for one of our workshops, seminars, or bootcamps.</span></span></span></li>
+        </ul>
+        <p><strong>iii. Shared With Me</strong></p>
+        <p><span><span><span><span>If any notebook projects have been shared with you, they will appear in a section titled <em>Shared With Me</em>. If this section is missing, it is because you haven''t had any projects shared with you yet.<br /></span></span></span></span></p>
+        <h4 id="open-an-existing-notebook">B. Open an existing notebook project</h4>
+        <h5><b>i. Opening from the Public Library<b></b></b></h5>
+        <p>While browsing the Public Library, clicking on any project will open a dialog box.</p>
+        <p>This gives you the option to view information about the project or run the project. Note that running a project will add a copy of it to your personal workspace.</p>
+        <h5><b>ii. Opening from your personal workspace</b></h5>
+        <p>Clicking on any notebook project in the list will open it in a new tab.</p>
+        <h4 id="create-a-new-notebook">C. Create a new notebook project</h4>
+        <p><span>To create a new blank project, click on the<span>&nbsp;</span></span><em>New Project</em><span><span> </span>button</span><span>. This will open a dialog prompting you to give the project a name, select and environment and, optionally, give it a description.<br /></span></p>
+        <h3 id="using-genepattern-in-a-notebook">3.&nbsp;Using g2nb tools in a notebook</h3>
+        <hr />
+        <p>Once a notebook project has been launched, a&nbsp; <em>Toolbox</em> panel will be available on the lefthand side of the interface. Opening this panel displays the list of available g2nb tools. Clicking on a tool in the list adds it to the currently selected notebook document.</p>
+        <p>For general information on how to use Jupyter, see the<span>&nbsp;</span><a href="https://jupyter.org/">Jupyter documentation</a>.<br /><span></span></p>
+        <h4 id="#log-into-genepattern">A. Authentication cells</h4>
+        <p>Certain g2nb-enabled platforms, such as GenePattern or Galaxy, require authentication. To use these platforms, first insert an Authentication Cell. This can be accomplished by clicking on "Galaxy Login" or "GenePattern Login" in the toolbox.</p>
+        <p>This adds a new cell to your notebook with a login form for the selected platform. Enter your credentials, then click "Log into ...".</p>
+        <p><img alt="Galaxy Login" src="/static/media/uploads/galaxy-login.png" width="100%" /></p>
+        <h4 id="begin-an-analysis">B. Begin an analysis</h4>
+        <p>Once you''re signed in, all of the analyses available on the selected platform will appear as separate tools in the g2nb toolbox.</p>
+        <p>You can search through these analyses using the search box found at the top of toolbox panel. Once you have selected an analysis, click it to add it as a cell in the notebook.</p>
+        <p>Each analysis has a number of parameters, which can be used to upload data and to select other options for the analysis. Once you fill in these parameters, click<span>&nbsp;"Run"</span><span>&nbsp;</span>to submit them as a job to the GenePattern or Galaxy server.</p>
+        <p><img alt="GenePattern Analysis" src="/static/media/uploads/analysis.png" width="100%" /></p>
+        <p>Once the<span>&nbsp;"Run"&nbsp;</span>button has been clicked, all selected files will upload and then the cell will change to indicate the status of the job in the queue. Jobs progress through the states of Pending, Running and finally either to Completed or Error.</p>
+        <p><img alt="GenePattern Job" src="/static/media/uploads/gp-job.png" width="100%" /></p>
+        <h4 id="working-with-results">C. Working with Results</h4>
+        <p>When an analysis is completed, the cell will display the result files. Clicking on one of these files will show a menu of options, such as viewing the file, using the output programmatically in Python code or sending the file to a downstream analysis. If an analysis resulted in an error, it will present an error log. This file can be viewed to determine what went wrong with the analysis.</p>
+        <p><img alt="Galaxy Job" src="/static/media/uploads/galaxy-job.png" width="100%" /></p>
+        <div id="gtx-trans">
+        <div class="gtx-trans-icon"></div>
+        </div>
+        </div>
+</body>
+</html>

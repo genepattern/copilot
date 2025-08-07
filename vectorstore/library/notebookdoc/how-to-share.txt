@@ -1,0 +1,12 @@
+Collaborative project sharing in g2nb requires user authentication and explicit invitation mechanisms
+Users can initiate project sharing by selecting the project's gear menu and choosing the "Share" option
+The sharing interface allows entry of usernames or email addresses for potential collaborators
+Multiple collaborators can be added by separating their contact information with commas or tabs
+Shared project invitations are sent electronically to specified users
+Recipients can view sharing invitations in the "Shared With Me" section of their g2nb Workspace
+Invited users have the option to accept or reject project sharing invitations
+Upon accepting an invitation, users gain view and edit access to the shared project
+Accepted shared projects are accessible through the "Shared With Me" section of the g2nb Workspace
+Project sharing facilitates collaborative research and analysis workflows between g2nb users
+The sharing process requires both an initiator and recipient to be authenticated g2nb users
+Shared projects maintain the original project structure and content during collaboration

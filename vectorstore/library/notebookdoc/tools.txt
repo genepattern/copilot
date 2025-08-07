@@ -1,0 +1,12 @@
+Galaxy is an open, web-based platform for performing reproducible and transparent biomedical research
+Galaxy allows complete computational analyses to be built, saved, rerun, modified, and shared
+GenePattern is a genomic analysis platform providing access to hundreds of tools for diverse biological research domains
+GenePattern supports tools for gene expression analysis, proteomics, SNP analysis, flow cytometry, RNA-seq analysis, and data processing
+Cytoscape is an open-source bioinformatics software for visualizing molecular interaction networks and biological pathways
+Cytoscape can integrate networks with annotations, gene expression profiles, and other state data
+The Integrative Genomics Viewer (IGV) is a high-performance visualization tool for exploring large-scale genomic data sets
+IGV supports flexible integration of diverse data types and enables seamless zooming and panning across genomic regions
+NDEx Project provides an open source framework for sharing, storing, manipulating, and publishing biological network knowledge
+Globus is a data management platform that allows users to move, share, and discover data across different computational environments
+Globus supports data transfer between supercomputers, lab clusters, tape archives, public clouds, and personal computers
+Users can initiate Globus transfers by right-clicking files in the Files panel

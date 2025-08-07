@@ -1,0 +1,40 @@
+Single-Cell GenePattern Resources Overview
+GenePattern is a computational platform for single-cell RNA sequencing analysis
+GenePattern provides multiple computational tools for different stages of single-cell analysis
+The platform supports various analysis workflows including preprocessing, alignment, quality control, and visualization
+Getting Started Resources
+g2nb tutorial notebook provides introduction to basic environment features
+Tutorial covers text formatting, UI builder, programmatic features, and file handling in Python
+Preprocessing and Alignment Tools
+STAR aligner maps RNA-seq reads to genome
+Kallisto performs transcript-level quantification
+HISAT2 enables mapping of sequencing reads to reference genomes
+TopHat supports splice junction mapping for RNA-Seq reads
+Quality Control and Filtering Tools
+FastQC generates sequencing data quality reports
+Seurat QC explores cell-level quality metrics
+Trimmomatic trims low-quality reads and adapter sequences
+HTSeq.Count processes alignment files
+Single-Cell Analysis Suites
+Seurat Suite provides comprehensive single-cell RNA-seq analysis workflow
+STREAM Suite enables trajectory reconstruction and visualization
+Conos Suite supports multi-sample dataset integration
+ScanpyUtilities offers Python-based single-cell analysis tools
+Seurat Workflow Components
+Seurat.QC performs initial dataset exploration
+Seurat.BatchCorrection integrates multiple datasets
+Seurat.Preprocessing prepares data for analysis
+Seurat.Clustering performs dimensionality reduction and clustering
+STREAM Trajectory Analysis Steps
+STREAM.Preprocess prepares single-cell RNA-seq data
+STREAM.FeatureSelection identifies key genomic features
+STREAM.DimensionReduction reduces dataset complexity
+STREAM.ElasticPrincipalGraph calculates pseudotime trajectory
+Computational Approach
+Supports multiple programming languages and analysis paradigms
+Modular design allows flexible workflow construction
+Enables complex single-cell data processing and interpretation
+Visualization and Exploration Tools
+Includes interactive visualization modules
+Supports various plotting and clustering representations
+Enables detailed exploration of single-cell datasets

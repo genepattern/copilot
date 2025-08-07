@@ -1,0 +1,14 @@
+Tool Cells provide graphical widgets for performing analyses in the g2nb environment, making it accessible to non-programming users.
+Tool Cells can be inserted by opening the Toolbox panel and clicking on the desired tool.
+Authentication Cells allow users to sign into g2nb-enabled platforms like Galaxy or GenePattern, presenting a login form with server selection options.
+Analysis Cells enable users to perform specific analyses after authentication by selecting tools from the Toolbox panel.
+Analysis Cells have multiple parameters for uploading data and configuring analysis options, with a Run button to submit jobs to the server.
+When an analysis is launched, a Job section appears tracking the job's status through Pending, Running, Completed, or Error states.
+Completed job cells display output files that can be viewed, downloaded, or used as input for subsequent analyses.
+Advanced job options like memory requirements can be accessed through the cell's Gear menu by selecting "Toggle Advanced Options".
+Markdown Cells allow notebook authors to add documentation, notes, and embedded images using HTML or Markdown syntax.
+The Rich Text Editor provides a user-friendly interface for formatting text without requiring HTML or Markdown knowledge.
+Notebook Projects are independent workspace environments where users can install extensions, libraries, and data files for specific research workflows.
+Projects can be created, named, and managed, with each project launching an independent Jupyter instance suspended after an hour of inactivity.
+Users can launch projects by clicking on them, which opens a new tab with the g2nb (JupyterLab) interface for research and analysis.
+Projects can be shared and published through a separate mechanism described in the documentation.

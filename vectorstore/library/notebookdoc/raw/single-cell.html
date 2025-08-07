@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single-Cell GenePattern Resources</title>
+    <meta name="slug" content="single-cell" />
+</head>
+<body>
+    <div class="header">
+        <div class="toc">
+        <h4>Table of Contents</h4>
+        <ol>
+        <li><a href="#get-started">Get Started</a></li>
+        <li><a href="#preprocessing">Preprocessing</a></li>
+        <ol>
+        <li><a href="#alignment">Alignment</a></li>
+        <li><a href="#qc">QC/Filtering</a></li>
+        </ol>
+        <li><a href="#single-cell">Single Cell Analysis</a></li>
+        <ol>
+        <li><a href="#seurat">Seurat Suite</a></li>
+        <li><a href="#stream">STREAM Suite</a></li>
+        <li><a href="#conos">Conos Suite</a></li>
+        <!-- <li><a href="#mutation">Monocle</a></li> -->
+        <li><a href="#scanpy">ScanpyUtilities</a></li>
+        </ol>
+        <li><a href="#visualization">Visualization Tools</a></li>
+        </ol>
+        </div>
+        <div class="get-started" id="get-started">
+        <h2>Get Started</h2>
+        <p>If you are new to g2nb, we recommend checking out some of our tutorial notebooks below:</p>
+        </div>
+        <div class="importing-data" id="importing-data">
+        <h3>Tutorial Notebooks</h3>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Notebook</th>
+        <th>Description</th>
+        <th>Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="https://notebook.genepattern.org/services/sharing/notebooks/361/preview/" target="_blank">g2nb Tutorial</a></th>
+        <td>A tutorial on how to use the basic features of the g2nb environment.</td>
+        <td style="text-align: center;"><a href="https://notebook.genepattern.org/services/sharing/notebooks/361/preview/" target="_blank"><i class="fas fa-file-alt"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://notebook.genepattern.org/services/sharing/notebooks/363/preview/" target="_blank">Introduction to Text and Document Formatting</a></th>
+        <td>A tutorial on the text/document features specific to g2nb</td>
+        <td style="text-align: center;"><a href="https://notebook.genepattern.org/services/sharing/notebooks/363/preview/" target="_blank"><i class="fas fa-file-alt"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://notebook.genepattern.org/services/sharing/notebooks/294/preview/" target="_blank">UI Builder Tutorial</a></th>
+        <td>A tutorial of how to use the UI Builder, aimed at notebook authors with programmatic skill.</td>
+        <td style="text-align: center;"><a href="https://notebook.genepattern.org/services/sharing/notebooks/294/preview/" target="_blank"><i class="fas fa-file-alt"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://notebook.genepattern.org/services/sharing/notebooks/362/preview/" target="_blank">Programmatic Features</a></th>
+        <td>A tutorial on the notebook features catering to programmers</td>
+        <td style="text-align: center;"><a href="https://notebook.genepattern.org/services/sharing/notebooks/362/preview/" target="_blank"><i class="fas fa-file-alt"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://notebook.genepattern.org/services/sharing/notebooks/29/preview/" target="_blank">GenePattern Files in Python</a></th>
+        <td>A tutorial on how to programmatically use g2nb files in conjunction with common Python libraries, such as csv, numpy, pandas and matplotlib.</td>
+        <td style="text-align: center;"><a href="https://notebook.genepattern.org/services/sharing/notebooks/29/preview/" target="_blank"><i class="fas fa-file-alt"></i></a></td>
+        </tr>
+        <!-- <tr>
+                                <th><a href=""></a></th>
+                                <td></td>
+                                <td style="text-align: center;"><a href=""><i class="fas fa-file-alt"></i></a></td>                    
+                            </tr>             --></tbody>
+        </table>
+        </div>
+        <h2 class="preprocessing" id="preprocessing">Preprocessing</h2>
+        <div class="alignment" id="alignment">
+        <h3>Alignment</h3>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Tool</th>
+        <th>Input</th>
+        <th>Output</th>
+        <th>Quantitation</th>
+        <th>Details</th>
+        <th>Documentation</th>
+        <th>Reference</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00370:999999999" target="_blank">STAR.aligner</a></th>
+        <td>FASTA/FASTQ</td>
+        <td>SAM/BAM</td>
+        <td></td>
+        <td>STAR (Spliced Transcripts Alignment to a Reference) 2.5.3a is a fast RNA-seq reads to genome mapper.</td>
+        <td style="text-align: center;"><a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00370:999999999" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="http://www.ncbi.nlm.nih.gov/pubmed/23104886" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://pachterlab.github.io/kallisto/" target="_blank">Kallisto</a></th>
+        <td>FASTA/FASTQ</td>
+        <td>TSV/CSV (Transcript-level and gene-level abundance)</td>
+        <td style="text-align: center;"><i class="fa fa-check"></i></td>
+        <td>Bare-bones implementation of kallisto, intended to be used for RNA quantitation against a human index.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Kallisto" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://www.nature.com/articles/nbt.3519" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <!-- <tr>
+                                <th><a>Salmon</a></th>
+                                <td>FASTA/FASTQ</td>
+                                <td>TSV/CSV (Transcript-level and gene-level abundance)</td>
+                                <td style="text-align: center;"><i class="fa fa-check"></i></td>
+                                <td></td>
+                            </tr> -->
+        <tr>
+        <th><a href="https://daehwankimlab.github.io/hisat2/" target="_blank">HISAT2.aligner</a></th>
+        <td>FASTA/FASTQ</td>
+        <td>SAM</td>
+        <td></td>
+        <td>HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome).</td>
+        <td style="text-align: center;"><a href="https://www.genepattern.org/modules/docs/Hisat2Aligner/1" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://dl.acm.org/doi/10.1109/TCBB.2013.2297101" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://www.genepattern.org/modules/docs/TopHat/9" target="_blank">TopHat</a></th>
+        <td>FASTA/FASTQ</td>
+        <td>BAM/BED</td>
+        <td></td>
+        <td>TopHat 2.0.11 is a fast splice junction mapper for RNA-Seq reads.</td>
+        <td style="text-align: center;"><a href="https://www.genepattern.org/modules/docs/TopHat/9" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="http://genomebiology.com/2013/14/4/R36/abstract" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        </tbody>
+        </table>
+        <!-- <div class="alert alert-danger">left out salmon bc it''s not ready</div> --></div>
+        <div class="qc" id="qc">
+        <h3>QC/Filtering</h3>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Tool</th>
+        <th>Input</th>
+        <th>Filtering</th>
+        <th>Normalization</th>
+        <th>Details</th>
+        <th>Documentation</th>
+        <th>Reference</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">FastQC</a></th>
+        <td>FASTQ, SAM, or BAM</td>
+        <td></td>
+        <td></td>
+        <td>FastQC takes sequencing data as input and returns a report on read quality.</td>
+        <td style="text-align: center;"><a href="https://www.genepattern.org/modules/docs/FastQC/1" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://github.com/genepattern/Seurat.QC/blob/develop/doc.md" target="_blank">Seurat.QC</a></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Seurat.QC allows you to explore QC metrics based on any user-defined criteria. A few QC metrics commonly used by the community include: unique feature counts, mitochondrial counts, total number of molecules detected within a cell. <a href="https://satijalab.org/seurat/v3.2/pbmc3k_tutorial.html" target="_blank">Source</a></td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Seurat.QC/blob/develop/doc.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://www.cell.com/cell/fulltext/S0092-8674(19)30559-8" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://satijalab.org/seurat/" target="_blank">Seurat.Preprocessing</a></th>
+        <td></td>
+        <td><i class="fa fa-check"></i></td>
+        <td>log-normalize</td>
+        <td>Seurat.Preprocessing allows you to explore QC metrics and filter cells based on any user-defined criteria. See Seurat.QC for more info.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Seurat.Preprocessing/blob/develop/doc.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://www.cell.com/cell/fulltext/S0092-8674(19)30559-8" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank">Trimmomatic</a></th>
+        <td></td>
+        <td><i class="fa fa-check"></i></td>
+        <td></td>
+        <td>Provides a variety of options for trimming Illumina FASTQ files of adapter sequences and low-quality reads.</td>
+        <td style="text-align: center;"><a href="https://www.genepattern.org/modules/docs/Trimmomatic/2" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://academic.oup.com/bioinformatics/article/30/15/2114/2390096" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://github.com/theislab/scanpy" target="_blank">ScanpyUtilities</a></th>
+        <td></td>
+        <td><i class="fa fa-check"></i></td>
+        <td><a href="https://genepattern.github.io/ScanpyUtilities/" target="_blank">See Documentation</a></td>
+        <td>Single-cell preprocessing (annotation and filtering) GenePattern module using Scanpy</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/ScanpyUtilities/" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://htseq.readthedocs.io/en/master/" target="_blank">HTSeq.Count</a></th>
+        <td>SAM/BAM and GTF/GFF</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="text-align: center;"><a href="https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00412:3" target="_blank"><i class="fa fa-book"></i></a></td>
+        <td style="text-align: center;"><a href="https://pubmed.ncbi.nlm.nih.gov/25260700/" target="_blank"><i class="fas fa-newspaper"></i></a></td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <div class="single-cell" id="single-cell">
+        <h2>Single Cell Analysis</h2>
+        <h3 id="seurat">Seurat Suite</h3>
+        <p>Seurat (<a href="https://satijalab.org/seurat/" target="_blank">https://satijalab.org/seurat/</a>) is an R package designed for QC, analysis, and exploration of single-cell RNA-seq data. Seurat aims to enable users to identify and interpret sources of heterogeneity from single-cell transcriptomic measurements, and to integrate diverse types of single-cell data. <br /><br /> <a href="https://www.nature.com/articles/nbt.4096" target="_blank">Butler <i>et al.</i>, Nature Biotechnology 2018</a> <br /> <a href="https://www.cell.com/cell/fulltext/S0092-8674(19)30559-8" target="_blank">Stuart, Butler <i>et al.</i>, Cell 2019</a></p>
+        <div style="text-align: center;"><img src="/static/media/uploads/seurat.png" width="70%" /></div>
+        <p>Within GenePattern, Seurat is accessed as several different modules exposing different portions of the Seurat workflow:</p>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Tool</th>
+        <th>Description</th>
+        <th>Documentation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="https://github.com/genepattern/Seurat.QC/blob/develop/doc.md" target="_blank">Seurat.QC</a><a></a></th>
+        <td>The <b>Seurat.QC</b> Module aims to provide a quick look at some basic single-cell datasets. This is typically the first step in the Seurat Suite modules. The resultant preprocessed dataset can then be used for downstream analyses and visualizations (such as <b>Seurat.Preprocessing</b>). If you are doing batch correction, then you want to run <b>Seurat.BatchCorrection</b> before <b>Seurat.QC</b>.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Seurat.QC/blob/develop/doc.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://github.com/genepattern/Seurat.BatchCorrection/blob/develop/doc.md" target="_blank">Seurat.BatchCorrection</a></th>
+        <td>The <b>Seurat.BatchCorrection</b> Module aims to integrate / "batch-correct" multiple single-cell datasets and identify shared cell states that are present across different datasets, regardless of their origin. Once the Module integrates these datasets, the returned object will contain a new Assay that holds an integrated / batch-corrected expression matrix for all cells. The resultant batch-corrected expression matrix can then be used for downstream analyses and visualizations.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Seurat.BatchCorrection/blob/develop/doc.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://github.com/genepattern/Seurat.Preprocessing/blob/develop/doc.md" target="_blank">Seurat.Preprocessing</a></th>
+        <td>The <b>Seurat.Preprocessing</b> Module aims to provide a way to integrate the multiple steps in the preprocessing of single-cell datasets. The resultant preprocessed dataset can then be used for downstream analyses and visualizations (<b>Seurat.Clustering</b>). You may need to run this module multiple times if you want to change the filtering step.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Seurat.Preprocessing/blob/develop/doc.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/SeuratClustering/" target="_blank">SeuratClustering</a></th>
+        <td><b>Seurat.Clustering</b> performs UMAP clustering and marker identification on single-cell RNA-Seq data. <br /><br /> The <b>Seurat.Clustering</b> module performs uses Seurat version 3.0.2. It performs following steps from Seurat to the input dataset:
+        <ol>
+        <li>FindNeighbors</li>
+        <li>FindClusters</li>
+        <li>RunUMAP</li>
+        <li>DimPlot</li>
+        </ol>
+        For details of the Seurat implementation please refer to the <a href="https://satijalab.org/seurat/" target="_blank">Seurat documentation</a> from the Satija lab.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/SeuratClustering/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="stream">STREAM Suite</h3>
+        <p>STREAM (Single-cell Trajectories Reconstruction, Exploration And Mapping) (<a href="https://github.com/pinellolab/STREAM" target="_blank">https://github.com/pinellolab/STREAM</a>) is an interactive pipeline capable of disentangling and visualizing complex branching trajectories from both single-cell transcriptomic and epigenomic data. Within GenePattern, STREAM is implemented as a collection of modules that cover the entire STREAM processing pipeline to allow individual steps to be performed interactively for data exploration.</p>
+        <a href="https://www.nature.com/articles/s41467-019-09670-4" target="_blank">Chen <i>et al.</i> 2019</a>
+        <div class="row" style="text-align: center;"><a href="https://notebooks.genepattern.org/services/sharing/notebooks/355/preview/" target="_blank"><img src="/static/media/uploads/stream-ss2.png" width="50%" /></a></div>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Tool</th>
+        <th>Description</th>
+        <th>Documentation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.Preprocess/" target="_blank">STREAM.Preprocess</a></th>
+        <td><b>STREAM.Preprocess</b> will prepare single cell RNA-seq data for the STREAM trajectory analysis. It will normalize, log transform, filter and remove mitochondiral genes.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.Preprocess/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.FeatureSelection/" target="_blank">STREAM.FeatureSelection</a></th>
+        <td><b>STREAM.FeatureSelection</b> is used to identify features to be used in the downstream analysis. Two types of features can be used;
+        <ol>
+        <li>Variable genes</li>
+        <li>Top principal components</li>
+        </ol>
+        </td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.FeatureSelection/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.DimensionReduction/" target="_blank">STREAM.DimensionReduction</a></th>
+        <td><b>STREAM.DimensionReduction</b> is used to reduce the dimensionality of the dataset to be used in the downstream analysis.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.DimensionReduction/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.Plot2DVisualization/" target="_blank">STREAM.Plot2DVisualization</a></th>
+        <td><b>STREAM.Plolt2DVisualization</b> is used check if there is clear meaningful trajectory pattern to the data. If there is, we will continue the downstream analysis placing the cells onto the trajectories. If not, we would go back to previous steps to modify the parameters used to filter and prepare the data to try different settings.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.Plot2DVisualization/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.SeedEPGStructure/" target="_blank">STREAM.SeedEPGStructure</a></th>
+        <td><b>STREAM.SeedEPGStructure</b> is use to seed the initial elastic principal graph prior to starting the trajectory learning process.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.SeedEPGStructure/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.ElasticPrincipalGraph/" target="_blank">STREAM.ElasticPrincipalGraph</a></th>
+        <td><b>STREAM.ElasticPrincipalGraph</b> uses elastic principal graph learning to calculate a pseudotime trajectory.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.ElasticPrincipalGraph/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.EPGAdjustFinalGraph/" target="_blank">STREAM.EPGAdjustFinalGraph</a></th>
+        <td><b>STREAM.EPGAdjustFinalGraph</b> facilitates some final adjustments to the graph generated by <b>STREAM.ElasticPrincipalGraph</b> such as optimizing the structure, pruning the final structure or extending leaf nodes.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.EPGAdjustFinalGraph/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.VisualizeTrajectories/" target="_blank">STREAM.VisualizeTrajectories</a></th>
+        <td><b>STREAM.VisualizeTrajectories</b> is used to generate the subway and stream plots for a computed graph structure.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.VisualizeTrajectories/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.DetectDifferentiallyExpressedGenes/" target="_blank">STREAM.DetectDifferentiallyExpressedGenes</a></th>
+        <td><b>STREAM.DetectDifferentiallyExpressedGenes</b> used to detect differentially expressed genes between pairs of branches.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.DetectDifferentiallyExpressedGenes/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.DetectLeafGenes/" target="_blank">STREAM.DetectLeafGenes</a></th>
+        <td><b>STREAM.DetectLeafGenes</b> is used to detect marker genes for each leaf branch.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.DetectLeafGenes/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://genepattern.github.io/STREAM.DetectTransitionGenes/" target="_blank">STREAM.DetectTransitionGenes</a></th>
+        <td><b>STREAM.DetectTransitionGenes</b> is used to detect marker genes for each transition.</td>
+        <td style="text-align: center;"><a href="https://genepattern.github.io/STREAM.DetectTransitionGenes/" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        </tbody>
+        </table>
+        <h3 id="conos">CONOS Suite</h3>
+        <p>Conos (Clustering on Network of Samples) (<a href="https://github.com/kharchenkolab/conos">https://github.com/kharchenkolab/conos</a>) is a package to wire together large collections of single-cell RNA-seq datasets, which allows for both the identification of recurrent cell clusters and the propagation of information between datasets in multi-sample or atlas-scale collections. It focuses on the uniform mapping of homologous cell types across heterogeneous sample collections. For instance, users could investigate a collection of dozens of peripheral blood samples from cancer patients combined with dozens of controls, which perhaps includes samples of a related tissue such as lymph nodes. <br /> <br /> <a href="https://www.nature.com/articles/s41592-019-0466-z" target="_blank">Barkas <i>et al.</i> 2019</a></p>
+        <div class="row" style="text-align: center;"><a target="_blank"><img src="/static/media/uploads/conos.png" width="60%" /></a></div>
+        <p><br /> This module will read single cell data (e.g., count files) from different datasets and project each of those datasets into their own PCA space.</p>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Tool</th>
+        <th>Description</th>
+        <th>Documentation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th><a href="https://github.com/genepattern/Conos.Preprocess/blob/master/documentation.md" target="_blank">Conos.Preprocess</a></th>
+        <td>Performs independent clustering of each of the single-cell quantification tables using the Pagoda2 method. These clustered results are then projected into C/PCA space and embedded into a joint graph.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Conos.Preprocess/blob/master/documentation.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        <tr>
+        <th><a href="https://github.com/genepattern/Conos.Cluster/blob/master/documentation.md" target="_blank">Conos.Cluster</a></th>
+        <td>Clustering is performed on the joint graph produced as the output of <b>Conos.Preprocess</b> using both Leiden community clustering and Walktrap clustering. The clustered joint graph is then projected into UMAP space for visualiztion.</td>
+        <td style="text-align: center;"><a href="https://github.com/genepattern/Conos.Cluster/blob/master/documentation.md" target="_blank"><i class="fa fa-book"></i></a></td>
+        </tr>
+        </tbody>
+        </table>
+        <!-- <div class="alert alert-danger">left out monocle for now</div> --> <!-- <h3>Monocle</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Description</th>
+                                <th>Documentation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+        <h3 id="scanpy">ScanpyUtilities</h3>
+        <p>Scanpy (Single Cell Analysis in Python) (<a href="https://scanpy.readthedocs.io/en/stable/)">https://scanpy.readthedocs.io/en/stable/)</a> is a scalable toolkit for analyzing single-cell gene expression data. It includes preprocessing, visualization, clustering, pseudotime and trajectory inference and differential expression testing. The Python-based implementation efficiently deals with datasets of more than one million cells. <br /><br /> Some common single-cell preprocessing steps require the entire dataset to be loaded into memory which can be an issue on less powerful machines or with larger datasets. This makes it useful to expose ScanPy as a genepattern module where the execution can be offloaded to different, larger, compute resources to perform initial steps to reduce the dataset size before extensive, interactive visualization such as might be done in a GenePattern notebook. <br /><br /> <a href="https://genepattern.github.io/ScanpyUtilities/" target="_blank">Documentation <i class="fa fa-book"></i></a> <br /> <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0" target="_blank">Wolf <i>et al.</i> 2018</a> <br /><br /> This module exposes many functions from scanpy version 1.3.3 to be used as a GenePattern module:</p>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>Function</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <th>Annotation</th>
+        <td>Add count information to the data file</td>
+        </tr>
+        <tr>
+        <th>Cell Filtering</th>
+        <td>Filter out cells based on the various thresholds.</td>
+        </tr>
+        <tr>
+        <th>Gene Filtering</th>
+        <td>Filter out genes based on the various thresholds.</td>
+        </tr>
+        <tr>
+        <th>Cell Type Identification</th>
+        <td>Run the cell type identification pipeline provided in the R package garnett</td>
+        </tr>
+        <tr>
+        <th>Normalization</th>
+        <td>Run the single-cell normalization pipeline provided in the R package scran</td>
+        </tr>
+        <tr>
+        <th>High Variance Genes</th>
+        <td>Filter and subset the data to retain only the N most variable genes.</td>
+        </tr>
+        <tr>
+        <th>Dimension Reduction</th>
+        <td>Compute UMAP or TSNE coordinates for visualization.</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <!-- <div class="single-cell" id="single-cell">
+                    <h2>Single Cell Analysis</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Input</th>
+                                <th>Normalization</th>
+                                <th>Batch / Confounder Removal</th>
+                                <th>Clustering</th>
+                                <th>Classification / Marker	</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th><a href="">SeuratClustering</a></th>
+                                <td><a href="">RDS</a></td>
+                                <td>log-normal; sctransform </td>
+                                <td>SNNAnchor (mutual nearest neighbors)</td>
+                                <td>Shared nearest neighbors</td>
+                                <td>Yes</td>
+                                <td><a target="_blank" href="https://notebook.genepattern.org/services/sharing/notebooks/376/preview/">Seurat notebook <i class="fas fa-file-alt"></i></a>. Performs clustering and marker identification on single cell data. <a target="_blank" href="https://www.nature.com/articles/nbt.4096">Butler <i>et al.</i> 2018</a>; <a target="_blank" href="https://genepattern.github.io/SeuratClustering/">Documentation</a>; <a target="_blank" href="https://github.com/genepattern/SeuratClustering">Github <i class="fab fa-github"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">CONOS (Preprocess, Cluster)</a></th>
+                                <td>text files with tab-separated gene expression matrices (rows are genes, columns are unique cells)</td>
+                                <td>variance normalization</td>
+                                <td>Yes</td>
+                                <td>Pagoda 2; Leiden community clustering; Walktrap clustering</td>
+                                <td>No</td>
+                                <td><a target="_blank" href="">CONOS notebook <i class="fas fa-file-alt"></i></a> . Clustering on Networks of Samples for Single Cell RNA-sequencing <a target="_blank" href="https://doi.org/10.1038/s41592-019-0466-z">Barkas <i>et al.</i> 2019</a>; <a target="_blank" href="">Documentation</a>; <a target="_blank" href="https://github.com/kharchenkolab/conos">Github <i class="fab fa-github"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">ScanpyUtilities</a></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">STREAM</a></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+                <div class="gsea" id="gsea">
+                    <h2>Gene Set Enrichment Analysis (GSEA)</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Input</th>
+                                <th>Sample Normalization</th>
+                                <th>Reduces Dimensionality</th>
+                                <th>RNA-seq?</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th><a href="">GSEA (classic)</a></th>
+                                <td>GCT or RES</td>
+                                <td>meandiv; none</td>
+                                <td></td>
+                                <td>not recommended</td>
+                                <td><a target="_blank" href="https://notebook.genepattern.org/services/sharing/notebooks/370/preview/">GSEA Notebook <i class="fas fa-file-alt"></i></a> Gene Set Enrichment Analysis for the GenePattern platform. <a target="_blank" href="https://gsea-msigdb.github.io/gsea-gpmodule/v20/index.html">Documentation</a>; <a target="_blank" href="">Github <i class="fab fa-github"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">ssGSEA</a></th>
+                                <td>GCT (minimum of two samples)</td>
+                                <td>none; rank; log rank; log</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td><a target="_blank" href="https://notebook.genepattern.org/services/sharing/notebooks/386/preview/">ssGSEA Notebook <i class="fas fa-file-alt"></i></a>. Performs single sample GSEA on the GenePattern platform. <a target="_blank" href="https://gsea-msigdb.github.io/ssGSEA-gpmodule/v10/index.html">Documentation</a>; <a target="_blank" href="">Github <i class="fab fa-github"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">GSEAPreranked</a></th>
+                                <td><a target="_blank" href="http://www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RNK:_Ranked_list_file_format_.28.2A.rnk.29">RNK</a> = ranked list of genes</td>
+                                <td>meandiv; none</td>
+                                <td></td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>Runs the gene set enrichment analysis against a user-supplied ranked list of genes. <a target="_blank" href="https://gsea-msigdb.github.io/gseapreranked-gpmodule/v7/index.html">Documentation</a>; <a target="_blank" href="">Github <i class="fab fa-github"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th><a href="">ConstellationMap</a></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="visual" id="visual">
+                    <h2>Visualization Tools</h2>
+                    <ul>
+                        <li>igv.js</li>
+                        <li>CytoscapeViewer</li>
+                        <li>HeatMapViewer</li>
+                        <li>HierarchicalClusteringViewer</li>
+                    </ul>
+                </div>
+            -->
+        <div class="visualiztion" id="visualization">
+        <h2>Visualization Tools (work in progress)</h2>
+        <ul>
+        <li>igv.js</li>
+        <li>CytoscapeViewer</li>
+        <li>HeatMapViewer</li>
+        <li>HierarchicalClusteringViewer</li>
+        </ul>
+        </div>
+        </div>
+</body>
+</html>
