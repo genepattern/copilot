@@ -108,12 +108,15 @@ class ServiceHelper:
         )
 
     @staticmethod
-    async def _load_mcp_tools():
-        """Load the GenePattern MCP client and its tools."""
+    async def _load_mcp_tools(api_key: str | None = None):
+        """Load the GenePattern MCP client and its tools.
+        If api_key is provided, include it as a Bearer token in the Authorization header.
+        """
         try:
             mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
+            headers = {"Authorization": f"Bearer {api_key}"} if api_key else None
             client = MultiServerMCPClient({
-                "genepattern": {"transport": "streamable_http", "url": mcp_url},
+                "genepattern": {"transport": "streamable_http", "url": mcp_url, "headers": headers},
             })
             return await client.get_tools()
         except Exception as e:
@@ -121,9 +124,12 @@ class ServiceHelper:
             return []
 
     @classmethod
-    async def create_instance(cls):
+    async def create_instance(cls, api_key: str | None = None):
         """Asynchronously creates and configures a new ServiceHelper instance,
         using globally cached resources if available.
+
+        If an api_key is provided, build per-request MCP tools and graphs with
+        Authorization headers, while still using cached LLMs and vector store.
         """
         global _cached_llms, _cached_vector_store, _cached_tools, _cached_graphs
 
@@ -143,21 +149,31 @@ class ServiceHelper:
                 _cached_vector_store = cls._load_vector_store()
             vector_store = _cached_vector_store
 
-            # Lazy load and cache MCP Tools
-            if _cached_tools is None:
-                logger.info("Initializing and caching MCP tools...")
-                _cached_tools = await cls._load_mcp_tools()
-            tools = _cached_tools
-
-            # Lazy build and cache LangGraphs
-            if _cached_graphs is None:
-                logger.info("Building and caching LangGraphs...")
+            # Load MCP Tools and Graphs
+            if api_key:
+                # Build tools/graphs for this request with Authorization header
+                logger.debug("Loading MCP tools with per-request Authorization header")
+                tools = await cls._load_mcp_tools(api_key)
                 try:
-                    _cached_graphs = await build_langgraph(tools)
+                    graphs = await build_langgraph(tools)
                 except Exception as e:
-                    logger.error(f"Error building LangGraphs during caching: {e}", exc_info=True)
+                    logger.error(f"Error building LangGraphs with per-request tools: {e}", exc_info=True)
                     raise
-            graphs = _cached_graphs
+            else:
+                # Use cached tools/graphs
+                if _cached_tools is None:
+                    logger.info("Initializing and caching MCP tools...")
+                    _cached_tools = await cls._load_mcp_tools()
+                tools = _cached_tools
+
+                if _cached_graphs is None:
+                    logger.info("Building and caching LangGraphs...")
+                    try:
+                        _cached_graphs = await build_langgraph(tools)
+                    except Exception as e:
+                        logger.error(f"Error building LangGraphs during caching: {e}", exc_info=True)
+                        raise
+                graphs = _cached_graphs
 
         return cls(llms=llms, vector_store=vector_store, graphs=graphs, tools=tools)
 
@@ -179,7 +195,7 @@ async def genepattern_mcp(state: ConversationState):
     """Node to interact with the LLM and GenePattern tools via MCP."""
     logger.debug("\n--- Entering genepattern_mcp ---")
     started_at = datetime.now()
-    helper = await ServiceHelper.create_instance()
+    helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))
     model_id = state["model_id"]
 
     if model_id not in helper.llms:
@@ -244,13 +260,9 @@ async def answer_question(state: ConversationState):
     This node is designed to handle being called from different graph paths.
     """
     model_id = state["model_id"]
-    helper = await ServiceHelper.create_instance() # Get a ServiceHelper instance with cached resources
+    helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))  # Use per-request tools if provided
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
-
-    # Add API key to context if provided
-    if state.get('method_id') == 'mcp' and state.get("api_key"):
-        context += f"\n\nGenePattern API Key: {state['api_key']}"
 
     context = "\n\n".join(doc.page_content for doc in state.get("context", []))
     system_content = f"{state['prompt']}\n\n{context}\n\n"
@@ -473,7 +485,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
     )
 
     # 5. Run the LangGraph
-    helper = await ServiceHelper.create_instance()
+    helper = await ServiceHelper.create_instance(api_key=api_key if (method_id == 'mcp' and api_key) else None)
     final_state = await helper.graph(method_id).ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database
