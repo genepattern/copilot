@@ -188,6 +188,7 @@ class ConversationState(MessagesState):
     context: List
     answer: str
     steps: List
+    method_id: str = None
     api_key: str = None
 
 
@@ -481,6 +482,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         messages=[],
         context=[],
         answer="",
+        method_id=method_id,
         api_key=api_key
     )
 

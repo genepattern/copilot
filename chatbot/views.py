@@ -3,6 +3,8 @@ from asgiref.sync import sync_to_async
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import generics, status, views, viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -64,7 +66,6 @@ class ChatAPIView(AsyncAPIView):
                 try:
                     profile = await sync_to_async(UserProfile.objects.get)(user=user)
                     api_key = profile.gp_api_key
-                    print(f'-------- API KEY IS {api_key}')
                 except UserProfile.DoesNotExist: pass  # Profile doesn't exist, no API key available
 
             # Call the service layer to handle the logic
@@ -126,6 +127,7 @@ class ResponseRatingView(views.APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@method_decorator(ensure_csrf_cookie, name='dispatch')
 class ChatInterfaceView(TemplateView):
     """
     Serves the main chat interface.
@@ -138,6 +140,7 @@ class ChatInterfaceView(TemplateView):
         return context
 
 
+@method_decorator(ensure_csrf_cookie, name='dispatch')
 class TestInterfaceView(TemplateView):
     """
     Serves the test chat interface.
@@ -177,6 +180,7 @@ class LoginAPIView(APIView):
 
 
 class LogoutAPIView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         # Clear API key from user profile if user is authenticated
         if request.user.is_authenticated:
