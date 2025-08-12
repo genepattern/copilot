@@ -32,6 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelSelect = document.getElementById('llm-models');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+    // Hide LLM controls by default; toggle with Cmd+i / Ctrl+i
+    if (methodSelect) methodSelect.classList.add('d-none');
+    if (modelSelect) modelSelect.classList.add('d-none');
+
+    document.addEventListener('keydown', (e) => {
+        const isCtrl = e.ctrlKey;
+        if (isCtrl && String(e.key).toLowerCase() === 'i') {
+            e.preventDefault();
+            [methodSelect, modelSelect].forEach(el => el && el.classList.toggle('d-none'));
+        }
+    });
+
     let currentConversationId = null; // Store the conversation ID
     let selectedLlmModel = null; // Store the selected LLM model
 
