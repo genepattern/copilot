@@ -477,6 +477,25 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
     if not system_prompt: return None, "No suitable model found or configured."
 
     # 4. Prepare Initial State for LangGraph
+    # Build message history from previous queries in this conversation
+    history_messages = []
+    try:
+        # Fetch prior queries in chronological order
+        prior_qs = await ServiceHelper.async_orm_wrapper(
+            lambda: list(Query.objects.filter(conversation=conversation).order_by('query_num'))
+        )
+    except Exception as e:
+        prior_qs = []
+    for q in prior_qs:
+        if getattr(q, 'raw_query', None):
+            history_messages.append(HumanMessage(content=q.raw_query))
+        if getattr(q, 'response', None):
+            history_messages.append(AIMessage(content=q.response))
+    # Append the current user query to the history if there is prior history;
+    # for a fresh conversation, keep messages empty so summarization nodes can prime the first message.
+    if history_messages:
+        history_messages.append(HumanMessage(content=user_query))
+
     initial_state = ConversationState(
         conversation_id=conversation.id,
         model_id=model_id,
@@ -484,7 +503,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         raw_query=user_query,
         query="",
         steps=[],
-        messages=[],
+        messages=history_messages,
         context=[],
         answer="",
         method_id=method_id,
