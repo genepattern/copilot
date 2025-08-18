@@ -14,7 +14,8 @@ from .serializers import (
     ConversationSerializer,
     QuerySerializer,
     ChatInputSerializer,
-    QueryRatingSerializer, LlmModelSerializer
+    QueryRatingSerializer, LlmModelSerializer,
+    ConversationListSerializer
 )
 from .services import handle_chat_message
 
@@ -30,6 +31,17 @@ class ModelsAPIView(views.APIView):
         models = LlmModel.objects.all()
         serializer = LlmModelSerializer(models, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ConversationListView(generics.ListAPIView):
+    """
+    API endpoint to list the current user's conversations (sidebar list).
+    """
+    serializer_class = ConversationListSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Conversation.objects.filter(user=self.request.user).prefetch_related('queries')
 
 
 class ChatAPIView(AsyncAPIView):
@@ -102,6 +114,12 @@ class ConversationDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         # Ensure users can only access their own conversations
         return super().get_queryset().filter(user=self.request.user)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        # Ensure conversation responses are returned as HTML for rendering in chat history
+        context['html'] = True
+        return context
 
 
 class ResponseRatingView(views.APIView):

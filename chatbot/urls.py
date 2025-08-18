@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import (ChatAPIView, ConversationDetailView, ResponseRatingView, LlmModelViewSet, ModelsAPIView,
-                    LoginAPIView, LogoutAPIView)
+                    LoginAPIView, LogoutAPIView, ConversationListView)
 from rest_framework import routers
 
 
@@ -24,7 +24,8 @@ urlpatterns = [
     # API endpoint to rate a specific response
     path('rate/<query_id>/', ResponseRatingView.as_view(), name='query-rate'),
 
-    # API endpoint to retrieve a specific conversation's details and history
+    # API endpoint to list and retrieve conversations
+    path('conversations/', ConversationListView.as_view(), name='conversation-list'),
     path('conversations/<id>/', ConversationDetailView.as_view(), name='conversation-detail'),
 
     # Django REST Framework's browsable API

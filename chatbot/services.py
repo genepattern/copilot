@@ -444,8 +444,13 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
 
     # 1. Get the existing conversation or lazily create one
     if conversation_id:
-        try: conversation = await ServiceHelper.async_orm_get(Conversation, id=conversation_id)
-        except Conversation.DoesNotExist: return None, "Conversation not found or access denied"
+        try:
+            conversation = await ServiceHelper.async_orm_get(Conversation, id=conversation_id)
+        except Conversation.DoesNotExist:
+            return None, "Conversation not found or access denied"
+        if user:  # Associate conversation with the current user on update
+            conversation.user = user
+            await sync_to_async(conversation.save)(update_fields=['user'])
     else:
         conversation = await ServiceHelper.async_orm_create(Conversation, user=user)
         conversation_id = conversation.id  # Get the new ID

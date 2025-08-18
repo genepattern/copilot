@@ -2,10 +2,6 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .navbar > .conversation-form {
@@ -31,7 +27,7 @@ body {
 }
 
 .chat-container {
-    width: 80%;
+    width: 100%;
     border-radius: 8px;
     display: flex;
     flex-direction: column;

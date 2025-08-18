@@ -51,16 +51,28 @@
             {% endif %}
         </div>
     </nav>
-    <div class="chat-container bg-light bg-opacity-10">
-        <div class="chat-box" id="chat-box">
-            <div class="message bot">
-                <p>Hello! You can ask me questions about GenePattern, including how to run specific workflows, about
-                    particular modules or which parameters to set.</p>
-            </div>
-        </div>
-        <div class="input-area">
-            <textarea id="user-input" class="text-bg-dark bg-light bg-opacity-10" placeholder="Type your query..." rows="1"></textarea>
-            <button id="send-button" class="btn btn-primary">Send</button>
+    <div class="container-fluid mt-5 pt-4">
+        <div class="row">
+            <aside id="conversations-sidebar-container" class="col-md-3 col-lg-3 {% if user.is_authenticated %}d-none d-md-block{% else %}d-none{% endif %}">
+                <div class="card bg-light bg-opacity-10 text-light h-100">
+                    <div class="card-header">Conversations</div>
+                    <div class="list-group list-group-flush" id="conversations-list"></div>
+                </div>
+            </aside>
+            <main class="col-12 col-md-9 col-lg-9">
+                <div class="chat-container bg-light bg-opacity-10">
+                    <div class="chat-box" id="chat-box">
+                        <div class="message bot">
+                            <p>Hello! You can ask me questions about GenePattern, including how to run specific workflows, about
+                                particular modules or which parameters to set.</p>
+                        </div>
+                    </div>
+                    <div class="input-area">
+                        <textarea id="user-input" class="text-bg-dark bg-light bg-opacity-10" placeholder="Type your query..." rows="1"></textarea>
+                        <button id="send-button" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 
@@ -111,6 +123,7 @@
         </div>
     </div>
 
+    <script>window.IS_AUTHENTICATED = {{ user.is_authenticated|yesno:'true,false' }};</script>
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

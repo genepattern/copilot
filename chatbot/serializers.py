@@ -36,15 +36,44 @@ class QuerySerializer(serializers.ModelSerializer):
 
     @staticmethod
     def markdown_to_html(markdown_text):
+        if not markdown_text:
+            return ""
         parser = MarkdownIt()
         html = parser.render(markdown_text)
         soup = BeautifulSoup(html, 'html.parser')
-        for a in soup.find_all('a', href=True): a['target'] = '_blank'
+        for a in soup.find_all('a', href=True):
+            a['target'] = '_blank'
         return str(soup)
 
     def get_response(self, obj):
-        if self.context['html']: return self.markdown_to_html(obj.response)
-        else: return obj.response
+        # Default to plain text unless 'html' is explicitly requested in context
+        if self.context.get('html', False):
+            return self.markdown_to_html(obj.response)
+        else:
+            return obj.response
+
+
+class ConversationListSerializer(serializers.ModelSerializer):
+    title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Conversation
+        fields = ['id', 'title', 'started_at']
+        read_only_fields = ['id', 'started_at']
+
+    def get_title(self, obj):
+        # Prefer explicit label; fallback to first query's text; otherwise a default placeholder
+        if getattr(obj, 'label', None):
+            return obj.label
+        first_query = None
+        try:
+            # Queries are ordered by started_at ascending per model Meta
+            first_query = obj.queries.first()
+        except Exception:
+            first_query = None
+        if first_query and getattr(first_query, 'raw_query', None):
+            return first_query.raw_query
+        return "New conversation"
 
 
 class ConversationSerializer(serializers.ModelSerializer):

@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelSelect = document.getElementById('llm-models');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+    // Sidebar elements
+    const conversationsList = document.getElementById('conversations-list');
+    const sidebarContainer = document.getElementById('conversations-sidebar-container');
+    const newConversationForm = document.querySelector('.conversation-form');
+
     // Hide LLM controls by default; toggle with Cmd+i / Ctrl+i
     if (methodSelect) methodSelect.classList.add('d-none');
     if (modelSelect) modelSelect.classList.add('d-none');
@@ -167,6 +172,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    function showSidebar() {
+        if (!sidebarContainer) return;
+        // Keep d-none so it's hidden on xs; add d-md-block to show on md+ breakpoints
+        if (!sidebarContainer.classList.contains('d-md-block')) sidebarContainer.classList.add('d-md-block');
+        // Ensure it's present in the DOM (not necessary to remove d-none for md+ visibility)
+    }
+
+    function hideSidebar() {
+        if (!sidebarContainer) return;
+        // Hide for all viewports
+        sidebarContainer.classList.add('d-none');
+        // Optionally remove md display class
+        // sidebarContainer.classList.remove('d-md-block');
+        if (conversationsList) conversationsList.innerHTML = '';
+    }
+
+    async function fetchConversations() {
+        const response = await fetch('/api/conversations/', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    }
+
+    function renderConversations(conversations, activeId = null) {
+        if (!conversationsList) return;
+        conversationsList.innerHTML = '';
+        conversations.forEach(conv => {
+            const a = document.createElement('a');
+            a.href = '#';
+            a.className = 'list-group-item list-group-item-action bg-transparent text-light text-truncate';
+            a.dataset.conversationId = conv.id;
+            a.title = conv.title || 'Conversation';
+            a.textContent = conv.title || 'Conversation';
+            if (activeId && conv.id === activeId) a.classList.add('active');
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadConversation(conv.id);
+            });
+            conversationsList.appendChild(a);
+        });
+    }
+
+    async function refreshConversations(activeId = null) {
+        try {
+            const conversations = await fetchConversations();
+            renderConversations(conversations, activeId || currentConversationId);
+        } catch (e) {
+            console.warn('Could not load conversations (maybe not logged in).');
+        }
+    }
+
+    async function loadConversation(conversationId) {
+        try {
+            const response = await fetch(`/api/conversations/${conversationId}/`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+
+            // Clear chat and render history
+            chatBox.innerHTML = '';
+            (data.queries || []).forEach(q => {
+                if (q.query) addMessage('user', q.query);
+                if (q.response) addMessage('bot', q.response, q.id, q.rating);
+            });
+
+            currentConversationId = data.id;
+            renderConversations(await fetchConversations(), currentConversationId);
+        } catch (e) {
+            handleApiError(e, 'loading conversation');
+        }
+    }
+
+    // Expose helpers for login/logout handler
+    window.refreshConversations = refreshConversations;
+    window.showConversationsSidebar = showSidebar;
+    window.hideConversationsSidebar = hideSidebar;
+
     async function sendMessage() {
         const queryText = userInput.value.trim();
         if (!queryText) return;
@@ -215,6 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.conversation && currentConversationId !== data.conversation) {
                  currentConversationId = data.conversation;
                  console.log("Started/Using Conversation ID:", currentConversationId);
+                 // Refresh sidebar on first message of new conversation
+                 if (window.IS_AUTHENTICATED) {
+                    try { await refreshConversations(currentConversationId); } catch(e) {}
+                 }
             }
 
             // Add bot response
@@ -310,6 +400,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     loadModels();
+    if (window.IS_AUTHENTICATED) {
+        try { refreshConversations(); } catch (e) {}
+    }
+    if (newConversationForm) {
+        newConversationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            currentConversationId = null;
+            chatBox.innerHTML = '';
+            try { refreshConversations(); } catch (e) {}
+        });
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -383,6 +484,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 await do_logout()
             });
         }
+
+        // Show sidebar and refresh conversations after login
+        if (window.showConversationsSidebar) window.showConversationsSidebar();
+        if (window.refreshConversations) window.refreshConversations();
     }
 
     function updateUIForLoggedOutUser() {
@@ -392,6 +497,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 Sign in
             </button>
         `;
+        if (window.hideConversationsSidebar) window.hideConversationsSidebar();
     }
 
     async function do_logout() {
