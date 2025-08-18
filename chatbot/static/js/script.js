@@ -37,6 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarContainer = document.getElementById('conversations-sidebar-container');
     const newConversationForm = document.querySelector('.conversation-form');
 
+    // Main chat column for responsive layout adjustments based on auth state
+    const mainChatCol = document.getElementById('main-chat-col');
+    function setChatMainAuthLayout(isAuthenticated) {
+        if (!mainChatCol) return;
+        // Reset classes we control
+        mainChatCol.classList.remove('col-md-9', 'col-lg-9', 'col-md-8', 'col-lg-6', 'mx-auto');
+        if (isAuthenticated) {
+            mainChatCol.classList.add('col-md-9', 'col-lg-9');
+        } else {
+            mainChatCol.classList.add('col-md-8', 'col-lg-6', 'mx-auto');
+        }
+    }
+    window.setChatMainAuthLayout = setChatMainAuthLayout;
+
     // Hide LLM controls by default; toggle with Cmd+i / Ctrl+i
     if (methodSelect) methodSelect.classList.add('d-none');
     if (modelSelect) modelSelect.classList.add('d-none');
@@ -174,17 +188,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSidebar() {
         if (!sidebarContainer) return;
-        // Keep d-none so it's hidden on xs; add d-md-block to show on md+ breakpoints
+        // Show on all appropriate viewports: remove d-none and add d-md-block
+        sidebarContainer.classList.remove('d-none');
         if (!sidebarContainer.classList.contains('d-md-block')) sidebarContainer.classList.add('d-md-block');
-        // Ensure it's present in the DOM (not necessary to remove d-none for md+ visibility)
     }
 
     function hideSidebar() {
         if (!sidebarContainer) return;
         // Hide for all viewports
         sidebarContainer.classList.add('d-none');
-        // Optionally remove md display class
-        // sidebarContainer.classList.remove('d-md-block');
+        // Ensure it doesn't reappear on md+ breakpoints
+        sidebarContainer.classList.remove('d-md-block');
         if (conversationsList) conversationsList.innerHTML = '';
     }
 
@@ -423,6 +437,14 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            const spinner = document.getElementById('loginSpinner');
+            const submitBtn = document.getElementById('loginSubmitBtn');
+            const errorBox = document.getElementById('loginError');
+            if (errorBox) errorBox.classList.add('d-none');
+
+            if (spinner) spinner.classList.remove('d-none');
+            if (submitBtn) submitBtn.disabled = true;
+
             const formData = new FormData();
             formData.append('username', document.getElementById('username').value);
             formData.append('password', document.getElementById('password').value);
@@ -440,14 +462,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (data.success) {
                     loginModal.hide();
+                    window.IS_AUTHENTICATED = true;
                     updateUIForLoggedInUser(data.username, data.is_staff);
+                    if (typeof window.setChatMainAuthLayout === 'function') window.setChatMainAuthLayout(true);
                     if (data.api_key) localStorage.setItem('gp_api_key', data.api_key); // Store API key in localStorage
                 } else {
-                    document.getElementById('loginError').textContent = data.error;
-                    document.getElementById('loginError').classList.remove('d-none');
+                    if (errorBox) {
+                        errorBox.textContent = data.error || 'Invalid credentials';
+                        errorBox.classList.remove('d-none');
+                    }
                 }
             } catch (error) {
                 console.error('Login error:', error);
+                if (errorBox) {
+                    errorBox.textContent = 'Login failed. Please try again.';
+                    errorBox.classList.remove('d-none');
+                }
+            } finally {
+                if (spinner) spinner.classList.add('d-none');
+                if (submitBtn) submitBtn.disabled = false;
             }
         });
     }
@@ -497,6 +530,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 Sign in
             </button>
         `;
+        window.IS_AUTHENTICATED = false;
+        if (typeof window.setChatMainAuthLayout === 'function') window.setChatMainAuthLayout(false);
         if (window.hideConversationsSidebar) window.hideConversationsSidebar();
     }
 

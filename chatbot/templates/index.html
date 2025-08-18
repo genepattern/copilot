@@ -59,7 +59,7 @@
                     <div class="list-group list-group-flush" id="conversations-list"></div>
                 </div>
             </aside>
-            <main class="col-12 col-md-9 col-lg-9">
+            <main id="main-chat-col" class="col-12 {% if user.is_authenticated %}col-md-9 col-lg-9{% else %}col-md-8 col-lg-6 mx-auto{% endif %}">
                 <div class="chat-container bg-light bg-opacity-10">
                     <div class="chat-box" id="chat-box">
                         <div class="message bot">
@@ -115,8 +115,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <div id="loginSpinner" class="spinner-border spinner-border-sm text-light d-none me-auto" role="status" aria-hidden="true"></div>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary" id="loginSubmitBtn">Sign in</button>
                     </div>
                 </form>
             </div>
