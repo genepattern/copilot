@@ -48,8 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             mainChatCol.classList.add('col-md-8', 'col-lg-6', 'mx-auto');
         }
+        if (typeof refreshLayoutHeight === 'function') refreshLayoutHeight();
     }
     window.setChatMainAuthLayout = setChatMainAuthLayout;
+
+    // Layout height calculation between fixed navbar and footer
+    function refreshLayoutHeight() {
+        const row = document.getElementById('content-row');
+        if (!row) return;
+        const footer = document.querySelector('footer.fixed-bottom');
+        const footerHeight = footer ? footer.offsetHeight : 0;
+        const rect = row.getBoundingClientRect();
+        const available = Math.max(window.innerHeight - footerHeight - rect.top - 20, 200);
+        row.style.height = available + 'px';
+        row.style.minHeight = available + 'px';
+    }
+    window.refreshLayoutHeight = refreshLayoutHeight;
+    // Initial call and listeners
+    window.addEventListener('resize', refreshLayoutHeight);
+    window.addEventListener('orientationchange', refreshLayoutHeight);
+    setTimeout(refreshLayoutHeight, 0);
 
     // Hide LLM controls by default; toggle with Cmd+i / Ctrl+i
     if (methodSelect) methodSelect.classList.add('d-none');
@@ -191,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show on all appropriate viewports: remove d-none and add d-md-block
         sidebarContainer.classList.remove('d-none');
         if (!sidebarContainer.classList.contains('d-md-block')) sidebarContainer.classList.add('d-md-block');
+        if (typeof refreshLayoutHeight === 'function') refreshLayoutHeight();
     }
 
     function hideSidebar() {
@@ -200,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure it doesn't reappear on md+ breakpoints
         sidebarContainer.classList.remove('d-md-block');
         if (conversationsList) conversationsList.innerHTML = '';
+        if (typeof refreshLayoutHeight === 'function') refreshLayoutHeight();
     }
 
     async function fetchConversations() {
