@@ -276,7 +276,7 @@ async def answer_question(state: ConversationState):
         for msg in history
     )
 
-    if has_tool_messages or state.get('method_id') == 'mcp':
+    if has_tool_messages or state.get('method_id') in ('mcp', 'rag_mcp'):
         llm_to_use = helper.llms[model_id].bind_tools(helper.tools)
     else:
         llm_to_use = helper.llms[model_id]
@@ -414,14 +414,47 @@ async def build_raw_graph() -> StateGraph:
     return workflow.compile()
 
 
+async def build_rag_mcp_graph(tools) -> StateGraph:
+    """Build and compile the LangGraph that combines RAG with MCP tools."""
+    workflow = StateGraph(ConversationState)
+
+    # Add nodes
+    workflow.add_node("summarize_question", summarize_question)
+    workflow.add_node("retrieve_documents", retrieve_documents)
+    workflow.add_node("genepattern_mcp", genepattern_mcp)
+    workflow.add_node("answer_question", answer_question)
+    workflow.add_node("tools", ToolNode(tools))
+
+    # Define edges
+    workflow.add_edge(START, "summarize_question")
+    workflow.add_edge("summarize_question", "retrieve_documents")
+    workflow.add_edge("retrieve_documents", "genepattern_mcp")
+
+    # Conditional edge for tool calling
+    workflow.add_conditional_edges(
+        "genepattern_mcp",
+        tools_condition,
+        {"tools": "tools", "__end__": "answer_question"},
+    )
+
+    # Loop back from tools to genepattern_mcp to process tool results
+    workflow.add_edge("tools", "genepattern_mcp")
+
+    # Final step
+    workflow.add_edge("answer_question", END)
+
+    return workflow.compile()
+
+
 async def build_langgraph(tools) -> Dict[str, StateGraph]:
     """Build and compile all LangGraphs and return them in a dictionary."""
-    rag_graph, mcp_graph, raw_graph = await asyncio.gather(
+    rag_graph, mcp_graph, raw_graph, rag_mcp_graph = await asyncio.gather(
         build_rag_graph(),
         build_mcp_graph(tools),
-        build_raw_graph()
+        build_raw_graph(),
+        build_rag_mcp_graph(tools)
     )
-    return { 'rag': rag_graph, 'mcp': mcp_graph, 'raw': raw_graph }
+    return { 'rag': rag_graph, 'mcp': mcp_graph, 'raw': raw_graph, 'rag_mcp': rag_mcp_graph }
 
 
 def assemble_answer(answer):
@@ -511,7 +544,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
     )
 
     # 5. Run the LangGraph
-    helper = await ServiceHelper.create_instance(api_key=api_key if (method_id == 'mcp' and api_key) else None)
+    helper = await ServiceHelper.create_instance(api_key=api_key if (method_id in ('mcp', 'rag_mcp') and api_key) else None)
     final_state = await helper.graph(method_id).ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database

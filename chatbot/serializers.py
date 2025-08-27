@@ -108,7 +108,7 @@ class ChatInputSerializer(serializers.Serializer):
         """Normalize and validate method_id"""
         if value is None: return value
         normalized = value.strip().lower()
-        allowed = {'rag', 'mcp', 'raw'}
+        allowed = {'rag', 'mcp', 'raw', 'rag_mcp'}
         if normalized not in allowed:
             raise serializers.ValidationError(f"Invalid method_id '{value}'. Must be one of {sorted(allowed)}.")
         return normalized
