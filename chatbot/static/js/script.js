@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('orientationchange', refreshLayoutHeight);
     setTimeout(refreshLayoutHeight, 0);
 
-    // Hide LLM controls by default; toggle with Cmd+i / Ctrl+i
-    if (methodSelect) methodSelect.classList.add('d-none');
-    if (modelSelect) modelSelect.classList.add('d-none');
+    // Show LLM controls by default; toggle with Cmd+i / Ctrl+i
+    if (methodSelect) methodSelect.classList.remove('d-none');
+    if (modelSelect) modelSelect.classList.remove('d-none');
 
     document.addEventListener('keydown', (e) => {
         const isCtrl = e.ctrlKey;
@@ -442,6 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             currentConversationId = null;
             chatBox.innerHTML = '';
+            if (methodSelect) methodSelect.disabled = false; // Re-enable method select
+            if (modelSelect) modelSelect.disabled = false;  // Re-enable model select
             try { refreshConversations(); } catch (e) {}
         });
     }
