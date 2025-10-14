@@ -14,6 +14,8 @@ from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, System
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step
 import logging
 import threading
+import base64
+import mimetypes
 
 logger = logging.getLogger(__name__)
 
@@ -190,6 +192,39 @@ class ConversationState(MessagesState):
     steps: List
     method_id: str = None
     api_key: str = None
+    files: List = None  # List of uploaded files
+    files_content: str = None  # Cached formatted file content
+
+
+async def read_and_format_files(files):
+    """Helper function to read and format file content once, then cache it."""
+    if not files:
+        return ""
+
+    files_content = "\n\n### Attached Files:\n\n"
+    for file in files:
+        try:
+            # Read file content asynchronously
+            content = await sync_to_async(file.read)()
+            # Try to decode as text (UTF-8)
+            try:
+                text_content = content.decode('utf-8')
+                files_content += f"**File: {file.name}**\n```\n{text_content}\n```\n\n"
+            except UnicodeDecodeError:
+                # If not text, base64 encode the binary content
+                b64_content = base64.b64encode(content).decode('ascii')
+                mimetype, _ = mimetypes.guess_type(file.name)
+                mimetype = mimetype or 'application/octet-stream'
+                files_content += (
+                    f"**File: {file.name}** (binary file, {len(content)} bytes)\n"
+                    f"MIME type: {mimetype}\n"
+                    f"Base64 encoded content:\n{b64_content}\n\n"
+                )
+        except Exception as e:
+            logger.error(f"Error reading file {file.name}: {e}")
+            files_content += f"**File: {file.name}** (error reading file)\n\n"
+
+    return files_content
 
 
 async def genepattern_mcp(state: ConversationState):
@@ -204,7 +239,16 @@ async def genepattern_mcp(state: ConversationState):
 
     # Create the initial message if the history is empty
     if not state["messages"]:
-        state["messages"] = [HumanMessage(content=state["query"])]
+        # Read and cache file content if not already cached
+        if state.get("files") and not state.get("files_content"):
+            state["files_content"] = await read_and_format_files(state["files"])
+
+        # Include file content in the initial query if files are attached
+        query_content = state["query"]
+        if state.get("files_content"):
+            query_content = f"{state['query']}{state['files_content']}"
+
+        state["messages"] = [HumanMessage(content=query_content)]
 
     # For accurate logging, capture the messages that are being sent to the LLM
     step_input_messages = str(state["messages"])
@@ -234,7 +278,7 @@ async def genepattern_mcp(state: ConversationState):
         logger.info("LLM did not request a tool call, proceeding to answer.")
 
     # Return the updated state fields
-    return {"messages": state["messages"], "steps": state["steps"]}
+    return {"messages": state["messages"], "steps": state["steps"], "files_content": state.get("files_content")}
 
 
 async def retrieve_documents(state: ConversationState):
@@ -266,7 +310,14 @@ async def answer_question(state: ConversationState):
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
     context = "\n\n".join(doc.page_content for doc in state.get("context", []))
-    system_content = f"{state['prompt']}\n\n{context}\n\n"
+
+    # Use cached file content if available, otherwise read and cache it now
+    files_content = state.get("files_content", "")
+    if not files_content and state.get("files"):
+        files_content = await read_and_format_files(state["files"])
+        state["files_content"] = files_content
+
+    system_content = f"{state['prompt']}\n\n{context}\n\n{files_content}"
     system = SystemMessage(content=system_content)
 
     history = state.get("messages", [])
@@ -282,7 +333,11 @@ async def answer_question(state: ConversationState):
         llm_to_use = helper.llms[model_id]
 
     if not history:
-        full_prompt = [system, HumanMessage(content=state['query'])]
+        # For RAG graph without message history, include file reference in the query if files are present
+        query_content = state['query']
+        if files_content:
+            query_content = f"{state['query']}\n\nPlease refer to the attached files in the system context above to answer this question."
+        full_prompt = [system, HumanMessage(content=query_content)]
     else:
         full_prompt = [system] + history
         # Ensure the conversation ends with a HumanMessage for models requiring it.
@@ -315,9 +370,23 @@ async def summarize_question_for_raw_graph(state: ConversationState):
 async def summarize_question(state: ConversationState, llm_summarization=True):
     """Node to summarize the user's raw query."""
 
-    # Check if LLM summarization is enabled
-    if not llm_summarization: return {"query": state["raw_query"]}
+    # Read and cache file content if not already cached
+    if state.get("files") and not state.get("files_content"):
+        state["files_content"] = await read_and_format_files(state["files"])
 
+    # Include file content in the initial query if files are attached
+    query_content = state["raw_query"]
+    if state.get("files_content"):
+        query_content = f"{state['raw_query']}{state['files_content']}"
+
+    state["messages"] = [HumanMessage(content=query_content)]
+
+    # Check if LLM summarization is enabled
+    if not llm_summarization:
+        return {
+            "query": state["raw_query"],
+            "files_content": state.get("files_content")
+        }
     model_id = state["model_id"]
     helper = await ServiceHelper.create_instance()
     if model_id not in helper.llms:
@@ -326,7 +395,7 @@ async def summarize_question(state: ConversationState, llm_summarization=True):
     started_at = datetime.now()
     system_prompt = await ServiceHelper.async_orm_get(SystemPrompt, name="Summarize Question", version=1.0)
     system = SystemMessage(content=f"{system_prompt.prompt}\n\n")
-    full_prompt = [system, HumanMessage(content=state["raw_query"])]
+    full_prompt = [system, HumanMessage(query_content)]
     response = await helper.llms[model_id].ainvoke(full_prompt)
     ended_at = datetime.now()
 
@@ -334,13 +403,16 @@ async def summarize_question(state: ConversationState, llm_summarization=True):
         'llm_model': state["model_id"],
         'system_prompt': system_prompt.prompt,
         'call_id': 'summarize_question',
-        'step_input': state["raw_query"],
+        'step_input': query_content,
         'step_output': response.content,
         'started_at': started_at,
         'ended_at': ended_at,
     })
 
-    return { "query": response.content }
+    return {
+        "query": response.content,
+        "files_content": state.get("files_content")
+    }
 
 
 async def build_rag_graph() -> StateGraph:
@@ -469,7 +541,7 @@ def assemble_answer(answer):
     raise ValueError("Invalid answer format. Expected a string, tuple or list of strings")
 
 
-async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None, api_key=None):
+async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None, api_key=None, files=None):
     """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
 
     start_time = datetime.now()
@@ -540,7 +612,8 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
         context=[],
         answer="",
         method_id=method_id,
-        api_key=api_key
+        api_key=api_key,
+        files=files or []
     )
 
     # 5. Run the LangGraph

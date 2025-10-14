@@ -72,6 +72,7 @@ class ChatAPIView(AsyncAPIView):
             method_id = serializer.validated_data.get('method_id')
             api_key = serializer.validated_data.get('api_key')
             html = serializer.validated_data.get('html')
+            files = serializer.validated_data.get('files', [])
 
             # If the call doesn't specify an API key, check the user profile
             if not api_key and user.is_authenticated:
@@ -81,9 +82,15 @@ class ChatAPIView(AsyncAPIView):
                 except UserProfile.DoesNotExist: pass  # Profile doesn't exist, no API key available
 
             # Call the service layer to handle the logic
-            query_instance, error_message = await handle_chat_message(user=user, conversation_id=conversation_id,
-                                                                      user_query=user_query, model_id=model_id,
-                                                                      method_id=method_id, api_key=api_key)
+            query_instance, error_message = await handle_chat_message(
+                user=user,
+                conversation_id=conversation_id,
+                user_query=user_query,
+                model_id=model_id,
+                method_id=method_id,
+                api_key=api_key,
+                files=files
+            )
 
             # Check if there was an error in processing
             if error_message: return Response({ "error": error_message }, status=status.HTTP_400_BAD_REQUEST)

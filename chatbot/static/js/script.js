@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelSelect = document.getElementById('llm-models');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+    // File attachment elements
+    const fileInput = document.getElementById('file-input');
+    const attachmentButton = document.getElementById('attachment-button');
+    const attachedFilesContainer = document.getElementById('attached-files');
+    const fileSizeErrorModal = new bootstrap.Modal(document.getElementById('fileSizeErrorModal'));
+    const MAX_FILE_SIZE = 325 * 1024; // 325 KB in bytes
+    let attachedFiles = [];
+
     // Sidebar elements
     const conversationsList = document.getElementById('conversations-list');
     const sidebarContainer = document.getElementById('conversations-sidebar-container');
@@ -289,37 +297,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function sendMessage() {
         const queryText = userInput.value.trim();
-        if (!queryText) return;
+        if (!queryText && attachedFiles.length === 0) return;
 
-        addMessage('user', queryText);
+        // Display user message with file indicators if files are attached
+        let displayMessage = queryText;
+        if (attachedFiles.length > 0) {
+            const fileNames = attachedFiles.map(f => f.name).join(', ');
+            displayMessage += `\n<br><small>📎 Attached: ${fileNames}</small>`;
+        }
+        addMessage('user', displayMessage);
+
         const waitMessage = addWaitMessage();
         userInput.value = ''; // Clear input field
         sendButton.disabled = true; // Disable button while processing
         modelSelect.disabled = true; // Disable model selection once a conversation is started
         methodSelect.disabled = true; // Disable method selection once a conversation is started
 
-        const payload = {
-            query: queryText,
-            conversation_id: currentConversationId, // Send null if it's the first message
-            model_id: modelSelect.value || null,    // Use selected model
-            method_id: methodSelect.value || null,  // Use selected method
-            html: true
-        };
+        // Prepare request - use FormData if files are attached, otherwise JSON
+        let fetchOptions;
 
-        // Include API key if available
-        if (localStorage.getItem('gp_api_key')) {
-            payload.api_key = localStorage.getItem('gp_api_key');
-        }
+        if (attachedFiles.length > 0) {
+            // Use FormData for file uploads
+            const formData = new FormData();
+            formData.append('query', queryText);
+            if (currentConversationId) formData.append('conversation_id', currentConversationId);
+            if (modelSelect.value) formData.append('model_id', modelSelect.value);
+            if (methodSelect.value) formData.append('method_id', methodSelect.value);
+            formData.append('html', 'true');
+            if (localStorage.getItem('gp_api_key')) {
+                formData.append('api_key', localStorage.getItem('gp_api_key'));
+            }
 
-        try {
-            const response = await fetch('/api/chat/', {
+            // Attach files
+            attachedFiles.forEach(file => {
+                formData.append('files', file);
+            });
+
+            fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: formData
+            };
+        } else {
+            // Use JSON for text-only messages
+            const payload = {
+                query: queryText,
+                conversation_id: currentConversationId,
+                model_id: modelSelect.value || null,
+                method_id: methodSelect.value || null,
+                html: true
+            };
+
+            if (localStorage.getItem('gp_api_key')) {
+                payload.api_key = localStorage.getItem('gp_api_key');
+            }
+
+            fetchOptions = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': getCookie('csrftoken')
                 },
                 body: JSON.stringify(payload)
-            });
+            };
+        }
+
+        try {
+            const response = await fetch('/api/chat/', fetchOptions);
             clearWaitMessage(waitMessage); // Clear wait message
 
             if (!response.ok) {
@@ -343,6 +389,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Add bot response
             addMessage('bot', data.response, data.id, data.rating); // Pass queryId and initial rating
+
+            // Clear attached files after successful send
+            attachedFiles = [];
+            updateAttachedFilesUI();
 
         } catch (error) {
              handleApiError(error, 'sending message');
@@ -404,11 +454,111 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    sendButton.addEventListener('click', sendMessage);
-    userInput.addEventListener('keypress', (event) => {
-        // Send message on Enter key, unless Shift+Enter is pressed
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault(); // Prevent default newline insertion
+    // File attachment handling
+    function calculateTotalFileSize() {
+        return attachedFiles.reduce((total, file) => total + file.size, 0);
+    }
+
+    function formatFileSize(bytes) {
+        return (bytes / 1024).toFixed(2) + ' KB';
+    }
+
+    function updateAttachedFilesUI() {
+        attachedFilesContainer.innerHTML = '';
+
+        attachedFiles.forEach((file, index) => {
+            const fileTag = document.createElement('div');
+            fileTag.className = 'file-tag';
+            fileTag.innerHTML = `
+                <span class="file-tag-name" title="${file.name}">${file.name}</span>
+                <button class="file-tag-remove" data-index="${index}" title="Remove file">
+                    <i class="fa fa-times"></i>
+                </button>
+            `;
+            attachedFilesContainer.appendChild(fileTag);
+        });
+    }
+
+    function addFiles(files) {
+        const newFiles = Array.from(files);
+        const tempFiles = [...attachedFiles, ...newFiles];
+        const totalSize = tempFiles.reduce((sum, file) => sum + file.size, 0);
+
+        if (totalSize > MAX_FILE_SIZE) {
+            const errorMsg = `The total size of attached files (${formatFileSize(totalSize)}) exceeds the maximum limit of 325 KB.`;
+            document.getElementById('fileSizeErrorMessage').textContent = errorMsg;
+            fileSizeErrorModal.show();
+            return;
+        }
+
+        attachedFiles = tempFiles;
+        updateAttachedFilesUI();
+    }
+
+    // Attachment button click handler
+    attachmentButton.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    // File input change handler
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            addFiles(e.target.files);
+            fileInput.value = ''; // Reset input
+        }
+    });
+
+    // Remove file handler (event delegation)
+    attachedFilesContainer.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.file-tag-remove');
+        if (removeBtn) {
+            const index = parseInt(removeBtn.dataset.index);
+            attachedFiles.splice(index, 1);
+            updateAttachedFilesUI();
+        }
+    });
+
+    // Drag and drop functionality
+    let dragCounter = 0;
+
+    chatBox.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        dragCounter++;
+        chatBox.classList.add('drag-over');
+    });
+
+    chatBox.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dragCounter--;
+        if (dragCounter === 0) {
+            chatBox.classList.remove('drag-over');
+        }
+    });
+
+    chatBox.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    chatBox.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dragCounter = 0;
+        chatBox.classList.remove('drag-over');
+
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            addFiles(files);
+        }
+    });
+
+    // Send button event listener
+    sendButton.addEventListener('click', () => {
+        sendMessage();
+    });
+
+    // Enter key event listener
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             sendMessage();
         }
     });

@@ -94,6 +94,12 @@ class ChatInputSerializer(serializers.Serializer):
     method_id = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="Specific method to use")
     api_key = serializers.CharField(max_length=100, required=False, allow_null=True, help_text="GenePattern API key for authenticated MCP calls")
     html = serializers.BooleanField(default=False, help_text="Return HTML response, otherwise return Markdown")
+    files = serializers.ListField(
+        child=serializers.FileField(),
+        required=False,
+        allow_empty=True,
+        help_text="List of files to attach to the query"
+    )
 
     # Future Use?: Allow specifying a system prompt version or ID
     # system_prompt_id = serializers.IntegerField(required=False, allow_null=True)

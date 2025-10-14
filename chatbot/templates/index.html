@@ -69,7 +69,14 @@
                         </div>
                     </div>
                     <div class="input-area">
-                        <textarea id="user-input" class="text-bg-dark bg-light bg-opacity-10" placeholder="Type your query..." rows="1"></textarea>
+                        <input type="file" id="file-input" multiple style="display: none;">
+                        <button id="attachment-button" class="btn btn-secondary" title="Attach files">
+                            <i class="fa fa-paperclip"></i>
+                        </button>
+                        <div class="input-wrapper">
+                            <div id="attached-files" class="attached-files"></div>
+                            <textarea id="user-input" class="text-bg-dark bg-light bg-opacity-10" placeholder="Type your query..." rows="1"></textarea>
+                        </div>
                         <button id="send-button" class="btn btn-primary">Send</button>
                     </div>
                 </div>
@@ -121,6 +128,24 @@
                         <button type="submit" class="btn btn-primary" id="loginSubmitBtn">Sign in</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Size Error Modal -->
+    <div class="modal fade" id="fileSizeErrorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">File Size Limit Exceeded</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="fileSizeErrorMessage">The attached files exceed the maximum size limit of 325 KB.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                </div>
             </div>
         </div>
     </div>
