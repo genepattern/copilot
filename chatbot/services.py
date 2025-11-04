@@ -1,9 +1,10 @@
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 from asgiref.sync import sync_to_async
 from dotenv import load_dotenv
 from django.conf import settings
 from django.utils import timezone
+from django.db.models import Sum
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -29,6 +30,37 @@ _cached_graphs = None
 
 # A simple, synchronous lock for global cache initialization, prevents race conditions
 _cache_lock = threading.Lock()
+
+
+async def check_daily_token_limit_exceeded():
+    """
+    Check if daily token usage has exceeded the configured limit.
+    Returns True if the limit is exceeded, False otherwise.
+    """
+    daily_limit = getattr(settings, 'DAILY_TOKEN_LIMIT', 1000000)
+
+    # Calculate the start of today (midnight UTC)
+    today_start = timezone.now().replace(hour=0, minute=0, second=0, microsecond=0)
+
+    # Query total tokens used today (using TOTAL token type to avoid double counting)
+    @sync_to_async
+    def get_daily_token_count():
+        result = TokenCount.objects.filter(
+            timestamp__gte=today_start,
+            token_type=TokenCount.TokenType.TOTAL
+        ).aggregate(total=Sum('token_count'))
+        return result['total'] or 0
+
+    total_tokens_today = await get_daily_token_count()
+
+    if total_tokens_today >= daily_limit:
+        logger.warning(
+            f"Daily token limit exceeded: {total_tokens_today}/{daily_limit} tokens used today"
+        )
+        return True
+
+    logger.debug(f"Daily token usage: {total_tokens_today}/{daily_limit} tokens")
+    return False
 
 
 class ServiceHelper:
@@ -591,6 +623,10 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
 
     start_time = timezone.now()
     if user.is_anonymous: user = None  # Anonymous users should be null
+
+    # Check if daily token limit has been exceeded
+    if await check_daily_token_limit_exceeded():
+        return None, "I'm sorry. I can't provide you with an answer right now, as I'm too busy answering questions from other users."
 
     # 1. Get the existing conversation or lazily create one
     if conversation_id:

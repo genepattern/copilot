@@ -166,6 +166,9 @@ DEFAULT_LLM_MODEL = os.getenv('DEFAULT_LLM_MODEL', 'us.anthropic.claude-3-5-haik
 DEFAULT_LLM_METHOD = os.getenv('DEFAULT_LLM_METHOD', 'mcp')  # Example, can be 'rag', 'mcp', 'raw'
 GENEPATTERN_MCP_URL = os.getenv('GENEPATTERN_MCP_URL', 'http://localhost:3000/mcp')  # Default to local MCP server
 
+# Token usage limit configuration
+DAILY_TOKEN_LIMIT = int(os.getenv('DAILY_TOKEN_LIMIT', '1000000'))  # Default to 1 million tokens per day
+
 # --- Logging Configuration (Optional but Recommended) ---
 LOGGING = {
     'version': 1,
