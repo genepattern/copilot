@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from chatbot.views import ChatInterfaceView, TestInterfaceView
+from chatbot.views import ChatInterfaceView, TestInterfaceView, TokenSummaryView
 
 urlpatterns = [
     # GenePattern Copilot webapp
@@ -8,6 +8,9 @@ urlpatterns = [
 
     # Method test view
     path('test/', TestInterfaceView.as_view(), name='test-interface'),
+
+    # Token usage summary (admin only)
+    path('tokens/', TokenSummaryView.as_view(), name='token-summary'),
 
     # Validation results page
     path('validation/', include('validation.urls', namespace='validation')),

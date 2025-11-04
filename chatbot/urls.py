@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import (ChatAPIView, ConversationDetailView, ResponseRatingView, LlmModelViewSet, ModelsAPIView,
-                    LoginAPIView, LogoutAPIView, ConversationListView)
+                    LoginAPIView, LogoutAPIView, ConversationListView, TokenSummaryAPIView)
 from rest_framework import routers
 
 
@@ -27,6 +27,9 @@ urlpatterns = [
     # API endpoint to list and retrieve conversations
     path('conversations/', ConversationListView.as_view(), name='conversation-list'),
     path('conversations/<id>/', ConversationDetailView.as_view(), name='conversation-detail'),
+
+    # API endpoint for token usage statistics (admin only)
+    path('token-summary/', TokenSummaryAPIView.as_view(), name='token-summary-api'),
 
     # Django REST Framework's browsable API
     path('', include(router.urls)),

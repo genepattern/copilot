@@ -3,6 +3,7 @@ from datetime import datetime
 from asgiref.sync import sync_to_async
 from dotenv import load_dotenv
 from django.conf import settings
+from django.utils import timezone
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -11,7 +12,8 @@ from langgraph.graph import START, StateGraph, END, MessagesState
 from typing import List, Dict
 from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage
-from .models import LlmModel, SystemPrompt, Conversation, Query, Step
+from .models import LlmModel, SystemPrompt, Conversation, Query, Step, TokenCount
+from .tokens import TokenCountingCallback
 import logging
 import threading
 import base64
@@ -230,12 +232,15 @@ async def read_and_format_files(files):
 async def genepattern_mcp(state: ConversationState):
     """Node to interact with the LLM and GenePattern tools via MCP."""
     logger.debug("\n--- Entering genepattern_mcp ---")
-    started_at = datetime.now()
+    started_at = timezone.now()
     helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))
     model_id = state["model_id"]
 
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
+
+    # Get model info for token tracking
+    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
 
     # Create the initial message if the history is empty
     if not state["messages"]:
@@ -253,10 +258,19 @@ async def genepattern_mcp(state: ConversationState):
     # For accurate logging, capture the messages that are being sent to the LLM
     step_input_messages = str(state["messages"])
 
-    # Invoke the LLM
+    # Create token tracking callback
+    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
+
+    # Invoke the LLM with token tracking
     model_with_tools = helper.llms[model_id].bind_tools(helper.tools)
-    response = await model_with_tools.ainvoke(state["messages"])
-    ended_at = datetime.now()
+    response = await model_with_tools.ainvoke(
+        state["messages"],
+        config={"callbacks": [token_callback]}
+    )
+    ended_at = timezone.now()
+
+    # Get token counts from callback
+    token_counts = token_callback.get_token_counts()
 
     # Log the details of this step
     state["steps"].append({
@@ -267,6 +281,7 @@ async def genepattern_mcp(state: ConversationState):
         'step_output': str(response),
         'started_at': started_at,
         'ended_at': ended_at,
+        'token_counts': token_counts,
     })
 
     state["messages"].append(response)
@@ -283,10 +298,10 @@ async def genepattern_mcp(state: ConversationState):
 
 async def retrieve_documents(state: ConversationState):
     """Node to retrieve relevant documents from the vector store."""
-    started_at = datetime.now()
+    started_at = timezone.now()
     helper = await ServiceHelper.create_instance()
     docs = helper.vector_store.similarity_search(state["query"])
-    ended_at = datetime.now()
+    ended_at = timezone.now()
     state["steps"].append({
         'llm_model': state["model_id"],
         'system_prompt': state["prompt"],
@@ -308,6 +323,9 @@ async def answer_question(state: ConversationState):
     helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))  # Use per-request tools if provided
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
+
+    # Get model info for token tracking
+    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
 
     context = "\n\n".join(doc.page_content for doc in state.get("context", []))
 
@@ -344,9 +362,16 @@ async def answer_question(state: ConversationState):
         if not full_prompt or not isinstance(full_prompt[-1], HumanMessage):
             full_prompt.append(HumanMessage(content=f"Based on the conversation above, please provide the final answer to my original question: {state['raw_query']}"))
 
-    started_at = datetime.now()
-    response = await llm_to_use.ainvoke(full_prompt)
-    ended_at = datetime.now()
+    # Create token tracking callback
+    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
+
+    started_at = timezone.now()
+    response = await llm_to_use.ainvoke(full_prompt, config={"callbacks": [token_callback]})
+    ended_at = timezone.now()
+
+    # Get token counts from callback
+    token_counts = token_callback.get_token_counts()
+
     state["steps"].append({
         'llm_model': state["model_id"],
         'system_prompt': state["prompt"],
@@ -355,6 +380,7 @@ async def answer_question(state: ConversationState):
         'step_output': response.content,
         'started_at': started_at,
         'ended_at': ended_at,
+        'token_counts': token_counts,
     })
     return {"answer": response.content}
 
@@ -392,25 +418,44 @@ async def summarize_question(state: ConversationState, llm_summarization=True):
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
-    started_at = datetime.now()
+    # Get model info for token tracking
+    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
+
+    started_at = timezone.now()
     system_prompt = await ServiceHelper.async_orm_get(SystemPrompt, name="Summarize Question", version=1.0)
     system = SystemMessage(content=f"{system_prompt.prompt}\n\n")
     full_prompt = [system, HumanMessage(query_content)]
-    response = await helper.llms[model_id].ainvoke(full_prompt)
-    ended_at = datetime.now()
+
+    # Create token tracking callback
+    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
+
+    response = await helper.llms[model_id].ainvoke(full_prompt, config={"callbacks": [token_callback]})
+    ended_at = timezone.now()
+
+    # Get token counts from callback
+    token_counts = token_callback.get_token_counts()
+
+    # Ensure response.content is always a string (some models like DeepSeek may return a list)
+    query_output = response.content
+    if isinstance(query_output, list):
+        # If it's a list, join the elements or extract text content
+        query_output = " ".join(str(item) for item in query_output)
+    elif not isinstance(query_output, str):
+        query_output = str(query_output)
 
     state["steps"].append({
         'llm_model': state["model_id"],
         'system_prompt': system_prompt.prompt,
         'call_id': 'summarize_question',
         'step_input': query_content,
-        'step_output': response.content,
+        'step_output': query_output,
         'started_at': started_at,
         'ended_at': ended_at,
+        'token_counts': token_counts,
     })
 
     return {
-        "query": response.content,
+        "query": query_output,
         "files_content": state.get("files_content")
     }
 
@@ -544,7 +589,7 @@ def assemble_answer(answer):
 async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None, api_key=None, files=None):
     """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
 
-    start_time = datetime.now()
+    start_time = timezone.now()
     if user.is_anonymous: user = None  # Anonymous users should be null
 
     # 1. Get the existing conversation or lazily create one
@@ -621,7 +666,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
     final_state = await helper.graph(method_id).ainvoke(initial_state)
 
     # 6. Record Query and Steps in Database
-    end_time = datetime.now()
+    end_time = timezone.now()
     query_num = await sync_to_async(conversation.queries.count)() + 1
     answer = final_state.get('answer', "Error: No response generated."),
     answer = assemble_answer(answer)
@@ -632,7 +677,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
 
     # Save steps taken during the graph execution
     for i, step in enumerate(final_state.get('steps', [])):
-        await ServiceHelper.async_orm_create(
+        step_instance = await ServiceHelper.async_orm_create(
             Step,
             query=query_instance,
             step_num=i + 1,
@@ -644,6 +689,48 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
             started_at=step["started_at"],
             ended_at=step["ended_at"]
         )
+
+        # Save token counts if available
+        token_counts = step.get('token_counts')
+        if token_counts:
+            # Save prompt tokens
+            if token_counts.get('prompt_tokens', 0) > 0:
+                await ServiceHelper.async_orm_create(
+                    TokenCount,
+                    step=step_instance,
+                    user=user,
+                    llm_model=llm_model,
+                    token_type=TokenCount.TokenType.PROMPT,
+                    token_count=token_counts['prompt_tokens'],
+                    call_id=str(step["call_id"]),
+                    estimated=token_counts.get('estimated', False)
+                )
+
+            # Save completion tokens
+            if token_counts.get('completion_tokens', 0) > 0:
+                await ServiceHelper.async_orm_create(
+                    TokenCount,
+                    step=step_instance,
+                    user=user,
+                    llm_model=llm_model,
+                    token_type=TokenCount.TokenType.COMPLETION,
+                    token_count=token_counts['completion_tokens'],
+                    call_id=str(step["call_id"]),
+                    estimated=token_counts.get('estimated', False)
+                )
+
+            # Save total tokens
+            if token_counts.get('total_tokens', 0) > 0:
+                await ServiceHelper.async_orm_create(
+                    TokenCount,
+                    step=step_instance,
+                    user=user,
+                    llm_model=llm_model,
+                    token_type=TokenCount.TokenType.TOTAL,
+                    token_count=token_counts['total_tokens'],
+                    call_id=str(step["call_id"]),
+                    estimated=token_counts.get('estimated', False)
+                )
 
     # 7. Return the created Query object
     return query_instance, None

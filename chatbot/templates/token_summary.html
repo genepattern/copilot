@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Usage Summary - GenePattern Copilot</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        .summary-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+        }
+        .user-row {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-row:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .username {
+            font-weight: 500;
+            color: #fff;
+        }
+        .token-count {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .request-count {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .model-badge {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+        }
+        .estimated-badge {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light bg-opacity-10">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'img/logo.png' %}" alt="GenePattern" width="200px" class="d-inline-block align-text-top">
+            </a>
+            <div class="navbar-nav ms-auto me-3">
+                {% if user.is_authenticated %}
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% if user.is_staff %}
+                                <li><a class="dropdown-item" target="_blank" href="{% url 'admin:index' %}">Admin</a></li>
+                                <li><a class="dropdown-item" href="{% url 'token-summary' %}">Token Usage</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{% url 'chatbot_api:logout' %}" id="logoutBtn">Sign out</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 80px; margin-bottom: 2rem;">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Token Usage Summary</h1>
+                    <div>
+                        <a href="/" class="btn btn-outline-light me-2"><i class="fas fa-arrow-left me-2"></i>Back to Chat</a>
+                        <select id="timeframe-selector" class="form-select d-inline-block" style="width: auto;">
+                            <option value="today" selected>Today</option>
+                            <option value="7days">Last 7 Days</option>
+                            <option value="30days">Last 30 Days</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="row" id="summary-section">
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <div class="stat-label">Total Tokens</div>
+                            <div class="stat-number" id="total-tokens">-</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <div class="stat-label">Total Requests</div>
+                            <div class="stat-number" id="total-requests">-</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <div class="stat-label">Unique Users</div>
+                            <div class="stat-number" id="unique-users">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Breakdown -->
+                <div class="row mt-4">
+                    <div class="col-lg-8">
+                        <div class="summary-card">
+                            <h3 class="mb-3"><i class="fas fa-users me-2"></i>Usage by User</h3>
+                            <div id="loading-users" class="loading">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading token usage data...</p>
+                            </div>
+                            <div id="user-stats" style="display: none;"></div>
+                            <div id="no-data" style="display: none;" class="text-center text-muted py-4">
+                                <i class="fas fa-info-circle fa-3x mb-3"></i>
+                                <p>No token usage data for the selected timeframe.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Breakdown -->
+                    <div class="col-lg-4">
+                        <div class="summary-card">
+                            <h3 class="mb-3"><i class="fas fa-robot me-2"></i>Usage by Model</h3>
+                            <div id="model-stats"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+        let currentTimeframe = 'today';
+
+        // Format numbers with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Load token usage data
+        async function loadTokenData(timeframe) {
+            currentTimeframe = timeframe;
+
+            // Show loading state
+            document.getElementById('loading-users').style.display = 'block';
+            document.getElementById('user-stats').style.display = 'none';
+            document.getElementById('no-data').style.display = 'none';
+
+            try {
+                const response = await fetch(`/api/token-summary/?timeframe=${timeframe}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    },
+                    credentials: 'same-origin'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load token data');
+                }
+
+                const data = await response.json();
+                displayTokenData(data);
+            } catch (error) {
+                console.error('Error loading token data:', error);
+                document.getElementById('loading-users').innerHTML =
+                    '<p class="text-danger">Error loading token usage data. Please try again.</p>';
+            }
+        }
+
+        // Display token data
+        function displayTokenData(data) {
+            // Hide loading
+            document.getElementById('loading-users').style.display = 'none';
+
+            // Update summary cards
+            document.getElementById('total-tokens').textContent = formatNumber(data.total_tokens);
+            document.getElementById('total-requests').textContent = formatNumber(data.total_requests);
+            document.getElementById('unique-users').textContent = data.user_stats.length;
+
+            // Display user stats
+            const userStatsDiv = document.getElementById('user-stats');
+            if (data.user_stats.length === 0) {
+                document.getElementById('no-data').style.display = 'block';
+            } else {
+                document.getElementById('user-stats').style.display = 'block';
+
+                let html = '';
+                data.user_stats.forEach(user => {
+                    const estimatedBadge = user.estimated_count > 0
+                        ? `<span class="estimated-badge" title="${user.estimated_count} estimated calls">~${user.estimated_count} est.</span>`
+                        : '';
+
+                    html += `
+                        <div class="user-row">
+                            <div>
+                                <span class="username">
+                                    ${user.is_anonymous ? '<i class="fas fa-user-secret me-2"></i>' : '<i class="fas fa-user me-2"></i>'}
+                                    ${user.username}
+                                </span>
+                                ${estimatedBadge}
+                            </div>
+                            <div class="text-end">
+                                <div class="token-count">${formatNumber(user.total_tokens)} tokens</div>
+                                <div class="request-count">${formatNumber(user.request_count)} requests</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                userStatsDiv.innerHTML = html;
+            }
+
+            // Display model stats
+            const modelStatsDiv = document.getElementById('model-stats');
+            if (data.model_stats.length === 0) {
+                modelStatsDiv.innerHTML = '<p class="text-muted">No model data available</p>';
+            } else {
+                let html = '';
+                data.model_stats.forEach(model => {
+                    html += `
+                        <div class="model-badge">
+                            <div><strong>${model.model_label}</strong></div>
+                            <div style="font-size: 0.8rem;">${formatNumber(model.total_tokens)} tokens</div>
+                            <div style="font-size: 0.75rem; opacity: 0.7;">${formatNumber(model.request_count)} requests</div>
+                        </div>
+                    `;
+                });
+                modelStatsDiv.innerHTML = html;
+            }
+        }
+
+        // Timeframe selector change handler
+        document.getElementById('timeframe-selector').addEventListener('change', (e) => {
+            loadTokenData(e.target.value);
+        });
+
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTokenData('today');
+        });
+    </script>
+</body>
+</html>
+

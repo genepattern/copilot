@@ -41,8 +41,9 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         {% if user.is_staff %}
                             <li><a class="dropdown-item" target="_blank" href="{% url 'admin:index' %}">Admin</a></li>
+                            <li><a class="dropdown-item" href="{% url 'token-summary' %}">Tokens</a></li>
                         {% endif %}
-                        <li><a class="dropdown-item" href="{% url 'chatbot:logout' %}" id="logoutBtn">Sign out</a></li>
+                        <li><a class="dropdown-item" href="{% url 'chatbot_api:logout' %}" id="logoutBtn">Sign out</a></li>
                     </ul>
                 </div>
             {% else %}

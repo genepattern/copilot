@@ -1,15 +1,19 @@
 from adrf.views import APIView as AsyncAPIView
 from asgiref.sync import sync_to_async
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.db.models import Sum, Count, Q
+from django.utils import timezone
+from datetime import timedelta
 from rest_framework import generics, status, views, viewsets
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Conversation, Query, LlmModel, UserProfile
+from .models import Conversation, Query, LlmModel, UserProfile, TokenCount
 from .serializers import (
     ConversationSerializer,
     QuerySerializer,
@@ -217,3 +221,104 @@ class LogoutAPIView(APIView):
 
         logout(request)
         return Response({'success': True})
+
+
+@method_decorator(ensure_csrf_cookie, name='dispatch')
+class TokenSummaryView(UserPassesTestMixin, TemplateView):
+    """
+    Serves the token summary page - admin only.
+    """
+    template_name = 'token_summary.html'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
+
+class TokenSummaryAPIView(APIView):
+    """
+    API endpoint for token usage statistics - admin only.
+    GET: Retrieve token usage summary by user for a given timeframe.
+    """
+    permission_classes = [IsAdminUser]
+
+    def get(self, request, *args, **kwargs):
+        # Get timeframe parameter (default to 'today')
+        timeframe = request.query_params.get('timeframe', 'today')
+
+        # Calculate date range based on timeframe
+        now = timezone.now()
+        if timeframe == 'today':
+            start_date = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        elif timeframe == '7days':
+            start_date = now - timedelta(days=7)
+        elif timeframe == '30days':
+            start_date = now - timedelta(days=30)
+        else:
+            start_date = now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+        # Query token counts for the timeframe
+        token_data = TokenCount.objects.filter(
+            timestamp__gte=start_date,
+            token_type=TokenCount.TokenType.TOTAL
+        ).values('user__username', 'user__id').annotate(
+            total_tokens=Sum('token_count'),
+            request_count=Count('id'),
+            estimated_count=Count('id', filter=Q(estimated=True))
+        ).order_by('-total_tokens')
+
+        # Format the data
+        user_stats = []
+        total_all_tokens = 0
+        total_all_requests = 0
+
+        for item in token_data:
+            username = item['user__username'] if item['user__username'] else 'Anonymous'
+            tokens = item['total_tokens'] or 0
+            requests = item['request_count'] or 0
+            estimated = item['estimated_count'] or 0
+
+            user_stats.append({
+                'username': username,
+                'user_id': item['user__id'],
+                'total_tokens': tokens,
+                'request_count': requests,
+                'estimated_count': estimated,
+                'is_anonymous': item['user__username'] is None
+            })
+
+            total_all_tokens += tokens
+            total_all_requests += requests
+
+        # Get model breakdown
+        model_stats = TokenCount.objects.filter(
+            timestamp__gte=start_date,
+            token_type=TokenCount.TokenType.TOTAL
+        ).values('llm_model__model_id', 'llm_model__label').annotate(
+            total_tokens=Sum('token_count'),
+            request_count=Count('id')
+        ).order_by('-total_tokens')
+
+        model_breakdown = []
+        for item in model_stats:
+            if item['llm_model__model_id']:
+                model_breakdown.append({
+                    'model_id': item['llm_model__model_id'],
+                    'model_label': item['llm_model__label'],
+                    'total_tokens': item['total_tokens'] or 0,
+                    'request_count': item['request_count'] or 0
+                })
+
+        return Response({
+            'timeframe': timeframe,
+            'start_date': start_date.isoformat(),
+            'end_date': now.isoformat(),
+            'total_tokens': total_all_tokens,
+            'total_requests': total_all_requests,
+            'user_stats': user_stats,
+            'model_stats': model_breakdown
+        }, status=status.HTTP_200_OK)

@@ -102,3 +102,39 @@ class Step(models.Model):
         ordering = ['-query', 'step_num']  # Order steps within a query chronologically
 
     def __str__(self): return f"Step {self.step_num} of Query {self.query.id}"
+
+
+class TokenCount(models.Model):
+    """Records token usage for LLM calls"""
+
+    class TokenType(models.TextChoices):
+        PROMPT = 'prompt', 'Prompt (Input)'
+        COMPLETION = 'completion', 'Completion (Output)'
+        TOTAL = 'total', 'Total'
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    step = models.ForeignKey(Step, on_delete=models.CASCADE, null=True, blank=True, related_name='token_counts', help_text="Associated step if applicable")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name='token_usage', help_text="User who initiated the request (null for anonymous)")
+    llm_model = models.ForeignKey(LlmModel, on_delete=models.SET_NULL, null=True, blank=True, related_name='token_usage')
+
+    token_type = models.CharField(max_length=20, choices=TokenType.choices, help_text="Type of tokens (prompt/completion/total)")
+    token_count = models.PositiveIntegerField(help_text="Number of tokens used")
+
+    timestamp = models.DateTimeField(auto_now_add=True, help_text="When this token usage occurred")
+
+    # Optional metadata
+    call_id = models.CharField(max_length=100, null=True, blank=True, help_text="Identifier for the graph node that made this call")
+    estimated = models.BooleanField(default=False, help_text="Whether this count is estimated (for models without native token tracking)")
+
+    class Meta:
+        ordering = ['-timestamp']
+        indexes = [
+            models.Index(fields=['user', 'timestamp']),
+            models.Index(fields=['llm_model', 'timestamp']),
+            models.Index(fields=['token_type']),
+        ]
+
+    def __str__(self):
+        user_str = self.user.username if self.user else 'Anonymous'
+        model_str = self.llm_model.model_id if self.llm_model else 'Unknown'
+        return f"{self.token_count} {self.token_type} tokens - {model_str} - {user_str}"
