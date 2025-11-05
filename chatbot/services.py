@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from django.conf import settings
 from django.utils import timezone
 from django.db.models import Sum
+from django.core.mail import send_mail
 from langchain.chat_models import init_chat_model
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -31,10 +32,68 @@ _cached_graphs = None
 # A simple, synchronous lock for global cache initialization, prevents race conditions
 _cache_lock = threading.Lock()
 
+# Track when we last sent a token limit email to avoid spam
+_last_token_limit_email_sent = None
+_email_lock = threading.Lock()
+
+
+async def send_token_limit_email(total_tokens: int, daily_limit: int):
+    """
+    Send an email notification to admins when daily token limit is exceeded.
+    Only sends once per day to avoid spam.
+    """
+    global _last_token_limit_email_sent
+
+    # Check if we already sent an email today
+    today = timezone.now().date()
+    with _email_lock:
+        if _last_token_limit_email_sent == today:
+            logger.debug("Token limit email already sent today, skipping")
+            return
+        _last_token_limit_email_sent = today
+
+    # Get admin emails from settings
+    admins = getattr(settings, 'ADMINS', [])
+    if not admins:
+        logger.warning("No ADMINS configured in settings, cannot send token limit email")
+        return
+
+    admin_emails = [admins]
+
+    # Prepare email content
+    subject = f"Daily Token Limit Exceeded - {timezone.now().strftime('%Y-%m-%d')}"
+
+    message = f"""
+Copilot Token Limit Alert
+=======================
+
+Copilot has exceeded its daily token usage limit.
+
+Current Usage: {total_tokens:,} tokens
+Daily Limit:   {daily_limit:,} tokens
+Percentage:    {(total_tokens / daily_limit * 100):.1f}%
+
+Time: {timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')}
+    """.strip()
+
+    try:
+        # Send email asynchronously
+        await sync_to_async(send_mail)(
+            subject=subject,
+            message=message,
+            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
+            recipient_list=admin_emails,
+            fail_silently=False,
+        )
+        logger.info(f"Token limit notification email sent to {len(admin_emails)} administrator(s)")
+    except Exception as e:
+        logger.error(f"Failed to send token limit email: {e}", exc_info=True)
+
 
 async def check_daily_token_limit_exceeded():
     """
     Check if daily token usage has exceeded the configured limit.
+    Sends an email notification to admins if limit is exceeded (once per day).
     Returns True if the limit is exceeded, False otherwise.
     """
     daily_limit = getattr(settings, 'DAILY_TOKEN_LIMIT', 1000000)
@@ -57,6 +116,10 @@ async def check_daily_token_limit_exceeded():
         logger.warning(
             f"Daily token limit exceeded: {total_tokens_today}/{daily_limit} tokens used today"
         )
+
+        # Send email notification (only once per day)
+        await send_token_limit_email(total_tokens_today, daily_limit)
+
         return True
 
     logger.debug(f"Daily token usage: {total_tokens_today}/{daily_limit} tokens")
