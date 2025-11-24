@@ -1,5 +1,3 @@
-from adrf.views import APIView as AsyncAPIView
-from asgiref.sync import sync_to_async
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import TemplateView
@@ -48,27 +46,16 @@ class ConversationListView(generics.ListAPIView):
         return Conversation.objects.filter(user=self.request.user).prefetch_related('queries')
 
 
-class ChatAPIView(AsyncAPIView):
+class ChatAPIView(APIView):
     """
     API endpoint for handling chat interactions.
     POST: Send a new message (creates a conversation if needed).
     """
     permission_classes = [AllowAny]
 
-    def validate_and_get_data(self, serializer):
-        if serializer.is_valid(): return serializer.validated_data
-        else: return None
-
-    @sync_to_async
-    def serialize_output(self, serializer): return serializer.data
-
-    @sync_to_async
-    def serialize_errors(self, serializer): return serializer.errors
-
-    async def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         serializer = ChatInputSerializer(data=request.data)
-        data = await sync_to_async(self.validate_and_get_data)(serializer)
-        if data:
+        if serializer.is_valid():
             user = request.user
             conversation_id = serializer.validated_data.get('conversation_id')
             user_query = serializer.validated_data['query']
@@ -81,14 +68,15 @@ class ChatAPIView(AsyncAPIView):
             # If the call doesn't specify an API key, check the user profile
             if not api_key and user.is_authenticated:
                 try:
-                    profile = await sync_to_async(UserProfile.objects.get)(user=user)
+                    profile = UserProfile.objects.get(user=user)
                     # Only use the profile API key if it's not None or empty
                     if profile.gp_api_key:
                         api_key = profile.gp_api_key
-                except UserProfile.DoesNotExist: pass  # Profile doesn't exist, no API key available
+                except UserProfile.DoesNotExist:
+                    pass  # Profile doesn't exist, no API key available
 
-            # Call the service layer to handle the logic
-            query_instance, error_message = await handle_chat_message(
+            # Call the service layer to handle the logic (now synchronous)
+            query_instance, error_message = handle_chat_message(
                 user=user,
                 conversation_id=conversation_id,
                 user_query=user_query,
@@ -99,19 +87,19 @@ class ChatAPIView(AsyncAPIView):
             )
 
             # Check if there was an error in processing
-            if error_message: return Response({ "error": error_message }, status=status.HTTP_400_BAD_REQUEST)
+            if error_message:
+                return Response({"error": error_message}, status=status.HTTP_400_BAD_REQUEST)
 
             # Return the newly created query object
             if query_instance:
-                output_serializer = QuerySerializer(query_instance, context={ 'request': request, 'html': html })
-                data = await self.serialize_output(output_serializer)
-                return Response(data, status=status.HTTP_201_CREATED)
+                output_serializer = QuerySerializer(query_instance, context={'request': request, 'html': html})
+                return Response(output_serializer.data, status=status.HTTP_201_CREATED)
 
             # Should not happen if error_message is handled, but as a fallback
-            else: return Response({"error": "Failed to process chat message."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            else:
+                return Response({"error": "Failed to process chat message."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        errors = await self.serialize_errors(serializer)
-        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ConversationDetailView(generics.RetrieveAPIView):
@@ -153,7 +141,7 @@ class ResponseRatingView(views.APIView):
             query.save(update_fields=['rating'])
 
             # Return the updated query or just a success message
-            return Response({ 'response': 'Thanks for the feedback' }, status=status.HTTP_200_OK)
+            return Response({'response': 'Thanks for the feedback'}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -219,7 +207,8 @@ class LogoutAPIView(APIView):
                 profile = UserProfile.objects.get(user=request.user)
                 profile.gp_api_key = None
                 profile.save(update_fields=['gp_api_key'])
-            except UserProfile.DoesNotExist: pass  # Profile doesn't exist, nothing to clear
+            except UserProfile.DoesNotExist:
+                pass  # Profile doesn't exist, nothing to clear
 
         logout(request)
         return Response({'success': True})
@@ -323,4 +312,4 @@ class TokenSummaryAPIView(APIView):
             'total_requests': total_all_requests,
             'user_stats': user_stats,
             'model_stats': model_breakdown
-        }, status=status.HTTP_200_OK)
+        })

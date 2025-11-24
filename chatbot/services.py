@@ -1,50 +1,351 @@
-import asyncio
-from datetime import datetime, timedelta
-from asgiref.sync import sync_to_async
 from dotenv import load_dotenv
 from django.conf import settings
 from django.utils import timezone
 from django.db.models import Sum
 from django.core.mail import send_mail
-from langchain.chat_models import init_chat_model
-from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_mcp_adapters.client import MultiServerMCPClient
-from langgraph.graph import START, StateGraph, END, MessagesState
-from typing import List, Dict
-from langgraph.prebuilt import ToolNode, tools_condition
-from langchain_core.messages import AIMessage, ToolMessage, HumanMessage, SystemMessage
-from .models import LlmModel, SystemPrompt, Conversation, Query, Step, TokenCount
-from .tokens import TokenCountingCallback
+from pydantic_ai import Agent
+from pydantic_ai.mcp import MCPServerStreamableHTTP
+from typing import List, Dict, Optional, Any
+from dataclasses import dataclass, field
+import chromadb
+from chromadb.utils import embedding_functions
 import logging
 import threading
 import base64
 import mimetypes
+import httpx
+
+from .models import LlmModel, SystemPrompt, Conversation, Query, Step, TokenCount
 
 logger = logging.getLogger(__name__)
 
-# Global variables for caching expensive-to-load, immutable resources, initialized when first imported
+# Global cache for expensive resources
 _cached_llms = None
 _cached_vector_store = None
 _cached_tools = None
-_cached_graphs = None
-
-# A simple, synchronous lock for global cache initialization, prevents race conditions
 _cache_lock = threading.Lock()
 
-# Track when we last sent a token limit email to avoid spam
+# Email rate limiting
 _last_token_limit_email_sent = None
 _email_lock = threading.Lock()
 
 
-async def send_token_limit_email(total_tokens: int, daily_limit: int):
-    """
-    Send an email notification to admins when daily token limit is exceeded.
-    Only sends once per day to avoid spam.
-    """
+@dataclass
+class ConversationState:
+    """State passed between agent runs."""
+    conversation_id: str
+    model_id: str
+    prompt: str
+    raw_query: str
+    query: str = ""
+    context: List = field(default_factory=list)
+    answer: str = ""
+    steps: List = field(default_factory=list)
+    method_id: Optional[str] = None
+    api_key: Optional[str] = None
+    files: Optional[List] = None
+    files_content: Optional[str] = None
+
+
+class ServiceHelper:
+    """Helper class for managing LLMs, vector store, and MCP tools."""
+
+    def __init__(self, llms, vector_store, tools):
+        self.llms = llms
+        self.vector_store = vector_store
+        self.tools = tools
+
+    @staticmethod
+    def _load_llms():
+        """Load all enabled LLM models from the database."""
+        llms = {}
+        models = LlmModel.objects.filter(disabled=False)
+
+        for model in models:
+            if model.provider_id in ('google_genai', 'google-gla'):
+                model_name = model.model_id
+            else:
+                provider = 'bedrock' if model.provider_id == 'bedrock_converse' else model.provider_id
+                model_name = f"{provider}:{model.model_id}"
+
+            llms[model.model_id] = model_name
+            logger.info(f"Loaded model {model.model_id} as '{model_name}'")
+
+        return llms
+
+    @staticmethod
+    def _load_vector_store():
+        """Load the ChromaDB vector store."""
+        chroma_client = chromadb.PersistentClient(path="./vectorstore/chroma")
+        embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
+            model_name="all-MiniLM-L6-v2"
+        )
+        return chroma_client.get_or_create_collection(
+            name="moduledoc",
+            embedding_function=embedding_function
+        )
+
+    @staticmethod
+    def _load_mcp_server(api_key: Optional[str] = None):
+        """Initialize MCP server connection using Pydantic AI's native MCP support."""
+        mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
+
+        logger.info(f"="*70)
+        logger.info(f"Initializing MCP server connection at: {mcp_url}")
+        logger.info(f"API key provided: {api_key is not None}")
+        if api_key:
+            logger.info(f"API key length: {len(api_key)}")
+        logger.info(f"="*70)
+
+        try:
+            # Create MCP server with optional authorization header
+            if api_key:
+                # Pass headers directly to MCPServerStreamableHTTP
+                # The MCP transport will use these headers for ALL requests including tool calls
+                mcp_server = MCPServerStreamableHTTP(
+                    mcp_url,
+                    headers={"Authorization": f"Bearer {api_key}"}
+                )
+                logger.info(f"✓ MCP server initialized with API key authentication")
+                logger.info(f"  Authorization header: Bearer {api_key[:8]}...")
+            else:
+                mcp_server = MCPServerStreamableHTTP(mcp_url)
+                logger.info(f"✓ MCP server initialized without authentication")
+
+            return mcp_server
+
+        except Exception as e:
+            logger.error(f"="*70)
+            logger.error(f"✗ MCP INITIALIZATION ERROR")
+            logger.error(f"="*70)
+            logger.error(f"Failed to initialize MCP server at {mcp_url}")
+            logger.error(f"Error: {type(e).__name__}: {str(e)}")
+            logger.error(f"")
+            logger.error(f"TROUBLESHOOTING:")
+            logger.error(f"  1. Verify MCP server is running: curl {mcp_url}")
+            logger.error(f"  2. Check that server supports streamable-http transport")
+            logger.error(f"  3. Verify URL in settings.GENEPATTERN_MCP_URL")
+            logger.error(f"  4. Check server logs for errors")
+            logger.error(f"")
+            logger.error(f"Application will continue without MCP tools.")
+            logger.error(f"="*70)
+            import traceback
+            logger.error(traceback.format_exc())
+            return None
+
+    @classmethod
+    def create_instance(cls, api_key: Optional[str] = None):
+        """Create a ServiceHelper instance with cached or per-request resources."""
+        global _cached_llms, _cached_vector_store, _cached_tools
+
+        with _cache_lock:
+            load_dotenv()
+
+            # Cache LLMs and vector store (shared across requests)
+            if _cached_llms is None:
+                logger.info("Initializing and caching LLMs...")
+                _cached_llms = cls._load_llms()
+
+            if _cached_vector_store is None:
+                logger.info("Initializing and caching vector store...")
+                _cached_vector_store = cls._load_vector_store()
+
+            # MCP tools: use per-request if api_key provided, otherwise cache
+            if api_key:
+                logger.debug("Loading MCP tools with per-request Authorization header")
+                tools = cls._load_mcp_server(api_key)
+            else:
+                if _cached_tools is None:
+                    logger.info("Initializing and caching MCP tools...")
+                    _cached_tools = cls._load_mcp_server()
+                tools = _cached_tools
+
+        return cls(llms=_cached_llms, vector_store=_cached_vector_store, tools=tools)
+
+
+# ==================== Helper Functions ====================
+
+def read_and_format_files(files):
+    """Read and format uploaded files for inclusion in prompts."""
+    if not files:
+        return ""
+
+    files_content = "\n\n### Attached Files:\n\n"
+    for file in files:
+        try:
+            content = file.read()
+            try:
+                text_content = content.decode('utf-8')
+                files_content += f"**File: {file.name}**\n```\n{text_content}\n```\n\n"
+            except UnicodeDecodeError:
+                b64_content = base64.b64encode(content).decode('ascii')
+                mimetype, _ = mimetypes.guess_type(file.name)
+                mimetype = mimetype or 'application/octet-stream'
+                files_content += (
+                    f"**File: {file.name}** (binary, {len(content)} bytes)\n"
+                    f"MIME type: {mimetype}\n"
+                    f"Base64: {b64_content}\n\n"
+                )
+        except Exception as e:
+            logger.error(f"Error reading file {file.name}: {e}")
+            files_content += f"**File: {file.name}** (error reading file)\n\n"
+
+    return files_content
+
+
+def estimate_token_counts(query: str, result_text: str) -> Dict[str, Any]:
+    """Estimate token usage based on word count."""
+    prompt_tokens = len(query.split()) * 2
+    completion_tokens = len(result_text.split()) * 2
+    return {
+        'prompt_tokens': prompt_tokens,
+        'completion_tokens': completion_tokens,
+        'total_tokens': prompt_tokens + completion_tokens,
+        'estimated': True
+    }
+
+
+def extract_result_text(result) -> str:
+    """Extract text from Pydantic AI result object."""
+    if hasattr(result, 'output'):
+        return str(result.output)
+    elif hasattr(result, 'data'):
+        return str(result.data)
+    else:
+        return str(result)
+
+
+def retrieve_documents(state: ConversationState, helper: ServiceHelper):
+    """Retrieve relevant documents from the vector store."""
+    started_at = timezone.now()
+
+    results = helper.vector_store.query(query_texts=[state.query], n_results=5)
+
+    docs = []
+    if results and results.get('documents'):
+        for doc_list in results['documents']:
+            docs.extend(doc_list)
+
+    ended_at = timezone.now()
+    state.steps.append({
+        'llm_model': state.model_id,
+        'system_prompt': state.prompt,
+        'call_id': 'retrieve_documents',
+        'step_input': state.query,
+        'step_output': "\n\n".join(docs),
+        'started_at': started_at,
+        'ended_at': ended_at,
+    })
+
+    state.context = docs
+    return docs
+
+
+def run_agent(state: ConversationState, helper: ServiceHelper, with_tools: bool = False) -> str:
+    """Generic agent runner - creates agent, optionally adds MCP tools, runs, and logs."""
+    model_name = helper.llms[state.model_id]
+    context = "\n\n".join(state.context) if state.context else ""
+    files_content = state.files_content or ""
+    system_content = f"{state.prompt}\n\n{context}\n\n{files_content}".strip()
+
+    # Create agent with MCP tools if requested
+    if with_tools and helper.tools:
+        # Use Pydantic AI's native MCP support via toolsets parameter
+        agent = Agent(
+            model_name,
+            system_prompt=system_content,
+            toolsets=[helper.tools]  # Pass MCP server as toolset
+        )
+    else:
+        # Create agent without tools
+        agent = Agent(model_name, system_prompt=system_content)
+
+    started_at = timezone.now()
+    result = agent.run_sync(state.query)
+    ended_at = timezone.now()
+
+    result_text = extract_result_text(result)
+    token_counts = estimate_token_counts(state.query, result_text)
+
+    call_id = 'mcp_agent' if with_tools else 'agent'
+    state.steps.append({
+        'llm_model': state.model_id,
+        'system_prompt': state.prompt,
+        'call_id': call_id,
+        'step_input': state.query,
+        'step_output': result_text,
+        'started_at': started_at,
+        'ended_at': ended_at,
+        'token_counts': token_counts,
+    })
+
+    state.answer = result_text
+    return result_text
+
+
+# ==================== Agent Methods ====================
+
+def run_raw_agent(state: ConversationState, helper: ServiceHelper):
+    """Direct answering without RAG or tools."""
+    state.query = state.raw_query
+
+    # Cache file content if needed
+    if state.files and not state.files_content:
+        state.files_content = read_and_format_files(state.files)
+
+    return run_agent(state, helper, with_tools=False)
+
+
+def run_rag_agent(state: ConversationState, helper: ServiceHelper):
+    """Answer with document retrieval."""
+    state.query = state.raw_query
+
+    # Cache file content if needed
+    if state.files and not state.files_content:
+        state.files_content = read_and_format_files(state.files)
+
+    retrieve_documents(state, helper)
+    return run_agent(state, helper, with_tools=False)
+
+
+def run_mcp_agent(state: ConversationState, helper: ServiceHelper):
+    """Answer with MCP tool calling."""
+    state.query = state.raw_query
+
+    # Cache file content if needed
+    if state.files and not state.files_content:
+        state.files_content = read_and_format_files(state.files)
+
+    return run_agent(state, helper, with_tools=True)
+
+
+def run_rag_mcp_agent(state: ConversationState, helper: ServiceHelper):
+    """Answer with both RAG and MCP tools."""
+    state.query = state.raw_query
+
+    # Cache file content if needed
+    if state.files and not state.files_content:
+        state.files_content = read_and_format_files(state.files)
+
+    retrieve_documents(state, helper)
+    return run_agent(state, helper, with_tools=True)
+
+
+# Agent registry
+AGENT_METHODS = {
+    'raw': run_raw_agent,
+    'rag': run_rag_agent,
+    'mcp': run_mcp_agent,
+    'rag_mcp': run_rag_mcp_agent
+}
+
+
+# ==================== Token Limit Management ====================
+
+def send_token_limit_email(total_tokens: int, daily_limit: int):
+    """Send email notification when daily token limit is exceeded (once per day)."""
     global _last_token_limit_email_sent
 
-    # Check if we already sent an email today
     today = timezone.now().date()
     with _email_lock:
         if _last_token_limit_email_sent == today:
@@ -52,17 +353,12 @@ async def send_token_limit_email(total_tokens: int, daily_limit: int):
             return
         _last_token_limit_email_sent = today
 
-    # Get admin emails from settings
     admins = getattr(settings, 'ADMINS', [])
     if not admins:
         logger.warning("No ADMINS configured in settings, cannot send token limit email")
         return
 
-    admin_emails = [admins]
-
-    # Prepare email content
     subject = f"Daily Token Limit Exceeded - {timezone.now().strftime('%Y-%m-%d')}"
-
     message = f"""
 Copilot Token Limit Alert
 =======================
@@ -77,831 +373,157 @@ Time: {timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')}
     """.strip()
 
     try:
-        # Send email asynchronously
-        await sync_to_async(send_mail)(
+        send_mail(
             subject=subject,
             message=message,
             from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
-            recipient_list=admin_emails,
+            recipient_list=admins,
             fail_silently=False,
         )
-        logger.info(f"Token limit notification email sent to {len(admin_emails)} administrator(s)")
+        logger.info(f"Token limit notification email sent to {len(admins)} administrator(s)")
     except Exception as e:
         logger.error(f"Failed to send token limit email: {e}", exc_info=True)
 
 
-async def check_daily_token_limit_exceeded():
-    """
-    Check if daily token usage has exceeded the configured limit.
-    Sends an email notification to admins if limit is exceeded (once per day).
-    Returns True if the limit is exceeded, False otherwise.
-    """
+def check_daily_token_limit_exceeded():
+    """Check if daily token limit exceeded and send notification if needed."""
     daily_limit = getattr(settings, 'DAILY_TOKEN_LIMIT', 1000000)
-
-    # Calculate the start of today (midnight UTC)
     today_start = timezone.now().replace(hour=0, minute=0, second=0, microsecond=0)
 
-    # Query total tokens used today (using TOTAL token type to avoid double counting)
-    @sync_to_async
-    def get_daily_token_count():
-        result = TokenCount.objects.filter(
-            timestamp__gte=today_start,
-            token_type=TokenCount.TokenType.TOTAL
-        ).aggregate(total=Sum('token_count'))
-        return result['total'] or 0
+    result = TokenCount.objects.filter(
+        timestamp__gte=today_start,
+        token_type=TokenCount.TokenType.TOTAL
+    ).aggregate(total=Sum('token_count'))
 
-    total_tokens_today = await get_daily_token_count()
+    total_tokens_today = result['total'] or 0
 
     if total_tokens_today >= daily_limit:
-        logger.warning(
-            f"Daily token limit exceeded: {total_tokens_today}/{daily_limit} tokens used today"
-        )
-
-        # Send email notification (only once per day)
-        await send_token_limit_email(total_tokens_today, daily_limit)
-
+        logger.warning(f"Daily token limit exceeded: {total_tokens_today}/{daily_limit} tokens")
+        send_token_limit_email(total_tokens_today, daily_limit)
         return True
 
     logger.debug(f"Daily token usage: {total_tokens_today}/{daily_limit} tokens")
     return False
 
 
-class ServiceHelper:
-    """
-        Initializes the ServiceHelper.
-        Args:
-            llms (dict): Dictionary of initialized LLM models.
-            vector_store: Initialized vector store instance.
-            graphs (dict): Dictionary of pre-built LangGraph instances.
-            tools (list): List of available tools for the LLM.
-        """
-
-    def __init__(self, llms, vector_store, graphs, tools):
-        self.llms = llms
-        self.vector_store = vector_store
-        self._graph: Dict[str, StateGraph] = graphs
-        self.tools = tools
-
-    def graph(self, method: str) -> StateGraph:
-        graph_instance = self._graph.get(method)
-        if not graph_instance:
-            valid_methods = list(self._graph.keys())
-            raise ValueError(f"Invalid method '{method}'. Valid methods are: {valid_methods}")
-        return graph_instance
-
-    @staticmethod
-    async def async_orm_wrapper(func, **kwargs):
-        """Asynchronous ORM wrapper to call a function with kwargs."""
-        return await sync_to_async(
-            lambda: func(**kwargs),
-            thread_sensitive=True
-        )()
-
-    @staticmethod
-    async def async_orm_create(model_cls, **kwargs):
-        """Asynchronous ORM create method."""
-        return await ServiceHelper.async_orm_wrapper(model_cls.objects.create, **kwargs)
-
-    @staticmethod
-    async def async_orm_get(model_cls, **kwargs):
-        """Asynchronous ORM get method to fetch a single object."""
-        return await ServiceHelper.async_orm_wrapper(model_cls.objects.get, **kwargs)
-
-    @staticmethod
-    async def async_orm_filter(model_cls, **kwargs):
-        """Asynchronous ORM filter method."""
-        return await ServiceHelper.async_orm_wrapper(model_cls.objects.filter, **kwargs)
-
-    @staticmethod
-    async def async_orm_filter_sort_first(model_cls, sort, **kwargs):
-        """Fetch the first object matching the filter and sort criteria."""
-        return await ServiceHelper.async_orm_wrapper(
-            lambda **x: model_cls.objects.filter(**kwargs).order_by(sort).first(), **kwargs
-        )
-
-    @staticmethod
-    @sync_to_async
-    def get_enabled_llms():
-        """Retrieves a list of enabled LLM models from the database."""
-        return list(LlmModel.objects.filter(disabled=False))
-
-    @staticmethod
-    async def _load_llms():
-        """Load all enabled LLM models from the database and initialize them."""
-        llms = {}
-        models = await ServiceHelper.get_enabled_llms()
-        for model in models:
-            llms[model.model_id] = init_chat_model(
-                model.model_id, model_provider=model.provider_id, temperature=0.1
+def save_token_counts(step_instance, user, llm_model, token_counts, call_id):
+    """Save token count records to database."""
+    for token_type, count_value in [
+        (TokenCount.TokenType.PROMPT, token_counts.get('prompt_tokens', 0)),
+        (TokenCount.TokenType.COMPLETION, token_counts.get('completion_tokens', 0)),
+        (TokenCount.TokenType.TOTAL, token_counts.get('total_tokens', 0))
+    ]:
+        if count_value > 0:
+            TokenCount.objects.create(
+                step=step_instance,
+                user=user,
+                llm_model=llm_model,
+                token_type=token_type,
+                token_count=count_value,
+                call_id=str(call_id),
+                estimated=token_counts.get('estimated', False)
             )
-        return llms
 
-    @staticmethod
-    def _load_vector_store():
-        """Load the vector store and embeddings."""
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        return Chroma(
-            collection_name="moduledoc",
-            embedding_function=embeddings,
-            persist_directory="./vectorstore/chroma",
-        )
 
-    @staticmethod
-    async def _load_mcp_tools(api_key: str | None = None):
-        """Load the GenePattern MCP client and its tools.
-        If api_key is provided, include it as a Bearer token in the Authorization header.
-        """
-        try:
-            mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
-            headers = {"Authorization": f"Bearer {api_key}"} if api_key else None
-            client = MultiServerMCPClient({
-                "genepattern": {"transport": "streamable_http", "url": mcp_url, "headers": headers},
-            })
-            return await client.get_tools()
-        except Exception as e:
-            logger.error(f"Could not connect to MCP server or load tools: {e}", exc_info=True)
-            return []
+# ==================== Main Entry Point ====================
 
-    @classmethod
-    async def create_instance(cls, api_key: str | None = None):
-        """Asynchronously creates and configures a new ServiceHelper instance,
-        using globally cached resources if available.
-
-        If an api_key is provided, build per-request MCP tools and graphs with
-        Authorization headers, while still using cached LLMs and vector store.
-        """
-        global _cached_llms, _cached_vector_store, _cached_tools, _cached_graphs
-
-        # Use a synchronous lock to guard the global cache initialization block.
-        with _cache_lock:
-            load_dotenv()
-
-            # Lazy load and cache LLMs
-            if _cached_llms is None:
-                logger.info("Initializing and caching LLMs...")
-                _cached_llms = await cls._load_llms()
-            llms = _cached_llms
-
-            # Lazy load and cache Vector Store
-            if _cached_vector_store is None:
-                logger.info("Initializing and caching vector store...")
-                _cached_vector_store = cls._load_vector_store()
-            vector_store = _cached_vector_store
-
-            # Load MCP Tools and Graphs
-            if api_key:
-                # Build tools/graphs for this request with Authorization header
-                logger.debug("Loading MCP tools with per-request Authorization header")
-                tools = await cls._load_mcp_tools(api_key)
-                try:
-                    graphs = await build_langgraph(tools)
-                except Exception as e:
-                    logger.error(f"Error building LangGraphs with per-request tools: {e}", exc_info=True)
-                    raise
-            else:
-                # Use cached tools/graphs
-                if _cached_tools is None:
-                    logger.info("Initializing and caching MCP tools...")
-                    _cached_tools = await cls._load_mcp_tools()
-                tools = _cached_tools
-
-                if _cached_graphs is None:
-                    logger.info("Building and caching LangGraphs...")
-                    try:
-                        _cached_graphs = await build_langgraph(tools)
-                    except Exception as e:
-                        logger.error(f"Error building LangGraphs during caching: {e}", exc_info=True)
-                        raise
-                graphs = _cached_graphs
-
-        return cls(llms=llms, vector_store=vector_store, graphs=graphs, tools=tools)
-
-
-class ConversationState(MessagesState):
-    """Defines the state passed between nodes in the graph."""
-    conversation_id: str
-    model_id: str
-    prompt: str
-    raw_query: str
-    query: str
-    context: List
-    answer: str
-    steps: List
-    method_id: str = None
-    api_key: str = None
-    files: List = None  # List of uploaded files
-    files_content: str = None  # Cached formatted file content
-
-
-async def read_and_format_files(files):
-    """Helper function to read and format file content once, then cache it."""
-    if not files:
-        return ""
-
-    files_content = "\n\n### Attached Files:\n\n"
-    for file in files:
-        try:
-            # Read file content asynchronously
-            content = await sync_to_async(file.read)()
-            # Try to decode as text (UTF-8)
-            try:
-                text_content = content.decode('utf-8')
-                files_content += f"**File: {file.name}**\n```\n{text_content}\n```\n\n"
-            except UnicodeDecodeError:
-                # If not text, base64 encode the binary content
-                b64_content = base64.b64encode(content).decode('ascii')
-                mimetype, _ = mimetypes.guess_type(file.name)
-                mimetype = mimetype or 'application/octet-stream'
-                files_content += (
-                    f"**File: {file.name}** (binary file, {len(content)} bytes)\n"
-                    f"MIME type: {mimetype}\n"
-                    f"Base64 encoded content:\n{b64_content}\n\n"
-                )
-        except Exception as e:
-            logger.error(f"Error reading file {file.name}: {e}")
-            files_content += f"**File: {file.name}** (error reading file)\n\n"
-
-    return files_content
-
-
-def truncate_large_content(content: str, max_tokens: int) -> str:
-    """
-    Truncate content to fit within token limit.
-    Uses rough estimation: ~4 characters per token.
-    """
-    chars_per_token = 4
-    max_chars = max_tokens * chars_per_token
-
-    if len(content) <= max_chars:
-        return content
-
-    # Truncate and add a notice
-    truncated_content = content[:max_chars]
-    notice = f"\n\n[Content truncated - original size: {len(content)} chars, truncated to: {max_chars} chars to fit within token limit]"
-    return truncated_content + notice
-
-
-def truncate_messages_for_context(messages: List, max_tokens: int) -> List:
-    """
-    Truncate messages to fit within token limit.
-    - Individual oversized ToolMessages are truncated in place
-    - If total still exceeds limit, older messages are dropped
-    - Prioritizes keeping recent conversation context
-    Uses rough estimation: ~4 characters per token.
-    """
-    if not messages:
-        return messages
-
-    # Estimate tokens (rough approximation: 4 chars per token)
-    chars_per_token = 4
-    max_chars = max_tokens * chars_per_token
-
-    # Reserve tokens for a single message at minimum (50% of limit)
-    single_message_max_tokens = int(max_tokens * 0.5)
-
-    # First pass: Truncate any oversized individual messages (especially ToolMessages)
-    processed_messages = []
-    for msg in messages:
-        msg_copy = msg
-        msg_content = getattr(msg, 'content', '')
-
-        # Calculate message size
-        if isinstance(msg_content, list):
-            msg_size = sum(len(str(item)) for item in msg_content)
-        else:
-            msg_size = len(str(msg_content))
-
-        # Add tool calls size if present
-        if hasattr(msg, 'tool_calls') and msg.tool_calls:
-            msg_size += sum(len(str(tc)) for tc in msg.tool_calls)
-
-        # Check if this single message is too large
-        if msg_size > single_message_max_tokens * chars_per_token:
-            # Truncate ToolMessages which often contain large JSON responses
-            if isinstance(msg, ToolMessage):
-                truncated_content = truncate_large_content(msg.content, single_message_max_tokens)
-                msg_copy = ToolMessage(
-                    content=truncated_content,
-                    tool_call_id=msg.tool_call_id,
-                    name=getattr(msg, 'name', None),
-                    artifact=getattr(msg, 'artifact', None)
-                )
-                logger.warning(
-                    f"Truncated large ToolMessage (tool_call_id={msg.tool_call_id}) from "
-                    f"{len(msg.content)} to {len(truncated_content)} chars"
-                )
-            # Also truncate HumanMessages with large file content
-            elif isinstance(msg, HumanMessage):
-                if isinstance(msg_content, str):
-                    truncated_content = truncate_large_content(msg_content, single_message_max_tokens)
-                    msg_copy = HumanMessage(content=truncated_content)
-                    logger.warning(
-                        f"Truncated large HumanMessage from {len(msg_content)} to {len(truncated_content)} chars"
-                    )
-
-        processed_messages.append(msg_copy)
-
-    # Second pass: If total still exceeds limit, drop older messages
-    truncated = []
-    total_chars = 0
-
-    for msg in reversed(processed_messages):
-        msg_content = getattr(msg, 'content', '')
-        if isinstance(msg_content, list):
-            msg_chars = sum(len(str(item)) for item in msg_content)
-        else:
-            msg_chars = len(str(msg_content))
-
-        if hasattr(msg, 'tool_calls') and msg.tool_calls:
-            msg_chars += sum(len(str(tc)) for tc in msg.tool_calls)
-
-        # Check if adding this message would exceed the limit
-        if total_chars + msg_chars > max_chars and truncated:
-            logger.warning(
-                f"Truncating message history: {len(processed_messages) - len(truncated)} older messages "
-                f"dropped to fit within {max_tokens} token limit"
-            )
-            break
-
-        truncated.insert(0, msg)
-        total_chars += msg_chars
-
-    # Always keep at least the last message
-    if not truncated and processed_messages:
-        truncated = [processed_messages[-1]]
-
-    return truncated
-
-
-async def genepattern_mcp(state: ConversationState):
-    """Node to interact with the LLM and GenePattern tools via MCP."""
-    logger.debug("\n--- Entering genepattern_mcp ---")
-    started_at = timezone.now()
-    helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))
-    model_id = state["model_id"]
-
-    if model_id not in helper.llms:
-        raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
-
-    # Get model info for token tracking and context window limits
-    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
-
-    # Create the initial message if the history is empty
-    if not state["messages"]:
-        # Read and cache file content if not already cached
-        if state.get("files") and not state.get("files_content"):
-            state["files_content"] = await read_and_format_files(state["files"])
-
-        # Include file content in the initial query if files are attached
-        query_content = state["query"]
-        if state.get("files_content"):
-            query_content = f"{state['query']}{state['files_content']}"
-
-        state["messages"] = [HumanMessage(content=query_content)]
-
-    # Truncate messages to fit within the model's context window
-    # Use 70% of max tokens as a safe threshold to leave room for response and system prompt
-    max_context_tokens = llm_model.max_context_tokens
-    safe_token_limit = int(max_context_tokens * 0.7)
-
-    # Truncate messages if needed, prioritizing recent messages
-    original_message_count = len(state["messages"])
-    state["messages"] = truncate_messages_for_context(state["messages"], safe_token_limit)
-
-    if len(state["messages"]) < original_message_count:
-        logger.info(
-            f"Truncated messages from {original_message_count} to {len(state['messages'])} "
-            f"to fit within {safe_token_limit} token limit (70% of {max_context_tokens})"
-        )
-
-    # For accurate logging, capture the messages that are being sent to the LLM
-    step_input_messages = str(state["messages"])
-
-    # Create token tracking callback
-    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
-
-    # Invoke the LLM with token tracking
-    model_with_tools = helper.llms[model_id].bind_tools(helper.tools)
-    response = await model_with_tools.ainvoke(
-        state["messages"],
-        config={"callbacks": [token_callback]}
-    )
-    ended_at = timezone.now()
-
-    # Get token counts from callback
-    token_counts = token_callback.get_token_counts()
-
-    # Log the details of this step
-    state["steps"].append({
-        'llm_model': state["model_id"],
-        'system_prompt': state["prompt"],
-        'call_id': 'genepattern_mcp',
-        'step_input': step_input_messages,
-        'step_output': str(response),
-        'started_at': started_at,
-        'ended_at': ended_at,
-        'token_counts': token_counts,
-    })
-
-    state["messages"].append(response)
-
-    # Log whether a tool call was requested
-    if response.tool_calls:
-        logger.info(f"LLM wants to call a tool: {response.tool_calls[0].get('name')}")
-    else:
-        logger.info("LLM did not request a tool call, proceeding to answer.")
-
-    # Return the updated state fields
-    return {"messages": state["messages"], "steps": state["steps"], "files_content": state.get("files_content")}
-
-
-async def retrieve_documents(state: ConversationState):
-    """Node to retrieve relevant documents from the vector store."""
-    started_at = timezone.now()
-    helper = await ServiceHelper.create_instance()
-    docs = helper.vector_store.similarity_search(state["query"])
-    ended_at = timezone.now()
-    state["steps"].append({
-        'llm_model': state["model_id"],
-        'system_prompt': state["prompt"],
-        'call_id': 'retrieve_documents[all]',
-        'step_input': state["prompt"],
-        'step_output': "\n\n".join(doc.page_content for doc in docs),
-        'started_at': started_at,
-        'ended_at': ended_at,
-    })
-    return { "context": docs }
-
-
-async def answer_question(state: ConversationState):
-    """
-    Node to generate a final answer using the LLM and context.
-    This node is designed to handle being called from different graph paths.
-    """
-    model_id = state["model_id"]
-    helper = await ServiceHelper.create_instance(api_key=state.get('api_key'))  # Use per-request tools if provided
-    if model_id not in helper.llms:
-        raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
-
-    # Get model info for token tracking
-    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
-
-    context = "\n\n".join(doc.page_content for doc in state.get("context", []))
-
-    # Use cached file content if available, otherwise read and cache it now
-    files_content = state.get("files_content", "")
-    if not files_content and state.get("files"):
-        files_content = await read_and_format_files(state["files"])
-        state["files_content"] = files_content
-
-    system_content = f"{state['prompt']}\n\n{context}\n\n{files_content}"
-    system = SystemMessage(content=system_content)
-
-    history = state.get("messages", [])
-
-    has_tool_messages = any(
-        (isinstance(msg, AIMessage) and msg.tool_calls) or isinstance(msg, ToolMessage)
-        for msg in history
-    )
-
-    if has_tool_messages or state.get('method_id') in ('mcp', 'rag_mcp'):
-        llm_to_use = helper.llms[model_id].bind_tools(helper.tools)
-    else:
-        llm_to_use = helper.llms[model_id]
-
-    if not history:
-        # For RAG graph without message history, include file reference in the query if files are present
-        query_content = state['query']
-        if files_content:
-            query_content = f"{state['query']}\n\nPlease refer to the attached files in the system context above to answer this question."
-        full_prompt = [system, HumanMessage(content=query_content)]
-    else:
-        full_prompt = [system] + history
-        # Ensure the conversation ends with a HumanMessage for models requiring it.
-        if not full_prompt or not isinstance(full_prompt[-1], HumanMessage):
-            full_prompt.append(HumanMessage(content=f"Based on the conversation above, please provide the final answer to my original question: {state['raw_query']}"))
-
-    # Create token tracking callback
-    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
-
-    started_at = timezone.now()
-    response = await llm_to_use.ainvoke(full_prompt, config={"callbacks": [token_callback]})
-    ended_at = timezone.now()
-
-    # Get token counts from callback
-    token_counts = token_callback.get_token_counts()
-
-    state["steps"].append({
-        'llm_model': state["model_id"],
-        'system_prompt': state["prompt"],
-        'call_id': 'answer_question',
-        'step_input': str(full_prompt),
-        'step_output': response.content,
-        'started_at': started_at,
-        'ended_at': ended_at,
-        'token_counts': token_counts,
-    })
-    return {"answer": response.content}
-
-
-async def summarize_question_for_raw_graph(state: ConversationState):
-    """
-    A specific async node for the raw graph to call summarize_question
-    with llm_summarization=False and await its result.
-    """
-    return await summarize_question(state, llm_summarization=False)
-
-
-async def summarize_question(state: ConversationState, llm_summarization=True):
-    """Node to summarize the user's raw query."""
-
-    # Read and cache file content if not already cached
-    if state.get("files") and not state.get("files_content"):
-        state["files_content"] = await read_and_format_files(state["files"])
-
-    # Include file content in the initial query if files are attached
-    query_content = state["raw_query"]
-    if state.get("files_content"):
-        query_content = f"{state['raw_query']}{state['files_content']}"
-
-    state["messages"] = [HumanMessage(content=query_content)]
-
-    # Check if LLM summarization is enabled
-    if not llm_summarization:
-        return {
-            "query": state["raw_query"],
-            "files_content": state.get("files_content")
-        }
-    model_id = state["model_id"]
-    helper = await ServiceHelper.create_instance()
-    if model_id not in helper.llms:
-        raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
-
-    # Get model info for token tracking
-    llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
-
-    started_at = timezone.now()
-    system_prompt = await ServiceHelper.async_orm_get(SystemPrompt, name="Summarize Question", version=1.0)
-    system = SystemMessage(content=f"{system_prompt.prompt}\n\n")
-    full_prompt = [system, HumanMessage(query_content)]
-
-    # Create token tracking callback
-    token_callback = TokenCountingCallback(model_id=model_id, provider_id=llm_model.provider_id)
-
-    response = await helper.llms[model_id].ainvoke(full_prompt, config={"callbacks": [token_callback]})
-    ended_at = timezone.now()
-
-    # Get token counts from callback
-    token_counts = token_callback.get_token_counts()
-
-    # Ensure response.content is always a string (some models like DeepSeek may return a list)
-    query_output = response.content
-    if isinstance(query_output, list):
-        # If it's a list, join the elements or extract text content
-        query_output = " ".join(str(item) for item in query_output)
-    elif not isinstance(query_output, str):
-        query_output = str(query_output)
-
-    state["steps"].append({
-        'llm_model': state["model_id"],
-        'system_prompt': system_prompt.prompt,
-        'call_id': 'summarize_question',
-        'step_input': query_content,
-        'step_output': query_output,
-        'started_at': started_at,
-        'ended_at': ended_at,
-        'token_counts': token_counts,
-    })
-
-    return {
-        "query": query_output,
-        "files_content": state.get("files_content")
-    }
-
-
-async def build_rag_graph() -> StateGraph:
-    """Build and compile the LangGraph for RAG."""
-    workflow = StateGraph(ConversationState)
-
-    # Add nodes
-    workflow.add_node("summarize_question", summarize_question)
-    workflow.add_node("retrieve_documents", retrieve_documents)
-    workflow.add_node("answer_question", answer_question)
-
-    # Define edges
-    workflow.add_edge(START, "summarize_question")
-    workflow.add_edge("summarize_question", "retrieve_documents")
-    workflow.add_edge("retrieve_documents", "answer_question")
-    workflow.add_edge("answer_question", END)
-
-    # Compile the graph
-    return workflow.compile()
-
-
-async def build_mcp_graph(tools) -> StateGraph:
-    """Build and compile the LangGraph for MCP tool usage."""
-    workflow = StateGraph(ConversationState)
-
-    # 1. Add all nodes to the graph
-    workflow.add_node("summarize_question", summarize_question)
-    workflow.add_node("genepattern_mcp", genepattern_mcp)
-    workflow.add_node("answer_question", answer_question)
-
-    # The ToolNode is a pre-built node that executes the tools it's given
-    workflow.add_node("tools", ToolNode(tools))
-
-    # 2. Define the graph's flow (edges)
-    workflow.add_edge(START, "summarize_question")
-    workflow.add_edge("summarize_question", "genepattern_mcp")
-
-    # 3. Add the conditional edge for tool calling
-    # After the `genepattern_mcp` node runs, the `tools_condition` function checks
-    # if the last message contains tool calls.
-    workflow.add_conditional_edges(
-        "genepattern_mcp",
-        tools_condition,
-        # If `tools_condition` is TRUE, it routes to the "tools" node.
-        # If `tools_condition` is FALSE, it routes to the "answer_question" node.
-        {"tools": "tools", "__end__": "answer_question"},
-    )
-
-    # 4. Define the loop
-    # After the "tools" node runs, it loops back to the `genepattern_mcp` node
-    # so the LLM can process the tool results.
-    workflow.add_edge("tools", "genepattern_mcp")
-
-    # 5. Define the final step
-    workflow.add_edge("answer_question", END)
-
-    return workflow.compile()
-
-
-async def build_raw_graph() -> StateGraph:
-    """Build and compile the LangGraph for direct answering."""
-    workflow = StateGraph(ConversationState)
-
-    # Use the specific async helper node that awaits summarize_question
-    workflow.add_node("summarize_question", summarize_question_for_raw_graph)
-    workflow.add_node("answer_question", answer_question)
-    workflow.add_edge(START, "summarize_question")
-    workflow.add_edge("summarize_question", "answer_question")
-    workflow.add_edge("answer_question", END)
-
-    return workflow.compile()
-
-
-async def build_rag_mcp_graph(tools) -> StateGraph:
-    """Build and compile the LangGraph that combines RAG with MCP tools."""
-    workflow = StateGraph(ConversationState)
-
-    # Add nodes
-    workflow.add_node("summarize_question", summarize_question)
-    workflow.add_node("retrieve_documents", retrieve_documents)
-    workflow.add_node("genepattern_mcp", genepattern_mcp)
-    workflow.add_node("answer_question", answer_question)
-    workflow.add_node("tools", ToolNode(tools))
-
-    # Define edges
-    workflow.add_edge(START, "summarize_question")
-    workflow.add_edge("summarize_question", "retrieve_documents")
-    workflow.add_edge("retrieve_documents", "genepattern_mcp")
-
-    # Conditional edge for tool calling
-    workflow.add_conditional_edges(
-        "genepattern_mcp",
-        tools_condition,
-        {"tools": "tools", "__end__": "answer_question"},
-    )
-
-    # Loop back from tools to genepattern_mcp to process tool results
-    workflow.add_edge("tools", "genepattern_mcp")
-
-    # Final step
-    workflow.add_edge("answer_question", END)
-
-    return workflow.compile()
-
-
-async def build_langgraph(tools) -> Dict[str, StateGraph]:
-    """Build and compile all LangGraphs and return them in a dictionary."""
-    rag_graph, mcp_graph, raw_graph, rag_mcp_graph = await asyncio.gather(
-        build_rag_graph(),
-        build_mcp_graph(tools),
-        build_raw_graph(),
-        build_rag_mcp_graph(tools)
-    )
-    return { 'rag': rag_graph, 'mcp': mcp_graph, 'raw': raw_graph, 'rag_mcp': rag_mcp_graph }
-
-
-def assemble_answer(answer):
-    """Assembles the final answer from potentially complex LLM outputs."""
-    if isinstance(answer, str): return answer
-    if isinstance(answer, tuple) or isinstance(answer, str):
-        if all(isinstance(item, str) for item in answer):
-            return '\n\n'.join(answer)
-        if all(isinstance(item, list) for item in answer) and len(answer):  # Special case for DeepSeek
-            for item in answer[0]:
-                if 'text' in item: return item['text']
-    raise ValueError("Invalid answer format. Expected a string, tuple or list of strings")
-
-
-async def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None, system_prompt_id=None, api_key=None, files=None):
-    """Handles an incoming chat message, runs it through the appropriate graph and logs the results."""
+def handle_chat_message(user, conversation_id, user_query, model_id=None, method_id=None,
+                       system_prompt_id=None, api_key=None, files=None):
+    """Handle an incoming chat message and return the response."""
 
     start_time = timezone.now()
-    if user.is_anonymous: user = None  # Anonymous users should be null
+    if user.is_anonymous:
+        user = None
 
-    # Check if daily token limit has been exceeded
-    if await check_daily_token_limit_exceeded():
+    # Log API key for debugging
+    logger.info(f"handle_chat_message called with api_key: {api_key is not None}")
+    if api_key:
+        logger.info(f"  API key length: {len(api_key)}, first 8 chars: {api_key[:8]}")
+
+    # Check token limit
+    if check_daily_token_limit_exceeded():
         return None, "I'm sorry. I can't provide you with an answer right now, as I'm too busy answering questions from other users."
 
-    # 1. Get the existing conversation or lazily create one
+    # Get or create conversation
     if conversation_id:
         try:
-            conversation = await ServiceHelper.async_orm_get(Conversation, id=conversation_id)
+            conversation = Conversation.objects.get(id=conversation_id)
+            if user:
+                conversation.user = user
+                conversation.save(update_fields=['user'])
         except Conversation.DoesNotExist:
             return None, "Conversation not found or access denied"
-        if user:  # Associate conversation with the current user on update
-            conversation.user = user
-            await sync_to_async(conversation.save)(update_fields=['user'])
     else:
-        conversation = await ServiceHelper.async_orm_create(Conversation, user=user)
-        conversation_id = conversation.id  # Get the new ID
+        conversation = Conversation.objects.create(user=user)
 
-    # 2. Select LLM Model
-    if not model_id: model_id = settings.DEFAULT_LLM_MODEL
-    try: llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
-    except LlmModel.DoesNotExist: return None, "Requested model id not found"
-
-    # Handle case where *no* models are found
-    if not llm_model: return None, "No suitable model found or configured."
-    model_id = llm_model.model_id
-
-    # 2.5 Select LLM Method
-    if not method_id: method_id = settings.DEFAULT_LLM_METHOD
-
-    # 3. Select System Prompt
-    if system_prompt_id:  # TODO: Handle requesting specific version or (id vs name)
-        try: system_prompt = await ServiceHelper.async_orm_filter_sort_first(SystemPrompt, '-version', name=system_prompt_id)
-        except SystemPrompt.DoesNotExist: return None, "Requested system prompt not found"
-    else: system_prompt = await ServiceHelper.async_orm_filter_sort_first(SystemPrompt, '-version', name="General")
-
-    # Handle case where *no* system prompts are found
-    if not system_prompt: return None, "No suitable model found or configured."
-
-    # 4. Prepare Initial State for LangGraph
-    # Build message history from previous queries in this conversation
-    history_messages = []
+    # Get LLM model
+    model_id = model_id or settings.DEFAULT_LLM_MODEL
     try:
-        # Fetch prior queries in chronological order
-        prior_qs = await ServiceHelper.async_orm_wrapper(
-            lambda: list(Query.objects.filter(conversation=conversation).order_by('query_num'))
-        )
-    except Exception as e:
-        prior_qs = []
-    for q in prior_qs:
-        if getattr(q, 'raw_query', None):
-            history_messages.append(HumanMessage(content=q.raw_query))
-        if getattr(q, 'response', None):
-            history_messages.append(AIMessage(content=q.response))
-    # Append the current user query to the history if there is prior history;
-    # for a fresh conversation, keep messages empty so summarization nodes can prime the first message.
-    if history_messages:
-        history_messages.append(HumanMessage(content=user_query))
+        llm_model = LlmModel.objects.get(model_id=model_id)
+    except LlmModel.DoesNotExist:
+        return None, "Requested model id not found"
 
-    initial_state = ConversationState(
-        conversation_id=conversation.id,
+    # Get method
+    method_id = method_id or settings.DEFAULT_LLM_METHOD
+    if method_id not in AGENT_METHODS:
+        return None, f"Invalid method '{method_id}'. Valid: {list(AGENT_METHODS.keys())}"
+
+    # Get system prompt
+    if system_prompt_id:
+        system_prompt = SystemPrompt.objects.filter(name=system_prompt_id).order_by('-version').first()
+    else:
+        system_prompt = SystemPrompt.objects.filter(name="General").order_by('-version').first()
+
+    if not system_prompt:
+        return None, "No system prompt found or configured."
+
+    # Prepare state
+    state = ConversationState(
+        conversation_id=str(conversation.id),
         model_id=model_id,
         prompt=system_prompt.prompt,
         raw_query=user_query,
-        query="",
-        steps=[],
-        messages=history_messages,
-        context=[],
-        answer="",
         method_id=method_id,
         api_key=api_key,
-        files=files or []
+        files=files or [],
     )
 
-    # 5. Run the LangGraph
-    helper = await ServiceHelper.create_instance(api_key=api_key if (method_id in ('mcp', 'rag_mcp') and api_key) else None)
-    final_state = await helper.graph(method_id).ainvoke(initial_state)
+    # Log state API key
+    logger.info(f"ConversationState created with api_key: {state.api_key is not None}")
+    if state.api_key:
+        logger.info(f"  State API key length: {len(state.api_key)}, first 8 chars: {state.api_key[:8]}")
 
-    # 6. Record Query and Steps in Database
+    # Run agent
+    api_key_for_helper = api_key if (method_id in ('mcp', 'rag_mcp') and api_key) else None
+    logger.info(f"Creating ServiceHelper with api_key: {api_key_for_helper is not None}")
+    if api_key_for_helper:
+        logger.info(f"  Helper API key length: {len(api_key_for_helper)}, first 8 chars: {api_key_for_helper[:8]}")
+
+    helper = ServiceHelper.create_instance(api_key=api_key_for_helper)
+
+    try:
+        answer = AGENT_METHODS[method_id](state, helper)
+    except Exception as e:
+        logger.error(f"Error running agent: {e}", exc_info=True)
+        return None, f"Error processing request: {str(e)}"
+
+    # Save to database
     end_time = timezone.now()
-    query_num = await sync_to_async(conversation.queries.count)() + 1
-    answer = final_state.get('answer', "Error: No response generated."),
-    answer = assemble_answer(answer)
+    query_num = conversation.queries.count() + 1
 
-    query_instance = await ServiceHelper.async_orm_create(Query, conversation=conversation, query_num=query_num,
-                                                          llm_model=llm_model, started_at=start_time, ended_at=end_time,
-                                                          raw_query=user_query, response=answer)
+    query_instance = Query.objects.create(
+        conversation=conversation,
+        query_num=query_num,
+        llm_model=llm_model,
+        started_at=start_time,
+        ended_at=end_time,
+        raw_query=user_query,
+        response=answer
+    )
 
-    # Save steps taken during the graph execution
-    for i, step in enumerate(final_state.get('steps', [])):
-        step_instance = await ServiceHelper.async_orm_create(
-            Step,
+    # Save steps and token counts
+    for i, step in enumerate(state.steps):
+        step_instance = Step.objects.create(
             query=query_instance,
             step_num=i + 1,
             llm_model=llm_model,
@@ -913,47 +535,7 @@ async def handle_chat_message(user, conversation_id, user_query, model_id=None, 
             ended_at=step["ended_at"]
         )
 
-        # Save token counts if available
-        token_counts = step.get('token_counts')
-        if token_counts:
-            # Save prompt tokens
-            if token_counts.get('prompt_tokens', 0) > 0:
-                await ServiceHelper.async_orm_create(
-                    TokenCount,
-                    step=step_instance,
-                    user=user,
-                    llm_model=llm_model,
-                    token_type=TokenCount.TokenType.PROMPT,
-                    token_count=token_counts['prompt_tokens'],
-                    call_id=str(step["call_id"]),
-                    estimated=token_counts.get('estimated', False)
-                )
+        if token_counts := step.get('token_counts'):
+            save_token_counts(step_instance, user, llm_model, token_counts, step["call_id"])
 
-            # Save completion tokens
-            if token_counts.get('completion_tokens', 0) > 0:
-                await ServiceHelper.async_orm_create(
-                    TokenCount,
-                    step=step_instance,
-                    user=user,
-                    llm_model=llm_model,
-                    token_type=TokenCount.TokenType.COMPLETION,
-                    token_count=token_counts['completion_tokens'],
-                    call_id=str(step["call_id"]),
-                    estimated=token_counts.get('estimated', False)
-                )
-
-            # Save total tokens
-            if token_counts.get('total_tokens', 0) > 0:
-                await ServiceHelper.async_orm_create(
-                    TokenCount,
-                    step=step_instance,
-                    user=user,
-                    llm_model=llm_model,
-                    token_type=TokenCount.TokenType.TOTAL,
-                    token_count=token_counts['total_tokens'],
-                    call_id=str(step["call_id"]),
-                    estimated=token_counts.get('estimated', False)
-                )
-
-    # 7. Return the created Query object
     return query_instance, None
