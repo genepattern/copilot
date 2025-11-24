@@ -82,7 +82,9 @@ class ChatAPIView(AsyncAPIView):
             if not api_key and user.is_authenticated:
                 try:
                     profile = await sync_to_async(UserProfile.objects.get)(user=user)
-                    api_key = profile.gp_api_key
+                    # Only use the profile API key if it's not None or empty
+                    if profile.gp_api_key:
+                        api_key = profile.gp_api_key
                 except UserProfile.DoesNotExist: pass  # Profile doesn't exist, no API key available
 
             # Call the service layer to handle the logic

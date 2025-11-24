@@ -20,6 +20,7 @@ class LlmModel(models.Model):
     provider_id = models.CharField(max_length=100, null=True, blank=True, help_text="Identifier of the provider (e.g., openai)")
     label = models.CharField(max_length=100, help_text="Human-friendly name (e.g., 'OpenAI GPT-4')")
     disabled = models.BooleanField(default=False, help_text="Mark model as disabled")
+    max_context_tokens = models.PositiveIntegerField(default=128000, help_text="Maximum context window size in tokens")
 
     def __str__(self): return self.label
 

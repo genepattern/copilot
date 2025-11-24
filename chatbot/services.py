@@ -324,6 +324,115 @@ async def read_and_format_files(files):
     return files_content
 
 
+def truncate_large_content(content: str, max_tokens: int) -> str:
+    """
+    Truncate content to fit within token limit.
+    Uses rough estimation: ~4 characters per token.
+    """
+    chars_per_token = 4
+    max_chars = max_tokens * chars_per_token
+
+    if len(content) <= max_chars:
+        return content
+
+    # Truncate and add a notice
+    truncated_content = content[:max_chars]
+    notice = f"\n\n[Content truncated - original size: {len(content)} chars, truncated to: {max_chars} chars to fit within token limit]"
+    return truncated_content + notice
+
+
+def truncate_messages_for_context(messages: List, max_tokens: int) -> List:
+    """
+    Truncate messages to fit within token limit.
+    - Individual oversized ToolMessages are truncated in place
+    - If total still exceeds limit, older messages are dropped
+    - Prioritizes keeping recent conversation context
+    Uses rough estimation: ~4 characters per token.
+    """
+    if not messages:
+        return messages
+
+    # Estimate tokens (rough approximation: 4 chars per token)
+    chars_per_token = 4
+    max_chars = max_tokens * chars_per_token
+
+    # Reserve tokens for a single message at minimum (50% of limit)
+    single_message_max_tokens = int(max_tokens * 0.5)
+
+    # First pass: Truncate any oversized individual messages (especially ToolMessages)
+    processed_messages = []
+    for msg in messages:
+        msg_copy = msg
+        msg_content = getattr(msg, 'content', '')
+
+        # Calculate message size
+        if isinstance(msg_content, list):
+            msg_size = sum(len(str(item)) for item in msg_content)
+        else:
+            msg_size = len(str(msg_content))
+
+        # Add tool calls size if present
+        if hasattr(msg, 'tool_calls') and msg.tool_calls:
+            msg_size += sum(len(str(tc)) for tc in msg.tool_calls)
+
+        # Check if this single message is too large
+        if msg_size > single_message_max_tokens * chars_per_token:
+            # Truncate ToolMessages which often contain large JSON responses
+            if isinstance(msg, ToolMessage):
+                truncated_content = truncate_large_content(msg.content, single_message_max_tokens)
+                msg_copy = ToolMessage(
+                    content=truncated_content,
+                    tool_call_id=msg.tool_call_id,
+                    name=getattr(msg, 'name', None),
+                    artifact=getattr(msg, 'artifact', None)
+                )
+                logger.warning(
+                    f"Truncated large ToolMessage (tool_call_id={msg.tool_call_id}) from "
+                    f"{len(msg.content)} to {len(truncated_content)} chars"
+                )
+            # Also truncate HumanMessages with large file content
+            elif isinstance(msg, HumanMessage):
+                if isinstance(msg_content, str):
+                    truncated_content = truncate_large_content(msg_content, single_message_max_tokens)
+                    msg_copy = HumanMessage(content=truncated_content)
+                    logger.warning(
+                        f"Truncated large HumanMessage from {len(msg_content)} to {len(truncated_content)} chars"
+                    )
+
+        processed_messages.append(msg_copy)
+
+    # Second pass: If total still exceeds limit, drop older messages
+    truncated = []
+    total_chars = 0
+
+    for msg in reversed(processed_messages):
+        msg_content = getattr(msg, 'content', '')
+        if isinstance(msg_content, list):
+            msg_chars = sum(len(str(item)) for item in msg_content)
+        else:
+            msg_chars = len(str(msg_content))
+
+        if hasattr(msg, 'tool_calls') and msg.tool_calls:
+            msg_chars += sum(len(str(tc)) for tc in msg.tool_calls)
+
+        # Check if adding this message would exceed the limit
+        if total_chars + msg_chars > max_chars and truncated:
+            logger.warning(
+                f"Truncating message history: {len(processed_messages) - len(truncated)} older messages "
+                f"dropped to fit within {max_tokens} token limit"
+            )
+            break
+
+        truncated.insert(0, msg)
+        total_chars += msg_chars
+
+    # Always keep at least the last message
+    if not truncated and processed_messages:
+        truncated = [processed_messages[-1]]
+
+    return truncated
+
+
 async def genepattern_mcp(state: ConversationState):
     """Node to interact with the LLM and GenePattern tools via MCP."""
     logger.debug("\n--- Entering genepattern_mcp ---")
@@ -334,7 +443,7 @@ async def genepattern_mcp(state: ConversationState):
     if model_id not in helper.llms:
         raise ValueError(f"Model '{model_id}' not found in loaded LLM models.")
 
-    # Get model info for token tracking
+    # Get model info for token tracking and context window limits
     llm_model = await ServiceHelper.async_orm_get(LlmModel, model_id=model_id)
 
     # Create the initial message if the history is empty
@@ -349,6 +458,21 @@ async def genepattern_mcp(state: ConversationState):
             query_content = f"{state['query']}{state['files_content']}"
 
         state["messages"] = [HumanMessage(content=query_content)]
+
+    # Truncate messages to fit within the model's context window
+    # Use 70% of max tokens as a safe threshold to leave room for response and system prompt
+    max_context_tokens = llm_model.max_context_tokens
+    safe_token_limit = int(max_context_tokens * 0.7)
+
+    # Truncate messages if needed, prioritizing recent messages
+    original_message_count = len(state["messages"])
+    state["messages"] = truncate_messages_for_context(state["messages"], safe_token_limit)
+
+    if len(state["messages"]) < original_message_count:
+        logger.info(
+            f"Truncated messages from {original_message_count} to {len(state['messages'])} "
+            f"to fit within {safe_token_limit} token limit (70% of {max_context_tokens})"
+        )
 
     # For accurate logging, capture the messages that are being sent to the LLM
     step_input_messages = str(state["messages"])
