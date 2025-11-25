@@ -358,8 +358,38 @@ class ConversationListTemplateView(UserPassesTestMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
 
+        # Get user filter from query parameter
+        user_filter = self.request.GET.get('user', None)
+
+        # Get page number from query parameter (default to 1)
+        try:
+            page = int(self.request.GET.get('page', 1))
+            if page < 1:
+                page = 1
+        except (ValueError, TypeError):
+            page = 1
+
+        page_size = 100
+        offset = (page - 1) * page_size
+
         # Get all conversations with their first query for fallback labeling
-        conversations = Conversation.objects.all().prefetch_related('queries').order_by('-started_at')
+        conversations = Conversation.objects.all().prefetch_related('queries', 'user')
+
+        # Apply user filter if provided
+        if user_filter == 'anonymous':
+            conversations = conversations.filter(user__isnull=True)
+        elif user_filter:
+            conversations = conversations.filter(user__username=user_filter)
+
+        # Order by most recent
+        conversations = conversations.order_by('-started_at')
+
+        # Get total count for pagination
+        total_count = conversations.count()
+        total_pages = (total_count + page_size - 1) // page_size  # Ceiling division
+
+        # Apply pagination
+        conversations = conversations[offset:offset + page_size]
 
         conversation_data = []
         for conv in conversations:
@@ -376,6 +406,20 @@ class ConversationListTemplateView(UserPassesTestMixin, TemplateView):
             })
 
         context['conversations'] = conversation_data
+        context['filtered_user'] = user_filter
+        context['current_page'] = page
+        context['total_pages'] = total_pages
+        context['total_count'] = total_count
+        context['has_previous'] = page > 1
+        context['has_next'] = page < total_pages
+        context['previous_page'] = page - 1
+        context['next_page'] = page + 1
+
+        # Generate page range for pagination display (show max 10 pages)
+        page_range_start = max(1, page - 5)
+        page_range_end = min(total_pages, page + 5)
+        context['page_range'] = range(page_range_start, page_range_end + 1)
+
         return context
 
 

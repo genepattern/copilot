@@ -91,6 +91,48 @@
         .back-link:hover {
             color: rgba(255, 255, 255, 0.8);
         }
+        .pagination-container {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pagination-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+        }
+        .page-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #1e3c72;
+            background: white;
+            color: #1e3c72;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .page-btn:hover {
+            background: #1e3c72;
+            color: white;
+        }
+        .page-btn.active {
+            background: #1e3c72;
+            color: white;
+            pointer-events: none;
+        }
+        .page-btn.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+        .page-ellipsis {
+            padding: 0.5rem;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +141,12 @@
 
         <div class="header">
             <h1>All Conversations</h1>
-            <p>Admin view of all user conversations</p>
+            <p>
+            {% if filtered_user %}
+                Filtered by user: <strong>{{ filtered_user }}</strong>
+                <a href="{% url 'conversation-list-admin' %}" style="color: white; text-decoration: underline; margin-left: 1rem;">Clear Filter</a>
+            {% endif %}
+            </p>
         </div>
 
         <div class="table-container">
@@ -122,9 +169,13 @@
                         </td>
                         <td>
                             {% if conv.user %}
-                                <span class="user-badge">{{ conv.user.username }}</span>
+                                <a href="?user={{ conv.user.username }}" style="text-decoration: none;">
+                                    <span class="user-badge" style="cursor: pointer;">{{ conv.user.username }}</span>
+                                </a>
                             {% else %}
-                                <span class="user-badge anonymous-badge">Anonymous</span>
+                                <a href="?user=anonymous" style="text-decoration: none;">
+                                    <span class="user-badge anonymous-badge" style="cursor: pointer;">Anonymous</span>
+                                </a>
                             {% endif %}
                         </td>
                         <td class="timestamp">{{ conv.started_at|date:"M d, Y g:i A" }}</td>
@@ -132,11 +183,43 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            {% if total_pages > 1 %}
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    Page {{ current_page }} of {{ total_pages }} ({{ total_count }} total conversation{% if total_count != 1 %}s{% endif %})
+                </div>
+                <div>
+                    {% if has_previous %}
+                        <a href="?page=1{% if filtered_user %}&user={{ filtered_user }}{% endif %}" class="page-btn">« First</a>
+                        <a href="?page={{ previous_page }}{% if filtered_user %}&user={{ filtered_user }}{% endif %}" class="page-btn">‹ Prev</a>
+                    {% else %}
+                        <span class="page-btn disabled">« First</span>
+                        <span class="page-btn disabled">‹ Prev</span>
+                    {% endif %}
+
+                    {% for num in page_range %}
+                        {% if num == current_page %}
+                            <span class="page-btn active">{{ num }}</span>
+                        {% else %}
+                            <a href="?page={{ num }}{% if filtered_user %}&user={{ filtered_user }}{% endif %}" class="page-btn">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if has_next %}
+                        <a href="?page={{ next_page }}{% if filtered_user %}&user={{ filtered_user }}{% endif %}" class="page-btn">Next ›</a>
+                        <a href="?page={{ total_pages }}{% if filtered_user %}&user={{ filtered_user }}{% endif %}" class="page-btn">Last »</a>
+                    {% else %}
+                        <span class="page-btn disabled">Next ›</span>
+                        <span class="page-btn disabled">Last »</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
             {% else %}
-            <p class="text-center text-muted py-5">No conversations found.</p>
+            <p class="text-center text-muted py-5">No conversations found{% if filtered_user %} for user {{ filtered_user }}{% endif %}.</p>
             {% endif %}
         </div>
     </div>
 </body>
 </html>
-
