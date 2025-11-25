@@ -1,0 +1,339 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Detail - GenePattern Copilot Admin</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .header {
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .header-info {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        .user-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+        .anonymous-badge {
+            background: #9E9E9E;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .back-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .query-block {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .query-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .query-num {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .query-timestamp {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .query-content {
+            background: rgba(30, 60, 114, 0.05);
+            border-left: 4px solid #1e3c72;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        .query-label {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .query-text {
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .response-content {
+            background: rgba(76, 175, 80, 0.05);
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        .response-label {
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .rating-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        .rating-up {
+            background: #4CAF50;
+            color: white;
+        }
+        .rating-down {
+            background: #f44336;
+            color: white;
+        }
+        .steps-section {
+            margin-top: 1rem;
+        }
+        .steps-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        .steps-toggle:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+        .steps-toggle-text {
+            font-weight: 500;
+            color: #333;
+        }
+        .steps-toggle-icon {
+            transition: transform 0.3s;
+        }
+        .steps-toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+        .steps-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        .steps-content.show {
+            display: block;
+        }
+        .step-item {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 4px;
+        }
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .step-meta {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .step-field {
+            margin-bottom: 0.75rem;
+        }
+        .step-field-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .step-field-value {
+            background: rgba(0, 0, 0, 0.02);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .no-queries {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'conversation-list-admin' %}" class="back-link">← Back to Conversations</a>
+
+        <div class="header">
+            <h1>Conversation Details</h1>
+            <div class="header-info">
+                {% if conversation.user %}
+                    <span>User: <span class="user-badge">{{ conversation.user.username }}</span></span>
+                {% else %}
+                    <span>User: <span class="user-badge anonymous-badge">Anonymous</span></span>
+                {% endif %}
+                <span style="margin-left: 1.5rem;">Started: {{ conversation.started_at|date:"M d, Y g:i A" }}</span>
+            </div>
+        </div>
+
+        {% if queries %}
+            {% for query in queries %}
+            <div class="query-block">
+                <div class="query-header">
+                    <span class="query-num">Query #{{ query.query_num }}</span>
+                    <span class="query-timestamp">{{ query.started_at|date:"M d, Y g:i:s A" }}</span>
+                </div>
+
+                <div class="query-content">
+                    <div class="query-label">
+                        User Query
+                        {% if query.rating == 1 %}
+                            <span class="rating-badge rating-up">👍 Thumbs Up</span>
+                        {% elif query.rating == -1 %}
+                            <span class="rating-badge rating-down">👎 Thumbs Down</span>
+                        {% endif %}
+                    </div>
+                    <div class="query-text">{{ query.raw_query }}</div>
+                </div>
+
+                {% if query.response %}
+                <div class="response-content">
+                    <div class="response-label">Response</div>
+                    <div class="query-text">{{ query.response }}</div>
+                </div>
+                {% endif %}
+
+                <div class="steps-section">
+                    <div class="steps-toggle" onclick="toggleSteps('steps-{{ query.id }}')">
+                        <span class="steps-toggle-text">
+                            View Steps ({{ query.steps.count }})
+                        </span>
+                        <span class="steps-toggle-icon" id="icon-{{ query.id }}">▼</span>
+                    </div>
+                    <div class="steps-content" id="steps-{{ query.id }}">
+                        {% for step in query.steps.all %}
+                        <div class="step-item">
+                            <div class="step-header">
+                                <span class="step-title">Step {{ step.step_num }}</span>
+                                <span class="step-meta">
+                                    {% if step.started_at %}{{ step.started_at|date:"g:i:s A" }}{% endif %}
+                                    {% if step.ended_at %} - {{ step.ended_at|date:"g:i:s A" }}{% endif %}
+                                </span>
+                            </div>
+
+                            {% if step.llm_model %}
+                            <div class="step-field">
+                                <div class="step-field-label">Model</div>
+                                <div class="step-field-value">{{ step.llm_model.label }} ({{ step.llm_model.model_id }})</div>
+                            </div>
+                            {% endif %}
+
+                            {% if step.call_id %}
+                            <div class="step-field">
+                                <div class="step-field-label">Call ID</div>
+                                <div class="step-field-value">{{ step.call_id }}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if step.step_input %}
+                            <div class="step-field">
+                                <div class="step-field-label">Input</div>
+                                <div class="step-field-value">{{ step.step_input }}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if step.step_output %}
+                            <div class="step-field">
+                                <div class="step-field-label">Output</div>
+                                <div class="step-field-value">{{ step.step_output }}</div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% empty %}
+                        <p class="text-muted" style="margin: 1rem 0;">No steps recorded for this query.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="query-block">
+                <div class="no-queries">No queries found in this conversation.</div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function toggleSteps(elementId) {
+            const stepsContent = document.getElementById(elementId);
+            const icon = document.getElementById('icon-' + elementId.replace('steps-', ''));
+
+            if (stepsContent.classList.contains('show')) {
+                stepsContent.classList.remove('show');
+                icon.classList.remove('expanded');
+            } else {
+                stepsContent.classList.add('show');
+                icon.classList.add('expanded');
+            }
+        }
+    </script>
+</body>
+</html>
+

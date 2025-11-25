@@ -11,7 +11,7 @@ from rest_framework import generics, status, views, viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Conversation, Query, LlmModel, UserProfile, TokenCount
+from .models import Conversation, Query, LlmModel, UserProfile, TokenCount, Step
 from .serializers import (
     ConversationSerializer,
     QuerySerializer,
@@ -313,3 +313,97 @@ class TokenSummaryAPIView(APIView):
             'user_stats': user_stats,
             'model_stats': model_breakdown
         })
+
+
+class ConversationListAdminView(generics.ListAPIView):
+    """
+    Admin API endpoint to list all conversations.
+    """
+    serializer_class = ConversationListSerializer
+    permission_classes = [IsAdminUser]
+
+    def get_queryset(self):
+        return Conversation.objects.all().prefetch_related('queries')
+
+
+class ConversationDetailAdminView(generics.RetrieveAPIView):
+    """
+    Admin API endpoint to retrieve details of a specific conversation.
+    """
+    queryset = Conversation.objects.prefetch_related('queries__steps', 'queries__llm_model').all()
+    serializer_class = ConversationSerializer
+    permission_classes = [IsAdminUser]
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        return super().get_queryset()
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['html'] = True
+        return context
+
+
+@method_decorator(ensure_csrf_cookie, name='dispatch')
+class ConversationListTemplateView(UserPassesTestMixin, TemplateView):
+    """
+    Serves the conversation list page - admin only.
+    """
+    template_name = 'conversation_list.html'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+
+        # Get all conversations with their first query for fallback labeling
+        conversations = Conversation.objects.all().prefetch_related('queries').order_by('-started_at')
+
+        conversation_data = []
+        for conv in conversations:
+            first_query = conv.queries.order_by('query_num').first()
+            fallback_label = ''
+            if first_query and not conv.label:
+                fallback_label = first_query.raw_query[:50] + ('...' if len(first_query.raw_query) > 50 else '')
+
+            conversation_data.append({
+                'id': conv.id,
+                'label': conv.label if conv.label else fallback_label,
+                'user': conv.user,
+                'started_at': conv.started_at,
+            })
+
+        context['conversations'] = conversation_data
+        return context
+
+
+@method_decorator(ensure_csrf_cookie, name='dispatch')
+class ConversationDetailTemplateView(UserPassesTestMixin, TemplateView):
+    """
+    Serves the conversation detail page - admin only.
+    """
+    template_name = 'conversation_detail.html'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+
+        conversation_id = kwargs.get('conversation_id')
+        conversation = get_object_or_404(
+            Conversation.objects.prefetch_related(
+                'queries__steps__llm_model',
+                'queries__llm_model'
+            ),
+            id=conversation_id
+        )
+
+        context['conversation'] = conversation
+        context['queries'] = conversation.queries.all().order_by('query_num')
+
+        return context
+
