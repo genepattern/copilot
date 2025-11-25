@@ -60,6 +60,7 @@
             border: 2px solid transparent;
             transition: all 0.2s;
             user-select: none;
+            min-height: 58px;
         }
         .matrix-cell.selected {
             background-color: #4a90e2;
@@ -229,7 +230,13 @@
 
         <!-- Model/Method Selection Matrix -->
         <div class="section-card">
-            <h4>Model/Method Selection</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Model / Method Selection</h4>
+                <div>
+                    <button id="select-all-button" class="btn btn-sm btn-outline-primary me-2">Select All</button>
+                    <button id="unselect-all-button" class="btn btn-sm btn-outline-secondary">Unselect All</button>
+                </div>
+            </div>
             <div id="selection-matrix" class="matrix-grid">
                 <div></div> <!-- Empty corner cell -->
             </div>
@@ -777,6 +784,25 @@
                 icon.classList.add('collapsed');
             }
         }
+
+        // Select or unselect all combinations
+        document.getElementById('select-all-button').addEventListener('click', function() {
+            models.forEach(modelId => {
+                methods.forEach(method => {
+                    selectedCombinations.add(`${modelId}_${method}`);
+                });
+            });
+            updateSelectionMatrix();
+        });
+
+        document.getElementById('unselect-all-button').addEventListener('click', function() {
+            models.forEach(modelId => {
+                methods.forEach(method => {
+                    selectedCombinations.delete(`${modelId}_${method}`);
+                });
+            });
+            updateSelectionMatrix();
+        });
     </script>
 </body>
 </html>
