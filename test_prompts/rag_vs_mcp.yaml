@@ -1,0 +1,17 @@
+name: "RAG vs MCP Comparison"
+description: "Compare RAG and MCP methods across multiple models"
+prompt: "How do I create a heatmap visualization of gene expression data?"
+combinations:
+  - model: "gpt-4o-mini"
+    method: "rag"
+  - model: "gpt-4o-mini"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "gemini-2.0-flash"
+    method: "rag"
+  - model: "gemini-2.0-flash"
+    method: "mcp"
+

@@ -1,0 +1,12 @@
+name: "Basic GenePattern Query"
+description: "Simple question about GenePattern modules"
+prompt: "What is the ComparativeMarkerSelection module used for?"
+combinations:
+  - model: "gpt-4o-mini"
+    method: "rag"
+  - model: "gpt-4o-mini"
+    method: "raw"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "raw"

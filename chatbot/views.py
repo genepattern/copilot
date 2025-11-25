@@ -20,6 +20,8 @@ from .serializers import (
     ConversationListSerializer
 )
 from .services import handle_chat_message
+import yaml
+from pathlib import Path
 
 
 class ModelsAPIView(views.APIView):
@@ -451,3 +453,68 @@ class ConversationDetailTemplateView(UserPassesTestMixin, TemplateView):
 
         return context
 
+
+@method_decorator(ensure_csrf_cookie, name='dispatch')
+class MatrixTestView(TemplateView):
+    """
+    Serves the matrix testing interface.
+    """
+    template_name = 'matrix.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+
+        # Get user's API key if authenticated
+        user_api_key = ''
+        if self.request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=self.request.user)
+                user_api_key = profile.gp_api_key if profile.gp_api_key else ''
+            except UserProfile.DoesNotExist:
+                pass
+
+        context['user_api_key'] = user_api_key
+        return context
+
+
+class TestPromptsAPIView(APIView):
+    """
+    API endpoint to retrieve pre-defined test prompts from the test_prompts directory.
+    GET: List all available test prompts.
+    """
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        from django.conf import settings
+
+        # Get the test_prompts directory
+        test_prompts_dir = Path(settings.BASE_DIR) / 'test_prompts'
+
+        if not test_prompts_dir.exists():
+            return Response([], status=status.HTTP_200_OK)
+
+        prompts = []
+
+        # Load all YAML files from the directory
+        for file_path in sorted(test_prompts_dir.glob('*.yaml')):
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    data = yaml.safe_load(f)
+
+                    if data and isinstance(data, dict):
+                        # Extract prompt data
+                        prompt_data = {
+                            'id': file_path.stem,  # Use filename without extension as ID
+                            'name': data.get('name', file_path.name),
+                            'description': data.get('description', ''),
+                            'prompt': data.get('prompt', ''),
+                            'combinations': data.get('combinations', [])
+                        }
+                        prompts.append(prompt_data)
+            except Exception as e:
+                # Skip files that can't be parsed
+                print(f"Error loading test prompt {file_path}: {e}")
+                continue
+
+        return Response(prompts, status=status.HTTP_200_OK)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from chatbot.views import ChatInterfaceView, TestInterfaceView, TokenSummaryView, ConversationListTemplateView, ConversationDetailTemplateView
+from chatbot.views import ChatInterfaceView, TestInterfaceView, TokenSummaryView, ConversationListTemplateView, ConversationDetailTemplateView, MatrixTestView, TestPromptsAPIView
 
 urlpatterns = [
     # GenePattern Copilot webapp
@@ -8,6 +8,10 @@ urlpatterns = [
 
     # Method test view
     path('test/', TestInterfaceView.as_view(), name='test-interface'),
+
+    # Matrix testing view and API
+    path('matrix/', MatrixTestView.as_view(), name='matrix-test'),
+    path('matrix/test-prompts/', TestPromptsAPIView.as_view(), name='matrix-test-prompts'),
 
     # Token usage summary (admin only)
     path('tokens/', TokenSummaryView.as_view(), name='token-summary'),
