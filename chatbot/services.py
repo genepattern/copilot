@@ -45,6 +45,7 @@ class ConversationState:
     api_key: Optional[str] = None
     files: Optional[List] = None
     files_content: Optional[str] = None
+    conversation_history: str = ""  # Add conversation history field
 
 
 class ServiceHelper:
@@ -246,7 +247,10 @@ def run_agent(state: ConversationState, helper: ServiceHelper, with_tools: bool 
     model_name = helper.llms[state.model_id]
     context = "\n\n".join(state.context) if state.context else ""
     files_content = state.files_content or ""
-    system_content = f"{state.prompt}\n\n{context}\n\n{files_content}".strip()
+    conversation_history = state.conversation_history or ""
+
+    # Build system content with conversation history, context, and files
+    system_content = f"{state.prompt}\n\n{conversation_history}\n\n{context}\n\n{files_content}".strip()
 
     # Create agent with MCP tools if requested
     if with_tools and helper.tools:
@@ -281,6 +285,23 @@ def run_agent(state: ConversationState, helper: ServiceHelper, with_tools: bool 
 
     state.answer = result_text
     return result_text
+
+
+def build_conversation_history(conversation):
+    """Build a formatted string of previous queries and responses in the conversation."""
+    previous_queries = conversation.queries.all().order_by('query_num')
+
+    if not previous_queries.exists():
+        return ""
+
+    history_parts = ["### Conversation History:\n"]
+    for query in previous_queries:
+        history_parts.append(f"USER: {query.raw_query}")
+        if query.response:
+            history_parts.append(f"ASSISTANT: {query.response}")
+        history_parts.append("")  # Empty line for spacing
+
+    return "\n".join(history_parts)
 
 
 # ==================== Agent Methods ====================
@@ -477,6 +498,9 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, method
     if not system_prompt:
         return None, "No system prompt found or configured."
 
+    # Build conversation history from previous queries
+    conversation_history = build_conversation_history(conversation)
+
     # Prepare state
     state = ConversationState(
         conversation_id=str(conversation.id),
@@ -486,6 +510,7 @@ def handle_chat_message(user, conversation_id, user_query, model_id=None, method
         method_id=method_id,
         api_key=api_key,
         files=files or [],
+        conversation_history=conversation_history,  # Include conversation history
     )
 
     # Log state API key

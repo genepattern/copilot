@@ -973,6 +973,257 @@ class ServiceHelperTestCase(TestCase):
         self.assertEqual(extract_result_text("Plain string"), "Plain string")
 
 
+class ConversationHistoryTestCase(TestCase):
+    """Test suite for conversation history functionality."""
+
+    def setUp(self):
+        """Set up test data."""
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='testpass123'
+        )
+
+        self.llm_model = LlmModel.objects.create(
+            model_id='test-model',
+            provider_id='openai',
+            label='Test Model'
+        )
+
+        self.conversation = Conversation.objects.create(
+            user=self.user,
+            label='Test Conversation'
+        )
+
+    def test_build_conversation_history_empty(self):
+        """Test building history for a conversation with no queries."""
+        from chatbot.services import build_conversation_history
+
+        history = build_conversation_history(self.conversation)
+
+        self.assertEqual(history, "")
+
+    def test_build_conversation_history_single_query(self):
+        """Test building history with a single query-response pair."""
+        from chatbot.services import build_conversation_history
+
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='What is Python?',
+            response='Python is a programming language.'
+        )
+
+        history = build_conversation_history(self.conversation)
+
+        self.assertIn('### Conversation History:', history)
+        self.assertIn('USER: What is Python?', history)
+        self.assertIn('ASSISTANT: Python is a programming language.', history)
+
+    def test_build_conversation_history_multiple_queries(self):
+        """Test building history with multiple query-response pairs."""
+        from chatbot.services import build_conversation_history
+
+        # Add multiple queries in order
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='My GenePattern username is THORIN_ROCKS.',
+            response='Thank you for sharing your GenePattern username.'
+        )
+
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=2,
+            llm_model=self.llm_model,
+            raw_query='What is my favorite color?',
+            response='I don\'t have information about your favorite color.'
+        )
+
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=3,
+            llm_model=self.llm_model,
+            raw_query='What is my GenePattern username?',
+            response='Your GenePattern username is THORIN_ROCKS.'
+        )
+
+        history = build_conversation_history(self.conversation)
+
+        # Verify all queries are in the history
+        self.assertIn('USER: My GenePattern username is THORIN_ROCKS.', history)
+        self.assertIn('ASSISTANT: Thank you for sharing your GenePattern username.', history)
+        self.assertIn('USER: What is my favorite color?', history)
+        self.assertIn('USER: What is my GenePattern username?', history)
+        self.assertIn('ASSISTANT: Your GenePattern username is THORIN_ROCKS.', history)
+
+        # Verify ordering (earlier messages should appear before later ones)
+        thorin_pos = history.index('THORIN_ROCKS')
+        color_pos = history.index('favorite color')
+        self.assertLess(thorin_pos, color_pos, "Earlier queries should appear first")
+
+    def test_build_conversation_history_query_without_response(self):
+        """Test building history when a query has no response yet."""
+        from chatbot.services import build_conversation_history
+
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='Test query',
+            response=None
+        )
+
+        history = build_conversation_history(self.conversation)
+
+        # Should include the query even without response
+        self.assertIn('USER: Test query', history)
+        # Should not crash or include "ASSISTANT: None"
+        self.assertNotIn('ASSISTANT: None', history)
+
+    def test_conversation_history_in_state(self):
+        """Test that conversation history is included in ConversationState."""
+        from chatbot.services import ConversationState
+
+        # Create some queries
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='First query',
+            response='First response'
+        )
+
+        # Create a state with conversation history
+        state = ConversationState(
+            conversation_id=str(self.conversation.id),
+            model_id='test-model',
+            prompt='You are helpful.',
+            raw_query='Current query',
+            conversation_history='### Conversation History:\n\nUSER: First query\nASSISTANT: First response\n'
+        )
+
+        self.assertIn('First query', state.conversation_history)
+        self.assertIn('First response', state.conversation_history)
+
+    @patch('chatbot.services.ServiceHelper.create_instance')
+    @patch('chatbot.services.Agent')
+    def test_conversation_history_included_in_agent_prompt(self, mock_agent_class, mock_helper):
+        """Test that conversation history is included in the agent's system prompt."""
+        from chatbot.services import run_agent, ConversationState, ServiceHelper
+
+        # Setup mocks
+        mock_agent_instance = Mock()
+        mock_result = Mock(output='Response text')
+        mock_agent_instance.run_sync.return_value = mock_result
+        mock_agent_class.return_value = mock_agent_instance
+
+        mock_helper_instance = Mock()
+        mock_helper_instance.llms = {'test-model': 'openai:gpt-4'}
+        mock_helper_instance.tools = None
+
+        # Create state with conversation history
+        state = ConversationState(
+            conversation_id=str(self.conversation.id),
+            model_id='test-model',
+            prompt='You are a helpful assistant.',
+            raw_query='What is my username?',
+            query='What is my username?',
+            conversation_history='### Conversation History:\n\nUSER: My username is THORIN_ROCKS.\nASSISTANT: Thank you for sharing.\n'
+        )
+
+        # Run the agent
+        run_agent(state, mock_helper_instance, with_tools=False)
+
+        # Verify Agent was called with conversation history in system prompt
+        mock_agent_class.assert_called_once()
+        call_args = mock_agent_class.call_args
+
+        # The system_prompt should contain the conversation history
+        system_prompt = call_args.kwargs['system_prompt']
+        self.assertIn('### Conversation History:', system_prompt)
+        self.assertIn('USER: My username is THORIN_ROCKS.', system_prompt)
+        self.assertIn('ASSISTANT: Thank you for sharing.', system_prompt)
+        self.assertIn('You are a helpful assistant.', system_prompt)
+
+    @patch('chatbot.services.ServiceHelper.create_instance')
+    @patch('chatbot.services.AGENT_METHODS')
+    def test_handle_chat_message_builds_history(self, mock_methods, mock_helper):
+        """Test that handle_chat_message builds conversation history before running agent."""
+        from chatbot.services import handle_chat_message
+
+        # Create system prompt
+        SystemPrompt.objects.create(
+            name='General',
+            version=1.0,
+            prompt='You are helpful.'
+        )
+
+        # Add previous queries to conversation
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='My name is Alice.',
+            response='Nice to meet you, Alice.'
+        )
+
+        # Setup mocks
+        mock_agent_func = Mock(return_value='You are Alice.')
+        mock_methods.__getitem__.return_value = mock_agent_func
+        mock_methods.__contains__.return_value = True
+
+        mock_helper_instance = Mock()
+        mock_helper.return_value = mock_helper_instance
+
+        # Call handle_chat_message with existing conversation
+        result = handle_chat_message(
+            user=self.user,
+            conversation_id=str(self.conversation.id),
+            user_query='What is my name?',
+            model_id='test-model',
+            method_id='raw'
+        )
+
+        # Verify the agent was called
+        mock_agent_func.assert_called_once()
+
+        # Get the state that was passed to the agent
+        state_arg = mock_agent_func.call_args[0][0]
+
+        # Verify conversation history was included in the state
+        self.assertIn('My name is Alice', state_arg.conversation_history)
+        self.assertIn('Nice to meet you, Alice', state_arg.conversation_history)
+
+    def test_conversation_memory_scenario(self):
+        """Test the complete conversation memory scenario from the requirements."""
+        from chatbot.services import build_conversation_history
+
+        # Simulate the exact scenario from requirements:
+        # USER: My GenePattern username is THORIN_ROCKS.
+        # CHATBOT: Thank you for sharing your GenePattern username.
+        # USER: What is my GenePattern username?
+
+        Query.objects.create(
+            conversation=self.conversation,
+            query_num=1,
+            llm_model=self.llm_model,
+            raw_query='My GenePattern username is THORIN_ROCKS.',
+            response='Thank you for sharing your GenePattern username.'
+        )
+
+        # Now build the history that would be available for the next query
+        history = build_conversation_history(self.conversation)
+
+        # Verify the chatbot would have the context to answer "What is my GenePattern username?"
+        self.assertIn('THORIN_ROCKS', history)
+        self.assertIn('My GenePattern username is THORIN_ROCKS.', history)
+        self.assertIn('Thank you for sharing your GenePattern username.', history)
+
+        # This history would now be in the system prompt, allowing the LLM to answer correctly
+
+
 class IntegrationTestCase(APITestCase):
     """End-to-end integration tests."""
 
