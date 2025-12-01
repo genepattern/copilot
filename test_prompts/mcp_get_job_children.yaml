@@ -1,0 +1,8 @@
+name: "MCP - Get Job Children"
+description: "Test the get_job_children MCP endpoint to retrieve child jobs of a pipeline"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then get the child jobs for that job (it may have none since it's not a pipeline, but this tests the endpoint)."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

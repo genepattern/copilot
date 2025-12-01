@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('orientationchange', refreshLayoutHeight);
     setTimeout(refreshLayoutHeight, 0);
 
-    // Show LLM controls by default; toggle with Cmd+i / Ctrl+i
-    if (methodSelect) methodSelect.classList.remove('d-none');
-    if (modelSelect) modelSelect.classList.remove('d-none');
+    // Don't show LLM controls by default; toggle with Cmd+i / Ctrl+i
+    if (methodSelect) methodSelect.classList.add('d-none');
+    if (modelSelect) modelSelect.classList.add('d-none');
 
     document.addEventListener('keydown', (e) => {
         const isCtrl = e.ctrlKey;

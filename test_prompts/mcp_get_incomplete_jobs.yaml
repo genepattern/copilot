@@ -1,0 +1,9 @@
+name: "MCP - Get Incomplete Jobs"
+description: "Test the get_incomplete_jobs MCP endpoint to find pending or running jobs"
+prompt: "Show me all my jobs that are currently pending or running"
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

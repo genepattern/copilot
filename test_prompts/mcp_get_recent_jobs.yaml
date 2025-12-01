@@ -1,0 +1,9 @@
+name: "MCP - Get Recent Jobs"
+description: "Test the get_recent_jobs MCP endpoint to retrieve the user's most recent jobs"
+prompt: "Show me my most recent jobs with their output files"
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

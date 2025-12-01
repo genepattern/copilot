@@ -5,6 +5,7 @@ from django.db.models import Sum
 from django.core.mail import send_mail
 from pydantic_ai import Agent
 from pydantic_ai.mcp import MCPServerStreamableHTTP
+from pydantic_ai.settings import ModelSettings
 from typing import List, Dict, Optional, Any
 from dataclasses import dataclass, field
 import chromadb
@@ -91,6 +92,12 @@ class ServiceHelper:
         """Initialize MCP server connection using Pydantic AI's native MCP support."""
         mcp_url = getattr(settings, 'GENEPATTERN_MCP_URL', "http://localhost:3000/mcp")
 
+        # Normalize api_key: treat None, empty string, or string "None" as no API key
+        if api_key and api_key.strip() and api_key.lower() != 'none':
+            api_key = api_key.strip()
+        else:
+            api_key = None
+
         logger.info(f"="*70)
         logger.info(f"Initializing MCP server connection at: {mcp_url}")
         logger.info(f"API key provided: {api_key is not None}")
@@ -105,13 +112,17 @@ class ServiceHelper:
                 # The MCP transport will use these headers for ALL requests including tool calls
                 mcp_server = MCPServerStreamableHTTP(
                     mcp_url,
-                    headers={"Authorization": f"Bearer {api_key}"}
+                    headers={"Authorization": f"Bearer {api_key}"},
+                    max_retries=5  # Increase tool retry limit from default (1) to 5
                 )
-                logger.info(f"✓ MCP server initialized with API key authentication")
+                logger.info(f"✓ MCP server initialized with API key authentication and max_retries=5")
                 logger.info(f"  Authorization header: Bearer {api_key[:8]}...")
             else:
-                mcp_server = MCPServerStreamableHTTP(mcp_url)
-                logger.info(f"✓ MCP server initialized without authentication")
+                mcp_server = MCPServerStreamableHTTP(
+                    mcp_url,
+                    max_retries=5  # Increase tool retry limit from default (1) to 5
+                )
+                logger.info(f"✓ MCP server initialized without authentication and max_retries=5")
 
             return mcp_server
 
@@ -139,6 +150,11 @@ class ServiceHelper:
         """Create a ServiceHelper instance with cached or per-request resources."""
         global _cached_llms, _cached_vector_store, _cached_tools
 
+        # Log the API key at the entry point
+        logger.info(f"ServiceHelper.create_instance called with api_key: {api_key is not None}")
+        if api_key:
+            logger.info(f"  API key type: {type(api_key)}, value: '{api_key[:8]}...' (length: {len(api_key)})")
+
         with _cache_lock:
             load_dotenv()
 
@@ -153,9 +169,10 @@ class ServiceHelper:
 
             # MCP tools: use per-request if api_key provided, otherwise cache
             if api_key:
-                logger.debug("Loading MCP tools with per-request Authorization header")
+                logger.info("Creating NEW MCP server instance with API key (not using cache)")
                 tools = cls._load_mcp_server(api_key)
             else:
+                logger.info("Using cached MCP server instance (no API key provided)")
                 if _cached_tools is None:
                     logger.info("Initializing and caching MCP tools...")
                     _cached_tools = cls._load_mcp_server()
@@ -258,11 +275,16 @@ def run_agent(state: ConversationState, helper: ServiceHelper, with_tools: bool 
         agent = Agent(
             model_name,
             system_prompt=system_content,
-            toolsets=[helper.tools]  # Pass MCP server as toolset
+            toolsets=[helper.tools],  # Pass MCP server as toolset
+            retries=5  # Increase max retries for tool calls from default (1) to 5
         )
     else:
         # Create agent without tools
-        agent = Agent(model_name, system_prompt=system_content)
+        agent = Agent(
+            model_name,
+            system_prompt=system_content,
+            retries=5  # Also set retries for consistency
+        )
 
     started_at = timezone.now()
     result = agent.run_sync(state.query)

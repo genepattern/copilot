@@ -1,0 +1,8 @@
+name: "MCP - Get Visualizer Input Files"
+description: "Test the get_visualizer_input_files MCP endpoint to get input file URLs for a visualizer"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then get the input file URLs for that job (note: this may not be a visualizer job, but this tests the endpoint)."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

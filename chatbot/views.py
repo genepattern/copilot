@@ -22,6 +22,10 @@ from .serializers import (
 from .services import handle_chat_message
 import yaml
 from pathlib import Path
+import logging
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 
 class ModelsAPIView(views.APIView):
@@ -67,15 +71,35 @@ class ChatAPIView(APIView):
             html = serializer.validated_data.get('html')
             files = serializer.validated_data.get('files', [])
 
+            # Log initial state
+            logger.info(f"ChatAPIView.post - User: {user.username if user.is_authenticated else 'anonymous'}")
+            logger.info(f"  API key from request: {api_key is not None}")
+            if api_key:
+                logger.info(f"  Request API key type: {type(api_key)}, length: {len(api_key)}")
+
             # If the call doesn't specify an API key, check the user profile
             if not api_key and user.is_authenticated:
                 try:
                     profile = UserProfile.objects.get(user=user)
+                    logger.info(f"  Found UserProfile for {user.username}")
+                    logger.info(f"  Profile gp_api_key exists: {profile.gp_api_key is not None}")
+                    if profile.gp_api_key:
+                        logger.info(f"  Profile gp_api_key type: {type(profile.gp_api_key)}, length: {len(profile.gp_api_key)}")
+                        logger.info(f"  Profile gp_api_key value: '{profile.gp_api_key[:8]}...'")
                     # Only use the profile API key if it's not None or empty
                     if profile.gp_api_key:
                         api_key = profile.gp_api_key
+                        logger.info(f"  ✓ Using API key from user profile")
+                    else:
+                        logger.info(f"  ✗ Profile API key is None or empty")
                 except UserProfile.DoesNotExist:
+                    logger.info(f"  ✗ No UserProfile found for {user.username}")
                     pass  # Profile doesn't exist, no API key available
+
+            # Log final API key state before calling service
+            logger.info(f"  Final api_key being passed to service: {api_key is not None}")
+            if api_key:
+                logger.info(f"  Final API key type: {type(api_key)}, length: {len(api_key)}, value: '{api_key[:8]}...'")
 
             # Call the service layer to handle the logic (now synchronous)
             query_instance, error_message = handle_chat_message(

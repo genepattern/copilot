@@ -682,18 +682,46 @@
             if (!responseText) return false;
 
             const errorPatterns = [
+                // Refusal patterns - can't/won't assist
+                /I'm sorry,? (?:but )?I can'?t (?:assist|help)(?: with that)?/i,
+                /I can'?t help (?:with that|you with that)/i,
+                /I do not provide instructions/i,
+                /I cannot assist with (?:that|this)/i,
+                /I will not (?:assist|help|provide)/i,
+                /I won'?t (?:assist|help|provide)/i,
+
+                // Apology-based refusals
                 /I (?:apologize|cannot|can't|will not|won't).*(?:cannot|can't|unable to|not able to)/i,
+                /I apologize.*(?:encountering|experiencing|having).*(?:issues|problems|difficulties)/i,
                 /I do not have (?:access|the ability|permission)/i,
-                /This (?:would be|is) (?:unethical|illegal|not possible)/i,
+
+                // Ethical/legal refusals
+                /This (?:would be|is) (?:unethical|illegal|not possible|dangerous)/i,
+                /(?:illegal|dangerous|harmful)(?: and)?(?: highly)? (?:illegal|dangerous|harmful)/i,
+                /creating (?:explosives|weapons|harmful devices)/i,
+
+                // Authentication errors
                 /you are not currently logged in/i,
-                /authentication.*(?:required|failed|invalid)/i,
+                /authentication.*(?:required|failed|invalid|issues)/i,
+                /encountering authentication issues/i,
+
+                // Capability limitations
                 /cannot actually (?:execute|retrieve|access)/i,
                 /I'm an AI assistant.*(?:cannot|don't have|do not have)/i,
+                /My purpose is to provide support.*(?:related to|about)/i,
+                /(?:prevent|prevents) me from (?:submitting|executing|running|accessing)/i,
+
+                // Suggestions to do something else
                 /you would (?:typically )?need to/i,
                 /contact.*support/i,
+                /(?:However|Instead),? I can (?:provide|suggest)/i,
+                /If you have (?:any )?(?:other )?questions.*feel free to ask/i,
+                /Is there something else I can help (?:you )?with/i,
+                /Would you like me to elaborate/i,
+
+                // Module/resource not found
                 /is not available in the list of/i,
                 /module is not available/i,
-                /(?:However|Instead),? I can suggest/i
             ];
 
             return errorPatterns.some(pattern => pattern.test(responseText));

@@ -65,6 +65,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Session configuration
+SESSION_COOKIE_AGE = 86400  # 24 hours in seconds (24 * 60 * 60)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Don't expire when browser closes
+
 ROOT_URLCONF = 'copilot.urls'
 
 TEMPLATES = [

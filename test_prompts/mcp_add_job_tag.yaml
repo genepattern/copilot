@@ -1,0 +1,8 @@
+name: "MCP - Add Job Tag"
+description: "Test the add_job_tag MCP endpoint to tag a job for organization"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then, note the job number and add the tag 'important' to that job. Finally, verify that the tag was successfully added by checking the job details."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

@@ -1,0 +1,8 @@
+name: "MCP - Search Jobs"
+description: "Test the search_jobs MCP endpoint to find jobs by various criteria"
+prompt: "First, submit two ConvertLineEndings jobs using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Add the tag 'analysis' to both jobs. Then search for all my jobs that are tagged with 'analysis' and show me the results sorted by most recent first."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

@@ -1,0 +1,8 @@
+name: "MCP - Get Visualizer Command Line"
+description: "Test the get_visualizer_command_line MCP endpoint to get a visualizer's command line with substitutions"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then get the command line for that job with the input file parameters substituted (note: this may not be a visualizer job, but this tests the endpoint)."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

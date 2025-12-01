@@ -1,0 +1,8 @@
+name: "MCP - Download Job Results"
+description: "Test the download_job_results MCP endpoint to get job output files"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Wait for the job to complete, then download all the result files from that job as a zip file."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
