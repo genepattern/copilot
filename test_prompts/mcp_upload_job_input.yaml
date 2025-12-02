@@ -1,0 +1,9 @@
+name: "MCP - Upload Job Input"
+description: "Test uploading files to be used as job inputs"
+prompt: "Create a test file with content 'Sample data for analysis' and upload it as a job input file named 'job_input_test.txt' using the upload_job_input_from_body method. Confirm the upload was successful and note the temporary location returned."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

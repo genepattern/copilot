@@ -1,6 +1,6 @@
 name: "MCP - Delete Job Tag"
 description: "Test the delete_job_tag MCP endpoint to remove a tag from a job"
-prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then add the tag 'temporary' to that job and note the tag ID. Finally, delete that tag from the job and verify it was removed."
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Then add the tag 'temporary' to that job and note the tag ID. Finally, delete that tag from the job and verify it was removed."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

@@ -1,6 +1,6 @@
 name: "MCP - Get Multiple Job Statuses"
 description: "Test the get_multiple_job_statuses MCP endpoint to check status of multiple jobs at once"
-prompt: "First, submit three ConvertLineEndings jobs using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Note all three job numbers, then check the status of all three jobs at once."
+prompt: "First, submit three ConvertLineEndings jobs, one after another, using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls and waiting 3 seconds between each submission. Note all three job numbers, then check the status of all three jobs."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

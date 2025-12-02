@@ -1,0 +1,9 @@
+name: "MCP - Get User Files"
+description: "Test the get_user_files MCP endpoint to list files in upload space"
+prompt: "Get the complete file and directory structure from my GenePattern upload space and display it in a readable format."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

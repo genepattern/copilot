@@ -681,6 +681,12 @@
         function isErrorResponse(responseText) {
             if (!responseText) return false;
 
+            // Strip HTML tags for cleaner pattern matching
+            const plainText = responseText.replace(/<[^>]*>/g, ' ').trim();
+
+            // Get first 500 characters to check for errors at the start
+            const firstPart = plainText.substring(0, 500);
+
             const errorPatterns = [
                 // Refusal patterns - can't/won't assist
                 /I'm sorry,? (?:but )?I can'?t (?:assist|help)(?: with that)?/i,
@@ -693,6 +699,10 @@
                 // Apology-based refusals
                 /I (?:apologize|cannot|can't|will not|won't).*(?:cannot|can't|unable to|not able to)/i,
                 /I apologize.*(?:encountering|experiencing|having).*(?:issues|problems|difficulties)/i,
+                /I apologize.*(?:encountering|experiencing|having).*(?:errors?|error)/i,
+                /I apologize.*(?:couldn't|could not)/i,
+                /I'm encountering (?:unexpected )?(?:errors?|issues|problems)/i,
+                /I encountered (?:unexpected )?(?:errors?|issues|problems)/i,
                 /I do not have (?:access|the ability|permission)/i,
 
                 // Ethical/legal refusals
@@ -711,20 +721,58 @@
                 /My purpose is to provide support.*(?:related to|about)/i,
                 /(?:prevent|prevents) me from (?:submitting|executing|running|accessing)/i,
 
-                // Suggestions to do something else
-                /you would (?:typically )?need to/i,
-                /contact.*support/i,
-                /(?:However|Instead),? I can (?:provide|suggest)/i,
-                /If you have (?:any )?(?:other )?questions.*feel free to ask/i,
-                /Is there something else I can help (?:you )?with/i,
-                /Would you like me to elaborate/i,
+                // Fallback/workaround indicators (doing something different than requested)
+                /(?:Instead|However),? I (?:used|tried|attempted)/i,
+                /I used (?:the )?(?:standard|alternative|different|another).*(?:method|approach|way)/i,
+                /couldn't use the (?:exact|requested|specified)/i,
+                /could not use the (?:exact|requested|specified)/i,
+
+                // Not working / system constraints
+                /(?:is|are) not working(?: due to)?/i,
+                /(?:due to|because of) system (?:constraints|limitations|restrictions)/i,
+                /the error (?:we're|we are|I'm|I am) seeing/i,
 
                 // Module/resource not found
                 /is not available in the list of/i,
                 /module is not available/i,
             ];
 
-            return errorPatterns.some(pattern => pattern.test(responseText));
+            // Check standard error patterns against full text
+            if (errorPatterns.some(pattern => pattern.test(plainText))) {
+                return true;
+            }
+
+            // Failure indicators that should only be checked at the beginning of response
+            const earlyErrorPatterns = [
+                // Explanations instead of actions (when appearing early)
+                /(?:While|Although) the (?:actual|requested)/i,
+                /let me explain (?:the|what|how)/i,
+                /(?:would|might) look like:/i,
+                /(?:typical|example of|example) .*(?:workflow|process):/i,
+
+                // Recommendations and troubleshooting suggestions (indicates failure)
+                /(?:Here's what I|I) recommend:/i,
+                /you may want to:/i,
+                /Would you like me to (?:help you )?troubleshoot/i,
+                /(?:manually|through the.*interface)/i,
+                /check your (?:file system )?permissions/i,
+                /verify the.*(?:structure|configuration)/i,
+                /there might be an? (?:issue|problem) with/i,
+                /suggests? that there (?:might|may) be/i,
+                /(?:might|may|could) be due to (?:some )?(?:server|configuration|restrictions)/i,
+
+                // Suggestions to do something else (when appearing early)
+                /you would (?:typically )?need to/i,
+                /contact.*support/i,
+                /(?:However|Instead),? I can (?:provide|suggest)/i,
+            ];
+
+            // Only check early error patterns in the first part of the response
+            if (earlyErrorPatterns.some(pattern => pattern.test(firstPart))) {
+                return true;
+            }
+
+            return false;
         }
 
         // Show response in modal

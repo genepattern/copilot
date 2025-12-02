@@ -1,0 +1,9 @@
+name: "MCP - Upload Job Output"
+description: "Test uploading a file as output for an existing job"
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Note the job number. Then create a file with content 'Custom output data' and upload it as an additional output file named 'custom_output.txt' for that job. Verify the upload succeeded."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

@@ -1,6 +1,6 @@
 name: "MCP - Get Job Permissions"
 description: "Test the get_job_permissions MCP endpoint to view job sharing permissions"
-prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then show me the current permissions for that job and which groups it can be shared with."
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Then show me the current permissions for that job and which groups it can be shared with."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

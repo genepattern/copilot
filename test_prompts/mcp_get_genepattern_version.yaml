@@ -1,0 +1,9 @@
+name: "MCP - Get GenePattern Version"
+description: "Test the get_genepattern_version MCP endpoint to retrieve server version"
+prompt: "Get the current version of the GenePattern server and display it."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

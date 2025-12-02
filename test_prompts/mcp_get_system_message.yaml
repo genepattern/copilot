@@ -1,0 +1,8 @@
+name: "MCP - Get System Message"
+description: "Test the get_system_message MCP endpoint to retrieve the current system banner"
+prompt: "Retrieve the current system-wide message or banner from the GenePattern server. Display the message if one is active, or indicate if no system message is currently set."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"

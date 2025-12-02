@@ -1,6 +1,6 @@
 name: "MCP - Get Job Status"
 description: "Test the get_job_status MCP endpoint to check the status of a running job"
-prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then check the current status of that job."
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Then check the status of that job."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

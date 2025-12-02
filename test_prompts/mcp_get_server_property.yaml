@@ -1,0 +1,9 @@
+name: "MCP - Get Server Property"
+description: "Test the get_server_property MCP endpoint to retrieve server configuration"
+prompt: "Retrieve the 'executor' server property from the GenePattern configuration. Display the value returned."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

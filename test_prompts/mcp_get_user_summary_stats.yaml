@@ -1,0 +1,17 @@
+name: "MCP - Get User Summary Stats"
+description: "Test the get_user_summary_stats MCP endpoint to retrieve usage statistics (admin only)"
+prompt: "Retrieve the user summary statistics for the GenePattern server from January 1, 2025 to January 31, 2025. Display the key metrics such as new user registrations, total jobs run, CPU time used, and most popular modules. Note: This is an admin-only function and may return an authorization error if you don't have admin privileges."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+name: "MCP - Upload Whole File"
+description: "Test the upload_whole_file MCP endpoint to upload a complete file in one request"
+prompt: "Create a small text file containing 'Hello GenePattern!' and upload it to my user directory as 'test_upload.txt'. Then verify the upload was successful by listing my uploaded files or checking if the file exists."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

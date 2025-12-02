@@ -1,6 +1,6 @@
 name: "MCP - Terminate Job"
 description: "Test the terminate_job MCP endpoint to stop a running job"
-prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Then immediately terminate that job and verify it was stopped successfully."
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Then terminate that job and verify it was stopped successfully."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

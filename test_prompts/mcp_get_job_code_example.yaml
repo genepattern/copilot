@@ -1,6 +1,6 @@
 name: "MCP - Get Job Code Example"
 description: "Test the get_job_code_example MCP endpoint to generate code to reproduce a job"
-prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls and output.file=all_aml_train.cvt.cls. Then generate Python code that reproduces that job."
+prompt: "First, submit a ConvertLineEndings job using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls and output.file=all_aml_train.cvt.cls. Then generate Python code that reproduces that job."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

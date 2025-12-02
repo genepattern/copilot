@@ -1,0 +1,9 @@
+name: "MCP - Get Disk Info"
+description: "Test the get_disk_info MCP endpoint to retrieve disk usage and quota information"
+prompt: "Get my current disk usage, quota, and job limit information from the GenePattern server. Display the key metrics including storage used, storage quota, current job count, and maximum allowed simultaneous jobs."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

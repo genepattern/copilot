@@ -1,0 +1,9 @@
+name: "MCP - File Operations (Create, Rename, Copy, Move, Delete)"
+description: "Test file and directory operations in user upload space"
+prompt: "Perform the following file operations: 1) Upload a file called 'test_file.txt' with content 'Hello World' to my uploads directory. 2) Create a directory called 'archive'. 3) Copy 'test_file.txt' to 'archive/test_file_copy.txt'. 4) Rename 'test_file.txt' to 'test_file_renamed.txt'. 5) Move 'test_file_renamed.txt' to 'archive/test_file_moved.txt'. 6) List my user files to verify all operations. 7) Delete the 'archive' directory. 8) List my user files again to confirm deletion."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

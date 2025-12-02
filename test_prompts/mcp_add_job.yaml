@@ -1,6 +1,6 @@
 name: "MCP - Submit Job"
 description: "Test the add_job MCP endpoint to submit a new analysis job"
-prompt: "Submit a job to run the ConvertLineEndings module. Use input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls and output.file=all_aml_train.cvt.cls"
+prompt: "Submit a job to run the ConvertLineEndings module. Use input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls and output.file=all_aml_train.cvt.cls"
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"

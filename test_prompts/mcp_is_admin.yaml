@@ -1,0 +1,9 @@
+name: "MCP - Check Admin Status"
+description: "Test the is_admin MCP endpoint to check if user has admin privileges"
+prompt: "Check if I have administrator privileges on the GenePattern server and tell me the result."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

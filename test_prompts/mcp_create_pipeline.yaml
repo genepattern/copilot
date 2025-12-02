@@ -1,0 +1,9 @@
+name: "MCP - Create Pipeline from Job Result"
+description: "Test the create_pipeline MCP endpoint to create a provenance pipeline"
+prompt: "First, find my most recent completed GenePattern job. Then create a provenance pipeline from that job's first output file, naming it 'test_pipeline_from_job'. If I do not have a recent completed job, or if that job has no output files, please inform me of that issue."
+combinations:
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "mcp"
+  - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    method: "rag_mcp"
+

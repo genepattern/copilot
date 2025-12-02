@@ -1,6 +1,6 @@
 name: "MCP - Delete Multiple Jobs"
 description: "Test the delete_jobs MCP endpoint to remove multiple jobs at once"
-prompt: "First, submit three ConvertLineEndings jobs using input.filename=https://datasets.genepattern.org/all_aml_1/all_aml_hold/all_aml/all_aml_train.cls. Note all three job numbers, then delete all three jobs at once from my job history and confirm they were deleted."
+prompt: "First, submit three ConvertLineEndings jobs using input.filename=https://datasets.genepattern.org/data/all_aml/all_aml_train.cls. Note all three job numbers, then delete all three jobs at once from my job history and confirm they were deleted."
 combinations:
   - model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
     method: "mcp"
