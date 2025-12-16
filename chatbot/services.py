@@ -15,6 +15,16 @@ import threading
 import base64
 import mimetypes
 import httpx
+import sys
+
+# Import BaseExceptionGroup for Python 3.11+
+try:
+    # Python 3.11+ has built-in ExceptionGroup and BaseExceptionGroup
+    BaseExceptionGroup
+except NameError:
+    # For older Python versions, create a dummy class
+    class BaseExceptionGroup(Exception):
+        pass
 
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step, TokenCount
 
@@ -269,31 +279,90 @@ def run_agent(state: ConversationState, helper: ServiceHelper, with_tools: bool 
     # Build system content with conversation history, context, and files
     system_content = f"{state.prompt}\n\n{conversation_history}\n\n{context}\n\n{files_content}".strip()
 
-    # Create agent with MCP tools if requested
-    if with_tools and helper.tools:
-        # Use Pydantic AI's native MCP support via toolsets parameter
-        agent = Agent(
-            model_name,
-            system_prompt=system_content,
-            toolsets=[helper.tools],  # Pass MCP server as toolset
-            retries=5  # Increase max retries for tool calls from default (1) to 5
-        )
-    else:
-        # Create agent without tools
-        agent = Agent(
-            model_name,
-            system_prompt=system_content,
-            retries=5  # Also set retries for consistency
-        )
-
     started_at = timezone.now()
-    result = agent.run_sync(state.query)
-    ended_at = timezone.now()
 
-    result_text = extract_result_text(result)
+    # Try to run the agent, with fallback if MCP connection fails
+    try:
+        # Create agent with MCP tools if requested
+        if with_tools and helper.tools:
+            # Use Pydantic AI's native MCP support via toolsets parameter
+            agent = Agent(
+                model_name,
+                system_prompt=system_content,
+                toolsets=[helper.tools],  # Pass MCP server as toolset
+                retries=5  # Increase max retries for tool calls from default (1) to 5
+            )
+        else:
+            # Create agent without tools
+            agent = Agent(
+                model_name,
+                system_prompt=system_content,
+                retries=5  # Also set retries for consistency
+            )
+
+        result = agent.run_sync(state.query)
+        ended_at = timezone.now()
+        result_text = extract_result_text(result)
+        call_id = 'mcp_agent' if with_tools else 'agent'
+
+    except (Exception, BaseExceptionGroup) as e:
+        # Check if this is an MCP connection error
+        # Handle both regular exceptions and ExceptionGroup
+        error_str = str(e).lower()
+        error_repr = repr(e).lower()
+
+        # Check for connection-related errors in the exception string or type
+        is_connection_error = (
+            'connection' in error_str or
+            'connecterror' in error_str or
+            'connection attempts failed' in error_str or
+            'connecterror' in error_repr or
+            isinstance(e, (ConnectionError, OSError))
+        )
+
+        # For ExceptionGroup, also check nested exceptions
+        if hasattr(e, 'exceptions'):
+            for nested_exc in e.exceptions:
+                nested_str = str(nested_exc).lower()
+                nested_repr = repr(nested_exc).lower()
+                if ('connection' in nested_str or
+                    'connecterror' in nested_str or
+                    'connecterror' in nested_repr or
+                    'connection attempts failed' in nested_str):
+                    is_connection_error = True
+                    break
+
+        if with_tools and is_connection_error:
+            # MCP server is unreachable, fall back to running without tools
+            logger.warning(f"MCP server unreachable, falling back to running without tools: {type(e).__name__}")
+            logger.debug(f"Full error: {e}")
+
+            # Create new agent without tools
+            agent_fallback = Agent(
+                model_name,
+                system_prompt=system_content,
+                retries=5
+            )
+
+            result = agent_fallback.run_sync(state.query)
+            ended_at = timezone.now()
+            result_text = extract_result_text(result)
+
+            # Prepend a note to the user about the fallback
+            fallback_note = (
+                "⚠️ Note: GenePattern tool server is currently unavailable, so I cannot perform direct actions "
+                "for your GenePatgtern account. Here's an answer based on available information:\n\n"
+            )
+            result_text = fallback_note + result_text
+            call_id = 'agent_fallback'
+
+            logger.info("Successfully fell back to running without MCP tools")
+        else:
+            # Re-raise if it's not a connection error or we weren't using tools
+            raise
+
     token_counts = estimate_token_counts(state.query, result_text)
 
-    call_id = 'mcp_agent' if with_tools else 'agent'
     state.steps.append({
         'llm_model': state.model_id,
         'system_prompt': state.prompt,

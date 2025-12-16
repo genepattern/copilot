@@ -24,6 +24,15 @@ function getCookie(name) {
 }
 window.getCookie = getCookie; // Make it globally accessible
 
+// Helper function to resolve the method value
+function resolveMethodValue(methodValue) {
+    if (methodValue === 'default') {
+        // Use RAG for unauthenticated users, RAG+MCP for authenticated users
+        return window.IS_AUTHENTICATED ? 'rag_mcp' : 'rag';
+    }
+    return methodValue;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const userInput = document.getElementById('user-input');
@@ -316,13 +325,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prepare request - use FormData if files are attached, otherwise JSON
         let fetchOptions;
 
+        // Resolve the method value (convert "default" to "rag" or "rag_mcp" based on auth)
+        const resolvedMethod = resolveMethodValue(methodSelect.value);
+
         if (attachedFiles.length > 0) {
             // Use FormData for file uploads
             const formData = new FormData();
             formData.append('query', queryText);
             if (currentConversationId) formData.append('conversation_id', currentConversationId);
             if (modelSelect.value) formData.append('model_id', modelSelect.value);
-            if (methodSelect.value) formData.append('method_id', methodSelect.value);
+            if (resolvedMethod) formData.append('method_id', resolvedMethod);
             formData.append('html', 'true');
             if (localStorage.getItem('gp_api_key')) {
                 formData.append('api_key', localStorage.getItem('gp_api_key'));
@@ -346,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 query: queryText,
                 conversation_id: currentConversationId,
                 model_id: modelSelect.value || null,
-                method_id: methodSelect.value || null,
+                method_id: resolvedMethod || null,
                 html: true
             };
 
