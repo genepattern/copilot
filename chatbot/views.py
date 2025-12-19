@@ -23,6 +23,8 @@ from .services import handle_chat_message
 import yaml
 from pathlib import Path
 import logging
+import base64
+from urllib.parse import unquote
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -238,6 +240,50 @@ class LogoutAPIView(APIView):
 
         logout(request)
         return Response({'success': True})
+
+
+class RefreshTokenAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            # Get the GenePattern cookie
+            gp_cookie = request.COOKIES.get('GenePattern')
+
+            if not gp_cookie:
+                return Response({'error': 'Could not refresh GenePattern token'},
+                              status=status.HTTP_400_BAD_REQUEST)
+
+            # Parse the cookie
+            parts = gp_cookie.split('|')
+            if len(parts) != 2:
+                return Response({'error': 'Could not refresh GenePattern token'},
+                              status=status.HTTP_400_BAD_REQUEST)
+
+            username = parts[0]
+            encoded_password = parts[1]
+            decoded_password = base64.b64decode(unquote(encoded_password)).decode('utf-8')
+
+            # Import the connect_to_genepattern function
+            from copilot.auth import connect_to_genepattern
+
+            # Call GenePattern to refresh the token
+            user, token = connect_to_genepattern(username, decoded_password)
+
+            # Store API key in user profile
+            profile, created = UserProfile.objects.get_or_create(user=user)
+            profile.gp_api_key = token
+            profile.save()
+
+            return Response({
+                'success': True,
+                'message': 'Token refreshed successfully'
+            })
+
+        except Exception as e:
+            logger.error(f'Error refreshing GenePattern token: {str(e)}')
+            return Response({'error': 'Could not refresh GenePattern token'},
+                          status=status.HTTP_400_BAD_REQUEST)
 
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')

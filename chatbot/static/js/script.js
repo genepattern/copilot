@@ -598,6 +598,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadModels();
     if (window.IS_AUTHENTICATED) {
         try { refreshConversations(); } catch (e) {}
+        // Refresh GenePattern token in the background if cookie exists
+        refreshGenePatternToken();
     }
     if (newConversationForm) {
         newConversationForm.addEventListener('submit', function(e) {
@@ -608,6 +610,34 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modelSelect) modelSelect.disabled = false;  // Re-enable model select
             try { refreshConversations(); } catch (e) {}
         });
+    }
+
+    // Function to refresh GenePattern token in the background
+    async function refreshGenePatternToken() {
+        // Check if GenePattern cookie exists
+        const gpCookie = getCookie('GenePattern');
+        if (!gpCookie) {
+            return; // No cookie, nothing to refresh
+        }
+
+        try {
+            const response = await fetch('/api/refresh/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                console.log('GenePattern token refreshed successfully');
+            } else {
+                console.warn('Failed to refresh GenePattern token:', data.error);
+            }
+        } catch (error) {
+            console.warn('Error refreshing GenePattern token:', error);
+        }
     }
 });
 
@@ -629,9 +659,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (spinner) spinner.classList.remove('d-none');
             if (submitBtn) submitBtn.disabled = true;
 
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Save cookie with username and base64-encoded password
+            const encodedPassword = encodeURIComponent(btoa(password));
+            document.cookie = `GenePattern=${username}|${encodedPassword};path=/;domain=${window.location.hostname}`;
+
             const formData = new FormData();
-            formData.append('username', document.getElementById('username').value);
-            formData.append('password', document.getElementById('password').value);
+            formData.append('username', username);
+            formData.append('password', password);
 
             try {
                 const response = await fetch('/api/login/', {
