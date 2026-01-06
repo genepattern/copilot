@@ -1,0 +1,15 @@
+GenePattern is a computational platform for analyzing genomic data through a graphical user interface.
+The platform provides access to a broad array of computational methods for genomic analysis.
+GenePattern has an extendable architecture that allows computational biologists to add new analysis and visualization modules.
+Users can access GenePattern through a public server or by installing a local server.
+The public server offers advantages like ready-to-use access, compute farm analysis, site support, and modules not available for local installation.
+GenePattern supports running individual analysis modules or complex pipelines of multiple modules.
+Users can interact with the platform through a web browser, accessing modules, running jobs, and managing analysis results.
+The platform supports multiple programming environments including Java, MATLAB, and R.
+GenePattern allows users to upload and manage files, run batch analyses, and share analysis results.
+The platform includes visualization modules to help interpret complex genomic analysis results.
+Users can create, edit, and share custom modules, pipelines, and suites of related analysis tools.
+GenePattern integrates with the Globus platform for advanced file transfer and identity management capabilities.
+The platform provides comprehensive documentation, tutorials, and support for users at different technical levels.
+GenePattern supports collaborative research by allowing users to share analysis jobs and results.
+The modular design enables continuous expansion of computational methods for genomic research.

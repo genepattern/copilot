@@ -1,0 +1,15 @@
+Multiple reaction monitoring mass spectrometry is a precise protein quantification technique using stable isotope-labeled internal standards
+MRM-MS assays can be highly accurate but frequently suffer from signal interference requiring expert review
+The AuDIT module provides an automated method to objectively evaluate MRM-MS data quality and identify problematic transitions
+AuDIT implements an algorithm that compares product ion intensities between analyte and stable isotope-labeled peptides
+The algorithm uses statistical tests like t-tests to determine significant differences in peptide transition signals
+AuDIT calculates coefficient of variation across sample replicates to flag transitions with excessive variability
+The module helps improve overall mass spectrometry data analysis accuracy
+Researchers need a preprocessed input CSV file containing MRM data from platforms like ABI 4000 Q TRAP
+Input files can be generated using software like Skyline or MultiQuant
+Users can access the AuDIT module through the public GenePattern server at http://genepattern.broadinstitute.org/gp/
+The module is categorized under Proteomics tools
+Users must specify an MRM data file as input to run the analysis
+The module generates a results file listing analysis outcomes for each peptide and transition
+The algorithm was originally developed by Abbatiello et al. and published in Clinical Chemistry in 2010
+AuDIT provides an objective, automated approach to quality control in mass spectrometry peptide quantification

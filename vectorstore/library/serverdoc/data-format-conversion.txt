@@ -1,0 +1,15 @@
+Data processing is crucial in genomic research due to the complexity and variability of biological data formats
+GenePattern supports comprehensive data conversion and preprocessing across multiple genomic platforms
+The platform can import data from diverse sources like MAGE-ML, mzXML, and Gene Expression Omnibus (GEO)
+Affymetrix CEL files can be converted to GenePattern files and vice versa
+Line ending conversions are supported to match different operating system requirements
+The preprocessDataset module offers multiple data preprocessing capabilities including normalization and filtering
+Normalization techniques help standardize data across different experimental conditions
+Thresholding options allow setting minimum and maximum value limits for gene expression data
+Variation filtering can remove genes with low or inconsistent expression levels
+Missing value imputation is supported, which is particularly useful when converting between data formats
+Gene identifier conversion enables mapping between different microarray chip nomenclatures
+GeneCruiser provides access to gene annotations using Affymetrix probe identifiers
+Data set manipulation features include extracting row and column names
+Users can transpose data, reorder samples by phenotype, and split data sets into non-overlapping subsets
+The platform supports comprehensive data management for genomic research workflows

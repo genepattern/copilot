@@ -1,0 +1,13 @@
+GenePattern is a computational platform for genomic data analysis with modular, extensible architecture.
+Analysis modules in GenePattern provide computational methods for processing genomic data, running on a centralized server.
+Visualization modules display analysis results graphically and run interactively on a user's local computer, requiring Java 1.5 or later.
+Pipelines are reusable workflows that combine multiple analysis and visualization modules into a single executable script.
+Pipelines enable reproducible research by allowing researchers to document and share entire computational analysis methodologies.
+Suites are collections of related modules and pipelines that can be easily shared among GenePattern users.
+GenePattern can be accessed through multiple server types: cloud-hosted, university-hosted, or locally installed servers.
+The cloud-hosted server at http://cloud.genepattern.org/gp/ offers free user accounts and most Broad Institute modules.
+Local servers provide benefits like data privacy, custom module installation, and organizational configuration.
+Each GenePattern job is persistent, continuing to run even if the user exits the interface or the server is temporarily interrupted.
+GenePattern implements a flexible security architecture allowing administrators to control server access, user authentication, and permissions.
+Version numbers in GenePattern uniquely identify modules, pipelines, and other objects, ensuring reproducible computational analyses.
+GenePattern supports programmatic interfaces for Java, MATLAB, and R, allowing software developers to integrate modules into their own research workflows.

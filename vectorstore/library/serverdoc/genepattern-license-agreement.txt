@@ -1,0 +1,12 @@
+GenePattern is a software platform distributed under a BSD-style open-source license.
+The license was established by the Broad Institute and Massachusetts Institute of Technology between 2003-2015.
+The license permits redistribution of source and binary code with specific conditions.
+Source code redistributions must retain the original copyright notice and license conditions.
+Binary redistributions must reproduce the copyright notice in accompanying documentation.
+Users cannot use the names of Broad Institute or MIT to endorse derivative products without written permission.
+The software is provided "as is" without any explicit or implied warranties.
+The license disclaims warranties of merchantability, purpose, documentation conformity, and non-infringement.
+Broad Institute and MIT are not liable for direct, indirect, incidental, or consequential damages from software use.
+If warranty disclaimers are deemed inapplicable, the sole remedy is software replacement with an updated version.
+The license covers potential damages arising from software use under various legal theories including negligence.
+The license ensures open access to the software while protecting the original institutions from legal liability.

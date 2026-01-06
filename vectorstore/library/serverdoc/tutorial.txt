@@ -1,0 +1,16 @@
+Here are the chunks for the GenePattern documentation:
+GenePattern is a web-based computational platform for analyzing genomic data, specifically designed for gene expression research.
+The tutorial focuses on analyzing a leukemia dataset from Golub and Slonim et al. (1999), which contains 38 bone marrow samples from acute leukemia patients.
+The primary goal is to identify marker genes that distinguish between two leukemia subtypes: Acute Lymphoblastic Leukemia (ALL) and Acute Myeloid Leukemia (AML).
+Users need access to a GenePattern server, such as the public server at https://cloud.genepattern.org/, with specific analysis modules installed.
+The tutorial involves using four key modules: ComparativeMarkerSelection, ComparativeMarkerSelectionViewer, ExtractComparativeMarkerResults, and HeatMapViewer.
+ComparativeMarkerSelection identifies genes most correlated with the two leukemia subtypes by analyzing gene expression patterns.
+ComparativeMarkerSelectionViewer allows researchers to examine the results of the marker selection analysis, focusing on statistical significance metrics like false discovery rate (FDR).
+ExtractComparativeMarkerResults creates a new dataset containing only the most promising marker genes from the initial analysis.
+HeatMapViewer provides a color-coded visualization of gene expression levels, with red representing high expression and blue representing low expression.
+The tutorial demonstrates how to create a pipeline that automates the entire analysis workflow, from marker selection to result visualization.
+Pipelines in GenePattern allow users to chain multiple analyses together, with the output of one module serving as the input for the next.
+Users can modify pipelines to make them more flexible by marking input parameters as "prompt-when-run", allowing dynamic selection of input files.
+Analysis results are temporarily stored on the GenePattern server and are typically deleted after one week, so users must manually save files they want to keep.
+The platform supports multiple programming environments, including Java, MATLAB, and R, enabling integration with various computational workflows.
+GenePattern provides a user-friendly web interface that guides researchers through complex genomic data analysis steps without requiring advanced computational skills.

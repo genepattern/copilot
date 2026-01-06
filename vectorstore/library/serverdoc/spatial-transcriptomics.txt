@@ -1,0 +1,12 @@
+Spatial transcriptomics is an advanced technique for mapping gene expression within tissue architecture, revealing complex cellular interactions.
+GenePattern's spatialGE modules provide a user-friendly, open-source solution for analyzing spatially-resolved transcriptomics data.
+The spatialGE toolkit supports multiple platforms including GeoMx, Visium, and CosMx-SMI for comprehensive spatial gene expression analysis.
+spatialGE.Preprocessing prepares raw spatial transcriptomics data through data ingestion, filtering, transformation, and pseudobulk operations.
+spatialGE.STplot generates visualizations of gene expression, cluster memberships, and metadata within the spatial context of tissue samples.
+spatialGE.SpatialAutocorrelation quantifies spatial uniformity of gene expression using statistical metrics like Moran's I and Geary's C.
+spatialGE.STenrich identifies spatial expression patterns and tests for gene set aggregation within specific tissue regions.
+spatialGE.STclust performs clustering analysis on spatial gene expression data to identify distinct cellular populations or tissue domains.
+spatialGE.STdiff conducts differential expression analysis using both spatial and non-spatial statistical models.
+spatialGE.STgradient analyzes gene expression gradients relative to reference tissue niches or domains.
+These modules have been successfully applied to studying tumor microenvironments, particularly in melanoma and Merkel cell carcinoma research.
+The toolkit aims to make complex spatial transcriptomics analysis accessible to researchers without advanced computational expertise.

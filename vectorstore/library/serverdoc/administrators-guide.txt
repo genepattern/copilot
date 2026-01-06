@@ -1,0 +1,11 @@
+GenePattern provides three deployment options: using the public server hosted at the Broad Institute, installing a local server for personal use, or installing a networked server for multiple users.
+The default GenePattern installation uses an HSQL database, but can be configured to use Oracle or MySQL by creating a custom database properties file.
+Server configuration options can be modified through the Server Settings page, which allows administrators to control access, set command line prefixes, configure databases, manage file purging, and adjust other server parameters.
+User groups and permissions are defined in two key configuration files: userGroups.xml defines user groups, and permissionMap.xml defines group permissions and access levels.
+Administrators can control server security through multiple mechanisms including access filtering, password protection, user authentication, and authorization based on group memberships.
+The server supports multiple programming language environments, allowing configuration of root directories and memory allocations for Java, R, and other language modules.
+GenePattern can be integrated with queuing systems like Load Sharing Facility (LSF) and Sun Grid Engine (SGE) to effectively manage computational resources and job execution.
+Modules can be installed from the Broad Institute's public repository or created custom, with options to configure memory allocations and execution environments for specific modules.
+The server supports SSL configuration to enable secure HTTPS connections, with detailed steps for configuring Tomcat and updating server properties for encrypted communication.
+Docker containers provide a modern deployment option for GenePattern, allowing persistent installations with external volume mounting for user files, job results, and configuration.
+Globus integration enables advanced data transfer capabilities, allowing users to move files between Globus endpoints and the GenePattern server using OAuth authentication.

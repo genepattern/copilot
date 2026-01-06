@@ -1,0 +1,15 @@
+Flow cytometry data preprocessing is a critical step in analyzing complex cellular data
+Flow cytometry data often requires multiple preprocessing transformations before analysis
+PreviewFCS provides structural metadata and descriptive statistics about FCS data files
+CsvToFcs and FcsToCsv enable conversion between comma-separated and flow cytometry standard file formats
+CompensateFCS corrects spectral overlap between fluorescence channels using a spillover matrix
+FCSNormalization addresses technical variation across samples in high-throughput experiments
+Logicle transformation enables better visualization of fluorescence data with low-to-zero mean values
+DeIdentifyFCS removes sensitive patient information from flow cytometry data files
+ExtractFCSKeywords allows retrieval of metadata embedded in FCS file text segments
+AddFCSEventIndex enables tracking of individual events across different analytical steps
+MergeFCSDataFiles supports combining multiple flow cytometry datasets for comprehensive analysis
+RemoveSaturatedFCSEvents eliminates data points with maximum/near-maximum parameter values
+ImmPortFCSConvLogicleTrans automates data transformation without requiring manual parameter selection
+AddNoiseToFCS helps prevent clustering algorithm issues by introducing minimal random variation
+ExtractFCSParameters allows selective extraction of specific measurement types from flow cytometry data

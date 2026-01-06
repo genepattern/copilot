@@ -1,0 +1,10 @@
+File formats are plain text files used in bioinformatics data analysis with specific structural requirements for different types of genomic and expression data.
+Plain text files in GenePattern must be tab-delimited and follow specific formatting rules for each file type.
+File extensions are critical and typically three letters long (e.g., .gct, .cls) to indicate the file's specific format and content.
+Different modules require different file formats, such as GCT for gene expression data, CLS for phenotype labels, and GMT for gene sets.
+Excel can introduce errors when handling biological data, so special care must be taken when converting files, such as using Text Import Wizard and avoiding auto-formatting.
+Most genomic data files have a header row defining column names and subsequent rows containing data values for genes, samples, or other biological entities.
+Some file formats like GCT and RES represent gene expression data, with variations in how they handle missing values and present/absent calls.
+Specialized file formats exist for specific analyses, such as MAF for mutation data, SNP files for genetic variation, and FCS for flow cytometry data.
+Conversion modules are available in GenePattern to transform data between different file formats, helping researchers standardize their input files.
+Proper file formatting is crucial for successful data analysis, as most bioinformatics modules have strict requirements for input file structure and content.

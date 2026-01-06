@@ -1,0 +1,16 @@
+The CopyNumberInferencePipeline is a computational method for analyzing Affymetrix SNP6.0 genetic data files in GenePattern.
+The pipeline processes raw SNP6 CEL files to generate segmented copy number calls for each sample.
+Copy number calls are relative and normalized to make each sample appear diploid.
+The workflow involves multiple steps including signal intensity calibration, genotype calling, copy number inference, and noise reduction.
+Ideally, input samples should be from the same PCR batch and include 20 or more diploid normal samples.
+Blood normal samples are preferred over tumor-adjacent tissue to minimize potential contamination or early tumorigenesis events.
+The first step calibrates signal intensities using quantile normalization to standardize probe distributions across arrays.
+The Birdseed algorithm computes genotype calls and determines cluster centers for probe intensities.
+Signal intensities are converted to copy number calls using different models for SNP and copy number probes.
+A noise quality control metric is calculated by examining intensity steps between adjacent genomic probes.
+Outlier probes are identified and removed to reduce noise in the copy number data.
+Tangent normalization further reduces noise by subtracting variation seen in a predefined set of normal samples.
+The Circular Binary Segmentation (CBS) algorithm segments the copy number data into regions with uniform copy number.
+A final step checks for hyper-segmentation by comparing the number of genome segments to a defined threshold.
+The pipeline can process a maximum of approximately 200 CEL files due to memory constraints.
+The output can be used for further analysis, such as running the GISTIC algorithm to identify significant copy number alterations.

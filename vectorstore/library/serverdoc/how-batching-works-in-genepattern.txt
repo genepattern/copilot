@@ -1,0 +1,10 @@
+Batching in GenePattern allows users to submit multiple jobs simultaneously by specifying multiple values for one or more parameters.
+Single parameter batching creates a separate job for each value specified for a batched parameter.
+When batching multiple parameters, values are paired based on their order of specification on the job submission page.
+For file parameter batching with directories, file pairing is done using the base filename (without extension) across different directories.
+Batching requires that when multiple parameters are batched, the number of values must match across all batched parameters.
+If multiple directories are used for batching, files are matched based on their common base names.
+Files without matching base names in other directories are automatically excluded from batch job generation.
+Batching supports file parameters within directories, but does not support mixing non-file and file parameters with directory inputs.
+The number of batch jobs created depends on the number of unique values specified for batched parameters.
+Batching provides a convenient way to run the same analysis workflow across multiple input datasets or with different parameter configurations.

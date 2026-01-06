@@ -1,0 +1,16 @@
+Purity and ploidy are key parameters in analyzing cancer genome copy number variations using the ABSOLUTE algorithm
+The ABSOLUTE algorithm generates multiple output files to help researchers understand genomic copy number profiles
+The *_summary.PP-calls_tab.txt file contains detailed tabular results of the ABSOLUTE analysis
+The *_summary.PP-modes.data.RData file stores comprehensive computational data used in generating output
+The *_summary.PP-modes.plots.pdf file visualizes potential purity and ploidy modes for each sample
+The purity/ploidy plot shows the top 12 potential genomic models across different cancer cell fractions
+Dotted lines in the purity/ploidy plot represent potential solutions with specific copy ratio characteristics
+Model scores graph evaluates the top three models based on log-likelihood and karyotype plausibility
+Candidate interpretation graphs show somatic DNA alterations on an absolute genomic scale
+The calls file allows manual annotation and selection of the most appropriate genomic model
+Analysts can override default solutions by adding a column in the calls file and selecting specific model numbers
+When selecting solutions, researchers should prioritize simpler genomic models with more probable configurations
+Copy number peaks should align with integral genome states: 1=haploid, 2=diploid, 3=triploid
+Preferred copy number peaks should be at easily achievable numbers like 1, 2, and 4
+The bottom copy number peak should be close to zero, indicating absence of copies
+The SSNV allelic fraction plot's alpha/2 line should bisect the peak representing the highest single nucleotide variant allelic fraction

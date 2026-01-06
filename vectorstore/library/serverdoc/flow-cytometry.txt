@@ -1,0 +1,10 @@
+Flow cytometry is a powerful technique for analyzing individual cells in a heterogeneous population based on multiple parameters simultaneously.
+The GenePattern Flow Cytometry Suite provides computational tools for comprehensive analysis of flow cytometry data.
+These modules are developed by researchers at the British Columbia Cancer Research Center to support advanced flow cytometry data processing.
+The suite includes functionalities for quality assessment, data preprocessing, cell gating, and clustering of high-dimensional flow cytometry datasets.
+GenePattern pipelines enable researchers to create reproducible, automated workflows for analyzing complex flow cytometry experiments.
+The modules can be chained together to create custom analysis protocols tailored to specific research questions.
+These computational tools help researchers extract meaningful insights from large, multidimensional flow cytometry datasets.
+The suite supports advanced data analysis techniques that go beyond traditional manual gating approaches.
+Researchers can use these modules to standardize and streamline their flow cytometry data analysis processes.
+The modules are designed to handle high-dimensional data, allowing for more comprehensive cellular characterization.

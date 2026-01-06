@@ -1,0 +1,15 @@
+Quality assessment is a critical step in flow cytometry data analysis to identify non-biologically motivated sample variations.
+Quality control tests help establish criteria for handling abnormal samples or excluding them from further analysis.
+The tests are based on functionality from flowQ and flowFP R/BioConductor packages.
+Quality control methods apply to both plate-based and single panel flow cytometry data.
+Tests include fingerprinting, cell number assessment, time flow evaluation, probability density function analysis, and scatter channel median tests.
+FCMSinglePanelQC performs quality control for single panel cytometry experiments with four specific tests.
+The four tests in FCMSinglePanelQC are cell number control, boundary events, timeflow, and timeline tests.
+PlateQAFCS conducts automated quality assessment of plate-based FCS data.
+PlateQAFCS assumes samples should have similar properties in forward scatter, side scatter, and time channels.
+A common use of PlateQAFCS is verifying correct flow cytometer processing of multi-well plate samples.
+FlowFingerprinting generates a multivariate probability distribution description of flow cytometry data.
+FlowFingerprinting is distribution-independent, unlike model-based methods like Gaussian Mixture Modeling.
+Fingerprints can be used for quality control screening by comparing similarity between data files.
+Fingerprints may also serve as input for data classification algorithms.
+The documentation references key publications in flow cytometry data standards and quality assessment methodologies.

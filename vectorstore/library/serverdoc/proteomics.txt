@@ -1,0 +1,10 @@
+Proteomics data analysis requires specialized computational techniques for accurate protein quantification and characterization.
+AuDIT provides an automated algorithm for identifying problematic mass spectrometry transition data by detecting signal interference and inconsistent replicate measurements.
+Multiple reaction monitoring-mass spectrometry (MRM-MS) enables precise protein quantification using stable isotope-labeled internal standards in complex biological samples.
+The enhanced signature peptide predictor (ESPPredictor) algorithmically identifies optimal peptide sequences for targeted protein quantification from protein sequence data.
+ProteoArray supports feature detection and alignment across multiple liquid chromatography-mass spectrometry (LC-MS) experimental runs.
+SELDI/MALDI data analysis modules enable comprehensive spectral processing, including quality assessment, peak detection, noise filtering, and cross-sample peak alignment.
+Proteomics pipeline modules can automatically process mass spectrometry data, performing normalization, peak matching, and feature extraction across multiple samples.
+GenePattern proteomics modules support data conversion and analysis using standard file formats like mzXML and comma-separated value (CSV) files.
+Peak detection in mass spectrometry data uses digital convolution filters that apply smoothing, background correction, and signal enhancement techniques.
+Proteomics data analysis modules enable downstream pattern recognition techniques like clustering, classification, and differential marker selection.

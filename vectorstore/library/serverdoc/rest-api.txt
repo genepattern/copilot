@@ -1,0 +1,16 @@
+GenePattern provides a RESTful web service API for programmatically interacting with its computational genomics platform.
+The API requires authentication through multiple methods including Basic Authentication, OAuth2, and GenomeSpace single sign-on.
+Basic Authentication involves sending an Authorization header with Base64 encoded username and password credentials.
+OAuth2 authentication allows clients to request access tokens for making authenticated requests to the GenePattern server.
+The API provides several key resources including Tags, Log, Config, Disk, and Tasks for managing computational workflows and user interactions.
+The Tags resource allows users to pin, repin, and unpin modules in their favorites list.
+The Log resource enables clients to send debugging, error, warning, and informational messages to the server's log system.
+The Config resource allows querying server configuration options like version, administrative privileges, and system messages.
+The Disk resource provides information about a user's disk usage and quota on the GenePattern server.
+The API supports multiple authentication methods to provide flexible integration with web applications and computational workflows.
+Developers can access a Web Application Description Language (WADL) file to understand the full specification of available endpoints.
+The API uses standard RESTful conventions with endpoints supporting GET, POST, PUT, and DELETE HTTP methods.
+Authentication is typically required for most API resources to ensure secure access to computational and data management functions.
+The OAuth2 implementation allows for secure token-based authentication and authorization for client applications.
+Endpoints return responses in JSON format, providing structured data about server configuration, user settings, and computational resources.
+The API is designed to support programmatic interaction with GenePattern's computational genomics tools and workflows.

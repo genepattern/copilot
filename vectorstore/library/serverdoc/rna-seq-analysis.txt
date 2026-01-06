@@ -1,0 +1,17 @@
+RNA-seq analysis provides computational tools for processing and analyzing sequencing data of RNA transcripts.
+GenePattern offers a comprehensive suite of RNA-seq analysis modules covering multiple stages of genomic data processing.
+The recommended approach is to run RNA-seq tools on a local GenePattern server due to large input file sizes.
+Some RNA-seq tools are specifically designed for Unix-based systems like Mac and Linux, and will not function on Windows.
+Reference genome indexes are pre-built for multiple species in GenePattern modules like TopHat, Bowtie, and BWA.
+Bowtie is a short read alignment algorithm designed to quickly map DNA sequence reads to large genomes.
+TopHat is a splice junction mapper that uses Bowtie to align RNA-seq reads and identify splice junctions between exons.
+Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression in RNA-seq samples.
+Cuffcompare helps analyze transcribed fragments by comparing assembled transcripts to reference annotations.
+Cuffmerge combines multiple Cufflinks assemblies and filters potential artifact transcripts.
+Cuffdiff identifies significant changes in transcript expression, splicing, and promoter usage.
+BWA (Burrows-Wheeler Aligner) is another read alignment tool supporting different sequence alignment strategies.
+RNA-SeQC calculates quality metrics for RNA-seq data, including coverage depth, rRNA contamination, and GC bias.
+Integrative Genomics Viewer (IGV) provides interactive visualization of large genomic datasets.
+Picard tools offer utilities for manipulating SAM/BAM files, including file format conversions and read group management.
+SAMtools provide additional utilities for processing sequence alignment files, such as sorting, merging, and indexing.
+The ExprToGct module converts legacy expression files to a standardized format for further analysis.

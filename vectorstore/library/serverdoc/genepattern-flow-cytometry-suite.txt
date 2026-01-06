@@ -1,0 +1,18 @@
+GenePattern Flow Cytometry Suite is a comprehensive computational toolkit for analyzing flow cytometry data
+The suite was developed collaboratively by the Brinkman lab at British Columbia Cancer Research Center and the GenePattern team
+The suite contains 34 modules organized into three primary categories: data preprocessing, quality assessment, and gating and clustering
+The modules are designed to support multiple steps in flow cytometry data analysis workflows
+The suite includes specialized tools for processing FCS (Flow Cytometry Standard) data files
+Data Preprocessing modules provide utilities for previewing, transforming, converting, merging, and sub-sampling flow cytometry data
+Quality Assessment modules help researchers automatically evaluate the quality of flow cytometry datasets
+Quality control tests are crucial for identifying potential experimental variations not driven by biological factors
+Gating and Clustering modules enable manual and automated cell population identification using various algorithmic approaches
+The suite supports multiple clustering techniques, including density-based methods like FLOCK (FLOw cytometry Clustering without K)
+ImmPort modules are specifically designed to work together for multi-dimensional flow cytometry data processing
+The suite includes pipelines to facilitate the use of ImmPort modules
+Modules can handle tasks like converting between spreadsheets and FCS files, editing file keywords, and applying transformations
+The toolkit supports advanced techniques like logicle transformation and spectral clustering
+Researchers can apply manually created gates saved in Gating-ML format
+The suite is open-source and includes implementations of cutting-edge flow cytometry data analysis algorithms
+References for the modules are provided, documenting the scientific foundations of each computational method
+The toolkit is particularly useful for high-throughput flow cytometry experiments requiring sophisticated data analysis

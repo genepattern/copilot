@@ -1,0 +1,17 @@
+Gene expression analysis involves computational techniques for understanding gene activity across different biological conditions.
+Differential analysis searches for genes with significantly different expression levels between phenotypes.
+Comparative marker selection ranks genes based on statistical tests like signal-to-noise ratio or t-test.
+Multiple hypothesis testing correction methods like false discovery rate (FDR) help control statistical errors.
+Class neighbors identifies genes with expression patterns strongly correlated with specific phenotypes.
+Heat map visualization represents gene expression values using color gradients from blue (low) to red (high).
+Supervised learning aims to predict phenotype membership using gene expression signatures.
+Classification methods include support vector machines, k-nearest neighbors, and probabilistic neural networks.
+Cross-validation techniques help assess classifier performance, especially with small datasets.
+Unsupervised learning discovers unknown gene expression patterns through clustering techniques.
+Clustering methods include hierarchical clustering, consensus clustering, and self-organizing maps.
+Non-negative matrix factorization and principal components analysis provide alternative clustering approaches.
+Pathway analysis examines sets of genes differentially expressed across biological conditions.
+Gene Set Enrichment Analysis (GSEA) determines statistically significant gene set differences between states.
+GenePattern supports multiple data formats, including tab-delimited and comma-separated text files.
+Modules can convert between different genomic data representations like MAGE-ML documents.
+Programming libraries for Java, MATLAB, and R enable custom file format interactions.

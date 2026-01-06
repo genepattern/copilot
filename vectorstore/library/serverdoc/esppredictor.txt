@@ -1,0 +1,17 @@
+The ESPPredictor is a computational method for predicting peptide performance in mass spectrometry assays
+The method was developed by Fusaro et al. in a 2009 Nature Biotechnology publication
+The module predicts which peptides from a protein sequence are most likely to work well in targeted protein assays
+Users must provide a text file containing peptide sequences, with one sequence per line
+The prediction is based solely on the peptide sequence information
+The module can process small numbers of peptides quickly (less than 20) or large numbers over many hours
+The prediction output includes each peptide sequence and its probability of successful assay performance
+Common errors include non-standard amino acids or invisible characters in the input file
+Users can access the module through the GenePattern public server at http://genepattern.broadinstitute.org/gp/
+A login or registration is required to use the GenePattern platform
+The module is categorized under the Proteomics section of available tools
+After submission, users can track job status and retrieve results from the Job Results page
+The prediction.txt file contains the final computational assessment of peptide performance probabilities
+Users can continue working or exit GenePattern while the analysis is processing
+The method represents an computational approach to optimizing mass spectrometry peptide selection
+Peptide performance prediction can help researchers design more effective targeted protein assays
+The tool is particularly useful for researchers working with proteomics and mass spectrometry techniques

@@ -1,0 +1,10 @@
+GenePattern provides multiple publicly accessible computational biology servers for genomic analysis without local software installation.
+Users must register separately for each server to gain access.
+The Amazon Cloud GenePattern server leverages elastic cloud computing resources for enhanced computational processing capabilities.
+GenePattern offers a GitHub-based server installation option for institutions wanting to host their own computational environment.
+Users are not required to install GenePattern locally to utilize its computational genomics tools.
+There are strict guidelines prohibiting upload of personally identifiable health information to GenePattern servers.
+Institutional compliance offices should be consulted if users have uncertainty about data upload permissions.
+The University of California disclaims liability for inappropriate data uploads by users.
+Server registration requires agreeing to terms of service and privacy statements.
+Cloud-based servers provide scalable computational resources for genomic data analysis.

@@ -1,0 +1,12 @@
+GenePattern provides a comprehensive support and communication ecosystem for computational biology researchers
+GenePattern offers multiple channels for user support and information dissemination
+The primary support mechanism is now a Google Groups community forum at groups.google.com/group/genepattern-help
+Users are encouraged to post technical questions, bug reports, and suggestions on the community forum
+The forum replaces previous one-on-one email support models
+GenePattern provides extensive documentation resources accessible through multiple channels
+Documentation resources include module documentation, FAQ, video tutorials, file format guides, user guides, and programmer's guides
+When reporting issues, users should provide comprehensive problem descriptions
+Issue reports should include specific details like job ID, input files, parameter values, and platform information
+Technical support is exclusively handled through the community forum
+Non-technical inquiries can be directed to genepattern-team@broadinstitute.org
+The support model emphasizes community-driven problem solving and self-service documentation

@@ -1,0 +1,20 @@
+Here are the chunks for the GenePattern Programmers Guide documentation:
+GenePattern provides access to a broad array of computational methods used to analyze genomic data.
+Its extendable architecture makes it easy for computational biologists to add analysis and visualization modules.
+The Concepts section provides a brief introduction to GenePattern's primary objects: modules, pipelines, and suites.
+The Quick Start guide provides a hands-on introduction to GenePattern for programmers.
+Programmers can interact with GenePattern in two primary ways: creating modules and accessing GenePattern from programming languages like Java, MATLAB, R, and Python.
+Creating a GenePattern module involves finding or writing a program that executes a desired function, typically one that can be run from the command line.
+Programs encapsulated in Docker containers are preferred, as Docker handles code dependency management.
+When creating a module, you can specify which parameters from the algorithm to expose to users and create user-friendly parameter names.
+GenePattern allows module creators to create drop-down list choices for parameters to reduce the possibility of incorrect parameter values.
+Modules can have end-user license agreements (EULAs) attached, which users must view and accept before running the module.
+The module creation process involves specifying module properties like name, description, author, category, and privacy settings.
+Each module must declare a Docker image that will be used to run the module's job.
+The command line specification is crucial, as it defines how the module will be launched and how parameters will be substituted.
+Parameters can be of various types, including text, input files, and choice lists, with options to specify default values and flags.
+When writing modules, programmers should follow guidelines like writing to standard output/error, writing output files to the current working directory, and using parameter flags.
+GenePattern provides libraries for Java, MATLAB, R, and Python that make it easy to run modules and retrieve analysis results.
+These libraries support arbitrary scripting, module access via function calls, and development of complex module combinations.
+Modules can be language-agnostic, with support for programs written in compiled or scripting languages.
+The GenePattern server validates modules to ensure all required parameters are included and parameter names are valid.

@@ -1,0 +1,12 @@
+GenePattern is a collaborative computational biology platform with multiple community interaction channels.
+The GenePattern forum is a Google Groups-based discussion space for users to ask questions and share information about the platform.
+Social media channels provide updates about new features, workshops, and community events.
+A mailing list allows users to receive official announcements from the GenePattern team.
+GenePattern Cloud is a web-based workspace supporting integrative genomics analysis with diverse bioinformatics tools.
+The platform is a founding tool of the GenomeSpace initiative, facilitating data storage, analysis, and visualization.
+Research papers associated with specific modules can be found in each module's documentation references.
+Users can locate GenePattern-related publications through Google Scholar searches.
+The platform maintains a comprehensive Code of Conduct emphasizing inclusivity and preventing harassment across all community spaces.
+The Code of Conduct applies to online and offline interactions, including forums, repositories, and social media platforms.
+Violations of the Code of Conduct may result in sanctions or expulsion from GenePattern community spaces.
+The platform is committed to creating a harassment-free environment regardless of personal characteristics or identity.

@@ -1,0 +1,17 @@
+GenePattern is a computational genomics platform for analyzing high-throughput biological data.
+The latest version of GenePattern can be found in the release notes.
+GenePattern supports various file formats for genomic data analysis, including GCT, RES, and ODF.
+The platform provides modules for different types of genomic analyses, such as RNA-seq, clustering, comparative marker selection, and visualization.
+GenePattern can be installed locally or accessed through a public server, with support for Windows, Mac, and Linux operating systems.
+Users can create pipelines to run multiple modules in parallel on different datasets.
+The platform supports batch processing of multiple files and provides APIs for integration with Java, MATLAB, and R.
+GenePattern offers modules for various types of genomic analyses, including:
+- RNA-seq processing
+- Gene expression clustering
+- Comparative marker selection
+- Copy number variation analysis
+- Visualization of genomic data
+The platform provides extensive documentation, including user guides, programmer guides, and module-specific instructions.
+Users can cite GenePattern in scientific publications using a specific citation format provided in the documentation.
+GenePattern supports multiple programming languages and provides tools for module creation and customization.
+The platform offers cloud-based and local installation options, with support for different computational environments.

@@ -1,0 +1,12 @@
+GenePattern is a web-based computational platform for genomic data analysis designed for researchers to perform complex bioinformatics tasks.
+GenePattern provides a user-friendly interface for accessing and executing advanced computational biology modules and pipelines.
+The platform allows users to log in through a web browser at https://cloud.genepattern.org/ using personal credentials.
+Users can search and select from a wide range of analysis modules through a searchable interface in the Modules & Pipelines panel.
+The platform supports various analyses, such as the ComparativeMarkerSelection module, which identifies genes correlated with specific sample classes.
+ComparativeMarkerSelection can help researchers distinguish between different phenotypes, such as leukemia subtypes (ALL and AML), by analyzing gene expression data.
+The analysis results are presented with statistical metrics like scores, false discovery rate (FDR), and family-wise error rate (FWER) to assess gene significance.
+Users can view and interpret analysis results through specialized viewers that provide detailed visualizations and statistical information.
+GenePattern supports multiple file formats and provides comprehensive documentation, including tutorials, user guides, and module descriptions.
+The platform allows users to upload their own datasets, run analyses, and store results for future reference.
+GenePattern offers a collaborative environment with community support through an online forum for users to ask questions and share feedback.
+The system is designed to be accessible to researchers with varying levels of computational expertise, from beginners to advanced users.

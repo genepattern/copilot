@@ -1,0 +1,12 @@
+Flow cytometry is a technique for analyzing individual cells based on their physical and fluorescent properties.
+Gating is the process of selecting specific cell populations from flow cytometry data by defining regions based on parameter values.
+Manual gating involves a researcher visually selecting and defining cell populations, while automatic gating uses computational algorithms to identify cell subsets.
+Clustering algorithms like FlowClust, FlowMeans, and FLOCK aim to objectively identify cell populations without subjective human intervention.
+Different clustering methods use various approaches, such as model-based clustering, density-based methods, and spectral clustering techniques.
+Clustering algorithms can identify cell populations by analyzing multiple dimensions of data, including physical characteristics and fluorescence intensity.
+The number of cell populations can be estimated using statistical methods like the Bayesian Information Criterion (BIC) and Integrated Completed Likelihood (ICL).
+Meta-clustering techniques allow comparison of cell populations across different samples by matching cluster centroids.
+Feature extraction from gated populations typically includes counting cells, calculating percentages, and measuring mean fluorescence intensity.
+Automated gating methods can help researchers identify novel cell subpopulations and reduce the labor-intensive process of manual gating.
+Different clustering algorithms have strengths in handling various data characteristics, such as non-spherical populations or large datasets.
+Cross-sample population identification helps researchers compare cell populations across different experimental conditions or patient samples.
