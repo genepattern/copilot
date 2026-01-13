@@ -169,6 +169,73 @@
         .collapse-icon.collapsed {
             transform: rotate(-90deg);
         }
+        /* Multi-prompt styles */
+        .prompt-entry {
+            background-color: #1a1a1a;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .prompt-entry.active {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+        }
+        .prompt-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .prompt-entry-number {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .prompt-remove-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 1.1em;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .prompt-remove-btn:hover {
+            opacity: 1;
+        }
+        .prompt-remove-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .add-prompt-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3a3a3a;
+            border: 2px dashed #555;
+            border-radius: 8px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .add-prompt-btn:hover {
+            background-color: #4a4a4a;
+            border-color: #4a90e2;
+            color: #4a90e2;
+        }
+        .status-matrix-container {
+            margin-bottom: 20px;
+        }
+        .status-matrix-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -216,22 +283,23 @@
             </div>
         </div>
 
-        <!-- Prompt Input Section -->
+        <!-- Prompt Input Section - Now supports multiple prompts -->
         <div class="section-card">
-            <h4>Prompt</h4>
-            <textarea id="prompt-input" class="form-control bg-dark text-light" rows="4" placeholder="Type your prompt here..."></textarea>
-        </div>
-
-        <!-- API Key Section -->
-        <div class="section-card">
-            <h4>API Key</h4>
-            <input type="text" id="api-key-input" class="form-control bg-dark text-light" placeholder="Enter GenePattern API key (optional)">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Prompts</h4>
+            </div>
+            <div id="prompts-list">
+                <!-- Prompt entries will be added here dynamically -->
+            </div>
+            <button type="button" class="add-prompt-btn" onclick="addPromptEntry()">
+                <i class="fas fa-plus me-2"></i>Add Another Prompt
+            </button>
         </div>
 
         <!-- Model/Method Selection Matrix -->
         <div class="section-card">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="mb-0">Model / Method Selection</h4>
+                <h4 class="mb-0">Model / Method Selection <span id="selection-prompt-indicator" class="text-muted" style="font-size: 0.7em; font-weight: normal;"></span></h4>
                 <div>
                     <button id="select-all-button" class="btn btn-sm btn-outline-primary me-2">Select All</button>
                     <button id="unselect-all-button" class="btn btn-sm btn-outline-secondary">Unselect All</button>
@@ -242,16 +310,22 @@
             </div>
         </div>
 
-        <!-- Run Button -->
-        <div class="section-card text-center">
-            <button id="run-button" class="btn btn-primary btn-lg">Run Prompt</button>
+        <!-- API Key Section (moved below Model/Method) -->
+        <div class="section-card">
+            <h4>API Key</h4>
+            <input type="text" id="api-key-input" class="form-control bg-dark text-light" placeholder="Enter GenePattern API key (optional)">
         </div>
 
-        <!-- Status Matrix -->
-        <div class="section-card">
+        <!-- Run Button -->
+        <div class="section-card text-center">
+            <button id="run-button" class="btn btn-primary btn-lg">Run Prompts</button>
+        </div>
+
+        <!-- Execution Status Section - Will contain multiple matrices -->
+        <div class="section-card" id="execution-status-section">
             <h4>Execution Status</h4>
-            <div id="status-matrix" class="status-matrix-grid">
-                <div></div> <!-- Empty corner cell -->
+            <div id="status-matrices-container">
+                <!-- Status matrices will be added here dynamically -->
             </div>
         </div>
 
@@ -314,17 +388,22 @@
         const methods = ['mcp', 'rag', 'rag_mcp', 'raw'];
         let models = []; // Array of model_ids
         let modelData = {}; // Map of model_id to full model object (including label)
-        let selectedCombinations = new Set();
         let predefinedPrompts = [];
-        let currentSelectedPrompt = null;
-        let testResults = {}; // Store results keyed by "model_method"
         let totalEstimatedCost = 0; // Track total estimated cost across all executions
+
+        // Multi-prompt state
+        let promptEntries = []; // Array of { id, text, combinations: Set }
+        let activePromptIndex = 0; // Currently selected prompt for editing combinations
+        let nextPromptId = 1;
+        let allTestResults = {}; // Store results keyed by "promptIndex_model_method"
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadModels();
             loadPredefinedPrompts();
             loadUserApiKey();
+            // Add initial prompt entry
+            addPromptEntry();
         });
 
         // Load available models from API
@@ -342,7 +421,6 @@
                 });
 
                 buildSelectionMatrix();
-                buildStatusMatrix();
             } catch (error) {
                 console.error('Error loading models:', error);
             }
@@ -382,38 +460,46 @@
             document.querySelectorAll('.prompt-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const promptId = this.getAttribute('data-prompt-id');
-                    selectPredefinedPrompt(promptId);
+                    addPredefinedPrompt(promptId);
                 });
             });
         }
 
-        // Select a predefined prompt
-        function selectPredefinedPrompt(promptId) {
+        // Add a predefined prompt to the list
+        function addPredefinedPrompt(promptId) {
             const prompt = predefinedPrompts.find(p => p.id === promptId);
             if (!prompt) return;
 
-            // Update visual selection
-            document.querySelectorAll('.prompt-item').forEach(item => {
-                item.classList.remove('selected');
-            });
-            document.querySelector(`[data-prompt-id="${promptId}"]`).classList.add('selected');
-            currentSelectedPrompt = prompt;
-
-            // Fill prompt text
-            document.getElementById('prompt-input').value = prompt.prompt;
-
-            // Update matrix selection - only include valid models
-            selectedCombinations.clear();
-            prompt.combinations.forEach(combo => {
-                // Only add if both the model exists and is in our models list
-                if (models.includes(combo.model) && methods.includes(combo.method)) {
-                    selectedCombinations.add(`${combo.model}_${combo.method}`);
-                }
-            });
-            updateSelectionMatrix();
-
-            // Also update status matrix to reflect the selections
-            updateStatusMatrixFromSelections();
+            // Check if the last prompt entry is blank
+            const lastEntry = promptEntries[promptEntries.length - 1];
+            if (lastEntry && lastEntry.text.trim() === '') {
+                // Replace the blank prompt
+                lastEntry.text = prompt.prompt;
+                lastEntry.combinations.clear();
+                prompt.combinations.forEach(combo => {
+                    if (models.includes(combo.model) && methods.includes(combo.method)) {
+                        lastEntry.combinations.add(`${combo.model}_${combo.method}`);
+                    }
+                });
+                // Set as active and update UI
+                setActivePrompt(promptEntries.length - 1);
+                updatePromptEntryUI(promptEntries.length - 1);
+            } else {
+                // Add a new prompt entry
+                const newEntry = {
+                    id: nextPromptId++,
+                    text: prompt.prompt,
+                    combinations: new Set()
+                };
+                prompt.combinations.forEach(combo => {
+                    if (models.includes(combo.model) && methods.includes(combo.method)) {
+                        newEntry.combinations.add(`${combo.model}_${combo.method}`);
+                    }
+                });
+                promptEntries.push(newEntry);
+                renderPromptEntries();
+                setActivePrompt(promptEntries.length - 1);
+            }
         }
 
         // Load user API key if logged in
@@ -424,6 +510,91 @@
                     document.getElementById('api-key-input').value = apiKey;
                 }
             {% endif %}
+        }
+
+        // Add a new prompt entry
+        function addPromptEntry() {
+            const newEntry = {
+                id: nextPromptId++,
+                text: '',
+                combinations: new Set()
+            };
+            // Default: select all combinations
+            models.forEach(modelId => {
+                methods.forEach(method => {
+                    newEntry.combinations.add(`${modelId}_${method}`);
+                });
+            });
+            promptEntries.push(newEntry);
+            renderPromptEntries();
+            setActivePrompt(promptEntries.length - 1);
+        }
+
+        // Remove a prompt entry
+        function removePromptEntry(index) {
+            if (promptEntries.length <= 1) return; // Keep at least one
+            promptEntries.splice(index, 1);
+            // Adjust active index if needed
+            if (activePromptIndex >= promptEntries.length) {
+                activePromptIndex = promptEntries.length - 1;
+            }
+            renderPromptEntries();
+            setActivePrompt(activePromptIndex);
+        }
+
+        // Render all prompt entries
+        function renderPromptEntries() {
+            const container = document.getElementById('prompts-list');
+            container.innerHTML = promptEntries.map((entry, index) => `
+                <div class="prompt-entry ${index === activePromptIndex ? 'active' : ''}" data-index="${index}" onclick="setActivePrompt(${index})">
+                    <div class="prompt-entry-header">
+                        <span class="prompt-entry-number">Prompt ${index + 1}</span>
+                        <button type="button" class="prompt-remove-btn" onclick="event.stopPropagation(); removePromptEntry(${index})" ${promptEntries.length <= 1 ? 'disabled' : ''} title="Remove prompt">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <textarea class="form-control bg-dark text-light" rows="3" placeholder="Type your prompt here..."
+                        onchange="updatePromptText(${index}, this.value)"
+                        oninput="updatePromptText(${index}, this.value)"
+                        onclick="event.stopPropagation(); setActivePrompt(${index})">${entry.text}</textarea>
+                </div>
+            `).join('');
+            updateRemoveButtons();
+        }
+
+        // Update prompt text
+        function updatePromptText(index, text) {
+            if (promptEntries[index]) {
+                promptEntries[index].text = text;
+            }
+        }
+
+        // Update a single prompt entry UI (for replacing blank prompts)
+        function updatePromptEntryUI(index) {
+            const textarea = document.querySelector(`.prompt-entry[data-index="${index}"] textarea`);
+            if (textarea) {
+                textarea.value = promptEntries[index].text;
+            }
+        }
+
+        // Update remove button states
+        function updateRemoveButtons() {
+            document.querySelectorAll('.prompt-remove-btn').forEach(btn => {
+                btn.disabled = promptEntries.length <= 1;
+            });
+        }
+
+        // Set active prompt and update selection matrix
+        function setActivePrompt(index) {
+            activePromptIndex = index;
+            // Update visual active state
+            document.querySelectorAll('.prompt-entry').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
+            // Update selection matrix to show this prompt's combinations
+            updateSelectionMatrix();
+            // Update indicator
+            document.getElementById('selection-prompt-indicator').textContent = `(for Prompt ${index + 1})`;
         }
 
         // Build the selection matrix
@@ -451,13 +622,9 @@
                 // Cells for each method
                 methods.forEach(method => {
                     const cell = document.createElement('div');
-                    cell.className = 'matrix-cell selected';
+                    cell.className = 'matrix-cell';
                     cell.dataset.model = modelId;
                     cell.dataset.method = method;
-                    cell.innerHTML = '<i class="fas fa-check"></i>';
-
-                    const key = `${modelId}_${method}`;
-                    selectedCombinations.add(key);
 
                     cell.addEventListener('click', function() {
                         toggleSelection(modelId, method);
@@ -466,27 +633,33 @@
                     matrix.appendChild(cell);
                 });
             });
+
+            // Update to show current prompt's selections
+            updateSelectionMatrix();
         }
 
-        // Toggle selection of a model/method combination
+        // Toggle selection of a model/method combination for active prompt
         function toggleSelection(model, method) {
+            if (!promptEntries[activePromptIndex]) return;
             const key = `${model}_${method}`;
-            if (selectedCombinations.has(key)) {
-                selectedCombinations.delete(key);
+            const combinations = promptEntries[activePromptIndex].combinations;
+            if (combinations.has(key)) {
+                combinations.delete(key);
             } else {
-                selectedCombinations.add(key);
+                combinations.add(key);
             }
             updateSelectionMatrix();
         }
 
-        // Update the visual state of the selection matrix
+        // Update the visual state of the selection matrix based on active prompt
         function updateSelectionMatrix() {
+            const combinations = promptEntries[activePromptIndex]?.combinations || new Set();
             document.querySelectorAll('.matrix-cell').forEach(cell => {
                 const model = cell.dataset.model;
                 const method = cell.dataset.method;
                 const key = `${model}_${method}`;
 
-                if (selectedCombinations.has(key)) {
+                if (combinations.has(key)) {
                     cell.classList.add('selected');
                     cell.classList.remove('unselected');
                     cell.innerHTML = '<i class="fas fa-check"></i>';
@@ -498,70 +671,81 @@
             });
         }
 
-        // Update status matrix to reflect current selections (reset to gray/white)
-        function updateStatusMatrixFromSelections() {
-            document.querySelectorAll('.status-cell').forEach(cell => {
-                const model = cell.dataset.model;
-                const method = cell.dataset.method;
-                const key = `${model}_${method}`;
+        // Build status matrices for all prompts
+        function buildStatusMatrices() {
+            const container = document.getElementById('status-matrices-container');
+            container.innerHTML = '';
 
-                if (selectedCombinations.has(key)) {
-                    // Reset to white (ready to run) if it was previously gray
-                    if (cell.classList.contains('status-gray')) {
-                        updateStatusCell(model, method, 'white');
-                    }
-                } else {
-                    // Set to gray if not selected
-                    updateStatusCell(model, method, 'gray');
-                }
-            });
-        }
+            promptEntries.forEach((entry, promptIndex) => {
+                const matrixContainer = document.createElement('div');
+                matrixContainer.className = 'status-matrix-container';
+                matrixContainer.id = `status-matrix-container-${promptIndex}`;
 
-        // Build the status matrix
-        function buildStatusMatrix() {
-            const matrix = document.getElementById('status-matrix');
-            matrix.innerHTML = '<div></div>'; // Empty corner
-
-            // Add method headers
-            methods.forEach(method => {
-                const header = document.createElement('div');
-                header.className = 'matrix-header';
-                header.textContent = method.toUpperCase();
-                matrix.appendChild(header);
-            });
-
-            // Add rows for each model
-            models.forEach(modelId => {
-                // Row label - use model label instead of ID
+                // Add prompt label (first line of prompt text)
+                const firstLine = entry.text.split('\n')[0].substring(0, 100) || `Prompt ${promptIndex + 1}`;
                 const label = document.createElement('div');
-                label.className = 'matrix-row-label';
-                label.textContent = modelData[modelId]?.label || modelId;
-                label.title = modelId; // Show full model ID on hover
-                matrix.appendChild(label);
+                label.className = 'status-matrix-label';
+                label.textContent = firstLine + (entry.text.length > 100 ? '...' : '');
+                label.title = entry.text;
+                matrixContainer.appendChild(label);
 
-                // Cells for each method
+                // Create the status matrix grid
+                const matrix = document.createElement('div');
+                matrix.className = 'status-matrix-grid';
+                matrix.id = `status-matrix-${promptIndex}`;
+                matrix.innerHTML = '<div></div>'; // Empty corner
+
+                // Add method headers
                 methods.forEach(method => {
-                    const cell = document.createElement('div');
-                    cell.className = 'status-cell status-gray';
-                    cell.dataset.model = modelId;
-                    cell.dataset.method = method;
-                    cell.textContent = 'Not Selected';
-
-                    cell.addEventListener('click', function() {
-                        showResponse(modelId, method);
-                    });
-
-                    matrix.appendChild(cell);
+                    const header = document.createElement('div');
+                    header.className = 'matrix-header';
+                    header.textContent = method.toUpperCase();
+                    matrix.appendChild(header);
                 });
+
+                // Add rows for each model
+                models.forEach(modelId => {
+                    // Row label
+                    const rowLabel = document.createElement('div');
+                    rowLabel.className = 'matrix-row-label';
+                    rowLabel.textContent = modelData[modelId]?.label || modelId;
+                    rowLabel.title = modelId;
+                    matrix.appendChild(rowLabel);
+
+                    // Cells for each method
+                    methods.forEach(method => {
+                        const cell = document.createElement('div');
+                        const key = `${modelId}_${method}`;
+                        const isSelected = entry.combinations.has(key);
+
+                        cell.className = `status-cell status-${isSelected ? 'white' : 'gray'}`;
+                        cell.dataset.promptIndex = promptIndex;
+                        cell.dataset.model = modelId;
+                        cell.dataset.method = method;
+                        cell.textContent = isSelected ? 'Queued' : 'Not Selected';
+
+                        cell.addEventListener('click', function() {
+                            showResponse(promptIndex, modelId, method);
+                        });
+
+                        matrix.appendChild(cell);
+                    });
+                });
+
+                matrixContainer.appendChild(matrix);
+                container.appendChild(matrixContainer);
             });
         }
 
-        // Update status cell
-        function updateStatusCell(model, method, status, message = '') {
-            const cell = document.querySelector(`.status-cell[data-model="${model}"][data-method="${method}"]`);
+        // Update status cell for a specific prompt
+        function updateStatusCell(promptIndex, model, method, status, message = '') {
+            const cell = document.querySelector(`#status-matrix-${promptIndex} .status-cell[data-model="${model}"][data-method="${method}"]`);
             if (!cell) return;
 
             cell.className = 'status-cell status-' + status;
+            cell.dataset.promptIndex = promptIndex;
+            cell.dataset.model = model;
+            cell.dataset.method = method;
 
             const statusText = {
                 'gray': 'Not Selected',
@@ -579,54 +763,51 @@
             document.getElementById('total-estimated-cost').textContent = '$' + totalEstimatedCost.toFixed(4);
         }
 
-        // Run the prompt with all selected combinations
+        // Run all prompts with their selected combinations
         document.getElementById('run-button').addEventListener('click', async function() {
-            const prompt = document.getElementById('prompt-input').value.trim();
-            if (!prompt) {
-                alert('Please enter a prompt');
+            // Validate that at least one prompt has text
+            const validPrompts = promptEntries.filter(e => e.text.trim() !== '');
+            if (validPrompts.length === 0) {
+                alert('Please enter at least one prompt');
                 return;
             }
 
             const apiKey = document.getElementById('api-key-input').value.trim() || null;
-            testResults = {};
-            totalEstimatedCost = 0; // Reset cost for new run
+            allTestResults = {};
+            totalEstimatedCost = 0;
             updateTotalCostDisplay();
 
-            // Reset all status cells to gray first
-            document.querySelectorAll('.status-cell').forEach(cell => {
-                const model = cell.dataset.model;
-                const method = cell.dataset.method;
-                const key = `${model}_${method}`;
-                if (selectedCombinations.has(key)) {
-                    updateStatusCell(model, method, 'white');
-                } else {
-                    updateStatusCell(model, method, 'gray');
-                }
-            });
+            // Build status matrices for all prompts
+            buildStatusMatrices();
 
-            // Execute all combinations in parallel, but stagger the starts by 1 second each
-            const combinationsArray = Array.from(selectedCombinations);
-            const promises = combinationsArray.map((key, index) => {
-                const [model, ...methodParts] = key.split('_');
-                const method = methodParts.join('_'); // Handle rag_mcp which contains underscore
+            // Run prompts sequentially
+            for (let promptIndex = 0; promptIndex < promptEntries.length; promptIndex++) {
+                const entry = promptEntries[promptIndex];
+                if (entry.text.trim() === '') continue;
 
-                // Return a promise that waits for the stagger delay, then runs the test
-                return new Promise(resolve => {
-                    setTimeout(async () => {
-                        await runSingleTest(prompt, model, method, apiKey);
-                        resolve();
-                    }, index * 1000); // Stagger by 1 second for each request
+                // Execute all combinations for this prompt in parallel (staggered)
+                const combinationsArray = Array.from(entry.combinations);
+                const promises = combinationsArray.map((key, index) => {
+                    const [model, ...methodParts] = key.split('_');
+                    const method = methodParts.join('_');
+
+                    return new Promise(resolve => {
+                        setTimeout(async () => {
+                            await runSingleTest(promptIndex, entry.text, model, method, apiKey);
+                            resolve();
+                        }, index * 1000);
+                    });
                 });
-            });
 
-            // Wait for all to complete
-            await Promise.all(promises);
+                // Wait for all combinations of this prompt to complete
+                await Promise.all(promises);
+            }
         });
 
         // Run a single test
-        async function runSingleTest(prompt, model, method, apiKey) {
-            const key = `${model}_${method}`;
-            updateStatusCell(model, method, 'yellow');
+        async function runSingleTest(promptIndex, prompt, model, method, apiKey) {
+            const key = `${promptIndex}_${model}_${method}`;
+            updateStatusCell(promptIndex, model, method, 'yellow');
 
             const requestBody = {
                 query: prompt,
@@ -640,7 +821,6 @@
             }
 
             try {
-                // Set timeout for 2 minutes
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 120000);
 
@@ -658,8 +838,8 @@
 
                 const data = await response.json();
 
-                // Store result
-                testResults[key] = {
+                allTestResults[key] = {
+                    promptIndex: promptIndex,
                     model: model,
                     method: method,
                     response: data,
@@ -667,36 +847,34 @@
                     isError: false
                 };
 
-                // Add estimated cost to running total
                 if (data.estimated_cost) {
                     totalEstimatedCost += data.estimated_cost;
                     updateTotalCostDisplay();
                 }
 
-                // Check for errors
                 if (!response.ok) {
-                    testResults[key].isError = true;
-                    updateStatusCell(model, method, 'red');
+                    allTestResults[key].isError = true;
+                    updateStatusCell(promptIndex, model, method, 'red');
                 } else if (data.error) {
-                    testResults[key].isError = true;
-                    updateStatusCell(model, method, 'red');
+                    allTestResults[key].isError = true;
+                    updateStatusCell(promptIndex, model, method, 'red');
                 } else if (isErrorResponse(data.response)) {
-                    testResults[key].isError = true;
-                    updateStatusCell(model, method, 'red');
+                    allTestResults[key].isError = true;
+                    updateStatusCell(promptIndex, model, method, 'red');
                 } else {
-                    updateStatusCell(model, method, 'green');
+                    updateStatusCell(promptIndex, model, method, 'green');
                 }
 
             } catch (error) {
-                // Handle timeout or network errors
-                testResults[key] = {
+                allTestResults[key] = {
+                    promptIndex: promptIndex,
                     model: model,
                     method: method,
                     response: { error: error.name === 'AbortError' ? 'Request timeout (2 minutes)' : error.message },
                     status: 0,
                     isError: true
                 };
-                updateStatusCell(model, method, 'red');
+                updateStatusCell(promptIndex, model, method, 'red');
             }
         }
 
@@ -704,22 +882,16 @@
         function isErrorResponse(responseText) {
             if (!responseText) return false;
 
-            // Strip HTML tags for cleaner pattern matching
             const plainText = responseText.replace(/<[^>]*>/g, ' ').trim();
-
-            // Get first 500 characters to check for errors at the start
             const firstPart = plainText.substring(0, 500);
 
             const errorPatterns = [
-                // Refusal patterns - can't/won't assist
                 /I'm sorry,? (?:but )?I can'?t (?:assist|help)(?: with that)?/i,
                 /I can'?t help (?:with that|you with that)/i,
                 /I do not provide instructions/i,
                 /I cannot assist with (?:that|this)/i,
                 /I will not (?:assist|help|provide)/i,
                 /I won'?t (?:assist|help|provide)/i,
-
-                // Apology-based refusals
                 /I (?:apologize|cannot|can't|will not|won't).*(?:cannot|can't|unable to|not able to)/i,
                 /I apologize.*(?:encountering|experiencing|having).*(?:issues|problems|difficulties)/i,
                 /I apologize.*(?:encountering|experiencing|having).*(?:errors?|error)/i,
@@ -727,53 +899,36 @@
                 /I'm encountering (?:unexpected )?(?:errors?|issues|problems)/i,
                 /I encountered (?:unexpected )?(?:errors?|issues|problems)/i,
                 /I do not have (?:access|the ability|permission)/i,
-
-                // Ethical/legal refusals
                 /This (?:would be|is) (?:unethical|illegal|not possible|dangerous)/i,
                 /(?:illegal|dangerous|harmful)(?: and)?(?: highly)? (?:illegal|dangerous|harmful)/i,
                 /creating (?:explosives|weapons|harmful devices)/i,
-
-                // Authentication errors
                 /you are not currently logged in/i,
                 /authentication.*(?:required|failed|invalid|issues)/i,
                 /encountering authentication issues/i,
-
-                // Capability limitations
                 /cannot actually (?:execute|retrieve|access)/i,
                 /I'm an AI assistant.*(?:cannot|don't have|do not have)/i,
                 /My purpose is to provide support.*(?:related to|about)/i,
                 /(?:prevent|prevents) me from (?:submitting|executing|running|accessing)/i,
-
-                // Fallback/workaround indicators (doing something different than requested)
                 /(?:Instead|However),? I (?:used|tried|attempted)/i,
                 /I used (?:the )?(?:standard|alternative|different|another).*(?:method|approach|way)/i,
                 /couldn't use the (?:exact|requested|specified)/i,
                 /could not use the (?:exact|requested|specified)/i,
-
-                // Not working / system constraints
                 /(?:is|are) not working(?: due to)?/i,
                 /(?:due to|because of) system (?:constraints|limitations|restrictions)/i,
                 /the error (?:we're|we are|I'm|I am) seeing/i,
-
-                // Module/resource not found
                 /is not available in the list of/i,
                 /module is not available/i,
             ];
 
-            // Check standard error patterns against full text
             if (errorPatterns.some(pattern => pattern.test(plainText))) {
                 return true;
             }
 
-            // Failure indicators that should only be checked at the beginning of response
             const earlyErrorPatterns = [
-                // Explanations instead of actions (when appearing early)
                 /(?:While|Although) the (?:actual|requested)/i,
                 /let me explain (?:the|what|how)/i,
                 /(?:would|might) look like:/i,
                 /(?:typical|example of|example) .*(?:workflow|process):/i,
-
-                // Recommendations and troubleshooting suggestions (indicates failure)
                 /(?:Here's what I|I) recommend:/i,
                 /you may want to:/i,
                 /Would you like me to (?:help you )?troubleshoot/i,
@@ -783,14 +938,11 @@
                 /there might be an? (?:issue|problem) with/i,
                 /suggests? that there (?:might|may) be/i,
                 /(?:might|may|could) be due to (?:some )?(?:server|configuration|restrictions)/i,
-
-                // Suggestions to do something else (when appearing early)
                 /you would (?:typically )?need to/i,
                 /contact.*support/i,
                 /(?:However|Instead),? I can (?:provide|suggest)/i,
             ];
 
-            // Only check early error patterns in the first part of the response
             if (earlyErrorPatterns.some(pattern => pattern.test(firstPart))) {
                 return true;
             }
@@ -799,14 +951,15 @@
         }
 
         // Show response in modal
-        function showResponse(model, method) {
-            const key = `${model}_${method}`;
-            const result = testResults[key];
+        function showResponse(promptIndex, model, method) {
+            const key = `${promptIndex}_${model}_${method}`;
+            const result = allTestResults[key];
 
             if (!result) return;
 
             const modelLabel = modelData[model]?.label || model;
-            const title = `${modelLabel} - ${method.toUpperCase()}`;
+            const promptLabel = `Prompt ${promptIndex + 1}`;
+            const title = `${promptLabel} - ${modelLabel} - ${method.toUpperCase()}`;
             document.getElementById('responseModalTitle').textContent = title;
 
             let content = '';
@@ -884,22 +1037,21 @@
             }
         }
 
-        // Select or unselect all combinations
+        // Select or unselect all combinations for active prompt
         document.getElementById('select-all-button').addEventListener('click', function() {
+            if (!promptEntries[activePromptIndex]) return;
+            const combinations = promptEntries[activePromptIndex].combinations;
             models.forEach(modelId => {
                 methods.forEach(method => {
-                    selectedCombinations.add(`${modelId}_${method}`);
+                    combinations.add(`${modelId}_${method}`);
                 });
             });
             updateSelectionMatrix();
         });
 
         document.getElementById('unselect-all-button').addEventListener('click', function() {
-            models.forEach(modelId => {
-                methods.forEach(method => {
-                    selectedCombinations.delete(`${modelId}_${method}`);
-                });
-            });
+            if (!promptEntries[activePromptIndex]) return;
+            promptEntries[activePromptIndex].combinations.clear();
             updateSelectionMatrix();
         });
     </script>
