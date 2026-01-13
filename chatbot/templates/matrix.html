@@ -254,6 +254,15 @@
                 <div></div> <!-- Empty corner cell -->
             </div>
         </div>
+
+        <!-- Estimated Cost Section -->
+        <div class="section-card">
+            <h4>Estimated Cost</h4>
+            <div class="d-flex align-items-center">
+                <span class="stat-label me-3">Total Cost:</span>
+                <span id="total-estimated-cost" class="stat-number" style="font-size: 1.8rem; color: #4CAF50;">$0.0000</span>
+            </div>
+        </div>
     </div>
 
     <!-- Response Modal -->
@@ -309,6 +318,7 @@
         let predefinedPrompts = [];
         let currentSelectedPrompt = null;
         let testResults = {}; // Store results keyed by "model_method"
+        let totalEstimatedCost = 0; // Track total estimated cost across all executions
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -564,6 +574,11 @@
             cell.textContent = statusText[status] || message;
         }
 
+        // Update the total estimated cost display
+        function updateTotalCostDisplay() {
+            document.getElementById('total-estimated-cost').textContent = '$' + totalEstimatedCost.toFixed(4);
+        }
+
         // Run the prompt with all selected combinations
         document.getElementById('run-button').addEventListener('click', async function() {
             const prompt = document.getElementById('prompt-input').value.trim();
@@ -574,6 +589,8 @@
 
             const apiKey = document.getElementById('api-key-input').value.trim() || null;
             testResults = {};
+            totalEstimatedCost = 0; // Reset cost for new run
+            updateTotalCostDisplay();
 
             // Reset all status cells to gray first
             document.querySelectorAll('.status-cell').forEach(cell => {
@@ -649,6 +666,12 @@
                     status: response.status,
                     isError: false
                 };
+
+                // Add estimated cost to running total
+                if (data.estimated_cost) {
+                    totalEstimatedCost += data.estimated_cost;
+                    updateTotalCostDisplay();
+                }
 
                 // Check for errors
                 if (!response.ok) {

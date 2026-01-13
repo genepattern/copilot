@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Sum
 from .models import LlmModel, SystemPrompt, Conversation, Query, Step, TokenCount
 
 
@@ -30,14 +31,29 @@ class QueryInline(admin.TabularInline):  # Or StackedInline
 
 @admin.register(Conversation)
 class ConversationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'started_at', 'label', 'query_count')
+    list_display = ('id', 'user', 'started_at', 'label', 'query_count', 'estimated_cost')
     list_filter = ('user', 'started_at')
     search_fields = ('id', 'user', 'label')
     inlines = [QueryInline]
-    readonly_fields = ('id', 'started_at')
+    readonly_fields = ('id', 'started_at', 'estimated_cost_display')
 
     def query_count(self, obj): return obj.queries.count()
     query_count.short_description = 'Queries'
+
+    def estimated_cost(self, obj):
+        """Calculate total estimated cost for all token counts in this conversation"""
+        total_cost = 0.0
+        for query in obj.queries.all():
+            for step in query.steps.all():
+                for token_count in step.token_counts.all():
+                    total_cost += token_count.get_estimated_cost()
+        return f"${total_cost:.4f}"
+    estimated_cost.short_description = 'Estimated Cost'
+
+    def estimated_cost_display(self, obj):
+        """Display estimated cost for the change view"""
+        return self.estimated_cost(obj)
+    estimated_cost_display.short_description = 'Estimated Cost'
 
 
 class TokenCountInline(admin.TabularInline):

@@ -25,12 +25,13 @@ class QuerySerializer(serializers.ModelSerializer):
     rating_label = serializers.CharField(source='get_rating_display', read_only=True)  # Human-readable rating
     query = serializers.CharField(source='raw_query', read_only=True)  # User's query
     response = serializers.SerializerMethodField()  # LLM's response, encoded as HTML or Markdown
+    estimated_cost = serializers.SerializerMethodField()  # Estimated cost for this query
 
     class Meta:
         model = Query
         fields = [
             'id', 'conversation', 'query_num', 'started_at', 'ended_at',
-            'rating', 'rating_label', 'query', 'response', 'model', 'steps'
+            'rating', 'rating_label', 'query', 'response', 'model', 'steps', 'estimated_cost'
         ]
         read_only_fields = ['id', 'started_at', 'ended_at', 'steps', 'llm_model']
 
@@ -51,6 +52,14 @@ class QuerySerializer(serializers.ModelSerializer):
             return self.markdown_to_html(obj.response)
         else:
             return obj.response
+
+    def get_estimated_cost(self, obj):
+        """Calculate estimated cost for all token counts in this query's steps."""
+        total_cost = 0.0
+        for step in obj.steps.all():
+            for token_count in step.token_counts.all():
+                total_cost += token_count.get_estimated_cost()
+        return round(total_cost, 6)
 
 
 class ConversationListSerializer(serializers.ModelSerializer):

@@ -1,4 +1,5 @@
 import uuid
+import os
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
@@ -139,3 +140,21 @@ class TokenCount(models.Model):
         user_str = self.user.username if self.user else 'Anonymous'
         model_str = self.llm_model.model_id if self.llm_model else 'Unknown'
         return f"{self.token_count} {self.token_type} tokens - {model_str} - {user_str}"
+
+    def get_estimated_cost(self):
+        """
+        Calculate the estimated cost for this token usage.
+        Returns the cost in dollars based on token type and count.
+        """
+        INPUT_TOKEN_COST_PER_1000 = float(os.getenv('INPUT_TOKEN_COST_PER_1000', '0.001'))
+        OUTPUT_TOKEN_COST_PER_1000 = float(os.getenv('OUTPUT_TOKEN_COST_PER_1000', '0.005'))
+
+        if self.token_type == self.TokenType.PROMPT:
+            return (self.token_count / 1000) * INPUT_TOKEN_COST_PER_1000
+        elif self.token_type == self.TokenType.COMPLETION:
+            return (self.token_count / 1000) * OUTPUT_TOKEN_COST_PER_1000
+        elif self.token_type == self.TokenType.TOTAL:
+            # For total, we can't distinguish between input/output, so use average
+            avg_cost = (INPUT_TOKEN_COST_PER_1000 + OUTPUT_TOKEN_COST_PER_1000) / 2
+            return (self.token_count / 1000) * avg_cost
+        return 0.0

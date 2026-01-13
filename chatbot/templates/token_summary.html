@@ -121,22 +121,28 @@
 
                 <!-- Summary Cards -->
                 <div class="row" id="summary-section">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="summary-card">
                             <div class="stat-label">Total Tokens</div>
                             <div class="stat-number" id="total-tokens">-</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="summary-card">
                             <div class="stat-label">Total Requests</div>
                             <div class="stat-number" id="total-requests">-</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="summary-card">
                             <div class="stat-label">Unique Users</div>
                             <div class="stat-number" id="unique-users">-</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="summary-card">
+                            <div class="stat-label">Estimated Cost</div>
+                            <div class="stat-number" id="estimated-cost">-</div>
                         </div>
                     </div>
                 </div>
@@ -153,7 +159,7 @@
                                 <p class="mt-2">Loading token usage data...</p>
                             </div>
                             <div id="user-stats" style="display: none;"></div>
-                            <div id="no-data" style="display: none;" class="text-center text-muted py-4">
+                            <div id="no-data" style="display: none;" class="text-center py-4">
                                 <i class="fas fa-info-circle fa-3x mb-3"></i>
                                 <p>No token usage data for the selected timeframe.</p>
                             </div>
@@ -222,6 +228,7 @@
             document.getElementById('total-tokens').textContent = formatNumber(data.total_tokens);
             document.getElementById('total-requests').textContent = formatNumber(data.total_requests);
             document.getElementById('unique-users').textContent = data.user_stats.length;
+            document.getElementById('estimated-cost').textContent = '$' + data.estimated_cost.toFixed(4);
 
             // Display user stats
             const userStatsDiv = document.getElementById('user-stats');

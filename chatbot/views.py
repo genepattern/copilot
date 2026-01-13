@@ -338,6 +338,7 @@ class TokenSummaryAPIView(APIView):
         user_stats = []
         total_all_tokens = 0
         total_all_requests = 0
+        total_estimated_cost = 0.0
 
         for item in token_data:
             username = item['user__username'] if item['user__username'] else 'Anonymous'
@@ -356,6 +357,11 @@ class TokenSummaryAPIView(APIView):
 
             total_all_tokens += tokens
             total_all_requests += requests
+
+        # Calculate total estimated cost from all token counts in the timeframe
+        all_token_counts = TokenCount.objects.filter(timestamp__gte=start_date)
+        for tc in all_token_counts:
+            total_estimated_cost += tc.get_estimated_cost()
 
         # Get model breakdown
         model_stats = TokenCount.objects.filter(
@@ -382,6 +388,7 @@ class TokenSummaryAPIView(APIView):
             'end_date': now.isoformat(),
             'total_tokens': total_all_tokens,
             'total_requests': total_all_requests,
+            'estimated_cost': round(total_estimated_cost, 4),
             'user_stats': user_stats,
             'model_stats': model_breakdown
         })
