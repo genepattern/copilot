@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/wu7ZuChneVk
+Title: Not a Number processing error in GISTIC 2.0
+----------------------------------------
+
+
+
+
+
+Not a Number processing error in GISTIC 2.0
+14 views
+Skip to first unread message
+
+Michelle Yang
+unread,
+Jun 23, 2020, 10:18:21 PM
+
+
+
+to GenePattern Help Forum
+I tried to run GISTIC 2.0 with a seg.file and reference file Human Genome 19. My seg file had all 6 required columns and included X chromosomes. However, when I ran it, it gave me this output message.
+
+
+GISTIC version 2.0.23
+ 
+GISTIC 2.0 input error detected:
+All input data were removed after NaN processing.
+
+
+Why would Not a Number processing occur with my file? Is it the X chromosomes? I have enough samples, so what could be the root of the error?
+Barbara Hill
+unread,
+Jun 25, 2020, 1:38:25 PM
+
+
+
+to GenePattern Help Forum
+
+
+Hello, 
+
+
+Was this run in GenePattern?
+If so, please provide your job id.
+
+
+If not, you will get more GISTIC specific help in the GISTIC-forum.
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

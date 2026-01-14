@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/6S2lDaDRhfA
+Title: Log-transformation by default?
+----------------------------------------
+
+
+
+
+
+Log-transformation by default?
+15 views
+MarkerSelection
+Skip to first unread message
+
+Chun Shen Lim
+unread,
+Oct 2, 2017, 11:19:35 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+First of all thank you for maintaining the user friendly platform. I did microarray analysis using the default settings: PreprocessDataset -> ExpressionFileCreator -> ComparativeMarkerSelection.
+
+
+Have the mean values of the final output (.odf) being log-transformed by default?
+
+
+Cheers,
+Chun Shen
+Edwin Juarez
+unread,
+Oct 3, 2017, 9:10:28 AM
+
+
+
+to GenePattern Help Forum
+Hello Chun Shen,
+
+
+I am glad that you find GenePattern useful!
+
+
+By default, ComparativeMarkerSelection does not log-transform your data, you would need to change the "log2 transform" parameter in that module to change that.
+
+
+Here is a link to the documentation if you want to take a closer look: http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/PreprocessDataset/6
+
+
+Let me know if that helps!
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/cBnvWY-90mU
+Title: Job ID 1664049. DeSeq2 processing times greater than 6 hours
+----------------------------------------
+
+
+
+
+
+Job ID 1664049. DeSeq2 processing times greater than 6 hours
+8 views
+Skip to first unread message
+
+Abhinav Achreja
+unread,
+Apr 19, 2018, 3:03:21 PM
+
+
+
+to GenePattern Help Forum
+
+
+I submitted this job around 11.30 AM EST and it had been over 6 hours since processing until I accidentally terminated it instead of reloading. I am attaching the screenshot of the job status. And here is the input parameter set:
+
+
+
+
+# Created: Thu Apr 19 17:33:34 EDT 2018 by ******@umich.edu
+# Job: 1664049    server:  https://genepattern.broadinstitute.org/gp/
+# Module: DESeq2 urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00362:0.4
+# Parameters: 
+#    input.file = CoMMpass_IA10c_E74GTF_HtSeq_Counts_GCT.gct   https://genepattern.broadinstitute.org/gp/users/******%40umich.edu/tmp/run3228515949924197465.tmp/input.file/1/CoMMpass_IA10c_E74GTF_HtSeq_Counts_GCT.gct
+#    cls.file = t11_14_CLS_GenePattern.cls   https://genepattern.broadinstitute.org/gp/users/******%40umich.edu/tmp/run1376528008080096822.tmp/cls.file/2/t11_14_CLS_GenePattern.cls
+#    confounding.variable.cls.file = 
+#    output.file.base = <input.file_basename>
+#    qc.plot.format = pdf
+#    fdr.threshold = 0.25
+#    top.N.count = 100
+#    random.seed = 779948241
+
+
+
+
+Any help will be appreciated. Thank you!
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+genepattern_1664049.PNG
+Peter Carr
+unread,
+Apr 20, 2018, 8:38:43 AM
+
+
+
+to genepatt...@googlegroups.com
+The best thing to do is to start it over again. We do not have a way to restart terminated jobs.
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2c5d7142-2918-4bd7-a740-103eb81cbcb9%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+
+Reply all
+
+Reply to author
+
+Forward

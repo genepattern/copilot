@@ -1,0 +1,27 @@
+URL: https://groups.google.com./g/genepattern-help/c/WnXuLGPXZX0
+Title: Announcement: cloud.genepattern.org upgrade today - including support for GLOBUS file transfers!
+----------------------------------------
+
+
+
+
+
+Announcement: cloud.genepattern.org upgrade today - including support for GLOBUS file transfers!
+6 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 6, 2021, 9:26:12 AM
+
+
+
+to GenePattern Help Forum
+TODAY, Dec 6, the main GenePattern server (https://cloud.genepattern.org) will be offline from 2 - 3 PM (UTC -7) to install the latest updates, including support for Globus for faster and more reliable file transfers. 
+Full details in the release notes:
+https://github.com/genepattern/genepattern-server/releases/tag/v3.9_21.12_b373
+
+Reply all
+
+Reply to author
+
+Forward

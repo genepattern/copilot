@@ -1,0 +1,26 @@
+URL: https://groups.google.com./g/genepattern-help/c/MtJCyglIxxI
+Title: Announcement: HTSeq.Count (using #HTSeq 0.11.2 ) is now available on GenePattern Cloud
+----------------------------------------
+
+
+
+
+
+Announcement: HTSeq.Count (using #HTSeq 0.11.2 ) is now available on GenePattern Cloud
+1 view
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jan 26, 2021, 11:31:21 AM
+
+
+
+to GenePattern Help Forum
+HTSeq.Count (using #HTSeq 0.11.2 ) is now available on GenePattern Cloud (https://cloud.genepattern.org)!
+
+
+Reply all
+
+Reply to author
+
+Forward

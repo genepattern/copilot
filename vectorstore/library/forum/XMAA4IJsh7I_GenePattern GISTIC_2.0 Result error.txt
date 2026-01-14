@@ -1,0 +1,1 @@
+`GenePattern GISTIC_2.0 module encountered input data processing error where all input data were removed during NaN processing, suggesting potential data quality issues like missing values, incorrect file formatting, or problematic input data that cannot be processed by the GISTIC algorithm, with recommendation to review input data carefully before re-running analysis`

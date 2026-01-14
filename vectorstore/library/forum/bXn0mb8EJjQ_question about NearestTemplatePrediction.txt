@@ -1,0 +1,1 @@
+Bioinformatics software GenePattern NearestTemplatePrediction module error caused by unicode file encoding, resolved by converting input files from unicode to ascii format using online unicode conversion tool, which successfully allowed module execution after file encoding adjustment.

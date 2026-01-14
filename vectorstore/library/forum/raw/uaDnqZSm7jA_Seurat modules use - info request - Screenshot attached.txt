@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/uaDnqZSm7jA
+Title: Seurat modules use - info request - Screenshot attached
+----------------------------------------
+
+
+
+
+
+Seurat modules use - info request - Screenshot attached
+8 views
+Skip to first unread message
+
+ravi
+unread,
+Sep 17, 2024, 12:04:53 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am a first user of spatial transcriptomics data and analysis tools. I have 10X Genomics targeted spatial transcriptomics/expression data from Xenium platform.  I received different files from the target panel gene expression data as in the screenshot. 
+
+
+From the GenePattern modules list, I could find 
+
+
+Seurat preprocessing
+Seurat QC
+Seurat Integrate Data
+Seurat Clustering
+Seurat Visualisation MarkerExpression
+
+
+May I know in what order I could use Seurat modules on GenePattern for cell type clustering, differential gene expression clustering and any additional analysis that could be possible with the data?
+
+
+Your expert suggestion will be very helpful.
+
+
+Thank you,
+Ravi.
+
+
+
+Xenium_Output_Files_Screenshot.png
+John Liefeld
+unread,
+Sep 17, 2024, 7:57:31 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am not an expert in Seurat, but there is a GenePattern notebook that goes over the use of the Seurat modules.  I suggest you give it a look to see if it answers your question
+
+
+https://notebook.genepattern.org/hub/preview?id=429
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

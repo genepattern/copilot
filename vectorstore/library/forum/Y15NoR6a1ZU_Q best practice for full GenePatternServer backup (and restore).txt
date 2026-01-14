@@ -1,0 +1,1 @@
+Backup and migration strategy for GenePattern Server involving archiving the full server folder, ensuring HSQL database preservation, and carefully transferring settings and data between Ubuntu and CentOS systems, with considerations for stopping the server during backup, recreating users, and potential restoration steps requiring specific maintenance scripts or procedures.

@@ -1,0 +1,229 @@
+URL: https://groups.google.com./g/genepattern-help/c/74AIt2Ks31w
+Title: Slurm Job Runner maxtime
+----------------------------------------
+
+
+
+
+
+Slurm Job Runner maxtime
+29 views
+Skip to first unread message
+
+Ivan Chang
+unread,
+Sep 6, 2017, 1:40:50 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter and Thorin,
+
+
+Is there a way to specify a different maxtime for SBATCH job depending on the module being run?
+
+
+Thanks!
+
+
+-Ivan
+Peter Carr
+unread,
+Sep 8, 2017, 3:00:31 PM
+
+
+
+to genepatt...@googlegroups.com
+Yes this is possible.  The best practice is to use the 'job.walltime' configuration property.
+
+What version of GP are you using, and what SLURM integration code are you using? I have to look at the source code and/or check with Thorin before I can provide a detailed answer for SLURM.
+
+Read on for a general overview. This is a two part process.
+  1) customize the job.walltime in the config_yaml file in d-hh:mm:ss format
+  2) (if necessary) implement support for 'job.walltime' in your SLURM integration
+
+Step 1: customize 'job.walltime'
+---------------------------
+# add entries by module name or full module lsid to the 'module.properties' section
+module.properties:
+    ConvertLineEndings:
+        # set max walltime to 2 hours
+        job.walltime: '0-02:00:00'
+    TopHat:
+        # set max walltime to 7 days
+        job.walltime: '7-00:00:00'
+
+The 'job.walltime' can be customized by user, by module, or as a global setting.
+For testing, you can also customize by user and module. For example,
+
+user.properties:
+    my_user_id:
+        module.properties:
+            TopHat:
+                # for debugging, kill tophat after 30 seconds, just to see what happens
+                job.walltime: '0-00:00:30'
+
+The 'job.walltime' can also be customized on a per-job basis, by adding a drop-down menu to the GUI. Let me know if you are interested. I will write up how to this. (You don't need to write any code).
+
+Step 2: JobRunner API integration
+---------------------------
+  To set a maxtime for SLURM, you may need to modify the startJob method of the JobRunner API.
+
+    public String startJob(final DrmJobSubmission job) throws CommandExecutorException {
+        ...
+        Walltime w=job.getWalltime();
+        if (w != null) {
+            System.out.println("walltime: "+w);
+        }
+        ...
+     }
+
+Use job.getWalltime() to get the custom walltime value for your job. It may be null if no value is supplied.
+The Walltime class makes it easier to work with the user-supplied 'job.walltime' value. E.g.
+        // convert to number of milliseconds
+        w.asMillis();
+        // format as 'hh:mm'
+        w.formatHoursAndMinutes();
+       
+        //Format as the total number of minutes.
+        // This is simply a convenience method for the direct call to the timeunit class:
+        //   ""+w.getTimeUnit().toMinutes(w.getDuration());
+        w.formatMinutes();
+
+   source code links:
+     https://github.com/genepattern/genepattern-server/blob/develop/src/org/genepattern/drm/Walltime.java
+     https://github.com/genepattern/genepattern-server/blob/develop/src/org/genepattern/drm/JobRunner.java
+
+Regards,
+Peter
+
+Ivan Chang
+unread,
+Sep 11, 2017, 10:17:02 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter, that helped a lot! I am using GP version 3.9.10 and I customized Thorin's gp-slurm-queue's SlurmJobRunner.java to SDSC Comet's environment. The individual module.properties worked great! I am interested in how you can apply custom walltime per-job basis. Thanks again! 
+
+
+Best,
+
+
+Ivan
+
+Peter Carr
+unread,
+Sep 11, 2017, 11:04:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Use the 'job.inputParams' configuration property to add a 'job.walltime' option to the GUI.  This is a two part process. Step 1, create a jobInputParams_yaml file. Step 2, update your config to include those params in the GUI.
+
+To get started, save the attached 'jobInputParams_walltime.yaml' file to your ./resources folder and edit your config_yaml file, e.g.
+
+default.properties:
+    job.inputParams: jobInputParams_walltime.yaml
+
+Don't forget to Admin > Server Settings > Job Configuration > Reload job Configuration after editing the config_yaml page.
+Note: you do not have to reload the configuration after making edits to the jobInputParams_yaml file. These changes take place automatically. If there are any YAML typos (which there will be on your first try) the entire file is ignored.
+
+The 'job.inputParams' is also configurable on a per-user, per-module basis. It's not uncommon for me to use more advanced options for admin-type users, e.g.
+group.properties:
+    administrators:
+        job.inputParams: jobInputParams_admin.yml
+
+
+This is can done for other JobRunner API options such as 'job.memory' and 'job.cpuCount'. Stay tuned, I'll pass along a fuller example
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b0479263-b7fb-43b0-a70c-7b567f140d9e%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+
+jobInputParams_walltime.yaml
+Peter Carr
+unread,
+Sep 11, 2017, 11:43:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Additionally you can add 'job.walltime' directly to the manifest file
+for a module. This becomes the default value on a server which does not
+have custom entries in the config file.
+
+Note: use '=' in the manifest file, use ':' in the config_yaml file. E.g.
+
+In config_yaml ...
+module.properties:
+my-module:
+# set max walltime to 1 day
+job.walltime: '0-24:00:00'
+
+In manifest file for 'my-module'
+job.walltime=0-24:00:00
+
+
+
+Peter Carr
+unread,
+Sep 11, 2017, 12:05:52 PM
+
+
+
+to genepatt...@googlegroups.com
+Use the attached 'jobInputParams_example.yaml' file as a template for
+adding job input parameters to the GUI.
+
+This file illustrates the most common job input parameters available in
+the JobRunner API. I don't recommend using all of the params. For
+example, some integrations request resources by queue name ('short' vs.
+'long') others by resource type ('job.memory', 'job.walltime').
+
+Regards,
+Peter
+
+
+
+
+
+jobInputParams_example.yaml
+Ivan Chang
+unread,
+Sep 12, 2017, 9:48:20 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thanks again for the comprehensive guide! Some of these job options will definitely be nice additions to our gateway. I'll try to implement and test them this week and let you know how they work.
+
+
+Best,
+
+
+Ivan
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/IkbBfx3krfA
+Title: Request for GSEA output heat_map_Top_50_Features.gct. Could we have the gct for the whole set ?
+----------------------------------------
+
+
+
+
+
+Request for GSEA output heat_map_Top_50_Features.gct. Could we have the gct for the whole set ?
+7 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+Jun 10, 2020, 6:27:50 AM
+
+
+
+to GenePattern Help Forum
+Hi ,
+
+
+heat_map_Top_50_Features.gct is the output matrice with Symbol in place of Ensembl id.
+
+
+This format is useful then if you want to do then an Enrichment Map inside Cytoscape.
+
+
+The whole output given by DESEQ2 use ENSEMBL ID. And GSEA give back a matrice only for 50 features with SYMBOL (after the collapsing process using the chip file)
+
+
+That could be great to have the whole features (in SYMBOL) to then push directly into Enrichment Map & Cytoscape.
+
+
+Or maybe there is an another simple way to get this whole expression file with normalised count and symbol . Am I missing something ? 
+
+
+Thanks. 
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+GenePattern Help Forum
+unread,
+Jun 12, 2020, 9:35:01 AM
+
+
+
+to GenePattern Help Forum
+Hello Phillipe,
+
+
+This does sound like a useful feature and I would suggest writing to the GSEA authors to request this since the GenePattern team does not maintain this particular set of modules.
+
+
+Let us know if we can provide any assistance with that request.
+
+
+Best
+-Barbara Hill
+
+
+Reply all
+
+Reply to author
+
+Forward

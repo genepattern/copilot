@@ -1,0 +1,1 @@
+A GenePattern user encountered difficulty visualizing clustering results using the Hierarchical Clustering Viewer in Chrome on Windows 10, but successfully resolved the issue by switching to Internet Explorer (IE) after receiving guidance from technical support, suggesting potential browser compatibility issues with the visualization module.

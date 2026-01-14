@@ -1,0 +1,1 @@
+A user encountered a shared library loading error when running GISTIC2 in GenePattern, preventing analysis of copy number variation data; the GenePattern team suggested using an older module version, and eventually resolved the issue by updating the GISTIC_2.0 module, recommending users with persistent problems consult the GISTIC forum directly for further troubleshooting.

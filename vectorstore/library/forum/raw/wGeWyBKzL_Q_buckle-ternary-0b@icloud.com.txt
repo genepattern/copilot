@@ -1,0 +1,38 @@
+URL: https://groups.google.com./g/genepattern-help/c/wGeWyBKzL_Q
+Title: buckle-ternary-0b@icloud.com
+----------------------------------------
+
+
+
+
+
+buckle-ternary-0b@icloud.com
+16 views
+Skip to first unread message
+
+Vithurran Thavarajah
+unread,
+Feb 16, 2022, 1:59:59 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've just used ssGSEA on genePattern for the first time. I inputed a .gct file in .txt form with no error messages. I inputted my own geneset in .gmt form. I clicked run. Run was completed without error messages. I have a PROJ.gct file output but cannot seem to open it. I try to open it in excel but doesn't seem to work?
+Vithurran Thavarajah
+unread,
+Feb 16, 2022, 2:03:06 AM
+
+
+
+to GenePattern Help Forum
+Sorry, just after I posted this question, I found the solution. Just change the file extension to .txt and it opens in excel.
+
+
+Reply all
+
+Reply to author
+
+Forward

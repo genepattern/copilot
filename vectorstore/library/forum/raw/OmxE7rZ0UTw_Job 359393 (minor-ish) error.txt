@@ -1,0 +1,122 @@
+URL: https://groups.google.com./g/genepattern-help/c/OmxE7rZ0UTw
+Title: Job 359393 (minor-ish) error
+----------------------------------------
+
+
+
+
+
+Job 359393 (minor-ish) error
+25 views
+Skip to first unread message
+
+Viktor
+unread,
+Jul 2, 2021, 10:51:50 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am getting the following error message from ComparativeMarkerSelection job: "Unable to compute q values."
+
+
+Apart from q-values which are all NaN, the job seems to have completed successfully, All other statistics, including FDR (BH), are computed and present in the output table. 
+
+
+Please advise and thank you,
+Viktor
+
+
+
+
+Viktor
+unread,
+Jul 6, 2021, 7:17:05 AM
+
+
+
+to GenePattern Help Forum
+Still waiting for help here.
+
+Barbara Hill
+unread,
+Jul 6, 2021, 8:35:46 AM
+
+
+
+to GenePattern Help Forum
+Hello Viktor, 
+
+
+Apologies for the wait - the team was all out of office for the national holiday.
+
+
+It looks like this module was never configured to run in a container that has R 2.5 which is what is causing this error. IE the java portion of the code is running, but R 2.5 is needed to comput q values and there is no R in the default Java 7 container. 
+
+
+We'll keep you posted as we work to fix this.
+
+
+Best
+-Barbara
+
+Viktor
+unread,
+Jul 6, 2021, 8:37:27 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+No worries and thank you for looking into this.
+
+
+Best,
+Viktor
+
+Barbara Hill
+unread,
+Jul 27, 2021, 2:08:37 PM
+
+
+
+to GenePattern Help Forum
+
+Hi Viktor, 
+
+
+I've updated ComparativeMarkerSelection and it is once again computing q values.
+
+
+Please let us know if you run into anything else.
+
+
+Best
+-Barbara
+Viktor
+unread,
+Jul 27, 2021, 3:19:09 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Perfect, thank you very much.
+
+
+Best,
+Viktor
+
+
+Reply all
+
+Reply to author
+
+Forward

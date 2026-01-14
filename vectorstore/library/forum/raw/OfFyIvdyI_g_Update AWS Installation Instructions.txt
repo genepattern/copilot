@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/OfFyIvdyI_g
+Title: Update AWS Installation Instructions
+----------------------------------------
+
+
+
+
+
+Update AWS Installation Instructions
+9 views
+Skip to first unread message
+
+Rashid O
+unread,
+May 26, 2023, 9:32:16 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am attempting to follow the AWS instructions to host genepattern-server using a AMI link. However the link shows as invalid in AWS - is there an updated link? If not, are there any AWS specific installation instructions through Docker?
+
+https://genepattern.org/administrators-guide#setting-up-a-new-genepattern-ami
+Ted Liefeld
+unread,
+May 26, 2023, 10:39:25 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+we don't have an updated AMI and have not published an update in a while.  I would recommend using our docker container instead for which the instructions should be up to date.  Then on AWS you can use the AWS documentation to open a port etc.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

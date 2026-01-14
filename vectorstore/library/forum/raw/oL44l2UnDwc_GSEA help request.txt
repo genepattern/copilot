@@ -1,0 +1,107 @@
+URL: https://groups.google.com./g/genepattern-help/c/oL44l2UnDwc
+Title: GSEA help request
+----------------------------------------
+
+
+
+
+
+GSEA help request
+22 views
+Skip to first unread message
+
+delfina borus
+unread,
+Sep 28, 2020, 10:05:40 AM
+
+
+
+to GenePattern Help Forum
+I’m writing in regards to GSEA performance. As part of my doctoral thesis I did an Enrichment Analysis in order to study the differentially expressed genes from a RNAseq experiment. In my case I ran GSEA following both the preranked analysis and the analysis using the normalized counts. Surprisingly the outcomes are very different from each other. As far as I know the Broad Institute recommends the normalized counts analysis as for 2020. I would like to know why is the normalized counts analysis recommended over the preranked analysis and the reason why the outcomes could be so different.
+
+
+Just to let you know, the RNAseq analysis was performed using Ilumina technology. The samples used were three samples of cells Caco-2 control and other three samples of Caco-2 knockdown for FBP1.
+
+
+Thank you in advance 
+
+
+your sincerely
+Delfina Borús
+Anthony Castanza
+unread,
+Sep 28, 2020, 10:42:41 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Delfina,
+
+ 
+
+Questions about the GSEA methodology should generally be directed to the GSEA help forum at groups.google.com/group/gsea-help
+
+ 
+
+But since I’m replying anyway, I might as well address the question.
+
+ 
+
+We switched to recommending the normalized counts methodology as proper between sample normalization allows analysis with the full suite of GSEA options, such as using the signal2noise ranking metric and phenotype permutation testing, and we had found that methods which produce between-sample normalized counts like DESeq2 were easily available to users through both GenePattern’s DESeq2 module and DESeq2 in Galaxy as an optional output that could be enabled.
+
+ 
+
+With GSEA preranked users have to define their own ranking metric, which is usually a simple log2(Fold Change) and are limited to the less robust gene_set permutation. Ranking by the Log2(fold change) metric is, unfortunately, susceptible to inflated log2(fold changes) resulting from outliers in lowly expressed genes as well as other variability in the samples – the same things that might cause your differential expression analysis to call a gene with a large log2(FC) as “not significant”. The built-in ranking metrics in full GSEA offer some protections against that sort of thing. Gene_set permutation also has an unfortunate tendency to undercorrect the false discovery calculations and thus give much lower FDRs than phenotype permutation.
+
+ 
+
+The permutation mode can dramatically affect the significance statistics, the default in standard GSEA is “phenotype” permutation, but because phenotype information is not available to the software in Preranked, preranekd is only able to calculate gene_set permutations. In the case of your data, however, being a 3 vs. 3 experiment, you should be running standard GSEA in gene_set permutation mode anyway as an N=3 experiment doesn’t have enough possible permutations to adequately calculate a null distribution.
+
+ 
+
+Its difficult to say why precisely you saw different results with your data in the different modes, but how genes are ranked fundamentally affects the GSEA result as these ranking values are used as a weighting factor when calculating the enrichment scores. This is the most likely cause of the changes in your results, however, neither result is “wrong” per-se, they’re just different ways of looking at the data.
+
+ 
+
+You also say that you “did an Enrichment Analysis in order to study the differentially expressed genes from a RNAseq experiment”. In our input data, did you include only the differentially expressed genes or the full dataset? GSEA is intended to be run on the full dataset in both standard and preranked mode, a gene list that has been filtered for just the differentially expressed genes can also cause issues with result accuracy.
+
+ 
+
+Did you run the two different modes using the same version of the MSigDB gene sets? We’re constantly improving MSigDB and if one of the analyses was old and run against a different version of MSigDB, this can also affect the results.
+
+ 
+
+I hope these answers were helpful, but if I missed anything, or you have more questions, feel free to reach out again
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ef4f8da1-4784-4fbb-9d01-6388ce914a72n%40googlegroups.com.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

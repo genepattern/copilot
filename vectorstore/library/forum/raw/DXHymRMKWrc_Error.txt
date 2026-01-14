@@ -1,0 +1,68 @@
+URL: https://groups.google.com./g/genepattern-help/c/DXHymRMKWrc
+Title: Error
+----------------------------------------
+
+
+
+
+
+Error
+15 views
+Skip to first unread message
+
+Güllü Elif Özdemir
+unread,
+Aug 1, 2023, 2:04:47 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern team,
+I am trying to do GISTIC2.0 analysis in GenePattern. When I run the analysis after the relevant adjustments, I am Processing appears for a while, but I get an error right after. I cannot find what caused the error and cannot complete the analysis. Could you please help me on this issue? 
+
+Yours faithfully,
+Gullu Elif Ozdemir
+Andrew Cherniack
+unread,
+Aug 1, 2023, 3:55:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Gullu,
+
+
+Can you send the error message in the output and your seg file?
+
+
+Regards,
+
+
+Andrew Cherniack
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ca1edff5-064d-4aa7-b339-75cbd71ebffcn%40googlegroups.com.
+
+--
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+
+Reply all
+
+Reply to author
+
+Forward

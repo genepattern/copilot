@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/3Pmxed5Raos
+Title: Is the Modules repository down?
+----------------------------------------
+
+
+
+
+
+Is the Modules repository down?
+7 views
+Skip to first unread message
+
+Justin Torok
+unread,
+Jun 20, 2019, 1:32:05 PM
+
+
+
+to GenePattern Help Forum
+The following link takes me to a page with an error message "Something went wrong:" http://software.broadinstitute.org/cancer/software/genepattern/modules
+
+
+I'm new to Genepattern and looking to learn more about and explore the available analysis tools.
+
+
+Thanks,
+Justin
+Barbara Hill
+unread,
+Jun 20, 2019, 3:22:14 PM
+
+
+
+to GenePattern Help Forum
+Hello Justin, 
+
+
+Thank you for bringing that to our attention. I've restarted the server and that page should be correctly populated now.
+
+
+Please let us know if you notice any other irregularities.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

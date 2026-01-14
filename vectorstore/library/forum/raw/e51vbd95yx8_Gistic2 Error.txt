@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/e51vbd95yx8
+Title: Gistic2 Error
+----------------------------------------
+
+
+
+
+
+Gistic2 Error
+26 views
+Skip to first unread message
+
+Angelussong
+unread,
+Sep 8, 2022, 8:17:01 AM
+
+
+
+to GenePattern Help Forum
+Hi all, 
+
+
+I tried to run Gistic2 with the parameter "remove X" as "no" on a .seg file I had previously successfully run. But I kept getting this "Internal Server Error" error. 
+
+
+I'm wondering if it's just for me or something is wrong with the GenePattern server and if it's the latter case, could anyone kindly let me know when this issue is expected to be solved? 
+
+
+Thank you very much for your help and your time! 
+
+
+Angelus
+Ted Liefeld
+unread,
+Sep 9, 2022, 10:42:38 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+can you please provide the job numbers for both the successful and failed jobs and I will look into it.
+
+
+We recently changed the execution environment and this may have lead to a problem.  One issue that has affected some users is that it can no longer accept filenames with special characters.
+
+
+Thanks for your pateince
+
+Ted
+
+
+
+Angelussong
+unread,
+Sep 9, 2022, 10:59:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+Thanks for your reply! One of the failed job IDs was 460602. 
+
+
+Last night I think I solved this by reducing the number of CPUs and memory requested. I also lowered the time limit. Then the jobs were running without any errors. 
+
+
+Thanks again, 
+
+
+Angelus
+
+> --
+> You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+> To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/e51vbd95yx8/unsubscribe.
+> To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c54f0843-a369-4ae0-92a8-fef7d3b6be58n%40googlegroups.com.
+
+Reply all
+
+Reply to author
+
+Forward

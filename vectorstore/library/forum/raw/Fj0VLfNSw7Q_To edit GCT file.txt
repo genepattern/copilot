@@ -1,0 +1,130 @@
+URL: https://groups.google.com./g/genepattern-help/c/Fj0VLfNSw7Q
+Title: To edit GCT file
+----------------------------------------
+
+
+
+
+
+To edit GCT file
+172 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Feb 10, 2022, 7:41:49 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I want to increase the HTSeq counts by adding 1 to all the datasets. When I opened the file in excel, I was able to edit it but it was later getting saved in text format. Can you please tell me if there is an alternative way?
+
+
+Regards,
+Sruthi
+
+
+
+	Sender notified by
+Mailtrack	02/10/22, 09:08:01 PM	
+Barbara Hill
+unread,
+Feb 10, 2022, 8:34:04 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi, 
+
+
+To save an Excel file as GCT you have to Save as type: Text (Tab delimited) and place parentheses around the file name:
+
+
+Best
+-Barbara
+
+
+Anthony Castanza
+unread,
+Feb 10, 2022, 8:36:39 AM
+
+
+
+to genepatt...@googlegroups.com
+If that doesn't work (some modern versions of Excel no longer allow this), once you've saved as tab delimited text, you can simply rename the file removing the .txt extension and adding .gct. You may have to enable your operating systems option to show extensions for known file types.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8840e151-1e9f-4333-b1c2-70c651fd42b4n%40googlegroups.com.
+
+Sruthi S
+unread,
+Feb 10, 2022, 8:56:45 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Sir,
+It worked! Thank you.
+
+
+Warm regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+02/10/22, 10:25:50 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZyHg5%2BDs0E1SwU62fSCLLmTKYKTxqz91eaWguo%2BGcSVsA%40mail.gmail.com.
+
+Sruthi S
+unread,
+Feb 10, 2022, 8:57:31 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+Thank you so much.
+
+
+Warm regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+02/10/22, 10:26:57 PM	
+
+
+
+
+--
+
+
+
+Reply all
+
+Reply to author
+
+Forward

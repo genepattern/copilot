@@ -1,0 +1,1 @@
+A GenePattern user encountered errors while trying to run the GSEA Preranked module, initially due to using an incorrect file format (XML/XLSX instead of tab-delimited text) and a limited gene list, and subsequently experiencing a file parsing error resolved by correcting the file extension to .rnk, highlighting the importance of proper input file preparation for GSEA analysis.

@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/A17_f-GZlVc
+Title: ssGSEA result
+----------------------------------------
+
+
+
+
+
+ssGSEA result
+35 views
+Skip to first unread message
+
+Yuliang Wang
+unread,
+Sep 21, 2020, 7:10:28 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+      I am a user of your great software ssGSEA on my local computer. After I applied the software on my own data, I got a result in attachment files, could you please tell me whether the gene signature was enriched in the KO group and why?
+
+
+       Thank you so much !
+
+Bcl6_505_Dr.Wang_2_WT.pdf
+
+Bcl6_505_Dr.Wang_2_KO.pdf
+Barbara Hill
+unread,
+Sep 22, 2020, 12:10:18 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I suggest that you take a look at the ssGSEA documentation and the referenced papers to better understand what the method is doing and how to interpret the results.
+
+
+https://gsea-msigdb.github.io/ssGSEA-gpmodule/v10/index.html
+
+
+Best
+-Barbara
+
+
+Yuliang Wang
+unread,
+Sep 24, 2020, 5:52:36 AM
+
+
+
+to genepatt...@googlegroups.com
+OK thank you
+
+
+Barbara Hill <bh...@broadinstitute.org> 于2020年9月23日周三 上午3:10写道：
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/A17_f-GZlVc/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7312e9c5-0e19-41a7-a5b1-eb6228a50475n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

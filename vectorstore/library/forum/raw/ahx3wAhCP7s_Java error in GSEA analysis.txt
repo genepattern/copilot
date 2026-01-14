@@ -1,0 +1,194 @@
+URL: https://groups.google.com./g/genepattern-help/c/ahx3wAhCP7s
+Title: Java error in GSEA analysis
+----------------------------------------
+
+
+
+
+
+Java error in GSEA analysis
+32 views
+Skip to first unread message
+
+Aswathymary Paul
+unread,
+Nov 1, 2017, 12:10:49 AM
+
+
+
+to GenePattern Help Forum
+
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+/xchip/gpprod/servers/genepattern/gp/resources/wrapper_scripts/gp-common.sh: line 611: java: command not found
+
+Job ID if run on a publicly available server.1568616. GSEA
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Nov 1, 2017, 9:24:29 AM
+
+
+
+to genepatt...@googlegroups.com
+Use the older version of GSEA while I look into this problem. From the job input form select v18 instead of v19.0.18. I will let you know when we have a fix for the newer version.
+Thanks,
+Peter
+
+
+
+On 11/1/17 3:10 AM, Aswathymary Paul wrote:
+
+
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+/xchip/gpprod/servers/genepattern/gp/resources/wrapper_scripts/gp-common.sh: line 611: java: command not found
+
+Job ID if run on a publicly available server.1568616. GSEA
+
+
+--
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Peter Carr
+unread,
+Nov 1, 2017, 9:41:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Update: The latest version of GSEA (v19.0.18) is working now. Reload your job and try running it again.
+
+
+Thanks,
+Peter
+
+
+
+On 11/1/17 3:10 AM, Aswathymary Paul wrote:
+
+
+Aswathymary Paul
+unread,
+Nov 1, 2017, 8:10:09 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you Sir
+ᐧ
+
+
+Regards
+-------------------------------------------------------
+Aswathy Mary Paul
+
+Ph.D. Student
+Computational biology and Bioinformatics
+Cancer Research Program [CRP-9]
+
+Rajiv Gandhi Center for Biotechnology
+Thycaud(P.O), Poojappura
+Thiruvananthapuram-695014, Kerala
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ahx3wAhCP7s/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4a698389-2a2e-72e2-22c9-3389a9305aaf%40broadinstitute.org.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Aswathymary Paul
+unread,
+Nov 1, 2017, 9:24:49 PM
+
+
+
+to genepatt...@googlegroups.com
+I got a new problem. The results are not zipped this time.
+
+
+
+
+ᐧ
+
+
+Regards
+-------------------------------------------------------
+Aswathy Mary Paul
+
+Ph.D. Student
+Computational biology and Bioinformatics
+Cancer Research Program [CRP-9]
+
+Rajiv Gandhi Center for Biotechnology
+Thycaud(P.O), Poojappura
+Thiruvananthapuram-695014, Kerala
+
+
+
+David Eby
+unread,
+Nov 3, 2017, 3:40:37 AM
+
+
+
+to genepatt...@googlegroups.com
+Have a closer look in the list of result files.  So long as you set the createZip parameter to 'true' (the default) there should be a ZIP file among them.
+
+
+This is a behavior change from the previous version of the module to give users direct access to the GSEA reports without the need to download the file, unzip, and open the report.  The ZIP is primarily for use with GSEALeadingEdgeViewer, though obviously it can be downloaded as well.
+
+
+BTW, there's a bug in this particular version of the module in the way the advanced parameters are displayed.  That will be fixed in the future.
+
+
+Regards,
+David
+
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+Reply all
+
+Reply to author
+
+Forward

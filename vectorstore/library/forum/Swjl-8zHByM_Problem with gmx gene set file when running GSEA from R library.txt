@@ -1,0 +1,1 @@
+A GenePattern forum thread discussing a Java exception when running GSEA (Gene Set Enrichment Analysis) from the R library after a module update, with the primary solution being to manually upload gene set files via the 'gene.sets.database.file' parameter instead of using the pull-down menu, and a recommendation to transition to using the REST API for future analyses.

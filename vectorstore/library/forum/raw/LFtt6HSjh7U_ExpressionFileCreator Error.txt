@@ -1,0 +1,70 @@
+URL: https://groups.google.com./g/genepattern-help/c/LFtt6HSjh7U
+Title: ExpressionFileCreator Error
+----------------------------------------
+
+
+
+
+
+ExpressionFileCreator Error
+20 views
+Skip to first unread message
+
+bri colletti
+unread,
+Sep 21, 2024, 4:40:29 AM
+
+
+
+to GenePattern Help Forum
+Hi all, 
+
+
+I'm a relatively new GenePattern user and have been having some difficulty using the ExpressionFileCretor module to normalize a data set that is contained in zipped file with all of the CEL files that I want to use. These CEL files were originally CEL.gz files that I downloaded from GEO and then unzipped to use for this module. I'm not sure what the issue is but would appreciate any suggestions that more experienced program users have. Thank you! 
+Michael Reich
+unread,
+Sep 23, 2024, 10:38:11 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Bri,
+
+
+Can you describe the problems you are having? Also, if you were using the public GenePattern server, can you provide the ID of the ExpressionFileCreator job that's producing the problem?
+
+
+Thanks,
+Michael
+
+
+
+On Sat, Sep 21, 2024 at 4:40 AM bri colletti <bcoll...@gmail.com> wrote:
+
+Hi all, 
+
+
+I'm a relatively new GenePattern user and have been having some difficulty using the ExpressionFileCretor module to normalize a data set that is contained in zipped file with all of the CEL files that I want to use. These CEL files were originally CEL.gz files that I downloaded from GEO and then unzipped to use for this module. I'm not sure what the issue is but would appreciate any suggestions that more experienced program users have. Thank you! 
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f17f174b-9f4e-477d-8c5c-c023dbea7eccn%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+
+Reply all
+
+Reply to author
+
+Forward

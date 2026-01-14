@@ -1,0 +1,26 @@
+URL: https://groups.google.com./g/genepattern-help/c/rooWbw6mGZk
+Title: Tuesday, Jun 29, the main GenePattern server (https://cloud.genepattern.org) will be offline from 1 PM - 3 PM PDT (UTC -7) to install the latest updates,
+----------------------------------------
+
+
+
+
+
+Tuesday, Jun 29, the main GenePattern server (https://cloud.genepattern.org) will be offline from 1 PM - 3 PM PDT (UTC -7) to install the latest updates,
+3 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jun 24, 2021, 12:51:33 PM
+
+
+
+to GenePattern Help Forum
+On Tuesday, Jun 29, the main GenePattern server (https://cloud.genepattern.org) will be offline from 1 PM - 3 PM PDT (UTC -7) to install the latest updates, including improved reliability for transfer of large files. Full details in the release notes: https://github.com/genepattern/genepattern-server/releases/tag/v3.9_21.06_b344
+
+
+Reply all
+
+Reply to author
+
+Forward

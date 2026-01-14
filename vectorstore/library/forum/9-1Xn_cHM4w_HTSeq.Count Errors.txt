@@ -1,0 +1,1 @@
+HTSeq.Count module not functioning on Broad Institute's internal server due to missing dotkit dependencies, with the user attempting to run the module on a BAM file aligned to hg19 but encountering a "command not found" error, and support staff indicating that a solution on the production server is pending with no current estimated timeline for resolution.

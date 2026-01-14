@@ -1,0 +1,155 @@
+URL: https://groups.google.com./g/genepattern-help/c/WBcxQOvlGco
+Title: AmpliconSeq - FASTQ files - Analysis Tools
+----------------------------------------
+
+
+
+
+
+AmpliconSeq - FASTQ files - Analysis Tools
+26 views
+Skip to first unread message
+
+ravi
+unread,
+Jan 7, 2025, 6:38:04 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have VCF files from cnvkit and mutect2. May I know if I could use any tools in GP for further downstream analysis to generate plots/figures generation?
+
+
+Targeted/amplicon sequencing data is generated using FFPE tumour samples that includes:
+
+
+n=8 - Untreated (4) and treated (4).
+
+
+I would like to compare CNV and mutation plots between the untreated and treated samples.
+
+
+Your expert suggestion will be very helpful.
+
+
+Thank you,
+Ravi.
+
+
+Michael Reich
+unread,
+Jan 8, 2025, 2:49:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+Available downstream analyses from Mutect2 are MutSigCV and MutPanning - please take a look at these and see if they are suitable for your purposes. For visualization and creation of figures, I suggest the Integrative Genomics Viewer (IGV), which is available as a GenePattern module and in other formats at https://igv.org.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/6c3cb4df-3e91-420f-9d96-3d7e9521fd02n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+ravi velaga
+unread,
+Jan 8, 2025, 2:54:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you very much for the information, Michael. I will look into the documentation.
+
+
+If you don't mind a quick follow up question, could you share your expert suggestion whether  VCFs from target sequencing after Mutect2 can be used as inputs for MutSigCV and MutPanning or if they are more reliable when WGS data is used ?
+
+
+Best Regards,
+Ravi.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/WBcxQOvlGco/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5GSv0RNRw803X4iKeKK79b6BueQrJ8LsC8oGOZZFw5rEw%40mail.gmail.com.
+
+Michael Reich
+unread,
+Jan 14, 2025, 2:57:50 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+You can use VCF files, but since MutSigCV and MutPanning both require MAF files as inputs, you would need to convert your VCF files to MAF format. There are several tools available to do this, such as vcf2maf . 
+
+
+Best,
+Michael
+
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAFrAY%2BCtmLZguvOngbKpFNurqU-Xbc6%3D-QNh%3DYR2iZRTgFBWhA%40mail.gmail.com.
+
+
+ravi velaga
+unread,
+Jan 14, 2025, 3:11:38 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, Michael.
+
+
+Looks like the input MAFs are only from WGS or WES but not from Targeted Amplicon Seq.
+
+
+Best Regards,
+Ravi.
+
+
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5Erg8Oo4BrWH68na-d9UAscpACoMvD0hr3XPOzzny90Lg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

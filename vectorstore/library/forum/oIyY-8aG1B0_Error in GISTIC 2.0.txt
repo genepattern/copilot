@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when running GISTIC 2.0 indicating an index out of bounds issue related to Q.%cell, with a forum moderator suggesting consulting the specific GISTIC forum for more targeted troubleshooting from method authors and experienced users.

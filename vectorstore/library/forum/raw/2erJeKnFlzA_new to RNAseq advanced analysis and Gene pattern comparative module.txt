@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/2erJeKnFlzA
+Title: new to RNAseq advanced analysis and Gene pattern comparative module
+----------------------------------------
+
+
+
+
+
+new to RNAseq advanced analysis and Gene pattern comparative module
+27 views
+Skip to first unread message
+
+Aurora prs
+unread,
+Aug 27, 2024, 2:53:20 PM
+
+
+
+to GenePattern Help Forum
+My colleague and I produced bulk RNAseq on four different cell types based on the expression of two genes in diseased mice model 3-month and 6-month time points. I was looking for a tool that can give us more comparative analysis than the simple heatmap we got. We know each gene expression level in each column, and overall, it is either up or down in older mice after running DESEQ2. The Excel spreadsheet example he gave me with results from the DGE analysis is enclosed. How can I change this file? I have to fit the comparative analysis module. Is there any other module or tool that helps us decipher the difference between cell types from bulk RNAseq? We are looking for a block of signatures or a more exclusive gene list specific to a type or be prominent in one or two cell types not the others
+Thanks!
+Aurora
+
+example.xlsx
+Michael Reich
+unread,
+Sep 3, 2024, 10:21:53 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Aurora,
+
+
+It looks like you are trying to determine which sets of genes may be up-or downregulated between your 3-month and 6-month sample types. For that I would suggest you look at Gene Set Enrichment Analysis (GSEA) and the Molecular Signatures Database. You can read more about these at https://www.gsea-msigdb.org/gsea/index.jsp. The Molecular Signatures Database includes several collections of mouse gene lists that may be useful for your project. The GSEA method is available in GenePattern and also as separately downloadable software. 
+
+
+Let me know if this is what you are looking for.
+
+
+Thanks,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f59693fe-96dd-4dbd-b12f-164fdbd2bc90n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+sepideh p
+unread,
+Sep 3, 2024, 10:33:03 AM
+
+
+
+to genepatt...@googlegroups.com
+
+That sounds great I will check it out thanks for help
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5HHSUJOsVKjucbUcMi-fT38VNxvJMnnXhzKD4kf3EDPBw%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,157 @@
+URL: https://groups.google.com./g/genepattern-help/c/tds8BbHRKuo
+Title: Understanding the different shapes of curves for UP/DOWN gene set.
+----------------------------------------
+
+
+
+
+
+Understanding the different shapes of curves for UP/DOWN gene set.
+2 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+May 20, 2020, 6:32:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I just want to be sure the way I interpret the results of GSEA are ok. This is a classical analyse with two phenotypes called basal A and basal B.
+Here I don't discuss the NES or FDR but just the shape of the curve depending of the fact genes set are up or down.
+I identify 4 use cases.
+
+Can you tell me if I my interpretation is correct ? 
+Thanks
+
+
+1 - Easy case, Genes up regulated for resistance to gefitinib are up regulated in 'basalB'.
+
+
+2 - Genes down regulated in gefinitinib resistance are up regulated ( more expressed) in basalA. So then, can you say they are downregulated in basal B ? 
+
+
+
+
+3- Genes downregulated comparing basal cells vs mesenchymal are upregulated in basalB (dowregulated in basalA ?)
+
+
+
+
+
+
+4 : Genes up regulated in cancer progress are upregulated in basalA. (down in basal B )
+
+
+
+
+
+
+
+
+
+
+--
+
+Jean-Philippe Villemin   - Bioinformatics, Software Engineer -
+
+
+IGH (Institute of Human Genetics)
+Team: Splicing and Epigenetics
+141 rue de la Cardonille
+Montpellier France 4094 cedex 5
+jpvil...@gmail.com
+
+
+Jersey Heitor Maues
+unread,
+May 20, 2020, 7:17:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Your analysis will depend on the label phenotype that you used in the input.
+I believe your conclusion is correct.
+Everything will depend on what you want to analyze and the result you expect to find.
+
+Analyzes 1 and 3 are upregulated, while 2 and 4 are downregulated.
+
+
+
+
+
+Dr. Jersey Heitor Maués
+Laboratório de Biologia Molecular 
+Hospital Ophir Loyola
+Av. Gov. Magalhães Barata, 992 - São Brás, Belém-PA, 66063-240
+Móvel: (91) 98166-8003
+
+
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAK1_-r5gr8nnYWgp-oNnmwequKWtuggJ19LerSTcu_kUGupbEw%40mail.gmail.com.
+
+Jersey Heitor Maues
+unread,
+May 20, 2020, 7:28:16 AM
+
+
+
+to genepatt...@googlegroups.com
+In a study I published with my colleagues (DOI: 10.1155/2018/5804376) , we were interested in investigating the expression signatures of target genes regulated by MYC in stomach cell lines.
+
+We use a transcriptome and label the phenotypes as Control_siRNA versus MYC_gene.
+
+The first is the normal transcriptome while the second is the transcript with the MYC silenced in the strains.
+
+When we analyzed with GSEA Control_siRNA versus MYC_gene, we found several gene sets enriched for the Control_siRNA phenotype, which for us were upregulated genes.
+
+
+  upregulated genes  =  Control_siRNA
+
+
+
+
+
+downregulated genes  MYC_gene
+
+
+
+
+
+
+Dr. Jersey Heitor Maués
+Laboratório de Biologia Molecular 
+Hospital Ophir Loyola
+Av. Gov. Magalhães Barata, 992 - São Brás, Belém-PA, 66063-240
+Móvel: (91) 98166-8003
+
+
+
+
+
+
+
+Em qua., 20 de mai. de 2020 às 10:32, Jean-Philippe Villemin <jpvil...@gmail.com> escreveu:
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

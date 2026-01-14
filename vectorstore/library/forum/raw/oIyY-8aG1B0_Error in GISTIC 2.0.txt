@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/oIyY-8aG1B0
+Title: Error in GISTIC 2.0
+----------------------------------------
+
+
+
+
+
+Error in GISTIC 2.0
+25 views
+Skip to first unread message
+
+michell...@gmail.com
+unread,
+Mar 15, 2021, 10:21:49 AM
+
+
+
+to GenePattern Help Forum
+I keep getting this error message when I run GISTIC 2.0.
+
+
+Attempted to access Q.%cell(:,9); index out of bounds because size(Q.%cell)=[0,0].
+
+
+
+Does anyone know what this message means?
+Barbara Hill
+unread,
+Mar 15, 2021, 11:19:58 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest posting in the GISTIC forum about this particular question, as that is frequented by the method authors as well as frequent users of GISTIC.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

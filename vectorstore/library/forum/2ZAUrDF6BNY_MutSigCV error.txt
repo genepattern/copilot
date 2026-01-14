@@ -1,0 +1,1 @@
+A user encountered a permission denied error when attempting to run MutSigCV on cloud.genepattern.org, specifically with a "Permission denied" error for the MutSigCV wrapper script, and was seeking guidance on resolving the issue and obtaining access to updated coverage and mutation type dictionary files during a platform migration.

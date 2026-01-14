@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/ro5G5y3Rmgo
+Title: ssGSEA - Error with uploading gct file format
+----------------------------------------
+
+
+
+
+
+ssGSEA - Error with uploading gct file format
+29 views
+Skip to first unread message
+
+Deena Maurer
+unread,
+May 11, 2023, 8:01:16 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am a new user to GenePattern and I am trying to run ssGSEA analysis. I followed the format online, but an error occurs when attempting to run the analysis: "Error in read.dataset(input.ds) : Input is not a res or gct file.
+Calls: ssGSEA.cmdline
+Execution halted"
+
+
+Job ID: ssGSEA (509444)
+
+
+My input file has a ".gct.txt" extension, which I am assuming might be the problem, but I am unsure how to get rid of the ".txt" portion. This file is able to run on the GSEA platform, so I am unsure of why the error persists here. Any help is appreciated! 
+
+
+Anthony Castanza
+unread,
+May 11, 2023, 8:13:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Deena, 
+
+
+Yes the txt file extension is the problem here. The standard GSEA software is written to handle this extra extension but unfortunately that protection is not present in the ssGSEA implementation on GenePattern.
+
+
+In order to show and remove this extra file extension you'll need to enable your operating system's option to "show hidden file extensions". If you're unable to locate this option, let me know what operating system you're using and I should be able to help direct you. 
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9d79e3c3-9f82-4133-a574-a980baf0b833n%40googlegroups.com.
+
+Deena Maurer
+unread,
+May 11, 2023, 8:25:05 AM
+
+
+
+to GenePattern Help Forum
+Thanks, Anthony! That is helpful. Will proceed with removing the txt file extension. 
+
+
+Reply all
+
+Reply to author
+
+Forward

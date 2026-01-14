@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/LQZqTE067KM
+Title: Input data for Multiplot
+----------------------------------------
+
+
+
+
+
+Input data for Multiplot
+22 views
+Skip to first unread message
+
+Rosy Liao
+unread,
+May 10, 2021, 1:34:02 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I'm trying to use Multiplot to create a graph with Fold Change vs Fold Change (as shown in attachment). I have 2 samples that I would like to input. I can't seem to get the formatting of input file correct. Is there an example file somewhere? 
+
+
+Thanks!
+
+Screen Shot 2021-05-10 at 3.21.12 PM.png
+Barbara Hill
+unread,
+May 11, 2021, 10:45:59 AM
+
+
+
+to GenePattern Help Forum
+Hello Rosy,
+
+
+Here is the link to the GCT format. https://www.genepattern.org/file-formats-guide#GCT
+
+
+Please let us know if you need any further assistance.
+
+
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,101 @@
+URL: https://groups.google.com./g/genepattern-help/c/1O6M_eN2GFA
+Title: Issue with GenePattern app
+----------------------------------------
+
+
+
+
+
+Issue with GenePattern app
+12 views
+Skip to first unread message
+
+M.L.
+unread,
+Aug 8, 2019, 1:16:58 PM
+
+
+
+to GenePattern Help Forum
+
+
+After downloading the app and trying to launch it, a Gene Pattern Configuration window opens (see screenshot). I add my email address, save and launch, but nothing happens. The same window keeps opening. Not sure what the problem is. I work with macOS Mojave 10.14.6 and I have an updated Java version (v8).
+
+
+Thanks,
+
+
+Michela
+
+GenePattern_Configuration.pdf
+Barbara Hill
+unread,
+Aug 9, 2019, 12:40:34 PM
+
+
+
+to GenePattern Help Forum
+Hello Michela,
+
+
+Which version of GenePattern are you trying to install?
+
+
+Thanks
+-Barbara
+Michela Locci
+unread,
+Aug 12, 2019, 9:50:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+I downloaded the newest version (3.9.10).
+
+
+Thanks,
+
+
+Michela
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1a28b32f-4383-46a2-b84a-b0219397de59%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jan 24, 2020, 1:03:02 PM
+
+
+
+to GenePattern Help Forum
+Hello Michela, 
+
+
+My sincere apologies for having taken so long to get back to you.
+
+
+If you are still looking to install GenePattern, I suggest you try out latest release, which is available from GitHub: https://github.com/genepattern/genepattern-server/releases/tag/v3.9.11-rc.5%2Bb234
+
+
+I have not personally tried this on Mojave, but let us know how it goes.
+
+
+Alternatively, if you do not need to administrate your own server, you are welcome to use our public server.
+
+
+Apologies again,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

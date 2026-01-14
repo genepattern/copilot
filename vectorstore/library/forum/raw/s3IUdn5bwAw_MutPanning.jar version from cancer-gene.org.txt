@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/s3IUdn5bwAw
+Title: MutPanning.jar version from cancer-gene.org
+----------------------------------------
+
+
+
+
+
+MutPanning.jar version from cancer-gene.org
+20 views
+Skip to first unread message
+
+Federica Brando
+unread,
+Aug 9, 2024, 6:57:06 AM
+
+
+
+to genepatt...@googlegroups.com
+Good morning,
+
+
+I am writing to you because we are trying to build the JAR file of MutPanning on the fly, starting from the repository. Although the version we are interested in is the one downloadable from the web http://104.196.209.200. 
+
+
+Would it be possible to have the commit or the tag from the github repository that is reproducing the version available on the web?
+
+
+Thanks a lot,
+
+Kind regards
+
+
+Federica Brando 
+Ted Liefeld
+unread,
+Aug 12, 2024, 7:16:56 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+sounds like you already found the repository (https://github.com/genepattern/MutPanning).  The latest MutPanning deployed on cloud.genepattern.org is v2 and has a release and a tag of "v2".
+
+
+Hope this helps,
+
+Ted 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

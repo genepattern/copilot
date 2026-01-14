@@ -1,0 +1,1 @@
+STAR alignment index problem in GenePattern where user reported issues accessing prebuilt genomic indices, specifically noting file structure problems with ZIP files containing STAR index files, with support team acknowledging the issue and requesting more specific debugging information to resolve index loading and alignment challenges across different genomic references.

@@ -1,0 +1,64 @@
+URL: https://groups.google.com./g/genepattern-help/c/E5g953jxmtM
+Title: SOM clustering error
+----------------------------------------
+
+
+
+
+
+SOM clustering error
+5 views
+Skip to first unread message
+
+Cynthia Moncada
+unread,
+Jun 30, 2020, 11:08:43 AM
+
+
+
+to GenePattern Help Forum
+Job ID for public server: 251800
+
+
+Error: An error occured while reading the file VSsecretionsRawData12cytokines.gct.
+Cause: 0columns on line 16. Expected 59.
+
+
+When I try to run SOM clustering with a .gct file, I get errors with the rows and columns dimensions I've set (see above). When I change the rows to 12 so that line 16 is not read, I get an error stating that there were more rows detected than expected (detected 13). I've tried changing the values several times. The correct number of rows should be 12.
+
+
+I can send you my files privately if needed.
+
+
+Any help is greatly appreciated! Thank you.
+
+
+
+
+GenePattern Help Forum
+unread,
+Jun 30, 2020, 2:03:38 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I checked your input and the issue is that you have empty rows after your 16th row of data. (81 total in the file)
+
+
+I suggest using an editor like Sublime text (which shows row numbers) to help you remove the empty rows.
+
+
+Please let us know if you need any additional help.
+
+
+Best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+Maintenance announcement for cloud.genepattern.org: The main GenePattern server will be temporarily offline on Wednesday, Dec 23 from 11 AM - 12 PM PST for system updates, with release notes available on the GitHub repository.

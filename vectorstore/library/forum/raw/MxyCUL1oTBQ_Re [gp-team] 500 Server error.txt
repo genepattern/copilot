@@ -1,0 +1,238 @@
+URL: https://groups.google.com./g/genepattern-help/c/MxyCUL1oTBQ
+Title: Re: [gp-team] 500 Server error
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] 500 Server error
+12 views
+Skip to first unread message
+
+Thorin Tabor
+unread,
+May 12, 2019, 10:46:35 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello Katie,
+
+This problem was caused by a server upgrade we performed. The problem should be fixed now and you should be able to log in.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+On 5/12/19 13:17, Katie Jenike wrote:
+
+Hello!! 
+
+
+I just tried to login to the server and ran across this error, any chance you know what is happening or if there is anything I can do on my end? 
+
+
+Best,
+Katie
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/E865CF45-EE82-4425-83A7-68678918FAC9%40gmail.com.
+
+Ted Liefeld
+unread,
+May 12, 2019, 11:14:28 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Hi
+
+
+can you try to login again?  I can see that your server is running and can access it from the admin panel.
+
+
+Thanks
+
+Ted
+
+
+On Sun, May 12, 2019 at 10:17 AM Katie Jenike <kate....@gmail.com> wrote:
+
+Hello!! 
+
+
+I just tried to login to the server and ran across this error, any chance you know what is happening or if there is anything I can do on my end? 
+
+
+Best,
+Katie
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/E865CF45-EE82-4425-83A7-68678918FAC9%40gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+May 15, 2019, 7:52:53 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Katie
+
+
+I have so far been unable to fix this for you, but another GenePattern team member who is the key architect of this system should arrive in the office in a couple of hours and we'll let you know when we have it working again,
+
+
+Thanks for your patience
+
+
+Ted
+
+
+On Wed, May 15, 2019 at 6:17 AM Katie Jenike <kate....@gmail.com> wrote:
+
+Hello again! 
+
+
+Sorry to bother you, while the problem was resolved on Monday, I am receiving the same error today. 
+
+
+Best,
+Katie
+
+
+On Sun, May 12, 2019 at 1:17 PM Katie Jenike <kate....@gmail.com> wrote:
+
+Hello!! 
+
+
+I just tried to login to the server and ran across this error, any chance you know what is happening or if there is anything I can do on my end? 
+
+
+Best,
+Katie
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/CAGJB-EZEgcnih%3D1vRsrchNC2sg%3DuQDwTNdTugUkcYgQKDnTntA%40mail.gmail.com.
+
+
+Thorin Tabor
+unread,
+May 15, 2019, 8:39:56 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello Katie,
+
+The issue should be fixed again and you should be able to log in.
+
+
+Thorin
+
+
+Thorin Tabor
+unread,
+May 17, 2019, 7:35:50 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello Katie,
+
+The issue is fixed again.
+
+To fill you in on what's causing the issue, it looks like something you are running is creating a .ipython directory in your account and installing stuff there. When your Jupyter server is started back up, it tries to read Python packages in that directory, but it runs into something that causes it to throw an error. This prevents Jupyter from starting back up and thus you get a 500 error.
+
+I'm still diagnosing exactly what in the .ipython directory is the problem, but in the meantime I've renamed ".ipython" to "ipython" and you should be able to log in.
+
+
+Thorin
+
+
+On 5/16/19 06:45, Katie Jenike wrote:
+
+Hello again! 
+
+
+Again, sorry to keep bothering you, but I just wanted to let you know this is still an issue.
+
+
+Best,
+Katie
+
+
+On Wed, May 15, 2019 at 9:16 AM Katie Jenike <kate....@gmail.com> wrote:
+
+Hello again! 
+
+
+Sorry to bother you, while the problem was resolved on Monday, I am receiving the same error today. 
+
+
+Best,
+Katie
+
+
+On Sun, May 12, 2019 at 1:17 PM Katie Jenike <kate....@gmail.com> wrote:
+
+Hello!! 
+
+
+I just tried to login to the server and ran across this error, any chance you know what is happening or if there is anything I can do on my end? 
+
+
+Best,
+Katie
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+
+To post to this group, send email to genepatt...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/CAGJB-Ebdpu8rZHURC2_4noaqVPGvA%2B2%3Dv%2BLC47HMSeP4Q8fkZQ%40mail.gmail.com.
+
+Thorin Tabor
+unread,
+May 17, 2019, 7:35:50 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Katie,
+
+I believe I have diagnosed the cause of the issue and have put in a fix to prevent users from running into it again. Let me know if you experience this error again.
+
+Sorry for the issues.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

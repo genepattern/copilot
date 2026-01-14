@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/_HiXlwn8lKk
+Title: igv.js version 2.4 asked for sign in again even I signed in already
+----------------------------------------
+
+
+
+
+
+igv.js version 2.4 asked for sign in again even I signed in already
+5 views
+Skip to first unread message
+
+GWang
+unread,
+Apr 29, 2021, 4:26:22 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern support team,
+I signed in my account, but could not use the igv since it asked me to sign in again. Please see screen shot. 
+Could you please let me know what is the issue? 
+Thanks.
+Guocan
+
+Screen Shot 2021-04-29 at 6.25.19 PM.png
+tmt...@cloud.ucsd.edu
+unread,
+Apr 30, 2021, 9:27:57 AM
+
+
+
+to GenePattern Help Forum
+Hello Guocan,
+
+
+Can you tell me the job number of the affected igv.js run so that I can investigate the issue?
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

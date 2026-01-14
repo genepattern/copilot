@@ -1,0 +1,129 @@
+URL: https://groups.google.com./g/genepattern-help/c/jTFWrqu25q8
+Title: MutsigCV job got terminated
+----------------------------------------
+
+
+
+
+
+MutsigCV job got terminated
+18 views
+Skip to first unread message
+
+Angelussong
+unread,
+Apr 30, 2024, 9:08:47 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I tried running a MutSigCV job with a maf file I made. The maf file is about 300M from 250 samples. The job got terminated without any other error messages. 
+
+
+Host EC2 (instance i-0060c7c9e14ab9537) terminated.
+
+
+
+I am wondering if this is some memory error that I need to request more resource for the job. The job ID is 579260.
+
+
+Thanks for your help!
+
+
+
+
+Ted Liefeld
+unread,
+Apr 30, 2024, 9:41:50 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I suspect it was insufficient memory.  I am running a test right now and will let you know how it goes in a few hours.
+
+
+Thanks for your patience
+
+
+Ted
+
+Angelussong
+unread,
+Apr 30, 2024, 9:45:06 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much! 
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cd3fbb10-fd91-4c7d-a940-273cc52401a2n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Apr 30, 2024, 10:39:17 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I was unable to access the mutation.type.dictionary input file.  It looks like it might have been deleted. Could you run another job with a fresh upload of that file (reload will fail die to its absence) annd send me the job number?  Add more memory (I was trying with 64GB) ad then you will have the result if it works, and if not I ca try to debug further.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Angelussong
+unread,
+Apr 30, 2024, 10:43:02 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks! Just restarted the job with 64G memory, 8 CPU and 4 hours requested. Hopefully this time it'll run without error. 
+
+
+Thanks for your help! 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/77f3949c-7656-4c65-ba05-fd55f3a296f6n%40googlegroups.com.
+
+Angelussong
+unread,
+Apr 30, 2024, 12:20:35 PM
+
+
+
+to genepatt...@googlegroups.com
+The job finished without any error. Thanks so much for your help! 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/77f3949c-7656-4c65-ba05-fd55f3a296f6n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

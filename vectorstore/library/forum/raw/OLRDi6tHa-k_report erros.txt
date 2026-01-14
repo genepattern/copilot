@@ -1,0 +1,145 @@
+URL: https://groups.google.com./g/genepattern-help/c/OLRDi6tHa-k
+Title: report erros
+----------------------------------------
+
+
+
+
+
+report erros
+68 views
+Skip to first unread message
+
+Abhinav Seth
+unread,
+Apr 7, 2021, 6:30:21 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I've run several successful jobs today.
+However some of the jobs this evening have been running but failing to produce graphical output. I get the error message listed below.
+Do you have any ideas on what might be causing this?
+
+
+Thanks,
+Abhi
+
+
+
+
+The Tool ran successfully but at least one part of the reports production failed with the following details The reports is INcompleteERROR 1 Must be finite. ---------------------------------------------------java.lang.IllegalArgumentException: Must be finite. at jfree...@1.5.0/org.jfree.chart.axis.NumberTickUnitSource.getCeilingTickUnit(NumberTickUnitSource.java:114) at jfree...@1.5.0/org.jfree.chart.axis.NumberAxis.selectHorizontalAutoTickUnit(NumberAxis.java:852) at jfree...@1.5.0/org.jfree.chart.axis.NumberAxis.selectAutoTickUnit(NumberAxis.java:825) at jfree...@1.5.0/org.jfree.chart.axis.NumberAxis.refreshTicksHorizontal(NumberAxis.java:954) at jfree...@1.5.0/org.jfree.chart.axis.NumberAxis.refreshTicks(NumberAxis.java:926) at jfree...@1.5.0/org.jfree.chart.axis.ValueAxis.reserveSpace(ValueAxis.java:806) at jfree...@1.5.0/org.jfree.chart.plot.XYPlot.calculateDomainAxisSpace(XYPlot.java:3031) at jfree...@1.5.0/org.jfree.chart.plot.XYPlot.calculateAxisSpace(XYPlot.java:2990) at jfree...@1.5.0/org.jfree.chart.plot.XYPlot.draw(XYPlot.java:3132) at jfree...@1.5.0/org.jfree.chart.JFreeChart.draw(JFreeChart.java:1286) at jfree...@1.5.0/org.jfree.chart.JFreeChart.createBufferedImage(JFreeChart.java:1453) at jfree...@1.5.0/org.jfree.chart.JFreeChart.createBufferedImage(JFreeChart.java:1434) at jfree...@1.5.0/org.jfree.chart.ChartUtils.writeChartAsPNG(ChartUtils.java:184) at jfree...@1.5.0/org.jfree.chart.ChartUtils.saveChartAsPNG(ChartUtils.java:310) at jfree...@1.5.0/org.jfree.chart.ChartUtils.saveChartAsPNG(ChartUtils.java:285) at org.gsea_msigdb.gsea/edu.mit.broad.genome.charts.XChartImpl.saveAsPNG(XChartImpl.java:114) at org.gsea_msigdb.gsea/edu.mit.broad.genome.reports.EnrichmentReports.createGseaLikeReport(EnrichmentReports.java:317) at org.gsea_msigdb.gsea/edu.mit.broad.genome.reports.EnrichmentReports.createGseaLikeReport(EnrichmentReports.java:179) at org.gsea_msigdb.gsea/xtools.gsea.AbstractGsea2Tool.execute_one_with_reporting(AbstractGsea2Tool.java:124) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.execute(Gsea.java:165) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:417) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:287) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29)
+
+Anthony Castanza
+unread,
+Apr 7, 2021, 7:00:28 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Abhi,
+
+ 
+
+The crux of the error is here: java.lang.IllegalArgumentException: Must be finite
+
+Then if you look at the error message you’ll see where exactly it failed “org.jfree.chart.axis.NumberAxis.selectHorizontalAutoTickUnit”
+
+ 
+
+What this is saying is that when its trying to generate the axis dimensions to plot your gene rankings its encountering an infinite value that it can’t plot as a real finite value on the axis.
+
+I assume this was in a GSEA job? GSEA Preranekd? If so, you’ll need to check your ranked list and resolve any non-numeric values. Some people replace infinite values with a small number above/below the positive/negative max value.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cfb7d79a-6848-424f-9556-7058cdce8dean%40googlegroups.com.
+
+Abhinav Seth
+unread,
+Apr 8, 2021, 9:04:08 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+That is very helpful. This is a GSEA job, not preranked. When I open the ranked list, I do see some genes have infinity score. When I look back at my dataset, these are genes where one of the categories had zero expression across all samples. What is the recommended way to deal with this if I want to complete the analysis as a GSEA job and not use the ranklist to run GSEA preranked?
+
+
+Thanks
+
+
+
+Anthony Castanza
+unread,
+Apr 8, 2021, 9:09:43 AM
+
+
+
+to genepatt...@googlegroups.com
+How many samples per group do you have, and what metric for ranking genes are you using?
+
+
+If you have three or more samples per group you should be able to run using the signal2noise ranking metric which has a built in mitigation this issue.
+
+
+If you're using some other ranking metric, and aren't able to use signal2noise, I'd suggest adding a small pseudo-count to your data.
+
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/baa700e6-cb6b-4a8d-9f5f-cc422a57f77an%40googlegroups.com.
+
+Abhinav Seth
+unread,
+Apr 8, 2021, 9:17:46 AM
+
+
+
+to GenePattern Help Forum
+Unfortunately it is somebody else's published data and there are only two replicates per condition, so I am unable to use signal2noise. I am trying to run GSEAprerank now, if that doesn't work, i'll try the pseudo count approach. It's weird that it's only doing it for some of the genes with zero values.
+
+
+Thanks for your help.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

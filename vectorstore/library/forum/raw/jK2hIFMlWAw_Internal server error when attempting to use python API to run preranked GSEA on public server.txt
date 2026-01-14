@@ -1,0 +1,219 @@
+URL: https://groups.google.com./g/genepattern-help/c/jK2hIFMlWAw
+Title: Internal server error when attempting to use python API to run preranked GSEA on public server
+----------------------------------------
+
+
+
+
+
+Internal server error when attempting to use python API to run preranked GSEA on public server
+56 views
+Skip to first unread message
+
+David Lahr
+unread,
+Sep 23, 2020, 8:36:50 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I've been using the GenePattern python API in the past to run Pre-ranked GSEA on the publicly provided server (thank you for both of these!).  Recently when I run  code to start the job I started getting an internal server error - specifically this line of my code:
+job = gpserver.run_job(job_spec, False)
+
+
+HTTPError: HTTP Error 500: Internal Server Error
+
+
+
+Full stack trace pasted below.  Can you help me investigate this?  
+
+
+Thank you,
+Dave
+
+
+Stacktrace:
+HTTPError                                 Traceback (most recent call last)
+<ipython-input-21-c5e41ad15a58> in <module>
+      3 for gs_group_name, job_spec in all_job_spec_list:
+      4     # This will return the job object and continue execution even if the job isn't finished
+----> 5     job = gpserver.run_job(job_spec, False)
+      6 #     print(dir(job))
+      7 
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/site-packages/gp/core.py in run_job(self, job_spec, wait_until_done)
+     97         request.add_header('Content-Type', 'application/json')
+     98         request.add_header('User-Agent', 'GenePatternRest')
+---> 99         response = urllib.request.urlopen(request, json_string)
+    100         if response.getcode() != 201:
+    101             print(" job POST failed, status code = %i" % response.getcode())
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in urlopen(url, data, timeout, cafile, capath, cadefault, context)
+    220     else:
+    221         opener = _opener
+--> 222     return opener.open(url, data, timeout)
+    223 
+    224 def install_opener(opener):
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in open(self, fullurl, data, timeout)
+    529         for processor in self.process_response.get(protocol, []):
+    530             meth = getattr(processor, meth_name)
+--> 531             response = meth(req, response)
+    532 
+    533         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_response(self, request, response)
+    639         if not (200 <= code < 300):
+    640             response = self.parent.error(
+--> 641                 'http', request, response, code, msg, hdrs)
+    642 
+    643         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in error(self, proto, *args)
+    567         if http_err:
+    568             args = (dict, 'default', 'http_error_default') + orig_args
+--> 569             return self._call_chain(*args)
+    570 
+    571 # XXX probably also want an abstract factory that knows when it makes
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in _call_chain(self, chain, kind, meth_name, *args)
+    501         for handler in handlers:
+    502             func = getattr(handler, meth_name)
+--> 503             result = func(*args)
+    504             if result is not None:
+    505                 return result
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_error_default(self, req, fp, code, msg, hdrs)
+    647 class HTTPDefaultErrorHandler(BaseHandler):
+    648     def http_error_default(self, req, fp, code, msg, hdrs):
+--> 649         raise HTTPError(req.full_url, code, msg, hdrs, fp)
+    650 
+    651 class HTTPRedirectHandler(BaseHandler):
+
+
+HTTPError: HTTP Error 500: Internal Server Error
+Ted Liefeld
+unread,
+Sep 23, 2020, 9:41:46 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am looking into it now.  Are you running the jobs using use account "dlahr" or another account?  Also, can you provide the code you are using to make the call from python?  I can't see any jobs for the "dlahr" account, but I do see that there are others running GSEAPreranked successfully (and sometimes not).  There are some errors in the logs that look like someone (I can't see the username) has tried to run versions of the module that are no longer on our server, so which version were you trying to run?
+
+
+Thanks
+
+
+Ted
+
+
+
+David Lahr
+unread,
+Sep 23, 2020, 12:34:52 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted
+
+
+Thank you for the quick response and help!  To answer your questions:
+account:  dllahr
+two letter l's in that fyi
+code is attached - jupyter notebook - 
+calls to API start around cell 6
+call that fails cell 21
+I trying to run v 7.2.0 but FYI I'm finding the available tasks via the API, then choosing GSEAPreranked (cells 10-13)
+I determined the version by running the code:  gsea_preranked_task.get_version()
+Is there anything I can do to help debug / get more info?
+
+
+Thanks again for your help!
+Dave
+
+
+
+
+gsea_python_api.ipynb.gz
+Ted Liefeld
+unread,
+Sep 23, 2020, 1:15:37 PM
+
+
+
+to GenePattern Help Forum
+Dave
+
+
+this is due to a bug in our server, one that we had found recently and hope to get deployed to prod in a week or two.  There is a workaround you can try (it works for me in a simpler test case).
+
+
+The issue is when the advanced job options (cpu, memory etc) do not exactly match the values provided by the server for the module.  In this case you are asking for "4 Gb" of memory, but the value in the settings ins "4GB" without the space.  Try changing the setting of the "job_memory" variable at the top of your notebook to remove the space and retry it.
+
+
+if it still fails, you may have to wait a week or two to be able to run this programmatically.  You should be able to still run jobs in the meantime via the UI though this might be a bit cumbersome.
+
+
+Let me know if this works for you,
+
+
+Ted
+
+
+
+David Lahr
+unread,
+Sep 23, 2020, 2:57:32 PM
+
+
+
+to GenePattern Help Forum
+Thanks Ted!  I tried it, unfortunately I got the same error message.  I commented out my code where I try to set the memory, and that works, so you've definitely identified the problem!  And that will still let me run about half my jobs automatically, the other half will fail, but then I can use the UI to restart w/ more mem, which is easier than creating from scratch.  Thanks!
+
+Ted Liefeld
+unread,
+Sep 23, 2020, 3:12:42 PM
+
+
+
+to GenePattern Help Forum
+Dave
+
+
+well it's a slight improvement.  We will try to get the proper fix out ASAP
+
+
+Ted
+
+
+
+David Lahr
+unread,
+Sep 24, 2020, 4:05:28 AM
+
+
+
+to GenePattern Help Forum
+Thank you Ted for all the help - much more than a slight improvement!  
+
+
+Reply all
+
+Reply to author
+
+Forward

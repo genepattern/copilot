@@ -1,0 +1,1 @@
+A user encountered an unexpected error when importing a GCT file into GSEA and sought help troubleshooting the issue, which was ultimately resolved by correcting a formatting issue in the GCT file, with an expert suggesting potential solutions like re-uploading the file and checking its contents.

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user asked about analyzing Copy Number Variation (CNV) for Affymetrix Cytoscan HD data using the Affymetrix SNP6 Copy Number Inference Pipeline, but was informed by a support representative that the pipeline is no longer supported, leaving the user without a clear solution for CNV analysis in GenePattern.

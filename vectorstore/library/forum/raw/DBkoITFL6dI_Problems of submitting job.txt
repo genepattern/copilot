@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/DBkoITFL6dI
+Title: Problems of submitting job
+----------------------------------------
+
+
+
+
+
+Problems of submitting job
+15 views
+Skip to first unread message
+
+曾家駿
+unread,
+Apr 2, 2019, 6:17:53 PM
+
+
+
+to GenePattern Help Forum
+When I try to upload the file to Public Server, I encountered following errors:
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+However, my network was OK, and the same message appeared even after using Uploader. 
+I had tried several modules "CollapsesDataset", "Differential Expression"...and the same error message occurred, Did anyone have some suggestions? Thank you very much.  
+
+
+Ted Liefeld
+unread,
+Apr 4, 2019, 9:16:09 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+unfortunately I haven't been able to duplicate this or find anything in our logs so far.  Could you try again and if it fails again, let me know the GMT time and date (https://www.google.com/search?q=gmt+now&rlz=1C5CHFA_enUS733US734&oq=gmt+now&aqs=chrome..69i57.949j0j7&sourceid=chrome&ie=UTF-8) and I will try to search the logs again.  It seems likely that the network issue was somewhere between Taiwan and our AWS server (on the east coast of the US).  I am not a network engineer but if you have one in your IT department, they might be able to help.
+
+
+I did try looking at our server using geopeeker (https://geopeeker.com/fetch/?url=cloud.genepattern.org) and it never did succeed from Singapore or Australia, the two sites (on the free version) closest to Taiwan.
+
+
+Let me know when you have tried again and I'll check the logs once more.
+
+
+Thanks
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

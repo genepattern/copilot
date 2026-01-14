@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/YDFwi_cAnTs
+Title: [Gistic2] do i need to generate my own cnv-file?
+----------------------------------------
+
+
+
+
+
+[Gistic2] do i need to generate my own cnv-file?
+28 views
+Skip to first unread message
+
+Samuel Terkper Ahuno
+unread,
+Aug 31, 2020, 6:25:26 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I'm fairly new. trying to run gistic2 for WES samples (aligned hg38).
+generated my .seg files with gatk copy number anlsysis pipelines. 
+ 
+please how can i generate the cnv-file and marker files needed to run gistic?
+i know it's optional but recommended.
+
+
+thanks for your help
+Sam
+Edwin Juarez
+unread,
+Sep 16, 2020, 10:48:05 AM
+
+
+
+to GenePattern Help Forum
+
+Hello!
+
+
+This is a question that you can ask over at the GISTIC forum: https://groups.google.com/a/broadinstitute.org/g/gistic-forum
+
+
+Good luck!
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

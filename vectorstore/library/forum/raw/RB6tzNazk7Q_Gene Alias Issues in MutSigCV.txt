@@ -1,0 +1,118 @@
+URL: https://groups.google.com./g/genepattern-help/c/RB6tzNazk7Q
+Title: Gene Alias Issues in MutSigCV
+----------------------------------------
+
+
+
+
+
+Gene Alias Issues in MutSigCV
+20 views
+Skip to first unread message
+
+Angelussong
+unread,
+Aug 30, 2021, 1:19:58 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I recently ran MutSigCV on GenePattern using a MAF file called by GATK Mutect2 followed by Funcotator under hg19. However, I found that some genes that seem statistically significant did not show up in the MutSigCV results such as ADGRV1 and KMT2C. 
+
+
+When I went into the exome 192 coverage file (the default file for MutSigCV) I found that it has that gene but under different aliases. KMT2C is listed as MLL3 and ADGRV1 is listed as GPR98. As a matter of fact, I ran a small test on the gene symbols in the exome 192 coverage file and found a ton of genes which are aliases, therefore, couldn't match to my dataset. 
+
+
+I am wondering if there is a way to fix this to make all the gene symbols consistent? 
+
+
+Thanks, 
+
+
+Hanbing Song
+Barbara Hill
+unread,
+Sep 1, 2021, 12:11:22 PM
+
+
+
+to GenePattern Help Forum
+Hello Hanbing, 
+
+
+Do you have a job id you can point us to? I think this may be a known issue, but I need to check the details to verify.
+
+
+Thank you
+-Barbara
+
+
+Angelussong
+unread,
+Sep 1, 2021, 12:14:29 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara, 
+
+
+The Job ID was 362000. But the job was from July 14th so I guess it's already deleted. 
+
+
+Thanks, 
+Hanbing
+
+
+
+Barbara Hill
+unread,
+Sep 3, 2021, 7:10:00 AM
+
+
+
+to GenePattern Help Forum
+Ah - yes, then that would have been purged.
+
+
+Do you still need assistance?
+
+
+Best
+-Barbara
+Angelussong
+unread,
+Sep 3, 2021, 10:06:40 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara, 
+
+
+I think I found a fix by mapping all the gene symbols in my datasets to the ones in MutSigCV so they are now compatible. 
+
+
+Thanks, 
+
+
+Hanbing
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/RB6tzNazk7Q/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1070401b-a678-4d23-b96c-f60ba1ad7e60n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

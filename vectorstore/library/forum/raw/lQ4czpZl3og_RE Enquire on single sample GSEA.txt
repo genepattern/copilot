@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/lQ4czpZl3og
+Title: RE: Enquire on single sample GSEA
+----------------------------------------
+
+
+
+
+
+RE: Enquire on single sample GSEA
+27 views
+Skip to first unread message
+GP-Info
+unread,
+Jul 20, 2020, 9:20:35 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+We were able to get the following response (see below)  from one of the senior members of our lab.
+
+
+Please note that the email address you sent to is no longer monitored. If you have additional questions, please post them here in our forum, as we will otherwise be unable to respond.
+
+
+Sincerely, 
+The GenePattern Team
+
+
+"ssGSEA scores are one step removed from the data but still are subject to biases because of the sample differences. It may work but it may not work well because of the difficulty normalizing the cell lines and microvesicles properly. 
+
+
+You can try rank-normalizing the samples before running ssGSEA and see if you can run some positive control to see if the normalization is reasonable. This will be somewhat easier if the samples were normal and tumor cells."
+
+
+
+
+Date: Sat, 11 Jul 2020 22:33:46 +0800 (CST)
+Subject: Enquire on single sample GSEA
+To whom it may concern,
+GenePattern is of great importance to our research project. However, currently,we have a discussion over the application of ssGSEA but without any further insights.Therefore, on behalf of my group, we would like enquire as the possibility of applying ssGSEA into a characterization of immune cell types (input by a gene markers sets gmt file) comparing between cell line and corresponding microvesicles. Commonly, microvesicle is not like solid tissue, there is no tumor infiltrating immune cells. Therefore simple exploring the immune cells types within the cell line and microvesicle will be no realisitc, of course noting like tumor tissue and normal tissue. However, I would like to further stick to the application of ssGSEA to the comparison of cell line and microvesicle using an immune cell gene markers input file (gmt), hoping that some insightful and reasonable explanation could be achieved.
+
+Looking for your response.
+
+
+Reply all
+
+Reply to author
+
+Forward

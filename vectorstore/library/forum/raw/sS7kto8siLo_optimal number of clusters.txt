@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/sS7kto8siLo
+Title: optimal number of clusters
+----------------------------------------
+
+
+
+
+
+optimal number of clusters
+9 views
+Skip to first unread message
+
+Jorge Alberto Cárdenas Pestana
+unread,
+Apr 5, 2023, 7:56:37 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+
+
+I am clustering genes including the uncertainty. Is there a way to find the optimal number of clusters K? I am using the pumaclustii function from the puma package but I have to define K prior to the analysis.
+
+
+Thanks in advance,
+
+
+Jorge A Cardenas
+
+edh...@cloud.ucsd.edu
+unread,
+Apr 5, 2023, 10:43:19 AM
+
+
+
+to GenePattern Help Forum
+Hi Jorge, 
+
+
+The Puma package is not available on GenePattern servers. We suggest you to take a look at the documentation for the puma package on Bioconductor: https://bioconductor.org/packages/release/bioc/html/puma.html
+
+
+Edwin
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

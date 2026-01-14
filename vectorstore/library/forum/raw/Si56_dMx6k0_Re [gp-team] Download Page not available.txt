@@ -1,0 +1,118 @@
+URL: https://groups.google.com./g/genepattern-help/c/Si56_dMx6k0
+Title: Re: [gp-team] Download Page not available
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] Download Page not available
+4 views
+Skip to first unread message
+Ted Liefeld
+unread,
+Jul 14, 2025, 6:50:42 AM
+
+
+
+to genepatt...@googlegroups.com, aor...@pitt.edu, genepatt...@broadinstitute.org
+Hi,
+
+
+a few months ago we transferred genepattern.org to a new server and new software stack and apparently we missed this link.  It looks like you are trying to get a download of the server installer.  The old download page was just a redirect to the correct link for server releases; 
+
+               https://github.com/genepattern/genepattern-server/releases
+
+
+On www.genepattern.org the download menu item points directly to github now without the redirect 'download' page.  From here, you should update your notes or scripts to use the github link.  I will add a ticket to add a redirect page back into the www.genepattern.org website but can't give you an ETA for it at this time.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+
+On Mon, Jul 14, 2025 at 6:15 AM 'Orbell, Adam W' via genepattern-team <genepatt...@broadinstitute.org> wrote:
+
+Hello, when trying to download using the Downloads page we receive a 404 error. Is this no longer the preferred method to download?
+https://www.genepattern.org/download
+
+
+
+
+
+ 
+
+Adam W. Orbell
+
+M.S., CISSP, Network +, A +, Server +, Cloud +, Green IT
+
+IT Manager
+
+Department of Environmental and Occupational Health
+
+University of Pittsburgh
+
+ 
+
+Environmental and Occupational Health
+
+Public Health Building
+
+Room G005
+
+130 DeSoto Street
+
+Pittsburgh, PA 15261
+
+Phone: 412-624-3084
+
+Fax: 412-624-9361
+
+E-mail: aor...@pitt.edu
+
+Help Ticket: Email or Login: https://pittpublichealth.freshdesk.com/
+
+ 
+
+ 
+
+***********************************************************************
+
+Confidentiality Notice:
+
+This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error, please notify the system manager. This message contains confidential information and is intended only for the individual named. If you are not the named addressee, you should not disseminate, distribute or copy this email. Please notify the sender immediately by email if you have received this email by mistake and delete this email from your system. If you are not the intended recipient, you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.
+
+***********************************************************************
+
+ 
+
+ 
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/SA6PR04MB9271F699CF6C8FA40E2A1F75C254A%40SA6PR04MB9271.namprd04.prod.outlook.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

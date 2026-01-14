@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/9YL1ov9S_PE
+Title: PredictionResultsViewer
+----------------------------------------
+
+
+
+
+
+PredictionResultsViewer
+11 views
+Skip to first unread message
+Sivan Gershanov
+unread,
+Dec 20, 2017, 2:24:43 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I uesd the PredictionResultsViewer module to view results from testing a predictor (KNN).
+
+My results file contains four class and the viewer shows only the results of two class.
+
+How can I view the results of all four class together?
+
+
+Input file attached.
+
+
+Thank you,
+Sivan
+
+
+
+
+
+series_matrix.test.10F.pred.odf
+
+Reply all
+
+Reply to author
+
+Forward

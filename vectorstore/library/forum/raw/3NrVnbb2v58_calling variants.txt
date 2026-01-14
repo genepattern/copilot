@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/3NrVnbb2v58
+Title: calling variants
+----------------------------------------
+
+
+
+
+
+calling variants
+5 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Feb 3, 2021, 10:24:40 AM
+
+
+
+to GenePattern Help Forum
+Posted anonymously:
+
+
+How can I use GenePattern to identify and annotate variants in human exomes?  I have the files in fastq format.  I need to align with the human genome, generate the bam and then get the vcf files for calling variants (indels, SNPs).  
+
+
+
+Can this be done in GenePattern?
+Barbara Hill
+unread,
+Feb 3, 2021, 10:28:14 AM
+
+
+
+to GenePattern Help Forum
+GenePattern does not have support for variant calling.
+
+
+We suggest you use the popular Genome Analysis Toolkit  (GATK) either locally, or through their integration with Terra.
+
+
+Please let us know if we can help with anything else.
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

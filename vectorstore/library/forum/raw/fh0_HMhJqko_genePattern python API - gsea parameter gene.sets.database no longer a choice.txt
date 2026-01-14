@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/fh0_HMhJqko
+Title: genePattern python API - gsea parameter gene.sets.database no longer a choice
+----------------------------------------
+
+
+
+
+
+genePattern python API - gsea parameter gene.sets.database no longer a choice
+16 views
+Skip to first unread message
+
+David Lahr
+unread,
+Jul 12, 2021, 2:27:32 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I'm using the python API for genePattern to run preranked GSEA, and today when I tried to run my code and set the gene.sets.database parameter I got the error message:
+GPException: 'not a choice parameter'
+
+
+This was a choice parameter as recently as last Thursday 3:30 PM EST.  Is this a problem somewhere on the server or a known change, if the latter can you point me to some documentation so I can update my code?  
+
+
+Thank you,
+Dave
+David Lahr
+unread,
+Jul 17, 2021, 2:20:10 PM
+
+
+
+to GenePattern Help Forum
+Do you need a code snippet to reproduce this?
+
+Barbara Hill
+unread,
+Jul 19, 2021, 6:54:37 AM
+
+
+
+to GenePattern Help Forum
+Hi Dave!
+
+
+Are you still seeing this?
+
+There was an issue with the dropdowns in GSEA & GSEAPreranked early last week, but I back out the change, and they are working again in the WebApp. 
+
+Let us know if you are currently experiencing this issue via the API.
+
+
+All the best
+-Barbara
+Dave Lahr
+unread,
+Jul 19, 2021, 8:55:12 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, just checked - works for me now!  Thank you,
+
+
+Dave
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/fh0_HMhJqko/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/93360a9d-0ad6-4da2-839b-37e2f31bea98n%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jul 19, 2021, 9:08:18 AM
+
+
+
+to GenePattern Help Forum
+Excellent news!
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,96 @@
+URL: https://groups.google.com./g/genepattern-help/c/7k-LQKgfPsI
+Title: Local server installation macOS
+----------------------------------------
+
+
+
+
+
+Local server installation macOS
+22 views
+Skip to first unread message
+
+Jun Ma
+unread,
+Jun 13, 2019, 2:26:34 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+   I am trying to setup a local server on macOS 10.12.6. I have downloaded Genepattern-server 3.9.11 rc.4 b216 from github. 
+   However, I keep on getting this error message:
+```
+/usr/bin/java
+found java executable in PATH
+version 1.8.0_211
+Version of Java passes inspection.
+-Djava.endorsed.dirs=/Applications/GenePattern.app/Contents/Resources/GenePatternServer/Tomcat/common/endorsed is not supported. Endorsed standards and standalone APIs
+in modular form will be supported via the concept of upgradeable modules.
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+```
+It seems there might be compatible issues with tomcat and java?
+I am using JAVA 8 as suggested though.
+
+
+Thanks
+Jun 
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Jan 24, 2020, 1:05:03 PM
+
+
+
+to GenePattern Help Forum
+Hello Jun, 
+
+
+I'm so very sorry that we did not respond to you sooner!
+
+
+I believe that you need the JDK for this to work.
+
+
+Please let us know if you have any further trouble. And as always, feel free to use our public server.
+
+
+Apologies again,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

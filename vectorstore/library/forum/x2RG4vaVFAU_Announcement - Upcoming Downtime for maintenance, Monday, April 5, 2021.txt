@@ -1,0 +1,1 @@
+GenePattern server scheduled for maintenance on Monday, April 5, 2021, from 1-4 PM PDT, with updates including more efficient S3 file transfer, and full release notes available on the GitHub repository.

@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when attempting to install and run a module, with input files and an R script being ignored during runtime, and a support team member suggested sharing the module details privately for further debugging investigation.

@@ -1,0 +1,1 @@
+A researcher encountered an error running MutSigCV on GenePattern, specifically a "silent and nonsilent rates are too different" error, likely related to the mutation type dictionary file, with the recommended solution being to contact the MutSig authors directly at their institutional email for further technical support.

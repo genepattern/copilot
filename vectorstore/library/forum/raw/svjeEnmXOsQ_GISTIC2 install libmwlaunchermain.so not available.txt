@@ -1,0 +1,97 @@
+URL: https://groups.google.com./g/genepattern-help/c/svjeEnmXOsQ
+Title: GISTIC2 install libmwlaunchermain.so not available
+----------------------------------------
+
+
+
+
+
+GISTIC2 install libmwlaunchermain.so not available
+23 views
+Skip to first unread message
+
+Praveen Kumar Raj Kumar
+unread,
+Jun 24, 2020, 7:05:35 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+   I just installed GISTIC2.0.23 in my Ubuntu 16.04.6 LTS server. Installation was successful including the MCR.
+
+
+When I ran gistic_example I get a library not found issue. 
+
+
+--- creating output directory ---
+--- running GISTIC ---
+Setting Matlab MCR root to /home/praveen/Software/GISTIC2.0.23/MATLAB_Compiler_Runtime
+./gp_gistic2_from_seg: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+
+
+Please let me know about this.
+
+
+Thanks,
+Praveen
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+Ted Liefeld
+unread,
+Jun 25, 2020, 12:31:07 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+this does not seem to be a GenePattern specific error.  However the docker container I built for our GISTIC module a while back might give you a starting point for getting your container to work.  The git repo is at
+
+
+https://github.com/genepattern/docker-gistic
+
+
+
+If you look at the Dockerfile there (using older Ubuntu 14.04 and probably an older version of GISTIC too) I had to install the following OS-level libraries as well. Also it is necessary to set the LD_LIBRARY_PATH and XAPPLRESDIR.  A quick google for the missing libmwlaunchermain.so turned up this Matlab response
+
+
+https://www.mathworks.com/matlabcentral/answers/267562-how-can-i-resolve-this-mcc-runtime-error-cannot-open-shared-object-library#answer_211306 
+
+
+So it looks like it might be something you can fix if you get your LD_LIBRARY_PATH set correctly.
+
+
+Hope this helps,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

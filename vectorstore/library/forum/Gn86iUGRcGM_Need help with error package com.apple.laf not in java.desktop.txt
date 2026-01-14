@@ -1,0 +1,1 @@
+A user encountered Java-related warnings and a memory space error while attempting to run a GSEAPreranked analysis on RNA-seq data, which were ultimately resolved by reloading the job, with the support team confirming that the Java warnings could be safely ignored and the space error appeared to be a temporary issue that did not prevent successful job completion.

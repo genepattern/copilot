@@ -1,0 +1,29 @@
+URL: https://groups.google.com./g/genepattern-help/c/DHknlEk-oGY
+Title: The main GenePattern server (https://cloud.genepattern.org) is back up and running the latest update, version 3.9_20.10.05_b293.
+----------------------------------------
+
+
+
+
+
+The main GenePattern server (https://cloud.genepattern.org) is back up and running the latest update, version 3.9_20.10.05_b293.
+9 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Oct 5, 2020, 3:49:09 PM
+
+
+
+to GenePattern Help Forum
+The main GenePattern server (https://cloud.genepattern.org) is back up and running the latest update, version 3.9_20.10.05_b293.
+
+
+
+Release notes are available at https://github.com/genepattern/genepattern-server/releases/tag/3.9_20.10.05_b293
+
+Reply all
+
+Reply to author
+
+Forward

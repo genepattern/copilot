@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/0bDxnw_m0ZE
+Title: Job Run Error
+----------------------------------------
+
+
+
+
+
+Job Run Error
+21 views
+Skip to first unread message
+
+bri colletti
+unread,
+May 31, 2024, 8:10:14 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone! 
+
+
+I'm a new GenePattern user, and for a class assignment I was asked to run the "ExpressionCreatorFile" module. Both the clm and input files were provided by the professor. The instructions say only to upload those files, leave all other fields as they are, click run, and then I will be provided with three new files: a .cls file, a .gct file, and a stdout.txt file. However, I've run this module several times as instructed and continue to get errors and only a stdout.txt file. Any suggestions on what I should try to avoid an error and get the other two files? 
+forre...@gmail.com
+unread,
+May 31, 2024, 1:34:40 PM
+
+
+
+to GenePattern Help Forum
+Hi Bri,
+
+
+Sorry you are having issues with the tool. Can you send us the GenePattern job id so we can take a look at what the specific issue is and if we can figure out what is going wrong?
+
+
+Thanks,
+Forrest
+
+
+
+Reply all
+
+Reply to author
+
+Forward

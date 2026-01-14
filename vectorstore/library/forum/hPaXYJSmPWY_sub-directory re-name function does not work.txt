@@ -1,0 +1,1 @@
+GenePattern subdirectory renaming issue where attempting to rename a folder causes it to disappear from the main "uploads" directory, along with other profile folders, with no immediate solution provided by the support team; user seeking confirmation of whether this problem will be addressed in future updates.

@@ -1,0 +1,1 @@
+GenePattern forum thread summary focused on SOMClusterViewer not displaying results, with the key resolution being that users must use the VisualizerLauncher to view module output, which can be accessed via instructions on the GenePattern GitHub documentation site, specifically addressing the initial user's problem of not seeing any plot when clicking on the visualization icon.

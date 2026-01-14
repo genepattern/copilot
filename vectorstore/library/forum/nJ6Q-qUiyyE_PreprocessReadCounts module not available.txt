@@ -1,0 +1,1 @@
+GenePattern user asked about the availability of the PreprocessReadCounts module, with the response indicating the module has been renamed to VoomNormalize, maintaining the same functionality while improving its descriptive naming for easier search and identification.

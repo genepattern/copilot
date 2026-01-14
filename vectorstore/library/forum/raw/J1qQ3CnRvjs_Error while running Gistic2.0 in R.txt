@@ -1,0 +1,182 @@
+URL: https://groups.google.com./g/genepattern-help/c/J1qQ3CnRvjs
+Title: Error while running Gistic2.0 in R
+----------------------------------------
+
+
+
+
+
+Error while running Gistic2.0 in R
+30 views
+Skip to first unread message
+
+Matt Moravec
+unread,
+Mar 2, 2020, 1:15:42 PM
+
+
+
+to GenePattern Help Forum
+I am trying to run GISTIC2.0 using R code. While I was running it, an error was thrown saying
+
+
+ Error in run.analysis(gp.client, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28",  : 
+
+  (404)Not Found: (404)Not Found.
+
+
+The code that the error was thrown on is: 
+
+
+GISTIC_2.0.result <- run.analysis(gp.client, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28", refgene.file="~/PIPELINE2_OV_Lasso/DATAFRAMES/Human_genes__GRCh38_p12_.rda", seg.file="~/PIPELINE2_OV_LASSO/ovary_brca_masked.txt", confidence.level="0.90")
+
+
+
+I tried different variations of the url, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28", and it made no difference, the error was still thrown. 
+
+
+The rest of my code that was used before the code that had the error:
+######## GISTIC 2.0 From Gene Pattern
+install.packages("~/PIPELINE2_OV_LASSO/GenePattern_1.0.2.tar.gz", type="source", repos=NULL)
+## Load GenePattern package
+library(GenePattern)
+username <- "_________"
+password <- "________"
+servername <- "___________"
+
+## Obtain a GPClient object which references a specific server and user
+gp.client <- gp.login(servername, username, password)
+
+
+
+
+
+Imput files are attached in a compressed folder.
+
+
+My parameter values are (gp.client, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28", refgene.file="~/PIPELINE2_OV_Lasso/DATAFRAMES/Human_genes__GRCh38_p12_.rda", seg.file="~/PIPELINE2_OV_LASSO/ovary_brca_masked.txt", confidence.level="0.90")
+
+
+The server is Linux.
+
+
+There were no other errors when this was run.
+
+
+
+
+
+
+
+
+
+
+
+GenePatternInputs.zip
+Ted Liefeld
+unread,
+Mar 2, 2020, 1:38:44 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+which GenePattern server are you running this agains?  Is this the public cloud.genepattern.org server or a different one that you set up (given the "The server is Linux" comment I thought I should ask).
+
+
+This looks like the right LSID for the module and it is present on our cloud server, so have you tried manually running the job via the web application?
+
+
+If you are on a different GenePattern server, you should confirm that this module has been installed and configured.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+Matt Moravec
+unread,
+Mar 2, 2020, 1:48:30 PM
+
+
+
+to GenePattern Help Forum
+I am running the R code on a private server. I believe that when the run.analysis function is called, the operation is performed on  the genepattern cloud server and then the value is returned and stored on the private server. I have gone through the website, and that does work. I am creating an R package that uses the output from gistic2.0, so I am trying to run it from the private server to streamline the process.
+
+Ted Liefeld
+unread,
+Mar 3, 2020, 11:27:50 AM
+
+
+
+to GenePattern Help Forum
+Matt
+
+
+I have been unable to duplicate your issue.  I am not an expert in GISTIC (I know very little about it actually) but when I ran it with you inputs, it ran but failed on loading the rda file which seems to be because it was expecting a txt file for the refgene data.
+
+
+Error using load
+Unknown text on line number 1 of ASCII file /opt/gpcloud/gp_home/jobResults/210762/Human_genes__GRCh38_p12_.rda
+
+
+It does find the module just fine though. 
+
+
+So you can test, I used a docker container to get the R environment, like this
+       docker run -w $PWD -v $PWD:$PWD -it cardcorp/r-java
+and then put the data files on an http server so that I didn't have to upload them from R (I also don't really use R, I am more familiar with GenePattern from Python or Java)
+
+
+Give it a try from the container if you have docker or install it to try (https://docs.docker.com/install)
+
+
+Hope this helps
+
+
+Ted
+======================
+
+
+
+install.packages("./GenePattern_1.0.2.tar.gz", type="source", repos=NULL)
+
+## Load GenePattern package
+
+library(GenePattern)
+
+username <- "notmyusername"
+
+password <- "notmypassword"
+
+servername <- "https://cloud.genepattern.org/gp"
+
+gp.client <- gp.login(servername, username, password)
+
+# fill in the URLs below
+
+file1 <- 'https://.../Human_genes__GRCh38_p12_.rda'
+
+file2 <- 'https://.../ovary_brca_cnv_masked.txt'
+
+
+
+
+jobresult <- run.analysis(gp.client, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28", refgene.file=file1, seg.file=file2, confidence.level="0.90")
+
+out.file.url <- job.result.get.url(jobresult, 0)
+
+print(out.file.url)
+
+
+
+Reply all
+
+Reply to author
+
+Forward

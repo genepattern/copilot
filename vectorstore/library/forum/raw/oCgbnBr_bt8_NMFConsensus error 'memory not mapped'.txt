@@ -1,0 +1,251 @@
+URL: https://groups.google.com./g/genepattern-help/c/oCgbnBr_bt8
+Title: NMFConsensus error: 'memory not mapped'
+----------------------------------------
+
+
+
+
+
+NMFConsensus error: 'memory not mapped'
+53 views
+Skip to first unread message
+
+Amy
+unread,
+Jan 25, 2023, 2:20:51 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I have some problem using NMFConsensus module with an error saying "caught segfault ... cause 'memory not mapped'" and the job id is 488610.
+Thank you in advance for your help.
+
+
+Best, 
+Amy
+Ted Liefeld
+unread,
+Jan 27, 2023, 10:47:47 AM
+
+
+
+to GenePattern Help Forum
+Amy
+
+
+we have seen a similar error before in other R modules when there are no entries in the gct description column because the R dataframe tries to index on the description.  Your gct file seems to have only "NA" in the description column so it might be the same thing.  Try replacing the NA with the value from the first column and see if that fixes it.
+
+
+Hope this helps,
+
+
+Ted 
+
+
+
+Amy
+unread,
+Jan 27, 2023, 2:20:18 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+I appreciate your advice.
+I tried replacing the description column as you suggested, but unfortunately, the exact same error saying 'memory not mapped' shows up again (job id: 489137)
+
+
+Could you suggested any other solution? 
+
+
+Thank you,
+Amy
+
+
+
+2023년 1월 28일 토요일 오전 3시 47분 47초 UTC+9에 lie...@broadinstitute.org님이 작성:
+
+
+Ted Liefeld
+unread,
+Jan 27, 2023, 2:27:44 PM
+
+
+
+to GenePattern Help Forum
+I will play around a bit with your job and see if I can find another solution
+
+
+Ted
+
+
+
+Amy
+unread,
+Jan 27, 2023, 2:35:05 PM
+
+
+
+to GenePattern Help Forum
+Thank you so much.
+
+
+Amy
+
+
+
+2023년 1월 28일 토요일 오전 7시 27분 44초 UTC+9에 lie...@broadinstitute.org님이 작성:
+
+
+Ted Liefeld
+unread,
+Jan 30, 2023, 7:50:04 AM
+
+
+
+to GenePattern Help Forum
+Amy
+
+
+you have 2 rows that include "NA" values in the matrix.  When I removed them it ran properly.  I cannot advise you on how to handle you r missing data but I think you should either remove those rows or decide on a method to impute values for them.
+
+
+Ted
+
+
+
+이정우
+unread,
+Jan 30, 2023, 12:37:45 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Thank you so much and have a great week!
+
+
+Amy
+Hela SASSI
+unread,
+Feb 1, 2023, 1:40:17 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+I have some trouble running GISTIC2. It is urgent++. Could you please help me to run the job ID 490449?
+Best regards
+Hela SASSI
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/71e002e1-3236-4c17-91d1-419d608beb9an%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Feb 1, 2023, 5:57:41 AM
+
+
+
+to GenePattern Help Forum
+Hela,
+
+
+It looks like it might be an issue with your data and/or parameters and not with GenePattern itself.  I can't help you with that but I would suggest asking on the gistic forum  https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum.  If you provide them with the contents of your stdout.txt and stderr.txt files they might be able to help
+
+
+Ted
+
+
+
+Hela SASSI
+unread,
+Feb 1, 2023, 10:19:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+I get no answer.
+I ran again without the sample RARE330, it worked.
+but when I added it, I had this message below and I did not see chromosome 0 in the input.
+Could you please try to run it?
+ 
+GISTIC 2.0 input error detected:
+4 invalid chromosomes detected in segment file '/opt/gpcloud/gp_home/users/Hela/uploads/tmp/run3286665823858790871.tmp/seg.file/1/CPC bug.seg.txt'.
+First invalid chromosome is '0' on line 170
+Best 
+Hela
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b9603e85-237c-470e-a52c-3c2b697ef32cn%40googlegroups.com.
+
+
+CPC bug.xlsx
+Ted Liefeld
+unread,
+Feb 2, 2023, 9:14:32 AM
+
+
+
+to GenePattern Help Forum
+Hela,
+
+
+I am sorry but the GenePattern team does not have the GISTIC expertise to help you with this.  Posting your question in the GISTIC Forum (https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum) is your best bet.
+
+
+hope this helps,
+
+
+Ted 
+
+
+
+Hela SASSI
+unread,
+Feb 5, 2023, 4:44:38 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+Thank you for your reply. but I did not get any response on the gistic forum
+
+Best regards
+Hela
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b9603e85-237c-470e-a52c-3c2b697ef32cn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

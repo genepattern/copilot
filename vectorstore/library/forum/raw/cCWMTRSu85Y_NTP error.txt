@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/cCWMTRSu85Y
+Title: NTP error
+----------------------------------------
+
+
+
+
+
+NTP error
+18 views
+Skip to first unread message
+
+Admita
+unread,
+Apr 13, 2023, 7:07:01 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+ I am trying to input the gene matrix of 25 samples in NTP module  and using the test data set (Hosida liver) as the input feature file , but I got the error : Error in if (orig.dist.to.all.temp[1] >= orig.dist.to.all.temp[2]) { : 
+  missing value where TRUE/FALSE needed
+Calls: NTPez
+Execution halted
+
+Job ID: 504515
+Thanks
+Admita
+Ted Liefeld
+unread,
+Apr 14, 2023, 10:50:44 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it appears that your input gct file has several rows with duplicate ids, different gene names in the description column, and then the data repeated.  Please remove all the duplicate rows and re-run your analysis.  Let us know if you have any further problems.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Apr 14, 2023, 10:53:41 AM
+
+
+
+to GenePattern Help Forum
+p.s. the duplicate rows all have gene names of the form "PAR_Y_<gene name of the line above>"
+
+Admita
+unread,
+Apr 15, 2023, 5:47:42 AM
+
+
+
+to GenePattern Help Forum
+The error has been resolved, thank you
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/4Ej-7pmNCuM
+Title: ssGSEA says "Task failed to start"
+----------------------------------------
+
+
+
+
+
+ssGSEA says "Task failed to start"
+26 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+Jul 24, 2024, 11:50:49 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I have send several tasks to ssGSEA and it fails to start.
+I have tried also with old files, which worked in the past.
+Any idea of what could be happening?
+Thanks
+Roser
+Ted Liefeld
+unread,
+Jul 25, 2024, 7:34:48 AM
+
+
+
+to GenePattern Help Forum
+Roser,
+
+
+there is something odd happening with ssGSEA to more users than just you.  Jobs being submitted with the default settings (2GB RAM in particular) are all failing this way.  Resubmitting the job requesting more memory (4GB) and the jobs seem to be running fine.  When the jobs are failing to start, they are unfortunately not producing any logs at all on the compute nodes.  So the jobs are dispatched and try to launch but fail.
+
+My guess is that it is a memory issue either with the node, or else just the ssGSEA container requires a more powerful node to run on.  THere will be a brief interruption as I force a refresh of the current compute node collection for new VMs and I will also update the ssGSEA config to require 4GB of RAM.  Wait about an hour and then try resubmitting your jobs.  You WILL have to manually reset the memory if you reload a job since it will reload the lower (2GB) value.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Roser Pinyol
+unread,
+Jul 25, 2024, 7:44:09 AM
+
+
+
+to GenePattern Help Forum
+Many thanks!
+
+
+El dia dijous, 25 de juliol del 2024 a les 16:34:48 UTC+2, Ted Liefeld va escriure:
+
+
+Ted Liefeld
+unread,
+Jul 25, 2024, 7:52:58 AM
+
+
+
+to GenePattern Help Forum
+Roser
+
+
+the changes have been made.  Please re-submit your jobs and let me know how it goes.  I tried to rerun your job 594179 and it does start and run to completion with 4GB RAM.
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

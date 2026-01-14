@@ -1,0 +1,304 @@
+URL: https://groups.google.com./g/genepattern-help/c/fyZ4SCLN1Og
+Title: How to setup "Email Reminder"?
+----------------------------------------
+
+
+
+
+
+How to setup "Email Reminder"?
+37 views
+Skip to first unread message
+
+Tim Chan
+unread,
+Jul 28, 2021, 1:40:07 PM
+
+
+
+to GenePattern Help Forum
+
+
+I have a GenePattern server running, but for some reason the email reminder option for a job doesn't actually send an email. I'm not able to receive any email.
+
+
+I don't seem to find the server configuration option anywhere on https://www.genepattern.org/administrators-guide. How should I setup my server so it sends a reminder email?
+
+
+
+
+Ted Liefeld
+unread,
+Jul 28, 2021, 1:53:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Tim,
+
+
+Sorry about the lack of documentation on this aspect of the server.  There is an example mail server configuration though in the config_example.yaml that you can look at.  Here is the mail server part of that example config file,
+
+
+
+  # Example config with auth to smtp server
+
+    #smtp.server: "example.com"
+
+    #smtp.from.email: "sen...@example.com"
+
+    ## optional username/password credentials
+
+    #smtp.auth.username: "username-api-key"
+
+    #smtp.auth.password: "password-secret-key"
+
+    ## additional JavaMail properties
+
+    #"javax.mail.Session.properties": {
+
+    #    # (optional) workaround for 'Helo command rejected: need fully-qualified hostname'
+
+    #    "mail.smtp.localhost": "example.com",
+
+    #    # "mail.host": "example.com",
+
+    #    # optionally set 'mail.smtp.host' here, takes precedence over
+
+    #    #   'mail.host' and 'smtp.server'
+
+    #    "mail.smtp.host":  "example.com",
+
+    #    #
+
+    #    "mail.smtp.port":  "587",
+
+    #    "mail.smtp.auth": "true",
+
+    #    "mail.smtp.starttls.enable": "true",
+
+    #    "mail.debug.auth": "true",
+
+    #}
+
+
+
+So you will need to have a mail server that can send the messages on your behalf, and then you can enter your login details to it etc into your config_custom.yaml file.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+On Wed, Jul 28, 2021 at 1:40 PM Tim Chan <computin...@gmail.com> wrote:
+
+
+
+I have a GenePattern server running, but for some reason the email reminder option for a job doesn't actually send an email. I'm not able to receive any email.
+
+
+I don't seem to find the server configuration option anywhere on https://www.genepattern.org/administrators-guide. How should I setup my server so it sends a reminder email?
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5043f834-9fad-49df-8eed-1051137ed7bdn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Tim Chan
+unread,
+Jul 29, 2021, 3:37:57 PM
+
+
+
+to GenePattern Help Forum
+Thanks,
+
+
+I have a brand new installation on my MacBook. I added the following lines to config_default.yaml, under default.properties.
+
+
+However, I'm still not receiving emails. I'm using Google's Gmail SMTP server. It's hard for me to work out what went wrong without logging. Can you please take a look of my configuration?
+
+
+
+
+    smtp.server: "smtp.googlemail.com"
+    smtp.from.email: "XX...@gmail.com"
+
+
+    ## optional username/password credentials
+    smtp.auth.username: "XXXX"
+    smtp.auth.password: "XXXX"
+
+
+	"javax.mail.Session.properties": {
+    #    # (optional) workaround for 'Helo command rejected: need fully-qualified hostname'
+    #    "mail.smtp.localhost": "example.com",
+
+
+    #    # "mail.host": "example.com",
+    #    # optionally set 'mail.smtp.host' here, takes precedence over
+
+
+    #    #   'mail.host' and 'smtp.server'
+
+
+    #    "mail.smtp.host":  "example.com",
+
+
+    #    #
+
+
+        "mail.smtp.port":  "465",
+        "mail.smtp.auth": "true",
+        "mail.smtp.starttls.enable": "true",
+        "mail.debug.auth": "true",
+    }
+
+Ted Liefeld
+unread,
+Jul 29, 2021, 4:44:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Why can you not see logs? If you are running GenePattern via Docker then you can “docker exec -it genepattern bash” to get inside the container to look at log files. They are also available on the admin page in a web browser.
+
+
+Nothing looks obviously wrong to me.
+
+
+Tex
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b38fa677-102a-41b8-95af-87a806b3f007n%40googlegroups.com.
+
+
+Tim Chan
+unread,
+Jul 29, 2021, 7:17:52 PM
+
+
+
+to GenePattern Help Forum
+For this server, I'm running it as a Mac native app (I downloaded DMG file)
+
+
+
+It looks like the error was the app was trying to send an email with the Broad Institute's SMTP server, which would of course fail. Please see screenshot A.png.
+
+
+However, I'm 100% sure the only file I've modified is "config_default.yaml" in the "resources" directory. I had not changed anything else such as "genepattern.properties". I don't see any Broad Institute information in my file. Please see screenshot B.png. I can see the correct configuration file being used, please see screenshot C.png.
+
+
+What could be the cause?
+
+
+A.png
+
+C.png
+
+B.png
+Ted Liefeld
+unread,
+Jul 30, 2021, 10:57:20 AM
+
+
+
+to GenePattern Help Forum
+My guess is that for some reason we are not getting the properties we think we are.  A couple of things we can try;
+
+
+1. Go to the Administration menu, "Job Configuration" tab and make sure that the config file path it shows (up near the top) matches the one you are editing.  Since you have the path from the log file this is likely the same thing as you saw there but it's worth checking.
+2. Make sure that there is not a second definition of "smtp.*" settings later in the config file.  I think if there is, the last one wins.
+3. Do a grep in the resources directory for "smtp.broadinstitute.org" as another double check, but this is defined as the default in the MailSender.java class so its not likely to be there.
+4. Put your changes into a config_custom.yaml file in the resources directory (instead of altering config_default.yaml).  This should trump any other configuration settings.
+
+
+For reference, here is what our cloud (public) server settings look like (passwords and usernames redacted or modified).  We are not overriding any of the javax.mail.Session.properties.
+
+
+#smtp.server: smtp.broadinstitute.org 
+ # the email recipient of help requests sent via the 'contact us' link # contact.us.email: "gp-...@broadinstitute.org" 
+ # the from email address for messages sent to end users, such as from the 'forgot password' link 
+ #smtp.from.email: "gp-help-...@genepattern.org" 
+ #
+#  Mailjet smtp server configuration 
+ smtp.server: "in-v3.mailjet.com" 
+ smtp.auth.username: "<our mailjet username>" 
+ smtp.auth.password: "<our mailjet password>" 
+ smtp.from.email: "gp-...@broadinstitute.org" 
+
+
+Ted
+
+
+
+Tim Chan
+unread,
+Aug 1, 2021, 1:39:17 AM
+
+
+
+to GenePattern Help Forum
+Thanks !
+
+
+Your SMTP configuration is indeed working for me. Great!
+
+
+Now, I have got another problem. The email content reads something like:
+"The results for job 3, helloworld, are available on the GenePattern Job Results Page".
+The URL for the Job Results Page is http://127.0.0.1:8080/gp/jobResults/3, but the server itself is being hosted as a docker container on a web server.
+
+
+How should I change the "http://127.0.0.1:8080" baseURL to something like "https://my-domain:8080"?
+
+Ted Liefeld
+unread,
+Aug 2, 2021, 10:26:02 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I think this would be set in the genepattern.properties file.  Look for the keys fqHostName and GenePatternURL and set them to the desired values.
+
+
+Ted
+
+
+p.s. fqHostName = fully qualified host name (not a URL)
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

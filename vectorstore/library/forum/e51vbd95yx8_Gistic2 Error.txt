@@ -1,0 +1,1 @@
+A user encountered an "Internal Server Error" when running Gistic2 with a .seg file, potentially due to recent changes in the GenePattern execution environment, and resolved the issue by reducing requested CPUs, memory, and time limit, which successfully allowed the job to run without errors.

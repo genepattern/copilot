@@ -1,0 +1,155 @@
+URL: https://groups.google.com./g/genepattern-help/c/O98vps9fbQM
+Title: STAR.aligner - Sample input
+----------------------------------------
+
+
+
+
+
+STAR.aligner - Sample input
+25 views
+Skip to first unread message
+
+ravi
+unread,
+Sep 9, 2024, 1:08:12 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+After uploading the paired end reads, I am trying to use them as inputs for STAR.aligner to continue using OutSplice for Alternative Splicing analysis.
+
+
+However, as you can see in the screenshot, STAR.aligner is not an option module to "send (the read) to Read Pair 1 parameter in STAR.aligner module".
+
+
+Could you please suggest why and how to sort this to move forward?
+
+
+Thank you,
+Ravi.
+ 
+
+GenPattern_STAR_aligner_RNaSeqData_FASTQ.png
+Michael Reich
+unread,
+Sep 9, 2024, 3:18:17 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+Go to the Modules tab, type STAR, and select the STAR.aligner module that way. You can then click on the Files tab and drag your files to the appropriate parameters.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/306c42c3-49e4-411d-a1a8-e831ab6be10an%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+ravi velaga
+unread,
+Sep 16, 2024, 10:13:40 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+On the GenePattern account, I see that I can only have 30 Gb space (screenshot attached). However, if I want to run STAR.aligner and then OutSplice using ten control samples (which is the minimum requirement as per the algorithm) and then study samples, I believe I may end up needing more space to upload the sample (FASTQ; RNA seq paired end) files.
+
+
+May I know how it can be addressed?
+
+
+Your expert response will be highly appreciated.
+
+
+Thank you,
+Ravi.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/O98vps9fbQM/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5EOVSr%3DnmAjaf0ah-WiiXeUNLgmkF5RkoNC%3DincQ40SsA%40mail.gmail.com.
+
+
+GP_Space.png
+John Liefeld
+unread,
+Sep 17, 2024, 8:01:09 AM
+
+
+
+to GenePattern Help Forum
+Ravi,
+
+
+we allow users to go past the 30GB limit for short periods of up to a week to handle cases like this.  Go ahead and upload the necessary files and run your analysis, then remove the inputs to drop back under the 30GB limit once you have successful runs.  You will see more aggressive warnings once you are >30GB but it will not immediately prevent you from running your analysis, though eventually that will happen if you stay over quota for too long, and/or the data might get deleted from the GenePattern servers.  Again, you should be OK for about a week.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+ravi velaga
+unread,
+Sep 17, 2024, 3:45:26 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Thank you for the information. It helps to plan the analysis timeline.
+
+
+Best regards,
+Ravi.
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e61c3460-7e9c-4b1f-a0f4-1a5ace143626n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

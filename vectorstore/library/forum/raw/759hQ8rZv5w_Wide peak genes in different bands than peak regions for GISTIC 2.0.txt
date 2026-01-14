@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/759hQ8rZv5w
+Title: Wide peak genes in different bands than peak regions for GISTIC 2.0?
+----------------------------------------
+
+
+
+
+
+Wide peak genes in different bands than peak regions for GISTIC 2.0?
+27 views
+Skip to first unread message
+
+michell...@gmail.com
+unread,
+Aug 21, 2020, 7:27:39 PM
+
+
+
+to GenePattern Help Forum
+For GISTIC 2.0, why does it detect genes for the wide peak regions in the amp_genes_conf.90 file found in different bands than the band labeled at the peak? For example, for a peak of 14q13.2, it also listed genes found on 14q13.1.
+Edwin Juarez
+unread,
+Aug 24, 2020, 11:55:16 AM
+
+
+
+to GenePattern Help Forum
+Hello!
+
+
+This is a question that you can ask over at the GISTIC forum: https://groups.google.com/a/broadinstitute.org/g/gistic-forum
+
+
+Good luck!
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

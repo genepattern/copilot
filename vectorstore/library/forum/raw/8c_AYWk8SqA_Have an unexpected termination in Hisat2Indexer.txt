@@ -1,0 +1,108 @@
+URL: https://groups.google.com./g/genepattern-help/c/8c_AYWk8SqA
+Title: Have an unexpected termination in Hisat2Indexer
+----------------------------------------
+
+
+
+
+
+Have an unexpected termination in Hisat2Indexer
+14 views
+Skip to first unread message
+
+Scott Lee 李思碩
+unread,
+Aug 2, 2019, 11:29:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+When I apply Hiast2Indexer to create a new index from 23 fasta file of mm10,1 fasta file with ERCC (spike-in control) fasta, and a GTF witch combine mm10 and ERCC,
+an error came out from stderr.txt. It said, "Host EC2 (instance i-08597411a81ab9d17) terminated."
+
+
+
+
+What's that supposed to mean?
+
+
+Here is my input parameter:
+Input Parameter	Display Value	Actual Value
+index name prefix	mm10andERCC	mm10andERCC
+fasta file	
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna.chromosome.1.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.10.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.11.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.12.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.13.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.14.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.15.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.16.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.17.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.18.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.19.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.2.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.3.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.4.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.5.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.6.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.7.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.8.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.9.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.MT.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.X.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.chromosome.Y.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/Mus_musculus.GRCm38.dna_rm.nonchromosomal.fa
+/opt/gpcloud/gp_home/users/userlee7655-2/uploads/WT_KO_testis/ERCC92.fa
+	
+gtf file	Mus_musculus_GRCm38_97_with_ERCC92.gtf	
+dry run	False
+
+job.memory	128 GB
+job.cpuCount	16
+job.walltime	24:00:00
+job.queue	gp-cloud-default
+
+
+My job_ID are 149631 and 149815.
+
+  Thank you so much to read my question.
+
+  Wish you can give me an answer.
+
+
+Sincerely,
+Scott Lee
+
+
+
+Ted Liefeld
+unread,
+Aug 7, 2019, 2:40:16 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it looks like we lost the VM while your job was running.  This happens sometimes as we have to use the cheapest amazon resources (spot instances) to keep GenePattern free to use.
+
+
+Please just resubmit your jobs and let us know if this becomes persistent.
+
+
+Thanks
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

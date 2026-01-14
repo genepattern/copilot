@@ -1,0 +1,1 @@
+A user inquired about replacing GenePattern's default basic authentication with an institutional Central Authentication Service (CAS), and received guidance to create a custom Java implementation of the IAuthenticationPlugin interface, with a potential OpenID Connect plugin being developed to support authentication for institutions using services like Google Apps.

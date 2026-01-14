@@ -1,0 +1,125 @@
+URL: https://groups.google.com./g/genepattern-help/c/hJoZlyt4uZY
+Title: Error when running GSEAPreranked
+----------------------------------------
+
+
+
+
+
+Error when running GSEAPreranked
+8 views
+GSEA
+Skip to first unread message
+
+dlahr.fo...@gmail.com
+unread,
+Mar 28, 2019, 12:43:15 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I'm trying to run GSEAPreranked on cloud.genepattern.org and I get the follow error:
+
+
+java.lang.ClassCastException: edu.mit.broad.genome.objects.DefaultDataset cannot be cast to edu.mit.broad.genome.objects.RankedList
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:182)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:74)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+java.lang.ClassCastException: edu.mit.broad.genome.objects.DefaultDataset cannot be cast to edu.mit.broad.genome.objects.RankedList
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:77)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+
+
+(link to above:  https://cloud.genepattern.org/gp/jobResults/104307/stderr.txt)
+
+
+Job ID:  104299
+
+
+Any help / advice you can give would be greatly appreciated.
+
+
+Thank you,
+Dave
+
+
+Barbara Hill
+unread,
+Mar 28, 2019, 2:36:26 PM
+
+
+
+to GenePattern Help Forum
+Hi Dave,
+
+
+Nice to see you here! Though, I'm sorry you are having trouble.
+
+
+Looks like you need to change your txt extensions to rnk.
+
+
+From one of the developers, in a previous private thread:
+
+
+"What's happening is that GSEAPreranked is getting confused by the TXT extension
+on your input file. Internally, the GSEA code decides which dataset file parser
+to use based on the extension and so it's using our TXT parser. The TXT parser
+requires a quite specific format and assumes a multi-sample format which is not
+valid for GSEAPreranked in any case.
+
+Try renaming your input file to have the RNK extension and give it another try."
+
+
+
+Let us know if that works!
+
+
+All the best
+-Barbara
+dlahr.fo...@gmail.com
+unread,
+Mar 29, 2019, 11:36:02 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara
+
+
+Good to see you too, thank you for the quick response - that fixed it for me.  I have notes written up but for got to explicitly mention the .rnk extension; I've added it now in bold :).  Also FYI / this may be known, I ran out of heap space with the default (2 GB) setting, upping to 4 GB worked.
+
+
+Cheers,
+Dave
+
+Barbara Hill
+unread,
+Mar 29, 2019, 11:54:21 AM
+
+
+
+to GenePattern Help Forum
+Glad that worked!
+
+
+We'll keep an eye on resources usage and see if that should generally be set higher.
+
+
+Thanks!
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

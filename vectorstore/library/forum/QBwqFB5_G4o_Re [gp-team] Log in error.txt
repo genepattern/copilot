@@ -1,0 +1,1 @@
+User encountered login issues with GenePattern, specifically email case sensitivity preventing login and potential mail server connection problems; recommended solution was to use lower-case email address and retry login, with option for account email modification if persistent issues occurred.

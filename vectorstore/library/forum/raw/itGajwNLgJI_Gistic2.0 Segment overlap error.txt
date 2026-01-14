@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/itGajwNLgJI
+Title: Gistic2.0 Segment overlap error
+----------------------------------------
+
+
+
+
+
+Gistic2.0 Segment overlap error
+128 views
+Skip to first unread message
+
+Matt Moravec
+unread,
+Jun 19, 2020, 3:21:54 PM
+
+
+
+to GenePattern Help Forum
+Hi, I am using gistic2.0 to with the ref file set as hg38, and I uploaded my segmentation file, which I will attach here. When I first had the error there were duplicate patients. After removing all duplicates I still had the error, but with less overlaps detected. This si the error message.
+
+
+GISTIC version 2.0.23
+ 
+GISTIC 2.0 input error detected:
+312 segment overlaps detected in file '/opt/gpcloud/gp_home/users/miRDriver/uploads/tmp/run1890416837164653985.tmp/seg.file/1/ovary_cnv_sample_formatted_6.txt'.
+First overlap detected between segments at lines 5 and 535.
+
+
+When I investigated lines 5 and 535, I saw that they were different and therefore I do not understand what is causing the error.
+My job number is 
+245687. GISTIC_2.0
+
+ovary_cnv_sample_formatted_6.txt
+GenePattern Help Forum
+unread,
+Jun 25, 2020, 2:39:10 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I think you will find this thread in the GISTIC-Forum helpful: https://groups.google.com/a/broadinstitute.org/g/gistic-forum/c/unYY5vDfdMc/m/SUEmSPapCAAJ
+
+
+Specifically - segments should not overlap by more than 1 marker. 
+
+
+The stop position of line 5 overlaps greatly with the start position of line 535. This is particularly apparent if you view your file sorted by the first column.
+
+
+I hope this helps,
+Barbara
+
+
+Matt Moravec
+unread,
+Jun 29, 2020, 10:03:02 AM
+
+
+
+to GenePattern Help Forum
+Thanks!
+
+Hanie Azari
+unread,
+Feb 13, 2023, 5:28:00 AM
+
+
+
+to GenePattern Help Forum
+Dear Matt,
+
+
+I also face this issue, did you find any solution?
+
+
+thanks,
+Hanieh A
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern user seeking assistance in connecting their gpbroad user account to Hahn lab data, with response indicating potential need for Unix access permissions and specific user account configurations for data sharing and access across Broad Institute systems.

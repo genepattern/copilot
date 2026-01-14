@@ -1,0 +1,1 @@
+A GenePattern user ran GISTIC2.0 on targeted sequencing copy number data and encountered incomplete results for chromosome X, specifically missing Xp data and experiencing overestimated arm-level alteration frequencies, seeking explanation for why this occurred when previous literature showed complete Xp and Xq representation from SNP array data.

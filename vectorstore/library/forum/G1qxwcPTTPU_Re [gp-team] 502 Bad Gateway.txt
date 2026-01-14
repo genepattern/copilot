@@ -1,0 +1,1 @@
+A GenePattern Cloud user encountered a "502 Bad Gateway" error while attempting to use the service, and the GenePattern team acknowledged an unplanned outage, actively working to restore server functionality and promising to provide updates via social media and forum channels.

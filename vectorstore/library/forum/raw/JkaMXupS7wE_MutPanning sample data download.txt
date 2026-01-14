@@ -1,0 +1,431 @@
+URL: https://groups.google.com./g/genepattern-help/c/JkaMXupS7wE
+Title: MutPanning sample data download
+----------------------------------------
+
+
+
+
+
+MutPanning sample data download
+44 views
+Skip to first unread message
+
+Jianying Li
+unread,
+Jul 31, 2020, 7:43:04 AM
+
+
+
+to GenePattern Help Forum
+I am new to this community, when I tried to run mutpanning, I could not download its sample mutation file, nor sample annotation file. Do I miss anything? Any attention is greatly appreciated.
+Ted Liefeld
+unread,
+Jul 31, 2020, 8:07:56 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I just tried the links in our MutPanning notebook and they both seem to work for me;
+    http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt
+
+    http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf
+
+
+
+Are these the same files you are trying to access?  If so, can you download them in your browser or via curl/wget?  My suspicion is that there is a connectivity issue between your laptop and the google storage server.
+
+
+If you cannot access them, try to just run the MutPanning notebook since in that case it will be the GenePattern server that is downloading them and it does not seem to have an issue accessing them at the moment.
+
+
+Hope this helps
+
+
+Ted
+
+Jianying Li
+unread,
+Jul 31, 2020, 8:20:00 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Ted! Yes, I was trying to download these two files. Maybe I need more reading without throwing out a question. 
+
+
+I also tried "curl", and got the same error. And, there is no luck with notebook either, please see the screenshot below
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dc037d08-f8d9-430f-b78c-7b3d2e48fa94o%40googlegroups.com.
+
+
+Screen Shot 2020-07-31 at 11.18.42 AM.png
+
+Screen Shot 2020-07-31 at 11.14.09 AM.png
+Ted Liefeld
+unread,
+Jul 31, 2020, 8:45:14 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+in the notebook its just giving you a GPFile reference, so the output actually looks correct there.  Try adding a read() to the txt file like this
+
+
+samplesskin_txt_file = nbtools.open("http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt")
+data = samplesskin_txt_file.read()
+data
+
+
+As for why you cannot see the google storage from your computer, I am afraid you will have to contact the support for google cloud platform as I can't really help with that part .
+
+
+Ted
+
+
+On Friday, July 31, 2020 at 8:20:00 AM UTC-7, Jianying Li wrote:
+Thanks Ted! Yes, I was trying to download these two files. Maybe I need more reading without throwing out a question. 
+
+
+I also tried "curl", and got the same error. And, there is no luck with notebook either, please see the screenshot below
+
+
+
+
+
+
+On Fri, Jul 31, 2020 at 11:08 AM Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+Hi
+
+
+I just tried the links in our MutPanning notebook and they both seem to work for me;
+    http://storage.googleapis.com/mutpanning_hg19/SamplesSkin.txt
+
+    http://storage.googleapis.com/mutpanning_hg19/MutationsSkin.maf
+
+
+
+Are these the same files you are trying to access?  If so, can you download them in your browser or via curl/wget?  My suspicion is that there is a connectivity issue between your laptop and the google storage server.
+
+
+If you cannot access them, try to just run the MutPanning notebook since in that case it will be the GenePattern server that is downloading them and it does not seem to have an issue accessing them at the moment.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+On Friday, July 31, 2020 at 7:43:04 AM UTC-7, Jianying Li wrote:
+I am new to this community, when I tried to run mutpanning, I could not download its sample mutation file, nor sample annotation file. Do I miss anything? Any attention is greatly appreciated.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+jiany...@gmail.com
+unread,
+Aug 21, 2020, 11:37:03 AM
+
+
+
+to GenePattern Help Forum
+Hi, Ted
+
+
+Now, I have test run the analysis. If I have my own mutation files, how should I access it? Do I need to upload or can I just use the local path.
+
+
+I tested this:
+
+
+annotation_txt_file = nbtools.open("/Users/li11/Desktop/ExomeSeq/driverGeneDetection/sampleData/BDCA.maf")
+data2 = annotation_txt_file.read()
+
+
+This throws error complaining "FileNotFoundError Traceback (most recent call last) <ipython-input-16-72563ec75128> in <module>"
+
+
+Your further attention is appreciated.
+
+
+Jianying
+
+Ted Liefeld
+unread,
+Aug 24, 2020, 10:40:15 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi again
+
+
+to be able to load it on the Notebook server you will first have to upload it to the notebook server.  Then you can use relative (or absolute) file paths from within the notebook.
+
+
+To upload the file, go to your main Jupyter hub page (you can click on the big "GenePattern Notebook" logo and text at the top right of any page or notebook to get there).  Then you will see an "upload" button near the top right corner.
+
+
+However if you are running the MutPanning module, it would be easier to just click the upload button for the module parameters ("mutation file*" and "sample annotation file*") since the module will be executed on the GenePattern server, not the notebook server.  Clicking on those "upload" buttons should allow you to select the files from your desktop.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/35bc3225-1126-465b-a683-1888f0db98d1n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Jianying Li
+unread,
+Sep 2, 2020, 8:26:22 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi, Ted,
+
+
+I tried to follow the tutorial and use sample files. When I clicked "Run", I got an error with no meaningful error message. Please advise, 
+
+
+BTW, can you share a sample python notebook again?
+
+
+Thanks
+
+
+Jianying
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdRm99y-1-ceyDMk4cOiSKL6M7opczoArwVbv1EG1E0Xjw%40mail.gmail.com.
+
+
+Screen Shot 2020-09-02 at 11.23.27 AM.png
+Ted Liefeld
+unread,
+Sep 2, 2020, 9:14:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Jianying
+
+
+How repeatable is the error and where geographically are you located?  In the last couple of months there have been a couple of cases where people's jobs failed to submit (usually with file upload errors).  It seems to happen predominantly to people outside of the US so we suspect a network issue is at the root of it.  So far it has gone away before we could figure it out every time.
+
+
+That said, I see a MutPanning job did run successfully this porning (user li11, who I am guessing is you), so it might be that the notebook timed out starting the job even though it did get submitted.  You might be able to connect up with the results (if this was you) by adding a new cell with the following contents (and running it with the Jupyter 'run' button)
+
+
+       job = gp.GPJob(genepattern.session.get(0), 272583)
+       genepattern.display(job)
+
+
+Note if this was not your job this will fail unless the actual owner has set it to be publicly visible.
+
+
+Let me know if this works and if not we can dig further.
+
+
+Ted
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAH%2BqTAxtQ-PheV-3xuwRyAu_7eoY_UwC4mnEY9Cf0TzQkTWmKg%40mail.gmail.com.
+
+
+Jianying Li
+unread,
+Sep 2, 2020, 9:41:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Ted, 
+
+
+Thank you so much for your swift response! 
+
+
+You are right that my user's id is "li11", and it was me who got a successful run (via web-portal though: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00380:2 ). 
+
+
+The one that failed was when I tried to run from "python notebook" (https://notebook.genepattern.org/user/li11/notebooks/MutPanning%20-%20Identification%20of%20cancer%20driver%20genes.ipynb#).
+
+
+I hate to bother you but I am still learning with your help. 
+
+
+My ultimate goal is to run this "MutPanning" on our "in-house mouse exomeSeq data". I sent a separate email from my work account inquiring how to feed the program with "different species". In our case, mouse. 
+
+
+I also had difficulty converting my ".vcf" file to ".maf" file. I used SnpEff to annotate the variant and I might just write my one script to mimic the .maf file you provided for human skin cancer study.
+
+
+Anyway, it has been a great pleasure talking to you. 
+
+
+With all the best regards, 
+
+
+Jianying
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdRxBDfXEuLe9gS_32rvAt9qR9GDizhDN8TQgmYDkO9FDQ%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Sep 2, 2020, 11:02:22 AM
+
+
+
+to genepatt...@googlegroups.com
+Jianying,
+
+
+Since the job did not kick off on the server for you, I don't have an easy anchor to use digging through the server logs to try to diagnose this.  Could you try to run the module again from the notebook and immediately get the time in UTC (https://www.timeanddate.com/worldclock/timezone/utc) and send it to me.
+
+
+I will use this to see if anything appears in either the notebook server or GenePattern server logs that could account for your problems.  If the errors persist, you could simply run MutPanning from the old web application user interface instead of the notebook, but even so we would like to find and fix this if we can.
+
+
+Thanks
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAH%2BqTAyG6U0tLOSa8tjRFw%3DMLk6WGEJh73fiDq7irtLUovH5Lg%40mail.gmail.com.
+
+
+Ted Liefeld
+unread,
+Sep 2, 2020, 11:13:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Jianying,
+
+
+my co-worker thinks he found the issue already.  Before re-running the module from the notebook, click on the gear icon at the top-right of the module UI and select "Advanced options" from the menu.  Then in the "Job Options" parameter group (which will appear below the other MutPanning parameters), select a memory value (e.g. 16Gb) before running the module.
+
+
+We suspect this will allow it to run from the notebook.  The issue (which only affects non-administrators) is that the notebook's default of '16 Gb' does not match the expectation in the menu of "16Gb' (note no space between the 6 and the G). I will update the notebook now and we will get a fix into the next release of the GenePattern server.
+
+
+let us know if this works
+
+
+Ted
+
+Jianying Li
+unread,
+Sep 2, 2020, 11:28:02 AM
+
+
+
+to genepatt...@googlegroups.com
+thanks!
+
+
+What about my question regarding "mouse exomeseq" instead of human? Do we need any special arrangement?
+
+
+Regards,
+
+
+Jianying
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdSbtubvEsA4uhe-RXP-CWP3dVe6RFJxOBjkGeKt36ZYzQ%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Sep 2, 2020, 1:27:11 PM
+
+
+
+to genepatt...@googlegroups.com
+Jianying,
+
+
+I forwarded that part of the question back to the author of the algorithm.  His reply was;
+
+
+Unfortunately, MutPanning is only available for the Hg19 human reference genome. I have not made a MutPanning version for genomes of any other species, including mice.
+
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAH%2BqTAzfBEKR8dB8z%2Br-cR0JXGnoZUQ7ebyTYmzKep_Bfe%3DqWg%40mail.gmail.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,30 @@
+URL: https://groups.google.com./g/genepattern-help/c/4hwDC5nIui4
+Title: End of Support for the PathSeq pipeline and associated modules
+----------------------------------------
+
+
+
+
+
+End of Support for the PathSeq pipeline and associated modules
+4 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Mar 30, 2021, 11:22:04 AM
+
+
+
+to GenePattern Help Forum
+Due to the end of support by the authors, the PathSeq pipeline and its associated modules are no longer installed on any of our servers and are no longer available from any of our repositories. Please see this blog post for more information.
+
+
+
+Sincerely,
+The GenePattern Team
+
+Reply all
+
+Reply to author
+
+Forward

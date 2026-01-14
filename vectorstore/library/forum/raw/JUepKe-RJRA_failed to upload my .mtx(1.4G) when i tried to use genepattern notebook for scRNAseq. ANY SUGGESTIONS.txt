@@ -1,0 +1,96 @@
+URL: https://groups.google.com./g/genepattern-help/c/JUepKe-RJRA
+Title: failed to upload my .mtx(1.4G) when i tried to use genepattern notebook for scRNAseq. ANY SUGGESTIONS?
+----------------------------------------
+
+
+
+
+
+failed to upload my .mtx(1.4G) when i tried to use genepattern notebook for scRNAseq. ANY SUGGESTIONS?
+6 views
+Skip to first unread message
+
+Cui Li
+unread,
+Jul 6, 2019, 11:34:12 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Cui Li
+unread,
+Jul 7, 2019, 12:35:24 PM
+
+
+
+to GenePattern Help Forum
+Hi, I used GenePattern Notebook on broad server and tried to run a public notebook for single cell sequencing. I failed to upload my file as suggested in the notebook. Basically, the web explorer crushed when i hit run. Any suggestions? 
+Best,
+Cui
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dd8f25d3-5ed8-4d0a-a5e8-582af02f9db1%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Jul 12, 2019, 10:00:00 AM
+
+
+
+to GenePattern Help Forum
+Hello Cui,
+
+
+Which notebook were you trying to run? and against which server?
+
+
+The default server to run against is cloud.genepattern.org , and is referred to as the "GenePattern Public Server" or "GenePattern Cloud" in the Notebook interface.
+
+
+Where did you upload your file? In a module dialog or to the workspace itself?
+
+
+There were some issues with the notebook workspace earlier this week which may have caused this error, but we've not resolved them.
+
+
+Please let us know if you are still having any difficulties.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

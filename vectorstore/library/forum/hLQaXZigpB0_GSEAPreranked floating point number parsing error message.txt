@@ -1,0 +1,1 @@
+GenePattern GSEAPreranked error resolved by converting an improperly saved XML file to a plain text .rnk file format, which resolved the floating point number parsing issue when running the GSEA Pre-ranked analysis module.

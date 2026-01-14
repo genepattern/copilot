@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/WK4QipIpEQU
+Title: OpenCRAVAT is now available in GenePattern!
+----------------------------------------
+
+
+
+
+
+OpenCRAVAT is now available in GenePattern!
+15 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Apr 27, 2020, 9:03:09 AM
+
+
+
+to GenePattern Help Forum
+OpenCRAVAT is now available in GenePattern!
+OpenCRAVAT aggregates over 100 data sources and tools for variant annotation and interpretation. 
+Thanks to the lab of Karchin Rachel for a great collaboration.
+Kym Pagel
+unread,
+May 12, 2020, 9:41:14 AM
+
+
+
+to GenePattern Help Forum
+After attempting to run OpenCRAVAT on notebook.genepattern.org (via Google Chrome on a MacBook), I'm encountering some issues:  
+First, I can't figure out how to select more than one annotator per category --  command-click, shift-click and other key combinations aren't working. Second, the notebook errors if there is at least one annotator category without an annotator selected from the dropdown. 
+
+Ted Liefeld
+unread,
+May 12, 2020, 10:10:20 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+apologies for the problems you are having.  At the moment the GenePattern Notebook cannot properly handle the multi-select drop-downs used by the OpenCRAVAT module.  You should be able to run it more easily on the GenePattern server itself (https://cloud.genepattern.org/gp).
+
+
+We do have a tentative fix for the notebook problem which we will be testing later this week.  If it passes our tests we will release it ASAP and update this ticket to let you know.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

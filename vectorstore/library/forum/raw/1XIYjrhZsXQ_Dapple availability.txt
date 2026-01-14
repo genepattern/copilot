@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/1XIYjrhZsXQ
+Title: Dapple availability
+----------------------------------------
+
+
+
+
+
+Dapple availability
+15 views
+Skip to first unread message
+
+Alexandra Pokhilko
+unread,
+Aug 21, 2020, 7:02:23 AM
+
+
+
+to GenePattern Help Forum
+
+
+Dear all,
+Is Dapple module available? I can not find it
+Best regards
+Alex
+
+Barbara Hill
+unread,
+Aug 21, 2020, 10:43:13 AM
+
+
+
+to GenePattern Help Forum
+
+Hello Alex,
+
+
+The module is available on our main public server. Please let us know if this link is not accessible for you (after logging in).
+https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:8080.gpbroad.broadinstitute.org:genepatternmodules:479:0.19 
+
+
+Best
+-Barbara 
+Alexandra Pokhilko
+unread,
+Aug 21, 2020, 10:49:07 AM
+
+
+
+to GenePattern Help Forum
+Thank you
+
+
+Reply all
+
+Reply to author
+
+Forward

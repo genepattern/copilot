@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/9Y9ol1kxVIw
+Title: Bowtie indexer error
+----------------------------------------
+
+
+
+
+
+Bowtie indexer error
+11 views
+Bowtie
+Bowtie-indexer
+Random-seed
+Skip to first unread message
+
+Fernando Alemán
+unread,
+Dec 15, 2017, 5:39:45 PM
+
+
+
+to GenePattern Help Forum
+Hi there,
+Before running the Bowtie Aligner I need a Bowtie Index 2 as a template. There is none publicly available for tomato so I am creating a custom template (a Bowtie Index) with the Bowtie Indexer. (I hope that's what I have to do to work with tomato RNA-seq samples).
+
+
+
+So I input a fasta file as requested and leave the rest as default, including the random seed number (=123456). 
+I click run and got this error message:
+"The random seed must be an integer"
+
+
+I don't know what went wrong nor how to solve it. 
+Thanks,
+Fernando.
+Barbara Hill
+unread,
+Dec 20, 2017, 3:29:57 PM
+
+
+
+to GenePattern Help Forum
+Hello Fernando, 
+
+
+Do you have a job id? This would make it easier for us to investigate.
+
+
+Best
+-Barbara
+Fernando Alemán
+unread,
+Dec 21, 2017, 12:57:20 PM
+
+
+
+to GenePattern Help Forum
+
+
+Hi Barbara,
+Thanks for your reply. I tried to find the job ID but there are too many (failed) jobs and couldn't find it. 
+So I went again to the Bowtie Indexer and repeat the process with a fasta file of all cDNA from tomato (from Emsembl) and left the rest on default (I hope that's what I had to do).
+The new job ID is 1602025 and I will keep you posted (it is pending and taking quite a long time).
+Thanks again and happy holidays!
+Fernando. 
+
+Fernando Alemán
+unread,
+Dec 21, 2017, 3:30:22 PM
+
+
+
+to GenePattern Help Forum
+
+
+I think the new job 1602025 worked now!
+Thanks!
+Fernando. 
+
+
+Reply all
+
+Reply to author
+
+Forward

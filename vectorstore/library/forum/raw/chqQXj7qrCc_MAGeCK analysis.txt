@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/chqQXj7qrCc
+Title: MAGeCK analysis
+----------------------------------------
+
+
+
+
+
+MAGeCK analysis
+27 views
+Skip to first unread message
+
+Koichi
+unread,
+Feb 15, 2019, 12:28:36 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I was using GenePattern for MAGeCK Count analysis till last year but can't find the job there.
+How can I find it?
+
+
+Thank you,
+Koichi
+Barbara Hill
+unread,
+Feb 14, 2020, 7:57:58 AM
+
+
+
+to GenePattern Help Forum
+Hello Koichi, 
+
+
+Unfortunately, the module developer no longer works on our team and is no longer supporting MAGeCK, so we are deprecating the module.
+
+
+There are 3 Git repositories associated with this account, if you are interested in taking a look at the code for yourself. (This will soon be archived, but still visible)
+
+
+https://github.com/search?q=topic%3Amageck+org%3Agenepattern&type=Repositories
+
+
+
+Please let us know if we can be of any further assistance.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

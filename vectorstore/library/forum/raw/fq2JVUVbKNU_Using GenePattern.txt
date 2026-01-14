@@ -1,0 +1,291 @@
+URL: https://groups.google.com./g/genepattern-help/c/fq2JVUVbKNU
+Title: Using GenePattern
+----------------------------------------
+
+
+
+
+
+Using GenePattern
+97 views
+Skip to first unread message
+
+Regan Odongo
+unread,
+May 22, 2019, 7:38:40 AM
+
+
+
+to GenePattern Help Forum
+How can I go around uploading expression data from GEO? I get an error message in all my attempts.
+
+
+GSE100743
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+May 24, 2019, 12:17:05 PM
+
+
+
+to GenePattern Help Forum
+Hello Regan, 
+
+
+Am I correct in assuming you have been trying to use GEOImporter? Can you provide a job id? This will allow me to look at the error you are getting.
+
+
+Best
+-Barbara
+angela cannata
+unread,
+May 13, 2020, 9:21:36 AM
+
+
+
+to GenePattern Help Forum
+Hello, I am having the same problem when trying to import with accession number and/or SOFT URL
+
+
+JOB IDs:
+231837
+231837
+231820
+
+231364
+
+
+
+With some errors:
+Error in switch(as.character(first.entity[1]), sample = { : 
+	argument is missing, with no default
+Execution halted
+
+Barbara Hill
+unread,
+May 15, 2020, 12:54:18 PM
+
+
+
+to GenePattern Help Forum
+Hello Angela, 
+
+
+The initial errors you encountered were due to two factors.
+
+
+1) In one job you specified both an accession id and a value for the soft file when the instructions are to provide one or the other
+2) In that same job you specified a path to a directory for the soft file and not the soft file itself
+
+
+I ran your job again with just the accession id and came up with a more informative error which indicates and issue that often comes up with GEOImporter as the data there does not
+always match what the module requires. It could be that the data set contains some non-numeric values that prevent the module from completing. The only recourse would be to download the SOFT file and manually remove those values.
+
+
+All the best,
+Barbara
+
+angela cannata
+unread,
+May 18, 2020, 6:02:05 AM
+
+
+
+to GenePattern Help Forum
+Thank you Barbara! Would it be possible to set up a meeting to de-bug other issues in real time?
+
+GenePattern Help Forum
+unread,
+May 18, 2020, 8:46:02 AM
+
+
+
+to GenePattern Help Forum
+Hi Angela, 
+
+
+That is possible, but it will have to wait a bit, as I am in the middle of a project with a hard deadline, fast approaching. I should also note that while I can provide lots of help with GenePattern in general, I may be less helpful with specific tools, as I did not develop all 250+ tools that we host (though I have been on the team for almost 13 years and thus do know a thing or two), and my background is not in bioinformatics. If you have bioinformatics or methods questions, it is probably best to keep communicating through the forum as it allows others to respond and allows me to engage colleagues from several institutions who *are* experts, as well as the authors themselves. That is not really possible in real-time.
+
+
+That being said, I'd be happy to help where I can. However, the earliest I can schedule is this Friday.  What is your timezone?
+
+
+Best
+-Barbara
+
+
+
+angela cannata
+unread,
+May 20, 2020, 11:46:21 AM
+
+
+
+to GenePattern Help Forum
+My apologies for the delayed reply. That would be great just to clear some things up my PI and I have been having issues with in general. If you are no longer available this Friday, next week is okay!
+
+Barbara Hill
+unread,
+Jun 1, 2020, 2:31:26 PM
+
+
+
+to GenePattern Help Forum
+Hi Angela, 
+
+
+I too was busy and now I apologize for taking so long to respond. 
+
+
+Do you still have questions you'd like to review?
+
+
+Best
+-Barbara
+Ling Wu
+unread,
+Jun 10, 2021, 12:13:57 PM
+
+
+
+to GenePattern Help Forum
+
+
+Dear Sir,
+I use file format TXT to cls and Excel to gct by gene pattern
+But do not work 
+
+
+could you please help me about this problem.
+Barbara Hill 在 2020年6月2日 星期二上午5:31:26 [UTC+8] 的信中寫道：
+
+
+Anthony Castanza
+unread,
+Jun 10, 2021, 12:16:44 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+Could you provide us the Job ID of the run that didn’t work? That would allow us to take a look at the files and provide advice on how to correct any issues with the formatting.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f3408bc4-955f-497a-8589-b910d3f279bfn%40googlegroups.com.
+
+Kyle Starost
+unread,
+Apr 26, 2025, 9:21:28 AM
+
+
+
+to GenePattern Help Forum
+Greetings,
+Apologies for any inconvenience.
+I am relatively new and have had similar experience with errors being generated when trying GEOimporter for GEO accession GSE19399 and all default inputs.
+I have issues converting to gct with
+ONLY accession ID - JOB ID 638768, 638770, and 638903
+
+
+as well as with 
+ONLY SOFT file - JOB ID 638907
+
+
+Would it be possible for someone to verify if this is potentially due to some "non-numeric values that prevent the module from completing" as referenced in the past thread?
+Also, if it is true, what methods can be used to determine which exact non-numeric values are causing the problem.
+
+
+Thank you,
+Kyle S.
+
+John Liefeld
+unread,
+Apr 28, 2025, 8:02:09 AM
+
+
+
+to GenePattern Help Forum
+Kyle,
+
+
+I looked at a couple of your jobs and in the stderr.txt files it said something like "Host EC2 (instance i-06376af584861a4dc) terminated.".  While there are several causes that could result in a message like this, due to the way that GenePattern delegates jobs through AWS batch we see this most frequently when a module crashes its container by running out of memory.  I re-ran one of your accession jobs and the soft job  with 16GB of memory (up from the 2GB default used in your jobs) and both completed successfully generating gct files.
+
+
+So go ahead and re-run your job with more memory and you should be fine.  16GB certainly worked but you might be able to get away with less.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+Kyle Starost
+unread,
+Apr 28, 2025, 7:51:20 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Thank you so much for the help!
+I changed it to a higher memory (12GB) and it worked.
+Much appreciated,
+Kyle 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

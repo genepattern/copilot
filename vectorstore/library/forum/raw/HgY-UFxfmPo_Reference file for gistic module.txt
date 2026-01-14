@@ -1,0 +1,189 @@
+URL: https://groups.google.com./g/genepattern-help/c/HgY-UFxfmPo
+Title: Reference file for gistic module
+----------------------------------------
+
+
+
+
+
+Reference file for gistic module
+31 views
+Skip to first unread message
+
+황현지
+unread,
+May 27, 2019, 6:30:06 PM
+
+
+
+to GenePattern Help Forum
+
+Hi, i found GISTIC module in genepattern cloud.
+
+ 
+
+I want to see copy number variation in my data, but there are 5 refgene files (human reference genome)
+
+ 
+
+I have a dog reference mat ilfe (canfam3.mat), so how can i upload it and use it? 
+
+ 
+
+Is there are any method to upload and use?
+
+ 
+
+I don't know it is possible. 
+
+ 
+
+I'd appreciate it if you let me know. 
+
+
+
+
+Thank you. 
+
+
+
+
+
+
+
+Ted Liefeld
+unread,
+Jun 6, 2019, 3:42:41 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+with the current Gistic 2.0 module you cannot upload the reference file.  There are a few ways you could possibly get around this;
+1- Run your own GenePattern server, edit the module to let you pass in this file instead of taking it from the list
+2- If you own Matlab, you could run the non-GenePattern gistic in Matlab
+3- If you can wait until next week I could help by temporarily adding your mat file to the module or making an altered version as in #1 above.
+
+
+Hope this helps,
+
+
+Ted
+
+황현지
+unread,
+Jun 10, 2019, 4:56:34 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Actually, i tried several times to use matlab, but it's very hard to me.
+
+
+if it's possible, can you add my mat file in module for a while?  
+
+
+i can wait because i can't solve this problem past few months. 
+
+
+
+so, where can i send my file(*.mat)?
+
+
+Thanks for your help.
+  
+
+
+2019년 6월 7일 금요일 오전 7시 42분 41초 UTC+9, Ted Liefeld 님의 말:
+
+Ted Liefeld
+unread,
+Jun 11, 2019, 7:11:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,  I have responded via my private email...
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/HgY-UFxfmPo/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/10f12f52-959a-40d8-8694-20514da19919%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+황현지
+unread,
+Jun 24, 2019, 12:40:15 AM
+
+
+
+to GenePattern Help Forum
+Hi, i figured out the first way that you told me.
+
+
+
+1- Run your own GenePattern server, edit the module to let you pass in this file instead of taking it from the list
+
+
+so, i make new modules in my own server.
+
+
+
+i attached my reference file (canfam3.1.mat) and saved this pipeline.
+
+
+and then, i run my own pipeline adding segmentation file.
+
+
+but, there is an error. invalid chromosome in my file.
+
+
+already i confirmed that my reference file(.mat) have 40 chromosome (chromosome 1-38, MT, X).
+
+
+i don't know why this error occurs..
+
+
+
+
+
+
+2019년 6월 11일 화요일 오후 11시 11분 41초 UTC+9, Ted Liefeld 님의 말:
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepatt...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/10f12f52-959a-40d8-8694-20514da19919%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

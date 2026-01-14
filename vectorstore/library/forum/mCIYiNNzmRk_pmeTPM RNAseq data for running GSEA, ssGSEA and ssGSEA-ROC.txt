@@ -1,0 +1,1 @@
+A user with an RNA-seq dataset in pmeTPM format wants guidance on preparing expression data for GSEA, ssGSEA, and ssGSEA-ROC analyses, specifically seeking clarity on whether direct use of pmeTPM values is appropriate or if additional normalization using DESeq2 is required before running gene set enrichment methods.

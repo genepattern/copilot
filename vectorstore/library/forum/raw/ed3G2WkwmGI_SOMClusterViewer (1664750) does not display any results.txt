@@ -1,0 +1,165 @@
+URL: https://groups.google.com./g/genepattern-help/c/ed3G2WkwmGI
+Title: SOMClusterViewer (1664750) does not display any results
+----------------------------------------
+
+
+
+
+
+SOMClusterViewer (1664750) does not display any results
+9 views
+Skip to first unread message
+
+Pnar Pir
+unread,
+Apr 21, 2018, 1:50:44 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+SOMClusterViewer (1664750) did not produce any results, I click on the icon to see the plot but nothing happens!
+
+
+
+Thank you!
+
+
+Pınar
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+정진우
+unread,
+Apr 22, 2018, 8:32:25 PM
+
+
+
+to genepatt...@googlegroups.com
+I appreciate for your reply. 
+
+
+I attached new zip file of my result.
+By the way, can you determine why does AuDIT not work on my skyline file by its shown code below??\
+
+
+Thank you!
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+
+
+Attaching package: 'gplots'
+
+
+The following object is masked from 'package:stats':
+
+
+    lowess
+
+
+[1] >>> Processing part 1 of 1
+[1] Initializing ...
+[1] Running AuDIT ...
+Error in run.AuDIT(file, output.prefix, required.columns = audit.required.columns,  : 
+  Could not calculate any p values.
+Calls: tryCatch ... eval -> tapply -> lapply -> FUN -> FUN -> run.AuDIT
+Execution halted
+
+
+Finished!
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3e301012-101c-4802-b05a-98b55d9f58c1%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+
+--
+
+Jin Woo Jung
+Department of Molecular Medicine and Biopharmaceutical Sciences
+Graduate School of Convergence Science and Technology
+Seoul National University
+
+
+
+TEL : 82-2-3668-7633
+
+Mobile: 010-3271-0735
+
+quasarerroronskyline.zip
+Peter Carr
+unread,
+Apr 23, 2018, 8:39:17 AM
+
+
+
+to genepatt...@googlegroups.com
+You need to use the VisualizerLauncher to view your SOMClusterViewer output.
+Open this link for ussage instructions:
+    https://genepattern.github.io/VisualizerLauncher/
+
+Regards,
+Peter
+
+Barbara Hill
+unread,
+Apr 27, 2018, 12:32:17 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Please send your job id, so that we can look into the details of your error.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

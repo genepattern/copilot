@@ -1,0 +1,1 @@
+GenePattern user experiencing issues with ssGSEA module not running properly on public server, with module repository unavailable, resulting in job timeouts and inability to install modules, with support staff recommending rerunning job and suggesting migration to cloud-hosted AWS GenePattern server as an alternative solution for module access and job processing.

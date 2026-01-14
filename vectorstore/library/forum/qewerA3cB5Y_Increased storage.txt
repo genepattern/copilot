@@ -1,0 +1,1 @@
+User inquired about GenePattern storage allocation being reduced from previously approved 150GB back to 30GB, and administrator quickly restored requested storage allocation, resolving the issue promptly with an apology noting a server upgrade may have caused the unintended reduction.

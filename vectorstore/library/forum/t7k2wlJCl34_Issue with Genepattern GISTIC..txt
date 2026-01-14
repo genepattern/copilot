@@ -1,0 +1,1 @@
+GenePattern GISTIC module error involving library loading failure resolved by migrating from local Broad Institute server to cloud-hosted Docker container version, with recommendation to use GenePattern cloud platform at https://cloud.genepattern.org for continued module functionality.

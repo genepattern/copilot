@@ -1,0 +1,83 @@
+URL: https://groups.google.com./g/genepattern-help/c/fQf5O4nK_W8
+Title: Questions About the NTP Module input features file
+----------------------------------------
+
+
+
+
+
+Questions About the NTP Module input features file
+30 views
+Skip to first unread message
+
+二哈李
+unread,
+Oct 9, 2022, 5:37:57 AM
+
+
+
+to GenePattern Help Forum
+Hi
+In the NTP module, whether the Class column in the List of marker genes has only one classification is like the figure below.
+
+
+
+
+After I run it, the output file is not classified. Is there something wrong with my file?
+
+My job number is 468128.
+
+
+Thank you
+王建东
+unread,
+Oct 9, 2022, 7:57:58 AM
+
+
+
+to genepattern-help
+At least two classifications for genes are required in the NTP module.
+wjd
+------------------ 原始邮件 ------------------
+发件人: "genepattern-help" <lier...@gmail.com>;
+发送时间: 2022年10月9日(星期天) 晚上8:37
+收件人: "GenePattern Help Forum"<genepatt...@googlegroups.com>;
+主题: [genepattern-help:2484] Questions About the NTP Module input features file
+
+
+Hi
+In the NTP module, whether the Class column in the List of marker genes has only one classification is like the figure below.
+
+
+
+
+After I run it, the output file is not classified. Is there something wrong with my file?
+
+My job number is 468128.
+
+
+Thank you
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/af3c8ed8-3028-4c63-9135-354c81052053n%40googlegroups.com.
+
+
+8C39CB3C@B064CA19.71E14263.jpg
+二哈李
+unread,
+Oct 13, 2022, 3:49:27 AM
+
+
+
+to GenePattern Help Forum
+
+ok, thanks for your answer.
+
+
+Reply all
+
+Reply to author
+
+Forward

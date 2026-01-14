@@ -1,0 +1,129 @@
+URL: https://groups.google.com./g/genepattern-help/c/tqRTjV1bxaM
+Title: Hierarchical Clustering Image problem
+----------------------------------------
+
+
+
+
+
+Hierarchical Clustering Image problem
+36 views
+Skip to first unread message
+
+Meg Houzer
+unread,
+Feb 11, 2020, 12:40:37 PM
+
+
+
+to GenePattern Help Forum
+
+Hi! I am trying to run the hierarchical clustering image however when I try the stderr.txt says Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 36, Size: 36.
+The job ID is 205143. Everything up to this point worked, hierarchical clustering viewer also is working just fine. 
+
+
+
+
+
+Ted Liefeld
+unread,
+Feb 18, 2020, 10:49:56 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+could you post your job number so that we can look at the job in detail to debug it?  Since you can run the HeatMapViewer, you can generate an image from that visualizer by clicking on the disk icon in the toolbar as a workaround.
+
+
+Thanks
+
+
+Ted
+
+
+
+Meg Houzer
+unread,
+Feb 24, 2020, 2:04:51 PM
+
+
+
+to GenePattern Help Forum
+The job ID is 205143.
+
+
+
+Ted Liefeld
+unread,
+Feb 26, 2020, 8:44:26 AM
+
+
+
+to GenePattern Help Forum
+Unfortunately that job has already been purged from the server.  If it happens again or if you can re-run it I will try to look again
+
+
+Thanks
+
+Ted  
+
+
+
+Meg Houzer
+unread,
+Feb 27, 2020, 10:06:55 AM
+
+
+
+to GenePattern Help Forum
+Ok! Thanks anyways!
+
+Meg Houzer
+unread,
+Feb 28, 2020, 8:55:35 AM
+
+
+
+to GenePattern Help Forum
+Hi! I re-ran the job (got the same error) and the job ID is 209719.
+
+Ted Liefeld
+unread,
+Feb 28, 2020, 9:48:13 AM
+
+
+
+to GenePattern Help Forum
+Meg
+
+
+thanks for the re-run.  The problem appears to be that there is an extra blank line between the header line and the line with the EWEIGHT values in the cdt file (i.e.line #2).  HierarchicalClusteringViewer handles this OK, but the HierarchicalClusteringImage module expects another line of data.  You can generate the image using HierarchicalClusteringImage if you delete that line from the file.
+
+
+Can you tell me what was used to generate these clustering results?  We just pulled HierarchicalClustering version 7.17 from the server because it has a few bugs.  This was not one of the known bugs but if you did use this version to generate the clusters, then you can try re-clustering using version 6 (was previous, now the latest version) to see if that fixes the problem.
+
+
+Hope this helps,
+
+
+Ted
+ 
+
+Meg Houzer
+unread,
+Mar 2, 2020, 7:56:50 AM
+
+
+
+to GenePattern Help Forum
+Thank you so much!
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,42 @@
+URL: https://groups.google.com./g/genepattern-help/c/nyXGvuCAWaA
+Title: UV mutagenesis hotspots
+----------------------------------------
+
+
+
+
+
+UV mutagenesis hotspots
+6 views
+Skip to first unread message
+
+Krissy Mahan
+unread,
+Jul 2, 2018, 9:15:43 AM
+
+
+
+to GenePattern Help Forum
+I'd like to identify and quantitate mutation hotspots in a genome of an organism that I UV mutagenized. What tools can I use to identify regions in the genome that were heavily mutated?
+
+Barbara Hill
+unread,
+Jul 16, 2018, 10:18:14 AM
+
+
+
+to GenePattern Help Forum
+Hello Krissy, 
+
+
+You might try MutSigCV and/or IGV.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

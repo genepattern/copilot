@@ -1,0 +1,1 @@
+A user inquired about running GenePattern server within a Docker container, and received a response that while a Docker container for GenePattern is not currently available, it is on their development roadmap, with the creation of such a container being complex due to challenges in running individual analysis jobs within the container.

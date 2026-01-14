@@ -1,0 +1,1 @@
+GenePattern user encountered an "Essential container in task exited" error while running GISTIC, which initially prevented job completion, but the issue was later resolved without a detailed technical explanation, with the user reporting successful subsequent runs and support staff acknowledging the apparent resolution.

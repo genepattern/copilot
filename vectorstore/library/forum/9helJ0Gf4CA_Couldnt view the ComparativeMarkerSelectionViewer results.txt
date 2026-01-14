@@ -1,0 +1,1 @@
+A user experienced difficulty viewing results from the ComparativeMarkerSelectionViewer in GenePattern on the public cloud server using Chrome browser, but the issue was eventually resolved without further technical details being shared, indicating a potential temporary system glitch or user-side configuration problem that did not require extensive troubleshooting.

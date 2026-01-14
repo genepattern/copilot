@@ -1,0 +1,1 @@
+A DAPPLE analysis user encountered an input file error where the system reported that the input file must only contain alphanumeric characters, despite the user attempting to clean the SNP p-value file; the support staff requested a job ID to investigate the specific issue, but no definitive resolution was provided in the thread.

@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/TQdaIRp-_pU
+Title: hi Can I use comparative marker selection tool in GP for RNAseq data downloaded from TCGA (RSEM normalised)?
+----------------------------------------
+
+
+
+
+
+hi Can I use comparative marker selection tool in GP for RNAseq data downloaded from TCGA (RSEM normalised)?
+19 views
+Skip to first unread message
+
+jayakumar vadakekolathu
+unread,
+Jun 12, 2020, 5:43:01 AM
+
+
+
+to GenePattern Help Forum
+hi Can I use comparative marker selection tool in GP for RNAseq data downloaded from TCGA (RSEM normalised)? 
+
+Barbara Hill
+unread,
+Jun 12, 2020, 9:31:20 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+This is a great question and we are looking into this to verify that the EM modeling that RSEM uses is compatible with the normality expectations of CMS .
+
+
+We will get back to you as soon as we have an answer.
+
+
+All the best
+-Barbara Hill
+
+GenePattern Help Forum
+unread,
+Jun 18, 2020, 9:21:22 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It seems this should work:
+
+
+"I believe its [RSEM's] transcript quantification can be used as input to the t-test or signal-to-noise differential analysis."
+
+
+Please let us know if you have any other questions.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

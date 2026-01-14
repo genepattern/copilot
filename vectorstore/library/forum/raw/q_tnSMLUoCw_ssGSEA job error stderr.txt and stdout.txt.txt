@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/q_tnSMLUoCw
+Title: ssGSEA job error: stderr.txt and stdout.txt
+----------------------------------------
+
+
+
+
+
+ssGSEA job error: stderr.txt and stdout.txt
+24 views
+Skip to first unread message
+
+Marie Domdom
+unread,
+May 4, 2018, 8:42:20 AM
+
+
+
+to GenePattern Help Forum
+Hello all,
+
+I've been trying to run a ssGSEA Projection using a .gct file created through the Phantasus online program. For some reason, I keep running into the same errors: stderr.txt and stout.txt. My latest run is job id: 1671371.
+
+I'm trying to look at different tutorials but I can't find a way.
+
+Thank you for your help!
+
+All the best!
+
+MA Domdom
+
+Barbara Hill
+unread,
+May 7, 2018, 1:20:53 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The most likely issue is that all of the gene sets in the GMT are being dropped as none
+of them contain symbols that match to the names in the GCT file.
+
+
+Let me know if that gets you pointed in the right direction.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

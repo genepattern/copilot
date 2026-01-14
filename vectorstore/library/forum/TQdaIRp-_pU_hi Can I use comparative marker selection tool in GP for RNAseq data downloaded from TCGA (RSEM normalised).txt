@@ -1,0 +1,1 @@
+User asked about using comparative marker selection tool in GenePattern for TCGA RNAseq data normalized with RSEM, and received confirmation from support that the RSEM transcript quantification should be compatible with t-test or signal-to-noise differential analysis methods.

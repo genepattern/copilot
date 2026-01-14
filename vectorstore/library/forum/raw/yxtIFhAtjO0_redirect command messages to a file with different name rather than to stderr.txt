@@ -1,0 +1,250 @@
+URL: https://groups.google.com./g/genepattern-help/c/yxtIFhAtjO0
+Title: redirect command messages to a file with different name rather than to stderr
+----------------------------------------
+
+
+
+
+
+redirect command messages to a file with different name rather than to stderr
+21 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 4, 2017, 7:48:08 AM
+
+
+
+to GenePattern Help Forum
+Sorry for the many posts, I try to keep them separate so that some can rapidly be closed :-)
+
+
+Non stdout output is saved as stderr while sometimes it is not really errors but rather comments.
+This makes the command result appear as failed while it is not.
+
+
+Is it possible to add to the command to save stderr messages to a file instead like in bash 'command > out 2>error'
+
+I tried adding behind my command '2\>run_messages.txt' but do not get it despite the escaping.
+
+
+Thanks and fine WE
+Stephane
+
+
+Barbara Hill
+unread,
+Aug 4, 2017, 12:05:09 PM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+There are two options here.
+
+
+What language is your module in?  (This will help to answer option 1)
+
+
+Option 2 is to configure GenePattern to only show "ERR" for a non-zero exit code.
+
+
+To do this set "job.error_status.exit_value: true"  in config.yaml and set "job.error_status.stderr: false"
+
+
+Have a great weekend! And thanks for keeping the posts small, it does help to close them out faster!
+
+
+-Barbara
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7cd01209-3ddc-4a86-b0de-f40d63b5931d%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://www.broadinstitute.org/cancer
+Stephane Plaisance
+unread,
+Aug 5, 2017, 1:02:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+I am currently trying to use pure module maker without addition of wrappers; making wrappers limits the ease of integration and the code is in two places which limits its readability.
+
+
+I was referring to commands purely built using the GUI and without additional wrappers. When using a wrapper, we can easily include these in the code but in the curren tcase (Picard tools) I noticed that some text is sent to the GP stderr although it does not contain tags like ERROR. I played with verbosity INFO ERROR and get the same result.
+
+
+For vcftools, I get warnings and comments in stderr as well which are not errors since I used the -f parameter to force the command but look mike errors. I cannot prevent this behavior using the vcftools command line argument set and I woudl prefer not to have to make a wrapper to stay closer to the original app.
+
+
+In general, based on my first week of intense GP module programming, I would wish to have more control on the command syntax including:
+
+
+* more control on the input as in my separate post including duplicating input data to the local folder when requested
+* playing with variables as one can do in bash (substitution, regexp in the variable values, basename and alike)
+* adding multi-command syntax, testing and decision (if,else) within module maker command text box; allowing for instance some bash syntax with ‘;’ and pipes would do (i know you are concerned with hacker injecting code ;-)
+* more control on the output like redirection of stderr and stdout to separate files (or together)
+* creation of a more customisable log file (this is less needed as there is already the gp_log but it does not report  soem of the data present in the .rte.out (merge them?)
+
+
+we are reinventing bash isn’t it (I am a bash addict, who needs python or perl to do these things?)
+
+
+Thanks for your great platform, I really start to enjoy it after some frustration and still some issues (list order issue in a separate post is a stunting one?)
+
+
+Best regards,
+Stephane
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/yxtIFhAtjO0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtwHkVwqiqs9%2Bw7-BfzFq4MQ4pJN3m7zEhOTago9NL_02Q%40mail.gmail.com.
+
+Barbara Hill
+unread,
+Aug 22, 2017, 10:12:39 AM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+This thread also contains some excellent requests which we will investigate adding to GenePattern.
+
+
+Notes:
+
+>"adding multi-command syntax, testing and decision (if,else) within module maker command text box; allowing for instance some bash syntax with ‘;’ and pipes would do (i know you are concerned with hacker injecting code ;-)"
+I think Peter has addressed this, but we probably won't change this in the near future as it would require a rewrite of our execution engine. It's not impossible, but it's also not insignificant. That's not to say that we won't do it, but we have other work that needs that sort of effort right now.
+
+
+>"more control on the output like redirection of stderr and stdout to separate files (or together)"
+This one is harder, as what gets sent to stderr vs stdout is mostly up to the module, and it's hard for us to generalize from module to module, but we can look into it. What we are actually planning to do is to set GenePattern to only ERR on non zero exit codes, by default. Therefore the contents of stderr & stdout would be informational, rather than determining the state of the job.
+
+
+
+
+Can you say a little more about these few:
+
+
+"playing with variables as one can do in bash (substitution, regexp in the variable values, basename and alike)"
+
+
+"creation of a more customisable log file (this is less needed as there is already the gp_log but it does not report  soem of the data present in the .rte.out (merge them?)"
+-> the log for the modules? or for the server?
+
+
+Many thanks!
+
+
+Barbara
+Stephane Plaisance
+unread,
+Aug 23, 2017, 12:37:39 AM
+
+
+
+to genepatt...@googlegroups.com
+
+
+On Tuesday, August 22, 2017 at 7:12:39 PM UTC+2, Barbara Hill wrote:
+Hi Stephane, 
+
+
+This thread also contains some excellent requests which we will investigate adding to GenePattern.
+
+
+Notes:
+
+>"adding multi-command syntax, testing and decision (if,else) within module maker command text box; allowing for instance some bash syntax with ‘;’ and pipes would do (i know you are concerned with hacker injecting code ;-)"
+I think Peter has addressed this, but we probably won't change this in the near future as it would require a rewrite of our execution engine. It's not impossible, but it's also not insignificant. That's not to say that we won't do it, but we have other work that needs that sort of effort right now.
+
+
+
+
+I can live with wrappers ;-)
+ 
+>"more control on the output like redirection of stderr and stdout to separate files (or together)"
+This one is harder, as what gets sent to stderr vs stdout is mostly up to the module, and it's hard for us to generalize from module to module, but we can look into it. What we are actually planning to do is to set GenePattern to only ERR on non zero exit codes, by default. Therefore the contents of stderr & stdout would be informational, rather than determining the state of the job.
+
+
+
+
+I have this case right now that although I ask ERROR as verbosity in Picard tools, I get INFO messages in the stderr file (nowhere ERROR in the output). I realize this has to be a Picard issue but this triggered my request.
+ 
+
+
+Can you say a little more about these few:
+
+
+"playing with variables as one can do in bash (substitution, regexp in the variable values, basename and alike)"
+
+
+
+
+we have now _basename, I asked Peter to add double _basename when the input is zipped and to avoid having results with double extensions in their names (cosmetic I agree ;-)
+
+
+extension/substitution functionalities as in shell would be cool and solve this
+${var:%%.vcf.gz} (https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
+
+
+ 
+"creation of a more customisable log file (this is less needed as there is already the gp_log but it does not report  soem of the data present in the .rte.out (merge them?)"
+-> the log for
+
+
+
+this is indeed not so important BUT the .err.out should be present with a link in the GUI, it took me some time to memorize its name and I now constantly open stdout and change it to .rte.out to get to it
+ 
+Many thanks!
+
+
+Likewise
+Stephane
+ 
+
+
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

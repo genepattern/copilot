@@ -1,0 +1,107 @@
+URL: https://groups.google.com./g/genepattern-help/c/5CoGaqoCSC8
+Title: Error ssGSEA(595651)
+----------------------------------------
+
+
+
+
+
+Error ssGSEA(595651)
+24 views
+Skip to first unread message
+
+Kudzayi Kutywayo
+unread,
+Aug 1, 2024, 7:06:26 AM
+
+
+
+to GenePattern Help Forum
+Hello, I have been trying to run ssGSEA but it keeps coming up with an error message (with no explanation). I have tried changing the job memory allocation but I'm getting the same result. Would you be able to help me with this please?
+John Liefeld
+unread,
+Aug 1, 2024, 7:22:56 AM
+
+
+
+to GenePattern Help Forum
+Hi,  please provide a job number for us to look at,
+
+
+Thanks
+
+
+Ted
+
+
+
+John Liefeld
+unread,
+Aug 1, 2024, 7:28:54 AM
+
+
+
+to GenePattern Help Forum
+I made the assumption that your username was khkutty (seems close to your email).  So if Job 595674 is one of yours, the proximal answer is in the stderr.txt file that the job output.
+
+
+"No output gct file written: no gene sets satisfied the min overlap criterion"
+
+
+I will forward this to one of the GSEA developers to see if they have advice for how to  address "no gene sets satisfying the min overlap criterion". 
+
+
+Hope this helps
+
+
+Ted
+
+Anthony Castanza
+unread,
+Aug 1, 2024, 9:00:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Kudzayi,
+
+
+It looks like your dataset is using Ensembl Gene IDs as the input gene identifier. Since MSigDB gene sets are provided in Gene Symbols (or NCBI gene IDs), n order to run ssGSEA on this data with MSigDB gene sets you first need to run your dataset through the "CollapseDataset" module: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00134:2.2.0
+
+You'll want to select the "Human_Ensembl_Gene_ID_MSigDB.v.2023.2.Hs.chip" file for this combination of gene IDs and gene sets.
+
+
+Let us know if you have any more questions
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/034e4b17-7f13-4ccf-9ef5-02ab9bd9f155n%40googlegroups.com.
+
+Kudzayi Kutywayo
+unread,
+Aug 5, 2024, 8:05:00 AM
+
+
+
+to GenePattern Help Forum
+Thank you very much! I was able to run ssGsea after collapsing the dataset.
+
+
+Reply all
+
+Reply to author
+
+Forward

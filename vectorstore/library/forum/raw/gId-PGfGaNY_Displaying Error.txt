@@ -1,0 +1,637 @@
+URL: https://groups.google.com./g/genepattern-help/c/gId-PGfGaNY
+Title: Displaying Error
+----------------------------------------
+
+
+
+
+
+Displaying Error
+117 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Nov 1, 2021, 12:52:59 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+I am Sruthi S. I have recently started learning about GenePattern tool for my internship purpose. I was trying out the quick start tutorial and have followed all the steps they have mentioned. But they are displaying while running the tutorial procedures. Can you please help me with this?
+
+
+Thanking you,
+Sruthi S
+Edwin Juarez
+unread,
+Nov 1, 2021, 11:50:19 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi,
+
+
+What tutorial are you following? What errors do you see? Is this when you try to run a GenePattern module, a notebook, or something else?
+
+
+Edwin.
+
+
+
+Sruthi S
+unread,
+Nov 1, 2021, 7:55:20 PM
+
+
+
+to genepatt...@googlegroups.com
+HI Edwin,
+I started learning by watching the YouTube tutorial: Getting Started with GenePattern. I followed the instructions to run a program, just to test. But an error was shown. I also tried the instruction given in the GenePattern website (https://www.genepattern.org/quick-start). Error was displayed after I ran the program (https://cloud.genepattern.org/gp/pages/index.jsf?jobid=389325&openVisualizers=true&openNewWindow=false) and screenshot to which is attached with this mail.
+I want to use this website for RNA-seq analyzing. I request you to provide me with an instruction document.  
+
+
+My username: Sruthi S
+
+
+Thank You,
+
+Sruthi S
+	Sender notified by
+Mailtrack	11/02/21, 08:20:36 AM	
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/gId-PGfGaNY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/678cffde-ed50-4f39-89dd-359ed1322cabn%40googlegroups.com.
+
+
+Screenshot (11).png
+Sruthi S
+unread,
+Nov 2, 2021, 8:07:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I somehow resolved that error message however I am not getting a result so far. I am attaching a screenshot of what I get. Kindly check and help me resolve it.
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+11/02/21, 08:30:07 PM	
+
+
+
+
+Screenshot (13).png
+
+Screenshot (15).png
+Edwin Juarez
+unread,
+Nov 2, 2021, 10:00:02 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi,
+
+
+Thanks for reporting this bug to us, there's a bug in a part of the code that handles special characters in usernames (the space right before the second s in your username is considered a special character). However, that bug should only be affecting the part of the code that's retrieving files from URLs.
+
+
+I suggest you download the GCT and CLS files and try running that job again and uploading those files instead of providing the URLs.
+
+
+Let me know if this works for you.
+
+
+
+While we patch this bug out, you could also create a new username without spaces or any other special characters, but I understand that this can be less convenient. 
+
+
+Kind regards,
+Edwin.
+
+1169925992
+unread,
+Nov 2, 2021, 10:00:13 AM
+
+
+
+to Edwin Juarez
+您好，邮件已收到~
+我会尽快向您回复邮件
+Sruthi S
+unread,
+Nov 2, 2021, 10:38:29 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi, 
+I modified my username and it worked. Thank you. Can you please give me any stepwise procedure with examples to do RNA-seq analysis using genepattern?
+
+
+Best regards,
+Sruthi S
+
+
+
+	Sender notified by
+Mailtrack
+11/02/21, 11:01:52 PM	
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6d1a5cd4-94c5-47cd-9bdb-02dcc530c7edn%40googlegroups.com.
+
+1169925992
+unread,
+Nov 2, 2021, 10:38:35 AM
+
+
+
+to Sruthi S
+您好，邮件已收到~
+我会尽快向您回复邮件
+Edwin Juarez
+unread,
+Nov 2, 2021, 11:43:11 AM
+
+
+
+to GenePattern Help Forum
+Great, I'm glad that worked for you.
+
+
+We have a few ways to do different types of RNA-seq analyses on GenePattern. May I ask what type of analyses are you wanting to run?
+
+
+Regardless, I suggest you look into the following notebooks:
+
+
+Hierarchical Clustering - RNASeq: https://notebook.genepattern.org/hub/preview?id=24
+Analyze and Quantify RNA-seq Data using Salmon: https://notebook.genepattern.org/hub/preview?id=406
+
+Seurat Suite: https://notebook.genepattern.org/hub/preview?id=429
+
+
+
+The first two are more geared towards bulk RNA-seq analyses and the third one is for single-cell RNA-seq. If you'd like to learn more about GenePattern Notebooks and se some examples, you can check out this recording of a somewhat recent webinar: https://youtu.be/SwPch9BuG9A
+
+
+Let me know if that helps!
+Edwin.
+
+
+
+1169925992
+unread,
+Nov 2, 2021, 11:43:19 AM
+
+
+
+to Edwin Juarez
+您好，邮件已收到~
+我会尽快向您回复邮件
+Sruthi S
+unread,
+Jan 3, 2022, 9:31:36 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Sir,
+Can you please help me with how to analyze RNA sequences and how to do basic plots such as volcano plots? I did contact many faculties for help; however, they haven't worked with genepattern. Kindly consider my request.
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/03/22, 10:58:43 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fe4fcdcc-8875-4c24-ac67-c1a65d26b040n%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 3, 2022, 11:04:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello sir,
+I was trying to create GCT files and I tried ExpressionFileCreator and GEOImporter and both of these shows errors while doing. The screenshot is attached with the file and kindly check and let me know.
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/04/22, 12:03:32 PM	
+
+
+
+
+Screenshot (22).png
+Ted Liefeld
+unread,
+Jan 4, 2022, 10:19:38 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+ExpressionFileCreator is not appropriate in this case as that module is designed to accept Affymetrix CEL files, not a counts matrix as is present for this GEO series.  The GEOImporter is failing for another reason, per one of our computational biologists;
+
+
+"...the problem is that GeoImporter reads the data from the standardized series matrix file: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE60nnn/GSE60450/matrix/ for microarray datasets the standard is to include the intensity values in this file but for some reason with RNA-seq datasets this convention has been abandoned, leaving the series matrix file blank but putting the counts into that file you see in the Supplementary files section. The problem is that there is no standard for the structure of this supplementary file or even really what it contains (raw counts, TPM, normalized counts, etc) and everyone makes theirs differently. "
+
+
+
+Given that, the supplementary text file was in a simple format that could be converted into a GCT file using the same process we covered in our GenePattern Notebook workshop last December.  The details are available on the GenePattern notebook server in the Project "2021-12-15 CCMI Single Cell RNA Sequencing Workshop".  Within that project check out the notebook in the "2. Getting data into GenePattern" folder, in particular the last part on importing data in a similar text format from the UCSD Center for Computational Biology and Bioinformatics.
+
+
+However for this case though I have already done the work and you can find the gct file I created at https://cloud.genepattern.org/gp/pages/index.jsf?jobid=402474 which should be publicly visible.
+
+
+Hope this helps,
+
+
+Ted
+
+Edwin Juarez
+unread,
+Jan 4, 2022, 2:27:05 PM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+For a volcano plot, you can take a look at this GenePattern Notebook which has a simple implementation of a volcano plot: https://notebook.genepattern.org/hub/preview?id=439 -- you can upload your excel file there (maybe you have to export it as a CSV file first) and choose which columns you want to use for the plot.
+
+
+What kind of RNA-seq analyses are you trying to do? What kind of data  Without knowing more details, I'd suggest you can take a look at various tutorials we have in our website (I listed a few in a previous response), or you can visit some other resources such as https://rosalind.info/about/
+
+
+Kind regards,
+Edwin.
+
+
+
+Sruthi S
+unread,
+Jan 5, 2022, 4:58:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+Thank you so much, now I have a much better idea of how to get a volcano plot.
+
+Kind regards,
+Sruthi S
+
+
+
+	Sender notified by
+Mailtrack
+01/05/22, 06:27:45 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/733ed060-35ee-4519-9607-ed15e22c93cbn%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 12, 2022, 10:14:57 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+Can you please teach me how to covert fq files to gct files? I have raw RNA Seq data which I need to plot a volcano plot. I am new to this whole software and can you please help me with this?
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/13/22, 11:42:39 AM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e28c04dc-01b0-4e60-8f2e-82a3fab39c9dn%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 13, 2022, 7:27:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Sir, 
+Can you please tell me how to know the names of the significant genes in a volcano plot using genepattern?
+
+
+Regards,
+Sruthi S
+
+	Sender notified by
+Mailtrack
+01/13/22, 08:56:17 PM	
+
+
+On Wed, 5 Jan 2022 at 03:57, Edwin Juarez <eju...@cloud.ucsd.edu> wrote:
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/733ed060-35ee-4519-9607-ed15e22c93cbn%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 13, 2022, 7:34:52 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+Can you please teach me how to covert fq files to gct files? I have raw RNA Seq data which I need to plot a volcano plot. I am new to this whole software and can you please help me with this? I tried using Illumina Expression File Creator, but they are showing errors. I have attached a screenshot for your reference. Kindly look into it.
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/13/22, 09:02:19 PM	
+
+
+On Tue, 4 Jan 2022 at 23:49, Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e28c04dc-01b0-4e60-8f2e-82a3fab39c9dn%40googlegroups.com.
+
+
+Screenshot (22).png
+Sruthi S
+unread,
+Jan 14, 2022, 12:52:03 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I am writing this mail as a follow up to the previous mail. Can you please help me?
+
+
+Thank you,
+Sruthi S
+
+
+
+
+
+	Sender notified by
+Mailtrack
+01/14/22, 02:20:15 PM	
+
+
+
+Barbara Hill
+unread,
+Jan 14, 2022, 10:02:35 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi,
+
+
+Apologies for the delay. Several members of the lab have been out on vacation.
+
+
+As Edwin suggested, please get a copy of the Volcan plot notebook (click "Run").
+
+
+Then add & run these modules above the cells already in the notebook.
+
+0 - FastQC
+0.1 - Trimmotatic (if you find reads that need to be trimmed after reviewing the results of FastQC - run FastQC again after Trimmomatic to verify that the issues are gone)
+
+1- Picard.FastqToSam
+2 - HTseq.Count
+2.1 - MergeHTSeqCounts (if needed)
+3 - DESeq2
+
+
+Then send the output of the DESeq2 run to the Volcan plot viewer widget.
+
+
+Please let us know if you need further instruction.
+
+
+Best
+-Barbara
+Sruthi S
+unread,
+Jan 15, 2022, 6:27:55 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I was working with MergeHTSeqCounts to merge 2 gct files which are attached along with the mail, however, I got errors. The stderr.txt of which is also attached with this mail.
+Kindly check and help me.
+
+
+Warm regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/15/22, 07:48:17 PM	
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5320de9d-946a-4a06-944f-ae38575c67f6n%40googlegroups.com.
+
+
+stderr.txt
+
+Tfh PP-.gct
+
+A5 PP-.gct
+Sruthi S
+unread,
+Jan 15, 2022, 9:19:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I got it resolved, my mistake.
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/15/22, 10:48:34 PM	
+
+
+
+Sruthi S
+unread,
+Jan 15, 2022, 9:24:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I have created a gct file with 2 samples, can you please help me in creating a cls file. I created one but when I perform DESeq2, it is showing an error saying cls file is not correct. Can you please help? I have attached the gct file with this mail.
+
+
+Please help, already running behind due dates
+Thank you,
+Sruthi S
+
+
+
+
+
+	Sender notified by
+Mailtrack
+01/15/22, 10:52:00 PM	
+
+
+
+
+Tfh PP-_ZG+.gct
+Sruthi S
+unread,
+Jan 16, 2022, 1:31:47 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Sir,
+Is there any way we can edit the volcano plot in genepattern notebook? Like changing the color of the most significant genes, and setting up p>= 0.05 like that.
+Can you please help me with this?
+
+
+Sruthi S
+
+
+	Sender notified by
+Mailtrack
+01/16/22, 02:59:25 PM	
+
+
+On Wed, 5 Jan 2022 at 03:57, Edwin Juarez <eju...@cloud.ucsd.edu> wrote:
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/733ed060-35ee-4519-9607-ed15e22c93cbn%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 16, 2022, 4:28:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir, 
+I did resolve most of the questions that I had asked. But I have a new doubt: how to add gene name instead of gene id in a DESeq2 output file?
+Please let me know.
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/16/22, 05:56:56 PM	
+
+
+
+Barbara Hill
+unread,
+Jan 18, 2022, 11:48:20 AM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+I would suggest trying CollapseDataset. You can use this on the GCT output from DESeq2.
+
+
+One of my colleagues also noted the following:
+CollapseDataset would work as long as this is human data already. If it's mouse/rat data it would give orthology converted symbols instead unless, for Mouse at least, they were to use the Mouse chips from the beta site (https://data.broadinstitute.org/gsea-msigdb/.test/msigdb/supplemental/mouse/annotations_versioned/)
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

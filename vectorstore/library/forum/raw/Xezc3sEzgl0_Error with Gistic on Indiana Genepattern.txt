@@ -1,0 +1,149 @@
+URL: https://groups.google.com./g/genepattern-help/c/Xezc3sEzgl0
+Title: Error with Gistic on Indiana Genepattern
+----------------------------------------
+
+
+
+
+
+Error with Gistic on Indiana Genepattern
+20 views
+Skip to first unread message
+
+Farshad Farshidfar
+unread,
+Jul 23, 2018, 11:43:24 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+I receive the following error when I submit a GISTIC run:
+
+
+/N/u/gpserver/Mason/gp-data/taskLib/GISTIC_2.0.6.14.546/gp_gistic2_from_seg: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+job finished but exit code is not 0, return C
+
+Job ID if run on a publicly available server.
+
+71766
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Jul 23, 2018, 1:27:45 PM
+
+
+
+to genepatt...@googlegroups.com
+We may not have set up GISTIC yet on the GP@IU server. I will look into this and get back to you.
+Thanks,
+Peter
+
+Peter Carr
+unread,
+Jul 24, 2018, 12:05:39 AM
+
+
+
+to genepatt...@googlegroups.com
+I installed a new version which resolves the problem. This is GP module version 6.15.28 which runs GISTIC 2.0.23 in a docker container. Let me know if there are any surprises.
+
+Regards,
+Peter
+
+Farshad Farshidfar
+unread,
+Jul 24, 2018, 2:33:03 PM
+
+
+
+to GenePattern Help Forum
+Thank you, Peter. Now I am receiving the following error:
+
+
+Error loading matlab-mcr/2014a, contact the server admin
+/N/u/gpserver/Karst/opt/genepattern/gp/resources/wrapper_scripts/env-custom.sh: line 48: exit: matlab-mcr/2014a: numeric argument required
+job finished but exit code is not 0, return C
+
+Peter Carr
+unread,
+Jul 24, 2018, 3:07:54 PM
+
+
+
+to genepatt...@googlegroups.com
+make sure to run GISTIC v6.15.28
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/69e852b5-2fb5-4f17-be4c-cbe8d328d322%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Farshad Farshidfar
+unread,
+Jul 24, 2018, 9:43:16 PM
+
+
+
+to GenePattern Help Forum
+Worked like a charm! Thank you, Peter. It may make it easy to make this version default.
+
+
+Yours,
+Farshad
+
+
+Pnar Pir
+unread,
+Jul 25, 2018, 12:01:52 AM
+
+
+
+to genepatt...@googlegroups.com
+Please remove me from the email list... Thank you very much!
+
+
+Pınar
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e8a3d362-6368-4f17-9c0d-3705a38b88c3%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

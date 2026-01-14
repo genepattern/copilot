@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/9mB7RCakLYY
+Title: leading edge visualizer not working
+----------------------------------------
+
+
+
+
+
+leading edge visualizer not working
+34 views
+Skip to first unread message
+
+Jayakumar Nair
+unread,
+Oct 3, 2022, 9:00:08 AM
+
+
+
+to GenePattern Help Forum
+HI
+  I am trying to view my job results from "GSEA leadingedge viewer".  I am using the latest visualizer jar file ver1.2.8.  I konw my username and password is right since I just used it on Genepattern.  My job ID is 466115 on my account under username "jakku". 
+I get the error message irrespective of whether i put in the right password or not. 
+un.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+
+
+Will appreciate a response for this
+Thank
+Jay
+
+
+Jayakumar Nair
+NIH
+Ted Liefeld
+unread,
+Oct 3, 2022, 11:47:09 AM
+
+
+
+to GenePattern Help Forum
+Jay
+
+
+it sounds like your installed java environment is not accepting the SSL certificate for the GenePattern server.  The fix is to install the GenePattern server's certificate into your java truststore.  Since you are at NIH and presumably have a managed environment you will probably need to contact your IT department to ask them to do this.  An alternative approach (which might have the same issue) would be to download the GSEA application from gsea-msigdb.org and see if that can run and display the leading edge viewer for you.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Jayakumar Nair
+unread,
+Oct 3, 2022, 12:14:52 PM
+
+
+
+to genepatt...@googlegroups.com
+THank you.  I did use the GSEA application and it worked fine.  Thank you
+Jay
+
+
+///////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Jayakumar Nair
+25113 Angela court
+Damascus, MD 20872
+Cell: 240-237-7354
+
+Home: 240-389-2396
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/9mB7RCakLYY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fb1d3381-d468-4840-a952-62d4fb6dbbfen%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

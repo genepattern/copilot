@@ -1,0 +1,469 @@
+URL: https://groups.google.com./g/genepattern-help/c/-cAt50E7Dgo
+Title: Java Applet Visualizer in windows
+----------------------------------------
+
+
+
+
+
+Java Applet Visualizer in windows
+74 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Jan 25, 2022, 9:19:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir, 
+I was using multiplot studio and I was not able to visualize the plot as I did not have that app? I tried https://github.com/genepattern/VisualizerLauncher/releases/download/v1.2.8/visualizerLauncher-1.2.8.jar
+but I can't find the one which I need to install to see the output in windows. Can you please help me with this?
+
+
+Thank you,
+Sruthi S
+Ted Liefeld
+unread,
+Jan 26, 2022, 7:43:41 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+In case you haven't seen them,  the instructions for using this jar file  are at https://genepattern.github.io/VisualizerLauncher/.  Can you reference which step in the instructions is giving you trouble?
+
+
+Thanks
+
+
+Ted
+
+Sruthi S
+unread,
+Jan 26, 2022, 7:48:12 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I was trying to create a volcano plot using the multiplot studio. I had already created one using GraphPad Prism. But when the same data is being used in the multiplot, I was not able to get a similar plot. I also have a doubt. To create a volcano plot, we basically take the DESeq2 output which is in the .txt format. However, in the multiplot, they have asked me to give a .gct file, which I did. But was not able to get a plot just like the one I got using GraphPad Prism.
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack	01/26/22, 09:14:21 PM	
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9947e046-e3ea-422a-bc4e-80ad02c77dcan%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jan 26, 2022, 10:45:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Sruthi, 
+
+
+Can you send us the job id for the Multiplot job as well as screen shots from the Volcano plots you are seeing from both Multiplot & GraphPad?
+
+
+Thanks
+-Barbara
+Sruthi S
+unread,
+Jan 26, 2022, 10:49:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+The Job ID of the multiplot is 407767. The first image is the plot that I created using the GraphPad Prism and the screenshot is the multiplot one. 
+
+
+
+Kind regards,
+Sruthi S
+
+
+	Sender notified by
+Mailtrack
+01/27/22, 12:17:33 AM	
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtw_c85nXdRqAxGi55EoNM0U5tzG01mgNDE9zOE3aGXwiQ%40mail.gmail.com.
+
+
+Tfh_ZGS vs T_ZGS.jpg
+
+Screenshot (40).png
+Sruthi S
+unread,
+Jan 27, 2022, 9:11:27 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I am not able to open the GenePattern Java Visualizer Launcher window. Can you please tell me how to open that, which among the jar files should we open?
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/27/22, 10:40:00 PM	
+
+
+On Wed, 26 Jan 2022 at 21:13, Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9947e046-e3ea-422a-bc4e-80ad02c77dcan%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 27, 2022, 10:15:54 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I am stuck at the starting page of the visualizer. The screenshot is attached with this mail, I am not getting any response after that step.
+Kindly look into it and please help. I am already past the due dates.
+
+
+Thanks & Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/27/22, 11:43:02 PM	
+
+
+
+
+Screenshot (41).png
+Barbara Hill
+unread,
+Jan 27, 2022, 12:04:35 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+I am not able to reproduce this issue. When I click OK MultiplotStudio displays for me, with your data.
+
+
+Please check in this location on your computer for a log and attach it, or send any error messages you find.
+
+
+C:\Users\HPAppData\Local\GenePattern\VisualizerLauncher\logs
+
+
+
+Best
+-Barbara
+Sruthi S
+unread,
+Jan 27, 2022, 12:12:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I did search for that address but I can't find it anywhere on my computer. Any suggestions?
+But mam, were you able to create a volcano plot using that ID?
+
+
+Regards, 
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/28/22, 01:40:06 AM	
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtwkkUGszDdZNroBNt9r9ghCBAz5j9JjbS2SHSa3hzHivQ%40mail.gmail.com.
+
+Sruthi S
+unread,
+Jan 27, 2022, 12:16:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+Yes, I located the address but what I found was those input data: like the gct and cls file that I had used to run the multiplot studio module. Other than that, there was nothing.
+
+
+Kindly check,
+Sruthi S
+
+
+
+
+
+
+
+	Sender notified by
+Mailtrack
+01/28/22, 01:45:00 AM	
+
+
+On Fri, 28 Jan 2022 at 01:34, Barbara Hill <bh...@broadinstitute.org> wrote:
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtwkkUGszDdZNroBNt9r9ghCBAz5j9JjbS2SHSa3hzHivQ%40mail.gmail.com.
+
+Barbara Hill
+unread,
+Jan 27, 2022, 12:19:08 PM
+
+
+
+to genepatt...@googlegroups.com
+C:\Users\HP\AppData\Local\GenePattern\VisualizerLauncher\logs
+
+
+There was a typo in the path I sent before - try the one above - you may have to unhide hidden folders in Windows - there is lots of help online if you don't already know how to do that.
+
+
+I did not attempt to create a volcano plot as I'm not familiar with your data, and while we host MultiplotStudio, it is not a tool we created, nor do we maintain it, so I can only offer limited help in using it.
+
+
+We did notice that in comparing the GraphPad results to the Mulitplot image it "looks like [your] axes on Multiplot are wrong. GraphPad is using -log(P value) vs log(FC), which is correct for a volcano plot. and in Multiplot [you are] plotting P value vs FC. 
+
+
+We aren't sure if MultiPlot can compute the log values before plotting, though we think it may be able to. Regardless, you are not going to see the same plot if you are not using the same axes. 
+
+
+Best
+-Barbara
+Sruthi S
+unread,
+Jan 27, 2022, 12:24:41 PM
+
+
+
+to genepatt...@googlegroups.com
+
+
+Can you tell me how to change the p-value to -log10 p-value in multiplot?
+
+
+Regards,
+Sruthi S
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtxzsZX%2BjTiWCfWJ6QpofoUDkSXMZB%2BtSno8znXCPWvwYA%40mail.gmail.com.
+
+Sruthi S
+unread,
+Jan 27, 2022, 10:17:39 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I located the log and is attached to this email.
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/28/22, 11:46:09 AM	
+
+
+On Fri, 28 Jan 2022 at 01:34, Barbara Hill <bh...@broadinstitute.org> wrote:
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CABDBPtwkkUGszDdZNroBNt9r9ghCBAz5j9JjbS2SHSa3hzHivQ%40mail.gmail.com.
+
+
+all.log
+Sruthi S
+unread,
+Jan 29, 2022, 5:52:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I am not able to open the visualizer app. The screenshot is attached to this email. Kindly check.
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/29/22, 07:19:54 PM	
+
+
+On Wed, 26 Jan 2022 at 21:13, Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9947e046-e3ea-422a-bc4e-80ad02c77dcan%40googlegroups.com.
+
+
+Screenshot (42).png
+
+Screenshot (43).png
+Sruthi S
+unread,
+Feb 1, 2022, 7:02:07 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I have resolved the issue and now I can work on the multiplot studio. However, I am not getting the plot shape that I got using GraphPad Prism. I have attached the screenshots, kindly check and help me.
+
+
+With regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+02/01/22, 08:24:52 PM	
+
+
+
+
+Tfh_ZGS vs T_ZGS.jpg
+
+P value in log scale.png
+
+P value not in Log scale..png
+Barbara Hill
+unread,
+Feb 3, 2022, 7:28:29 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi, 
+
+
+Unfortunately, our lab is not familiar with GraphPad Prism and while we host MultiplotStudio, it is not a tool we created, nor do we maintain it, so we are unable to offer specific help in configuring it for use. It is, however, well documented, so I would suggest reading through the documentation and contacting the author if you have further questions (his email is at the top of the documentation.)
+
+All the best
+-Barbara
+Sruthi S
+unread,
+Feb 4, 2022, 5:14:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+That is ok mam, thank you.
+
+
+Regards,
+Sruthi S
+
+
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/300259b5-2e45-453d-ae8b-ac8f94425dbcn%40googlegroups.com.
+
+
+
+	Sender notified by
+Mailtrack
+02/04/22, 06:43:37 PM	
+
+Reply all
+
+Reply to author
+
+Forward

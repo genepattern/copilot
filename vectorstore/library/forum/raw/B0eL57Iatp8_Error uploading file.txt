@@ -1,0 +1,147 @@
+URL: https://groups.google.com./g/genepattern-help/c/B0eL57Iatp8
+Title: Error uploading file
+----------------------------------------
+
+
+
+
+
+Error uploading file
+18 views
+Skip to first unread message
+
+Nellie Agosta
+unread,
+Sep 3, 2024, 9:53:18 AM
+
+
+
+to GenePattern Help Forum
+I am getting the following error: "Please correct the following errors before proceeding: No space left on device" when trying to upload a 20 GB file. I am only using 5.9 GB out of 150 GB total storage. 
+
+
+Any help or advice would be appreciated!
+
+
+Thank you, 
+Eleanor 
+John Liefeld
+unread,
+Sep 3, 2024, 10:51:09 AM
+
+
+
+to GenePattern Help Forum
+Eleanor,
+
+
+what module are you trying to run and what is your GenePattern username?  My suspicion is that the compute node you are trying to use is where the space is unavailable.  You might try using the 'RNASeq_large_disk' selection for the job.queue (in the job options section of the run page).  If you are running AmpliconSuite it may be the same problem but I will need to look at a different compute environment since those are run on an environment owned by the Bafna lab.
+
+
+Hope this helps,
+
+Ted
+
+
+
+Nellie Agosta
+unread,
+Sep 3, 2024, 11:57:11 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your response, my usename is ej...@rjwms.rutgers.edu 
+
+
+The error is happening when I am trying to upload the files, before trying to run any modules. I am eventually trying to run AmpliconSuite
+
+
+Thank you, 
+Eleanor
+
+
+
+
+Ted (aka John) Liefeld
+unread,
+Sep 3, 2024, 12:34:38 PM
+
+
+
+to genepatt...@googlegroups.com
+If you have a 20GB file, you should try to upload to the files tab, or use globus to transfer it into your files tab.  I assume you are on the server cloud.genepattern.org but that uploads directly to an AWS S3 bucket on the files tab and should not be able to run out of space.  I also do see an account on cloud with that userid but its not part of the AmpliconSuiteUsers group so this makes me think you might be on a different GenePattern server than I have been assuming.  Can you confirm which server you are using?
+
+
+Thanks
+
+
+Ted
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d2a5b1c9-e9a5-4ef3-af53-fa619afc28d3n%40googlegroups.com.
+
+Nellie Agosta
+unread,
+Sep 3, 2024, 2:04:16 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I log on to the website https://genepattern.ucsd.edu/ which I think is different. On cloud.genepattern it seems I only have 30 GB of storage available and I need to upload two 20 GB files for this analysis. 
+
+
+I am trying to upload the file to the files tab directly and that is when I'm getting the error. I can try with the AWS bucket. 
+
+
+Thank you, 
+Eleanor
+
+
+
+Ted (aka John) Liefeld
+unread,
+Sep 3, 2024, 2:23:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Eleanor,
+
+
+It's better to switch to the cloud account.  I just adjusted the storage for you there so that it is 150GB there as well.  We have moved most AmpliconSuite runs there because for larger datasets, the max guaranteed run time on the UCSD server is 2 days which has been proven to not be enough.  
+
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7461be6e-3afd-4368-abe7-10deb245baf7n%40googlegroups.com.
+
+Nellie Agosta
+unread,
+Sep 3, 2024, 5:35:46 PM
+
+
+
+to GenePattern Help Forum
+Thank you!
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,133 @@
+URL: https://groups.google.com./g/genepattern-help/c/zyzRb6mf0Ck
+Title: PTM-SEA error
+----------------------------------------
+
+
+
+
+
+PTM-SEA error
+197 views
+ssGSEA
+Skip to first unread message
+aliciar
+unread,
+Nov 13, 2018, 8:23:06 PM
+
+
+
+to GenePattern Help Forum
+Hi everyone, 
+
+
+I am trying out the Beta version of PTM-SEA (Windows) using the provided data and database and default settings. I am getting the following error message in stderr.txt (Gene Pattern job 42798):
+
+
+
+
+Error in ssGSEA2(input.ds = opt$input.ds, output.prefix = opt$output.prefix,  : 
+  object 'm' not found
+Execution halted
+
+
+Any thoughts would be appreciated.
+
+
+Thanks!
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+D R Mani
+unread,
+Nov 14, 2018, 10:07:30 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+From the GitHub site at https://github.com/broadinstitute/ssGSEA2.0, using the "Single site-centric phosphoproteome dataset" (PI3K_pert_logP_n2x23936.gct) as "input data" and "PTMsigDB" (ptm.sig.db.all.flanking.human.v1.8.1.gmt) as the "pathway db" should work without any error (see attached screenshot). If some other dataset was being used, please let us know and we can try to debug the issue. 
+
+
+We are still working on improving error reporting, but the "object 'm' not found" error is an indicator of incorrect input data format.
+
+
+
+
+
+
+
+Alicia Richards
+unread,
+Nov 16, 2018, 9:55:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I am able to get it working with the downloaded data, but get the object 'm' not found when using my dataset (attached).
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/09579456-fe37-428a-b466-d4f2d48ad826%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+All_4.gct
+D R Mani
+unread,
+Nov 18, 2018, 9:20:17 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The error was due to incorrect formatting of the input dataset -- the file contains blank columns (see screen shot). An easy way to correctly format gct files is to use Morpheus (https://software.broadinstitute.org/morpheus/). 
+
+
+The corrected input dataset is attached.
+
+
+Data Table screenshot.png
+
+ALL_4_fixed.gct
+
+Reply all
+
+Reply to author
+
+Forward

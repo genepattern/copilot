@@ -1,0 +1,112 @@
+URL: https://groups.google.com./g/genepattern-help/c/qiEhtA-At40
+Title: Visualizer issues
+----------------------------------------
+
+
+
+
+
+Visualizer issues
+19 views
+Skip to first unread message
+
+Jayakumar Nair
+unread,
+Jul 22, 2025, 12:07:44 PM
+
+
+
+to GenePattern Help Forum
+Hi
+    WHen I submit my leading edge viewer job to visualizer, I get the following error. 
+
+
+ Error retrieving job details: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+
+Can anyone help?
+THanks
+Jay
+John Liefeld
+unread,
+Jul 22, 2025, 12:49:26 PM
+
+
+
+to GenePattern Help Forum
+Jay,
+
+
+the problem is probably that the version of java that you are using to run the VisualizerLauncher is older (as is the launcher) and needs to have its keystore certificates updated.  There are a lot of variations in this for OS, Java version etc, but this page seems to do a good job of walking you through the steps.
+
+
+https://medium.com/expedia-group-tech/how-to-import-public-certificates-into-javas-truststore-from-a-browser-a35e49a806dc
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+Jayakumar Nair
+unread,
+Jul 25, 2025, 7:50:34 AM
+
+
+
+to GenePattern Help Forum
+Thank you.  I will talk to my IT team about it
+Jay
+
+
+
+Jayakumar Nair
+unread,
+Aug 12, 2025, 1:25:47 PM
+
+
+
+to GenePattern Help Forum
+Hi John
+     So our institute IT person did the certificate thingy :-) as you suggested on the website link. It looks like it is connecting now, but it now returns a different error window with the message "An error occurred while reading the input file".   Please advise.
+     BTW I am using the latest version of visualizer visualizerLauncher-1.2.8-full.jar.
+   Thank you again for all the help.  
+Best
+Jay
+
+
+
+On Tuesday, July 22, 2025 at 3:49:26 PM UTC-4 John Liefeld wrote:
+
+
+John Liefeld
+unread,
+Aug 13, 2025, 10:42:22 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+Sorry that its still not working.  My best guess is that it might still have a certificate issue within the visualizer or else there is a network issue between you and our AWS hosted server.  Without a stack trace from the app its not possible to debug this remotely.
+
+
+I think your best bet will be to download the GSEA desktop application (https://www.gsea-msigdb.org/gsea/downloads.jsp) and then rerun your analysis in the desktop version which includes a version of the leading edge viewer.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

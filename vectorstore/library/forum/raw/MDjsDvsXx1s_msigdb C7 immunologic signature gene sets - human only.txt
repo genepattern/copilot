@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/MDjsDvsXx1s
+Title: msigdb C7 immunologic signature gene sets - human only
+----------------------------------------
+
+
+
+
+
+msigdb C7 immunologic signature gene sets - human only
+17 views
+Skip to first unread message
+
+Ziqiao
+unread,
+Oct 9, 2020, 11:23:00 AM
+
+
+
+to GenePattern Help Forum
+Hello! I'm using the GenePattern to do a ssGSEA analysis and need to use the available C7 immunologic signature gene sets, this contains both mouse and human gene sets of over 4800 sets. I would like to only use the human gene sets, is there an option that I could choose in the server? I tried to download the human gene sets alone but was not able to find this resource, would you please kindly point me in the right direction? Any suggestions will be appreciated, thank you.
+
+
+Anthony Castanza
+unread,
+Oct 9, 2020, 11:51:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+The gene sets in C7 were derived from both mouse and human samples but all have been converted to Human genes for analysis. We don't, by default, currently offer a version of this collection split by original source species, as we feel there is useful bioloigcal knowledge to be gained from performing this kind of cross species anlaysis. However, if you do want to restrict your search to just studies performed on human samples you can easily construct such a file using our search tool: https://www.gsea-msigdb.org/gsea/msigdb/search.jsp
+
+
+To do this, leve the "Keywords" Field blank. Then under "Search Filteres:" apply the following settings:
+collection: select C7
+organism: select "Homo sapiens"
+contributor: leave on the default (all contributors)
+
+
+Click search
+
+
+You should see a box that says something like "select all 1888"
+check this box.
+
+
+In the "select an action" dropdown choose "Export selected gene sets as .GMT". (the other options will not work with such a large number of sets).
+This should produce a GMT file your browser will prompt you to download (or may download automatically depending on your browser settings), that can then be loaded into GSEA for further analysis.
+
+
+Let me know if you encounter any issues with this procedure, or if I can be of further assistance,
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+On Fri, Oct 9, 2020, 11:23 AM Ziqiao <wzqj...@gmail.com> wrote:
+
+Hello! I'm using the GenePattern to do a ssGSEA analysis and need to use the available C7 immunologic signature gene sets, this contains both mouse and human gene sets of over 4800 sets. I would like to only use the human gene sets, is there an option that I could choose in the server? I tried to download the human gene sets alone but was not able to find this resource, would you please kindly point me in the right direction? Any suggestions will be appreciated, thank you.
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a72eb7d1-2f78-45af-a434-193046377e47n%40googlegroups.com.
+
+Ziqiao Wang
+unread,
+Oct 9, 2020, 3:16:35 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+
+
+Thank you very much for the clear explanations! I have successfully downloaded the gene sets. Really appreciate it.
+
+
+Ziqiao
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZyvb3zerUbp1w6b---qmk5mWZKZkYMJjrOm6yR9vkLHHw%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

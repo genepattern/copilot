@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when running MutSigCV on a MAF file with 17 cases, specifically an error related to silent and nonsilent mutation rates being too different, and received a recommendation to check a specific CGA forum posting for potential troubleshooting guidance.

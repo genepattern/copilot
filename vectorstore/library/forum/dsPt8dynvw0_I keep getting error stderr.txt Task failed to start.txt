@@ -1,0 +1,1 @@
+A user encountered persistent "Task failed to start" errors on GenePattern when attempting to run jobs on a Mac platform, which was ultimately resolved by GenePattern administrators replacing a problematic AWS compute node that was preventing job execution.

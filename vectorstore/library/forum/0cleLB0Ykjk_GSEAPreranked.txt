@@ -1,0 +1,1 @@
+The thread discusses a user experiencing access denied errors when attempting to view results from multiple GSEAPreranked jobs in GenePattern, with a support team member recommending downloading the ZIP file and examining results locally as a temporary workaround while a long-term solution is being developed.

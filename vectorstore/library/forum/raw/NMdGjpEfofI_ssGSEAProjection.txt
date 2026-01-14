@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/NMdGjpEfofI
+Title: ssGSEAProjection
+----------------------------------------
+
+
+
+
+
+ssGSEAProjection
+28 views
+Skip to first unread message
+
+Jersey Heitor Maues
+unread,
+Aug 13, 2019, 7:43:57 PM
+
+
+
+to GenePattern Help Forum
+Dear,
+
+I would like you to help me with the graphing done by analyzing the ssGSEA tool.
+
+I had no success in making the chart. I read some tutorials that show the ssGSEAProjection tool by GenePattern.
+
+The graph models shown below are represented by these bars that show the ranks of the set genes.
+
+
+
+Best regards,
+
+
+Jersey
+
+
+
+
+
+F2.large.jpg
+
+1-s2.0-S2405471215002185-gr2.jpg
+Barbara Hill
+unread,
+Sep 9, 2019, 1:59:01 PM
+
+
+
+to GenePattern Help Forum
+Hi Jersey, 
+
+
+We've asked around to all of the current ssGSEA developers and the consensus is that these are custom plots. IE not created by ssGSEA or in GenePattern. You might try reaching out to the author of the figures.
+
+
+I'm sorry we can't be more helpful!
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern ssGSEA module user encountered an error with duplicate row names when using combine.add option, which was resolved by using the UniquifyLabels module to generate unique labels for gene sets, allowing downstream analysis in ComparativeMarkerSelection with paired up and down regulated gene sets while maintaining original dataset enrichment information.

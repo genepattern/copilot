@@ -1,0 +1,27 @@
+URL: https://groups.google.com./g/genepattern-help/c/B9OvZEThvKk
+Title: Announcement: TCGA.SampleSelection has been updated with better error handling
+----------------------------------------
+
+
+
+
+
+Announcement: TCGA.SampleSelection has been updated with better error handling
+5 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jul 29, 2021, 1:45:27 PM
+
+
+
+to GenePattern Help Forum
+TCGA.SampleSelection has been updated with better error handling for invalid and unmappable genes. 
+https://bit.ly/TCGA-SS-v0dot12
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,231 @@
+URL: https://groups.google.com./g/genepattern-help/c/8ral10Cm4hs
+Title: ssGSEA failled
+----------------------------------------
+
+
+
+
+
+ssGSEA failled
+79 views
+Skip to first unread message
+
+Baharia Mograbi
+unread,
+Mar 21, 2022, 10:41:07 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone
+I am trying ssGSEA with gct 
+but unfortunately, this failed again, again and again (the file number ssGSEA (420203)
+could someone help me to fix it
+I would be grateful
+Thanks, Bam
+tmt...@cloud.ucsd.edu
+unread,
+Mar 21, 2022, 12:09:32 PM
+
+
+
+to GenePattern Help Forum
+Hello Bam,
+
+
+This is a known error that we are working to fix, which happens sporadically. Usually, re-uploading the file and then resubmitting the job corrects the issue.
+
+
+
+Thorin
+
+
+Baharia Mograbi
+unread,
+Mar 25, 2022, 9:26:31 AM
+
+
+
+to GenePattern Help Forum
+Hi Thorin
+Thank you so much for your rapid response
+I've tried. Unfortunately, this failed using 10.0.11 and 10.0.10 versions
+before, when it failed with the newest version, this worked when I used the 9.0.10 ;) LOL
+I hope you will fix it soon as it was constructive
+have a beautiful day
+warmest regards
+Bam
+
+
+
+Baharia Mograbi
+unread,
+Mar 25, 2022, 9:56:51 AM
+
+
+
+to GenePattern Help Forum
+the last jod id is  422101.
+bam
+
+
+
+Anthony Castanza
+unread,
+Mar 28, 2022, 9:58:23 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Bam,
+
+ 
+
+I'm pretty sure the issue here is the great deal of NaN values in the dataset. From the dataset it appears the input you're using is log transformed RSEM counts, is it possible that when this conversion was done a pseudocount of 1 was not added to the data resulting in all of the 0 values becoming NaN? If so, I might suggest reconverting the data but instead using log(RSEM+1). However, we don't really recommend using counts data for ssGSEA, something more appropriate might be TPM (or log(TPM+1), as this would prevent the length of the gene from influencing it's contribution to the enrichment score.
+
+ 
+
+Let me know if you have additional questions here,
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f1a450bb-30ed-48a5-9a39-6cd054c0a607n%40googlegroups.com.
+
+Baharia Mograbi
+unread,
+Mar 30, 2022, 7:57:02 AM
+
+
+
+to GenePattern Help Forum
+Hi Antony
+It worked! Fantastic ;)))
+I would be glad to have you as a coauthor of our future publications if you have time to help us.
+All the best, take care
+Bam
+
+Anthony Castanza
+unread,
+Mar 30, 2022, 9:36:51 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Bam,
+
+ 
+
+Glad you were able to get it to work!
+
+We're always happy to consider opportunities for collaboration with the labs that make use of the tools we produce! Feel free to reach out to us at gsea...@broadinsititute.org
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e40f511d-ca26-425e-9b46-e96210ec3979n%40googlegroups.com.
+
+Baharia Mograbi
+unread,
+Apr 28, 2022, 5:18:28 AM
+
+
+
+to GenePattern Help Forum
+Hi Antony,
+I would like to thank you as I feel more confident in ssGSEA
+however, some work while others do not, even if I reload them (431864, 431864, 431867, and ...)
+please help me to fix it
+have a wonderful day
+Bam
+
+Mitchell Frederick
+unread,
+Apr 28, 2022, 6:18:52 AM
+
+
+
+to genepatt...@googlegroups.com
+As stated earlier, often there is a stray value that is not quite formatted right. Like a weird scientific notation. Inspect all the values or move them to another place like excel and use the sort function which should bring problem values to the top or bottom. If you are positive there is no stray characters, try to copy and paste data to a new file and make sure you format as numbers. If all else fails try the clean function in excel to remove unwanted characters. Of course, this assumes your input files have the correct input formatting 
+
+
+Sent from my iPhone
+
+
+On Apr 28, 2022, at 7:18 AM, Baharia Mograbi <mograbi...@gmail.com> wrote:
+
+
+﻿Hi Antony,
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/737cf54e-7383-4ed7-9670-d1f5e02e737an%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Apr 28, 2022, 9:56:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+The actual issue here appears to be something related to the container exiting. This can occur when the job attempts to exceed the server limits defined at runtime.
+
+In the "Job Options" section, you can see that these jobs were run with the default parameter of 2GB of memory, and a two hour maximum runtime. I would suspect that this was an issue with the memory requirement in particular. Try increasing this to 16GB and rerunning. If it still doesn't work we can try digging into the server logs to get more information as to why this is happening.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/737cf54e-7383-4ed7-9670-d1f5e02e737an%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

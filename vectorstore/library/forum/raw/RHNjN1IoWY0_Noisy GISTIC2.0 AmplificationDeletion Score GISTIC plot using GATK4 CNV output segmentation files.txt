@@ -1,0 +1,139 @@
+URL: https://groups.google.com./g/genepattern-help/c/RHNjN1IoWY0
+Title: Noisy GISTIC2.0 Amplification/Deletion Score GISTIC plot using GATK4 CNV output segmentation files
+----------------------------------------
+
+
+
+
+
+Noisy GISTIC2.0 Amplification/Deletion Score GISTIC plot using GATK4 CNV output segmentation files
+838 views
+Skip to first unread message
+
+Yige Wu
+unread,
+Aug 25, 2018, 5:01:03 PM
+
+
+
+to genepatt...@googlegroups.com
+I ran GISTIC2.0  successfully using segmentation files output by GATK4 somatic CNV pipeline. The GATK4 CNV pipeline was ran on whole exome sequenced data of 105 tumor samples against corresponding blood samples. I can share the files privately.
+
+
+
+My Amplification/Deletion Score GISTIC plot looks much more noisy than the previous TCGA marker paper for the same cancer type (clear cell renal carcinoma) using SNP array data.
+
+
+My Amplification Score GISTIC plot
+
+
+
+
+
+TCGA plots
+
+
+
+
+Aside from the noisy plot,  I cannot find any reported amplified/deleted genes in my outputs except the %samples with arm-level (5q, 14q) is close to the TCGA paper.
+
+
+Although their are differences between the TCGA study and mine:
+the TCGA paper used SNP array data instead of WES data
+the algorithms for segmentation is different
+TCGA: 
+Segmented copy number profiles were analyzed using Ziggurat deconstruction [3,5] to determine the most likely set of events contributing to these profiles, and the lengths, amplitudes, and locations of these events.
+mine: GATK4 CNV
+the TCGA paper is 3 times my sample size
+
+
+I'm not sure if my output is abnormal since I haven't found any paper has used GISTIC2.0 on WES CNV results. So I'm wondering has anyone has experience on this and tell me if anything looks wrong. 
+
+
+
+
+Thank you
+
+
+
+
+ps:
+
+
+I did use the parameters as close as the TCGA paper, which is in their supplement:
+ Absolute log2 ratios greater than 1.5 were capped to 1.5 to reduce hypersegmentation due to variations in dynamic range between probes, and events whose absolute amplitude was less than a log2 ratio of 0.1 were excluded from further analysis as likely to represent noise. Events whose length was greater than and less than 50% of the chromosome arm on which they resided were called arm-level and focal events, respectively, and these groups of events were analyzed separately using GISTIC 2.0 [5]. Regions were considered significant if assigned False Discovery Rate [6] q-values < 0.25. 
+
+
+
+
+parameters: in addition to supplying Segmentation File, Markers File and Reference Genome File (hg19.mat)
+Running focal GISTIC version 2.0.23
+params =
+         array_list_file: ''
+                cnv_file: ''
+                   t_amp: 0.1000
+                   t_del: 0.1000
+       join_segment_size: 8
+                     ext: ''
+               qv_thresh: 0.1000
+                remove_X: 0
+                 markers: '/diskmnt/Projects/CPTAC3CNV/gistic/outputs/CCRC...'
+      max_marker_spacing: []
+      run_broad_analysis: 1
+        broad_len_cutoff: 0.5000
+                   ziggs: [1x1 struct]
+                     res: 4.7619e-04
+              conf_level: 0.9900
+                     cap: 1.5000
+          do_gene_gistic: 1
+     conserve_disk_space: 0
+         save_data_files: 1
+            use_segarray: 1
+        write_gene_files: 0
+           use_two_sided: 0
+          do_arbitration: 1
+           save_seg_data: 1
+                   fname: ''
+              peak_types: {'robust'}
+             genepattern: 1
+             arm_peeloff: 1
+    gene_collapse_method: 'mean'
+           sample_center: 'median'
+                   alpha: [2.5145 2.1653]
+            partial_hits: [1 0]
+                   islog: []
+server: Linux
+
+warning
+Reading Markers File '/diskmnt/Projects/CPTAC3CNV/gistic/outputs/CCRC1to5/merge_seg_files/CCRC1to5_markers.txt'
+Markers in markersfile require sorting!
+Non-unique positions ... using first marker from each position
+Non-unique positions ... using first marker from each position
+Reading Seg File '/diskmnt/Projects/CPTAC3CNV/gistic/outputs/CCRC1to5/merge_seg_files/CCRC1to5.seg'
+currently not taking care of edge of chromosomes!!!
+
+
+Barbara Hill
+unread,
+Aug 27, 2018, 1:18:04 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The reasons you list are all likely candidates for why your results are different than those in the TCGA paper; Beyond that, I am unable to speculate.
+
+
+I would suggest posting in the GISTIC-forum to get more expert advice.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

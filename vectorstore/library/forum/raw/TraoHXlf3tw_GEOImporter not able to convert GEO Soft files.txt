@@ -1,0 +1,105 @@
+URL: https://groups.google.com./g/genepattern-help/c/TraoHXlf3tw
+Title: GEOImporter not able to convert GEO Soft files
+----------------------------------------
+
+
+
+
+
+GEOImporter not able to convert GEO Soft files
+18 views
+Skip to first unread message
+
+Chris C
+unread,
+Nov 15, 2018, 5:21:00 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+
+Job 57284 - job hanging.
+Run on public server, using GEO17920.
+Conversion has failed multiple times, both following entry of the GEO access file and also after uploading the soft file. 
+
+
+The stderr.txt (from jobs 57268, 57270, 57278) 'could not find or load main class RunR'.
+
+
+PC, using Chrome.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 15, 2018, 10:59:45 AM
+
+
+
+to GenePattern Help Forum
+Hi Chris, 
+
+
+There were two issues at play.
+
+
+1) I needed to connect the module to its Docker image, which I have now done.
+
+
+2) You had provided a link to the FTP directory and not the soft file itself. So a simple rerun of your job will fail noting improper formatting.  To fix this, simply navigate to the ftp folder, then copy the link address of the soft.gz file and provide that as your input. (I've tested this and it takes a bit - about 35 minutes - but it works)
+
+
+Please let us know if you have any further trouble.
+
+
+Best
+-Barbara
+Chris Carey
+unread,
+Nov 15, 2018, 11:07:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks to you both, that's so helpful. 
+
+
+-- 
+Chris
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4dccea3e-6f9e-4214-916f-5c463c298204%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

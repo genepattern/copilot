@@ -1,0 +1,281 @@
+URL: https://groups.google.com./g/genepattern-help/c/gCql0rkOBYY
+Title: python API: server error when downloading zip file
+----------------------------------------
+
+
+
+
+
+python API: server error when downloading zip file
+65 views
+Skip to first unread message
+
+David Lahr
+unread,
+Jul 2, 2021, 1:23:37 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+First, as always, thank you for providing the GenePattern resource - very much appreciated!
+
+
+Recently when I've been using the python API to run pre-ranked GSEA, when the job finishes and I attempt to download the zip file of the result I get a server error message.  When I go to the GenePattern website, if I click on the job and click download, I get a popup window that says it is preparing the zipfile, this takes a while, then it is downloaded.  Now, once I've done that, my python code to download the job works without an error.
+
+
+So it seems that even though via the API the zip file is listed as an output of the job, it is not available for download.  Can you help me with this?
+
+
+Thank you,
+Dave
+
+
+David Lahr
+unread,
+Jul 4, 2021, 11:20:01 AM
+
+
+
+to GenePattern Help Forum
+ps. here's some relevant code and the stacktrace:
+
+
+t = [x for x in job.get_output_files() if x.get_name().endswith(".zip")]
+    
+    if len(t) == 1:
+        zip_output_file = t[0]
+    #     print(zip_output_file.get_name())
+    #     print(zip_output_file.get_url())
+
+
+        dl_filename = os.path.splitext(zip_output_file.get_name())[0] + "_" + gs_group_name + ".zip"
+    #     print(dl_filename)
+
+
+        dl_filepath = os.path.join(zip_dir, dl_filename)
+        zip_files_list.append((job, dl_filepath))
+
+
+        print(zip_output_file.get_url())
+        print(dl_filepath)
+
+
+        f = open(dl_filepath, "wb")
+        f.write(zip_output_file.open().read())
+        f.close()
+
+
+#############################
+Stacktrace
+#############################
+
+
+---------------------------------------------------------------------------
+HTTPError                                 Traceback (most recent call last)
+<ipython-input-30-cfa07f7bf33d> in <module>
+     24 #         open_zip_output_file = zip_output_file.open()
+     25         f = open(dl_filepath, "wb")
+---> 26         f.write(zip_output_file.open().read())
+     27         f.close()
+     28     elif len(t) == 0:
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/site-packages/gp/core.py in open(self)
+    226             request.add_header('Authorization', self.server_data.authorization_header())
+    227         request.add_header('User-Agent', 'GenePatternRest')
+--> 228         return urllib.request.urlopen(request)
+    229 
+    230     def read(self):
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in urlopen(url, data, timeout, cafile, capath, cadefault, context)
+    220     else:
+    221         opener = _opener
+--> 222     return opener.open(url, data, timeout)
+    223 
+    224 def install_opener(opener):
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in open(self, fullurl, data, timeout)
+    529         for processor in self.process_response.get(protocol, []):
+    530             meth = getattr(processor, meth_name)
+--> 531             response = meth(req, response)
+    532 
+    533         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_response(self, request, response)
+    639         if not (200 <= code < 300):
+    640             response = self.parent.error(
+--> 641                 'http', request, response, code, msg, hdrs)
+    642 
+    643         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in error(self, proto, *args)
+    561             http_err = 0
+    562         args = (dict, proto, meth_name) + args
+--> 563         result = self._call_chain(*args)
+    564         if result:
+    565             return result
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in _call_chain(self, chain, kind, meth_name, *args)
+    501         for handler in handlers:
+    502             func = getattr(handler, meth_name)
+--> 503             result = func(*args)
+    504             if result is not None:
+    505                 return result
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_error_302(self, req, fp, code, msg, headers)
+    753         fp.close()
+    754 
+--> 755         return self.parent.open(new, timeout=req.timeout)
+    756 
+    757     http_error_301 = http_error_303 = http_error_307 = http_error_302
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in open(self, fullurl, data, timeout)
+    529         for processor in self.process_response.get(protocol, []):
+    530             meth = getattr(processor, meth_name)
+--> 531             response = meth(req, response)
+    532 
+    533         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_response(self, request, response)
+    639         if not (200 <= code < 300):
+    640             response = self.parent.error(
+--> 641                 'http', request, response, code, msg, hdrs)
+    642 
+    643         return response
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in error(self, proto, *args)
+    567         if http_err:
+    568             args = (dict, 'default', 'http_error_default') + orig_args
+--> 569             return self._call_chain(*args)
+    570 
+    571 # XXX probably also want an abstract factory that knows when it makes
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in _call_chain(self, chain, kind, meth_name, *args)
+    501         for handler in handlers:
+    502             func = getattr(handler, meth_name)
+--> 503             result = func(*args)
+    504             if result is not None:
+    505                 return result
+
+
+~/miniconda3/envs/cmapPy3/lib/python3.7/urllib/request.py in http_error_default(self, req, fp, code, msg, hdrs)
+    647 class HTTPDefaultErrorHandler(BaseHandler):
+    648     def http_error_default(self, req, fp, code, msg, hdrs):
+--> 649         raise HTTPError(req.full_url, code, msg, hdrs, fp)
+    650 
+    651 class HTTPRedirectHandler(BaseHandler):
+
+
+HTTPError: HTTP Error 400: Bad Request
+
+
+
+Ted Liefeld
+unread,
+Jul 6, 2021, 9:35:28 AM
+
+
+
+to GenePattern Help Forum
+Dave,
+
+
+In the latest release we changed the server backend so that it leaves result files on AWS S3 instead of copying them to the local drive.  This is likely a side effect of those changes. 
+
+
+As a stopgap while we look into fixing the python API, you could try using the rest api to return the zip for the module instead.  You can get the job results at a URL like this
+
+
+    https://<your username>:<your password>:cloud.genepattern.org/gp/rest/api/v1/jobs/<your job number>/download
+
+
+where you put in the values for your username, password and job number in place of <your username> etc.
+
+
+hope this helps,
+
+
+Ted
+
+David Lahr
+unread,
+Jul 7, 2021, 7:37:11 AM
+
+
+
+to GenePattern Help Forum
+Thank you Ted.  When I try to do that in Postman or curl, I get an error that I'm using an invalid port number - I'm guessing it is because of the colons in the first section of the url (between username, password, address).  Apologies I'm missing something obvious.
+
+Ted Liefeld
+unread,
+Jul 7, 2021, 7:55:53 AM
+
+
+
+to genepatt...@googlegroups.com
+David,
+
+
+I made a couple of typos when I provided the URL above, sorry about that.  I copied a URL with an extra "api" in the path and the colon between the password and "cloud" should have been an '@'.  Both of the following URLS should work though if you replace the bolded user:password parts.  I made the job 359069 public so you should be able to use the URLS with just the identity change.  I
+
+
+https://ted:NOTMYPASSWORD@cloud.genepattern.org/gp/rest/v1/jobs/359069/download
+
+https://ted:NOTMYPASSWORD@cloud.genepattern.org/gp/rest/v1/jobs/359069/slowDownload
+
+
+
+Apologies for the false start yesterday.  I shouldn't have rushed my response, and should have double checked it.
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/gCql0rkOBYY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/929f4415-200c-4e6a-84cf-13771f1301b6n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+David Lahr
+unread,
+Jul 9, 2021, 6:43:19 AM
+
+
+
+to GenePattern Help Forum
+Thanks Ted!  That worked - much appreciated to have a method to automatically download.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/3SmCee3xslk
+Title: How to interpret the ssGSEA and GSEA result data?
+----------------------------------------
+
+
+
+
+
+How to interpret the ssGSEA and GSEA result data?
+455 views
+Skip to first unread message
+
+Shweta Johari
+unread,
+May 11, 2021, 7:41:39 AM
+
+
+
+to GenePattern Help Forum
+Good evening
+My name is Shweta Johari and I have used GSEA and ssGSEA by the online Gene pattern platform. 
+I have gotten results but can someone help with how to interpret the results?
+What other ways are there to visualize the data from ssGSEA and GSEA? What are the other ways to display the data to the supervisor and papers? 
+Is there any video or tutorial in interpreting and analyzing the data? 
+
+
+Please do forgive me if this question is silly. 
+
+
+Have a safe and well season. 
+
+
+Yours sincerely,
+Shweta Johari
+Anthony Castanza
+unread,
+May 11, 2021, 9:13:54 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Shwet,
+The primary results of GSEA are accessed through the "index.html" page which allow you to explore the enrichment of gene sets in each phenotype (i.e. Up or down regulated gene sets). The GSEA user guide has a section on Interpreting Results here: https://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm#_Interpreting_GSEA_Results its primarily focused on the Desktop application and not the GenePattern Module but the fundamentals are the same.
+
+Additionally, you can use the EnrichmentMap add-on plugin in the desktop Cytoscape application to further visualize your enrichment results (https://enrichmentmap.readthedocs.io/en/latest/)
+
+
+ssGSEA results are just in the results table (gct) and consist of the score for each set in each sample. If you have a CLS file that has sample phenotype information for the samples used in ssGSEA you can provide it and your results to either the ConstellationMap or ssGSEA_ROC modules which can help determine which gene sets are able to discriminate between those phenotypes, and in the case of ConstellationMap, can give you an overview of how similar the discriminative gene sets are to each other.
+
+
+
+Let me know if you have further questions
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cb9d3463-e96d-46e7-97c7-a4d032a3098fn%40googlegroups.com.
+
+
+
+--
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+Reply all
+
+Reply to author
+
+Forward

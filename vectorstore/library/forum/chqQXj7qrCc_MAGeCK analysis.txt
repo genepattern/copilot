@@ -1,0 +1,1 @@
+A GenePattern user inquired about a previously used MAGeCK Count analysis module, and was informed by the forum moderator that the module has been deprecated due to the original developer no longer being on the team, with GitHub repositories related to the module still available for reference.

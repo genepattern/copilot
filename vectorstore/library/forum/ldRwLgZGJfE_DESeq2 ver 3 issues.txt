@@ -1,0 +1,1 @@
+A GenePattern forum thread discussing a DESeq2 version 3 analysis error where a user encountered a specific runtime error when running a differential gene expression job, likely related to input file formatting, with the support team suggesting potential file structure issues and recommending re-running the job with careful attention to input file column arrangement.

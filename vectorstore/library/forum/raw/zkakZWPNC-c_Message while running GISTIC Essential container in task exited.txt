@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/zkakZWPNC-c
+Title: Message while running GISTIC: Essential container in task exited
+----------------------------------------
+
+
+
+
+
+Message while running GISTIC: Essential container in task exited
+77 views
+Skip to first unread message
+
+Andrew Cherniack
+unread,
+Jun 2, 2021, 7:49:41 PM
+
+
+
+to GenePattern Help Forum
+When I run GISTIC I get this message: Essential container in task exited.
+What does this mean?
+
+
+Andrew Cherniack
+unread,
+Jun 2, 2021, 7:54:32 PM
+
+
+
+to GenePattern Help Forum
+GISTIC seems to stop running without giving results after I get this message.
+
+Barbara Hill
+unread,
+Jun 7, 2021, 9:08:43 AM
+
+
+
+to GenePattern Help Forum
+Hi Andrew, 
+
+
+Apologies for the delay in responding.  I'm looking into this now and will let you know what I find.
+
+
+Best
+-Barbara
+Andrew Cherniack
+unread,
+Jun 7, 2021, 9:10:43 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+This bug was a temporary issue.   I eventually got GISTIC to work.
+
+
+Andy
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5d8eccda-e3c5-4afc-ac9f-2781c89f9e19n%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jun 7, 2021, 9:12:02 AM
+
+
+
+to GenePattern Help Forum
+Hello again,
+
+
+It appears that your most recent jobs are working.
+
+
+Please let me know if there is a specific job you would like assistance with.
+
+
+All the best
+-Barbara
+
+
+Barbara Hill
+unread,
+Jun 7, 2021, 9:12:47 AM
+
+
+
+to GenePattern Help Forum
+Oh great! Good to know.
+
+
+Thanks, Andy!
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

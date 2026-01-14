@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/iOoOD2Fp9CY
+Title: MethylationCNVAnalysis v2.4
+----------------------------------------
+
+
+
+
+
+MethylationCNVAnalysis v2.4
+22 views
+Skip to first unread message
+
+Simon Haefliger
+unread,
+Jun 10, 2022, 6:33:14 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am using the methylationCNVAnalysis v2.4 on gene pattern and I have some problems with it. I get following error message:
+
+
+Error in read.metharray(basenames = commonFiles, extended = extended, : [read.metharray] Trying to parse IDAT files with different array size but seemingly all of the same type. You can force this by 'force=TRUE', see the man page ?read.metharray Calls: preprocess.minfi -> read.metharray.exp -> read.metharray Execution halted
+
+
+Thanks in advance for your help and best regards
+
+Simon
+Simon Haefliger
+unread,
+Jun 10, 2022, 6:53:47 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+The job number for the request below  is 444014.
+
+
+Thanks for your help
+
+
+
+Best regards
+
+
+Simon
+
+
+Reply all
+
+Reply to author
+
+Forward

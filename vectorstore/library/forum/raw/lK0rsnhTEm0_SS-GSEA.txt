@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/lK0rsnhTEm0
+Title: SS-GSEA
+----------------------------------------
+
+
+
+
+
+SS-GSEA
+32 views
+ssGSEA
+Skip to first unread message
+
+AKumar
+unread,
+Nov 16, 2017, 2:03:45 PM
+
+
+
+to GenePattern Help Forum
+I am using ssGSEA. My question  is,
+
+
+"How can we find how many genes in the gene set positively contributed to the enrichment score?"
+
+
+I have used GSEA before. There we can get this information very easily (given as Yes or No in the table). But not here. I can find the overlaps and number of gene sets considered after applying size filter from the stdout file. 
+
+
+Is there any module to perform leading edge analysis like GSEA to find overlap among gene sets, genes contributing to enrichment score of a gene set etc??
+
+
+Thanks.
+Barbara Hill
+unread,
+Nov 17, 2017, 12:37:09 PM
+
+
+
+to GenePattern Help Forum
+Hello ,
+
+
+You might try the GSEALeadingEdgeViewer. 
+
+
+Note that you will also need to use the Visualizer Launcher.
+
+
+Please let us know if you have any questions.
+
+
+Best,
+
+
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

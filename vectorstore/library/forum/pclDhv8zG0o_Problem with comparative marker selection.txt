@@ -1,0 +1,1 @@
+ComparativeMarkerSelection module job failed due to improperly formatted .cls file, with the specific error being a malformed header line in the CLS file, which caused the parsing to fail and prevented .odf file generation; the user was advised to review the GenePattern file format guide for correct CLS file formatting guidelines.

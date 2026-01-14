@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/lwLgLn7Icps
+Title: CEL file not found
+----------------------------------------
+
+
+
+
+
+CEL file not found
+31 views
+Skip to first unread message
+
+Tim Pham
+unread,
+Nov 7, 2019, 6:08:49 PM
+
+
+
+to GenePattern Help Forum
+
+
+I tried to use Expression File Creator and used a zip file that contains nothing but CEL files in the top level as far as I can tell.  I did not specify a CLM or CDF file.  I am getting an error saying:
+
+
+Error: No CEL files found.  If you used a CLM it may have filtered out them all out.
+Execution halted
+
+
+It is job ID 180877.  How should I format the files so that I can use this module?  Do I need to specify a CLM or CDF?
+
+
+Barbara Hill
+unread,
+Dec 16, 2019, 10:17:02 AM
+
+
+
+to GenePattern Help Forum
+
+Hello Tim, 
+
+
+I'm so sorry it has taken us so long to respond. 
+
+
+Are you still having trouble with ExpressionFileCreator? If so, please send a recent job id and we'll take a look right away.
+
+
+Apologies again,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

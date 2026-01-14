@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/hLMFKdobPhM
+Title: Re: [gp-team] GenePattern Local Server
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] GenePattern Local Server
+14 views
+Skip to first unread message
+Barbara Hill
+unread,
+Feb 4, 2019, 2:32:44 PM
+
+
+
+to GenePattern Help Forum, genepatt...@broadinstitute.org
+Hello Hajera, 
+
+
+I suggest following this post in our help forum.
+
+
+https://groups.google.com/forum/#!topic/genepattern-help/tsHqGVHnYD0
+
+
+
+Best
+-Barbara
+
+
+On Fri, Jan 11, 2019 at 9:52 AM Amatullah, Hajera <HAMAT...@mgh.harvard.edu> wrote:
+
+
+Hi,
+
+I have been trying to install genepattern local server on my Mac. However I cannot seem to open it once the file has downloaded. The genepattern zip file comes up and expands to the actual gene pattern icon on my desktop; however, when I click on it, it opens my chrome browser on this http://127.0.0.1:8080/gp and says this site cant be reached. It says to check if any proxy servers are checked in system preferences, but I don’t and also don’t have a firewall currently blocking it in any way. Even when I am trying to open the local site listed on the user guide, I cant seem to open it.
+
+ http://localhost:8080/gp/
+
+ 
+
+ 
+
+Could you please let me know how to get pass through this error.
+
+ 
+
+Appreciate your help,
+
+Hajera
+
+ 
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is
+addressed. If you believe this e-mail was sent to you in error and the e-mail
+contains patient information, please contact the Partners Compliance HelpLine at
+http://www.partners.org/complianceline . If the e-mail was sent to you in error
+but does not contain patient information, please contact the sender and properly
+dispose of the e-mail.
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/8522D7BF-F407-4B2D-8E2D-DA76D4045F63%40mgh.harvard.edu.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+Reply all
+
+Reply to author
+
+Forward

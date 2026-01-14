@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/84hCBHjWtF8
+Title: Some modules and projections do not work
+----------------------------------------
+
+
+
+
+
+Some modules and projections do not work
+22 views
+Skip to first unread message
+
+ufcer
+unread,
+Dec 26, 2019, 5:54:00 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+These days I observed that some modules (eg. ssGSEA, NMF) do not work even with the example files provided by Genepattern. (For example, Job 192815 was run with "all_aml_train.res" provided by system. But there still shows error...)
+But the online system worked well before.
+I am wondering if there is anything wrong with the online system recently, or my computer...
+Thank you very much for your work and assistance.
+Best regards and Merry Christmas! 
+
+
+
+Message has been deleted
+Mitchell Frederick
+unread,
+Dec 26, 2019, 10:11:45 PM
+
+
+
+to GenePattern Help Forum
+What does the error log say? There used to be a bug in ssGSEA that caused an error if the gene list file only had one column of data. Not sure if that was ever fixed so I always run at least 2 columns or gene lists. If you only have one list of genes to run just copy and paste it over as a duplicate column and alter the column name slightly.
+Ted Liefeld
+unread,
+Dec 28, 2019, 3:39:55 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+I think this is the same problem as in https://groups.google.com/forum/#!topic/genepattern-help/dsPt8dynvw0.  Basically the AWS compute node at the head of the cluster we use to run jobs had a problem and was failing all jobs for a while.  Since it failed immediately the cluster saw it as unused and it would then get the next job and so on blocking anything from running.  This should now be fixed so try reloading and re-running your analysis.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+
+
+
+
+
+On Thu, Dec 26, 2019 at 10:11 PM Mitchell Frederick <mitchellja...@gmail.com> wrote:
+
+What does the error log say? There used to be a bug in ssGSEA that caused an error if the gene list file only had one column of data. Not sure if that was ever fixed so I always run at least 2 columns or gene lists. If you only have one list of genes to run just copy and paste it over as a duplicate column and alter the column name slightly.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c00edb43-7c88-47fb-8acc-e16bade9aaad%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

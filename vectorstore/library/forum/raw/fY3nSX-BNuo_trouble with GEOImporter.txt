@@ -1,0 +1,66 @@
+URL: https://groups.google.com./g/genepattern-help/c/fY3nSX-BNuo
+Title: trouble with GEOImporter
+----------------------------------------
+
+
+
+
+
+trouble with GEOImporter
+5 views
+Skip to first unread message
+
+Kinisha Gala
+unread,
+Jul 2, 2019, 5:21:52 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): I am trying to import GSE199982 but after running the job on GEOImporter I am not seeing any output files. My job number is 97040
+
+Job ID if run on a publicly available server. My job ID is 97040
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)? Mac
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues: I got a stderr.txt that said "which: no R in (/N/soft/rhel7/git/gnu/2.13.0/bin:/N/soft/rhel7/quotas:/N/soft/rhel7/perl/gnu/5.24.1/bin:/N/soft/rhel7/intel/18.0.2/compilers_and_libraries_2018.2.199/linux/bin/intel64:/N/soft/rhel7/gcc/6.3.0/bin:/opt/moab/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/N/u/gpserver/Carbonate/bin)
+R_HOME is not set"
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Jul 12, 2019, 11:10:21 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It looks like GeoImporter is not correctly configured to run on the Indiana University server. I've notified the system administrator there. In the meantime, you are welcome to run this module on our public GenePattern server - cloud.genepattern.org.
+
+
+Please let us know if you have any trouble.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

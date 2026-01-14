@@ -1,0 +1,1 @@
+GenePattern forum thread summarizing the error involving p-values and lambda estimation, where a user encountered issues with a computational analysis involving deprecated vector operations and potential problems with p-value calculation, with support staff recommending re-running the job and providing job IDs for further investigation.

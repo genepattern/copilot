@@ -1,0 +1,262 @@
+URL: https://groups.google.com./g/genepattern-help/c/_r-bTfCpskg
+Title: SNPFileCreator and CopyNumberInference
+----------------------------------------
+
+
+
+
+
+SNPFileCreator and CopyNumberInference
+64 views
+Skip to first unread message
+
+Nicolas Poux
+unread,
+Jan 23, 2024, 2:30:19 PM
+
+
+
+to GenePattern Help Forum
+Hi!
+
+
+I'm trying to put together parts of the now defunct Affymetrix SNP6 Copy Number Inference Pipeline (https://www.genepattern.org/affymetrix-snp6-copy-number-inference-pipeline#gsc.tab=0) to do copy number analysis on SNP6 microarray data, and I had a couple of questions relating to accessibility and implementation of some of the modules.
+
+
+The first few steps of the pipeline are as follows: SNPFileCreator (to take CEL files and normalize intensity values within batches) -> Birdseed (to define what genotypes of normal data look like to be used as calibration) -> CopyNumberInference (determine copy number from sample data based on calibration from normals). Birdseed and CopyNumberInference no longer appear to be publicly available on GenePattern, though I have found an implementation of Birdseed that I can use locally. I'd thus like to find a way to string together the different modules (SNPFileCreator + Birdseed + CopyNumberInference) between what's still available on GenePattern and what I can implement locally. My questions are as follows:
+
+
+1) The SNPFileCreator module has a functioning implementation on GenePattern. Is there any way to download this module so that I can use it locally and feed the output directly to my local implementation of Birdseed?
+2) Is there any record of the CopyNumberInference module? Even if it is no longer implementable on GenePattern, is there any of the source code that I could download and try to adapt?
+
+
+Thank you!
+Best,
+Nicolas
+
+
+
+
+
+
+
+
+
+
+Michael Reich
+unread,
+Jan 24, 2024, 10:58:45 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Nicolas,
+
+
+You can get the executable for the SNPFileCreator by going to cloud.genepattern.org, selecting the SNPFileCreator module, and choosing Export from the gear menu on the upper right hand side. That will export a zip file that contains the Java code for the analysis. Please note that there is a separate module, SNPFileCreator_SNP6, for the SNP6 chip, in case that chip was used. We are working on retrieving the code for CopyNumberInference and will let you know as soon as we have it. 
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3b5924f9-e6c3-4689-b484-1621f2e417f6n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+Nicolas Poux
+unread,
+Jan 24, 2024, 3:19:54 PM
+
+
+
+to GenePattern Help Forum
+Thank you!
+
+Ted Liefeld
+unread,
+Jan 25, 2024, 8:10:53 AM
+
+
+
+to GenePattern Help Forum
+Nicolas,
+
+
+You can now ind the code for the CopyNumberInference module at https://datasets.genepattern.org/data/module_support_files/CopyNumberInference/CopyNumberInference.zip.
+
+
+I also included the manifest for a related module called CopyNumberInference.SNP6.0 which I believe may be just the pipeline you started with.  I am still trying to ascertain if the code it references in its command line is still cached somewhere.
+
+
+Ted
+
+
+
+Nicolas Poux
+unread,
+Jan 25, 2024, 8:39:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted,
+
+
+This is amazingly helpful, thank you! I look forward to hearing if the pipeline code still exists.
+
+
+Best,
+Nico
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/63193d2b-11a2-4857-9ed9-c077b548b45an%40googlegroups.com.
+
+Nicolas Poux
+unread,
+Jan 25, 2024, 9:09:09 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted,
+
+
+Alternatively, if it turns out that the pipeline code is not recoverable, do you think you would be able to find records of the Birdseed and BirdseedDataPreparation modules? From looking through the documentation of the CopyNumberInference module in the archive you provided, and then the documentation of the two modules listed above, it seems like there's a straight line between the inputs/outputs of SNPFileCreator_SNP6.0 -> BirdseedDataPreparation -> Birdseed -> CopyNumberInference which would then provide exactly what I need for recreating the relevant parts of the Affymetrix SNP6 CopyNumberInference pipeline.
+
+
+Thanks so much for your help!
+
+
+Best,
+Nico
+
+Ted Liefeld
+unread,
+Jan 25, 2024, 2:41:45 PM
+
+
+
+to GenePattern Help Forum
+Nico,
+
+
+so far I have found no sign of the pipeline code, but the two Birdseed modules are in our long-term archive.  I have put in the request to have them thawed for use and will put their zip file on datasets.genepattern.org once they are available (or more likely on Monday morning as I am out of the office tomorrow).
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jan 29, 2024, 7:51:15 AM
+
+
+
+to GenePattern Help Forum
+Nico,
+
+
+the code for the birdseed modules is in a zip file at 
+
+
+https://datasets.genepattern.org/data/module_support_files/Birdseed/birdseed.zip
+
+
+Hope this helps,
+
+Ted
+
+
+
+Nicolas Poux
+unread,
+Jan 29, 2024, 12:54:10 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted,
+
+
+Perfect -- thank you so much for your help with this!
+
+
+Best,
+Nico
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e36eb1c9-5975-4933-bab1-cd2b5cabd084n%40googlegroups.com.
+
+Nicolas Poux
+unread,
+Feb 20, 2024, 12:43:39 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+As a follow up to our conversation, I am going through Birdseed modules that you thawed and I was wondering if you have any record of the java packages that are used by these modules.
+
+
+Specifically, the BirdseedDataPreparation module uses a Java script "DataPrep.java" that imports a number of packages (that originate from the Broad Institute, presumably) that I cannot find anywhere online:
+import org.broadinstitute.io.AnalysisUtil;
+import org.broadinstitute.io.IOUtil;
+import org.broadinstitute.io.dchip.SampleInfo;
+
+
+I'm assuming that there was an implementation of these java packages on the genepattern server at the time that these modules existed there. Do you know if there is any way to access/recover the packages originating from org.broadinstitute.io?
+
+
+Thanks so much,
+Nico
+
+Ted Liefeld
+unread,
+Feb 21, 2024, 10:47:10 AM
+
+
+
+to GenePattern Help Forum
+Nico
+
+
+I think those classes can be found in the jar file gp-module.jar.  I have put a copy of that here:  
+
+
+https://datasets.genepattern.org/?prefix=data/module_support_files/Birdseed/
+
+
+I also found an old copy of the BirdseedDataPreparation module and added its zip file there as well along with the 2 other jar files it used assuming you might need them next.  I don't know if that module zip is good, it came from an old dev server so its not an official release.
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

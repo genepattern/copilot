@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/I4FUZnuJ6ZQ
+Title: Error attempting to run MutSigCV on GenePattern
+----------------------------------------
+
+
+
+
+
+Error attempting to run MutSigCV on GenePattern
+43 views
+Error
+mutsigcv
+Skip to first unread message
+
+Xavier de luca
+unread,
+Nov 6, 2018, 6:47:58 PM
+
+
+
+to GenePattern Help Forum
+ Hello,
+I was trying to run MutSig on  around 80 samples. I downloaded all the default files from the job submission page and uploaded  them in their respective input. Every time I attempt to  submit a MutSig job, I get back the following stderr :
+
+
+/opt/gpbeta/gp_home/resources/wrapper_scripts/gp-common.sh: line 598: /opt/gpbeta/gp_home/taskLib/MutSigCV.1.2.217/gp_MutSigCV: Permission denied
+
+
+
+
+The input files I used are attached.
+
+
+What could be done to solve this issue?
+Kind regards
+
+mutation_type_dictionary_file.txt
+
+gene.covariates.txt
+
+exome_full192.coverage.txt
+Barbara Hill
+unread,
+Nov 8, 2018, 9:51:47 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Can you provide your job id?
+
+
+This will help to determine all the details of how your job was run and allow us to more easily debug the issue.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

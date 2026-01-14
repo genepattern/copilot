@@ -1,0 +1,1 @@
+GenePattern server installation issue where job creation fails due to missing job input parameter configuration; resolved by adding a jobInputParams.yaml file with predefined memory, CPU count, and walltime options, and referencing this file in the config_custom.yaml configuration to enable proper job submission on a local Ubuntu server running GenePattern version 3.9.11.

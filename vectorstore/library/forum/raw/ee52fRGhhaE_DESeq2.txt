@@ -1,0 +1,159 @@
+URL: https://groups.google.com./g/genepattern-help/c/ee52fRGhhaE
+Title: DESeq2
+----------------------------------------
+
+
+
+
+
+DESeq2
+34 views
+Skip to first unread message
+
+mussa salkhordeh chokami
+unread,
+Aug 18, 2020, 12:21:43 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+Whatever I try DESeq2 module I get error
+
+
+I have attached my input files here
+
+
+Please help me to get DESeq2 work on y data
+
+
+I have 9 responders versus 33 non-responders
+
+
+Thank you
+
+
+this is the link of my raw counts
+
+
+https://www.dropbox.com/s/kdbcxfliz3lq9g9/GDS4551.gct?dl=0
+
+
+P53.cls.txt
+
+stderr-3.txt
+Ted Liefeld
+unread,
+Aug 20, 2020, 6:50:13 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+it took a bit of time to figure out the problems here.  They all revolved around file formatting and parsing.
+
+
+First in the cls file, you need to add a space after the '#' and before the first class name ("e.g. "# r nr" and not "#r nr")
+
+
+Second, there's a line in the GCT with no Name or Description (at line 536), which I found by loading a TXT version of the file in R (basically the same content but without the first two lines:
+
+           > df <- read.table(file = "~/Downloads/GDS4551.txt", header = TRUE, row.names = NULL) Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, : line 534 did not have 35 elements
+
+
+So the code is was choking when trying to create a Data Frame.  This can be 'corrected'  by tossing in "Foo"  or ideally the real gene name/description into the Name and Description columns..  
+
+
+Third,  there was also a line with a Name & Description of "NA" (at line 116):
+            > which(is.na(df$Name)) [1] 113
+
+
+You can fix this by changing "NA" to "NAFoo" (or anything other than NA.  This is actually a bogus fix because there really is a gene named NA, albeit non-human.  Nonetheless, this is an issue with the code & data that comes up sometimes since NA is a special value in R).  
+
+
+It's possible use a similar trick to walk through each of the columns to look for NA or missing values in the data matrix, but that wasn't necessary here.
+
+
+Lastly, there seems to be an issue with parsing GCT sample names that contain '.' characters. Switching these to underscores seems to solve the problem and allows the analysis to complete.
+
+
+Hope this helps,
+
+
+Ted (with most of the input from David Eby who wrapped DeSeq2 as a module)
+
+
+
+
+
+mussa salkhordeh chokami
+unread,
+Aug 20, 2020, 7:33:25 AM
+
+
+
+to genepatt...@googlegroups.com
+Sorry I'm too bad in this area
+Is it possible to attach the files you edited here?
+I guess you may put some time in inspecting these files
+Excuse me to be rude 
+I really need to run the software and I can't trust in my expertise in troubleshooting this soon that is why I trouble you
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/161443b8-ce21-4164-9b98-382f3d81e5c4n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 21, 2020, 10:41:51 AM
+
+
+
+to GenePattern Help Forum
+Here you go with the cls file...
+
+
+Ted
+
+
+
+GDS4551mod.cls
+mussa salkhordeh chokami
+unread,
+Aug 21, 2020, 4:03:10 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks a million
+
+
+
+
+On Fri, Aug 21, 2020 at 6:41 PM Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+Here you go with the cls file...
+
+
+Ted
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ee52fRGhhaE/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fa85b0ad-a548-4b6d-98e7-f9f15894252en%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

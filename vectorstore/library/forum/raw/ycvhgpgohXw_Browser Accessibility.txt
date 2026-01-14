@@ -1,0 +1,104 @@
+URL: https://groups.google.com./g/genepattern-help/c/ycvhgpgohXw
+Title: Browser Accessibility
+----------------------------------------
+
+
+
+
+
+Browser Accessibility
+19 views
+Skip to first unread message
+
+Joseph
+unread,
+Sep 18, 2024, 4:57:31 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am a new to GenePatter and was getting to using it recently. I  am usually operating as guest on the brower platform. After the update, GenePattern environment is not accessible to me to get to the modules.
+
+
+Any assistance is very appreciated!
+
+
+Regrads,
+Joseph
+Ted Liefeld
+unread,
+Sep 18, 2024, 6:08:43 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+if you were referring to the server at https://genepattern.ucsd.edu/gp,  last night that server crashed and it has been restarted.  If it was any other genepattern server, please let us know which one and send us a screenshot of what you are seeing in your browser.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Joseph
+unread,
+Sep 19, 2024, 12:54:45 AM
+
+
+
+to GenePattern Help Forum
+Thank you Ted! The link worked.
+
+
+Have a good day.
+
+
+Joseph
+
+
+
+Joseph
+unread,
+Sep 19, 2024, 1:35:39 AM
+
+
+
+to GenePattern Help Forum
+Are the GSEA modules not anymore included in the GenePattern modules? Because I couldn't find those.
+
+
+Thanks!
+
+
+
+Ted Liefeld
+unread,
+Sep 20, 2024, 10:56:57 AM
+
+
+
+to GenePattern Help Forum
+Joseph,
+
+
+what server are you logging in to?  They are still on cloud.genepattern.org.  They are not and never have been on genepattern.ucsd.edu.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

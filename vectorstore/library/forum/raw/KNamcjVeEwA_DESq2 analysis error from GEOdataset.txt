@@ -1,0 +1,219 @@
+URL: https://groups.google.com./g/genepattern-help/c/KNamcjVeEwA
+Title: DESq2 analysis error from GEOdataset
+----------------------------------------
+
+
+
+
+
+DESq2 analysis error from GEOdataset
+39 views
+Skip to first unread message
+
+ece janet dinc
+unread,
+Sep 16, 2024, 2:53:37 AM
+
+
+
+to GenePattern Help Forum
+Hello, I am trying to get results from this module using GEOdatasets but it always shows error like this "Error in if (numberOfDataPoints != length(labels)) { : missing value where TRUE/FALSE needed Calls: read.cls Execution halted" I also created both .gct and .cls files and check their extensions in case they have a .txt but it did not work.
+
+
+Best,
+
+Janet
+
+Ted Liefeld
+unread,
+Sep 16, 2024, 6:01:00 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+it sounds like the number of samples in your gct file and the number of labels in your cls file are not matching. Can you provide a job number?  That will allow us (GenePattern administrators) to look at the job and the files for errors.
+
+
+Thanks
+
+
+Ted
+
+
+
+
+ece janet dinc
+unread,
+Sep 16, 2024, 9:10:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your quick response!! Of course, here: 603634
+
+
+Best,
+Janet
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/KNamcjVeEwA/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e4eaaa51-18ad-4db8-9ac7-d95fb5265c51n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Sep 16, 2024, 9:21:58 AM
+
+
+
+to GenePattern Help Forum
+Janet,
+
+
+Your cls file was saved in rich text format (rtf).  Try exporting it from whatever editor you used as a plain text file and give it another try.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+ece janet dinc
+unread,
+Sep 16, 2024, 11:46:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi again,
+
+
+Thanks a lot!! I did a plain text without .rtf, created a .cls file from that and ran again the module but it showed an error this time stating "Error in read.gct(opts$input.file) : Number of sample names 292 not equal to the number of columns 293. Execution halted" I actually did check the samples, it should be 293 but I don't understand what I missed.
+
+
+Best,
+Janet
+
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/bd878daf-4341-4a63-a9cc-bd75de3a4a00n%40googlegroups.com.
+
+ece janet dinc
+unread,
+Sep 16, 2024, 11:48:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Job id: 603654.
+
+Ted Liefeld
+unread,
+Sep 16, 2024, 12:33:47 PM
+
+
+
+to GenePattern Help Forum
+Janet,
+
+
+sorry I did not look at both of your files the first time.  The gct file seems to be missing the description column (https://www.genepattern.org/file-formats-guide#GCT).  So its taking the first sample column as description (ev092L...) and then is coming up one sample short.  Just copy your ID_REF column (preserving the top 3 header lines) between itself and the first sample and rename it description.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+ece janet dinc
+unread,
+Sep 17, 2024, 2:05:04 AM
+
+
+
+to GenePattern Help Forum
+Hello, Ted!
+
+
+Thank you so much for your input, I got it what the problem was for .gct file and I did exactly what you said and copied & renamed it but this time it shows an error: Error in if (line2[1] == "#") { : missing value where TRUE/FALSE needed Calls: read.cls Execution halted. I assume it is related to .cls file, I created it like as the guide. I am putting the files here for you to better check.
+
+
+
+Best,
+Janet
+
+
+
+GSE182065.cls
+
+GSE182065_description.gct
+John Liefeld
+unread,
+Sep 17, 2024, 7:55:55 AM
+
+
+
+to GenePattern Help Forum
+Janet,
+
+
+your cls file now has extra newline characters after every line.  The blank lines in between prevent the modules from reading it correctly.  I deleted those and tried a DESeq2 run and came up with a different error;
+
+      The cls.file must be categorical with exactly two classes
+
+
+So it seems for DESeq2 you will need to filter your dataset to do pairwise comparisons or one-versus-all for the conditions of interest.  The DESeq2 documentation (https://genepattern.github.io/DESeq2/v1/index.html) states for the cls.file parameter definition;
+
+
+A categorical CLS file specifying the phenotype classes for the samples in the GCT file. This should contain exactly two classes with the control specified first.
+I suggest that you start a new thread in the forum if you want help with DESeq2 as it will be a different question than the file format issues that we have been chasing in this thread, and also it will require someone other than me who is more familiar with DESeq2 to be able to help with how to do your analysis.
+
+
+hope this helps,
+
+
+Ted
+
+ece janet dinc
+unread,
+Sep 17, 2024, 10:03:12 AM
+
+
+
+to genepatt...@googlegroups.com
+Got it! I will try and if I need to, I will start a new thread! Thanks a lot again for your help, much appreciated!
+
+
+Best,
+Janet
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c10e6009-2649-4939-b7c4-d4f5bbc495aan%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

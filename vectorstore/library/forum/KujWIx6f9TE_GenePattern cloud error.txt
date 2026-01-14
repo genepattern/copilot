@@ -1,0 +1,1 @@
+GenePattern cloud error related to MutSigCV module experiencing permission denied issue when trying to execute the script, which was subsequently resolved by GenePattern team installing a new version of the module that fixed the underlying permissions problem.

@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/np_9EN-yNMk
+Title: Unable to use the SplitDatasetTrainTest module
+----------------------------------------
+
+
+
+
+
+Unable to use the SplitDatasetTrainTest module
+18 views
+Skip to first unread message
+
+Paola
+unread,
+Apr 11, 2019, 1:46:19 AM
+
+
+
+to genepatt...@googlegroups.com
+
+
+Dear all,
+
+
+we were trying to use the SplitDatasetTrainTest module. We are pretty sure that the input files are in the correct format, however we are getting the following error:
+
+
+Error: Could not find or load main class RunR
+
+ 
+
+# Created: Thu Apr 11 08:42:06 UTC 2019 by
+# Job: 108572    server:  https://cloud.genepattern.org/gp/
+# Module: SplitDatasetTrainTest urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00024:4
+# Parameters: 
+#    input.dataset.file = CESC_normalized_counts_ULK3signature_ClassiSurvDivise.gct  
+#    cls.file = class_GenePattern.cls   
+#    split.method = percentage split
+#    stratified = yes
+#    folds = 2
+#    percentage.split.proportion = 0.6
+#    seed = 123456
+#    output.prefix = prova4
+
+
+Jobs IDs are: 108541, 108569.
+
+
+Thank you very much in advance
+
+
+Paola
+Barbara Hill
+unread,
+Apr 12, 2019, 2:55:56 PM
+
+
+
+to GenePattern Help Forum
+Hello Paola, 
+
+
+That was a configuration error on our end.
+
+
+I've fixed that and it now runs, though in at least a rerun of job 108572 I do get an error indicating an "incorrect number of data points". Without digging in, I suspect there is a mismatch between your .gct and .cls files.
+
+
+Please let me know if you have any further trouble.
+
+
+Best
+-Barbara
+
+Paola
+unread,
+Apr 15, 2019, 1:53:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+thank you very much for your helping.
+Everything is working now!
+
+
+Best
+
+
+Paola
+
+
+
+Reply all
+
+Reply to author
+
+Forward

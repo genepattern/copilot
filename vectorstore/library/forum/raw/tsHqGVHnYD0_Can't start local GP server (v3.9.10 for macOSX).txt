@@ -1,0 +1,105 @@
+URL: https://groups.google.com./g/genepattern-help/c/tsHqGVHnYD0
+Title: Can't start local GP server (v3.9.10 for macOSX)
+----------------------------------------
+
+
+
+
+
+Can't start local GP server (v3.9.10 for macOSX)
+42 views
+Installation
+mac
+server
+Skip to first unread message
+
+Celina Peralta
+unread,
+Jan 28, 2019, 5:52:30 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run a local GenePattern server on Mojave 10.14 for some application development. I followed the installation instructions online. 
+
+
+Here's what I'm getting in the console:
+error	08:50:24.298762 -0500	open	Unable to load Info.plist exceptions (eGPUOverrides)
+error	08:50:24.680533 -0500	tccd	spooky magic for /Applications/GenePattern.app/Contents/MacOS/GenePattern (622F2123)
+error	08:50:24.695535 -0500	Google Chrome	10759711: Error #17  (os/kern) invalid right attempting to add send right to port ( port:282199/0x44e57 rcv:0,send:0,d:1 limit:0).
+
+
+After looking around online, I found that the first error seems to be a Mojave-specific issue. I'm not sure about the others. Any suggestions?
+
+
+Thanks,
+Celina
+Peter Carr
+unread,
+Jan 30, 2019, 3:44:53 PM
+
+
+
+to GenePattern Help Forum
+Try moving your GenePattern.app into your /Applications folder. For best results, first shut down the server, then move it, then start it up again. That worked for us.
+Regards,
+Peter
+
+Celina Peralta
+unread,
+Jan 30, 2019, 8:57:49 PM
+
+
+
+to GenePattern Help Forum
+I have been trying to launch it from the Applications folder, but the problem still persists.
+
+Barbara Hill
+unread,
+Feb 4, 2019, 2:25:08 PM
+
+
+
+to GenePattern Help Forum
+Hello Celina, 
+
+
+Did you delete all previous installations before moving? or did you just move it after installing?
+
+
+If the latter, I would suggest you delete the previously failed installations, start with a new download, move that to the applications folder and try again.
+
+
+Let us know if that helps. (That worked for us)
+
+
+Best
+-Barbara
+
+
+
+Celina Peralta
+unread,
+Feb 6, 2019, 5:37:30 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I deleted all previous installations and tried again from the applications directory. At this point, I think the problem has to do with OSX 10.14. Have there been any reports of the server not working on that version of OSX?
+
+
+Thanks,
+Celina
+
+
+Reply all
+
+Reply to author
+
+Forward

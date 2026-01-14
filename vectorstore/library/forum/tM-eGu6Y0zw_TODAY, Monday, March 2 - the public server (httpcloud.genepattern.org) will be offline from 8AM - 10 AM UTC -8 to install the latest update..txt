@@ -1,0 +1,1 @@
+GenePattern public cloud server maintenance and update notification, with server being offline from 8AM - 10AM UTC-8 on March 2, 2020, for version 3.9.11 build 244 update, with service subsequently restored and confirmed operational.

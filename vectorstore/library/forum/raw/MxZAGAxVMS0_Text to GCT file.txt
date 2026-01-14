@@ -1,0 +1,118 @@
+URL: https://groups.google.com./g/genepattern-help/c/MxZAGAxVMS0
+Title: Text to GCT file
+----------------------------------------
+
+
+
+
+
+Text to GCT file
+509 views
+Skip to first unread message
+
+Shweta Johari
+unread,
+Sep 6, 2021, 8:43:04 AM
+
+
+
+to GenePattern Help Forum
+Good evening, 
+May I please know how to change the data from Text delimited file to gct?
+The file has the #1.2 in the first column above the no. of rows and then the number of samples according to the gct. file format. 
+May I please know, after saving it in text delimited format. What to do next?
+Thank you in advance.
+
+
+Yours sincerely,
+Shweta Johari 
+Anthony Castanza
+unread,
+Sep 6, 2021, 11:02:32 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Assuming the information was added to the file correctly, the final step is simply to change the file extension from .txt to .gct.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/541c267e-4503-49ad-8c63-e0a9c3e0e296n%40googlegroups.com.
+
+Shweta Johari
+unread,
+Sep 7, 2021, 3:34:02 AM
+
+
+
+to GenePattern Help Forum
+Respected Sir, 
+Thank you. 
+I did that too but still it is displayed as a text file and not gct. 
+
+
+Yours sincerely, 
+Shweta Johari 
+
+
+
+
+still txt not gct.docx
+Anthony Castanza
+unread,
+Sep 7, 2021, 9:36:01 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+It looks like your operating system is hiding known file extensions by default. You'll have to set file extensions to "show" then you should be able to remove the previous .txt extension.
+
+Microsoft describes how to do this here: https://social.technet.microsoft.com/wiki/contents/articles/1784.windows-how-to-view-file-name-extensions.aspx
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5a4ddcd4-7a04-42d4-ab69-621cbdebb2a2n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

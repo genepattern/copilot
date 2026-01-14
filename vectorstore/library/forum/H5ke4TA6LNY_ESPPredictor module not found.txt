@@ -1,0 +1,1 @@
+A user inquired about the unavailability of the ESPPredictor module in GenePattern, seeking guidance on finding alternative resources; a GenePattern representative responded that they would work on installing the module on their cloud server and provide an update in the coming week.

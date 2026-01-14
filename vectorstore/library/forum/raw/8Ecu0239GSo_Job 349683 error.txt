@@ -1,0 +1,116 @@
+URL: https://groups.google.com./g/genepattern-help/c/8Ecu0239GSo
+Title: Job 349683 error
+----------------------------------------
+
+
+
+
+
+Job 349683 error
+32 views
+Skip to first unread message
+
+Viktor
+unread,
+May 26, 2021, 5:11:50 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am getting an error when running SelectFeaturesColumns. The error message says "Data at line number 9 and column 9 is not a number" in the input GCT file but I am unable to find any issues there. There are NAs corresponding to missing values but I have not had an issue with them using this module before.
+
+
+Please advise.
+
+
+Thanks,
+Viktor
+Viktor
+unread,
+May 26, 2021, 5:57:14 AM
+
+
+
+to GenePattern Help Forum
+It appears that my assumption about missing values was mistaken. Even a single NA results in error for SelectFeaturesColumns (job 349686) whereas removing it completes the run successfully (job 349688).
+
+
+If what I am seeing here is true, is there a technical reason why SelectFeaturesColumns cannot pull down gene expression data with missing values? I do not see anything about it in the module documentation.
+
+
+Thanks,
+Viktor
+
+
+
+Anthony Castanza
+unread,
+May 26, 2021, 10:05:54 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Viktor,
+
+ 
+
+I suspect this was done for consistency with other modules that actually do have technical reasons for not supporting NA values, like GSEA where NA values must be blanks. Perhaps this is something we can look into changing, or at least we can clearly state it in the documentation.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c4c338a1-f53d-4caa-b11d-e57e3db15e16n%40googlegroups.com.
+
+Viktor
+unread,
+May 26, 2021, 10:06:24 AM
+
+
+
+to GenePattern Help Forum
+I believe I figured out a workaround. I replaced NAs with values way outside of the gene expression range (1000) and SelectFeaturesColumns completed successfully. Then I just need to replace all 1000s back with NAs.
+
+
+Viktor
+
+
+
+Viktor
+unread,
+May 26, 2021, 10:13:13 AM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+
+
+Thank you for the reply. I think stating this in the documentation would be helpful. Hopefully, my workaround makes sense. 
+
+
+Viktor
+
+
+Reply all
+
+Reply to author
+
+Forward

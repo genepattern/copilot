@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/2cCjHn8LOxI
+Title: class file for class neighbors analysis
+----------------------------------------
+
+
+
+
+
+class file for class neighbors analysis
+9 views
+Skip to first unread message
+
+Cynthia Moncada
+unread,
+Jul 14, 2020, 3:18:50 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am new to running class neighbors analysis on GenePattern. Could you help me figure out what the class file is and what format it should be in?
+
+
+Thank you!
+-cynthia
+Barbara Hill
+unread,
+Jul 15, 2020, 7:55:04 AM
+
+
+
+to GenePattern Help Forum
+Hello Cynthia,
+
+
+Thanks for writing in.
+
+
+I suggest you start with the ClassNeighbors documentation (also found via the Documentation link in the upper right of all modules) and review the File Format guide on cls files - also accessible from the Help menu in the navigation bar on the server.
+ 
+Please let us know if you have any other questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

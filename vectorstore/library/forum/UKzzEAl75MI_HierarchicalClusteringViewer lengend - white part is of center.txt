@@ -1,0 +1,1 @@
+User asked about the positioning of the white segment in the HierarchicalClusteringViewer legend, specifically whether it should be centered, and performed row normalization with Pearson distance metric; support confirmed this is normal appearance and suggested manually correcting gradient in illustration software, with plans to address legend design in future software update.

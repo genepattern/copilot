@@ -1,0 +1,76 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ldr_CyhlkI0
+Title: difficulties running ssGSEA
+----------------------------------------
+
+
+
+
+
+difficulties running ssGSEA
+42 views
+Skip to first unread message
+
+Vijay Putatunda
+unread,
+May 23, 2023, 2:48:48 PM
+
+
+
+to GenePattern Help Forum
+hello,
+I am trying to run ssGSEA, but am encountering the following error:
+Error in vector(length = gene.set.size, mode = "character") : 
+  invalid 'length' argument
+Calls: ssGSEA.cmdline
+Execution halted
+
+
+
+I know my gct file works because I was able to run the GSEA hallmark gene set. I am not sure what is wrong with my gmt file (attached). Could you please advise?
+
+
+thank you,
+Vijay
+
+LM22_MDSC.gmt
+Castanza, Anthony
+unread,
+May 23, 2023, 3:28:13 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Vijay,
+
+The issue might be with the quotes and commas in the gene set names in your file, I’d recommend removing those and trying again
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cd6fecdb-3770-4eed-b9f9-c1b6ad74b735n%40googlegroups.com.
+
+ 
+
+
+Reply all
+
+Reply to author
+
+Forward

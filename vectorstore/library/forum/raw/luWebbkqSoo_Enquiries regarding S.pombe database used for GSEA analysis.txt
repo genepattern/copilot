@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/luWebbkqSoo
+Title: Enquiries regarding S.pombe database used for GSEA analysis
+----------------------------------------
+
+
+
+
+
+Enquiries regarding S.pombe database used for GSEA analysis
+18 views
+Skip to first unread message
+
+Phoebe Chair
+unread,
+Jul 6, 2021, 12:42:16 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am currently working on a PTMsig/ssGSEA and EGSEA analysis on an S.pombe dataset. After many searches, I can't find any provided public databases required for this analysis. The files needed for the analysis are ptmsig.db and msig.db of the S.pombe species. I was wondering if anyone from this group knows where I could get access to these databases? 
+
+
+Thanks,
+Phoebe
+
+
+
+
+Anthony Castanza
+unread,
+Jul 8, 2021, 6:22:09 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Phoebe,
+
+
+Unfortunately I don't think we're going to be able to help with this one. MSigDB is primarily a human resource with limited support for model organisms, additionally, the ".db" files are not something provided by us, I think those were created by some 3rd party as a repackaging of our database to facilitate their R implementation of GSEA. Furthermore, ptMSigDB is a 3rd party that we only have a loose relationship with so you'd need to reach out to them directly (https://github.com/broadinstitute/ssGSEA2.0) but I also think they don't really support many model organisms.
+
+
+That said, if you are able to identify a suitable resource of S. pombe pathways I might be able to help get them into a GSEA-compatible format. Reactome appears to have a collection of S. pombe pathways, if that would help I can create some GMTs from that data next week that might be useful with at least the desktop version of GSEA.
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a3a41301-1386-454c-b384-0c609408b051n%40googlegroups.com.
+
+
+
+--
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+Reply all
+
+Reply to author
+
+Forward

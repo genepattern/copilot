@@ -1,0 +1,124 @@
+URL: https://groups.google.com./g/genepattern-help/c/7mB8ABWODrI
+Title: ESPPredictor
+----------------------------------------
+
+
+
+
+
+ESPPredictor
+10 views
+Skip to first unread message
+
+Alicia Roque
+unread,
+Jun 26, 2019, 8:09:23 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+The ESPPredictor module is missing from the module selection menu on the public server
+Job ID if run on a publicly available server.
+Public server
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Ted Liefeld
+unread,
+Jul 22, 2019, 2:27:21 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+the first version of ESPPredictor in our containerized system is now up on beta if you have time to try it out
+
+
+    https://beta.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:999999999
+
+
+Please report back here if it works or not,
+
+
+Thanks
+
+
+Ted
+
+Honghui Wang
+unread,
+Jul 23, 2019, 9:11:38 AM
+
+
+
+to genepatt...@googlegroups.com
+I have tested new esppredictor and it worked! Thank you again to make this valuable tool work again!
+
+
+One tip: if your file name for peptide list contains SPACE, it may return error message. Special characters, such as #%&, in file name seem ok.
+
+
+Honghui
+
+
+Sent from my iPhone
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c8318149-bf21-49f8-92cb-d27fd92f0674%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jul 23, 2019, 2:28:20 PM
+
+
+
+to GenePattern Help Forum
+I believe the problem with spaces in file names is now fixed -- Ted 
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+Barbara Hill
+unread,
+Apr 30, 2020, 1:49:26 PM
+
+
+
+to GenePattern Help Forum
+We have just now released ESPPredictor on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:4
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

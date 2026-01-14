@@ -1,0 +1,1 @@
+A GenePattern user reported slow job execution on the public server, with two PreprocessDataset jobs remaining in a pending state for several hours, and the support team recommended trying alternative servers like the Indiana University (IU) server or the AWS beta server, which ultimately resolved the user's job processing issue.

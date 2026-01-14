@@ -1,0 +1,1 @@
+User encountered an error while running MutSigCV (version 1.35) on GenePattern, experiencing a job failure during the RUN stage with an error message indicating "silent and nonsilent rates are too different", and was advised by the GenePattern team to seek help on the GATK forum due to lack of internal expertise in the MutSigCV algorithm.

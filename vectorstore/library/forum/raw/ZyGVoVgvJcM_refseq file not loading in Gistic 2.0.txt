@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZyGVoVgvJcM
+Title: refseq file not loading in Gistic 2.0
+----------------------------------------
+
+
+
+
+
+refseq file not loading in Gistic 2.0
+12 views
+Skip to first unread message
+
+Anna K
+unread,
+Jun 22, 2020, 5:38:44 AM
+
+
+
+to GenePattern Help Forum
+Trying to run GISTIC 2.0 from the web app on GenePattern, but the refgene file pull-down menu fails to load (06/22/20).
+
+
+Thanks,
+Anna
+GenePattern Help Forum
+unread,
+Jun 25, 2020, 2:23:49 PM
+
+
+
+to GenePattern Help Forum
+Hello Anna, 
+
+
+I am unable to reproduce this in Firefox, Chrome or Edge on Windows 10. 
+
+
+Are you still having this problem? If so, what browser and what is your platform? (Mac? Ubuntu?) - if you can send a screenshot as well - that would be helpful.
+
+
+Thank you!
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

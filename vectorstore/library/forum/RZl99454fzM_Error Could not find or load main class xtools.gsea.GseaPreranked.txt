@@ -1,0 +1,1 @@
+`A user encountered an error running GSEA pre-ranked analysis in R, specifically "Could not find or load main class xtools.gsea.GseaPreranked", which likely indicates an issue with Java classpath configuration or incorrect jar file path; recommended solution was to seek help in the dedicated GSEA help forum instead of the GenePattern forum.`

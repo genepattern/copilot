@@ -1,0 +1,143 @@
+URL: https://groups.google.com./g/genepattern-help/c/v1miwfzNn-8
+Title: COMBAT_output file
+----------------------------------------
+
+
+
+
+
+COMBAT_output file
+10 views
+Skip to first unread message
+
+Ramani Gopal
+unread,
+May 8, 2019, 3:56:49 AM
+
+
+
+to GenePattern Help Forum
+Dear Team 
+    I ran my combat job today. It seems the job completion was without any error. But i dint get output file with corrected expression value of given samples. I read your previous comments in the same query, but still i dint get the results what i expected from the module.
+I tried many times with several IDs.... one of them is 117762. ComBat 
+
+
+Please let me know your suggestions.
+
+
+Thank you
+Barbara Hill
+unread,
+May 10, 2019, 1:38:15 PM
+
+
+
+to GenePattern Help Forum
+Hello Ramani,
+
+
+There appears to be an error parsing the command line. I suspect that the space in your sample file name may be the culprit. Please remove that and try running the job again.
+
+
+Let us know how it goes.
+
+
+All the best
+-Barbara
+Ramani
+unread,
+May 13, 2019, 1:52:22 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you Barbara... will let you know.
+
+
+Regards 
+Ramani
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/51e99ac2-f891-459b-9824-9f6c9ae60966%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+Ramani Gopal
+
+
+Ramani Gopal
+unread,
+May 13, 2019, 2:06:15 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your response. But still i had same problem. Can you please suggest your ideas to overcome these problems...
+
+Ramani
+unread,
+May 13, 2019, 2:58:21 AM
+
+
+
+to GenePattern Help Forum
+Hello Barabara
+ Finally i got my results. I did changes in my input files where my samples are named with hyphen... I just removed that and run the same analysis. Anyway thank you for the support. 
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6ea70de3-db3c-4189-abf8-1a507268e3f6%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+Ramani Gopal
+
+
+Barbara Hill
+unread,
+May 14, 2019, 1:14:53 PM
+
+
+
+to GenePattern Help Forum
+Hello Ramani, 
+
+
+I'm glad you were able to resolve the errors.
+
+
+Please let us know if you have any other difficulties.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: User reported issues with Gistic version 2 public server not working properly, experiencing job aborts after 5 seconds, which was resolved by the next day with no specific technical explanation provided; GenePattern team member requested job details to investigate but no further technical diagnosis was shared.

@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/ffAyM31YEOE
+Title: Re: [gp-team] Sign in issue
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] Sign in issue
+7 views
+Skip to first unread message
+Ted Liefeld
+unread,
+Dec 16, 2021, 11:45:59 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Hi
+
+
+Usually this is because the password email is being filtered out by a spam filter.  Please try again and make sure that there is not a response in your spam folder.  If you still cannot find it let me know and I will briefly take over your account to have the temporary password sent to me which I can then forward to you.
+
+
+Hope this helps
+
+
+Ted
+
+
+On Wed, Dec 15, 2021 at 4:28 AM Knol, J.C. (Jaco) <j.k...@amsterdamumc.nl> wrote:
+
+
+Hello,
+
+ 
+
+I asked for a new password, and it was said to be sent, but I did not receive it.
+
+ 
+
+j.knol
+
+ 
+
+ 
+
+ 
+
+Your new password has been sent to j.k...@amsterdamumc.nl.
+
+ 
+
+Sign in to GenePattern
+
+	
+
+Click to Register
+
+ 
+
+Username:
+
+	
+
+
+
+
+Password:
+
+	
+
+
+Forgot your password?
+
+______________________________________________________
+VUmc disclaimer : www.vumc.nl/disclaimer
+AMC disclaimer : www.amc.nl/disclaimer
+
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/AM9P193MB1780854EE1F92341379A62CA9B769%40AM9P193MB1780.EURP193.PROD.OUTLOOK.COM.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

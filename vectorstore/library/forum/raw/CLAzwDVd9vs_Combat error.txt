@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/CLAzwDVd9vs
+Title: Combat error
+----------------------------------------
+
+
+
+
+
+Combat error
+12 views
+Skip to first unread message
+
+Kiandokht Bashiri
+unread,
+May 1, 2020, 12:06:56 PM
+
+
+
+to GenePattern Help Forum
+Hello, I'm trying to use Combat module of Genepattern on my RNAseq data and I get the following error: 
+
+
+Error in FUN(newX[, i], ...) : no complete element pairs
+Calls: parseCmdLine ... .parseCmdLine -> gp.combat.R -> ComBat -> rbind -> apply -> FUN
+Execution halted
+Job ID: 228575
+
+Server platform: Mac
+
+
+Could you please help me to solve this issue?
+Barbara Hill
+unread,
+May 7, 2020, 10:19:45 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+At first glance, it would same that you may not have preprocessed your data.
+
+
+Please have a look at the documentation for a discussion of this requirement. There are also example files to explore.
+
+
+For additional assistance with this method, I would suggest posting in the ComBat users forum or contacting the author directly. That information can be found at the top of the documentation.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

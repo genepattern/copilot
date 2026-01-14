@@ -1,0 +1,325 @@
+URL: https://groups.google.com./g/genepattern-help/c/r_DRkbHe1m4
+Title: specify job memory from python API?
+----------------------------------------
+
+
+
+
+
+specify job memory from python API?
+20 views
+GSEA
+api
+python
+Skip to first unread message
+
+David Lahr
+unread,
+May 1, 2020, 3:32:25 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+Sorry if I missed this in the docs/code repo (...and using dir() extensively!) - is there a way to specify the job memory when using the GenePattern python API?  I'm using GSEAPreranked module to be specific, but I believe this is a generic option (along with walltime, job CPU count).
+
+
+Thanks,
+Dave
+Thorin Tabor
+unread,
+May 1, 2020, 8:20:36 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Dave,
+
+
+From the Python API you should be able to specify job-related parameters, such as memory or wall time, like so:
+
+
+
+gseapreranked_task = gp.GPTask(gpserver, 'urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00317')
+gseapreranked_job_spec = gseapreranked_task.make_job_spec()
+# Normal parameters go here
+gseapreranked_job_spec.set_parameter("job.memory", "2 Gb")
+gseapreranked_job_spec.set_parameter("job.cpuCount", "1")
+gseapreranked_job_spec.set_parameter("job.walltime", "02:00:00")
+
+
+
+Hope that helps.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Dave Lahr
+unread,
+May 1, 2020, 6:32:59 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Thorin
+
+
+Thank you for the quick response, much appreciated.  I've tried it out, and I can't get it to work.  For example, with job 228642. GSEAPreranked Pending 2020-05-02 01:23:42.0, when I reload the job (through the web UI) all the other options are set correctly (gene sets, input file, etc.) but the memory option is the default 2 Gb.  Screenshot below.  Also below a printout from my Jupyter notebook of the params in the job spec, I think confirming that it is set correctly.  Any ideas for what I can try?
+
+
+job_spec params in my Jupyter notebook:
+[{'name': 'job.memory', 'values': ['4 Gb']},
+ {'name': 'number.of.permutations', 'values': ['1000']},
+ {'name': 'collapse.dataset', 'values': ['No_Collapse']},
+ {'name': 'scoring.scheme', 'values': ['weighted']},
+ {'name': 'max.gene.set.size', 'values': ['500']},
+ {'name': 'min.gene.set.size', 'values': ['15']},
+ {'name': 'collapsing.mode.for.probe.sets.with.more.than.one.match',
+  'values': ['Max_probe']},
+ {'name': 'normalization.mode', 'values': ['meandiv']},
+ {'name': 'omit.features.with.no.symbol.match', 'values': ['true']},
+ {'name': 'make.detailed.gene.set.report', 'values': ['true']},
+ {'name': 'num.top.sets', 'values': ['20']},
+ {'name': 'random.seed', 'values': ['timestamp']},
+ {'name': 'create.svgs', 'values': ['false']},
+ {'name': 'output.file.name', 'values': ['<ranked.list_basename>.zip']},
+ {'name': 'create.zip', 'values': ['true']},
+ {'name': 'dev.mode', 'values': ['false']},
+ {'name': 'ranked.list',
+  'values': ['https://cloud.genepattern.org/gp/users/dllahr/tmp/run4383614231942919099.tmp/changed.rnk']},
+ {'name': 'gene.sets.database',
+  'values': ['ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c1.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c6.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c7.all.v7.1.symbols.gmt',
+   'ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/h.all.v7.1.symbols.gmt']}]
+
+
+
+Here's a screenshot from reloading the job through the UI, showing the default memory setting (note the other settings are not default, they are set):
+
+
+
+
+I also used the option for the job to "show python code" in the web UI, it also does not report the job.memory parameter as being set:
+ # GSEAPreranked
+ # generated: Sat May 02 01:24:52 UTC 2020
+
+import gp
+
+gpserver = gp.GPServer("https://cloud.genepattern.org/gp", "dllahr", "INSERT_PASSWORD")
+
+gseapreranked_task = gp.GPTask(gpserver, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00317:7.0.4")
+
+# Load the parameters from the GenePattern server
+gseapreranked_task.param_load()
+
+# Create a JobSpec object for launching a job
+gseapreranked_job_spec = gseapreranked_task.make_job_spec()
+
+gseapreranked_job_spec.set_parameter("ranked.list", "<GenePatternURL>users/dllahr/tmp/run4383614231942919099.tmp/changed.rnk")
+gseapreranked_job_spec.set_parameter("gene.sets.database", "<GenePatternURL>users/dllahr/tmp/run6856607980188325178.tmp/gene.sets.database.list.txt")
+gseapreranked_job_spec.set_parameter("number.of.permutations", "1000")
+gseapreranked_job_spec.set_parameter("collapse.dataset", "No_Collapse")
+gseapreranked_job_spec.set_parameter("chip.platform.file", "")
+gseapreranked_job_spec.set_parameter("scoring.scheme", "weighted")
+gseapreranked_job_spec.set_parameter("max.gene.set.size", "500")
+gseapreranked_job_spec.set_parameter("min.gene.set.size", "15")
+gseapreranked_job_spec.set_parameter("collapsing.mode.for.probe.sets.with.more.than.one.match", "Max_probe")
+gseapreranked_job_spec.set_parameter("normalization.mode", "meandiv")
+gseapreranked_job_spec.set_parameter("omit.features.with.no.symbol.match", "true")
+gseapreranked_job_spec.set_parameter("make.detailed.gene.set.report", "true")
+gseapreranked_job_spec.set_parameter("num.top.sets", "20")
+gseapreranked_job_spec.set_parameter("random.seed", "timestamp")
+gseapreranked_job_spec.set_parameter("create.svgs", "false")
+gseapreranked_job_spec.set_parameter("output.file.name", "<ranked.list_basename>.zip")
+gseapreranked_job_spec.set_parameter("selected.gene.sets", "")
+gseapreranked_job_spec.set_parameter("alt.delim", "")
+gseapreranked_job_spec.set_parameter("create.zip", "true")
+gseapreranked_job_spec.set_parameter("dev.mode", "false")
+
+gseapreranked_job = gpserver.run_job(gseapreranked_job_spec)
+
+
+
+Thanks,
+Dave
+
+
+On Fri, May 1, 2020 at 11:20 AM Thorin Tabor <tmt...@cloud.ucsd.edu> wrote:
+
+Hello Dave,
+
+
+From the Python API you should be able to specify job-related parameters, such as memory or wall time, like so:
+
+
+
+gseapreranked_task = gp.GPTask(gpserver, 'urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00317')
+gseapreranked_job_spec = gseapreranked_task.make_job_spec()
+# Normal parameters go here
+gseapreranked_job_spec.set_parameter("job.memory", "2 Gb")
+
+gseapreranked_job_spec.set_parameter("job.queue", "gp-cloud-default")
+
+gseapreranked_job_spec.set_parameter("job.cpuCount", "1")
+gseapreranked_job_spec.set_parameter("job.walltime", "02:00:00")
+
+
+
+Hope that helps.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+On Friday, May 1, 2020 at 6:32:25 AM UTC-4, David Lahr wrote:
+Hello
+
+
+Sorry if I missed this in the docs/code repo (...and using dir() extensively!) - is there a way to specify the job memory when using the GenePattern python API?  I'm using GSEAPreranked module to be specific, but I believe this is a generic option (along with walltime, job CPU count).
+
+
+Thanks,
+Dave
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/r_DRkbHe1m4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d3a65d46-fbf2-4ee8-bba6-6b70ec10a2d1%40googlegroups.com.
+
+David Lahr
+unread,
+May 2, 2020, 1:46:58 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Quick update, I think it may have actually worked to set the job.memory b/c my job completed successfully (previously had failed w/ only 2 Gb).  Not sure / can't confirm definitively but if there's something I can do to check that let me know and/or if you have a way to confirm it would be great to hear. 
+
+
+Thank you again for your help,
+Dave
+
+
+On Friday, May 1, 2020 at 6:32:25 AM UTC-4, David Lahr wrote:
+
+Ted Liefeld
+unread,
+May 4, 2020, 7:56:43 AM
+
+
+
+to GenePattern Help Forum
+David,
+
+
+if you can give me some job numbers I should be able to verify the memory and processors used.
+
+
+Ted
+
+Dave Lahr
+unread,
+May 4, 2020, 2:48:00 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Ted, much appreciated!
+
+
+Here are some of the jobs:
+229013
+
+229011
+
+229009
+
+229008
+
+
+
+No need to check them all, just providing for completeness.
+
+
+Cheers,
+Dave
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/r_DRkbHe1m4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e6029122-e20e-4c6c-a67f-676bb19aa2d3%40googlegroups.com.
+
+Ted Liefeld
+unread,
+May 4, 2020, 4:12:51 PM
+
+
+
+to GenePattern Help Forum
+229013 -> 4GB and 7200 second (2 hour) timeout
+229011 and 229009 were the same
+
+
+Ted
+
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+Dave Lahr
+unread,
+May 4, 2020, 4:19:00 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you Ted, that's great to hear.
+
+
+
+
+
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e6029122-e20e-4c6c-a67f-676bb19aa2d3%40googlegroups.com.
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/r_DRkbHe1m4/unsubscribe.
+
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d0926693-bd7f-4dbe-8cac-85cd6b9e0722%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

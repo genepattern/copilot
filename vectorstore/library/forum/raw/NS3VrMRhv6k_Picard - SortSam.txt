@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/NS3VrMRhv6k
+Title: Picard - SortSam
+----------------------------------------
+
+
+
+
+
+Picard - SortSam
+10 views
+commandline
+picard
+sortsam
+Skip to first unread message
+
+kushakov
+unread,
+Oct 7, 2017, 2:13:51 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm using Picard's SortSam tool and was wandering if I can use the same script for 2 files?  Meaning, can I do something like that (script below)? What would be the separator sign? Or I would have to run it independently for each file? 
+
+
+Thank you!
+
+
+----
+
+
+source /broad/software/scripts/useuse
+reuse -q Java-1.8
+"$@"
+
+
+source /broad/software/scripts/useuse
+reuse -q Picard-Tools
+"$@"
+		
+java -Xmx4g -jar ~/picard-2.12.2/picard.jar SortSam \
+INPUT=FILE1.sam, FILE2.bam \
+OUTPUT=FILE1.bam, FILE2.bam \
+SORT_ORDER=queryname
+Barbara Hill
+unread,
+Oct 17, 2017, 9:37:33 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+It looks like you are using Picard from the command line, and not from within GenePattern.
+
+
+I would suggest contacting the Picard team for help with this question. https://gatkforums.broadinstitute.org/gatk/categories/ask-the-team
+
+
+If you want to do this with our GenePattern Picard.SortSam module, click the "Batch" checkbox to the right of the input file field and you will be able to submit multiple files.
+ https://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00245:4
+
+
+Please let us know if we can be of further assistance.
+
+
+Best
+Barbara
+
+kushakov
+unread,
+Oct 18, 2017, 8:30:42 AM
+
+
+
+to GenePattern Help Forum
+Thank you, Barbara
+
+
+I will reach out for them through GATK.
+
+
+Best,
+Kathy
+
+
+Reply all
+
+Reply to author
+
+Forward

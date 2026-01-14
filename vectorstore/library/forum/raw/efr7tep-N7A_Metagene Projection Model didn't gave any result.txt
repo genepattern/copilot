@@ -1,0 +1,109 @@
+URL: https://groups.google.com./g/genepattern-help/c/efr7tep-N7A
+Title: Metagene Projection Model didn't gave any result
+----------------------------------------
+
+
+
+
+
+Metagene Projection Model didn't gave any result
+28 views
+Skip to first unread message
+
+Leilei Zhou
+unread,
+Feb 18, 2020, 10:09:48 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+ I am trying to run the Metagene Projection Module, it ended in half minute and only gave the standard output files but any figure. I am not sure if it went wrong.
+
+Job ID 207024
+
+
+Thank you
+Leilei
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Edwin Juarez
+unread,
+Feb 18, 2020, 10:19:47 AM
+
+
+
+to GenePattern Help Forum
+Leilei,
+
+
+Looking at the stderr.txt file that was also created, it seems like the module had issue finding some files. Some modules have problems when file names have spaces in their names. Can you try renaming the three file names with spaces and rerun the job?
+
+
+Let us know whether that works or not.
+
+
+Kind regards,
+Edwin. 
+
+Leilei Zhou
+unread,
+Feb 19, 2020, 2:50:46 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+
+Thank you for your answer. The error is due to the wrong format of input file. But I have another error which is "Error in MP.Subset.Dataset(input.ds = model.dataset.table$gct.file, input.cls = model.dataset.table$cls.file,  : object "m2" not found" . Do you know what does it mean?
+
+
+Best
+Leilei
+
+Edwin Juarez
+unread,
+Feb 19, 2020, 9:55:28 AM
+
+
+
+to GenePattern Help Forum
+I am unsure as to what exactly this error is indicating, can you share he new job ID so I can look at those files?
+
+
+
+How did you generate your GCT and CLS files?
+
+Leilei Zhou
+unread,
+Feb 19, 2020, 10:56:12 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Yes, the job ID is 207288.
+
+
+Best
+Leilei
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/2vSD_vzBKW8
+Title: ssGSEA ERROR: An Error occurred while submitting the job: Error updataing upload file record for file 'tmp' null.
+----------------------------------------
+
+
+
+
+
+ssGSEA ERROR: An Error occurred while submitting the job: Error updataing upload file record for file 'tmp' null.
+25 views
+Skip to first unread message
+
+K Bl
+unread,
+Aug 14, 2020, 2:39:38 PM
+
+
+
+to GenePattern Help Forum
+
+
+Dear Group
+
+
+I am fairly new to this platform. I have VST normalized RNAseq data from 50 subjects. I have a set of 50 genes that I would like to convert into a single score for each subject. I have converted my VST normalized RNAseq database into a GCT file. I have converted my signature into a GMT file. I uploaded my files to the cloud section of the cloud-based GenePattern platform. I dragged the appropriate files to the appropriate sections of the ssGSEA module v10.0.3. I hit run. Then I get the following error:
+
+
+
+Error: An Error occurred while submitting the job: Error updataing upload file record for file 'tmp' null.
+
+
+I have been receiving the same error for the last couple of days. Any suggestions on what I could be doing wrong would be greatly appreciated.
+
+
+Thank you
+
+Ted Liefeld
+unread,
+Aug 14, 2020, 2:52:56 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+can you send your username to me privately (jliefeld at cloud dot ucsd dot edu)?  I cannot find a GenePattern account associated with the email address you used to post to this forum.
+
+
+I will try to look into it once I get it
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f75bb71b-3cc9-4812-affe-a636356c09bbn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

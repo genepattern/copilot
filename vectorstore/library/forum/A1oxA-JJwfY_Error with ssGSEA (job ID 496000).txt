@@ -1,0 +1,1 @@
+A user encountered an ssGSEA error due to comma formatting in a GCT file, where the ssGSEA parser could not read numbers with commas; solution suggestions included removing commas entirely or replacing them with appropriate decimal points, noting that this may be due to localization differences in number formatting between spreadsheet software and the GenePattern tool.

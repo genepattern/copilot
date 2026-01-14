@@ -1,0 +1,128 @@
+URL: https://groups.google.com./g/genepattern-help/c/DsPiy_NremY
+Title: tximport.DESeq2 does not work
+----------------------------------------
+
+
+
+
+
+tximport.DESeq2 does not work
+25 views
+Skip to first unread message
+
+Viktor
+unread,
+Jan 24, 2022, 6:02:01 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I continue to have problems with this module. I get error messages when trying to rerun the job that previously completed successfully, see job 406933.
+
+
+Is the module still operational?
+
+
+Thanks,
+Viktor
+Ted Liefeld
+unread,
+Jan 24, 2022, 7:59:32 AM
+
+
+
+to GenePattern Help Forum
+Viktor
+
+
+there seems to be a problem with the module not being able to see the input files.  I am working on this now and will update you here when I have more information
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+Viktor
+unread,
+Jan 24, 2022, 8:02:50 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Sounds good, thank you for looking into this.
+
+
+Viktor
+
+Ted Liefeld
+unread,
+Jan 24, 2022, 11:37:24 AM
+
+
+
+to GenePattern Help Forum
+Viktor
+
+
+it looks like the input files you gave the last job are no longer on the server.  This can happen if they were uploaded on the run module page and the original job they are associated with has been purged which happens about 10 days after a job is run.
+
+
+Try running again but upload fresh copies of all the input files.  To avoid this repeating in another 2 weeks you can upload them to your Files tab, and then use them from there.  The files on your "Files" tab are not purged unless you go over the 30GB storage quota.
+
+
+Let me know if this works for you, if not I will dig deeper on the new job
+
+
+Ted 
+
+
+On Monday, January 24, 2022 at 6:02:01 AM UTC-8 Viktor wrote:
+
+
+Viktor
+unread,
+Jan 24, 2022, 11:41:34 AM
+
+
+
+to GenePattern Help Forum
+Will do, Ted. Thank you. 
+
+
+Will keep you posted.
+
+
+
+Viktor
+unread,
+Jan 24, 2022, 12:37:58 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+I ran 3 jobs and they all completed without errors.
+
+
+Thank you for your help,
+Viktor
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

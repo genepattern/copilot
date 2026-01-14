@@ -1,0 +1,1 @@
+ssGSEA analysis in GenePattern requires a clean .gct file format without additional .txt extension; the solution involves removing the secondary .txt file extension by enabling hidden file extension visibility in the operating system, which allows precise file naming and successful upload for computational analysis.

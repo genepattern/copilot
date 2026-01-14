@@ -1,0 +1,26 @@
+URL: https://groups.google.com./g/genepattern-help/c/nXjYQp4CnKk
+Title: Announcement: On Monday, July 12, the main GenePattern server (https://cloud.genepattern.org) will be offline from 10:30 - 11:30 AM PDT (UTC -7) to install an update addressing an issue with file access in some modules.
+----------------------------------------
+
+
+
+
+
+Announcement: On Monday, July 12, the main GenePattern server (https://cloud.genepattern.org) will be offline from 10:30 - 11:30 AM PDT (UTC -7) to install an update addressing an issue with file access in some modules.
+6 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jul 9, 2021, 10:00:31 AM
+
+
+
+to GenePattern Help Forum
+On Monday, July 12, the main GenePattern server (https://cloud.genepattern.org) will be offline from 10:30 - 11:30 AM PDT (UTC -7) to install an update addressing an issue with file access in some modules.
+
+
+Reply all
+
+Reply to author
+
+Forward

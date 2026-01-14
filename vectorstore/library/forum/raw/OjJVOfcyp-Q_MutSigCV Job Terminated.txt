@@ -1,0 +1,211 @@
+URL: https://groups.google.com./g/genepattern-help/c/OjJVOfcyp-Q
+Title: MutSigCV Job Terminated
+----------------------------------------
+
+
+
+
+
+MutSigCV Job Terminated
+53 views
+Skip to first unread message
+
+Angelussong
+unread,
+Jun 1, 2021, 9:38:31 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am trying to run MutsigCV for our WES project. The maf file I am using is >3G so I uploaded it in my space. However I could not get the job to start. This is the error I am seeing (which is not very helpful): 
+Host EC2 (instance i-0ca8a7128c75e9b20) terminated.
+
+
+
+The job ID is 351121. 
+
+
+I think the maf file I used is correctly formatted as I was able to parse it locally in maftools and other packages. 
+
+
+Could you please help me with this? 
+
+
+Thanks for your time! 
+
+
+
+
+Ted Liefeld
+unread,
+Jun 1, 2021, 10:51:15 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I have confirmed that this is happening repeatably and I am looking into establishing the cause.  I will report back here once I have something useful to share,
+
+
+Thanks for your patience,
+
+Ted
+
+
+
+Angelussong
+unread,
+Jun 1, 2021, 10:52:16 AM
+
+
+
+to GenePattern Help Forum
+
+Thanks for looking into this! 
+
+
+HS
+
+Ted Liefeld
+unread,
+Jun 2, 2021, 6:03:42 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+so it appears that the problem was there was insufficient memory (16GB) assigned to the job.  The silent failure is something we will have to look into on our server and seems to be a new failure mode specific to compiled matlab modules running in docker on AWS Batch.  After some experimentation I found that with your dataset it requires at least 64GB to get the run started.  That said its been running now for over 18 hours and I can only presume its not caught in a dead-end loop.  I am not familiar with MutSigCV or what a typical runtime should be but the 2.7GB input file is quite large so its not surprising that it is taking a long time.
+
+
+Given how long its taking, please let me know your username and I will share the job with you privately so that you don't have to re-run it.  I will post here again when it completes.
+
+
+Thanks again for your patience
+
+
+Ted
+
+
+
+Angelussong
+unread,
+Jun 2, 2021, 9:11:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted, 
+
+
+Thanks so much again for looking into this! Sure, my username is angelussong. 
+
+Ted Liefeld
+unread,
+Jun 4, 2021, 9:16:28 AM
+
+
+
+to GenePattern Help Forum
+To keep you in the loop the job did not complete within 24 hours.  There was nothing in the logs indicating an error and the VM was still showing 100% of one CPU running until it wa auto terminated.  I am retrying again with a 2 day max duration (the longest we allow) and will let you know how it goes in a few days.
+
+
+Ted
+
+
+
+Angelussong
+unread,
+Jun 4, 2021, 4:31:04 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks so much for keeping me in the loop, Ted!
+
+
+Ted Liefeld <lie...@broadinstitute.org>于2021年6月4日 周五上午9:16写道：
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/OjJVOfcyp-Q/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4a4f55d1-f8fd-4c6f-8365-952185fd728an%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jun 11, 2021, 10:48:40 AM
+
+
+
+to GenePattern Help Forum
+Hi,  still no luck getting it to run.  Since we use AWS Spot instances they can get pulled from us if we are outbid, and for a job that takes > 1 day to run this seems to happen a bit with the really big machines it needs.  I have installed it now on an experimental server we have running at the San Diego SuperComputing center and its been running there for ~3.5 hours so far.  If it succeeds there we should know on Monday.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+Angelussong
+unread,
+Jun 11, 2021, 11:03:05 AM
+
+
+
+to genepatt...@googlegroups.com
+Wow! Thanks so much for helping me! Yeah, please let me know if the job finishes. Again, sorry about the inconvenience. 
+
+
+Hanbing
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3c21adf1-54b7-48d0-9546-a6c05a2f8441n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jun 17, 2021, 11:49:36 AM
+
+
+
+to GenePattern Help Forum
+Hi again
+
+
+I finally got a run that went all the way to completion and I think it generated valid results (I am not familiar with MutSigCV data details, but there is nothing in the stderr.txt file that makes me think anything went wrong).  I will send you a link privately that you can use to download the result files.
+
+
+In the end it took 54 hours on a machine with 96GB of memory to be able to run to completion.  This is not now, and won't be any time soon, possible to run on our public servers because the resource costs go beyond what we allow on our free-to-use servers, but I wanted to do this to ensure we knew what the technical issues were in getting this job to run.  
+
+
+Hopefully the results are still useful to you after the several weeks of waiting.
+
+
+Thanks
+
+
+Ted
+
+
+On Wednesday, June 2, 2021 at 9:11:42 AM UTC-7 angel...@gmail.com wrote:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

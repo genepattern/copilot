@@ -1,0 +1,1 @@
+Single embedding-friendly summary chunk: GenePattern forum thread discussing how to identify genes positively contributing to enrichment score in ssGSEA, with a recommendation to use the GSEALeadingEdgeViewer module and Visualizer Launcher to perform leading edge analysis and examine gene set overlaps.

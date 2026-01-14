@@ -1,0 +1,71 @@
+URL: https://groups.google.com./g/genepattern-help/c/8vQGSyjBkXw
+Title: Is non-SNP array data available for GISTIC2.0 ?
+----------------------------------------
+
+
+
+
+
+Is non-SNP array data available for GISTIC2.0 ?
+19 views
+Skip to first unread message
+
+ray
+unread,
+Oct 14, 2017, 12:28:34 AM
+
+
+
+to GenePattern Help Forum
+Hi.
+I'm trying to use non-SNP array data derived from HMMcopy in GISTIC2.0.
+Error message always send to me.
+In GISTIC2.0 public version, is non-SNP array CNV data not able to analyze ?
+We want to know focal CNV  in our seg file with GISTIC2.0.
+What should we do?
+
+
+Job ID: 1560141.GISTIC_2.0  
+
+
+Ray
+
+gistic_inputs.mat
+
+stdout.txt
+Barbara Hill
+unread,
+Oct 17, 2017, 9:13:04 AM
+
+
+
+to GenePattern Help Forum
+Hello Ray, 
+
+
+As the error indicates, you have no matches between your segment and markers files.
+
+
+How did you generate your segmentation file? I am not familiar with HMMcopy, so I can not speak to whether that data should work with GISTIC.
+
+
+I also suggest that you follow up on this question in our GISTIC forum, which is monitored by the GISTIC author.
+
+
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+
+
+There you will find information as to marker/seg file mismatches as well.
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

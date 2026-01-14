@@ -1,0 +1,140 @@
+URL: https://groups.google.com./g/genepattern-help/c/QfH8nswzN9g
+Title: Workflow: ABSOLUTE + HAPSEG
+----------------------------------------
+
+
+
+
+
+Workflow: ABSOLUTE + HAPSEG
+243 views
+Skip to first unread message
+
+Nik
+unread,
+Feb 16, 2022, 7:56:46 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying to reproduce the original input/output of ABSOLUTE.
+
+
+
+For this I already installed ABSOLUTE and HAPSEG from CGA/Broad.
+
+Now I am having a very hard time finding all the different parts of that workflow.
+
+
+I found this GenePattern workflow, but it does not exist anymore? (https://www.genepattern.org/using-hapseg-and-absolute-in-genepattern)
+
+Also there was a new documentation a couple of months/weeks ago, but this is also gone. (https://www.genepattern.org/modules/docs/ABSOLUTE)
+
+
+
+I found different options for HAPSEG regarding the input (https://software.broadinstitute.org/cancer/cga/hapseg_run)
+
+
+
+1. SNPFileCreator_SNP6 (found on GenePattern) with FullSnpFileParser (not found)
+2. Birdseed + BirdseedClustersFileParser (not found, https://www.broadinstitute.org/mpg/birdsuite/birdseed.html)
+
+
+So is it still possible to run ABSOLUTE as it was originally intended or is everyone just using any CNV segmentation as input instead of the HAPSEG output?
+I noticed a lot of noisy results by using ABSOLUTE with any 3rd party segmentation.
+
+
+
+Thank you very much!
+Kind regards.
+
+
+
+
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Feb 23, 2022, 11:13:09 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Unfortunately, that workflow is no longer supported.
+https://genepattern.org/FAQ#deprecated_modules
+
+https://genepattern.org/blog/2021/12/06/end-of-support-for-modules-using-the-deprecated-genepattern-patch-mechanism
+
+
+
+Thank you for pointing out that the workflow description was still on our website. I have now removed it.
+
+
+Best
+-Barbara
+
+
+
+
+Nik
+unread,
+Feb 24, 2022, 12:58:38 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+
+
+thank you for the information.
+
+
+In the blog it is noted, that we can "revive" the modules on our own, but some of the tools do not exist or are just empty on your github archive repository.
+
+
+examples are:
+
+https://github.com/genepattern/SNPFileCreator
+BirdSeed
+
+
+Would it be possible to upload the deprecated code?
+
+Thank you very much.
+
+
+Barbara Hill
+unread,
+Mar 1, 2022, 8:56:58 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Our module source for these is now archived in S3 Glacier and thus will take rather a long time to retrieve, and I'm not sure that the contents will be of use to you outside of an older version of GenePattern.
+
+I suggest instead reviewing the Birdsuiite page here, which will also connect you with the original authors.
+
+SNPFileCreator_SNP6 is a different module than SNPFileCreator and has some specific requirements to run. Please see this forum post for more information. That post does contain an FTP link which you won't be able to access in a modern browser. So I've put the module zip that it mentions in an archived repository in our GitHub organization.
+
+
+I hope this helps.
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

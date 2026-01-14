@@ -1,0 +1,1 @@
+`GenePattern forum discussion about the correct input file format for the removeSamples module, with the response indicating that input files should be in GCT format, as specified in the module documentation, with links provided to detailed file format guidelines for reference.`

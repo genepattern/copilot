@@ -1,0 +1,1 @@
+A user experienced login difficulties with GenePattern, being unable to register or reset their password due to an SMTP service issue, which was ultimately resolved by restarting the server's AMI, allowing the user to successfully reset their password and regain access to the platform after a few days of troubleshooting.

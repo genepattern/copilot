@@ -1,0 +1,96 @@
+URL: https://groups.google.com./g/genepattern-help/c/7fhLyEnnR2I
+Title: Neoantigen detection
+----------------------------------------
+
+
+
+
+
+Neoantigen detection
+14 views
+Skip to first unread message
+
+ravi
+unread,
+Sep 3, 2024, 9:12:54 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+May I know if there is module in GenePattern that I could use to detect neoantigens from RNA seq and WES?
+
+
+Thank you,
+Ravi.
+
+
+Michael Reich
+unread,
+Sep 6, 2024, 11:18:49 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+GenePattern does not currently host any tools for neoantigen detection. For now I suggest you look at pVacTools: http://www.pvactools.org. We plan to support neoantigen detection tools in the near future, so I encourage you to check the site periodically.
+
+
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b3d65f72-d72e-41c6-98e2-be48d21d2cf4n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+ravi velaga
+unread,
+Sep 6, 2024, 6:48:18 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Michael,
+
+
+Thank you for your reply and information.
+
+
+Best regards,
+Ravi.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/7fhLyEnnR2I/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5HLfZg6A__X%2BZ9-EvLSUOpohyi1NQO1K9jOXCQE%2B%3DhUhA%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/5MXFfmKoWok
+Title: Error uploading idat files for CNV analysis
+----------------------------------------
+
+
+
+
+
+Error uploading idat files for CNV analysis
+25 views
+Skip to first unread message
+
+Brendon Price
+unread,
+Nov 2, 2021, 6:18:58 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone
+
+
+I am a new user of GenePattern and would like to upload methylation microarray idat files for CNV analysis. ("Error submitting job:error")
+I keep on getting an error when trying to upload the sample data with attached csv file as a zip file. Do the files have to be submitted in the format of Illumina demo dataset - if so, can someone provide an example of this? Do the Sentrix ID and positions make a difference? I.e does the Sentrix ID need to be the same and do the positions need to be consecutive e.g. R03C01, R04C01, R05C01?
+
+
+Thank you in advance.
+
+
+Regards 
+
+
+Brendon
+Ted Liefeld
+unread,
+Nov 2, 2021, 9:24:17 AM
+
+
+
+to GenePattern Help Forum
+Brendon,
+
+
+I am sorry that you are having problems with GenePattern.  The error you are seeing is typically an issue with the GenePattern server and/or the browser and web application so I do not think this issue would be caused by your file format.  In that case you would see the job run but end with an error status and a file called stderr.txt that should give you a clue about what went wrong.
+
+
+We have seen sporadic issues with people's files not uploading (to Amazon AWS S3) due to firewalls.  Can you tell me if you are using GenePattern from within an institution or company network or from your own or home location?  Also if you could tell me what browser and operating system you are using and your username I will look through our logs for other clues.
+
+Finally,  if you are able to open your browser's javascript console (see https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers) and try to submit the job again, that may show evidence of the error as well.  Please send me the contents if you are able to do this.
+
+
+Thanks for your help and patience,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

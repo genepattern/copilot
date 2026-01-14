@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/iXiD5MvTLDg
+Title: Error in processing gistic files by maftools package in R
+----------------------------------------
+
+
+
+
+
+Error in processing gistic files by maftools package in R
+36 views
+Skip to first unread message
+
+Anda 52
+unread,
+Sep 13, 2020, 1:52:54 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,I got the gisticfiles through GISTIC2.0 in https://cloud.genepattern.org/. When I readGistic in R, it delivered an error as follows.  Would you please give me some advice? Thank you!
+
+
+gistic files.zip
+Barbara Hill
+unread,
+Sep 17, 2020, 7:37:42 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest you post this question in the GISTIC forum or bioconductor forum to see if anyone else has run into this. 
+Our team is not familiar with Maftools.
+
+
+(By the way, this seems to be a common R error, and may be solved by a more general Google search)
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,31 @@
+URL: https://groups.google.com./g/genepattern-help/c/nOS3lbvCvo4
+Title: Gene Pattern Server on Mac
+----------------------------------------
+
+
+
+
+
+Gene Pattern Server on Mac
+7 views
+Skip to first unread message
+Ryan Gimple
+unread,
+Apr 20, 2020, 9:22:31 AM
+
+
+
+to GenePattern Help Forum
+
+I was hoping to use the Gene Pattern tools on my own computer. I tried downloading the "GPserver.v244.zip" file from this page, but when I right click on the file and select "open" I get a message that states "The application GPserver can't be opened".
+
+Could you let me know if it is possible to use your tool on Mac?
+
+Thanks
+
+
+Reply all
+
+Reply to author
+
+Forward

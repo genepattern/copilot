@@ -1,0 +1,87 @@
+URL: https://groups.google.com./g/genepattern-help/c/hLQaXZigpB0
+Title: GSEAPreranked floating point number parsing error message
+----------------------------------------
+
+
+
+
+
+GSEAPreranked floating point number parsing error message
+13 views
+Skip to first unread message
+
+Samyukta Mallick
+unread,
+Oct 20, 2022, 8:00:53 AM
+
+
+
+to GenePattern Help Forum
+Hi, when I run GSEAPreranked on some .rnk files I made, I am running into this new issue that I have not previously seen. 
+
+
+"[1666252162103] [SEVERE] Could not parse '� � =��Z�MY�b�� �BS���7��ϛ ז��' as a floating point number in row 2 of the data matrix with Name 'PK � � ���!�b�h^ ��� �� � [Content_Types].xml" 
+
+
+
+The files are in the same format as all my previous successfully run .rnk files. 
+
+
+Thank you,
+Sam
+Anthony Castanza
+unread,
+Oct 20, 2022, 10:08:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Based on the error message text this file is in fact an xml file which we don't support. It would likely need to be re-saved as a plain text format then renamed to have a .rnk extension.
+
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5bc4f16d-e191-4698-9e70-add61e3db2f5n%40googlegroups.com.
+
+Samyukta Mallick
+unread,
+Oct 20, 2022, 11:05:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you! I completely forgot that step. It worked now.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/hLQaXZigpB0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZy03hrYJ2QgaAQ8A-9d_EdbO4i-GgcyTRG9yY9VPSd5%3Dw%40mail.gmail.com.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

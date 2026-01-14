@@ -1,0 +1,123 @@
+URL: https://groups.google.com./g/genepattern-help/c/thG85rLV2Cs
+Title: QuaSAR error on Skyline
+----------------------------------------
+
+
+
+
+
+QuaSAR error on Skyline
+15 views
+Skip to first unread message
+
+정진우
+unread,
+Apr 10, 2018, 5:45:14 PM
+
+
+
+to GenePattern Help Forum
+Deal all,
+I have a problem with running QuaSAR program on Skyline
+I did triplicate run for response and non response about specific drug that I defined "SampleGroup" as R and NR, "Concentration" as 5 (which is 5ug of sample), and "IS Spike" as 200 (which is 200fmol/ul).
+
+As unit of my sample and SIS peptides are different(ug and fmol/ul), Is it applicable to put values as I mentioned above??
+
+Also, I have one more problem with running it. Below command is error on Skyline immediate window.
+Any one can help??
+I also attached my Skyline file.
+
+Thank you
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+
+
+Attaching package: 'gplots'
+
+
+The following object is masked from 'package:stats':
+
+
+    lowess
+
+
+[1] >>> Processing part 1 of 1
+[1] Initializing ...
+[1] Running AuDIT ...
+Error in run.AuDIT(file, output.prefix, required.columns = audit.required.columns,  : 
+  Could not calculate any p values.
+Calls: tryCatch ... eval -> tapply -> lapply -> FUN -> FUN -> run.AuDIT
+Execution halted
+
+
+Finished!
+
+
+
+QuaSAR_error.skyd
+
+QuaSAR_error.sky.view
+Barbara Hill
+unread,
+Apr 13, 2018, 1:02:23 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Can you send your job ids? That will help us to get a better sense of the details of this issue.
+
+
+Many thanks
+-Barbara
+정진우
+unread,
+Apr 16, 2018, 1:22:09 AM
+
+
+
+to GenePattern Help Forum
+Thanks four your reply.
+
+
+What do you mean by job ids? I actually attached my files on question above.
+I am not sure about job ids.
+If you let me know, I will send it.
+
+
+I appreciate for your help.
+
+2018년 4월 14일 토요일 오전 5시 2분 23초 UTC+9, Barbara Hill 님의 말:
+
+Barbara Hill
+unread,
+Apr 27, 2018, 12:38:42 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Your job id is the number next to the module name after you run a job.
+
+
+
+It's easier for us to debug this way, as it allows us to see all of your input files, the parameters you set, and any outputs produced.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

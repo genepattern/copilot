@@ -1,0 +1,1 @@
+Error in GSEA module submission involving file upload during attempt to run example dataset from Broad Institute, with intermittent job submission errors preventing successful gene set enrichment analysis; specific technical details of resolution not provided in thread, with forum moderator acknowledging delayed response and inquiring about potential workaround.

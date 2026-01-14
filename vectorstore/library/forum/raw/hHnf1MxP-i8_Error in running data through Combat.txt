@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/hHnf1MxP-i8
+Title: Error in running data through Combat
+----------------------------------------
+
+
+
+
+
+Error in running data through Combat
+23 views
+Skip to first unread message
+
+aa bb
+unread,
+Oct 28, 2020, 4:50:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello 
+
+
+I hope you are doing well. I am facing a problem when I run data in combat to correct for batch affect. I have list of data (640) in a.gct file format and i created the sample info in .txt format and whenever i run my dat I get this error
+Error in matrix(0, length(vec), nlevels(vec) - start + 1) : 
+  invalid 'ncol' value (< 0)
+Calls: parseCmdLine ... gp.combat.R -> ComBat -> design.mat -> build.design -> matrix
+Execution halted
+I uploaded the .txt file in this email. I appreciate if you could help to solve this error
+
+
+
+
+Regards,
+
+
+Abdul
+
+
+
+CLL_bcell_sampleinfofile .txt
+Barbara Hill
+unread,
+Oct 29, 2020, 10:38:19 AM
+
+
+
+to GenePattern Help Forum
+Hello Abdul, 
+
+
+The first issue is that your gct file is not actually a gct file. Neither the format nor the extension are correct.
+
+
+More information on the GCT format and example inputs can be found in the ComBat documentation, which is also accessible via the documentation link in the upper right-hand corner of the module submit form.
+
+
+Please let us know if you have any other questions or comments.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

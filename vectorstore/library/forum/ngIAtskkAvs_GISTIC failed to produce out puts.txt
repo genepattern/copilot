@@ -1,0 +1,1 @@
+GISTIC data analysis job experienced file transfer and content issues with some output files being empty, resolved by system administrator retrieving missing files via Google Drive and providing alternative download options for the user, suggesting potential temporary file system problems on the remote server.

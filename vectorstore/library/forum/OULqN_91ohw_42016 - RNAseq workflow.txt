@@ -1,0 +1,2 @@
+Here's a summary formatted for vector store embedding:
+RNA-seq workflow troubleshooting involving issues with Cuffdiff analysis of BAM files and Bowtie2 alignment of compressed FASTQ files, with key solutions including: uncompressing gz files for Bowtie2, ensuring proper BAM file inputs for Cuffdiff, using merged.gtf from Cufflinks, and confirming input file compatibility with GenePattern RNA-seq modules, with potential alignment format compatibility questions regarding PICARD-aligned BAM files.

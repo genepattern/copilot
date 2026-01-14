@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/oFNbCrNT30E
+Title: Issue while installing DAPPLE on local genepattern server
+----------------------------------------
+
+
+
+
+
+Issue while installing DAPPLE on local genepattern server
+40 views
+DAPPLE
+Skip to first unread message
+
+Mouncef El Ouardi
+unread,
+Mar 18, 2022, 4:19:30 AM
+
+
+
+to GenePattern Help Forum
+Hello, I encoutered an error while installing DAPPLE on a local genepatter server, i get the same error even if I try to install it from zip or from the repository, here is the error:
+"
+DAPPLE.zip
+
+Errors:1.DAPPLE: no substitution available for &lt;run-with-env&gt; in command line &lt;run-with-env&gt; -u Python-2.6 -u R-3.1 python /web/wwwprod/htdocs/mpg/dapple/NewCode/BuildNetwork_slowTMP.py &lt;Input.File&gt; keyword=&lt;Keyword&gt; permute=&lt;Permute.Length&gt; plot=&lt;Plot&gt; genome=&lt;genome.build&gt; nearestgene=&lt;nearest.gene&gt;.
+"
+Can you please help me to fix it, thank you.
+Barbara Hill
+unread,
+Mar 24, 2022, 11:14:55 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Apologies for the delay in responding. I realized that you had gotten this from our GParc repository and that we were hosting an outdated version there. I have updated the latest version in GParc (v0.19) to use our current method of running modules in Docker containers. 
+
+
+
+Please download and install the updated version and let me know if you have any difficulties.
+
+
+Best
+-Barbara
+Mouncef El Ouardi
+unread,
+Mar 30, 2022, 3:37:10 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+Thank you for your answer, there is still a problem in this command "RUN /code/downloadData.sh" (the last command in dockerfile),  the URL where data should be downloaded is not working (https://personal.broadinstitute.org/hhorn/dappleData/).
+
+Barbara Hill
+unread,
+Mar 30, 2022, 10:30:10 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm not sure why you building a new image.
+
+
+The published version of DAPPLE in our GParc repository (or available by exporting from our cloud server) - uses genepattern/dapple:v0.19-pre.4 - and that is automatically pulled when the module is run. So you shouldn't need to build the image.
+
+
+Here is the nightly test which ran successfully last night on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=423163&openNewWindow=false
+
+
+Please let us know if we can provide any further assistance.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

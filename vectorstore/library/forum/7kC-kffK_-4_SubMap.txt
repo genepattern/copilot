@@ -1,0 +1,1 @@
+A user sought help with SubMap analysis in GenePattern, experiencing file format errors with .gct files, which were resolved through guidance on proper file formatting including correct header lines, proper row/column specification, and adding a required 'Description' column by duplicating gene_id or using blank entries, ultimately successfully completing the analysis.

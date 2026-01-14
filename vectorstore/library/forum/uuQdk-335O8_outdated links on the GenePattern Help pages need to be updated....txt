@@ -1,0 +1,1 @@
+A user reported broken links on the GenePattern Help page under the "Creating Input Files" section, specifically two URLs related to data format conversion and preprocessing utilities, and a website administrator (Barbara) responded that she was in the process of updating the website and resolving these dead links within the upcoming week.

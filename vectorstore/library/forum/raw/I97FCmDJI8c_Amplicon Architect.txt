@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/I97FCmDJI8c
+Title: Amplicon Architect
+----------------------------------------
+
+
+
+
+
+Amplicon Architect
+19 views
+Skip to first unread message
+
+Anne Van Arsdale
+unread,
+Jan 20, 2025, 5:08:22 PM
+
+
+
+to GenePattern Help Forum
+Hi-
+I keep getting an exit code (see below) for AA...this is with really straight forward input and no alteration of default settings with fastq input. 
+[root:INFO] rm -f /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output//*tmp.bed /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output//*.cnn /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output//*target.bed /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output//*.bintest.cns [root:INFO] gzip -f /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output/Siso.cs.rmdup.cnr [root:INFO] Rescaling CNVKit calls python3 /home/programs/cnvkit.py call /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output/Siso.cs.rmdup.cns -m clonal --purity 0.8 -o /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output/Siso.cs.rmdup_rescaled.cns Treating sample Siso.cs.rmdup as female Rescaling sample with purity 0.8, ploidy 2 Wrote /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output/Siso.cs.rmdup_rescaled.cns with 1576 regions [root:INFO] Running amplified_intervals [root:INFO] python /home/programs/AmpliconArchitect-master/src/amplified_intervals.py --ref GRCh38_viral --bed /opt/gpcloud/gp_home/jobResults/623224/Siso_cnvkit_output//Siso.cs.rmdup_CNV_CALLS_unfiltered_gains.bed --bam /opt/gpcloud/gp_home/jobResults/623224/Siso.cs.rmdup.bam --gain 4.5 --cnsize_min 50000 --out /opt/gpcloud/gp_home/jobResults/623224/Siso_AA_CNV_SEEDS [root:INFO] python /home/programs/AmpliconArchitect-master/src/AmpliconArchitect.py --ref GRCh38_viral --downsample 10.0 --bed /opt/gpcloud/gp_home/jobResults/623224/Siso_AA_CNV_SEEDS.bed --bam /opt/gpcloud/gp_home/jobResults/623224/Siso.cs.rmdup.bam --runmode FULL --extendmode VIRAL --out /opt/gpcloud/gp_home/jobResults/623224/Siso_AA_results//Siso --insert_sdevs 3.0 Traceback (most recent call last): File "/home/programs/AmpliconArchitect-master/src/AmpliconArchitect.py", line 418, in <module> bamFileb2b.plot_segmentation( File "/home/programs/AmpliconArchitect-master/src/bam_to_breakpoint.py", line 2463, in plot_segmentation msrlist.append(self.get_meanshift(i, window_size0=plot_ws0)) File "/home/programs/AmpliconArchitect-master/src/bam_to_breakpoint.py", line 779, in get_meanshift msr = self.meanshift_refined(i, window_size0=window_size0, window_size1=window_size1, gcc=gcc) File "/home/programs/AmpliconArchitect-master/src/bam_to_breakpoint.py", line 724, in meanshift_refined shifts1 = reduce(lambda x,y: x+y, [self.meanshift_segmentation(hg.interval(i.chrom, s.start - 3 * window_size0, s.start + 3 * window_size0), window_size1, gcc, pvalue=0.05) for s in shift1_intervals], []) File "/home/programs/AmpliconArchitect-master/src/bam_to_breakpoint.py", line 724, in <listcomp> shifts1 = reduce(lambda x,y: x+y, [self.meanshift_segmentation(hg.interval(i.chrom, s.start - 3 * window_size0, s.start + 3 * window_size0), window_size1, gcc, pvalue=0.05) for s in shift1_intervals], []) File "/home/programs/AmpliconArchitect-master/src/ref_util.py", line 149, in __init__ self.load_line(line, file_format, exclude_info_string=exclude_info_string) File "/home/programs/AmpliconArchitect-master/src/ref_util.py", line 161, in load_line self.start = int(line.split(':')[1].split('-')[0]) IndexError: list index out of range [root:ERROR] AmpliconArchitect returned a non-zero exit code. Exiting...
+
+Jens Luebeck
+unread,
+Jan 21, 2025, 9:23:29 AM
+
+
+
+to GenePattern Help Forum
+Hi Anne,
+
+
+Thanks for reaching out with this bug report. The issue is related to the use of the advanced argument "AA extend mode": "VIRAL". This should currently remain as default ("EXPLORE"), even for samples that utilize the GRCh38_viral reference. The results will be the same for those two choices of extend mode, even on viral samples, in the vast, vast majority of cases. We will make a bugfix though for the issue you found in the next release.
+
+
+Hopefully you can re-utilize the same BAM file generated earlier during the run when you re-load and re-run the job with the adjusted AA extend mode argument.
+
+
+Thank you and please do not hesitate to reach out with more questions!
+Jens
+
+
+Reply all
+
+Reply to author
+
+Forward

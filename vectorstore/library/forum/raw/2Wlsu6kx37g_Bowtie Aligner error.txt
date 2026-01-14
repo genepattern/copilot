@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/2Wlsu6kx37g
+Title: Bowtie Aligner error
+----------------------------------------
+
+
+
+
+
+Bowtie Aligner error
+13 views
+Skip to first unread message
+
+Nadia A
+unread,
+Jan 25, 2018, 2:45:17 PM
+
+
+
+to GenePattern Help Forum
+
+
+Job ID: 1619876
+
+
+I am trying to align reads from a recent RNAseq run using Bowtie in order to perform downstream differential gene expression analysis. 
+
+
+I am getting the error: 
+Error: reads file does not look like a FASTQ file
+terminate called after throwing an instance of 'int'
+bowtie2-align died with signal 6 (ABRT) (core dumped)
+
+
+
+
+My input files are paired end reads in the format: file_name.fq.gz
+Bowtie documentation indicates that compressed files are compatible as input but I haven't tried inputting unzipped FASTQ files yet.
+I'd appreciate any suggestions as to why I'm getting the error and how I should attempt to fix it. 
+Thanks!
+Nadia 
+
+
+
+
+
+
+Nadia A
+unread,
+Jan 26, 2018, 10:21:56 AM
+
+
+
+to GenePattern Help Forum
+Update: it looks like the uncompressed .fq files went through just fine so it Bowtie may just not recognize compressed files.
+
+Edwin Juarez
+unread,
+Jan 26, 2018, 11:25:21 AM
+
+
+
+to GenePattern Help Forum
+Thanks Nadia!
+
+
+I'm glad that uncompressed files work just fine. We will look at this module and either update the documentation accordingly or add support for compressed files.
+
+
+Kind regards,
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern does not support direct variant calling for human exome data; users are recommended to use alternative tools like the Genome Analysis Toolkit (GATK) for aligning fastq files to the human genome, generating BAM files, and calling variants (SNPs and indels), either locally or through Terra platform integration.

@@ -1,0 +1,1 @@
+GenePattern user reported REVEALER module jobs staying in pending status for 3 days, with system response indicating compute cluster was busy and the REVEALER module specifically requires an older, limited-capacity compute cluster, which is planned to be upgraded by end of year to improve processing speed and reliability.

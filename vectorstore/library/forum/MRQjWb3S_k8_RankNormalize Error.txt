@@ -1,0 +1,1 @@
+A GenePattern user experienced an error running the RankNormalize module due to a missing Rscript executable, which was resolved by setting the job.docker.image configuration to a specific Docker image containing R, specifically "genepattern/docker-r-2-15:0.1" in the configuration file, enabling successful module execution on the cloud.gp server.

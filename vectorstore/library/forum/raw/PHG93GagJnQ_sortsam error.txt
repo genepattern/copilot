@@ -1,0 +1,104 @@
+URL: https://groups.google.com./g/genepattern-help/c/PHG93GagJnQ
+Title: sortsam error
+----------------------------------------
+
+
+
+
+
+sortsam error
+4 views
+Skip to first unread message
+
+Calvin Cicha
+unread,
+Apr 15, 2019, 5:31:49 PM
+
+
+
+to GenePattern Help Forum
+
+
+
+
+I am working with nanopore data. My pipeline includes analyzing this data with Epi2me to generate a BAM file. I then take this BAM file and run it on picard: sortsam. I have done this successfully with a smaller file and it has generated a BAI index file. I then use this BAI file to view my data with IGV. I am now trying to run the same pipeline with a larger alignment file. I am getting an error and the pipeline is not creating a BAI file. I have changed the job option parameters and none of them work.
+
+
+110205. Picard.SortSam  
+ this is the job number of the run that had an error
+110111. Picard.SortSam
+ this is the job number of the successful run with a smaller alignment file
+
+
+
+
+Barbara Hill
+unread,
+Apr 22, 2019, 10:58:49 AM
+
+
+
+to GenePattern Help Forum
+Hello Calvin,
+
+
+What is the size of your .bam file from job 110205? 
+
+
+On our end, I'm seeing 515.9 MB and wondering if maybe the file was, indeed, truncated during upload.
+
+
+All the best
+-Barbara
+Calvin Cicha
+unread,
+Apr 22, 2019, 11:32:35 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+I recently went back and changed my upstream pipeline. After doing this my larger file ran successfully. Therefore, I think my earlier file must have been formatted wrong, or some other problem was happening. What ever the problem was it didn't happen once I changed the upstream pipeline. Thank you for your help.
+
+
+Best,
+
+
+Calvin
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4a339c80-9cb2-4a09-a9d6-25ef273c4ae6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Apr 22, 2019, 11:55:48 AM
+
+
+
+to GenePattern Help Forum
+Hi Calvin, 
+
+
+That's great to hear. I'm sorry we weren't able to respond more quickly, but I'm glad you were able to resolve the issue.
+
+
+Please let us know if anything else comes up.
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: User experiencing a matrix dimension indexing error when running GISTIC 2 on segmentation files, with technical support recommending checking file formatting (ensuring tab-delimited, following GISTIC documentation guidelines) to resolve the header reading issue that was causing the MATLAB error.

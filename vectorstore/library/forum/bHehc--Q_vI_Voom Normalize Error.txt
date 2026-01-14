@@ -1,0 +1,1 @@
+A user encountered an error when running VoomNormalize in GenePattern, likely due to providing log-normalized data instead of raw RNA-seq count data; the recommended solution is to use the original raw count matrix, which is the correct input format for the VoomNormalize preprocessing module.

@@ -1,0 +1,1 @@
+DESeq2 normalization discussion focused on the baseMean column generation, where it was clarified that the normalization is based on a 'median of ratios' method rather than TPM (Transcripts Per Million), with the baseMean representing the average of normalized count values divided by size factors across all samples.

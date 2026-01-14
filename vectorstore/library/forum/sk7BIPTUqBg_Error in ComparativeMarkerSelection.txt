@@ -1,0 +1,1 @@
+GenePattern ComparativeMarkerSelection module error resolved by converting phenotype class (.cls) file from text labels to numeric labels (0 and 1), with the original file using text labels like "Knockout" and "Wildtype" needing to be transformed to a numeric representation for successful parsing by the GenePattern platform.

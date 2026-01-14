@@ -1,0 +1,1 @@
+GenePattern server cloud.genepattern.org was updated to version 3.9.11_b270, with standard monthly maintenance window scheduled for first Monday of each month from 2-3pm PDT, and next update planned for September 7, 2020; no specific technical questions or troubleshooting were discussed in this routine server update announcement.

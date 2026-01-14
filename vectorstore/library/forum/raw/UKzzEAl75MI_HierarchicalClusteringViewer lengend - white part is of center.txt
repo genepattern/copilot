@@ -1,0 +1,162 @@
+URL: https://groups.google.com./g/genepattern-help/c/UKzzEAl75MI
+Title: HierarchicalClusteringViewer lengend - white part is of center
+----------------------------------------
+
+
+
+
+
+HierarchicalClusteringViewer lengend - white part is of center
+10 views
+Skip to first unread message
+
+Markus Schäfer
+unread,
+Jan 14, 2019, 11:16:30 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+shouldn't the white part in the HierarchicalClusteringViewer legend be in the center (screenshot).
+
+
+I did row normalization with the HierarchicalClustering module like this:
+
+
+
+col_distance_metric = No_column_clustering
+
+        output_distances = False
+
+        row_distance_metric = pearson
+
+        clustering_method = average
+
+        output_base_name = 57genes_descr
+
+        row_normalization = True
+
+        col_normalization = False
+
+        row_centering = Mean
+
+        col_centering = None
+
+
+
+
+just wanna make sure that has nothing to do with the row normalisation that I did. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+thanks!
+
+
+Markus
+Barbara Hill
+unread,
+Jan 14, 2019, 1:06:25 PM
+
+
+
+to GenePattern Help Forum
+Hello Markus, 
+
+
+That's normal.
+
+
+You'll see that even in our example job in the HierarchicalClustering protocol it looks the same:
+
+
+
+Please let us know if you have any other questions.
+
+
+
+
+Best
+
+-Barbara
+
+
+
+
+
+
+Markus Schäfer
+unread,
+Jan 14, 2019, 1:12:52 PM
+
+
+
+to GenePattern Help Forum
+Ok cool,
+
+
+I corrected the gradient the the center of the bar in Illustrator.
+
+
+Greetings from Vienna.
+
+
+markus
+
+Barbara Hill
+unread,
+Jan 14, 2019, 1:22:21 PM
+
+
+
+to GenePattern Help Forum
+That's a great stop-gap!
+
+
+I'll also put in a ticket to address this next time we are working on HierarchicalClusteringViewer. 
+
+
+Thank you for bringing this to our attention!
+
+
+Hope you are enjoying the winter in Austria!
+
+
+Best
+-Barbara 
+
+
+
+Reply all
+
+Reply to author
+
+Forward

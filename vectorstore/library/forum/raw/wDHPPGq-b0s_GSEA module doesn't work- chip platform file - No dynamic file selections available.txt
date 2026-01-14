@@ -1,0 +1,164 @@
+URL: https://groups.google.com./g/genepattern-help/c/wDHPPGq-b0s
+Title: GSEA module doesn't work- "chip platform file - No dynamic file selections available"
+----------------------------------------
+
+
+
+
+
+GSEA module doesn't work- "chip platform file - No dynamic file selections available"
+16 views
+Skip to first unread message
+
+Alexey Moscovtsev
+unread,
+May 10, 2019, 1:55:03 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+GSEA module doesn't work possibly because of  "chip platform file  - No dynamic file selections available". This notification appeared only recently - GSEA worked properly several days ago with the same parameters, combobox for choosing chip platform file was available without any notification. Description of error: "Error listing ftpDir=ftp://ftp.broadinstitute.org/pub/gsea/annotations/, Login incorrect."
+Unfortunately, it's not possible to use my own .cdf file - content of job result (#118561. GSEA) stderr.txt:
+
+
+java.io.IOException: com.enterprisedt.net.ftp.ControlChannelIOException: Read timed out
+	at edu.mit.broad.genome.parsers.ParserFactory.createInputStream(ParserFactory.java:1114)
+	at edu.mit.broad.genome.parsers.ParserFactory.createInputStream(ParserFactory.java:1145)
+	at edu.mit.broad.genome.parsers.ParserFactory.readChip(ParserFactory.java:502)
+	at edu.mit.broad.vdb.chip.FileInMemoryChip.readDeepData(FileInMemoryChip.java:174)
+	at edu.mit.broad.vdb.chip.FileInMemoryChip.getProbes(FileInMemoryChip.java:209)
+	at edu.mit.broad.vdb.chip.FileInMemoryChip.readDeepData(FileInMemoryChip.java:156)
+	at edu.mit.broad.vdb.chip.FileInMemoryChip.initProbeProbeMap(FileInMemoryChip.java:225)
+	at edu.mit.broad.vdb.chip.FileInMemoryChip.isProbe(FileInMemoryChip.java:247)
+	at edu.mit.broad.vdb.chip.AbstractChip.getSymbol(AbstractChip.java:78)
+	at edu.mit.broad.genome.alg.DatasetGenerators.collapse_core(DatasetGenerators.java:127)
+	at edu.mit.broad.genome.alg.DatasetGenerators.collapse(DatasetGenerators.java:85)
+	at xtools.gsea.AbstractGsea2Tool.getDataset(AbstractGsea2Tool.java:237)
+	at xtools.gsea.Gsea.execute(Gsea.java:97)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.Gsea.main(Gsea.java:140)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:362)
+Caused by: com.enterprisedt.net.ftp.ControlChannelIOException: Read timed out
+	at com.enterprisedt.net.ftp.FTPControlSocket.readLine(FTPControlSocket.java:1053)
+	at com.enterprisedt.net.ftp.FTPControlSocket.readReply(FTPControlSocket.java:1088)
+	at com.enterprisedt.net.ftp.FTPClient.readReply(FTPClient.java:2197)
+	at com.enterprisedt.net.ftp.AbstractFTPInputStream.close(AbstractFTPInputStream.java:162)
+	at com.enterprisedt.net.ftp.FTPInputStream.close(FTPInputStream.java:135)
+	at edu.mit.broad.genome.io.FtpSingleUrlTransferCommand.retrieveAsInputStream(FtpSingleUrlTransferCommand.java:133)
+	at edu.mit.broad.genome.parsers.ParserFactory.createInputStream(ParserFactory.java:1102)
+	... 15 more
+xtools.api.param.BadParamException: After pruning, none of the gene sets passed size thresholds.
+	at xtools.api.param.ParamFactory.checkAndBarfIfZeroSets(ParamFactory.java:88)
+	at xtools.gsea.Gsea.execute(Gsea.java:111)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.Gsea.main(Gsea.java:140)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:362)
+
+
+
+
+
+
+
+Job ID if run on a publicly available server.
+118561. GSEA
+
+Thanks in advance,
+Alexey Moscovtsev
+Barbara Hill
+unread,
+May 10, 2019, 1:23:26 PM
+
+
+
+to GenePattern Help Forum
+Hello Alexey,
+
+
+There does not seem to be an issue with FTP now, and your jobs from later this morning have all completed successfully. It could have been a brief network "hiccup".
+
+
+Please let us know if you have any further trouble.
+
+
+Best
+-Barbara
+Alexey Moskovtsev
+unread,
+May 11, 2019, 1:20:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Barbara!
+
+Thanks for your reply. But the problem still persists - see the screenshot below (red notification).
+
+
+Regarding my jobs which have completed successfully - it's interesting -the only way to do it was to restart my old jobs with new parameters. It's impossible to start GSEA job de novo.
+Thanks for your attention.
+
+Sincerely,
+Alexey    
+
+
+Пятница, 10 мая 2019, 23:23 +03:00 от Barbara Hill <bh...@broadinstitute.org>:
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e32bb60b-473c-494e-bc6d-b82e5c613637%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+Алексей Московцев
+
+Barbara Hill
+unread,
+May 14, 2019, 1:23:06 PM
+
+
+
+to GenePattern Help Forum
+Hi Alexey, 
+
+
+I was able to reproduce the ftp error. That is very strange. As you can see from the url it should be public. I will check with the IT team here at the Broad and see if perhaps they accidentally changed something.
+
+
+All the best
+-Barbara
+Barbara Hill
+unread,
+May 24, 2019, 12:29:27 PM
+
+
+
+to GenePattern Help Forum
+Hello Alexey, 
+
+
+It turned out that the authentication for the FTP server at the Broad had changed. This has been corrected for these public files, and you should be able to run your jobs again.
+
+
+Our apologies for the inconvenience.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

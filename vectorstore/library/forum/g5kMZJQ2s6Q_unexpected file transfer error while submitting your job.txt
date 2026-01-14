@@ -1,0 +1,1 @@
+A GenePattern user experienced a file transfer error when attempting to submit a job to MutSigCV, but the issue resolved itself spontaneously after seeking help, with the support team recommending troubleshooting steps such as testing file upload with a different module and checking browser console for specific error messages.

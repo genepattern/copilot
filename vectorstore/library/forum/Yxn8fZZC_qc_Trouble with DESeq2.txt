@@ -1,0 +1,1 @@
+A GenePattern user encountered an error with the DESeq2 module due to a missing 'getopt' R package, which was caused by temporary connection issues with the CRAN repository; the module administrators acknowledged the problem and suggested waiting a few hours to retry the job, with plans to create a custom docker container to prevent future installation issues.

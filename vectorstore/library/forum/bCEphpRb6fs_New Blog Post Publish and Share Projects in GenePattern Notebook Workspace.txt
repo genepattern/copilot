@@ -1,0 +1,1 @@
+A new blog post describes how users can now publish GenePattern Notebook projects publicly or share them privately with collaborators, allowing researchers to make their computational workflows and analysis notebooks more accessible and collaborative through the GenePattern Notebook Workspace platform.

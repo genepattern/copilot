@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/y5LF4qh5NFQ
+Title: must be str, not float
+----------------------------------------
+
+
+
+
+
+must be str, not float
+6 views
+Skip to first unread message
+
+Hill Seika
+unread,
+Aug 28, 2019, 8:57:19 PM
+
+
+
+to GenePattern Help Forum
+ Hierarchical clustering error message: "must be str, not float". How can I overcome this error?
+
+Job ID if run on a publicly available server.156159
+
+
+ 
+Thank you so much for your help!
+
+
+Seika
+
+ 
+Edwin Juarez
+unread,
+Aug 29, 2019, 7:46:07 AM
+
+
+
+to GenePattern Help Forum
+Hello Seika,
+
+
+I changed the names of the headers of your GCT file and the module ran successfully. You can see the results here:
+
+
+https://cloud.genepattern.org/gp/pages/index.jsf?jobid=156324
+
+
+Particularly the fields "NAME" and "Description" had a different title, here's the description of the GCT file format: https://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+I think your use case shows that in the next release of the we should allow for different words to be in those fileds or at the very least print a more informative error code. I have created a ticket to evaluate those alternatives.
+
+
+Kind regards,
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

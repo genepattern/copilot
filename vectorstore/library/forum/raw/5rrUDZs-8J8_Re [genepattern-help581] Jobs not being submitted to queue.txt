@@ -1,0 +1,40 @@
+URL: https://groups.google.com./g/genepattern-help/c/5rrUDZs-8J8
+Title: Re: [genepattern-help:581] Jobs not being submitted to queue
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:581] Jobs not being submitted to queue
+5 views
+Skip to first unread message
+Peter Carr
+unread,
+Aug 14, 2018, 10:34:46 AM
+
+
+
+to genepatt...@googlegroups.com
+In looking at these jobs after the fact, both jobs started almost immediately and took about 40 minutes to finish. Perhaps you were looking at the Job Results page (which lists all of your jobs) instead of the Job Status page (for an individual job). The summary page does not refresh itself automatically so your jobs may have appeared to be stuck in the pending state. For best results, try refreshing the page.
+
+Regards,
+Peter
+
+
+On 8/13/18 5:54 PM, Steve Lu wrote:
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): Hi I am trying to run some jobs using MutSigCV. However it seems that my jobs are pending and not even submitted to the queue. Is this correct? I tried to run using smaller memory instead of 16GB in case that was the problem.
+
+Job ID if run on a publicly available server. Jobs 1714386 and 1714394
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

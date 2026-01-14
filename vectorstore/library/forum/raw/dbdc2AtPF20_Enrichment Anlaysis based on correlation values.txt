@@ -1,0 +1,204 @@
+URL: https://groups.google.com./g/genepattern-help/c/dbdc2AtPF20
+Title: Enrichment Anlaysis based on correlation values
+----------------------------------------
+
+
+
+
+
+Enrichment Anlaysis based on correlation values
+501 views
+Skip to first unread message
+
+noorus...@gmail.com
+unread,
+Mar 17, 2021, 4:34:07 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I need suggestions regarding gene enrichment analysis. I have genes with correlation values and I want to perform network and pathway analysis using GSEA according to their correlation values. Can anyone guide me how to perform this analysis.
+
+
+Thanks.
+
+Barbara Hill
+unread,
+Mar 19, 2021, 8:06:42 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The following are some suggestions and additional questions from members of our team most familiar with GSEA.
+
+
+Do you have correlation values for several thousand genes/ideally the whole transcriptome? PreRanked GSEA could work. You could, perhaps, then look at the links to NDEx for the significant gene sets.
+This is going to depend on what your dataset as a whole looks like. There isn’t any particular reason GSEA can’t work with correlation values, in fact, GSEA supports Pearson (and a few other) correlation metrics natively. It’s mostly just a matter of what you want to correlate.
+
+Please let us know if we can provide further assistance.
+Best
+-Barbara
+
+
+
+Noor- Us-Subah
+unread,
+Mar 20, 2021, 4:16:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Thanks for getting back to me. Yes, I have correlation values (Pearson) for the whole transcriptome with one specific gene and are already PreRanked. I want to perform enrichment analysis on those PreRanked genes according to their correlations values with my gene on interest. This will help me to understand how these genes are working with my gene of interest in regulating specific biological functions.
+
+
+Thanks.
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/dbdc2AtPF20/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f6771e9a-9ab8-49b5-bd29-6e1912cf2062n%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Mar 20, 2021, 10:25:14 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+If you format the ranking by correlation values as a .RNK file (https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RNK:_Ranked_list_file_format_.28.2A.rnk.29)
+
+GSEAPreranked should work just fine with this kind of correlation. In fact, the standard, non-preranked mode of GSEA also supports doing Pearson correlation between a dataset and the expression profile of a selected gene of interest as one of the built in modes.
+
+ 
+
+Feel free to reach out to us here or on gsea-help (https://groups.google.com/g/gsea-help) if you have further questions about formatting your files for, or running GSEA.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAEFPcTwQE8SFmLJ7Xr1UguPMMAJU6t-4bVA5vmuxHZMtWwbAzA%40mail.gmail.com.
+
+Noor- Us-Subah
+unread,
+May 21, 2021, 6:37:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I need help in interpreting the enrichment plot by GSEA, it's showing very irregular behaviour/plot peaks. So kindly help me understanding the enrichment plot.I  have run the pre-ranked gsea as I already have the correlation values. Images are attached below:
+
+
+
+
+
+
+
+
+Thanks.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB57823FF48C6B3FBA21B819E4F7679%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+Barbara Hill
+unread,
+May 21, 2021, 10:46:20 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest reviewing the GSEA user guide.  Specifically the section on how to interpret results.
+
+
+Please let us know if we can provide any additional help.
+
+
+Best
+-Barbara
+
+Anthony Castanza
+unread,
+May 21, 2021, 10:51:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+The issue you're seeing here is likely because you've performed some sort of pre-filtering of your ranked list. You can see in the ranked list metric (preranked) portion of the enrichment plot that there are hard cutoffs between the positive correlation and the negative correlation. GSEA expects data for all the expressed genes, not just those that pass arbitrary thresholds.
+You still might see some relatively sharp enrichments if there aren't very many genes enriched on one side but those that are are "overwhelmingly" strongly enriched, but this shouldn't be nearly as severe if fewer of the genes in the set are filtered out due to preprocessing of the ranked list.
+
+
+Let me know if you have any additional questions after rerunning with the unfiltered list of correlations.
+
+
+-Anthony
+
+
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAEFPcTzrqnsvw1yrdqJ4et%2BLzbfGuzaMSqOZU2KYzNC8vcEQHg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

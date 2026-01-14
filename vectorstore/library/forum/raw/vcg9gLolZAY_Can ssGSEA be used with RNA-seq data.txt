@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/vcg9gLolZAY
+Title: Can ssGSEA be used with RNA-seq data?
+----------------------------------------
+
+
+
+
+
+Can ssGSEA be used with RNA-seq data?
+243 views
+Skip to first unread message
+
+xbri...@gmail.com
+unread,
+Jan 31, 2018, 9:40:56 AM
+
+
+
+to GenePattern Help Forum
+
+
+
+
+Hi, I was wondering if I can use ssGSEA on my RNA seq data. If so, what format does the RNA seq data need to be in (raw counts, FPKM, logFPKM, logCPM)?
+
+
+Thanks!
+
+
+Edwin Juarez
+unread,
+Jan 31, 2018, 1:00:21 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+You can run ssGSEA using RNA-Seq data. This would generally work if your samples raw counts are not too different from one another. If counts vary too much, you may consider normalizing your data (e.g., so that they are between 0 and 1). 
+
+
+Additionally, I would advise you to run your raw RNASeq counts through the module PreprocessReadCounts first. This module was designed to transform RNA-Seq data into the type of distribution that modules such as ssGSEA would expect. You can read the documentation of PreprocessReadCounts here: http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/PreprocessReadCounts/1
+
+
+Perhaps you can run three different jobs trying these approaches looking for results that you can confirm are biologically significant.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A user encountered an error when running HierarchicalClustering in GenePattern due to file naming issues with spaces, which prevented the system from locating output files; the solution was to either remove spaces from the input filename or modify the output base name parameter, after which the clustering job ran successfully.

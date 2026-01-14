@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/RZl99454fzM
+Title: Error: Could not find or load main class xtools.gsea.GseaPreranked
+----------------------------------------
+
+
+
+
+
+Error: Could not find or load main class xtools.gsea.GseaPreranked
+8 views
+Skip to first unread message
+
+Sarah-Lee Bekaert
+unread,
+Sep 18, 2020, 7:04:48 AM
+
+
+
+to GenePattern Help Forum
+
+Dear, 
+
+
+
+
+
+I'm working on a GSEA using R and java code. When I try to run my code, this is the error I get. I have no idea and no one on the internet seems to have had this problem so you are my last hope. 
+
+
+This is the command I'm trying to run: 
+
+
+
+
+
+rpt.label <- colnames(rmatrix_sel)[2]
+
+
+
+param.start <- "java -cp  ~/Sarah-Lee/MSigDB/gsea2-2.2.4.jar -Xmx8g xtools.gsea.GseaPreranked -gmx ~/Sarah-Lee/MSigDB/h.all.v7.1.symbols.gmt -collapse false -mode Max_probe -norm meandiv -nperm 100 -rnk "
+
+
+
+param.end <- " -include_only_symbols true -make_sets true -plot_top_x 50 -rnd_seed 149 -set_max 500 -set_min 15 -zip_report false -out ~/Sarah-Lee/Data/SBK_01_NSQ_Run675/GSEA/hallmark -gui false"
+
+
+
+system.call <- paste(param.start, rank.file, " -scoring_scheme weighted -rpt_label ", rpt.label, param.end, sep="")
+
+
+
+system(system.call)
+
+
+Error: Could not find or load main class xtools.gsea.GseaPreranked​
+
+
+ 
+
+
+I hope this is enough information for you guys. 
+
+
+
+
+
+Best, 
+
+
+Sarah-Lee Bekaert 
+
+
+Center for medical genetics UZ Gent - Belgium 
+
+GenePattern Help Forum
+unread,
+Sep 18, 2020, 9:28:38 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Sarah-Lee,
+
+
+I would suggest asking in the GSEA forum, as this forum is GenePattern usage specific.
+
+
+https://groups.google.com/g/gsea-help
+
+
+
+All the best
+-Barbara 
+
+Reply all
+
+Reply to author
+
+Forward

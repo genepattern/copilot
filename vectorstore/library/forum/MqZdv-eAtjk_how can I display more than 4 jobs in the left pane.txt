@@ -1,0 +1,1 @@
+The user's main question was how to display more than 4 jobs in the left pane of the GenePattern interface, and the answer was that this setting could be found under 'My settings' in the top right user menu, allowing users to customize the number of jobs displayed in the job history view.

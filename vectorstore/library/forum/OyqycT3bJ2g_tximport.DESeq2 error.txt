@@ -1,0 +1,1 @@
+Error in tximport.DESeq2 workflow with inconsistent job failures across multiple attempts, suggesting potential module instability or input data incompatibility when processing RNA-seq quantification and differential expression analysis, where the user experienced repeated errors even when rerunning previously successful jobs with identical input parameters.

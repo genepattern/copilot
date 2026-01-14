@@ -1,0 +1,138 @@
+URL: https://groups.google.com./g/genepattern-help/c/k3IRIeAzJPI
+Title: ProteoArray, upload large mzmxl file
+----------------------------------------
+
+
+
+
+
+ProteoArray, upload large mzmxl file
+26 views
+Skip to first unread message
+
+anjali bajpai
+unread,
+Mar 18, 2024, 4:30:50 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+ I trying to upload a single zipped file containing 6 mzmxl files for ProteoArray analysis.
+
+
+I have used Globus to transfer the zip file on to Gene Pattern server. Which it has, I received a confirmatory message.
+SUCCEEDED - To GenePattern
+TASK DETAILS
+Task ID: 74929d9a-e2a2-11ee-83a5-63d4fb542fc4
+Task Type: TRANSFER
+Status: SUCCEEDED
+Source: BAJPAI PROTEOMICS
+Destination: GenePattern Beta Server
+Label: To GenePattern
+Request Time: 2024-03-15 08:03:08.903218 (UTC)
+Completion Time: 2024-03-15 10:58:28.018338 (UTC)
+Files Transfered: 1
+Directories Transfered: 0
+Bytes Transfered: 9611913273
+Effective Speed: 913757 Bytes per Second
+
+
+however, I cannot locate it. It is not visible on the side panel of the GenePattern. I am using, https://genepattern.org/
+. 
+Please help.
+
+
+thanks much. Anjali
+
+
+
+Ted Liefeld
+unread,
+Mar 18, 2024, 7:17:11 AM
+
+
+
+to GenePattern Help Forum
+Anjali
+
+
+It looks like you were working on our beta server.  I found the file which had transferred successfully but for reasons that are not yet clear, it was not added into the database after the transfer and no errors were logged by the server.  I have attempted to add it into the database manually.  Please refresh your session and see if you can now see the file.  If you can, click the link to initiate a download of it. If the download starts successfully, then you can cancel it and use the file.  If the download  does not start or the file is not visible, I will have to take over your account to debug things since we don't normally hand-stitch files into the database like this.
+
+
+let me know how it goes
+
+
+Ted
+
+
+p.s. In the future you should use the server at cloud.genepattern.org as the beta server is for testing and will experience frequent outages and may be reset on occasion removing all jobs and files.  I would not recommend switching servers right now though since the file transfer is already complete to beta and we don't know whether a second transfer to cloud will be any different 
+
+anjali bajpai
+unread,
+Mar 19, 2024, 11:40:33 PM
+
+
+
+to GenePattern Help Forum
+Thank you Ted.
+ And I apologize the mixup. I have been using the guest login for the GenePattern in the Amazon Cloud.  Further, I cannot find the mzmxl file in the following directory /GenePatternLocal/anjalii/globus/. I hope I am looking at the right place?
+
+anjali bajpai
+unread,
+Mar 20, 2024, 4:50:37 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+  Got it. Reloaded the zip-file. Now visible in AnjaliBajpai folder . Thanks again.
+Anjali
+
+
+
+anjali bajpai
+unread,
+Mar 20, 2024, 6:34:45 AM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+
+ still some issues, when I provide the path for the input file " /GenePatternLocal/AnjaliBajpai/globus/hsr66ProteomeMzmxl.zip" in the ProteoArray module, if gives an ERROR "not permitted to access file".
+
+
+When I transfer file using globus, it automatically takes "Gene Pattern Beta server" as the destination folder. How do I change this?
+
+
+Thanks for your patient listening.
+
+
+
+Ted Liefeld
+unread,
+Mar 20, 2024, 8:14:10 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+You should just drag and drop it from your files tab to the input field, not provide it as a file path.  The file paths are not what you would expect and only work for special cases that we set up for individual users.  If you are not seeing it on your files tab, then we are back to what I said earlier about needing to take over your account to set things straight.  Can you confirm the account name and which GenePattern server you are on?  I had assumed you were anjalii on beta.genepattern.org/gp as that was where I found that proteomics file.  If you are using a guest account I need to know its exact name (there are literally thousands) and the server you are on.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

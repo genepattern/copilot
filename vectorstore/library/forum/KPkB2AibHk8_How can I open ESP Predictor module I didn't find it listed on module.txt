@@ -1,0 +1,1 @@
+The forum thread discusses how to access the ESP Predictor module in GenePattern, with the resolution being that the module is only available on the beta server (https://beta.genepattern.org/), and not on the standard GenePattern server, requiring users to specifically navigate to the beta platform to use this particular module.

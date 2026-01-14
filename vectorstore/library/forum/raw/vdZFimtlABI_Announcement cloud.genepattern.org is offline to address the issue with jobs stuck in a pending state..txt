@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/vdZFimtlABI
+Title: Announcement: cloud.genepattern.org is offline to address the issue with jobs stuck in a pending state.
+----------------------------------------
+
+
+
+
+
+Announcement: cloud.genepattern.org is offline to address the issue with jobs stuck in a pending state.
+9 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Apr 7, 2021, 7:56:14 AM
+
+
+
+to GenePattern Help Forum
+The main GenePattern server (http://cloud.genepattern.org) is offline to address the issue with jobs stuck in a pending state. 
+We are actively working on this and will post again soon with updates. 
+We apologize for any inconvenience.
+
+
+Reply all
+
+Reply to author
+
+Forward

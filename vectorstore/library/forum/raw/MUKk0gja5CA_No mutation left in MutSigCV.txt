@@ -1,0 +1,101 @@
+URL: https://groups.google.com./g/genepattern-help/c/MUKk0gja5CA
+Title: No mutation left in MutSigCV
+----------------------------------------
+
+
+
+
+
+No mutation left in MutSigCV
+53 views
+Error
+mutsigcv
+Skip to first unread message
+
+6279...@qq.com
+unread,
+Sep 24, 2018, 7:13:03 PM
+
+
+
+to GenePattern Help Forum
+
+Hi there!
+
+
+
+
+I've been trying to run MutSigCV on the Broad Institute GenePattern server and I get this error "Error using gp_MutSigCV>MutSig_preprocess (line 314)
+No mutations left!
+
+Error in gp_MutSigCV (line 184)
+"
+
+
+
+
+Turn to error text, it seems that no mutation could be mapped to mutation dictionary :
+
+MutSigCV: PREPROCESS
+--------------------
+Loading mutation_file...
+Loading coverage file...
+Processing mutation "effect"...
+WARNING:  3481/3481 mutations could not be mapped to effect using mutation_type_dictionary_file:
+
+     "Nonstop_Mutation": [3]
+         "In_Frame_Ins": [6]
+         "In_Frame_Del": [20]
+          "Splice_Site": [75]
+      "Frame_Shift_Ins": [78]
+            "Frame_Del": [205]
+    "Nonsense_Mutation": [250]
+    "Missense_Mutation": [2844]
+              ----TOTAL: [3481]
+          They will be removed from the analysis.
+
+
+
+
+However, I can see the mapping relationship in the dictionary like Missense_Mutation can map to a nonsilent.
+
+
+
+
+
+What exactly is going on here and how do I fix the error?
+
+
+
+
+Btw, my job ID is 1730394
+
+
+
+
+Many thanks advanced!
+
+Barbara Hill
+unread,
+Oct 19, 2018, 1:33:09 PM
+
+
+
+to GenePattern Help Forum
+Hello 
+
+
+Apologies for the delay in responding. Some members of the team have been out of the office.
+
+
+Are you still having trouble with MutSig?
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

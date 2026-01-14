@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/OMMYqk-eIqM
+Title: microarray input file for ssGSEA
+----------------------------------------
+
+
+
+
+
+microarray input file for ssGSEA
+36 views
+Skip to first unread message
+
+mrin...@gmail.com
+unread,
+Aug 17, 2020, 4:57:01 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have a microarray input file for ssGSEA analysis.
+
+
+I have been recieving errors while analysing the dta in cloud.
+  
+Is it necessary to remove duplicate names? As multiple array probes will have same gene ID.
+
+
+regards
+
+
+Mrinal
+Edwin Juarez
+unread,
+Aug 19, 2020, 10:46:02 AM
+
+
+
+to GenePattern Help Forum
+Hello Mrinal,
+
+
+Yes, you should remove duplicate entries. You can use the GenePattern Module CollapseDataset for that.
+
+
+https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00134:1
+
+
+
+Let us know if you have any further questions.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

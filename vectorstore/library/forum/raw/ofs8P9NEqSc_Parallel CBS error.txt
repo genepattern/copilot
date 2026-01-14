@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/ofs8P9NEqSc
+Title: Parallel CBS error
+----------------------------------------
+
+
+
+
+
+Parallel CBS error
+7 views
+Skip to first unread message
+
+Aafaque Khan
+unread,
+Feb 21, 2019, 10:43:32 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I was trying Parallel CBS for segmenting data for GISTIC on public server. However I am getting error saying module not installed (Job ID 87841). Can any body please help in this issue...
+
+
+Thanks,
+Aafaque 
+
+PCBS error.png
+Barbara Hill
+unread,
+Mar 26, 2019, 10:30:12 AM
+
+
+
+to GenePattern Help Forum
+Hello Aafaque,
+
+
+My apologies for the delay in responding - we have had a reorganization of our team and it kept us a bit distracted this past month.
+
+
+Peter was correct in suggesting that the issue you reported has to do with ParallelCBS (which is a pipeline, running many CBS jobs) not having been updated to use v3 of CBS which is the only version of CBS available on the server. I will try this simple solution first and see if it resolves the issue.
+
+
+Best
+-Barbara
+Aafaque Khan
+unread,
+Apr 2, 2019, 11:54:10 AM
+
+
+
+to GenePattern Help Forum
+Thanks Barbara. Let me know whenever you update PCBS compatibility for v3 of CBS.
+
+
+Aafaque
+
+
+Reply all
+
+Reply to author
+
+Forward

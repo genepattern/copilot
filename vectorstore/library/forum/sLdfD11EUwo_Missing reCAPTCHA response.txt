@@ -1,0 +1,1 @@
+A user encountered a reCAPTCHA validation issue when attempting to register an account on the GenePattern cloud platform, preventing them from accessing critical bioinformatics tools like Mutsig2CV and GISTIC for their PhD research, and experienced difficulties unsubscribing from mailing lists due to email sending errors.

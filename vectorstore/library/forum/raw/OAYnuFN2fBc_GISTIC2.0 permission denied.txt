@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/OAYnuFN2fBc
+Title: GISTIC2.0 permission denied
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 permission denied
+12 views
+Skip to first unread message
+
+李亚明
+unread,
+Nov 28, 2019, 3:23:31 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+
+
+While using gistic2.0 modules, we always get '/opt/gpcloud/gp_home/resources/wrapper_scripts/gp-common.sh: line 598: /opt/gpcloud/gp_home/taskLib/GISTIC_2.0.6.14.625/gp_gistic2_from_seg: Permission denied', and the procession was stopped.
+
+
+
+Job ID 187556 for instance.
+
+ 
+ Thank you.
+Ted Liefeld
+unread,
+Dec 2, 2019, 9:07:35 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+It seems that that job number has already been deleted so I cannot see the error details anymore.  That is an older version of gistic which I am not actually finding on cloud.genepattern.org as well.  Can you retry using the newest version of GISTIC on the server (6.15.28) and let me know if that works for you?
+
+
+Hope this helps
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

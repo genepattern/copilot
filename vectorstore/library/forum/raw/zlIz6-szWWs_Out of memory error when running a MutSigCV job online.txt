@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/zlIz6-szWWs
+Title: Out of memory error when running a MutSigCV job online
+----------------------------------------
+
+
+
+
+
+Out of memory error when running a MutSigCV job online
+32 views
+Skip to first unread message
+
+Gergely
+unread,
+Jul 15, 2021, 5:05:01 AM
+
+
+
+to GenePattern Help Forum
+Hi Everybody,
+
+
+I had successfully been able to run MutSigCV analysis on the web interface of the module a couple of month ago. I have now returned to run some further analysis, however, I consistently get the following error:
+
+Out of memory. Type HELP MEMORY for your options.
+Error in gp_MutSigCV>text_to_lines (line 2179)
+Error in gp_MutSigCV>load_lines (line 1363)
+Error in gp_MutSigCV>load_struct (line 1482)
+Error in gp_MutSigCV>load_struct_specify_string_cols (line 1565)
+Error in gp_MutSigCV>MutSig_preprocess (line 250)
+Error in gp_MutSigCV (line 184)
+MATLAB:nomem
+
+
+I tried using the exact same input files as during my initial anlysis, but nevertheless received the same error. I am using the recommended mutational table, the full-coverage and the mutation type dictionary, as well as a .maf file from the TCGA Gastric Cancer dataset (around 240k recorded mutations, 250 MB). As I said it has worked before, but I nevertheless tried with just a subset of the data, as well as increasing the assigned RAM to 128 GB, but nothing helped with the error. Increasing the assigned RAM just made it take longer to return this error. I have tried using different versions of the module and played with the job parameters too, but nothing.
+
+Does anyone have some suggestions where the problem could lie?
+
+(I uploaded the dictionary and coverage file here, as I downloaded them from external sources as I could not import these from the genepattern file storage. But as I said, they did work 2 months ago:
+https://drive.google.com/drive/folders/1LNtIilHEplly5F9hVHmHQ5XQjcYCXUZd?usp=sharing
+)
+
+Thank you in advance!
+
+Ted Liefeld
+unread,
+Jul 15, 2021, 12:59:33 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+sorry that you are bumping into this error.  We have seen this sporadically over the last 2 months but so far haven't had much luck tracking down the cause.  We have a ticket open with AWS support (GenePattern runs on AWS) but so far they have not suggested how to fix this either.  For the moment the only suggestion seems to be wait a day or two and try again.  Sorry that this is the best I can offer at the moment
+
+
+Ted
+
+
+
+Gergely
+unread,
+Jul 19, 2021, 7:46:09 AM
+
+
+
+to GenePattern Help Forum
+Thank you for getting back to me! Just trying again has also been my best bet, so I will keep doing that:)
+
+Also, thank you for having created this online version of the tool, it's been a great help for my research and I imagine also for many others!
+
+Gergely
+
+
+Reply all
+
+Reply to author
+
+Forward

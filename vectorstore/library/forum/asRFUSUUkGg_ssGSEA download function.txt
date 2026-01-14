@@ -1,0 +1,1 @@
+A user experienced difficulty downloading results from the ssGSEA module in GenePattern and was advised to use the "Save file" option, which functions as a download mechanism to save files locally on the user's computer.

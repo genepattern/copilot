@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/LU-ADWsDK9Q
+Title: Gene Priorization
+----------------------------------------
+
+
+
+
+
+Gene Priorization
+27 views
+Skip to first unread message
+
+Alex Waldman
+unread,
+Oct 10, 2024, 1:45:48 PM
+
+
+
+to genepatt...@googlegroups.com
+
+I just had two conceptual questions about ssGSEA and how to extract some information for gene prioritization:
+
+What does the alpha weight represent conceptually and can a metric that indicates the contribution of each protein to the overall enrichment score be extracted similar to what a PCA loading tells us?
+Is there a way to understand how coordinated the expression of each member of the pathway is? In other words, how co-expressed are the pathway members? Would looking at the ranks of each pathway member help to understand this (ie if they all cluster together vs not). Is this something that is easily extractable or quantifiable?
+Anthony Castanza
+unread,
+Oct 11, 2024, 12:07:59 PM
+
+
+
+to GenePattern Help Forum
+Hi Alex,
+
+I'm not entirely sure what you're referring to here. We don't, to my knowledge, ever refer to an "alpha weight" in the ssGSEA or GSEA algorithm. It's possible that you're just using a different term than we do, so if you could point me to whatever documentation has driven these questions it might help.
+
+All flavors of GSEA do use a weighting exponent though, this is used to allow the actual value of the ranking metric to contribute to the scoring function. The detail of this method is described in the GSEA PNAS paper: https://www.pnas.org/doi/10.1073/pnas.0506580102. ssGSEA is built on the fundamentals of this method, however, there are some key differences. Particularly, the per-sample scoring values that are provided undergo a z-score like transform internally, the value from this transform for each gene is then used in the ranking calculation however unlike GSEA which uses the full value, ssGSEA scales this to 0.75 of the value by default, and the major difference, is that unlike GSEA which uses the maximum deviation from zero as the enrichment score, ssGSEA uses the area under the K-S curve.
+
+The enrichment score that ssGSEA returns is fundamentally a metric of the coordinated perturbation of the members of a given set towards the top or the bottom of the expression list.
+
+Looking at the ranks of each pathway member can be informative, this is in essence the Leading Edge details that GSEA reports, however this information isn't exposed in ssGSEA as, due to the nature of the calculation being the area under the curve rather than the maximum deviation from zero, the leading edge is somewhat less directly responsible for the the scoring. And this wouldn't be particularly easily extractable without significant modifications to the ssGSEA code.
+
+
+Sorry I couldn't be of more help here, I'm just really not sure what exactly you're asking.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+Reply all
+
+Reply to author
+
+Forward

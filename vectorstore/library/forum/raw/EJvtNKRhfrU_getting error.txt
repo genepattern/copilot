@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/EJvtNKRhfrU
+Title: getting error
+----------------------------------------
+
+
+
+
+
+getting error
+14 views
+Skip to first unread message
+
+Chitra Subramanian
+unread,
+Apr 14, 2020, 8:12:29 PM
+
+
+
+to GenePattern Help Forum
+Hi 
+Why i am getting the following error.
+
+stderr.txt
+
+Error in order(na.last, decreasing, ...) :    argument 1 is not a vectorIn addition: Warning messages:1: $ operator is deprecated for atomic vectors, returning NULL in: result$qvalues 2: $ operator is deprecated for atomic vectors, returning NULL in: result$lambda 3: $ operator is deprecated for atomic vectors, returning NULL in: result$pval 4: $ operator is deprecated for atomic vectors, returning NULL in: result$pval Execution halted
+
+ 
+
+stdout.txt
+
+ 
+
+[1] "ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method."
+GenePattern Help Forum
+unread,
+Apr 15, 2020, 9:25:04 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Your jobs have been deleted, so we are unfortunately unable to help you, as we do not know which module you have run.
+
+
+Please run your jobs again, and if you continue to have problems,, respond to this email with your job ids.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

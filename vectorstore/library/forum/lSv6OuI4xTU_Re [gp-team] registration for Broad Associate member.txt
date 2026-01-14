@@ -1,0 +1,1 @@
+A Broad Institute Associate member requested help accessing GenePattern, and was directed to use the new cloud.genepattern.org server instead of the old server which was being shut down, with guidance to register at the new cloud-based platform and contact support if experiencing any registration issues.

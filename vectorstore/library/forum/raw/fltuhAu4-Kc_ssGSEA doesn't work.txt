@@ -1,0 +1,127 @@
+URL: https://groups.google.com./g/genepattern-help/c/fltuhAu4-Kc
+Title: ssGSEA doesn't work
+----------------------------------------
+
+
+
+
+
+ssGSEA doesn't work
+36 views
+Skip to first unread message
+
+daniel...@gmail.com
+unread,
+Mar 25, 2022, 1:32:03 AM
+
+
+
+to GenePattern Help Forum
+Hello, I have used ssGSEA in the past and it worked fine. I wanted to repeat an analysis and I keep getting the following error message 
+
+
+Error in file(con, "r") : cannot open the connection
+Calls: ssGSEA.cmdline
+Execution halted
+
+
+
+Does anyone have any suggestions?
+
+
+Thank you very much in advance for your help,
+Daniel
+Barbara Hill
+unread,
+Mar 25, 2022, 7:16:48 AM
+
+
+
+to GenePattern Help Forum
+Hello Daniel,
+
+
+Please provide a job id so that we can look into the problem.
+
+
+You might also check the forum for similar issues - such as this one, which suggests you may have incorrectly formatted the output prefix.
+
+
+Thank you,
+-Barbara
+
+
+daniel...@gmail.com
+unread,
+Mar 28, 2022, 12:29:08 AM
+
+
+
+to GenePattern Help Forum
+Sorry about that, the job ID is  ssGSEA (421393). As for the output prefix, I have left it blank since I am happy with the default. When I wrote something in the field, I had the same problem as before.
+
+
+Thanks for looking into this for me!
+Daniel
+
+
+
+Ted Liefeld
+unread,
+Mar 28, 2022, 8:03:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Daniel,
+
+
+Looking at that job it seems that the signature.gmt file is not present on the GenePattern server, nor in S3 (where our files are really kept, even though it is present in the database.  At the moment I cannot say how this happened, but you should try to re-upload it and then rerun the job.  Please let us know if this works.
+
+
+Hope this helps
+
+
+Ted 
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d67fae70-6ee5-4bd8-a414-31857cfacd5fn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+daniel...@gmail.com
+unread,
+Mar 29, 2022, 12:58:43 AM
+
+
+
+to GenePattern Help Forum
+Thanks Ted, when I re-uploaded the signature file, everything worked perfectly.
+
+
+Thanks again,
+Daniel
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

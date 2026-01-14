@@ -1,0 +1,153 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZQjd-uKpFEs
+Title: what's the problem about the online GISTIC2 with this output?
+----------------------------------------
+
+
+
+
+
+what's the problem about the online GISTIC2 with this output?
+55 views
+Skip to first unread message
+
+槐笑栀
+unread,
+Sep 25, 2023, 6:31:16 AM
+
+
+
+to GenePattern Help Forum
+I  can only get three files from the below setting？
+
+
+Ted Liefeld
+unread,
+Sep 25, 2023, 6:55:40 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+looking at the contents of the remote_stdout.txt file, you will see that GISTIC is reporting an error on your input file.  here is the content from 535353;
+
+
+GISTIC 2.0 input error detected:
+Data missing in segment file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/9896/HNSC_segement.txt', line 103342
+
+
+Hope this helps
+
+Ted
+
+
+
+槐笑栀
+unread,
+Sep 26, 2023, 12:06:53 AM
+
+
+
+to GenePattern Help Forum
+Thank you very much, Ted!
+I had saw the same problem in this group last night, and I already sloved my problem! It is my input seg.txt has some NA values which were deleted.
+But I have an another question about the markers file:
+what will be different in the outcomes, if there are no markers file to input?
+
+
+Xiaozi Huai
+
+
+
+Andrew Cherniack
+unread,
+Sep 26, 2023, 2:24:52 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Xiaozi,
+
+
+It is really hard to know without trying it, but it makes less of a difference with more samples in your input and with tumors with lots of focal alterations.
+
+
+Without a marker file the less significant peaks might be different, but the major peaks should be the same. 
+
+
+Andy
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9ed2db7a-f94b-494b-bac3-0bcdadbc3decn%40googlegroups.com.
+
+槐笑栀
+unread,
+Sep 28, 2023, 7:20:11 AM
+
+
+
+to GenePattern Help Forum
+Hi Andy and Ted! I'm face another problem now!
+
+I'm face another problem now! In my first-time input seg-file, it's a problem that have  482 segment overlaps detected in seg-file,.And then I checked the duplicated rows by "Sample，Chrosome, Start_Position” in R, so I deleted 116 rows which was duplicated. Running GISTIC2 again, it tipped 361 overlaps segment remained, once again, I check the overlaps by "Sample，Chrosome, End_Position”, but only 74 overlaps are detected. How can I thoroughly eliminate the overlaps segment?  the file content is too large to attach for you. Do you have some advice to solve this issue in R.
+Thanks a lot1
+Xiaozi Huai!
+
+
+
+
+Andrew Cherniack
+unread,
+Sep 28, 2023, 9:29:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Overlapping segments are likely due to having more than one sample with the same ID.
+Before you start eliminating segments you should check this out.
+
+
+Andy
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fdf76b02-5e09-4c6a-b5af-ba2df390385cn%40googlegroups.com.
+
+槐笑栀
+unread,
+Sep 28, 2023, 7:49:29 PM
+
+
+
+to GenePattern Help Forum
+thanks Andy,
+ I delete all of the overlaps samples which were consisted by sample "TCGA-CV-6955-01A" and "TCGA-CV-6956-01A". But now, there is a new problem that remote_stdout tips that
+<<the Warning: Shortened 26 segments in '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/10126/HNSC_segment.txt' that overlap by one marker.
+[ > In make_D_from_seg at 268
+  In run_gistic2_from_seg at 188
+  In gp_gistic2_from_seg at 97] >>
+How can I find and slove the 26 shortened segments?
+Xiaozi Huai.
+
+
+Reply all
+
+Reply to author
+
+Forward

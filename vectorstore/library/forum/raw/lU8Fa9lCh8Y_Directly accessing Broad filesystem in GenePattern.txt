@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/lU8Fa9lCh8Y
+Title: Directly accessing Broad filesystem in GenePattern
+----------------------------------------
+
+
+
+
+
+Directly accessing Broad filesystem in GenePattern
+10 views
+Skip to first unread message
+
+dke...@broadinstitute.org
+unread,
+Sep 13, 2017, 8:29:51 AM
+
+
+
+to GenePattern Help Forum
+When designating a file as an input parameter for a job, how can one add a path to a file currently on the Broad login servers?  The Broad Internal GenePattern server theoretically allows for such direct access, but it is unclear from the documentation how to accomplish this.  For example, if I have a file with the path "/broad/my_lab_directory/my_directory/project/file.extension", how do I modify this path to make it accessible with the "Add Path or URL..." option?
+
+Thanks in advance for your help.  I hope what I am asking is clear.
+Peter Carr
+unread,
+Sep 13, 2017, 9:27:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Ask your friendly GenePattern Server administrator to link the directory to your GP user account. You are in the right place. I will reply directly for the relevant details.
+
+For GP server administrators ...
+  The directory must be read accessible by the gpserver role account from the host on which the server is running.
+  Add or edit the 'server.browse.file.system.root' property in the config_yaml file. For our production server we set default value and customize on a user or group basis.
+See the example config below.
+
+default.properties:
+    ...
+    # add 'shared_data' and 'example_data' for all users
+    server.browse.file.system.root: [
+        "/opt/genepattern/shared_data",
+        "/opt/genepattern/example_data"
+    ]
+
+group.properties:
+    ...
+    # add a project folder for a group of users
+    my-lab-group:
+        # Note: you must duplicate the defaults
+        server.browse.file.system.root: [
+            "/opt/genepattern/shared_data",
+            "/opt/genepattern/example_data",
+           "/my-lab-group/data"
+        ]
+
+user.properties:
+    ...
+    # add a folder for an individual user account
+    my-account:
+        server.browse.file.system.root: [
+            ...
+        ]
+
+
+Reply all
+
+Reply to author
+
+Forward

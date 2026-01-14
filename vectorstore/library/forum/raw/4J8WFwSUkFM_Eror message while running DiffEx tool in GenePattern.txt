@@ -1,0 +1,111 @@
+URL: https://groups.google.com./g/genepattern-help/c/4J8WFwSUkFM
+Title: Eror message while running DiffEx tool in GenePattern
+----------------------------------------
+
+
+
+
+
+Eror message while running DiffEx tool in GenePattern
+14 views
+Skip to first unread message
+
+Scorpio
+unread,
+Oct 3, 2019, 1:49:53 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): 
+I am trying to execute an expression analysis of a GEO dataset - GSE15402, using the DiffEx tool in Gene Pattern software. I generated the GCT file and CLS file using the modules available in the software. While executing the DiffEx job run an error is poping up. 
+Error message is:
+Traceback (most recent call last):
+  File "/opt/gpcloud/gp_home/taskLib/DiffEx.0.1.10.394/DiffEx.py", line 15, in <module>
+    from ccalnoir.mathematics.information import information_coefficient
+ModuleNotFoundError: No module named 'ccalnoir'
+
+Job ID if run on a publicly available server. - 169026. 
+Please let me know how to resolve this
+Thanks is advance
+
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Oct 4, 2019, 2:00:49 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Thank you for bringing this to our attention.
+
+
+Unfortunately, that module was not ready for use. I have removed it for the time being.
+
+
+For the time being, I would suggest using ComparativeMarkerSelection instead.
+
+
+If you don't mind helping us to debug - how did you find DiffEx?  Part of what is wrong with it is that is can't be looked up by name. So we are just curious as to how you came to use it, so that we can be sure we haven't missed anything else.
+
+
+All the best
+-Barbara
+Anup Mammen
+unread,
+Oct 7, 2019, 1:17:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks a lot Barbera for suggesting me Comparative Marker Selection tool. It is working for the task I was searching for. I found DiffEx tool when I give the search name differential expression for searching the tools in Gene Pattern. The error appeared after I upload the files and start running the tool. Hope this will answer your query. 
+Thanks and regards,
+Anup
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/4J8WFwSUkFM/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6f57c475-fa8b-449b-a70a-afa36a03d2a0%40googlegroups.com.
+
+angela cannata
+unread,
+May 13, 2020, 8:52:57 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+What GP modules did you use to convert your GEO imported file to gct and cls?
+
+
+Reply all
+
+Reply to author
+
+Forward

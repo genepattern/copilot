@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/7YdWs6FF7gg
+Title: Curse of Dimensionality in Flow Cytometry
+----------------------------------------
+
+
+
+
+
+Curse of Dimensionality in Flow Cytometry
+7 views
+Dimensionality
+Flow
+Flow_Cytometry
+Skip to first unread message
+
+Fernando Alemán
+unread,
+Dec 22, 2017, 6:08:25 PM
+
+
+
+to GenePattern Help Forum
+
+
+Hi 
+I just want to share with the Flow Cytometry developers this recent paper:
+https://www.nature.com/articles/nri.2017.150 
+
+And the reply to this commentary: https://www.nature.com/articles/nri.2017.151 
+Best,
+Fernando. 
+Barbara Hill
+unread,
+Jan 9, 2018, 9:37:09 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Fernando,
+
+
+Many thanks for passing this along!
+
+
+You may also wish to post this information in the GP-FlowCyt forum, where the Flow Cytometry developers are more likely to see this.
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gp-flowcyt-help
+
+
+
+All the best,
+Barbara
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dd7bdcd8-754b-4a06-84b2-971a869d16f6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://www.broadinstitute.org/cancer
+
+Reply all
+
+Reply to author
+
+Forward

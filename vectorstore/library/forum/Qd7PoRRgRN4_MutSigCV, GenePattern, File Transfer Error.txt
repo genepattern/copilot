@@ -1,0 +1,2 @@
+Here's a summary formatted for embedding:
+A GenePattern user experienced persistent file transfer errors when attempting to upload files for running MutSigCV on a LUSC dataset, encountering a 500 server response error across multiple browsers and network connections, with technical support suggesting troubleshooting steps including checking network restrictions, browser compatibility, and potentially scheduling a direct technical support call to resolve the underlying upload issue.

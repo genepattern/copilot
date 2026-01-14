@@ -1,0 +1,104 @@
+URL: https://groups.google.com./g/genepattern-help/c/n_mVnaRzGrg
+Title: Gene pattern ftp link(s) for reference data
+----------------------------------------
+
+
+
+
+
+Gene pattern ftp link(s) for reference data
+9 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Jun 25, 2018, 6:18:46 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Long time no see!
+
+
+I have a question about reference data storage. Guy is linking our most used reference genomes stored on a FTP server in Gent, mainking the maintenance of these files easier across our several GP instances. This is fine for most users who need default species like human mouse or so.
+
+
+Now the question; would it be possible to add a secondary FTP links where we would put more exotic genome species and that GP sees the sum of both FTP sites (obviously we would avoid duplicate names)?
+
+
+If this is possible, could you please refresh my mind and tell me which file(s) need be edited in the GP tree to obtain such result. I used to know this from the taining but forgot and do not find my notes about this feature.
+
+
+Thanks in advance
+
+
+Stephane
+
+Peter Carr
+unread,
+Jun 25, 2018, 7:35:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Stephane,
+
+
+This is possible by listing all of the reference files as a single list in the module manifest file. We call this a static drop-down; as opposed to a dynamic one. You must create a new version of the module to change the list.
+
+
+I am away from my work computer (and offline mostly) for the next week or so. I am happy to fill in the details when I get back.
+
+
+Meanwhile, you can remind yourself of how to do this by creating a new module in GP. Add a file parameter with a static drop down. When you save and export the module to see the manifest file format.
+Regards,
+Peter
+
+
+ps. I’m on vacation in Netherlands. Greetings neighbor!
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e7aaf8a8-5bdf-4ae0-8606-b66396c2d50b%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Stephane Plaisance
+unread,
+Jun 25, 2018, 7:40:27 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Peter, we look in to this option and will mail you back if not clear.
+
+
+Enjoy your stay in NL :-)
+
+
+Stephane
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/n_mVnaRzGrg/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/209DF092-745C-4F3B-B94C-88827C6906F0%40broadinstitute.org.
+
+
+Reply all
+
+Reply to author
+
+Forward

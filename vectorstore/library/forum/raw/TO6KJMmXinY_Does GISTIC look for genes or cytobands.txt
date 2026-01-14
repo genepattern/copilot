@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/TO6KJMmXinY
+Title: Does GISTIC look for genes or cytobands?
+----------------------------------------
+
+
+
+
+
+Does GISTIC look for genes or cytobands?
+13 views
+Skip to first unread message
+
+Diogo de Moraes
+unread,
+Nov 11, 2019, 6:31:15 AM
+
+
+
+to GenePattern Help Forum
+Hello all
+
+
+I am currently working with TCGA-LIHC CNV data which has been processed on GISTIC, and have not used it myself. On the cBioPortal, there are lists of genes which were considered as amplified, normal or deleted for each sample, along with a cytoband of the gene. I would like to know how the gene name is determined exactly. Does the pipeline look for amplifications/deletions of each gene specifically or each cytoband -and then considers everygene in a cytoband as amplified/deleted?
+
+
+Best,
+Diogo
+Barbara Hill
+unread,
+Dec 12, 2019, 1:02:43 PM
+
+
+
+to GenePattern Help Forum
+Hello Diogo,
+
+
+My apologies for this late reply and that the GenePattern team is unable to answer this question - it is unfortunately outside our area of expertise.
+
+
+I would suggest posting in the GISTIC forum which is monitored by the authors and community at large.
+
+
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user encountered a 500 Internal Server Error when attempting to access notebook.genepattern.org and hca.genepattern.org across multiple accounts, which was subsequently resolved by the GenePattern admin team within two days, with the system returning to normal functionality after the initial service disruption.

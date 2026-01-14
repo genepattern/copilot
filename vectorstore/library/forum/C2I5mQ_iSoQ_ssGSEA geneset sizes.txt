@@ -1,0 +1,1 @@
+Gene set size limitation in ssGSEA: Users reported that ssGSEA has a hard-coded maximum gene set size of 2,000 genes, preventing computation and output of larger gene sets, with no built-in parameter to modify this limit and only recommended workaround being manual gene set size reduction or potential open-source code modification.

@@ -1,0 +1,157 @@
+URL: https://groups.google.com./g/genepattern-help/c/FoLi2Nl9IbQ
+Title: GISTIC2.0 Out put error
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 Out put error
+103 views
+Skip to first unread message
+
+Amelia Jones
+unread,
+Nov 3, 2022, 8:20:08 PM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+
+
+When I try to run GISTIC, I run into problems with the output. Using the same inputs, I received 19 outputs in October, but only 2 outputs yesterday.
+
+I don't understand why?
+
+Any ideas?
+
+Best wishes and many thanks.
+Amelia
+
+Ted Liefeld
+unread,
+Nov 4, 2022, 7:10:06 AM
+
+
+
+to GenePattern Help Forum
+Amelia
+
+
+could you provide the job numbers for both jobs and I will take a look,
+
+
+Ted
+
+
+
+Amelia Jones
+unread,
+Nov 5, 2022, 5:05:42 AM
+
+
+
+to GenePattern Help Forum
+Ted
+
+
+
+I'm sorry I deleted this job after getting the wrong result, but I kept job with another data, and this output also has only 2 files
+This is the job ID for which I used data 2 to get the wrong number of files 473601. GISTIC_2.0
+This is the job ID I used to get the correct number of files with data 1 472687. GISTIC_2.0
+
+And the strange thing is that no matter what data I use, it always results in a file size of 403kb
+
+
+Amelia
+
+
+
+Amelia Jones
+unread,
+Nov 5, 2022, 5:09:00 AM
+
+
+
+to GenePattern Help Forum
+Ted
+
+
+Just now I re-ran the analysis with data 1 and still got the wrong number of file outputs (job ID:474022)
+
+
+Amelia
+在2022年11月4日星期五 UTC+8 22:10:06<lie...@broadinstitute.org> 写道：
+
+
+Ted Liefeld
+unread,
+Nov 5, 2022, 5:36:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Amelia,
+
+
+I just looked at your job and in the stdout.txt file this error was reported;
+
+
+GISTIC 2.0 input error detected:
+116149 segment start or end positions in '/opt/gpcloud/gp_home/users/HongXY09/uploads/tmp/run6218123174912316095.tmp/seg.file/1/tumor_cnv_data_pred.txt' do not match any markers in '/opt/gpcloud/gp_home/users/HongXY09/uploads/tmp/run7693094298813593329.tmp/markers.file/2/hg_marker_file.txt'.
+First bad position is 1:3301765 at line 2.
+
+
+
+I am not familiar with GISTIC so to understand this error it's best to consult the GISTIC forum (https://groups.google.com/a/broadinstitute.org/g/gistic-forum) where the authors and developers of GISTIC can respond.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0fdac498-9f33-4252-9df5-de7619781451n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Amelia Jones
+unread,
+Nov 5, 2022, 9:26:04 PM
+
+
+
+to GenePattern Help Forum
+Ted,
+
+
+Thanks so much, I checked the error message you mentioned and I'm guessing it's because I didn't remove the column names when I exported the file in question. After I removed the column names from both files it analysed successfully!
+
+Thank you so much for your help!
+
+Amelia
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user inquired about visualizing SOM clustering results, with a support team member recommending the SOMClusterViewer module as the appropriate tool, which requires installing a Java plugin through the VisualizerLauncher to enable direct visualization on the user's computer, addressing potential browser-based security concerns.

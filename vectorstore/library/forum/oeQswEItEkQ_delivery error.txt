@@ -1,0 +1,1 @@
+GenePattern GSEA job failure caused by non-Latin characters in gene set names (.gmt file), potentially causing SQL database encoding issues, with recommended solution of converting special characters (like β) to standard Latin characters to enable proper file processing and result retrieval.

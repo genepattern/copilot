@@ -1,0 +1,1 @@
+User asked about running Nearest Template Prediction (NTP) on a single sample GCT file and encountered an error, with the resolution being to add a dummy column to the input file to ensure the tool works correctly when processing minimal data, allowing successful execution of the NTP analysis on cloud.genepattern.org.

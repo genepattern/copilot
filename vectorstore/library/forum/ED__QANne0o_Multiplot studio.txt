@@ -1,0 +1,1 @@
+For running fold change analysis using Multiplot Studio in GenePattern, users need to first merge multiple GCT and CLS files into single files using the MergeColumns module before performing visualization, with p-values viewable in the module's documentation under the "Calculations" section.

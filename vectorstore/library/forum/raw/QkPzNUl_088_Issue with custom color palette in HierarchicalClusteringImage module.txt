@@ -1,0 +1,78 @@
+URL: https://groups.google.com./g/genepattern-help/c/QkPzNUl_088
+Title: Issue with custom color palette in HierarchicalClusteringImage module
+----------------------------------------
+
+
+
+
+
+Issue with custom color palette in HierarchicalClusteringImage module
+19 views
+Skip to first unread message
+
+Sara Haddock
+unread,
+Dec 14, 2021, 3:05:58 PM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern team,
+
+
+GenePattern keeps throwing errors when I try to generate a hierarchical clustering image with custom colors.  The most recent attempt was job # 398902.  The error message ("An error occurred while parsing the color palette") is not very informative and I have no clue what might be wrong!
+
+
+Thanks in advance for your help.
+
+
+-Sara
+Anthony Castanza
+unread,
+Dec 16, 2021, 11:42:26 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Sara,
+
+ 
+
+It looks like there was an issue with the color codes used in the palette. The color codes need to be a hex value but these all had a trailing "FF" value making them octets, probably an alpha (transparency) code that the module wasn't accepting. I was able to confirm that stripping those values out allows the module to plot with this palette and that it will plot with the expected inferno color space. I've attached the fixed palette here.
+
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f2cf6dba-9a1a-4852-9a9d-baa571345356n%40googlegroups.com.
+
+
+
+
+inferno_palette_hex_codes_15.txt
+Sara Haddock
+unread,
+Dec 16, 2021, 5:19:17 PM
+
+
+
+to GenePattern Help Forum
+Ahh, so simple!  Thank you Anthony!!
+
+
+Reply all
+
+Reply to author
+
+Forward

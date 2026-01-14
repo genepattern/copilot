@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/dAEre_FeZpc
+Title: PARIS launch
+----------------------------------------
+
+
+
+
+
+PARIS launch
+17 views
+PARIS
+Skip to first unread message
+Gennie Parkman
+unread,
+Jan 17, 2019, 10:28:14 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): I had previously been able to launch PARIS jobs from the BroadInstitute page directly into gene pattern, but now I am unsure of how to do this automatically as I was able to before. Could you please tell me if there is a way to launch PARIS now that GenePattern has moved to the cloud and reroutes the job?
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Reply all
+
+Reply to author
+
+Forward

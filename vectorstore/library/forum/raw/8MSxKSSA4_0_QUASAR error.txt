@@ -1,0 +1,197 @@
+URL: https://groups.google.com./g/genepattern-help/c/8MSxKSSA4_0
+Title: QUASAR error
+----------------------------------------
+
+
+
+
+
+QUASAR error
+25 views
+Skip to first unread message
+
+정진우
+unread,
+May 17, 2018, 10:15:07 PM
+
+
+
+to GenePattern Help Forum
+Hello Genepattern 
+
+
+I am having some trouble with using QUASAR on skyline.
+It shows me the error message below
+
+
+=====================================================
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+
+
+Attaching package: 'gplots'
+
+
+The following object is masked from 'package:stats':
+
+
+    lowess
+
+
+[1] Processing arguments ...
+[1] >>> Processing part 1 of 1
+[1] Initializing ...
+[1] Running AuDIT ...
+Error in calculate(data.subset, concentrationFile, output.prefix = outputPrefix,  : 
+   No data for LOD calculation -- disable LOD calculation
+Calls: tryCatch -> tryCatchList -> parse.cmdline -> calculate
+Execution halted
+
+
+
+
+Finished!
+============================================================
+
+
+I have no idea why this error came out.
+I also attached my Skyline zip file on it.
+Is there any advice with this issue??
+
+
+I appreciate for your help.
+
+RA_spike-in_all_SIS_peps_set1.sky.zip
+Barbara Hill
+unread,
+May 21, 2018, 1:14:08 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Could you send your job id? This will allow me to take a look at the details of your job.
+
+
+Many thanks
+-Barbara
+정진우
+unread,
+May 21, 2018, 5:31:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your reply.
+
+
+I ran QUASAR on Skyline so that I could not find any job ids on file.
+By the way I attached zip file on it. Does it not enough to get feedback about my problem??
+or how can I find job ids on Skyline??
+
+
+I appreciate for your help.
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/31d515b5-3712-4d4c-97ac-a8463f90223f%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+
+--
+
+Jin Woo Jung
+Department of Molecular Medicine and Biopharmaceutical Sciences
+Graduate School of Convergence Science and Technology
+Seoul National University
+
+
+
+TEL : 82-2-3668-7633
+
+Mobile: 010-3271-0735
+Barbara Hill
+unread,
+May 30, 2018, 2:54:23 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Apologies for the delay, I've been out of the office.
+
+
+I'm afraid I do not understand what you are asking.
+
+
+Are you running Skyline and looking for help? This is not a tool we support.
+
+
+Or are you running QUASAR in GenePattern?
+
+
+Best
+-Barbara
+
+
+정진우
+unread,
+May 30, 2018, 5:22:25 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for your reply.
+
+
+I an actually running it through Skyline.
+If so, where should I ask about this issue??
+
+
+I appreciate your help 
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e744bd1d-a1b9-4350-a2ce-61553fb601bd%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Barbara Hill
+unread,
+Jun 6, 2018, 10:27:22 AM
+
+
+
+to GenePattern Help Forum
+This would appear to be the help page for Skyline : https://skyline.ms/project/home/issues/begin.view?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

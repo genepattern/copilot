@@ -1,0 +1,146 @@
+URL: https://groups.google.com./g/genepattern-help/c/N4A4d_hxCLk
+Title: DEseq2 data analysis
+----------------------------------------
+
+
+
+
+
+DEseq2 data analysis
+22 views
+Skip to first unread message
+
+ASWANI KRISHNA
+unread,
+Oct 30, 2019, 10:52:19 PM
+
+
+
+to GenePattern Help Forum
+I am currently using genepattern server and i was not able to execute the job, since it shows error as "killed". Since i am using windows platform new version of the app is not available foe windows?? what should i do to run deseq2 analysis for my htseqcount files from UCSC xena?
+
+
+Job ID: 177990
+
+
+
+
+
+
+Edwin Juarez
+unread,
+Oct 31, 2019, 9:16:32 AM
+
+
+
+to GenePattern Help Forum
+Hello Aswani,
+
+
+Looking at the error log (stderr.txt) file on that job, it seems like the module was not able to find enough memory to complete the task. I recommend scrolling down to the job options and selecting 4Gb or 8Gb from the Job Memory scroll down menu. Let us know if that fixed your problem!
+
+
+Edwin.
+
+ASWANI KRISHNA
+unread,
+Oct 31, 2019, 9:53:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much for replying sir, i will try this out.
+
+--
+Thanks & Regards
+
+
+Aswani Krishna.P
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/899ca635-fc99-4b49-ad9f-b9d1ccdff63b%40googlegroups.com.
+
+ASWANI KRISHNA
+unread,
+Nov 12, 2019, 9:42:11 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+I am getting an error like this, while uploading my file.
+Please correct the following errors before proceeding:
+/opt/gpcloud/gp_home/temp/aswani_run6219143074516754685.tmp/gbm,lgg-counts.cls.temp (No such file or directory)
+--
+Thanks & Regards
+
+
+Aswani Krishna.P
+
+
+
+
+
+ASWANI KRISHNA
+unread,
+Nov 13, 2019, 12:24:42 AM
+
+
+
+to genepatt...@googlegroups.com
+I am currently using genepattern server and i was not able to execute the job, since it shows error as "killed" and i am using windows platform. why jobs are not running??
+
+
+Job ID: 182290
+--
+Thanks & Regards
+
+
+Aswani Krishna.P
+
+
+
+
+
+Edwin Juarez
+unread,
+Nov 15, 2019, 9:14:21 AM
+
+
+
+to GenePattern Help Forum
+Aswani,
+
+
+Apologies for the late replies.
+
+
+Earlier this week we had some issues with the server and many jobs were unexpectedly terminated. Can you try running your job now that the server has been up and running?
+
+
+Edwin.
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

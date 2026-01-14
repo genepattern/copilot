@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/KYkHkiWxeHg
+Title: Problem with ComparativeMarkerSelectionViewer
+----------------------------------------
+
+
+
+
+
+Problem with ComparativeMarkerSelectionViewer
+35 views
+Skip to first unread message
+
+CW
+unread,
+Nov 8, 2017, 9:44:57 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+I successfully run ComparativeMarkerSelection and then run ComparativeMarkerSelectionViewer on the.odf outputfile.
+The rank list is displayed but no graphics:
+
+Error: Invalid GCT file. Expected '#1.2' on line 1.
+
+
+Job ID 1573907
+
+Thanks,
+Chris
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Nov 8, 2017, 11:32:12 AM
+
+
+
+to genepatt...@googlegroups.com
+You need to use the original gct file for the 'dataset filename', not the cls file. Reload your ComparativeMarkerSelectionViewer job and use this 'dataset filename':
+    https://genepattern.broadinstitute.org/gp/users/cw694/tmp/run637726464321677808.tmp/input.file/1/STAR_Gene_Counts_Run_woMarch.gct
+
+Regards,
+Peter
+
+Christiane Wrann
+unread,
+Nov 8, 2017, 12:26:08 PM
+
+
+
+to genepatt...@googlegroups.com
+that did the trick-
+
+Thanks,
+
+Chris
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/KYkHkiWxeHg/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3aab7ce9-0c16-1887-3ba9-6d32dcecc49d%40broadinstitute.org.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

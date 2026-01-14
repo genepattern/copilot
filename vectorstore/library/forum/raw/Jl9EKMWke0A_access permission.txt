@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/Jl9EKMWke0A
+Title: access permission
+----------------------------------------
+
+
+
+
+
+access permission
+5 views
+Skip to first unread message
+
+Qianqian song
+unread,
+Feb 11, 2019, 10:16:27 AM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern team,
+
+ 
+
+Thanks very much for providing and hosting this great resource of GenePattern. I would like to inquire about the access to the source code. Could you kindly give me the permission?
+
+ 
+
+Thanks!
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Feb 11, 2019, 10:18:37 AM
+
+
+
+to genepatt...@googlegroups.com
+The source code for the GenePattern Server is available on GitHub:
+    https://github.com/genepattern/genepattern-server
+
+Regards,
+Peter
+
+Qianqian song
+unread,
+Feb 11, 2019, 12:30:20 PM
+
+
+
+to genepatt...@googlegroups.com
+Got it. Thanks very much for your help! 
+
+
+Best,
+Qianqian Song
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c82e43ba-b61e-b888-418b-d2ad5101e9be%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

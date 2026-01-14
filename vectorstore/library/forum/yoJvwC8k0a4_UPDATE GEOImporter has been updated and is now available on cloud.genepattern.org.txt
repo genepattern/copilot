@@ -1,0 +1,1 @@
+GenePattern cloud platform announces update to GEOImporter module that restores programmatic data access from Gene Expression Omnibus (GEO), enabling researchers to more easily import and analyze publicly available genomic datasets directly through the cloud-based bioinformatics platform.

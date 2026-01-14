@@ -1,0 +1,1 @@
+ssGSEA troubleshooting thread addressing an error in gene set analysis where the user encountered a vector length issue when running ssGSEA; the recommended solution was to remove quotes and commas from gene set names in the GMT file to resolve the runtime error, suggesting potential formatting problems in the gene set file were preventing successful analysis.

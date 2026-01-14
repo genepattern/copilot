@@ -1,0 +1,1 @@
+A user sought guidance on converting GEO data from .txt format to .gct and .cls files for GenePattern analysis, asking about the correct module and steps to perform this conversion without encountering errors, with a support team member indicating they would investigate and provide further assistance in a related thread.

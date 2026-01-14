@@ -1,0 +1,1 @@
+A user initially struggled to open a GenePattern ssGSEA output file (.gct) and resolved the issue by simply changing the file extension to .txt, which then allowed the file to be opened in Microsoft Excel.

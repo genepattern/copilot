@@ -1,0 +1,1 @@
+Docker pull rate limit encountered during DESeq2 analysis on GenePattern server, causing job failures, which resolved itself the next day and was likely a temporary Docker Hub authentication issue preventing container retrieval, with the user experiencing intermittent errors across multiple job submissions but finding the problem self-corrected without specific intervention.

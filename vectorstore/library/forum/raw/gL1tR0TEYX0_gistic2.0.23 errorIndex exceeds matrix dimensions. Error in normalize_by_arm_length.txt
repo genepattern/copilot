@@ -1,0 +1,249 @@
+URL: https://groups.google.com./g/genepattern-help/c/gL1tR0TEYX0
+Title: gistic2.0.23 error:Index exceeds matrix dimensions. Error in normalize_by_arm_length
+----------------------------------------
+
+
+
+
+
+gistic2.0.23 error:Index exceeds matrix dimensions. Error in normalize_by_arm_length
+235 views
+Skip to first unread message
+
+yiqing zhang
+unread,
+Nov 2, 2023, 9:02:12 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+
+I am trying to run GISTIC on a segments file but can't seem to solve an error.
+
+
+GISTIC version: v.2.0.23
+Input file: segments file from WES, with columns sample, chrom , chr_start, chr_stop, num_markers and seg_mean. I create this file using varscan. Simultaneously input the self created marker file.
+Genome version: hg38
+
+
+
+
+The error is:
+Index exceeds matrix dimensions.
+Error in normalize_by_arm_length (line 85)
+Error in make_sample_B (line 50)
+Error in perform_deconstruction (line 68)
+Error in perform_ziggurat_deconstruction (line 126)
+Error in run_focal_gistic (line 151)
+Error in run_gistic20 (line 124)
+Error in run_gistic2_from_seg (line 249)
+Error in gp_gistic2_from_seg (line 97)
+MATLAB:badsubscript
+
+
+
+Hope you can help us!
+Best,
+zhangyiiqng0706.
+Andrew Cherniack
+unread,
+Nov 3, 2023, 9:10:59 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Yiqing,
+
+
+The issue is likely with your marker file. Try running GISTIC without a marker file and see if it works.
+If you create your own marker file there needs to be a marker at every single segment breaks or it will error out.
+Also how many samples are in your seg file?
+Regards,
+Andrew
+
+yiqing zhang
+unread,
+Nov 3, 2023, 8:42:03 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew ,
+I have tried to run without using the marker file, but he still reported this error. Additionally, I have 18 samples. This is my seg file. Can you help me troubleshoot the error?
+
+
+npcr_segmentedFile (1).txt
+Andrew Cherniack
+unread,
+Nov 3, 2023, 8:54:09 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Yiqing,
+
+
+Your seg file is badly hypersegmented which is causing GISTIC to error out.
+Seg files for each tumor  usually have a few 100 segments or less.
+You will need trouble shoot the what ever you used to generate CN from WES.
+
+
+Regards
+Andrew
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/gL1tR0TEYX0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7e9d8d0c-c031-48a3-9060-07b0d713d22fn%40googlegroups.com.
+
+yiqing zhang
+unread,
+Nov 4, 2023, 2:44:43 AM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+I use the same method but it can run normally when the number of samples is reduced. Can you tell me why?
+
+Andrew Cherniack
+unread,
+Nov 4, 2023, 5:15:23 AM
+
+
+
+to genepatt...@googlegroups.com
+The issue has less to do with the number of samples than with your Copy Number data itself.
+Here are the number of segments that you have in each sample.
+
+
+tumor	    number of segments
+X11A	72915
+X12A	81039
+X19A	102086
+X21A	9517
+X22A	105243
+X25A	20154
+X26A	38608
+X27A	7407
+X31A	29481
+X38A	46123
+X39A	130194
+X40A	271113
+X44A	13988
+X45A	96492
+X50A	142648
+X52A	153809
+X54A	161270
+X56A	164723
+
+
+ Almost all of your tumors have 10s to 100s of thousands of copy number segments.
+This means your data is extremely noisy and something went wrong either with your sequencing or the algorithm you used to generate your copy number data.
+The total number of CN segments for tumors should be in the 100s and no more than a few 1000.  GISTIC cannot handle data with this much noise and so it is errroring out.
+Because of this, GISTIC's default setting is set to ignore tumors with more than 2500 segments.
+I am sorry, but I cannot help you with troubleshooting your sequencing or the pipeline that you used to generate your CN.
+
+
+Regards,
+Andrew
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/180346e4-7192-4b4b-a3de-17b1ddca29bdn%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Nov 4, 2023, 5:18:35 AM
+
+
+
+to GenePattern Help Forum
+he issue has less to do with the number of samples than with your Copy Number data itself.
+Here are the number of segments that you have in each sample.
+
+X11A:  72915
+
+X12A:  81039
+X19A: 102086
+X21A:  9517
+X22A: 105243
+X25A: 20154
+X26A: 38608
+X27A: 7407
+X31A: 29481
+X38A: 46123
+X39A: 130194
+X40A: 271113
+X44A: 13988
+X45A: 96492
+X50A: 142648
+X52A: 153809
+X54A:161270
+X56A: 164723
+
+
+
+
+ Almost all your tumors have 10s to 100s of thousands of copy number segments.
+This means your data is extremely noisy and something went wrong either with your sequencing or the algorithm you used to generate your copy number data.
+The total number of CN segments for tumors should be in the 100s and no more than a few 1000.  GISTIC cannot handle data with this much noise and so it is errroring out.
+Because of this, GISTIC's default setting is set to ignore tumors with more than 2500 segments.
+I am sorry, but I cannot help you with troubleshooting your sequencing or the pipeline that you used to generate your CN.
+
+
+Regards,
+Andrew
+
+
+
+Andrew Cherniack
+unread,
+Nov 4, 2023, 5:29:34 AM
+
+
+
+to GenePattern Help Forum
+One more thing.  One more indication that there is something wrong with CN data is that you have segment breaks in the middle of intragenic regions that your WES data does not cover.
+(see example below)
+
+Are you trying to use off-target reads to generate copy number?  If so this could be messing you up.
+
+
+
+
+
+
+
+
+
+Screenshot 2023-11-04 at 8.24.44 AM.png
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/82bVTv0Zk3Y
+Title: Trouble shooting in registering for gene pattern notebook account
+----------------------------------------
+
+
+
+
+
+Trouble shooting in registering for gene pattern notebook account
+26 views
+Skip to first unread message
+
+Ifra Saifi
+unread,
+Nov 5, 2021, 7:24:16 AM
+
+
+
+to GenePattern Help Forum
+Hello, I am new to Genepattern notebook but I am unable to register myself. I tried several times but failed registration without showing any error. So, please help me with this. Thanks in advance!
+With regards
+Ifra
+tmt...@cloud.ucsd.edu
+unread,
+Nov 5, 2021, 10:48:41 AM
+
+
+
+to GenePattern Help Forum
+Hello Ifra,
+
+
+This a bug we are in the process of fixing. For now, please register for an account at the link below. Then you can use that account to log into GenePattern Notebook.
+
+
+Registration link: https://cloud.genepattern.org/gp/pages/registerUser.jsf
+
+
+Notebook link: https://notebook.genepattern.org/hub/
+
+
+
+Hope that helps,
+
+
+Thorin Tabor
+GenePattern Team
+
+
+1169925992
+unread,
+Nov 5, 2021, 10:48:53 AM
+
+
+
+to tmt...@cloud.ucsd.edu
+您好，邮件已收到~
+我会尽快向您回复邮件
+Ifra Saifi
+unread,
+Nov 7, 2021, 3:07:44 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you!
+With regards
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/82bVTv0Zk3Y/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dbd9fd9a-920d-4707-9728-8231d2bf8544n%40googlegroups.com.
+
+1169925992
+unread,
+Nov 7, 2021, 3:07:52 AM
+
+
+
+to Ifra Saifi
+您好，邮件已收到~
+我会尽快向您回复邮件
+
+Reply all
+
+Reply to author
+
+Forward

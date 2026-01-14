@@ -1,0 +1,1 @@
+A GenePattern user requested guidance on creating a Multiplot graph comparing Fold Change between two samples, seeking an example input file format, with a response directing them to the official GCT file format documentation as a reference for proper data input structure for the Multiplot module.

@@ -1,0 +1,229 @@
+URL: https://groups.google.com./g/genepattern-help/c/AJqx3753yoE
+Title: Im working on heat map image module but it keeps giving error in spite im following the instructions what could be the problem, thank you
+----------------------------------------
+
+
+
+
+
+Im working on heat map image module but it keeps giving error in spite im following the instructions what could be the problem, thank you
+12 views
+Skip to first unread message
+
+Diana ZEID
+unread,
+May 9, 2020, 8:04:53 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+Barbara Hill
+unread,
+May 11, 2020, 3:33:51 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Please provide your job id so that we can debug this problem.
+
+
+Best
+-Barbara
+Diana ZEID
+unread,
+May 12, 2020, 6:26:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello, 
+here is the link of the job result ( https://cloud.genepattern.org/gp/jobResults/230963/ ) 
+
+
+thank you so much,
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cb4fa842-5e83-433e-8c18-b36fba9bea30%40googlegroups.com.
+
+
+
+______________________
+
+
+Bu e-posta mesajı ve ekinde bulunabilecek dosyalar yalnız mesajın alıcı hanesinde kayıtlı kullanıcı(lar) için hazırlanmıştır. Mesajın alıcısı değilseniz, lütfen hemen göndericiyi uyarınız. Mesajı dağıtmayınız, kopyalamayınız, içeriğini açıklamayınız; çıktı almaksızın siliniz. Aksi belirtilmedikçe, bu mesajda kayıtlı görüş ve düşünceler hiçbir şekilde İzmir Biyotıp ve Genom Merkezi'ne atfedilemeyeceği gibi, bağlayıcı da değildir. Virüs ve kötü amaçlı yazılımların bu mesajda yerleşmesinin engellenmesi amacıyla gerekli tüm önlemler alınmış olsa da, bu mesajın sisteminizde yaratabileceği kayıp ve zararlardan dolayı İzmir Biyotıp ve Genom Merkezi hukuken sorumluluk kabul etmez.
+
+This email and any files transmitted with it are intended solely for the use of the addressee(s). If you are not the intended recipient, please notify the sender immediately, then delete it without printing, copying, distributing or disclosing its contents. Unless otherwise specified, any view or opinion expressed in this email does not necessarily represent those of the Izmir Biomedicine and Genome Center, or bind it in any way. Although reasonable precautions are taken to ensure that no viruses or malware are present in this email, the Izmir Biomedicine and Genome Center can not accept any legal responsibility for any loss or damage arising from its use.
+Barbara Hill
+unread,
+May 12, 2020, 2:32:41 PM
+
+
+
+to GenePattern Help Forum
+Hi Diana, 
+
+
+The issue is that HeatMapImage only accepts gct files, whereas you are providing it an ODF file, which appears to have come from ComparativeMarkerSelection.
+
+To view the output of ComparativeMarkerSelection use ComparativeMarkerSelectionViewer.
+
+
+Please let us know if you need anything else.
+
+
+Best
+-Barbara
+Çağrı Buldu
+unread,
+May 12, 2020, 4:02:17 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi, 
+But l also tried it with the gct form and it didn't work, what should i do?
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9a4227b7-f8f2-4305-b60e-32d6793ab45f%40googlegroups.com.
+
+Diana ZEID
+unread,
+May 13, 2020, 10:02:55 AM
+
+
+
+to genepatt...@googlegroups.com
+231857 this is the last job we have worked  on 
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAPHq1defsovPnENt2TD6en4q4AVYu%3DpkL8FmLcoMsVnt-Uy08A%40mail.gmail.com.
+
+
+Ted Liefeld
+unread,
+May 13, 2020, 10:27:16 AM
+
+
+
+to GenePattern Help Forum
+Diana,
+
+
+this does seem to be a problem with the HeatMapImage module.  We will look into it and see what we can do to correct it.  In the meantime, I verified that your gct file can run on the HeatMapViewer visualization.  It will allow you to save the heatmap as either a png or svg file.  As this runs in a browser interactively, it may not be ideal for a pipeline, but if you only have a few files to generate images for it might suffice until we have a fix.
+
+
+Hope this helps
+
+
+Ted
+
+
+On Wednesday, May 13, 2020 at 10:02:55 AM UTC-7, Diana ZEID wrote:
+231857 this is the last job we have worked  on 
+
+
+
+On Wed, May 13, 2020 at 2:02 AM Çağrı Buldu <cagri...@gmail.com> wrote:
+
+Hi, 
+But l also tried it with the gct form and it didn't work, what should i do?
+
+
+On Wed, May 13, 2020, 12:32 AM Barbara Hill <bh...@broadinstitute.org> wrote:
+
+Hi Diana, 
+
+
+The issue is that HeatMapImage only accepts gct files, whereas you are providing it an ODF file, which appears to have come from ComparativeMarkerSelection.
+
+To view the output of ComparativeMarkerSelection use ComparativeMarkerSelectionViewer.
+
+
+Please let us know if you need anything else.
+
+
+Best
+-Barbara
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9a4227b7-f8f2-4305-b60e-32d6793ab45f%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAPHq1defsovPnENt2TD6en4q4AVYu%3DpkL8FmLcoMsVnt-Uy08A%40mail.gmail.com.
+
+
+Barbara Hill
+unread,
+May 15, 2020, 12:10:26 PM
+
+
+
+to GenePattern Help Forum
+Hi Diana, 
+
+
+The issue, unfortunately, was still with your file. You had saved it as a text file with a ".txt" suffix. To fix this in the future, make sure you save your .gct files with quotes around them to prevent your computer from added a .txt ending. 
+"myfile.gct" vs myfile.gct in the save dialog.
+
+
+Let us know if you need any further assistance.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

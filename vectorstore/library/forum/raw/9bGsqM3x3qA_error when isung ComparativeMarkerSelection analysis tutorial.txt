@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/9bGsqM3x3qA
+Title: error when isung ComparativeMarkerSelection analysis tutorial
+----------------------------------------
+
+
+
+
+
+error when isung ComparativeMarkerSelection analysis tutorial
+4 views
+Skip to first unread message
+
+Matthias Kirsch
+unread,
+Aug 19, 2019, 2:52:52 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+
+
+I have tried to repeat a ComparativeMarkerSelection analysis with my own data, which has run without errors previously. Now I get the error message: Unable to compute q values.
+I went back to the tutorials and performed the all_aml_train analysis as suggested in the tutorial and get the same error message.
+Following that the Viewer also does not produce any result???
+
+
+Thanks and best
+Matthias
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Aug 26, 2019, 12:06:23 PM
+
+
+
+to GenePattern Help Forum
+Hello Matthias,
+
+
+Can you provide a job id? This will allow us to look into the matter.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

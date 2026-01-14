@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/EnjCVpPZb_Y
+Title: Importing non-standard package
+----------------------------------------
+
+
+
+
+
+Importing non-standard package
+9 views
+Skip to first unread message
+
+Mikayla Webster
+unread,
+Apr 4, 2018, 10:44:36 AM
+
+
+
+to GenePattern Help Forum
+Hello! 
+
+
+I'm having troubles figuring out how to import a non-standard package in my GenePattern Notebook that I've pip installed locally. Specifically, running "import mygene" returns "ModuleNotFoundError: No module named 'mygene'". 
+
+
+Thank you!
+Edwin Juarez
+unread,
+Apr 4, 2018, 1:45:34 PM
+
+
+
+to GenePattern Help Forum
+Hello Mikayla,
+
+
+If you want to install that package, you can open a new terminal similarly as you would create a new Notebook: under the Files tab, click new, select Terminal from the list.
+
+
+There you can do a install that package for your user with pip, the command you'd need to run is:
+
+
+pip install --user mygene
+
+
+
+Don't forget to add the "--user" flag to explicitly tell pip to install that package locally. If you forget to add that flag, you may experience some inconsistent behavior.
+
+
+Make sure you restart the kernel of the notebook in which you are trying to import mygene before trying to import that package again.
+
+
+Edwin
+
+
+Reply all
+
+Reply to author
+
+Forward

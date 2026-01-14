@@ -1,0 +1,1 @@
+User requested help troubleshooting a DESeq2 error in GenePattern, specifically encountering an invalid long flag error and a class-related issue when attempting to run differential gene expression analysis, with the key problem appearing to be an incompatible classification file that contains more than two classes when the method requires exactly two classes for comparison.

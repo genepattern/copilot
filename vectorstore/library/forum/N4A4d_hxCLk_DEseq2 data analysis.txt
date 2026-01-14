@@ -1,0 +1,1 @@
+User experiencing issues running DESeq2 analysis on GenePattern server, primarily facing memory allocation problems and file upload errors on Windows platform; recommended solution was to increase job memory allocation from 4GB to 8GB and verify file paths, with technical support acknowledging potential recent server instability that may have interrupted job execution.

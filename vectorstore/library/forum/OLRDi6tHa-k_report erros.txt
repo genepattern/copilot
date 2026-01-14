@@ -1,0 +1,1 @@
+GenePattern forum thread summary: User encountered GSEA job errors with infinite values in gene ranking due to zero expression genes, with recommended solutions including using signal2noise metric (if ≥3 samples per group), or adding a small pseudo-count to mitigate infinite value issues when using gene expression datasets with low sample replication.

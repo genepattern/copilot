@@ -1,0 +1,165 @@
+URL: https://groups.google.com./g/genepattern-help/c/GiBIAqVrMEI
+Title: reg. comparative marker selection viewer filter
+----------------------------------------
+
+
+
+
+
+reg. comparative marker selection viewer filter
+23 views
+Skip to first unread message
+
+csub...@umich.edu
+unread,
+Nov 20, 2017, 1:28:17 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am trying to analyze normal to two different treatment groups. When I use comparative marker selection, I try to create a heat map of unregulated genes ranked from top to bottom. In the filter if I select unregulated in rest, it is not sorting it based on that. What kind of filter should I use to get my heat map as per the attached table
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+table.xlsx
+Barbara Hill
+unread,
+Nov 20, 2017, 1:42:51 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+What are you using to view your data? HeatMapViewer or ComparativeMarkerSelectionViewer?
+
+
+Best
+-Barbara
+csub...@umich.edu
+unread,
+Nov 20, 2017, 6:25:30 PM
+
+
+
+to GenePattern Help Forum
+comparative marker viewer.
+Thanks
+
+Barbara Hill
+unread,
+Nov 27, 2017, 12:49:35 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+You should be able to click on the column headers to sort the table.
+
+
+Is that what you are trying to do?
+
+
+-Barbara
+Chitra Subramanian
+unread,
+Dec 6, 2017, 7:58:25 PM
+
+
+
+to GenePattern Help Forum
+Thanks. I am trying to change the heat map. I am able to change the column header and sort the table. Can you please also explain about the filters. I am not able to find how ranking is done and how to change the heat map when we change the column header in the table
+
+Barbara Hill
+unread,
+Dec 8, 2017, 1:15:27 PM
+
+
+
+to GenePattern Help Forum
+Hello Chitra, 
+
+
+I am not sure I understand that you are trying to do.
+
+
+Are you trying to filter the table by rank? sort the table by rank? sort the heatmap by rank? filter the heatmap by rank? and how are you changing the column header in the table?
+
+
+Best
+
+
+-Barbara
+Barbara Hill
+unread,
+Dec 8, 2017, 1:22:27 PM
+
+
+
+to GenePattern Help Forum
+Hello again, 
+
+
+I merged your requests as they are similar:
+
+
+"Also i tried to input unregulated in cancer instead of normal. How do i apply this filter.
+When i change the up-regulated in cancer the heat map does not change. only vales in the table changes in comparative marker viewer
+Another question is how do i cluster normal vs cancer samples and have only highly significant genes."
+
+
+Can you point me to some example jobs? I'm not sure that I understand what you mean when you say you "tried to input unregulated in cancer instead of normal. How do i apply this filter." Did  you change the data set you used or did you simply apply a new filter?
+
+
+As for clustering you want to use one of our clustering modules and then filter for significance. There are a number of ways to do this. I suggest starting by reading our clustering protocols to determine which best suits your data and desired outcome.
+https://genepattern.broadinstitute.org/gp/pages/protocols/ClassDiscovery.html
+
+
+
+Best
+
+
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,38 @@
+URL: https://groups.google.com./g/genepattern-help/c/J2un0pFYLcY
+Title: Announcement: cloud.genepattern.org update complete
+----------------------------------------
+
+
+
+
+
+Announcement: cloud.genepattern.org update complete
+14 views
+Skip to first unread message
+
+Barbara Hill
+unread,
+Apr 6, 2021, 8:03:02 AM
+
+
+
+to GenePattern Help Forum
+The server update has completed successfully and regular use of cloud.genepattern.org may now resume.
+Please see the release notes for more details about this update to v3.9_21.04.05_b325.
+
+Adam Sowalsky
+unread,
+Apr 6, 2021, 1:14:22 PM
+
+
+
+to GenePattern Help Forum
+
+Are new jobs being dispatched? I've had a couple simple jobs pending for hours, so I'm wondering whether there is a significant backlog/queue or if there is an issue with job dispatching.
+
+
+Reply all
+
+Reply to author
+
+Forward

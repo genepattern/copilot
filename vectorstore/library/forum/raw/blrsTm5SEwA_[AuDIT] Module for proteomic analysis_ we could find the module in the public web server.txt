@@ -1,0 +1,165 @@
+URL: https://groups.google.com./g/genepattern-help/c/blrsTm5SEwA
+Title: [AuDIT] Module for proteomic analysis_ we could find the module in the public web server
+----------------------------------------
+
+
+
+
+
+[AuDIT] Module for proteomic analysis_ we could find the module in the public web server
+46 views
+Skip to first unread message
+
+신동윤
+unread,
+Oct 28, 2021, 5:10:11 PM
+
+
+
+to GenePattern Help Forum
+
+Hello.
+
+ 
+
+My name is Dongyoon, Ph.D candidate.
+
+ 
+
+I have a question for AuDIT module in Genepatten public sever.
+
+ 
+
+Although I try to perform AuDIT analysis, I can't find the module in the public sever.
+
+ 
+
+However, the module has been introduced on the web page of Genepattern.
+
+ 
+
+How can I find the module?
+
+ 
+
+Please help me.
+
+ 
+
+My regards.
+
+D R Mani
+unread,
+Oct 28, 2021, 9:06:24 PM
+
+
+
+to genepatt...@googlegroups.com
+The AuDIT module needs to be updated to run on the current version of GenePattern. I'm working on it and will have it updated soon. Please check back later.
+
+
+Best,
+Mani
+
+D. R. Mani, Ph.D.
+
+Director of Computational Proteomics, Proteomics Platform 
+
+Broad Institute of MIT and Harvard, Cambridge, MA 02142
+
+man...@broadinstitute.org  | 617.714.7483
+
+Pronouns: he/him
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fcf7b31e-31b5-4995-a704-d6501ddfe512n%40googlegroups.com.
+
+신동윤
+unread,
+Nov 7, 2021, 10:47:51 PM
+
+
+
+to GenePattern Help Forum
+Hello Genepattern!!
+
+
+Thanks for your response.
+
+
+When should I check the update??
+
+
+May I know the approximate date of releasing the updated AuDIT module?
+
+
+Thanks?
+
+
+Best regards
+
+
+
+
+
+
+
+2021년 10월 29일 금요일 오후 1시 6분 24초 UTC+9에 man...@broadinstitute.org님이 작성:
+
+
+1169925992
+unread,
+Nov 7, 2021, 10:48:00 PM
+
+
+
+to 신동윤
+您好，邮件已收到~
+我会尽快向您回复邮件
+D R Mani
+unread,
+Nov 8, 2021, 7:45:36 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+I'll try and have it ready by the end of Nov.
+
+
+-- Mani
+
+D. R. Mani, Ph.D.
+
+Director of Computational Proteomics, Proteomics Platform 
+
+Broad Institute of MIT and Harvard, Cambridge, MA 02142
+
+man...@broadinstitute.org  | 617.714.7483
+
+Pronouns: he/him
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2c32fdf9-2d4f-4c86-8af9-a280f392d8een%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user encountered issues running GISTIC analysis and was unable to obtain G-scores for Y chromosome genes, with a support team member suggesting consulting an external GISTIC forum thread for potential resolution, indicating potential complexity in handling Y chromosome data in genomic copy number analysis.

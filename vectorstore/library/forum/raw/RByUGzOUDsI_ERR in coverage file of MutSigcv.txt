@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/RByUGzOUDsI
+Title: ERR in coverage file of MutSigcv
+----------------------------------------
+
+
+
+
+
+ERR in coverage file of MutSigcv
+12 views
+Skip to first unread message
+
+Sakshi sen
+unread,
+Aug 13, 2023, 10:12:43 PM
+
+
+
+to GenePattern Help Forum
+Hii
+i am using mutsigcv but i got ERR again and again. can you please help me out how can i generate my coverage file 
+Ted Liefeld
+unread,
+Aug 14, 2023, 7:07:17 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am unaware of any tools to automatically generate the file.  It is a tab-delimited format and the contents are defined in the MutSigCV documentation (https://www.genepattern.org/modules/docs/MutSigCV/1#input_files).  You may also want to try the Broad's gdac-users help forum where there is more detailed discussion of MutSigCV not restricted to the GenePattern context.  Here is a link to one of the posts I found there https://groups.google.com/a/broadinstitute.org/g/gdac-users/c/CGrKr8ncq6s.
+
+
+Foillowing is the section from the module documentation that describes the format;
+
+
+Coverage file
+
+This file contains information about the sequencing coverage achieved for each gene and patient/tumor. Within each gene-patient bin, the coverage is broken down further according to the mutation category (e.g., A:T basepairs, C:G basepairs), and also according to the effect (silent/nonsilent/noncoding). This tab-delimited file can be produced by processing the sample-level coverage files in WIG (wiggle) format output by the MuTect tool.  More information on MuTect can be found here: http://www.broadinstitute.org/cancer/cga/mutect.  If detailed coverage information is not available, the user can use a “full coverage” file that is available on the GenePattern server.
+
+The columns of the file are:
+
+gene: name of the gene for which this line reports coverage (corresponds to the MAF file's Hugo_Symbol)
+effect: silent, nonsilent, or noncoding
+categ: number of the category that this line reports coverage for (must match the categ in the mutation table)
+<patient_name_1>: number of covered bases for this gene, effect, and category
+<patient_name_2>: number of covered bases for this gene, effect, and category
+<patient_name_ ...>: number of covered bases for this gene, effect, and category
+
+Note, covered bases will typically contribute fractionally to more than one effect depending on the consequences of mutating to each of three different possible alternate bases.
+
+We recognize that detailed coverage information is not always available.  In such cases, a reasonable approach is to carry out the computation assuming full coverage.  The MutSigCV developers have prepared a file that can be used for this purpose: it is a "full coverage" file, or more accurately a "territory" file: the only information it contributes is a tabulation of how the reference sequence of the human exome breaks down by gene, categ, and effect.  On the GenePattern public server, this file can be found using "Add Path or URL" under "shared_data/example_files/MutSigCV_1.3/exome_full192.coverage.txt".
+
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

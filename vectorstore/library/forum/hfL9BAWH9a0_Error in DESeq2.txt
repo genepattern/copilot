@@ -1,0 +1,1 @@
+A user experienced an unspecified error while attempting to run the DESeq2 module in GenePattern, and the GenePattern team acknowledged the issue, promising to diagnose and fix the module, which they subsequently did by deploying a new container approximately 10 days after the initial report, with an invitation for the user to retry the module and report any further issues.

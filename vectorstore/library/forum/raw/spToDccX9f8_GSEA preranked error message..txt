@@ -1,0 +1,120 @@
+URL: https://groups.google.com./g/genepattern-help/c/spToDccX9f8
+Title: GSEA preranked error message.
+----------------------------------------
+
+
+
+
+
+GSEA preranked error message.
+170 views
+Skip to first unread message
+
+Holly Pacenta
+unread,
+Mar 19, 2018, 11:47:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Please respond with the following information as applicable: 
+ Complete description of the problem (ie what you were trying to do and what went wrong): trying to run a GSEA reranked analysis on an rna seq dataset with a .rnk file containing a list of genes in the first column and the log2 fold change in the second column. I keep receiving the following error message and am unsure what the issue is. I have successfully run other analyses on using GSEA preranked and am unsure what the issue is. 
+
+
+ava.lang.NumberFormatException: For input string: "#NAME?"
+	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2043)
+	at sun.misc.FloatingDecimal.parseFloat(FloatingDecimal.java:122)
+	at java.lang.Float.parseFloat(Float.java:451)
+	at edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:101)
+	at edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+	at edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:557)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:757)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:800)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:788)
+	at xtools.api.param.PobParam.getPob(PobParam.java:79)
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:182)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:74)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+java.lang.NumberFormatException: For input string: "#NAME?"
+	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2043)
+	at sun.misc.FloatingDecimal.parseFloat(FloatingDecimal.java:122)
+	at java.lang.Float.parseFloat(Float.java:451)
+	at edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:101)
+	at edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+	at edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:557)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:757)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:800)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:788)
+	at xtools.api.param.PobParam.getPob(PobParam.java:79)
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:77)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+
+Job ID if run on a publicly available server.1650740 0
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+3.19.18.rnk
+David Eby
+unread,
+Mar 19, 2018, 12:53:53 PM
+
+
+
+to GenePattern Help Forum
+Hi Holly,
+
+
+Your RNK file contains several genes with an associated metric value of "#NAME?" which looks like it's probably an error stemming from Excel conversion or something similar.  The error message is saying that GSEA Preranked is unable to convert these.
+
+
+It might be worthwhile to go back to your original data to see if these have strange values.  You can just filter these out of the file.
+
+
+It's a fairly common for Excel to automatically alter cells where it thinks the value looks like some other data type (turning them into dates, for example).  It's best to be very careful when manipulating scientific data in Excel.
+
+
+Regards,
+David
+
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

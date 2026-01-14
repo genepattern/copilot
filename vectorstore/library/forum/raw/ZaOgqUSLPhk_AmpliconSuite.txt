@@ -1,0 +1,140 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZaOgqUSLPhk
+Title: AmpliconSuite
+----------------------------------------
+
+
+
+
+
+AmpliconSuite
+60 views
+Skip to first unread message
+
+Anne Van Arsdale
+unread,
+Oct 18, 2023, 10:15:30 AM
+
+
+
+to GenePattern Help Forum
+Is it possible to use single strand long range sequencing with the pipeline? 
+My input is a sorted bam, but it keeps giving me an error message
+Thanks!
+Jens Luebeck
+unread,
+Oct 18, 2023, 10:33:16 AM
+
+
+
+to GenePattern Help Forum
+Hi Anne,
+
+
+Thanks for this great question. Unfortunately, AmpliconSuite only supports paired-end WGS data, and will result in an error otherwise.
+
+
+We are working on a complementary method that will work on single-end long reads (Nanopore), however it is still a couple months from being released. We'll make a note of it on the AmpliconSuite GitHub as soon as a beta version is available for testing!
+
+
+Thanks,
+Jens
+
+
+Anne Van Arsdale
+unread,
+Dec 18, 2023, 8:18:42 AM
+
+
+
+to GenePattern Help Forum
+Hi-
+Have there been errors running the Amplicon Suite/AA command? 
+It immediately gives me an error message when I submit the command. 
+
+Ted Liefeld
+unread,
+Dec 18, 2023, 8:20:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Anne
+
+
+The computer system that the genepattern.ucsd.edu server uses just went down for maintenance.  Try running at https://cloud.genepattern.org/gp instead for the rest of today.  You may need to register your account again there as they do not share user login (unless you login using globus/google/sso)
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/51d1e51d-9042-404e-80e2-dc4808203ad0n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+Dec 19, 2023, 7:34:55 AM
+
+
+
+to GenePattern Help Forum
+The SDSC Expanse maintenance completed last night at out GenePattern server at https://genepattern.ucsd.edu/gp is once again operating normally.
+
+
+Ted
+
+
+
+Anne Van Arsdale
+unread,
+Dec 20, 2023, 6:49:50 AM
+
+
+
+to GenePattern Help Forum
+Hi-
+Sorry...another issue...I am trying to run a WGS sorted bam file on Amplicon Suite, however I keep getting the error message that the MOSEK file is not found. Any troubleshooting for this? 
+thanks!
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Dec 20, 2023, 2:05:05 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+From the job results, I think your job result ID is 21657. I've recently replaced the mosek file on the server, that error message will be removed in the next patch but should not affect the module running. 
+
+
+I noticed you uploaded your inputs as .fq files. Can you rename those files to .fastq and try running again? In the upcoming patch, I'll include .fq as one of the allowed file extensions. 
+
+
+Thanks, 
+Edwin 
+
+
+Reply all
+
+Reply to author
+
+Forward

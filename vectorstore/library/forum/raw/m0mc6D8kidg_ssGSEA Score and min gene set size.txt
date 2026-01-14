@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/m0mc6D8kidg
+Title: ssGSEA Score and min gene set size
+----------------------------------------
+
+
+
+
+
+ssGSEA Score and min gene set size
+35 views
+Skip to first unread message
+
+Macore
+unread,
+Feb 10, 2018, 1:09:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear guys, i am using ssGSEA projections to analyze my RNAseq data. 
+
+i found that the same pair of sample and gene set had different score when the gmt file contain different number gene sets. 
+For example, in Job 163086, where 19 gene sets was included . The score of the sample "N3" and "HPC marker" is -9917.30730137454. 
+while in Job 1630865, where 5 gene sets was included . The score of the sample "N3" and "HPC marker" is 2505.72010834249. 
+Here only  "HPC marker" and "hepatocyte marker" gene sets showed different scores.  
+i want to know why it happened, and which score is real.
+Another questions
+1. how to interpret the ssGSEA score? 
+2. how to set "min gens set size"? 
+Thanks
+Barbara Hill
+unread,
+Feb 16, 2018, 12:39:08 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest you start by reading the ssGSEA documentation, and search in the GSEA help forum, as these will provide you with the most specific answers.
+
+
+Documentation: https://gsea-msigdb.github.io/ssGSEAProjection-gpmodule/v9/index.html
+
+
+Forum: https://groups.google.com/forum/#!forum/gsea-help
+
+
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

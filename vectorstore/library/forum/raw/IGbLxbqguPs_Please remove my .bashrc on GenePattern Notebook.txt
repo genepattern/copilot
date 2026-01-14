@@ -1,0 +1,111 @@
+URL: https://groups.google.com./g/genepattern-help/c/IGbLxbqguPs
+Title: Please remove my .bashrc on GenePattern Notebook
+----------------------------------------
+
+
+
+
+
+Please remove my .bashrc on GenePattern Notebook
+7 views
+notebook
+Skip to first unread message
+
+Rick Wagner
+unread,
+Nov 1, 2019, 11:13:40 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I got too clever and tried to set up a process to automatically start when I logged in--but I also didn't check to see if it was already running. I suspect I've caused my spawning process to fail.
+
+
+Could you remove ~/.bashrc for user rpwagner on GenePattern Notebook?
+
+
+Thanks
+
+
+--Rick
+
+
+Thorin Tabor
+unread,
+Nov 1, 2019, 2:26:51 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Rick,
+
+No problem. I have removed the offending .bashrc file. You should be able to log in and reach your server.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a4a7ffb3-0c51-4b17-9c07-5adc4cbdcd4e%40googlegroups.com.
+
+Rick Wagner
+unread,
+Nov 1, 2019, 2:38:21 PM
+
+
+
+to GenePattern Help Forum
+Thanks, Thorin! It's working now.
+
+
+--Rick
+
+
+On Friday, November 1, 2019 at 2:26:51 PM UTC-7, Thorin Tabor wrote:
+
+Rick,
+
+No problem. I have removed the offending .bashrc file. You should be able to log in and reach your server.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+On 11/1/19 11:13, Rick Wagner wrote:
+
+Hi,
+
+
+I got too clever and tried to set up a process to automatically start when I logged in--but I also didn't check to see if it was already running. I suspect I've caused my spawning process to fail.
+
+
+Could you remove ~/.bashrc for user rpwagner on GenePattern Notebook?
+
+
+Thanks
+
+
+--Rick
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepatt...@googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/mHF3likhSwc
+Title: GSEA of GSE10080 gets error message "After pruning, none of the gene sets passed size thresholds."
+----------------------------------------
+
+
+
+
+
+GSEA of GSE10080 gets error message "After pruning, none of the gene sets passed size thresholds."
+16 views
+Skip to first unread message
+
+chris briggs
+unread,
+Mar 28, 2019, 6:10:58 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+This is an Illumina Hum 6 v2.0 chip dataset retrieved from GEO:
+GSE10080
+I've run GSEA with and without collapsing.
+Job ID if run on a publicly available server.
+104165 - GSEA
+104162 - GSEA
+104163 - GSEA
+104161 - Preprocess (lg2 transform)
+104157 - IlluminaExpresionFileCreator generated get & cls files
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+
+   Server Platform (Mac/Linux)? Mac
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+xtools.api.param.BadParamException: After pruning, none of the gene sets passed size thresholds.
+	at xtools.api.param.ParamFactory.checkAndBarfIfZeroSets(ParamFactory.java:88)
+	at xtools.gsea.Gsea.execute(Gsea.java:111)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.Gsea.main(Gsea.java:140)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:362)
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+chris briggs
+unread,
+Mar 28, 2019, 11:04:53 AM
+
+
+
+to GenePattern Help Forum
+
+Barbara Hill
+unread,
+Mar 28, 2019, 2:46:35 PM
+
+
+
+to GenePattern Help Forum
+Hello Chris,
+
+
+
+This is a common GSEA error, the basic answer is:
+
+
+"GSEA performs an initial filtering step where the list of symbols in the rnk (or other expression file) is considered the initial universe of "gene" expression, IDs in the gene set (eg gmt) file aren't considered for the gene set size cutoff. A reciprocal step is performed where symbols in the rnk file but not in the gmt file are also ignored. One of the most common causes of the error you've reported is when after performing this filtering step, there are fewer IDs remaining in the gmt file than the "min size" cutoff. This can also occur when the symbols in your gmt file aren't the exact same format as the symbols in your rnk file."
+
+
+I pulled this from one of many threads in the GSEA help forum. If you need more information as to how to resolve the error for your data, I suggest you search there for the error message "none of the gene sets passed size thresholds", as there are many more specific responses in the forum from the current GSEA developer.
+
+
+Please let us know if you have other GenePattern questions.
+
+
+All the best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

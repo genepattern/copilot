@@ -1,0 +1,403 @@
+URL: https://groups.google.com./g/genepattern-help/c/_zm-9EGlI8I
+Title: DESeq2
+----------------------------------------
+
+
+
+
+
+DESeq2
+182 views
+Skip to first unread message
+
+Laurie Baert
+unread,
+Dec 13, 2021, 5:54:41 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+I would like to run the DESeq2 module to see the differential expression genes between all my samples.
+I have the HTSeq counts of my 6 different samples combined in 1 GCT file. To run DESeq2 I need a CLS file specifying the phenotype classes for the samples in the GCT file but it is limited to 2 classes so I don't know how to run the analysis to compare all my samples together ?
+I have 3 different types of cells:  Tfh, Th17 and Tfh17 and then I have 2 types of tissues: spleen and Peyer's Patches so 6 samples in total. I guess I need to run DESeq2 to be able to create any plots afterwards...
+What I want at the end is to be able to create a volcano plot to see the up/downregulated genes.
+
+
+Thank you
+
+
+Laurie
+Laurie Baert
+unread,
+Dec 13, 2021, 8:29:19 AM
+
+
+
+to GenePattern Help Forum
+Actually I think it's not DESeq2 but ComparativeMarkerSelection that I should run.
+What kind of gct file do I have to use as input ? I don't know if mergeHTSeq count is a good gct file to run for ComparativeMarkerSelection. I run one but it failed (# 398456)
+
+
+Thank you
+
+
+Laurie
+
+Laurie Baert
+unread,
+Dec 13, 2021, 8:36:13 AM
+
+
+
+to GenePattern Help Forum
+I forgot to mention that it is to analyse bulk RNAseq data
+
+
+thanks for your help
+
+
+
+Ted Liefeld
+unread,
+Dec 13, 2021, 8:39:05 AM
+
+
+
+to GenePattern Help Forum
+Laurie
+
+
+for some reason yout GCT file is not quite right.  On the second line there should be the number of rows and samples separated by a single tab.  In the file you supplied it has 3 tabs between the values and that seems to be why its failing to load properly.  I have just submitted an edited version to DESeq2 with your cls file.  If it succeeds without any other errors I can send you the results or you can re-run it yourself with the fix on line 2.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Laurie Baert
+unread,
+Dec 13, 2021, 9:38:48 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted, 
+
+
+I re-run the ComparativeMarkerSelection with the fixed GCT file but still failed (#398470). I am wondering if raw count from the module HTseq.count is a proper input for this kind of module ?
+
+
+Thank you
+
+
+
+Anthony Castanza
+unread,
+Dec 13, 2021, 1:16:53 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Laurie,
+
+ 
+
+Sorry about the issue with that GCT file I'd sent.
+
+ 
+
+We were able to get this data to run in DESeq2 with some significant caveats.
+DESeq2 isn't really designed to handle single replicate comparisons, let alone many of them. So we ended up running your data as a six different One vs. Remaining comparisons, that is, we did TZGpp vs All the other cells, TfhZGs vs all the other cells, Tfhs vs all the other cells, etc.
+
+
+
+
+
+Those results are here:
+
+
+TfhZGs: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398537&openNewWindow=false
+
+TZGs: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398538&openNewWindow=false
+
+Tfhs: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398539&openNewWindow=false
+
+TZGpp: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398540&openNewWindow=false
+
+Tfhpp: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398541&openNewWindow=false
+
+TfhZGpp: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=398542&openNewWindow=false
+
+
+
+
+The jobs did run into some errors (calculating the mean expression for the class with only one sample), but this was after the differential expression results were already calculated, so if you look at the ".DESeq2_results_report.txt" file for each job, that should contain the Log2FC results that you're looking for. These files are tab delimited plain text files. I've also attached the six CLS files that I used to run these jobs if you'd like to rerun them yourself.
+
+
+
+
+Note that this is not the only way you could run this experiment. If you were just interested in the difference between the cell types and just wanted to control for the tissue specific effects, you could annotate the tissue in a confounding variable cls file (also attached as Tissue_Confounding.cls). Then you could construct CLS files with, for example, the TfhZG cells from both spleen and Peyer's Patches. That CLS would look something like this:
+
+
+6 2 1
+# OTHER TfhZG
+0 0 1 0 0 1
+
+
+
+
+
+
+
+
+And you could, in theory, do the opposite and calculate the tissue specific differential expression controlling for cell types using the Tissue CLS as the main CLS and the cell types in a confounding variable CLS file like this:
+6 3 1
+# TZG Tfh TfhZG
+0 1 2 0 1 2
+
+
+
+
+
+
+
+
+That said, I think the job results above are probably what you were looking for. Feel free to reach out to us with any other questions, of if anything here doesn't make sense
+
+
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3d658b1e-052e-42c1-98cd-f2b419b8e6dfn%40googlegroups.com.
+
+
+TfhZGs_vs_ALL.cls
+
+TZGs_vs_ALL.cls
+
+Tfhpp_vs_ALL.cls
+
+Tfhs_vs_ALL.cls
+
+TZGpp_vs_ALL.cls
+
+TfhZGpp_vs_ALL.cls
+
+Tissue_Confounding.cls
+Laurie Baert
+unread,
+Dec 13, 2021, 2:40:41 PM
+
+
+
+to GenePattern Help Forum
+Thank you for all this info !
+
+
+The analysis you run unfortunately cannot work because I don't want to compare one sample with other sample all together but separately with each other samples..
+Basically I want the differentially expressed genes as follow : TZG PP VS TZG spleen;    Tfh PP VS Tfh spleen;    TfhZG PP VS TfhZG spleen;    Tfh spleen VS TZG spleen;  TfhZG spleen VS TZG spleen;  TfhZG spleen VS Tfh spleen;  and Tfh PP VS TZG PP;    TfhZG PP VS TZG PP;    TfhZG PP VS Tfh PP.
+
+
+I actually tried to run a DESeq2 (#398573) using tissues as main CLS file and cell types as confounding variable like you suggested in second option, unfortunately I got only the spleen/PP comparisons and not all of the others comparisons based on cell types and probably because the option "all pairs" for phenotype test is missing. 
+So how I can get the comparisons I listed above ?
+
+
+Also after that I want to generate a volcano plot to clearly show the up/down-regulated genes for each comparisons performed above so for example display the p-value in Y axis and Fold change TZG PP/TZG spleen in X axis.
+I guess I need to use the multiplot studio module to do that right ? but what kind of GCT file is required ? I think I should use the "results_report.txt" file produced by DESeq2 because it contains the fold change values and p-values as well, unfortunately it is not a GCT file so not supported by the multiplot studio module. The only GCT file produced by DESeq2 contains only the normalized count so obviously every value is highly positive and no p-values so it cannot be used for the volcano plot.
+So I am a bit stuck at that point if you can help me !
+
+
+Thank you
+
+
+Laurie
+
+
+
+
+
+
+
+
+
+
+
+
+
+Anthony Castanza
+unread,
+Dec 13, 2021, 3:06:53 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Laurie,
+
+ 
+
+Unfortunately the DESeq2 module on GenePattern does not support automatically doing "all pairs", the only option would be to create gct files containing just the samples you want for each individual comparison. However, doing this with only one sample per type (resulting in 1 vs 1 comparisons), it's strongly discouraged by the DESeq2 authors. To quote from the DESeq2 Documentation:
+
+
+"Experiments without replicates do not allow for estimation of the dispersion of counts around the expected value for each group, which is critical for differential expression analysis. ... We provide this approach for data exploration only, but for accurately identifying differential expression, biological replicates are required."
+
+ 
+
+Because this isn't a standard pipeline, I'm not entirely sure if the module will even be able to process the data when given a file containing just the two samples. Your best bet if you still want to use DESeq2 to try these comparisons would be running it natively in the R environment where you'd have full access to its functionality (even though these 1v1 comparisons are not advised).
+
+The Log2FC results you get out of DESeq2 might still be better than manually calculating a Log2(FC) in, for example, Excel based on the raw counts, but the other statistics definitely wouldn't be valid. That said, if you just want a really rough idea what the log2 Fold Changes might be simply calculating it in Excel would be easier and faster.
+
+ 
+
+There isn't really much in the way of a good option here, sorry we couldn't be of more help
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/39d22af6-4255-41df-86cc-65cc7b10794dn%40googlegroups.com.
+
+Laurie Baert
+unread,
+Dec 13, 2021, 4:18:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+Thank you I got it!
+
+
+So I actually have another batch of samples ready soon and I would be able to duplicate all my samples and potentially run the DESeq2 as you suggested one by one.
+But meantime can you explain me how I can generate the volcano plot I need?
+I have a old batch of samples with already FC and p-values in Excel sheet, so what should be in columns and in rows to create properly the GCT file for multiplot studio ?
+
+
+Thank you so much
+
+
+Laurie
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/_zm-9EGlI8I/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB76094C94C3AF7DDA04F55537F7749%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+Laurie Baert
+unread,
+Dec 15, 2021, 8:32:35 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+Can someone help me with my question about the multiplot studio module ?
+
+
+"But meantime can you explain me how I can generate the volcano plot I need?
+I have a old batch of samples with already FC and p-values in Excel sheet, so what should be in columns and in rows to create properly the GCT file for multiplot studio ?"
+
+
+Thank you
+
+
+Laurie
+
+
+
+Laurie Baert
+unread,
+Dec 17, 2021, 5:36:11 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Sorry to ask again but I really need help to generate a volcano plot: "I have a old batch of samples with already FC and p-values in Excel sheet, so what should be in columns and in rows to create properly the GCT file for multiplot studio ?"
+
+
+
+
+thank you
+
+
+Laurie
+
+Barbara Hill
+unread,
+Dec 17, 2021, 10:39:31 AM
+
+
+
+to GenePattern Help Forum
+Hi Laurie, 
+
+
+Please have a look at the GCT format documentation and let us know if you have any additional questions.
+
+
+Best
+-Barbara
+
+Laurie Baert
+unread,
+Dec 17, 2021, 11:26:09 AM
+
+
+
+to GenePattern Help Forum
+HI, 
+Yes I already looked at that documentation but it doesn't really help because I want to generate a volcano plot displaying the FC values in X axis and p-values in Y axis ( like a normal volcano plot) so I have 2 types of values. In this kind of GCT file from the documentation there is only 1 kind of value for each sample so how can I generate my volcano plot ? is the "volcano studio" module calculating the pvalue itself based on the FC values? 
+Otherwise let me know how I can generate a volcano plot using genepattern ?
+
+
+Thank you
+
+
+Laurie
+
+Edwin Juarez
+unread,
+Dec 17, 2021, 12:06:48 PM
+
+
+
+to GenePattern Help Forum
+Hi Laurie,
+
+
+Take a look at this GenePattern Notebook which has a simple implementation of a volcano plot: https://notebook.genepattern.org/hub/preview?id=439 -- you can upload your excel file there (maybe you have to export it as a CSV file first) and choose which columns you want to use for the plot. It is not full-featured yet, but let us know if this helps you.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

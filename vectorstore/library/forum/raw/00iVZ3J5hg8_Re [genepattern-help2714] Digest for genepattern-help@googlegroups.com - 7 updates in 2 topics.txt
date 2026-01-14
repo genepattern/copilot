@@ -1,0 +1,146 @@
+URL: https://groups.google.com./g/genepattern-help/c/00iVZ3J5hg8
+Title: Re: [genepattern-help:2714] Digest for genepattern-help@googlegroups.com - 7 updates in 2 topics
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:2714] Digest for genepattern-help@googlegroups.com - 7 updates in 2 topics
+12 views
+Skip to first unread message
+Gashaw Garedew
+unread,
+Jun 13, 2023, 10:38:32 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted, 
+Thank you so much. It is now working properly.
+Regards 
+Gashaw
+
+
+On Wed, Jun 14, 2023 at 10:50 AM <genepatt...@googlegroups.com> wrote:
+
+genepatt...@googlegroups.com	Google Groups	
+Topic digest
+View all topics
+GenePattern is down - June 13, 2023 1pm PST - 2 Updates
+PCA analysis - 5 Updates
+GenePattern is down - June 13, 2023 1pm PST
+Ted Liefeld <lie...@broadinstitute.org>: Jun 13 01:04PM -0700
+
+The GenePattern server is currently unable to run any jobs due to problems
+with Amazon Web Services. No jobs can be run at the moment and files
+cannot be uploaded or downloaded from the GenePattern server. We will
+update this thread when we have more information
+
+Ted Liefeld <lie...@broadinstitute.org>: Jun 13 02:02PM -0700
+
+The server is once again running properly. The AWS systems are running
+again. More detail about the outage can be found at
+https://health.aws.amazon.com/health/status
+ 
+On Tuesday, June 13, 2023 at 1:04:08 PM UTC-7 Ted Liefeld wrote:
+ 
+
+Back to top
+PCA analysis
+Gashaw Garedew <gasht...@gmail.com>: Jun 13 05:54AM -0700
+
+Hello,
+ 
+I tried to perform Principal Component Analysis and was not able to do it.
+After uploading the GCT file, an error occurred when clicking the "run"
+icon.
+ 
+I saw the following error message in stderr.txt.
+ 
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2 at
+edu.mit.wi.genome.gp.mev.PCAAlgorithmWrapper.main(PCAAlgorithmWrapper.java:35)
+ 
+ 
+Please help how to fix this problem.
+ 
+Many thanks
+ 
+Gashaw
+
+Ted Liefeld <lie...@broadinstitute.org>: Jun 13 07:20AM -0700
+
+Hi
+ 
+Can you tell us the job number so we can take a look?
+ 
+Thanks
+ 
+Ted
+ 
+ 
+--
+Ted Liefeld UC San Diego
+Mesirov Lab lie...@ucsd.edu
+ 
+Office 2A24, BRF-II 858-246-1974
+
+Gashaw Garedew <gasht...@gmail.com>: Jun 13 10:39PM +0800
+
+Dear Ted,
+Thanks for your reply.
+Please find below the job number.
+515036.
+ 
+ 
+On Tue, Jun 13, 2023 at 10:20 PM Ted Liefeld <lie...@broadinstitute.org>
+wrote:
+ 
+
+Ted Liefeld <lie...@broadinstitute.org>: Jun 13 10:06AM -0700
+
+I think the problem is that it is running out of memory. I have rerun your
+job several times selecting different memory allocations from the job
+options section of the module parameters. It runs inconsistently with 8GB
+(about half of jobs still fail) but seems to be working consistently with
+12GB.
+ 
+So please rerun with 12 GB and please let me know if you get the results
+you need.
+ 
+Hope this helps,
+ 
+Ted
+ 
+
+Ted Liefeld <lie...@broadinstitute.org>: Jun 13 11:33AM -0700
+
+Hi, one of my coworkers noticed another problem that also needs to be
+addressed. The output filename specified contains the characters "<" and
+">". This is probably the true cause of the failure. In my tests using
+different memory settings, some included that and some did not which lead
+me to mistakenly identify memory as the problem.
+ 
+So please rerun with the "<" and ">" removed from the output file name and
+let us know how it goes.
+ 
+Ted
+ 
+p.s. the reason for the issue with the characters is that GenePattern
+tokenizes and replaces elements on the command line that are between the <
+and > characters. You can see more details in the GenePattern Programmers
+Guide (https://www.genepattern.org/programmers-guide#_Creating_Modules)
+about 1/4 of the way down in the section on the command line.
+ 
+On Tuesday, June 13, 2023 at 10:06:25 AM UTC-7 Ted Liefeld wrote:
+ 
+
+Back to top
+You received this digest because you're subscribed to updates for this group. You can change your settings on the group membership page.
+To unsubscribe from this group and stop receiving emails from it send an email to genepattern-he...@googlegroups.com.
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+Researcher sought advice on editing a GCT (Gene Cluster Text) file to increase HTSeq counts by adding 1 to all datasets, with solutions provided including saving the file as tab-delimited text and ensuring proper file extension (.gct), successfully resolving the file editing challenge through simple file format conversion techniques.

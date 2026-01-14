@@ -1,0 +1,239 @@
+URL: https://groups.google.com./g/genepattern-help/c/3BF37DzvzGY
+Title: GLAD not processing
+----------------------------------------
+
+
+
+
+
+GLAD not processing
+18 views
+Skip to first unread message
+
+Jacky Watt
+unread,
+Aug 11, 2017, 1:42:49 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am trying to run GLAD on a .cn file. Job has been tried several times and gives the error that the file does not exist. I have tried uploading it from my desktop, loading from genome space and from the upload folder. 
+Job IDs: 1535120, 1535119, 1533480,1533477
+
+
+Error in dyn.load(x, as.logical(local), as.logical(now)) : 
+	unable to load shared library '/xchip/gpprod/servers/genepattern/taskLib/GLAD.2.4516/aws/libs/aws.so':
+  libg2c.so.0: cannot open shared object file: No such file or directory
+Error: package 'aws' could not be loaded
+Execution halted
+
+
+Thanks
+
+
+
+
+
+
+Barbara Hill
+unread,
+Aug 11, 2017, 12:09:23 PM
+
+
+
+to GenePattern Help Forum
+Hello Jacky, 
+
+
+The file that is missing is a shared library needed to run the module, not your uploaded file. We'll look into this and get back to you shortly.
+
+
+
+Best
+
+
+- Barbara
+Barbara Hill
+unread,
+Aug 11, 2017, 12:19:18 PM
+
+
+
+to GenePattern Help Forum
+Hi Jacky, 
+
+
+Please try trying the development version 2.2 of GLAD, and let me know if this fixes the issue.
+
+
+Best
+
+
+-Barbara
+
+
+(For internal notes - this is likely related to GPAT-528 which resulted in the release of version 2.2)
+
+
+
+Peter Carr
+unread,
+Aug 11, 2017, 4:29:21 PM
+
+
+
+to genepatt...@googlegroups.com
+GLAD version 2.2 is private (visible only to the GP Team) and not yet
+ready for production. Instead, I updated the server configuration to:
+* use the legacy centos5 compute environment
+* mark jobs as error if there is any stderr output
+
+Try running your job again using the same version (v2) that you used
+before. Let me know if that corrects your problem.
+
+(For internal notes - correction: related ticket is GPAT-578; I created
+GPAT-2263 to note the broad/centos5 dependency)
+
+Regards,
+Peter
+
+
+Jacky
+unread,
+Aug 12, 2017, 2:21:49 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks a lot!
+
+Sent from my iPhone
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/3BF37DzvzGY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/58751577-95fb-44fc-9694-2415f58f9e97%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Jacky Watt
+unread,
+Aug 15, 2017, 2:47:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I have loaded the job again, it has been running for about a day now. Is that not too long?
+
+
+Thanks so much
+
+
+Jacky
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/3BF37DzvzGY/unsubscribe.
+
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/71f56d1c-407b-4157-aa4b-15e83f7463e5%40broadinstitute.org.
+
+Peter Carr
+unread,
+Aug 15, 2017, 3:14:17 AM
+
+
+
+to genepatt...@googlegroups.com
+I'm not that familiar with the module. I started a test run with a similar dataset at about the same time. As of yesterday it had made it about half way. Give it another day or two.
+
+
+Regards,
+Peter
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAH6L8%2Bq5u90b0nAesiY3O0_VxoLUksq3tR%2BvYaX94gK8eJPfNQ%40mail.gmail.com.
+
+Barbara Hill
+unread,
+Aug 15, 2017, 8:00:11 AM
+
+
+
+to GenePattern Help Forum
+Hi Jacky,
+
+
+It's a very slow module. 
+CBS is faster for segmentation.
+
+
+Best
+
+
+-Barbara
+Jacky
+unread,
+Aug 15, 2017, 8:26:57 AM
+
+
+
+to genepatt...@googlegroups.com
+Okay thanks. To use GISTIC, I need to use GLAD though correct?
+
+Sent from my iPhone
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/3BF37DzvzGY/unsubscribe.
+
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/39252ac4-24bc-4d5e-8098-9ce81d4405fd%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 15, 2017, 9:39:44 AM
+
+
+
+to GenePattern Help Forum
+Hi Jacky, 
+
+
+You can use CBS as well.
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/GISTIC_2.0/7
+
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

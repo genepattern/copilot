@@ -1,0 +1,1 @@
+GenePattern servers experienced temporary downtime at the Broad Institute, impacting both server access and Notebook Repository sign-in, with servers later restored and users advised to postpone large data processing jobs until Monday; full service was eventually resumed with a request for user patience.

@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/dQsMPwsUSog
+Title: Comparative marker selection on rpm-plus1log2 Ion Torrent RNAseq data
+----------------------------------------
+
+
+
+
+
+Comparative marker selection on rpm-plus1log2 Ion Torrent RNAseq data
+24 views
+Skip to first unread message
+
+Josephine Klitgaard
+unread,
+Apr 28, 2022, 4:49:41 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I'm comparing a cohort of patient samples, treated vs CTR using the comparative marker selection. The data are generated on the Ion Torrent Analyzer and are rpm plus1 log2 transformed. I choose a pairwise T test and say the data are log transformed, do I need to do antilog or transform the fold changes from comparative marker selection afterwards?
+Also, if I need to identify markers which are downregulated with the treatment, are those markers then the ones that are upregulated in CTRs?
+
+
+Many thanks for your help in advance,
+Josephine
+mmr...@cloud.ucsd.edu
+unread,
+May 6, 2022, 1:48:48 PM
+
+
+
+to GenePattern Help Forum
+Hi Josephine,
+
+
+Apologies for the delayed response. Because of the distribution assumptions of the T-test, that is not recommended for read-based data, and RPM is not generally recommended for between-sample comparisons for RNA-seq data. Is the data available as a counts matrix? If so, it is possible to use DESeq2 to calculate differential expression.
+
+
+Best,
+Michael
+
+
+ 
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

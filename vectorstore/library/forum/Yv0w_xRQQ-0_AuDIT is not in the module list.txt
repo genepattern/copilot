@@ -1,0 +1,1 @@
+A user inquired about the unavailability of the AuDIT module in GenePattern, and after communication with the module's author, the source code was shared, with team members subsequently working to update and make the module available on cloud.genepattern.org, ultimately resolving the module accessibility issue through collaborative troubleshooting and code restoration.

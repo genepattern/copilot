@@ -1,0 +1,1 @@
+GenePattern forum thread summary focused on moving the ComBat module to a new server, with users inquiring about module availability, and the GenePattern team confirming that ComBat version 3.1 has been patched and successfully deployed on cloud.genepattern.org without prior plot generation capabilities, resolving users' concerns about module accessibility.

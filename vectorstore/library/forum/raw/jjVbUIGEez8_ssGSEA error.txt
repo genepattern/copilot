@@ -1,0 +1,98 @@
+URL: https://groups.google.com./g/genepattern-help/c/jjVbUIGEez8
+Title: ssGSEA error
+----------------------------------------
+
+
+
+
+
+ssGSEA error
+45 views
+Skip to first unread message
+
+Elvin Yang
+unread,
+Apr 21, 2022, 8:05:01 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm trying to run a ssGSEA job, but when I submit the job, I keep getting the same error message:
+
+
+"An error occurred while submitting the job: Error updating upload file record for file 'tmp': null
+
+
+I was hoping to get some help with this error message and I suspect it has something to do with my account. My GenePattern username is yyang18.
+
+
+Thanks!
+Elvin
+Ted Liefeld
+unread,
+Apr 21, 2022, 9:59:13 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+do you have a job number we can look at?
+
+
+Thanks
+
+Ted
+
+
+
+Elvin Yang
+unread,
+Apr 21, 2022, 10:03:51 AM
+
+
+
+to GenePattern Help Forum
+Hello Ted, 
+
+
+This error shows up after I click "Run" in ssGSEA, so no job can be created. I've also attached the console message:
+
+
+Thanks!
+
+
+ErrorMessage.PNG
+Ted Liefeld
+unread,
+Apr 25, 2022, 11:42:51 AM
+
+
+
+to GenePattern Help Forum
+Elvin,
+
+
+what is your username and where (geographically) are you connecting from?  The 403 error is a 'forbidden' so it looks like the server is not seeing the cookie identifying you.  So this might me because of a filter between you and our server (if you are at a commercial place with strict internet filters) and might sometimes happen from China and a few other nations.  
+
+
+Are you able to logout and log back in successfully?  Can you upload a file to your files tab?
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

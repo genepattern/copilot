@@ -1,0 +1,122 @@
+URL: https://groups.google.com./g/genepattern-help/c/yoa80q6ANYs
+Title: Error launching project
+----------------------------------------
+
+
+
+
+
+Error launching project
+24 views
+Skip to first unread message
+
+junhao zhu
+unread,
+Aug 5, 2025, 7:42:15 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+    I am encountering an issue when attempting to start my project and launch the server. I keep receiving the error message: "Spawn failed: Timeout." I have already tried several solutions, such as switching networks and using a VPN, but the error persists.
+
+Could anyone assist me with resolving this issue?
+
+Thank you in advance for your help!
+Junhao Zhu
+
+
+
+John Liefeld
+unread,
+Aug 6, 2025, 6:49:55 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+By project, I assume you mean that you are trying to start your own GenePattern server? On that assumption we will need some more details to be able to help;
+
+
+- Are you running our Docker container or a local installation
+- What OS
+- Is this an existing server that won't restart or a new install starting for the first time
+- What is in the server log files
+
+
+Lets start with those questions and we'll see what we can do,
+
+
+Ted
+
+
+
+junhao zhu
+unread,
+Aug 6, 2025, 8:09:26 AM
+
+
+
+to GenePattern Help Forum
+
+Dear Ted,
+
+Thank you for your response. To clarify: I am using the public web-based GenePattern server (accessing it via browser, not self-hosting). My issue occurs specifically in this webpage.
+
+Regarding your questions:
+
+Installation type:  Using the official web server (no Docker/local installation).
+
+OS:  Accessing via Chrome on Windows 11, but the issue persists across browsers.
+
+To assist troubleshooting:
+I've re-attached a screenshot showing the error .
+
+Appreciate your guidance on next steps.
+
+Best regards,
+Junhao Zhu
+
+
+John Liefeld
+unread,
+Aug 6, 2025, 8:45:52 AM
+
+
+
+to GenePattern Help Forum
+Thanks for the clarification.  I will ask the GenePattern Notebook developer to take a look and get back to you.
+
+
+Ted
+
+
+
+Thorin Tabor
+unread,
+Aug 6, 2025, 9:25:42 AM
+
+
+
+to genepatt...@googlegroups.com, junhao zhu
+
+One of our notebook servers was stuck. I apologize. The issue has now been fixed. If you retry the project it should launch.
+
+Thorin
+GenePattern Team
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/3440fbb6-dff1-43da-bec2-eac4a9ccc9afn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

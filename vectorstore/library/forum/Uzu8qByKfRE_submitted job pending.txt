@@ -1,0 +1,1 @@
+GenePattern users experiencing jobs stuck in "pending" status after a system upgrade, with the issue being investigated by support team and ultimately resolved, with jobs being successfully completed and status updated after server-side corrections.

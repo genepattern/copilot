@@ -1,0 +1,1 @@
+NTP (Nearest Template Prediction) running error resolved by setting "weight genes" parameter to "no" when processing input features with more than two classes, specifically in the context of analyzing the Hosida liver dataset in GenePattern.

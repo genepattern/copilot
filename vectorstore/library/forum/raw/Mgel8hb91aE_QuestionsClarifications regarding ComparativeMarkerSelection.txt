@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/Mgel8hb91aE
+Title: Questions/Clarifications regarding ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+Questions/Clarifications regarding ComparativeMarkerSelection
+51 views
+MarkerSelection
+Skip to first unread message
+
+Ravi Patel
+unread,
+Sep 6, 2017, 11:29:35 AM
+
+
+
+to GenePattern Help Forum
+I used ssGSEA to identify cell-types (gene sets) that are differentially enriched between two samples. As the ssGSEA manual suggests, I can use the output of ssGSEA (enrichment scores) as input in ComparativeMarkerSelection to identify "marker cell-types" that are significantly differentially enriched between two samples. Following are two relevant lines from the input file used for ComparativeMarkerSelection. Given that there is a very little variation between replicates (A & B), I would expect that the difference between M28 and M1 is significant.
+
+Name         Description   M28A      M28B      M1A      M1B
+
+Th1.cells    24            4271.57   4288.52   3627.98  3553.50
+However, the FDR and Q values are 0.631 and 0.818, respectively. I used all default parameters of ComparativeMarkerSelection. I am not sure if I am doing anything wrong. There are many significant terms for M1/M28 comparison and none for M28/M1, this indicates that the one.sided t-tests are performed. However, the default value for "test direction" is 2-sided. Could you please advise?
+
+
+On a different note, the manual for ComparativeMarkerSelection mentions that the calculated "Fold change" in output file is a ratio of class-0 and class-1. This seems true for entries with positive "score". However the "Fold change" is a ratio of class-1 and class-0 for the entries where the score is a negative value. I have copied a chunk of the output file to show few examples. Please let me know how to interpret this output.
+
+
+Thank you for your time.
+
+
+Best,
+
+Ravi
+
+test.xls
+Edwin Juarez
+unread,
+Sep 8, 2017, 3:16:18 PM
+
+
+
+to GenePattern Help Forum
+Hello Ravi,
+
+
+Did you run ssGSEA and ComparativeMarkerSelection on the public servers? If so, can you please provide the job numbers associated with these outputs? I'd like to take a look at the input and output files to get more context to your questions.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

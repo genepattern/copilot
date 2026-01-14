@@ -1,0 +1,86 @@
+URL: https://groups.google.com./g/genepattern-help/c/bXn0mb8EJjQ
+Title: question about NearestTemplatePrediction
+----------------------------------------
+
+
+
+
+
+question about NearestTemplatePrediction
+31 views
+Skip to first unread message
+
+王东
+unread,
+Sep 28, 2022, 7:56:00 AM
+
+
+
+to GenePattern Help Forum
+Hi, I tried to run NTP, it's always execution halted: 
+"Error in read.table(file = file, header = header, sep = sep, quote = quote,  :
+  empty beginning of file
+Calls: NTPez -> read.delim -> read.table"
+the supllymentary file are my example files and error.
+
+
+Thank you 
+wjd
+
+wnt.txt
+
+464662.zip
+
+FPKMN.116.gct
+Message has been deleted
+王东
+unread,
+Sep 28, 2022, 8:09:51 AM
+
+
+
+to GenePattern Help Forum
+the job id is  464669
+
+Ted Liefeld
+unread,
+Sep 28, 2022, 9:45:02 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I think the problem is that the file(s) was saved using unicode, but the module is expecting an ascii file.  When I look at the file in the Atom text editor it looks like  the attached image.
+
+
+
+You can use an online tool like https://onlineunicodetools.com/convert-unicode-to-ascii co convert the file.  You will probably need to do this for all input files.
+
+
+Hope this helps
+
+
+Ted
+
+
+Screen Shot 2022-09-28 at 9.40.37 AM.png
+王东
+unread,
+Sep 28, 2022, 11:26:20 PM
+
+
+
+to GenePattern Help Forum
+Thank you, I tried this and  it successfully worked.
+
+
+wjd
+
+
+Reply all
+
+Reply to author
+
+Forward

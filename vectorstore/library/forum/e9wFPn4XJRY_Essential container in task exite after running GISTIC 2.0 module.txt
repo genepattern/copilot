@@ -1,0 +1,1 @@
+A user encountered an "Essential container in task exite" error when running the GISTIC 2.0 module in GenePattern, which was resolved by the system administrator replacing the compute node due to insufficient disk space; the job was successfully rerun after the node replacement, and the user confirmed the analysis worked correctly.

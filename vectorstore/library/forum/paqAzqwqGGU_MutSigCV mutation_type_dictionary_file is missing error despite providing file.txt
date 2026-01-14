@@ -1,0 +1,1 @@
+GenePattern MutSigCV module error investigation: User encountered persistent "mutation_type_dictionary_file is missing" error when running analysis, which was subsequently diagnosed as likely related to incorrect substitution variable configuration, with suggested resolution involving reviewing module configuration settings and ensuring proper file naming/input parameters.

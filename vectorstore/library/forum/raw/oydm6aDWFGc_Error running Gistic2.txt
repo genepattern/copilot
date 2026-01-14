@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/oydm6aDWFGc
+Title: Error running Gistic2
+----------------------------------------
+
+
+
+
+
+Error running Gistic2
+37 views
+Skip to first unread message
+
+Angelussong
+unread,
+Jan 29, 2024, 8:42:04 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+I have been trying to run Gistic2 for my .seg files. Everything was fine for running before the weekend but then I have been seeing this error:
+
+GenePattern Server error preparing job 23596 for execution.
+org.genepattern.server.executor.CommandExecutorException: Error running cmd
+
+java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: Error running cmd
+at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1824)
+at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1562)
+at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+at java.lang.Thread.run(Thread.java:750)
+Caused by: org.genepattern.server.executor.CommandExecutorException: Error running cmd
+at org.genepattern.server.executor.slurm.SlurmJobRunner.startJob(SlurmJobRunner.java:440)
+at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:854)
+at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1815)
+at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1811)
+... 4 more
+
+
+I am wondering if it's something wrong with my .seg file or how I could resolve it. 
+
+
+
+Thank you very much for your help! 
+
+
+
+
+Ted Liefeld
+unread,
+Jan 29, 2024, 9:11:24 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it appears something has gone off on the compute environment that is used for running Gistic, SubMap and NearestTemplatePrediction jobs for the cloud server.  I have redirected those modules to use a different compute environment until it is repaired.  You should be able to rerun your jobs now.
+
+
+Thanks for your patience
+
+
+Ted  
+
+
+
+Angelussong
+unread,
+Jan 29, 2024, 9:12:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much!! I'll test it now! 
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/eb5ab216-d98f-4a31-ae9b-8dc75d4f5d48n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,420 @@
+URL: https://groups.google.com./g/genepattern-help/c/9Y3LJp4aU5U
+Title: GSEAPreranked gene rank order
+----------------------------------------
+
+
+
+
+
+GSEAPreranked gene rank order
+34 views
+Skip to first unread message
+
+Roberto Salatino
+unread,
+Feb 3, 2022, 2:25:33 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+I am using the GSEAPreranked module for the first time and I am a bit confused about one detail, the ordering of my ranked list. I am computing my statistical analysis with NOISeq using the tmm normalization and I get a gene ranking, a result that ranks the most differentially expressed gene 1st and going down the less differentially expressed genes. Can I use that list directly with the  GSEAPreranked module or do I need to reverse it?
+Thank you very much for your help,
+Roberto 
+Anthony Castanza
+unread,
+Feb 3, 2022, 4:21:15 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Roberto,
+
+ 
+
+This kind of ordered list isn't really what we'd expect to accept for GSEA Preranked. Typically what we expect here would be a descending order ranking where the values span positive and negative, so something more like a Log2(FC) list. So I do think if you want to use this data, you would need to reverse the ranking order, and additionally I would suggest that perhaps you could apply the sign from the log2FC to get something more on the scale that we would expect (although you don't technically have to do this).
+
+ 
+
+So your 1,2,3,4,5,6,8,9 (for the sake of example) list would, if 2,5,9 were a negative log2fc become 1,3,4,6,8,-9,-5,-2, and then to rescale them 5,4,3,2,1,-1,-2,-3 where the old #1 is now 5, #2=4, -9=-1 etc. Does that make sense?
+
+ 
+
+Then for your data where the rank values aren't biologically meaningful, you would also want to change ethe "Enrichment Statistic" parameter from the "weighted' option to the "classic" option.
+
+ 
+
+That is what I would try if I was working with this kind of data.
+
+ 
+
+Let me know how that goes and if you experience any issues/anything doesn't look right with the results and we'll see what we can do.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6f7f16a1-8863-419d-a760-61000257f601n%40googlegroups.com.
+
+Roberto Salatino
+unread,
+Feb 7, 2022, 6:12:54 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony, 
+Thank you very much for the detailed explanation. Since the output of NOISeq contains also a -log2(FC) I will try to use that as input for my analysis with the GSEAPreranked module. It seems like that would be a more straightforward metric to use. Since my data are from RNA seq I should not need to indicate a chip platform, correct? 
+Thanks
+roberto 
+
+
+
+
+
+
+	Sender notified by
+Mailtrack	02/07/22, 08:20:58 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB7609A400B3A13ABD95B95B46F7299%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+Feb 7, 2022, 6:19:54 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Roberto,
+
+ 
+
+We recommend always specifying a CHIP platform when using MSigDB gene sets, even if your data is already in Human Gene Symbols. Over time the approved symbol for a gene can change and the chips we provide contain the historical mappings to convert an old symbol to the current (as of the release of that version of MSigDB) symbol. By specifying a CHIP it ensures that the gene symbols the software is testing are the same as the ones in the gene sets, otherwise any symbols that have changed would be dropped from the dataset.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Roberto Salatino <rm.sa...@gmail.com>
+Date: Monday, February 7, 2022 at 6:12 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:2263] GSEAPreranked gene rank order
+
+Hi Anthony, 
+
+Thank you very much for the detailed explanation. Since the output of NOISeq contains also a -log2(FC) I will try to use that as input for my analysis with the GSEAPreranked module. It seems like that would be a more straightforward metric to use. Since my data are from RNA seq I should not need to indicate a chip platform, correct? 
+
+Thanks
+
+roberto 
+
+
+
+
+
+ 
+
+Sender notified by
+Mailtrack
+
+	
+
+02/07/22, 08:20:58 PM
+
+	
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CA%2B5yZNCxeZ1unCqumLwK-9eRQJF2uTxxaUXu272iFH%3DkRXqYHA%40mail.gmail.com.
+
+Roberto Salatino
+unread,
+Feb 8, 2022, 9:51:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony, 
+Thanks that makes sense, is there a documentation page I can refer to to make sure I select the right CHIP?
+thanks!
+
+
+
+
+	Sender notified by
+Mailtrack	02/08/22, 12:03:33 PM	
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/9Y3LJp4aU5U/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB760948B406CC5ED389F4F7E1F72D9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+Feb 8, 2022, 10:26:55 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Roberto
+
+We've generally relied on people knowing what their ID type is already, but in hindsight there has definitely been some confusion that such a documentation page would alleviate. That said until we can put something together, if you send me a sampling of the IDs in your data file, i can tell you which chip to use for it.
+
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CA%2B5yZNDoJ3A4Aq6m2NO_R1UoFBBEzDoYME4%2B83aXH28Avr21pQ%40mail.gmail.com.
+
+Roberto Salatino
+unread,
+Feb 8, 2022, 2:55:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony, 
+yes, sure, I was in a rush and i dind't explain myself correctly, I know my id (usually I use either the HGNC gene ID or the ENSEMBL transcripts depending on the analysis) but I am a bit confused about the version number. In this particular case I have mapped my reads using the latest ENSEMBL genome release so should I go with the latest version?
+thanks
+roberto 
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZzAtWHD9tonzQQHLvzYL8ivr9gdLPe_TMa4yRbX-Bf3Gg%40mail.gmail.com.
+
+Anthony Castanza
+unread,
+Feb 8, 2022, 3:00:52 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Roberto,
+
+ 
+
+Our Ensembl chip file expects unversioned Ensembl gene ids (not transcript IDs) so these would be of the format ENSG00000123456, it is common for pipelines to produce versioned Ensembl IDs, (i.e. ENSG00000123456.7) that trailing version should be stripped from the IDs. But other than needing to remove the version, our MSigDB 7.5.1 chips are based on Ensembl Release 105 (Dec 2021) so it should work well if you've used that version or any version prior to 105. HGNC IDs (in the format HGNC:12345) would also work through the HGNC ID chip file.
+
+ 
+
+We might also recommend changing the "Collapse Mode for Probe Sets >=1" from the default "max_probe" to the "sum_of_probes" option under Advanced Fields if running in standard GSEA and not GSEA Preranked.
+
+ 
+
+Let me know if you have any issues with these options/settings.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Roberto Salatino <rm.sa...@gmail.com>
+Date: Tuesday, February 8, 2022 at 2:55 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:2267] GSEAPreranked gene rank order
+
+Hi Anthony, 
+
+yes, sure, I was in a rush and i dind't explain myself correctly, I know my id (usually I use either the HGNC gene ID or the ENSEMBL transcripts depending on the analysis) but I am a bit confused about the version number. In this particular case I have mapped my reads using the latest ENSEMBL genome release so should I go with the latest version?
+
+thanks
+
+roberto 
+
+
+
+
+
+
+
+On Tue, Feb 8, 2022 at 1:26 PM Anthony Castanza <acas...@cloud.ucsd.edu> wrote:
+
+Hi Roberto
+
+We've generally relied on people knowing what their ID type is already, but in hindsight there has definitely been some confusion that such a documentation page would alleviate. That said until we can put something together, if you send me a sampling of the IDs in your data file, i can tell you which chip to use for it.
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+ 
+
+On Tue, Feb 8, 2022, 9:51 AM Roberto Salatino <rm.sa...@gmail.com> wrote:
+
+Hi Anthony, 
+
+Thanks that makes sense, is there a documentation page I can refer to to make sure I select the right CHIP?
+
+thanks!
+
+
+
+
+	
+
+Sender notified by
+Mailtrack
+
+02/08/22, 12:03:33 PM
+
+	
+
+
+
+
+On Mon, Feb 7, 2022 at 9:19 PM Anthony Castanza <acas...@cloud.ucsd.edu> wrote:
+
+Hi Roberto,
+
+ 
+
+We recommend always specifying a CHIP platform when using MSigDB gene sets, even if your data is already in Human Gene Symbols. Over time the approved symbol for a gene can change and the chips we provide contain the historical mappings to convert an old symbol to the current (as of the release of that version of MSigDB) symbol. By specifying a CHIP it ensures that the gene symbols the software is testing are the same as the ones in the gene sets, otherwise any symbols that have changed would be dropped from the dataset.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Roberto Salatino <rm.sa...@gmail.com>
+Date: Monday, February 7, 2022 at 6:12 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:2263] GSEAPreranked gene rank order
+
+Hi Anthony, 
+
+Thank you very much for the detailed explanation. Since the output of NOISeq contains also a -log2(FC) I will try to use that as input for my analysis with the GSEAPreranked module. It seems like that would be a more straightforward metric to use. Since my data are from RNA seq I should not need to indicate a chip platform, correct? 
+
+Thanks
+
+roberto 
+
+ 
+
+ 
+
+Sender notified by
+Mailtrack
+
+	
+
+02/07/22, 08:20:58 PM
+
+	
+
+
+
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CA%2B5yZNAphviW9bzQACDXEXJhK3fvS5RCoFWwEkTj_Zdtx8b75A%40mail.gmail.com.
+
+Roberto Salatino
+unread,
+Feb 8, 2022, 3:52:14 PM
+
+
+
+to genepatt...@googlegroups.com
+Sounds good! I think that answers all the questions.
+Thank you very much for your help!
+
+
+
+
+	Sender notified by
+Mailtrack	02/08/22, 06:51:21 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB76093D798A2AF95910ACD3D8F72D9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

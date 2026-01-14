@@ -1,0 +1,2 @@
+Here's the summary formatted for vector store embedding:
+ComBat module in GenePattern experienced an error during execution on a Windows platform, with a specific matrix-related error suggesting potential issues with sample information file formatting or extra spaces in covariate definitions, and a recommendation to test on a public server to diagnose the precise cause of the runtime error.

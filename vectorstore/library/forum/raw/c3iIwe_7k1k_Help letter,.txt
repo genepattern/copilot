@@ -1,0 +1,143 @@
+URL: https://groups.google.com./g/genepattern-help/c/c3iIwe_7k1k
+Title: Help letter,
+----------------------------------------
+
+
+
+
+
+Help letter,
+82 views
+Skip to first unread message
+
+胡金桐
+unread,
+Sep 13, 2024, 8:28:38 AM
+
+
+
+to GenePattern Help Forum
+Help letter, when I ran CNV with the same data as others, they could output the results, and mine could run without any errors. However, after running, I couldn't find where the results were and didn't output the file
+
+
+
+Andrew Cherniack
+unread,
+Sep 13, 2024, 8:36:27 AM
+
+
+
+to genepatt...@googlegroups.com
+For some reason, your runs could not generate the analysis.
+Could you share the gistic_input.met and stdout.txt files from one of your runs?
+
+
+On Fri, Sep 13, 2024 at 11:28 AM 胡金桐 <hujin...@gmail.com> wrote:
+
+Help letter, when I ran CNV with the same data as others, they could output the results, and mine could run without any errors. However, after running, I couldn't find where the results were and didn't output the file
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a6dc8338-65ec-4026-9f44-43ed5e620fcdn%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Sep 13, 2024, 9:24:07 AM
+
+
+
+to GenePattern Help Forum
+Looking at the stdout.txt file it generated, it reports this error;
+
+     GISTIC version 2.0.23
+ 
+     GISTIC 2.0 input error detected:
+     Invalid chromosome '
+
+So it looks like your input file is not in the right format.  Andrew should be able to help with that better than I
+
+
+Ted
+
+
+
+Andrew Cherniack
+unread,
+Sep 13, 2024, 10:07:11 AM
+
+
+
+to genepatt...@googlegroups.com
+For the chromosome column of your seg file, it's best to just have numbers without "chr" before the number.
+X and Y are also usually OK, but if there are errors still, you can change these to 23 and 24.
+
+
+Andy
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3a4224bb-c938-492c-ab4b-a9ab9b3fa2a9n%40googlegroups.com.
+
+Message has been deleted
+胡金桐
+unread,
+Sep 13, 2024, 10:48:48 PM
+
+
+
+to GenePattern Help Forum
+Thank you very much for your help. This is my file
+
+
+
+
+
+
+胡金桐
+unread,
+Sep 13, 2024, 11:27:50 PM
+
+
+
+to GenePattern Help Forum
+I found that it may be a problem with the ladder, that is, the VPN. My VPN cannot connect well to the server, and this prompt will appear every time I run it
+
+Andrew Cherniack
+unread,
+Sep 14, 2024, 8:27:47 AM
+
+
+
+to genepatt...@googlegroups.com
+GISTIC will likely error out because your seg file lacks a header.
+The header should be:  
+Sample Chromosome Start End Num_Probes Segment_Mean
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6093f772-bb0d-4553-abea-42f0a1ca8b6an%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Sep 14, 2024, 8:34:46 AM
+
+
+
+to GenePattern Help Forum
+Also, I don't know where you got your marker file from, but there needs to be an SNP at the end of every segment break.
+You can run GISTIC without a marker file.
+
+
+Reply all
+
+Reply to author
+
+Forward

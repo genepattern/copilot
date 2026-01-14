@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/F3Gzzk1epKc
+Title: DESeq2 Erro
+----------------------------------------
+
+
+
+
+
+DESeq2 Erro
+25 views
+Skip to first unread message
+
+Abraam Zakhary
+unread,
+Apr 10, 2023, 10:53:11 AM
+
+
+
+to GenePattern Help Forum
+503752. DESeq2
+
+I am getting an error that I don't really understand. 
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+trying URL 'http://cran.us.r-project.org/src/contrib/getopt_1.20.3.tar.gz'
+Content type 'application/x-gzip' length 18573 bytes (18 KB)
+==================================================
+downloaded 18 KB
+
+* installing *source* package 'getopt' ...
+** package 'getopt' successfully unpacked and MD5 sums checked
+** R
+** exec
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (getopt)
+
+The downloaded source packages are in
+	'/tmp/RtmpycHJ2J/downloaded_packages'
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+Warning message:
+package 'optparse' is not available (for R version 3.3.2) 
+Error in DESeqDataSet(se, design = design, ignoreRank) : 
+  NA values are not allowed in the count matrix
+Calls: GP.deseq2 ... withCallingHandlers -> DESeqDataSetFromMatrix -> DESeqDataSet
+Execution halted
+
+
+
+I have created the gct/cls file and they seem fine to me. Any help?
+
+
+Thanks,Abraam
+edh...@cloud.ucsd.edu
+unread,
+Apr 10, 2023, 11:48:06 AM
+
+
+
+to GenePattern Help Forum
+Hi Abraam, 
+
+
+Looks like there are NA values in your file. Our suggestion is to remove genes with NA values. You can use the RemoveMissingValues modules: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00184:1. 
+
+
+Edwin 
+
+
+
+Abraam Zakhary
+unread,
+Apr 10, 2023, 11:53:13 AM
+
+
+
+to GenePattern Help Forum
+Perfect! I realized some genes were misaligned which is why there might have been NA values. Thank you!
+
+
+Reply all
+
+Reply to author
+
+Forward

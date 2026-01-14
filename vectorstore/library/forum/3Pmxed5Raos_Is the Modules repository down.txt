@@ -1,0 +1,1 @@
+GenePattern Modules repository temporary access issue reported by a new user, with the Broad Institute technical support quickly responding by restarting the server to restore functionality, resolving the initial access problem and providing prompt user support.

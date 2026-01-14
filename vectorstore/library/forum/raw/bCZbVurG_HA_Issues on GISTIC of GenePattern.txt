@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/bCZbVurG_HA
+Title: Issues on GISTIC of GenePattern
+----------------------------------------
+
+
+
+
+
+Issues on GISTIC of GenePattern
+45 views
+CNV
+Gistic
+SNP6
+Skip to first unread message
+
+Dmitri Bi
+unread,
+Sep 21, 2019, 11:16:38 AM
+
+
+
+to GenePattern Help Forum
+Hi guys, I have got a CNV data from TCGA and the marker file as shown below,
+
+Seg file:
+
+Sample Chromosome Start End Num_Probes Segment_Mean
+
+TCGA.05.4249.01A 1 3218610 120527361 67456 -0.1725
+
+TCGA.05.4249.01A 1 149881398 167526508 10663 0.5859
+TCGA.05.4249.01A 1 167526675 167526823 2 -1.1518
+TCGA.05.4249.01A 1 167526972 247813706 50571 0.5816
+
+TCGA.05.4249.01A 2 484222 242476062 130861 0.0585
+
+Markers file:(For the affymetrix SNP6.0)
+
+Probe.Name Chromosome Start
+
+CN_473963 1 61735
+CN_473964 1 61808
+CN_473965 1 61823
+CN_477984 1 62152
+CN_473981 1 62920
+CN_473982 1 62937
+
+And my goal is to perform GISTIC analysis with the GISTIC 2.0 module in GenePattern, but the result is always like this: "GISTIC version 2.0.23 GISTIC 2.0 input error detected: 76606 segment start or end positions in '/opt/gpcloud/gp_home/users/genye/uploads/tmp/run8835511072592266907.tmp/seg.file/1/biguoshu1.txt' do not match any markers in '/opt/gpcloud/gp_home/users/genye/uploads/tmp/run6032895478607754030.tmp/markers.file/2/markersMatrix.txt'. First bad position is 10:24732567 at line 33."
+
+I have uploaded my files in .txt format and choose the GISTIC version 6.15.28 and Human_hg38.mat as the refgene file. All other parameters were by default. Could anyone please tell me what the problem is and how to solve? Thank you !
+
+
+
+
+Job ID: 165784. GISTIC_2.0
+
+   Server Platform: Mac
+I met my problems in stdout.txt.
+
+
+
+Barbara Hill
+unread,
+Jan 13, 2020, 9:42:20 AM
+
+
+
+to GenePattern Help Forum
+Hello Dmitri,
+
+
+I'm so sorry that you've not received any help yet.
+
+
+Are you still having difficulty with GISTIC in GenePattern?
+
+
+We'll be happy to see what we can do to help.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

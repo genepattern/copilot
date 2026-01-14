@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/0LbhW9ZOz0o
+Title: Error in NTP
+----------------------------------------
+
+
+
+
+
+Error in NTP
+17 views
+Skip to first unread message
+Crane Tiger
+unread,
+Jul 19, 2023, 10:13:25 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+I've tried to run NTP for a gene expression matrix, but got an error:
+Error in if (orig.dist.to.all.temp[1] >= orig.dist.to.all.temp[2]) { : missing value where TRUE/FALSE needed Calls: NTPez Execution halted
+
+
+
+This matrix works for the other feature files so I'm sure it is fine, maybe it's because the feature files, but I cannot find the reason behind since the format seems to be ok. Would you mind to help me in this task? The job number is 521267
+
+
+Best wishes,
+Xinchen
+Ted Liefeld
+unread,
+Jul 19, 2023, 11:02:11 AM
+
+
+
+to GenePattern Help Forum
+Xinchen
+
+
+sorry for the bug in NTP.  From our initial look at it, it does seem to work for your data when correlation is selected instead of cosine for the 'distance selection' parameter.  If this is acceptable you can use it as a workaround while we try to get to the root of the problem and fix it.
+
+
+It does appear the code follows a different path when there are 2 classes vs more than 2 (as in your other runs).  I will do some debugging on a modified version of the module but it will take at least a few days before a new version is available.
+
+
+Ted
+
+
+
+Crane Tiger
+unread,
+Jul 19, 2023, 11:19:16 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Ted,
+
+
+Cheers, I will try to use the correlation version first. Thank you for your suggestions. 
+
+
+Best wishes,
+Xinchen
+
+Ted Liefeld
+unread,
+Jul 25, 2023, 7:08:17 AM
+
+
+
+to GenePattern Help Forum
+Xinchen,
+
+
+a new version (6) of NearestTemplatePrediction has been released and it no longer has this issue.  
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

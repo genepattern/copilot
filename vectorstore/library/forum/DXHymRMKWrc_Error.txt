@@ -1,0 +1,1 @@
+A GenePattern user encountered an unspecified error while attempting to run GISTIC2.0 analysis, with a request for troubleshooting assistance, and a support team member requested additional diagnostic information including the specific error message and segmentation file to help diagnose the underlying issue.

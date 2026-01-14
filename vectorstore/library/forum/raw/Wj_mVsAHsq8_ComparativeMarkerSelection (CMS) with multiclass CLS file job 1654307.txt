@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/Wj_mVsAHsq8
+Title: ComparativeMarkerSelection (CMS) with multiclass CLS file: job 1654307
+----------------------------------------
+
+
+
+
+
+ComparativeMarkerSelection (CMS) with multiclass CLS file: job 1654307
+10 views
+Skip to first unread message
+
+Viktor
+unread,
+Mar 30, 2018, 1:09:04 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I ran CMS module with multiclass CLS file (17 samples, 4 classes, 3-4 samples per class). I used default one-versus-all phenotype test.
+
+
+This job completed without errors and generated 4 ODF files, one for each comparison (class 1 vs. rest, class 2 vs. rest, etc.). From each ODF, I extracted significant differentially expressed genes (DEGs, q-value <0.05): jobs 1654331-1654334. 
+
+
+Now, this is where it gets strange. For some reason, even though the actual DEGs are different between each comparison (no overlap at all), their number is always exactly the same: 21. 
+
+I have no idea how this is possible and what is happening here. Is this a problem with the gene expression dataset, CMS, multiclass CLS or more than one of the above?
+
+
+Thanks,
+Viktor
+Barbara Hill
+unread,
+Apr 9, 2018, 1:12:19 PM
+
+
+
+to GenePattern Help Forum
+Hello Viktor, 
+
+
+Apologies for the long delay in responding. 
+
+
+Do you have any recent jobs we could look at? Unfortunately, we're past the 7 day purge cycle.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

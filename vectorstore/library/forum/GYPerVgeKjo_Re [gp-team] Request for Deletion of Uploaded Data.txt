@@ -1,0 +1,1 @@
+A user requested deletion of specific job entries from the GenePattern platform due to unauthorized data sharing, with the support team confirming complete deletion of job results and input files while retaining job parameter metadata, and providing instructions for users to self-delete jobs through the platform's interface.

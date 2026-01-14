@@ -1,0 +1,458 @@
+URL: https://groups.google.com./g/genepattern-help/c/W6BvGujgc-U
+Title: Pïcard CollectMultipleMetrics fails with multiple values for Argument PROGRAM=
+----------------------------------------
+
+
+
+
+
+Pïcard CollectMultipleMetrics fails with multiple values for Argument PROGRAM=
+27 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 2, 2017, 8:05:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear,
+
+
+Picard CollectMultipleMetrics (I run latest picard-tools-2.10.6 consisting of only the jar file) accepts multiple instances of PROGRAM= with up to 9 possible options
+
+
+PROGRAM=Program               Set of metrics programs to apply during the pass through the SAM file.  Default value:
+                              [CollectAlignmentSummaryMetrics, CollectBaseDistributionByCycle,  
+                              CollectInsertSizeMetrics, MeanQualityByCycle, QualityScoreDistribution]. This option can  
+                              be set to 'null' to clear the default value. Possible values:  
+                              {CollectAlignmentSummaryMetrics, CollectInsertSizeMetrics, QualityScoreDistribution,  
+                              MeanQualityByCycle, CollectBaseDistributionByCycle, CollectGcBiasMetrics, RnaSeqMetrics,  
+                              CollectSequencingArtifactMetrics, CollectQualityYieldMetrics} This option may be  
+                              specified 0 or more times. This option can be set to 'null' to clear the default list.
+
+
+
+
+I made a simple wrapper for this but it fails to work, apparently because the PROGRAM option is not produces as expected.
+
+
+<java> <java_flags> -jar <picard-tools-2>/picard.jar CollectMultipleMetrics  I=<input.file> PROGRAM=<program> O=<output.prefix> R=<fasta.reference>  VALIDATION_STRINGENCY=LENIENT 
+
+
+
+Here is the error report (thanks to the fact that log4j2 was not found otherwise I would not have a copy of the full command.
+
+
+ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console. [Wed Aug 02 16:20:02 CEST 2017] picard.analysis.CollectMultipleMetrics INPUT=/opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam OUTPUT=NA18507-10pc_sample_coord-srt.sorted PROGRAM=[CollectAlignmentSummaryMetrics, CollectBaseDistributionByCycle, CollectInsertSizeMetrics, MeanQualityByCycle, QualityScoreDistribution] VALIDATION_STRINGENCY=LENIENT REFERENCE_SEQUENCE=null ASSUME_SORTED=true STOP_AFTER=0 METRIC_ACCUMULATION_LEVEL=[ALL_READS] INCLUDE_UNPAIRED=false VERBOSITY=INFO QUIET=false COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false [Wed Aug 02 16:20:02 CEST 2017] Executing as genepattern@MAF-SRV-04 on Linux 3.13.0-123-generic amd64; Java HotSpot(TM) 64-Bit Server VM 1.8.0_131-b11; Deflater: Jdk; Inflater: Jdk; Picard version: 2.10.6-SNAPSHOT INFO 2017-08-02 16:20:20 SinglePassSamProgram Processed 1,000,000 records. Elapsed time: 00:00:16s. Time for last 1,000,000: 16s. Last read position: chr21:36,379,733 INFO 2017-08-02 16:20:30 RExecutor Executing R script via command: Rscript /tmp/genepattern/script3165131166079704862.R /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.base_distribution_by_cycle_metrics /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.base_distribution_by_cycle.pdf NA18507-10pc_sample_coord-srt.sorted.bam INFO 2017-08-02 16:20:33 ProcessExecutor null device INFO 2017-08-02 16:20:33 ProcessExecutor 1 INFO 2017-08-02 16:21:18 RExecutor Executing R script via command: Rscript /tmp/genepattern/script1805491884106773991.R /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.insert_size_metrics /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.insert_size_histogram.pdf NA18507-10pc_sample_coord-srt.sorted.bam INFO 2017-08-02 16:21:20 ProcessExecutor null device INFO 2017-08-02 16:21:20 ProcessExecutor 1 INFO 2017-08-02 16:21:20 RExecutor Executing R script via command: Rscript /tmp/genepattern/script728897705472448166.R /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.quality_by_cycle_metrics /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.quality_by_cycle.pdf NA18507-10pc_sample_coord-srt.sorted.bam INFO 2017-08-02 16:21:20 ProcessExecutor null device INFO 2017-08-02 16:21:20 ProcessExecutor 1 INFO 2017-08-02 16:21:20 RExecutor Executing R script via command: Rscript /tmp/genepattern/script7155533197601951990.R /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.quality_distribution_metrics /opt/tools/GenePatternServer/jobResults/510/NA18507-10pc_sample_coord-srt.sorted.quality_distribution.pdf NA18507-10pc_sample_coord-srt.sorted.bam INFO 2017-08-02 16:21:20 ProcessExecutor null device INFO 2017-08-02 16:21:20 ProcessExecutor 1 [Wed Aug 02 16:21:20 CEST 2017] picard.analysis.CollectMultipleMetrics done. Elapsed time: 1.40 minutes. Runtime.totalMemory()=5739905024
+
+
+from above, it seems that the PROGRAM has been passed as
+PROGRAM=[CollectAlignmentSummaryMetrics, CollectBaseDistributionByCycle, CollectInsertSizeMetrics, MeanQualityByCycle, QualityScoreDistribution]
+
+
+
+instead of the product of PROGRAM= x each separate value
+
+
+A run with PROGRAM=MeanQualityByCycle alone (not taking null) does work and generates an error only due to 'No log4j2 configuration file found'. 
+All txt and PDF output are present for the 5 default PROGRAMs. It therefore seems that the issue arises when more than one option is chosen.
+
+
+I have set the 'program' parameter to list of type 'Get-Opt style list' and the wrapper works when I only input a single choice.
+
+
+Did I miss something?
+
+
+Thanks in advance for help,
+Stephane
+
+
+PS: I attach the current zip version of my module, only picard-tools-2 needs be defined and the latest picard.jar installed to reproduce my env.
+
+Picard.CollectMultipleMetrics.zip
+Peter Carr
+unread,
+Aug 2, 2017, 9:26:38 AM
+
+
+
+to genepatt...@googlegroups.com
+for debugging, send me the contents of the hidden '.rte.out' file. It lists the actual command line.
+Enter the url in the web browser location bar, something like:
+  https://127.0.0.1:8080/gp/jobResults/<job_id>/.rte.out
+I usually view the stdout.txt or gp_execution_log.txt and replace it's name.
+
+to save me the trouble of reading the picard tools man page, send me an example command line that will work from outside for GenePattern.
+
+Thanks,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/35d6070d-7fda-43b9-8157-d4d7535abf56%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Peter Carr
+unread,
+Aug 2, 2017, 11:15:49 AM
+
+
+
+to genepatt...@googlegroups.com
+You need to select the 'prefix when specified' option for your
+parameter. You can do this in the Edit module GUI or by editing these
+lines in your manifest file,
+p4_prefix=PROGRAM\=
+p4_prefix_when_specified=PROGRAM\=
+
+
+FYI, here's the full example from a manifest file for the 'p4_' param ...
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=
+p4_description=Set of metrics programs to apply during the pass through
+
+the SAM file. Default value: [CollectAlignmentSummaryMetrics,
+
+CollectBaseDistribut\
+ionByCycle, CollectInsertSizeMetrics, MeanQualityByCycle,
+QualityScoreDistribution]. This option may be specified 0 or more times.
+
+This option can be set \
+to 'null' to clear the default list.
+
+p4_fileFormat=
+p4_flag=PROGRAM\=
+p4_listMode=cmd_opt
+p4_name=PROGRAM
+p4_numValues=0+
+p4_optional=
+p4_prefix=PROGRAM\=
+p4_prefix_when_specified=PROGRAM\=
+p4_type=java.lang.String
+p4_value=\=none (use picard default);\
+CollectAlignmentSummaryMetrics\=CollectAlignmentSummaryMetrics;\
+CollectInsertSizeMetrics\=CollectInsertSizeMetrics;\
+QualityScoreDistribution\=QualityScoreDistribution;\
+MeanQualityByCycle\=MeanQualityByCycle;\
+CollectBaseDistributionByCycle\=CollectBaseDistributionByCycle;\
+CollectGcBiasMetrics\=CollectGcBiasMetrics;\
+RnaSeqMetrics\=RnaSeqMetrics;\
+CollectSequencingArtifactMetrics\=CollectSequencingArtifactMetrics;\
+CollectQualityYieldMetrics\=CollectQualityYieldMetrics;\
+null\=null (overrides default)
+
+
+
+
+Stephane Plaisance
+unread,
+Aug 3, 2017, 2:46:45 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peter,
+
+
+Thanks a lot for the suggestions, most have worked now and my code is almost OK 
+
+
+(I still get this nasty "ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console" on each run for which I made a ticket at github-Picard. Any idea?)
+
+
+I have one residual problem linked to the default PROGRAMs used by the app.
+When no PROGRAM= is specified, picard takes 5 predifined ones.
+To cancel this the user should give null as FIRST program then one or more PROGRAMs to be executed.
+
+
+I did put null as first choice in the list but when I trigger null +2 other programs, the null argument is passed as second instead of first and cancels the first argument (reset)
+How can I enforce that the list arguments be taken in the order they are present in the list, it does not seem the case (see new manifest cut for P4 and command behaviour)
+
+
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=CollectAlignmentSummaryMetrics
+p4_description=QC metrics (select 0 or more, add null to reset defaults)
+p4_fileFormat=
+p4_flag=PROGRAM\=
+p4_listMode=cmd_opt
+p4_name=program
+p4_numValues=0+
+p4_optional=on
+p4_prefix=PROGRAM\=
+p4_prefix_when_specified=PROGRAM\=
+p4_type=java.lang.String
+p4_value=null\=null;CollectAlignmentSummaryMetrics\=CollectAlignmentSummaryMetrics;CollectInsertSizeMetrics\=CollectInsertSizeMetrics;QualityScoreDistribution\=QualityScoreDistribution;MeanQualityByCycle\=MeanQualityByCycle;CollectBaseDistributionByCycle\=CollectBaseDistributionByCycle;CollectGcBiasMetrics\=CollectGcBiasMetrics;RnaSeqMetrics\=RnaSeqMetrics;CollectSequencingArtifactMetrics\=CollectSequencingArtifactMetrics;CollectQualityYieldMetrics\=CollectQualityYieldMetrics
+
+
+# 'null' was moved as second below, deactivating the new-first argument CollectAlignmentSummaryMetrics
+
+
+cat ../535/.rte.out
+
+job command line: /usr/lib/jvm/java-8-oracle/bin/java -Dhttp.proxyHost=null -Dhttp.proxyPort=null -jar /opt/tools/GenePatternServer/patches/picard-tools-2/picard.jar CollectMultipleMetrics I=/opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam O=MetricsQC_NA18507-10pc_sample_coord-srt.sorted.bam.txt PROGRAM=CollectAlignmentSummaryMetrics PROGRAM=null PROGRAM=CollectInsertSizeMetrics R=/opt/tools/GenePatternServer/users/.cache/uploads/cache/193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa VALIDATION_STRINGENCY=LENIENT VERBOSITY=INFO
+
+arg[0]: '/usr/lib/jvm/java-8-oracle/bin/java'
+arg[1]: '-Dhttp.proxyHost=null'
+arg[2]: '-Dhttp.proxyPort=null'
+arg[3]: '-jar'
+arg[4]: '/opt/tools/GenePatternServer/patches/picard-tools-2/picard.jar'
+arg[5]: 'CollectMultipleMetrics'
+arg[6]: 'I=/opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam'
+arg[7]: 'O=MetricsQC_NA18507-10pc_sample_coord-srt.sorted.bam.txt'
+arg[8]: 'PROGRAM=CollectAlignmentSummaryMetrics'
+arg[9]: 'PROGRAM=null'
+arg[10]: 'PROGRAM=CollectInsertSizeMetrics'
+arg[11]: 'R=/opt/tools/GenePatternServer/users/.cache/uploads/cache/193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa'
+arg[12]: 'VALIDATION_STRINGENCY=LENIENT'
+arg[13]: 'VERBOSITY=INFO'
+
+
+# same 'disorder' in log
+
+
+cat gp_execution_log.txt
+
+# Created: Thu Aug 03 11:32:58 CEST 2017 by splaisan
+# Job: 535    server:  http://10.33.126.105:8100
+# Module: Picard_CollectMultipleMetrics_sp urn:lsid:8100.admin.MAF-SRV-04.maf-srv-04.med.ad10.intern.kuleuven.ac.be:genepatternmodules:29:12
+# Parameters:  
+#    input.file = NA18507-10pc_sample_coord-srt.sorted.bam   http://10.33.126.105:8100/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam
+#    reference = ftp://193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa
+#    output_prefix = MetricsQC_<input.file_file>.txt
+#    program = [CollectAlignmentSummaryMetrics, null, CollectInsertSizeMetrics]
+#    stringency = LENIENT
+#    verbosity = INFO
+
+
+
+
+Peter Carr
+unread,
+Aug 8, 2017, 1:11:27 PM
+
+
+
+to GenePattern Help Forum
+Copying this reply to a related question into this thread ...
+
+
+When you create a 'Get-opt style list' for a parameter, they are passed along to the command line in the order in which they are selected. 
+
+
+To workaround this problem ...
+1) open the menu and click 'X Uncheck all'
+2) select 'null' option
+3) select other options in order ...
+
+
+I expect the selections to appear in the order in which they were made in the GUI, e.g.
+PROGRAM	
+
+null (overrides default), CollectAlignmentSummaryMetrics, CollectInsertSizeMetrics
+Which should result in a properly ordered command line, e.g.
+  java -jar /path/to/picard.jar CollectMultipleMetrics ... PROGRAM=null PROGRAM=CollectAlignmentSummaryMetrics PROGRAM=CollectInsertSizeMetrics  ...
+
+
+Peter Carr
+unread,
+Aug 8, 2017, 1:53:04 PM
+
+
+
+to GenePattern Help Forum
+When experimenting with this, I discovered a bug with the way GenePattern handles 'Get-opt style list' text parameters. The default empty string value is incorrectly added to the command line as: "[]". E.g.
+  java -jar /path/to/picard.jar CollectMultipleMetrics I=/path/to/file.bam []
+
+
+Instead of
+  java -jar /path/to/picard.jar CollectMultipleMetrics I=/path/to/file.bam
+
+
+As a workaround (pending a bug fix in GP v3.9.11), I suggest changing your module to include each PROGRAM arg as an individual optional parameter. I am attaching the 'Demo.Picard.CollectMultipleMetrics_v0.4.1' module which is organized this way. To make it a bit more readable I created a 'paramgroups.json' file which groups all of the PROGRAM args into one section.
+
+
+You can start with a copy of this module. Don't forget to make some edits to the manifest before adding to your server.
+change the lsid to match the baselsid of your server; increment or set the version as you see fit.
+set the author/organization
+Additional edits are required. They can be done in the gui or in the manifest file.
+
+remove 'echo' as the first arg of the command line; or keep it until you are satisfied
+set the correct substitution for the picard.jar file. When testing locally I included the jar file in the module. I removed it from the zip to reduce the size of the attachment.
+Here are the steps to build this from scratch in the GUI. 
+Create a 'use.default' parameter.
+  Name: use.default
+  Select 'Make this parameter optional.'
+  Flag: 'PROGRAM='
+  Select 'prefix when specified'
+  Create a drop-down list with two values
+Value="" (empty), Display Value="default", select this as the default selection
+
+Value="null"
+Create a PROGRAM=program-name for each optional program-name arg. For example,
+  Name: CollectAlignmentSummaryMetrics
+  Select 'Make this parameter optional.'
+  Flag: 'PROGRAM='
+  Select 'prefix when specified'
+  Create a drop-down list with two values
+Value="" (empty), Display Value="no", select this as the default selection
+Value="CollectAlignmentSummaryMetrics"
+
+
+For convenience, here are the relevant sections of the manifest file  
+
+
+commandLine=echo <java-1.8> <java_flags> -jar <libdir>picard-2.10.6.jar CollectMultipleMetrics \
+    <input.file> \
+    <fasta.reference> \
+    <output.prefix> \
+    <use.default> \
+    <CollectAlignmentSummaryMetrics> \
+    <CollectInsertSizeMetrics> \
+    <QualityScoreDistribution> \
+    <MeanQualityByCycle> \
+    <CollectBaseDistributionByCycle> \
+    <CollectGcBiasMetrics> \
+    <RnaSeqMetrics> \
+    <CollectSequencingArtifactMetrics> \
+    <CollectQualityYieldMetrics>
+
+
+Note: commandLine can be split with the '\' character
+
+
+The 'use.default' parameter can toggle between (no arg) and 'PROGRAM=null'.
+p4_name=use.default
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=
+p4_description=Default value\: [CollectAlignmentSummaryMetrics, CollectBaseDistributionByCycle, CollectInsertSizeMetrics, MeanQualityByCycle, QualityScoreDistribution]. This option can be set to 'null' to clear the default value.
+p4_fileFormat=
+p4_flag=PROGRAM\=
+p4_numValues=0..1
+
+p4_optional=on
+p4_prefix=PROGRAM\=
+p4_prefix_when_specified=PROGRAM\=
+p4_type=java.lang.String
+
+p4_value=\=default;null\=null
+
+
+Each additional 'PROGRAM=' arg is a separate parameter.
+p5_MODE=
+p5_TYPE=TEXT
+p5_default_value=
+p5_description=
+p5_fileFormat=
+p5_flag=PROGRAM\=
+p5_name=CollectAlignmentSummaryMetrics
+p5_numValues=0..1
+p5_optional=on
+p5_prefix=PROGRAM\=
+p5_prefix_when_specified=PROGRAM\=
+p5_type=java.lang.String
+p5_value=\=no;CollectAlignmentSummaryMetrics\=CollectAlignmentSummaryMetrics
+
+
+
+
+The 'paramgroups.json' file requires manually editing and adding to the zip file. E.g.
+zip -r _modulename_v_version.zip paramgroups.json
+paramgroups.json
+[
+{       name: "Basic Parameters",
+  parameters: [ "input.file", "fasta.reference", "output.prefix" ],
+      hidden: false
+},
+{       name: "PROGRAM args",
+ description: "Set 'PROGRAM=' args to apply during the pass through the SAM file. This option can be set to 'null' to clear the default value. This option may be specified 0 or more times.",
+  parameters: [
+     "use.default",
+     "CollectAlignmentSummaryMetrics",
+     "CollectInsertSizeMetrics",
+     "QualityScoreDistribution",
+     "MeanQualityByCycle",
+     "CollectBaseDistributionByCycle",
+     "CollectGcBiasMetrics",
+     "RnaSeqMetrics",
+     "CollectSequencingArtifactMetrics",
+     "CollectQualityYieldMetrics"
+   ],
+      hidden: false
+}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+Demo.Picard.CollectMultipleMetrics_v0.4.1.zip
+Stéphane Plaisance
+unread,
+Aug 9, 2017, 2:47:34 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Peter,
+
+
+Thanks for your support and glad to see I was right smelling a bug in GP. I hope this will get fixed soon :-)
+
+
+Also thanks for the tutorial for manifest editing and optional json file, I finally learned how to do this properly and create sections which is very neat.
+Could this tutorial be added to the developer doc too? It seems very relevant to me.
+
+
+I still have a final question about the LSID line
+LSID=urn\:lsid\:8100.admin.MAF-SRV-04.maf-srv-04.med.ad10.intern.kuleuven.ac.be\:genepatternmodules\:57\:0.4.2
+what does 57 mean here before the version space? Can we put a random value here (like 0!) or is it related to the number of modules on the server...
+
+
+Best Regards,
+Stephane
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/W6BvGujgc-U/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/289c4fcc-4e0f-41d3-b9af-d3b4cfbe74e4%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+<Demo.Picard.CollectMultipleMetrics_v0.4.1.zip>
+
+
+
+Reply all
+
+Reply to author
+
+Forward

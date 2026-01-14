@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/I1BKUjUMMF0
+Title: tximport error
+----------------------------------------
+
+
+
+
+
+tximport error
+29 views
+Skip to first unread message
+
+Minu Seong
+unread,
+Dec 26, 2023, 10:20:50 AM
+
+
+
+to GenePattern Help Forum
+Hello. I'm a newest here. My purpose is to obtain the input .gct files for GSEA running.
+
+
+I run the tximport program. Input files are .abundance.h5 files from the kallisto output. However, I got an error message, below.
+
+
+Error in tximport(tximportfiles, type = "kallisto", tx2gene = tx2gene,  :
+  object 'tx2gene' not found
+Calls: suppressMessages -> withCallingHandlers
+Execution halted
+
+
+
+object 'tx2gene' not found
+
+edh...@cloud.ucsd.edu
+unread,
+Jan 5, 2024, 10:39:04 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+What was your job ID for the job that errored out? 
+
+
+Thanks, 
+Edwin 
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Jan 5, 2024, 11:14:34 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+For Salmon/Sailfish/Kallisto data providing the transcriptome file used to quantify the data is required and must be provided in GTF/GFF3 format. This parameter is not utilized for RSEM data. You need to supply a transcriptome database file to the "Transcriptome Database" parameter. It should be the same one gtf/gff3 file you used for your kallisto quant run. 
+
+
+Edwin 
+
+
+ 
+
+
+On Tuesday, December 26, 2023 at 10:20:50 AM UTC-8 ms5...@columbia.edu wrote:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/I4YDTiw34tk
+Title: Cloud Migration update: genepattern.broadinstitute.org will stop running jobs at 5 PM ET on November 30, 2018
+----------------------------------------
+
+
+
+
+
+Cloud Migration update: genepattern.broadinstitute.org will stop running jobs at 5 PM ET on November 30, 2018
+15 views
+Skip to first unread message
+Barbara Hill
+unread,
+Nov 21, 2018, 2:08:22 PM
+
+
+
+to GenePattern Help Forum
+
+Cloud Migration update: genepattern.broadinstitute.org will stop running jobs at 5 PM ET on November 30, 2018   
+
+
+In a previous blog post and email, we announced that the public GenePattern server hosted by the GenePattern team will officially be migrated to the Amazon cloud: https://cloud.genepattern.org at the end of December 2018. 
+
+
+
+
+As the next step in this migration, genepattern.broadinstitute.org will stop running jobs at 5 PM ET on November 30, 2018.
+
+
+
+
+This effectively ends our support of the Broad-hosted server. 
+
+Existing users will be able to log in only to retrieve any data or pipelines they wish to save before the server is shut down.
+
+(please see our previous blog post for additional details)
+
+Please note that there will also be system maintenance at the Broad Institute during the weekend of Dec 1 - 2, 2018, which may cause genepattern.broadinstitute.org to be offline intermittently. 
+
+
+
+
+If you have any questions or comments, feel free to post contact us via our public forum.
+
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/hkdSkSWbU6c
+Title: Basic file format query (too basic?)
+----------------------------------------
+
+
+
+
+
+Basic file format query (too basic?)
+9 views
+Skip to first unread message
+
+jr...@case.edu
+unread,
+Dec 6, 2017, 8:37:48 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm relatively new to bioinformatics and have been trying out various tools. I have proteomic data that I have processed into datasets with 3 columns - (protein, log expr change, and p-val) was wondering whether GenePattern has a pathway analysis tool such as ARCANE which can let me input my data in this form. I have entrez IDs/accession IDs for the various proteins too. I apologize for what must seem like a highly basic query, but I'm having trouble using GenePattern as is with this input and am not sure how to proceed if I wanted to try it out further. 
+
+
+Thanks for any help.
+
+
+Joe
+Barbara Hill
+unread,
+Dec 8, 2017, 1:27:09 PM
+
+
+
+to GenePattern Help Forum
+Hi Joe, 
+
+
+There is no such thing as a "too basic" question!
+
+
+We do have ARACNE https://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00090:2
+
+
+I would suggest starting with the documentation for the module https://genepattern.broadinstitute.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00090:2
+
+
+I would also suggest looking through our general proteomic offerings, either by searching for proteomics in the search bar in the panel on the left and/or by reading through an overview of our proteomics offerings on our webpage: http://software.broadinstitute.org/cancer/software/genepattern/proteomics
+
+
+On that same webpage, you will also find user guides and tutorials, which may help you to figure out some of the things you are struggling with. That being said, please feel free to pester us as often as you like with any questions you have. We're very happy to help!
+
+
+Best,
+Barbara
+
+
+PS Welcome to bioinformatics!
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

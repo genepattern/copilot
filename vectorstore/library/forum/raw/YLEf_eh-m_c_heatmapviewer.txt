@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/YLEf_eh-m_c
+Title: heatmapviewer
+----------------------------------------
+
+
+
+
+
+heatmapviewer
+3 views
+Skip to first unread message
+
+gudrun.m...@meduniwien.ac.at
+unread,
+Apr 26, 2019, 1:13:54 AM
+
+
+
+to GenePattern Help Forum
+what is wrong with the attached file, I used it for hierarchical cluster analyses but when I want to use the heatmapviewer there is an error?
+
+Job ID 113928
+
+
+
+
+
+Auswahl2new.gct
+Barbara Hill
+unread,
+Apr 29, 2019, 9:13:54 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+You have extra data in the first line of your GCT file.
+
+
+The first line should technically only contain "#1.2"
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+
+Different modules were written by different developers over many years, so they do not always parse the input in the same ways, and some may be more lenient than others.
+
+
+Please let us know if we can offer any other assistance.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,161 @@
+URL: https://groups.google.com./g/genepattern-help/c/F2BZQuOIS8o
+Title: Regd DiSCoVER
+----------------------------------------
+
+
+
+
+
+Regd DiSCoVER
+41 views
+Skip to first unread message
+
+ravi
+unread,
+Sep 19, 2024, 9:28:46 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+When using DiSCoVER module;
+
+
+1 - Is it okay to use TPM or RPKM values as gene expression values?
+
+
+2 - Can this algorithm be used for samples from different treatment groups in one .csv data sheet? For instance can I include tumour subtypes in one .csv sheet or is it ideal to prepare separate .csv sheets for each subtype/group of samples ?
+
+
+Your expert suggestion will help.
+
+
+Thank you,
+Ravi.
+
+
+Michael Reich
+unread,
+Sep 23, 2024, 4:08:11 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+1. You should use TPM values for input to DiSCoVER. 
+
+
+2. DiSCoVER is designed to run on one treatment/control pair at a time, so there should not be different treatment groups in the treatment .csv file.
+
+
+Please let me know if I can answer any other questions.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/53743331-b879-404a-b92f-120b39f2a9e7n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+ravi velaga
+unread,
+Sep 23, 2024, 4:50:01 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Michael,
+
+
+Thank you for the information and reply.
+
+
+Is it also compatible to use normalised total read counts after DESeq2 normalisation?
+
+
+Your suggestion will help.
+
+
+Thank you,
+Ravi.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/F2BZQuOIS8o/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5HAndxkjqOaJqBNms4D%3DV%3Dk_FNzUO43BbvsRsAD97wtRA%40mail.gmail.com.
+
+Michael Reich
+unread,
+Sep 24, 2024, 2:31:28 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ravi,
+
+
+Yes, you can use normalized DESeq2 read counts.
+
+
+Best,
+Michael
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFrAY%2BBOULDytiOEytMWVyyabav5WJzazNAJRE0gvRJM6HjrNw%40mail.gmail.com.
+
+
+ravi velaga
+unread,
+Sep 24, 2024, 3:28:16 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, Michael.
+
+
+Best regards,
+Ravi.
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5HSBHXO62puw6aJr%3DYALxskphaFw5Z2fohNFujpP4BDDg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

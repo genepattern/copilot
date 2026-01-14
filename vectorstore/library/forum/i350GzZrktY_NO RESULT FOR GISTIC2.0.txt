@@ -1,0 +1,2 @@
+Here is a summary of the GenePattern forum thread formatted for vector store ingestion:
+A user was experiencing issues running GISTIC 2.0 analysis on copy number alteration (CNA) data, initially encountering overlapping segment errors due to duplicate sample identifiers in the input file. After removing duplicates and trying multiple data sources, the user ultimately resolved the issue by using CNA data from Firehose/cBioportal instead of TCGA, with forum moderators providing guidance on proper .seg file formatting and troubleshooting input data errors.

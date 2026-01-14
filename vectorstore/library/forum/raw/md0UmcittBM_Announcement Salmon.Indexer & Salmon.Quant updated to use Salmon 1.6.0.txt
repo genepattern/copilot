@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/md0UmcittBM
+Title: Announcement: Salmon.Indexer & Salmon.Quant updated to use Salmon 1.6.0
+----------------------------------------
+
+
+
+
+
+Announcement: Salmon.Indexer & Salmon.Quant updated to use Salmon 1.6.0
+7 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Mar 31, 2022, 1:44:34 PM
+
+
+
+to GenePattern Help Forum
+Salmon.Quant & Salmon.Indexer have been updated to Salmon 1.6.0, and Quant now provides indices for the Gencode Human v39 and Mouse M28 releases.
+
+Both are now available on cloud.genepattern.org and in our production module repository.
+
+
+Reply all
+
+Reply to author
+
+Forward

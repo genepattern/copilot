@@ -1,0 +1,1 @@
+GenePattern API has a concurrent job limit of approximately 25-26 jobs to prevent system overload, requiring users to throttle job submissions to around 20 concurrent jobs when running multiple analyses, which helps maintain system performance and prevents blocking other users' computational resources.

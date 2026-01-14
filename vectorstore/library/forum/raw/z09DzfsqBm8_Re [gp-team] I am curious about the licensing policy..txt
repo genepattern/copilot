@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/z09DzfsqBm8
+Title: Re: [gp-team] I am curious about the licensing policy.
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] I am curious about the licensing policy.
+11 views
+Skip to first unread message
+Ted Liefeld
+unread,
+Apr 27, 2022, 8:06:01 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Hi
+
+
+GenePattern is free to use for all users.  If you wish to set up your own server, our open source license is available on our github repository at https://github.com/genepattern/genepattern-server.
+
+
+Hope this helps,
+
+Ted
+
+
+On Wed, Apr 27, 2022 at 4:02 AM shga...@gmail.com <shga...@gmail.com> wrote:
+
+
+ 
+
+hiHello I have a question.
+
+ 
+
+I am curious about the license policy for using genepattern- .
+
+ 
+
+I'm also curious about the amount.
+
+ 
+
+thank you.
+
+ 
+
+Windows용 메일에서 발송된 메일입니다.
+
+ 
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/B5BDEFD6-B232-4ECE-90B3-B74B1F8EE1F3%40hxcore.ol.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

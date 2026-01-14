@@ -1,0 +1,111 @@
+URL: https://groups.google.com./g/genepattern-help/c/zKZLsUWas_E
+Title: Inconsistent results with GSEA
+----------------------------------------
+
+
+
+
+
+Inconsistent results with GSEA
+6 views
+Skip to first unread message
+
+G
+unread,
+May 27, 2020, 3:26:10 AM
+
+
+
+to GenePattern Help Forum
+Hi. I am writing because I found a slightly inconsistent reporting of the results in two GSEA runs I made through the GENEPATTERN suite (https://cloud.genepattern.org/).
+
+
+
+The first run was done on November 6, 2019 using the MsigDB 7.0
+
+The second run was done today using the MsigDB v7.1.
+
+
+
+In the enclosed two png files where you can see that the reported figures of ES, NES, etc., are slightly different. I was wondering if this lack of reproducibility is due do the fact that I did something different, besided using two different MSigDB versions. I apologize in advance if I am missing something big here.
+
+
+
+I enclose also the rpt files of both runs.  
+
+
+
+Thanks in advance.
+
+SecondRun.rpt
+
+FirstRun.rpt
+
+FirstRun.png
+
+SecondRun.png
+Anthony Castanza
+unread,
+May 28, 2020, 7:59:46 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Note: This question was previously answered through the GSEA team’s direct contact, the answer has been copied here to make a record of the response in the GenePattern public help forum as well.
+
+ 
+
+Hi,
+
+ 
+
+There are at least two sources of variability that have led to the “inconsistency” you’ve observed (although, I would argue that, at least for the example you’ve provided, the enrichment result is within tolerance for being called as “the same”).
+
+ 
+
+The first is indeed the use of a different gene set database. The example you’ve provided is from Reactome, The version of Reactome that was included in MSigDB 7.0 is Reactome v69, the version of Reactome included in MSigDB 7.1 is version 72. If there was even a single gene change between the two versions of that gene set, that alone could be sufficient to cause the variability in that set.
+
+ 
+
+Additionally, you appear to be running GSEA without collapse/remap, this is no longer the generally recommended configuration. Gene symbols regularly get changed by the nomenclature consortium to better reflect our understanding of biology, MSigDB updates these symbols upon each release by pulling the latest annotation snapshot as integrated into the Ensembl database. MSigDB 7.0 uses gene symbols as present in Ensembl version 97/Gencode release 31. MSigDB 7.1 uses gene symbols as present in Ensembl 99/Gencode release 33. Again, if one of the symbols in the gene set changed due to renamings between the releases, that would have effectively the same result as deleting a gene from the gene set and adding in an entirely new one that wouldn’t necessarily match your dataset anymore, again introducing variability. To prevent this specifically, we provide CHIP files that should be used with their corresponding MSigDB version even when you input dataset is already “human gene symbols” (unless your dataset is from exactly the Ensembl/Gencode transcriptome version that was used to build that specific version of MSigDB).
+
+In the case of MSigDB 7.1 the CHIP file that performs this symbol “roll-up” to harmonize the user supplied gene symbols with the MSigDB versions of gene symbols is called: “Human_Symbol_with_Remapping_MSigDB.v7.1.chip”. I recommend using this chip with GSEA’s “Remap_only” collapse mode first, and then only if that encounters an error attempting in the true “collapse” mode.
+
+ 
+
+Thirdly, GSEA uses a random seed to perform the random permutation tests necessary to calculate the “significance” statistics. I can see from your .rpt files that you’ve left this with the default parameter in both runs. The defaut parameter uses the system timestamp to initialize the permutation algorithm. Since the timestamp was not identical between the two runs, the permuted null distribution will necessarily be different, and since the null distribution will have varied the resultant calculations will as well. At the bottom of the “index.html’ file in your GSEA outputs there is a section titled “Comments” GSEA prints the timestamp that was used as the seed in that section. In GSEA’s Advanced Parameters section you can manually specify an integer instead of the default timestamp. GSEA provided with the timestamp from a previous run through this UI will generate identical results when used with identical input files. However, for the other reasons I outlined above, your files aren’t strictly identical so you will still see some variance even if specifying the same seed.
+
+ 
+
+I hope this helps clarify some of how GSEA is operating on your data that can result in this, generally normal, variance,
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b0a12358-b237-4ff6-8124-6dae7e63ceb6%40googlegroups.com.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

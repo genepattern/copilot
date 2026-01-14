@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ho4Lpg7qpx4
+Title: Can't create a gene pattern account
+----------------------------------------
+
+
+
+
+
+Can't create a gene pattern account
+9 views
+Skip to first unread message
+
+noah
+unread,
+Nov 11, 2019, 2:19:22 PM
+
+
+
+to GenePattern Help Forum
+Hi I have been trying to register a gene pattern account and it gives me the following error:
+Error creating 'gp.user.dir' for username=friedman14, error: Unable to create home directory for user friedman14, userDir=/opt/gpcloud/gp_home/users/friedman14
+
+
+
+I've tried this with multiple permutations of ids, multiple permutations of passwords and in safari, firefox and chrome,
+
+
+What's going wrong?
+
+
+thanks
+Noah
+
+Barbara Hill
+unread,
+Nov 12, 2019, 10:25:47 AM
+
+
+
+to GenePattern Help Forum
+Hi Noah, 
+
+
+We had an unexpected surge of storage use and briefly ran out of space. This has been fixed and you should be able to create an account now.
+
+
+Please let us know if you have any other troubles, questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

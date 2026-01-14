@@ -1,0 +1,2 @@
+Here is the summary in the requested format:
+A user sought guidance on running ssGSEA via command line in a Linux pipeline, with a response explaining that while no direct command line version exists, the R-based module could potentially be adapted for command line use by examining the GitHub code and manifest file, though this would require R programming skills and local testing to ensure accurate results.

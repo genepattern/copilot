@@ -1,0 +1,32 @@
+URL: https://groups.google.com./g/genepattern-help/c/jC_FjHFY3Ek
+Title: GenePattern Notebook & HCA Workspaces have been updated!
+----------------------------------------
+
+
+
+
+
+GenePattern Notebook & HCA Workspaces have been updated!
+6 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Oct 15, 2019, 2:24:19 PM
+
+
+
+to GenePattern Help Forum
+The GenePattern Notebook & HCA Workspaces have been updated! 
+New features include the ability to upload large files in the UI Builder, an updated rich text editor, & expanded R support. 
+More details for v19.09: http://genepattern-notebook.org/new-features/ 
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user was experiencing difficulty launching PARIS jobs after the platform's migration to cloud infrastructure, seeking guidance on how to automatically launch jobs now that the previous direct method no longer works, with no definitive resolution provided in the forum thread.

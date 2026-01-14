@@ -1,0 +1,1 @@
+GenePattern ComparativeMarkerSelection module installation error resolved by reinstalling the module using the official zip file, specifically addressing a Java class loading issue on a Mac server where the beta version was initially causing an error preventing module execution.

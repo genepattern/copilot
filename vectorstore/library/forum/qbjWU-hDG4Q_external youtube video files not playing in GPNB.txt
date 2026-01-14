@@ -1,0 +1,1 @@
+GenePattern Notebook YouTube video embedding issue resolved by changing video URL from watch?v= format to embed/ format, specifically replacing 'https://www.youtube.com/watch?v=CdnaJPPxQow' with 'https://www.youtube.com/embed/CdnaJPPxQow' to ensure proper video display within the notebook environment.

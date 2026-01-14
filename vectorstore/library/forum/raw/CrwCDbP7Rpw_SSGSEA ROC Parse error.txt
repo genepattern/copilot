@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/CrwCDbP7Rpw
+Title: SSGSEA ROC Parse error
+----------------------------------------
+
+
+
+
+
+SSGSEA ROC Parse error
+31 views
+Skip to first unread message
+
+SF
+unread,
+Jun 9, 2023, 8:27:02 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've been trying to run the ssGSEA ROC module and am receiving the following error:
+
+
+Error in parse(text = paste0("dataset$", dataset_calculations[dataset_calculations[c(1)] == : <text>:1:14: unexpected numeric constant 1: dataset$Type 2 ^ Calls: prediction -> is.data.frame -> eval -> parse
+Execution halted
+
+
+I am using proj GCT from the ssGSEA module and have made the CLS file myself and with the ClsFileCreator tool. Both CLS files result in this error.
+
+
+I have previously ran this module in January 2023 without any issues. Any help would be greatly appreciated.
+
+
+Thank you!!
+SF
+unread,
+Jun 11, 2023, 3:05:26 PM
+
+
+
+to GenePattern Help Forum
+Resolved :)
+
+
+Reply all
+
+Reply to author
+
+Forward

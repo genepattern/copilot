@@ -1,0 +1,1 @@
+`GenePattern introduced Notebook Projects feature to improve notebook dependency management and organizational capabilities, with a YouTube tutorial available to demonstrate the new functionality and solicit user feedback.`

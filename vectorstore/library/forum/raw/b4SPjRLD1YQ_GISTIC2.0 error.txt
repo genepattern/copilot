@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/b4SPjRLD1YQ
+Title: GISTIC2.0 error
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 error
+27 views
+Error
+Gistic
+Skip to first unread message
+
+Swetha Ramadesikan
+unread,
+Jan 31, 2023, 9:13:29 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+I have been trying to run the GISTIC2.0 module on the public cloud server. I have previously run this with no issues. Since last night, I see the following error in my error log:
+"Essential container in task exited"
+"write /var/lib/docker/tmp/GetImageBlob351967463: no space left on device". 
+
+
+The input files have not significantly changed and I tried to rerun an older input file that had previously successfully generated outputs. Some of my JOB IDs are 490338, 490137, 490145.
+
+
+Thanks for your time and assistance!
+Swetha
+Ted Liefeld
+unread,
+Jan 31, 2023, 10:07:30 AM
+
+
+
+to GenePattern Help Forum
+Swetha,
+
+
+you can retry your job now and it should be able to go through, the problem was one of our compute nodes ran out of disk bit failed to shutdown.
+
+
+Ted
+
+
+Long version of what failed:
+
+
+We dispatch jobs on AWS and they can share compute nodes.  Another user ran a job that consumed the entire disk (~170GB) but the process did not die, it just sat in a hung state.  The scheduler saw that the CPU on this node was 0% and so it kept dispatching jobs to this compute node, which then failed because there was not enough space to get the docker container or input files.
+
+
+
+Swetha Ramadesikan
+unread,
+Feb 1, 2023, 6:39:29 AM
+
+
+
+to GenePattern Help Forum
+Ted, thank you so much for your quick response!! That fixed it, I am able to successfully complete jobs now!
+
+
+Swetha
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

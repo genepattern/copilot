@@ -1,0 +1,1 @@
+A GenePattern user encountered an error running ssGSEA where the file connection could not be opened; the issue was resolved by re-uploading the missing signature GMT file, which allowed the analysis to run successfully.

@@ -1,0 +1,1 @@
+GenePattern user encountered issue with Comparative Marker Selection analysis on microarray data from 23 patients, generating over 3000 significant results with blocks of similar p-values, with potential solution suggested involving more rigorous data preprocessing and referencing a tutorial for guidance on improving analytical approach.

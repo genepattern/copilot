@@ -1,0 +1,1 @@
+A GenePattern user sought guidance on extracting only human immunologic signature gene sets from the MSigDB C7 collection, which originally contains both mouse and human gene sets. The solution involved using the MSigDB search tool to filter for "Homo sapiens" in the C7 collection, then exporting the resulting human gene sets as a GMT file for further analysis in GSEA or ssGSEA.

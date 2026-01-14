@@ -1,0 +1,99 @@
+URL: https://groups.google.com./g/genepattern-help/c/fh9ZHD1Lifg
+Title: GenePattern R graphic device
+----------------------------------------
+
+
+
+
+
+GenePattern R graphic device
+10 views
+Skip to first unread message
+
+yingfei chen
+unread,
+Mar 12, 2019, 7:30:00 PM
+
+
+
+to genepatt...@googlegroups.com, Shiji...@utsouthwestern.edu, Yujin....@utsouthwestern.edu, pc...@broadinstitute.org
+
+Hi,
+
+ 
+
+Currently, we are trying to use GenePattern module "png" to create picture.  However, it didn't generate picture.
+
+ 
+
+As far as I know, it use the r 2.5 in docker image, not the R 3.5 system default in our server.
+
+ 
+
+I'm not sure how to manipulate the docker 2.5 image to have X11. Could you  give us some suggestion?
+
+ 
+
+Yujin, please add the details if any.
+
+ 
+
+Thanks,
+
+Yingfei
+
+Peter Carr
+unread,
+Mar 13, 2019, 7:12:44 AM
+
+
+
+to genepatt...@googlegroups.com, Shijia Zhu
+Did you try this as an alternative?
+
+png("abc", type="cairo")
+
+FYI, the GP server environment will not fix this. You need to get it working inside the container. For debugging, I suggest using the docker command line to connect to the container and do some basic experimenting with the R environment in the container. Once that is working, I am happy to show you how to modify the image, and link the new version to your module.
+
+Regards,
+Peter
+
+
+Y Y
+unread,
+Mar 15, 2019, 1:41:31 PM
+
+
+
+to genepatt...@googlegroups.com, Shijia Zhu
+Thanks for your input, Peter!
+
+
+
+We tried type="cairo", but didn't work. Instead, we found pdf() works fine without relying on X11. We'll switch to pdf() onward.
+
+
+Thanks!
+Yujin
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/40dd6355-78e7-016b-61f2-a8087b078245%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

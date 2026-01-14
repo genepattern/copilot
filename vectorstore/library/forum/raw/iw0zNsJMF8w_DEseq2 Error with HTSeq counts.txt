@@ -1,0 +1,150 @@
+URL: https://groups.google.com./g/genepattern-help/c/iw0zNsJMF8w
+Title: DEseq2 Error with HTSeq counts
+----------------------------------------
+
+
+
+
+
+DEseq2 Error with HTSeq counts
+67 views
+Skip to first unread message
+
+aswanikri...@gmail.com
+unread,
+Jul 10, 2023, 4:50:53 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I have encountered with a warning message like this while processing the HTSeq count data.
+Can anyone help to solve this?
+The downloaded source packages are in '/tmp/RtmpFKcWXL/downloaded_packages' Installing package into '/usr/local/lib/R/site-library' (as 'lib' is unspecified) Warning message: package 'optparse' is not available (for R version 3.3.2) -- note: fitType='parametric', but the dispersion trend was not well captured by the function: y = a/x + b, and a local regression fit was automatically substituted. specify fitType='local' or 'mean' to avoid this message next time. Host EC2 (instance i-0bb915fa859ddccb5) terminated.
+
+edh...@cloud.ucsd.edu
+unread,
+Jul 11, 2023, 10:42:13 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Can you send us the job number so we can take a look at it? 
+
+
+Thanks, 
+Edwin 
+
+
+
+Aswani
+unread,
+Jul 12, 2023, 12:48:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi 
+
+
+When i resubmit it my error is given below and my job id is  519837 for deseq2
+
+
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+trying URL 'http://cran.us.r-project.org/src/contrib/getopt_1.20.3.tar.gz'
+Content type 'application/x-gzip' length 18573 bytes (18 KB)
+==================================================
+downloaded 18 KB
+
+* installing *source* package 'getopt' ...
+** package 'getopt' successfully unpacked and MD5 sums checked
+** R
+** exec
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (getopt)
+
+The downloaded source packages are in
+	'/tmp/Rtmp2EE8om/downloaded_packages'
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+Warning message:
+package 'optparse' is not available (for R version 3.3.2) 
+Host EC2 (instance i-04e0df411abc3d02d) te
+--
+Thanks & Regards
+
+
+Aswani Krishna.P
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8a895929-89a1-4c2b-9662-1f30063da095n%40googlegroups.com.
+
+edh...@cloud.ucsd.edu
+unread,
+Jul 17, 2023, 12:28:42 PM
+
+
+
+to GenePattern Help Forum
+Hi Aswani, 
+
+
+We have updated DESeq2 to use an updated version of R (v 4.3.0), as well as updated DESeq2 to version 1.40.2. I've re-run your job here (https://cloud.genepattern.org/gp/pages/index.jsf?jobid=520845&openVisualizers=true&openNewWindow=false) and it ran to completion. Please reach out to us if you run into any more issues! 
+
+
+Thanks, 
+Edwin 
+
+
+
+Aswani
+unread,
+Jul 17, 2023, 11:00:02 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+
+
+Thank you so much for the help. 
+
+
+--
+Thanks & Regards
+
+
+Aswani Krishna.P
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8e10ec37-596c-478c-966d-e1ba9af72802n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

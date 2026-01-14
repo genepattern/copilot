@@ -1,0 +1,1 @@
+SOM clustering error in GenePattern involving a .gct file with inconsistent row dimensions, resolved by identifying and removing empty rows at the end of the data file, with a recommendation to use a text editor like Sublime Text to help manually clean the file and ensure consistent row and column counts.

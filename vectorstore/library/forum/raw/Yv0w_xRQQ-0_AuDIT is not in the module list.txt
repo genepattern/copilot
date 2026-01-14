@@ -1,0 +1,145 @@
+URL: https://groups.google.com./g/genepattern-help/c/Yv0w_xRQQ-0
+Title: AuDIT is not in the module list
+----------------------------------------
+
+
+
+
+
+AuDIT is not in the module list
+28 views
+Skip to first unread message
+
+Xiao LIANG
+unread,
+Nov 18, 2024, 2:26:15 AM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern,
+
+
+I am planning on using AuDIT (https://www.genepattern.org/modules/docs/AuDIT) but failed to find it in the module list.
+
+
+I noticed that similar issues have been reported since 2021 in several conversations. I wonder is there alternative way to run the software?
+
+
+Thanks,
+Xiao
+Ted Liefeld
+unread,
+Nov 18, 2024, 6:11:05 AM
+
+
+
+to GenePattern Help Forum
+Xiao,
+
+
+I have contacted the author of AuDIT to see if they have any update on those conversations from 2021 and whether it would be OK to share the code if not.  I believe I have located a copy of the old source code in deep archive which I could access after a day or 2.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+John Liefeld
+unread,
+Nov 21, 2024, 10:39:12 AM
+
+
+
+to GenePattern Help Forum
+Xiao,
+
+
+I spoke to the original author of AuDIT and it appears that nobody spent the time to get AuDIT running in docker (and thus modern GenePattern) back in 2021.  He did OK sharing the source code and I have attached it here.
+
+
+I will look at it next week to see if I can get it running in GenePattern but I can't give an ETA or guarantee of success.  I'll post back here once I have a result (positive or negative). Feel free to try to use it directly if you are familiar with R.
+
+
+Hope this helps,
+
+Ted
+
+
+AuDIT.zip
+John Liefeld
+unread,
+Nov 21, 2024, 10:47:47 AM
+
+
+
+to GenePattern Help Forum
+Added the code to public github for easier sharing...  https://github.com/genepattern/AuDIT
+
+Xiao LIANG
+unread,
+Nov 21, 2024, 10:37:04 PM
+
+
+
+to GenePattern Help Forum
+Thanks for the code and I'm looking forward to any updates!!
+
+
+Xiao
+
+
+
+John Liefeld
+unread,
+Dec 10, 2024, 2:02:00 PM
+
+
+
+to GenePattern Help Forum
+Xiao
+
+
+I just put a new version of AuDIT (v8) up on cloud.genepattern.org.  Let me know if you have any more requests,
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+Xiao LIANG
+unread,
+Dec 10, 2024, 6:09:02 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi John and Ted,
+
+
+Thanks for the kind help!
+
+
+Best Regards,
+Xiao
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/43466428-c8e3-4a38-8652-a1190e19e03fn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

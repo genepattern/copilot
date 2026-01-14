@@ -1,0 +1,134 @@
+URL: https://groups.google.com./g/genepattern-help/c/HKYMq7dfJmc
+Title: Error when trying to run GSEA pre-ranked
+----------------------------------------
+
+
+
+
+
+Error when trying to run GSEA pre-ranked
+35 views
+Skip to first unread message
+
+David Lahr
+unread,
+Jan 23, 2022, 12:39:22 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I hope you all are well.  I'm trying to run GSEA pre-ranked and the job fails almost immediately with this error message:
+"Essential container in task exited"
+
+
+Example job ID is 406731 but FYI same issue happened with the 13 others.  I'm running using a script that uses the python API, only parameter I changed were uploaded rnk files and updated the versions of the genesets.
+
+
+Can you help me get this working?  Thank you!
+
+
+Cheers,
+Dave
+David Lahr
+unread,
+Jan 23, 2022, 12:39:53 PM
+
+
+
+to GenePattern Help Forum
+ps. I found this stackoverflow that might be relevant:
+https://stackoverflow.com/questions/55702196/essential-container-in-task-exited
+
+David Eby
+unread,
+Jan 24, 2022, 3:14:39 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi David,
+
+
+It looks like there was an issue with pushing the latest GSEA container image to DockerHub.  I'll look into it ASAP, but it may be a couple of hours.
+
+
+Thanks,
+David
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/79a15e58-260e-44b4-bf72-48b29658e33fn%40googlegroups.com.
+
+David Eby
+unread,
+Jan 24, 2022, 3:57:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi David,
+
+
+The container image should be in place now.
+
+
+Thanks for your patience,
+David
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+Dave Lahr
+unread,
+Jan 25, 2022, 3:16:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi David
+
+
+Thank you for the quick response - after getting your email I kicked off the jobs again and they ran successfully last night.  FYI One job failed (out of 14) but I don't think it is related to this, I'm rerunning this morning.
+
+
+Thank you!
+Dave
+
+
+
+
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/HKYMq7dfJmc/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFEo9Xj2%2B5g50EYgLUdD6Ct9vK9uniMXEjh8ORKmfAhK3GQULQ%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

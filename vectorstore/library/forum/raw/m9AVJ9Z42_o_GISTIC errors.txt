@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/m9AVJ9Z42_o
+Title: GISTIC errors
+----------------------------------------
+
+
+
+
+
+GISTIC errors
+26 views
+Error
+Gistic
+R
+commandline
+troubleshooting
+Skip to first unread message
+
+Yura SONG
+unread,
+Feb 11, 2020, 2:44:41 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I faced a set of error during running GISTIC 2.0. I am using Ubuntu 18.10, and the version of MCR is v83.
+The command and parameters are as below,
+
+
+> gp_gistic2_from_seg -v 30 -rx 1 -js 4 -savegene 1 -genepattern 0 -b results_$cohort -seg $segfile -refgene hg19.mat -genegistic 1 -smallmem 0 -broad 1 -brlen 0.7 -conf 0.9 -scent none -qvt 0.25
+
+
+The segfile is attached.
+
+
+
+I run with several different cohorts, and only one gives this error messages, but did not give back any further logs.
+
+
+
+Error using genomic_location (line 63)
+crosses chromosomes
+
+Error in add_D_peakcalls (line 90)
+Error in make_all_lesions_file (line 105)
+Error in write_gistic_outfiles (line 70)
+Error in run_focal_gistic (line 319)
+Error in run_gistic20 (line 124)
+Error in run_gistic2_from_seg (line 249)
+Error in gp_gistic2_from_seg (line 97)
+
+
+
+If possible, could you give me some pieces of advice to overcome it?
+
+
+
+Thanks in advance,
+
+Best,
+
+
+Yura
+
+
+seg_clean_ESO.txt
+Ted Liefeld
+unread,
+Feb 11, 2020, 11:35:21 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I think you might have better luck getting help at the GISTIC forum .  https://groups.google.com/a/broadinstitute.org/g/gistic-forum
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

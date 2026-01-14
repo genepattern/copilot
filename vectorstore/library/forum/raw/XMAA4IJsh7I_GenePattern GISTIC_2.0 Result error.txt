@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/XMAA4IJsh7I
+Title: GenePattern GISTIC_2.0 Result error
+----------------------------------------
+
+
+
+
+
+GenePattern GISTIC_2.0 Result error
+88 views
+Skip to first unread message
+
+soogus
+unread,
+Oct 9, 2023, 11:01:38 PM
+
+
+
+to GenePattern Help Forum
+Some output files are missing. How can i do this problem?
+
+
+I would appreciate your reply.
+
+Ted Liefeld
+unread,
+Oct 10, 2023, 7:46:29 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+when you see a result or error, you should always read the stdout and stderr files that are returned as they will usually give a good idea of the cause.  In this case, the contents of the file, remote_stdout.txt, contains the following;
+
+
+        GISTIC version 2.0.23
+ 
+        GISTIC 2.0 input error detected:
+        All input data were removed after NaN processing.
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user needed help importing a non-standard Python package (mygene) that was pip-installed locally, receiving a ModuleNotFoundError; the solution involved using a terminal within the GenePattern environment to install the package with the "--user" flag and then restarting the notebook kernel to successfully import the package.

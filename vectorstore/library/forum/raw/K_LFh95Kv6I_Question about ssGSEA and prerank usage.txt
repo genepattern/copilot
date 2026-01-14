@@ -1,0 +1,135 @@
+URL: https://groups.google.com./g/genepattern-help/c/K_LFh95Kv6I
+Title: Question about ssGSEA and prerank usage
+----------------------------------------
+
+
+
+
+
+Question about ssGSEA and prerank usage
+55 views
+Skip to first unread message
+
+Kathy Ma
+unread,
+Apr 3, 2024, 12:00:10 PM
+
+
+
+to GenePattern Help Forum
+Hi there,
+
+
+I'm currently engaged in replicating the GSEA analysis from a study. This study includes a variety of gene lists for both wild-type and mutant specimens. Their approach was to first normalize expression values, then rank genes for each specimen individually, and conducting a separate GSEA for each. It appears to me that traditional GSEA, which typically requires the complete dataset along with phenotype labels, may not be the best fit for this scenario since their input is single vectors. I'm uncertain whether ssGSEA or a preranked GSEA approach would be appropriate here. Do you have any recommendations or insights on this matter?
+
+
+
+Thank you so much,
+Kathy Ma
+Anthony Castanza
+unread,
+Apr 4, 2024, 2:15:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Kathy,
+
+
+What kind of normalization was used for the data? There are some considerations that need to be made, like for gene length, when doing this kind of analysis.
+
+That said, either approach can work with proper normalization, the big difference is that for ssGSEA the input data will first undergo a z-score like transform then the area under the curve of the enrichment calculation will be returned as the enrichment score. With the GSEAPreranked approach, the data will be used as-is and the maximum deviation from zero will be returned as the enrichment score. Because of this the ssGSEA approach can be more informative with respect to the ability to interpret how skewed your set of interest is compared to the mean expression. That said the GSEAPreranekd approach will still tell you what sets are disproportionately represented at the top and bottom of the lists in absolute terms, and does have the advantage of returning additional calculations for significance statistics based on permuting the gene set membership - a feature that the ssGSEA approach lacks.
+
+
+As to a specific recommendation for which approach is best for the dataset here, I'm afraid that's a little beyond the scope of the kind of advice we can offer here, sorry! But do feel free to reach out with any additional questions
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/970eac77-205e-4e3d-b9f9-3af9b5c4006en%40googlegroups.com.
+
+Kathy Ma
+unread,
+Apr 8, 2024, 8:44:43 AM
+
+
+
+to GenePattern Help Forum
+Hi Anthony, 
+
+
+Thank you for your reply! As for the normalization method, they first normalize genes using the robust multichip average method (the measurements are array data). Then, they normalized the value for each gene i (~21327 genes in total) across each sample n (~20 in total) using the formula:
+
+
+Which is kind of like the like z-score transform. Then, the GSEA for each sample was performed. 
+My understanding is that since the expression values already went through a z-score like transformation, it's not necessary to use the ssGSEA? Could you advise on whether it would be suitable to use preranked or single-sample GSEA for this analysis? I know this may be a bit off-topic, but I really appreciate any of your thoughts on this case.
+
+
+Thanks again,
+Kathy Ma
+
+Anthony Castanza
+unread,
+Apr 9, 2024, 10:33:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Kathy,
+
+
+Because of the transformation I would probably agree that it wouldn't be appropriate to run this through ssGSEA where such a transform would be repeated. That said, I'm not a statistician, so I would probably recommend consulting with one in this case if your institution offers such a service.
+
+Sorry I couldn't be of more help here
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/755b9aa3-a904-4a32-a066-66d292f6c8f8n%40googlegroups.com.
+
+Kathy Ma
+unread,
+Apr 11, 2024, 6:17:25 AM
+
+
+
+to genepatt...@googlegroups.com
+That's fine. Thank you so much for your help!
+
+
+Regards,
+Kathy Ma
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/K_LFh95Kv6I/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZzEV6FAPAu-ks4CT4V5Z8o3cn4KT4%3Dof4dbaLr9xhBqKA%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

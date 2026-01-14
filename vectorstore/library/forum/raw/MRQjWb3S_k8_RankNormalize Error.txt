@@ -1,0 +1,133 @@
+URL: https://groups.google.com./g/genepattern-help/c/MRQjWb3S_k8
+Title: RankNormalize Error
+----------------------------------------
+
+
+
+
+
+RankNormalize Error
+4 views
+Skip to first unread message
+
+Hussein El Saghire
+unread,
+Mar 13, 2019, 3:54:35 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ 
+Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+Always giving an error in RankNormalize Module.  
+/opt/gpbeta/gp_home/jobResults/97953.meta/exec.sh: 4: /opt/gpbeta/gp_home/jobResults/97953.meta/exec.sh: Rscript: not found
+
+
+Job ID if run on a publicly available server: 97953
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Mar 13, 2019, 8:50:06 AM
+
+
+
+to genepatt...@googlegroups.com
+I'm looking into this, I'll let you know what I find.
+Regards,
+Peter
+
+Peter Carr
+unread,
+Mar 13, 2019, 10:25:58 AM
+
+
+
+to genepatt...@googlegroups.com
+It should be working now on cloud.gp. Thanks for letting us know about the problem.
+
+FYI, for other servers, if you run into this problem, here is the workaround. Set the job.docker.image in the configuration file.
+    ./gp_home/resources/config_custom.yaml
+
+default.properties:
+    ...
+    job.docker.image.lookup: {
+        ...
+        "RankNormalize": "genepattern/docker-r-2-15:0.1",
+        ...
+    }
+    ...
+
+
+Regards,
+Peter
+
+Hussein El Saghire
+unread,
+Mar 15, 2019, 1:41:31 PM
+
+
+
+to genepatt...@googlegroups.com
+thanks Peter!!
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8534377c-fc75-ea1f-5318-62f77bef19b8%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

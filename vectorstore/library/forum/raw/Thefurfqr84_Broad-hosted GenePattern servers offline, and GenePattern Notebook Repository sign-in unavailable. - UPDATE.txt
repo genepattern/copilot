@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/Thefurfqr84
+Title: Broad-hosted GenePattern servers offline, and GenePattern Notebook Repository sign-in unavailable. - UPDATE
+----------------------------------------
+
+
+
+
+
+Broad-hosted GenePattern servers offline, and GenePattern Notebook Repository sign-in unavailable. - UPDATE
+11 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Aug 25, 2017, 9:57:51 AM
+
+
+
+to genepatt...@googlegroups.com
+UPDATE: 
+
+
+The two GenePattern servers hosted at the Broad are back online, and sign in for the Notebook Repository has been restored.
+
+
+We've updated our blog post with information about our ongoing efforts to improve performance and a request to hold off on big data and batch jobs until Monday.
+
+
+Many thanks for your patience,
+
+
+The GenePattern Team
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+The two GenePattern servers hosted at the Broad - genepattern.broadinstitute.org & gpbroad.broadinstiute.org -  are currently unavailable. 
+
+
+This also impacts sign in for the GenePattern Notebook Repository.
+
+
+We will keep our blog updated as we work to resolve the issues.
+
+
+You can also follow us on Twitter, Facebook or Google+
+
+
+Many thanks for your patience,
+
+
+The GenePattern Team
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user encountered an error creating an account due to insufficient file storage space, which was temporarily resolved by the system administrator freeing up some disk space, with a recommendation to avoid working with large datasets until full capacity is expanded.

@@ -1,0 +1,1 @@
+`Broad Institute announced the end of service for CentOS 5 compute nodes after a data center fire, resulting in the discontinuation of several legacy bioinformatics modules and pipelines, with future archiving planned in GParc repository or GitHub`

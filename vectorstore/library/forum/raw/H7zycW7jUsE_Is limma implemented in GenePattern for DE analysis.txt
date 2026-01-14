@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/H7zycW7jUsE
+Title: Is limma implemented in GenePattern for DE analysis ?
+----------------------------------------
+
+
+
+
+
+Is limma implemented in GenePattern for DE analysis ?
+11 views
+Skip to first unread message
+
+Simone Ragaini
+unread,
+Mar 14, 2020, 2:01:34 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+I'd like to know if I could use limma through GenePattern for differential expression analysis.
+I read something about NuGo modules but I couldn't find it.
+Can you help me ?
+
+Thank you very much,
+
+Simone
+Barbara Hill
+unread,
+Mar 16, 2020, 1:10:54 PM
+
+
+
+to GenePattern Help Forum
+Hello Simone, 
+
+
+The only limma module we have in GenePattern implements VOOM from the Bioconductor limma package - it's called 'VoomNormalize'
+
+
+The NuGO GenePattern modules were created by an outside organization many years ago and hosted on their own servers, but not on ours. 
+
+
+Please let us know if we can help in any other way.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

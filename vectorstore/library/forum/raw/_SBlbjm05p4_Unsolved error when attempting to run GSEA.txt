@@ -1,0 +1,218 @@
+URL: https://groups.google.com./g/genepattern-help/c/_SBlbjm05p4
+Title: Unsolved error when attempting to run GSEA
+----------------------------------------
+
+
+
+
+
+Unsolved error when attempting to run GSEA
+64 views
+Skip to first unread message
+
+jpa...@uic.edu
+unread,
+Nov 28, 2018, 10:11:30 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+While attempting to run a GSEA I continue to get the error "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab." I have ensured that all of my files are formatted correctly and that I have used the proper uploader. I have completed GSEA's using this software earlier in the year with no problems using the same data, but different gene sets.
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Nov 28, 2018, 12:44:25 PM
+
+
+
+to genepatt...@googlegroups.com
+Did you upload the file on the 'Files' tab to the left of the page? How large is the file? and does it happen to have an special characters in the file name?
+
+Thanks,
+Peter
+
+Finley Lab
+unread,
+Dec 4, 2018, 8:17:11 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I'm having the same issue. I've tried running the exact same files that I have used successfully in the past.
+
+
+
+If I upload a file directly into the "basic parameters" section, I get this error: "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+I have also uploaded the file to the 'Files' tab and confirmed that the file uploaded successfully. When I try to run using this file, I get a popup error window stating, "Error:
+An error occurred while submitting the job: Error updating upload file record for file 'tmp': nul"
+
+
+I've used both GenePattern GSEA/GSEAPreranked for years and never seen either of these errors. I see them both with old files I have used before and with new.
+
+
+
+Any insight into what I'm doing wrong would be greatly appreciated.
+
+Barbara Hill
+unread,
+Dec 4, 2018, 1:37:45 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Could you send your userid? 
+
+
+And when you say you've run this successfully before, was that on genepattern.broadinstitute.org or on cloud.genepattern.org?
+
+
+Many thanks
+-Barbara
+Message has been deleted
+Barbara Hill
+unread,
+Dec 10, 2018, 11:53:00 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+It appears that you've been able to run GSEAPreranked successfully.
+
+
+Do you have any remaining questions or concerns?
+
+
+Best
+-Barbara
+SId
+unread,
+Dec 12, 2018, 6:52:33 PM
+
+
+
+to GenePattern Help Forum
+I appear to encounter the same error when I run ssGSEA.
+I have used the same input gct file multiple times before on gene pattern.broadinstitute.org (not cloud.genepattern.org)
+Doesn't matter if I try to upload the file from my computer or use the file saved on gene pattern.
+
+
+My id is rellikniap
+
+
+Thanks for your assistance
+Sid
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 9:24:01 AM
+
+
+
+to GenePattern Help Forum
+Our file storage was completely full, which was likely the source of the problem. I can submit GSEApreranked jobs now. Please let us know if this has solved your issues.
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 9:46:57 AM
+
+
+
+to GenePattern Help Forum
+This issue has been resolved for another user now, so I will mark this as resolved unless someone else is still experiencing the same problem.
+
+Siddhartha Devarakonda
+unread,
+Dec 13, 2018, 4:58:02 PM
+
+
+
+to genepatt...@googlegroups.com
+Still unable to upload my file on ssGSEA and run the analysis
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.”
+
+
+
+
+
+
+
+
+-- 
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/03629c01-4fb3-413a-aa31-91cd0fb42acd%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Jing Liu
+unread,
+Aug 1, 2020, 7:40:38 PM
+
+
+
+to GenePattern Help Forum
+Me too. The problem is still here in my Mac computer
+
+
+
+
+Barbara Hill
+unread,
+Aug 3, 2020, 10:51:42 AM
+
+
+
+to GenePattern Help Forum
+Hello!
+
+
+I've responded to your question in the other thread in which you posted.
+
+
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/genepattern-help/kaHi5UOD-N0/RkbP7ATxAAAJ
+
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

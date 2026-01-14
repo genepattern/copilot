@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/OYVPPx3l9jo
+Title: MutsigCV error
+----------------------------------------
+
+
+
+
+
+MutsigCV error
+32 views
+Skip to first unread message
+
+Sumithra Sankararaman
+unread,
+Nov 7, 2022, 8:19:41 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern developers,
+I tried to run mutsigCV on GenePattern but get errors which I don't understand. This is the job id 474342. 
+For coverage, I used exome_full192_coverage.txt which I downloaded locally. If this is not the correct one, could you please let me know which is the correct version.
+Thank you.
+Regards,
+Sumithra
+
+
+Ted Liefeld
+unread,
+Nov 7, 2022, 8:56:20 AM
+
+
+
+to GenePattern Help Forum
+Sumithra,
+
+
+I think you may be encountering 2 different errors.  First the job failed because the underlying AWS EC2 compute node shut down.  This probably has nothing to do with your inputs, it happens sometimes and is a side effect of GenePattern using the cheapest AWS resources available to keep our costs in check so that we can remain free to use.
+
+
+Second when I rerun your job I get this error;
+
+
+Error using gp_MutSigCV>MutSig_preprocess (line 302) missing mutation_type_dictionary_file Error in gp_MutSigCV (line 184
+
+
+
+I cannot help with this issue as I am not terribly familiar with the details of MutSigCV.  To fix this problem and to answer your direct question (about the exome file), I recommend that you try one of the following, which are specific to MutSigCV issues:
+
+http://www.broadinstitute.org/cancer/cga/cga_forums
+muts...@broadinstitute.org
+
+
+Hope this helps,
+
+Ted
+
+Sumithra Sankararaman
+unread,
+Nov 9, 2022, 8:55:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, Ted. I will contact the google group you have referenced.
+Sumithra
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b1798f0d-689a-45bd-8b26-9752ac91af63n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

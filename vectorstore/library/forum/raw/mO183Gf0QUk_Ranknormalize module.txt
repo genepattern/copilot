@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/mO183Gf0QUk
+Title: Ranknormalize module
+----------------------------------------
+
+
+
+
+
+Ranknormalize module
+19 views
+Skip to first unread message
+
+Hussein El Saghire
+unread,
+Apr 18, 2023, 5:46:20 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am trying to find ranknormalize module in genepattern, but when searched in the modules tab, it is not appearing. Was it discontinued? 
+
+
+Kind regards 
+edh...@cloud.ucsd.edu
+unread,
+Apr 18, 2023, 10:49:51 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+The module was deprecated as of December 2021 (https://www.genepattern.org/blog/2021/12/06/end-of-support-for-modules-using-the-deprecated-genepattern-patch-mechanism#gsc.tab=0 ). We are looking into it and will let you know if there is a re-implemented version of the module in the future. 
+
+
+Edwin 
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Apr 18, 2023, 10:15:31 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+We just installed RankNormalize onto our cloud server, available here: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00315:1.10. Please let us know if you run into any issues or have questions. Thanks! 
+
+
+Edwin 
+
+
+
+Hussein El Saghire
+unread,
+Apr 19, 2023, 1:43:07 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Edwin, 
+
+
+Module is functioning correctly without any problem. 
+I appreciate your help. 
+Kind regards
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/mO183Gf0QUk/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/766a95e0-d07b-49e9-b198-8b30dc6a7634n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

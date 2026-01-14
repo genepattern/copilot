@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/wfrpK158HUs
+Title: ComparativeMarkerSelection execution log
+----------------------------------------
+
+
+
+
+
+ComparativeMarkerSelection execution log
+12 views
+MarkerSelection
+Skip to first unread message
+
+Viktor
+unread,
+Dec 20, 2018, 8:49:40 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Is it possible to add execution log to ComparativeMarkerSelection module on cloud? It used to be generated on the old server and it was very convenient.
+
+
+Thank you,
+Viktor
+Peter Carr
+unread,
+Dec 20, 2018, 10:18:05 AM
+
+
+
+to genepatt...@googlegroups.com
+The 'gp_execution_log.txt' file is available on the cloud. Make sure to
+click the checkbox on the job status page.
+The hidden command line log uses a different naming convention,
+https://cloud.genepattern.org/gp/jobResults/<jobId>/.rte.out
+e.g.
+    https://cloud.genepattern.org/gp/jobResults/68333/.rte.out
+
+Regards,
+Peter
+
+
+Viktor
+unread,
+Dec 20, 2018, 10:27:06 AM
+
+
+
+to GenePattern Help Forum
+Got it, thanks very much, Peter. 
+
+
+Reply all
+
+Reply to author
+
+Forward

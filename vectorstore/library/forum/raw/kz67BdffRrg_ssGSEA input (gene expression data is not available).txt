@@ -1,0 +1,76 @@
+URL: https://groups.google.com./g/genepattern-help/c/kz67BdffRrg
+Title: ssGSEA input (gene expression data is not available)
+----------------------------------------
+
+
+
+
+
+ssGSEA input (gene expression data is not available)
+44 views
+Skip to first unread message
+
+mko
+unread,
+Dec 23, 2021, 10:18:59 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm wondering if ssGSEA can take any scores (other than gene expression values).
+For example,  we came up with some scores that can rank individual genes (over 20k) across >=30 samples.
+
+
+Is ssGSEA going to work in this scenario? If it does, does it required to be preprocessed like normalization?
+
+
+Thanks!
+
+
+MJ
+
+
+
+
+Anthony Castanza
+unread,
+Jan 4, 2022, 11:08:28 AM
+
+
+
+to GenePattern Help Forum
+Hi MJ,
+
+
+Without knowing the details of your ranking metric its difficult to say if it would be appropriate for ssGSEA or not.
+
+
+
+Internally, ssGSEA transforms the provided score into something akin to a z-score, and then using this list produces a calculation similar to the standard GSEA mountain plot where the score is incremented when a gene is in the set and de-incremented when a gene is not in the set, but then the final ssGSEA score is calculated from the area under the resulting "curve" (hopefully that makes sense).
+
+
+
+The general expectation would be that the dataset contains all of the expressed genes in the model, that the values of the genes are assigned in some biologically meaningful way (at least such that it isn't nonsensical to weight each gene's contribution to the  set score proportionally to it's ranking metric), and finally that technical biases in the dataset have been removed (such as the common rna-seq length bias where longer genes tend to have more assigned counts).
+
+
+If you explain a little more about what you're trying to do, how your experiment is designed, and what kind of results you're looking for (per sample scores, groupwise differential scores, etc), hopefully I'll be able to offer more detailed advice here.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+https://gsea-msigdb.org
+
+
+
+Reply all
+
+Reply to author
+
+Forward

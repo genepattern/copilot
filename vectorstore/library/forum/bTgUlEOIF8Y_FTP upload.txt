@@ -1,0 +1,1 @@
+GenePattern file upload thread summary: User seeks assistance uploading a large 1GB file, with recommended solutions including direct FTP URL input for single analysis jobs and using GenomeSpace for multiple file reuse across analyses, providing alternative methods to circumvent traditional upload limitations.

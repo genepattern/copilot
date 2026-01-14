@@ -1,0 +1,224 @@
+URL: https://groups.google.com./g/genepattern-help/c/99NgzO8gKoQ
+Title: When do you expect ESPPredictor to be back running?
+----------------------------------------
+
+
+
+
+
+When do you expect ESPPredictor to be back running?
+47 views
+Skip to first unread message
+
+hw08...@gmail.com
+unread,
+Jul 9, 2018, 12:16:00 PM
+
+
+
+to GenePattern Help Forum
+I posted one week ago regarding the pending ESPPredictor. A new message stating that it was possible due to the recent power outrage was posted on 6/28/2018. The ESPPredictor is still not running. When do you expect to have this module running again?
+
+
+Honghui
+
+Peter Carr
+unread,
+Jul 9, 2018, 1:19:33 PM
+
+
+
+to genepatt...@googlegroups.com
+Unfortunately, the fire took out the last remaining compute node that supported the ESPPredictor module. We want it up and running as soon as possible but do not have anyone available right now to port it to our new infrastructure. It requires the following:
+* matlab 2010a
+* R2.5
+* java
+
+It is possible to install these requirements on a local machine and run it from there, but I have had not had a chance to test this out.
+
+Regards,
+Peter
+
+
+
+
+On 7/9/18 3:16 PM, hw08...@gmail.com wrote:
+
+I posted one week ago regarding the pending ESPPredictor. A new message stating that it was possible due to the recent power outrage was posted on 6/28/2018. The ESPPredictor is still not running. When do you expect to have this module running again?
+
+
+Honghui
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0520e73f-53c1-42bc-b5df-8d969f30d691%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Honghui Wang
+unread,
+Jul 10, 2018, 7:58:05 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks. I notice there is another server in Indiana University. However, there is no Esppredictor module in Indiana site. Is it possible to ask Indiana site to install esppredictor? How to contact them?
+
+
+Honghui 
+
+
+Sent from my iPhone
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1e79a77e-ff1f-f642-b5d5-44edb585d7a0%40broadinstitute.org.
+
+Peter Carr
+unread,
+Jul 10, 2018, 8:05:02 AM
+
+
+
+to genepatt...@googlegroups.com
+The module only worked on the old (centos5) compute nodes that we had at the Broad. We first have to go through the exercise of replicating that compute environment (by creating a new docker image and testing the module). It’s not that hard to do, but it does require some attention.
+It will not easily install at Indiana U until we have the docker image.
+
+
+I will keep you posted.
+
+
+Regards,
+Peter
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ABC299DA-8AA3-4FDE-ADEA-B966600D505B%40gmail.com.
+
+Honghui Wang
+unread,
+Jul 29, 2018, 12:37:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peter,
+
+
+Thanks. I’m trying to install ESPpredictor on my local computer (32-bit pc Window 7) since this module in GenePattern was damaged by fire a few weeks ago.
+
+ 
+
+I have downloaded esppredictor.zip file from Genepattern.org, installed R2.5, Matlab 2010a and Java on my computer. Here are the directories for all these files:
+
+ 
+
+Matlab DIR: C:\Program Files\MATLAB\R2010a
+
+R2.5 DIR: "C:\Program Files\R\R-2.5.0\bin\Rgui.exe
+
+ESPPREDICTOR DIR: “C:\Users\hwang2\Desktop\ESPpredictor”
+
+Java DIR: C:\Program Files\Java\jre1.8.0_151
+
+ 
+
+Could you offer me a detailed instruction on how to run ESPpredictor on my PC? I’m not a computer programmer and have little experience on Java or R programming.
+
+ 
+
+Thank you very much for your help.
+
+ 
+
+Honghui
+
+
+
+Sent from my iPhone
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/05AC32FA-E2D8-403E-8A88-9B4BD4DB2DBE%40broadinstitute.org.
+
+Barbara Hill
+unread,
+Aug 3, 2018, 2:24:51 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The command line for ESPPredictor in GenePattern is:
+<java> <java_flags> -cp <libdir>gp-modules.jar -Dmatlab\=/broad/software/nonfree/Linux/redhat_5_x86_64/pkgs/matlab_2010a/bin/matlab org.genepattern.module.ESPPredictor <libdir> peptideFeatureSet <input.file> zzz <R2.5_HOME> <libdir>ESP_Predictor.R Predict PeptideFeatureSet.csv <libdir>ESP_Predictor_Model_020708.RData <libdir>
+
+
+<xxx> is a variable - https://launchschool.com/books/ruby/read/variables
+
+
+This is like sending email to a mailing list, where the TO:  field has a placeholder like <email> and this is populated by a computer program, when you send, with the email of someone on your mailing list, so that you don't have to type in each email.
+
+
+Basically, this means you need to replace each of those < > instances with the "hardcoded" value for your computer.  something like:
+
+
+(you'll want to make sure to add java to your path https://www.java.com/en/download/help/path.xml)
+
+
+then from the director where the gp-modules.jar file is (where you extracted the module .zip file)
+
+
+java -cp <libdir>gp-modules.jar -Dmatlab=C:\Program Files\MATLAB\R2010a org.genepattern.module.ESPPredictor peptideFeatureSet <input.file> zzz C:\Program Files\R\R-2.5.0\bin ESP_Predictor.R Predict PeptideFeatureSet.csv ESP_Predictor_Model_020708.RData
+
+
+Both Peter and I are out next week, so if this doesn't work, we'll help you out when we get back. We're also going to create a new version of this module for our Amazon Cloud server, hopefully, to be made available in September.
+
+
+Best
+-Barbara
+anne-marie hesse
+unread,
+Feb 11, 2019, 12:40:42 AM
+
+
+
+to GenePattern Help Forum
+Dear all
+
+
+I am also very interesting in ESP predictor.
+
+
+Somebody could send me the esppredictor.zip, please ? 
+
+
+best regards
+Anne-MArie
+
+Barbara Hill
+unread,
+Apr 30, 2020, 1:48:46 PM
+
+
+
+to GenePattern Help Forum
+We have just now released ESPPredictor on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:4
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/StVkCPRyDlc
+Title: MutSigCV error
+----------------------------------------
+
+
+
+
+
+MutSigCV error
+27 views
+Skip to first unread message
+
+Sandra Romero
+unread,
+Mar 17, 2020, 1:57:29 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Team: 
+
+
+I am trying to reanalyze some maf files in MutSigCV module from my own data as well as TCGA. Some moths ago I performed the analysis without any problem in Genepattern but right now I am facing some errors, even with the same files I had already analyzed. 
+
+
+Error using gp_MutSigCV>MutSig_preprocess (line 302)
+missing mutation_type_dictionary_file
+
+Error in gp_MutSigCV (line 184)
+
+
+All my MAF files were annotated according to example_files/MutSigCV_1.3/mutation_type_dictionary_file.txt and I am using MutSigCV_1.3/exome_full192.coverage.txt as coverage file. 
+
+
+I share my input files.
+
+
+Any idea what is going on?
+
+
+Tjanks in advance for your support
+
+
+
+TCGA_AA.maf
+
+Prueba1.maf
+Ted Liefeld
+unread,
+Mar 18, 2020, 11:52:12 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+in the description for the "mutation type dictionary" parameter, it says
+
+
+        "The mutation type dictionary to use for automatic category and effect discovery. This is necessary only if you are using a MAF file without the columns "categ" and "effect"."
+
+
+
+it seems that neither of your maf files has these columns so you probably need to provide the dictionary files you used for annotation (which you named above) to that parameter.
+
+
+hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

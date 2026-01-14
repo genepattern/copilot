@@ -1,0 +1,1 @@
+The GenePattern forum thread discusses a user's question about using Picard's SortSam tool to sort multiple input files simultaneously, with the official response recommending using the GenePattern module's "Batch" checkbox to process multiple files, or alternatively contacting the Picard team directly for command-line specific guidance on multi-file processing.

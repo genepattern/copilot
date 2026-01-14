@@ -1,0 +1,1 @@
+A user was having trouble locating the exome coverage file for MutSigCV on the GenePattern server, and a support representative provided a direct download link to the specific coverage file at https://datasets.genepattern.org/data/module_support_files/MutSigCV_1.3/exome_full192.coverage.txt, resolving the user's file access issue.

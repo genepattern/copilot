@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/tbl9yeaejKA
+Title: File transfer error
+----------------------------------------
+
+
+
+
+
+File transfer error
+107 views
+Skip to first unread message
+
+Abby X
+unread,
+Jul 26, 2021, 2:37:52 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I have encountered the same error message when attempting to run GSEA Preranked on my personal computer, when using "upload files." Here is the error message: "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab." 
+
+
+I also get the error message when I uploaded to the Files tab first. "Error updating upload file record for file 'tmp': null." 
+
+
+I believe I have formatted my rnk and gmx files correctly. Please let me know if you have any suggestions!
+
+
+
+
+Username: abx4001
+(have also tried w/ username axie2609)
+
+
+Thank you.
+
+
+Ted Liefeld
+unread,
+Jul 27, 2021, 8:20:27 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+sorry about the problems with the upload.  Can you tell me
+1. When did this happen (the more accurate the time the easier to find it in log files)
+2. What operating system were you uploading from
+3. What browser were you using.
+4. Where (approximately) are you geographically (to look into network problems.  Nation or state is accurate enough)
+
+
+Ted
+
+
+
+qingy...@gmail.com
+unread,
+Aug 1, 2021, 7:29:09 AM
+
+
+
+to GenePattern Help Forum
+I get the same error trying to upload a batch of files to run GISTIC_2.0. 
+3 files were successfully uploaded. And the rest are not uploaded. Then I tried to upload individual files with the "Upload File" button, but then even single file fails.
+
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+qingy...@gmail.com
+unread,
+Aug 1, 2021, 7:31:30 AM
+
+
+
+to GenePattern Help Forum
+Sorry I forgot to write the specs. It's exactly now, with macOS 11.5.1, safari browser, Switzerland.
+
+qingy...@gmail.com
+unread,
+Aug 1, 2021, 7:56:19 AM
+
+
+
+to GenePattern Help Forum
+I have tried again with Google Chrome. Same error. What is strange is that some files went to the end of the process bar 100% uploaded, but after the error occurred, none of them were successfully uploaded. 
+
+qingy...@gmail.com
+unread,
+Aug 1, 2021, 8:07:57 AM
+
+
+
+to GenePattern Help Forum
+
+Hi, 
+I tried to upload the files to "Files" and drag from there. And it worked. I wonder if there's an easier way to drag multiple files from the uploaded files?
+
+
+Thank you.
+Qingyao
+
+
+Reply all
+
+Reply to author
+
+Forward

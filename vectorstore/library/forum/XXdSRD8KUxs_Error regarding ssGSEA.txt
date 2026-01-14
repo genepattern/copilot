@@ -1,0 +1,1 @@
+GenePattern user experiencing file upload errors when attempting to run ssGSEA module, initially unable to resolve issue through multiple troubleshooting attempts, ultimately fixed by creating a new user account after support team cleared uploads directory and investigated potential account-specific technical problems.

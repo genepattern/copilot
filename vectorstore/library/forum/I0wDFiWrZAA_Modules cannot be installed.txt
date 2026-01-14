@@ -1,0 +1,1 @@
+A user encountered difficulties installing GenePattern modules on a Windows computer, experiencing repository connection errors, and received guidance recommending using public GenePattern servers instead of local Windows installation due to lack of current Windows support, with a suggestion to access online servers if local administration is not strictly necessary.

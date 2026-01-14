@@ -1,0 +1,1 @@
+Feature q-value computation restored in ComparativeMarkerSelection module, addressing a previous technical issue with statistical analysis of differential gene expression data, with a reference link provided for users to obtain more information about the module update.

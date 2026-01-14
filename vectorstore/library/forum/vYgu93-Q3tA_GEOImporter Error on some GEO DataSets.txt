@@ -1,0 +1,1 @@
+GEOImporter module encounters data import errors for some RNA-seq datasets from GEO due to data being stored in supplementary files instead of series matrix files, requiring manual download and processing of count files, with a potential future development of parsing supplementary information files being considered by the GenePattern team.

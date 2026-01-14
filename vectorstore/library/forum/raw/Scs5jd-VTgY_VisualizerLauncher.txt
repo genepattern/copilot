@@ -1,0 +1,138 @@
+URL: https://groups.google.com./g/genepattern-help/c/Scs5jd-VTgY
+Title: VisualizerLauncher
+----------------------------------------
+
+
+
+
+
+VisualizerLauncher
+21 views
+Skip to first unread message
+
+Hossein Valipour Kahrood
+unread,
+Jun 6, 2024, 5:41:40 PM
+
+
+
+to GenePattern Help Forum
+Hello team,
+
+I was trying to visualise the leading edge genes using the VisualizerLauncher in Mac terminal. I hit this message:
+
+WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
+
+
+I was wondering if this is something to deal with my IT or can be related to the app itself?
+
+Thanks
+tmt...@cloud.ucsd.edu
+unread,
+Jun 7, 2024, 10:47:30 AM
+
+
+
+to GenePattern Help Forum
+Hello Hossein,
+
+
+This message is likely indicative of your system using a non-compatible version of Java to launch the app. The VisualizerLauncher requires Java 8 to run successfully.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Hossein Valipour Kahrood
+unread,
+Jun 8, 2024, 8:01:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Thorin,
+
+Thanks for your message.
+
+Here is my java version:
+
+
+
+java --version
+
+java 18.0.2.1 2022-08-18
+
+Java(TM) SE Runtime Environment (build 18.0.2.1+1-1)
+
+Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
+
+
+I believe the version should not be the issue.
+
+Regards,
+Hossein
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Scs5jd-VTgY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1307fdde-99c7-40a9-8dc5-a24fddb22c31n%40googlegroups.com.
+
+Thorin Tabor
+unread,
+Jun 10, 2024, 9:30:02 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello Hossein,
+
+This output confirms that your system is running an incompatible version of Java. The VisualizerLauncher requires Java 8, whereas your system is running Java 18. 
+
+Unfortunately Java 11 introduced many breaking changes to the Java bytecode, causing many older Java programs to no longer function with the newer runtime environments. Java 18 inherits those breaking changes from Java 11.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAC6n7O5vkv5224_D%3D3URp61%2BbsWq6U3aZLpQjOGDvwDgG2%2BeYA%40mail.gmail.com.
+
+Hossein Valipour Kahrood
+unread,
+Jun 10, 2024, 4:47:20 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Thorin,
+
+
+Thanks for the clarification.
+
+Regards,
+Hossein
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b79068b1-89c4-421d-8ff5-afc79db49ba0%40cloud.ucsd.edu.
+
+
+Reply all
+
+Reply to author
+
+Forward

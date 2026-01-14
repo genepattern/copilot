@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/V3Tpx7oSBGs
+Title: Error in PTM-SEA
+----------------------------------------
+
+
+
+
+
+Error in PTM-SEA
+20 views
+Skip to first unread message
+
+Sam
+unread,
+Jul 24, 2023, 1:49:08 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+Was hoping to get help with the PTM-SEA module. I've used it in the past without issue but now I'm getting an error that reads: "Error in max(temp.size.G) : invalid 'type' (list) of argument." I've even inputted old data that I've used the PTM-SEA module on before and I get the same error. Has something changed in the type of input file I need? 
+
+
+Thanks,
+Sam
+Ted Liefeld
+unread,
+Jul 25, 2023, 7:25:15 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+It looks like you used a github link for the gmt file.  That results in the module downloading the github webpage for the file you wanted instead of the file itself.  You need to use the 'Raw' link for the file instead which you can get from that github page (see the right side of the image below.
+
+
+Hope this helps,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

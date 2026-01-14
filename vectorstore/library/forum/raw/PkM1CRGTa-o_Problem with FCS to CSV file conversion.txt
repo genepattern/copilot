@@ -1,0 +1,108 @@
+URL: https://groups.google.com./g/genepattern-help/c/PkM1CRGTa-o
+Title: Problem with FCS to CSV file conversion
+----------------------------------------
+
+
+
+
+
+Problem with FCS to CSV file conversion
+31 views
+Skip to first unread message
+
+ambri...@gmail.com
+unread,
+Nov 14, 2017, 2:33:25 AM
+
+
+
+to GenePattern Help Forum
+I put an .fcs file I got from Novocyte (version 3.1) into the FcsToCsv module and it gave me back an empty .csv file. (0 kb) It also produced a text file called "stderr.txt" which contained text saying "Exception: Null" I'm not sure why it's throwing a null exception, but I'd like to know how it can be fixed.
+
+
+
+
+
+
+
+
+A12_P. veronii 1E04.fcs
+Barbara Hill
+unread,
+Nov 14, 2017, 9:21:47 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Are you using one of our public servers? If so, please provide your job id.
+
+
+Best
+-Barbara
+ambri...@gmail.com
+unread,
+Nov 14, 2017, 9:51:27 AM
+
+
+
+to GenePattern Help Forum
+The job id is 1576806.
+
+Barbara Hill
+unread,
+Nov 17, 2017, 12:51:48 PM
+
+
+
+to GenePattern Help Forum
+As a first step, I would suggest removing the spaces from your file name.
+
+
+Let me know if that solves the issue.
+
+
+Best
+-Barbara
+ambri...@gmail.com
+unread,
+Nov 18, 2017, 2:18:06 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+Unfortunately, that doesnt work. I tried re-naming it (without spaces this time) and ran it (Job ID: 1580144). It still gives me an empty file. 
+
+Barbara Hill
+unread,
+Nov 20, 2017, 1:56:13 PM
+
+
+
+to GenePattern Help Forum
+Unfortunately I'm not that familiar with this particular module, you will likely have more luck speaking with the module authors in their forum: https://groups.google.com/a/broadinstitute.org/forum/#!forum/gp-flowcyt-help
+
+
+Please let me know if I can be of any further assistance.
+
+
+Best
+-Barbara
+ambri...@gmail.com
+unread,
+Nov 22, 2017, 3:37:13 AM
+
+
+
+to GenePattern Help Forum
+Thanks for your help.
+
+
+Reply all
+
+Reply to author
+
+Forward

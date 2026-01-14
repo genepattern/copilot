@@ -1,0 +1,162 @@
+URL: https://groups.google.com./g/genepattern-help/c/fFbEmya8dfU
+Title: GSEA Preranked error
+----------------------------------------
+
+
+
+
+
+GSEA Preranked error
+19 views
+Skip to first unread message
+
+Adam Nelson
+unread,
+Dec 4, 2020, 2:31:56 PM
+
+
+
+to GenePattern Help Forum
+Hello GenePattern Team,
+
+
+I am currently trying to run the GSEA Preranked module but have gotten a number of errors. The most recent one is as follows:
+
+
+WARNING: package com.apple.laf not in java.desktop
+WARNING: package com.sun.java.swing.plaf.windows not in java.desktop
+WARNING: package sun.awt.windows not in java.desktop
+edu.mit.broad.genome.parsers.ParserException: Bad rnk file format exception - expected 2 fields but got: 3 line>????9L????? ???sbg??|???l!?????? USh9i???b???r:"y_dl??????D?????? ???|-N??????R"4 ???2???G???%?????? Z???4?????y???7	????????????? ??????   ?????? PK    ! ???>?????????   ???   xl/_rels/workbook.xml.rels ??? (???                                                                                                                                                                                                                                                                 ???RMK???0 ??? ??????0w???v ???t/"???U??? ??)???&!3~?????? *???]X???K/ o???y?????????v???5 ??? ??????+?????? z l???; o????????? b??? ???G ???????????? ???s ???>??????,??? 8??????(% ?????????"D????????4j???0u2js??? ???MY??????????????S???????????? ???)f?????????C?????? ??????y ?????? 	I<<
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:77)
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:556)
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:756)
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:799)
+	at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:787)
+	at org.gsea_msigdb.gsea/xtools.api.param.PobParam.getPob(PobParam.java:79)
+	at org.gsea_msigdb.gsea/xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:234)
+	at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.execute(GseaPreranked.java:83)
+	at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:417)
+	at org.gsea_msigdb.gsea/org.genepattern.modules.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:241)
+	at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:31)
+
+
+The file I am using contains 50 gene names in one column and the corresponding fold change values in a second column. I believe that is the correct format for rnk files so I am not sure what the issue could be. Any help would be greatly appreciated!
+
+
+Best,
+Adam 
+Anthony Castanza
+unread,
+Dec 4, 2020, 2:40:49 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Adam, there are two problems here.
+First, from the error message you appear to be loading an XML file, which usually means an XLSX file. Input data for GSEAPreranked must be in a tab delimited text file.
+Secondly, GSEA (both standard and Preranked) are intended to be run on the entire list of expressed genes (without applying fold change or pvalue cutoffs). A restricted list of 50 isn't a valid input dataset.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2589c4e4-f98d-4902-8950-229b73e6aae0n%40googlegroups.com.
+
+Adam Nelson
+unread,
+Dec 4, 2020, 3:28:37 PM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+
+
+I really appreciate your quick reply. I changed the file to a tab delimited text file and included all the genes. Unfortunately now I am getting the following error:
+
+
+WARNING: package com.apple.laf not in java.desktop WARNING: package com.sun.java.swing.plaf.windows not in java.desktop WARNING: package sun.awt.windows not in java.desktop java.lang.ClassCastException: class edu.mit.broad.genome.objects.DefaultDataset cannot be cast to class edu.mit.broad.genome.objects.RankedList (edu.mit.broad.genome.objects.DefaultDataset and edu.mit.broad.genome.objects.RankedList are in module org.gsea_msigdb.gsea of loader 'app') at org.gsea_msigdb.gsea/xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28) at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:234) at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.execute(GseaPreranked.java:83) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:417) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:241) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:31) Dec 04, 2020 11:22:44 PM java.util.prefs.FileSystemPreferences$1 run  
+
+
+My apologies if I am missing something obvious. 
+
+
+-Adam
+
+Anthony Castanza
+unread,
+Dec 4, 2020, 3:36:51 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Adam,
+
+ 
+
+That is an error I don’t remember having encountered before, but it looks like its choking on the RNK file still, albeit in a different way. The only thing I can think of without seeing the file itself is that there may be a problem with the file extension that is preventing it from loading it in properly. The file extension should be .rnk (not .rnk.txt or something else) these will cause GSEA to be unable to identify the correct parser for the file.
+
+ 
+
+If the extension is correct, you can send your input file to gsea...@broadinsitute.org (we’ll keep it confidential and only use it for debugging) and I can take a closer look and see if I can identify what’s causing the load to fail.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a5a4de66-59aa-4f4b-9658-31c60ce5ae76n%40googlegroups.com.
+
+
+
+Adam Nelson
+unread,
+Dec 4, 2020, 4:12:46 PM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+
+
+I fixed the file extension and it ran successfully. Thank you so much!
+
+
+Best,
+Adam
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

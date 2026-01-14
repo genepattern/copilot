@@ -1,0 +1,87 @@
+URL: https://groups.google.com./g/genepattern-help/c/7CKX7pQdleo
+Title: Error when using custom gene set
+----------------------------------------
+
+
+
+
+
+Error when using custom gene set
+82 views
+Skip to first unread message
+
+Roberto Salatino
+unread,
+Apr 5, 2021, 12:45:04 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+I have been trying to run a ssGSEA analysis using a custom gene set (Job #335430
+) but I keep getting and error I am really not familiar with. 
+
+
+Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+Calls: ssGSEA.cmdline
+Execution halted
+
+
+When I use the the same input gct file with a a reference gene set from MsigDB the analysis works correctly. I think I formatted my custom reference gene set correctly.
+
+
+Any help would be really appreciated! 
+
+
+Thank you
+Best
+Roberto 
+
+
+Anthony Castanza
+unread,
+Apr 5, 2021, 10:19:47 AM
+
+
+
+to genepatt...@googlegroups.com
+
+HI Roberto,
+
+ 
+
+This is a bit of a weird one, simple fix though, in your gene set description you have a “–“ character, this character looks like a dash but appears to be some auto-formatting replacement (likely a “long dash”). For whatever reason the gene set database parser in ssGSEA is choking on this character, remove them from the gene set descriptions or replace them with a standard short dash in a plain text editor and the gene sets should work just fine.
+
+ 
+
+I’ll look into if we can implement a fix here but it might be a programming language problem.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/20f2a5ba-a680-42ee-9354-72337c8beeafn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

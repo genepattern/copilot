@@ -1,0 +1,160 @@
+URL: https://groups.google.com./g/genepattern-help/c/i_Ffy8OevKY
+Title: Module to highlight signature genes
+----------------------------------------
+
+
+
+
+
+Module to highlight signature genes
+21 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Feb 11, 2022, 11:25:38 AM
+
+
+
+to genepatt...@googlegroups.com
+Respected sir,
+I have been studying to analyze RNA sequences and create volcano plots. As one of the assignments, I had to create a volcano plot of Th1 and Th2 cells and highlight Th17 signature genes on it. I was able to do this as all these data were microarray data, and were in CEL file format. So, I was able to convert them into GCT and make them as a single file and was able to create an output.
+
+
+However, I was not able to highlight signature genes on the plot of TfhZsG+ and TfhZsG- as the latter were RNA seq and were stored in FASTQ file format. Is there any module that can help me in solving this problem? 
+
+
+Thank you,
+Sruthi S
+
+
+
+	Sender notified by
+Mailtrack	02/12/22, 12:45:10 AM	
+Sruthi S
+unread,
+Feb 14, 2022, 6:18:02 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir, 
+I am writing this to know if there is any update on this problem?
+
+
+Thanks & Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+02/14/22, 07:46:52 PM	
+
+
+
+Barbara Hill
+unread,
+Feb 14, 2022, 11:52:05 AM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi, 
+
+
+It sounds like you need to create a GCT file from your FASTQ data. 
+
+
+This can be accomplished with the modules in the workflow I suggested last month.
+
+
+Please let us know if this helps you out.
+
+
+best
+-Barbara
+
+
+
+
+Sruthi S
+unread,
+Feb 14, 2022, 11:56:53 AM
+
+
+
+to genepatt...@googlegroups.com
+I made the gct files and I got the plot. But I want to highlight genes on the obtained plot. However, the genes to be highlighted are stored in the format of CEL files. I converted those into GCT also. But I am not able to combine the above and new GCT and so not able to highlight it.
+
+
+Regards,
+Sruthi S
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f364e99c-ce66-470e-b01d-4ebefdb4e845n%40googlegroups.com.
+
+Barbara Hill
+unread,
+Feb 17, 2022, 2:04:50 PM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi,
+
+
+What are you trying to accomplish by combining the GCT files? That is not a common task for two disparate datasets. Especially as one contains microarray data and the other bulk RNA-seq.
+
+
+Best
+-Barbara
+
+
+Sruthi S
+unread,
+Feb 17, 2022, 2:12:41 PM
+
+
+
+to genepatt...@googlegroups.com
+
+
+Hi mam,
+
+
+The assignment that I got is to highlight Th17 genes on a volcano plot created for TfhZsG+ vs TfhZsG-, with 2 as the cut-off for FC over the expression value of two other cells types. So, here the two cell types are Tfh_ZsG+ and Tfh_ZsG-. This is what I am finding difficult to do so. I think it is because the th17 genes are microarray data whereas the other two cell types are RNA seq.
+
+
+I was able to do a similar assignment: to highlight Th17 genes on the volcano plot of Th1 vs Th2. Here I was able to highlight it as all the three were microarray data and I converted CEL file to GCT and combined their GCT file and was able to create a plot and highlight Th17 genes.
+
+
+But in the former one, I was not able to combine the GCT of Th17(microarray data), Tfh_ZsG+, and Tfh_ZsG- (RNA-seq).
+
+
+Thank you and regards,
+Sruthi S
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0f60a67e-f108-498b-879a-5372349191ecn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

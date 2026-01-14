@@ -1,0 +1,29 @@
+URL: https://groups.google.com./g/genepattern-help/c/WHQzHShZl8Y
+Title: The main GenePattern server (cloud.genepattern.org) has successfully been updated to the latest version, v3.9.11_b270
+----------------------------------------
+
+
+
+
+
+The main GenePattern server (cloud.genepattern.org) has successfully been updated to the latest version, v3.9.11_b270
+8 views
+Skip to first unread message
+Barbara Hill
+unread,
+Aug 3, 2020, 2:52:54 PM
+
+
+
+to GenePattern Help Forum
+The main GenePattern server (cloud.genepattern.org) has successfully been updated to the latest version, v3.9.11_b270. Release notes are available on GitHub.
+
+The server has a 1-hour maintenance window on the first Monday of each month from 2 pm - 3 pm  PDT (UTC-7)
+
+The next update will be Monday, September 7, 2020
+
+Reply all
+
+Reply to author
+
+Forward

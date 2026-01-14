@@ -1,0 +1,1 @@
+The forum thread discusses a user's question about the NTP (presumably Nearest Template Prediction) module in GenePattern, specifically inquiring whether the input features file can have only a single classification in the Class column, with the answer being that at least two classifications are required for the module to function and produce classified output.

@@ -1,0 +1,1 @@
+A GenePattern user encountered an error with the DESeq2 module where the package was not being recognized, preventing normalization of read counts for GSEA analysis; the GenePattern team investigated and deployed a new container for the module, resolving the package installation issue and enabling the user to proceed with their RNA-seq data normalization workflow.

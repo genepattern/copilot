@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/g5kMZJQ2s6Q
+Title: "unexpected file transfer error while submitting your job"
+----------------------------------------
+
+
+
+
+
+"unexpected file transfer error while submitting your job"
+22 views
+Skip to first unread message
+
+Théo Hirsch
+unread,
+Aug 27, 2020, 3:20:18 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern team,
+
+
+For the last 2 days I've been trying to submit a job to MutSigCV, but whenever I hit the "run" button I get this error message:
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+I did use the Uploader in the Files tab, so I don't know what to do.
+
+
+Many thanks in advance, best regards,
+Theo
+
+Ted Liefeld
+unread,
+Aug 27, 2020, 5:54:53 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+I cannot replicate this.  Can you try a small file against another module (e.g. a text file against ConvertLineEndings) and see if that succeeds or also fails?  Also if you could open the javascript console for your browser and send us the error message you see there that would help us diagnose the problem.
+
+
+Ted
+
+
+p.s. here is an article showing how to get to the console in various browsers https://balsamiq.com/support/faqs/browserconsole/
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1d41f590-279d-4844-b749-c689dbaa8e47n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Théo Hirsch
+unread,
+Aug 27, 2020, 9:08:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted,
+
+
+Thank you very much for your quick answer! Actually I don't know what changed but MutSigCV is now working for me!
+
+
+Best regards,
+Theo
+
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/g5kMZJQ2s6Q/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdROuj10G5gqsGL%2BwR1dxHDUx4nfUa%3DGCivdWNQpWQt1tQ%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

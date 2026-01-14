@@ -1,0 +1,1 @@
+A GenePattern user experienced a Java certificate validation error when launching the Leading Edge Viewer, initially resolved by updating Java certificates, but subsequently encountering a file reading error; the recommended solution was to download and use the GSEA desktop application as an alternative method for running the analysis and visualizing results.

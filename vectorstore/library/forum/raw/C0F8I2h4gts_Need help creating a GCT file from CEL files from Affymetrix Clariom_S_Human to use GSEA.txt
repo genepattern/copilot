@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/C0F8I2h4gts
+Title: Need help creating a GCT file from CEL files from Affymetrix Clariom_S_Human to use GSEA
+----------------------------------------
+
+
+
+
+
+Need help creating a GCT file from CEL files from Affymetrix Clariom_S_Human to use GSEA
+33 views
+Skip to first unread message
+
+Alex Chan
+unread,
+Dec 3, 2020, 5:30:02 PM
+
+
+
+to GenePattern Help Forum
+Hi everyone, 
+
+
+New here, and quite new to analysing big data. 
+
+
+I have recently got some data using the Clariom_S_Human array from Affymetrix and have 30 CEL files. I want to try make a GCT file to put into GSEA but currently getting errors using the ExpressionFileGenerator and AffySTExpressionFileCreator (both files attached). I have compressed my CEL files into a single ZIP folder and uploaded that without changing any of the settings. I'd really appreciate any help to make this work. 
+
+
+Cheers, 
+Alex
+Alex Chan
+unread,
+Dec 3, 2020, 5:33:43 PM
+
+
+
+to GenePattern Help Forum
+Forgot to attach the error messages. 
+
+
+stderr_ AffySTExpressionFileCreator.txt
+
+stderr_ExpressionFileCreator.txt
+Barbara Hill
+unread,
+Dec 10, 2020, 1:07:33 PM
+
+
+
+to GenePattern Help Forum
+Hello Alex,
+
+
+We are working on an update for this issue and should be releasing that in the first few weeks of 2021. We'll let you know as soon as that is available.
+
+
+All the best
+-Barbara
+
+
+Alex Chan
+unread,
+Dec 10, 2020, 2:54:30 PM
+
+
+
+to GenePattern Help Forum
+Thanks Barbara! Hope to hear back from you soon. 
+
+
+Cheers,
+Alex
+
+
+
+Barbara Hill
+unread,
+Feb 2, 2021, 9:07:13 AM
+
+
+
+to GenePattern Help Forum
+Hello Alex,
+
+
+We've just released an update to AffySTExpressionFileCreator to add support of Clariom arrays.
+
+
+https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00346:1.3
+
+
+Please let us know if you run into any issues with this or any other module, or if you have any additional questions or comments.
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

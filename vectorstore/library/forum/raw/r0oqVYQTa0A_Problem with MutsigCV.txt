@@ -1,0 +1,138 @@
+URL: https://groups.google.com./g/genepattern-help/c/r0oqVYQTa0A
+Title: Problem with MutsigCV
+----------------------------------------
+
+
+
+
+
+Problem with MutsigCV
+65 views
+Skip to first unread message
+
+Farshad Farshidfar
+unread,
+Jul 25, 2018, 11:22:17 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+Running MutsigCV, I get the following error:
+/N/u/gpserver/Mason/gp-data/taskLib/MutSigCV.1.2.427/gp_MutSigCV: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+job finished but exit code is not 0, return C
+
+
+Maybe because it is using Ver 1.2, not 1.3? Ver 1.3 is not in the options.
+
+
+
+Job ID if run on a publicly available server.
+71909
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Jul 25, 2018, 11:47:58 AM
+
+
+
+to genepatt...@googlegroups.com
+We have not yet set up MutSigCV on GP@Indiana U. I will look into this and get back to you when it is ready.
+
+Note: this is part of an on-going effort to migrate the compute cluster from Mason to Carbonate. In most cases we will need to set up a docker container for this.
+
+Regards,
+Peter
+
+Farshad Farshidfar
+unread,
+Jul 25, 2018, 12:09:22 PM
+
+
+
+to GenePattern Help Forum
+Thank you, Peter. I totally understand and appreciate your help. I have not been given access the Broad server, so I am limited in my means.
+
+
+Best,
+Farshad
+
+
+Barbara Hill
+unread,
+Jul 27, 2018, 2:47:23 PM
+
+
+
+to GenePattern Help Forum
+Hello Farshad, 
+
+
+Are you saying you are unable to access this server?
+https://genepattern.broadinstitute.org/gp
+
+
+Best
+-Barbara
+Farshad Farshidfar
+unread,
+Jul 27, 2018, 3:23:31 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+That is correct. I was only given access to the Indiana server, for some reason. This account is opened in Feb 2016.
+
+
+Thank you,
+Farshad
+
+
+Barbara Hill
+unread,
+Aug 3, 2018, 2:27:16 PM
+
+
+
+to GenePattern Help Forum
+Hello Farshad, 
+
+
+You should be able to register for an account on genepattern.broadinstitute.org. There are no restrictions.
+
+
+
+Please let us know if you have any trouble registering or using MutSigCV
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

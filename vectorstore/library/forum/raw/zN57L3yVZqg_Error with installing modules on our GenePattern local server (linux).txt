@@ -1,0 +1,200 @@
+URL: https://groups.google.com./g/genepattern-help/c/zN57L3yVZqg
+Title: Error with installing modules on our GenePattern local server (linux)
+----------------------------------------
+
+
+
+
+
+Error with installing modules on our GenePattern local server (linux)
+77 views
+Skip to first unread message
+
+Afshin Beheshti
+unread,
+Nov 28, 2017, 4:28:49 AM
+
+
+
+to GenePattern Help Forum
+Hi All.
+
+
+We have installed GenePattern as a local server on our own server (linux OS). GenePattern is running well on our server, but we are having problems with installing the modules.
+
+
+When trying to install GenePattern modules from the Broad Production (new) Repository the following error occurs:
+
+
+Errors: IOException while running patch: Cannot run program &quot;-Dant.home=/root/GenePatternServer/Tomcat/gp/WEN-INF/tools/ant/apache-ant-1.8.4&quot; (in directory $quot;/root/GenePatternServer/patches/broadinstitute.org.plugin.R2.15_Installer.1&quot;): error=2, No such file or directory
+
+
+We have installed Tomcat and apache and that directory/file does exist, so we are confused why this error is occurring.
+
+
+When trying to install from the GParc Repository the following error occurs:
+
+
+Errors: 1.Acgh2Tab: no substition available for <perl> in command line <perl><libdir>acgh2tab.pl -acghinput <acgh.input.fule> -presentlist <presentlist.file> -absentlist <absentlist.file> -genelocs <genelocs.file>
+
+
+ When trying to install from the Broad beta Repository the following error occurs:
+
+
+Errors: 1. ABSOLUTE: no subsitution available for <R2.15_Rscript> in command line <R2.15_Rscript>
+
+
+Any help will be much appreciated with trying to figure out why these errors are occurring.
+
+
+Thanks,
+Afshin
+Peter Carr
+unread,
+Nov 28, 2017, 10:23:45 AM
+
+
+
+to GenePattern Help Forum
+Some of our older modules fail to install from the repository. Please ignore any errors for modules that you do not plan on running.
+
+
+For the modules that you do need to install, Linux servers require additional configuration steps. Usually this is as simple as defining a substitution variable; for example <perl>. In some cases you must first install the required software then define a substitution variable; for example <R2.15_Rscript>.
+
+
+For perl, go to the Admin > Server Settings > Custom properties page and set the path to perl. It *can* be as simple as,
+
+  perl=perl
+
+
+See our documentation for more details on substitution variables:
+  http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide#_Writing_Modules_for_GenePattern
+
+
+For additional details, if you are interested in reverse engineering, look at the readme in the resources/wrapper_scripts directory of your GP server installation.
+
+
+I am happy to provide more detailed assistance as needed.
+
+
+
+Regards,
+
+Afshin Beheshti
+unread,
+Nov 28, 2017, 10:36:37 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thank you for your reply. That did it! That solved the error problems. I really appreciate your help and input! 
+
+
+Again thank you for your help!
+Afshin
+
+Afshin Beheshti
+unread,
+Nov 29, 2017, 7:27:45 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+One more question related to this thread. I'm still having the problem related to this error:
+
+
+Errors: IOException while running patch: Cannot run program &quot;-Dant.home=/root/GenePatternServer/Tomcat/gp/WEN-INF/tools/ant/apache-ant-1.8.4&quot; (in directory $quot;/root/GenePatternServer/patches/broadinstitute.org.plugin.R2.15_Installer.1&quot;): error=2, No such file or directory
+
+
+We have apache-ant installed, so I'm not sure what I can do to resolve this issue. Do I have to define specific substitution variable with this also? If so what would that be?
+
+
+I appreciate any help you can give me.
+Thanks,
+Afshin
+
+
+Peter Carr
+unread,
+Nov 29, 2017, 8:22:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Which specific module were you installing? Send more of the stack trace.
+At first glance, I do see a typo here ...
+    -Dant.home=/root/GenePa...mcat/gp/WEN-INF/tools/ant/ap...
+
+Regards,
+Peter
+
+Afshin Beheshti
+unread,
+Nov 29, 2017, 8:59:45 AM
+
+
+
+to GenePattern Help Forum
+The modules that I'm installing with the error are the following:
+
+
+BWA.aln
+BWA.bwasw
+BW.indexer
+
+
+A few other modules are giving me other errors also.
+
+
+I attached a screenshot of the errors for these modules.
+
+
+Let me know how you think I can resolve this.
+Thanks,
+Afshin
+
+
+GenePattern Module Error Installation.jpg
+Peter Carr
+unread,
+Dec 1, 2017, 1:20:46 PM
+
+
+
+to genepatt...@googlegroups.com
+To correct these errors, you must set the <java> command substitution. Similar to what you did for perl, go to Server Settings > custom and set java. It can be as simple as:
+  java=java
+
+I recommend setting it to an explicit location, e.g.
+  java=/usr/java/jdk_1.7.0-71/bin/java
+
+Best practice is to set two substitution variables and use java_1.7 as the default e.g.
+  java_1.7=/usr/java/jdk_1.7.0-71/bin/java
+  java_1.8=/usr/java/jdk1.8.0_121/bin/java
+  java=<java_1.7>
+Most of our <java> modules were developed and testing with java_1.7. Newer modules may require java_1.8.
+
+If you only have one version of java, I recommend  java_1.8.
+
+The <java> fix will correct two types of installation errors that you are seeing:
+1) "no substitution available for <java>", for ListFiles
+2) "IOException while running patch: Cannot run program "-Dant.home=...""
+  This obscure message is because the builtin <ant-1.8> command requires <java>
+
+The TopHat error requires further investigation on your part. Make sure to set the correct path to perl for your server.
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

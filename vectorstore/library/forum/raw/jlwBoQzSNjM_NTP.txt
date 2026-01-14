@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/jlwBoQzSNjM
+Title: NTP
+----------------------------------------
+
+
+
+
+
+NTP
+22 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+Apr 15, 2024, 3:04:20 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+we have problems in running NTPs at GenePattern.
+Thanks for your help.
+Best wishes
+R
+Ted Liefeld
+unread,
+Apr 15, 2024, 7:31:32 AM
+
+
+
+to genepatt...@googlegroups.com
+There seems to be an issue between the GenePattern server and the compute nodes that the jobs are executing on.  I am looking into this now.  In the meantime you could create a new account on our other public server https://genepattern.ucsd.edu/gp where NTP jobs are executing properly at the moment.
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/33324393-f82b-4282-b62d-8bd028039dc9n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

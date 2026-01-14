@@ -1,0 +1,1 @@
+A research group seeks guidance on using single sample Gene Set Enrichment Analysis (ssGSEA) to compare immune cell types between cell lines and microvesicles, with an expert cautioning that normalization challenges may limit the reliability of the analysis, recommending rank-normalization of samples and using positive controls to validate the approach.

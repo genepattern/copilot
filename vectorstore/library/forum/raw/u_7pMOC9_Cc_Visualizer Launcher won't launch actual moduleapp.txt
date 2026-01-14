@@ -1,0 +1,180 @@
+URL: https://groups.google.com./g/genepattern-help/c/u_7pMOC9_Cc
+Title: Visualizer Launcher won't launch actual module/app
+----------------------------------------
+
+
+
+
+
+Visualizer Launcher won't launch actual module/app
+42 views
+Skip to first unread message
+
+deng....@gmail.com
+unread,
+Jan 18, 2018, 12:39:44 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+I'm having some issues with the visualizer launcher. I ran a job using the multiplotstudio module but I'm unable to launch the visualizer via the visualizer launcher app.
+
+
+
+After filling out the launcher with the server, my username/password and the job ID, when I click Submit, the button turns blue for a bit and then nothing happens.
+
+I then tried to the visualizer launcher using a different macbook pro and a PC and those both worked.
+
+Do you guys have any idea what might be the problem that's specific to my computer?
+
+Here are some of my computer specs:
+2017 MacBook Pro
+macOS High Sierra Version 10.13.2
+I have uninstalled and re-installed Java 8
+Java has been enabled for browser and Web Start Applications.
+
+Any help would be greatly appreciated.
+
+Job ID if run on a publicly available server.
+1615903
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Jan 22, 2018, 11:20:16 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Did this thread resolve your issues?
+
+
+https://github.com/genepattern/VisualizerLauncher/issues/12
+
+
+
+Best
+-Barbara
+Tianda Deng
+unread,
+Jan 22, 2018, 12:02:54 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Thanks for getting back. 
+
+
+Unfortunately the thread did not resolve the issue.
+
+
+Do you have any ideas what might be wrong?
+
+
+
+
+Thanks, 
+Tianda 
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/u_7pMOC9_Cc/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9ed0ce43-026e-49fa-b3ff-6e15b6c2fd79%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Jan 23, 2018, 10:58:21 AM
+
+
+
+to GenePattern Help Forum
+Hello Tianda,
+
+
+Unfortunately, I've tried to reproduce the issue on both my PC and my Mac Mini (Sierra) and have had no trouble running MultiPlotStudio with the VisualizerLauncher.
+
+
+Are you able to run this on other computers?
+
+
+Best
+
+
+-Barbara
+Tianda Deng
+unread,
+Jan 23, 2018, 11:04:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Yes I have been able to use the visualizerLauncher to initiate multiplot studio on other computers.
+
+
+A lab mate has the same computer as me hardward wise but she is on a less updated version of OS. I'm on High Sierra 10.13.2 so I think maybe that's the issue.
+
+
+If there are not solutions at the moment, please keep me update on more news on the issue.
+
+
+
+Thanks,
+
+Tianda
+
+
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/u_7pMOC9_Cc/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/40ace8c0-b967-4cce-b2c5-038c036aa581%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

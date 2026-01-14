@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/aNWAf05QPWk
+Title: Error with ExpressionFileCreator
+----------------------------------------
+
+
+
+
+
+Error with ExpressionFileCreator
+15 views
+Skip to first unread message
+
+JUNXI FENG
+unread,
+Jun 26, 2023, 6:52:57 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am trying to use this module: ExpressionFileCreator with default parameters to convert a set of zipped CEL files to GCT format. However, I got this error message: 
+
+
+Error in library(BiocGenerics) : there is no package called ‘BiocGenerics’ Calls: suppressMessages -> withCallingHandlers Execution halted
+
+
+
+Can anyone help me with this?
+
+
+Thanks a lot!!
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 27, 2023, 10:48:43 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Could you please send the job number of the job with the error, this way I can look at the logs and help debug the issue.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

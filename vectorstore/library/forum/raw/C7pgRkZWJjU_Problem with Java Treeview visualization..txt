@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/C7pgRkZWJjU
+Title: Problem with Java Treeview visualization.
+----------------------------------------
+
+
+
+
+
+Problem with Java Treeview visualization.
+4 views
+Skip to first unread message
+
+Daniel Moreno Soto
+unread,
+Jan 23, 2018, 1:20:49 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I've been unable to visualize dendrograms using Java Treeview. Nothing loads when I click the icon of the visualizer below the status of the job, as suggested. Some time ago I've been able to use this tool, so I guess it has something to do with the Java plugin. I know most browsers do not longer support this plugins, but I've tried to activate them manually, even by command line, and still nothing. I've tried firefox, chrome and chromium, and also tried ubuntu 16.04 and windows 10.
+
+My job ID is JavaTreeView (1617964).
+
+Thanks beforehand.
+Peter Carr
+unread,
+Jan 23, 2018, 1:27:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Try using the VisualizerLauncher
+    https://genepattern.github.io/VisualizerLauncher/
+
+Regards,
+Peter
+
+Daniel Moreno Soto
+unread,
+Jan 24, 2018, 7:17:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, it worked very well!
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/C7pgRkZWJjU/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8e1e7a3c-5af1-3ea6-0941-619d627cc71b%40broadinstitute.org.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

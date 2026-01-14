@@ -1,0 +1,171 @@
+URL: https://groups.google.com./g/genepattern-help/c/qSlAq3w9Ev8
+Title: Unable to Access GenePattern Notebook
+----------------------------------------
+
+
+
+
+
+Unable to Access GenePattern Notebook
+8 views
+Skip to first unread message
+
+Christopher Dubay
+unread,
+Aug 13, 2019, 8:59:10 AM
+
+
+
+to GenePattern Help Forum
+I had a GenePattern account on the Broad server, which now appears to be VPN only.
+
+
+I am trying to access the https://notebook.genepattern.org/ using my old login, it says my password is incorrect.
+
+
+So trying to reset my password, I get the attached error message (after a long wait).
+
+
+Can someone help me access GenePattern Notebook?
+
+
+Thank you in advance for your time responding to this query...
+
+
+Christopher
+
+
+
+GPN_noReset.png
+Barbara Hill
+unread,
+Aug 13, 2019, 9:25:10 AM
+
+
+
+to GenePattern Help Forum
+Hi Christopher,
+
+
+There seems to be a bug with our password reset right now - I'm looking into this.
+
+
+As a side-note, to help clear up confusion about the Broad hosted server; we migrated off the Broad servers and into the Amazon cloud as of Jan 1 this year. So it's not behind a firewall, it's just only on Amazon. Unfortunately, the landing page which would have told you all of this is also not displaying right now. I'll put that back in place as well.
+
+
+Thank you for bringing all of this to our attention! We'll let you know as soon as these issues are resolved.
+
+
+All the best
+-Barbara
+Christopher Dubay
+unread,
+Aug 13, 2019, 9:41:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Cool.
+
+
+Thanks Barbara, I will stay tuned.
+
+
+Christopher
+
+
+Christopher Dubay, PhD
+Biomedical Informatics
+Laboratory of Molecular and Tumor Immunology
+Earle A. Chiles Research Institute
+Providence Cancer Center
+4805 NE Glisan St.- 2N57
+Portland, OR 97213  USA
+T: (503) 215-7981
+F: (503) 215-6841
+
+
+christop...@providence.org
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/91f14e93-5a1d-428f-9679-34331bab93ae%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 13, 2019, 11:54:47 AM
+
+
+
+to GenePattern Help Forum
+Hi Christopher,
+
+
+This should all be resolved now.
+
+
+Please let us know if you run into anything else.
+
+
+Best
+-Barbara
+Christopher Dubay
+unread,
+Aug 14, 2019, 8:37:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Barbara,
+
+
+I can verify that this is now working.
+
+
+Thanks for the quick fix! Sorry you had to take the platform down.
+
+
+Really appreciate your help...
+
+
+Christopher
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/12c6a0f7-4f0f-4efd-94a3-78a85a98fa10%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 14, 2019, 8:44:26 AM
+
+
+
+to GenePattern Help Forum
+Hi Christopher, 
+
+
+No problem at all - it impacted all of our transactional email so it needed to be fixed, and you caught it at a quiet part of the day/week, so the timing was actually just fine.
+
+
+Thanks again!
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

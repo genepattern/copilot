@@ -1,0 +1,74 @@
+URL: https://groups.google.com./g/genepattern-help/c/Mts-E3TfI1o
+Title: Can I use GISTIC2 for CNV data from targeted sequencing?
+----------------------------------------
+
+
+
+
+
+Can I use GISTIC2 for CNV data from targeted sequencing?
+20 views
+Skip to first unread message
+
+goodje...@gmail.com
+unread,
+Apr 24, 2019, 10:39:34 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+
+
+
+
+
+
+Hi.
+
+I have targeted panel sequencing data. The panel size is 1.2 Mbp with 33,524 probes targeting a total of 382 genes, including entire exons of 199 genes. 
+I got segmented log2 ratios and SEG files using CNVkit from this targeted bam files. I would like to check driver events using GISTIC2.
+
+length-based filtering of arm-level events greatly improves the sensitivity of GISTIC. But my data is targeted, so I worry that the algorithm will work.
+
+Can I use CNV data from targeted sequencing instead of whole exome sequencing or whole genome sequencing as an GISTIC2 input?
+
+I did GISTIC2 analysis on the genepattern (job id : 113584)  and got results without errors. Can I think of this as a result of the gistic algorithm working well?
+
+
+
+
+Thanks.
+
+Barbara Hill
+unread,
+Apr 29, 2019, 9:18:59 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+I'm afraid this question goes outside the expertise of the developers on the GenePattern team.
+
+
+I would suggest submitting your question to the GISTIC forum: 
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+
+
+I'm sorry we couldn't give more help.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

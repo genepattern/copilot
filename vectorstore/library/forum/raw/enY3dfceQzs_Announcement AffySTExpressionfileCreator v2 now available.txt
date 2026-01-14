@@ -1,0 +1,29 @@
+URL: https://groups.google.com./g/genepattern-help/c/enY3dfceQzs
+Title: Announcement: AffySTExpressionfileCreator v2 now available
+----------------------------------------
+
+
+
+
+
+Announcement: AffySTExpressionfileCreator v2 now available
+2 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jul 27, 2021, 9:06:51 AM
+
+
+
+to GenePattern Help Forum
+The issues with the previous AffySTExpressionFileCreator Docker image have been resolved. 
+It has also been updated to R 4.0.4 and once again accepts Clariom arrays. https://bit.ly/AffySTEFC_v2 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

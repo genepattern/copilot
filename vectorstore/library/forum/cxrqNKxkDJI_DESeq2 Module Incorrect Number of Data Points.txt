@@ -1,0 +1,1 @@
+A user encountered an issue with the DESeq2 module on GenePattern, where the input files were not correctly processed due to a formatting problem in the .cls file (specifically, missing a space after the # on the second line), which was resolved by adding the necessary space, allowing proper normalization of gene expression data.

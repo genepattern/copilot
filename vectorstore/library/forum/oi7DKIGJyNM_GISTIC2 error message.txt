@@ -1,0 +1,1 @@
+A user experienced an error while trying to run the GISTIC2 module in GenePattern, specifically an execution error indicating the module was not available on the remote system, with the support team suggesting a simple rerun of the job as a potential solution to what they believed was an intermittent technical issue.

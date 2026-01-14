@@ -1,0 +1,76 @@
+URL: https://groups.google.com./g/genepattern-help/c/SkxCKxjbpkQ
+Title: AffySTExpression File Creator
+----------------------------------------
+
+
+
+
+
+AffySTExpression File Creator
+12 views
+Skip to first unread message
+
+calm....@gmail.com
+unread,
+Dec 11, 2018, 5:27:39 AM
+
+
+
+to GenePattern Help Forum
+Hello!  I had previously used the AffySTExpressionFileCreator before it was moved to the cloud to convert .zip file containing cel files to .gct format.  I've tried a few times with a new .zip file and also with an old file that previously worked, and I get the error:
+
+"/opt/gpbeta/gp_home/jobResults/63762.meta/exec.sh: 4: /opt/gpbeta/gp_home/jobResults/63762.meta/exec.sh: Rscript: not found"
+
+
+
+
+Does this mean the module has been taken down?  Is there any other platform on which this could be accessed (it was so helpful!) -- Thank you!
+
+
+
+
+Barbara Hill
+unread,
+Dec 11, 2018, 9:23:17 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Thank you for bringing this to our attention. I'll take a look. It could be that it just hasn't been properly configured. 
+
+
+I'll get back to you shortly.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Dec 11, 2018, 10:29:33 AM
+
+
+
+to GenePattern Help Forum
+Hi again, 
+
+
+AffySTExpressionFileCreator should be configured correctly and running without error now.
+
+
+
+Please let us know if you have any further questions or comments.
+
+
+Best,
+Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

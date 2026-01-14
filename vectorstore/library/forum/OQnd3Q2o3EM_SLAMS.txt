@@ -1,0 +1,1 @@
+A user inquired about a GenePattern module for SLAMS (Stepwise Linkage Analysis for identifying Copy Number Variation-associated transcriptional regulators), and was informed that no specific module exists, with a reference to an archived SAM method and a discontinued GenomeSpace recipe as potential alternative guidance.

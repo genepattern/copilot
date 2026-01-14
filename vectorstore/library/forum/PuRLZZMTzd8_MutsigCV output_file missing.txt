@@ -1,0 +1,1 @@
+MutsigCV output file troubleshooting involving user's inability to locate expected output files, with solution involving correct specification of output filename using basename variable and avoiding direct editing of substitution variables in GenePattern module parameters, potentially resolving issues with mutation type dictionary file and output generation.

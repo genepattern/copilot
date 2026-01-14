@@ -1,0 +1,151 @@
+URL: https://groups.google.com./g/genepattern-help/c/VBMotke4eOs
+Title: Very Long Queue
+----------------------------------------
+
+
+
+
+
+Very Long Queue
+65 views
+Skip to first unread message
+
+Karen Ross
+unread,
+Jan 22, 2024, 12:21:39 PM
+
+
+
+to GenePattern Help Forum
+I have been trying to use the AWS Cloud implementation of GenePattern since last Friday and my jobs have not been running due to the length of the queue. Currently, GenePattern is reporting that there are nearly 4000 jobs in the queue, which many, many more than I have ever seen in several years of using GenePattern. Is this actually due to unusually high traffic or is there some problem that is causing the backup?
+
+
+Thank you!
+Ted Liefeld
+unread,
+Jan 22, 2024, 12:43:10 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+thanks for brigning this to our attention.  There seems to be an issue with getting job status fdrom AWS.  The jobs have run but GenePattern has not recognized that they finished.  We are working on a quick fix and should have it in place shortly
+
+
+Thanks for your patience,
+
+Ted
+
+
+
+Karen Ross
+unread,
+Jan 22, 2024, 1:44:49 PM
+
+
+
+to GenePattern Help Forum
+Awesome! Thank you!
+
+Ted Liefeld
+unread,
+Jan 22, 2024, 1:50:09 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi again
+
+
+I believe things are working properly now.  Unfortunately many of the jobs run over the weekend (but not all) were unable to recover their output files.  If your jobs how an error or have no outputs present you can reload and resubmit the job,
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/VBMotke4eOs/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e2ea9d37-4e47-48aa-93be-31d295ac1362n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Felix Geist
+unread,
+Apr 11, 2024, 8:27:48 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+it seems like, that we have again quite a long queue, 6022 jobs now in the queue. Is this again a communication error with AWS?
+Best
+Felix
+
+
+
+Ted Liefeld
+unread,
+Apr 11, 2024, 8:35:15 AM
+
+
+
+to GenePattern Help Forum
+Felix,
+
+
+A couple of things are going on here.  First the reported queue of 6022 jobs is incorrect.  There has been a fix made but not deployed to prod as of yet.  The real number is 6 (the error is it includes a log of failed jobs in the count going back to 2018 when the AWS server went live).
+
+
+Second, some modules are run on the SDSC Expanse supercomputer instead of on AWS (to save money so we can keep providing this free service).  These include GISTIC, SubMap, NearestTemplatePrediction and a few others.  At the moment there is a backlog on Expanse, but 4/6 GenePattern jobs have started running with the other 2 still pending.
+
+
+Hopefully your jobs will start to run soon too.
+
+
+Thanks for your patience
+
+
+Ted 
+
+
+
+Message has been deleted
+Felix Geist
+unread,
+Apr 11, 2024, 9:05:20 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+thanks for your super fast reply!! I was really stunned by the number of jobs in the queue and as my NearestTemplatePrediction workflow has not started, I wondered if there was a huge backlog that led to the long pending time.
+Then I will just wait a while longer for my NTP runs to start (job 576288,  576289 and  576291).
+Thanks for your help!
+Best
+Felix
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

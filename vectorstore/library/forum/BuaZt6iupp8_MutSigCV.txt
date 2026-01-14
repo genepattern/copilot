@@ -1,0 +1,1 @@
+A MutSigCV user encountered a "not enough mutations to analyze" error when attempting to run the tool on their genomic sequence data, with the error likely arising from insufficient mutation count or data mapping issues, and no definitive resolution was provided in the thread beyond referencing another similar discussion.

@@ -1,0 +1,35 @@
+URL: https://groups.google.com./g/genepattern-help/c/SXsusNOmKwo
+Title: GenePattern is down - June 13, 2023 1pm PST
+----------------------------------------
+
+
+
+
+
+GenePattern is down - June 13, 2023 1pm PST
+8 views
+Skip to first unread message
+
+Ted Liefeld
+unread,
+Jun 13, 2023, 1:04:08 PM
+
+
+
+to GenePattern Help Forum
+The GenePattern server is currently unable to run any jobs due to problems with Amazon Web Services.  No jobs can be run at the moment and files cannot be uploaded or downloaded from the GenePattern server.  We will update this thread when we have more information
+Ted Liefeld
+unread,
+Jun 13, 2023, 2:02:57 PM
+
+
+
+to GenePattern Help Forum
+The server is once again running properly.  The AWS systems are running again.  More detail about the outage can be found at https://health.aws.amazon.com/health/status
+
+
+Reply all
+
+Reply to author
+
+Forward

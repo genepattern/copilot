@@ -1,0 +1,1 @@
+A GenePattern user encountered a GSEA 1006 error when running gene set enrichment analysis with the Signal2Noise metric, initially experiencing issues with sample class size and NA values, which was resolved by changing normalization and metric, with a recommendation to use gene set permutation over phenotype permutation and to carefully handle NA values in the dataset.

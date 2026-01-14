@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/8Au24sF3-HM
+Title: GISTIC issue
+----------------------------------------
+
+
+
+
+
+GISTIC issue
+22 views
+Skip to first unread message
+
+Katia Nones
+unread,
+Feb 13, 2023, 12:16:03 AM
+
+
+
+to GenePattern Help Forum
+I think something is broken... Having error messages too.
+In a data set run ealier last week
+Ted Liefeld
+unread,
+Feb 13, 2023, 8:18:34 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+can you provide a job number and I will take a look however GISTC can be very tempermental with respect to its input data so it might be best to ask this question on the GISTIC Forum, https://groups.google.com/a/broadinstitute.org/g/gistic-forum/c/unYY5vDfdMc/m/SUEmSPapCAAJ
+
+
+Ted
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 13, 2023, 1:59:02 PM
+
+
+
+to GenePattern Help Forum
+We have just updated the GISTIC_2.0 module. Please try again.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+On Monday, February 13, 2023 at 12:16:03 AM UTC-8 katiano...@gmail.com wrote:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

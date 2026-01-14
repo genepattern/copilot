@@ -1,0 +1,1 @@
+GenePattern forum thread summary addressing a user's query about a lost gene interaction analysis PDF for the DLG2 gene, where the response revealed the analysis was performed using DAPPLE (v0.17), job details were provided, but the specific input file and PDF were no longer available on the server due to file purging, with no direct method for file recovery suggested.

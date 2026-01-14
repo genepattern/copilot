@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when trying to run ssGSEA with a manually generated gene set file, which was resolved by replacing a non-UTF8 linebreak in the gene set file with a correct linebreak, allowing successful execution of the ssGSEA analysis.

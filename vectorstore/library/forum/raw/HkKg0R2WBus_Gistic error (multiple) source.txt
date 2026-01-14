@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/HkKg0R2WBus
+Title: Gistic error (multiple) source?
+----------------------------------------
+
+
+
+
+
+Gistic error (multiple) source?
+24 views
+Skip to first unread message
+
+Eric David Elass@UW.Edu
+unread,
+Mar 6, 2024, 8:02:14 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am attempting to use gistic 2.0 with a .seg file generated from CNVkit. I have tried it a handful of times and continue getting the errors listed below. Likewise, because it appears theres an error with figure production, I am not getting any del_qplot figures in my output. Difficult to find any causes/solutions via googling around. Is it an issue with my .seg file? Any help is appreciated!
+
+
+INFO: Using cached SIF image Error using ghostscript (line 186) Problem converting PostScript. System returned error: -1.Failed to convert to output format; Ghostscript status: -100.**** Unable to open the initial device, quitting. **** Unable to open the initial device, quitting. Artifex Ghostscript 8.54: **** Could not open temporary file /scratch/genepattern/job_29080006/gs_3q5Jir Error in print>LocalPrint (line 307) Error in print (line 233) Error in save_current_figure (line 38) Error in plot_snp_score (line 492) Error in gistic_plots (line 219) Error in run_focal_gistic (line 347) Error in run_gistic20 (line 124) Error in run_gistic2_from_seg (line 249) Error in gp_gistic2_from_seg (line 97) MATLAB:ghostscript:ProblemConvertingPostScriptSystemReturnedError
+
+Ted Liefeld
+unread,
+Mar 7, 2024, 10:58:16 AM
+
+
+
+to GenePattern Help Forum
+this might have been caused by an issue we tracked down in another help request (problem with the $TMPDIR changing on the compute env to /scratch and that directory not being mounted to the container running the analysis).  Can you retry the 6.15.30 runs to see if they work now?
+
+
+Thanks for your patience and help,
+
+
+Ted
+
+
+Eric David Elass@UW.Edu
+unread,
+Mar 7, 2024, 8:58:38 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I actually believe I may have resolved the error. I believe it was caused by creating from .seg files from my cnvkit *.call.cns files rather than the *.cns files themselves. I re-ran the new .seg files and no errors occurred. I appreciate your response though!
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

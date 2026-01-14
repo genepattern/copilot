@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/A_HGLrkjVaI
+Title: Re: [gp-help-no-reply] Question request
+----------------------------------------
+
+
+
+
+
+Re: [gp-help-no-reply] Question request
+18 views
+Skip to first unread message
+Ted Liefeld
+unread,
+May 27, 2022, 10:45:30 AM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+Hi
+
+
+The problem is simply that your job exceeded the default 2-hour time limit for the job.  Try increasing the runtime in the job options section below the gistic parameters.
+
+
+Hope this helps,
+
+Ted
+
+
+On Fri, May 27, 2022 at 9:57 AM lu chen <chenlu18...@outlook.com> wrote:
+
+
+Dear engineer：
+
+            I want to ask why my task has no error, but there is no result file? Can you help me handle it? Can I reply after receiving it? In a hurry
+
+            for example:
+
+ 
+
+从 Windows 版邮件发送
+
+ 
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

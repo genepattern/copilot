@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/RcKQ5Pk_UGk
+Title: 3 ODF Files from a ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+3 ODF Files from a ComparativeMarkerSelection
+26 views
+Skip to first unread message
+
+Kiera Lee
+unread,
+Sep 25, 2020, 12:51:05 PM
+
+
+
+to GenePattern Help Forum
+Hi there,
+
+
+
+I have been trying use the ComparativeMarkerSelection module with a GCT file I have. There are 9 samples, 3 categories, although I am not getting any p values and I get 3 ODF files. I was hoping someone could hep me understand how to get the p values and 1 ODF file to then use in the ComparativeMarkerSelectionViewer.
+
+
+
+I am using Mac on the Public Server - Job ID: 279801
+
+
+
+Thank you in advance,
+
+
+
+Any help would be appreciated!
+
+
+
+Kiera
+
+Kiera Lee
+unread,
+Sep 25, 2020, 12:53:19 PM
+
+
+
+to GenePattern Help Forum
+If it helps anything, the GCT file was made through the affySTExpressionFileCreator from CEL (.tar) file.
+
+
+Edwin Juarez
+unread,
+Sep 28, 2020, 11:58:06 AM
+
+
+
+to GenePattern Help Forum
+Hello Kiera,
+
+
+Since you have 3 categories you will have 3 ODFs when you run ComparativeMarkerSelection. In the phenotype test parameter you can choose either one versus all (which is the one you have selected in the job you ran) or all pairs (where you'd see the results of comparing. If you want only one ODF file, you'd need to provide a CLS file which classifies your data into only 2 classes (though, I think that is a different scientific question than what you originally set out to ask).
+
+
+With regards to the p-values, the ODF files on job #279801 have a column named Feature P, that is the p-value for that specific gene (https://www.genepattern.org/modules/docs/ComparativeMarkerSelection/10). let us know if you have more questions!
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

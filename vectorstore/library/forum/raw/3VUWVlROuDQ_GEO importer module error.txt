@@ -1,0 +1,123 @@
+URL: https://groups.google.com./g/genepattern-help/c/3VUWVlROuDQ
+Title: GEO importer module error
+----------------------------------------
+
+
+
+
+
+GEO importer module error
+55 views
+Skip to first unread message
+
+Aracelly Quiroz
+unread,
+Mar 31, 2021, 6:06:08 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am trying to download gct files from GEO Importer module in GenePattern, but I always got the stderr.txt file. For example, in my last job running the GSE123168 study I got the 334494 error. 
+
+
+kindly help, please. 
+
+
+
+
+acas...@cloud.ucsd.edu
+unread,
+Mar 31, 2021, 6:21:37 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Aracelly,
+
+ 
+
+GSE123168 is an RNA-seq dataset. RNA-seq datasets typically don’t have their complete data in the GEO Soft file format that would be required to read them in through the GEOImporter Module. If you navigate to the GEO page for GSE123168 (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123168), you can see at the bottom of the page that there is a GSE123168_Count_Table.txt.gz file. You’ll need to download that file and manually convert it into the GCT format. Once you’ve done that, you can normalize it with the DESeq2 module and then use it for GSEA. Unfortunately, there is too much heterogeneity in the way Supplementary Files are included in GEO records to allow for us to implement a programmatic importer for these data.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/af4eed9f-b374-445f-a3dc-acfce2d30d49n%40googlegroups.com.
+
+Aracelly Quiroz
+unread,
+Apr 1, 2021, 7:05:55 AM
+
+
+
+to genepatt...@googlegroups.com
+How do you recommend to convert the GSE123168_Count_Table.txt.gz file. file to gct format ? What do you mean to do it manually?  
+
+
+Thanks ! 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/025201d72695%244ab41f20%24e01c5d60%24%40cloud.ucsd.edu.
+
+
+
+
+
+--
+
+Aracelly Quiroz Lagos.
+Tecnólogo Médico c/m Morfofisiopatología y Citodiagnóstico. 
+Estudiante de Doctorado Ciencias Biológicas
+Laboratorio de Transducción de Señales y Cáncer
+Universidad de Concepción, Chile.
+Barbara Hill
+unread,
+Apr 1, 2021, 8:01:56 AM
+
+
+
+to GenePattern Help Forum
+Hello Aracelly,
+
+
+To convert it manually, we mean to do so in a spreadsheet program like Microsoft Excel, or Google Sheets.
+
+
+The format is described here: https://genepattern.org/file-formats-guide#GCT
+
+
+There is also a tutorial video available on YouTube: https://youtu.be/_zpH-DgE33U
+(The screenshots are very out-dated now, but the information on how to do the conversion is still correct.
+
+
+Let us know if this helps,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

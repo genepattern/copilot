@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/pEguzYVZdR0
+Title: Subscripted assignment dimension mismatch.
+----------------------------------------
+
+
+
+
+
+Subscripted assignment dimension mismatch.
+12 views
+Skip to first unread message
+
+ali pirani
+unread,
+Oct 8, 2024, 7:33:23 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am getting this error for MutSig which seems very cryptic. 
+
+
+Any idea what this means? The input data seems okay and follows the instructions. Also, I am only analyzing SV (small ins and deletions) with category 7 and effect as nonsilent.
+
+
+Is there something I am doing wrong? 
+
+
+The job id is 608353. 
+
+
+
+
+John Liefeld
+unread,
+Oct 8, 2024, 9:02:05 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I took a quick look but am not familiar enough with MutSigCV to be able to help with this.  I suggest you contact the authors of the method at mutsi...@broadinstitute.org and ask them.
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

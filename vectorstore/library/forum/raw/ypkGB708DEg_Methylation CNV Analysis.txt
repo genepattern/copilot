@@ -1,0 +1,186 @@
+URL: https://groups.google.com./g/genepattern-help/c/ypkGB708DEg
+Title: Methylation CNV Analysis
+----------------------------------------
+
+
+
+
+
+Methylation CNV Analysis
+25 views
+Skip to first unread message
+
+Daniel Merk
+unread,
+Feb 23, 2021, 4:51:05 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+
+
+I am currently using the Meth CNV Analysis from the beta server for CNV analysis from EPIC arrays. It works, but for some reason, it will not incorporate my list of selected genes in the final CNV output. It also doesn't work if I use the predefined list of cancer-related genes from the Broad. I did this a while ago and it worked, don't know why it doesn't now.
+
+
+
+Does anyone know how to fix this?
+
+
+Best
+Daniel
+
+Barbara Hill
+unread,
+Feb 26, 2021, 11:11:21 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Daniel,
+
+
+Could you send along a job id? This will give us all of the information we need to debug this issue.
+
+
+Many thanks
+-Barbara
+Daniel Merk
+unread,
+Feb 26, 2021, 11:32:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Job ID for the last try I did was 66494, using the MethylationCNVanalysis.
+
+
+Hope that is what you need, otherwise let me know! Help would be great, will try it in R otherwise, but don’t know if I can manage that;)
+
+
+Best
+Daniel 
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ypkGB708DEg/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5892bc57-ff31-47ea-a559-e03290ca3834n%40googlegroups.com.
+
+Barbara Hill
+unread,
+Feb 26, 2021, 11:54:46 AM
+
+
+
+to GenePattern Help Forum
+Hi Daniel, 
+
+
+You seem to be running on our development server and using a development version of this module. I'm not quite sure how that happened, but please try your analysis again on our public production server - cloud.genepattern.org.
+
+
+Note that you may need to register on that server if you have not already done so.
+
+
+Let us know if the problem persists there.
+
+
+All the best
+-Barbara
+Daniel Merk
+unread,
+Feb 26, 2021, 1:22:01 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+I actually did that on purpose. There was a problem with merging 450k and EPIC arrays with the module, I think it was on the notebook server. I contacted the developers, and they told me to use the one on the beta server, which worked by the time.
+
+
+I can use the other public server, and will let you know if it doesn’t work.
+
+
+Best
+Daniel 
+
+
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ypkGB708DEg/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/de1af5bd-4c68-402c-85f8-65893a2216b1n%40googlegroups.com.
+
+Daniel Merk
+unread,
+Mar 9, 2021, 5:29:54 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+I re-did my DNA Methylation CNV analysis on the regular genepattern server (job ID 327422), but it will still not incorporate the selection of specific genes, in this case I used the common cancer gene list from the Broad.
+
+
+Hope you can help with that issue!
+
+
+Best
+Daniel
+
+
+Daniel Merk
+unread,
+Mar 9, 2021, 6:02:29 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Barbara,
+
+
+sorry for my previous email. I now did the analysis using the 2.3 version, and this worked. It does not work with the newer version, for some reason!
+
+
+Best
+Daniel
+
+
+Barbara Hill
+unread,
+Mar 10, 2021, 8:52:46 AM
+
+
+
+to GenePattern Help Forum
+Hi Daniel,
+Hm - that is strange, I'll get in touch with the author of the latest version.
+
+In the meantime, I'm glad that you were able to find a version that works for you!
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

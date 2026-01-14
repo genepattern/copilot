@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/yvCZEVTckNA
+Title: Why isn't ABSOLUTE on cloud Genepattern?
+----------------------------------------
+
+
+
+
+
+Why isn't ABSOLUTE on cloud Genepattern?
+17 views
+Skip to first unread message
+
+Andrew Cherniack
+unread,
+Sep 19, 2019, 2:03:14 PM
+
+
+
+to GenePattern Help Forum
+ABSOLUTE.review and ABSOLUTE.summary are on cloud gene pattern, but not ABSOLUTE itself.
+Neither of these modules are useful unless ABSOLUTE is run first.  ABSOLUTE was on the old genepattern.
+Can someone out ABSOLUTE on cloud gene pattern.
+Barbara Hill
+unread,
+Sep 19, 2019, 2:54:47 PM
+
+
+
+to GenePattern Help Forum
+Hi Andy,
+
+
+As I think you noticed, we are working on this and plan to have it out before the end of the year.
+
+
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!searchin/genepattern-help/ABSOLUTE%7Csort:date/genepattern-help/FgQlHjvZdWE/1op3ti0FBwAJ
+
+
+We'll update this forum, the system message, and our social media channels when that happens.
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

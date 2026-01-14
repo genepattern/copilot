@@ -1,0 +1,215 @@
+URL: https://groups.google.com./g/genepattern-help/c/loPYaB51VbI
+Title: Issue running GISTIC_2.0 module
+----------------------------------------
+
+
+
+
+
+Issue running GISTIC_2.0 module
+75 views
+Skip to first unread message
+
+Fernando RB
+unread,
+Mar 4, 2024, 7:53:18 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone,
+
+
+I've encountered an issue while attempting to run the GISTIC_2.0 module in GenePattern. Specifically, when attempting to run the latest version (6.15.30) on the segmentation file,  the job abruptly terminates with an error. Here is the error message:
+
+"""
+INFO: Using cached SIF image Error using ghostscript (line 186) Problem converting PostScript. System returned error: -1.Failed to convert to output format; Ghostscript status: -100.**** Unable to open the initial device, quitting. **** Unable to open the initial device, quitting. Artifex Ghostscript 8.54: **** Could not open temporary file /scratch/genepattern/job_28983437/gs_itxHKB Error in print>LocalPrint (line 307) Error in print (line 233) Error in save_current_figure (line 38) Error in plot_snp_score (line 492) Error in gistic_plots (line 219) Error in run_focal_gistic (line 347) Error in run_gistic20 (line 124) Error in run_gistic2_from_seg (line 249) Error in gp_gistic2_from_seg (line 97) MATLAB:ghostscript:ProblemConvertingPostScriptSystemReturnedError
+
+"""
+
+Then, I attempted version 6.15.28, which appears to be stable. It executed successfully with default input parameters. However, when I tried to adjust some input parameters (amplifications and deletions thresholds, and q-value threshold) it still ran with the default parameters, yielding always the same results.
+
+
+Any idea of the cause of this issue?
+
+
+Thank you in advance for your help.
+Andrew Cherniack
+unread,
+Mar 4, 2024, 7:57:18 AM
+
+
+
+to GenePattern Help Forum
+Can you share your seg file?
+
+Fernando RB
+unread,
+Mar 4, 2024, 8:04:52 AM
+
+
+
+to GenePattern Help Forum
+Of course, this is the segmentation file I used as input.
+
+
+I used the Human_Hg19.mat file as refgene file.
+
+
+
+
+data_cna_hg19.seg
+Andrew Cherniack
+unread,
+Mar 4, 2024, 8:19:32 AM
+
+
+
+to GenePattern Help Forum
+I don't know if this is the issue, but your column headers with periods might be causing an issue.
+Try changing your column headers to this.
+Sample	Chromosome	Start	End	Num_Probes	Segment_Mean
+
+
+
+Andrew Cherniack
+unread,
+Mar 4, 2024, 8:21:41 AM
+
+
+
+to GenePattern Help Forum
+Here is a second issue,
+Your seg means are all positive numbers.
+How are they centered?  Are they log2 values?
+
+
+
+Andrew Cherniack
+unread,
+Mar 4, 2024, 8:39:37 AM
+
+
+
+to GenePattern Help Forum
+
+Sorry I was wrong about your seg means.  They look OK
+
+Fernando RB
+unread,
+Mar 5, 2024, 4:56:21 AM
+
+
+
+to GenePattern Help Forum
+I have tried changing the column headers as advised. However, the problem persists: the execution with version 6.15.30 still aborts, and with version 6.15.28, despite specifying different parameter values, the default parameters are utilized.
+
+Andrew Cherniack
+unread,
+Mar 6, 2024, 12:58:12 PM
+
+
+
+to GenePattern Help Forum
+Can you send examples of the input parameters that are causing errors?
+
+Axel Künstner
+unread,
+Mar 7, 2024, 12:14:54 AM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+
+
+some problem here with v6.15.30. The previous version (v6.15.28) runs smoothly using the same input data.
+
+
+
+Here the error log:
+
+
+INFO: Using cached SIF image Error using ghostscript (line 186) Problem converting PostScript. System returned error: -1.Failed to convert to output format; Ghostscript status: -100.**** Unable to open the initial device, quitting. **** Unable to open the initial device, quitting. Artifex Ghostscript 8.54: **** Could not open temporary file /scratch/genepattern/job_29098829/gs_K5CKMW Error in print>LocalPrint (line 307) Error in print (line 233) Error in save_current_figure (line 38) Error in plot_snp_score (line 492) Error in gistic_plots (line 219) Error in run_focal_gistic (line 347) Error in run_gistic20 (line 124) Error in run_gistic2_from_seg (line 249) Error in gp_gistic2_from_seg (line 97) MATLAB:ghostscript:ProblemConvertingPostScriptSystemReturnedError
+
+
+
+Best,
+ Axel
+
+
+Fernando RB
+unread,
+Mar 7, 2024, 2:19:19 AM
+
+
+
+to GenePattern Help Forum
+In version 6.15.30, even the default parameters cause the error.
+
+
+Despite this, in version 6.15.28, I've managed to generate results using the default parameters. However, when attempting to run the same input data with the q-value threshold set to 0.001 (default=0.25) and another run with amplification and deletion thresholds set to 0.3 (default=0.1), the default parameters are persistently employed, resulting in identical outputs.
+
+
+
+Ted Liefeld
+unread,
+Mar 7, 2024, 10:57:18 AM
+
+
+
+to GenePattern Help Forum
+Fernando
+
+
+this might have been caused by an issue we tracked down in another help request (problem with the $TMPDIR changing on the compute env to /scratch and that directory not being mounted to the container running the analysis).  Can you retry the 6.15.30 runs to see if they work now?
+
+
+Thanks for your patience and help,
+
+
+Ted
+
+
+
+Andrew Cherniack
+unread,
+Mar 7, 2024, 12:19:34 PM
+
+
+
+to GenePattern Help Forum
+Fernando,
+
+
+I just ran your file with a change of q value to 0.001.  It gave two error messages unrelated to GISTIC itself, but everything seems to have been run to completion.
+If you are running HG19 Copy number from TCGA SNP array data, I recommend using the attached marker file.
+https://drive.google.com/file/d/10A40YdrjtW2I1uE5gIF6wu1EqvUxZpTv/view?usp=sharing
+
+
+
+Regards
+Andrew
+
+
+
+Fernando RB
+unread,
+Mar 8, 2024, 3:41:00 AM
+
+
+
+to GenePattern Help Forum
+Version 6.15.30 is now working perfectly.
+
+
+Thank you very much for your help!
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

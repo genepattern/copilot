@@ -1,0 +1,1 @@
+GenePattern help thread summary: User reported CLSfilecreator wizard connection failure, with forum administrator suggesting using official GenePattern cloud server (https://cloud.genepattern.org) as an alternative method for creating CLS files, and verifying that the problematic URL appears to be non-standard.

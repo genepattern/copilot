@@ -1,0 +1,1 @@
+A user experienced an error while unzipping a GenePattern module patch for Bowtie.aligner, caused by multiple URL redirects during the download process. The support team provided a workaround by offering an alternative direct download URL for the patch, which successfully resolved the installation issue, with the team planning to address the underlying bug in a future release.

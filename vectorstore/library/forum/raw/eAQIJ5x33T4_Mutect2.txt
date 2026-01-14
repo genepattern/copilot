@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/eAQIJ5x33T4
+Title: Mutect2
+----------------------------------------
+
+
+
+
+
+Mutect2
+29 views
+Skip to first unread message
+
+Imran Noorani
+unread,
+Oct 19, 2024, 7:13:04 AM
+
+
+
+to GenePattern Help Forum
+Hi GP team,
+
+
+I was wondering whether it would be possible to add a pipeline on GP for detecting mutations in cancer samples? For example, if you have downstream tools for looking at mutational significance but I can't see a method there for detecting the mutations. Mutect2 would be very useful. Please can you kindly let me know what you advise?
+
+
+Many thanks,
+Imran
+Michael Reich
+unread,
+Oct 22, 2024, 2:14:44 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Imran,
+
+
+We're currently reviewing the available mutation detection tools, including Mutect2, for inclusion in GenePattern. For now, if you are interested in using Mutect2, it is available in Galaxy.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8f958514-f03c-4981-8842-0b96cefa9783n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+Imran Noorani
+unread,
+Oct 23, 2024, 2:21:11 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Michael 
+
+
+This is very helpful thank you
+Best wishes
+Imran 
+
+Sent from my iPhone
+
+
+On 22 Oct 2024, at 22:14, Michael Reich <mmr...@cloud.ucsd.edu> wrote:
+
+
+﻿
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2Ce5ESsbpUDSRjzdS0nvMfhhc4YB%2BG3f4jKb2Mnf%2BeiAAxiw%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

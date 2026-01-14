@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/EWUx8Cs2AYc
+Title: trying to run ssGSEAProjection can't get gct formatted correctly
+----------------------------------------
+
+
+
+
+
+trying to run ssGSEAProjection can't get gct formatted correctly
+93 views
+ssGSEA
+Skip to first unread message
+
+dl...@foghorntx.com
+unread,
+Aug 6, 2018, 3:05:58 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I'm trying to run sGSEAProjection and I believe I'm having a problem with the GCT I'm using for my input.gct.file parameter.  I'm running on the public, Broad-hosted GenePattern server, the job ID is 1711290.
+
+
+The error message I'm receiving (stderr.txt) is:
+Error in read.gct(file) : 
+  Number of sample names 1 not equal to the number of columns 2 .Number of sample names 1 not equal to the number of columns 0 .
+Calls: ssGSEA.projection.cmdline
+Execution halted
+
+
+Here's the top of my gct file, produced with the cmapPy python library:
+#1.3
+1000	2	0	0
+id	col2	col1
+a000	834.0000	223.0000 
+a001	622.0000	729.0000
+
+
+I don't know where the code is getting the "sample names" from (and that there is only 1 of them).  I would have guessed it would be using the gct dimensions and/or the column headers for the matrix in the gct file, but that is not the case. 
+
+
+Any help much appreciated!
+
+
+Thanks,
+Dave
+Edwin Juarez
+unread,
+Aug 6, 2018, 3:26:27 PM
+
+
+
+to GenePattern Help Forum
+Hello Dave,
+
+
+It seems like cmapPy is creating version 1.3 of the GCT file format. You'd need to use version 1.2 of the format as described here: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+As for your question about where the code is getting the number of sample names, note that GCT version 1.2 requires a "Name" and a "Description" columns, so my guess is that ssGSEA is seeing 3 total columns and guesses that there is only one "data column" (based on the assumption that the GCT file is version 1.2).
+
+
+Edwin.
+
+dl...@foghorntx.com
+unread,
+Aug 7, 2018, 5:04:29 AM
+
+
+
+to GenePattern Help Forum
+Thank you Edwin - that did it!  I reformatted to GCT 1.2 and it worked fine.
+
+
+Reply all
+
+Reply to author
+
+Forward

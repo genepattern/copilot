@@ -1,0 +1,1 @@
+Maintenance notification for GenePattern Notebook Workspace involving a planned offline period on Tuesday, March 2nd for system upgrade to introduce Notebook Projects feature, with minimal disruption expected and details available via linked information resource.

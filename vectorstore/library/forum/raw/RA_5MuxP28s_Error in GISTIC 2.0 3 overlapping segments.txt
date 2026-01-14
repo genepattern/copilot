@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/RA_5MuxP28s
+Title: Error in GISTIC 2.0 3 overlapping segments
+----------------------------------------
+
+
+
+
+
+Error in GISTIC 2.0 3 overlapping segments
+16 views
+Skip to first unread message
+
+Michelle Yang
+unread,
+Jun 23, 2020, 8:34:27 AM
+
+
+
+to GenePattern Help Forum
+I ran a txt in GISTIC 2.0 as the seg.file with all the values being positive integers and all 6 columns present. However, it ran into an error and said it detected 3 overlaps, the first between line 17440 and 17737 . What does that mean? Which category of data is overlapping? 
+
+
+Is there an efficient way to detect overlaps within a large range of excel rows to fix the problem? 
+GenePattern Help Forum
+unread,
+Jun 25, 2020, 2:18:32 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+You may find this thread to be helpful in resolving this issue:
+https://groups.google.com/a/broadinstitute.org/forum/#!msg/gistic-forum/xw7w9tlUAE4/1g6uOrqlBAAJ 
+
+
+Best
+-Barbara 
+
+
+Reply all
+
+Reply to author
+
+Forward

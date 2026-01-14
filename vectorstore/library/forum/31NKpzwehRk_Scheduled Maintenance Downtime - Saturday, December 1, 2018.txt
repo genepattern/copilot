@@ -1,0 +1,1 @@
+GenePattern planned a maintenance downtime on Saturday, December 1, 2018, affecting multiple servers and websites including genepattern.org and gpftp.broadinstitute.org, with the Amazon cloud server (cloud.genepattern.org) remaining operational, and advising users to avoid running long jobs before the maintenance period and to use the cloud server as an alternative.

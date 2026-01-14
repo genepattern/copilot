@@ -1,0 +1,219 @@
+URL: https://groups.google.com./g/genepattern-help/c/eNJqp0Mmzfs
+Title: ExpressionFileCreator Query
+----------------------------------------
+
+
+
+
+
+ExpressionFileCreator Query
+49 views
+Skip to first unread message
+
+srilaksh...@gmail.com
+unread,
+Aug 5, 2018, 2:43:27 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+I'm trying to create an expression file from an IVT array using ExpressionFileCreator
+
+
+
+However, I cannot find it anymore on genepattern
+
+
+could someone please suggest how I might perform this function? ( I just a clinician, I dont have any ability with R)
+
+
+
+Thank you
+Sri
+
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+srilaksh...@gmail.com
+unread,
+Aug 6, 2018, 10:56:17 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara/ Peter
+
+
+Would you kindly point me in the right direction
+
+
+I need to use expression file creator to convert IVT array  to a gct file . This expression file creator is apparently a repository module which may be downloaded after a previous version of gene pattern is downloaded.
+
+I have attempted to download gene pattern from 8_2016 to my computer. It appears to download and then after I register, it tells me to restart gene pattern. If I try to do this, a web page opens . This webpage fails to load gene pattern
+
+the error message reads as below:
+
+This 127.0.0.1 page can’t be found
+
+No webpage was found for the web address:http://127.0.0.1:8080/gp/pages/login.jsf;jsessionid=BEC02DC1A7FC3151B1C8E8EB4AC2B955
+HTTP ERROR 404
+
+Barbara Hill
+unread,
+Aug 13, 2018, 1:17:21 PM
+
+
+
+to GenePattern Help Forum
+Hello Sri, 
+
+
+If you are trying to use this module on one of our public servers, it can be accessed here:
+
+
+on our current production GenePattern server hosted at the Broad Institute
+https://genepattern.broadinstitute.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00041:12.3
+
+
+On our new Beta Amazon Cloud Server
+https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00041:12.4.1
+
+
+Is there a reason you need to run GenePattern on your computer? This is totally fine, but is more work for you, as you have to administrate and maintain your own server.
+
+
+Best
+-Barbara
+srilakshmi sharma
+unread,
+Aug 14, 2018, 6:29:12 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara
+in order to use expression file creator , i need to upload files to cover them to .gct files
+
+
+I really am having problems uploading a 273 mb zip file of CEL files and don’t know why
+
+
+I us the ‘file’>upload command on the left hand side of the screen but when the server uploads to 20%, the public server becomes unresponsive and stays frozen at 20% . the upload speed of the wifi at work is 100mbps so I don’t think its the local server . can you suggest what I might do?
+
+
+can you please advise me?
+Sri
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b8d2ccc2-f0e8-4d4c-b7c9-b20de24244a1%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Aug 14, 2018, 6:51:37 AM
+
+
+
+to GenePattern Help Forum
+Have you tried using the upload button for the zip file parameter?
+
+
+This should work for files up to ~2GB.
+
+
+Also - what browser are you using?
+
+
+Best
+-Barbara
+
+
+srilakshmi sharma
+unread,
+Aug 14, 2018, 7:01:02 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+I’m using firefox mainly and tried it on chrome too ( completely crashed ) 
+
+
+Yes, I used the upload button for the zip file parameter
+
+
+Best
+Sri
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/69deed47-d221-48aa-aad6-4a9bb3eb3810%40googlegroups.com.
+
+srilakshmi sharma
+unread,
+Aug 14, 2018, 12:43:14 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for your help Barbara
+I went to another location and used a networked computer and was able to finally upload the files
+Much obliged to you for your help
+Sri
+
+On 14 Aug 2018, at 14:51, Barbara Hill <bh...@broadinstitute.org> wrote:
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/69deed47-d221-48aa-aad6-4a9bb3eb3810%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

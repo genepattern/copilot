@@ -1,0 +1,1 @@
+`A GenePattern user encountered a GISTIC02 error related to segment overlap in a segmentation file, with a support team member suggesting checking for overlapping segments within a single sample or duplicate sample names as potential causes of the processing error.`

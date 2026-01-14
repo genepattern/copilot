@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/yMk62eTYPsU
+Title: alll_data_by_genes vs all_
+----------------------------------------
+
+
+
+
+
+alll_data_by_genes vs all_
+28 views
+Skip to first unread message
+
+Ram Srinivasan
+unread,
+Sep 8, 2020, 1:26:33 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've run GISTIC2.0 on the output from the CopywriteR R package (which processed tumor/platform-matched-normal BAMs) with the following parameters:
+
+
+gistic2 \
+    -b /path/to/gistic2_output/ \
+    -seg /path/to/segmentation_values.tsv \
+    -refgene /path/to/refgenefiles/hg19.UCSC.add_miR.140312.refgene.mat \
+    -genegistic 1 -smallmem 0 -rx 0 -broad 1 \
+    -brlen 0.7 -conf 0.99 -armpeel 1 \
+    -savegene 1 -gcm extreme -v 30 \
+    -maxseg 46000 -ta 0.3 -td 0.3 -cap 1.5 -js 4
+
+
+My understanding was that per-gene log2 values would be available in all_data_by_genes.txt and all_thresholded.by_genes.txt would contain the calls as thresholded using the ta and td values. However, this does not seem to be the case as there are log2 values > ta in the former file that are not labeled amplifications in the latter file.
+
+
+Can you help me understand what is going on, please? How do the values in the former file relate to those in the latter file? I'm unable to find a manual for GISTIC v2.0.23, and the `-h` argument only gives me the briefest of descriptions as shown below:
+
+
+Usage: gp_gistic2_from_seg -b base_dir -seg segmentation_file
+-refgene ref_gene_file  [-mk markers_file] [-alf array_list_file(def:empty)]
+[-cnv cnv_file] [-ta amplifications_threshold(def=.1)] [-td deletions_threshold(def=.1)]
+[-js join_segment_size(def=8)] [-ext extension] [-qvt qv_thresh(def=0.25)]
+[-rx remove_x(def=1)] [-v verbosity_level(def=0)] [-cap cap_val(def=1.5]]
+[-broad run_broad_analysis(def=0)] [-brlen broad_length_cutoff(def=0.98)]
+[-maxseg max_sample_segs(def=2500)] [-res res(def=0.05)] [-conf conf_level(def=0.75)]
+[-genegistic do_gene_gistic(def=0)] [-smalldisk save_disk_space(def=0)]
+[-smallmem use_segarray(def=1)] [-savegene write_gene_files(def=0)]
+[-arb do_arbitration(def=1)] [-twosides use_two_sided(def=0)] [-peaktype peak_types(def=robust)]
+
+
+Thank you
+
+
+--
+Ram
+
+Barbara Hill
+unread,
+Sep 8, 2020, 3:03:06 PM
+
+
+
+to GenePattern Help Forum
+Hello Ram, 
+
+
+As you are running this from a command line and not in GenePattern, I suggest you post in the GISTIC forum.
+https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+
+
+I hope that helps!
+
+
+All the best
+-Barbara
+Ram Srinivasan
+unread,
+Sep 8, 2020, 3:04:11 PM
+
+
+
+to GenePattern Help Forum
+Thank you, Barbara. I was not aware of this other group. I'll search and post there.
+
+
+Reply all
+
+Reply to author
+
+Forward

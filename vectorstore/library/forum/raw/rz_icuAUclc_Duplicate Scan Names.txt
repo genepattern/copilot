@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/rz_icuAUclc
+Title: Duplicate Scan Names
+----------------------------------------
+
+
+
+
+
+Duplicate Scan Names
+12 views
+Skip to first unread message
+
+Tia Vuu
+unread,
+Sep 27, 2020, 12:42:18 PM
+
+
+
+to GenePattern Help Forum
+I'm trying to get a GCT file fro  Affymetrix Mouse Expression 430A Array. 
+
+
+Issue: I have tried to get a GCT just fro: 
+ID: 280198 --> Input: zip file --> Error: no CEL files, or CLM filtered it all out
+ID: 280200 --> Input: Zip, CLM --> Error: ducplicate scan name
+ID: 280199-->  Input: Zip, CLM and CDF --> Error: duplicate scan name
+
+
+Is there an issue with my CLM file? 
+Barbara Hill
+unread,
+Sep 28, 2020, 1:11:16 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It seems there are a number of things going wrong here, so we'll start with the low-hanging fruit.
+
+
+
+
+
+ID: 280198 --> Input: zip file --> Error: no CEL files, or CLM filtered it all out
+The zip file you use for input to job 280198 is invalid - which is likely the reason that you are getting an error saying it couldn't find CEL files.
+ 
+ID: 280200 --> Input: Zip, CLM --> Error: ducplicate scan name
+Again, the zip file for the cel input is invalid. Additionally, your clm file looks to have Windows line endings as well as additional Windows formatting encoded. I would suggest copying just re-creating the file in Notepad (rather than Word or WordPad) and saving it as an ANSI txt file.
+(I might also suggest downloaded a text editor like Sublime Text which allows you to more easily create files with Unix (IE non-Windows) friendly line endings)
+ 
+ID: 280199-->  Input: Zip, CLM and CDF --> Error: duplicate scan name
+The CEL file zip is still invalid.
+The CLM is also still incorrectly formatted.
+The CDF should be a file, not a zip - this looks like a whole library when what is being asked for is a single .cdf file. - It looks like you can navigate through this zip library and extract just the 430A CDF (C:\Users\<yourUsername>\Downloads\moe430_libraryfile.zip\CD_MOE430\Full\MOE430A\LibFiles\MOE430A.CDF
+
+
+Try fixing your CEL zips (I'm not sure what you were using to zip, so I'm not sure I can suggest anything to help, but be sure you can unzip on your local computer before uploading),  reformatting your CLM, and providing just the .cdf file and let us know how it goes.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

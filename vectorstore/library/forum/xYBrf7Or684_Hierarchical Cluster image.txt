@@ -1,0 +1,1 @@
+A GenePattern user inquired about generating a blank JPEG image when using the Hierarchical Cluster image module, with a support representative requesting additional job details to troubleshoot the issue, but without a definitive resolution provided in the thread.

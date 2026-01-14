@@ -1,0 +1,1 @@
+A user seeks guidance on installing MutSigCV locally and obtaining specialized installation instructions, with a follow-up clarifying question about whether the installation is intended for use with a GenePattern Server.

@@ -1,0 +1,1 @@
+The summary of the GenePattern forum thread is: User inquired about using non-SNP array data derived from HMMcopy with GISTIC2.0, experiencing error messages preventing analysis of focal copy number variations, with a support representative recommending consultation with the GISTIC forum and suggesting investigation of marker/segment file compatibility issues.

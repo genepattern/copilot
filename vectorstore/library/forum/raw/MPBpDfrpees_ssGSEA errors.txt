@@ -1,0 +1,283 @@
+URL: https://groups.google.com./g/genepattern-help/c/MPBpDfrpees
+Title: ssGSEA errors
+----------------------------------------
+
+
+
+
+
+ssGSEA errors
+98 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+Jan 27, 2020, 2:25:08 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Trying to process a GCT file with two gene sets from msigdb. I removed the first two lines of the two gene sets files.
+
+
+http://software.broadinstitute.org/gsea/msigdb/cards/CHARAFE_BREAST_CANCER_BASAL_VS_MESENCHYMAL_DN.html
+
+http://software.broadinstitute.org/gsea/msigdb/cards/CHARAFE_BREAST_CANCER_BASAL_VS_MESENCHYMAL_UP.html
+
+
+
+The CGT file is obtain from Morpheus. So it should not be corrupted.
+
+
+There are 6 column annotations  in the original matrice. From morpheus, the file contain 50 columns (samples), and ~50 000 rows.
+
+
+I tried version 1.2 and version 1.3, both gives me error.
+
+
+Version 1.3 gave me the following error : 
+
+
+Error in read.gct(file) :
+Number of sample names 54 not equal to the number of columns 50 .Number of sample names 54 not equal to the number of columns 1 .
+Calls: ssGSEA.projection.cmdline
+Execution halted
+
+
+Version 1.2 gave me the following error : 
+
+
+Error in 1:max(GSDB$size.G) : result would be too long a vector
+Calls: ssGSEA.projection.cmdline
+Execution halted
+
+
+And in the output was : 
+
+
+[1] "No normalization to be made"
+
+
+Job ids are 201283 201281 201279
+
+
+Any idea would be welcome. 
+Alex Wenzel
+unread,
+Jan 28, 2020, 10:39:10 PM
+
+
+
+to GenePattern Help Forum
+Hi Jean-Philippe,
+
+
+For the input GCT, version 1.2 should be the correct version to use. Additionally, I am not an admin and cannot look at your job results, but that error to me indicates there could be a problem with the GMT file you created from those two gene sets. Would you mind posting that file? 
+
+
+Alex
+Jean-Philippe Villemin
+unread,
+Jan 29, 2020, 12:15:09 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+Yeah but from (https://github.com/broadinstitute/ssGSEA2.0)   I thought it would work with GCT version 1.3 .
+ But it's a different module called PTM-SEA that should implement the last version of ssGSEA and I tried ssGSEAProjection
+ I will do some test in console and with PTM-SEA and come back to you I still have mistakes. Thanks
+
+Changes to the original ssGSEA R-implementation
+
+Original code written by Pablo Tamayo. Adapted with additional modifications by D. R. Mani and Karsten Krug. Adaptions include:
+
+support of multiple CPU cores (doParallel R-package)
+support of GCT v1.3 format using functions from cmapR
+improved handling of missing values
+scoring of directional gene sets (PTMsigDB)
+basic error handling
+improvements in runtime performance
+additional output files like rank plots and parameter fil
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2a6d47ab-cfb5-4138-897a-9f6791befc75%40googlegroups.com.
+
+
+
+
+
+--
+
+Jean-Philippe Villemin   - Bioinformatics, Software Engineer -
+
+
+IGH (Institute of Human Genetics)
+Team: Splicing and Epigenetics
+141 rue de la Cardonille
+Montpellier France 4094 cedex 5
+jpvil...@gmail.com
+
+
+Alex Wenzel
+unread,
+Jan 29, 2020, 2:17:55 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Jean-Philippe,
+
+
+Thank for bringing the 1.2/1.3 version issue to our attention. This is being looked at by our development team. 
+
+
+In the meantime, this analysis should work with a GCT v1.2 format file. Looking at your job results (our admins saw this thread and made me an admin too!) I see that you have uploaded two txt files with lists of genes. You will actually need to upload a gmt format file - the same file you can obtain from MSigDB. Please let me know if using the v1.2 GCT and the GMT format for your gene sets helps.
+
+
+Alex
+David Eby
+unread,
+Jan 29, 2020, 5:07:16 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Jean-Philippe,
+
+
+Just to clarify the situation, the ssGSEA module on GenePattern is the original implementation, and it's completely unrelated to this ssGSEA 2.0 repository on GitHub.  If you are interested in that method you would need to obtain that code from elsewhere and run it outside of GenePattern.  Unfortunately we aren't able to provide any support for that.
+
+
+It's not clear to me exactly what they've changed compared to the GenePattern version, so I'm not sure it's entirely accurate to call this a later version of ssGSEA.  Perhaps "alternate implementation" would be a better term.  In any case, we (the GenePattern and GSEA teams) are not involved with it and can't vouch for it.
+
+
+We can help with the ssGSEA method on GenePattern, though, and Alex's points about the GCT & GMT formatting seem like the best suggestions here.  The GenePattern module also has it's own documentation page as well.
+
+
+Versioning is a little odd here.  The version numbers associated with the GenePattern module are GP-specific version numbers, and within that realm there were no separate "ssGSEA versions" at all, just the R code itself.  The "ssGSEA 2.0" nomenclature from that GitHub repository seems to be using "2.0" in the modern vernacular "new, improved" sense of the term, rather than being a specific version.  But I can't really speak for that since, again, we're not directly involved in that package.
+
+
+Regards,
+David
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+On Thu, Jan 30, 2020 at 7:17 AM Alex Wenzel <atwe...@eng.ucsd.edu> wrote:
+
+Hi Jean-Philippe,
+
+
+Thank for brining the 1.2/1.3 version issue to our attention. This is being looked at by our development team. 
+
+
+In the meantime, this analysis should work with a GCT v1.2 format file. Looking at your job results (our admins saw this thread and made me an admin too!) I see that you have uploaded two txt files with lists of genes. You will actually need to upload a gmt format file - the same file you can obtain from MSigDB. Please let me know if using the v1.2 GCT and the GMT format for your gene sets helps.
+
+
+Alex
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/50f2ee5c-f47e-42f5-a024-092aaec989c8%40googlegroups.com.
+
+Jean-Philippe Villemin
+unread,
+Jan 30, 2020, 1:56:52 AM
+
+
+
+to GenePattern Help Forum
+Hi Alex & David,
+
+
+I have made several tests with ssGsea_Projection and PTM_SEA.
+
+
+For Gsea_Projection I used version GCT  1.2 . Job 201967 . Error : 
+
+
+Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed
+Calls: ssGSEA.projection.cmdline
+Execution halted
+
+
+For PTM-SEA I used version GCT  1.3 . Job 201968,201969 Error : 
+
+
+parsing as GCT v1.3
+/opt/gpcloud/gp_home/users/jp/uploads/tmp/run8501335613651628628.tmp/input.data/1/TPM_1.3.gct 53855 rows, 50 cols, 5 row descriptors, 1 col descriptors
+Error in ssGSEA2(input.ds = opt$input.ds, output.prefix = opt$output.prefix, :
+object 'm' not found
+Execution halted
+
+
+The advantage of PTM-SEA is that is was working on CGT v1.3 and apply ssGSEA (alternative implementation but still in GenePattern)
+
+I thought that would be cool for the output that it could keep several descriptors. So it's why I wanted to make this version work.
+
+
+But with both modules, I'm stuck... Thanks for your help.
+
+Jean-Philippe Villemin
+unread,
+Feb 3, 2020, 1:22:02 AM
+
+
+
+to GenePattern Help Forum
+Any idea at least for GSEA_PRojection. 
+
+Alex Wenzel
+unread,
+Feb 3, 2020, 2:31:47 PM
+
+
+
+to GenePattern Help Forum
+Hi Jean-Philippe
+
+
+I apologize for the delayed response. I believe this error is due to the NaN values in your data. When I replaced them with 0, I was able to run the projection with the Hallmarks gene set collection. I've attached a screenshot with Python code so you can see the transformation I made. Please let me know if this helps or if there are any other issues.
+
+
+Alex
+
+
+
+
+
+Jean-Philippe Villemin
+unread,
+Feb 4, 2020, 3:56:43 AM
+
+
+
+to GenePattern Help Forum
+Yeah it worked thanks.
+
+
+Reply all
+
+Reply to author
+
+Forward

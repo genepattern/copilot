@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/LnEGCHpqd58
+Title: Re: [genepattern-help:3034] Re: DeSeq2 job error RNAseq Raw readcount
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:3034] Re: DeSeq2 job error RNAseq Raw readcount
+12 views
+Skip to first unread message
+Ted Liefeld
+unread,
+Jun 27, 2024, 5:48:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+In future, please send your help requests to the GenePattern help forum, https://groups.google.com/u/1/g/genepattern-help, as this email address is no longer monitored regularly.
+
+
+That said, it seems that job 588894 has already been deleted from the server so I cannot see your input file to provide guidance.  If you are still having trouble please post a new message to the GenePattern help forum (https://groups.google.com/u/1/g/genepattern-help) including the stderr.txt contents and the cls file contents.
+
+
+Thanks
+
+
+Ted
+
+
+On Wed, Jun 26, 2024 at 8:25 PM đông lê <nguoic...@gmail.com> wrote:
+
+Here is the report from stderr.txt
+Error in GP.deseq2(gct, cls, confounding.var.cls, opts$qc.plot.format,  :
+  The cls.file must be categorical with exactly two classes
+Execution halted
+So I guess that my cls file has problem.
+
+
+Vào lúc 10:39:05 UTC+8 ngày Thứ Năm, 27 tháng 6, 2024, đông lê đã viết:
+
+Dear all,
+I am new to the group, so perhaps my question could be answered elsewhere, but I can not find the similar topic currently.
+Here, I would like to run DEseq2 analysis using my Raw readcount, but the running got error. Please help me with this, since I already check the format of my input .gtc and .cls file and they are all in the correct format.
+here is my job ID: 588894. DESeq2
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fbd6c56d-a4f4-4043-9967-ccddca9ceaa3n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

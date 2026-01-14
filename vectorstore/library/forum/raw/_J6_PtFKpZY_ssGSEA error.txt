@@ -1,0 +1,185 @@
+URL: https://groups.google.com./g/genepattern-help/c/_J6_PtFKpZY
+Title: ssGSEA error
+----------------------------------------
+
+
+
+
+
+ssGSEA error
+44 views
+Skip to first unread message
+
+Jaishree Tripathi
+unread,
+Oct 14, 2022, 4:59:32 AM
+
+
+
+to GenePattern Help Forum
+Hi 
+
+
+I am trying to run the ssGSEA on Gene Pattern and keep getting the following error:
+"Error in uploading file 'tmp':null"
+
+
+Could you please advise where am I going wrong?
+
+
+I uploaded .gct and .gmt files and ran the ssGSEA.
+
+
+Thanks
+Jaishree
+Jaishree Tripathi
+unread,
+Oct 14, 2022, 5:07:01 AM
+
+
+
+to GenePattern Help Forum
+Upon retrial where I uploaded files in the upload folder, I see the following error:
+
+
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+Please help.
+Thanks
+
+
+
+Ted Liefeld
+unread,
+Oct 14, 2022, 6:58:11 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+we have seen this error before and I think I have fixed it for your account.  Unfortunately we have not yet found the origin of the error so it might appear again.  If it does please just contact us here on the forum. Our engineers are working on discovering and fixing the root of the problem and will correct it as soon as possible.
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+Jaishree Tripathi
+unread,
+Oct 14, 2022, 6:30:00 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted
+
+
+Thanks for fixing it. So, now I managed to get past the uploading step and the ssGSEA seems to be doing something. Then I reach this page attached slide (I cannot seem to paste the screenshot within email!)
+
+
+So, did it work? If yes, where can I access the results/plots?
+
+
+Thanks
+Jaishree
+
+
+ssGSEA trial.pptx
+Jaishree Tripathi
+unread,
+Oct 14, 2022, 6:34:44 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted
+
+
+So the ssGSEA job finished and I got two output files:
+
+ Allgenes_log2FPKM_d5_BR5.PROJ.gct (42.0 KB) (Last modified: 2022-10-15 01:27:03.0)
+
+ stdout.txt (50.0 KB) (Last modified: Sat Oct 15 01:27:11 UTC 2022)
+
+They don't seem to show any enrichment scores or pvalue. Could you help me read the output? Is this correct?
+
+
+
+
+Cheers
+
+Jaishree
+
+
+
+
+Jaishree Tripathi
+unread,
+Oct 16, 2022, 7:30:38 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+What's the purpose of the stdout.txt in the output file? What does it show?
+
+
+for the .PROJ.gct file out put, if I want to see which pathways are more enriched in my sample, then should I just sort the table from highest to lowest for the third column which has numerical values (positive and negative). Are the negative value gene sets the least expressed or least enriched in my data set?
+
+
+Please help me to understand the output.
+
+
+Thanks!
+
+Ted Liefeld
+unread,
+Oct 17, 2022, 5:47:03 AM
+
+
+
+to GenePattern Help Forum
+Within GenePattern, if a module (ssGSEA in this case) logs anything to stdout, it will be captured and returned in a file called stdout.txt.  The same thing happens with any logging to stderr being captured and placed in a file called stderr.txt.  For your ssGSEA run it appears that the stdout.txt is just logging the overlap between each gene set and the input data.
+
+Anthony Castanza
+unread,
+Oct 18, 2022, 2:00:52 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Jaishree,
+
+
+To follow up Ted's answer, the results in the .PROJ.gct file are the enrichment scores of those gene sets within each sample in your input file. ssGSEA computes enrichment at both the top (positive scores) and bottom (negative scores) of the input expression data.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ca3e0b5-7736-4620-9655-0db8ac0e6fa3n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

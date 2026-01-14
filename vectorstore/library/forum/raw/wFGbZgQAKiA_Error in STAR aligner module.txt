@@ -1,0 +1,168 @@
+URL: https://groups.google.com./g/genepattern-help/c/wFGbZgQAKiA
+Title: Error in STAR aligner module
+----------------------------------------
+
+
+
+
+
+Error in STAR aligner module
+42 views
+Skip to first unread message
+
+Johann Shane Tian
+unread,
+Aug 19, 2022, 5:47:00 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have a problem running the STAR aligner to analyze public domain fastq datasets. Through the GenePattern web-browser version, I successfully created an index zip file for the reference genome. But when I ran it with a paired-end sample as a test, I always get an error a few hours later. According to the log files, it seems that the program have not started yet. One thing I am unsure is the paired-end RNA sequencing files were uploaded as a .fastq. Will that affect it? I mean if it doesn't, then the program would have not allowed me to include them during the configuration right?
+
+
+Hope to get some input/help in this matter. Thank you.
+
+
+
+Here is the description of the stderr.txt, stdout.txt and gp_execution_log.txt respective:
+
+
+"Host EC2 (instance i-04f6eea5f94e40f18) terminated."
+
+
+
+" Aug 19 01:58:48 ..... started STAR run
+
+  Aug 19 01:58:48 ..... loading genome
+
+  Aug 19 01:58:54 ..... started mapping"
+
+
+" # Job: 457375
+
+# User: (e-mail address)
+# Submitted: 2022-08-19 01:47:15.0
+
+# Completed: 02022-03-19 08:03:59.519
+
+# ET(ms): 22604519 server: https://cloud.genepattern.org/gp/
+
+# Module: STAR.aligner urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00370:999999999 # Parameters:
+
+# star.index = starindex_250.zip https://cloud.genepattern.org/gp/jobResults/457312/starindex_250.zip
+
+# reads.pair.1 = reads.pair.1.list.txt https://cloud.genepattern.org/gp/users/(login details)/tmp/run4391429012057499249.tmp/reads.pair.1.list.txt
+
+# reads.pair.2 = reads.pair.2.list.txt https://cloud.genepattern.org/gp/users/ (login details)/tmp/run2357505427446117168.tmp/reads.pair.2.list.txt
+
+# max.reads.to.align =
+
+# align.read.end.to.end = no
+
+# max.number.mismatches = 10
+
+# max.fraction.mistaches = 0.3
+
+# min.overhang.annotated.read = 3
+
+# min.overhang.not.annotated.read = 5
+
+# min.intron.length = 21 # max.intron.length = 500000
+
+# mates.max.gap = 500000
+
+# secondary.mapping.mismatches.range = 0
+
+# max.multimapping = 10
+
+# min.report.canonical.junction.overhang = 12
+
+# min.report.noncanonical.junction.overhang = 30 # map.only.reported.juntions = no
+
+# two.pass = no
+
+# detect.chimeric.transcripts = no
+
+# output.unmapped.reads = no
+
+# quantify.genes = no
+
+# output.wiggle.file = none
+
+# wiggle.signal = all
+
+# output.format = BAM unsorted
+
+# HI.flag = only one
+
+# output.prefix = STAR_osteosarcoma1
+
+
+
+Regards,
+Johann Shane Tian (PhD)
+Research Fellow
+
+iHealthtech
+National University of Singapore
+
+Ted Liefeld
+unread,
+Aug 22, 2022, 1:14:55 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Sorry that you are having problems with this.  We often see these sort of "EC2 host terminated" errors if an analysis runs out of memory but in this case that does not seem to be the case.  I am looking into it and will let you know once I have a fix or a workaround.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Aug 24, 2022, 3:41:29 PM
+
+
+
+to GenePattern Help Forum
+Just a quick heads-up where we are at.  The job was failing due to lack of disk space.  I restarted it (using the RNASeq large disk" queue)  but it timed out after 24 hours.  I restarted it again with more memory and the max 2-day runtime and should know on Friday if it can complete in that amount of time.  If it does I will make the results available to you throgh GenePattern so you don't have to re-run the (very long and slow) job.
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Sep 1, 2022, 1:55:22 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We have attempted to run this job several times on 3 different compute resources, but it has never run to completion.  The STAR.aligner code never prints an error and its last log message is always just "Started mapping".   So unfortunately are not able to tell what the issue may be or if our resources will be able to complete an analysis of it.  I still have 2 runs processing and will let you know if they succeed, but at this point we don't expect success.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

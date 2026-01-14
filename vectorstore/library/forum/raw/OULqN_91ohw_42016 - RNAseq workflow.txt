@@ -1,0 +1,170 @@
+URL: https://groups.google.com./g/genepattern-help/c/OULqN_91ohw
+Title: 4/20/16 - RNAseq workflow
+----------------------------------------
+
+
+
+
+
+4/20/16 - RNAseq workflow
+41 views
+Skip to first unread message
+Barbara Hill
+unread,
+Aug 22, 2017, 3:33:31 PM
+
+
+
+to GenePattern Help Forum
+(THIS IS A REPOST FROM OUR PREVIOUS FORUM)
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+Hello,
+I have RNAseq files to analyze.
+I received FASTQ files and BAM files (PICARD aligned) from the walk up sequencing facility.
+
+Question 1: 
+JOB IDs: 99031, 99023 and 99185
+Cufflinks/Cuffmerge pipeline followed by Cuffdiff.
+FPKM traking files have all 0 values? 
+It is as if the PICARD aligned BAM files were not recognized.
+
+Question 2: 
+JOB IDs 99046 or 99047 
+I tried to work with my FASTQ files, but the BOWTIE2 module is not recognizing them as FATSQ
+
+I am not on the public server, and can share my files privately if necessary.
+
+Thank you!
+
+Rita
+
+===========================================
+
+
+
+
+Hi Rita, 
+
+
+
+Question 1:
+Your input files to Cuffdiff need to be aligned BAM or SAM files, not tracking files:
+
+
+A list of SAM/BAM files containing aligned RNA-seq reads grouped by condition.
+Cuffdiff tests for differential expression and regulation between all pairs of samples.  SAM is a standard short read alignment that allows aligners to attach custom tags to individual alignments. BAM is the binary equivalent of SAM.  For more information about the SAM/BAM format, see the specification.
+(Taken from the Cuffdiff doc: http://www.broadinstitute.org/cancer/software/genepattern/modules/docs/Cuffdiff/7)
+
+
+Question 2:
+
+
+       Unfortunately this is a known issue with this version of Bowtie2.aligner - it is not currently accepting gz files. I would suggest un-compressing the files. 
+
+
+ Please let me know if this helps to resolve the issues.
+
+
+Best
+
+
+-Barbara
+
+
+================================================
+
+
+Hi Rita a quick update: 
+
+
+I've check the Bowtie2 manual on Source Forge and it looks like, while they had provided .gz as in input option when we released this module, it never worked and it is no longer a valid input format.
+
+
+Apologies for any confusion.
+
+
+Best
+
+
+================================================
+
+
+Hi Rita, 
+
+
+From the Cuffdiff doc:
+ "The Cuffdiff module takes two or more fragment alignment SAM/BAM files (from TopHat or other read aligner), as well as a GTF file containing transcript annotations (such as merged.gtf from Cuffmerge) as input."
+
+
+So, yes, the aligned files you provided as input to Cufflinks, along with the merged.gtf output by Cuffmerge, should do the trick.
+
+
+Let us know if you need any further assistance.
+
+
+(Please note that most of the team is out of the office tomorrow)
+
+
+
+
+ 
+Hello Bobbie,
+
+
+To clarify for cuffidiff:  if I am using the same BAM files that I fed into Cufflinks (6 of them), then the only file required from Cufflinks to be fed to cuffdiff is the merged.gtf of all the BAM files fed into cufflinks? 
+
+
+I will go ahead a un-compress my zip file.
+
+
+Thank you so much for all your help!!
+
+
+Rita
+
+
+====================================================
+
+
+Hello Barbara,
+
+
+for the zipped files: I am using UNIX to unzip the files I have on the Hahn lab server (which I have access to via GP) 
+
+
+Cuffdiff: thank you for the clarifications, I will give it a shot and let you know!
+
+
+I have one final question:
+the facility aligned my sequences using PICARD (all my BAM files are PICARD aligned) > can GP RNAseq modules recognize PICARD ? 
+
+
+Thanks! 
+
+
+Rita
+
+
+===================================================
+
+
+Hi Rita, 
+
+
+ Do you know what PICARD tool was used to align? (I should think it would work though...)
+
+
+ As for your files - are you saying you can already see them in GP? if so - there is no need to upload them again. Just drag them into the input file space.
+
+
+Let me know if that helps. 
+
+Reply all
+
+Reply to author
+
+Forward

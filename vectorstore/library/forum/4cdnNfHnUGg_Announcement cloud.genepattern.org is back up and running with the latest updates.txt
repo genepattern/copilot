@@ -1,0 +1,1 @@
+Announcement about cloud.genepattern.org being restored after maintenance, with latest updates available and release notes published at the specified GitHub repository link, providing users with information about the platform's current status and recent improvements.

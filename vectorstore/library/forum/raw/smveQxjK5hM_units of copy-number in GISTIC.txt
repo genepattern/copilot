@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/smveQxjK5hM
+Title: units of copy-number in GISTIC
+----------------------------------------
+
+
+
+
+
+units of copy-number in GISTIC
+44 views
+Skip to first unread message
+
+Sumithra Sankararaman
+unread,
+Oct 6, 2023, 11:27:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi, 
+In reference to the GISTIC 2.0 job id 538500, I have the following question:
+What are the units of copy-number in all_data_by_genes.txt, focal_data_by_genes.txt etc. Is it change in copy number from 2?
+Thanks
+Sumithra
+Andrew Cherniack
+unread,
+Oct 6, 2023, 12:18:33 PM
+
+
+
+to genepatt...@googlegroups.com
+It’s change in copy number from the baseline CN state of the tumor.
+In a diploid cell that would be two.
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADFJXbuiY4hBNsuZznChMzgC2%2B5o6V_QjOsMKK8i3S8wfdD_gQ%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

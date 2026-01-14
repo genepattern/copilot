@@ -1,0 +1,150 @@
+URL: https://groups.google.com./g/genepattern-help/c/Oq6-vSTs94w
+Title: Error when using SubMap module
+----------------------------------------
+
+
+
+
+
+Error when using SubMap module
+138 views
+Skip to first unread message
+
+Atsuyuki Kishibe
+unread,
+Jul 2, 2023, 10:55:35 PM
+
+
+
+to GenePattern Help Forum
+Hello, I have been trying to use SubMap and got Error: 
+
+Error in if (ncol(data) != columns) { : the condition has length > 1 Calls: submap.main -> read.gct Execution halted
+
+My job ID is 518488, and the input files are in proper format I think.
+
+
+Many thanks if you could help solving this error.
+Kishibe
+Ted Liefeld
+unread,
+Jul 5, 2023, 10:59:02 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I think the problem is probably the spaces in your sample names.  If you look at the SubMap documentation (https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00101:4), for both the datasets it says
+
+
+      "Note: Remove spaces from sample names"
+
+
+Since the error seems to be a column count issue, I suspect its treating the space separated parts of the sample names as separate columns and this is throwing off the count (plus if it made it further it would probably try to read the latter name fragments as numbers and generate a different error).
+
+
+Hope this helps
+
+
+Ted
+
+Atsuyuki Kishibe
+unread,
+Jul 5, 2023, 8:52:24 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thanks for your reply! I noticed that the feature names (eg, KEGG ABC transporters) instead of sample names have spaces. However, I still got exact the same error when I rerun the job with .gct files whose feature names and sample names have no spaces. I have checked this in R using the code below.
+
+
+table(grepl(' ', colnames(SubMapExp@mat)))   # SubMap was a GCT object and was later converted to the input file of SubMap module using write_gct() function in cmapR package
+FALSE
+  158 
+
+
+
+table(grepl(' ', rownames(SubMapExp@mat)))
+FALSE
+ 2405 
+
+
+
+The new job ID is 519082.
+
+
+I hope the above clues are useful, and any suggestions would be highly appreciated.
+
+
+
+Kishibe
+
+Ted Liefeld
+unread,
+Jul 6, 2023, 2:47:07 PM
+
+
+
+to GenePattern Help Forum
+Kishibe,
+
+
+There were other issues with the gct file formats.
+- There was an extra header line (starts with X1.ncol.SubMapExp.)
+- it was defined as gct version 1.3 but SubMap accepts 1.2
+- On the 2nd line it had two extra values (e.g. 2419 58 1 1).  This might be because of version 1.3 of the format?  I am not familiar with that version as it is not used anywhere in GenePattern AFAIK but was used in some other software.
+
+
+When I corrected those points I was able to get a successful run
+
+
+p.s. How were these input files created?
+
+Atsuyuki Kishibe
+unread,
+Jul 6, 2023, 6:37:55 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thanks for pointing out these issues, and I also successfully ran the module and got the result. The crux for the matter does exist in the gct version. GCT version 1.2 avoided all the previous errors.
+
+
+The input files were created in R. Briefly, the gene expression matrix (df, with sample names in columns and gene symbols in rows) was converted into a GCT class and wrote to the disk:
+
+
+library(cmapR)
+
+SubMapExp = new("GCT", mat = df)
+write_gct(SubMapExp, ofile = "SubMapExp", ver = 2)    # ver = 2 here resulted in a GCT version 1.2 file, and the failure to provide this parameter was the direct reason of the previous error
+
+
+The 3rd line of the .cls file was wrote to the disk, and the 1st and 2nd lines were manually added to it:
+
+
+SubMapCluster = data.frame(Cluster = ifelse(Metadata$Status == 'Del', 1, 0)) %>% t()                                 # I have two group named 'Del' and 'WT'
+
+write.table(SubMapCluster, file = 'SubMapCluster.cls', quote = F, row.names = F, col.names = F, sep = ' ') # the sep here is a space
+
+ 
+Thanks again for your help!
+
+
+Kishibe
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

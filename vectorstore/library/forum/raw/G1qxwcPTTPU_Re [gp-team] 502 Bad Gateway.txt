@@ -1,0 +1,83 @@
+URL: https://groups.google.com./g/genepattern-help/c/G1qxwcPTTPU
+Title: Re: [gp-team] 502 Bad Gateway
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] 502 Bad Gateway
+5 views
+Skip to first unread message
+Barbara Hill
+unread,
+Feb 19, 2019, 6:43:10 AM
+
+
+
+to GenePattern Help Forum, genepattern-team
+Hello,
+
+
+Yes, we are experiencing an unplanned outage. I have just post to social media (thank you for the reminder - I was busy debugging). We are actively working to get the server back up ASAP. I will post again in the forum and on Twitter and Facebook, as soon as I have more information.
+
+
+Apologies, 
+Barbara
+
+
+On Tue, Feb 19, 2019 at 9:26 AM <torre...@idibaps.org> wrote:
+
+
+Dear GenePattern team,
+
+ 
+
+I am a researcher at IDIBAPS (Barcelona). I’ve been trying to use the GenePattern in the Cloud and I’m getting the “502 Bad Gateway”.
+
+ 
+
+Thank you
+
+ 
+
+Sara Torrecilla Recio
+
+PhD Student
+Translational research in Liver Cancer
+
+IDIBAPS – Campus Clínic (University of Barcelona)
+
+Tel: +34 93 227 9155
+
+ 
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/1A6B7709924C484D828FCFCBE412467B01A47C9EAC%40cscmlbe3.csc.es.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+Reply all
+
+Reply to author
+
+Forward

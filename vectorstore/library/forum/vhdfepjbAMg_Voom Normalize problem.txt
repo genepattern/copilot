@@ -1,0 +1,1 @@
+VoomNormalize GenePattern module error caused by trailing blank spaces in GCT file, which led to a mismatch between expected sample count (6) and detected sample count (15); solution involves carefully editing the file in a text editor to remove extraneous whitespace at the end of each line, ensuring accurate parsing of sample metadata and column headers.

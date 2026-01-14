@@ -1,0 +1,174 @@
+URL: https://groups.google.com./g/genepattern-help/c/ek5Jiy5F1a4
+Title: possible missing java version issue on our server
+----------------------------------------
+
+
+
+
+
+possible missing java version issue on our server
+61 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 6, 2018, 3:44:06 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+After some updates on the server side, GP seems to not be avail anymore although a process is running.
+
+
+genepat+ 24840  2.0  0.1 8722812 505736 pts/12 Sl   12:06   0:46 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.171-8.b10.el7_5.x86_64/jre/bin/java -Xmx1024m -Xms256m com.zerog.lax.LAX /opt/genepattern/./StartGenePatternServer.lax /tmp/env.properties.24840
+
+
+Could it be because of the differences below
+
+
+cat /opt/genepattern/./StartGenePatternServer.lax | grep java
+java.endorsed.dirs=./common/endorsed
+java.io.tmpdir=./temp
+lax.nl.current.vm=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.144-0.b01.el7_4.x86_64/jre/bin/java
+#   main class of LaunchAnywhere's java launcher -- do not adjust
+lax.nl.java.launcher.main.class=com.zerog.lax.LAX
+#   main method of LaunchAnywhere's java launcher -- do not adjust
+lax.nl.java.launcher.main.method=main
+lax.nl.java.option.java.heap.size.initial=256m
+lax.nl.java.option.java.heap.size.max=1024m
+
+
+ 
+it seems GP looks for java-1.8.0-openjdk-1.8.0.144
+which is not present below
+
+
+[u0002316@gbw-s-nuc03 ~]$ ll /usr/lib/jvm/
+total 16K
+drwxr-xr-x. 11 root root 4.0K Jul 17 07:41 .
+dr-xr-xr-x. 53 root root 8.0K Jul 17 07:41 ..
+lrwxrwxrwx   1 root root   26 Jul 17 07:41 java -> /etc/alternatives/java_sdk
+drwxr-xr-x.  3 root root   17 Mar  9 13:55 java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64
+drwxr-xr-x   3 root root   17 May 11 11:33 java-1.7.0-openjdk-1.7.0.171-2.6.13.0.el7_4.x86_64
+drwxr-xr-x   3 root root   17 Jul 17 07:41 java-1.7.0-openjdk-1.7.0.181-2.6.14.5.el7.x86_64
+drwxr-xr-x   4 root root  100 Jul 17 07:37 java-1.7.0-openjdk-1.7.0.181-2.6.14.8.el7_5.x86_64
+lrwxrwxrwx   1 root root   32 Jul 17 07:41 java-1.8.0 -> /etc/alternatives/java_sdk_1.8.0
+lrwxrwxrwx   1 root root   40 Jul 17 07:41 java-1.8.0-openjdk -> /etc/alternatives/java_sdk_1.8.0_openjdk
+drwxr-xr-x.  3 root root   17 Jan  9  2018 java-1.8.0-openjdk-1.8.0.151-1.b12.el7_4.x86_64
+drwxr-xr-x.  3 root root   17 Jan 23  2018 java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64
+drwxr-xr-x.  3 root root   17 May 11 11:33 java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64
+drwxr-xr-x   3 root root   17 Jul 17 07:41 java-1.8.0-openjdk-1.8.0.171-7.b10.el7.x86_64
+drwxr-xr-x   7 root root   68 Jul 17 07:38 java-1.8.0-openjdk-1.8.0.171-8.b10.el7_5.x86_64
+lrwxrwxrwx   1 root root   34 Jul 17 07:41 java-openjdk -> /etc/alternatives/java_sdk_openjdk
+lrwxrwxrwx   1 root root   21 Jul 17 07:41 jre -> /etc/alternatives/jre
+lrwxrwxrwx   1 root root   27 Jul 17 07:41 jre-1.7.0 -> /etc/alternatives/jre_1.7.0
+lrwxrwxrwx   1 root root   35 Jul 17 07:41 jre-1.7.0-openjdk -> /etc/alternatives/jre_1.7.0_openjdk
+lrwxrwxrwx   1 root root   54 Jul 17 07:37 jre-1.7.0-openjdk-1.7.0.181-2.6.14.8.el7_5.x86_64 -> java-1.7.0-openjdk-1.7.0.181-2.6.14.8.el7_5.x86_64/jre
+lrwxrwxrwx   1 root root   27 Jul 17 07:41 jre-1.8.0 -> /etc/alternatives/jre_1.8.0
+lrwxrwxrwx   1 root root   35 Jul 17 07:41 jre-1.8.0-openjdk -> /etc/alternatives/jre_1.8.0_openjdk
+lrwxrwxrwx   1 root root   51 Jul 17 07:38 jre-1.8.0-openjdk-1.8.0.171-8.b10.el7_5.x86_64 -> java-1.8.0-openjdk-1.8.0.171-8.b10.el7_5.x86_64/jre
+lrwxrwxrwx   1 root root   29 Jul 17 07:41 jre-openjdk -> /etc/alternatives/jre_openjdk
+
+
+if Yes, should I simply stop the server and edit the lax.nl.current to reflect the current java location?
+
+
+[u0002316@gbw-s-nuc03 genepattern]$ java -version
+openjdk version "1.8.0_171"
+OpenJDK Runtime Environment (build 1.8.0_171-b10)
+OpenJDK 64-Bit Server VM (build 25.171-b10, mixed mode) 
+
+
+thanks
+Stephane 
+
+
+
+
+PS: after stopping the server (twice) and restarting it it came back to life but the question about the apparent java version mismatch still applies - this is weird and seems not to affect the server at all???)
+Peter Carr
+unread,
+Aug 6, 2018, 10:34:02 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Stephane,
+At first glance, yes. Stop the server and set the java location.
+I am away on vacation this week. I will look into this in more detail when I get back.
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/27322080-43d9-4ca4-9e41-a213879dd53d%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Aug 17, 2018, 11:41:30 AM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+Did Peter's hints help get things back up and running for you?
+
+
+Best
+-Barbara
+Stephane Plaisance
+unread,
+Aug 17, 2018, 12:04:18 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara
+The java mismatch was apparently not involved and we only eeded to fully kill all gp jobs and restart it. I lso edited the conf file to match the actual java but this setting seems to be quite neutral.
+Thanks for your concern
+Best
+Stephane
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ek5Jiy5F1a4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14eec5aa-5833-4d3b-ab4e-a8c580a392fc%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 17, 2018, 2:55:29 PM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+Good news! I just wanted to be sure we hadn't left you hanging.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

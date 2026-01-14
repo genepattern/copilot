@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/OSzq9ovfVwY
+Title: CLS GSEA Error
+----------------------------------------
+
+
+
+
+
+CLS GSEA Error
+16 views
+Skip to first unread message
+
+Stephanie Mullane
+unread,
+Dec 12, 2017, 6:15:47 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run GSEA. I am getting an error, which I believe is related to my CLS file. The file I am using is attached. Below is the error:
+
+
+edu.mit.broad.genome.parsers.ParserException: Bad format - expect ncols: 4 but found: 497 on line: 0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+	at edu.mit.broad.genome.parsers.StringDataframeParser._parse(StringDataframeParser.java:172)
+	at edu.mit.broad.genome.parsers.StringDataframeParser.parseSdf(StringDataframeParser.java:149)
+	at edu.mit.broad.genome.parsers.ClsParser._parse_new_style(ClsParser.java:273)
+	at edu.mit.broad.genome.parsers.ClsParser.parse(ClsParser.java:228)
+	at edu.mit.broad.genome.parsers.ParserFactory._readTemplates(ParserFactory.java:342)
+	at edu.mit.broad.genome.parsers.ParserFactory.readTemplate(ParserFactory.java:293)
+	at edu.mit.broad.genome.parsers.ParserFactory.readTemplate(ParserFactory.java:273)
+	at xtools.api.param.TemplateSingleChooserParam._getTemplates(TemplateSingleChooserParam.java:142)
+	at xtools.api.param.TemplateSingleChooserParam.getTemplate(TemplateSingleChooserParam.java:52)
+	at xtools.gsea.Gsea.execute(Gsea.java:69)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.Gsea.main(Gsea.java:140)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:362)
+
+
+
+
+The job ID is 1595999. GSEA.
+
+
+Thank you for any help in advance. 
+
+
+
+
+
+KMT2CorD_Mut_NonMut.cls
+Barbara Hill
+unread,
+Jan 9, 2018, 9:28:26 AM
+
+
+
+to GenePattern Help Forum
+Hello Stephanie,
+
+
+How did you delimit create your file?
+
+
+Currently, everything is on one line in your file. Open the file in Text Wrangler, Emacs/VI, or Notepad to see this; browsers will render the new lines for you making it look correct,even when it is not.
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

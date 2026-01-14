@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/n3CrPlO48lk
+Title: Sharing data files in Genepattern repository?
+----------------------------------------
+
+
+
+
+
+Sharing data files in Genepattern repository?
+14 views
+Skip to first unread message
+
+Rich Lysakowski
+unread,
+Mar 1, 2020, 10:00:22 AM
+
+
+
+to GenePattern Help Forum
+GenePattern Notebook files can be shared easily among users logged into the same GenePattern Notebook server.  
+
+
+We need a way to store and share small (< 5 MB) with our GenePattern Notebooks.  
+
+
+Is there an easy way (ala a "Share Data" button) to share data files on the Genepattern Jupyter Notebook server?  
+
+
+I understand that storage costs and data security can be a problem and perhaps that is why it is not included.  
+
+
+
+If built-in data file sharing was intentionally left out by design, what is the recommended way to securely store and share files from within GenePattern Notebook client notebook?  
+
+
+Having a GPNB built-in module to browse and manage a secure data file store in a secure way would facilitate having all work artifacts in-place and reduce the cognitive load on users.  
+
+
+A "Data Library" tab and embedded website page similar to the Notebook Library page would accomplish this.  The Data Library could have the same "Public Datasets", "Shared Datasets" interface on the left-side navigator and the table of file metadata on the main page body.   
+
+
+Has anyone implemented a built-in Data (Sharing) Library for data files?  
+
+
+Thank you.
+
+
+Best Regards, 
+
+
+Rich Lysakowski
+Broad Institute 
+Thorin Tabor
+unread,
+Mar 2, 2020, 10:17:27 AM
+
+
+
+to GenePattern Help Forum
+Hello Rich,
+
+
+We are currently working on a better way to share data files along with their associated notebooks.
+
+
+
+In the meantime, if your data files can't be made public, I would recommend picking a secure channel of your choice and using it to distribute files to your users - perhaps an internal file system, private FTP server or Dropbox account. From inside a notebook, you can then programmatically access the data files using whatever authentication mechanism that channel provides.
+
+
+
+I wish I had a better solution than this at the moment, but our long-term solution to this is still being implemented.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

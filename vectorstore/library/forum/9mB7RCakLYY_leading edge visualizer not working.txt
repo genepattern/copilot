@@ -1,0 +1,1 @@
+A user encountered an SSL certificate validation issue when attempting to use the GSEA leading edge visualizer in GenePattern, which was resolved by using the standalone GSEA application, with the underlying technical problem likely related to Java's certificate trust configuration that would require IT support to fully address.

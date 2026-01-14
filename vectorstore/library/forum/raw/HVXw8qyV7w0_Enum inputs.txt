@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/HVXw8qyV7w0
+Title: Enum inputs?
+----------------------------------------
+
+
+
+
+
+Enum inputs?
+8 views
+Skip to first unread message
+
+Tim Chan
+unread,
+Jul 27, 2021, 2:02:45 PM
+
+
+
+to GenePattern Help Forum
+
+
+I'd like a GenePattern module user to give my module one of the following input options:
+"intron"
+"exon"
+"CDS"
+Anything else will be an error. Is there a way for me to make the input rendered as an enum instead of a plain text-field that a user will be able to enter anything?
+Barbara Hill
+unread,
+Jul 27, 2021, 2:35:05 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Yes! You can provide a drop-down list that allows users to choose from valid options only.
+
+
+
+
+The [?] next to this option provides more detail. (https://cloud.genepattern.org/gp/modules/createhelp.jsp#paramType)
+
+
+Please let us know if you need any further help.
+
+
+Best,
+Barbara
+
+
+PS - when you are done with your module - we'd love to hear about it!
+Tim Chan
+unread,
+Jul 28, 2021, 1:34:21 PM
+
+
+
+to GenePattern Help Forum
+Thanks. All good!
+
+
+Reply all
+
+Reply to author
+
+Forward

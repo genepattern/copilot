@@ -1,0 +1,197 @@
+URL: https://groups.google.com./g/genepattern-help/c/70hUfaDcLkU
+Title: Error in score.matrix
+----------------------------------------
+
+
+
+
+
+Error in score.matrix
+34 views
+Skip to first unread message
+
+Martin Demmert
+unread,
+Nov 18, 2020, 12:50:17 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I try to run a ssgsea analysis with a dataset from a single cell rna seq experiment. I have run "regular" GSEA analysis before without any problem.
+However, when I try to run ssgsea on the server i get this error:
+
+
+
+Error in score.matrix[i, ] : incorrect number of dimensions Calls: ssGSEA.cmdline Execution halted
+
+
+
+I think I am doing something wrong in the way I format the gct file. This is what the first lines of my gct file look like:
+#1.2
+11975	1
+NAME	DESCRIPTION	LPS
+NOC2L	NA	0.00292682926829268
+ENSMMUG00000008350	NA	0.00048780487804878
+HES4	NA	0.00439024390243902
+ENSMMUG00000001819	NA	0.0502439024390244
+C1orf159	NA	0.00292682926829268
+TTLL10	NA	0.00048780487804878
+TNFRSF18	NA	0.0317073170731707
+SDF4	NA	0.0785365853658537
+
+
+Does anyone have an idea what the problem is here?
+
+Thanks a lot!
+Anthony Castanza
+unread,
+Nov 18, 2020, 3:10:57 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Martin,
+
+
+Thanks for bringing this issue to our attention. We've identified the bug and have a fix in the works. In the meantime, adding a second dummy sample to the input dataset should allow the analysis to complete.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f07e69f0-8cf4-4138-8300-8b5b44d4afcfn%40googlegroups.com.
+
+Martin Demmert
+unread,
+Nov 20, 2020, 6:16:49 AM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+thanks so much for your reply.
+So my gct file looks like this now:
+
+
+#1.2			
+11966	2		
+NAME	DESCRIPTION	LPS	MOCK
+NOC2L	NA	0.00292682926829268	0
+ENSMMUG00000008350	NA	0.00048780487804878	0
+HES4	NA	0.00439024390243902	0
+ENSMMUG00000001819	NA	0.0502439024390244	0
+C1orf159	NA	0.00292682926829268	0
+TTLL10	NA	0.00048780487804878	0
+TNFRSF18	NA	0.0317073170731707	0
+SDF4	NA	0.0785365853658537	0
+B3GALT6	NA	0.00048780487804878	0
+C1QTNF12	NA	0.0024390243902439	0
+UBE2J2	NA	0.0195121951219512	0
+PUSL1	NA	0.00048780487804878	0
+INTS11	NA	0.00780487804878049	0
+CPTP	NA	0.00292682926829268	0
+MXRA8	NA	0.00439024390243902	0
+CCNL2	NA	0.0497560975609756	0
+
+
+And unfortunately another error comes up:
+
+
+Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed Calls: ssGSEA.cmdline Execution halted  
+
+
+
+How can I fix that?
+
+
+Martin
+
+Martin Demmert
+unread,
+Nov 20, 2020, 6:28:36 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+I think I fixed it. The script apparently wasn't happy with all the zeros. I just put in random numbers instead and it worked.
+Thanks again,
+Martin
+
+
+
+Anthony Castanza
+unread,
+Nov 20, 2020, 9:17:12 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Martin,
+
+ 
+
+Yes, that would do it, my apologizes, I should have been more specific as to what the mock set should look like since ssGSEA will still try to do math on it.
+
+Glad you were able to get it to work!
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/aa9dac35-7164-4fa4-beff-94c34f933da9n%40googlegroups.com.
+
+
+
+Barbara Hill
+unread,
+Jan 26, 2021, 3:37:17 PM
+
+
+
+to GenePattern Help Forum
+Hi Martin,
+
+
+I just wanted to follow up and let you know that the fix was implemented and the module has been updated.
+
+
+Please let us know if you encounter any further issues.
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

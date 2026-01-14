@@ -1,0 +1,194 @@
+URL: https://groups.google.com./g/genepattern-help/c/u1VPwMRH_ew
+Title: Importing a script from Github
+----------------------------------------
+
+
+
+
+
+Importing a script from Github
+26 views
+Skip to first unread message
+
+Barry Demchak
+unread,
+Jun 10, 2021, 1:59:08 PM
+
+
+
+to GenePattern Help Forum
+Hi --
+
+
+I have a number of notebooks stored on Github. Is there an easy way to import a script from Github to GenePattern Notebook??
+
+
+... and/or to store it back onto Github?
+
+
+Thanks
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 14, 2021, 1:12:25 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+There are several ways to might use a script on GitHub in your GenePattern Notebook project. If your script has a setup.py file, the easiest way may be to install it via pip. For example
+
+
+
+    !pip install --user git+https://github.com/<orgaization>/<repo>.git
+
+
+On the other hand, if your script is a single Python file, it may be easier to simply download it to your home directory. For example:
+
+
+    !wget https://raw.githubusercontent.com/genepattern/genepattern-notebook/master/genepattern/remote_widgets.py
+
+
+
+In either case, you will want to do a python import for the script after it is downloaded.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Barry Demchak
+unread,
+Jun 15, 2021, 11:34:47 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Thanks, Thorin … does this same advice apply to Python in Jupyter Notebooks (.ipynb files)?
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/u1VPwMRH_ew/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/49bbbeec-573f-49f1-ac50-275e0257a8dcn%40googlegroups.com.
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 15, 2021, 1:55:10 PM
+
+
+
+to GenePattern Help Forum
+Yes, you can retrieve and run ipynb files the same way.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Barry Demchak
+unread,
+Jun 21, 2021, 2:33:29 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Aha … found more on this topic:
+
+ 
+
+https://blog.reviewnb.com/github-jupyter-notebook/
+
+ 
+
+So, to go this route, you’d have to pop open a terminal session and import/export the project from there. But once it’s in server storage, Jupyter Notebook should be fine with it.
+
+ 
+
+Agree?
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/58bada7a-a184-4af7-a647-16c5ecea7c16n%40googlegroups.com.
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 22, 2021, 11:01:32 AM
+
+
+
+to GenePattern Help Forum
+That sounds correct.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Barry Demchak
+unread,
+Jun 28, 2021, 10:12:53 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Here’s another way to fetch and run Python code …
+
+ 
+
+Put the Python code in Github and then do this:
+
+ 
+
+import requests
+
+ 
+
+exec(requests.get(https://raw.githubusercontent.com/cytoscape/jupyter-bridge/master/client/p4c_init.py).text)
+
+ 
+
+ 
+
+This is different from %load because it executes the code directly and executes it, whereas %load only copies the code into the cell so you can re-execute the cell with the imported code inside of it.
+
+ 
+
+Pros and cons … the pro is obvious … it’s essentially an injection of Github-resident code into current execution thread. The con is that one never knows quite what’s in that Github code, so it has to be trusted by whomever is using it.
+
+ 
+
+In our case, we’re using it as initialization code for py4cytoscape (https://py4cytoscape.readthedocs.io/en/latest/). We’re recommending the code snippet to users who don’t what to know or care how this initialization is actually done. There’s nothing to stop a user from copy/pasting the Github code into their own cell if they don’t want to rely on or trust the Github version.
+
+ 
+
+On the other hand, if we improve the Github-based initialization code, we can improve it for all users instantly by checking in the new version.
+
+ 
+
+One perc … note that this initialization code checks for certain variables being already defined, and if they are, the variables’ values are used instead of the initialization code’s defaults. This is a way of parameterizing the initialization … this is useful here for selecting the exact py4cytoscape module to load and to set up debugging flags.
+
+ 
+
+I suspect the same approach would work for R, but that’s another adventure.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/58bada7a-a184-4af7-a647-16c5ecea7c16n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

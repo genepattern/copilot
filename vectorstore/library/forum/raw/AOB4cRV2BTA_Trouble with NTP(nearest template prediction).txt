@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/AOB4cRV2BTA
+Title: Trouble with NTP(nearest template prediction)
+----------------------------------------
+
+
+
+
+
+Trouble with NTP(nearest template prediction)
+29 views
+Skip to first unread message
+
+yulu shi
+unread,
+Sep 27, 2023, 5:29:48 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone,
+I have some trouble when uploaded the input.exp.gct files, and input.features.txt files. I have tried many times with different solutions, including changed my features txt files into a UTF-8 format, but none of them work. I DON know why it still gives an error. Really hope you can help me solve this problem. THANKS.
+One of my job id and input file  attached 
+
+
+
+
+Ted Liefeld
+unread,
+Sep 27, 2023, 10:19:56 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+the problem is the format of your feature file.  There are at least 2 problems with it;
+1. The columns are space separated.  The NTP documentation specifies that you need to use tabs to seperate the column values in each row
+2. You have an additional column, the leftmost, which appears to be the numerical index for each row.  This is offsetting the other columns by one so that the GeneName column is being read as the class column (after the spaces/tabs are fixed)
+
+
+Hope this helps
+
+
+Ted 
+
+
+
+yulu shi
+unread,
+Sep 27, 2023, 5:54:10 PM
+
+
+
+to GenePattern Help Forum
+Thanks
+After I change the input.features file into tab separated version, and delete the leftmost numerical index for each row, I get my NTP results successfully.  
+
+
+I really appreciate your help!!!
+Best Wishes.
+
+
+Yulu
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

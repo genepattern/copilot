@@ -1,0 +1,139 @@
+URL: https://groups.google.com./g/genepattern-help/c/zbBAWlaj5cA
+Title: module requiring vcf .gz and its tbi index (the second implicitly)
+----------------------------------------
+
+
+
+
+
+module requiring vcf .gz and its tbi index (the second implicitly)
+229 views
+a
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Oct 16, 2018, 12:18:25 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am making a module to run SnpSift annotate (http://snpeff.sourceforge.net/SnpSift.html#annotate)
+The command line should take a database of known variants as a vcf.gz sorted and compressed file (+ a .tbi tabix index) 
+
+
+from the SnpSift page
+ java -jar SnpSift.jar annotate dbSnp132.vcf variants.vcf > variants_annotated.vcf 
+# in our case the command is more of the kind
+java -jar SnpSift.jar annotate dbSnp132.vcf.gz variants.vcf > variants_annotated.vcf 
+
+Important: SnpSift annotate command has different strategies depending on the input VCF file:
+
+Uncomressed VCF If the file is not compressed, it created an index in memory to optimize search. This assumes that both the database and the input VCF files are sorted by position, since it is required by the VCF standard (chromosome sort order can differ between files). NOT OK, read below
+Compressed, Tabix indexed It uses the tabix index to speed up annotations.
+
+
+REM: the uncompressed input is not OK for our server where memory is too limited so we need the compressed and indexed approach.
+
+
+The command itself does not include (and cannot) the tbi file (implicit) but it is required for success
+
+
+I tried to create a separate file parameter for the index but not use it in the command and this is not allowed.
+
+
+Could such a behaviour be implemented?
+
+
+so that the user provides (by upload and or URL so that we also can us online dbsnp databases)
+* the vcf.gz as argument #1
+* vcf.gz.tbi files as argument #2 
+
+
+the command includes only the first argument but both files are linked or copied to the job folder so that the command finds them both as required.
+
+
+The fix by Guy for such situations is to make a perl wrapper but it is really a pain to develop a perl script to handle this sole exception (which is often seen in variant / VCF analysis.
+
+
+Could we make the command double with a neutral part only meant to copy the tbi to the job folder
+ln -s <index.file> . && java -jar <libdir>/SnpSift.jar annotate <database.file> <input.file> > <output.file>
+
+
+Thanks in advance for any suggestion.
+
+
+Stephane
+
+
+
+
+
+
+Peter Carr
+unread,
+Oct 16, 2018, 10:01:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Stephane,
+
+We have a similar use-case for the TopHat module. For example, look at the latest version on our AWS instance (https://cloud.genepattern.org/gp/). The 'bowtie.index' parameter uses a dynamic drop-down to pull a set of files from a remote FTP directory.
+    ftp://gpftp.broadinstitute.org/module_support_files/bowtie2/index/by_genome/
+
+The user selects an index from the drop-down, each index is linked to a remote directory. The GP server copies the files from the remote server into a local directory. The path to the directory is passed as the command line argument to the module.
+
+Does that match your requirements? Hopefully that allows you to wrap this module without writing a perl wrapper script.
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4a161f8b-b55d-45a7-84c9-7fc2bd1ad26a%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Stephane Plaisance
+unread,
+Oct 17, 2018, 12:27:38 AM
+
+
+
+to GenePattern Help Forum
+Thanks Peter,
+
+
+This is great but involves a perl module (like Guy is already doing several times for similar cases) and your code is quite long for my purpose.
+
+
+What I dream of is to be able to provide additional arguments through the GUI that lead to copying corresponding resources to the job folder  or defining values but that do not need to be included in the command line (silent arguments if you like)
+
+
+That would allow us using many more java apps or c++ executables that expect more than the inputs described in the command itself and make writing modules much more transparent.
+
+
+Thanks anyway,
+
+
+Best
+Stephane
+
+
+Reply all
+
+Reply to author
+
+Forward

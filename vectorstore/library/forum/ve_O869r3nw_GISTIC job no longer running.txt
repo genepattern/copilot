@@ -1,0 +1,1 @@
+A system update caused issues with running the GISTIC module in GenePattern due to special characters in the module name, specifically the '.' in 'GISTIC_2.0', which was subsequently corrected, allowing the module to resume normal functionality and successfully process jobs.

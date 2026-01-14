@@ -1,0 +1,1 @@
+A user experienced difficulty opening the PCA viewer module in GenePattern and requested troubleshooting assistance, with a support representative recommending review of previous forum discussions about PCA viewer launch issues, suggesting potential configuration or technical problems with visualizing principal component analysis results in the software platform.

@@ -1,0 +1,1 @@
+GenePattern Notebook and HCA Workspaces update released with enhanced features including large file uploads in UI Builder, improved rich text editor, and expanded R support for version 19.09, providing biologists and computational researchers with improved tools for genomic data analysis and visualization.

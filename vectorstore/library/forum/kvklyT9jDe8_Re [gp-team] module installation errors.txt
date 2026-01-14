@@ -1,0 +1,1 @@
+GenePattern module installation thread summary: Users reported compatibility issues with R and Python versions in GenePattern modules, with recommended solution being to upgrade to the latest GenePattern version using Docker containers, which provides better environment isolation for different modules and can resolve software version conflicts across bioinformatics tools.

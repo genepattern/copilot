@@ -1,0 +1,38 @@
+URL: https://groups.google.com./g/genepattern-help/c/nzzntzZj5kk
+Title: GenePattern Source Code
+----------------------------------------
+
+
+
+
+
+GenePattern Source Code
+4 views
+Skip to first unread message
+GP-Info
+unread,
+Feb 12, 2019, 3:14:43 PM
+
+
+
+to GenePattern Help Forum, qs...@wakehealth.edu
+Hello, 
+
+
+Our source code can be found on GitHub.
+
+
+Please also note that the old gp-help email address is no longer active. We now use a Google forum for help requests, and that address as been cc'd on this email.
+
+
+Please feel free to write to us in the forum at any time!
+
+
+Sincerely,
+The GenePattern Team
+
+Reply all
+
+Reply to author
+
+Forward

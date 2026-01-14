@@ -1,0 +1,1 @@
+A GenePattern user had difficulty opening a downloaded visualizer and sought help, but the initial response requested more context about the specific download method and intended use, with no definitive technical solution provided in the visible thread.

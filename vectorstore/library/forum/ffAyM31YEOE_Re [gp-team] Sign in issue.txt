@@ -1,0 +1,1 @@
+A user reported not receiving a password reset email for GenePattern, and was advised to check spam filters, with the support contact offering to manually reset the password if the email was not received after re-sending.

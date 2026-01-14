@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/Uzu8qByKfRE
+Title: submitted job "pending"
+----------------------------------------
+
+
+
+
+
+submitted job "pending"
+34 views
+Skip to first unread message
+
+GWang
+unread,
+Apr 6, 2021, 10:11:43 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Support Team,
+My submitted job just stayed at "pending" since the upgrade. Could you let me know what I can do to fix it? 
+Thanks a lot. 
+Guocan
+
+
+
+
+status.            Job.              module.      size.       submission date
+
+Pending         335858         GSEA          0 B.          Apr 7, 12:05 am
+
+ 
+
+
+
+Pending           335855        GSEA        0 B              Apr 6, 11:55 pm
+ 
+Adam Sowalsky
+unread,
+Apr 7, 2021, 4:18:53 AM
+
+
+
+to GenePattern Help Forum
+
+I am having the same problem
+
+Ted Liefeld
+unread,
+Apr 7, 2021, 6:24:07 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am looking into the cause but almost all of the pending jobs have run but there seems to be an underlying problem and the GenePattern server is not recording them as complete.  I will let you all know when this gets sorted out
+
+
+Thanks for your patience,
+
+
+Ted 
+
+
+
+Ted Liefeld
+unread,
+Apr 7, 2021, 8:28:09 AM
+
+
+
+to GenePattern Help Forum
+We believe that things are working normally once again.  All of the pending jobs are not complete (whether success or failure).  Please don't hesitate to let us know if you continue to see the previous behavior (or any other odd behaviors)
+
+
+Thanks
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

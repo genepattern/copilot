@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/QaPmuf2Vme0
+Title: Job did not run because there is not enough disk space available.
+----------------------------------------
+
+
+
+
+
+Job did not run because there is not enough disk space available.
+10 views
+Skip to first unread message
+
+Mohammed Khalfan
+unread,
+Sep 27, 2019, 12:46:02 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+
+As soon as I try to run the job, it fails with this error:
+
+
+GenePattern Server error preparing job 167707 for execution.
+Job did not run because there is not enough disk space available.
+
+
+org.genepattern.server.executor.JobDispatchException: Job did not run because there is not enough disk space available.
+
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.checkDiskQuota(GenePatternAnalysisTask.java:1509)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:615)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+
+Job ID if run on a publicly available server.
+Job #167707
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation:
+
+
+
+Tried searching for this error but nothing came up. I have around 80MB of data in my directory..
+
+
+
+Thank you.
+
+Barbara Hill
+unread,
+Oct 4, 2019, 2:25:59 PM
+
+
+
+to GenePattern Help Forum
+Hi Mohammed,
+
+
+Apologies for the late reply.
+
+
+This issue should be resolved.
+
+
+Please let us know if you run into anything else.
+
+
+Best
+-Barbara
+Mohammed Khalfan
+unread,
+Oct 7, 2019, 12:45:54 PM
+
+
+
+to GenePattern Help Forum
+Working now, thank you!
+
+
+Reply all
+
+Reply to author
+
+Forward

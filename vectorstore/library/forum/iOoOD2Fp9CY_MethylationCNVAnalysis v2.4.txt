@@ -1,0 +1,1 @@
+Based on the forum thread, here's a concise, embedding-friendly summary: User encountered a technical error when attempting to run MethylationCNVAnalysis v2.4 on GenePattern, specifically an IDAT file parsing issue involving arrays of different sizes, with potential resolution suggested by using 'force=TRUE' parameter when reading methylation array data.

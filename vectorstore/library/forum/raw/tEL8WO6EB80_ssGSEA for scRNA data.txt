@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/tEL8WO6EB80
+Title: ssGSEA for scRNA data
+----------------------------------------
+
+
+
+
+
+ssGSEA for scRNA data
+22 views
+Skip to first unread message
+
+Rini Pauly
+unread,
+Dec 9, 2020, 11:43:13 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+Can we use ssGSEA for scRNAseq data?
+
+If so, is there a white paper for this technique?
+
+ 
+
+Thanks,
+
+Rini
+
+Barbara Hill
+unread,
+Dec 11, 2020, 8:55:41 AM
+
+
+
+to GenePattern Help Forum
+Hello Rini, 
+
+
+Unfortunately, we do not currently recommend the existing module for scRNASeq data.
+Adapting the method for this data is an active area of research in our lab, however, and we will let you know as soon as that is ready for public release.
+
+
+Thank you for reaching out,
+Barbara 
+
+
+
+Reply all
+
+Reply to author
+
+Forward

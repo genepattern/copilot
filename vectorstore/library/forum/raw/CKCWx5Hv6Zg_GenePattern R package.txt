@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/CKCWx5Hv6Zg
+Title: GenePattern R package?
+----------------------------------------
+
+
+
+
+
+GenePattern R package?
+189 views
+Skip to first unread message
+
+Sara Haddock
+unread,
+Dec 14, 2021, 3:01:06 PM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern team,
+
+I'm trying to run GenePattern modules within R.  According to the instructions here, I should be able to find the R package in "Downloads>Programming Libraries" within GenePattern.  I don't see that anywhere.  Can anyone help?
+
+
+Thanks so much,
+
+
+-Sara
+Thorin Tabor
+unread,
+Dec 16, 2021, 11:17:51 AM
+
+
+
+to genepatt...@googlegroups.com, Sara Haddock
+
+Hello Sara,
+
+The old GenePattern R package was deprecated and removed because it no longer works with recent versions of R.
+
+
+That said, you should still be able to access GenePattern modules and launch GenePattern jobs using the GenePattern REST API. Unfortunately it's a bit more work, but from R you can load the httr and jsonlite packages, then call the endpoints described in the GenePattern REST API documentation.
+
+https://www.genepattern.org/rest-api
+
+If you're familiar with Python, we also have a Python library that is available.
+
+https://github.com/genepattern/genepattern-python
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/42be8bd8-3eea-4018-8c50-b27871fe0c3fn%40googlegroups.com.
+
+Sara Haddock
+unread,
+Dec 16, 2021, 6:13:04 PM
+
+
+
+to GenePattern Help Forum
+ok, that makes sense.  Can the Programmers' Guide be edited to reflect that?  I'm not the only one who's been confused by this.
+
+
+Thanks so much for your help, and happy holidays.
+-Sara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

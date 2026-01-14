@@ -1,0 +1,1 @@
+GenePattern user encountered "Filtered all genes" error in Preprocess Dataset Module, likely caused by overly strict filtering parameters (ceiling, floor, or fold-change); recommended solution is to use more relaxed filter settings to ensure some genes remain after preprocessing.

@@ -1,0 +1,1 @@
+GenePattern Forum Summary: A researcher sought advice on identifying mutation hotspots in a UV-mutagenized genome, with a recommendation to use MutSigCV and IGV (Integrative Genomics Viewer) as potential bioinformatics tools for detecting and visualizing regions of significant mutational activity.

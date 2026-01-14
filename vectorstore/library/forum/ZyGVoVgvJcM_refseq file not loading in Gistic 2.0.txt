@@ -1,0 +1,1 @@
+A user experienced difficulty loading the refseq file in Gistic 2.0 through the GenePattern web app, with the refgene file pull-down menu failing to load, and support staff requested additional browser and platform details to troubleshoot the issue.

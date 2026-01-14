@@ -1,0 +1,1 @@
+A GenePattern Expression File Creator user encountered an error "No CEL files found" when attempting to reproduce old results, which was resolved by extracting CEL files from a nested ZIP directory and creating a new ZIP file with CEL files at the top level, ensuring no subdirectories or additional files are present, and avoiding special characters in filenames.

@@ -1,0 +1,39 @@
+URL: https://groups.google.com./g/genepattern-help/c/md9YgEauvh0
+Title: On Monday, May 18th the public server (https://cloud.genepattern.org) will be offline from 1PM - 2PM UTC -8 to install the latest update.
+----------------------------------------
+
+
+
+
+
+On Monday, May 18th the public server (https://cloud.genepattern.org) will be offline from 1PM - 2PM UTC -8 to install the latest update.
+1 view
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+May 15, 2020, 11:44:31 AM
+
+
+
+to GenePattern Help Forum
+On Monday, May 18 - the public server (https://cloud.genepattern.org) will be offline from 1PM - 2PM UTC -8 to install the latest update. 
+Release notes for v3.9.11 build 250
+https://github.com/genepattern/genepattern-server/releases/tag/v3.9.11-rc.5-b250 
+
+Barbara Hill
+unread,
+May 18, 2020, 6:10:22 PM
+
+
+
+to GenePattern Help Forum
+The public server (http://cloud.genepattern.org) has been successfully updated to v3.9.11 build 250.
+Release notes can be found in our GitHub repository.
+
+
+Reply all
+
+Reply to author
+
+Forward

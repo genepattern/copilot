@@ -1,0 +1,1 @@
+GenePattern login issue reported with 500 Internal Server Error on hca.genepattern.org, initially unresolved but subsequently fixed by administrators within the same day, with user advised to contact support if problems persist.

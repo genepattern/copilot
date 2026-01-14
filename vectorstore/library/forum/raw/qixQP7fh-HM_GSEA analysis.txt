@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/qixQP7fh-HM
+Title: GSEA analysis
+----------------------------------------
+
+
+
+
+
+GSEA analysis
+13 views
+Skip to first unread message
+glav
+unread,
+May 15, 2019, 4:48:10 AM
+
+
+
+to genepatt...@googlegroups.com
+ Hi. I would like to analyze a gene expression case/control dataset, in which tumor values are represented as a fold change value versus a pool of healthy controls. So, for each gene I have 1 control value (always equal to 1) and 12 tumor values (2.3, 3.4, 5.6, etc). Although, I had a reasonable luck by performing a pre-ranked GSEA, in which I made an arbitrary +2/-2 fold change cutoff, I feel I am not using all the info I have at disposal. In particular, bedides using the arbitrary fold change cutoff, I am not considering the variability of the the tumor samples data. So, in order to overcome these problems, I was thinking about two alternative ways to run GSEA:
+a) use 1 control (with a value of 1 for each gene) vs. the actual fold change values of all the 12 tumor samples
+b) 
+
+- generate, for each gene, 12 control values with both a mean of 1 and the same standard deviation of the corresponding tumor samples
+- perform a 12 vs. 12 GSEA, using the newly generated control value vs. the 12 tumor sample values (the same  I used in a). 
+I was wondering if you could advice me on which one, if any, would be the best way to proceed.
+
+
+Thank you!
+
+
+Giovanni
+
+
+
+
+Barbara Hill
+unread,
+May 24, 2019, 1:00:56 PM
+
+
+
+to GenePattern Help Forum
+Hello Giovanni, 
+
+
+I would suggest posting this request in the GSEA forum, as you will get insight there from the GSEA developers and community.
+
+
+All the best
+-Barbara
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern module ExpressionCreatorFile run failure causing student to only receive stdout.txt instead of expected .cls and .gct files; module support recommends sharing specific job ID for detailed troubleshooting and identifying potential file upload or configuration issues that might be preventing successful module execution.

@@ -1,0 +1,1 @@
+Thread summary: A new user asks about installing the R version of GenePattern in RStudio on Windows 10, noting difficulty finding the R package in the download module, and also requests an account configuration to extend the default 1-day runtime limit for processing large datasets in the GenePattern cloud environment.

@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/04kksW_ZeQ0
+Title: hello, Im new to genpattern tool, Im trying the quick guide and tuturial links but since its not updated along with the webpage it keeps giving error and no reults. what should I do? thanks
+----------------------------------------
+
+
+
+
+
+hello, Im new to genpattern tool, Im trying the quick guide and tuturial links but since its not updated along with the webpage it keeps giving error and no reults. what should I do? thanks
+12 views
+Skip to first unread message
+
+Diana Zeid
+unread,
+Apr 19, 2020, 9:24:45 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Ted Liefeld
+unread,
+Apr 19, 2020, 10:29:32 AM
+
+
+
+to genepatt...@googlegroups.com
+Diana
+
+
+I just looked at your jobs on our server and it looks like the problem is in the redirects for the example data files.  I think it might work if you change the URLs to be '...datasets.genepattern.org...' instead of '...www.genepattern.org...'.
+
+
+E.g. for the PreprocessDataset analysis, you can use this as input instead of what you saw in the docs
+
+
+    https://www.genepattern.org/data/all_aml/all_aml_test.gct
+
+
+Since it is a sunday morning where the development team is, a fix to the documentation will have to wait a day or two until people are back in the office.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9c08ddbe-0d96-4518-921e-a248f81dedbf%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Barbara Hill
+unread,
+Apr 30, 2020, 3:22:44 PM
+
+
+
+to GenePattern Help Forum
+Hi Diana,
+
+
+I've now updated all of the links in both the Quick Start and Differential Expression Tutorial.
+
+
+Please let us know if you encounter any other issues or have any other questions.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

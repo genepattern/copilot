@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/ysaVQZXgJvs
+Title: Gistic public server doesn't work
+----------------------------------------
+
+
+
+
+
+Gistic public server doesn't work
+31 views
+Skip to first unread message
+
+Matin Salehi
+unread,
+Jun 21, 2023, 1:55:34 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone. Today I was trying to use gene patter, gist version 2 for my copy number analysis. Unfortunately, the running stops in seconds. the last time I tried was yesterday at 6 pm and everything was working perfectly. But today, there is a problem with the server. I would be grateful if you check and see if this issue is for everyone or it's just me. I even tried with my colleague account but same error.
+thank you. 
+Thorin Tabor
+unread,
+Jun 21, 2023, 8:40:25 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+Could you send me the job number of the GISTIC run, so that I can look into what might be causing the issue?
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+
+
+On 6/21/23 1:55 AM, Matin Salehi wrote:
+
+Hello everyone. Today I was trying to use gene patter, gist version 2 for my copy number analysis. Unfortunately, the running stops in seconds. the last time I tried was yesterday at 6 pm and everything was working perfectly. But today, there is a problem with the server. I would be grateful if you check and see if this issue is for everyone or it's just me. I even tried with my colleague account but same error.
+thank you. 
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a75a0c73-8e3e-459e-8ffe-d0b327146cc5n%40googlegroups.com.
+
+Matin Salehi
+unread,
+Jun 22, 2023, 6:19:26 AM
+
+
+
+to GenePattern Help Forum
+Dear Thorin,
+
+
+Many thanks for your response. I tried today and it is working again. But I had problem the whole yesterday to run and I was getting the notification that the job aborted after 5 seconds of running. 
+Now everything seems fine. Many thanks!
+
+
+Regards,
+
+
+Matin
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,174 @@
+URL: https://groups.google.com./g/genepattern-help/c/_Co3PlxzV7Y
+Title: I can't upload any gct files in any modules
+----------------------------------------
+
+
+
+
+
+I can't upload any gct files in any modules
+7 views
+Error
+hierarchical
+Skip to first unread message
+Chris C
+unread,
+Nov 9, 2018, 6:55:27 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+I'm probably making some basic error, but I can't figure it out. 
+I used to use genepattern and gene-e years ago as a download, but java seems to have broken that. 
+
+
+Online I can't even get gct files to upload, including already-formatted ones from the genepattern database. 
+
+
+I have used mac, pc, all browsers, home and at work, to no avail. 
+
+
+Thanks
+
+
+Chris
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+M-CL_innateDB.gct
+Barbara Hill
+unread,
+Nov 9, 2018, 7:39:47 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Chris, 
+
+
+How are you trying to upload the files? 
+Are you using the upload button in the job submit form or the Files tab on the left? 
+
+
+
+
+And on which server? 
+Our old Broad-hosted server or our new Amazon cloud server? 
+
+
+Best
+Barbara 
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+Chris Carey
+unread,
+Nov 9, 2018, 7:44:28 AM
+
+
+
+to genepatt...@googlegroups.com
+I used the Amazon server. 
+
+
+I've tried both methods of uploading, each time it just increments the upload progress from 0, 17, 34%, then crashes. 
+
+
+I've matched the format structure for files, and tried using the example files too, but I can't get it to work. 
+
+
+Chros
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/37ce01e6-fb6e-4c62-9217-c850ba4bac29%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Peter Carr
+unread,
+Nov 9, 2018, 8:36:07 AM
+
+
+
+to genepatt...@googlegroups.com
+It looks like we maxed out the disk usage. I am working on a fix. Thanks for letting us know.
+Regards,
+Peter
+
+Chris Carey
+unread,
+Nov 9, 2018, 12:03:12 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for the reply Peter, appreciate it
+
+
+Chris
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/05462767-5ff8-bf8d-2308-05752a8e61c7%40broadinstitute.org.
+
+Peter Carr
+unread,
+Nov 9, 2018, 12:11:56 PM
+
+
+
+to genepatt...@googlegroups.com
+We added more disk capacity. It's ready for new jobs.
+Thanks again for letting us know.
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/I8v5DhVDXB4
+Title: Job ID 446023 and Job ID446027
+----------------------------------------
+
+
+
+
+
+Job ID 446023 and Job ID446027
+34 views
+Skip to first unread message
+
+Shwetha Kumar
+unread,
+Jun 21, 2022, 1:11:30 PM
+
+
+
+to GenePattern Help Forum
+Dear Sir/Madam,
+
+
+I am using the maf files from CCLE data and the job for the whole data (Job 446023) works but for a specific lineage (Job ID 446027), it throws out an error saying not enough mutations to analyze.
+
+
+Error using gp_MutSigCV>MutSig_runCV (line 850)
+not enough mutations to analyze
+
+Error in gp_MutSigCV (line 194)
+
+
+
+Thank you.
+Best,
+Shwetha
+Ted Liefeld
+unread,
+Jun 22, 2022, 10:43:21 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+The breast cancer only MAF file seems quite short (only 83 lines) so it might be that it does not have enough mutations to reach significance, but that is just a guess. We no longer have anyone on the genepattern team with MutSigCV experience.  I suggest you contact some of the other, MutSig specific, addresses in the MutSigCV documentation
+
+
+http://www.broadinstitute.org/cancer/cga/mutsig
+http://www.broadinstitute.org/cancer/cga/cga_forums
+mutsi...@broadinstitute.org
+
+
+hope this helps,
+
+
+Ted
+
+Shwetha Kumar
+unread,
+Jun 22, 2022, 11:20:00 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much.
+
+
+Shwetha
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/I8v5DhVDXB4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4538ac02-b985-48bb-9a49-bbbe73a0f585n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

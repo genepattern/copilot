@@ -1,0 +1,1 @@
+A user sought assistance with the CollapseDataset Module in GenePattern, encountering Java-related warnings when attempting to collapse a GCT file using a .chip annotation file; an expert clarified that the displayed warnings are harmless interface-related messages from Java running on Linux and do not impact the module's functionality or output.

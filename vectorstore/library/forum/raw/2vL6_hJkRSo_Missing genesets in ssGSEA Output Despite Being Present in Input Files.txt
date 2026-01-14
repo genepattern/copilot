@@ -1,0 +1,143 @@
+URL: https://groups.google.com./g/genepattern-help/c/2vL6_hJkRSo
+Title: Missing genesets in ssGSEA Output Despite Being Present in Input Files
+----------------------------------------
+
+
+
+
+
+Missing genesets in ssGSEA Output Despite Being Present in Input Files
+32 views
+Skip to first unread message
+
+Ariyan
+unread,
+Oct 6, 2024, 4:58:12 PM
+
+
+
+to GenePattern Help Forum
+
+Hi everyone,
+
+I’m encountering an issue while running ssGSEA using my .gmt and .gct files on the GenePattern website. Despite having around 44 miRNAs in my input .gmt file, the output from ssGSEA only contains 26 miRNAs. Here’s the breakdown of what I’ve done so far:
+
+Input Files:
+
+• .gmt file: Contains around 44 miRNAs with their associated gene targets.
+
+• .gct file: Contains normalized gene expression data for 40,390 genes across 11 conditions.
+
+Initial Setup:
+
+• I set the min_size parameter to 10 initially but reduced it to 2 after seeing missing miRNAs in the output.
+
+• I requested 64GB of job memory and 12 CPUs, giving the process ample resources and time (4 hours).
+
+Current Issue:
+
+• After running ssGSEA with the new settings (including min_size=2), the output still only includes 26 miRNAs out of the expected 44.
+
+• I’ve confirmed that all 44 miRNAs are present in the input .gmt file, so I’m unsure why 18 of them are missing from the results.
+
+4. What I’ve Tried:
+
+• Lowered the minimum gene set size to 2 to ensure smaller gene sets are not excluded.
+
+• Increased job memory and CPU allocation for processing large datasets.
+
+• Ensured that all miRNAs in the .gmt file have gene targets.
+
+
+My Job IDs is 608033
+
+Thank you, 
+
+Ariyan 
+
+
+
+
+Anthony Castanza
+unread,
+Oct 7, 2024, 2:32:20 PM
+
+
+
+to GenePattern Help Forum
+Hi Ariyan,
+
+The issue here is an internal, hardcoded, cap on the maximum gene set size which is set at 2000 genes. The gene sets that aren't being analyzed here have (in some cases, substantially) more genes than this, on the order of 4000-7000 genes.
+
+I would suggest increasing the stringency of your gene selection for the creation of these sets if possible. If that isn't possible, you would likely need to modify the ssGSEA R-code, which is available from the GenePattern github repository.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+Ariyan
+unread,
+Oct 9, 2024, 9:58:26 AM
+
+
+
+to GenePattern Help Forum
+Hello Anthony, 
+
+
+I unfortunately cannot place a more stringent filtering for my gene sets as such I would need to modify the ssGSEA R code. Could you help me find the link the this file in GenePattern github repository. I am only able to get this page open: https://github.com/genepattern/ssGSEA-notebook. In this I see a jupyter notebook file but but I do not see where I can effectively input or make changes to the ssGSEA code to circumvent the 2000 genes max size. 
+
+
+Thank you!
+
+
+- Ariyan 
+
+
+
+Anthony Castanza
+unread,
+Oct 9, 2024, 10:11:43 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Airyan,
+
+
+
+That's my bad, ssGSEA is actually located in the GSEA org repository not the GenePattern resposiotry, sorry about that! Here's the link:
+https://github.com/GSEA-MSigDB/ssGSEA-gpmodule
+
+
+Specifically you'd need to edit the thres.max line in ssGSEA.Library.R for the appropriate gmt/gmx file format that you're using: https://github.com/GSEA-MSigDB/ssGSEA-gpmodule/blob/a882e2a5706f9c87c0e637123255f61cb5510e46/src/ssGSEA.Library.R#L107
+
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/76959391-e200-43a9-a92a-634caa6bc866n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

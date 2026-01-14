@@ -1,0 +1,1 @@
+GenePattern Notebook does not guarantee confidentiality for Protected Health Information (PHI) and recommends downloading a local copy of the software to handle sensitive data securely, with detailed local installation instructions available on their documentation website to enable researchers to process confidential genomic sequencing data privately.

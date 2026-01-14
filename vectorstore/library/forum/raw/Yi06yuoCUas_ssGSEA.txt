@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/Yi06yuoCUas
+Title: ssGSEA
+----------------------------------------
+
+
+
+
+
+ssGSEA
+22 views
+Skip to first unread message
+
+王二小
+unread,
+Jan 17, 2021, 8:29:43 AM
+
+
+
+to GenePattern Help Forum
+I just downloaded a gct file and my gmt file to test ssGSEA score,but it run out error.What does it mean?
+
+
+WARNING: ignoring environment value of R_HOME
+[1] "1 gene set: WP_FERROPTOSIS  overlap= 0"
+[1] "N.gs before overlap prunning: 1"
+[1] "N.gs after overlap prunning: 0"
+[1] "initial.up.entries: 0"
+[1] "final.up.entries: 0"
+[1] "initial.dn.entries: 0"
+[1] "final.dn.entries: 0"
+[1] "other.entries: 0"
+[1] "combined.entries: 0"
+[1] "total entries: 0"
+
+
+
+stdout.txt
+Anthony Castanza
+unread,
+Jan 17, 2021, 9:48:25 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+This issue is caused when none of the gene identifiers in your dataset match the gene symbols in the Gene Set. You’ll want to remap the identifiers in the dataset so that they match the gene set. This can be done using the CollapseDataset module with a CHIP file that matches the type of IDs used in the input file. We offer CHIP files for many different input identifier types. They’re available from here: https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations_versioned/
+
+(The ones versioned MSigDB.7.2 are the latest build).
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7cb365c2-4daf-4958-9e7e-400a62277203n%40googlegroups.com.
+
+王二小
+unread,
+Jan 17, 2021, 9:50:51 AM
+
+
+
+to genepatt...@googlegroups.com
+I've got that. Thanks a lot.
+
+
+Anthony Castanza <acas...@cloud.ucsd.edu>于2021年1月18日 周一01:48写道：
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB5782E3FC8D6A08D020EA1D9DF7A50%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+--
+
+发自移动版 Gmail
+
+Reply all
+
+Reply to author
+
+Forward

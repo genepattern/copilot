@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/_OFiFpyCjc8
+Title: Announcement: cloud.genepattern.org will be offline for an hour on Wednesday, Dec 23 for regular maintenance.
+----------------------------------------
+
+
+
+
+
+Announcement: cloud.genepattern.org will be offline for an hour on Wednesday, Dec 23 for regular maintenance.
+3 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 21, 2020, 3:50:45 PM
+
+
+
+to GenePattern Help Forum
+On Wednesday, Dec 23, 2020,  the main GenePattern server (cloud.genepattern.org) will be offline from 11 AM - 12 PM PST (UTC -8) to install the latest updates. Release notes are available at  https://github.com/genepattern/genepattern-server/releases/tag/v3.9_20.12.23_b307
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

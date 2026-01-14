@@ -1,0 +1,1 @@
+GenePattern's GEOImporter module was updated to provide users with an option to remove rows containing exclusively NA (missing/null) values when importing datasets from the Gene Expression Omnibus (GEO), improving data cleaning and preprocessing capabilities for genomic research by allowing more efficient handling of incomplete or sparse data matrices.

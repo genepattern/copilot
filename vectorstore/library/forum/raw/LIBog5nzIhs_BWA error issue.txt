@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/LIBog5nzIhs
+Title: BWA error issue
+----------------------------------------
+
+
+
+
+
+BWA error issue
+6 views
+Skip to first unread message
+
+matthe...@uml.edu
+unread,
+Feb 14, 2018, 11:02:07 AM
+
+
+
+to GenePattern Help Forum
+I am running alignments on a large number of samples using a Pipeline that I set up.  The read pair files are aligned in BWA, the output is sorted and then run though cufflinks to assemble the transcripts.  The pipeline works well if I run only one at a time but I get an error with all but one of the jobs if I run more than one set of samples at a time.  
+
+
+The most recent occurrence of this can be found at job #1632507 
+
+
+Any ideas what might be happening?  I hope that I don't have to analyze one set of samples at a time.
+
+
+Thanks,
+
+
+Matt
+
+
+Peter Carr
+unread,
+Feb 14, 2018, 12:25:37 PM
+
+
+
+to genepatt...@googlegroups.com
+I am not sure yet the exact cause of the problem. The BWA.aln step of the pipeline failed with this error message:
+    hasSignaled, terminatingSignal=SIGKILL
+
+This error message can be displayed when ...
+  * the job exceeds the max memory limit (job.memory=4 Gb)
+  * the job exceeds the wallclock time limit
+  * user cancels the job or parent pipeline
+  * other unexpected circumstances
+
+I put in a help request to our system admins.
+
+FYI, to view the details, paste this link into your location bar:
+    https://genepattern.broadinstitute.org/gp/jobResults/1632508
+Then click the Show details link. I attached an image.
+
+Regards,
+Peter
+
+
+gpprod_1632508.tiff
+Peter Carr
+unread,
+Feb 14, 2018, 12:33:32 PM
+
+
+
+to GenePattern Help Forum
+Can you run these jobs in parallel? If so, then try running a batch of pipelines, instead of a single pipeline with a batch of inputs. See our online documentation for an explanation:
+    http://software.broadinstitute.org/cancer/software/genepattern/how-batching-works-in-genepattern
+
+ 
+Regards,
+Peter
+
+
+
+Reply all
+
+Reply to author
+
+Forward

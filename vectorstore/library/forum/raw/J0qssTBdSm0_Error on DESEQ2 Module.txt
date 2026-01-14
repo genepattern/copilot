@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/J0qssTBdSm0
+Title: Error: on DESEQ2 Module
+----------------------------------------
+
+
+
+
+
+Error: on DESEQ2 Module
+13 views
+Skip to first unread message
+
+Shruthy Suresh Aggarwal
+unread,
+Jun 14, 2020, 5:55:57 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ 
+
+
+A complete description of the problem (ie what you were trying to do and what went wrong): I was trying to run the DESEQ2 module on GenePattern using a GCT file from the BROAD INSTITUTE CCLE RNASEQ data set (counts file) 
+
+Job ID if run on a publicly available server.: 243535
+
+
+I am running this on a Mac. 
+
+
+
+
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues: Error: cannot allocate vector of size 426.9 Mb Execution halted
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+GenePattern Help Forum
+unread,
+Jun 15, 2020, 9:36:58 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I would suggest increasing the amount of memory requested for this job. You can do this in the job submit form at the bottom below the other job parameters.
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

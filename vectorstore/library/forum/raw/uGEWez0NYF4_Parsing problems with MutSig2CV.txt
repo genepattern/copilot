@@ -1,0 +1,76 @@
+URL: https://groups.google.com./g/genepattern-help/c/uGEWez0NYF4
+Title: Parsing problems with MutSig2CV
+----------------------------------------
+
+
+
+
+
+Parsing problems with MutSig2CV
+80 views
+MutSig2CV
+bug
+parameters
+Skip to first unread message
+Diogo Pellegrina
+unread,
+Apr 2, 2019, 5:53:45 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm running MutSig2CV on a linux server, and I have a problem with the parameter file.
+I tried to change one of the settings adding the line:
+	remove_duplicate_patients	false
+
+
+But it didn't appear to change anything, no errors where shown and the log still reported duplicate patients being removed.
+In order to figure out what was going on I used the following parameter_file:
+
+	remove_duplicate_patients	false
+
+	remove_duplicate_patients	0
+	remove_duplicate_patients	False
+	remove_duplicate_patients	FALSE
+	are_you_reading_me	true
+
+	what_happens_if_I_only_use_1_column
+
+
+
+No error appeared, and again it ran as if the parameters file wasn't being read.
+But when I tried to add the following line:
+	remove_duplicate_patients=false
+
+
+
+And it printed this error:
+	Error setting field "remove_duplicate_patients=false"
+
+	  MException with properties:
+	
+
+	    identifier: 'MATLAB:AddField:InvalidFieldName'
+	       message: 'Invalid field name: 'remove_duplicate_patients=false'.'
+	         cause: {}
+	         stack: [5x1 struct]
+	
+
+	Invalid field name: 'remove_duplicate_patients=false'.
+
+
+This means that the parameter file is indeed being read, but I still couldn't manage to actually change remove_duplicate_patients to false. I also tried each of the above lines separately, but nothing changed.
+
+
+Thanks again,
+Diogo
+
+
+Reply all
+
+Reply to author
+
+Forward

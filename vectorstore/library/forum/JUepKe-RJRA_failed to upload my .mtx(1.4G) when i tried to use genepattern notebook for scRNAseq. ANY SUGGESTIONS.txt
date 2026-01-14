@@ -1,0 +1,1 @@
+A user experienced difficulty uploading a large 1.4 GB .mtx single-cell RNA sequencing file to a GenePattern notebook on the Broad server, encountering a web browser crash when attempting to run the notebook, with support staff suggesting further investigation into upload location, server details, and potential recent workspace issues that might have caused the upload problem.

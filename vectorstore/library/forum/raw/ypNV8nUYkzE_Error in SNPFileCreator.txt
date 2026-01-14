@@ -1,0 +1,78 @@
+URL: https://groups.google.com./g/genepattern-help/c/ypNV8nUYkzE
+Title: Error in SNPFileCreator
+----------------------------------------
+
+
+
+
+
+Error in SNPFileCreator
+8 views
+Skip to first unread message
+
+Wei
+unread,
+Jun 30, 2018, 11:49:34 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+
+
+I have two questions:
+
+
+1.I want to install local GenePattern server in Mac. After downloading MacOSX version, I double click the GenePattern. The page can not open (http://127.0.0.1:8080/gp).
+
+
+What is wrong?
+
+
+2.I tried to analyze copy number changes with GenePattern@ Indiana University server. The status of my job #70329 is :
+job finished, stderr exists and contains some errors, return C
+Queue	[default]
+Exit Code	-1
+Status date	Jun 30 01:12:26 PM
+
+
+I do not know what is the exact error.
+
+
+I attached my input file "1720.txt".
+
+Thank you for the help!
+
+
+Wei
+
+1720.txt
+Barbara Hill
+unread,
+Jul 16, 2018, 10:22:30 AM
+
+
+
+to GenePattern Help Forum
+Hello Wei, 
+
+
+Did you first double click to run the install, then again to start the server?
+
+
+As for the error - you provided a single txt file, when the module requires a zip of many cel files.
+
+
+Have a look at the documentation and let me know if you have any questions:
+https://gp.indiana.edu/gp/getTaskDoc.jsp?name=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00086:1
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+For ssGSEA analysis of RNAseq data, normalized counts from DESeq2 are not recommended; instead, TPM (transcripts per million) or FPKM (fragments per kilobase million) are preferred input formats, as these metrics normalize gene expression values accounting for gene length, which is critical for accurately computing relative gene set enrichment within individual samples.

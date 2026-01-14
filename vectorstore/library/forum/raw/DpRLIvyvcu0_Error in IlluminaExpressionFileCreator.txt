@@ -1,0 +1,99 @@
+URL: https://groups.google.com./g/genepattern-help/c/DpRLIvyvcu0
+Title: Error in IlluminaExpressionFileCreator
+----------------------------------------
+
+
+
+
+
+Error in IlluminaExpressionFileCreator
+5 views
+Skip to first unread message
+
+Ranadip Mandal
+unread,
+Oct 30, 2018, 7:01:20 AM
+
+
+
+to GenePattern Help Forum
+
+Hello,
+
+
+
+
+I am trying to convert my Illumina IDAT.7z files into .gct files using the IlluminaExpressionFileCreator. I am receiving the error message “The job exited abnormally before finishing, for example if the command exited with a non-zero exit code or by exceeding a resource usage limit“ every time. The Job ID was 1743002. What could be the reason behind this error message and what's the possible solution? What am I doing wrong?
+
+
+
+
+Regards,
+
+Dr. Ranadip Mandal,
+
+Post-doctoral scientist
+
+ 
+
+Department of Gynecology & Obstetrics,
+
+Theodor-Stern-Kai 7, House 15,
+
+University Hospital,
+
+J. W. Goethe University,
+
+60590 Frankfurt am Main, Germany.
+
+
+
+
+
+
+Barbara Hill
+unread,
+Oct 30, 2018, 9:14:41 AM
+
+
+
+to GenePattern Help Forum
+Hello Ranadip, 
+
+
+The problem with the job you mentioned is that your manifest is being provided in a zipped format, rather than as a normal txt file.
+
+
+The error message states:
+No [Probes] section found in manifest.
+
+
+Let us know if this resolves the error for you.
+
+
+Best
+Barbara
+Ranadip Mandal
+unread,
+Oct 30, 2018, 1:06:05 PM
+
+
+
+to GenePattern Help Forum
+Hello Barbara,
+
+
+Thanks, I have now been able to solve the problem. The input files were not properly zipped.
+
+
+Regards,
+
+
+Ranadip
+
+
+Reply all
+
+Reply to author
+
+Forward

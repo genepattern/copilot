@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/pclDhv8zG0o
+Title: Problem with comparative marker selection
+----------------------------------------
+
+
+
+
+
+Problem with comparative marker selection
+23 views
+Skip to first unread message
+
+bc...@georgetown.edu
+unread,
+Aug 14, 2017, 10:51:59 AM
+
+
+
+to GenePattern Help Forum
+I am trying to run ComparativeMarkerSelection and when I input the .gct and .cls files, the job runs fine and completes, however, no .odf file outputs. Job #1535930 on the public server. 
+
+
+I'm getting this as a stderr.txt output. 
+
+
+org.broadinstitute.io.matrix.ParseException: Header line needs three numbers!
+"{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210"
+	at org.broadinstitute.io.matrix.cls.ClsParser.processHeader(ClsParser.java:166)
+	at org.broadinstitute.io.matrix.cls.ClsParser.read(ClsParser.java:125)
+	at org.broadinstitute.io.matrix.cls.ClsParser.parse(ClsParser.java:106)
+	at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:56)
+	at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:42)
+	at org.broadinstitute.io.IOUtil.readCls(IOUtil.java:464)
+	at org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1646)
+	at org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+Unable to parse CLSfileglycocalyxpig.cls.
+java.lang.NullPointerException
+	at org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1691)
+	at org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+
+
+
+
+Thank you, 
+Bonnie
+
+
+Peter Carr
+unread,
+Aug 14, 2017, 1:00:13 PM
+
+
+
+to GenePattern Help Forum
+Your cls file is poorly formatted. See our File Format Guide for more details: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#CLS
+
+
+Regards,
+Peter
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

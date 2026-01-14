@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/lSv6OuI4xTU
+Title: Re: [gp-team] registration for Broad Associate member
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] registration for Broad Associate member
+7 views
+Skip to first unread message
+Barbara Hill
+unread,
+Dec 31, 2018, 1:19:31 PM
+
+
+
+to GenePattern Help Forum, opou...@bwh.harvard.edu
+Hello Olivier, 
+
+
+In case you went to our old server (which will be shut down tomorrow), please try to register at cloud.genepattern.org. This is our new Amazon Cloud server and will be our production server going forward.
+
+
+Let us know if you have any problems.
+
+
+Best
+-Barbara
+
+
+On Mon, Dec 31, 2018 at 4:10 PM Pourquie, Olivier <opou...@bwh.harvard.edu> wrote:
+
+
+Hi,
+
+I am an Associate Broad member based at BWH and I would like to use gene pattern. I was not able to register on the web site. Could you please let me know if and how I can access Gene pattern. I have an Enigma account if this helps.
+
+Many thanks
+
+Olivier Pourquie
+
+Professor of Pathology and Genetics
+
+Brigham and Women’s Hospital and Harvard Medical School
+
+The information in this e-mail is intended only for the person to whom it is
+addressed. If you believe this e-mail was sent to you in error and the e-mail
+contains patient information, please contact the Partners Compliance HelpLine at
+http://www.partners.org/complianceline . If the e-mail was sent to you in error
+but does not contain patient information, please contact the sender and properly
+dispose of the e-mail.
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/BYAPR04MB5623FDEF2A639488447ABC91F6B20%40BYAPR04MB5623.namprd04.prod.outlook.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+Reply all
+
+Reply to author
+
+Forward

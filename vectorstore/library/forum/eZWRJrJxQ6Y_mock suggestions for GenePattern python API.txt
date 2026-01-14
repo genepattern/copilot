@@ -1,0 +1,1 @@
+A developer sought advice on creating mock objects for unit testing the GenePattern Python API, with the GenePattern team expressing interest in seeing the mock implementation and suggesting generating valid responses by querying the API and serializing returned data structures, ultimately agreeing to collaborate on developing mock testing tools for the API.

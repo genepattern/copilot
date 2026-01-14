@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/pKsR88U-HOc
+Title: GSEA upload error
+----------------------------------------
+
+
+
+
+
+GSEA upload error
+65 views
+Skip to first unread message
+
+Deborah Moran
+unread,
+Sep 27, 2021, 7:02:45 AM
+
+
+
+to GenePattern Help Forum
+
+
+Hello!
+
+
+
+I've been consistently running into an error message when trying to run the GSEA module on the public server. The error reads:
+
+
+Error:
+An error occurred while submitting the job: Error updating upload file record for file 'tmp': null
+
+
+
+Thus far, I've tried uploading the files using both the "Files" tab and dragging files to the appropriate field in the GSEA module tab. I've tried on both Chrome and Firefox on 3 different PC's but nothing seems to be helping.
+
+
+Any insights would be most appreciated!!
+Deborah
+
+Ted Liefeld
+unread,
+Sep 27, 2021, 11:44:28 AM
+
+
+
+to GenePattern Help Forum
+Deborah,
+
+
+I am sorry for the problems you are experiencing.  To help us try to identify the problem, can you answer the following questions;
+- What operating system are you using
+- What Browser are you using
+- What is your GenePattern username
+
+
+Also if possible can you open your browser's Javascript console (immediately after experiencing the problem) and post any messages or errors that you see there?
+
+
+Thanks
+
+
+Ted
+
+
+p.s. If you don't know how to open your browser's Javascript console, please see the first answer at https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers
+
+
+Reply all
+
+Reply to author
+
+Forward

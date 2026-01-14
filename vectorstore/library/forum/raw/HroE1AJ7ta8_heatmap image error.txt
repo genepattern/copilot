@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/HroE1AJ7ta8
+Title: heatmap image error
+----------------------------------------
+
+
+
+
+
+heatmap image error
+8 views
+Skip to first unread message
+
+Diana ZEID
+unread,
+Sep 19, 2020, 3:51:15 AM
+
+
+
+to genepatt...@googlegroups.com
+hello, 
+
+
+I still have error while working on the heatmap image module in spite I'm working with the gct file and following the steps, this is the id: 277803 . hope you can guide me to a solution soon it's very important,
+Thank you so much.
+
+
+______________________
+
+
+Bu e-posta mesajı ve ekinde bulunabilecek dosyalar yalnız mesajın alıcı hanesinde kayıtlı kullanıcı(lar) için hazırlanmıştır. Mesajın alıcısı değilseniz, lütfen hemen göndericiyi uyarınız. Mesajı dağıtmayınız, kopyalamayınız, içeriğini açıklamayınız; çıktı almaksızın siliniz. Aksi belirtilmedikçe, bu mesajda kayıtlı görüş ve düşünceler hiçbir şekilde İzmir Biyotıp ve Genom Merkezi'ne atfedilemeyeceği gibi, bağlayıcı da değildir. Virüs ve kötü amaçlı yazılımların bu mesajda yerleşmesinin engellenmesi amacıyla gerekli tüm önlemler alınmış olsa da, bu mesajın sisteminizde yaratabileceği kayıp ve zararlardan dolayı İzmir Biyotıp ve Genom Merkezi hukuken sorumluluk kabul etmez.
+
+This email and any files transmitted with it are intended solely for the use of the addressee(s). If you are not the intended recipient, please notify the sender immediately, then delete it without printing, copying, distributing or disclosing its contents. Unless otherwise specified, any view or opinion expressed in this email does not necessarily represent those of the Izmir Biomedicine and Genome Center, or bind it in any way. Although reasonable precautions are taken to ensure that no viruses or malware are present in this email, the Izmir Biomedicine and Genome Center can not accept any legal responsibility for any loss or damage arising from its use.
+Barbara Hill
+unread,
+Sep 21, 2020, 8:53:15 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+There were a few things amiss:
+Your file extension was incorrect. Please save your file without the .txt extension. (From a save dialog, make sure to put quotes around the file name "MyFileName.gct" ) or use the mv command in a terminal window.
+The output name had an incorrect syntax. If you want to append the output name you'll want to do something like the following: "<input.dataset_basename>.gct_MyMetaInfo" (without the quotes) - this allows GenePattern to construct a valid file name.
+
+I am not sure why but your data is not working with a jpeg output, though it does work for others I have tried. To work around this, select png from the "Output format" dropdown. If you really need it to be a jpeg you can always convert the file afterward.
+Please let us know if you have any other questions or comments.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

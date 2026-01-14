@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user asked about adding a secondary FTP link for reference genomes in GenePattern, specifically to include more exotic genome species, and received guidance that this is possible by listing reference files as a single static drop-down list in the module manifest file, which requires creating a new module version to modify the list.

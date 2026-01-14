@@ -1,0 +1,1 @@
+A user inquired about the availability of the GenePattern ImmPortFLOCK module for flow cytometry analysis, and was informed that the module was deprecated following a data center fire in June 2018, with potential future availability in the GParc repository and recommended to contact the original module authors for the latest version.

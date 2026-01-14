@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/QI9uZhd5dOw
+Title: Fwd: MutSigCV error
+----------------------------------------
+
+
+
+
+
+Fwd: MutSigCV error
+30 views
+Skip to first unread message
+
+Barbara Hill
+unread,
+Jul 21, 2017, 12:23:12 PM
+
+
+
+to GenePattern Help Forum
+
+
+On Friday, July 21, 2017 at 8:33:06 AM UTC-4, Yoshihiro Ishida wrote:
+I am trying to discover driver mutations out of a maf file containing 17 cases on the public server. My job ID is MutSigCV (1525776).
+It spits an error below and does not give me a file of significant genes. Are there anything I can do about it?
+
+
+Error using gp_MutSigCV>MutSig_runCV (line 854) silent and nonsilent rates are too different Error in gp_MutSigCV (line 194)
+Barbara Hill
+unread,
+Jul 21, 2017, 12:25:50 PM
+
+
+
+to GenePattern Help Forum
+Hello Yoshihiro,
+
+
+I suggest looking into this posting in the CGA forum: http://archive.broadinstitute.org/cancer/cga/node/103
+
+
+Best
+
+
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

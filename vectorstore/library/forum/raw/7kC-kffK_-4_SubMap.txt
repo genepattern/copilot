@@ -1,0 +1,204 @@
+URL: https://groups.google.com./g/genepattern-help/c/7kC-kffK_-4
+Title: SubMap
+----------------------------------------
+
+
+
+
+
+SubMap
+32 views
+Skip to first unread message
+
+Güllü Elif Özdemir
+unread,
+Aug 7, 2023, 3:04:14 AM
+
+
+
+to GenePattern Help Forum
+I want to do a SubMap analysis. However, when I examined the SubMap document, I did not fully understand what the contents of the files would be. Still, as far as I understand, I created and analyzed the files, but it gave an error. Can you help me? Analyis number: 524439
+
+Ted Liefeld
+unread,
+Aug 7, 2023, 6:46:52 AM
+
+
+
+to GenePattern Help Forum
+Hi,  
+
+
+the file format definitions for the submap module are 
+
+
+.gct :  https://www.genepattern.org/file-formats-guide#GCT
+.cls : https://www.genepattern.org/file-formats-guide#CLS
+
+
+From a quick look neither of your gct files  fit the format.  The first file (starting with S), on the second line there are additional spaces between the number of rows and columns.  It should just be #rows a single tab and then the # columns.
+
+
+The second gct file (starting with i) is completely lacking the first 2 header lines required in a gct file.
+
+
+Both files are missing a 'Description' column that should be present between the gene_id and the first column of values. Its not used in submap but must be present to be formatted properly. The easiest thing you could do here is just duplicate the gene_id column values, or even a column of blanks.
+
+
+Hope this helps
+
+
+Ted 
+
+
+
+Güllü Elif Özdemir
+unread,
+Aug 8, 2023, 7:42:51 AM
+
+
+
+to genepatt...@googlegroups.com
+I solved the problem with your help. Thank you very much.
+
+7 Ağustos 2023 Pazartesi tarihinde Ted Liefeld <lie...@broadinstitute.org> yazdı:
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/7kC-kffK_-4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f33487de-6043-4c79-8d3b-ad26180f9128n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 8, 2023, 7:52:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Glad to hear you were able to perform your analysis.  Feel free to contact us again if there are any issues in the future.
+
+
+Ted
+
+
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f33487de-6043-4c79-8d3b-ad26180f9128n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRXWqjfgWLX7m%2BoRpHZPHHv4JkkaX8udpqb64KCCt1w2bw%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Güllü Elif Özdemir
+unread,
+Aug 8, 2023, 7:59:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Of course. Thank you again. I wish you good work.
+
+8 Ağustos 2023 Salı tarihinde Ted Liefeld <lie...@broadinstitute.org> yazdı:
+
+Glad to hear you were able to perform your analysis.  Feel free to contact us again if there are any issues in the future.
+
+
+Ted
+
+
+On Tue, Aug 8, 2023 at 7:42 AM Güllü Elif Özdemir <gullueli...@gmail.com> wrote:
+
+I solved the problem with your help. Thank you very much.
+
+7 Ağustos 2023 Pazartesi tarihinde Ted Liefeld <lie...@broadinstitute.org> yazdı:
+
+Hi,  
+
+
+the file format definitions for the submap module are 
+
+
+.gct :  https://www.genepattern.org/file-formats-guide#GCT
+.cls : https://www.genepattern.org/file-formats-guide#CLS
+
+
+From a quick look neither of your gct files  fit the format.  The first file (starting with S), on the second line there are additional spaces between the number of rows and columns.  It should just be #rows a single tab and then the # columns.
+
+
+The second gct file (starting with i) is completely lacking the first 2 header lines required in a gct file.
+
+
+Both files are missing a 'Description' column that should be present between the gene_id and the first column of values. Its not used in submap but must be present to be formatted properly. The easiest thing you could do here is just duplicate the gene_id column values, or even a column of blanks.
+
+
+Hope this helps
+
+
+Ted 
+
+
+On Monday, August 7, 2023 at 3:04:14 AM UTC-7 gullueli...@gmail.com wrote:
+
+I want to do a SubMap analysis. However, when I examined the SubMap document, I did not fully understand what the contents of the files would be. Still, as far as I understand, I created and analyzed the files, but it gave an error. Can you help me? Analyis number: 524439
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/7kC-kffK_-4/unsubscribe.
+
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f33487de-6043-4c79-8d3b-ad26180f9128n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRXWqjfgWLX7m%2BoRpHZPHHv4JkkaX8udpqb64KCCt1w2bw%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdSE4znZgdYHB6LTSAP8EcLAFZ5wwRQT8tLRdE%2BDbca2jA%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

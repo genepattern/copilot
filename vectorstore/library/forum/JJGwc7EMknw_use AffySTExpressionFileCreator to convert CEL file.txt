@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user encountered an error when attempting to convert a CEL file to a GCT file using AffySTExpressionFileCreator, specifically reporting that no CEL files were found in the input, with the support team requesting additional job details to help troubleshoot the file conversion problem.

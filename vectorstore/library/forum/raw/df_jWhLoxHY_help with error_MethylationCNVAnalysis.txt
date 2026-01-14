@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/df_jWhLoxHY
+Title: help with error_MethylationCNVAnalysis
+----------------------------------------
+
+
+
+
+
+help with error_MethylationCNVAnalysis
+19 views
+Skip to first unread message
+
+Mel Pag
+unread,
+Aug 22, 2019, 2:53:59 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+
+
+I am trying to use MethylationCNVAnalysis, but I get an error message (see below).
+Would you be so kind as to help me clarifying that?
+
+
+Thank you
+
+
+
+
+using genome annotations from UCSC
+getting EPIC annotations
+ - 863904 probes used
+importing regions to exclude from analysis
+importing regions for detailed analysis
+creating bins
+ - 57467 bins created
+merging bins
+ - 26481 bins remaining
+Warning message:
+In CNV.check(object) : intensities are abnormally low (< 5000).
+Error in .local(query, ref, anno, ...) : 
+  query intensities not given for all probes.
+Calls: cnv.analyze.plot -> CNV.fit -> CNV.fit -> .local
+Execution halted
+
+
+jobID: 154540
+
+
+
+
+
+Barbara Hill
+unread,
+Aug 26, 2019, 11:58:02 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+We are looking into this. Unfortunately, the original author no longer works for our team so it may take a little longer than usual to get you an answer.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

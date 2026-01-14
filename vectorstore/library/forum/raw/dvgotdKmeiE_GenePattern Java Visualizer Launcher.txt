@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/dvgotdKmeiE
+Title: GenePattern Java Visualizer Launcher
+----------------------------------------
+
+
+
+
+
+GenePattern Java Visualizer Launcher
+37 views
+Skip to first unread message
+
+Afshin Beheshti
+unread,
+Apr 19, 2018, 6:48:28 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern,
+
+
+I'm trying to use the Java Visualizer Launcher to run the GSEALeadingEdgeViewer. I have done this in the past with no problem, but now I try to run this for Job# 21842 (and I've tried several other jobs) and I get the following error:
+
+
+"Error retrieving job details: HTTP/1.1 401 Invalid credentials, https://genepattern.broadinstitute.org/gp/rest/v1/jobs/21842"
+
+
+I'm using the same credentials for my username and password which I just used to access my GenePattern account, so I'm at a loss on what is happening.
+
+
+If you can point me to the right direction it will be much appreciated.
+
+
+Thanks,
+Afshin
+Peter Carr
+unread,
+Apr 19, 2018, 8:10:48 AM
+
+
+
+to genepatt...@googlegroups.com
+You need to connect to the gp-beta-ami server. Make sure to enter this server on the VisualizerLauncher dialog.
+    server: https://gp-beta-ami.genepattern.org/gp
+
+Regards,
+Peter
+
+Peter Carr
+unread,
+Apr 19, 2018, 8:14:33 AM
+
+
+
+to GenePattern Help Forum
+I just tried this from my Mac OS X laptop and it works. It takes a few minutes for the dataset to load but the viewer will eventually open.
+Regards,
+Peter
+
+Afshin Beheshti
+unread,
+Apr 19, 2018, 8:52:53 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter!
+
+
+Thank you! That did the trick! I was using the default server info which was incorrect.
+
+
+Thanks again for your help!
+
+
+Afshin
+
+
+Reply all
+
+Reply to author
+
+Forward

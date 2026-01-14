@@ -1,0 +1,188 @@
+URL: https://groups.google.com./g/genepattern-help/c/N-i_LXdlGSA
+Title: *** caught segfault *** address 0x7f7ca03d7618, cause 'invalid permissions' error
+----------------------------------------
+
+
+
+
+
+*** caught segfault *** address 0x7f7ca03d7618, cause 'invalid permissions' error
+44 views
+Skip to first unread message
+
+Neelam Shinde
+unread,
+Nov 13, 2022, 7:34:47 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I get the following two errors while using expression file creator. Please suggest how to fix this.
+
+
+Thanks,
+Neelam
+
+
+*** caught segfault *** address 0x7f7ca03d7618, cause 'invalid permissions' Traceback: 1: .Call("read_probeintensities", filenames, rm.mask, rm.outliers, rm.extra, ref.cdfName, dim.intensity, verbose, cdfInfo, which, PACKAGE = "affyio") 2: read.celfile.probeintensity.matrices(filenames = filenames, cdfInfo = cdfInfo, rm.mask = rm.mask, rm.outliers = rm.outliers, rm.extra = rm.extra, verbose = verbose, which = which) 3: read.probematrix(filenames = filenames, cdfname = cdfname) 4: just.rma(filenames = cel.files, compress = compressed, normalize = normalize, background = background, verbose = FALSE, cdfname = "mycdfenv") 5: gp.rma(cel.file.names, compressed, quantile.normalization, background, compute.calls) 6: create.expression.file(input.file.name = input.file.name, output.file.name = output.file.name, method = method, quantile.normalization = quantile.normalization, background = background, compute.calls = compute.calls, normalization.method = normalization.method, clm.input.file = clm.input.file, libdir = libdir, value.to.scale.to = value.to.scale.to, annotate.probes = annotate.probes, cdf.file = cdf.file) 7: .parseCmdLine(args) 8: withCallingHandlers(expr, message = function(c) invokeRestart("muffleMessage")) 9: suppressMessages(.parseCmdLine(args)) 10: parseCmdLine(args[2:NROW(args)]) aborting ... Segmentation fault (core dumped)
+
+
+
+
+
+
+
+R version 2.15.3 (2013-03-01) Platform: x86_64-unknown-linux-gnu (64-bit) locale: [1] LC_CTYPE=en_US.UTF-8 LC_NUMERIC=C [3] LC_TIME=en_US.UTF-8 LC_COLLATE=en_US.UTF-8 [5] LC_MONETARY=en_US.UTF-8 LC_MESSAGES=en_US.UTF-8 [7] LC_PAPER=C LC_NAME=C [9] LC_ADDRESS=C LC_TELEPHONE=C [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C attached base packages: [1] methods stats graphics grDevices utils datasets base other attached packages: [1] makecdfenv_1.36.0 gcrma_2.30.0 Biostrings_2.26.3 [4] preprocessCore_1.20.0 affy_1.36.1 affyio_1.26.0 [7] zlibbioc_1.4.0 AnnotationDbi_1.20.7 Biobase_2.18.0 [10] IRanges_1.16.6 BiocGenerics_0.4.0 RSQLite_0.11.4 [13] DBI_0.2-7 spatial_7.3-5 rpart_4.1-6 [16] nnet_7.3-7 mgcv_1.7-28 nlme_3.1-108 [19] Matrix_1.2-0 MASS_7.3-23 lattice_0.20-29 [22] KernSmooth_2.23-10 foreign_0.8-54 cluster_1.15.3 [25] class_7.3-5 boot_1.3-7 loaded via a namespace (and not attached): [1] BiocInstaller_1.8.3 grid_2.15.3 parallel_2.15.3 [4] splines_2.15.3 stats4_2.15.3 Reading CDF file. Creating CDF environment Wait for about 713 dots.
+
+Ted Liefeld
+unread,
+Nov 14, 2022, 11:47:01 AM
+
+
+
+to GenePattern Help Forum
+Neelam,
+
+
+can you provide the job number and I will take a look at this.  Without looking my guess is that it might need more memory.
+
+
+Ted
+
+
+
+Neelam Shinde
+unread,
+Nov 14, 2022, 5:05:14 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+Thank you for your quick response. The job number is 475865. Thank you for your help.
+
+
+Neelam.  
+ver sion 2.15.3 (2013-03-0Platform: x86_64-unknown-linux-gnu (64-bit)
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/N-i_LXdlGSA/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dd576ec7-e3b6-4577-bded-92dc61f09672n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Nov 15, 2022, 9:01:15 AM
+
+
+
+to GenePattern Help Forum
+Neelam
+
+
+Try again using the  AffySTExpressionFileCreator module (instead of ExpressionFileCreator, EFC).  Looking at the EFC documentation it says the following;
+
+
+Note:  A number of newer Affymetrix array types are not current supported by ExpressionFileCreator, including the 1.1, 2.0, 2.1 ST arrays, Exon arrays, and HTA 2.0 arrays.  This is the case even if a CDF file is provided.  Please use the AffySTExpressionFileCreator module for these arrays instead.
+
+
+
+I dropped your input files into AffySTExpressionFileCreator and it generated valid looking gct and cls files, so retry your run using that module instead and let me know if that works for you as well,
+
+
+Hope this helps,
+
+Ted
+
+Neelam Shinde
+unread,
+Nov 15, 2022, 1:18:28 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you Ted. Appreciate your help with this. I will try this and reach out if I have any questions. 
+
+
+Neelam.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/aa14ed42-654e-48f6-8b21-b79c1c3a8d19n%40googlegroups.com.
+
+Neelam Shinde
+unread,
+Nov 15, 2022, 6:47:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you Ted. I tried AffySTExpressionFileCreator and it works. I just wanted to know that the AffySTExpressionFileCreator supports Clariom S Mouse array since it did not require any cdf library files unlike Expression file creator. Additionally the current version of GSEA on genepattern does not have Clariom S mouse annotation chip file( which were available on the older versions). Is there a way to get the file or get access to older version of genepattern and gsea?
+
+
+Thanks,
+Neelam.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/aa14ed42-654e-48f6-8b21-b79c1c3a8d19n%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Nov 16, 2022, 11:18:40 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Neelam,
+
+
+Unfortunately I can't really help you with the issue of Clariom array support in the AffySTExpressionFileCreator, I think this is something the GenePattern team is looking into.
+But as to Clariom Array support in GSEA, our orthology chip for the Mouse Clariom S array is available here: https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Mouse_Clariom_S.r1_Human_Orthologs_MSigDB.v2022.1.Hs_REMAPPED_PATCH.chip (this chip file is designed to convert the Mouse Clariom S array to Human Gene Symbols for analysis with the MSigSB 2022.1.Hs (Human Collections) data.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAJ7Tfe7ebGArvCenF1hffbRqezWfusstXaNxhSQfQE_MjB10sw%40mail.gmail.com.
+
+Neelam Shinde
+unread,
+Nov 19, 2022, 4:39:43 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your reply Anthony. It is very helpful. I will wait on the update regarding the issue of clariom array support. If I can get help on that it will be really helpful for me. 
+
+
+Thanks,
+Neelam 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZxQoKMJUpO-go4KULeX9_Kzz4GDckNpBWjsm5diSUd-zQ%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

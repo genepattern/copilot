@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/EJ9S8DoQkg4
+Title: GISTIC2.0 Create Marker File from CNVkit output
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 Create Marker File from CNVkit output
+292 views
+Gistic
+Skip to first unread message
+
+James Moon
+unread,
+Dec 13, 2019, 9:56:34 AM
+
+
+
+to GenePattern Help Forum
+Hello. I am trying to create a markers file based on CNVkit output [.seg, .cnr, .cns, targetcoverage.cnn file] for GISTIC2.0.
+I have a reference genome file and segmentation file ready, but I need more information about on the markers file.
+
+
+From the user guide, it describes as:
+The markers file identifies the marker names and positions of the markers in the original dataset (before segmentation). It is a three-column, tab-delimited file with an optional header. The column headers are: 1. Marker Name (marker name) 2. Chromosome (chromosome number) 3. Marker Position (in bases).
+
+
+
+I am not sure where I can get the maker name from the CNVkit output.
+
+
+Thanks!
+James
+Edwin Juarez
+unread,
+Dec 13, 2019, 10:50:53 AM
+
+
+
+to GenePattern Help Forum
+Hello James,
+
+
+For questions that relate to GISTIC analyses and results interpretation, please contact the GISTIC forum at https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum (note that you may need to click "join group" in order to access their forum).
+
+
+Edwin.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

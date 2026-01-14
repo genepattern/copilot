@@ -1,0 +1,101 @@
+URL: https://groups.google.com./g/genepattern-help/c/bojnusd2mfw
+Title: Error in Hisat2Aligner which about ran out of memory.
+----------------------------------------
+
+
+
+
+
+Error in Hisat2Aligner which about ran out of memory.
+10 views
+Skip to first unread message
+
+Scott Lee 李思碩
+unread,
+Apr 8, 2019, 8:00:56 AM
+
+
+
+to GenePattern Help Forum
+Dear,
+I was trying to do Hisat2Aligner for RNAseq mapping on the public server.
+I ran 5 jobs of  Hisat2Aligner at the same time.
+However, the error comes up like this:
+
+
+Error: Ran out of memory allocating space for the bitpacked reference.  Please
+re-run on a computer with more memory.
+Error: Encountered internal HISAT2 exception (#1)
+
+
+The JobID are 107296, 107297, 107300, 107301,and 107302.
+Is there anything I miss or I should done which I do not to cause this failure?
+
+
+Thanks for your helping!
+
+
+Sincerely,
+Scott
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Ted Liefeld
+unread,
+Apr 8, 2019, 2:15:16 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+It looks like you requested only 1 CPU and 2 GB of ram for the jobs in the job options.  Try rerunning one of them with a bit more *see the job options section at the bottom of the job launch page) and once you find adequate resources then launch the others.  e.g. you could try 2-4 CPU and 8-16 Gb for your next pass.
+
+
+Hope this helps,
+
+
+Ted
+
+Scott Lee 李思碩
+unread,
+Apr 8, 2019, 11:23:48 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+Thank you so much for your helping.
+U guys are the best.
+
+
+Sincerely,
+Scott
+
+Ted Liefeld於 2019年4月9日星期二 UTC+8上午5時15分16秒寫道：
+
+
+Reply all
+
+Reply to author
+
+Forward

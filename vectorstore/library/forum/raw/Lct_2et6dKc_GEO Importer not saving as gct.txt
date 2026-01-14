@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/Lct_2et6dKc
+Title: GEO Importer not saving as gct
+----------------------------------------
+
+
+
+
+
+GEO Importer not saving as gct
+12 views
+GEO
+GEOimporter
+Skip to first unread message
+
+angela cannata
+unread,
+May 11, 2020, 9:33:13 PM
+
+
+
+to GenePattern Help Forum
+
+
+I used GEOimporter and input the GEO number, ran the module, but the file saved at .txt instead of .gct as GenePattern says it should.
+Job ID: 231364
+All parameter values left as default. The only thing inputted was the GEO number of GSE110021.
+Files after module has done running shown as stderr.txt and stdout.txt
+Barbara Hill
+unread,
+May 15, 2020, 12:26:53 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+This job appears to have been deleted from the server.
+
+
+We are looking into your other post regarding GEOImporter and will respond in that thread.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

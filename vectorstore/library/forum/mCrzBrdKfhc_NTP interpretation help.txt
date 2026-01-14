@@ -1,0 +1,1 @@
+NTP (Nearest Template Prediction) module output with correlation distance uses Pearson correlation coefficient in the "dist.to.template" column to measure similarity between templates and samples, with a lower value indicating greater similarity.

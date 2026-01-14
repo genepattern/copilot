@@ -1,0 +1,109 @@
+URL: https://groups.google.com./g/genepattern-help/c/F4cvpGqb8M4
+Title: PTM_SEA no matches
+----------------------------------------
+
+
+
+
+
+PTM_SEA no matches
+11 views
+Skip to first unread message
+
+Jessica Ritter
+unread,
+May 7, 2019, 7:52:56 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm trying to run PTM-SEA with the human database at the URL (https://raw.githubusercontent.com/broadinstitute/ssGSEA2.0/master/db/ptmsigdb/ptm.sig.db.all.flanking.human.v1.9.0.gmt). I have modified my data to the -p;u as we all as just -p formatting to attempt to find matches for a small set of data (22 phosphosites as well as a larger 4,900 set). I'm running this via GenePattern after Morpheus conversion in Google Chrome, however continually get the following message:
+
+
+parsing as GCT v1.3
+/opt/gpbeta/gp_home/users/jrit13/uploads/CellBasedv9.gct 22 rows, 4 cols, 0 row descriptors, 0 col descriptors
+Error in ssGSEA2(input.ds = opt$input.ds, output.prefix = opt$output.prefix,  : 
+  No overlap to any gene sets found in your data set!
+Possible reasons: 1) organism other than human; 2) wrong format of gene names/site ids!
+Execution halted
+
+
+
+
+The latest job identifier is 117363. PTM_SEA.Any assistance would be greatly appreciated. 
+
+
+Jess Ritter
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+
+
+
+Barbara Hill
+unread,
+May 10, 2019, 1:47:11 PM
+
+
+
+to GenePattern Help Forum
+Hello Jessica, 
+
+
+Unfortunately, this module is not maintained by the GenePattern team, but is instead maintained by a collaborator here at the Broad.
+
+
+I will request that he respond to this thread.
+
+
+In the meantime, his previous response regarding this module may be of use.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+May 10, 2019, 1:52:46 PM
+
+
+
+to GenePattern Help Forum
+There is also more information about this module available here in GitHub: https://github.com/broadinstitute/ssGSEA2.0
+
+Reply all
+
+Reply to author
+
+Forward

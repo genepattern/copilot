@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/VeMUElCwUFQ
+Title: about using TPM with ssGSEA
+----------------------------------------
+
+
+
+
+
+about using TPM with ssGSEA
+269 views
+Skip to first unread message
+
+白澤昌之
+unread,
+Jan 6, 2022, 4:24:18 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I'm trying to analyze ssGSEA, which is better to use TPM data or log2 (TPM + 1) data?
+
+
+
+
+====================================
+
+Masayuki Shirasawa MD
+
+Division of Genome Biology
+
+National Cancer Center Research Institute
+
+
+Department of Thoracic Oncology 
+
+National Cancer Center Hospital 
+
+====================================
+
+
+
+Anthony Castanza
+unread,
+Jan 6, 2022, 1:33:23 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+This is not a scenario we've investigated in detail. Historically we've used untransformed TPM, and for other GSEA-family algorithms, we've not generally recommended log transformation, however, without extensive testing I can't give you a firm answer on what to do here.
+
+ 
+
+Using the non-transformed TPM would probably be most in-line with other workflows that use ssGSEA, but depending on what you're trying to do with the results, it could be definitely worthwhile to run ssGSEA with both versions and do some comparisons. If you do so, we'd definitely be interested in hearing about your results.
+
+ 
+
+Sorry I couldn't be of more help here,
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b012f067-16c7-4159-9a4e-7ae279720f45n%40googlegroups.com.
+
+白澤昌之
+unread,
+Jan 6, 2022, 3:59:25 PM
+
+
+
+to GenePattern Help Forum
+Dear Anthony,
+
+
+Thanks a lot for your answer! I'm going to try both patterns.
+
+
+Masayuki Shirasawa 
+
+
+2022年1月7日金曜日 6:33:23 UTC+9 Anthony Castanza:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

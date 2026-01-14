@@ -1,0 +1,193 @@
+URL: https://groups.google.com./g/genepattern-help/c/68q_a_O647w
+Title: Deseq2
+----------------------------------------
+
+
+
+
+
+Deseq2
+53 views
+Skip to first unread message
+
+Franciele Kipper
+unread,
+Oct 11, 2019, 8:21:32 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): I can't use the double conditions as an input. I'm trying to input the transcript counts for 2 cell lines each one at baseline and after co-culture. There's no way (not a box to check or similar) to ask the comparison A vs B, A vs D, etc etc. When I simple input the 2 .cls I don't see all groups comparison in the end. Could you help me to solve what I'm doing wrong?
+.cls for baseline 
+14	2	1											
+#	PVEC	ABEC											
+0	0	0	0	0	0	1	1	1	1	1	1	1	1
+.cls for mono vs co-culture
+14	4	1											
+#	PVEC_mono	PVEC_coculture	ABEC_mono	ABEC_coculture								
+A	A	A	B	B	B	C	C	C	C	D	D	D	D
+
+Job ID if run on a publicly available server.171792
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values? 
+Input Parameter	Display Value	Actual Value
+input file	170685_MergeHTSeqcounts.gct	
+cls file	pvec and abec.cls	
+confounding variable cls file	mono vs coculture.cls	
+output file base	<input.file_basename>	<input.file_basename>
+qc plot format	svg	svg
+fdr threshold	0.1	0.1
+top N count	25	25
+random seed	779948241	779948241
+
+
+
+   Server Platform (Mac/Linux)? 
+
+
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Error in checkFullRank(modelMatrix) : 
+  the model matrix is not full rank, so the model cannot be fit as specified.
+  One or more variables or interaction terms in the design formula are linear
+  combinations of the others and must be removed.
+
+  Please read the vignette section 'Model matrix not full rank':
+
+  vignette('DESeq2')
+Calls: GP.deseq2 ... DESeqDataSetFromMatrix -> DESeqDataSet -> checkFullRank
+Execution halted
+
+
+WARNING: ignoring environment value of R_HOME
+R version 3.2.5 (2016-04-14)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Debian GNU/Linux 8 (jessie)
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Edwin Juarez
+unread,
+Oct 31, 2019, 9:28:22 AM
+
+
+
+to GenePattern Help Forum
+Hello Franciele,
+
+
+Apologies for the late reply. Are you still working on this? I have noticed that we are not exposing the parameter that would allow you to choose between the "one vs all" or "all pairs" -- I haven't looked at the code of the module yet, but I think by default we would run one vs all, which seems to match what you see on your end. A workaround would be to manually separate the files into the conditions you want to test and manually run those jobs.
+
+
+I'll notify the module developer about this.
+
+
+Edwin.
+
+Franciele Kipper
+unread,
+Nov 1, 2019, 7:34:58 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin, thank for helping me
+I'm struggling with this problem yet. Unfortunately I don't understand the code and need to use the "user friendly" interface. 
+Based on my results, I'd say it's doing the analysis of one parameter only (cell line) and non considering the parameter treatment.
+I'd appreciate if you could help look into the code
+Thank you in advance
+Franciele
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8cb4e859-7c60-48fe-a993-5a8df91ed4fe%40googlegroups.com.
+
+Edwin Juarez
+unread,
+Nov 15, 2019, 9:26:13 AM
+
+
+
+to GenePattern Help Forum
+Hello Franciele,
+
+
+One way to go about this would be to use the module SelectFeaturesColumns (https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00021:4) and separate you GCT file so you now have only the samples you want to test and provide (e.g., create a GCT file with only the A and the B samples, one with only the A and the C, etc.) and run DESeq2 with each of these samples (in each run providing a new CLS file to separate out the two conditions present in your new GCT files -- you can use ClsFileCreator to help you with this step https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.visualizer:00261:4)
+
+
+Let me know if that makes sense. The number of conditions that you are looking into is fortunately not too large, so doing this manually seems feasible.
+
+Edwin.
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+Franciele Kipper
+unread,
+Dec 12, 2019, 12:35:46 PM
+
+
+
+to GenePattern Help Forum
+Hi Edwin, unfortunately doing it group by group doesn't solve my problem since I'm using the tool to get a broad comparison. 
+I do have paired analysis performed with other tools.
+Do you have any idea if the tool will be uploaded to match with the documentation?
+Thank you in advance
+Franciele
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepatt...@googlegroups.com.
+
+Edwin Juarez
+unread,
+Dec 13, 2019, 11:09:25 AM
+
+
+
+to GenePattern Help Forum
+Hi Franciele,
+
+
+I've passed on that request to the (DESeq2) module developer. I am unsure as to when this feature may be implemented.
+
+
+An alternative workflow to consider is this:
+1- Use DESEq2 with the first CLS file (the one that separates PVEC vs ABEC). This will produce a GCT file as an output (which ends with ".normalized_counts.GCT")
+2- Use this GCT file to run ComparativeMarkerSelection using your second CLS file (the one which has the conditions A, B, C, and D). This module has a parameter called "phenotype test" and you can select "all pairs" from the dropdown menu. This should give you the comparisons you are looking for. Selecting "all pairs" will create a new file for each comparison.
+2.1- Note that ComparativeMarkerSelection outputs ODF files, you can use ComparativeMarkerSelectionViewer to view these results.
+
+
+Please let us know if this works for you.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

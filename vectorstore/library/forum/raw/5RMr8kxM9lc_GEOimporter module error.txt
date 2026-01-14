@@ -1,0 +1,239 @@
+URL: https://groups.google.com./g/genepattern-help/c/5RMr8kxM9lc
+Title: GEOimporter module error
+----------------------------------------
+
+
+
+
+
+GEOimporter module error
+17 views
+Skip to first unread message
+
+Aracelly Quiroz
+unread,
+Mar 26, 2021, 2:30:06 PM
+
+
+
+to GenePattern Help Forum
+hI, im trying to get the GSE12168 study in the module GEO importer but I have gotten this error twice:
+
+
+333185. GEOImporter 
+2021-03-26 21:25:55.0
+stderr.txt
+
+
+what can I do?
+
+
+Thanks !
+Barbara Hill
+unread,
+Mar 26, 2021, 2:51:31 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It looks like your browser auto-filled the ftp username with one of your stored usernames, which then causes the module to fail because you did not also specify a password.
+
+
+I don't believe you need a ftp login for this job, so I would make sure that username field (and all login fields) is blank before submitting this job.
+
+Best
+-Barbara
+Anthony Castanza
+unread,
+Mar 26, 2021, 3:23:33 PM
+
+
+
+to genepatt...@googlegroups.com
+
+I took deeper look at the issue here because it didn’t quite line up with what we’d expect from the FTP credentials issue. It appears to me that the SOFT file for the subseries accession that you’re trying to access doesn’t actually contain all the individual sample-level information that is expected in a soft file. I’m not sure if this is a general problem with sub-series accessions or if the submitter to GEO made a mistake/formatting choice that isn’t in line with our expectations. That said, this information is present in the super-series accession: GSE12094. If you run GEOImporter on this accession it will retrieve all data for the experiment including the samples you’re interested in and the other samples you’re not interested in.
+
+I’ve run that and made the job result available here: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=333192
+
+ 
+
+Since this isn’t quite what you were wanting, I downloaded the resulting GCT and was able to extract the columns you were interested in and replace the “null” values with blank cells (required for use with GSEA). That processed GCT is attached here.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/79d884d8-ef4d-4b3e-b503-b4c0ab13e05an%40googlegroups.com.
+
+Aracelly Quiroz
+unread,
+Mar 30, 2021, 4:07:27 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi again, 
+I dont understand, why do you get the GSE12094.gct  file ? I was trying to download the GSE12168 study. 
+I run the GSE12094 but I got an error: 
+
+
+334126. GEOImporter 
+2021-03-30 23:00:29.0
+stderr.txt
+
+
+I also check my username. What do you suggests? 
+
+
+Thanks !
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB5782342B791EAFF296AF9D3BF7619%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+
+
+
+--
+
+Aracelly Quiroz Lagos.
+Tecnólogo Médico c/m Morfofisiopatología y Citodiagnóstico. 
+Estudiante de Doctorado Ciencias Biológicas
+Laboratorio de Transducción de Señales y Cáncer
+Universidad de Concepción, Chile.
+Anthony Castanza
+unread,
+Mar 30, 2021, 4:36:27 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Aracelly
+
+ 
+
+GSE12168 is not an independent study, it is part of the GSE12094 super-series. You can see this if you go to the experiment’s pages on GEO. As I explained in the previous message, only the super-series contains all of the information needed to construct the expression file using GEOImporter. So, in order to build a GCT for GSE12168 you have to retrieve all the data in the parent study, GSE12094 and then manually extract only the parts that are needed. That is what I did to construct the GSE12168.gct file. It looks like that attachment may have been stripped from the previous email so I’m including it again here.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Aracelly Quiroz <quiroza...@gmail.com>
+Date: Tuesday, March 30, 2021 at 4:07 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:1876] GEOimporter module error
+
+Hi again, 
+
+I dont understand, why do you get the GSE12094.gct  file ? I was trying to download the GSE12168 study. 
+
+I run the GSE12094 but I got an error: 
+
+ 
+
+334126. GEOImporter 
+
+2021-03-30 23:00:29.0
+
+stderr.txt
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAEHtpKXv4FZp9cmyq75DzkBggJHfYWHof8V%2BnSD6cKc-1oGG5A%40mail.gmail.com.
+
+Aracelly Quiroz
+unread,
+Mar 30, 2021, 6:47:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Ok, I am very grateful for your answer. But it seem that the gct file stripped again because I can not find it and I do not know how to delete the series that I wont use. 
+
+
+Thanks again! 
+Aracelly. 
+
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/5RMr8kxM9lc/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB57823BC41E17F6820D45F7B2F77D9%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+Anthony Castanza
+unread,
+Mar 30, 2021, 6:55:22 PM
+
+
+
+to genepatt...@googlegroups.com
+That's annoying. I'm including it as a google drive link this time. Let me know if you have any issues with accessing it.
+https://drive.google.com/file/d/1UGTn3wdt5b1E7Rgag4S6yMUNnlMdW-jM/view?usp=sharing
+
+
+-Anthony
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAEHtpKVL4yUXm7Hx27asD4%3DCKDPO6_ECPiWti%3D2JL58jgqhZSA%40mail.gmail.com.
+
+Aracelly Quiroz
+unread,
+Mar 30, 2021, 6:59:55 PM
+
+
+
+to genepatt...@googlegroups.com
+thanks ! I got it. 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZw1tGDj41%2B6yMpxD%3DigCDDmrEEfqdRzYf7vRV1g9UXriA%40mail.gmail.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

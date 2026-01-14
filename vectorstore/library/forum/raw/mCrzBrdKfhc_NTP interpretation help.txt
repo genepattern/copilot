@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/mCrzBrdKfhc
+Title: NTP interpretation help
+----------------------------------------
+
+
+
+
+
+NTP interpretation help
+57 views
+Skip to first unread message
+
+JH
+unread,
+Dec 4, 2022, 3:21:39 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have a question for the nearest template prediction module. In terms of how to interpret the output "_prediction_result.xls" file when distance selection is "correlation" instead of "cosine distance".
+
+
+Specifically (job ID 480258), after correlation distance is selected, is the "dist.to.template" column representing pearson correlation?
+
+
+Thank you,
+Julia
+Michael Reich
+unread,
+Jan 3, 2023, 10:52:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Julia,
+
+
+Apologies for the delay in responding. You are correct - the "correlation" option uses the Pearson correlation.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ac4baf4-a96b-43cb-a6e0-75289c0d2375n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+
+Reply all
+
+Reply to author
+
+Forward

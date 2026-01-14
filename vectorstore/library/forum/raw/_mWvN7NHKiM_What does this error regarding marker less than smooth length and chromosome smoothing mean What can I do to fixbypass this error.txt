@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/_mWvN7NHKiM
+Title: What does this error regarding marker less than smooth length and chromosome smoothing mean? What can I do to fix/bypass this error?
+----------------------------------------
+
+
+
+
+
+What does this error regarding marker less than smooth length and chromosome smoothing mean? What can I do to fix/bypass this error?
+166 views
+Skip to first unread message
+
+Ishaar Ganesan
+unread,
+Jun 26, 2019, 2:20:34 PM
+
+
+
+to GenePattern Help Forum
+From stdout.txt: 
+
+
+GISTIC version 2.0.23
+Warning: Number of markers is less than smooth length for the following chromosomes: 13  14. These chromosomes will not be smoothed.  (Smooth length = 8.)
+[ > In smooth_cbs at 54
+In clean_gistic_input at 77
+In run_gistic2_from_seg at 238
+In gp_gistic2_from_seg at 97]  
+Warning: Excessive score truncated for 1508 samples.
+[ > 
+In run_focal_gistic at 132
+In run_gistic20 at 124
+In run_gistic2_from_seg at 249
+In gp_gistic2_from_seg at 97]  
+
+From stderr.txt
+
+
+Index exceeds matrix dimensions.
+Error in normalize_by_arm_length (line 85)
+Error in make_sample_B (line 50)
+Error in perform_deconstruction (line 68)
+Error in perform_ziggurat_deconstruction (line 126)
+Error in run_focal_gistic (line 151)
+Error in run_gistic20 (line 124)
+Error in run_gistic2_from_seg (line 249)
+Error in gp_gistic2_from_seg (line 97)
+MATLAB:badsubscript
+
+
+I am a new user, and I have only found one other thing about this online which was not extremely helpful. Would greatly appreciate if I could get some insight on this. 
+
+
+Thanks
+Barbara Hill
+unread,
+Aug 5, 2019, 10:02:13 AM
+
+
+
+to GenePattern Help Forum
+Hello Ishaar, 
+
+
+My apologies for the late response.
+
+
+Usually, this error indicates a mismatch between your segmentation file and markers file.
+
+
+Additional insights can be found in the GISTIC-forum
+
+
+Please let us know if we can provide any further assistance.
+
+
+Best
+-Barbara
+xingyu chen
+unread,
+Nov 27, 2022, 2:07:01 AM
+
+
+
+to GenePattern Help Forum
+I WANT to know that do you solve this problem. I met this problem,too. But I used GISTIC and didn't meet this problem.
+
+Ted Liefeld
+unread,
+Nov 28, 2022, 12:42:09 PM
+
+
+
+to GenePattern Help Forum
+You should ask this question on the GISTIC forum, https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum.  
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

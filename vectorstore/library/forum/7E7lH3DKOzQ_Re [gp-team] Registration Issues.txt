@@ -1,0 +1,1 @@
+A user experienced a persistent reCAPTCHA error during GenePattern cloud registration, and the GenePattern team resolved the issue by manually creating an account with a suggested username, instructing the user to use the "forgot password" link to set a new password and complete registration.

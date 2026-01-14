@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/GdrFH0NHjZI
+Title: Some visualizations are not displaying properly due to latest browser security updates.
+----------------------------------------
+
+
+
+
+
+Some visualizations are not displaying properly due to latest browser security updates.
+68 views
+BrowserSecurity
+ConstellationMap
+MixedContent
+Viewer
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Mar 18, 2019, 2:04:02 PM
+
+
+
+to GenePattern Help Forum
+Due to recent browser security updates, cracking down on mixed content, some of our viewers are unable to display their content. 
+
+
+We are currently only aware of one module (ConstellationMap) being impacted. Please let us know if you discover others.
+
+
+Sincerely,
+The GenePattern Team
+Owen Chapman
+unread,
+Jul 4, 2019, 5:51:14 PM
+
+
+
+to GenePattern Help Forum
+HeatMapViewer didn't load for me on
+
+Firefox Quantum, Extended Support release, 60.5.1esr (64-bit).
+Same job worked fine on:
+Microsoft Edge 41.16299.1004.0
+Microsoft EdgeHTML 16.16299
+O
+
+
+Barbara Hill
+unread,
+Jul 8, 2019, 6:57:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Owen,
+
+
+Does it work if you relaunch (not reload) the viewer?
+
+
+Thanks
+-Bobbie
+Owen Chapman
+unread,
+Jul 8, 2019, 9:58:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Bobbie,
+Unfortunately I am unable to reproduce this issue because UC Health IT has decided that Firefox is unsafe and I can no longer access it on this computer. Working on purging UC Health from my life this week.
+Yours,
+Owen
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/506d1a7b-63e9-4155-8513-671f21b4cf6d%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

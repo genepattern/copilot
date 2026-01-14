@@ -1,0 +1,1 @@
+A GenePattern user encountered an unexpected file transfer error when attempting to submit a GSEA pre-rank job on a public server, potentially related to insufficient available storage space, and sought troubleshooting advice from the forum to resolve the submission issue by checking network connection and available file system resources.

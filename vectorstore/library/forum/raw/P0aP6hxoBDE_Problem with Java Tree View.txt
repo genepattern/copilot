@@ -1,0 +1,119 @@
+URL: https://groups.google.com./g/genepattern-help/c/P0aP6hxoBDE
+Title: Problem with Java Tree View
+----------------------------------------
+
+
+
+
+
+Problem with Java Tree View
+22 views
+Skip to first unread message
+
+Paul Ney
+unread,
+Feb 4, 2020, 7:44:59 AM
+
+
+
+to GenePattern Help Forum
+When i try to run Java Tree View visualizer I get the following error message: "edu.stanford.genetics.treeview.LoadException: LoadException 1: Error Parsing CDT: java.lang.NullPointerException". The cdt and gtr files I used were created within GenePattern.
+
+Edwin Juarez
+unread,
+Feb 5, 2020, 11:56:52 AM
+
+
+
+to GenePattern Help Forum
+Paul,
+
+Can you share your JobID id you were using the a public GenePattern server?
+
+
+You can also try using HierarchicalClusteringViewer (which has similar functionality). JavaTreeView requires some extra steps, you can read more here: https://genepattern.github.io/VisualizerLauncher/
+
+
+Edwin.
+
+Paul Ney
+unread,
+Feb 5, 2020, 1:00:59 PM
+
+
+
+to GenePattern Help Forum
+Job ID is 203310. I followed the instructions on the VisualizerLauncher webpage, which led to the error message. I also tried the other visualizer but ran into a different problem, which I haven't described here. It involved an index in the cdt file. Thx
+
+Ted Liefeld
+unread,
+Feb 6, 2020, 1:06:36 PM
+
+
+
+to GenePattern Help Forum
+Paul
+
+
+I tried to re-run your job and get the same error, but I was able to run it successfully in the HierarchicalClusterViewer Javascript visualizer instead.  I did notice that the cdt file has an extra blank line (2nd line) that I think is not appropriate for the format.  Deleting it I still see the same error but it makes me wonder about the rest of the cdt file. 
+
+
+How were the cdt/gtr files generated?  Could you share that job # as well and we can keep trying to track this down?
+
+
+Thanks
+
+
+Ted 
+
+
+
+Ted Liefeld
+unread,
+Feb 6, 2020, 1:11:17 PM
+
+
+
+to GenePattern Help Forum
+Paul
+
+
+I found another formatting issue in the cdt file.  The third line started with an extraneous tab character.  After removing that as well, the JavaTreeView loaded properly for me. I will send you a link to my edited file privately.
+
+
+Ted
+
+
+
+Paul Ney
+unread,
+Feb 6, 2020, 6:42:04 PM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+Thanks for your assistance. I will try the revised files in a moment. The cdt/gtr files were generated in job 202679.
+
+
+On Tuesday, February 4, 2020 at 10:44:59 AM UTC-5, Paul Ney wrote:
+
+Paul Ney
+unread,
+Feb 7, 2020, 8:08:52 AM
+
+
+
+to GenePattern Help Forum
+JavaTreeView and HierarchicalClusteringViewer are working with the reformatted cdt file. Thanks for the assistance. Not sure why cdt file was improperly formatted to begin, but you have the job number. Also, HierarchicalClusterImage still doesn't work, but I don't really need that. Thx again for the help.
+
+
+On Tuesday, February 4, 2020 at 10:44:59 AM UTC-5, Paul Ney wrote:
+
+
+Reply all
+
+Reply to author
+
+Forward

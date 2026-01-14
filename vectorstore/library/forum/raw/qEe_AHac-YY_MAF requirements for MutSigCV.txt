@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/qEe_AHac-YY
+Title: MAF requirements for MutSigCV
+----------------------------------------
+
+
+
+
+
+MAF requirements for MutSigCV
+23 views
+Skip to first unread message
+
+Jennifer Diaz
+unread,
+Sep 6, 2024, 12:39:49 PM
+
+
+
+to GenePattern Help Forum
+Hi, I'm reconstructing a MAF to submit to MutSigCV. I am planning to use the standard files for automatic categ and effect detection. My coordinates are in hg19, and since MutSigCV uses the reference genome for this purpose, I assume it infers categ and effect based on the coordinates. So, which columns of a MAF do I actually need to supply to detect categ and effect? I assume I don't need all the columns in the official format ( File Format: MAF - GDC Docs (cancer.gov)). What if I just have:
+gene_symbol
+chromosome
+start
+stop
+patient_id
+reference_allele
+variant_allele
+
+
+Will it be able to detect categ and effect from that? 
+thank you!
+Jennifer Diaz
+unread,
+Sep 6, 2024, 12:45:47 PM
+
+
+
+to GenePattern Help Forum
+Also, is it the order of columns or the names of columns taht matter?
+
+Michael Reich
+unread,
+Sep 9, 2024, 10:37:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Jennifer - you should submit the entire MAF file.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/bf24af99-7cf1-4ce1-a2ea-ce9ff07f40een%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/X2kJpIEUvVk
+Title: SNPFileCreator_SNP6
+----------------------------------------
+
+
+
+
+
+SNPFileCreator_SNP6
+32 views
+Installation
+SNP
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Oct 22, 2018, 1:44:37 PM
+
+
+
+to GenePattern Help Forum
+Greetings,
+
+
+I am interested in using SNPFileCreator_SNP6 to process CEL file that I have recently got.
+GenePattern webpage indicated that SNPFileCreator_SNP6 is available only on public server.
+So I looked into public server but there was no SNPFileCreator_SNP6.
+Do I need some authentication to have access to it or is it simply unavailable at the moment?
+
+
+I am sorry if this is an inappropriate question to ask here
+
+
+Thank you
+Barbara Hill
+unread,
+Oct 22, 2018, 1:58:20 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+The SNPFileCreator_SNP6 is part of the CopyNumberInferencePipeline, and is intended to be run as part of that pipeline, rather than as a standalone module.
+Unfortunately, that pipeline is currently non-functional due to a fire in our data center in June, 2018.
+
+
+Additionally, SNPFileCreator_SNP6 requires a specific environment to run, as indicated in its documentation:
+
+
+SNPFileCreator_SNP6 requires on average a minimum of 12GB RAM to process SNP
+Array 6.0 files. Use the GenePattern public server or configure your local GenePattern
+server to allocate the required memory for the module. Note that this module is currently
+only supported on 64-bit Linux servers and is therefore not available for download in the
+GenePattern Module Repository. 
+
+
+That being said, I have linked to it here, in-case it is still of use to you.
+
+
+ftp://gpftp.broadinstitute.org/modules/SNPFileCreator_SNP6.zip
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

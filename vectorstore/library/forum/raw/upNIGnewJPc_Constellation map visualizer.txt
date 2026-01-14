@@ -1,0 +1,66 @@
+URL: https://groups.google.com./g/genepattern-help/c/upNIGnewJPc
+Title: Constellation map visualizer
+----------------------------------------
+
+
+
+
+
+Constellation map visualizer
+18 views
+Skip to first unread message
+
+JL
+unread,
+Mar 18, 2019, 12:35:39 PM
+
+
+
+to GenePattern Help Forum
+I have run Constellation Map using the ssGSEA output only (method 2), and it appears to have run successfully with only a warning message in the err output (Warning message:
+In readLines(file) :)
+  incomplete final line found on '/opt/gpbeta/gp_home/users/[USERNAME]/uploads/tmp/run5709097794771495082.tmp/input.cls.file/2/CLSfile.cls')
+
+
+The problem I encounter is that the visualizer.html doesn't work. I have tried opening it from the GenePattern interface by selecting "Open Link" and by downloading the job so that the .odf files are in the same folder, but in both cases, I get something that looks like the attached file screenshot: visualizer opens but no data is read. I tried the same using Firefox, but that didn't work either. 
+
+
+Job ID: 100104. (I think)
+
+
+I set parameter values as described in the documentation for method 2, and I am running on a Mac.
+
+Screen Shot 2019-03-18 at 12.31.51 PM.png
+JL
+unread,
+Mar 18, 2019, 2:19:23 PM
+
+
+
+to GenePattern Help Forum
+I ultimately got it to work by opening the Visualization.html in the latest version of Firefox by clicking on the downloaded file rather than opening from Genepattern in the browser.
+
+Barbara Hill
+unread,
+Mar 18, 2019, 2:21:55 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Thank you for bringing this to our attention. The recent browser security updates have sealed up a potential security hole in passing content to/from https and http domains  (IE secure & unsecure). While this is ultimately a good thing, it has caused some trouble out in the wild, such as this bug you've encountered. Basically, the browser is not allowing a required file to be accessed, so the viewer can not finish displaying your data.
+
+
+I've notified the current developer of this module, and we will let you know as soon as this issue has been resolved.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

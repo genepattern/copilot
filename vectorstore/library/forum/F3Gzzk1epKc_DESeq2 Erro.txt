@@ -1,0 +1,1 @@
+DESeq2 error in GenePattern involving NA values in count matrix, resolved by using the RemoveMissingValues module to eliminate genes with NA values, which was likely caused by misaligned gene data; user successfully addressed the issue by cleaning the input file before analysis.

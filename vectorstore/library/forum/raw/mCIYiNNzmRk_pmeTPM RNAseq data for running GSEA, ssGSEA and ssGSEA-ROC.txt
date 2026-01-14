@@ -1,0 +1,39 @@
+URL: https://groups.google.com./g/genepattern-help/c/mCIYiNNzmRk
+Title: pmeTPM RNAseq data for running GSEA, ssGSEA and ssGSEA-ROC
+----------------------------------------
+
+
+
+
+
+pmeTPM RNAseq data for running GSEA, ssGSEA and ssGSEA-ROC
+26 views
+Skip to first unread message
+Lilian Inoue
+unread,
+Feb 19, 2025, 11:47:58 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+My name is Lilian Inoue.
+
+I have a RNAseq dataset where the resulting reads were aligned to the human reference genome build hg38 using RSEM with the STAR aligner to obtain posterior mean estimated transcripts per million (pmeTPM) as a measure of gene expression. However, we do not have the raw data.
+
+We want to make some comparisons across samples by running GSEA, ssGSEA, and ssGSEA-ROC. Please, I would like to know whether I can run those analyses with the expression dataset in pmeTPM format directly or whether I should first normalize counts using tools like DESeq2. If that is the case, should normalization in DESeq2 be performed with the command below?
+
+normalized_counts <- counts(dds, normalized = TRUE)
+
+Best regards,
+
+Lilian
+
+
+Reply all
+
+Reply to author
+
+Forward

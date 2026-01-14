@@ -1,0 +1,116 @@
+URL: https://groups.google.com./g/genepattern-help/c/faewsWPY-fk
+Title: Making Heatmap with Transformed Logs from RNA Seq data
+----------------------------------------
+
+
+
+
+
+Making Heatmap with Transformed Logs from RNA Seq data
+87 views
+Skip to first unread message
+
+Jillian Knox
+unread,
+May 7, 2018, 11:05:48 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+Hi, 
+I am trying to create a heat map using the Gene IDs and Log2 values that I have from analyzing my RNA seq data. It includes 57 genes (all of which have an adjusted p-value of less than 0.05). Every time I try to use the heat map image tools to do this, it tells me the job failed because of an 'unknown version on line 1.' I'm not sure what is going wrong. It's a .gct file.  Can you possibly help me with this?
+
+
+Thank you,
+Jillian Knox
+
+
+Job ID if run on a publicly available server.
+
+
+HeatMapImage (1672129)
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+Mac
+
+
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Edwin Juarez
+unread,
+May 7, 2018, 11:38:48 AM
+
+
+
+to GenePattern Help Forum
+Hello Jillian ,
+
+
+It looks like your GCT file is missing two lines at the top of the file, please take a look at the formatting requirements for GCT files here: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+Let me know if that fixes your error.
+
+
+Edwin.
+
+Courtney Bannerman
+unread,
+Sep 8, 2018, 9:39:24 PM
+
+
+
+to GenePattern Help Forum
+Hello Jillian and Edwin
+
+
+I also seem to be having the same error message when I run my .gct file to make a heat map. I looked over the formatting requirements and my .gct file seems to be set up correctly. I was wondering if you had any other suggestions to try?
+
+
+Thank you for your help!
+
+
+Courtney
+Barbara Hill
+unread,
+Sep 13, 2018, 2:55:48 PM
+
+
+
+to GenePattern Help Forum
+Hello Courtney, 
+
+
+If you can provide your job id, we can take a look at your file and see what else might be causing your trouble.
+
+
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

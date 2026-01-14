@@ -1,0 +1,1 @@
+GenePattern hierarchical clustering module encountered an error due to incorrectly formatted GCT file headers, which required renaming the "NAME" and "Description" columns to match the standard GCT file format specification, and the issue was resolved by adjusting column headers to align with the expected naming convention.

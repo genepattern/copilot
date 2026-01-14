@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/bgaB5QOMX5g
+Title: Nearest Template Prediction
+----------------------------------------
+
+
+
+
+
+Nearest Template Prediction
+74 views
+Skip to first unread message
+
+shamaine....@gmail.com
+unread,
+Aug 21, 2021, 8:10:58 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am using the Nearest Template Prediction tool on the Genepattern website.
+As the original publication states NTP can work on single sample, I have tried running NTP on a single sample GCT file , but failed to get any results.
+The error that appears is:
+
+
+Error in if (orig.dist.to.all.temp[1] >= orig.dist.to.all.temp[2]) { : missing value where TRUE/FALSE needed Calls: NTPez Execution halted
+
+
+
+
+
+Please kindly advice if it is possible to apply NTP on single sample GCTs, and how I can proceed.
+
+
+Thank you very much,
+Shamaine 
+
+
+Edwin Juarez
+unread,
+Aug 23, 2021, 11:42:29 AM
+
+
+
+to GenePattern Help Forum
+Shamaine,
+
+
+Can you share with us the Job ID for this error? Is this on the cloud.genepattern.org server?
+
+
+Edwin.
+
+
+
+shamaine....@gmail.com
+unread,
+Aug 23, 2021, 6:18:56 PM
+
+
+
+to GenePattern Help Forum
+
+Hi Edwin,
+
+
+Yes I ran the program on the cloud.genepattern.org server.
+
+
+The job IDs are 371532 and  371915
+
+
+Thank you!
+
+Edwin Juarez
+unread,
+Aug 25, 2021, 10:42:54 AM
+
+
+
+to GenePattern Help Forum
+Shamaine,
+
+
+I think the issue is that the module does not actually support 1 sample, despite the original method does.
+
+
+I recommend editing your GCT file to include a dummy column, something like this: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=372198&openNewWindow=false
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

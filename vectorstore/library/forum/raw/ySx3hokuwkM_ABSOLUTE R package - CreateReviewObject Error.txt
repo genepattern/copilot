@@ -1,0 +1,156 @@
+URL: https://groups.google.com./g/genepattern-help/c/ySx3hokuwkM
+Title: ABSOLUTE R package - CreateReviewObject Error
+----------------------------------------
+
+
+
+
+
+ABSOLUTE R package - CreateReviewObject Error
+364 views
+Skip to first unread message
+
+Calvi C.
+unread,
+Oct 2, 2017, 12:00:18 PM
+
+
+
+to GenePattern Help Forum
+
+
+
+Hi all,
+
+I am using the R package ABSOLUTE and ran the function RunAbsolute and CreateReviewObject.
+
+My segment file (absolute.segment.numonly) looks like this:
+
+Chromosome      Start   End     Num_Probes      Segment_Mean
+chr1    13048   647355  77      0.0994
+chr1    657939  909727  168     -0.921
+chr1    909827  935126  15      -1.7359
+chr1    943368  977419  32      -0.7704
+chr1    978837  978887  3       -2.2057
+chr1    978987  1019721 55      -0.8486
+chr1    1019777 1248069 166     -1.273
+chr1    1248169 1289627 105     -1.007
+...
+
+ 
+
+I replaced/deleted all chromosome names that are not in the format chr# or # as the GenePattern website (http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/ABSOLUTE) says.
+
+Now when I run RunAbsolute (works) and CreateReviewObject (apparently this throws the error) it creates the RData file, but not the plot (empty PDF file) and gives me the error "Error in seq_len(M) : argument must be coercible to non-negative integer"
+
+I followed the answer of this (http://archive.broadinstitute.org/cancer/cga/node/668) topic of someone who set max.non.clonal to 0.1 but it did not work.
+
+This is my code:
+
+
+
+
+
+
+
+library(ABSOLUTE)
+segfile="absolute.segment.numonly"
+genome <- "hg19"
+platform <- "Illumina_WES"
+sigma.p <- 0.05
+max.sigma.h <- 0.02
+min.ploidy <- 0.95
+max.ploidy <- 2
+max.as.seg.count <- 1000000
+max.non.clonal <- 0.1
+max.neg.genome <- 0
+copy_num_type <- "total"
+sample.name="TGlioma"
+primary.disease="Glioma"
+results.dir ="results"
+
+RunAbsolute(segfile, sigma.p, max.sigma.h, min.ploidy, max.ploidy,
+            primary.disease, platform, sample.name, results.dir,
+            max.as.seg.count, max.non.clonal, max.neg.genome,
+            copy_num_type, maf.fn = NULL, min.mut.af = NULL,
+            output.fn.base = "absolute.output.malignant", verbose = TRUE)
+
+output_path="results/absolute.output.malignant.ABSOLUTE.RData"
+
+CreateReviewObject("Review_malignant", output_path,
+                   paste(results.dir,"/run1",sep=""), "total", plot.modes = TRUE, verbose=TRUE)
+
+ 
+
+Unfortunately, I get this error:
+
+> source('~/ABSOLUTE.r')
+[1] "Capping 0 segs at tCR = 5.0"
+[1] "Expected copy-ratio = 0.95334"
+[1] "MAF file:  not found."
+.....................
+.....................
+.....................
+.....................
+.....................
+.....................
+.....................
+.....................
+.....................
+-------
+[1] "1d mode opt: "
+     [,1]      [,2]      [,3]
+[1,]    0 -2.287936 -5552.342
+[2,]    0 -2.287936 -5552.342
+[3,]    0 -2.287936 -5552.342
+[4,]    0 -2.287936 -5552.342
+[5,]    0 -2.287936 -5552.342
+[6,]    0 -2.287936 -5552.342
+[7,]    0 -2.287936 -5552.342
+[1] "4 unique modes found"
+[1] "1 modes in b / delta range."
+     alpha      tau AT b     delta       LL mode_curv
+[1,]     1 9.874938 NA 0 0.1012665 5552.445 -8.166027
+[1] "removing 1 / 1 modes outside of alpha/tau range."
+[1] "Evaluating subclonal SCNAs in  purity/ploidy modes: "
+
+Error in seq_len(M) : argument must be coercible to non-negative integer
+In addition: There were 50 or more warnings (use warnings() to see the first 50)
+
+ 
+
+How can this problem be solved?
+
+Thanks!
+
+
+
+
+
+
+Barbara Hill
+unread,
+Oct 2, 2017, 12:51:52 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Are you running this from the command line?
+
+
+I would suggest the following contacts for help with this:
+For ABSOLUTE questions:
+Use the Biostars forum <https://www.biostars.org/t/absolute/>
+Use the CGA discussion and help forum, especially for help with data interpretation 
+The module is provided for academic non-commercial research purposes only. Other parties interested in using ABSOLUTE should contact the authors at <absolu...@broadinstitute.org>.
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

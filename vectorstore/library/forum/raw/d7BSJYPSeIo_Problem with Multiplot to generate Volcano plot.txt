@@ -1,0 +1,150 @@
+URL: https://groups.google.com./g/genepattern-help/c/d7BSJYPSeIo
+Title: Problem with Multiplot to generate Volcano plot
+----------------------------------------
+
+
+
+
+
+Problem with Multiplot to generate Volcano plot
+29 views
+Skip to first unread message
+
+anjali bajpai
+unread,
+Mar 4, 2021, 12:38:09 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+ I am trying to generate volcano plot for microarray expression data, for which, I am using the Multiplot in the Visualizer module of Gene Pattern (online version).  I have generated  .gct and .cls files, and I understand that before Multiplot visualizer, I need to run preprocess-Multiplot to generate .msdata file in the preprocess and Utilities module. 
+
+
+ I am unable to locate Preprocess-Multiplot, in any of the GenePattern modules, let alone in preprocess and Utilities.  How else do I generate .msdata file?
+ 
+Any suggestions?, Please help.
+
+
+ thanks
+ Anjali
+
+Barbara Hill
+unread,
+Mar 4, 2021, 7:21:28 AM
+
+
+
+to GenePattern Help Forum
+Hello Anjali,
+
+
+Multiplot was deprecated and is no longer available on our hosted servers.
+
+
+The author updated the previous suite of modules in 2014 as one module which, among other things, moved all of the preprocessing work into that same module.
+
+
+It is available on our public server.
+
+
+Please note, however, that while this is an update from the previous suite, it is still a legacy visualizer which requires the user of our VisualizerLauncher to view its output, as will be indicated on the Job Status page, after your job completes.
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+
+anjali bajpai
+unread,
+Mar 4, 2021, 6:08:01 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you much Barbara,
+
+Yes I realize that pre-processing for multiplot is no longer required.
+
+Also, could you help me one more time. I am genertaing a volcano plot,
+and I get an "inverted" volcano plot. I am unable to convert the y
+axis scale from p value to -logP value using the plot tool bar buttons
+in lower left corner. How do I go about it.
+
+thanks for your help
+
+
+
+
+On 3/4/21, Barbara Hill <bh...@broadinstitute.org> wrote:
+> Hello Anjali,
+>
+> Multiplot was deprecated and is no longer available on our hosted servers.
+>
+> The author updated the previous suite of modules in 2014 as one module
+> which, among other things, moved all of the preprocessing work into that
+> same module.
+>
+> It is available on our public server.
+
+> <https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:127.0.0.1:genepatternmodules:4:1.5.62>
+
+>
+> Please note, however, that while this is an update from the previous suite,
+>
+> it is still a legacy visualizer which requires the user of our
+> VisualizerLauncher
+
+> <https://genepattern.github.io/VisualizerLauncher/>to view its output, as
+
+> will be indicated on the Job Status page, after your job completes.
+>
+> Please let us know if you have any questions or comments.
+>
+> Best
+> -Barbara
+>
+
+> --
+> You received this message because you are subscribed to a topic in the
+> Google Groups "GenePattern Help Forum" group.
+> To unsubscribe from this topic, visit
+> https://groups.google.com/d/topic/genepattern-help/d7BSJYPSeIo/unsubscribe.
+> To unsubscribe from this group and all its topics, send an email to
+> genepattern-he...@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/genepattern-help/c3f29ed8-c616-40ae-ba18-d4be8e1b57den%40googlegroups.com.
+>
+
+Barbara Hill
+unread,
+Mar 5, 2021, 11:55:29 AM
+
+
+
+to GenePattern Help Forum
+Hello Anjali, 
+
+
+Unfortunately, I'm not terribly familiar with this module. I did take a look through the documentation, which you probably have as well, and it looks like you might be able to achieve this conversion in the Sample Selection Dialog.
+
+
+If that doesn't achieve your goal, one of my colleagues has suggested that you might do that conversion before you input your data.
+
+
+I'm sorry if none of the above is particularly helpful.  If that does end up being the case, you might try reaching out the author, Scott Davis. sdavis.bio...@gmail.com  
+
+
+All the best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

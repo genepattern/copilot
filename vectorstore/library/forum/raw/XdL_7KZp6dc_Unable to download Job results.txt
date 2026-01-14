@@ -1,0 +1,207 @@
+URL: https://groups.google.com./g/genepattern-help/c/XdL_7KZp6dc
+Title: Unable to download Job results
+----------------------------------------
+
+
+
+
+
+Unable to download Job results
+6 views
+Skip to first unread message
+
+Abdulazeez Giwa
+unread,
+May 21, 2020, 7:49:52 AM
+
+
+
+to GenePattern Help Forum
+I am unable to download my job outputs. I am trying to download as a zip folder. When I do so, It clears my job panes and gives an error message "please correct the following errors before proceeding".
+
+JobIDs: 235186, 235187, 235188.
+
+
+
+
+gp.png
+Abdulazeez Giwa
+unread,
+May 21, 2020, 7:51:04 AM
+
+
+
+to GenePattern Help Forum
+
+
+gp2.png
+Barbara Hill
+unread,
+May 21, 2020, 8:06:34 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I have been unable to reproduce this with the individual jobs in any browser (though, I see that you are using Firefox). 
+
+Were you trying to download 1 job or all of those jobs?
+
+
+Best
+-Barbara
+Abdulazeez Giwa
+unread,
+May 21, 2020, 8:09:47 AM
+
+
+
+to GenePattern Help Forum
+I wanted to download one after another. I couldn't download anyone
+
+Ted Liefeld
+unread,
+May 21, 2020, 8:41:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+I cannot reproduce this either (I am on a mac and I see you are on windows though).  You could try logging out of GenePattern, stopping and restarting your browser and then login and try again.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/071c4719-5d57-49c6-9a2d-f86756cb25cc%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Abdulazeez Giwa
+unread,
+May 21, 2020, 9:11:08 AM
+
+
+
+to genepatt...@googlegroups.com
+I am on linux.
+
+
+
+It is working in Chrome. Maybe it's a browser problem. 
+
+
+
+Thanks.
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdRgJikMZdPVfWSzcqJEHSWADBPv7mv5ef_WG4TkOo860w%40mail.gmail.com.
+
+
+
+--
+
+Kind Regards
+
+
+Giwa, Abdulazeez O.
+
+
+Abdulazeez Giwa
+unread,
+May 21, 2020, 9:12:18 AM
+
+
+
+to GenePattern Help Forum
+I am on linux.
+
+
+
+It is working in Chrome. Maybe it's a browser problem. 
+
+
+
+Thanks.
+
+
+On Thursday, May 21, 2020 at 5:41:24 PM UTC+2, Ted Liefeld wrote:
+Hi
+
+
+I cannot reproduce this either (I am on a mac and I see you are on windows though).  You could try logging out of GenePattern, stopping and restarting your browser and then login and try again.
+
+
+Hope this helps
+
+
+Ted
+
+
+On Thu, May 21, 2020 at 8:09 AM Abdulazeez Giwa <giw...@gmail.com> wrote:
+
+I wanted to download one after another. I couldn't download anyone
+
+On Thursday, May 21, 2020 at 5:06:34 PM UTC+2, Barbara Hill wrote:
+Hello, 
+
+
+I have been unable to reproduce this with the individual jobs in any browser (though, I see that you are using Firefox). 
+
+Were you trying to download 1 job or all of those jobs?
+
+
+Best
+-Barbara
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/071c4719-5d57-49c6-9a2d-f86756cb25cc%40googlegroups.com.
+
+
+Barbara Hill
+unread,
+May 21, 2020, 9:40:34 AM
+
+
+
+to GenePattern Help Forum
+That is strange, but I'm glad you were able to find a solution.
+
+
+Best, 
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

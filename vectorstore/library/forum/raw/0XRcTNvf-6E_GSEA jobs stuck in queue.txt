@@ -1,0 +1,166 @@
+URL: https://groups.google.com./g/genepattern-help/c/0XRcTNvf-6E
+Title: GSEA jobs stuck in queue?
+----------------------------------------
+
+
+
+
+
+GSEA jobs stuck in queue?
+28 views
+Skip to first unread message
+
+Sean Misek
+unread,
+Dec 12, 2017, 10:25:55 AM
+
+
+
+to GenePattern Help Forum
+I have been trying to run GSEA on a pretty small dataset for a few days now, but it seems like my job is always stuck in queue. Yesterday I tried to run a job at ~ 3:00, and the job stayed in queue until ~6:00, when I canceled it. Then I tried to re-run the same jobs overnight, but request slightly less memory requested. Out of my 4 jobs, two of them errored out due to java heap space, but the other 2 supposedly worked (they had a blue checkmark), but there were no output files -- so I don't think they actually worked. 
+
+
+I tried to re-run the same jobs again this morning, and so far they have been stuck at pending for ~ 2.5 hours. These jobs are: 1595922, 1595923, 1595924, 1595925. I also just recently initiated a new job with a different dataset (1595963), which also seems to be stuck in queue. I successfully performed GSEA on the 1595963 dataset ~3 days ago, so whatever has changed appears to be a recent thing. Also, I am using version 18 of GSEA.
+
+
+Thanks!
+Sean Misek
+unread,
+Dec 12, 2017, 11:41:54 AM
+
+
+
+to GenePattern Help Forum
+Update:
+
+
+From the stdout file it seems like the job was run successfully for the first 4 jobs that I previously mentioned. But there do not appear to be any output files for the results.
+
+Peter Carr
+unread,
+Dec 12, 2017, 11:56:34 AM
+
+
+
+to genepatt...@googlegroups.com
+The job queue is backed up with a large batch of jobs which were submitted yesterday. Please be patient.
+
+Because there are a large number of pending jobs, it may take a while for your completed jobs to be reported back to the user interface. The completed jobs with missing data files may be an unexpected side effect of this traffic jam. For those jobs, it is best to reload and run them again.
+
+Please refrain from submitting duplicate jobs. Your pending jobs will will eventually make it through the queue. 
+
+Regards,
+Peter
+
+Peter Carr
+unread,
+Dec 12, 2017, 11:57:24 AM
+
+
+
+to genepatt...@googlegroups.com
+our messages crossed. please send job ids for those jobs. I will
+investigate.
+Thanks,
+Peter
+
+
+Sean Misek
+unread,
+Dec 12, 2017, 12:01:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thanks for your help. I will cancel the duplicate job.
+
+
+The jobs that finished, but have no output files are: 1595922, 1595923, 1595924, 1595925.
+
+
+Sean
+
+
+Peter Carr
+unread,
+Dec 12, 2017, 1:49:56 PM
+
+
+
+to genepatt...@googlegroups.com
+I looked at job 1595922. The missing output files are not necessarily related to the traffic jam on the queue. I sent this along to the GSEA developer. Is there a reason you are using v18 instead of v19?
+
+One workaround, for v18, is to explicitly set the "output.filename" instead of using the "<expression.dataset_basename>.zip" substitution.
+
+BTW, the traffic jam does cause a very long wait time between when your job actually completes (a few minutes) and when it is reported as complete in GenePattern. Unfortunately there is no easy remedy for this. In the short term we will wait for the traffic to subside. If it is still sluggish, I will clear out the queue later this week.
+
+Regards,
+Peter
+
+Sean Misek
+unread,
+Dec 12, 2017, 2:01:08 PM
+
+
+
+to GenePattern Help Forum
+Thanks for the reply. I was using v18 instead of v19 because with v19 I kept getting a java heap space error (I think probably because I am using a lot of permutations). Also, with v19, it vomits out every output file, so I need to hunt through the list to find the .zip file which contains all of my data so that I can download it. I could not figure out how to change this, but I guess this issue may just be something that I missed.
+
+
+Thanks for your help,
+Sean
+
+Peter Carr
+unread,
+Dec 12, 2017, 4:06:14 PM
+
+
+
+to genepatt...@googlegroups.com
+As a possible workaround for the traffic jam, try GSEA on our not-yet-announced beta server:
+
+    https://gp-beta-ami.broadinstitute.org/
+
+This is hosted "in the cloud" on Amazon Web Services (AWS). It's not quite ready for production use, but good enough that we are inviting friends and family to give it a try while we work out the kinks. We expect to restart the server without warning from time to time as we make improvements. We'll do our best to keep the server up and running and to respond to help requests in a timely manner.
+
+We are still vetting modules in the new environment. If you find that something is missing, just let us know and we'll resolve the issue as soon as possible.
+
+Best regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/055c40a1-3ddb-4659-a1aa-eff4549c6ebe%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Sean Misek
+unread,
+Dec 13, 2017, 8:45:15 AM
+
+
+
+to GenePattern Help Forum
+Sounds great, I will try out the AWS server.
+
+
+Thanks for your help!
+Sean
+
+
+Reply all
+
+Reply to author
+
+Forward

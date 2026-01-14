@@ -1,0 +1,151 @@
+URL: https://groups.google.com./g/genepattern-help/c/O4-5ph_cw7U
+Title: ATARiS job running 12+ hrs
+----------------------------------------
+
+
+
+
+
+ATARiS job running 12+ hrs
+15 views
+Skip to first unread message
+
+Josh Alpern
+unread,
+Nov 28, 2017, 10:35:12 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+Job was submitted yesterday and is still running despite modest size. The provided data set with the module took ~1hr. My job currently at 12+ hrs.
+
+
+
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+1585579
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+
+
+N/A
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Nov 28, 2017, 1:06:05 PM
+
+
+
+to genepatt...@googlegroups.com
+I am not sure exactly what is causing the delay. I checked out the job status on our compute cluster. It is still running with these usage stats:
+    usage                 1:    wallclock=16:32:02, cpu=16:30:55, mem=35166.45589 GBs, io=0.01353 GB, iow=1.390 s, ioops=5012, vmem=988.102M, maxvmem=988.102M
+
+The compute cluster seems healthy. Did you use a similar (or identical) dataset? To free up compute resources, you should cancel duplicate jobs, if any, that you submitted.
+
+I am not familiar with the ATARiS module to know the expected computation time. Have a look at the module documentation and the referenced paper for additional support.
+    D.D. Shao, A. Tsherniak et al., “ATARiS: Computational quantification of gene suppression phenotypes from multi-sample RNAi screens”, Genome Research, 2012
+
+Here's a snapshot of the stdout stream ...
+
+Loading file(s) /xchip/gpprod/servers/genepattern/users/josh.alpern/uploads/tmp/run8421955024096142266.tmp/gct.file/1/crisprHelaScreen.gct :
+Number of excluded 'empty' cons entries:0
+Number of excluded 'PGW/empty' cons entries:0
+Number of excluded 'PGW' cons entries:0
+Number of excluded 'LUCIFERASE' gene entries:0
+Number of excluded 'lacZ' gene entries:0
+Number of excluded 'RFP' gene entries:0
+Number of excluded 'rfp' gene entries:0
+Number of excluded 'GFP' gene entries:0
+Number of excluded 'clonetechGfp' gene entries:0
+Number of excluded 'promegaLuc' gene entries:0
+Number of excluded 'NA' gene entries:0
+Number of excluded '' gene entries:0
+Number of excluded '0' gene entries:0
+Number of excluded 'pgw' gene entries:0
+Genes excluded because had only one construct:1
+Input file contains data for 2 samples. 18947 genes targeted by 77429 RNAi reagents.
+
+Computing null distributions for gene solutions:
+Generating s.values and saving to file: ./crisprHelaScreen.s.values.Rdata ...
+Computing null 0.15 significance values for genes of size 2 ...
+Loading required package: methods
+
+Attaching package: 'SparseM'
+
+The following object(s) are masked from 'package:base':
+
+    backsolve
+
+Loading required package: R.oo
+Loading required package: R.methodsS3
+R.methodsS3 v1.7.0 (2015-02-19) successfully loaded. See ?R.methodsS3 for help.
+R.oo v1.19.0 (2015-02-27) successfully loaded. See ?R.oo for help.
+
+Attaching package: 'R.oo'
+
+The following object(s) are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following object(s) are masked from 'package:base':
+
+    attach, detach, gc, load, save
+
+aroma.light v1.28.0 (2012-09-12) successfully loaded. See ?aroma.light for help.
+Computing null 0.15 significance values for genes of size 3 ...
+Computing null 0.15 significance values for genes of size 4 ...
+Computing null 0.15 significance values for genes of size 5 ...
+Computing null 0.15 significance values for genes of size 6 ...
+Computing null 0.15 significance values for genes of size 7 ...
+Computing null 0.15 significance values for genes of size 8 ...
+Computing null 0.15 significance values for genes of size 9 ...
+Computing null 0.15 significance values for genes of size 10 ...
+
+... DELETED FOR BREVITY ...
+
+Computing null 0.15 significance values for genes of size 793 ...
+Computing null 0.15 significance values for genes of size 794 ...
+Computing null 0.15 significance values for genes of size 795 ...
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/668bb018-742c-4a73-9f98-1b859e74dc1e%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Josh Alpern
+unread,
+Nov 28, 2017, 2:16:03 PM
+
+
+
+to GenePattern Help Forum
+Thank you Peter! Seeing the stdout stream was very helpful in diagnosing what's wrong. 
+
+
+Reply all
+
+Reply to author
+
+Forward

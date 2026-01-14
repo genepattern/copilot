@@ -1,0 +1,99 @@
+URL: https://groups.google.com./g/genepattern-help/c/B9w2iPou0eE
+Title: problem with STAR index
+----------------------------------------
+
+
+
+
+
+problem with STAR index
+13 views
+Skip to first unread message
+
+Guy Bottu
+unread,
+Feb 25, 2019, 11:53:35 PM
+
+
+
+to GenePattern Help Forum
+I have noticed that there is a problem with STAR.aligner in https://cloud.genepattern.org/. The interface says :
+Select a prebuilt index from https://datasets.genepattern.org/?prefix=data/module_support_files/STAR/
+
+Howevern, when I try, I get
+Unable to connect to https://datasets.genepattern.org/data/module_support_files/STAR/Homo_sapiens.UCSC.hg38/Genome.zip. 
+When I try instead 
+https://datasets.genepattern.org/?prefix=data/module_support_files/STAR/Arabidopsis_thaliana.Ensembl.TAIR10/
+
+now it starts running but fails. The reason is that the zip file contains the files of the STAR index, but to make it work (I understand you are using code from V.I.B.) the zip file should contain a folder with inside that folder the files of the index and the name of the folder shall appear on the command line. I suggest you change the indices or change the code.
+
+
+Guy Bottu
+VIB BioinformaticsCore
+Barbara Hill
+unread,
+Mar 15, 2019, 2:16:06 PM
+
+
+
+to GenePattern Help Forum
+Hello Guy, 
+
+
+I'm sorry for responding so late. I've been away much of the last month due to family illness and death and our team is reconfiguring as Peter is moving to another group here at the Broad.
+
+
+Thank you for bringing this to our attention. I'll file a bug and we'll see about getting this updated in the near future.
+
+
+All the best
+-Barbara
+
+Peter Carr
+unread,
+Mar 15, 2019, 2:31:41 PM
+
+
+
+to genepatt...@googlegroups.com
+I think the best course of action is for V.I.B. to give us an example command which will run inside of a container (either docker or singularity) independently of GenePattern. The GP Team can use that for testing/debugging the actual problem on cloud.gp.
+
+By way of background ... with cloud.gp we started using Docker. For this we also had to change the file input handling code internal to the GP server. I am not sure we are handling this particular scenario. We can proceed by changing the module parameters to fit with the way GP actually works, or by finding the bug and fixing it.
+
+Best regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/63da72c4-0df6-48e3-8c51-82d8217b0695%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Mar 15, 2019, 2:57:00 PM
+
+
+
+to GenePattern Help Forum
+Hello again,
+
+
+I'm actually not able to reproduce this error. When I provide the full url to the .zip it all works.
+
+
+Can you send me a job that is failing for you? 
+
+
+Thanks,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

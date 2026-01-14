@@ -1,0 +1,130 @@
+URL: https://groups.google.com./g/genepattern-help/c/zN497ps4JlM
+Title: GSEAPreranked and collapse dataset
+----------------------------------------
+
+
+
+
+
+GSEAPreranked and collapse dataset
+82 views
+Skip to first unread message
+
+Jonelle Dickow Villar
+unread,
+Jul 19, 2018, 3:57:47 AM
+
+
+
+to GenePattern Help Forum
+Dear Gene Pattern friends,
+
+It was very helpful to read the webpage about GSEAPreranked.
+
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/GSEAPreranked/1
+
+I do have a question however about the function for Collapse dataset. I am using a preranked list with human gene symbols.  I am not able to select "Collapse dataset = false" when running the tool for "Run GSEAPreranked".  The options for collapse dataset pertain to collapsing mode for probe sets - either max or median probes.
+
+I have pasted below a sentence from your webpage.
+
+"Therefore, while GSEAPreranked also provides a collapse dataset option, we recommend you provide a ranked list that already has unique human gene symbols and select false (the default value) for the parameter collapse data."
+
+Is it my understanding that the default value is false?  And yet when I look at the results, I see under Dataset details the message that gene symbol collapsing was requested.  See below:
+
+ Dataset details     The dataset has 25578 features (genes)
+  No probe set => gene symbol collapsing was requested, so all 25578 features were used
+
+
+
+I am obviously confused.  Any clarification would be greatly appreciated.  I am running Windows 10.
+
+Kind regards,
+Jonelle Villar
+Bergen, Norway
+
+
+
+
+
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+David Eby
+unread,
+Jul 22, 2018, 6:53:43 PM
+
+
+
+to GenePattern Help Forum
+Hi Jonelle,
+
+That documentation link applies to an older version of GSEA Preranked.  The latest version is here, which is the same as the link from the Job Submit page (in the grey module title bar).
+
+The Collapse Dataset feature has been removed from GSEA Preranked as it often led to confusion among our users.  The primary issue here is that the user can choose whatever metric is desired to rank the entries in the dataset, but there's no guarantee that either of the collapse-to-max or collapse-to-median choices we provided are valid given that metric.
+
+
+Our new recommendation is that users collapse these rows during the ranking process to ensure the collapsing method is appropriate given the chosen metric.  We may revisit this in the future if we can find a way to balance the concerns and avoid any confusion, though it's not clear when or if that will happen.
+
+Note that older versions of GSEA Preranked are still available from the Version drop-down (also in the grey module title bar) If you are very confident that one of these collapsing modes is appropriate for your ranking metric.
+
+Regards,
+David
+
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+David Eby
+unread,
+Jul 22, 2018, 6:58:37 PM
+
+
+
+to GenePattern Help Forum
+One more minor note...
+
+
+The collapse-related messages in the log are due to the data being run through a common section of code, used by both the GSEA Preranked method and the usual GSEA method.  You are correct that no collapsing is being done.  This message:
+ No probe set => gene symbol collapsing was requested,...
+
+should be read as "No 'probe set to gene symbol' collapsing was requested...", that is, "no collapsing was requested".
+
+
+- David
+
+
+Reply all
+
+Reply to author
+
+Forward

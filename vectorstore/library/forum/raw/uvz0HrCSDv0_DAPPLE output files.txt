@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/uvz0HrCSDv0
+Title: DAPPLE output files
+----------------------------------------
+
+
+
+
+
+DAPPLE output files
+16 views
+Skip to first unread message
+
+Luis Leal
+unread,
+Oct 12, 2018, 4:55:11 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Help Forum,
+
+
+I ran a job with the module DAPPLE (1737843) . 
+
+
+This module is for prioritisation of genes. However, the list of output files does not include all the files stated by the module documentation. (https://genepattern.broadinstitute.org/gp/module/doc/urn:lsid:8080.gpbroad.broadinstitute.org:genepatternmodules:479:0.17)
+
+
+Specifically, the main files required for prioritisation are missed from the output (FILE_GenesToPrioritize, FILE_SeedScores) and they are very important because I need the p-values to rank the genes. 
+
+
+Would you please take a look at this?
+
+
+Many thanks,
+
+
+--
+Luis Leal
+hh...@broadinstitute.org
+unread,
+Oct 12, 2018, 12:12:36 PM
+
+
+
+to GenePattern Help Forum
+Dear Luis,
+
+
+it is likely that the permute variable was left at the default value (Permute.Length = 0). Without permuting, Dapple is not able to calculate p values.
+Can you please set it to 1000 and try again? I assume that will solve the issue.
+
+
+Best,
+Heiko
+
+Luis Leal
+unread,
+Oct 12, 2018, 2:19:15 PM
+
+
+
+to GenePattern Help Forum
+Dear Heiko,
+
+
+Many thanks for your assistance, Heiko. It's solved! I overlooked the permutation parameter. 
+
+
+
+Reply all
+
+Reply to author
+
+Forward

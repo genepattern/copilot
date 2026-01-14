@@ -1,0 +1,1 @@
+A GenePattern user encountered a terminated MutsigCV job processing a 300MB MAF file from 250 samples, likely due to insufficient computational resources; after increasing memory allocation to 64GB, 8 CPUs, and extending job runtime to 4 hours, the job successfully completed without errors, resolving the initial computational resource limitation.

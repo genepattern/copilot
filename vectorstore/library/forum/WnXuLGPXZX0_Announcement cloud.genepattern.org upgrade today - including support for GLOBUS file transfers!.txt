@@ -1,0 +1,1 @@
+Announcement about a scheduled maintenance for the GenePattern cloud server, with a planned 1-hour downtime to upgrade the system and implement new Globus file transfer capabilities, providing researchers with improved data transfer mechanisms for bioinformatics workflows.

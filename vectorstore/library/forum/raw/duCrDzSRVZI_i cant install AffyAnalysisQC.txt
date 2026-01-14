@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/duCrDzSRVZI
+Title: i cant install AffyAnalysisQC
+----------------------------------------
+
+
+
+
+
+i cant install AffyAnalysisQC
+9 views
+Skip to first unread message
+
+Sadegh Sabery
+unread,
+Sep 1, 2019, 8:44:51 AM
+
+
+
+to GenePattern Help Forum
+hi guies
+i cant install a affyAnalysisQC module in genepattern with an old tutorial. UI has been changed and i can not followed tutorial. Is anybody installed this module?
+url is:
+http://arrayanalysis.org/technicalDesc.php#online
+Barbara Hill
+unread,
+Sep 6, 2019, 12:15:51 PM
+
+
+
+to GenePattern Help Forum
+Hello Sadegh
+
+
+Unfortunately, this is not a module which the GenePattern team has created or ever supported. It looks like it's something created many years ago on a local GenePattern server. 
+
+
+Perhaps there is another module or pipeline you could use. What are you trying to do?
+
+
+Best
+-Barbara
+Sadegh Sabery
+unread,
+Sep 7, 2019, 8:48:17 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi dear barbara
+thanx for your time
+I used arrayanalysis software to analyze the microarray data. One of my favorite gse has too many gsm's which makes uploading impossible. I just wrote my article and the referees asked me to send them all my data in the output format of this site.
+These instructions are posted in the technical section of this site.
+However, the corresponding R commands for the analysis carried out on this site are also included، but I do not know enough about R usage, so I cannot use these commands.
+If you can help me in this regard, thank you.
+https://github.com/arrayanalysis/affyQC_Module?files=1
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5968b0c8-bdc0-45b9-85ff-3502874bbd97%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jan 24, 2020, 12:57:54 PM
+
+
+
+to GenePattern Help Forum
+Hello Sadegh, 
+
+
+I'm very sorry that it has taken me so long to get back to you. I hope everything turned out for the best with your paper.
+
+
+Unfortunately, this is not code we've written, nor is it code we plan to incorporate into GenePattern.
+
+
+I'm sorry we were not able to be more helpful.
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

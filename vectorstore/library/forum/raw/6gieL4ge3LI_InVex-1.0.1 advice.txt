@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/6gieL4ge3LI
+Title: InVex-1.0.1 advice
+----------------------------------------
+
+
+
+
+
+InVex-1.0.1 advice
+7 views
+Skip to first unread message
+
+Maely Gauthier
+unread,
+Mar 21, 2018, 8:47:05 PM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+I am trialling the tool InVex (http://archive.broadinstitute.org/cancer/cga/invex_example)
+
+I just wanted to ask you some help regarding some of the input files or directories required at the Core InVex step (when running the Prepare.py script http://archive.broadinstitute.org/cancer/cga/invex_run). What are the NT Classes fasta file, the GAF file and how can they be derived? And for the following parameters, (genePeptideFile, mutationsDir, polyphen2Dir, cosmicFilePath, swissProtRefFile), am I meant to provide a path to full databases, or predictions for my given samples? Any help will be greatly appreciated.
+
+
+ Server Platform (Linux)
+
+Cheers
+M
+
+Barbara Hill
+unread,
+Mar 26, 2018, 1:20:36 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+InVex is not a GenePattern tool, but is maintained by Cancer Genome Analysis team.
+
+
+Their forum can be found here: https://gatkforums.broadinstitute.org/firecloud/categories/cancer-genome-analysis
+
+
+Best of luck!
+-Barbara
+Maely Gauthier
+unread,
+Mar 26, 2018, 3:44:44 PM
+
+
+
+to GenePattern Help Forum
+Thanks Barbara, I'll try my luck there
+M
+
+Maely Gauthier
+unread,
+Mar 26, 2018, 4:22:05 PM
+
+
+
+to GenePattern Help Forum
+I just realised that all files are available here: http://archive.broadinstitute.org/cancer/cga/invex_download
+
+
+Barbara Hill
+unread,
+Apr 9, 2018, 1:19:53 PM
+
+
+
+to GenePattern Help Forum
+Great! 
+
+
+Thanks for posting your findings in the forum!
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

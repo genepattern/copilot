@@ -1,0 +1,223 @@
+URL: https://groups.google.com./g/genepattern-help/c/FluaDYLhSfM
+Title: MutSigCV error
+----------------------------------------
+
+
+
+
+
+MutSigCV error
+62 views
+Skip to first unread message
+
+Jennifer Diaz
+unread,
+Sep 23, 2024, 11:33:23 AM
+
+
+
+to GenePattern Help Forum
+on a recent MutSigCV job, I got the error:
+"unable to perform category discovery, because no chr_files available"
+
+
+What are chr_files and why are they missing?
+
+
+Job ID: 605235
+
+
+Jennifer Diaz
+unread,
+Sep 23, 2024, 11:36:05 AM
+
+
+
+to GenePattern Help Forum
+I hope this isn't the answer, but at a guess--is hg19 not supported for automatic categ and effect detection?
+
+Ted Liefeld
+unread,
+Sep 23, 2024, 2:38:25 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I can't give a definitive answer because I am not experienced in this specific method, but I poked around a bit and here is what I found;
+
+
+The code is available at https://github.com/genepattern/MutSigCV/blob/master/src/gp_MutSigCV.m
+
+
+The error comes back to line 371 (chr_files_directory is empty) and then back in line 203 it seems that chr_files can be passed in as a parameter, but looking at the module (https://www.genepattern.org/modules/docs/MutSigCV/1#gsc.tab=0), this parameter is not exposed or provided as a default.  So as a stating point, it appears that this has never been an option when running MutSigCV via GenePattern.
+
+
+Looking at the module doc, in the Input Files section for the MAF file, it says "...Category and effect discovery is only available for human genomes hg19 and hg18 at present".  so hg19 should still be doable for category discovery.
+
+
+Looking at your dictionary file, I am not certain it is in the right format (but have no experience) when compared to the example at https://datasets.genepattern.org/data/module_support_files/MutSigCV_1.3/mutation_type_dictionary_file.txt.  Specifically with lines like 
+
+
+3_prime_UTR_variant,NMD_transcript_variant noncoding
+
+Its not clear to me whether this represents 2 classifications (3_prime_UTR_variant, and NMD_transcript_variant) or a compound name, where the only similar line in the example file looks like "upstream;downstream	noncoding" where it seems to be 2 options separated by a semi-colon.
+
+Looking back over the ~20 MutSigCV jobs since last April it seems they all say "unable to perform category discovery, because ..." with either the same reason as your job, or another that appears earlier in the code (link above).
+
+
+Finally from the doc it suggests for installing your own copy of MutSigCV to contact mutsi...@broadinstitute.org.  You might try asking for help there.  As far as I can tell the category effect detection cannot work on GenePattern at the moment.  If you can determine the right format for the chr files from the mutsig help email, we can modify the module for you to either add them (if they are general) or allow them to be passed in as another input parameter.
+
+
+Hope this helps
+
+
+Ted
+
+Jennifer Diaz
+unread,
+Sep 25, 2024, 1:00:43 PM
+
+
+
+to GenePattern Help Forum
+Hi, thanks for directing my to the code, that's helpful. It does seem to confirm what I would guess those files are: the reference genome, such as would be downloadable from Homo sapiens genome assembly GRCh37 - NCBI - NLM (nih.gov). You can see in the % STEP2 section (starting at line 530), these files are being used to look up the bases to the left (leftpos) and right (leftpos+2) of a single nucleotide variant (or "trinucleotide context"). These are then used in % STEP4 to assign category to each variant (starting at line 563).
+
+
+Presumably, when I select hg19 on the MutSigCV module page (the instructions there read: "Genome build to use for automatic category and effect discovery. This is necessary only if you are using a MAF file without the columns "categ" and "effect"."), it tells MutSigCV to look up the chr_files in chr_files_directory associated with build hg19 (37). It appears from lines 375-378 that these files have names chr1.txt, chr2.txt, etc. Do you perhaps have files like that stored in another folder somewhere, or can a standard download such as at the NCBI link above be used as a replacement?
+
+
+Assigning the categories described on the module description page you linked to is part of the power of this method (for reasons described in Lawrence et al, 2013, https://www.nature.com/articles/nature12213#Sec3). However, because the module can't find the chr_files, it defaults to two categories: "missense" and "null+indel". It appears these categories are very loosely defined and they are essentially supersets of the "effect" I have already designated (using the mutation table and mutation type dictionary), when they are actually supposed to be independent of "effect". I'm concerned defaulting to these two categories weakens the relevance of the results. 
+
+
+The preprocessing section of the MutSigCV module (which includes all the lines of code we've identified so far) looks up trinucleotide context from the reference genome in order to assign single nucleotide variants to the defined categories, but some of the variants that can be passed in are also insertions or deletions. I see there is also a section of preprocessing to identify indels--at least, I think this is what lines 583-597 are doing. What's odd to me is that I don't see an indel category listed in the "full coverage" table supplied by MutSigCV (Previously found at shared_data/example_files/MutSigCV_1.3/exome_full192.coverage.txt). In addition, the documentation indicates that 'categ' in the mutation file is supposed to match the categories in the coverage table. However, when the module defaults to the two categories of "missense" and "null+indel" in the mutation table, and it is still using the "full coverage" table which has a number of categories listed based on trinucleotide repeat (i.e., A(A->C)A, A(A->C)C, etc), then the categories of the mutation table and the coverage table don't match, and I would think it should throw an error. But it doesn't. I don't quite understand why, and I wonder if there is a bug there.
+
+
+This should all be independent of the "effect" assignment based on the mutation type dictionary. From the documentation, as long as the mutation types in the mutation table match those in the dictionary, the "effect" from the mutation type dictionary should map to the mutation table without issue. I used the same types of "effect" as in the standard example (silent, nonsilent, noncoding), and just used a custom dictionary to map them. The dictionary and mutation table are tab-delimited files, so commas in the "Variant_Classification" column shouldn't cause an issue.
+
+
+If you don't think you have or can easily get reference genome files to replace the "chr_files", I'll send an email as you suggest and see if they can give some direction.
+
+
+Thanks!
+
+Ted Liefeld
+unread,
+Sep 25, 2024, 1:42:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Jennifer,
+
+
+This is a good analysis and I agree with your points.  I spent a few hours yesterday digging through the file systems at the Broad and our old source code repositories (pre github) but could not find any examples of the chr*.txt files.  I am sure you are right about them being the genome, it's just not documented what the format should be (that I found).  I have contacted Gad Getz (the senior author on the paper) to ask for help identifying copies of the files and he has roped in a current member of his lab to look at this, so I don't think you need to email mut...@broad as I think it will end up in the same place.  Hopefully we will hear back from them in a few days.
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/FluaDYLhSfM/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a8eddafa-9f7b-4b4f-9843-d13889157306n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Jennifer Diaz
+unread,
+Sep 26, 2024, 9:11:20 AM
+
+
+
+to GenePattern Help Forum
+Great thank you! Will stay tuned.
+
+Jennifer Diaz
+unread,
+Oct 3, 2024, 12:58:12 PM
+
+
+
+to GenePattern Help Forum
+Just checking back in. Any luck?
+
+Ted Liefeld
+unread,
+Oct 4, 2024, 7:24:59 AM
+
+
+
+to GenePattern Help Forum
+Jennifer,
+
+
+I checked back and was told that they haven't found anything in a quick look. A deeper dive into the archives to look for the files may not happen for several weeks as they are very busy at the moment.  Sorry, but it looks like its going to be a bit of a wait.
+
+
+Ted
+
+
+
+Jennifer Diaz
+unread,
+Oct 4, 2024, 8:46:08 AM
+
+
+
+to GenePattern Help Forum
+Ok thanks. Do you have instructions somewhere for downloading and running MutSigCV locally?
+
+Ted Liefeld
+unread,
+Oct 4, 2024, 10:56:10 AM
+
+
+
+to GenePattern Help Forum
+Jennifer,
+
+
+We don't have any prepared instructions but it should be possible to do assuming you have docker installed (https://docs.docker.com/engine/install/) on your computer. In general, any GenePattern module can be run locally if you have docker.  You can see the template for the command line, and the docker container name and version if you show properties on the module run page (from the gear menu).  Then its a case of calling "docker run ..." mounting directories for data input and output and passing on the command line.
+
+
+For MutSigCV its using the docker container labeled "genepattern/docker-mutsigcv:0.2". I think you can use one of the test scripts we have for the docker container as a starting point if you have never used docker before.  It might not be much simpler since its a bit more flexible than you really need.
+
+
+https://github.com/genepattern/docker-mutsigcv/blob/master/runLocal.sh
+
+
+Copy that and then modify file paths etc as needed.  I can't do any testing on this today but might be able to help more next week if you can't figure it out or don't have docker experience.  Without docker its only slightly possible but you would need to have a MatLab license for the right version which is probably from ~ 10-15 years ago now since the actual code is a compiled MatLab routine.  
+
+
+Ted
+
+
+p.s. 15 years or so ago we did receive permission from the MathWorks  to make this available publicly as a GenePattern module.  Generally their license doesn't allow that as I understand it 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

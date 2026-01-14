@@ -1,0 +1,186 @@
+URL: https://groups.google.com./g/genepattern-help/c/objo62_bEY4
+Title: GSEAPreranked failed
+----------------------------------------
+
+
+
+
+
+GSEAPreranked failed
+21 views
+Skip to first unread message
+
+Mike Italy
+unread,
+Jun 6, 2019, 12:36:53 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+Hi, there:
+I am running GSEAPreranked module in GenePattern and most of my jobs are OK, but some failed. One example of the failed ones has job ID as: 130179. I copied and pasted below the contents for stderr.txt and stadout.txt files here for your info. I also attached the corresponding rnk file here as well.
+
+
+
+
+stderr file content as below:
+
+
+java.lang.NumberFormatException: For input string: "Inf"
+	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2043)
+	at sun.misc.FloatingDecimal.parseFloat(FloatingDecimal.java:122)
+	at java.lang.Float.parseFloat(Float.java:451)
+	at edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:101)
+	at edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+	at edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:557)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:757)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:800)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:788)
+	at xtools.api.param.PobParam.getPob(PobParam.java:79)
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:182)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:74)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+java.lang.NumberFormatException: For input string: "Inf"
+	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2043)
+	at sun.misc.FloatingDecimal.parseFloat(FloatingDecimal.java:122)
+	at java.lang.Float.parseFloat(Float.java:451)
+	at edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:101)
+	at edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+	at edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:557)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:757)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:800)
+	at edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:788)
+	at xtools.api.param.PobParam.getPob(PobParam.java:79)
+	at xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+	at xtools.gsea.GseaPreranked.execute(GseaPreranked.java:77)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.GseaPreranked.main(GseaPreranked.java:176)
+	at org.genepattern.modules.gseapreranked.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:298)
+
+
+the content of stdout.txt file as below:
+Copying file '/opt/gpbeta/gp_home/users/yim...@mail.nih.gov/uploads/tmp/run6853987690084514740.tmp/ranked.list/49/Minus_Mid_cG1_G2M.edgeR.rnk' to 'Minus_Mid_cG1_G2M.edgeR.rnk'
+Parameters passing to GSEAPreranked.main:
+rnk	.tmp_gsea/Minus_Mid_cG1_G2M.edgeR.rnk
+gmx	/opt/gpbeta/gp_home/users/.cache/uploads/cache/gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.kegg.v6.2.symbols.gmt
+out	.tmp_gsea/analysis
+rpt_label	Minus_Mid_cG1_G2M.edgeR
+zip_report	false
+gui	false
+norm	meandiv
+nperm	1000
+scoring_scheme	weighted
+make_sets	true
+plot_top_x	20
+rnd_seed	timestamp
+create_svgs	false
+set_max	500
+set_min	15
+1253 [INFO ] Made Vdb dir JIT: /opt/gpbeta/gp_home/jobResults/130179/jun05
+1463 [INFO ] Begun importing: RankedList from: .tmp_gsea/Minus_Mid_cG1_G2M.edgeR.rnk
+Working in DETERMINISTIC report mode -- a subdir ts will not be applied
+3536 [INFO ] Begun importing: RankedList from: .tmp_gsea/Minus_Mid_cG1_G2M.edgeR.rnk
+3678 [INFO ] Renaming rpt dir on error to: .tmp_gsea/error_analysis
+
+
+Thanks a lot for your help!
+Best
+Ming
+
+
+
+NCI Ras Initiative
+
+Cancer Research Technology Program
+
+Frederick National Laboratory for Cancer Research
+
+Frederick, MD 21702
+
+
+
+
+
+
+
+
+
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values? I used default parameters
+   Server Platform (Mac/Linux)? 
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Minus_Mid_cG1_G2M.edgeR.rnk
+Ted Liefeld
+unread,
+Jun 6, 2019, 3:32:31 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I think the issue is the values of 'Inf' in your rank file.  Since this is a java implementation its looking to put those values into a float object which cannot contain infinity.
+
+
+I think if you pick a very large number and replace all the 'Inf''s in your rank file it should be able to work.  The max value of a float in java is 3.40282346638528860e+38 but you might want to pick a number just a bit lower than that in case I found the wrong answer on google.  I did convert it to 9999999999999 and ran it as a test and it seemed to be able to run to completion.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Copying file '/opt/gpbeta/gp_home/users/yimi...@mail.nih.gov/uploads/tmp/run6853987690084514740.tmp/ranked.list/49/Minus_Mid_cG1_G2M.edgeR.rnk' to 'Minus_Mid_cG1_G2M.edgeR.rnk'
+
+
+
+Mike Italy
+unread,
+Jun 6, 2019, 8:40:42 PM
+
+
+
+to GenePattern Help Forum
+Hi, Ted:
+
+
+Thx a lot for your great suggestion, very helpful. Yes, it works now!!
+best
+Ming
+
+
+Reply all
+
+Reply to author
+
+Forward

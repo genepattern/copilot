@@ -1,0 +1,1 @@
+GenePattern forum thread about how to post to the public help forum, with the main question being how to email the forum and the solution being that the forum requires web-based posting through the Google Groups web interface at https://groups.google.com/forum/#!forum/genepattern-help, not direct email submission.

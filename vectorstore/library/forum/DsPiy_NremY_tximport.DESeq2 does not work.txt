@@ -1,0 +1,1 @@
+GenePattern tximport.DESeq2 module issue resolved by re-uploading input files to the Files tab, with files initially unavailable due to automatic purging after 10 days, and user successfully ran module after following support team's recommendation to upload fresh input files to persistent storage.

@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/X56v3p_Jdfg
+Title: Gistic2 problems
+----------------------------------------
+
+
+
+
+
+Gistic2 problems
+52 views
+Skip to first unread message
+
+孙强
+unread,
+Mar 17, 2022, 1:38:38 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+ I encountered an error that said "Error response from daemon: too many requests: You have reached your pull rate limit. You may increase the limit by authenticating and upgrading: https://www.docker.com/increase-rate-limit" in dockererr.log, and "Essential container in task exited" in stderr.txt
+
+
+Thank you,
+Sincerely
+ 
+Qiang Sun
+Ted Liefeld
+unread,
+Mar 24, 2022, 7:55:58 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+This can happen sometimes when demand on the GenePattern servers is high.  Lately we have had several users running batches of 50-200 jobs against the public Genepattern server.  When this happens we can get the error you see because the machines are running so non-stop they cannot be recycled (we use leased cloud-hosted machines from AWS).  If you can afford to wait, the best thing to do  is to wait a few hours and then resubmit your job.  It may sometimes work to change the cpu count and memory requested if you cannot wait, but this is not guaranteed to work. If you  yourself are running batch jobs and hitting this frequently then we can help you set up your own GenePattern server where you will not affect, or be affected by, other users.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

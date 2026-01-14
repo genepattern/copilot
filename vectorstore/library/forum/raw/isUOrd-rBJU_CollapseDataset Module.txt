@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/isUOrd-rBJU
+Title: CollapseDataset Module
+----------------------------------------
+
+
+
+
+
+CollapseDataset Module
+164 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+Sep 29, 2021, 3:50:56 AM
+
+
+
+to GenePattern Help Forum
+I am trying to collapse a GCT file generated through the Expression File Creator using the CollapseDataset Module from GenePattern. 
+However, I get a java-related error.
+I used a ".chip" file selected through the CollapseDataset Module.
+I also tried with the annotation file from Affy.
+I would appreciate if you could provide some support to solve this issue.
+Many thanks
+David Eby
+unread,
+Sep 29, 2021, 8:24:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Roser,
+
+
+
+I'm following up to your private message to me here on the GenePattern mailing list in case the discussion will help anyone else looking for answers in the future.
+
+
+The question was in regards to these warnings in the module output:
+WARNING: package com.apple.laf not in java.desktop
+WARNING: package com.sun.java.swing.plaf.windows not in java.desktop
+WARNING: package sun.awt.windows not in java.desktop
+
+ 
+
+
+Those messages are just warnings from Java that packages for the Mac and Windows user interface are not available since the program is running on Linux.  They can be totally ignored, they have no effect on the output at all and don't represent an error.
+
+
+CollapseDataset is part of the GSEA Desktop program which has its own stand-alone UI.  For GenePattern we run this in a "command-line" (or "batch") mode with no user interface, but Java still notices these are missing and gives the warning.
+
+
+Regards,
+David
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/92a7c26a-f183-424e-b093-0c40c29bf6fbn%40googlegroups.com.
+
+Roser Pinyol
+unread,
+Sep 30, 2021, 12:37:29 AM
+
+
+
+to GenePattern Help Forum
+Fantastic! 
+Many thanks for this clarification.
+Best,
+R
+
+
+El dia dimecres, 29 de setembre de 2021 a les 17:24:33 UTC+2, e...@broadinstitute.org va escriure:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

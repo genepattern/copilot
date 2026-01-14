@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/Y3n4_Cqyod8
+Title: Final Cloud Migration update: genepattern.broadinstitute.org will no longer be available as of January 1, 2019
+----------------------------------------
+
+
+
+
+
+Final Cloud Migration update: genepattern.broadinstitute.org will no longer be available as of January 1, 2019
+28 views
+AWS
+Migration
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 21, 2018, 12:16:43 PM
+
+
+
+to GenePattern Help Forum
+
+As we have previously announced, the public GenePattern server hosted by the GenePattern team will officially be migrated to the Amazon cloud: https://cloud.genepattern.org at the end of December 2018. 
+
+As the final step in this migration, genepattern.broadinstitute.org will no longer be available as of January 1, 2019.
+
+
+
+
+This completes the migration of our public server to the Amazon cloud.
+
+
+
+
+Details are below:
+
+How do I backup my pipelines and result files?
+
+To backup pipelines, open the pipeline you want to backup, then click the gear menu in the upper right and select Export. This will open a dialog asking how you want to export the pipeline. For most purposes, the Pipeline only option works best*. 
+
+To backup files, click the link to the file you want to backup and then select Save File from the slide-out menu.
+
+To back up whole jobs, click the link to the job you want to back up and then select Download Job from the slide-out menu.
+
+*Note that most users do not have permission to install modules on our hosted servers.
+
+How do I import my pipelines to cloud.genepattern.org?
+
+To import a pipeline to the new server, click Modules & Pipelines>Install from zip. More detailed information can be found in our user guide. 
+
+What happens if I cannot log into my account on cloud.genepattern.org?
+
+Please try resetting your password and logging in with the new temporary password sent to your email address. If this doesn’t work, contact us through the GenePattern forum.
+
+I cannot find a module I use regularly on cloud.genepattern.org. Help!
+
+Some older modules may not be immediately supported on our new infrastructure. If a module you depend on is missing, please let us know on the GenePattern forum.
+
+How will this upgrade affect my GenePattern Notebook or GenomeSpace accounts?
+
+Your GenePattern Notebook and GenomeSpace accounts will continue to work as before. However, GenePattern Notebook will use the cloud.genepattern.org as its default option, and GenomeSpace users may need to re-associate their accounts.
+
+How can I install my module on the new server?
+
+GenePattern now officially requires that all modules run in Docker and declare their Docker image in their manifest file. For more details on how to configure your module(s) for our new environment and speak with us about installing your module on our public server, please contact us.
+
+
+
+
+If you have any other questions, comments or concerns, please do not hesitate to leave us a note here, in the GenePattern forum.
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

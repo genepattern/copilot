@@ -1,0 +1,1 @@
+GenePattern ssGSEA task failing to start due to memory allocation issues, with solution being to increase RAM allocation from 2GB to 4GB, which resolves job submission and execution problems, likely related to computational resource constraints in the ssGSEA module container.

@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZmDnNaiTrgs
+Title: [macOS Catalina] Stuck in configuration
+----------------------------------------
+
+
+
+
+
+[macOS Catalina] Stuck in configuration
+18 views
+Skip to first unread message
+
+Francesco Volta
+unread,
+Nov 22, 2019, 1:20:51 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I just download gene pattern to perform some analysis on my Mac. Unfortunately after the download, when I launch the software it open a configuration page (attached), after I fill it it request to restart the software and then it happen again and again
+
+
+What am I doing wrong?
+
+
+Thanks a lot for your help
+Francesco 
+
+Schermata 2019-11-22 alle 10.20.27.png
+Edwin Juarez
+unread,
+Nov 22, 2019, 9:06:04 AM
+
+
+
+to GenePattern Help Forum
+Francesco,
+
+
+In which folder were you installing the GenePattern? I have had this problem when I attempt to install it anywhere other than the Applications folder. To fix this issue, something that has worked for me and some other team members is this two step approach:
+
+
+1. Delete ~/.genepattern (you can do this from the terminal using the command rm ~/.genepattern) -- this was created the first time you ran GenePattern.app
+     1.a If you had already moved GenePattern.app into /Applications, remove it from there too. 
+2. Start the installation process again, but this time from within the Applications folder. I.e., put the GenePattern.app that you got from the zip into /Applications and then run it. 
+
+
+
+Let me know if that helps.
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

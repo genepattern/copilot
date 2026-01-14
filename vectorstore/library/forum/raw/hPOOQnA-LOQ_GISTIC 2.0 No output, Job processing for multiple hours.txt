@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/hPOOQnA-LOQ
+Title: GISTIC 2.0 No output, Job processing for multiple hours
+----------------------------------------
+
+
+
+
+
+GISTIC 2.0 No output, Job processing for multiple hours
+18 views
+Skip to first unread message
+
+Teresa Harris
+unread,
+Jun 23, 2024, 7:03:12 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am  a new user of GISTIC 2.0 but i have recieved one good output. But, since Friday (22/6/24) every job that I put in never has an output. The job is just "processing" forever. 
+
+
+Is GenePattern/GISTIC2.) down and not running at the moment? 
+
+
+Thanks, 
+Teresa 
+Ted Liefeld
+unread,
+Jun 24, 2024, 6:41:16 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+for some reason some of the GISTIC jobs submitted between June 21 and this morning (June 24) are not reporting as completed in GenePattern even though they have in fact finished.  We are working on the problem and will let  you know when a fix or workaround is in place.  In the meantime you can try resubmitting the jobs, they may or may not complete normally as the problem only appears to affect about 1/2 of GISTIC jobs.
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jun 24, 2024, 8:18:25 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+we think we know the proximal cause of the failure, but it will take a bit of time before a fix can be tested and released to the cloud server.  In the meantime we have reconfigured GenePattern so that new GISTIC analysis run on a different compute environment.  
+
+
+For the jobs that were stalled between last Friday and this morning, we have attempted to recover the result files.  Note that most of these jobs will show a status of 'Error" in GenePattern whether or not they genuinely had an error running.  Make sure to examine the files remote_stderr.txt and remote_stdout.txt to determine if they really did fail.  As a general rule of thumb, if all 20-ish output files are present, it probably was a successful run.
+
+
+Thanks again for your patience
+
+
+Ted
+
+
+p.s. The gritty details, in case you care;  GenePattern runs analysis jobs on a mix of back end compute environments.  Most jobs run on AWS Batch but some jobs go to academic computing centers in order to reduce our AWS bill and allow us to keep running GenePattern as a free service.  For one of the academic centers there seems to be a problem retrieving one of the GISTIC output files.  Its not clear why but the failure is always on the file called gistic_inputs.mat. In turn the GenePattern server sees that not all outputs have been retrieved and so leaves the job in a running state until it can get that last file downloaded after which it will mark the job as done.  The temporary code fix will be updating this logic to allow a maximum number of download attempts before accepting it may never work and reporting the job as complete with the output files that were downloaded.  The longer term fix is to determine why the file gistic_inputs.mat cannot be retrieved when it seems to exist on the remote system. 
+
+
+Reply all
+
+Reply to author
+
+Forward

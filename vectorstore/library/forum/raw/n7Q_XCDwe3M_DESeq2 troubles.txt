@@ -1,0 +1,121 @@
+URL: https://groups.google.com./g/genepattern-help/c/n7Q_XCDwe3M
+Title: DESeq2 troubles
+----------------------------------------
+
+
+
+
+
+DESeq2 troubles
+51 views
+Skip to first unread message
+
+Patricia Mingo
+unread,
+Jun 14, 2022, 3:00:57 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am triying to perform GSEA analysis and first I have to normalized my read counts. I tried to use DESeq2 module get the normalized_counts.gct but after loading my files I get this error: 
+
+
+Error in library(DESeq2) : there is no package called ‘DESeq2’ 
+Calls: suppressMessages -> withCallingHandlers 
+Execution halted
+
+
+How can I fix it? I get this message even with the GenePattern examples files. 
+
+
+Thank you all,
+
+
+Patricia 
+
+
+
+
+
+Ted Liefeld
+unread,
+Jun 14, 2022, 6:43:21 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+we are currently working to diagnose the problems with the DESeq2 module.  We will update you this thread when we have implemented a fix.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+Patricia Mingo
+unread,
+Jun 14, 2022, 11:31:18 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thanks for your quick answer! I will follow your updates,
+
+
+Patricia 
+
+
+
+Ted Liefeld
+unread,
+Jun 24, 2022, 11:03:07 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We have just deployed a new container for the DESeq2 module and we believe it should be working properly now.  Please feel free to try it and let us know if you have any problems.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+Patricia Mingo
+unread,
+Jun 24, 2022, 11:13:40 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thanks for your message! Hope it works know
+
+
+Patricia 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/NvLajoOy6aM
+Title: shorthand for tab character in module dropdown multichoice
+----------------------------------------
+
+
+
+
+
+shorthand for tab character in module dropdown multichoice
+9 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Oct 22, 2018, 8:32:15 AM
+
+
+
+to GenePattern Help Forum
+I would like to use an argument to select the desired separator for a new module from a pop down selector (because tab cannot be entered in a text field)
+
+I would like people to select between <tab>, <comma>, or <space> as their delimiter and pass the result to my command. with -s "     ", -s "," or -s " " (the first would be a tab)
+
+
+A number of shorthands for special characters like <cr> <tab> <comma> <semicolon> <space> <colon> ... would be great to have to build commands and or populate multi choice dropdown definitions in modules. Alternatively, using the regex codes would be just perfect \t \n ... -> is this possible? quoting?
+
+
+Any other way to reach my goal?
+
+
+S
+Peter Carr
+unread,
+Oct 23, 2018, 1:46:06 PM
+
+
+
+to GenePattern Help Forum
+You can’t pass a special character through to the command line. Furthermore, it's tricky to handle quote, space and other special characters in the GenePattern manifest file format. 
+
+
+The drop-down menu selection is passed as a string to the module command line. You can use '\' as an escape character.  Note: the characters '=' and ';' are not allowed in the module integrator (GenePattern GUI). For your drop-down menu, I suggest one of three encodings:
+* escape sequence, e.g. '\n', '\t'
+* unicode, e.g. 'U+000A', 'U+0009'
+* unicode escape sequence, e.g. '\u000A', '\u0009'
+
+
+From the GenePattern module integrator I created an example 'delim' parameter with '\t', '\n', and ' ' as options. Here's the manifest file format for that param. 
+p2_TYPE=TEXT
+p2_default_value=\\t
+p2_description=Example drop-down options for tab, comma, or space as a delimiter
+p2_fileFormat=
+p2_flag=-s
+p2_name=delim
+p2_numValues=0..1
+p2_optional=
+p2_prefix=-s
+p2_prefix_when_specified=-s
+p2_type=java.lang.String
+p2_value=\\t\=tab;,\=comma; \=space
+
+
+
+
+
+
+Some technical details:
+* the characters '=' and ';' are not allowed in the module integrator (GenePattern GUI)
+
+* the manifest is in java .properties format, see https://en.wikipedia.org/wiki/.properties 
+* the job engine will pass an array of args to the command line; it's up to your module to parse the args correctly. It is preferable to avoid complex character escape sequences.
+
+* wikipedia List_of_Unicode_characters
+* see FileFormat.info for more details on the the unicode format
+
+
+Regards,
+Peter
+
+Peter Carr
+unread,
+Oct 23, 2018, 1:50:06 PM
+
+
+
+to GenePattern Help Forum
+Here's a more detailed example with three different drop-down params. A basic example, an example with unicode characters, and another with unicode escape sequences.
+Regards,
+Peter
+
+On Monday, October 22, 2018 at 11:32:15 AM UTC-4, GenePattern Help Forum wrote:
+
+
+testSeparatorChar_v0.15.zip
+
+Reply all
+
+Reply to author
+
+Forward

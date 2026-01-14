@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/4_0-SXakkzM
+Title: tmp file null error was occured but i have no idea
+----------------------------------------
+
+
+
+
+
+tmp file null error was occured but i have no idea
+14 views
+Skip to first unread message
+
+이한새
+unread,
+Oct 21, 2020, 2:18:36 AM
+
+
+
+to GenePattern Help Forum
+hi genepattern,
+first of all, thank you for great tool
+
+
+but i have a serious problem when i am submitting the .gct files and .gmt files i Think my files are intact but every time i tried to submit tmp file error is occured 
+what can i do for this??  :'(  
+
+
+I'll attach the captured  error file.  
+
+
+
+Thanks  
+
+KakaoTalk_20201021_180028518.png
+Ted Liefeld
+unread,
+Oct 21, 2020, 6:57:37 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I cannot seem to replicate this issue.  I assume it did not get far enough to give you a job number.  If it did please send that to me here.
+A few things you can try:
+- check that the filenames have no special characters.  I believe the server expects utf-8 
+- upload the files to the files tab and try to send them to the job from there
+- put the files on a web server and give GenePattern the URL for the file parameters
+
+
+Llet me know if any of these work.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

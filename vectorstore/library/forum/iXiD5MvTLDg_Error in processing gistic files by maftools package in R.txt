@@ -1,0 +1,1 @@
+Error processing GISTIC files in maftools R package caused by file incompatibility or formatting issues; recommended seeking specialized help in Bioconductor forums or performing broader troubleshooting via general R error resolution techniques, with no specific technical solution provided in this thread.

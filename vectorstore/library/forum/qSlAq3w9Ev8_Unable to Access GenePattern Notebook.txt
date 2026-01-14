@@ -1,0 +1,1 @@
+GenePattern user experiencing login and password reset issues after server migration from Broad to Amazon cloud, with technical support team (Barbara Hill) quickly identifying and resolving the password reset functionality bug, ultimately restoring user access to the GenePattern Notebook platform.

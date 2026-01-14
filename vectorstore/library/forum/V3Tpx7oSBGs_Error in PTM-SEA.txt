@@ -1,0 +1,1 @@
+A user encountered an error when using the PTM-SEA module in GenePattern, specifically a "max() error with invalid 'type' (list) argument", which was resolved by using the 'Raw' GitHub link instead of a standard GitHub webpage link when uploading the GMT file, ensuring the correct file is downloaded and processed by the module.

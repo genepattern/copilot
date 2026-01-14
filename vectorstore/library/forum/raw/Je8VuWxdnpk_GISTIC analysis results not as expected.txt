@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/Je8VuWxdnpk
+Title: GISTIC analysis results not as expected
+----------------------------------------
+
+
+
+
+
+GISTIC analysis results not as expected
+57 views
+Skip to first unread message
+
+Shivangi Agarwal
+unread,
+Mar 27, 2023, 3:09:44 PM
+
+
+
+to GenePattern Help Forum
+Hi Gistic developers,
+
+
+I am using genepattern to run GISTIC 2.0 analysis. I have input a segment file having six fields as required (see below).
+In our copy number results, we can clearly see that there is a deletion in chromosome 3 and GISTIC raw heatmap also reflected the same. But deletion plot did not show any deletion bars in chrm 3 and surprisingly, it is showing deletion bar in chrom 2. I wonder whether there is some parameter or anything missing ? I could not understand how this is possible. Please suggest me and let me know if you need any other information/files.
+
+
+SampleID	chrom	start	end	num.mark	seg.median.logR
+52	1	1000001	248000000	247	2.16E-05
+52	2	1000001	243000000	242	0.004613738740763
+52	3	1000001	197000000	196	-0.417951638735614
+52	4	2000001	191000000	189	0.011724782597305
+52	5	1000001	180000000	179	0.307167086545751
+52	6	1000001	170000000	169	-0.015040095801268
+52	7	1000001	159000000	158	-0.019216697944641
+52	8	1000001	145000000	144	-0.009627104007852
+52	9	1000001	141000000	140	-0.036188562405659
+52	10	1000001	135000000	134	-0.006447404137733
+52	11	2000001	134000000	132	-0.045372759035958
+52	12	1000001	132000000	131	0.003329740154372
+52	13	20000001	114000000	94	0.051714846435706
+
+
+
+Thanks
+Message has been deleted
+Message has been deleted
+Message has been deleted
+Message has been deleted
+Message has been deleted
+Andrew Cherniack
+unread,
+Mar 27, 2023, 6:03:46 PM
+
+
+
+to GenePattern Help Forum
+1) How many samples are in your GISTIC input
+2) The example that you show is a deletion of the entire Chromosome.  The point of GISTIC is to identify significantly reoccurring focal CN alterations.  A whole chromosome deletion is not a focal event.
+
+
+
+Shivangi Agarwal
+unread,
+Mar 28, 2023, 11:27:11 AM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+
+
+I have 59 samples.
+Yes, it looks like a whole chromosome deletion in Chr 3. Please have a look over the heatmap. 
+
+
+raw_copy_number.pdf
+Andrew Cherniack
+unread,
+Mar 28, 2023, 11:35:31 AM
+
+
+
+to genepatt...@googlegroups.com
+
+
+That would explain it.
+GISTIC is not supposed to pick up whole chromosome events, but there must be some sort of focal event being picked up on chromosome 2 which may be too small to see on the heatmap.
+One thing you can try is adjusting the length of focal events to consider using the focal length cutoff parameter.
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Je8VuWxdnpk/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d01f11af-d296-448d-be6d-2f6dca114eb5n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted
+Message has been deleted
+Message has been deleted
+Message has been deleted

@@ -1,0 +1,133 @@
+URL: https://groups.google.com./g/genepattern-help/c/jvqGAdkvnS8
+Title: XML file error
+----------------------------------------
+
+
+
+
+
+XML file error
+15 views
+Skip to first unread message
+
+Hui Shinyee
+unread,
+Jul 27, 2021, 1:46:20 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I had recently been using Genepattern for RNAseq analysis. After the run was completed, I cannot open the link or download the zipped results files. I tried both online platform and desktop software, also switched into different computers/laptops/operating systems, all encountered error below:
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+
+<Error>
+<Code>AccessDenied</Code>
+<Message>Access Denied</Message>
+<RequestId>HQSQSBN0TD91KDKM</RequestId>
+<HostId>NjTjehi6mFuVQbnoo+9dv8NaBTlwmbFue4Mk3xdIHdD0qzddINWapK3dg45N6EPI7fIawuUIrw0=</HostId>
+</Error>
+I had successfully run, preview, and download my result files a few months back.
+Please advice what went wrong.
+
+
+Thank you very much,
+Shinyee
+
+
+Ted Liefeld
+unread,
+Jul 27, 2021, 8:21:11 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+can you give me a GenePattern job number to look at so that I can try to reproduce this?
+
+
+Thanks
+
+
+Ted
+
+
+
+Hui Shinyee
+unread,
+Jul 27, 2021, 8:51:52 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted, thanks for replying. The job number was  365508.
+
+Ted Liefeld
+unread,
+Jul 28, 2021, 8:53:26 AM
+
+
+
+to GenePattern Help Forum
+Shinyee,
+
+
+So when you click on the link for RNAseq_Napa_recode.Control.vs.Treatment.normalized_counts.zip you are unable to download it as well?
+
+
+https://cloud.genepattern.org/gp/jobResults/365508/RNAseq_Napa_recode.Control.vs.Treatment.normalized_counts.zip (this link will only work for the owner of the job an GenePattern Admins).
+
+
+This should be doing a redirect to a one-time presigned S3 URL.  If you turn on developer tools you might be able to see the details and relay what is happening here.
+
+
+There is a known problem that the html files cannot follow links properly at the moment from GenePattern web pages.  We are working on this and the current workaround is to download the zip file, unzip it and then open the local html file copies.
+
+
+Ted 
+
+Hui Shinyee
+unread,
+Jul 28, 2021, 5:30:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Yeah the link to zipped file didn't work as well.
+I had downloaded the required files from the link you provided. Thank you very much.
+
+
+Shinyee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/jvqGAdkvnS8/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d1d5eeb0-26e5-478b-b69b-3debf2414683n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,106 @@
+URL: https://groups.google.com./g/genepattern-help/c/VCDnPJ78V0c
+Title: error using HierarchicalClustering
+----------------------------------------
+
+
+
+
+
+error using HierarchicalClustering
+12 views
+Skip to first unread message
+
+Jinrui
+unread,
+Nov 30, 2017, 6:04:30 AM
+
+
+
+to GenePattern Help Forum
+Hi, I got an error when using  HierarchicalClustering 
+
+
+The job id is 1586934.
+
+
+
+
+ input.filename: GC MS amino acid all enrichment genepattern LCMS2.gct.txt
+
+ GC MS amino acid all enrichment genepattern LCMS2.gct.cdt (14.0 KB) (Last modified: Thu Nov 30 08:54:01 EST 2017)
+
+ GC MS amino acid all enrichment genepattern LCMS2.gct.gtr (2.0 KB) (Last modified: Thu Nov 30 08:54:01 EST 2017)
+
+
+
+when I download, it showed that the sdr and gtr filr are not existed. The error is below:
+
+
+The page you requested cannot be found.
+Please try the following:
+If you typed the page address in the Address bar, make sure that it is spelled correctly.
+Open the GenePattern home page and look for links to the information you want.
+Click the Back button to try another link.
+
+
+Thanks for your help!
+
+
+Kind regards
+
+
+Jin
+Barbara Hill
+unread,
+Dec 1, 2017, 12:36:25 PM
+
+
+
+to GenePattern Help Forum
+Hello Jin
+
+
+The files are there, but the spaces in the file names are not allowing the filesystem to find them.
+
+
+Remove the spaces from your input file name, then rerun the job with the newly named file, and you shouldn't have any more trouble.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Dec 1, 2017, 12:37:32 PM
+
+
+
+to GenePattern Help Forum
+Alternately, you could rerun the job, with the same input file, but change the output file name to something that has no spaces, using the "output base name" parameter
+
+
+Best
+-Barbara
+Jinrui
+unread,
+Dec 4, 2017, 4:48:34 AM
+
+
+
+to GenePattern Help Forum
+Hi, Barbara,
+
+
+It works, thank you very much! 
+
+
+Kind regards
+
+
+Jinrui
+
+
+Reply all
+
+Reply to author
+
+Forward

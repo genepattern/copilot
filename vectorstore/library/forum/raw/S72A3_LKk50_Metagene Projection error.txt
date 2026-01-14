@@ -1,0 +1,307 @@
+URL: https://groups.google.com./g/genepattern-help/c/S72A3_LKk50
+Title: Metagene Projection error
+----------------------------------------
+
+
+
+
+
+Metagene Projection error
+39 views
+Skip to first unread message
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 9:06:59 AM
+
+
+
+to GenePattern Help Forum
+I have been working on running data through Metagene Projection but have continued to get errors. Barbara Hill previously helped me ensure that my GCT and Preprocessing files were all in the correct format (I was even able to run NMF Consensus with the GCT files), however, I am still getting the following error:
+
+
+cp: cannot stat ???inst/*???: No such file or directory
+Loading required package: class
+Loading required package: class
+Error in MP.Preprocess.Dataset(input.ds = paste(output.dir, "temp1.gct",  : 
+	subscript out of bounds
+Execution halted
+
+
+I am not sure where the error could be coming from though. 
+
+
+I do not have access to my previous jobs from last week, but am currently rerunning the analysis. It is job #323010. If someone on the GenePattern team has access, my last attempt was run on 19 Feb, and is #322563.
+
+
+Thank you.
+Krystine Mansfield
+unread,
+Feb 24, 2021, 1:28:03 PM
+
+
+
+to GenePattern Help Forum
+Hello, I was wondering if anyone had a chance to look at this error, or had any insight into what might be causing it?
+
+Barbara Hill
+unread,
+Feb 24, 2021, 2:54:08 PM
+
+
+
+to GenePattern Help Forum
+Hi Krystine, 
+
+
+We have been taking a look, but we're all a bit stumped at the moment. It's an older module, and none of our team members is the original author, so it's taking a bit of time to try and figure out what is going on.
+
+We'll let you know once we have more information.
+
+With apologies for the frustration and delay,
+-Barbara
+
+
+Anthony Castanza
+unread,
+Feb 24, 2021, 4:19:33 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Krystine,
+
+ 
+
+I dug into your dataset here and I think I identified the issue. In your input data file “Model_Archer_red.unique.gct” pretty much all the values seem to be between -10 and 10, but in your preprocessing parameters file you’ve specified the following parameters:
+
+ 
+
+thres = 20
+
+ceil = 100000
+
+fold = 5
+
+delta = 500
+
+norm = 6
+
+ 
+
+This applies a series of thresholds using a variation filter function to the dataset: a min value threshold of 20, a min fold change threshold of 5, and a delta threshold of 500. After applying these parameters there are simply no genes left in the model. Since so much of your data is negative values, the threshold is setting basically everything to “20” causing the rest of the thresholds to screen it all out. The fold and delta are also not fitting the data well since the distribution is largely between -10 and 10, the delta 500, fold 5 aren’t fitting the data.
+
+ 
+
+I would encourage you do perhaps generate some histograms of your dataset (or at least eyeball the data for “typical” values) to try to pick filter parameters that better fit the distribution being observed, similarly for the
+
+Test_CCTMS_ data, which seems to have a substantially different distribution than the Model data (which isn’t a problem per-se, it just has to be accounted for the variance filter thresholds).
+
+ 
+
+Let me know if you have other questions and I’ll try to answer as best as I can
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+This electronic message is intended to be for the use only of the named recipient, and may contain information that is confidential or privileged, including patient health information. If you are not the intended recipient, you are hereby notified that any disclosure, copying, distribution or use of the contents of this message is strictly prohibited. If you have received this message in error or are not the named recipient, please notify us immediately by contacting the sender at the electronic mail address noted above, and delete and destroy all copies of this message. Thank you.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2cf39956-1a35-4e0d-8789-37d9f0d8520fn%40googlegroups.com.
+
+Krystine Mansfield
+unread,
+Feb 25, 2021, 9:49:28 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your response. That was very helpful. I knew that the datasets were quite different, and that our Model included negative values, I guess I misunderstood the description of the parameters themselves in the MetaGeneProjection Documentation page. Could you please clarify on the descriptions? There was not a lot of detail on the variation filter, so I was not sure how these values actually came into play.
+
+
+Threshold: From the description I was not sure what this was a threshold of. This is a threshold on the protein/gene minimum abundance value allowed?
+Ceil: From the description I was not sure what this was a ceiling of. This is a threshold on the protein/gene maximim abundance value allowed?
+Fold: I am still not sure where this fold change value should be calculated from? How is a fold change calculated from protein/gene distributions? Is this the max/min value of the abundances across the data set? The max/min of the abundances across a protein/gene? The max/min of the variance across the data?
+Delta: Absolute difference between what? Highest and lowest abundance values for the dataset? Difference between variance across samples? difference between variance across proteins/genes?
+
+Anthony Castanza
+unread,
+Feb 25, 2021, 10:16:08 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Krystine,
+
+ 
+
+I agree, the documentation for these parameters could be improved. Here’s what’s happening from looking at the module code:
+
+ 
+
+Threshold: Applied as the minimum floor value to the dataset (either model or test depending on which preprocessing file). Values below this value in the applicable dataset will be set to this value – since the assumed input is gene counts/microarray intensities it doesn’t apply this value on an absolute value basis separately to negative and positive distributions, it just applies it as a blanket floor. You can omit this entry from the txt file to not perform this filtering.
+
+ 
+
+Ceil: Applied as a maximum ceiling value to the dataset (either model or test depending on which preprocessing file). Values above this value in the applicable dataset will be set to this value. You can omit this entry from the txt file to not perform this filtering.
+
+ 
+
+Fold and Delta: These are used as minimum variation filters applied to each row of the dataset. They are calculated on each row (gene) using the row maximum and the row minimum. Fold change is calculated row.max /row.min, and the Delta is calculated from row.max - row.min. Importantly, this is performed after applying the threshold and ceiling. A row is accepted if both the calculated row fold is and a row is accepted if this is >= fold parameter and the row delta is >= delta parameter. If either fold or delta are omitted from the text file both fold and delta filtering will not be performed.
+
+ 
+
+There is another parameter described in the code “shift” which allows applying a global constant to correct for a known offset (this was likely implemented to correct microarray data for example if one dataset was reading a higher global background intensity than the other). Shift is applied after performing the Thresholds and Ceiling calculations, but before the Fold and Delta variance filter.
+
+ 
+
+Let me know if you have any questions about my descriptions here
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0cd5142d-258d-456e-9ae8-5e27d2716890n%40googlegroups.com.
+
+Krystine Mansfield
+unread,
+Feb 25, 2021, 3:29:51 PM
+
+
+
+to GenePattern Help Forum
+Thank you Anthony. That makes so much more sense. I had used the example parameters because I did not understand their meanings, but now I see why my dataset was not reporting anything. My only question now is, if I want to skip the filtering, at least for a first pass, does "omit" mean not include the parameter at all in the processing file, or to set the parameter as " " or "NA"?
+
+Anthony Castanza
+unread,
+Feb 25, 2021, 3:47:42 PM
+
+
+
+to genepatt...@googlegroups.com
+
+By “omit” I mean don’t include the parameter at all in the file (don’t put the name or value). I’m pretty sure that’s what the code expects to skip a given filtering step.
+
+I think NA would also work, but haven’t fully investigated the parameter parsing functions here.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0d11831e-173d-456f-91bf-11ffe76f6c35n%40googlegroups.com.
+
+Krystine Mansfield
+unread,
+Feb 26, 2021, 10:48:40 AM
+
+
+
+to GenePattern Help Forum
+I ran several jobs today on MetageneProjection first completely omitting those 4 parameters (#324283), then again with the parameters but using NULL as the value (#324296), and finally using NA for the parameters (#324301). All errored out. I have attached the 3 corresponding error files related to each job.
+
+
+Any other feedback you can provide is greatly appreciated.
+
+
+
+
+stderr_324296.txt
+
+stderr_324283.txt
+
+stderr_324301.txt
+Anthony Castanza
+unread,
+Feb 26, 2021, 11:38:55 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Krystine,
+
+ 
+
+I think I found the issue, I misinterpreted a bit of the parsing code.
+
+What happens is if you omit the values entirely the program inserts the logical value NULL, but later it tests for the string value “NULL”, these aren’t the same and in R the tests return different results. In order to trigger the skipping of these filtering steps properly, you actually have to put
+
+ 
+
+thres = "NULL"
+
+ceil = "NULL"
+
+ 
+
+etc. for the other parameters, with NULL in quotes, in your preprocessing text file.
+
+Sorry about that!
+
+ 
+
+-Anthony
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/56854182-d5e8-42e0-be06-ae09303d2eban%40googlegroups.com.
+
+Krystine Mansfield
+unread,
+Feb 26, 2021, 1:20:21 PM
+
+
+
+to GenePattern Help Forum
+Thank you for finding that! I ran the job and it completed!
+
+
+Is there anyone on your team I can talk to to help interpret the results? Since this is unpublished data, I would like to talk to someone through email, and I cannot find a detailed description of the output columns.
+
+
+Thank you for all your help!
+
+
+
+
+Anthony Castanza
+unread,
+Feb 26, 2021, 1:59:24 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Krystine,
+
+ 
+
+Glad you were able to get it to run!
+
+Pablo Tamayo is the original author of MetageneProjection, if you have specific interpretation questions that aren’t answered by the module documentation or the associated publication (https://pubmed.ncbi.nlm.nih.gov/17389406/), I’d probably suggest reaching out to him. His current email address is pta...@ucsd.edu, but considering how long ago this was developed, I don’t know how much specific help he’s going to be able to give.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d3b793d0-a6e1-4410-b1d9-209133fdb47en%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

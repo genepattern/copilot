@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/225JWyjjwBU
+Title: GISTIC2 with public server
+----------------------------------------
+
+
+
+
+
+GISTIC2 with public server
+59 views
+Skip to first unread message
+
+Shota Kato
+unread,
+Jan 16, 2025, 4:02:42 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I performed GISTIC2 with the public server.
+However, the amplification/deletion plots showed a narrow region of chromosome 8 (file attached).
+I would like to know how I can solve this problem.
+
+
+I used a segmentation file from WGS data and the provided hg38 ref file.
+
+
+Thank you, 
+Shota
+
+611424.amp_qplot copy.png
+Andrew Cherniack
+unread,
+Jan 28, 2025, 11:12:32 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We need to know more about how you ran GISTIC to answer your question.
+Can you provide us with your input parameters and seg file?
+
+
+Andy
+
+
+
+Shota Kato
+unread,
+Jan 28, 2025, 5:15:08 PM
+
+
+
+to GenePattern Help Forum
+Hello Andy, 
+
+
+I used the default parameters with the broad analysis option.
+I attached the input seg file.
+
+
+I appreciate your cooperation.
+
+
+Best regards,
+Shota
+
+
+2025年1月29日水曜日 4:12:32 UTC+9 Andrew Cherniack:
+
+
+
+GISTIC_input.txt
+
+Reply all
+
+Reply to author
+
+Forward

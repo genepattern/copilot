@@ -1,0 +1,127 @@
+URL: https://groups.google.com./g/genepattern-help/c/n_NVHAF5VjQ
+Title: distance_matrix.txt missing from hierarchical clustering o/p
+----------------------------------------
+
+
+
+
+
+distance_matrix.txt missing from hierarchical clustering o/p
+11 views
+Skip to first unread message
+
+Akshaya Ramesh
+unread,
+Mar 20, 2018, 9:52:07 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've been running hierarchical clustering on my dataset (using multiple different parameters) and the distance_matrix.txt file is not produced in any of them. There is an error that Edwin mentioned was harmless (Fontconfig warning: ignoring C.UTF-8: not a valid language tag), but I'm not sure if that's the reason why the distance_matrix.txt is not generated.
+
+
+Thanks,
+Akshaya 
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Edwin Juarez
+unread,
+Mar 21, 2018, 9:08:13 AM
+
+
+
+to GenePattern Help Forum
+Hello Akshaya,
+
+
+Could you send us a job number for which you expected the distance_matrix but it was not generated? Hopefully the Fontconfig error is not related to this bug, but I'll investigate further.
+
+
+Edwin.
+
+Akshaya Ramesh
+unread,
+Mar 21, 2018, 9:33:53 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+
+It failed for all my hierarchical clustering jobs (using all the diff correlations). Here are some of the job numbers - 18513, 18491, 18497, 18499, 18502, 18503
+
+
+Akshaya 
+
+Edwin Juarez
+unread,
+Mar 27, 2018, 8:57:12 AM
+
+
+
+to GenePattern Help Forum
+Hello Akshaya,
+
+
+I'm sorry for the late reply. I'll take a look at this issue in the next few days and will let you know of the status of this issue.
+
+
+Because the creation of the distance_matrix is a new feature I would like to know how you plan on using it. Is it part of a pipeline? Would you use it mostly to double check results or understand your dataset better?
+
+
+Thank you!
+
+
+Edwin.
+
+Edwin Juarez
+unread,
+Apr 12, 2018, 1:27:14 PM
+
+
+
+to GenePattern Help Forum
+Hi Akshaya,
+
+
+The fontconfig warning has been fixed with the most recent version of HierarchicalClustering (7.9).
+
+
+I also tested the creation of the distance matrix and for small datasets that functionality is working correctly, although, it creates a csv file (so I will update the documentation accordingly). Let me know if you run into problems with your datasets.
+
+
+Edwin. 
+
+
+Reply all
+
+Reply to author
+
+Forward

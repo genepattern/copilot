@@ -1,0 +1,1 @@
+GenePattern forum thread addressing a user's request for the specific Git commit/tag corresponding to the MutPanning.jar version available on cancer-gene.org, with the response indicating that the latest version deployed on cloud.genepattern.org is tagged as "v2" in the GitHub repository at https://github.com/genepattern/MutPanning.

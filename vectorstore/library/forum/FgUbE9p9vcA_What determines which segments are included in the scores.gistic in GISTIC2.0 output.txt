@@ -1,0 +1,1 @@
+In the GISTIC2.0 output, segments may be filtered or shortened due to overlapping regions, which can result in the exclusion of certain segments from the scores.gistic file; users experiencing missing samples due to segment shortening should consult with the GISTIC developers directly for potential workarounds or alternative processing strategies.

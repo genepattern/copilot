@@ -1,0 +1,1 @@
+GenePattern user experiencing file upload errors with AffySTExpressionFileCreator when attempting to upload CEL files from a Mac computer, with troubleshooting suggestions including verifying server connection (cloud vs local), browser type, file size, and specific error messages to diagnose potential network or compatibility issues.

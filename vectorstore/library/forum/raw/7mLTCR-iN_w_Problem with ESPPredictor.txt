@@ -1,0 +1,169 @@
+URL: https://groups.google.com./g/genepattern-help/c/7mLTCR-iN_w
+Title: Problem with ESPPredictor
+----------------------------------------
+
+
+
+
+
+Problem with ESPPredictor
+18 views
+Skip to first unread message
+
+Thibault Robin
+unread,
+Jan 31, 2018, 3:24:31 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+
+I am trying to use ESPPredictor on two small lists of peptides. The job for the first one completed without issues (ID 1622959), but the second one failed (ID 1622457).
+The error log says that the issue probably comes from the presence of unusual amino acids, but the sequences don't contain any.
+
+Here are the peptides I tried to analyze:
+
+NELSGALTGLTR
+AANAAENDFSVSQAEMSSR
+ISNPWQSPSGTLPALR
+QGTFHSQQALEYGTK
+TGSLKPNPASPLPASPYGGPTPASYTTASTPAGPAFPVQVK
+GALPAVSSPPAPVSPSSPTTHNGELEPSFSPNTESQIGPEEAMER
+TPSNTPSAEADWSPGLELHPDYK
+SASSESEAENLEAQPQSTVRPEEIPPIPENR
+DCATEEDEPPAPELHQDAAR
+LEQDLQQMQAK
+EAEDVIWEDSASENQEGLR
+DIQDSLTVSNEVQTAK
+SPPMELQPPVSPQQSECNPVGALQELVVQK
+HAMYCNGLMEEDTVLTR
+DPHVAMQALTLLGACVSNCGK
+SVYAVSSNHSAAYNGTDGLAPVEVEELLR
+CPARPPPSGSQGLLEEMLAASSSK
+
+Many thanks in advance for your answer,
+
+Cheers,
+
+Thibault
+
+Barbara Hill
+unread,
+Feb 9, 2018, 12:50:19 PM
+
+
+
+to GenePattern Help Forum
+Hello Thibault,
+
+
+My apologies for this late response.
+
+
+Are you still having trouble with ESPPredictor?
+
+
+Best
+-Barbara
+Thibault Robin
+unread,
+Feb 12, 2018, 2:36:18 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+
+In addition to the problem I mentioned in my previous message, it looks like any job I try fails (see JOBID 1631348).
+
+Thank you in advance for your help,
+
+Thibault
+
+Peter Carr
+unread,
+Feb 12, 2018, 6:40:39 AM
+
+
+
+to genepatt...@googlegroups.com
+One of our compute nodes went offline, which ultimately caused the error
+you are seeing with job #1631348. I adjusted the configuration to
+correct that problem. Try reloading and running the job again.
+
+Regards,
+Peter
+
+
+Thibault Robin
+unread,
+Feb 12, 2018, 7:30:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Peter,
+
+
+It did fix the job submission, thank you ! However I still have the error I described in my first message. The exact error message is:
+
+Error in Predict("PeptideFeatureSet.csv", "/xchip/gpprod/servers/genepattern/taskLib/ESPPredictor.3.2.17220/ESP_Predictor_Model_020708.RData",  : 	The feature file was not generated - MATLAB error probably non-standard amino acid J,U,Z,B,O,XExecution halted
+Cheers,
+
+
+Thibault
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/7mLTCR-iN_w/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7cde7832-a621-8731-bc27-f0fa1e2fc4df%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Feb 16, 2018, 12:34:08 PM
+
+
+
+to GenePattern Help Forum
+Hi Thibault,
+
+
+Do you have the latest job id? You might also check to see if there are extra spaces or lines in your input files.
+
+
+Best
+-Barbara
+Thibault Robin
+unread,
+Feb 19, 2018, 6:02:01 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+
+There was indeed a space at the end of one of the peptides that was causing the job to crash. All is functioning as expected now.
+
+Thank you for your time !
+
+Thibaut
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/zudjet8Jja8
+Title: DESeq2 Error
+----------------------------------------
+
+
+
+
+
+DESeq2 Error
+22 views
+Skip to first unread message
+
+Abraam Zakhary
+unread,
+Mar 27, 2023, 5:34:01 PM
+
+
+
+to GenePattern Help Forum
+Hey,
+
+
+I got the following error when trying to use the DESeq2 module on genepattern:
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+trying URL 'http://cran.us.r-project.org/src/contrib/getopt_1.20.3.tar.gz'
+Content type 'application/x-gzip' length 18573 bytes (18 KB)
+==================================================
+downloaded 18 KB
+
+* installing *source* package 'getopt' ...
+** package 'getopt' successfully unpacked and MD5 sums checked
+** R
+** exec
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (getopt)
+
+The downloaded source packages are in
+	'/tmp/RtmpRzzDV1/downloaded_packages'
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+Warning message:
+package 'optparse' is not available (for R version 3.3.2) 
+Error in factor(line3, labels = classNames) : 
+  invalid 'labels'; length 4 should be 1 or 2
+Calls: read.cls -> factor
+Execution halted
+
+
+
+I am pretty sure my gct/cls file is made correctly so I am not sure what I am doing wrong. The error message doesn't seem to be very clear either. Thoughts?
+Ted Liefeld
+unread,
+Mar 28, 2023, 9:18:19 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I think I found your job (501454) and it looks like the problem is that the CLS file parser is reading the second line of your cls file as 4 separate class labels (and then only finds the two classes (0,1) because it uses the space (' ') as the delimiter.    I won't use your class labels here (in case its private) but you have something vaguely like
+
+
+#  First class Second class
+
+
+and I think if you want a compound class name you should change it to something without a space in a class name like this
+
+
+#  First_class Second_class
+
+
+I did a quick test and this seems to work when I rerun your job with a modified class file.
+
+
+Hope this helps,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

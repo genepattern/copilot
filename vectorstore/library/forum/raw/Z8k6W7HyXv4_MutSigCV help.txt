@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/Z8k6W7HyXv4
+Title: MutSigCV help
+----------------------------------------
+
+
+
+
+
+MutSigCV help
+52 views
+Skip to first unread message
+
+Abraam Zakhary
+unread,
+Apr 26, 2024, 11:33:40 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run a mutational analysis for my cases. 
+I am not sure whether my file is in the correct maf format and I am not sure how to combine multiple files into one. I attached two for reference to check.
+
+
+I also don't think the TCGA gives coverage table files for the data but I get an error message when I try to use the "shared_data/example_files/MutSigCV_1.3/exome_full192.coverage.txt" path saying I do not have access to that.
+
+
+Please help.
+
+
+Thanks,
+Abraam
+
+KL-8323.maf
+
+KL-8324.maf
+Abraam Zakhary
+unread,
+Apr 30, 2024, 9:30:07 AM
+
+
+
+to GenePattern Help Forum
+Any help or guidance?
+
+edh...@cloud.ucsd.edu
+unread,
+Apr 30, 2024, 10:44:18 AM
+
+
+
+to GenePattern Help Forum
+Hi Abraam, 
+
+
+Sorry for the late reply. 
+
+
+What was your job ID for the run? 
+
+
+Edwin 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

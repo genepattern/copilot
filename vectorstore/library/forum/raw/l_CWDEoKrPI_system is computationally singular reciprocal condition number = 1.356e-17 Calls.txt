@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/l_CWDEoKrPI
+Title: system is computationally singular: reciprocal condition number = 1.356e-17 Calls
+----------------------------------------
+
+
+
+
+
+system is computationally singular: reciprocal condition number = 1.356e-17 Calls
+18 views
+Skip to first unread message
+
+Mrinal Das
+unread,
+Feb 16, 2018, 4:05:06 AM
+
+
+
+to GenePattern Help Forum
+Please refer to the Job ID_1634070. I was trying to use ComBat module using a gct file with 39416  and 442 obs. The sample file include 5 batches and 3 covariates. I am getting following error. 
+
+
+Error in solve.default(t(design) %*% design) : 
+  system is computationally singular: reciprocal condition number = 1.356e-17
+Calls: parseCmdLine ... gp.combat.R -> ComBat -> solve -> solve.default -> .Call
+Execution halted
+
+
+I beleive it is due to the tolerance level. Is there ant way I can increase the tolerance level to 1e-18.
+OR 
+Any other way it can be solved.
+
+
+best
+
+
+Mrinal
+Barbara Hill
+unread,
+Feb 16, 2018, 12:22:33 PM
+
+
+
+to GenePattern Help Forum
+Hello Mrinal,
+
+
+Most likely you need to preprocess your data.
+
+
+Please review the doc for considerations in preparing your data for use with this module and troubleshooting tips.
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/ComBat/3
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

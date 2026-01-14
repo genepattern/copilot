@@ -1,0 +1,1 @@
+GenePattern Team announces the availability of their source code on GitHub and recommends using the Google forum for help requests instead of the old email address, providing a direct communication channel for users seeking assistance with the bioinformatics software platform.

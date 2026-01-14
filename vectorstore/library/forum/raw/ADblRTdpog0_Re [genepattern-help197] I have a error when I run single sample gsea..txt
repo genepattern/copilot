@@ -1,0 +1,114 @@
+URL: https://groups.google.com./g/genepattern-help/c/ADblRTdpog0
+Title: Re: [genepattern-help:197] I have a error when I run single sample gsea.
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:197] I have a error when I run single sample gsea.
+26 views
+Skip to first unread message
+
+David Eby
+unread,
+Nov 7, 2017, 4:53:23 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+There is a known bug in ssGSEA when all the values in a given row contain the same value, and the error message is not very obvious for this (for non-experts in R, anyway).  The common case would be all zeroes across a row but I don't believe it's a limited to that.
+
+
+We just provide the ssGSEA method as a GP module, but we're not the original developers.  However, you might try filtering out those all-zero rows.  I'll send off a note to the original author to see if we can get more info on the validity of this.
+
+
+Regards,
+David
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+
+On Mon, Nov 6, 2017 at 8:04 PM, stella wrote:
+
+I run ssgsea by using ssGSEAProjection. 
+
+
+my gct file is 
+#1.2	
+20501	230
+NAME	Description	Sample1	Sample2	Sample3
+ABCA9	na	0	112.9383	3729.048
+ABCB10	na	0	0	110.2757
+ABCB1	na	0	7.4074	0
+AAMP	na	0	647.9506	78.8618
+AAGAB	na	0	0	0
+AAK1	na	0	110.2757	5634.106
+ 
+
+
+
+
+my file is tab-delimited and has unique 20501 gene and unique 230 sample.
+
+
+unusally, of all 215 sample, 180 samples's all gene expression value is "0"    
+
+
+in this case I have this  error message.
+
+
+Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed
+Calls: ssGSEA.projection.cmdline
+Execution halted
+
+
+and this stdout
+
+
+[1] "1 gene set: chr5q23  overlap= 53"
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5e60d6a8-530f-4996-ad4d-f0f0ed342dcf%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+David Eby
+unread,
+Nov 9, 2017, 8:31:42 PM
+
+
+
+to GenePattern Help Forum
+I managed to reach the original author.  He says it's a good idea to filter out any features that are zero or "flat" across all columns.
+
+
+Regards,
+David
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,71 @@
+URL: https://groups.google.com./g/genepattern-help/c/EN0_E_Fv73k
+Title: NTP running error!
+----------------------------------------
+
+
+
+
+
+NTP running error!
+52 views
+Skip to first unread message
+
+Hai Tran
+unread,
+Jan 19, 2023, 3:55:10 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying to an input feature with four classes and ran the test data set (Hosida liver) and got this error (job ID 487086): 
+Error in as.vector(features.extract[, 4]) : object 'features.extract' not found Calls: NTPez -> as.vector Execution halted 
+
+
+When I tried with two classes, it show no error. It would be a great help, if some body can help...
+Thank you very much!
+
+
+Best,
+Hai
+edh...@cloud.ucsd.edu
+unread,
+Jan 20, 2023, 10:43:26 AM
+
+
+
+to GenePattern Help Forum
+Hi Hai, 
+
+
+Please try again with the parameter "weight genes" set to "no". From the documentation, that parameter only works for two classes. 
+
+
+Edwin 
+
+
+
+Message has been deleted
+Hai Tran
+unread,
+Jan 23, 2023, 3:38:35 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+
+Thank you very much! it works now;)!
+
+
+Hai
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,70 @@
+URL: https://groups.google.com./g/genepattern-help/c/HAblGx12KSE
+Title: GSEA Reseg_NP_human and Refseq_human.chip
+----------------------------------------
+
+
+
+
+
+GSEA Reseg_NP_human and Refseq_human.chip
+7 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Nov 8, 2018, 8:58:24 AM
+
+
+
+to GenePattern Help Forum
+
+Dear Sir or Madame,
+
+ 
+
+I have been trying to use GSEA (v3.0) for may RNA-seq experiment with moderate success and have a couple of questions which I couldn’t answer myself despite viewing documentation and  extensive web search.
+
+ 
+
+On the FAQ page it says that it is recommended to run a preranked test for RNA-seq experiments, as to my understanding of the FAQs, it is not known whether GSEA algorithms are appropriate for RNA-seq. I was wondering whether this is still true as I also found the wiki page about the ENSEMBLE chip files which recommends use of these files for RNA-seq. When running a preranked GSEA the program doesn’t ask for a chip file which confuses me. So my question is whether it is still recommended to run a preranked test for RNA-seq experiment.
+
+ 
+
+My second question is concerning the RefSeq_human.chip and RefSeq_NP_human.chip files which I was very happy to find after having trouble with the ENSEMBLE chips. Nevertheless I couldn’t find any documentation on these chips and I am wondering whether they are designed to work for RNA-seq experiments and also what the difference between RefSeq_human and RefSeq_NP_human is.
+
+ 
+
+Thank you very much!
+
+Barbara Hill
+unread,
+Nov 8, 2018, 9:04:26 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+This seems to be about the GSEA desktop software, which is not maintained by the GenePattern team, as opposed to the GenePattern GSEA module, which we can provide only limited assistance with.
+
+
+The best place to find answers specific to the function of GSEA is the GSEA forum.
+
+
+For instance, this thread may be of use.
+
+
+Or this one which discusses considerations for the ENSEMBL chips
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

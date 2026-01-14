@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/wY1boXI1I18
+Title: Error in hierarchical clustering
+----------------------------------------
+
+
+
+
+
+Error in hierarchical clustering
+11 views
+Skip to first unread message
+
+Abraam Zakhary
+unread,
+Aug 31, 2023, 8:21:05 AM
+
+
+
+to GenePattern Help Forum
+JOB 529467
+
+
+
+Got the error message: "An error occurred while running the algorithm.".
+Not sure what to do.
+
+
+Thanks for your help
+Ted Liefeld
+unread,
+Aug 31, 2023, 10:07:40 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+it appears (via testing) the HierarchicalClustering module requires the ".gct" file extension to be present to work.  Your input files is a properly formatted gct file so simply adding the file extension seems to work.  Since this module is so old, I have not yet been able to find the source code, only the compile java jar file, so I can't definitively confirm this, but I have re-run your job successfully (with the file extension added) with as little as 2GB of RAM
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

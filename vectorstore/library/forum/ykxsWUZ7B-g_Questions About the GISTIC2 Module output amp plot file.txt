@@ -1,0 +1,1 @@
+GISTIC2 module output plot variation: User inquired about differences in chromosome region display between multiple amp_qplot.pdf files and sought guidance on controlling visualization parameters, with recommendation to consult the GISTIC forum for expert advice from module developers.

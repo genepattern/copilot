@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/H06MblPQAWo
+Title: Seurat.QC error
+----------------------------------------
+
+
+
+
+
+Seurat.QC error
+21 views
+Skip to first unread message
+
+seika...@gmail.com
+unread,
+Dec 27, 2022, 4:49:42 PM
+
+
+
+to GenePattern Help Forum
+I zipped three scRNAseq files I downloaded from GEO below and loaded them onto Seurat.QC
+- barcodes.tsv.gz
+-features.tsv.gz
+-natrix.mtx.gz
+
+
+And got below errors:
+
+
+Error in Read10X(data.dir = paste("/temp/10xdata/", list.files("/temp/10xdata/"), : Directory provided does not exist Calls: suppressMessages -> withCallingHandlers -> setupR -> Read10X Execution halted
+
+
+
+Could anyone advise what to change?
+
+
+Thank you!
+
+
+edh...@cloud.ucsd.edu
+unread,
+Jan 3, 2023, 10:42:26 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Can you try running the job again to see if you get the same error? It might be an intermittent issue with the backend server. 
+
+
+Edwin 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

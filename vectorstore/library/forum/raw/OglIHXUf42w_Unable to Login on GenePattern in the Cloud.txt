@@ -1,0 +1,296 @@
+URL: https://groups.google.com./g/genepattern-help/c/OglIHXUf42w
+Title: Unable to Login on GenePattern in the Cloud
+----------------------------------------
+
+
+
+
+
+Unable to Login on GenePattern in the Cloud
+44 views
+Skip to first unread message
+
+Carlo Donato
+unread,
+Aug 9, 2021, 9:24:12 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern team, I have been using your GenePattern cloud server for a long time.
+
+
+It is really awesome platform and I got many helps from it.
+
+
+
+However, I cannot access anymore the website( https://cloud.genepattern.org/gp/pages/login.jsf ) now.
+
+
+Please, could you help me?
+Thank you.
+
+
+-Donato
+Barbara Hill
+unread,
+Aug 10, 2021, 10:26:05 AM
+
+
+
+to GenePattern Help Forum
+Hello Donato, 
+
+
+Thank you! We love to hear that folks are enjoying using GenePattern!
+
+
+Are you having trouble logging in or are you unable to get to the site?
+
+
+
+
+Best
+-Barbara
+Carlo Donato
+unread,
+Aug 10, 2021, 12:33:30 PM
+
+
+
+to GenePattern Help Forum
+Hello Barbara!
+
+
+Thank you for your support!
+I am unable to get to the site, and also unable to create a new account (for example) and also to create a new password. I did try everything, but I cannot go beyond the login page!!
+Please, can you help me?
+
+
+Thank you!!
+
+
+
+Srijana Bastakoti
+unread,
+Aug 11, 2021, 5:26:30 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Barbara, 
+
+
+Like Donato, I also cannot access anymore the website( https://cloud.genepattern.org/gp/pages/login.jsf ) for many days. I try every possible way. 
+
+
+The gene pattern server has been really helpful and I would like to continue working but I am distracted by this error. 
+
+
+Kindly, please help me out!
+
+
+Regards,
+Srijana
+
+Carlo Donato
+unread,
+Aug 11, 2021, 7:41:41 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your report Srijana,
+
+
+Yes, like you I can't access Genepattern anymore for many days!
+Please, can someone explain me what is happening and how to correct this?
+I have tried many things, like cleaning my cache or changing the browser or the Computer, and it is still not giving me access to use Genepattern by the Amazon Cloud. 
+I can't log in.
+
+
+Thank you so much!
+Donato.
+
+
+
+Ted Liefeld
+unread,
+Aug 11, 2021, 10:41:14 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We have not been able to replicate this.  Can you give us screenshots that show the URL and exactly what you are seeing?  
+
+
+Thanks
+
+
+Ted
+
+
+
+Carlo Donato
+unread,
+Aug 11, 2021, 2:45:30 PM
+
+
+
+to GenePattern Help Forum
+Hello Ted, many thanks for your attention!
+
+
+The address is https://cloud.genepattern.org/gp/pages/login.jsf
+and the screenshot is attached. 
+I can't login and cannot pass to the next page, which I expect would be the genepattern platform.
+Any time that I write my username and password, the webpage continues the same.
+
+
+Many Thanks! 
+
+
+
+
+
+
+Srijana Bastakoti
+unread,
+Aug 12, 2021, 1:54:59 AM
+
+
+
+to GenePattern Help Forum
+Hei Ted, 
+yeah, I have the same login problem. Also, it's giving me some security threats if I try to login from  https://dev.bits.vib.be:8686/   - screenshot attached below
+Hope we can resolve this issue very soon.
+Thanks
+Srijana 
+
+
+genepattern_error.jpg
+Ted Liefeld
+unread,
+Aug 12, 2021, 6:41:15 AM
+
+
+
+to genepatt...@googlegroups.com
+Srijava & Carlo,
+
+
+for the VIB server I suggest you contact VIB directly.  This looks like they have either an expired or a self-signed certificate on the server but given the URL this looks like their development server and not their production server.  The URL for the production server is not known to me but they have a support page for it at 
+
+
+https://www.bits.vib.be/software-support/115-bits/software-support/free/353-genepattern
+
+
+It looks like bi...@vib.be is the email you can use to contact them.
+
+
+I assume you are having the same login issue on our cloud server as reported by Carlo (above) as well though.
+
+
+I still can't seem to make this happen on my end.  Can you share your cloud username or the email you used to register on cloud?  I don't see any accounts registered using the email associated with this posting.
+
+
+Carlo,  I assume the problems you are having are using your 'mailbronx' user ID?  Do you mind if I take over that account to see if I can replicate the problem from my end?  This would involve me changing the account email to my own and then doing a password reset.  When I am done I would change the email back but you would need to do another password reset to get it back to something you remember.
+
+
+Ted
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/OglIHXUf42w/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e388cc3d-6237-4706-83a2-71e595902addn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Carlo Donato
+unread,
+Aug 12, 2021, 9:35:25 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+many thanks for your attention!
+I will be writing to VIB and ask if they could help me, thanks for sharing their email.
+Please, if you would like, the username I am using is carlodonato, linked to my email on donato...@yahoo.com.br
+Would be great if you could help me access GenePattern again!
+
+
+Thank you so much!
+
+
+
+Ted Liefeld
+unread,
+Aug 12, 2021, 10:23:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Carlo
+
+
+your user account worked fine for me on cloud.genepattern.org (after the password reset).  I think I will need to screen share with you to get this any further.  I will send you an email so that we can connect outside the public forum and maybe there is a time tomorrow where we could work together for 30 minutes or so.
+
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7f344372-9aa5-436a-a1a2-b21560a5d01dn%40googlegroups.com.
+
+
+Carlo Donato
+unread,
+Aug 12, 2021, 10:29:44 AM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+
+I really appreciate the chance of speaking with you, I just can't tomorrow and Monday but anytime after that would be great!
+You can send me the link or contact to my email above 
+
+
+Thank you so much!
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

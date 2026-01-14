@@ -1,0 +1,1 @@
+GenePattern user requested a log2(+1) transformation option in the PreprocessDataset module to handle zero values in gene expression data, enabling successful NMF clustering by avoiding -Infinity values through adding a pseudocount of 1 before log2 transformation, with the development team acknowledging the feature request and planning to evaluate its implementation.

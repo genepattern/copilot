@@ -1,0 +1,1 @@
+A user encountered a memory allocation error when attempting to run the DESEQ2 module on GenePattern using a RNA-seq counts file from the CCLE dataset, which was resolved by recommending increasing the memory allocation for the job to accommodate the large data file size and computational requirements of the analysis.

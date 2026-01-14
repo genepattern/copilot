@@ -1,0 +1,1 @@
+GenePattern Notebooks update announcement introducing new features including improved notebook previews, table of contents support, commenting capabilities, and enhanced UI Builder cell customization for computational biology researchers and data scientists working with bioinformatics analysis platforms.

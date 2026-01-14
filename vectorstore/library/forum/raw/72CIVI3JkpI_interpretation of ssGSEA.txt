@@ -1,0 +1,150 @@
+URL: https://groups.google.com./g/genepattern-help/c/72CIVI3JkpI
+Title: interpretation of ssGSEA
+----------------------------------------
+
+
+
+
+
+interpretation of ssGSEA
+45 views
+Skip to first unread message
+
+Mohamed Kamal
+unread,
+Mar 4, 2021, 1:42:34 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I did ssGSEA analyses for a set of samples for the hallmark EMT gene signature aiming to stratify them into either epithelial or mesenchymal.
+
+
+Would you please have a look at my results (job ID: 324065). Are samples with high score considered Mesenchymal and those with low are Epithelial? Is there a cut off I can use for this stratification?
+
+
+Another question: Does ssGSEA take into consideration the direction of expression (up or down regulated)? I see that the .GMT file contains only the gene symboles of genes in the signature with information whether they are Epithelial or mesenchymal markers .  
+
+
+Looking forward to hearing back from you.
+Thank you so much for the help.
+
+
+Mohamed
+
+
+Anthony Castanza
+unread,
+Mar 4, 2021, 4:03:11 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+ssGSEA scores can be positive or negative, in the case of your data here, it looks like there is at least moderate enrichment of the EMT signature in all of your samples (although one of them, the third one I think, looks quite highly enriched). I’ve attached a screenshot of the a quick plotting of the enrichment scores of your samples. You can see that, with some exceptions, they’re all pretty similar.
+
+If you want to determine unbiased cutoffs for calling Mesenchymal, or Epithelial types from the enrichment scores, you’d need biological controls to compare your sample’s enrichment scores against.
+
+ 
+
+The GMT contains only the gene symbols, not information on where the genes “should be” in any given expression dataset. ssGSEA uses the expression values from your input dataset to determine if the genes are highly expressed or lowly expressed in your samples and determines a score on aggregate if those genes appear towards the top or the bottom of the sample’s gene expression.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/37052b10-9cb3-453e-9034-9d16fea53cadn%40googlegroups.com.
+
+
+Screen Shot 2021-03-04 at 4.01.34 PM.png
+Mohamed Kamal
+unread,
+Mar 4, 2021, 5:12:39 PM
+
+
+
+to GenePattern Help Forum
+Thanks Anthony for your explanation.
+This means that the score is influenced by the expression of other genes in the dataset, right?  To un mask the EMT status of each sample, do you think I should restrict the ssGSEA analyses to the genes in the gene signature? In other words, I generate a .gct dataset with RPKM values of only the 200 genes in the EMT signature and use as input to the gene pattern?
+
+
+
+For the biological controls, could I use publicly available RNA seq data for an Epithelial and Mesenchymal cell lines and include them in my .gct dataset then re-run the ssGSEA? I did not include such control samples in my RNA seq run.
+
+
+  
+Thanks.
+
+
+Mohamed
+
+Anthony Castanza
+unread,
+Mar 4, 2021, 5:28:12 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+No, ssGSEA uses the expression values of the genes in the gene set as well as the relative position of these genes in the ranked list to calculate the enrichment score. In order to determine their relative positions in the expression list ssGSEA needs the information from all genes expressed in the sample. There isn’t anything to unmask, looking at the relative position of the genes is an essential component of the enrichment score calculation. ssGSEA doesn’t use the actual expression values from the genes that aren’t in the gene set, it just uses their presence and position to determine where in the list the genes of interest are.
+
+ 
+
+For controls, you could try to use publicly available data but you’d want to make sure that at minimum, they’ve been normalized the same way, and, ideally quantified using the same pipeline. It’s hard to say how well it’ll work without giving it a try.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/de95e10b-2a30-48c0-baf3-cd41f4edfefbn%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Mar 4, 2021, 5:37:00 PM
+
+
+
+to GenePattern Help Forum
+Great, thank you so much for all the help.
+
+
+Have a wonderful evening.
+
+
+Mohamed
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

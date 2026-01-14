@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/_MBVeVkO15A
+Title: PCA viewer problems in IE
+----------------------------------------
+
+
+
+
+
+PCA viewer problems in IE
+41 views
+Skip to first unread message
+
+ibee...@gmail.com
+unread,
+Oct 17, 2017, 11:35:36 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+I am trying to use a few of the visualizers in GenePattern.  I am currently using a PC and IE.  I have added genepattern to my Exception Site list in Java.  However, when I attempt to open my PCAviewer, and allow for exemption, I receive the error: An error occurred while launching the visualizer.  Any advice would be appreciated.
+
+Job ID if run on a publicly available server.
+1561161
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Oct 30, 2017, 1:00:15 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Please see our blog post regarding Java Visualizers and our Visualizer Launcher.
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/blog/2017/04/11/java-applet-visualizer-launcher-now-available
+
+
+
+Please also note that PCAViewer requires Java 3D.
+
+
+Best
+
+
+-Barbara
+Joshua Chai
+unread,
+Nov 1, 2017, 3:39:42 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I am in a similar situation. I downloaded the Visualizer Launcher and followed the instruction to enter my GenePattern ID and password followed by the Job ID. However, there was only a brief 'flash' of PCAViewer on the status bar and then the app quits.
+
+
+I realised that you mentioned in your post that PCA Viewer require Java 3D. I am on Mac OS X 10.10.5 and how do I install Java 3D as required?
+
+
+Best wishes,
+Josh
+
+
+Reply all
+
+Reply to author
+
+Forward

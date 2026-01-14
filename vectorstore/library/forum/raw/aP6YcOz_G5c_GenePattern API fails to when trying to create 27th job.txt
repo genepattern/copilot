@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/aP6YcOz_G5c
+Title: GenePattern API fails to when trying to create 27th job
+----------------------------------------
+
+
+
+
+
+GenePattern API fails to when trying to create 27th job
+13 views
+Skip to first unread message
+
+David Lahr
+unread,
+Mar 16, 2021, 7:09:35 AM
+
+
+
+to GenePattern Help Forum
+Hi all
+
+
+First, thank you again for providing GenePattern and the python API - very much appreciated!  
+
+
+Today I'm running into a problem where I'm using the python API to start several GSEA jobs, and it fails when it attempts to create the 27th job with an http 403 forbidden error message.  Note that it appears to be a limit of having 26 active jobs (if I start a separate session, I cannot create any more jobs until the current group finishes).  Is this expected behavior or is something else going on?  
+
+
+Thank you in advance for any advice / help.
+
+
+Cheers,
+Dave
+Ted Liefeld
+unread,
+Mar 16, 2021, 7:39:41 AM
+
+
+
+to GenePattern Help Forum
+Dave,
+
+
+This is intended behavior.  The nominal limit is 25 concurrent jobs but due to multi-threading the exact cut-off is usually 1-2 higher if you are sending jobs in with a script.  This was implemented a while back when some user scripts were sending 300+ jobs all at once.  This had the effect of blocking out all other GenePattern users (we do have a compute limit) for several hours and occasionally crashed the server due to file transfer loads (we have a fix for this in beta).
+
+
+If you modify your scripts to keep only ~20 running at a time you should still be able to get all your jobs through, if slightly more slowly.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Dave Lahr
+unread,
+Mar 16, 2021, 10:16:45 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted
+
+
+Thank you for the quick response - that is extremely helpful, completely understand.  Will do on throttling the job submission on my end.
+
+
+Cheers,
+Dave
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/aP6YcOz_G5c/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2082b00a-f00e-4980-b34f-98ec5c782a0an%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

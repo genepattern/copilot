@@ -1,0 +1,1 @@
+A researcher requested increased GenePattern storage from 30GB to 150GB to accommodate whole genome sequencing files (~15GB each), with storage needed for one year; the administrator confirmed the request and updated the storage allocation after verifying the user's account details on the cloud server.

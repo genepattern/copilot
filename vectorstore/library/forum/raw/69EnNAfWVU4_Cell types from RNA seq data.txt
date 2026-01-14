@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/69EnNAfWVU4
+Title: Cell types from RNA seq data
+----------------------------------------
+
+
+
+
+
+Cell types from RNA seq data
+14 views
+Skip to first unread message
+
+Mohamed Kamal
+unread,
+Apr 22, 2021, 12:03:41 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have RNA seq data for a total of 20 single cells (4 of them are immune cells and 16 are cancer cells). Cells were identified based on immunofluorescence staining and RNA was extracted form each cell using SMARTer v4 ultra low input RNA kit and libraries were prepared using Nextera XT kit from illumina. I have around 0.5 millions to 2 millions uniquely mapped reads to the human genome for each cell.  
+
+
+I am looking for a way to confirm cell type for each cell. I currently have both the row read counts and the RPKM counts. Is there a way to test this?
+
+
+Thank you.
+
+
+Mohamed
+Barbara Hill
+unread,
+Apr 23, 2021, 8:12:38 AM
+
+
+
+to GenePattern Help Forum
+Hello Mohamed, 
+
+
+Unfortunately, given the number of samples you have we don't have any GenePattern modules or notebooks to recommend. 
+
+
+From one of my colleagues:
+" the go-to approach for classifying cells would be to run Seurat clustering + FindMarkers or add your own manual grouping of the cells and then do FindMarkers. Analyzing the markers can then be used to infer cell types. That said though, 20 cells at scRNA-seq levels of sparsity is an extraordinarily small dataset and I don't know if I would trust the statistics that Seurat (or any method really) comes up with"
+
+
+Another colleague agreed that the number of cells meant that Seurat would not be appropriate for your aim and perhaps not even what you are looking for. He though perhaps you were looking to automatically classify cell types and suggested Garnett, from the Trapnell lab, though we do not currently have this in GenePattern. You would need to read the documentation and potentially contact the authors to determine if this is indeed appropriate for your data.
+
+
+I'm sorry we couldn't offer more assistance.
+
+
+Best
+-Barbara
+Mohamed Kamal
+unread,
+Apr 25, 2021, 1:51:46 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+Thank you so much for the recommendations.
+
+
+Best regards.
+
+
+Mohamed
+
+
+Get Outlook for iOS
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Barbara Hill <bh...@broadinstitute.org>
+Sent: Friday, April 23, 2021 8:12:38 AM
+To: GenePattern Help Forum <genepatt...@googlegroups.com>
+Subject: [genepattern-help:1913] Re: Cell types from RNA seq data
+ 
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/69EnNAfWVU4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f49e69c7-2b1a-44c6-9fb5-0a75cbdf8011n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/6fZpNU01PXI
+Title: scRNA analysis
+----------------------------------------
+
+
+
+
+
+scRNA analysis
+19 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Nov 18, 2022, 11:42:14 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+
+I have been working with scRNA seq analysis. I have the h5 files of scRNA seq, is it possible to create a volcano plot using the multiplot studio module with this data?
+
+
+I know that gct and cls files are the input that multiplot studio accepts. In that case, is there a way to produce those with h5 files?
+
+
+Thank you,
+Sruthi
+tmt...@cloud.ucsd.edu
+unread,
+Nov 21, 2022, 11:43:38 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi,
+
+
+We will add this as a feature request, but unfortunately Mutiplot Studio does not accept hdf5 files.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

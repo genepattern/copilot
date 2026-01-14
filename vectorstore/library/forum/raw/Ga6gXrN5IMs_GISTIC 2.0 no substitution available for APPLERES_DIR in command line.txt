@@ -1,0 +1,150 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ga6gXrN5IMs
+Title: GISTIC 2.0 no substitution available for <APPLERES_DIR> in command line
+----------------------------------------
+
+
+
+
+
+GISTIC 2.0 no substitution available for <APPLERES_DIR> in command line
+305 views
+Skip to first unread message
+
+kenf...@bccrc.ca
+unread,
+Feb 1, 2018, 1:53:36 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am working on the GenePattern server, running GISTIC 2.0 (Windows computer).
+
+
+I previously ran TCGA segmentation data from lung adenocarcinoma no problem. They were hg19 segmentation files processed for "nocnv". I used the URL marker file:
+
+
+ftp://ftp.broadinstitute.org/pub/GISTIC2.0/hg19_support/genome.info.6.0_hg19.na31_minus_frequent_nan_probes_sorted_2.1.txt
+
+
+
+I downloaded the same type of data from the TCGA legacy archive (hg19_nocnv), use the same URL marker file, and run in GISTIC 2.0 (version 5 and version 6)
+
+
+This is the immediate error:
+
+
+GISTIC_2.0: no substitution available for <APPLERES_DIR> in command line <libdir>gistic_script <libdir> <MATLAB_LIBRARY> <APPLERES_DIR> -b . -seg <seg.file> -mk <markers.file> -alf <array.list.file> -cnv <cnv.file> -refgene <libdir><refgene.file> -ta <amplifications.threshold> -td <deletions.threshold> -js <join.segment.size> -qvt <qv.thresh> -rx <remove.X> -cap Inf -conf <confidence.level> -genegistic <gene.gistic> -broad <run.broad.analysis> -brlen <broad.length.cutoff> -maxseg <max.sample.segs> -armpeel <arm.peel> -arb 1 -peak_type robust -fname <output.prefix> -genepattern 1 -twosides 0 -saveseg 0 -savedata 0 -smalldisk 0 -smallmem 1 -savegene 1 -v 0.
+
+
+Job ID: 1623986. GISTIC_2.0
+
+
+By eye, the format of the input files for LUAD and LUSC look identical. I'm not sure what the error means.
+
+
+Help much appreciated!
+Peter Carr
+unread,
+Feb 1, 2018, 2:47:12 PM
+
+
+
+to genepatt...@googlegroups.com
+The GISTIC GenePattern module is released as a linux only binary. It will not run on a Windows computer. For best results I suggest running it on one of our publicly available servers.
+
+For more information on running GISTIC as a standalone application:
+    http://portals.broadinstitute.org/cgi-bin/cancer/publications/pub_paper.cgi?mode=view&paper_id=216&p=t
+    ftp://ftp.broadinstitute.org/pub/GISTIC2.0/INSTALL.txt
+
+The installer appears to be linux only.
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/886fea34-f94f-43f9-ae00-9b6c7beb040b%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+kenf...@bccrc.ca
+unread,
+Feb 1, 2018, 3:19:51 PM
+
+
+
+to GenePattern Help Forum
+Thanks Peter, but I'm running it on the GenePattern server.
+
+Peter Carr
+unread,
+Feb 1, 2018, 7:26:59 PM
+
+
+
+to genepatt...@googlegroups.com
+sorry, i misread the message. I will look into this and get back to you.
+- Peter
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1d554fb1-dc25-4d3f-9cef-5cf6dba603c5%40googlegroups.com.
+
+Peter Carr
+unread,
+Feb 2, 2018, 3:34:31 PM
+
+
+
+to genepatt...@googlegroups.com
+It looks like you are using an older version of GISTIC_2.0. For best results use the latest installed version, presently v6.10 which corresponds to GISTIC version 2.0.22.
+
+Is there a reason you need the older version of the module?
+
+Regards,
+Peter
+
+Katey Enfield
+unread,
+Feb 5, 2018, 10:42:31 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Thanks Peter, the new version worked.
+
+ 
+
+Katey
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Ga6gXrN5IMs/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8b7138d9-f536-0d8a-0f20-4216a6aa69c5%40broadinstitute.org.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,143 @@
+URL: https://groups.google.com./g/genepattern-help/c/5o4YEtnNffQ
+Title: Cufflinks is not recognizing genome reference file
+----------------------------------------
+
+
+
+
+
+Cufflinks is not recognizing genome reference file
+19 views
+Skip to first unread message
+
+Matthew Gage
+unread,
+Oct 5, 2017, 9:50:15 AM
+
+
+
+to GenePattern Help Forum
+I am trying to run Cufflinks on the Broad GenePattern server and the job is ending and the stderr.txt file has the following statement "ERROR: The transcripts.gtf file is empty. Please check that your input files and parameter settings are valid."
+
+
+The most recent job IDs for this are 1556734 and 1556735.  I ran Cufflinks a couple weeks ago without a problem so I am not sure what has changed.
+
+
+Thanks,
+
+
+Matt
+
+
+
+
+Barbara Hill
+unread,
+Oct 6, 2017, 2:15:00 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Matt,
+
+
+I'm also seeing that you ran a bunch of jobs yesterday that didn't error out, but they seem to have all be deleted. The only ones I can still see are the ones with errors.
+
+
+Can you set up and run one that did work?
+
+
+Many thanks
+
+
+-Barbara
+Matthew Gage
+unread,
+Oct 10, 2017, 8:20:06 AM
+
+
+
+to GenePattern Help Forum
+I just submitted two jobs that worked previously.  I had had forgotten to do a sort step, which is why I deleted the other jobs.  It was between the initial runs and the .bam files that had been sorted that I started to have an issue.
+
+
+Matt
+
+Peter Carr
+unread,
+Oct 10, 2017, 11:18:17 AM
+
+
+
+to genepatt...@googlegroups.com
+There may have been a configuration error on the server. I moved the patches directory back to the correct location. Please try again and let me know if your jobs are working now.
+
+Thanks,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8b797dfa-a150-4ee1-8279-53d845936609%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+matthe...@uml.edu
+unread,
+Oct 12, 2017, 9:24:37 AM
+
+
+
+to GenePattern Help Forum
+I submitted a number of jobs a couple days ago and they have just sat there for the past two days.  It says that there is a long wait time (up to days) so I can't tell if the changes you made to the patches corrected the problem.  Should I delete the pending jobs and just submit one?
+
+
+Matt
+
+Peter Carr
+unread,
+Oct 12, 2017, 11:32:12 AM
+
+
+
+to genepatt...@googlegroups.com
+I put in a help request with our IT team to investigate. Perhaps coincidentally (perhaps not), they made changes to the configuration of the compute cluster. I will keep you posted.
+
+Thanks,
+Peter
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e2bee103-7f9f-4dfd-a9e2-f3b9065011ce%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Peter Carr
+unread,
+Oct 16, 2017, 9:27:17 AM
+
+
+
+to genepatt...@googlegroups.com
+I made an adjustment to your jobs. They should be running now.
+
+In case your interested (and for my records), the compute cluster config changed.
+  Previously, we requested 16 Gb of RAM x 2 processors for a total of 32 Gb; our hosts have 31 Gb of RAM.
+  We now request 8 Gb of RAM x 2 processors.
+
+Sorry for the delay,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

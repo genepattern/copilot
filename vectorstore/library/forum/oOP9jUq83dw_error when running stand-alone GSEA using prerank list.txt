@@ -1,0 +1,1 @@
+User encountered a Java heap space memory error when attempting to run GSEA (Gene Set Enrichment Analysis) using a pre-ranked gene list and the C2.cp.kegg.v6.2.symbols.gmt gene set collection, likely due to insufficient memory allocation for processing large genomic datasets, and was advised to seek further assistance in the GSEA-specific help forum.

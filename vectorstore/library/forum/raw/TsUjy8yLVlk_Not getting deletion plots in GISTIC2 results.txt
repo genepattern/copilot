@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/TsUjy8yLVlk
+Title: Not getting deletion plots in GISTIC2 results
+----------------------------------------
+
+
+
+
+
+Not getting deletion plots in GISTIC2 results
+25 views
+Skip to first unread message
+
+Sreeja S
+unread,
+Mar 7, 2024, 8:10:42 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+    I ran GISTIC 2 with my data. Results generated successfully but all output files are not available. I got amplification plots but deletion plot is missing in my result. S please let me know how to get the deletion plot in output.
+
+
+     Thank you so much
+
+Screen Shot 2024-03-08 at 1.08.18 AM.png
+Ted Liefeld
+unread,
+Mar 7, 2024, 8:45:15 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+there seems to be a problem with the compute node that this job ran on.  I will start working on a fix and let you know when you can try again
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Mar 7, 2024, 9:02:31 AM
+
+
+
+to GenePattern Help Forum
+Please rerun the job and you should find the plots will be generated now
+
+
+Ted
+
+
+p.s. For the curious, all our modules run containerized (either singularity or docker) and on several different compute environments (AWS and academic supercomputer centers).  The supercomputer center where GISTIC jobs run (who shall remain nameless) just changed their location for temporary files ($TMPDIR) without notifying users.  Non-containerized apps continued to work fine, but containerized applications like our modules needed to change the volume bindings for any module that used temporary files, such as GISTIC does when generating plots.  If temp files were not created, things continued to run normally
+
+
+
+Andrew Cherniack
+unread,
+Mar 7, 2024, 9:50:10 AM
+
+
+
+to GenePattern Help Forum
+
+I think this might have been the problem with everybody else GISTIC issues.
+
+Ted Liefeld
+unread,
+Mar 7, 2024, 10:55:45 AM
+
+
+
+to GenePattern Help Forum
+I think you are right, sorry if you spent much time on this
+
+
+Reply all
+
+Reply to author
+
+Forward

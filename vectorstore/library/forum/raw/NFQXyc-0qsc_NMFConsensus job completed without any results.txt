@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/NFQXyc-0qsc
+Title: NMFConsensus job completed without any results
+----------------------------------------
+
+
+
+
+
+NMFConsensus job completed without any results
+15 views
+Clustering
+Skip to first unread message
+
+Shion Zhang
+unread,
+Jun 9, 2019, 2:44:27 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+
+hi, I'm a new learner of this platform. And I try to use the NMFconsus module. After uploading the gct file and confirming the settings routinely, I wait for the result for a day, and only to find that job seems to be completed correctly, but there is no result at all ! 
+I wonder if it's my incorrect settings or files ,otherwise the bug in the sever giving rise to this problem,  and how can I handle with it?
+
+
+
+
+
+
+Job ID 130959. NMFConsensus
+
+
+
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+
+
+
+Thanks in advance,
+
+Shion Zhang
+Barbara Hill
+unread,
+Jun 10, 2019, 2:39:43 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+That particular module has a default runtime limit of 1 day. Your job hit that limit and was ended.
+
+
+I have configured your user account so that NMFConsensus has 2 days to run before it will terminate.
+
+
+Please let us know if you have any further trouble.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/tDViSCLFV3A
+Title: Gistic arm-level vs focal-level
+----------------------------------------
+
+
+
+
+
+Gistic arm-level vs focal-level
+33 views
+Skip to first unread message
+
+Matin Salehi
+unread,
+Jul 4, 2023, 8:26:45 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone, hope you are doing well.
+I have. a question regarding GISTIC focal and arm-level. I would like to know how I can plot focal and arm level separately? 
+Because when I change -brlen cutoff, it doesn't seem to be so much separated. I put the number 0.75.
+I would be grateful if you help me regrading this. 
+
+
+Regards,
+
+
+Matin
+tmt...@cloud.ucsd.edu
+unread,
+Jul 10, 2023, 10:39:05 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Can you provide a job number and I will take a look? However, it might be best to ask this question on the GISTIC Forum: https://groups.google.com/a/broadinstitute.org/g/gistic-forum/c/unYY5vDfdMc/m/SUEmSPapCAAJ
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A user encountered an issue converting an FCS flow cytometry file to CSV using the GenePattern FcsToCsv module, resulting in an empty output file and a "Null Exception" error, with troubleshooting attempts including renaming the file to remove spaces proving unsuccessful, ultimately leading to a recommendation to contact the module's original authors for further assistance.

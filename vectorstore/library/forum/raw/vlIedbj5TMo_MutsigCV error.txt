@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/vlIedbj5TMo
+Title: MutsigCV error
+----------------------------------------
+
+
+
+
+
+MutsigCV error
+21 views
+Skip to first unread message
+
+he wang
+unread,
+Jul 25, 2019, 10:23:45 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+    Sorry for trouble you, I want to run the MutsigCV with my data on the publicly available server, I don't know why there are some error. I will be very grateful for your help. Thank you.
+Job ID：146752
+
+stderr.txt:
+
+Error using gp_MutSigCV (line 168)
+usage: MutSig_preprocess(mutation_file,coverage_file,covariate_file,output_filestem)
+
+
+
+stdout.txt:
+
+Warning: application is running on a locale different from the original platform locale.
+Warning: No display specified.  You will not be able to display graphics on the screen.
+
+
+
+Thank you. Hoping for your help.
+
+
+Barbara Hill
+unread,
+Aug 5, 2019, 9:45:59 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Apologies for the late reply.
+
+
+I've forwarded this to one of the module authors to see if they can help
+
+
+Best
+-Barbara
+Michelle Wedemeyer
+unread,
+Aug 5, 2019, 9:56:54 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I found a workaround and was able to get everything processed.
+
+
+Michelle
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/647c393a-1e15-4d4b-bae3-064d1abaa200%40googlegroups.com.
+
+he wang
+unread,
+Aug 5, 2019, 9:20:51 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks a lot. You are helpful.
+
+
+Michelle Wedemeyer <michelle.ari...@gmail.com> 于2019年8月6日周二 上午12:56写道：
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CACx78f2BP9F8DTwpPkQ0UJYJCK2z%2BJG5p9HjCJcyDg1ethg0%3Dg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

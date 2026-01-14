@@ -1,0 +1,228 @@
+URL: https://groups.google.com./g/genepattern-help/c/XXdSRD8KUxs
+Title: Error regarding ssGSEA
+----------------------------------------
+
+
+
+
+
+Error regarding ssGSEA
+58 views
+Skip to first unread message
+
+Tonmoy Das
+unread,
+Mar 15, 2021, 9:46:36 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Help Forum team,
+
+
+I have been trying to submit a job to the ssGSEA module for. But each time I upload my respected files (gct, gmx) and hit the 'run' button I am getting the following message: 
+'There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.'
+
+
+
+I have also tried to upload the gct and gmx files first. But this time I am getting the message like the image attached. Can you please let me know what might be the problem here and how can I resolve this issue?
+
+
+Best
+Tonmoy
+
+
+
+
+ 
+Barbara Hill
+unread,
+Mar 16, 2021, 9:02:16 AM
+
+
+
+to GenePattern Help Forum
+Hello Tonmoy,
+
+
+I have a few questions which might help us to debug this issue.
+
+
+1) What is your username? (do not post your password, just your username will suffice)
+2) How large is the gct file you are uploading?
+3) Are you uploading your files from your local computer?
+
+
+Many thanks
+-Barbara
+
+Tonmoy Das
+unread,
+Mar 16, 2021, 9:20:11 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+My username is donmoy0. The gct file that I uploaded was around 6.5 mb. And yes, I have uploaded the file from my local pc. For your information, I also tried the gene pattern notebook with the given example and it still didn't work. Hope this helps.
+
+
+
+Best
+Tonmoy
+
+Barbara Hill
+unread,
+Mar 16, 2021, 9:47:29 AM
+
+
+
+to GenePattern Help Forum
+Hi Tonmoy,
+
+
+There is definitely something weird with how your uploads are being recorded. I'm digging into this deeper with another colleague, but have also tried a quick fix.
+
+
+Can you try 2 more times - once using files from your Files tab and once from the job submit form?
+
+
+I'll be in touch again soon.
+
+
+Best
+-Barbara
+Tonmoy Das
+unread,
+Mar 16, 2021, 10:02:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I have already tried those options but the error message keeps pooping up each time. Although I was successful in running the R code for ssGSEA, I was hoping to cross check those results using GenePattern. 
+
+
+Many thanks.
+
+
+Tonmoy
+
+
+
+Barbara Hill
+unread,
+Mar 16, 2021, 10:11:01 AM
+
+
+
+to GenePattern Help Forum
+Hi Tonmoy, 
+
+
+Yes, I know you tried them before. I just applied a quick attempt at a fix and wanted to see if that had resolved things. Unfortunately, this will require a little bit of back and forth as we debug this issue.
+
+
+All the best
+-Barbara
+Barbara Hill
+unread,
+Mar 16, 2021, 11:11:43 AM
+
+
+
+to GenePattern Help Forum
+Hello again, 
+
+
+We ended up having to clear your uploads directory. If you still see files in your Files tab - please delete them first, as they do not actually exist on the server anymore, despite their being represented in the interface.
+
+
+Once that is done, if it was necessary, please try running your job again, and let us know how it goes.
+
+
+All the best
+-Barbara
+
+
+
+
+Tonmoy Das
+unread,
+Mar 16, 2021, 11:27:06 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+
+
+The error problem still remains on both GenePattern and GenePattern Notebook.
+
+
+Best
+Tonmoy
+
+
+
+Barbara Hill
+unread,
+Mar 16, 2021, 12:06:07 PM
+
+
+
+to GenePattern Help Forum
+That really unfortunate.
+
+I think at this point the best thing is to create a new user.  Hopefully, that's not too big an inconvenience.
+
+
+Let us know if you continue to have any issues.
+
+
+Best
+-Barbara
+
+Tonmoy Das
+unread,
+Mar 16, 2021, 12:24:39 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Creating a new user actually worked! Don't know what's wrong with my previous account. Anyways thank you so much for the support.
+
+
+Best
+Tonmoy
+
+
+
+Barbara Hill
+unread,
+Mar 16, 2021, 12:26:22 PM
+
+
+
+to GenePattern Help Forum
+Oh good! I'm so glad.
+
+
+Definitely let us know if anything else comes up.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

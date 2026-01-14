@@ -1,0 +1,1 @@
+The user sought help merging multiple HTSeq gene count files into a single consolidated file using GenePattern, but experienced technical difficulties during the process, potentially requiring guidance on proper file merging techniques for RNA-seq count data.

@@ -1,0 +1,1 @@
+Summary for vector store ingestion: GenePattern user experiencing account registration error due to home directory creation issue, which was resolved by administrators after a temporary storage space shortage; user was advised to retry account creation after the system fix.

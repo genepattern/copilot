@@ -1,0 +1,112 @@
+URL: https://groups.google.com./g/genepattern-help/c/dHjxB6c7-Xc
+Title: Report error on constellation map
+----------------------------------------
+
+
+
+
+
+Report error on constellation map
+26 views
+Skip to first unread message
+
+winard...@gmail.com
+unread,
+Apr 7, 2021, 9:08:25 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am currently using constellation map in gene patern  using  ssGSEA gct file and cls file as an input. however I got an error with a message (  Error in MSIG.ReadPhenFile.2(file = cls.filename) : Failed to parse input cls. file .cls. Expected 104 samples. Instead saw 1 samples. Execution halted). I believe my cls file was correct as I used it for my GSEA analysis without any problem. thank you.
+
+
+the job ID is 336159
+Barbara Hill
+unread,
+Apr 8, 2021, 10:21:13 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Unfortunately, this is because GSEA uses a tab-delimited CLS file, while ConstellationMap expects a space-delimited CLS file.
+
+
+They are now maintained by the same developers, so I will see if this is something that can be amended in the future.
+
+
+All the best
+-Barbara
+
+winard...@gmail.com
+unread,
+Apr 8, 2021, 10:37:21 PM
+
+
+
+to GenePattern Help Forum
+I see, thanks for your explanation. 
+
+
+best regards
+
+
+wira
+
+Barbara Hill
+unread,
+Apr 9, 2021, 3:53:39 PM
+
+
+
+to GenePattern Help Forum
+Hello again,
+
+
+The authors were able to update the code and now ConstellationMap will accept the same CLS files used in GSEA. (IE it accepts tab or space-delimited CLS files)
+
+
+Please let us know if we can help with anything else.
+
+
+All the best
+-Barbara
+
+
+Wira Winardi
+unread,
+Apr 11, 2021, 6:23:04 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello.
+
+
+Thank you very much for the update. I really appreciate it.
+
+
+Best
+
+
+Wira
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/34c065dc-5f5c-4177-9450-6450070a13fbn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A user encountered an error when trying to run Parallel CBS for GISTIC data segmentation on the GenePattern public server, with the module reporting as not installed. The support team acknowledged the issue was related to compatibility between ParallelCBS and CBS version 3, and indicated they would work on updating the pipeline to resolve the compatibility problem.

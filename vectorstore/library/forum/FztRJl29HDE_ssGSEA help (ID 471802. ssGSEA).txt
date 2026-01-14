@@ -1,0 +1,1 @@
+A user encountered errors while running ssGSEA on an NGS dataset with a custom gene list, initially experiencing file opening issues and then a runtime error, which were resolved by removing quotation marks from the input file and correcting the GMT file format according to Broad Institute's guidelines, ultimately successfully executing the gene set enrichment analysis.

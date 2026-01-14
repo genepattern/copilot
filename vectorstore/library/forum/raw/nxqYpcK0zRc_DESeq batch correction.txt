@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/nxqYpcK0zRc
+Title: DESeq batch correction
+----------------------------------------
+
+
+
+
+
+DESeq batch correction
+6 views
+Skip to first unread message
+
+xbri...@gmail.com
+unread,
+Jul 31, 2018, 8:52:16 AM
+
+
+
+to GenePattern Help Forum
+Hi I was wondering how would I model a batch effect in the DESeq module?
+
+
+Thank you
+Barbara Hill
+unread,
+Aug 3, 2018, 2:05:36 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I suggest checking out these threads in the Bioconductor forum:
+
+
+https://support.bioconductor.org/p/76099/
+
+https://support.bioconductor.org/p/103100/
+
+
+
+and many others:
+https://www.google.com/search?q=model+batch+effect+in+DESeq&oq=model+batch+effect+in+DESeq&aqs=chrome..69i57.7551j1j7&sourceid=chrome&ie=UTF-8
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

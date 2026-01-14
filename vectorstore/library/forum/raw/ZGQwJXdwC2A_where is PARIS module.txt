@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZGQwJXdwC2A
+Title: where is PARIS module?
+----------------------------------------
+
+
+
+
+
+where is PARIS module?
+13 views
+Skip to first unread message
+
+xusha...@gmail.com
+unread,
+Feb 13, 2019, 7:36:06 AM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern Help
+
+
+I like to use PARIS module in Gene Pattern to find genes that are essential in mutant cell lines,  but I cannot find the PARIS module. Is this module gone?
+
+
+
+Thanks for your time and looking forward to your reply
+
+
+
+Best wishes,
+
+
+Shan
+
+Barbara Hill
+unread,
+Feb 13, 2019, 8:33:53 AM
+
+
+
+to GenePattern Help Forum
+Hello Shan,
+
+
+PARIS is not currently installed on the Cloud hosted GenePattern server, as it not a module maintained by the GenePattern team, but instead by an external collaborator who has not updated the module.
+
+
+We will look into this and see if this is something we can address, but it may be that it requires a re-write from the module author. 
+
+
+We will post here when we have more information about this module.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

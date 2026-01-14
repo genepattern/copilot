@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/8OUEQ2oeLqE
+Title: What is the correct format for the input to removeSamples?
+----------------------------------------
+
+
+
+
+
+What is the correct format for the input to removeSamples?
+10 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Nov 17, 2017, 12:32:25 PM
+
+
+
+to GenePattern Help Forum
+
+I am trying to use gene pattern remove samples module and am having issues with the text file.
+
+I have the test file as attached.
+
+Please let me know what is the right format txt file for this module.
+
+Thanks, and have a great day.
+
+Barbara Hill
+unread,
+Nov 17, 2017, 12:32:57 PM
+
+
+
+to GenePattern Help Forum
+Your input should be in GCT format, as indicated in the module documentation: http://www.gparc.org/docs/urn:lsid:8080.gpbroad.broadinstitute.org:genepatternmodules:109:18
+
+
+More information about GenePattern formats can be found here: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+Please let us know if you have any further questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user inquired about why the "focal or broad" information was showing as NA in the GISTIC2 output file all_lesions.conf_99.txt, with a recommendation to consult the GISTIC forum directly for expert guidance on resolving the issue with detailed output information.

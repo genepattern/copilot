@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when trying to upload zipped CEL files to the ExpressionFileCreator module, receiving a "No CEL files found" error; the recommended solutions were to ensure a valid .cdf file is used and to verify the ZIP file structure is flat with no subdirectories or additional files, and that file names do not contain special characters or spaces.

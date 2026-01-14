@@ -1,0 +1,1 @@
+A GenePattern user requested the ESP Predictor module, which was temporarily unavailable due to a data center fire. After multiple users expressed interest in obtaining the module, the GenePattern team eventually re-released ESPPredictor on their cloud server, resolving the initial request for access to this bioinformatics analysis tool.

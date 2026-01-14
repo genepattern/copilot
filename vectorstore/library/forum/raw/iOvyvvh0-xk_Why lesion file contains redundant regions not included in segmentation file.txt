@@ -1,0 +1,68 @@
+URL: https://groups.google.com./g/genepattern-help/c/iOvyvvh0-xk
+Title: Why lesion file contains redundant regions not included in segmentation file
+----------------------------------------
+
+
+
+
+
+Why lesion file contains redundant regions not included in segmentation file
+5 views
+Skip to first unread message
+
+Bose
+unread,
+May 1, 2018, 11:12:33 AM
+
+
+
+to GenePattern Help Forum
+I noticed very suspicious regions appeared in lesion file which are not at all in the segmentation file. For example, segmentation file has no info on Chr1:1-...... but gistic regions are giving it as chr1:1-25962889(probes 1:453). So I am getting many redundant aberration regions which are not supposed to be there?
+Why is that so?
+I have used the segmentation and marker files provided in the Gistic documentation to understand this.
+
+
+Job ID 1669123.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   Parameter values: Default
+   Genepattern
+   
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+May 8, 2018, 10:05:17 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've just released the latest version of GISTIC in beta on the public GenePattern server. 
+
+
+Please try your analysis again, and see if the same issues exist for you.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

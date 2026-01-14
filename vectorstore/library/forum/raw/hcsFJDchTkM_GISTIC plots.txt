@@ -1,0 +1,117 @@
+URL: https://groups.google.com./g/genepattern-help/c/hcsFJDchTkM
+Title: GISTIC plots
+----------------------------------------
+
+
+
+
+
+GISTIC plots
+54 views
+Skip to first unread message
+
+Prit Benny
+unread,
+May 9, 2020, 3:54:53 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+I am pretty new to GISTIC plots. I am making a plot for my WES sample. I have made marker file based on id, chrom and marker positions. After uploading my SEG and marker file, I got an error.
+
+
+GISTIC version 2.0.23
+Warning: Number of markers is less than smooth length for the following chromosomes: 1   2   5   6   9  10  11  12  13  14  15  18  19  21  22. These chromosomes will not be smoothed.  (Smooth length = 8.)
+[ > In smooth_cbs at 54
+  In clean_gistic_input at 77
+  In run_gistic2_from_seg at 238
+  In gp_gistic2_from_seg at 97]  
+ 
+GISTIC 2.0 input error detected:
+Only one sample remains after noise filtering.
+
+
+Can someone help me??
+
+Job ID if run on a publicly available server:230793
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+Barbara Hill
+unread,
+May 11, 2020, 3:32:35 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The issue is almost certainly that you only have 1 sample.
+
+
+As GISTIC is a statistical method, you have to have good coverage on all chromosomes for at least 30 samples in order for the algorithm to work and be accurate.
+
+
+Best
+-Barbara
+shahin rmz
+unread,
+Sep 19, 2023, 12:25:40 PM
+
+
+
+to GenePattern Help Forum
+3 Years later...
+Thank you Barbara.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,158 @@
+URL: https://groups.google.com./g/genepattern-help/c/mDkfKfDR5aY
+Title: GISTIC error
+----------------------------------------
+
+
+
+
+
+GISTIC error
+40 views
+Skip to first unread message
+
+David Venet
+unread,
+Jun 9, 2023, 4:33:20 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I've tried to run GISTIC2 on the cloud server but I get this error (remote_stderr.txt) -
+
+
+Lmod has detected the following error:
+The following module(s) are unknown: "singularitypro/3.7" Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try: $ module --ignore-cache load "singularitypro/3.7" Also make sure that all modulefiles written in TCL start with the string #%Module
+
+
+Command not found: 'singularity'
+Make sure to install Singularity and configure your GenePattern Server. To install Singularity on Mac OS X ... See: https://singularity.lbl.gov/install-mac To configure your server ... Set the 'singularity' property in your config_yaml file. E.g. default.properties: ... # path to singularity executable "singularity": "/usr/local/bin/singularity"
+
+
+
+Any idea how to solve the issue?
+
+
+Thanks,
+
+
+David
+
+Andrew Cherniack
+unread,
+Jun 9, 2023, 5:53:49 AM
+
+
+
+to GenePattern Help Forum
+I just tested it out and got the same error.
+Something needs to be installed on the genpattern server.
+
+Ted Liefeld
+unread,
+Jun 9, 2023, 6:19:52 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+This should be working again now.  
+
+
+The compute cluster that runs our GISTIC jobs had a configuration change around 5pm yesterday that resulted in all GISTIC jobs failing for the last 13 hours or so.  I have reconfigured things to use a different cluster and for now things seem to be working as intended again.
+
+
+Thanks for your patience and apologies for the disruption in your work.
+
+
+Ted 
+
+
+
+David Venet
+unread,
+Jun 12, 2023, 1:01:48 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+It worked. Thanks!
+
+
+David
+
+
+Alison Taylor
+unread,
+Jun 15, 2023, 2:54:39 PM
+
+
+
+to GenePattern Help Forum
+Hi, it was working but now we are getting the same error again when running GISTIC.
+Hopefully it's the same fix again, my exact error below:
+
+
+GenePattern Server error preparing job 515522 for execution.
+org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error
+
+java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1803)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1562)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error
+	at org.genepattern.drm.impl.gpongp.AlternativeGpServerJobRunner.startJob(AlternativeGpServerJobRunner.java:201)
+	at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:853)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1799)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1796)
+	... 4 more
+
+
+Ted Liefeld
+unread,
+Jun 15, 2023, 4:36:36 PM
+
+
+
+to GenePattern Help Forum
+It's not the same thing this time, and it's odd.  Some peoples GISTIC  jobs are running fine, but some others are consistently seeing these same errors as you.  I have reset it to run on AWS again instead of the Expanse supercomputer and will dig into it further tomorrow.  For now the jobs do seem to be running OK on AWS.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Alison Taylor
+unread,
+Jun 16, 2023, 5:30:10 AM
+
+
+
+to GenePattern Help Forum
+That worked fo rme! Thanks so much for your help
+
+
+Reply all
+
+Reply to author
+
+Forward

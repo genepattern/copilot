@@ -1,0 +1,85 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ie_6Z7Wd_Ms
+Title: Problems with the SplitDatasetTrainTest module
+----------------------------------------
+
+
+
+
+
+Problems with the SplitDatasetTrainTest module
+23 views
+Skip to first unread message
+
+Paola
+unread,
+Mar 2, 2020, 2:32:37 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear all,
+
+
+I'm trying to use the SplitDatasetTrainTest module, and I'm getting the following error:
+
+
+
+Error in file(file, "r", encoding = encoding) : unable to open connection In addition: Warning message: cannot open file '0.9common.R', reason 'No such file or directory' in: file(file, "r", encoding = encoding) Execution halted
+
+
+ 
+The Jobs ID is: 209670.
+
+
+
+Thank you very much in advance
+
+
+Paola
+Ted Liefeld
+unread,
+Mar 2, 2020, 9:09:58 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+the problem is the value for the "output prefix" parameter which was set as "<OS>".  The angle brackets make GenePattern try to substitute the value and in this case since there is no substitution available for OS, it tries to open an output file named "" (i.e. an empty string).
+
+
+If you re-run your job you can change the value to either "OS" or "<input.dataset.file_basename>" .  The first will explicitly set the output prefix, while the second will substitute the name of the input dataset up to the ".gct" part (which is also OS).
+
+
+Hope this helps
+
+
+Ted
+
+Paola
+unread,
+Mar 3, 2020, 12:05:15 AM
+
+
+
+to GenePattern Help Forum
+Dear Ted,
+
+
+yes, this helps a lot!!
+Now everything is working fine.
+
+
+Thank you so much.
+
+
+Paola
+
+
+
+Reply all
+
+Reply to author
+
+Forward

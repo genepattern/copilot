@@ -1,0 +1,1 @@
+A user asked about processing a microarray input file for ssGSEA analysis, specifically inquiring whether duplicate gene names/IDs need to be removed, with a response recommending using the GenePattern CollapseDataset module to resolve duplicate probe entries before analysis.

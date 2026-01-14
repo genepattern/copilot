@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/XZiAGIvfR6o
+Title: ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+ComparativeMarkerSelection
+18 views
+Skip to first unread message
+
+Gerry
+unread,
+Apr 27, 2019, 10:29:03 AM
+
+
+
+to GenePattern Help Forum
+
+
+
+Please let me know what I can do if my Mac Server, on using ComparativeMarkerSelection with correct inputs showed the error ? 
+
+
+Error: Could not find or load main class org.broadinstitute.marker.MarkerSelection
+Process exited with an error: 1 (Exit value: 1)
+
+
+Many thanks. 
+
+
+Barbara Hill
+unread,
+Apr 29, 2019, 9:05:04 AM
+
+
+
+to GenePattern Help Forum
+Hello Gerry, 
+Which version of ComparativeMarkerSelection have you installed? and were there any errors on install?
+
+
+Best
+-Barbara
+Gerry
+unread,
+May 1, 2019, 9:03:06 AM
+
+
+
+to GenePattern Help Forum
+Hii Barbara, 
+
+
+I think I had beta-version installed. The problem resolved with re-installing with the zip file. Many thanks! 
+
+
+Gerry 
+
+Barbara Hill
+unread,
+May 10, 2019, 2:07:19 PM
+
+
+
+to GenePattern Help Forum
+That's great news Gerry!
+
+
+Please let us know if you have any further difficulties.
+
+
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

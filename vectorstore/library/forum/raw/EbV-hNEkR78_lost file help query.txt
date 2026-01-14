@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/EbV-hNEkR78
+Title: lost file help query
+----------------------------------------
+
+
+
+
+
+lost file help query
+15 views
+Skip to first unread message
+
+Panos Giannopoulos
+unread,
+May 23, 2018, 6:48:42 AM
+
+
+
+to GenePattern Help Forum
+Dear Team, 
+
+
+A couple of months ago I ran a gene interaction analysis (unfortunately I do not remember the name of the application used) for DLG2 gene.
+Amongst the results returned there was a pdf file that was a plot of DLG2 interactors. 
+The path for the file was https://genepattern.broadinstitute.org/gp/jobResults/1651232/hg19_plot.pdf
+
+
+Unfortunately, this is now not on the server any more and I would like to ask you:
+
+
+- From the above link description, can you tell which software platform I used two months ago to run my analysis?
+- Is there any way to retrieve the missing file?
+
+
+Many thanks in advance for your time and help.
+
+
+Kindest regards,
+Panos   
+
+
+Peter Carr
+unread,
+May 23, 2018, 10:32:06 AM
+
+
+
+to genepatt...@googlegroups.com
+This was a DAPPLE (v0.17) job run on the GenePattern Server
+  job: 1651232
+  started 20-MAR-18 06.37 AM, completed 20-MAR-18 06.40 AM
+
+We purged the input and result files. Here is the meta data. I do not
+have a record of the "genes.txt" file which you used for input.
+Input parameters ...
+  "Input.File"
+value="<GenePatternURL>users/s1582089%2540ed.ac.uk/tmp/run5034184584550513814.tmp/Input.File/1/genes.txt">
+  "Permute.Length" value="0"
+  "Plot"           value="true"
+  "nearest.gene"   value="false"
+  "genome.build"   value="19"
+  "Keyword"        value="hg19"
+
+Output files ...
+    1651232/Seeds
+    1651232/hg19_MissingGenes
+    1651232/hg19_seedLocusMapping
+    1651232/hg19_directConnections
+    1651232/hg19_indirectConnections
+    1651232/hg19_summary
+    1651232/tmpDirect
+    1651232/tmpIndirect
+    1651232/tmpSnpGene
+    1651232/PlotCoordinates
+    1651232/hg19_plot.pdf
+    1651232/stderr.txt
+    1651232/stdout.txt
+    1651232/gp_execution_log.txt
+
+Regards,
+Peter
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

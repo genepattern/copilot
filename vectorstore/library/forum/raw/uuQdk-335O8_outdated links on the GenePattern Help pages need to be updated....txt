@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/uuQdk-335O8
+Title: outdated links on the GenePattern Help pages need to be updated...
+----------------------------------------
+
+
+
+
+
+outdated links on the GenePattern Help pages need to be updated...
+6 views
+Skip to first unread message
+
+Rich Lysakowski
+unread,
+Feb 29, 2020, 6:22:51 PM
+
+
+
+to GenePattern Help Forum
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+I was reading the page titled "Creating Input Files" at https://www.genepattern.org/file-formats-guide#_Creating_Input_Files_Tab
+
+
+The following 2 links under "Transforming Plain Text Files" are outdated (point to error page "404 Page Does not Exist") 
+
+
+http://www.broadinstitute.org/modules?utf8=%E2%9C%93&taskType=Data+Format+Conversion&env=
+
+
+http://www.broadinstitute.org/modules?utf8=%E2%9C%93&taskType=Preprocess+%26+Utilities&env=
+
+
+
+
+Barbara Hill
+unread,
+Mar 2, 2020, 12:49:32 PM
+
+
+
+to GenePattern Help Forum
+Hi Rich,
+
+
+Thanks for reporting this.
+
+
+I'm in the middle of updating the website and working through all of the dead links. They should all be working by the end of next week.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,170 @@
+URL: https://groups.google.com./g/genepattern-help/c/EI9AHJoCul4
+Title: AuDIT
+----------------------------------------
+
+
+
+
+
+AuDIT
+11 views
+Skip to first unread message
+
+man...@broadinstitute.org
+unread,
+Aug 30, 2021, 3:10:49 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The AuDIT module in GenePattern is not functional. I wrote it a long time ago (and is not dockerized). There are some users who have requested re-instatement of the module. Could you please let me know what I need to do in order to get the module working again?
+
+
+Thanks.
+
+
+D. R. Mani
+
+
+Barbara Hill
+unread,
+Sep 1, 2021, 10:01:13 AM
+
+
+
+to GenePattern Help Forum
+Hi Mani, 
+
+
+At the root of the issue is that AuDIT was developed before we used Docker containers to run GenePattern modules.
+
+
+I will configure it to use our generic R2.5 container and see if that works. If it does,  that can be the solution, though it is not ideal, as it is dependent on the server configuration rather than the module's configuration. I could update the module to simply point to that generic R2.5 container though and then you'd have a more permanent solution. 
+
+
+Let me see how it goes with the generic R2.5 container and I'll let you know what I find.
+
+
+All the best
+-Bobbie
+
+D R Mani
+unread,
+Sep 1, 2021, 10:45:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Sounds good, Bobbie. Thanks very much for looking into this.
+
+
+Best,
+Mani
+
+D. R. Mani, Ph.D.
+
+Director of Computational Proteomics, Proteomics Platform 
+
+Broad Institute of MIT and Harvard, Cambridge, MA 02142
+
+man...@broadinstitute.org  | 617.714.7483
+
+Pronouns: he/him
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/EI9AHJoCul4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cbd802b7-8e51-40de-a9d6-d6da35ff0dfbn%40googlegroups.com.
+
+Barbara Hill
+unread,
+Sep 1, 2021, 11:58:51 AM
+
+
+
+to GenePattern Help Forum
+Hi Mani,
+
+
+Sadly, the generic R2.5 image didn't fix it. The module runs without error but also doesn't generate any output. I did a quick pass of debugging, but that didn't turn anything up. All of the R code seems to be executed, but again, no output.
+
+
+I suspect that there may be an issue whereby the output is being cleaned up with the container, but I'm not sure.
+
+
+So, at this point. I would suggest debugging in a local R2.5 container and or local GenePattern server.
+
+
+Our generic R2.5 container is here: https://hub.docker.com/repository/docker/genepattern/docker-r-2-5 (use tag 0.1, not latest)
+
+
+And instructions for running a local GenePattern server are here (we now recommend running GenePattern in Docker).
+
+
+
+Once you have the module running via Docker in GenePattern, fill out this form, and we can get it back up and running on cloud. 
+
+
+In the meantime, I will pull the module from the cloud server, to avoid further confusion.
+
+
+Please let me know if you have any questions along the way.
+
+
+Best
+-Bobbie
+D R Mani
+unread,
+Sep 2, 2021, 9:26:11 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Bobbie,
+
+
+Thanks. I'll try to get it running using the R2.5 container and then get back to you.
+
+
+-- Mani
+
+D. R. Mani, Ph.D.
+
+Director of Computational Proteomics, Proteomics Platform 
+
+Broad Institute of MIT and Harvard, Cambridge, MA 02142
+
+man...@broadinstitute.org  | 617.714.7483
+
+Pronouns: he/him
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/EI9AHJoCul4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e25a63d7-a9c8-4b30-93da-193fcf662d8en%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

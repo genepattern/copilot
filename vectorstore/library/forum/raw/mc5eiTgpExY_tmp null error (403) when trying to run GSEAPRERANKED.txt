@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/mc5eiTgpExY
+Title: tmp: null error (403) when trying to run GSEAPRERANKED
+----------------------------------------
+
+
+
+
+
+tmp: null error (403) when trying to run GSEAPRERANKED
+21 views
+Skip to first unread message
+
+Patrick Jonker
+unread,
+Nov 9, 2022, 9:37:36 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+i've been trying to run a GSEA pre-ranked analysis using GenePattern, but keep getting the error shown in the attached image. I saw in prior conversations that this might be due to some barrier between my server and the GenePattern server, but I've tried it both on my computer at my institution and on my home computer (connected to my home WiFi). Can you help me?
+
+
+Patrick
+
+error.JPG
+
+error2.JPG
+Ted Liefeld
+unread,
+Nov 9, 2022, 10:28:31 AM
+
+
+
+to genepatt...@googlegroups.com
+Patrick
+
+
+sorry about the inconvenience.  This is a bug that is fixed in the next release of GenePattern.  In the meantime I can fix it for you if you provide either your GenePattern user id, or the email you used to register the account (as there is no account using the gmail you posted here with).
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9bd6e721-2314-4e2c-b4f2-64f10ed4a9e0n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Patrick Jonker
+unread,
+Nov 9, 2022, 10:46:53 AM
+
+
+
+to genepatt...@googlegroups.com
+No worries--my username is pbjonker. Thanks!
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdS%2B20eTVRz%3DfJdfM0mhKgZbkNhCB7az09aGm1bAakFBYA%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Nov 10, 2022, 5:45:07 AM
+
+
+
+to GenePattern Help Forum
+Patrick,
+
+
+give it another try now and let me know how it goes
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

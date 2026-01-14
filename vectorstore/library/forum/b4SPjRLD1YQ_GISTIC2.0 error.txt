@@ -1,0 +1,1 @@
+A user encountered an error running GISTIC2.0 on GenePattern's cloud server due to insufficient disk space on a compute node, which was caused by another user's job consuming the entire disk and preventing proper job scheduling; the issue was resolved by the GenePattern team clearing the node, allowing subsequent jobs to run successfully.

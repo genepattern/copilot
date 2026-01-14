@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/CWx9kEQlgck
+Title: Nearest template prediction
+----------------------------------------
+
+
+
+
+
+Nearest template prediction
+31 views
+Skip to first unread message
+Shamaine Ho
+unread,
+Dec 20, 2018, 5:28:21 PM
+
+
+
+to GenePattern Help Forum
+
+I have encountered a problem running the nearest template prediction tool, and am unable to debug the code.
+
+The same .gct input file have been used to run other jobs which turned out fine (e.g. job ID 68349, 68351) , however one job consistently returns with the following error:
+
+ 
+
+Error in if (orig.dist.to.all.temp[1] >= orig.dist.to.all.temp[2]) { :
+
+  missing value where TRUE/FALSE needed
+
+Calls: NTPez
+
+Execution halted
+
+ 
+
+The job ID is  68348. 
+
+
+
+
+Looking forward to hear from you guys, thanks very much!
+
+
+Reply all
+
+Reply to author
+
+Forward

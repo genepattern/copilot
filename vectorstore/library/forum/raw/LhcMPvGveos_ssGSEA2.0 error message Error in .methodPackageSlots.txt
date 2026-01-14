@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/LhcMPvGveos
+Title: ssGSEA2.0 error "message Error in .methodPackageSlots"
+----------------------------------------
+
+
+
+
+
+ssGSEA2.0 error "message Error in .methodPackageSlots"
+30 views
+Skip to first unread message
+
+【JSTAR】選挙管理委員会
+unread,
+Apr 16, 2023, 7:31:49 PM
+
+
+
+to GenePattern Help Forum
+Dear genepattern-help staff,
+
+
+I'm using ssGSEA2.0 in R.
+I prepared a gct file with attched file and run with the gct file and database.
+I got error message as following: "Error in .methodPackageSlots(def, label, table, dupl, isCurrent) : 
+  trying to get slot "target" from an object of a basic class ("environment") with no slots."
+
+
+I conducted this  analysis version 4.2.3 in R.
+What should I do to solve this problem ?
+
+
+Many thanks,
+Ray
+
+ptm.sig.db.all.flanking.human.v1.8.1.gmt
+
+input4.gct
+edh...@cloud.ucsd.edu
+unread,
+Apr 17, 2023, 11:38:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Ray, 
+
+
+We suggest you to run ssGSEA on the GenePattern server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00270:10.1.0 
+
+
+Edwin 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

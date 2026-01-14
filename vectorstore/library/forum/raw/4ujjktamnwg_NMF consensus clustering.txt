@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/4ujjktamnwg
+Title: NMF consensus clustering
+----------------------------------------
+
+
+
+
+
+NMF consensus clustering
+16 views
+Skip to first unread message
+
+Daniel Picard
+unread,
+Mar 11, 2019, 5:56:04 AM
+
+
+
+to GenePattern Help Forum
+Hello, I am trying to perform clustering using the ConsensusClustering module on the Cloud GeneParttern.  I have been able to analyse my data using the Hierarchical, SOM and KMEANS clustering algorithms. 
+
+
+Howerver, it does not work for NMF.  When I try, I get the following message in the stderr.txt file: ERROR: At least one matrix entry <= 0: M[0,0] = -0.6307639479637146 
+
+
+I have provided the input I used. I have tried to run the algorithm with the non-log values, with removing any negative values, with a transposed matrix...
+
+
+Any help would be appreciated!
+
+
+Thank you,
+Daniel
+
+Picard_123_entries_32_samples.gct
+Barbara Hill
+unread,
+Mar 15, 2019, 2:07:58 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The error means that values less than or equal to 0 where found in your
+dataset. 
+
+
+This may be happening because normalization is turned on.
+
+You can turn off normalization by setting normalize type to none.
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

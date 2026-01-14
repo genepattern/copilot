@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/JJGwc7EMknw
+Title: use AffySTExpressionFileCreator to convert CEL file
+----------------------------------------
+
+
+
+
+
+use AffySTExpressionFileCreator to convert CEL file
+13 views
+Skip to first unread message
+
+yuan.hu...@gmail.com
+unread,
+Dec 15, 2017, 3:13:11 PM
+
+
+
+to GenePattern Help Forum
+Job ID: 1597801. AffySTExpressionFileCreator
+
+
+
+I tried to use AffySTExpressionFileCreator to convert CEL file to gct file, but it gave the following error:
+
+
+Error in GP.affyst.efc(files.to.process, normalize, background.correct,  : 
+  No CEL files were found in the input file(s)
+Calls: tryCatch -> tryCatchList -> GP.affyst.efc
+Execution halted
+
+
+Please help.
+Thanks.
+
+
+Yuan
+Barbara Hill
+unread,
+Jan 9, 2018, 9:33:28 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Please rerun and send a jobid. I'll then look into the details.
+
+
+Best
+Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

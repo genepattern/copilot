@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/meFSPpz-8-A
+Title: Index exceeds matrix dimensions GISTIC
+----------------------------------------
+
+
+
+
+
+Index exceeds matrix dimensions GISTIC
+208 views
+Error
+Gistic
+Skip to first unread message
+
+Loreina
+unread,
+Sep 3, 2019, 10:28:04 AM
+
+
+
+to GenePattern Help Forum
+I am working on Gistics 2 with my segmentation files
+
+
+It keeps telling me that the Index exceeds matrix dimensions error.
+
+
+Can you help me to solve this problem?
+
+
+It is with the job ID: 157573
+
+
+Here is the specific error message:
+
+
+Index exceeds matrix dimensions.
+
+Error in check_if_has_header (line 25)
+
+
+
+Error in read_segfile (line 26)
+
+
+
+Error in make_D_from_segseq_data (line 38)
+
+
+
+Error in run_gistic2_from_seg (line 193)
+
+
+
+Error in gp_gistic2_from_seg (line 97)
+
+
+
+MATLAB:badsubscript
+
+
+Barbara Hill
+unread,
+Sep 6, 2019, 12:09:10 PM
+
+
+
+to GenePattern Help Forum
+Hello Loreina, 
+
+
+The error shows that it can't read your headers, which is because the seg file is not correctly formatted.
+
+
+First and foremost it should be tab, not comma-delimited.
+
+
+The GISTIC documentation provides more details and an example.
+http://software.broadinstitute.org/cancer/software/genepattern/doc/GISTIC_2.0/2.0.23/GISTICDocumentation_standalone.htm
+
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

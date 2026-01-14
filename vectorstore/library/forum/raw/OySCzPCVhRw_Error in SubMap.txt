@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/OySCzPCVhRw
+Title: Error in SubMap
+----------------------------------------
+
+
+
+
+
+Error in SubMap
+33 views
+Skip to first unread message
+
+fz z
+unread,
+Sep 4, 2023, 1:36:20 AM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern Team,  
+
+
+
+I submitted the corresponding format of the document as required but did not receive any results. An error was reported when only two files (stdout and stderr) were displayed.
+
+My job ID is:
+SubMap (529863)    
+
+
+
+Thank you very much in advance for your guidance.  
+
+Ted Liefeld
+unread,
+Sep 5, 2023, 10:57:53 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+per the contents of the stderr file, the job simply did not have enough memory assigned.  I reran it with 8GB requested and that fixed the memory issue but hit another error with your input files.
+
+
+Error in read.gct(filename = input.data.A) :
+Found 1154 samples in /expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/8442/Immune2.for.SubMap.gct but expected 1155 samples
+
+
+I think this is because your file (and probably also the other gct file) is missing the description column between the gene name and the first sample.  You can simply duplicate the gene name column as description.  Also it seems that the second line is using spaces and not tabs to separate the # of rows and columns.
+
+
+Hope this helps
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

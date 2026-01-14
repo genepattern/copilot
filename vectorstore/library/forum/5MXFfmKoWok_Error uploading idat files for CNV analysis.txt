@@ -1,0 +1,1 @@
+GenePattern forum thread summary about uploading idat files for CNV analysis, where a new user encountered upload errors when trying to submit methylation microarray files, with a support response suggesting potential network, browser, or server-side issues and requesting more diagnostic information about the user's environment to troubleshoot the file upload problem.

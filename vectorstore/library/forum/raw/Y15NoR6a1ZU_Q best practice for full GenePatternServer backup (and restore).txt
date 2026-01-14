@@ -1,0 +1,71 @@
+URL: https://groups.google.com./g/genepattern-help/c/Y15NoR6a1ZU
+Title: Q: best practice for full GenePatternServer backup (and restore)
+----------------------------------------
+
+
+
+
+
+Q: best practice for full GenePatternServer backup (and restore)
+11 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Sep 28, 2017, 2:44:10 AM
+
+
+
+to genepatt...@googlegroups.com
+HI, 
+
+
+We will migrate our server on a freshly installed machine (ubuntu => centos) next week and I am trying to secure everything now.
+
+
+I figured out already that I need a tar.gz of the full 'GenePatternServer' folder
+
+
+What about the HSQL data (is it saved within the server folder?) - Should I backup the HSQL data somehow?
+
+
+Other things I might have overlooked and need for backup including:
+re-creating user(s) on the new machine
+
+?
+!! Do I need to stop the server prior to creating the data archive(s)? (it now complains about nohup when I archive as myself)
+
+
+What about restoring things, should I create a new=empty GPS first then overwrite it with the backups to regain all job data, custom settings, and dependencies?
+Should I process the HSQL data after restoring the folder (any maintenance script that needs be ran?)
+
+
+Thanks in advance,
+Stephane
+
+
+
+
+Barbara Hill
+unread,
+Oct 3, 2017, 9:31:38 AM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+I'll let Peter provide the best answer here. He is currently out of the office, but will return tomorrow.
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

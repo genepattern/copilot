@@ -1,0 +1,189 @@
+URL: https://groups.google.com./g/genepattern-help/c/HYNRjBXdx7o
+Title: GSEAPreranked error message
+----------------------------------------
+
+
+
+
+
+GSEAPreranked error message
+36 views
+Skip to first unread message
+
+eleni
+unread,
+Sep 26, 2022, 2:49:39 AM
+
+
+
+to GenePattern Help Forum
+Hi, I am trying to run a few GSEAPreranked jobs and keep getting the following error:
+
+
+"Essential container in task exited"
+
+
+
+Job ids: 
+464096. GSEAPreranked
+464094. GSEAPreranked
+
+
+
+Thank you,
+Eleni
+Anthony Castanza
+unread,
+Sep 26, 2022, 10:20:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Eleni,
+
+
+"Essential container in task exited" is usually a result of the virtual machine GenePattern is using to run the job running out of memory. I'd suggest going down to the "Job Options" parameters and changing the default job memory from 2Gb to something more like 8Gb.
+
+
+If you're still having issues after increasing the job memory please let us know
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f211a2d9-79d2-438b-bcbb-6eb50c69142fn%40googlegroups.com.
+
+eleni
+unread,
+Sep 26, 2022, 12:56:40 PM
+
+
+
+to GenePattern Help Forum
+Hi Anthony, thank you for your response, I have now tried increasing job memory to 8Gb and to more and also tried increasing the jobcpuCount but keep getting the same error.
+
+
+eg jobIDs 
+464165. GSEAPreranked
+464168. GSEAPreranked.
+
+
+Many thanks for your help on this,
+
+
+Eleni
+
+
+
+Ted Liefeld
+unread,
+Sep 26, 2022, 2:10:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Eleni,
+
+
+Sorry for the confusion. There was a bad version of the GSEAPreranked module installed just before the weekend.  The GSEA team is working to create a fix.  In the meantime I removed the latest version and you can try again using the older version 7.3.5.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7650567e-f929-4d90-b2e3-eab1c31fd593n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+Sep 26, 2022, 3:14:07 PM
+
+
+
+to GenePattern Help Forum
+Eleni,
+
+
+A new version (7.3.7) of GSEAPreranked is now available.  This should correct the errors you were seeing earlier.
+
+
+Please let us know if this solves your problem.
+
+
+Thanks,
+
+
+Ted
+
+
+
+myxu.china
+unread,
+Sep 27, 2022, 12:10:32 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear GengPattern team 
+ Thanks for your information my errors have been solved
+
+
+---- Replied Message ----
+From	Ted Liefeld<lie...@broadinstitute.org>
+Date	09/27/2022 06:14
+To	GenePattern Help Forum<genepatt...@googlegroups.com>
+Subject	Re: [genepattern-help:2471] GSEAPreranked error message
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a0b0b903-9891-4b36-812b-131331de2a8dn%40googlegroups.com.
+
+Eleni Maniati
+unread,
+Sep 27, 2022, 3:22:18 AM
+
+
+
+to genepatt...@googlegroups.com
+Many thanks, yes it works now both with v7.3.5 and 7.3.7.
+Thanks again for looking into it,
+
+Eleni
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a0b0b903-9891-4b36-812b-131331de2a8dn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/t9g02Ore2Ac
+Title: Mac OSX Install (Jul 11, 2017)
+----------------------------------------
+
+
+
+
+
+Mac OSX Install (Jul 11, 2017)
+16 views
+Skip to first unread message
+Barbara Hill
+unread,
+Aug 22, 2017, 2:49:10 PM
+
+
+
+to GenePattern Help Forum
+(THIS IS A REPOST FROM OUR PREVIOUS FORUM)
+
+
+-------------------------------------------------------------------------------------------------
+
+
+I can't get past the Configuration window!
+
+I downloaded v3.9.10-b153 on my Mac (OS 10.12.1) and unzipped it.  When I run GenePattern, it pops up the 'GenePattern Configuration' window, I enter an email, hit Save.  A message tells me the "Configuration saved.  Please restart GenePattern."  When I do so, it loops back to the GenePattern Configuration' window.  How do I get past this?
+
+Cheers,
+
+Jim
+
+
+
+================================
+
+
+BEST ANSWER:
+
+
+Jim
+
+
+I had the same problem (I think) and i think it happens when you install into a directory other than the default or already have an install present. Here is what i did to get past it;
+
+
+1.  delete ~/.genepattern 
+2. I had to remove the old genepattern installation from my /Applications directory 
+3.  Then put the new GenePattern.app into /Applications and it was happy to start.  
+
+
+With the old one removed and the new one installed on my desktop it still failed.  And of course I had to delete ~/.genepattern every time
+
+
+
+hope this helps
+
+
+Ted
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,106 @@
+URL: https://groups.google.com./g/genepattern-help/c/hfL9BAWH9a0
+Title: Error in DESeq2
+----------------------------------------
+
+
+
+
+
+Error in DESeq2
+29 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Jun 14, 2022, 6:16:46 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I have been trying to run the DESeq2 module. But it is showing an error. I have attached the stderr.txt with this email. Kindly check and help me find a solution.
+
+
+Thank you,
+Sruthi S
+
+
+	Sender notified by
+Mailtrack	06/14/22, 06:43:51 PM	
+
+stderr.txt
+Ted Liefeld
+unread,
+Jun 14, 2022, 6:43:12 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+we are currently working to diagnose the problems with the DESeq2 module.  We will update you this thread when we have implemented a fix.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+Sruthi S
+unread,
+Jun 14, 2022, 8:06:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Ok, thank you!
+
+
+Sruthi
+
+
+
+
+
+	Sender notified by
+Mailtrack
+06/14/22, 08:35:09 PM	
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c15142a9-a129-42b3-91f2-1ade74bbe158n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jun 24, 2022, 11:03:23 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We have just deployed a new container for the DESeq2 module and we believe it should be working properly now.  Please feel free to try it and let us know if you have any problems.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

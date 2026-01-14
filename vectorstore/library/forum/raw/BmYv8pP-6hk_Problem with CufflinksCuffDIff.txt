@@ -1,0 +1,78 @@
+URL: https://groups.google.com./g/genepattern-help/c/BmYv8pP-6hk
+Title: Problem with Cufflinks/CuffDIff
+----------------------------------------
+
+
+
+
+
+Problem with Cufflinks/CuffDIff
+14 views
+Skip to first unread message
+
+matthe...@uml.edu
+unread,
+Sep 20, 2017, 4:54:23 AM
+
+
+
+to GenePattern Help Forum
+I have completed a TopHat alignment on an RNA-Seq dataset and I keep getting an error when I try to run either Cufflinks or Cuffdiff.  The stderr.txt file reads "ERROR: The transcripts.gtf file is empty. Please check that your input files and parameter settings are valid.job finished, stderr exists and contains some errors, return C"
+
+
+I am using the .bam file my TopHat alignment and I have tried but using a .gtf file from the drop down menu and also loading a downloaded version but I keep getting the same error.  I am not sure what I am doing wrong with the input.  The most recent job that I tried is 51662.
+
+
+Any ideas would be appreciated.
+
+
+Matt
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Sep 20, 2017, 2:36:24 PM
+
+
+
+to GenePattern Help Forum
+Hi Matt,
+
+
+I don't have an answer for you. I am seeing the same error on the GP@IU server with one of my test data sets. I'll pass this along to the GP Team and get back to you when we have a better understanding of the problem.
+
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

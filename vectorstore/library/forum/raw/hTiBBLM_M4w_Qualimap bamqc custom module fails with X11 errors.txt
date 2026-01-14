@@ -1,0 +1,155 @@
+URL: https://groups.google.com./g/genepattern-help/c/hTiBBLM_M4w
+Title: Qualimap bamqc custom module fails with X11 errors
+----------------------------------------
+
+
+
+
+
+Qualimap bamqc custom module fails with X11 errors
+97 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 14, 2017, 2:52:52 AM
+
+
+
+to genepatt...@googlegroups.com
+I created a module (still very basic) for the nice Qualimap java suite
+
+
+CLI info at http://qualimap.bioinfo.cipf.es/doc_html/index.html
+
+
+
+Although the full command works when I run it under terminal on the GP server, the internal GP job fails with X11 error(s)
+
+
+Exception in thread "main" java.awt.AWTError: Can't connect to X11 window server using 'localhost:10.0' as the value of the DISPLAY variable.
+ at sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)
+ at sun.awt.X11GraphicsEnvironment.access$200(X11GraphicsEnvironment.java:65)
+ at sun.awt.X11GraphicsEnvironment$1.run(X11GraphicsEnvironment.java:115)
+ at java.security.AccessController.doPrivileged(Native Method)
+ at sun.awt.X11GraphicsEnvironment.<clinit>(X11GraphicsEnvironment.java:74)
+ at java.lang.Class.forName0(Native Method)
+ at java.lang.Class.forName(Class.java:264)
+ at java.awt.GraphicsEnvironment.createGE(GraphicsEnvironment.java:103)
+ at java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment(GraphicsEnvironment.java:82)
+ at sun.awt.X11.XToolkit.<clinit>(XToolkit.java:126)
+ at java.lang.Class.forName0(Native Method)
+ at java.lang.Class.forName(Class.java:264)
+ at java.awt.Toolkit$2.run(Toolkit.java:860)
+ at java.awt.Toolkit$2.run(Toolkit.java:855)
+ at java.security.AccessController.doPrivileged(Native Method)
+ at java.awt.Toolkit.getDefaultToolkit(Toolkit.java:854)
+ at sun.swing.SwingUtilities2.getSystemMnemonicKeyMask(SwingUtilities2.java:2020)
+ at javax.swing.plaf.basic.BasicLookAndFeel.initComponentDefaults(BasicLookAndFeel.java:1158)
+ at javax.swing.plaf.metal.MetalLookAndFeel.initComponentDefaults(MetalLookAndFeel.java:431)
+ at javax.swing.plaf.basic.BasicLookAndFeel.getDefaults(BasicLookAndFeel.java:148)
+ at javax.swing.plaf.metal.MetalLookAndFeel.getDefaults(MetalLookAndFeel.java:1577)
+ at javax.swing.UIManager.setLookAndFeel(UIManager.java:539)
+ at javax.swing.UIManager.setLookAndFeel(UIManager.java:579)
+ at javax.swing.UIManager.initializeDefaultLAF(UIManager.java:1349)
+ at javax.swing.UIManager.initialize(UIManager.java:1459)
+ at javax.swing.UIManager.maybeInitialize(UIManager.java:1426)
+ at javax.swing.UIManager.getDefaults(UIManager.java:659)
+ at javax.swing.UIManager.getColor(UIManager.java:701)
+ at org.jfree.chart.JFreeChart.<clinit>(JFreeChart.java:258)
+ at org.jfree.chart.ChartFactory.createXYLineChart(ChartFactory.java:1748)
+ at org.bioinfo.ngs.qc.qualimap.beans.BamQCChart.render(BamQCChart.java:186)
+ at org.bioinfo.ngs.qc.qualimap.beans.BamQCRegionReporter.computeChartsBuffers(BamQCRegionReporter.java:625)
+ at org.bioinfo.ngs.qc.qualimap.main.BamQcTool.execute(BamQcTool.java:263)
+ at org.bioinfo.ngs.qc.qualimap.main.NgsSmartTool.run(NgsSmartTool.java:190)
+ at org.bioinfo.ngs.qc.qualimap.main.NgsSmartMain.main(NgsSmartMain.java:111)
+
+
+The command ran was in that case:
+
+
+/usr/lib/jvm/java-8-oracle/bin/java -Xmx4G -classpath /opt/tools/GenePatternServer/patches/qualimap/qualimap.jar:/opt/tools/GenePatternServer/patches/qualimap/lib/* org.bioinfo.ngs.qc.qualimap.main.NgsSmartMain bamqc -bam /opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam -outdir /opt/tools/GenePatternServer/jobResults/792 -outfile Qualimap_bamqc_NA18507-10pc_sample_coord-srt.sorted -outformat PDF
+
+
+I defined the -cp to point to the Qualimap jar and lib folder containing the other jars. This is enough under terminal to get it to work.
+
+
+How can I fix this error requiring starting X11 env (if possible?)
+
+
+# the genepattern user currently gets this
+genepattern@MAF-SRV-04:~$ echo $DISPLAY
+localhost:10.0 
+
+
+It seems correct so why is it not allowed during the run to the GP server?
+
+
+
+
+
+Thanks in advance,
+
+
+
+Stephane
+
+
+
+
+Stephane Plaisance
+unread,
+Aug 14, 2017, 7:05:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Some propose to unset DISPLAY in the java command, other add an extra flag to the java call to run headless (!!painful!!)
+/usr/bin/java -Djava.awt.headless=true $Your_program
+
+
+I stopped trying this in pure GUI+java and made a perl wrapper for good measure (also copying the BAM input).
+I also added '-Djava.awt.headless' to the qualimap internal shell wrapper by editing the 'qualimap' exe script provided in the package (edited a default value for JAVA_OPTS="-Djava.awt.headless").
+
+It now does not report X11 errors anymore at runtime but still fails to generate the PDF or HTML output while the exact same command does it under terminal (in the same job folder) and creates a nice PDF of HTML dataset.
+
+
+
+Is there another smart variable I can add to the qualimap shell script to make this compatible with GP?
+
+
+Thanks
+Stephane
+
+
+PS: Peter, I put the dev-module Qualimap.BamQC.pw.v0.06.zip and script on my github.
+Peter Carr
+unread,
+Aug 14, 2017, 1:10:37 PM
+
+
+
+to genepatt...@googlegroups.com
+This Qualimap doc lists java and R/3.1 as requirements. My first guess:
+you need to configure the R environment for your GP server.
+I suggest adding some debugging statements to your wrapper script.
+which Rscript
+Rscript --version
+# to compare your local to your GP server runtime environment
+env | sort
+
+FYI, once this is working ... you don't necessarily need to run a
+wrapper to set a java flag. This module command line will have the same
+effect:
+commandLine=<java> -Djava.awt.headless ...
+
+- Peter
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

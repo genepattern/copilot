@@ -1,0 +1,171 @@
+URL: https://groups.google.com./g/genepattern-help/c/pIGnjKwIKCY
+Title: COMBAT ERROR
+----------------------------------------
+
+
+
+
+
+COMBAT ERROR
+30 views
+Skip to first unread message
+
+jham...@gmail.com
+unread,
+Dec 20, 2018, 12:31:21 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+I am trying to use combat but after the first job it continues showing this error message:  Job attempt duration exceeded timeout 
+
+
+I thought it was because the size of the file but the error is the same when I use a smaller one. 
+
+
+The Jobs ID are : 68327, 68023, 67497, 67132. 
+
+
+Jhajaira
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Dec 20, 2018, 12:59:25 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+We are looking into this and will get back to you shortly.
+
+
+Best
+-Barbara
+jham...@gmail.com
+unread,
+Jan 2, 2019, 6:29:50 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+Do you have any news?
+
+
+Best
+
+
+Jhajaira
+
+
+
+
+
+
+
+Edwin Juarez
+unread,
+Jan 2, 2019, 7:23:51 AM
+
+
+
+to GenePattern Help Forum
+Hello Jhajaira,
+
+
+I'm taking a look at this and will give you an update once I figure out the source of these errors. Hopefully within a day or two.
+
+
+Happy New Year!
+
+Edwin Juarez
+unread,
+Jan 2, 2019, 2:47:55 PM
+
+
+
+to GenePattern Help Forum
+Just a quick update: I have been able to reproduce the error you receive, it may be related to a programmed time-out that all modules have. The default is 2 hours. I am running a couple of tests now with a time out of 24 hours. It's been running for roughly 6 hours so far. 
+
+
+I am unsure if this is the expected run time for the size of data you are working with. I'll let you know once I have more info!
+
+
+Edwin.
+
+jham...@gmail.com
+unread,
+Jan 3, 2019, 6:28:02 AM
+
+
+
+to GenePattern Help Forum
+Hello Edwin,
+
+
+
+I've tried with 24 hours too but I received the same error.
+
+
+I'll wait for your updates.
+
+
+Thank you and Happy New Year !
+jham...@gmail.com
+unread,
+Jan 23, 2019, 11:30:33 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+
+I wonder if there is something about the problem with my dataset.
+
+
+Bests
+
+
+Jhajaira 
+Edwin Juarez
+unread,
+Jan 29, 2019, 9:06:59 AM
+
+
+
+to GenePattern Help Forum
+Hello Jhajaira,
+
+
+I have wondered if there is something with your dataset as well, perhaps some kind of non-standard string or formatting. I will create a ticket in our internal development tracking system to look into this issue in our following development cycle. So expect an answer from me in the next three weeks or so.
+
+
+In the meantime, if you have time to do so, it would be helpful to know if this error occurs with subsets of your data (you'd need to manually remove row, for example the bottom X rows, and modify the header of the GCT file to reflect the change following these guidelines: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT).
+
+
+Apologies for the slow process in debugging this.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

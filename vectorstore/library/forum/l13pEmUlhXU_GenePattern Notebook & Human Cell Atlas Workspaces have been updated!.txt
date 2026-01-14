@@ -1,0 +1,1 @@
+GenePattern Notebook and Human Cell Atlas Workspaces updated to version 20.03 with minor bug fixes to improve user experience, with release details available on the official website for review.

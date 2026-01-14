@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/c0YBBUCHJMQ
+Title: error in ssgsea module
+----------------------------------------
+
+
+
+
+
+error in ssgsea module
+78 views
+Skip to first unread message
+
+Sumithra Sankararaman
+unread,
+Aug 31, 2022, 11:26:40 AM
+
+
+
+to GenePattern Help Forum
+Hi, I am getting an error about a mismatch between the number of samples and the number of columns in the gct file in the ssgsea module. I have checked that the number of samples/columns is 6658. So I am not sure of the source of the error. Please let me know.
+Job id : 459393
+Error : 
+Error in read.gct(file) : Number of sample names 6657 not equal to the number of columns 6658 . Calls: ssGSEA.cmdline Execution halted
+
+
+Thanks and Regards,
+Sumithra
+Ted Liefeld
+unread,
+Sep 1, 2022, 9:11:05 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+The problem is that the GCT file does not include a description column (see the file formats guide https://www.genepattern.org/file-formats-guide#GCT).  As a result its taking your first data column as the description which leaves it one short when it gets to the end.  If you add a description column (e.g. copy the id column and rename it,  making sure to that the extra column does not change the ordering on the second line with row/col sizes  ) you should be OK
+
+
+Hope this helps
+
+
+Ted 
+
+Sumithra Sankararaman
+unread,
+Sep 2, 2022, 8:24:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, I added a Description column and the gct gets read in. But I still get the following error : Host EC2 (instance i-012414938c53e02ed) terminated. From other posts, I found out that this is linked to memory errors. Is there some settings I can modify to run this to completion. Job id : 459714.
+Regards,
+Sumithra
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/119a9b4b-f1d8-429a-952f-eab38c2ae62en%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Sep 2, 2022, 8:56:20 AM
+
+
+
+to GenePattern Help Forum
+Sumithra
+
+
+at the bottom of the normal parameters sections, you should see a collapsed section called "Job Options".  Click on this line and it will open up the  settings for memory, # vCPU and how long to wait for the job to complete.  Since your gct file is fairly large I would suggest trying 16 or 32 GB.  As GSEA is single threaded adding CPU is unlikely to change anything.  For walltime you can pick a longer value than the default 2 hours since it will not cost any extra if it completes early, but it's probably not really necessary.
+
+
+FWIW sometimes the "EC2 instance terminated" messages can have other causes so its not certain that it is memory related.  We use AWS spot instances for the compute which keeps costs down, but it does mean that when Amazon's computer's are busy, sometimes machines can get taken away from us. to be given to higher paying customers.  We see this a lot around black-friday and christmas sale times and its possible that all of the labour day online shopping (in the US)  could cause this at this time of year.  Also be aware that the more memory/CPU that you request, the more likely this is to happen.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

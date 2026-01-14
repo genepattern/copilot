@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/GU_QyCA6c5o
+Title: PreprocessDataset needs a log2(+1) option
+----------------------------------------
+
+
+
+
+
+PreprocessDataset needs a log2(+1) option
+9 views
+Skip to first unread message
+
+Owen Chapman
+unread,
+Jul 3, 2019, 10:48:53 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+NMF Clustering using the NMF Clustering GP Notebook
+
+
+Job ID if run on a publicly available server.
+140084, 140087
+
+
+
+
+NMF requires nonnegative values, so it fails if the original input .gct has any zeroes in the counts matrix, such that a log2-transformed .gct contains -Infinity values.  Need a log2 option with 1 pseudocount to get around this.
+
+
+O
+
+Barbara Hill
+unread,
+Jul 12, 2019, 10:10:33 AM
+
+
+
+to GenePattern Help Forum
+Hi Owen, 
+
+
+Thanks for bringing this to our attention.
+
+
+I'll discuss with the team and see where this fits on our roadmap.
+
+
+All the best
+-Bobbie
+
+Reply all
+
+Reply to author
+
+Forward

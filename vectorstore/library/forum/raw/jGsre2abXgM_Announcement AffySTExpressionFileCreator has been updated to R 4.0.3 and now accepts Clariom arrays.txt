@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/jGsre2abXgM
+Title: Announcement: AffySTExpressionFileCreator has been updated to R 4.0.3 and now accepts Clariom arrays
+----------------------------------------
+
+
+
+
+
+Announcement: AffySTExpressionFileCreator has been updated to R 4.0.3 and now accepts Clariom arrays
+5 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Feb 1, 2021, 3:21:43 PM
+
+
+
+to GenePattern Help Forum
+AffySTExpressionFileCreator has been updated to R 4.0.3 and now accepts Clariom arrays. http://bit.ly/AffySTEFC_v1-3
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

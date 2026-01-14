@@ -1,0 +1,1 @@
+GenePattern login issue due to automatic maintenance update causing login page to continuously refresh, which was subsequently resolved by technical team with users able to access their accounts again after the problem was corrected.

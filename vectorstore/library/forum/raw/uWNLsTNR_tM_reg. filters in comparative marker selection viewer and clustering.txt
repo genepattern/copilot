@@ -1,0 +1,42 @@
+URL: https://groups.google.com./g/genepattern-help/c/uWNLsTNR_tM
+Title: reg. filters in comparative marker selection viewer and clustering
+----------------------------------------
+
+
+
+
+
+reg. filters in comparative marker selection viewer and clustering
+3 views
+Skip to first unread message
+Chitra Subramanian
+unread,
+Dec 6, 2017, 7:55:20 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying to apply filter for the comparative marker selection viewer. I am not sure how the ranking works. Also i tried to input unregulated in cancer instead of normal. How do i apply this filter.
+When i change the up-regulated in cancer the heat map does not change. only vales in the table changes in comparative marker viewer
+Another question is how do i cluster normal vs cancer samples and have only highly significant genes.
+Thanks and am looking forward to the ans
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

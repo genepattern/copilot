@@ -1,0 +1,1 @@
+A GenePattern user experienced an error when running the SubMap module, likely due to missing values or spaces in sample names, with troubleshooting advice suggesting file input review and removal of spaces from sample names to resolve the computational issue.

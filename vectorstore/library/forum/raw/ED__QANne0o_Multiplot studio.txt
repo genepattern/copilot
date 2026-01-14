@@ -1,0 +1,134 @@
+URL: https://groups.google.com./g/genepattern-help/c/ED__QANne0o
+Title: Multiplot studio
+----------------------------------------
+
+
+
+
+
+Multiplot studio
+36 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Jul 18, 2022, 6:01:31 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+Is there a way that we can find the p-value in the multiplot studio?
+
+
+Thank you,
+Sruthi 
+
+
+
+
+
+	Sender notified by
+Mailtrack	07/18/22, 06:30:05 PM	
+
+
+	Virus-free. www.avast.com
+mmr...@cloud.ucsd.edu
+unread,
+Jul 18, 2022, 4:42:50 PM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+Yes, the instructions for viewing p-values are in the Multiplot Studio documentation, which you can find at https://cloud.genepattern.org/gp/module/doc/urn:lsid:127.0.0.1:genepatternmodules:4:1.5.62. Look in the section for "Calculations." 
+
+
+Best,
+Michael
+
+
+
+Sruthi S
+unread,
+Jul 22, 2022, 7:49:28 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, sir. Another doubt is whether it is possible to put 2 GCT files and 2 CLS files to run the multiplot program. I wanted to do a fold change vs fold change analysis, so when I tried putting 2 GCT's and CLS's, it was showing an error. The error message screenshot is attached to this mail, kindly check and provide me with a solution.
+
+
+Regards,
+Sruthi
+
+
+
+
+
+
+	Sender notified by
+Mailtrack
+07/22/22, 08:15:32 PM	
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d033c6a5-1ffd-48d6-8135-246236dfe24cn%40googlegroups.com.
+
+
+Screenshot (82).png
+mmr...@cloud.ucsd.edu
+unread,
+Jul 22, 2022, 1:28:46 PM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+In order to visualize results for 2 GCT files, you need to combine them into a single GCT file, and similarly for the CLS files. You can do this using the MergeColumns module in GenePattern.
+
+
+Best,
+Michael
+
+
+
+Sruthi S
+unread,
+Jul 22, 2022, 1:55:59 PM
+
+
+
+to genepatt...@googlegroups.com
+Ok, thank you!!
+I tried and it worked!
+Sruthi 
+
+
+
+
+
+
+	Sender notified by
+Mailtrack
+07/23/22, 02:21:05 AM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/581b73e8-ae2f-407f-88b8-c01ff4b44ef9n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

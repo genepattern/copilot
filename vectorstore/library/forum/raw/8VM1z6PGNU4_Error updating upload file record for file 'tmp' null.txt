@@ -1,0 +1,168 @@
+URL: https://groups.google.com./g/genepattern-help/c/8VM1z6PGNU4
+Title: Error updating upload file record for file 'tmp': null
+----------------------------------------
+
+
+
+
+
+Error updating upload file record for file 'tmp': null
+49 views
+Skip to first unread message
+
+Sam Preston
+unread,
+Nov 30, 2022, 5:47:00 PM
+
+
+
+to GenePattern Help Forum
+Hi there,
+
+
+I'm attempting to use the ssGSEA module in GenePattern, and am running into issues when trying to upload files. I'm getting the following error message:
+Error:
+An error occurred while submitting the job: Error updating upload file record for file 'tmp': null
+
+I took a look through the forum and I think other users have had the same issue, potentially caused by an unknown bug. Would you be able to help? The username for my account is: samuel.preston
+
+
+Thanks so much!
+Ted Liefeld
+unread,
+Nov 30, 2022, 5:53:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+give it another try now, I think that I have fixed the immediate problem.  We have a new server build going into testing tomorrow that we believe will stop this from happening again, but it might not be in place until January, so if this happens again please contact us here as youdid this time,
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fff86d46-6c1b-4bdf-84ae-3e8d9dbe83e7n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Sam Preston
+unread,
+Nov 30, 2022, 5:58:27 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Thanks so much for the quick response, I've just tried again and it look like its worked (job is processing now). If I run into more issues I'll be sure to come back to the forum for help.
+Much appreciated,
+Sam
+
+Ted Liefeld
+unread,
+Nov 30, 2022, 6:06:05 PM
+
+
+
+to genepatt...@googlegroups.com
+Glad to help
+
+
+Ted
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/13b1540f-da54-4f27-9088-55dee568c90en%40googlegroups.com.
+
+
+Sam Preston
+unread,
+Nov 30, 2022, 7:05:56 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Now my jobs are processing just fine, but I'm running into another error that I'm unsure how to deal with... instead of getting a .proj file as output, im getting a stderr.txt file that reads 'Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed Calls: ssGSEA.cmdline Execution halted'
+I thought it might have been to do with missing values in my GCT file, so I tried a version where missing values were imputed, but still got the same error.
+Any help would be appreciated!
+Thanks, Sam
+
+Sam Preston
+unread,
+Dec 1, 2022, 9:10:22 AM
+
+
+
+to GenePattern Help Forum
+Update - I actually figured out my issue :)
+
+Ted Liefeld
+unread,
+Dec 1, 2022, 9:11:16 AM
+
+
+
+to GenePattern Help Forum
+What was it?
+
+Sam Preston
+unread,
+Dec 1, 2022, 9:19:19 AM
+
+
+
+to GenePattern Help Forum
+The input file I was using only had expression data for the same set of genes that were in my gene dataset file, so every gene in the GCT was mapping to the geneset being tested. When I used an input file with more broad expression data it fixed the issue.
+
+Anthony Castanza
+unread,
+Dec 1, 2022, 9:52:15 AM
+
+
+
+to GenePattern Help Forum
+Hi Sam,
+
+
+Yes this is expected, GSEA and its variants like ssGSEA are designed to use the information for all expressed genes as the input, then from within that the overrepresentation of a subset (gene set) is tested. Utilizing the expression information for just the genes in a specific gene set is not the correct way to run this analysis.
+If you have any questions about the specifics of how to run GSEA, GSEA best practices, or the method, please feel free to reach out!
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

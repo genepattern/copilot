@@ -1,0 +1,149 @@
+URL: https://groups.google.com./g/genepattern-help/c/muNwYwq1bCM
+Title: ssGSEA - job finished without error but output .gct file is lacking
+----------------------------------------
+
+
+
+
+
+ssGSEA - job finished without error but output .gct file is lacking
+27 views
+Skip to first unread message
+
+Annelies
+unread,
+Feb 20, 2020, 9:24:45 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am running ssGSEA on normalized RNAseq data with HUGO gene annotations, testing for MSigDB signatures and using all the standard input parameters. It concerns job with ID 207501.
+After finishing, the job status window reports "job finished without error".
+However, there's no .gct output file.
+There is a stdout.txt file with descriptive parameters that look okay to me: eg "N.gs after overlap pruning: 189"; "total entries: 279" and last line mentioning".proj.gct".
+
+
+I looked for the .gct file in the "job status" window and in the downloaded & extracted job results folder, but both only contain the .txt file.
+
+
+
+
+Thank you very much for your help,
+Annelies
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+stdout.txt
+Ted Liefeld
+unread,
+Feb 20, 2020, 9:33:35 AM
+
+
+
+to GenePattern Help Forum
+Annelies
+
+
+try renaming your input file to remove the '+" symbol in the filename (eg change to '_and_' to preserve meaning in the name).  Some modules have difficulty when symbols or spaces are included in filenames.
+
+
+Hope this helps
+
+Ted
+
+
+
+Annelies
+unread,
+Feb 21, 2020, 12:24:19 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thanks a lot for your quick reply!
+Unfortunately, the job failed in exactly the same way after renaming the file (job ID 207730): yielded a .txt file with descriptive parameters that seem fine, but no .gct.
+
+
+I'd be happy with any other suggestion :)
+
+
+Thx!
+Annelies
+
+Ted Liefeld
+unread,
+Feb 21, 2020, 8:24:08 AM
+
+
+
+to GenePattern Help Forum
+Annelies,
+
+
+I think I found it (and had a successful run of your dataset).  The issue was the "output file prefix" parameter is being set as ".proj", and if you look at the end of the stdout.txt you will see that it did actually create ".proj.gct".  The problem is that most operating systems, and GenePattern itself, consider files that start with a dot "." to be hidden files, so it was not recognized by GenePattern as output.  If you change the value of the "output.filename.prefix" parameter to not start with the dot, you should get the expected gct file as an output in GenePattern.
+
+
+Hope this helps,
+
+
+Ted 
+
+
+
+Annelies
+unread,
+Feb 21, 2020, 8:55:43 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Thank you so much for your help, now it works perfect indeed!
+
+
+
+
+Enjoy the weekend,
+Annelies
+
+On Thursday, February 20, 2020 at 6:24:45 PM UTC+1, Annelies wrote:
+
+
+Reply all
+
+Reply to author
+
+Forward

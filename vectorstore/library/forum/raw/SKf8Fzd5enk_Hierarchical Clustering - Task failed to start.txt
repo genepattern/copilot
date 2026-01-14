@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/SKf8Fzd5enk
+Title: Hierarchical Clustering - Task failed to start
+----------------------------------------
+
+
+
+
+
+Hierarchical Clustering - Task failed to start
+26 views
+Skip to first unread message
+
+Daniel H
+unread,
+Oct 17, 2019, 8:21:25 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm experiencing problems with the HierarchicalClustering module. It seems to have stoped working and cannot initiate an analysis.
+
+
+When I ran a job 173537 a couple of days ago it worked successfully. Then I have tried several new analyses but they have all failed and I thought there was something wrong with the new files. For all jobs that I have tried I get the error message " Task failed to start"
+
+
+I have then done some trouble shooting and have come to the conclusion that something has changed during the past days, a missing link or something in the scripts. I tried the old file and it did not work, job 173940. I then reloaded job 173537, that previously worked, and it also failed with the same error message, job 173942.
+
+
+I ran with standard parameters for version 6.0, but they should be irrelevant, since not even the reloaded job did not execute.
+
+
+Thanks,
+Daniel
+Edwin Juarez
+unread,
+Oct 17, 2019, 10:42:58 AM
+
+
+
+to GenePattern Help Forum
+Hello Daniel,
+
+
+You may have been sending jobs when no compute notes were being found (which is a rare occurrence). I have tried running the job you mentioned and here are the results: 
+https://cloud.genepattern.org/gp/pages/index.jsf?jobid=173975
+
+
+Let me know if you are still having issues getting jobs to run!
+
+
+Kind regards,
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

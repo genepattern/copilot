@@ -1,0 +1,86 @@
+URL: https://groups.google.com./g/genepattern-help/c/0dG7A22MSWw
+Title: Error when checking all gene sets database
+----------------------------------------
+
+
+
+
+
+Error when checking all gene sets database
+13 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+May 19, 2020, 2:24:06 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+It's work fine when I am using  Hallmak database for example.
+
+
+But trying to use them all make the things crash :/
+
+
+Thanks.
+
+
+ID job GSEA (234238)
+
+
+
+
+WARNING: package com.apple.laf not in java.desktop
+WARNING: package com.sun.java.swing.plaf.windows not in java.desktop
+WARNING: package sun.awt.windows not in java.desktop
+java.lang.RuntimeException: There were errors: ERROR(S) #:20314
+GeneSets should have unique names. The lookup is case INsensitive. Found duplicate name: KEGG_GLYCOLYSIS_GLUCONEOGENESIS
+GeneSets should have unique names. The lookup is case INsensitive. Found duplicate name: KEGG_CITRATE_CYCLE_TCA_CYCLE
+GeneSets should have unique names. The lookup is case INsensitive. Found duplicate name: KEGG_PENTOSE_PHOSPHATE_PATHWAY 
+GeneSets should have unique names. The lookup is case INsensitive. Found duplicate name: KEGG_PENTOSE_AND_GLUCURONATE_INTERCONVE
+
+
+--
+
+Jean-Philippe Villemin   - Bioinformatics, Software Engineer -
+
+
+IGH (Institute of Human Genetics)
+Team: Splicing and Epigenetics
+141 rue de la Cardonille
+Montpellier France 4094 cedex 5
+jpvil...@gmail.com
+
+
+
+stdout.txt
+
+stderr.txt
+Barbara Hill
+unread,
+May 19, 2020, 6:46:31 AM
+
+
+
+to GenePattern Help Forum
+Hello Jean-Philippe,
+
+
+The warning messages can be safely ignored - they are informational and always output by this module.
+
+
+As for the issue with duplicate names, please see this thread in our forum: https://groups.google.com/forum/#!topic/genepattern-help/hKLqiseQKfQ
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

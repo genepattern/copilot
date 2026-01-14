@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/c2R36y14LvQ
+Title: can a module print the username ?
+----------------------------------------
+
+
+
+
+
+can a module print the username ?
+7 views
+Skip to first unread message
+
+Guy Bottu
+unread,
+Sep 4, 2017, 5:03:26 AM
+
+
+
+to GenePattern Help Forum
+I have been asked to write a new GenPattern module that can write the name of the user who logged into GenPattern in the output file. Is this possible ? Is there a way to access the username ? e.g. by putting in the interface something like <username> ?
+
+Barbara Hill
+unread,
+Sep 5, 2017, 9:20:26 AM
+
+
+
+to GenePattern Help Forum, guy....@skynet.be
+Hello Guy, 
+
+
+ This is a little beyond my expertise, so I will defer to Peter for details. However in the meantime, you might take a look at some of the code that generates the gp_execution_log.txt which includes the userid. 
+
+
+ Specifically you are looking for jobInfo.getUserID
+
+
+https://github.com/genepattern/genepattern-server/blob/f1483569cc8f1f200954af52c98cd2db75a0d045/src/org/genepattern/server/user/UsageLog.java
+
+
+(you can also generally search our GitHub for other uses of jobInfo.getUserID)
+
+
+Let me know if that helps.
+
+
+-Barbara
+Peter Carr
+unread,
+Sep 5, 2017, 10:03:38 AM
+
+
+
+to genepatt...@googlegroups.com
+Yes. Use the <userid> substitution variable. For example, the attached
+module saves the current userid into the <output.filename>.
+Enter this commandLine in the GUI
+echo "userid=<userid>" \> <output.filename>
+
+Note: the "\>" redirects output to the named file. Use an additional '\'
+as an escape character when editing the manifest file directly. E.g.
+commandLine=echo "userid\=<userid>" \\> <output.filename>
+
+For testing, I use a general purpose echoCmd module,
+commandLine=echo <arg>
+At runtime I add various substitution params as args, e.g.
+The userid substitution: <userid>
+
+Regards,
+Peter
+
+
+
+TestUserid_v0.5.zip
+
+Reply all
+
+Reply to author
+
+Forward

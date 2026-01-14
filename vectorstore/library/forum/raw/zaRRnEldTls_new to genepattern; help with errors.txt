@@ -1,0 +1,75 @@
+URL: https://groups.google.com./g/genepattern-help/c/zaRRnEldTls
+Title: new to genepattern; help with errors
+----------------------------------------
+
+
+
+
+
+new to genepattern; help with errors
+45 views
+Skip to first unread message
+
+Donna Bedasee
+unread,
+Apr 21, 2022, 11:26:50 AM
+
+
+
+to GenePattern Help Forum
+hi all, 
+
+
+I am processing a RNK.file with significant gene expression with the entire GSEA data signatures. But when doing so using the pre-ranked setting, I receive an error for the output. I am new to this platform and ask for help dissecting the error message? I appreciate your help. 
+
+
+
+
+
+preranked error output file .png
+Anthony Castanza
+unread,
+Apr 22, 2022, 10:53:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Unfortunately it appears you deleted the errored job, we can't provide detailed debugging for this error as the screenshot you've included doesn't contain the complete error logging information from the job and the detailed logs were removed with the job was deleted.
+
+
+The best I can guess based on your email is that you submitted a filtered ranked list, GSEA expects the ranking information for all expressed genes not just significant ones. Try including the complete dataset in a rerun and if you still experience the issue please send us the job number of the errored job.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+On Thu, Apr 21, 2022, 11:26 AM Donna Bedasee <donnab...@gmail.com> wrote:
+
+hi all, 
+
+
+I am processing a RNK.file with significant gene expression with the entire GSEA data signatures. But when doing so using the pre-ranked setting, I receive an error for the output. I am new to this platform and ask for help dissecting the error message? I appreciate your help. 
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8b4a6bd0-3266-4207-9a4c-6542b1b7cbb3n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

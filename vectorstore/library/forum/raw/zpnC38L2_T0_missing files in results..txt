@@ -1,0 +1,253 @@
+URL: https://groups.google.com./g/genepattern-help/c/zpnC38L2_T0
+Title: missing files in results.
+----------------------------------------
+
+
+
+
+
+missing files in results.
+99 views
+Skip to first unread message
+
+Gary Zhu
+unread,
+Jun 14, 2021, 10:03:25 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I just launched a task in GISTIC_2.0 module, however, I only get gistic_inputs.mat, and stdout.txt these two files back when the task finished.
+could someone help me with this issue?
+
+
+Thank you very much.
+Zheng
+Ted Liefeld
+unread,
+Jun 14, 2021, 11:38:45 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest posting in the GISTIC forum about this particular question, as that is frequented by the method authors as well as frequent users of GISTIC.
+
+
+Hope this helps,
+
+
+Ted
+
+Andrew Cherniack
+unread,
+Jun 14, 2021, 12:39:46 PM
+
+
+
+to genepatt...@googlegroups.com
+I think GISTIC might be timing out.  This is especially true if your seg file is very large.
+Try increasing the job memory, the wait time and the job cpuCount
+
+
+Regards,
+Andrew
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cda56154-4e75-4058-8026-510b9607d9een%40googlegroups.com.
+
+Gary Zhu
+unread,
+Jun 15, 2021, 8:27:06 AM
+
+
+
+to GenePattern Help Forum
+Thank you Ted, I will try to post on GISTIC forum.
+
+Gary Zhu
+unread,
+Jun 15, 2021, 8:28:06 AM
+
+
+
+to GenePattern Help Forum
+Thank you, Andrew,
+I increased the job memory but it still comes to the same result.
+
+木兮下
+unread,
+Jan 8, 2024, 8:08:30 AM
+
+
+
+to GenePattern Help Forum
+Hello, I met the same problem with you, have you dealt with it? If you do, please help me. Thank you so much!
+
+Ted Liefeld
+unread,
+Jan 8, 2024, 8:12:50 AM
+
+
+
+to GenePattern Help Forum
+Can you provide a job number?  If so one of the GenePattern administrators can take a look at your faild job.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+木兮下
+unread,
+Jan 8, 2024, 8:21:34 AM
+
+
+
+to GenePattern Help Forum
+Thanks, Ted. Here is one job number:555169. 
+
+Best wishes to you,
+
+Mu
+
+Ted Liefeld
+unread,
+Jan 8, 2024, 9:15:43 AM
+
+
+
+to GenePattern Help Forum
+Mu
+
+
+I think you should try the GISTIC forum as mentioned above.  Your input file is not so large (6.7MB) and the job is completing in ~2 minutes without an error, just also without output.  I retried using up to 64GB of memory and it has no effect.  The stderr file is empty (the message from singularity about the SIF image is not an actual error FWIW) and the only contents of the stdout are
+
+
+GISTIC version 2.0.23
+ 
+GISTIC 2.0 input error detected:
+4366 segment overlaps detected in file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/22404/MaskedCopyNumberSegment.txt'.
+First overlap detected between segments at lines 1902 and 133125.
+
+
+
+ So I think you will need GISTIC help (as opposed to GenePattern help).  
+
+
+Hope this helps,
+
+
+Ted
+
+Andrew Cherniack
+unread,
+Jan 8, 2024, 10:36:23 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Mu,
+
+
+The most likely cause of this error message is that you have two samples in your seg file with identical names.
+
+
+Regards,
+Andy
+
+木兮下
+unread,
+Jan 8, 2024, 7:19:06 PM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+
+I followed your advice and attempted to remove duplicate values as you suggested. Unfortunately, it seems that the removal of duplicate values did not have the desired effect on the analysis outcome.
+
+I will try to seek help from the GISTIC forum.
+
+
+Best regards,
+Mu
+
+
+
+
+木兮下
+unread,
+Jan 8, 2024, 7:26:01 PM
+
+
+
+to GenePattern Help Forum
+Hi Andy,
+
+Thank you for your response. It appears that removal of identical names does not work.
+
+Warm regards,
+Mu
+
+
+
+
+
+在2024年1月9日星期二 UTC+8 02:36:23<Andrew Cherniack> 写道：
+
+
+Andrew Cherniack
+unread,
+Jan 9, 2024, 6:41:32 PM
+
+
+
+to genepatt...@googlegroups.com
+Are you getting the same error message?
+
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9c4a384a-bf9d-4cb6-ad60-c0f7868b2663n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

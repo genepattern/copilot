@@ -1,0 +1,1 @@
+A bioinformatics user asked about using GSEA with an old dataset annotated with Ensembl v85 and MSigDB v7.1, and received confirmation that older Ensembl versions can be successfully mapped to newer gene symbols by using the appropriate CHIP file, with the recommendation to potentially reanalyze with a newer transcriptome for potential improvements.

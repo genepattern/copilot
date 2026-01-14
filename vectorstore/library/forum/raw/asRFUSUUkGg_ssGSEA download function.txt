@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/asRFUSUUkGg
+Title: ssGSEA download function
+----------------------------------------
+
+
+
+
+
+ssGSEA download function
+23 views
+Skip to first unread message
+
+Xayah
+unread,
+Sep 18, 2024, 8:59:51 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+  I was using the ssGSEA module when my results could not be downloaded.How can I fix it?
+Ted (aka John) Liefeld
+unread,
+Sep 18, 2024, 9:05:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Clicking "Save file" will "save a copy of the file to your local computer".  It does not use the word 'download' but thats what it will do.
+
+
+Hope this helps
+
+
+Ted
+
+
+On Wed, Sep 18, 2024 at 9:02 AM Xayah <xaya...@gmail.com> wrote:
+
+Hi,
+  I was using the ssGSEA module when my results could not be downloaded.How can I fix it?
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fa4b5725-b1c3-44dc-8300-f6d11b9e6335n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

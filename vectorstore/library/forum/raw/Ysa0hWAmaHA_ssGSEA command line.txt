@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ysa0hWAmaHA
+Title: ssGSEA command line
+----------------------------------------
+
+
+
+
+
+ssGSEA command line
+22 views
+Skip to first unread message
+
+Vineela Gangalapudi
+unread,
+Jan 3, 2018, 8:59:57 AM
+
+
+
+to GenePattern Help Forum
+I have been using ssgsea for few months now, I would like to incorporate it in my linux pipeline,so that ssgsea can be run automatically. I understand that there is no command line version. However after running the analysis online, we can view the R,Java and python code for the analysis. Is there a way to use this information to incorporate ssgsea on command line?
+Any help will be appreciated. thanks
+
+
+
+
+David Eby
+unread,
+Jan 3, 2018, 9:45:01 PM
+
+
+
+to GenePattern Help Forum
+Unfortunately we don't have support for that at this time.  The module is written in R as you note, so if you are savvy with R programming you could conceivably turn it into something that runs on the command line - that is conceptually what GenePattern is doing behind the scenes.  The latest version is pure R so there's no longer any need for Java.
+
+
+The code is available on GitHub or it can be exported from the GenePattern server.  Check the manifest file for hints on creating a suitable command line using Rscript.  The module lists R-2.15 as a requirement but it's quite likely it would work with newer versions of R as well (it has no additional library dependencies).  You would want to test that for yourself, of course, for example by comparing results from GenePattern to local runs.
+
+
+Regards,
+David
+
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+Reply all
+
+Reply to author
+
+Forward

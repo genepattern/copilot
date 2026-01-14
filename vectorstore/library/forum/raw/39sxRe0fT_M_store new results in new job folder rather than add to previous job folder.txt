@@ -1,0 +1,123 @@
+URL: https://groups.google.com./g/genepattern-help/c/39sxRe0fT_M
+Title: store new results in new job folder rather than add to previous job folder
+----------------------------------------
+
+
+
+
+
+store new results in new job folder rather than add to previous job folder
+11 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 3, 2017, 5:27:44 AM
+
+
+
+to GenePattern Help Forum
+Dear Peter,
+
+
+I noticed that, when running tools that add files to existing ones (like adding an index to a bam file with samtools index), the new (tbi) file will be stored where the input was taken from.
+This most of the time makes sense in order to reduce storage and avoid duplication but what can I do when I want to duplicate the input and add the index to the copy in a new job folder?
+
+
+My first solution was to make a parser that copies the input.file first and then operates on the copy (inspired by some of Guy's code)
+<Feature-Req?> Would it be possible to add a flag/option <copy-input(s)> in the module maker to make to input data copied (duplicated) first in the new job folder then the copy used as input?
+
+
+
+Another fix I found when some executable takes an 'output.file' parameter was to tweak it to save under: .../GenePatternServer/jobResults/<job_id>/<output.file>
+In order to streamline this I created a  <job_dir> entry to point to ".../GenePatternServer/jobResults" in resources/custom.properties.
+Did this <job_dir> alias already exist like <job_id> does and if yes would you have a full list of ALL default aliases or are they all to be found in "resources/custom.properties"? (from your previous post, more aliases have meanwhile be created in later versions). A manual page with such up-to-date info would be great!
+
+
+Making daily progresses ... this starts to rock
+
+
+Thanks
+Stephane
+Barbara Hill
+unread,
+Aug 4, 2017, 12:16:38 PM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+Take a look at how SAMtools.FastaIndex  works.
+
+
+It takes in the Fasta file, and then spits it back out with the the index.
+
+
+Best
+
+
+-Barbara
+Stephane Plaisance
+unread,
+Aug 5, 2017, 1:46:05 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Barbara,
+
+
+I already saw similar code in Guy’s modules and this is exactly the process I would wish to have natively in the GUI builder as an invisible option.
+The GP server takes care of copying what is not present locally when the user asks it (default OFF to reduce data redundancy). Rather than making a perl wrapper and define again all inputs and outputs, it would allow to do this all in one go using the nice GUI. Currently, each time a program evolves and new arguments are created, we need a new perl wrapper + a new GUI module (double work).
+
+
+Best
+Stephane
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/39sxRe0fT_M/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f6d21def-17ba-4698-b528-e75144b651cf%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Aug 22, 2017, 9:46:02 AM
+
+
+
+to GenePattern Help Forum
+Hi Stephane, 
+
+
+Apologies for the delay - August is full of time off.
+
+
+I've talked with the team and with Michael and we think this sounds like a reasonable thing to look into. Probably not until we're settled in AWS, but we'll keep you posted.
+
+
+I'll add a ticket for improvement of the Module Integrator UI and let you know when we begin work.
+
+
+Best
+
+
+-Barbara
+
+
+(For internal use: ticket is GP-6642)
+
+Reply all
+
+Reply to author
+
+Forward

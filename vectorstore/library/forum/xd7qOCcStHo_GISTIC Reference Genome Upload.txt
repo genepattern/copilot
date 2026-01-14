@@ -1,0 +1,1 @@
+User sought guidance on uploading a custom mouse (mm10) reference genome to the GISTIC2.0 module in GenePattern, with the response indicating that direct reference genome upload is not supported, and the user was advised to seek alternative methods such as running GISTIC in R or contacting the GISTIC-specific support forum for further assistance.

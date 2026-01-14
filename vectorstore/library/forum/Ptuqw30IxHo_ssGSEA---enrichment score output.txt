@@ -1,0 +1,1 @@
+GenePattern ssGSEA enrichment scores question: User asked if ssGSEA enrichment scores from GenePattern module are normalized and can be directly used in regression models; expert response indicated that the scores are in arbitrary units, are not normalized, and should be standardized or normalized before downstream analysis.

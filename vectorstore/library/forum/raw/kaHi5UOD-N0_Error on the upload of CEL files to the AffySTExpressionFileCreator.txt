@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/kaHi5UOD-N0
+Title: Error on the upload of CEL files to the AffySTExpressionFileCreator
+----------------------------------------
+
+
+
+
+
+Error on the upload of CEL files to the AffySTExpressionFileCreator
+26 views
+Skip to first unread message
+
+Natália Jaeger
+unread,
+May 3, 2019, 9:45:03 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am trying to upload CEL files into the AffySTExpressionFileCreator but keep getting this message:
+
+
+
+
+There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+
+I am using a Mac, tried in 3 different computers and older data that I was able to convert before and i get the same message everytime.
+
+
+Thank you
+Barbara Hill
+unread,
+May 6, 2019, 11:03:09 AM
+
+
+
+to GenePattern Help Forum
+Hello Natália,
+
+
+Are you running GenePattern locally or are you connecting to cloud.genepattern.org? and what browsers have you used?
+
+
+I am able to successfully upload a ~200MB Zip file of Mouse data on cloud.genepattern.org in Chrome on Windows 10.
+
+
+Best
+-Barbara
+Jing Liu
+unread,
+Aug 1, 2020, 7:43:56 PM
+
+
+
+to GenePattern Help Forum
+The problem is still here.
+
+
+
+
+Barbara Hill
+unread,
+Aug 3, 2020, 10:50:46 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I saw in your other post that you are using a Mac. Can you tell us more?
+
+
+Are you running against the cloud.genepattern.org server? and in what browser? Also, what is the size of your data? and what is its type?
+
+
+Any error messages you have received would also be very helpful.
+
+
+All the best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

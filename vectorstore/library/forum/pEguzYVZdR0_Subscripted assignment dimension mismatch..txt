@@ -1,0 +1,1 @@
+A GenePattern user encountered a "subscripted assignment dimension mismatch" error while running MutSig for small insertions and deletions (SVs) with nonsilent category, and was advised by another user to contact the MutSig method authors directly for specialized technical support.

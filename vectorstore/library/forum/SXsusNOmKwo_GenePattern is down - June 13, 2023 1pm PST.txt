@@ -1,0 +1,1 @@
+GenePattern server experienced an outage on June 13, 2023 at 1pm PST due to Amazon Web Services problems, preventing job execution and file transfers; the server was restored approximately one hour later and full functionality was resumed.

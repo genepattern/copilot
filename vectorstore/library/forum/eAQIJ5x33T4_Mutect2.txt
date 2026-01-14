@@ -1,0 +1,1 @@
+A user inquired about adding a Mutect2-based mutation detection pipeline to GenePattern, and the GenePattern team responded that they are currently reviewing available mutation detection tools for potential inclusion, and suggested using Galaxy as an alternative platform for Mutect2 in the meantime.

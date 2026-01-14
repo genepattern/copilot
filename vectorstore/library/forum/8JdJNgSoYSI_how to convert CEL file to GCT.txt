@@ -1,0 +1,1 @@
+A user sought help converting an Affymetrix CEL file (Clariom_S_Human array) to GCT format for GSEA analysis, encountering an error indicating the array type was not compatible with AffySTExpressionFileCreator; the recommended solution was to use ExpressionFileCreator instead, which might successfully handle the file conversion.

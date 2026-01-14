@@ -1,0 +1,1 @@
+A GenePattern forum user requested help interpreting ssGSEA results comparing wild-type and knockout groups, with a moderator directing them to consult the ssGSEA documentation and referenced papers to better understand method interpretation, ultimately providing no specific guidance on the gene signature enrichment analysis.

@@ -1,0 +1,1 @@
+The GenePattern forum thread involved a user experiencing a file transfer error while attempting to run ssGSEA, with a support team member requesting additional network context to diagnose potential connectivity or firewall issues preventing successful file upload to Amazon AWS S3.

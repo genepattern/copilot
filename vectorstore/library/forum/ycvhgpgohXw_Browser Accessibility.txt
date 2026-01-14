@@ -1,0 +1,1 @@
+A user experienced accessibility issues with the GenePattern browser platform after an update and could not access modules, with the server administrator indicating a recent server crash and restart; the user later inquired about the availability of GSEA modules, which were confirmed to be present on cloud.genepattern.org but not on the previously mentioned server.

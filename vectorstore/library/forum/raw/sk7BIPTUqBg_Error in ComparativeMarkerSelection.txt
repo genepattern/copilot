@@ -1,0 +1,112 @@
+URL: https://groups.google.com./g/genepattern-help/c/sk7BIPTUqBg
+Title: Error in ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+Error in ComparativeMarkerSelection
+13 views
+Skip to first unread message
+
+吳尚殷_Wu Shang-Yin
+unread,
+Mar 31, 2022, 12:00:20 AM
+
+
+
+to GenePattern Help Forum
+Hi, Sir,
+
+I encounter the following error when I run ComparativeMarkerSelection
+
+org.broadinstitute.io.matrix.ParseException: All values on the 3rd lines must be numbers.
+    at org.broadinstitute.io.matrix.cls.ClsParser.processData(ClsParser.java:246)
+    at org.broadinstitute.io.matrix.cls.ClsParser.read(ClsParser.java:137)
+    at org.broadinstitute.io.matrix.cls.ClsParser.parse(ClsParser.java:106)
+    at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:56)
+    at org.broadinstitute.io.matrix.cls.ClsReader.read(ClsReader.java:42)
+    at org.broadinstitute.io.IOUtil.readCls(IOUtil.java:464)
+    at org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1646)
+    at org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+Unable to parse phenotype.cls.
+java.lang.NullPointerException
+    at org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1691)
+    at org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+
+The job number is 423538
+
+However, I could run desktop GSEA using these two files I upload to GenePattern.
+
+Thanks for your generous support
+
+Shang-Yin
+
+Anthony Castanza
+unread,
+Mar 31, 2022, 9:44:48 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Shang-Yin,
+
+ 
+
+Desktop GSEA uses a slightly looser definition of the CLS file specification than GenePattern does, so a small change will need to be made here to the CLS file.
+
+ 
+
+If for GSEA your file looked like
+
+ 
+
+8 4 1
+
+# Knockout Wildtype
+
+Knockout Knockout Knockout Knockout Wildtype Wildtype Wildtype Wildtype
+
+ 
+
+Then for GenePattern's non-GSEA modules, it would need to be changed to
+
+ 
+
+8 4 1
+
+# Knockout Wildtype
+
+0 0 0 0 1 1 1 1
+
+ 
+
+Hope that helps! Let me know if you have further issues
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/de931a64-977d-48b3-8042-cf13cb843e06n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

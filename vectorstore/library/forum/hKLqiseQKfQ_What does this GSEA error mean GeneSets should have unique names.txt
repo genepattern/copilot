@@ -1,0 +1,1 @@
+Gene set enrichment analysis (GSEA) error "GeneSets should have unique names" occurs when using both parent and sub-collections simultaneously, causing duplicate gene set names; to resolve this, use only parent collections without their sub-collections during analysis.

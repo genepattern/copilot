@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/L5lYrqtVsOs
+Title: Probelm with Combat
+----------------------------------------
+
+
+
+
+
+Probelm with Combat
+18 views
+Skip to first unread message
+
+Shaymaa Elgaafary
+unread,
+Dec 9, 2017, 12:21:46 AM
+
+
+
+to GenePattern Help Forum
+Dear Sir,
+I have been using the combat module in gene pattern package..I have successfully formatted the files and introduced the preprocessed ones to the modules yet I got this message in stderr.txt. 
+Error in matrix(0, length(vec), nlevels(vec) - start + 1) : 
+  invalid 'ncol' value (< 0)
+Calls: parseCmdLine ... gp.combat.R -> ComBat -> design.mat -> build.design -> matrix
+Execution halted
+
+
+How can i fix this and what does it meaan.
+
+I had two other output1- PNG file: black!!!
+2- text file (stdout.txt) showin this content:
+Reading Sample Information File
+Reading Expression Data File
+[1] "APOBEC3B"       "APOBEC3C"       "BASI/BSG/CD147" "BATF"            E1 E2 E3 E4 E5 E6 E7 E8 E9   E10 E11 E12 E13 A1 A2 A3    non1    non2   non3
+1 20 20 20 20 20 20 20 20 20 20.00  20  20  20 20 20 20   83.00   95.01  54.00
+2 20 20 20 20 20 20 20 20 20 72.45  20  20  20 20 20 20 1389.16 1734.13 709.18
+    non4    non5   non6   non7    non8    non9     O1     B1     O2      B2
+1  54.00   55.99 108.99  84.98  144.01  324.93  20.00  20.00  20.00   36.99
+2 709.18 1858.60 998.07 750.13 2876.30 2288.20 455.09 905.14 962.74 1038.29
+      B3     B4     O3     O4      O5  non10  non11   non12 non13  non14
+1  20.00  27.00  41.01  20.00  154.02  73.01  79.01   51.98 20.00 148.98
+2 586.91 824.29 528.95 570.07 2019.80 633.85 696.99 1234.75 59.01 798.97
+Found 2 batches
+Found 2 covariate(s)
+
+
+the parameter values were the default...I have not changed them
+
+
+My server is windows
+
+I would appreciate your help.
+Many thanks
+Shaymaa
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Dec 12, 2017, 9:52:57 AM
+
+
+
+to GenePattern Help Forum
+Hello Shaymaa, 
+
+
+First of all, I should note that Windows is no longer a supported GenePattern platform. That doesn't mean that you can't install and run your own GenePattern server on Windows, obviously, but it does mean that our ability to support your efforts will be limited.
+
+
+So - without being able to see your sample info, my best guess is that you have extra spaces in your sample info file which are being interpreted as covariates by ComBat.  If you can run your job on our public server, I can take a closer look at your specific job details.
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

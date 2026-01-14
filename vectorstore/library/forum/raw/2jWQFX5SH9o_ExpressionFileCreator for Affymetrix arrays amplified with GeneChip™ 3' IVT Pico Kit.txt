@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/2jWQFX5SH9o
+Title: ExpressionFileCreator for Affymetrix arrays amplified with GeneChip™ 3' IVT Pico Kit
+----------------------------------------
+
+
+
+
+
+ExpressionFileCreator for Affymetrix arrays amplified with GeneChip™ 3' IVT Pico Kit
+13 views
+Skip to first unread message
+
+saratorr...@gmail.com
+unread,
+Oct 10, 2017, 1:49:43 PM
+
+
+
+to GenePattern Help Forum
+
+We aim to study the whole-transcriptome of FFPE human samples from which we have tumor and non-paired tumor tissues. We then used the GeneChip™ 3' IVT Pico Kit following hybridization to Affymetrix® Human U219 Array Plate.
+
+Does anyone worked with samples retrotranscribed with the GeneChip™ 3' IVT Pico Kit? Any recommendations to normalize and preprocess transcriptomes amplified with Pico kit? We usually normalize Affy data using the RMA with background correction method through the ExpressionFileCreator module (GenePattern), but we are not sure if this is the best approach for Pico-amplified samples.
+
+
+Barbara Hill
+unread,
+Oct 17, 2017, 9:27:08 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Are these ST arrays?
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

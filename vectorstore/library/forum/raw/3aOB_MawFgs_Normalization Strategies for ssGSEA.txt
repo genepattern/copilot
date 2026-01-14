@@ -1,0 +1,74 @@
+URL: https://groups.google.com./g/genepattern-help/c/3aOB_MawFgs
+Title: Normalization Strategies for ssGSEA
+----------------------------------------
+
+
+
+
+
+Normalization Strategies for ssGSEA
+99 views
+Skip to first unread message
+
+Bob Zimmermann
+unread,
+Oct 9, 2024, 10:35:01 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I noticed that the original ssGSEA (and subsequently GSVA's ssGSEA) implement an ES normalization strategy based on the range of ES values in the current matrix. However, ssGSEA 2.0 will compute NES based on permuted gene sets,  and this creates a different range sometimes slightly different ranking of normalized scores.
+
+
+I'm wondering if there is a general intuition or rationale for either of these different strategies. The original Barbie et al 2009 paper is cited as having mentioned the original range-based strategy in the "online methods", however, I don't see any mention of this in the current version of the article.
+
+
+Thanks in advance!
+
+
+Best,
+Bob
+Anthony Castanza
+unread,
+Oct 11, 2024, 12:17:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Bob,
+
+Unfortunately I can't really comment on the decisions the developers of the ssGSEA "2.0" or GSVA algorithms have made, they're a 3rd parties that have adapted the core ssGSEA algorithm that we developed for additional purposes.
+
+That said, the permutation method they are apparently using is one that is effectively derived from the GSEA/GSEA Preranked gene set permutation approach, so rather than the Barbie paper, they're likely intending to refer to the original GSEA PNAS paper https://www.pnas.org/doi/10.1073/pnas.0506580102
+
+This approach was likely adopted to allow ssGSEA to produce additional significance statistics that we do not do, so the ES that ssGSEA produces and the NES that these other methods produce are not directly comparable.
+
+Sorry I couldn't be of more help here, I've reached out to our team members on the algorithm development side, and I'll update you if they have any additional comments.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+Bob Zimmermann
+unread,
+Oct 14, 2024, 4:28:49 PM
+
+
+
+to GenePattern Help Forum
+Thanks Anthony. This is helpful! Let me know if you hear anything further.
+
+
+Reply all
+
+Reply to author
+
+Forward

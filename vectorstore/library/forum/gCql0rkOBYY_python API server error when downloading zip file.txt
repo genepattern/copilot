@@ -1,0 +1,1 @@
+A GenePattern Python API user encountered a server error when attempting to download a zip file of job results, which was resolved by using an alternative REST API download method after a backend change to AWS S3 storage, with the recommended URL format being https://username:password@cloud.genepattern.org/gp/rest/v1/jobs/[job_number]/download.

@@ -1,0 +1,1 @@
+The forum thread discusses a GenePattern ExpressionFileCreator module error where the input CLM file had extra tab characters in the first few lines, causing a parsing failure, and the solution was to remove the additional tabs to successfully process the file.

@@ -1,0 +1,83 @@
+URL: https://groups.google.com./g/genepattern-help/c/8mGzjYeE6wI
+Title: Keep on getting 500 Internal Error When logging in
+----------------------------------------
+
+
+
+
+
+Keep on getting 500 Internal Error When logging in
+6 views
+Skip to first unread message
+
+Tejas Guha
+unread,
+Jul 11, 2019, 8:26:53 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+Whenever I try logging in onto hca.genepattern.org, I keep on getting the following 500 Internal Error where it says to contact admin to resolve the issue:
+
+
+500 : Internal Server Error
+
+Failed to start your server on the last attempt. Please contact admin if the issue persists.
+
+
+
+
+
+
+
+
+Can you please fix it?  Thank you very much in advance.
+
+
+Thank you,
+Tejas Guha
+
+Barbara Hill
+unread,
+Jul 11, 2019, 11:52:53 AM
+
+
+
+to GenePattern Help Forum
+Hi Tejas, 
+
+
+We are looking into this, and have had some intermittent success, but unfortunately probably will not have this resolved completely until next week.
+
+
+We are very sorry for any difficulty this may cause you.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Jul 11, 2019, 3:05:08 PM
+
+
+
+to GenePattern Help Forum
+Hello Tejas, 
+
+
+We have resolved the issue.
+
+
+Please let us know if you continue to have any trouble.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

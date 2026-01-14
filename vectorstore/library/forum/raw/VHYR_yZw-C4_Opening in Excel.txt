@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/VHYR_yZw-C4
+Title: Opening in Excel
+----------------------------------------
+
+
+
+
+
+Opening in Excel
+20 views
+Skip to first unread message
+
+golden wang
+unread,
+Oct 13, 2019, 9:00:08 PM
+
+
+
+to GenePattern Help Forum
+I am not sure how to open a .gct file in excel. Whenever I open Excel 2013, I press "open" and select my genetic .gct file that I parsed from a .tar file, and it doesn't work. Please help!
+Mitchell Frederick
+unread,
+Oct 13, 2019, 10:58:59 PM
+
+
+
+to GenePattern Help Forum
+I’m no expert but it is highly likely the gct file did not uncompress properly. Can you show a screen shot of file properties for what you think is the uncompressed form?
+Mitchell Frederick
+unread,
+Oct 13, 2019, 11:02:19 PM
+
+
+
+to GenePattern Help Forum
+Also be sure you have the tab delimited box checked in the excel open file pop up menu when you attempt to open and then the correct delimiter which I believed would be tab
+golden wang
+unread,
+Nov 5, 2019, 7:40:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Wait, I am more confused now. I used 7zip to parse my .gz files from LINCS 1000 dataset to .gct files, but now, I cannot open those .gct files using Excel. Please send help.
+
+Edwin Juarez
+unread,
+Dec 18, 2019, 10:58:31 AM
+
+
+
+to GenePattern Help Forum
+If you want to open a GCT file, you can open it in Excel by selecting the "tab delimited" option (as Mitchell Frederick has mentioned). It is possible that the GCT file you are trying to use has been corrupted, try to delete it and uncompress the TAR file you have.
+
+
+If all you want to do is view the contents of the GCT file, you can also open it in a text editor (and this is often easier to do than in Excel).
+
+
+
+For more information on GCT files, you can check this link: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats
+
+
+If you are still having problems, please let us know more details (e.g., what happens when you try opening the file and what steps are you taking to do so).
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

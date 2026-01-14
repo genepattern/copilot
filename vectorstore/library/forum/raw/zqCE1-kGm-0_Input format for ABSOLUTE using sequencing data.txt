@@ -1,0 +1,106 @@
+URL: https://groups.google.com./g/genepattern-help/c/zqCE1-kGm-0
+Title: Input format for ABSOLUTE using sequencing data
+----------------------------------------
+
+
+
+
+
+Input format for ABSOLUTE using sequencing data
+88 views
+ABSOLUTE
+Input
+Num_probes
+Segment_mean
+WGS
+sequencing
+Skip to first unread message
+
+罗思圆
+unread,
+Mar 6, 2020, 3:48:03 AM
+
+
+
+to GenePattern Help Forum
+
+Hello,
+
+Can anyone explain how to use ABSOLUTE for cancer DNA sequencing data? I
+searched for
+
+http://www.broadinstitute.org/cancer/cga/absolute_run
+
+But did not find enough information. Specifically, ABSOLUTE requires the
+input data to have at least four columns:
+"Chromosome", "Start", "End", "Num_Probes" and "Segment_Mean".
+
+
+
+
+For my sequencing data, I have done the segmentation already, and I have
+"Chromosome", "Start", "End", plus the number of reads mapped to the
+segment in tumor sample "d_T", and the number of reads mapped to the
+segment in matched normal sample "d_N". So, I'm wondering how to convert
+these "d_N", "d_T" into "Num_Probes" and "Segment_Mean" for ABSOLUTE?
+
+Thanks so much!
+
+
+
+
+
+
+
+GenePattern Help Forum
+unread,
+Mar 6, 2020, 10:52:54 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The URL you are looking for has changed. The archived CGA site for ABSOLUTE is here:  https://software.broadinstitute.org/cancer/cga/absolute_run 
+
+
+You probably need to run HAPSEG first -  https://software.broadinstitute.org/cancer/cga/hapseg_run 
+
+
+We hope this helps!
+
+
+Best
+-Barbara 
+
+
+
+罗思圆
+unread,
+Mar 7, 2020, 5:41:30 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thank you so much for the prompt reply!
+
+
+I've read the website you mentioned as well, and it says without using HAPSEG, I can also supply a tab delimited segmentation file to ABSOLUTE as input. It's necessary for me because I'm testing my tool for segmentation as well. Now I'm still confused about what  "Num_Probes" and "Segment_Mean" should be for sequencing data. I would be really appreciate for your answer!
+
+
+Best,
+Siyuan
+
+
+在 2020年3月6日星期五 UTC+1下午7:52:54，GenePattern Help Forum写道：
+
+
+Reply all
+
+Reply to author
+
+Forward

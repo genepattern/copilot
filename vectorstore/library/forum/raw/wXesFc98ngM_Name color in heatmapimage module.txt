@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/wXesFc98ngM
+Title: Name color in heatmapimage module
+----------------------------------------
+
+
+
+
+
+Name color in heatmapimage module
+20 views
+Skip to first unread message
+
+Praveen Kumar Raj Kumar
+unread,
+Sep 13, 2020, 10:25:39 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+   I was using heatmap.gct from ssGSEA to do heatmap using " HeatMapImage" module. Can you tell how can we specify colors for Phenotype row?
+Thanks,
+Praveen
+GenePattern Help Forum
+unread,
+Sep 16, 2020, 7:59:35 AM
+
+
+
+to GenePattern Help Forum
+Hello Praveen, 
+
+
+The only color option for HeatMapImage is to recolor the heatmap itself. 
+
+
+Please see the documentation for details: https://cloud.genepattern.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00032:6
+As a reminder, documentation for all modules is always available from the documentation link in the upper right-hand corner of the module run page. It's also available from the gear icon in the module buttons in the panel modules & pipelines panel.
+
+
+Let us know if you have any further questions or comments.
+
+
+Best
+-Barbara
+
+
+
+Raj Kumar, Praveen Kumar
+unread,
+Sep 16, 2020, 8:18:52 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+    Thanks. Yes I am aware of the documentation. As you pointed out it has only a color palette option not the colors for annotation of columns. I was wondering if there is any way you can specify that in the module.
+Thanks,
+Praveen
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6047c43a-9f3a-4d30-b128-0b76c78a7224n%40googlegroups.com.
+
+
+
+
+
+
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

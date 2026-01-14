@@ -1,0 +1,1 @@
+A user encountered a server-side execution error when running GISTIC 2.0 on GenePattern, which was caused by temporary unavailability of remote compute nodes; the issue was resolved by system administrators, who noted that the next GenePattern release will include automated job failover to prevent similar disruptions in the future.

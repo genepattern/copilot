@@ -1,0 +1,1 @@
+A user encountered a ClassCastException error when running GSEAPreranked in GenePattern, which was resolved by changing the input file extension from .txt to .rnk, with the recommendation to increase memory allocation from 2 GB to 4 GB to prevent heap space issues when processing large datasets.

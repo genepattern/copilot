@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/A1oxA-JJwfY
+Title: Error with ssGSEA (job ID: 496000)
+----------------------------------------
+
+
+
+
+
+Error with ssGSEA (job ID: 496000)
+34 views
+Skip to first unread message
+
+Hai Tran
+unread,
+Feb 28, 2023, 8:53:08 AM
+
+
+
+to GenePattern Help Forum
+I am trying to run ssGSEA for our data. However there was an error (job ID: 496000):
+
+
+Error in scan(file, what, nmax, sep, dec, quote, skip, nlines, na.strings,  : 
+  scan() expected 'a real', got '1,541'
+
+
+
+It would be a great help if you can have a look through what could be possible problem!
+
+
+Best,
+Hai
+Ted Liefeld
+unread,
+Feb 28, 2023, 9:19:51 AM
+
+
+
+to GenePattern Help Forum
+Hai
+
+
+it looks like the ssGSEA file parser is not happy with the number format in your gct file.  the '1,542' is the first appearance of a comma in your gct file. I did an experiment deleting all the commas (',') from your gct and the file runs fine.  So just do a quick find/replace in your favorite text editor replacing the commas with nothing and you should be good to go.
+
+
+Hope this helps, 
+Ted
+
+
+
+David Eby
+unread,
+Feb 28, 2023, 10:47:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Hai,
+
+
+Just a quick note: those commas may represent decimal points, in which case you should replace with a '.' instead.  That is, '1,542' might mean '1542' as Ted suggested or it might mean '1.542'.  It will depend on how your dataset was constructed, so we can't advise you directly on that.
+
+
+This is a localization difference, where ssGSEA is operating assuming US decimal formatting.
+
+
+Regards,
+David
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/45de0654-b102-491a-abec-75cf88c553e4n%40googlegroups.com.
+
+Hai Tran
+unread,
+Mar 1, 2023, 1:00:36 AM
+
+
+
+to GenePattern Help Forum
+Thanks Ted and David. Indeed there is one line having ",". Sometime "copy paste" in excel is doing strange thing!
+Hai
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

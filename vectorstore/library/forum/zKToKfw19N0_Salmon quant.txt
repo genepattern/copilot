@@ -1,0 +1,1 @@
+GenePattern forum thread discussing Salmon quantification and HISAT2 alignment challenges involving file upload issues with .fq.gz files, resolved by adjusting browser settings and job memory parameters, with a recommendation to increase job memory to 32GB and CPU count to 4 to successfully complete RNA-seq alignment and quantification analyses.

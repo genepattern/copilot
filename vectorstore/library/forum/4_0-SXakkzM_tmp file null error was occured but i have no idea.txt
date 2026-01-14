@@ -1,0 +1,1 @@
+A GenePattern user experienced a "tmp file null error" when attempting to submit .gct and .gmt files, with no clear explanation for the error, and received troubleshooting suggestions including: checking filenames for special characters, uploading files through the files tab, or providing web URLs for the files to resolve potential file upload or transfer issues.

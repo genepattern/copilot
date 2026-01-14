@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/y0quO56m-m8
+Title: error running mutsigcv
+----------------------------------------
+
+
+
+
+
+error running mutsigcv
+13 views
+Skip to first unread message
+
+Sumithra Sankararaman
+unread,
+Dec 2, 2024, 11:28:00 AM
+
+
+
+to GenePattern Help Forum
+Hi , I am getting an error when running mutsigcv on genepattern public server. This is the job id 
+617584
+error is 
+Error using gp_MutSigCV>MutSig_runCV (line 854)
+silent and nonsilent rates are too different Error in gp_MutSigCV (line 194)
+
+
+My mutation_type_dcitionary_file.txt is attached. Could this be the issue?
+Thanks
+Sumithra
+
+mutation_type_dictionary_file.txt
+Ted Liefeld
+unread,
+Dec 2, 2024, 11:40:57 AM
+
+
+
+to GenePattern Help Forum
+ I suggest you contact the authors of the method at mutsi...@broadinstitute.org and ask them.
+
+
+Hope this helps,
+
+Ted
+
+
+
+Reply all
+
+Reply to author
+
+Forward

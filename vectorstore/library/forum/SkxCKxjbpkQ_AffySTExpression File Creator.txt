@@ -1,0 +1,1 @@
+A GenePattern user reported an error with the AffySTExpressionFileCreator module, specifically encountering a "Rscript: not found" error when attempting to convert .zip files containing CEL files to .gct format, which was resolved by the GenePattern support team who reconfigured the module to function correctly.

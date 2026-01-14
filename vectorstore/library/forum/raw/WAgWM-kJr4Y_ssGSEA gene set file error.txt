@@ -1,0 +1,108 @@
+URL: https://groups.google.com./g/genepattern-help/c/WAgWM-kJr4Y
+Title: ssGSEA gene set file error
+----------------------------------------
+
+
+
+
+
+ssGSEA gene set file error
+47 views
+Skip to first unread message
+
+Sara Balch
+unread,
+Apr 4, 2022, 2:02:19 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+When I try to run ssGSEA using a manually generated gene set file, I receive the following error:
+Error in vector(length = gene.set.size, mode = "character") : invalid 'length' argument Calls: ssGSEA.cmdline Execution halted
+
+
+
+The job number is 424483.
+
+
+I have successfully run ssGSEA with the same input file using GenePattern's dropdown menu of gene set files (see job 424404) which removes the input file as the issue. 
+
+
+Have you seen this error before and could you provide any insight on why the manually generated gene set file is causing the error?
+
+
+Thanks in advance!
+Sara
+Anthony Castanza
+unread,
+Apr 4, 2022, 2:57:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Sara,
+
+
+I haven't the foggiest idea how something like this might have happened, but there appears to have been one single non-UTF8 linebreak at the "TURASHVILI_BREAST_LOBULAR_CARCINOMA_VS_LOBULAR_NORMAL_DN" set. I replaced this line break with the correct type and the file seems to be working now. I've attached the corrected GMT to this reply. Let me know if you have any additional issues.
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/70a4e5a9-2604-42de-98b6-c6228557b0aen%40googlegroups.com.
+
+
+c2.cgp.breast.v6.1.symbols.gmt
+Sara Balch
+unread,
+Apr 4, 2022, 6:30:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for such a quick response and for finding a solution! I appreciate all the help!
+
+
+Sara
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/WAgWM-kJr4Y/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZxVeDQEPAJg_bFdBsJhVq7EJvoreJ%3DSK6MyCom_pHdx%3Dw%40mail.gmail.com.
+
+
+
+
+
+--
+
+Sara Balch
+Associate Computational Biologist II | Wagle Lab
+Broad Institute of MIT and Harvard
+415 Main Street,
+Cambridge, MA 02141
+sba...@broadinstitute.org
+
+Reply all
+
+Reply to author
+
+Forward

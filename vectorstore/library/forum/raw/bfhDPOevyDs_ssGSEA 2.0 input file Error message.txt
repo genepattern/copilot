@@ -1,0 +1,118 @@
+URL: https://groups.google.com./g/genepattern-help/c/bfhDPOevyDs
+Title: ssGSEA 2.0 input file "Error message"
+----------------------------------------
+
+
+
+
+
+ssGSEA 2.0 input file "Error message"
+40 views
+Skip to first unread message
+
+【JSTAR】選挙管理委員会
+unread,
+Apr 19, 2023, 6:39:36 PM
+
+
+
+to GenePattern Help Forum
+
+
+
+
+【JSTAR】選挙管理委員会 <hyougii...@jstar.or.jp>
+
+
+4月19日(水) 10:03 (1 日前)
+
+
+
+
+
+
+
+
+To genepattern-help
+Dear Edwin,
+
+
+Thanks for your quick response.
+I'll try to use your server for ssGSEA.
+I tried to conduct ssGESA with the other PC. The run was successful.
+But error message occurred like an attached image.
+How should I solve against this message ?
+Our id constructed by peptide sequence was not appropriate, is not it ?
+To solve this problem, PTMdatabase should be changed from the attached version ?
+Would you like to provide comments for me ?
+
+
+Many thanks,
+
+
+Ray
+
+input2.gct
+
+ptm.sig.db.all.flanking.human.v1.8.1.gmt
+【JSTAR】選挙管理委員会
+unread,
+Apr 19, 2023, 6:41:46 PM
+
+
+
+to GenePattern Help Forum
+Dear Edwin,
+
+
+I forgot attached image.
+
+
+Many thanks,
+Ray
+
+
+2023年4月20日木曜日 10:39:36 UTC+9 【JSTAR】選挙管理委員会:
+
+
+
+image (1) (1).png
+edh...@cloud.ucsd.edu
+unread,
+Apr 21, 2023, 10:51:01 AM
+
+
+
+to GenePattern Help Forum
+Hi Ray, 
+
+
+Sorry for the late reply. 
+
+
+We would suggest you to fix the identifiers in the GMT file. There are ';u' and ';d' as the suffix of the identifiers in the GMT file, but not in the GCT file. Please try running ssGSEA again after changing the identifiers in the GMT file to match the identifiers in the GCT file. 
+
+Example: 
+
+
+in the GMT file, there is the identifier:
+LDGENIYIRHSNLM-p;u
+
+
+
+In the GCT file, the identifiers look like this:
+LDGENIYIRHSNLM-p
+
+
+
+Changing the identifiers in the GMT file to match the format in the GCT file will solve the issue. 
+
+
+Edwin 
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/s5CVog5ww78
+Title: incorrect number of data points error
+----------------------------------------
+
+
+
+
+
+incorrect number of data points error
+31 views
+Skip to first unread message
+
+Wayne
+unread,
+Jun 30, 2023, 8:08:43 AM
+
+
+
+to GenePattern Help Forum
+Dear colleagues - i am using DeSeq2 cloud version for the first time and getting this error:
+
+
+The downloaded source packages are in '/tmp/RtmpkZVMxV/downloaded_packages' Installing package into '/usr/local/lib/R/site-library' (as 'lib' is unspecified) Warning message: package 'optparse' is not available (for R version 3.3.2) Error in read.cls(opts$cls.file) : Incorrect number of data points Execution halted
+
+
+
+i have checked the # of samples and # rows in the gct file, and the parameters in the cls file, and it is perfect. i did do pre-processing on the gct file and it found some duplicates just an excel-date problem. i edited them and the pre-processing went through. then used that file to try deseq2 and got the error above.
+
+
+any ideas?
+
+
+thanks!
+Wayne
+unread,
+Jul 1, 2023, 8:22:47 PM
+
+
+
+to GenePattern Help Forum
+ok i figured it out.  basically should let the "preprocess and utilities" make the .cls file.  making it manually seems not to work (at least not for me).  phew...
+
+
+Reply all
+
+Reply to author
+
+Forward

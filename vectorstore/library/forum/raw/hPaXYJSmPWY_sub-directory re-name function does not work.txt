@@ -1,0 +1,47 @@
+URL: https://groups.google.com./g/genepattern-help/c/hPaXYJSmPWY
+Title: sub-directory re-name function does not work
+----------------------------------------
+
+
+
+
+
+sub-directory re-name function does not work
+4 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+May 8, 2024, 10:46:47 PM
+
+
+
+to GenePattern Help Forum
+When I rename a folder, it disapears from the main "uploads" directory, together with the other folders/sub-folders of the profile.
+Would this be fixed?
+Thanks
+
+
+Ted Liefeld
+unread,
+May 9, 2024, 6:16:45 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I responded to this in your other help request.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

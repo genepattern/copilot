@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/je690yizDh8
+Title: Missing module
+----------------------------------------
+
+
+
+
+
+Missing module
+8 views
+Skip to first unread message
+
+Ann Sizemore
+unread,
+May 9, 2018, 9:41:10 AM
+
+
+
+to GenePattern Help Forum
+Good afternoon,
+
+
+I am looking for a module called PKCD or Persistent k-clique community detection but I am not seeing it on Gene Pattern. Is this a Broad-only module or was it public and removed recently?
+
+
+Thanks so much!
+Ann
+Peter Carr
+unread,
+May 9, 2018, 10:22:54 AM
+
+
+
+to genepatt...@googlegroups.com
+It's on the internal Broad hosted server (https://gpbroad.broadinstitute.org/gp/). For long term availability, you should add it to GParc (http://www.gparc.org/).
+I will send you a copy of the latest version.
+Best regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e96cd34a-4a64-4ff5-b2bc-886d0b1b6f4a%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+
+Reply all
+
+Reply to author
+
+Forward

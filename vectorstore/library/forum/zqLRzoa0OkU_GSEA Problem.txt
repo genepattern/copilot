@@ -1,0 +1,1 @@
+GSEA Problem summary: User encountered an error in GenePattern's GSEA module where no gene sets passed size thresholds, with potential causes including using a restricted gene list or mismatched gene identifiers between input data and reference datasets, with recommended solutions of checking input file compatibility and ensuring complete dataset usage.

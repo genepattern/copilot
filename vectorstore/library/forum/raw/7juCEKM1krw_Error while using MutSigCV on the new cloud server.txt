@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/7juCEKM1krw
+Title: Error while using MutSigCV on the new cloud server
+----------------------------------------
+
+
+
+
+
+Error while using MutSigCV on the new cloud server
+31 views
+Error
+Input
+mutsigcv
+Skip to first unread message
+
+Théo Hirsch
+unread,
+Nov 7, 2018, 11:56:28 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I tried to run MutSigCV from the new cloud server. As inputs, I used:
+
+
+- my own mutation table (in the same format as what used to work on the broad server)
+- coverage table: ftp://gpftp.broadinstitute.org/module_support_files/MutSigCV_1.4/exome_full192.coverage.txt
+- covariate table: ftp://gpftp.broadinstitute.org/module_support_files/MutSigCV_1.4/gene.covariates.txt
+- mutation type dictionary: ftp://gpftp.broadinstitute.org/module_support_files/MutSigCV_1.4/mutation_type_dictionary_file.txt
+
+
+I got an error with the following message in stderr.txt:
+
+
+/opt/gpbeta/gp_home/resources/wrapper_scripts/gp-common.sh: line 598: /opt/gpbeta/gp_home/taskLib/MutSigCV.1.2.217/gp_MutSigCV: Permission denied
+
+Do you know what it means? For information, I then tried to run it with the same mutation table on the broad server (but with the 1.3 versions of the input parameters) and it did work.
+
+Thank you in advance !
+
+
+
+Barbara Hill
+unread,
+Nov 8, 2018, 9:59:52 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Thank you for bringing this to our attention. This module needs to be updated to run in Docker on our new cloud server.
+
+
+We will add this to our work in the next few weeks and let you know when we have a new functional version available.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

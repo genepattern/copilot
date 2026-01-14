@@ -1,0 +1,64 @@
+URL: https://groups.google.com./g/genepattern-help/c/FSEeGQYT-Z8
+Title: DifferentialExpressionViewer not working
+----------------------------------------
+
+
+
+
+
+DifferentialExpressionViewer not working
+17 views
+Skip to first unread message
+
+Mauricio Cuello
+unread,
+May 12, 2023, 12:01:27 PM
+
+
+
+to GenePattern Help Forum
+I have been working with the differential expression pipeline. Once I tried to visualize my results using  DifferentialExpressionViewer, it recognizes the odf file and the gct file. However, when loading it appears the following message on screen. 
+
+
+
+There was an error loading the DifferentialExpression Viewer:
+
+Not Found
+
+
+
+Thanks for checking this bug on the website.
+
+
+sincerely
+
+
+M Cuello
+
+
+
+Screenshot 2023-05-12 at 2.55.08 PM.png
+tmt...@cloud.ucsd.edu
+unread,
+May 17, 2023, 10:43:15 AM
+
+
+
+to GenePattern Help Forum
+Hello M. Cuello,
+
+
+In order to help troubleshoot your error, would you mind sending me the GenePattern job number associated with your DifferentialExpressionViewer run. You can find it by logging into GenePattern, going to the Jobs tab on the left and locating the number to next to "DifferentialExpressionViewer" in the list.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

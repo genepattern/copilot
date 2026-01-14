@@ -1,0 +1,371 @@
+URL: https://groups.google.com./g/genepattern-help/c/9ZdkHoDvmPQ
+Title: GISTIC2.0 Floating point exception error
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 Floating point exception error
+105 views
+Skip to first unread message
+Eunice lly
+unread,
+Jun 6, 2024, 2:29:47 AM
+
+
+
+to GenePattern Help Forum
+Hello Gene Pattern team, 
+
+
+I ran GISTIC2.0 for 3 different cohorts and it was smooth for the first 2. However, for 1 cohort which is also the largest among all, the job terminated before completion. My other cohorts produced 27 output files while this one only produced 19 files. The error report says "float point exception" (see attached image)
+Here are my parameters which is the same for the other 2 cohorts and didnt give me any error. 
+./gistic2 -b $basedir -seg $segfile -maxspace -refgene $refgenefile -genegistic 1 -smallmem 1 -broad 1 -brlen 0.7 -conf 0.95 -armpeel 1 -savegene 1 -gcm mean -rx 0
+
+
+Your help is greatly appreciated!
+
+
+Thank you!
+
+Capture.PNG
+edh...@cloud.ucsd.edu
+unread,
+Jun 7, 2024, 10:38:52 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Whats the job id for this job? 
+
+
+Edwin 
+
+
+
+Eunice lly
+unread,
+Jun 7, 2024, 8:26:51 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I tried several times so they’re:
+1382578
+1382697
+1382781
+
+
+Thank you!
+
+
+Eunice 
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/9ZdkHoDvmPQ/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/16e54a38-6854-4874-a5b8-ca7fb678aec0n%40googlegroups.com.
+
+edh...@cloud.ucsd.edu
+unread,
+Jun 10, 2024, 10:37:58 AM
+
+
+
+to GenePattern Help Forum
+Hi Eunice, 
+
+
+Thanks, the GISTIC forum will provide more information shortly. 
+
+
+Edwin 
+
+
+
+Eunice lly
+unread,
+Jun 17, 2024, 11:03:21 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Can I follow up on this error?
+
+
+Thank you!
+
+
+Eunice 
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Jun 18, 2024, 10:46:56 AM
+
+
+
+to GenePattern Help Forum
+Hey Eunice, 
+
+
+What were the input files you used? If there are URL Links to it that would be great. 
+
+
+Edwin 
+
+
+
+
+Eunice lly
+unread,
+Jun 18, 2024, 6:59:25 PM
+
+
+
+to GenePattern Help Forum
+
+Hi Edwin,
+
+
+Here's the link to my input file https://drive.google.com/file/d/1uLoRqNIhfKYN3caEXHzT9r_vgIfDOZOv/view?usp=sharing
+
+
+Thanks!
+Andrew Cherniack
+unread,
+Jun 19, 2024, 6:51:55 PM
+
+
+
+to genepatt...@googlegroups.com
+I ran using the default conditions without errors.
+What files were you missing in the output?
+
+
+Andrew
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5ebf8f54-b31a-4bad-aefc-3824683a7f88n%40googlegroups.com.
+
+Eunice lly
+unread,
+Jun 19, 2024, 10:22:32 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew, 
+
+
+I'm missing around 8 files as shown below, left is output for this cohort, right is output from another smaller cohort that I ran without error.
+Files such as all_data_by_genes, all_thresholded.by_genes, broad_data_by_genes, broad_significance_results, broad_values_by_arm, focal_data_by_genes, freqarms_vs_ngenes and sample_cutoffs are missing. 
+When I ran with the same input file, it was terminated with floating point exception error in the error file.  
+
+
+
+
+
+Eunice
+
+
+
+
+Andrew Cherniack
+unread,
+Jun 20, 2024, 6:24:42 AM
+
+
+
+to genepatt...@googlegroups.com
+
+
+I was able to run your seg file successfully and generated those files.
+I doubt this made a difference by renaming your file TCGA_LUAD_gistic2_segment.seg so that I could look at it in IGV.
+Also, what genomic build did you use?
+
+
+Regards
+Andrew
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0f5fc993-0fd4-4cd2-8805-e397a51c197an%40googlegroups.com.
+
+Eunice lly
+unread,
+Jun 20, 2024, 7:10:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Andrew, 
+
+
+Do you mean changing the extension from .txt to .seg?
+
+
+I'm using hg38. 
+
+
+Eunice
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/9ZdkHoDvmPQ/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6V28RGvrQ%2B8oqEUXn%3DpCh9stbL%2Bw-hN7fd%3D6WEuLvUGFQ%40mail.gmail.com.
+
+Andrew Cherniack
+unread,
+Jun 21, 2024, 8:14:24 AM
+
+
+
+to genepatt...@googlegroups.com
+yes
+
+___________________________
+
+_
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAHOt%3DS_UppaHCXQ7pirhE934UOQE9mD%3DUGXE5%3DoVKoPxXmiuDQ%40mail.gmail.com.
+
+Eunice lly
+unread,
+Jun 30, 2024, 7:14:06 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew, 
+
+
+Here is the .seg file. https://drive.google.com/file/d/1SqXNQ6eQNngyUZIS1o62cIPOxF_Z5455/view?usp=drive_link
+
+
+Thank you!
+
+
+Regards,
+Eunice
+
+
+Andrew Cherniack
+unread,
+Jul 1, 2024, 11:26:37 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Eunice,
+
+
+I successfully ran your seg file and got all of the output without error. Have you tried to rerun it recently?
+These were my input parameters.
+
+
+t_amp: 0.1000
+ t_del: 0.1000
+join_segment_size: 8
+ ext: ''
+qv_thresh: 0.2500
+remove_X: 0
+markers: []
+max_marker_spacing: 10000
+run_broad_analysis: 1
+ broad_len_cutoff: 0.7000
+ziggs: [1×1 struct]
+res: 0.0500
+conf_level: 0.9500
+ cap: 2.5000
+do_gene_gistic: 1
+conserve_disk_space: 0
+ save_data_files: 0
+ use_segarray: 1
+write_gene_files: 1
+use_two_sided: 0
+ do_arbitration: 1
+save_seg_data: 0
+ fname: ''
+ peak_types: {'robust'}
+genepattern: 1
+arm_peeloff: 1
+gene_collapse_method: 'extreme'
+sample_center: 'mean'
+ alpha: [2.5145 2.1653]
+partial_hits: [1 0]
+islog: []
+
+
+
+
+
+
+_
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/834a2fc2-46f8-40b9-9603-9c78301f7043n%40googlegroups.com.
+
+Eunice lly
+unread,
+Jul 1, 2024, 6:49:33 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew, 
+
+
+Thank you for the prompt response. Yes, I rerun it recently and same error occurred. 
+My colleague and I tried running in smaller batches with the same parameters that we were using for other cohorts, and the maximum we could run without error is at ~450 samples. Does any of these parameters that you've listed here define the sample size?
+
+
+Thanks again! 
+
+
+Regards,
+Eunice 
+
+
+Reply all
+
+Reply to author
+
+Forward

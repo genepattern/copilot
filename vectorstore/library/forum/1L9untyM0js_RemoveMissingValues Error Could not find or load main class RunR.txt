@@ -1,0 +1,1 @@
+Error troubleshooting thread where a user encountered a Java class loading error with the RemoveMissingValues module in GenePattern, which was subsequently resolved by a system administrator who confirmed the module configuration was corrected, allowing the job to run successfully.

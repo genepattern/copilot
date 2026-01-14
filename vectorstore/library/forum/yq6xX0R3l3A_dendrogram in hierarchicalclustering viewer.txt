@@ -1,0 +1,1 @@
+A user asked about the interpretation of y-axis distances in a hierarchical clustering dendrogram, specifically whether these distances reflect the similarity between groups, and a response confirmed that the y-axis represents the distance/dissimilarity between clustered groups, with a reference provided to a Wikipedia article for further explanation.

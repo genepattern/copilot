@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/zqLRzoa0OkU
+Title: GSEA Problem
+----------------------------------------
+
+
+
+
+
+GSEA Problem
+27 views
+Skip to first unread message
+
+Daryl Griffin
+unread,
+Oct 7, 2020, 12:50:26 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+When running a GSEA module - the following error message appears:
+WARNING: package com.apple.laf not in java.desktop WARNING: package com.sun.java.swing.plaf.windows not in java.desktop WARNING: package sun.awt.windows not in java.desktop Oct 07, 2020 7:21:26 PM java.util.prefs.FileSystemPreferences$1 run INFO: Created user preferences directory. xtools.api.param.BadParamException: After pruning, none of the gene sets passed size thresholds. at org.gsea_msigdb.gsea/xtools.gsea.AbstractGseaTool.checkAndBarfIfZeroSets(AbstractGseaTool.java:45) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.execute(Gsea.java:160) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:417) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:287) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29) 
+
+
+Job Number is 283634
+
+
+Any help is much appreciated,
+Daryl 
+
+Anthony Castanza
+unread,
+Oct 8, 2020, 10:52:17 AM
+
+
+
+to GenePattern Help Forum
+Hi Daryl,
+
+
+The key error is here:  BadParamException: After pruning, none of the gene sets passed size thresholds  
+This is caused by a couple of potential things, the most common are not using the whole dataset, GSEA is indented to be run on all expressed genes so having a highly restricted gene list can cause issues with the gene set size thresholds.
+Another common cause is not collapsing the data using the correct CHIP file. Your input identifiers need to match exactly the identifiers used in MSigDB if not collapsing, or need to exactly match the identifiers in the first column of the selected CHIP file if collapsing.
+I recomend checking your input files to see if either of these conditions applies. And if not, we can take a closer look.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicie
+University of California, San Diego
+
+
+Reply all
+
+Reply to author
+
+Forward

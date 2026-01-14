@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/2U_6H5fqPdw
+Title: How to extract the Cancer Cell Fraction for copy number lesions (eg. 8q23.3) from ABSOLUTE output?
+----------------------------------------
+
+
+
+
+
+How to extract the Cancer Cell Fraction for copy number lesions (eg. 8q23.3) from ABSOLUTE output?
+43 views
+Skip to first unread message
+
+sunand...@gmail.com
+unread,
+Mar 10, 2023, 11:54:51 AM
+
+
+
+to GenePattern Help Forum
+
+
+To provide more information: Absolute ran successfully on segmentation and maf files for each sample in my study. The .RData files have been generated on each sample. Here is the summary of one of the samples
+> summary(seg.dat)
+                Length Class      Mode    
+segtab           8     data.frame list    
+error_model      0     -none-     list    
+primary.disease  1     -none-     character
+group            1     -none-     character
+platform         1     -none-     character
+sample.name      1     -none-     character
+array.name       1     -none-     character
+maf.fn           1     -none-     character
+obs.scna         8     -none-     list    
+mut.cn.dat       8     data.frame list    
+mode.res        14     -none-     list    
+version          1     -none-     numeric  
+
+
+
+Where can i find the Cancer cell fraction (CCF) for a particular lesion (say 8q23.3) in this seg.dat list generated as Absolute output?
+Ted Liefeld
+unread,
+Mar 15, 2023, 3:28:49 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+unfortunately we do not have any experience with Absolute in the GenePattern team.  I asked a colleague at the Broad Institute and he suggested looking into the segtab dataframe from your output to see if there was anything in there.  Sorry we can't offer more help
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/qewerA3cB5Y
+Title: Increased storage
+----------------------------------------
+
+
+
+
+
+Increased storage
+15 views
+Skip to first unread message
+
+JESSIE HOLLINGSWORTH
+unread,
+Mar 13, 2025, 7:27:57 AM
+
+
+
+to GenePattern Help Forum
+Hi, I requested that my storage be increased to 150GB, what was done last week but has since been decreased back to 30GB. Can the storage be increased back to 150GB? Thanks.
+Ted Liefeld
+unread,
+Mar 13, 2025, 7:36:22 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have increased it back, sorry for the inconvenience.  We upgraded the server last week, and somehow this slipped through a crack.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

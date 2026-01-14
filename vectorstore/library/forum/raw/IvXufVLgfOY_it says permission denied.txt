@@ -1,0 +1,152 @@
+URL: https://groups.google.com./g/genepattern-help/c/IvXufVLgfOY
+Title: it says permission denied
+----------------------------------------
+
+
+
+
+
+it says permission denied
+9 views
+Skip to first unread message
+
+Bhaswatee Das
+unread,
+Aug 2, 2019, 3:52:47 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Capture.PNG
+Michelle Wedemeyer
+unread,
+Aug 2, 2019, 8:28:49 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi.  I was able to get the program working beautifully from the Broad web interface!  Thank you for the response.
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5d336615-7b61-4d9e-9e8d-bd156a6dfa60%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 2, 2019, 8:33:25 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Are you still having this problem?
+
+
+If so, try logging out and logging back in. 
+
+
+Let me know if the problem persists.
+
+
+Best
+-Barbara
+Michelle Wedemeyer
+unread,
+Aug 2, 2019, 8:37:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I had tried logging out and logging back in several times as well as closing my browser.  I finally switched from using the GenePattern notebook to the Broad hosted cloud based Genepattern web inferface.  It seemed to be some sort of server issue with uploading as I was also unable to load the test dataset.  I tried to install the downloaded version on my Mac as well but that kept asking for a token and a server which I don't have or couldn't find.  Once I switched to the Cloud approach it was just fine.  
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7a28dffa-9604-4d7d-8739-863badb8c286%40googlegroups.com.
+
+Barbara Hill
+unread,
+Aug 2, 2019, 10:14:37 AM
+
+
+
+to GenePattern Help Forum
+Hi Michelle, 
+
+
+Were you using the notebook via notebook.genepattern.org? and you ran the job from a notebook which was logged into cloud.genepattern.org?
+
+
+And from where were you trying to upload the test data? In the notebook or the cloud.genepattern.org web app?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

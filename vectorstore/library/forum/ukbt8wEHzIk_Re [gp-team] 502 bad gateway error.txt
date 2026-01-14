@@ -1,0 +1,1 @@
+A GenePattern user experienced a 502 bad gateway error when attempting to access the online platform, and was informed by the support team that the server was temporarily down for maintenance, with the issue being resolved within a few hours.

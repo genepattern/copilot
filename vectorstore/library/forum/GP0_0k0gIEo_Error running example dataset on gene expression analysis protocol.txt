@@ -1,0 +1,1 @@
+A user attempted to run a Differential Gene Expression (DGE) protocol using GenePattern's sample dataset but encountered repeated errors during each step of the protocol, with no specific resolution provided beyond a server administrator noting that the initial job submission had been deleted from the server.

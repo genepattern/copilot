@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/r921CwT-nqo
+Title: reference genome for genepattern
+----------------------------------------
+
+
+
+
+
+reference genome for genepattern
+3 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Nov 8, 2018, 9:21:01 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+i am using genepattern for my NGS analyses and i need the maize reference genome. 
+
+
+I tried to add it several time but it did not work.
+
+
+Can you add the reference genome of maize version 3 and 4 on gene pattern 
+
+
+Thanks 
+Barbara Hill
+unread,
+Nov 8, 2018, 9:22:00 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Which module are you trying to use? and what are the errors you are getting?
+
+
+If you give us a job id we can take a look and help you get back to your work.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

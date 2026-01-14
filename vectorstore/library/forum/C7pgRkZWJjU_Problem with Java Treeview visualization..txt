@@ -1,0 +1,1 @@
+A user experienced issues with Java Treeview visualization not loading in various browsers and operating systems, which was resolved by using the VisualizerLauncher alternative tool, providing a successful workaround for visualizing dendrograms in the GenePattern platform.

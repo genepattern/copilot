@@ -1,0 +1,1 @@
+A user reported a GenePattern hierarchical clustering module job getting stuck in pending status, with a recommendation from support to try running the job on the cloud.genepattern.org platform as a potential workaround for potential job processing issues.

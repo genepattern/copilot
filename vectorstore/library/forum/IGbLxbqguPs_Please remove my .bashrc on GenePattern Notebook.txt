@@ -1,0 +1,1 @@
+A user requested assistance removing their .bashrc file on GenePattern Notebook after an attempted automatic login process configuration caused a spawning process failure, which was successfully resolved by a GenePattern team member who removed the problematic .bashrc file, allowing the user to regain server access.

@@ -1,0 +1,117 @@
+URL: https://groups.google.com./g/genepattern-help/c/ItKmqaPR9Dw
+Title: The GenePattern Public Notebook Collection is now available from within the classic GenePattern web app!
+----------------------------------------
+
+
+
+
+
+The GenePattern Public Notebook Collection is now available from within the classic GenePattern web app!
+10 views
+Skip to first unread message
+Barbara Hill
+unread,
+May 23, 2019, 2:07:43 PM
+
+
+
+to genepatt...@googlegroups.com
+
+GenePattern 3.9.11 build 216 is available for use on our Public GenePattern Server, via download, and as an Amazon Machine Image (AMI). 
+
+
+
+
+New in this release is the Notebook tab in the left-hand panel which provides access to the GenePattern Public Notebook Collection.
+
+
+
+
+Selecting a notebook from this menu opens a copy of the notebook in your 
+GenePattern notebook workspace, allowing you to run, edit, share and save the notebook as you can with any of your notebooks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+More details about features and improvements in this version of GenePattern can be found in the Release Notes. 
+
+
+
+Feel free to contact us with any questions or comments.
+
+Sincerely, 
+
+The GenePattern Team
+
+
+Reply all
+
+Reply to author
+
+Forward

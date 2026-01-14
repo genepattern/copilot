@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/SmFwhC2EO84
+Title: is there minimum number criteria to run ssGSEA??
+----------------------------------------
+
+
+
+
+
+is there minimum number criteria to run ssGSEA??
+22 views
+Skip to first unread message
+
+이한새
+unread,
+Nov 11, 2020, 3:28:04 AM
+
+
+
+to GenePattern Help Forum
+hi ssGSEA team
+first of all 
+i love to using this great tool for my analysis
+
+
+my question is ...  same as the title.
+i just runned a job with almost 3000 samples with gene set that made of 7 genes
+but no results came out
+but gene names are 100% intact
+
+
+so... is there any minimum number to run ssgsea??
+then where can i see criteria for geneset or sample dataset??
+Anthony Castanza
+unread,
+Nov 11, 2020, 10:26:41 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+ssGSEA has a default minimum gene set size of 10, however this can be adjusted (it’s the second to last parameter in the main settings). We generally find that such small gene sets don’t produce substantial enrichment scores, but there shouldn’t be any technical issues with trying.
+
+One thing to note however is that this filter is applied after matching the gene symbols in the gene set to the gene symbols in the dataset, so if there are genes in the gene set that aren’t in the dataset, that will affect the effective size of the set.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5808505e-e156-45c0-b9a7-c38df28853b8n%40googlegroups.com.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

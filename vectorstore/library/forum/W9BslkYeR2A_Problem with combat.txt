@@ -1,0 +1,1 @@
+Problem with ComBat batch effect removal in GenePattern: User encountered an error due to duplicate row names in their input GCT file, which is not allowed by the module. Solution involves preprocessing data to ensure unique row identifiers before running the ComBat module, as specified in the module documentation.

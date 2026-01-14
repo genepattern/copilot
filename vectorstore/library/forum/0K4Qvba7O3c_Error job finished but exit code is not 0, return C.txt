@@ -1,0 +1,1 @@
+A user encountered a GenePattern GSEA module job failure with an exit code error of -1 on the Indiana server, seeking troubleshooting advice for resolving the "job finished but exit code is not 0, return C" error, though no specific resolution was provided in the forum thread.

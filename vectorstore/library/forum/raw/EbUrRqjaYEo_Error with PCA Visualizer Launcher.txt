@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/EbUrRqjaYEo
+Title: Error with PCA Visualizer Launcher
+----------------------------------------
+
+
+
+
+
+Error with PCA Visualizer Launcher
+16 views
+Skip to first unread message
+
+Amanda Robinson
+unread,
+Oct 24, 2018, 5:13:30 PM
+
+
+
+to genepatt...@googlegroups.com
+Complete description of the problem (ie what you were trying to do and what went wrong):
+
+I am trying to visualize my PCA analysis and the applet work around is not loading the visualization pages.  The interface where I input my user name, password, and job number is fine, but when I hit submit a java icon flashes in the corner, quickly becomes the mac terminal icon, and then disappears all together without any windows opening.   This is a new problem, the applet was working for me last week.
+
+ 
+
+I have checked that my java is up to date.  When finding java in my terminal I get the attached error message.
+
+
+
+
+
+Screen Shot 2018-10-24 at 4.56.18 PM.png
+Barbara Hill
+unread,
+Oct 26, 2018, 1:57:20 PM
+
+
+
+to GenePattern Help Forum
+Hello Amanda, 
+
+
+I tried this out on my Windows 10 machine and got the following error in my terminal:
+
+
+An error occured while reading the file 18JK_30ct_PCA_transposed.gct.
+Cause: Expected 712 column names, but read 711 column names on line 3.
+
+
+It may be that if you fix that error, you'll bypass the one you are seeing (if it is a red herring) but I think there may also be a Java version error. Have you updated your computer recently?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

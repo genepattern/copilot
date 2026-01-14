@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/V-H2xRCjdvk
+Title: 【GISTIC result for chromosome X】
+----------------------------------------
+
+
+
+
+
+【GISTIC result for chromosome X】
+23 views
+Skip to first unread message
+
+Yuta Ito
+unread,
+Mar 6, 2022, 5:47:23 PM
+
+
+
+to GenePattern Help Forum
+Hello, GenePattern Team
+
+
+I ran GISTIC2.0 on the copy number data from targeted-sequencing data.
+I would like to analyze chromosome X as well.
+
+
+However, in my result (broad_significance_results.txt), only Xq was shown (Xp data was missing), and also the frequency of arm-level alteration is not correct (overestimation).
+
+
+According to the previous paper, both Xp and Xq are drawn based on SNP array data.
+
+
+Why did this happen? 
+
+
+Thak you for your help.
+
+
+Best,
+Yuta 
+tmt...@cloud.ucsd.edu
+unread,
+Mar 7, 2022, 11:40:02 AM
+
+
+
+to GenePattern Help Forum
+Hello Yuta,
+
+
+For an issue like this, it is best to post in the GISTIC Forum, where the lead developer and other members of the GISTIC community can assist you. 
+
+
+Best,
+Thorin
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,130 @@
+URL: https://groups.google.com./g/genepattern-help/c/qbjWU-hDG4Q
+Title: external youtube video files not playing in GPNB ?
+----------------------------------------
+
+
+
+
+
+external youtube video files not playing in GPNB ?
+5 views
+Skip to first unread message
+
+Rich Lysakowski
+unread,
+Mar 1, 2020, 2:36:03 PM
+
+
+
+to GenePattern Help Forum
+Just as a learning test, I tried playing some smooth jazz using the exact same approach as in the "GenePattern Notebook Tutorial" notebook.  
+
+
+I substituted a different URL into the Python code and updated the description to match the new video. 
+
+
+Code Before:
+
+
+from IPython.display import IFrame
+import genepattern
+
+
+def youtube():
+    display(IFrame('https://www.youtube.com/embed/8npzyGLpUHU', width="100%", height="480"))
+
+
+genepattern.GPUIBuilder(
+    youtube,
+    name='GenePattern Notebook Introduction Video',
+    description='Press Run to load the video',
+    parameters={
+        'output_var': {
+            'hide': True
+        }
+    })
+
+
+
+
+CODE AFTER:
+
+
+from IPython.display import IFrame
+import genepattern
+
+def youtube2():
+    display(IFrame('https://www.youtube.com/watch?v=CdnaJPPxQow', width="100%", height="480"))
+
+
+genepattern.GPUIBuilder(
+    youtube2,
+    name='Jazz Music | Smooth Jazz Saxophone | Relaxing Background Music with the Sound of Ocean Waves',
+    description='Press Run to load the video',
+    parameters={'output_var': {'hide': True}}
+)
+
+
+The code after shows a frowny face icon and the video doesn't play.  
+
+
+The only message is "www.youtube.com refused to connect."
+
+
+There is no message in the console.  I think this may be a YouTube authentication issue, because it doesn't recognize the Browser Agent as a person.  The Request is not telling it that this is a real person in a browser.
+
+
+What is a workaround for this?    Do we need to incorporate a browser agent to into the Python function before the display(IFrame()) call?  
+
+
+def youtube2():
+    display(IFrame('https://www.youtube.com/watch?v=CdnaJPPxQow', width="100%", height="480"))
+
+
+
+
+
+
+For training purposes it would be nice to be able to include a URL out to any arbitrary video.  
+
+
+Thanks.
+
+
+Best Regards, 
+
+
+Rich Lysakowski 
+
+
+
+
+
+
+Alex Wenzel
+unread,
+Mar 1, 2020, 7:30:21 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Rich,
+
+
+You can fix this by changing your URL to "youtube.com/embed/<id>" instead of "youtube.com/watch?v=<id>"
+
+
+from IPython.display import IFrame
+import genepattern
+
+
+def youtube2():
+
+    display(IFrame('https://www.youtube.com/embed/CdnaJPPxQow', width="100%", height="480"))
+
+
+Reply all
+
+Reply to author
+
+Forward

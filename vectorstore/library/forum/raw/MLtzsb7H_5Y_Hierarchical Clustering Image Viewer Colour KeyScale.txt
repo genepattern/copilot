@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/MLtzsb7H_5Y
+Title: Hierarchical Clustering Image Viewer Colour Key/Scale
+----------------------------------------
+
+
+
+
+
+Hierarchical Clustering Image Viewer Colour Key/Scale
+9 views
+Skip to first unread message
+
+Cathriona Foley
+unread,
+Jan 17, 2021, 2:28:27 AM
+
+
+
+to GenePattern Help Forum
+Hi All,
+
+
+I have created a heatmap using the Hierarchical Clustering module and Image Viewer module which worked well. However, is there a way to represent the colour scale or a color key that I can create to complement my heatmap? The input data were normalised RNA-Seq read counts (LogCPM). 
+
+
+Thanks in advance.
+
+
+Cathriona
+Barbara Hill
+unread,
+Jan 19, 2021, 7:31:54 AM
+
+
+
+to GenePattern Help Forum
+Hello Cathriona, 
+
+
+By default, the legend is displayed in the upper left-hand corner of the viewer (as seen in this forum post). 
+
+
+Please let us know if you are having difficulties displaying the HierarchicalClusteringViewer.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

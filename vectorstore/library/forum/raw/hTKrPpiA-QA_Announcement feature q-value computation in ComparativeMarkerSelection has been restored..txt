@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/hTKrPpiA-QA
+Title: Announcement: feature q-value computation in ComparativeMarkerSelection has been restored.
+----------------------------------------
+
+
+
+
+
+Announcement: feature q-value computation in ComparativeMarkerSelection has been restored.
+2 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jul 28, 2021, 10:59:45 AM
+
+
+
+to GenePattern Help Forum
+ComparativeMarkerSelection has been fixed to restore the computation of feature q values. https://bit.ly/ComparativeMarkerSelection_v11
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

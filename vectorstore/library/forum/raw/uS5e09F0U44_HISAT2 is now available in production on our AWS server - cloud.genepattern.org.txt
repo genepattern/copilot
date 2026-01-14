@@ -1,0 +1,26 @@
+URL: https://groups.google.com./g/genepattern-help/c/uS5e09F0U44
+Title: HISAT2 is now available in production on our AWS server - cloud.genepattern.org
+----------------------------------------
+
+
+
+
+
+HISAT2 is now available in production on our AWS server - cloud.genepattern.org
+8 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Oct 26, 2018, 12:53:30 PM
+
+
+
+to genepatt...@googlegroups.com
+HISAT2 is now released in production on our AWS server cloud.genepattern.org - providing fast and sensitive alignment program for mapping next-generation RNA & DNA sequencing reads.
+
+
+Reply all
+
+Reply to author
+
+Forward

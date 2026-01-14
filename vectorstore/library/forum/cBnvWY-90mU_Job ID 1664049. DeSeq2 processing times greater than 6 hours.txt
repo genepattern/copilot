@@ -1,0 +1,1 @@
+A user submitted a DESeq2 job on GenePattern that was taking over 6 hours to process, resulting in job termination, with input files including a gene count matrix and a classification file, and the support team recommended simply restarting the job without providing specific troubleshooting guidance for the extended processing time.

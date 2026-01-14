@@ -1,0 +1,1 @@
+A user inquired about the unavailability of the RankNormalize module in GenePattern, and was informed that the module was deprecated in December 2021, but subsequently reinstalled on the cloud server, with the user confirming successful functionality after installation.

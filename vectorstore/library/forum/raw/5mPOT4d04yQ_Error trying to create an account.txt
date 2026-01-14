@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/5mPOT4d04yQ
+Title: Error trying to create an account
+----------------------------------------
+
+
+
+
+
+Error trying to create an account
+4 views
+Skip to first unread message
+
+Helena Paidassi
+unread,
+Nov 9, 2018, 7:07:33 AM
+
+
+
+to GenePattern Help Forum
+When trying to create an account I get this error message:
+
+
+Error creating 'gp.user.dir' for username=hpaidass, error: Unable to create home directory for user hpaidass, userDir=/opt/gpbeta/gp_home/users/hpaidass 
+
+
+
+Any advise ?
+Barbara Hill
+unread,
+Nov 9, 2018, 7:36:23 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Helena, 
+
+
+Well look into this right away. 
+
+
+Best 
+Barbara 
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+Peter Carr
+unread,
+Nov 9, 2018, 8:49:06 AM
+
+
+
+to genepatt...@googlegroups.com
+The file storage is completely full. I am working on adding more
+capacity. I will let you know when we are ready.
+Regards,
+Peter
+
+
+Peter Carr
+unread,
+Nov 9, 2018, 8:56:02 AM
+
+
+
+to genepatt...@googlegroups.com
+We freed up a small amount of space. Go ahead and create your account.
+Please refrain from working with large datasets while we expand the disk
+capacity.
+
+Regards,
+Peter
+
+
+
+Reply all
+
+Reply to author
+
+Forward

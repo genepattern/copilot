@@ -1,0 +1,1 @@
+GenePattern upload interface update: User inquired about missing upload button, support clarified that the previously named "upload" button is now labeled "Files" in the current interface, resolving potential confusion from outdated tutorial materials.

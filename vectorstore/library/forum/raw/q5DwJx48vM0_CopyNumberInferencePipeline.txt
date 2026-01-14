@@ -1,0 +1,137 @@
+URL: https://groups.google.com./g/genepattern-help/c/q5DwJx48vM0
+Title: CopyNumberInferencePipeline
+----------------------------------------
+
+
+
+
+
+CopyNumberInferencePipeline
+22 views
+Skip to first unread message
+
+Jingwei Cheng
+unread,
+Sep 15, 2017, 12:42:14 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+I was trying to run CopyNumberInferencePipeline module on the server. However I got the following error message “The module or pipeline is not installed: ParallelCBS”.
+
+Job ID if run on a publicly available server. 
+1549250
+
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Sep 19, 2017, 9:45:06 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello, 
+
+
+My apologies for the delay in responding. This issue should be resolved by the end of the week. I will let you know as soon as it is.
+
+
+Best
+
+
+-Barbara
+Barbara Hill
+unread,
+Oct 10, 2017, 1:37:15 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Apologies again for the delay. This issue should be resolved now.
+
+
+Please let us know if you have any further troubles.
+
+
+Best
+
+
+-Barbara
+
+Jingwei Cheng
+unread,
+Nov 12, 2017, 11:11:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thanks for taking care of the issue.
+I re-ran the CopyNumberInferencePipeline module on the server, but got an error message again "CopyNumberNoise: non-optional parameter <input.file> is blank."
+I was wondering how to provide Input.file to the pipeline and what Input file I should use.
+Thanks.
+Job ID if run on a publicly available server.
+1575618
+
+
+Barbara Hill
+unread,
+Nov 17, 2017, 1:16:33 PM
+
+
+
+to GenePattern Help Forum
+Hello Jingwei, 
+
+
+Unfortunately, this goes beyond my understanding of this pipeline. 
+
+
+What I do know is that the error is occurring in the CopyNumberInference step. It is failing to produce the quality scores file needed as input to CopyNumberNoise. I can see from the error (and what where it points in the code) that that is exactly where the module is failing, and I know that it has to do with the matrices not matching, but I am not sure beyond that. I suspect it has to do with your sample info file, but I wasn't able to figure out what is wrong. 
+
+
+I'm hoping that these pointers combined with your knowledge of your data and analyses will allow you to address the issue.
+
+
+Please let me know if you are still having difficulty and I'll see if I can point you toward someone with deeper knowledge of this particular code.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,157 @@
+URL: https://groups.google.com./g/genepattern-help/c/ejrkQWF3ZZI
+Title: Upload of data
+----------------------------------------
+
+
+
+
+
+Upload of data
+36 views
+Skip to first unread message
+
+Maria K
+unread,
+Aug 6, 2022, 2:09:30 AM
+
+
+
+to GenePattern Help Forum
+Hi there,
+I try to upload for my first try analysis, a csv file with the data. But there is a problem and it is in the first step, I don't know how to fix that. The data is supplied from another person to me. How can I be sure to find out how my upload data is correct to be uploaded??
+Ted Liefeld
+unread,
+Aug 8, 2022, 8:39:32 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+can you provide a few more details so that we may try to help you?
+1. What is your GenePattern username (or the email you used to register)?
+2. Was this on the GenePattern server (cloud.genepattern.org) or the GenePattern Notebook server (notebook.genepattern.org)?
+3. Were you uploading to your Files tab or directly to a module input parameter?
+4. Do you have good internet connectivity
+
+
+Thanks
+
+
+Ted
+
+
+
+Maria K
+unread,
+Aug 8, 2022, 8:52:43 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi there,
+Thank you for your response.
+I am currently working on single cell RNA clustering analysis. This one I choose when I am going to start my project from the features. In my notebook, the first step after a lot of analysis was running, but now I have to deal with so errors. When it was running I had a plot as a result. My problem now is in step 2 where I don't know how to set the parameters of the quality control. When it comes to for example 400 cells how can I be sure to set the right value for the parameters. And how much time should I wait for them. I mean there is a message progress removing of high mitochondrial genes but after that there is code and I can't understand a lot about that. How can I be sure for setting the correct values for parameters. I try to find some help from the documentation without any result. 
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/ejrkQWF3ZZI/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/065196f8-7e11-4db9-9b37-9b761719891en%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 8, 2022, 11:24:27 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+can you tell me the name of the notebook you are trying to run?  Is it one of the notebooks provided by the GenePattern Notebook Library or did you get it from somewhere else?
+
+
+Ted
+
+
+
+Maria K
+unread,
+Aug 8, 2022, 11:49:07 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+I chose the notebook from the public library "Single-Cell RNA-seq Clustering Analysis Notebook" and I have uploaded a couple of CSV files to test, however my real data is in the file "GSE41265_data.csv".
+The first step is running well and I get the charts with both Matrix dimension names options "gene by cell" and "cell by gene".
+I see some errors in the code after successfully but I guess those are fine as I see the graphs.
+
+
+When I try to go into the second step, I am facing the issues. I guess that I am not using the proper parameters values.
+Is there any guidance on how to proceed with the next steps? which values are the proper to get into the graph of step 2
+
+
+My GenePatternusername (profile) is MAraki128
+
+
+Thank you in advance.
+
+
+Maria
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/37916318-9051-4810-b62a-b646f0bb5c6dn%40googlegroups.com.
+
+Alex Wenzel
+unread,
+Aug 9, 2022, 8:55:52 PM
+
+
+
+to GenePattern Help Forum
+Hi Maria,
+
+
+The parameter choices in the filtering step are dependent on the distribution of the QC metrics in the specific dataset being analyzed. In general, the goal is to filter outliers. As an example, see the violin plot figures and the resulting parameter choices in the Seurat toolkit's tutorial (on which our notebook workflow is based). 
+
+
+Alex
+
+
+
+Maria K
+unread,
+Aug 9, 2022, 10:19:06 PM
+
+
+
+to genepatt...@googlegroups.com
+That could be very useful!! I will check this! Thanks you so much Alex!! 
+
+
+Best wishes,
+Maria 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/86658122-87d4-4a11-97b4-a7366bfeada3n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

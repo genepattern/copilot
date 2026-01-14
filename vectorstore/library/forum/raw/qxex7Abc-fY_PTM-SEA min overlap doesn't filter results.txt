@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/qxex7Abc-fY
+Title: PTM-SEA: min overlap doesn't filter results
+----------------------------------------
+
+
+
+
+
+PTM-SEA: min overlap doesn't filter results
+26 views
+Skip to first unread message
+
+Tyler Sagendorf
+unread,
+Nov 4, 2021, 5:17:11 PM
+
+
+
+to GenePattern Help Forum
+Setting the min overlap to 10, for example, still results in signatures with overlap percent less than 10 in the combined results.
+1169925992
+unread,
+Nov 4, 2021, 5:17:19 PM
+
+
+
+to Tyler Sagendorf
+您好，邮件已收到~
+我会尽快向您回复邮件
+Anthony Castanza
+unread,
+Nov 4, 2021, 5:23:37 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+While GenePattern offers a platform for running PTM-SEA, we don't actually develop it.
+
+I'd recommend reaching out to the authors of PTM-SEA. You might open a ticket at their GitHub repository https://github.com/broadinstitute/ssGSEA2.0.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b9b928b0-ed51-4bbf-bb2a-d0b441308fa6n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

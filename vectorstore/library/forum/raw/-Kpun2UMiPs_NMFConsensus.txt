@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/-Kpun2UMiPs
+Title: NMFConsensus
+----------------------------------------
+
+
+
+
+
+NMFConsensus
+17 views
+Skip to first unread message
+
+Elena Pipi
+unread,
+Feb 17, 2019, 10:50:17 AM
+
+
+
+to GenePattern Help Forum
+Hi there,
+
+
+I was wondering if it is possible for somebody to see the molecular pattern that define each cluster in NM consensus clustering.
+
+
+thanks,
+elena
+Edwin Juarez
+unread,
+Feb 20, 2019, 8:26:39 AM
+
+
+
+to GenePattern Help Forum
+Elena,
+
+
+Although the outputs of NMFConsensus do not provide this information directly, it is possible to visualize them using other tools. One approach you can take is to:
+- Take the membership.gct file corresponding to the clustering in which you are interested, identify which samples belong to which cluster
+- Use that information to run SelectFeaturesColumns providing the original expression (gct) file you provided to NMFConsensus 
+--> With SelectFeaturesColumns you will be able to choose a subset of columns, repeat this process for your clusters of interest and you will have a GCT file for each cluster
+- Visualize each cluster using HeatMapViewer
+
+
+We recognize this process can be time consuming, we are planning on providing a more streamlined way to visualize the expression patterns on each cluster (but I can't promise that this pipeline/notebook will be ready right away).
+
+
+Are you comfortable with programing? If so, you could replicate this workflow with your programming environment of choice as well (of course we'd recommend using GenePattern Notebooks for that).
+
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

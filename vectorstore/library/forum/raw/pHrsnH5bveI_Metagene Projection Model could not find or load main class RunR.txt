@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/pHrsnH5bveI
+Title: Metagene Projection Model could not find or load main class RunR
+----------------------------------------
+
+
+
+
+
+Metagene Projection Model could not find or load main class RunR
+34 views
+Error
+R
+Skip to first unread message
+
+Nikho Hizon
+unread,
+Jun 27, 2019, 1:14:22 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run the Metagene Projection Module but before it even begins running, within a few seconds of the job starting, it ends with this error:
+
+
+Error: Could not find or load main class RunR
+
+The Job ID was 138502.
+
+
+Thank you in advance,
+Nikho Hizon
+
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Jul 12, 2019, 12:45:19 PM
+
+
+
+to GenePattern Help Forum
+Hello Nikho,
+
+
+Thank you for bringing this to our attention. The module was not correctly configured to run on the Amazon server. I have fixed this now and verified that it now runs to completion.
+
+
+Please try your job again and let me know if you have any further difficulties.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

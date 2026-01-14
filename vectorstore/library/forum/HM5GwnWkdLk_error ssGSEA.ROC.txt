@@ -1,0 +1,1 @@
+A user encountered an error running ssGSEA in GenePattern due to a missing 'getopt' R package dependency, which was resolved by using an alternative module version hosted on the GenePattern cloud platform that avoided the package installation issue, successfully enabling the comparative ssGSEA analysis for two phenotype groups.

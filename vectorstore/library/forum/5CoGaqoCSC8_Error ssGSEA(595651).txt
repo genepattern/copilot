@@ -1,0 +1,1 @@
+The GenePattern forum thread discusses a user experiencing an error while running ssGSEA, which was resolved by converting Ensembl Gene IDs to gene symbols using the CollapseDataset module with the Human_Ensembl_Gene_ID_MSigDB.v.2023.2.Hs.chip file, allowing successful execution of the ssGSEA analysis by ensuring gene set identifier compatibility.

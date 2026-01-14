@@ -1,0 +1,303 @@
+URL: https://groups.google.com./g/genepattern-help/c/lR8RG1yWQDs
+Title: Error in SubMap
+----------------------------------------
+
+
+
+
+
+Error in SubMap
+116 views
+SubMap
+Skip to first unread message
+
+xf627...@gmail.com
+unread,
+Jun 8, 2018, 1:00:32 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi there,
+
+ 
+
+I follow the instruction and made a label stating with 1 in 3rd line but I always get error :
+
+ 
+
+Error in if (min(as.numeric(cls)) == 0) { :
+
+                missing value where TRUE/FALSE needed
+
+Execution halted
+
+ 
+
+Attached is one of my cls file, all parameters are set default.
+
+
+
+
+could anyone give me some help.
+
+ 
+
+Thank you so much!
+
+
+
+Btw, I am not sure if this is a job ID : 1689448. SubMap 
+
+skcm.immunotherapy.for.SubMap.cls
+xf627...@gmail.com
+unread,
+Jun 8, 2018, 7:20:10 PM
+
+
+
+to GenePattern Help Forum
+Hello, anyone can help???
+I have tried tons of times....all ERROR
+
+在 2018年6月8日星期五 UTC-5下午3:00:32，xf627...@gmail.com写道：
+
+Barbara Hill
+unread,
+Jun 18, 2018, 2:26:46 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Apologies for the delay in responding. 
+
+
+Unfortunately, your job has been purged, as it has been over a week. So, I can't look at your input data.
+
+
+Might it have had features that are zero or "flat" across all columns?
+
+
+Best
+-Barbara
+
+xf627...@gmail.com
+unread,
+Jun 26, 2018, 8:33:27 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I will try again tomorrow and I think I will still get en error. Hope this time you can check the input data.
+
+在 2018年6月18日星期一 UTC-5下午4:26:46，Barbara Hill写道：
+
+xf627...@gmail.com
+unread,
+Jun 27, 2018, 6:37:13 AM
+
+
+
+to GenePattern Help Forum
+Good Morning,
+
+
+The new ID is 1696733 and yes it is still an error.
+
+
+在 2018年6月18日星期一 UTC-5下午4:26:46，Barbara Hill写道：
+Hello,
+
+Barbara Hill
+unread,
+Jun 28, 2018, 10:31:25 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+It does look like you have some rows which may be interpreted as flat by the algorithm:
+
+
+For example in your dataseta.file, rows 14, 196 and 242 contain a majority of 0 values, and row 757 is all 0s.
+
+
+Best
+-Barbara
+xf627...@gmail.com
+unread,
+Jun 29, 2018, 10:33:05 AM
+
+
+
+to GenePattern Help Forum
+Thank you.
+
+
+However, I still get error when I filtered low expressed genes.
+My work ID is 1698087 this time.
+
+
+The flat value maybe one reason, but, as I mentioned, the error information is :
+Error in if (min(as.numeric(cls)) == 0) { : 
+	missing value where TRUE/FALSE needed
+Execution halted
+
+
+Thus, I think it is concerning about the cls file.
+
+
+Could you check it for me?
+Thank you so much.
+
+在 2018年6月28日星期四 UTC-5下午12:31:25，Barbara Hill写道：
+
+Barbara Hill
+unread,
+Jul 16, 2018, 10:24:21 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm just returning from vacation and, unfortunately, your job has been purged. Please run it again and provide a new job id for me to review.
+
+
+Best
+-Barbara
+6279...@qq.com
+unread,
+Jul 17, 2018, 7:48:18 PM
+
+
+
+to GenePattern Help Forum
+Ok.
+The new job ID is 1704645 and the error is still
+
+Error in if (min(as.numeric(cls)) == 0) { :
+    missing value where TRUE/FALSE needed
+Execution halted
+
+
+Please advise.
+Best.
+
+在 2018年7月17日星期二 UTC+8上午1:24:21，Barbara Hill写道：
+
+6279...@qq.com
+unread,
+Jul 23, 2018, 12:59:58 AM
+
+
+
+to GenePattern Help Forum
+Ok I know the last job is going to be purged and actually, I do not know how long I should wait for getting the solution.
+Thus this is the new job ID:
+1706368
+
+Many thanks.
+
+
+在 2018年7月17日星期二 UTC+8上午1:24:21，Barbara Hill写道：
+Hello, 
+
+Barbara Hill
+unread,
+Jul 23, 2018, 2:32:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello, 
+
+
+Thank you for the updated job id - I'm running through some tests now to see if I can help.
+
+
+Best
+-Barbara
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a2c38126-76d2-46c6-a555-01c0be070409%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+Barbara Hill
+unread,
+Jul 24, 2018, 2:25:01 PM
+
+
+
+to GenePattern Help Forum
+Hello again, 
+
+
+I fixed your files as follows:
+
+
+Removed extra spaces from the end of your cls files and updated the first line to only have 1 space between each number.
+
+
+For the GCT files - they were incorrectly formatted.
+GCT files should have a description column as the second column - this is optionally populated, but it impacts the dimensions of the matrix. This increased your number of samples in each file by 1 which brought the number of samples in your gct files in line with the number of samples indicated in your cls files.
+
+
+I have shared my job with you, so that you can download the files, or simply reload the job and run it to get the same job run by your user.
+
+
+https://genepattern.broadinstitute.org/gp/pages/index.jsf?jobid=1706975&openNewWindow=false
+
+
+
+Best
+-Barbara
+
+
+6279...@qq.com
+unread,
+Jul 24, 2018, 6:40:06 PM
+
+
+
+to GenePattern Help Forum
+Thank you soooooooooooooo much!
+
+在 2018年7月25日星期三 UTC+8上午5:25:01，Barbara Hill写道：
+
+
+Reply all
+
+Reply to author
+
+Forward

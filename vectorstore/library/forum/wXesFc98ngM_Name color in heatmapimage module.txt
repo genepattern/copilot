@@ -1,0 +1,1 @@
+GenePattern user seeks guidance on customizing heatmap annotation row colors in HeatMapImage module, with module documentation confirming limited color palette options and no direct method for specifying individual annotation row colors; no definitive solution was provided for the specific color customization request.

@@ -1,0 +1,1 @@
+A GenePattern user inquired about retrieving the detailed parameters used in a previous GISTIC analysis job, with a support team member responding by emailing the parameters directly and advising that job parameters can be found in the downloaded gp_execution_log.txt file or full job zip archive.

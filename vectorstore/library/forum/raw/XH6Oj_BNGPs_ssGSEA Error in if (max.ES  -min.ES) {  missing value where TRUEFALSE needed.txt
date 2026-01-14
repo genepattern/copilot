@@ -1,0 +1,174 @@
+URL: https://groups.google.com./g/genepattern-help/c/XH6Oj_BNGPs
+Title: ssGSEA Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed
+----------------------------------------
+
+
+
+
+
+ssGSEA Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed
+51 views
+Skip to first unread message
+
+Gabriel Mesa
+unread,
+Apr 19, 2024, 9:00:44 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've run ssGSEA before several times but I've never gotten this error. 
+
+
+My GMT file is one gene set of around 400 genes and my GCT file is formatted the same as I've run before based on the formatting guide instructions. 
+
+
+I run the analysis and I get back this error:
+
+
+Error in if (max.ES > -min.ES) { : missing value where TRUE/FALSE needed
+Calls: ssGSEA.cmdline
+Execution halted
+
+
+
+If you have some thoughts on how to resolve this I'd really appreciate it!
+
+
+Best,
+
+
+Gabriel Mesa
+Gabriel Mesa
+unread,
+Apr 19, 2024, 9:02:04 AM
+
+
+
+to GenePattern Help Forum
+Here is the job information as well:
+
+
+# Job: 577648
+# User: ghm15
+# Submitted: 2024-04-19 15:50:17.0
+# Started Running: 2024-04-19 15:50:28.0
+# Finished Running: 2024-04-19 15:51:26.0
+# Completed: Fri Apr 19 15:51:32 UTC 2024
+# ET(ms): 75105    server:  https://cloud.genepattern.org/gp/
+# Module: ssGSEA urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00270:10.1.0
+# Parameters: 
+#    input.gct.file = Chronos_GCT_format.gct   https://cloud.genepattern.org/gp/users/ghm15/tmp/run616491435654423369.tmp/input.gct.file/1/Chronos_GCT_format.gct # file size 	 272523802	18424	1100																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
+#    output.file.prefix = 
+#    gene.sets.database.files = gene.sets.database.files.list.txt   https://cloud.genepattern.org/gp/users/ghm15/tmp/run6032618546466980021.tmp/gene.sets.database.files.list.txt # file size 	140
+#    gene.symbol.column = Column 1
+#    gene.set.selection = ALL
+#    sample.normalization.method = none
+#    weighting.exponent = 0.75
+#    min.gene.set.size = 10
+#    combine.mode = combine.add
+
+
+
+Gabriel Mesa
+unread,
+Apr 22, 2024, 8:07:29 AM
+
+
+
+to GenePattern Help Forum
+I've also rechecked my input files and they look properly formatted. Still can't figure out what's wrong with it.
+
+Anthony Castanza
+unread,
+Apr 22, 2024, 12:41:55 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Gabriel,
+
+
+The issue here is stemming from the missing data in some cells. There appear to be quite a few genes where NA values are filled in, and the algorithm is choking on these. My recommendation would be to remove as many of these genes as you can (perhaps where there isn't a value for more than half your samples) and then to fill the remainder in with 0.
+
+0 isn't ideal in this case as it might affect the z-score like transform that is applied to the data internally, but it is probably the best option for getting this data to run without needing to rewrite a portion of the scoring algorithm.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8f244a5e-6df9-4a3f-8fe0-08acdfb171aan%40googlegroups.com.
+
+Gabriel Mesa
+unread,
+Apr 22, 2024, 1:47:40 PM
+
+
+
+to GenePattern Help Forum
+That worked great, thank you so much for your help. I made a slightly more conservative cutoff, where I kept genes that had at least 500 values out of my total 1100 possible total values. Since I made a little more conservative of a cutoff, what concerns should I have about the zeros in regards to the scoring algorithm?
+
+Anthony Castanza
+unread,
+Apr 25, 2024, 10:25:23 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Gabriel,
+
+
+Sorry for the late reply, without digging into the data myself and seeing the scale of the issue it's hard to say, but I think generally the impact should be pretty minimal.
+
+Just remember that if you wanted to compare any additional samples down the line to these samples, you'd want to ensure that they have a matching gene universe.
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/016c2d15-09eb-4814-acea-c026bdc9b5e7n%40googlegroups.com.
+
+Gabriel Mesa
+unread,
+Apr 26, 2024, 5:36:57 AM
+
+
+
+to GenePattern Help Forum
+I really appreciate your help thank you so much.
+
+
+Have a great day,
+
+
+Gabriel Mesa
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

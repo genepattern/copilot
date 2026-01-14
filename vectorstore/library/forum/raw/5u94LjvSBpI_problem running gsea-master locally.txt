@@ -1,0 +1,86 @@
+URL: https://groups.google.com./g/genepattern-help/c/5u94LjvSBpI
+Title: problem: running gsea-master locally
+----------------------------------------
+
+
+
+
+
+problem: running gsea-master locally
+6 views
+Skip to first unread message
+
+t.v...@aon.at
+unread,
+Sep 6, 2018, 7:30:03 AM
+
+
+
+to GenePattern Help Forum
+hello
+
+I downloaded the gsea-master package last week (version: see data.zip: DESCRIPTION).
+The data data and script I tried to analyze are included in data.zip.
+
+The program runs all the way through to the second last gen set in c5.bp.v6.2.ensg.gmt. Then it gets stuck without any further message (see screen shot in data.zip).
+I am using R3.4.3 or 3.5. There is no difference. I also tried it on different machines and in RStudio, without any success.
+
+I ran the exact same data set (using symbol instead of ensg as gene identifier) in GenePattern with the job id 1721843. GSE. This went smoothly.
+
+Could you help me fining out where the problem is?
+
+Thanks a lot
+
+Best
+
+Tilman Voss
+
+
+
+Tilman Voss, Ph.D.
+
+Boehringer Ingelheim RCV
+
+Dr. Boehringer Gasse 5-11
+
+A-1121 Vienna
+
+Austria
+
++43 1 80105 2606
+
+Tilma...@boehringer.ingelheim.com
+
+
+
+
+
+
+
+
+
+data.zip
+Barbara Hill
+unread,
+Sep 7, 2018, 12:49:38 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Help with the GSEA desktop app is beyond the reach of this forum.
+
+
+I suggest you post in the gsea-help forum, found here: https://groups.google.com/forum/#!forum/gsea-help
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

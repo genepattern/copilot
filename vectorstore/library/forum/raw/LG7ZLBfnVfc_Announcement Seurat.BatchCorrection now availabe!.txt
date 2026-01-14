@@ -1,0 +1,26 @@
+URL: https://groups.google.com./g/genepattern-help/c/LG7ZLBfnVfc
+Title: Announcement: Seurat.BatchCorrection now availabe!
+----------------------------------------
+
+
+
+
+
+Announcement: Seurat.BatchCorrection now availabe!
+4 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Apr 12, 2021, 6:30:27 PM
+
+
+
+to GenePattern Help Forum
+Seurat.BatchCorrection, using Seurat version 3.2.0 from the Satija Lab, is now available on GenePattern! Check it out on cloud.genepattern.org.
+
+
+Reply all
+
+Reply to author
+
+Forward

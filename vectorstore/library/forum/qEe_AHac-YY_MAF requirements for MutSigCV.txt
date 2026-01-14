@@ -1,0 +1,1 @@
+`GenePattern forum thread discusses MAF file requirements for MutSigCV analysis, with user seeking guidance on minimal column requirements for mutation category and effect detection, and receiving advice to submit the entire standard MAF file, indicating that comprehensive mutation annotation is crucial for accurate computational analysis.`

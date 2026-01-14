@@ -1,0 +1,136 @@
+URL: https://groups.google.com./g/genepattern-help/c/EtDfgWOX1Io
+Title: Is possible to analyze OncoScan CNV FFPE .cel files with GenePattern?
+----------------------------------------
+
+
+
+
+
+Is possible to analyze OncoScan CNV FFPE .cel files with GenePattern?
+37 views
+Skip to first unread message
+
+Joan Gibert Fernandez
+unread,
+Aug 21, 2018, 5:52:51 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+I am working with OncoScan data from lung cancer patients (no normal tissue paired samples). I would like to analyze the CNV and LOH from this samples using GenePattern but I'm not sure that I could use it.
+
+I'm browsing around the web-based GenePattern and SNPFileCreator seems to only allow four types of affymetrix arrays (50K Hind, 50K Xba, 250K Sty, 250K NSP). I couldn't find any place where this codification was specified in the OncoScan documentation. Any idea if this samples correspond to any of this options?
+
+Thanks!
+
+
+
+Barbara Hill
+unread,
+Aug 27, 2018, 1:55:53 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+We do not have experience with OncoScan data on this team, but I can pass along some information from our old email help which may be of use:
+
+
+Begin Thread:
+
+
+Dear GenePattern team,
+
+I am trying to run ABSOLUTE using Oncoscan data. It works for some samples, for others the expected copy number ratio is too high:
+
+[1] "Capping 0 segs at tCR = 5.0"
+[1] "Expected copy-ratio = 1.37009"
+
+It would seem that in those cases the mean segment values are centered around 1, instead of 0. Possibly because the ploidy is 3 instead of 2. If I center the segment values around zero by subtracting the mean of the segment values there is no problem.
+
+Is one supposed to center the mean segment values around 0 when using Oncoscan data?
+
+Should I run ABSOLUTE specifying the platform to be SNP_6.0?
+
+Do you recommend against using Oncoscan data for Absolute?
+
+I ran into the same problem using SNP6 data recently. In this case I just changed the expected copy-ratio threshold in the code, because it was a bit more tricky to center the mean segment values. I'm sure the expected copy-ratio threshold is there for a reason, so I was just wondering what one recommends to do in this case.
+
+
+
+-------------------------
+
+
+The following information is from a previous help ticket: 'The expected
+copy-ratio should be very close to 1.0 if the input data were properly
+prepared. ABSOLUTE is hard-wired to fail if it is < 0.75 or > 1.25. Your output
+shows a level which they say is "unbiologically high" and "well beyond where
+SNP6 would saturate".'
+
+Based on the last comment, I would infer that this is the linear range for SNP6
+and beyond this the signal is saturated and not useful.
+
+
+
+----------------------
+
+
+Thank you for your response. That clarifies my question partially. I'm not
+very familiar with SNP6 data, but from my brief experience it would seem
+that some algorithms, such as the one from Oncoscan, translate the signal
+when it believes the genome is not diploid. In that case it makes sense to
+center the signal around zero again so ABSOLUTE can handle the data. Not
+sure if there is a difference in that case if one changes the 1.25 copy
+ratio threshold or centers the signal. For HAPSEG I am uncertain whether
+the raw SNP6 signal is changed in some way that would give ABSOLUTE the
+impression the signal is saturated even though it is not. Are there any
+recommended ways to check for SNP6 saturation?
+
+
+
+-------------------------------------
+
+
+I passed on your original and updated questions to the CGA group and here
+is a summary of the reply:
+
+   - They have no experience working with Oncoscan arrays.
+   - Still waiting to hear back about your question around the capping
+   output.
+   - They'd like to emphasize that ABSOLUTE provides models for which the
+   highest scoring model is not always the best solution. For each profile,
+   solutions have to be manually reviewed in order to choose which
+   purity/ploidy model makes the most sense for a given tumor. To this end,
+   the CGA group holds training sessions to teach people how to review data.
+   - If you send your outputs to the CGA group (either to
+   absolute-help@broadinstitute.org, posted to their forum
+   <http://www.broadinstitute.org/cancer/cga/cga_forums>, or post here and
+   I can send along your data), they can look it over to help you pick the
+   correct solution.
+
+
+
+----------------------------------------
+
+
+Thanks a lot for your help! I managed to manually inspect the output and
+pick a satisfying solution. Unfortunately since I've been using a new
+mutation caller I'll have to rerun ABSOLUTE and pick the best solutions.
+I'll try to use the forum this time and will let you know when I sent it.
+
+
+
+---------------------------------------------
+
+
+(*Content was anonymized as it came from an old private email forum)
+
+Reply all
+
+Reply to author
+
+Forward

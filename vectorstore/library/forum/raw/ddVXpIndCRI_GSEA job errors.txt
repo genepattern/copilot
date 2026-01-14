@@ -1,0 +1,140 @@
+URL: https://groups.google.com./g/genepattern-help/c/ddVXpIndCRI
+Title: GSEA job errors
+----------------------------------------
+
+
+
+
+
+GSEA job errors
+405 views
+GSEA
+Skip to first unread message
+
+Candice
+unread,
+Oct 19, 2017, 4:27:55 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+I am trying to run the following jobs: 1562233 and 1562237. Both are returning different stderr messages. For reference, I have run jobs in GSEA successfully before, so I don't think this is a file format issue since I have checked the formats extensively.
+
+
+One stderr message is: 
+xtools.api.param.BadParamException: Too few samples in the dataset to use this metric
+	at edu.mit.broad.genome.alg.DatasetStatsCore.calc2ClassCategoricalMetricMarkerScores(DatasetStatsCore.java:238)
+	at edu.mit.broad.genome.alg.markers.PermutationTestBuilder.<init>(PermutationTestBuilder.java:93)
+	at edu.mit.broad.genome.alg.gsea.KSTests.shuffleTemplate_canned_templates(KSTests.java:358)
+	at edu.mit.broad.genome.alg.gsea.KSTests.shuffleTemplate(KSTests.java:289)
+	at edu.mit.broad.genome.alg.gsea.KSTests.executeGsea(KSTests.java:152)
+	at edu.mit.broad.genome.alg.gsea.KSTests.executeGsea(KSTests.java:126)
+	at xtools.gsea.AbstractGsea2Tool.execute_one(AbstractGsea2Tool.java:101)
+	at xtools.gsea.AbstractGsea2Tool.execute_one_with_reporting(AbstractGsea2Tool.java:135)
+	at xtools.gsea.Gsea.execute(Gsea.java:114)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:620)
+	at xtools.gsea.Gsea.main(Gsea.java:136)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:418)The 
+
+
+I believe this is saying that 5 samples is insufficient to perform the analysis.
+
+
+The other stderr message is: 
+java.lang.NullPointerException
+	at edu.mit.broad.genome.alg.DatasetStatsCore.calc2ClassCategoricalMetricMarkerScores(DatasetStatsCore.java:241)
+	at edu.mit.broad.genome.alg.markers.PermutationTestBuilder.<init>(PermutationTestBuilder.java:93)
+	at edu.mit.broad.genome.alg.gsea.KSTests.shuffleTemplate_canned_templates(KSTests.java:358)
+	at edu.mit.broad.genome.alg.gsea.KSTests.shuffleTemplate(KSTests.java:289)
+	at edu.mit.broad.genome.alg.gsea.KSTests.executeGsea(KSTests.java:152)
+	at edu.mit.broad.genome.alg.gsea.KSTests.executeGsea(KSTests.java:126)
+	at xtools.gsea.AbstractGsea2Tool.execute_one(AbstractGsea2Tool.java:101)
+	at xtools.gsea.AbstractGsea2Tool.execute_one_with_reporting(AbstractGsea2Tool.java:135)
+	at xtools.gsea.Gsea.execute(Gsea.java:114)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:620)
+	at xtools.gsea.Gsea.main(Gsea.java:136)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:418)
+
+
+Your help is much appreciated!
+ 
+
+
+
+
+
+David Eby
+unread,
+Oct 20, 2017, 2:13:31 AM
+
+
+
+to genepatt...@googlegroups.com
+HI,
+
+
+Yes, that error message indicates that there are too few samples to use the chosen metric; in particular, the default Signal2Noise metric requires at least three samples per phenotype.
+
+
+See this section of our User Guide for more details.   You should consult your local statistician to choose the best metric for your data.
+
+
+If you're using the default parameters, there's a follow-up issue that's likely to come up just beyond this.  You'll need to change the Permutation Type parameter to 'gene_set' as phenotype permutation (the preferred method) is not available with fewer than 7 samples per phenotype.
+
+
+More details are on this page in our User's Guide.
+
+
+
+Regards,
+David
+
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8f4df219-b9cd-4c86-ab42-eabcb70801cc%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Candice
+unread,
+Oct 20, 2017, 11:31:59 AM
+
+
+
+to GenePattern Help Forum
+Thank you, this fixed my problem!
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

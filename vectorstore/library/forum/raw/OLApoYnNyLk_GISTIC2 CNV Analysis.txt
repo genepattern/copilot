@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/OLApoYnNyLk
+Title: GISTIC2 CNV Analysis
+----------------------------------------
+
+
+
+
+
+GISTIC2 CNV Analysis
+47 views
+Skip to first unread message
+
+Geraint Xia
+unread,
+Apr 13, 2022, 7:38:22 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I use GenePattern's GISTIC2.0 module for online analysis of TCGA gastric cancer CNV. This task has been running for more than 48 hours. I would like to ask if anyone has encountered the same problem. Before again, the CNV analysis time of other TCGA tumors was less than 2 hours.
+
+Best wishes,
+Yuhong
+Ted Liefeld
+unread,
+Apr 15, 2022, 10:39:21 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+this was due to a bug in job delegation that affected about 10% of GISTIC jobs over the last few weeks.  We have a temporary fix in place and hope to have a permanent fix in a few weeks.  You should be able to rerun your jobs now and let me know if you encounter additional issues like this.
+
+
+Thanks
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

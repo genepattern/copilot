@@ -1,0 +1,1 @@
+A user encountered an error running ssGSEA in GenePattern with an RPKM expression matrix and GMT geneset file, specifically an "invalid 'length' argument" error that halted execution, with a support team member requesting job ID details to help troubleshoot the issue.

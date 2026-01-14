@@ -1,0 +1,130 @@
+URL: https://groups.google.com./g/genepattern-help/c/v7D-vbvrrWg
+Title: Normalise gct data set with illuminaNormalizer module.
+----------------------------------------
+
+
+
+
+
+Normalise gct data set with illuminaNormalizer module.
+7 views
+Skip to first unread message
+
+Ayan Saha
+unread,
+Feb 1, 2018, 2:59:04 PM
+
+
+
+to GenePattern Help Forum
+
+
+
+
+Hi ALL,
+ I am analysing some micro array data. 
+I made gct file and converted them to log2 via PreprocessDataset module.
+I am trying to normalise my prepossessed gct file to trough illiminaNormalizer. It's showing error every time. 
+
+massage error is like this. 
+
+
+GenePattern Server error preparing job 1624029 for execution.
+org.genepattern.server.executor.CommandExecutorException: Error adding job to queue, gpJobNo=1624029, DrmaaException=can't resolve hostname "node1459.broadinstitute.org"
+
+java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: Error adding job to queue, gpJobNo=1624029, DrmaaException=can't resolve hostname "node1459.broadinstitute.org"
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1505)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1402)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:141)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.genepattern.server.executor.CommandExecutorException: Error adding job to queue, gpJobNo=1624029, DrmaaException=can't resolve hostname "node1459.broadinstitute.org"
+	at org.genepattern.drm.impl.drmaa_v1.DrmaaV1JobRunner.startJob(DrmaaV1JobRunner.java:163)
+	at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:812)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1501)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1498)
+	... 4 more
+Caused by: org.ggf.drmaa.DeniedByDrmException: can't resolve hostname "node1459.broadinstitute.org"
+	at com.sun.grid.drmaa.SessionImpl.nativeRunJob(Native Method)
+	at com.sun.grid.drmaa.SessionImpl.runJob(SessionImpl.java:349)
+	at org.genepattern.drm.impl.drmaa_v1.DrmaaV1JobRunner.submitJob(DrmaaV1JobRunner.java:482)
+	at org.genepattern.drm.impl.drmaa_v1.DrmaaV1JobRunner.startJob(DrmaaV1JobRunner.java:157)
+	... 7 more
+
+
+
+
+
+
+
+
+What kind of problem is this? Is it server related?
+Is the any other ways to normalise my Data? I want to do quantile normalisation. 
+
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+stderr (5).txt
+Peter Carr
+unread,
+Feb 1, 2018, 3:05:35 PM
+
+
+
+to genepatt...@googlegroups.com
+I am not sure of the cause of the problem. All systems seem normal on our compute cluster. Try renaming the input file and running the job again. Remove all special characters such as space ' ', '-', et cetera.
+
+Regards,
+Peter
+
+Ayan Saha
+unread,
+Feb 1, 2018, 3:28:40 PM
+
+
+
+to GenePattern Help Forum
+Thanks Peter. I just tried with renaming it. Still not working. Please check the attached files. 
+Can I try any other module? 
+TIA. :) 
+
+
+Input 1.jpg
+
+Input 2.jpg
+
+output 1.jpg
+
+output2.jpg
+
+Reply all
+
+Reply to author
+
+Forward

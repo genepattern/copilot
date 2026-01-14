@@ -1,0 +1,169 @@
+URL: https://groups.google.com./g/genepattern-help/c/YcKCTIBoVIk
+Title: MutsigCV output question
+----------------------------------------
+
+
+
+
+
+MutsigCV output question
+61 views
+Skip to first unread message
+
+amandayu
+unread,
+May 5, 2023, 6:30:04 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I am trying to perform MutSigCV analysis using three input files: a mutation table file (which you obtained from TCGA), a coverage table file, and a covariates table file. Since you don't have the latter two, you used the ones provided at "ftp://ftp.broadinstitute.org/pub/genepattern/example_files/MutSigCV_1.3/exome_full192.coverage.txt" and "ftp://ftp.broadinstitute.org/pub/genepattern/example_files/MutSigCV_1.3/gene.covariates.txt", respectively.
+
+However, I encountered some issues during the analysis, and I are wondering if the problem lies with the mutation table file my provided.
+
+
+https://drive.google.com/file/d/13GKpaD7esMtIgWsUIztPxfen2guE5JW6/view?usp=sharing
+
+
+
+Amanda
+
+
+
+螢幕擷取畫面 2023-05-06 090905.png
+Ted Liefeld
+unread,
+May 8, 2023, 2:38:30 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+There seems to be an odd behaviour with the coverage file ftp link when sent to GenePattern.  We will look into this and try to fix the underlying problem.
+
+
+In the meantime, you should be able to still run your analysis if you download the files first from the ftp server, and then upload them to the GenePattern server.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+amandayu
+unread,
+May 8, 2023, 9:08:58 PM
+
+
+
+to GenePattern Help Forum
+
+Hi Ted,
+
+I have downloaded a file from an FTP server and after running it for a while, I am still having issues. The problem I am encountering is that the stderr.txt file is showing the error message "Host EC2 (instance i-0a279224b67e05aa9) terminated." I have also obtained the dockererr.log file but it is empty. Could you please advise me on how to resolve this issue? Thank you.
+
+Best regards, Amanda
+
+
+
+Ted Liefeld 在 2023年5月9日 星期二清晨5:38:30 [UTC+8] 的信中寫道：
+
+
+Ted Liefeld
+unread,
+May 9, 2023, 7:35:37 AM
+
+
+
+to genepatt...@googlegroups.com
+Amanda,
+
+
+There are 2 possible causes but one is much more likely.  I suggest that you increase the memory for your job. IIRC MutSigCV defaults to 16GB so try again with 32 or 64GB.  Unfortunately some modules, typically those in R or MatLab (which MutSigCV is) do not give good error messages if they run out of memory.  Just to be safe you should also increase the walltime.  I have a test case running now (copying your job 508843) and will let you know and share the results if it works.
+
+
+The other possible cause is when Amazon spot prices rise and preempt our GenePattern compute nodes.  This is pretty rare and usually affects pretty much all GP users for a short time when it happens.  There is no obvious sign of this so its unlikely in this case.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/YcKCTIBoVIk/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/806ee212-4b37-4050-906b-246e21c79465n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+May 9, 2023, 8:50:06 AM
+
+
+
+to GenePattern Help Forum
+Amanda
+
+
+for my run with 32 GB it failed, but with a different error.  I am not familiar with MutSigCV itself but it appears to need a dictionary file for your data (this is an optional parameter) but there was one on the ftp site (ftp://ftp.broadinstitute.org/pub/genepattern/example_files/MutSigCV_1.3/mutation_type_dictionary_file.txt) so I reran with that.  Unfortunately it errored again but this time it appears to have run to completion but found nothing.  I am not sure if this is because the dictionary from the ftp site is inappropriate, but we no longer have anyone on the genepattern team with MutSigCV experience.  I suggest you contact some of the other, MutSig specific, addresses in the MutSigCV documentation
+
+
+Ted
+
+
+Error using gp_MutSigCV>MutSig_preprocess (line 314)
+No mutations left!
+
+Error in gp_MutSigCV (line 184)
+
+
+
+
+amandayu
+unread,
+May 14, 2023, 11:37:26 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted, 
+
+
+I'll give it another try, thank you.
+
+
+
+Amanda
+
+
+Ted Liefeld 在 2023年5月9日 星期二晚上11:50:06 [UTC+8] 的信中寫道：
+
+
+
+Reply all
+
+Reply to author
+
+Forward

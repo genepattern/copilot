@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/q3Z-QX6lc7M
+Title: coverage file not found in MutSigCV
+----------------------------------------
+
+
+
+
+
+coverage file not found in MutSigCV
+19 views
+Skip to first unread message
+
+Sumithra Sankararaman
+unread,
+Sep 24, 2021, 9:44:54 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying to run MutSigCV on the genepattern server with the exome coverage file that is available with the package. However, I am unable to load the file shared_data/example_files/MutSigCV_1.3/exome_full192.coverage.txt
+Could you please let me know where I can find this file?
+Thanks
+Sumithra
+Barbara Hill
+unread,
+Sep 24, 2021, 12:30:22 PM
+
+
+
+to GenePattern Help Forum
+Hello Sumithra,
+
+
+Apologies for the confusion. 
+
+
+You can find the file here: https://datasets.genepattern.org/data/module_support_files/MutSigCV_1.3/exome_full192.coverage.txt
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

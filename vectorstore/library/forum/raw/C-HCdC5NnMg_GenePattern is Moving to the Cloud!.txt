@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/C-HCdC5NnMg
+Title: GenePattern is Moving to the Cloud!
+----------------------------------------
+
+
+
+
+
+GenePattern is Moving to the Cloud!
+27 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Oct 26, 2018, 8:57:37 AM
+
+
+
+to GenePattern Help Forum
+GenePattern is Moving to the Cloud
+
+At the end of December 2018, the public GenePattern server hosted by the GenePattern team will be running on the Amazon cloud: https://cloud.genepattern.org. This migration will allow us to provide more flexible compute power and support the growing analysis needs of the genomics research community, while still maintaining our free service to the community.
+
+
+
+
+What this means for GenePattern users
+
+We created a new account for you on the Amazon cloud GenePattern server,  https://cloud.genepattern.org, with the same username, password, and email address you had on the Broad-hosted server. 
+Please note that we have not migrated your job results or pipelines to the new server. If you would like to save your job results and pipelines, please see the instructions below.
+We encourage you to sign in and use the new server right away, as the Broad-hosted server will be shut down on January 1, 2019. 
+On November 1, 2018, we will end new registrations on the Broad-hosted GenePattern server. Current users will be able to access their accounts and use GenePattern as usual.
+On December 1, 2018, we will stop accepting jobs on the Broad-hosted GenePattern server. New jobs will need to be submitted on the Amazon cloud GenePattern server.
+This effectively ends our support of the Broad-hosted server. Existing users will be able to log in only to retrieve any data or pipelines they wish to save before the server is shut down. (see below)
+On January 1, 2019, the Broad-hosted GenePattern server will be shut down, and all users will need to have accounts on the Amazon cloud GenePattern server.  All users will need to retrieve any data or pipelines they wish to save before this date.
+
+
+
+Details are below:
+
+How do I backup my pipelines and result files?
+
+To backup pipelines, open the pipeline you want to backup, then click the gear menu in the upper right and select Export. This will open a dialog asking how you want to export the pipeline. For most purposes, the Pipeline only option works best*. 
+
+To backup files, click the link to the file you want to backup and then select Save File from the slide-out menu.
+
+To back up whole jobs, click the link to the job you want to back up and then select Download Job from the slide-out menu.
+
+*Note that most users do not have permission to install modules on our hosted servers.
+
+
+
+
+How do I import my pipelines to the new server?
+
+To import a pipeline to the new server, click Modules & Pipelines>Install from zip. More detailed information can be found in our user guide. 
+
+
+
+
+What happens if I cannot log into my account after November 1?
+
+Please try resetting your password and logging in with the new temporary password sent to your email address. If this doesn’t work, contact us through the GenePattern forum.
+
+
+
+
+I cannot find a module I use regularly on the new server. Help!
+
+Some older modules may not be immediately supported on our new infrastructure. If a module you depend on is missing, please let us know on the GenePattern forum.
+
+
+
+
+How will this upgrade affect my GenePattern Notebook or GenomeSpace accounts?
+
+Your GenePattern Notebook and GenomeSpace accounts will continue to work as before. However, starting November 1, GenePattern Notebook will begin using the cloud-based server as its default option, and GenomeSpace users may need to re-associate their accounts.
+
+
+
+
+If you have any other questions, comments or concerns, please do not hesitate to leave us a note in the GenePattern forum.
+
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

@@ -1,0 +1,263 @@
+URL: https://groups.google.com./g/genepattern-help/c/PVTsQrPITFg
+Title: Error on pathway analysis
+----------------------------------------
+
+
+
+
+
+Error on pathway analysis
+29 views
+Skip to first unread message
+
+Lauren Dalvin
+unread,
+Sep 16, 2024, 11:14:23 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am new to running pathway analysis, and I am struggling to get a successful run. I am getting a message that one or more errors occurred, but I'm having a hard time identifying where the errors are. I wonder if I am doing something incorrectly with my file formatting (attached here). 
+
+
+openjdk version "11.0.3" 2019-04-16 OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.3+7) OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.3+7, mixed mode) WARNING: package com.apple.laf not in java.desktop WARNING: package com.sun.java.swing.plaf.windows not in java.desktop WARNING: package sun.awt.windows not in java.desktop java.lang.Exception: There were one or more errors with the job parameters. Please check log output for details. at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:239) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29)
+
+
+
+Using system JDK. Copying file '/opt/gpcloud/gp_home/users/dalvin...@mayo.edu/uploads/tmp/run7617320949266398874.tmp/expression.dataset/1/240916 PDOs vs Melanocytes Minus 15.gct' to '240916 PDOs vs Melanocytes Minus 15.gct' Copying file '/opt/gpcloud/gp_home/users/dalvin...@mayo.edu/uploads/tmp/run3714963229103405769.tmp/phenotype.labels/2/240916 GSEA Phenotype File.cls' to '240916 GSEA Phenotype File.cls' [1726509810522] [SEVERE] A 'chip.platform.file' must be provided for collapse/remap Copying file '/opt/gpcloud/gp_home/users/dalvin...@mayo.edu/uploads/tmp/external/data.broadinstitute.org/gsea-msigdb/msigdb/release/2024.1.Hs/c2.cp.kegg_medicus.v2024.1.Hs.symbols.gmt' to 'c2.cp.kegg_medicus.v2024.1.Hs.symbols.gmt' [1726509810617] [SEVERE] Error while processing: [1726509810618] [SEVERE] There were one or more errors with the job parameters. Please check log output for details.
+
+
+
+# Job: 603649 # User: dalvin...@mayo.edu # Submitted: 2024-09-16 17:58:03.0 # Started Running: 2024-09-16 18:03:09.0 # Finished Running: 2024-09-16 18:03:46.0 # Completed: Mon Sep 16 18:03:55 UTC 2024 # ET(ms): 352248 server: https://cloud.genepattern.org/gp/ # Module: GSEA urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00072:20.4.0 # Parameters: # expression.dataset = 240916 PDOs vs Melanocytes Minus 15.gct https://cloud.genepattern.org/gp/users/dalvin.lauren%40mayo.edu/tmp/run7617320949266398874.tmp/expression.dataset/1/240916%20PDOs%20vs%20Melanocytes%20Minus%2015.gct # file size 733359 A2M NA -0.858243944 -0.861826815 -0.858499165 0.30230636 -0.262753027 -0.57816282 -0.474939196 0.252637836 0.483229439 -0.524142863 2.633008987 0.747385207 # gene.sets.database = gene.sets.database.list.txt https://cloud.genepattern.org/gp/users/dalvin.lauren%40mayo.edu/tmp/run4383381712077866375.tmp/gene.sets.database.list.txt # file size 174 # number.of.permutations = 1000 # phenotype.labels = 240916 GSEA Phenotype File.cls https://cloud.genepattern.org/gp/users/dalvin.lauren%40mayo.edu/tmp/run3714963229103405769.tmp/phenotype.labels/2/240916%20GSEA%20Phenotype%20File.cls # file size 67 # target.profile = # collapse.dataset = Collapse # permutation.type = phenotype # chip.platform.file = # scoring.scheme = weighted # metric.for.ranking.genes = Signal2Noise # gene.list.sorting.mode = real # gene.list.ordering.mode = descending # max.gene.set.size = 500 # min.gene.set.size = 15 # collapsing.mode.for.probe.sets.with.more.than.one.match = Max_probe # normalization.mode = meandiv # randomization.mode = no_balance # omit.features.with.no.symbol.match = true # make.detailed.gene.set.report = true # median.for.class.metrics = false # number.of.markers = 100 # plot.graphs.for.the.top.sets.of.each.phenotype = 20 # random.seed = timestamp # save.random.ranked.lists = false # create.svgs = false # selected.gene.sets = # output.file.name = <expression.dataset_basename>.zip # alt.delim = # create.gcts = false # dev.mode = false
+
+
+240916 PDOs vs Melanocytes Minus 15.gct
+
+240916 GSEA Phenotype File.cls
+Lauren Dalvin
+unread,
+Sep 16, 2024, 12:24:57 PM
+
+
+
+to GenePattern Help Forum
+I am still having the same error with alternative file options.
+
+
+240916.3 GSEA Phenotype File.cls
+
+240916.2 Counts Melanocytes vs UM.gct
+Ted Liefeld
+unread,
+Sep 16, 2024, 12:42:08 PM
+
+
+
+to GenePattern Help Forum
+Lauren,
+
+
+your gct files do not match the format exactly (https://www.genepattern.org/file-formats-guide#GCT).  They seem to be missing the first 2 header lines.  Also the first example you gave has a description column (as it should) but lacks a label for the first (id) column, and the gct file in your second post lacks the description column.  Take a look at the format link (above) but you should be able to add the 2 header lines 
+
+
+#1.2
+4504      12
+
+
+and make sure both the ID and description columns are present.
+
+
+hope this helps,
+
+
+Ted
+p.s. in the second line above (4504  12) it needs to be a tab between the numbers.  The web editor I am using is replacing that with spaces so don't just cut-and-paste from this message
+
+Lauren Dalvin
+unread,
+Sep 16, 2024, 12:59:14 PM
+
+
+
+to GenePattern Help Forum
+Thanks, Ted! I updated the files but am still having trouble. Can you by any chance spot the remaining error? Is there a better format for the phenotype file of the two attached?
+
+
+240916 GSEA Phenotype File.cls
+
+240916.3 GSEA Phenotype File.cls
+
+240916.4 Counts Melanocytes vs UM.gct
+Ted (aka John) Liefeld
+unread,
+Sep 16, 2024, 1:41:31 PM
+
+
+
+to genepatt...@googlegroups.com
+Your cls file "24016 GSEA Phenotype File.cls" looks OK but the .3 version in your last post does not.  It should be numbers on the 3rd line.
+
+
+The .4 version of your GCT looks OK, but I am not sure about all of the gene identifiers in your first column.  Specifically for running GSEA I don't know if the chip files have a mapping for all of the "LOC#########" rows or the "LINC#####" rows.  Since this is for GSEA I will ask one of my colleagues who is a GSEA expert to take a look at it.
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/74e882d7-b6ea-458d-aa72-1b569d3e7183n%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Sep 16, 2024, 1:54:46 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Looking at the files you sent they seem to be formatted correctly at this point, the only significant issue is that your gct file appears to only contain 4504 genes. GSEA expects the entire universe of all expressed genes which is typically on the order of tens of thousands of genes. Was this list pre-filtered in some way?
+
+Additionally, if you're using MSigDB gene sets for your analysis, you'll want to enable the "Collapse" option and specify the chip file: Human_Gene_Symbol_with_Remapping_MSigDB.v2024.1.Hs.chip file from MSigDB to ensure that your gene symbols are matched properly.
+
+
+If you're still having trouble after checking your collapse/chip settings, and addressing the issue with number of genes, please let me know
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAJVzJCPAf-e4r4gnnmsV89FWkyBXj1xAvVx99%2BiQOsE0%3DTyH9w%40mail.gmail.com.
+
+Lauren Dalvin
+unread,
+Sep 16, 2024, 2:23:37 PM
+
+
+
+to GenePattern Help Forum
+Thanks, Anthony. I updated the file to avoid filtering out any of the genes, but I am still getting an error. I am trying to use Kegg. Do I need to specify a different chip file for kegg? Or do you see any new errors in these files?
+
+
+240916.6 Counts Melanocytes vs UM.gct
+
+240916 GSEA Phenotype File.cls
+Anthony Castanza
+unread,
+Sep 16, 2024, 2:34:59 PM
+
+
+
+to genepatt...@googlegroups.com
+Hey Lauren,
+
+
+Could you send me the full text of the error message you're getting?
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dfad3f4d-6426-4b19-a474-bc4e0c7902d9n%40googlegroups.com.
+
+Lauren Dalvin
+unread,
+Sep 16, 2024, 2:40:08 PM
+
+
+
+to GenePattern Help Forum
+It looks like 2 errors. One with spaces (but to me, everything seems like a tab) and one with chip.
+
+
+openjdk version "11.0.3" 2019-04-16 OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.3+7) OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.3+7, mixed mode) WARNING: package com.apple.laf not in java.desktop WARNING: package com.sun.java.swing.plaf.windows not in java.desktop WARNING: package sun.awt.windows not in java.desktop java.lang.IllegalArgumentException: Analysis name cannot contain spaces. Specified: 240916.6 Counts Melanocytes vs UM at org.gsea_msigdb.gsea/xtools.api.param.ReportLabelParam.setValue(ReportLabelParam.java:44) at org.gsea_msigdb.gsea/xtools.api.param.StringInputParam.setValue(StringInputParam.java:40) at org.gsea_msigdb.gsea/xtools.api.param.ToolParamSet.fill(ToolParamSet.java:159) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.init(AbstractTool.java:140) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.<init>(Gsea.java:50) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:289) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29) xtools.api.param.BadParamException: Chip parameter must be specified as you asked to analyze in the space of gene symbols. Chip is used to collapse probe ids into symbols at org.gsea_msigdb.gsea/xtools.gsea.Gsea.getDataset(Gsea.java:78) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.execute(Gsea.java:164) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:401) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:291) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29)
+
+
+
+Anthony Castanza
+unread,
+Sep 16, 2024, 2:44:41 PM
+
+
+
+to genepatt...@googlegroups.com
+Just to followup, I was able to run the two files you sent in the GSEA desktop application, with the Kegg_medicus collection without any issue. You will need to change the permutation type to "gene set" due to there only being three samples in one of the phenotypes. But it does appear to run without error on my end.
+
+
+
+One little addendum to what I said before, you probably do want to remove rows with all zero counts, these genes aren't part of the expressed universe and they can have some small issue with GSEA's correction factors for low variance genes. Typically you'd use a threshold of 5 or 10 counts summed across all samples to set the expression floor.
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/dfad3f4d-6426-4b19-a474-bc4e0c7902d9n%40googlegroups.com.
+
+Lauren Dalvin
+unread,
+Sep 16, 2024, 3:32:38 PM
+
+
+
+to GenePattern Help Forum
+
+I still seem to be stuck on the web version. I updated the file again to remove zeros and changed to gene set instead of phenotype. The error message basically looks the same.
+
+
+openjdk version "11.0.3" 2019-04-16 OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.3+7) OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.3+7, mixed mode) WARNING: package com.apple.laf not in java.desktop WARNING: package com.sun.java.swing.plaf.windows not in java.desktop WARNING: package sun.awt.windows not in java.desktop java.lang.IllegalArgumentException: Analysis name cannot contain spaces. Specified: 240916.7 Counts Melanocytes vs UM at org.gsea_msigdb.gsea/xtools.api.param.ReportLabelParam.setValue(ReportLabelParam.java:44) at org.gsea_msigdb.gsea/xtools.api.param.StringInputParam.setValue(StringInputParam.java:40) at org.gsea_msigdb.gsea/xtools.api.param.ToolParamSet.fill(ToolParamSet.java:159) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.init(AbstractTool.java:140) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.<init>(Gsea.java:50) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:289) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29) xtools.api.param.BadParamException: Chip parameter must be specified as you asked to analyze in the space of gene symbols. Chip is used to collapse probe ids into symbols at org.gsea_msigdb.gsea/xtools.gsea.Gsea.getDataset(Gsea.java:78) at org.gsea_msigdb.gsea/xtools.gsea.Gsea.execute(Gsea.java:164) at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:401) at org.gsea_msigdb.gsea/org.genepattern.modules.GseaWrapper.main(GseaWrapper.java:291) at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:29)
+
+
+
+240916 GSEA Phenotype File.cls
+
+240916.7 Counts Melanocytes vs UM.gct
+Lauren Dalvin
+unread,
+Sep 16, 2024, 3:55:53 PM
+
+
+
+to GenePattern Help Forum
+I think I got it!! Just had to remove spaces from the file name itself. Thank you so much for your help!!
+
+
+Reply all
+
+Reply to author
+
+Forward

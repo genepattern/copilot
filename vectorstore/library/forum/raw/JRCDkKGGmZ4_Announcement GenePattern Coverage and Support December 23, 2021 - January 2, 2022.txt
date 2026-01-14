@@ -1,0 +1,39 @@
+URL: https://groups.google.com./g/genepattern-help/c/JRCDkKGGmZ4
+Title: Announcement: GenePattern Coverage and Support December 23, 2021 - January 2, 2022
+----------------------------------------
+
+
+
+
+
+Announcement: GenePattern Coverage and Support December 23, 2021 - January 2, 2022
+13 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 21, 2021, 8:29:16 AM
+
+
+
+to GenePattern Help Forum
+
+From December 23, 2021, through January 2, 2022, the GenePattern team will be out of the office for our annual holiday closing. During this time, the GenePattern and GenePattern Notebook servers and repositories will remain up. We will be monitoring them and, should anything happen to disrupt service, we will work to resolve any issues within 24 hrs. However, due to the holiday closing, please be aware that:
+
+GenePattern staff will not be reachable by phone or responding to email. This includes our help forum, GitHub issues, Twitter, Instagram, and Facebook.
+Emails (including forum posts) and phone calls will be responded to as quickly as possible, once we return to the office on Jan 3, 2022.
+
+If you have any questions, please feel free to contact us.
+
+Best Wishes,
+
+-The GenePattern Team
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

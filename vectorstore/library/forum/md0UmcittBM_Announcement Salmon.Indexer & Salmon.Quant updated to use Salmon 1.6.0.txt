@@ -1,0 +1,1 @@
+The GenePattern forum thread describes an update to the Salmon.Indexer and Salmon.Quant modules to version 1.6.0, adding indices for Gencode Human v39 and Mouse M28 genome releases, available on cloud.genepattern.org and the production module repository.

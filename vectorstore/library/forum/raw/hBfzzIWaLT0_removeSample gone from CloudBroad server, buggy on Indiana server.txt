@@ -1,0 +1,133 @@
+URL: https://groups.google.com./g/genepattern-help/c/hBfzzIWaLT0
+Title: removeSample gone from Cloud/Broad server, buggy on Indiana server
+----------------------------------------
+
+
+
+
+
+removeSample gone from Cloud/Broad server, buggy on Indiana server
+13 views
+Skip to first unread message
+
+vd
+unread,
+Nov 14, 2018, 5:29:28 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+
+
+The removeSamples module is super-useful as it it avoids painful, bug-prone, file manipulations in excel.
+
+
+It is missing from the GP cloud server, https://cloud.genepattern.org . It was missing from the Broad server last week (now it seems to be back, for how long?). The Indiana server produces an error :
+
+
+
+---
+/N/u/gpserver/Karst/opt/genepattern/gp/resources/wrapper_scripts/run-with-env.sh: line 611: Rscript: command not found
+job finished but exit code is not 0, return C
+---
+
+Thanks for the great tool and for your help,
+
+Vincent
+
+
+Barbara Hill
+unread,
+Nov 15, 2018, 11:50:36 AM
+
+
+
+to GenePattern Help Forum
+Hi Vincent, 
+
+
+Thanks for alerting us to this.
+
+
+It's weird that you weren't able to find it on the Broad server last week. I'm not seeing anything on the backend to indicate that it was unavailable, but that is not to say that I doubt you; I'm just unsure as to why that would have been.
+
+
+In any case, as you know, we're moving off of the Broad-hosted server, so it's good that you went looking on cloud.gp.
+
+
+Unfortunately, that module does not have a suitable Docker container (which is now required), and it is not a module that we developed, and the author is not interested in Dockerizing her modules. That being said, we intend to support legacy modules when and where we can and this one is a pretty simple utility, so we may be able to get it working before the end of the year.
+
+
+In the meantime, you could use SelectFeaturesColumns to do that same thing, though in logical reverse - IE you must specify what to keep, rather than what to get rid of.
+
+
+We'll let you know if we are able to get removeSamples correctly configured for the new AWS Batch environment.
+
+
+As for IU - they will need our Docker information before they can get the module working in Singularity, so we'll keep them in the loop as well.
+
+
+Please let us know if you run into anything else.
+
+
+Best
+Barbara
+Vincent Detours
+unread,
+Nov 16, 2018, 8:22:09 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+Thanks a lot for tour reply!
+
+If removeSample is to be remodeled, a useful functionallity, would be
+a synchronized handling of GCT and matched CLS files.
+
+All the best,
+
+Vincent
+
+
+> --
+> You received this message because you are subscribed to the Google Groups
+> "GenePattern Help Forum" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to genepattern-he...@googlegroups.com.
+> To post to this group, send email to genepatt...@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/genepattern-help/19d47b16-bee4-4927-aed0-24ff08d4b670%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+
+
+--
+http://www.detourshenry.eu
+
+Barbara Hill
+unread,
+Nov 20, 2018, 5:45:11 PM
+
+
+
+to GenePattern Help Forum
+Hi Vincent, 
+
+
+I just added this to the ticket for this module. 
+
+
+We'll let you know when we have something for you to take a look at.
+
+
+Thanks again
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

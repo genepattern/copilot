@@ -1,0 +1,25 @@
+URL: https://groups.google.com./g/genepattern-help/c/TbG2n7sZwOY
+Title: gistic non-human reference
+----------------------------------------
+
+
+
+
+
+gistic non-human reference
+11 views
+Skip to first unread message
+Caterina Colón
+unread,
+Nov 1, 2023, 6:06:04 PM
+
+
+
+to GenePattern Help Forum
+Hello, are there any pointers to generating a non-human reference genome file to run on GISTIC? I would like to analyze copy number data with respect to mm39- thanks! 
+
+Reply all
+
+Reply to author
+
+Forward

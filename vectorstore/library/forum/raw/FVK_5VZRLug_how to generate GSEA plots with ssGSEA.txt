@@ -1,0 +1,68 @@
+URL: https://groups.google.com./g/genepattern-help/c/FVK_5VZRLug
+Title: how to generate GSEA plots with ssGSEA?
+----------------------------------------
+
+
+
+
+
+how to generate GSEA plots with ssGSEA?
+54 views
+Skip to first unread message
+
+Kathrin Julia Laue
+unread,
+Jul 4, 2022, 10:40:57 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+
+
+how can I generate GSEA plots with ssGSEA? 
+Anthony Castanza
+unread,
+Jul 4, 2022, 11:52:36 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Kathrin,
+
+
+Unfortunately the ssGSEA module does not produce an analogue of the traditional GSEA mountain plot and there isn't a way to get it to do so.
+The standard presentation of ssGSEA results generally seem to be a heatmap/clustered heatmap of some sort.
+
+
+Sorry we couldn't be of more help here
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+On Mon, Jul 4, 2022 at 10:40 AM Kathrin Julia Laue <kathrinj...@gmail.com> wrote:
+
+Hi everyone,
+
+
+how can I generate GSEA plots with ssGSEA? 
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6c3193c3-2021-4c31-b32c-cfd8381e48a3n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

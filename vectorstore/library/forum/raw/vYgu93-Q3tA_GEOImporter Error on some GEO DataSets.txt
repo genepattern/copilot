@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/vYgu93-Q3tA
+Title: GEOImporter Error on some GEO DataSets
+----------------------------------------
+
+
+
+
+
+GEOImporter Error on some GEO DataSets
+9 views
+Skip to first unread message
+
+Aline
+unread,
+Jan 18, 2021, 8:59:02 AM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern Team,
+
+
+I recently started my PhD and have to analyze expression profiles of several transcriptomic datasets.
+I’m running into some problem when trying to use the GEOImporter Module on GEO DataSets from https://www.ncbi.nlm.nih.gov/gds/
+
+
+Some DataSets are working as expected, for example: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE98572
+Note that there is also the „Analyze with GEO2R“ Button available on this page.
+
+
+Other DataSets are failing to convert with the following error:
+
+
+Error in tbl.start:tbl.end : argument of length 0 Calls: run ... parseGeoDataTable -> parseGeoData -> textConnection Execution halted
+
+
+For Example: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE118894
+Or: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE97974
+
+
+Note that these do not have the „Analyze with GEO2R“ Button.
+
+
+To reproduce: Download the .soft files from these pages and load them into a GEOImporter Module.
+The first one should be successfully converted to a .gct file, the other ones should fail with the above error.
+
+
+Do you have any idea why that is and how I could fix it?
+This would really help me since I don’t know how else I can access and analyze the datasets.
+
+
+Best regards,
+
+
+Aline
+
+Anthony Castanza
+unread,
+Jan 18, 2021, 11:19:48 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Aline,
+
+ 
+
+The GEOImporter module relies on the data deposited in GEO being present in the Series Matrix file, this is typically the case for microarray data. However this is frequently not the case for data from RNA-seq experiments. For RNA-seq experiments, this data is typically deposited in in a Supplementary file. In the case of your example “GSE118894_counts.txt.gz” contains the RNA-Seq data.
+
+ 
+
+I’m not sure why this is done. It could have been due to some prior limitation on the series matrix size, or it could be due to the expectations that the series matrix contains normalized data, but that RNA-seq data be reposited in a raw, unnormalized, format. Either way, this causes both our tools, and GEO’s internal Geo2R tool to not be able to handle these files automatically since neither the soft file or the series matrix actually contain the underlying dataset.
+
+ 
+
+To access and analyze the dataset, you’ll have to manually download the counts file from the supplementary files field and do any processing/formatting you need to do manually.
+
+ 
+
+Sorry about this, it’s just an unfortunate limitation of the way that the data has been deposited into GEO. I’ll make a note to see if maybe we can develop something that handles parsing of files from GEO’s supplementary information at some point in the future.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1989c582-aa15-4789-8d7b-18357df5371an%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

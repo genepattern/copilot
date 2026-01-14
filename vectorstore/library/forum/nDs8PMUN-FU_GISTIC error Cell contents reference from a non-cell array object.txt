@@ -1,0 +1,1 @@
+A user encountered a "Cell contents reference from a non-cell array object" error when running GISTIC 2.0, which was resolved by understanding that the segmentation file contained only 1 sample, and GISTIC requires multiple samples (ideally 40+) to perform meaningful statistical analysis of genetic alterations.

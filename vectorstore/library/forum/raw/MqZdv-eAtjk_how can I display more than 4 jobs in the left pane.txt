@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/MqZdv-eAtjk
+Title: how can I display more than 4 jobs in the left pane?
+----------------------------------------
+
+
+
+
+
+how can I display more than 4 jobs in the left pane?
+8 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Oct 17, 2017, 4:05:12 AM
+
+
+
+to genepatt...@googlegroups.com
+I remember of a setting somewhere but do not seem to find it back in 'Administration' and my job list is only 4 long while I have 30+ jobs in the history.
+
+
+Thanks
+Stephane
+
+
+Version:	3.9.9
+Build Id:	149
+Date:	2017-01-27 03:16
+Java Version:	1.8.0_101
+Stephane Plaisance
+unread,
+Oct 17, 2017, 5:09:17 AM
+
+
+
+to GenePattern Help Forum
+Found it, it was 'hidden' in the 'My settings' called from the right top User menu 
+
+;-) 
+
+Reply all
+
+Reply to author
+
+Forward

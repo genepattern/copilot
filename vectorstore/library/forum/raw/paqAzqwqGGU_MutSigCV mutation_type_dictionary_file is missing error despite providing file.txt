@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/paqAzqwqGGU
+Title: MutSigCV: mutation_type_dictionary_file is missing error despite providing file
+----------------------------------------
+
+
+
+
+
+MutSigCV: mutation_type_dictionary_file is missing error despite providing file
+65 views
+Skip to first unread message
+
+casxue
+unread,
+Oct 20, 2021, 1:23:36 AM
+
+
+
+to GenePattern Help Forum
+When running MutSigCV from just a maf, I consistently get an error saying that the mutation_type_dictionary_file is missing. 
+
+
+Error using gp_MutSigCV>MutSig_preprocess (line 302) 
+missing mutation_type_dictionary_file 
+
+
+Error in gp_MutSigCV (line 184)
+
+
+I have tried both using the FTP link (e.g., job 386479) and uploading a local copy of the same file (e.g., job 386492), and both result in this same error.
+
+
+Could you please advise how to proceed? Thanks!
+Barbara Hill
+unread,
+Oct 20, 2021, 3:46:57 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The issue is that you have changed a substitution variable that GenePattern needs, in order to name your output file.
+
+
+Please see this thread for more information.
+
+
+Let us know if this helps to resolve the issue for you.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,346 @@
+URL: https://groups.google.com./g/genepattern-help/c/Wh-upkmXs6s
+Title: Batch Files Limited to 20
+----------------------------------------
+
+
+
+
+
+Batch Files Limited to 20
+44 views
+Skip to first unread message
+
+Jonathan S
+unread,
+Jun 30, 2020, 12:13:11 PM
+
+
+
+to GenePattern Help Forum
+
+
+Hello,
+
+
+I have received the error pasted at the bottom of this email. There are several hundreds of files I would like to run in batch mode consecutively, but it only runs 20 then the rest return with this error. Specifically, I was running DESeq2. All the jobs except the first 20 gave the same error below with none of the proper output files.  Is there a way to avoid this error. I was hoping the files could simply wait in a queue so that when the first 20 complete the next will start. It is not practical to load only 20 at a time. 
+
+
+Thank you for your help 
+
+
+--Jonathan 
+
+
+GenePattern Server error preparing job 251501 for execution.
+Job did not run because maximum simultaneous processing jobs exceeded.Processing: 23. Max simultaneous: 20
+
+org.genepattern.server.executor.JobDispatchException: Job did not run because maximum simultaneous processing jobs exceeded.Processing: 23. Max simultaneous: 20
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.checkDiskQuota(GenePatternAnalysisTask.java:1524)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:614)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+Ted Liefeld
+unread,
+Jun 30, 2020, 2:40:21 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Unfortunately we had to implement the limit to the number of concurrent jobs after several server crashes caused by users submitting many jobs at once.
+
+
+Can you tell us how you are submitting all the jobs at once?  Is it coming from a script, programming language or a Jupyter Notebook (or something else)?  If its a script we can try to help you modify the script so that it only runs 20 at a time  and submit more as each job finishes.
+
+
+Thanks
+
+Ted
+
+Jonathan S
+unread,
+Jun 30, 2020, 3:43:03 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+All the files are submitted through the GenePattern cloud online interface by selecting "batch" and then selecting a folder containing gct and another folder containing cls files with matching names in the DESeq2 module. Then when I press the run button it splits it up into all the jobs which is can see running on the GenePatteen online interface. 
+
+
+If there is a way to automatically load 20 at a time and have the rest pending in a queue that would be very helpful!
+
+
+Thanks,
+Jonathan
+
+Ted Liefeld
+unread,
+Jun 30, 2020, 3:59:48 PM
+
+
+
+to GenePattern Help Forum
+Jonathon
+
+
+unfortunately there isn't a way to do that at this time.  We will add it as a feature request though.
+
+
+Ted
+
+Jonathan S
+unread,
+Jun 30, 2020, 4:06:01 PM
+
+
+
+to GenePattern Help Forum
+That is unfortunate indeed, but thanks for adding it as a feature request. It will be enormously useful to many people I am certain. 
+
+
+Jonathan 
+
+Jonathan Sussman
+unread,
+Jun 30, 2020, 4:09:04 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+All the files are submitted through the GenePattern cloud online interface by selecting "batch" and then selecting a folder containing gct and another folder containing cls files with matching names in the DESeq2 module. Then when I press the run button it splits it up into all the jobs which is can see running on the GenePatteen online interface. 
+
+
+If there is a way to automatically load 20 at a time and have the rest pending in a queue that would be very helpful!
+
+
+Thanks,
+Jonathan
+
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Wh-upkmXs6s/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/399e60e2-8f5a-4044-b663-47ee07392e25o%40googlegroups.com.
+
+Matthew Jeon
+unread,
+Jul 1, 2020, 4:52:17 PM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+
+I am experiencing an even reduced simultaneous process cap. Here is the error output that I just received while running DESeq2 as shown below. Do you have any suggestions to how I/you can fix this?
+
+
+GenePattern Server error preparing job 252801 for execution.
+Job did not run because maximum simultaneous processing jobs exceeded.Processing: 9. Max simultaneous: 2
+
+org.genepattern.server.executor.JobDispatchException: Job did not run because maximum simultaneous processing jobs exceeded.Processing: 9. Max simultaneous: 2
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.checkDiskQuota(GenePatternAnalysisTask.java:1524)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:614)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748).
+
+
+Jonathan
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepatt...@googlegroups.com.
+
+Ted Liefeld
+unread,
+Jul 2, 2020, 6:55:55 AM
+
+
+
+to genepatt...@googlegroups.com
+Matthew,
+
+
+yesterday there were three accounts created with disposable email addresses; deseqaccount1, deseqaccount2 and deseqaccount3.  I presume that all three are yours.  As a result of all three accounts simultaneously hitting our server with many more jobs than the normal quota of 20, all other GenePattern users were blocked from running any jobs for several hours.  In order to allow other users access to the server, we had to block these accounts.  In effect they were acting like a denial of service attack even though we know that was not the intent. 
+
+
+Creating multiple accounts to get around job submission limitations is against our terms of service and affects our ability to provide services to our other users. We will therefore limit or terminate these accounts when we identify them.
+
+
+I look forward to being able to accommodate all of these requests when we have the XSEDE resources available from GenePattern's  main server. 
+
+
+Ted
+
+
+p.s. Some nitty-gritty details.  
+
+
+The problem was exacerbated because of your DeSeq jobs was requesting 16 CPU and 128 GB of RAM which contributed to the problem since with that level of resources required, it is not possible to execute multiple jobs on each compute node that we launch.  Particularly because of the high memory, each of your DeSeq jobs required an M5.12xlarge (48 cpu, 192GB RAM) or bigger node to itself.  Our configuration limits GenePattern to a max of 256 CPU at any given moment in order to prevent the cost to our lab from exploding and preventing us from continuing to provide this service to the community for free.  With this level of resources for each job it meant that at most we could launch 5 (very large) compute nodes at one time.  Since each of your jobs took ~40 minutes to run, your 3 accounts hitting us in parallel would consume all available GenePattern resources for 8 hours each time they submitted 20 jobs each.  This is what prevented any other GenePattern users from running any jobs at all for most of yesterday.
+
+
+I am not familiar with DeSeq2's resource requirements, but if it is possible to run it with smaller resources (especially memory) that could make a huge difference.
+
+Ted Liefeld
+unread,
+Jul 2, 2020, 1:13:14 PM
+
+
+
+to GenePattern Help Forum
+Matthew,
+
+
+as a follow-up, we have contacted the administrators of the GenePattern server at the Indiana University National Center for Genome Analysis Support (NCGAS) and asked them to install DeSeq2 on their Genepattern server.  Once we have an estimate of when that will be ready I will update this thread,
+
+
+Thanks
+
+
+Ted
+
+Ted Liefeld
+unread,
+Jul 6, 2020, 11:14:41 AM
+
+
+
+to GenePattern Help Forum
+Matthew and Jonathan,
+
+
+DeSeq2 is now also available on the Indiana University NCGAS server at  http://gp.indiana.edu/gp/.  Please give it a try there where there are additional compute resources available 
+
+
+Thanks
+
+
+Ted
+
+Jonathan Sussman
+unread,
+Jul 6, 2020, 11:20:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Excellent, thanks for letting us know! 
+
+
+Jonathan 
+
+
+
+
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0c46904b-4723-454e-b356-3499b22eb51fo%40googlegroups.com.
+
+Matthew Jeon
+unread,
+Jul 10, 2020, 12:44:25 PM
+
+
+
+to GenePattern Help Forum
+Hello Ted,
+
+
+We just found out the Indiana University's NCGAS server of GenePattern does not have the DESeq2 module. Would you mind contacting the administrators to check on this issue once again?
+
+
+Thank you for your time in advance.
+
+Ted Liefeld
+unread,
+Jul 10, 2020, 1:14:20 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+I just emailed the admin there.  They said it was running but I think they just did not make it public yet.  Hopefully they can turn this around quickly
+
+
+Ted
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/11330dbd-207a-446d-8ebe-90add8d85398o%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+Jul 10, 2020, 1:36:28 PM
+
+
+
+to genepatt...@googlegroups.com
+Matthew
+
+
+it should now be publicly visible on IU,
+
+
+hope this helps,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,137 @@
+URL: https://groups.google.com./g/genepattern-help/c/JqZvaM_Hxd0
+Title: Is there an issue with the combat function?
+----------------------------------------
+
+
+
+
+
+Is there an issue with the combat function?
+15 views
+Skip to first unread message
+
+Nicholas Chiam
+unread,
+Feb 12, 2018, 8:14:08 AM
+
+
+
+to GenePattern Help Forum
+To the GenePattern Team:
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+I tried to run the Combat function on my matrix to correct some of the batch effects on my meta-analysis of Parkinsons' GEOdata. The data was normalized study by study, and during PCA analysis, I found that they tend to cluster together in batches.
+My matrix contains 253 samples and 12000+ rows of gene expression data (I have attached the files for your reference)
+
+
+I'm not sure how this function runs, but I was expecting it to produce an output of corrected expression data. However, all I got was a stdout.txt file that I could download.
+https://drive.google.com/open?id=170D4-2IprS_2FqxnRRKGPlqFTfnpM08T - google drive link to the matrix file
+
+Job ID if run on a publicly available server: 
+
+1631522. ComBat
+
+
+
+
+
+
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+This is the stdout.txt output from the job. However, I do not see any output files of my expression data matrix.
+
+Reading Sample Information File
+Reading Expression Data File
+[1] "RFC2"   "HSPA6"  "PAX8"   "GUCA1A"
+  SN_C_1 SN_C_2 SN_C_3 SN_C_4 SN_C_5 SN_C_6 SN_PD_1 SN_PD_2 SN_PD_3 SN_PD_4
+1  2.138  2.179  1.905  2.063  2.195  2.969   2.485   3.591   1.946   1.928
+2  2.792  2.632  2.860  3.120  3.390  2.191   2.709   3.229   3.302   3.007
+  SN_PD_5 SN_PD_6 SN_PD_7 SN_PD_8 SN_PD_9 Gpi_PD_1 Gpi_C_1 Gpi_C_2 Gpi_C_3
+1   2.356   2.343   2.419   3.168   2.317    3.148   3.201   3.019   3.374
+2   4.225   6.985   7.164   7.567   2.712   10.321   5.123   6.283   5.331
+  Gpi_PD_2 Gpi_PD_3 Gpi_C_4 Gpi_C_5 Gpi_PD_4 Gpi_C_6 Gpi_C_7 Gpi_PD_5 Gpi_PD_6
+1    2.996    2.985   3.254   3.346    3.431   2.359   3.068    3.472    3.140
+2    7.311    4.526   5.354   5.073    9.624   4.400   5.185    9.194   10.757
+  Gpi_C_8 Gpi_C_9 Gpi_PD_7 Gpi_PD_8 Gpi_PD_9 SN_C_7 SN_C_8 SN_C_9 SN_C_10
+1   2.897   3.062    3.156    3.004    3.164  8.518  8.649  8.568   8.621
+2   4.856   4.983   11.339    3.784    5.001 10.819 10.632 10.694  10.788
+.
+.
+.
+  SN_C_59 SN_C_60 SN_C_61 SN_C_62 SN_PD_69 SN_PD_70 SN_PD_71 SN_PD_72 SN_PD_73
+1   4.727   4.761   4.588   4.546    4.675    4.688    4.595    4.621    4.700
+2   6.174   5.965   5.937   5.917    6.077    6.137    6.121    6.229    6.159
+  SN_PD_74 SN_PD_75 SN_C_63 SN_C_64 SN_C_65 SN_C_66 SN_C_67 SN_C_68 SN_C_69
+1    4.699    4.681   4.581   4.614   4.580   4.541   4.676   4.836   4.606
+2    6.437    6.209   5.889   5.989   6.331   6.095   5.984   5.961   5.940
+  SN_C_70 SN_PD_76 SN_PD_77 SN_PD_78 SN_PD_79 SN_PD_80 SN_PD_81 SN_PD_82
+1   4.628    4.505    4.647    4.552    4.611    4.615    4.812    4.585
+2   5.917    6.248    5.841    6.301    6.060    6.029    6.193    5.893
+  SN_PD_83 SN_PD_84 SN_PD_85 SN_PD_86 SN_PD_87 SN_PD_88 SN_PD_89 SN_C_71
+1    4.680    4.519    4.577    4.639    4.338    4.478    4.804   4.615
+2    6.141    5.885    6.623    6.351    6.144    6.053    6.064   5.886
+Found 11 batches
+Found 1 covariate(s)
+
+
+Thank you so much for creating this interface and I really appreciate how easy it is to perform tasks here.
+
+
+Best Regards,
+Nicholas Chiam
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Park_all_TargetlistBatch2.txt
+Peter Carr
+unread,
+Feb 14, 2018, 12:59:28 PM
+
+
+
+to genepatt...@googlegroups.com
+Your job ran correctly to completion but the output files are hidden, because the custom "output files" parameter you used was incorrect. For best results, run your job again, using the default value for the "output file" parameter.
+
+Example values for the output file parameter
+Correct (default value):
+    <input.file_basename>.combat.<input.file_extension>
+Correct (custom value):
+    Park.combat.<input.file_extension>
+Error (hides the output files)
+    <Park>.combat.<gct>
+
+FYI, the Module Editor documentation has more information on angle bracket (<>) substitution properties.
+
+Regards,
+Peter
+
+Nicholas Chiam
+unread,
+Feb 14, 2018, 6:17:15 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thanks so much for your help!
+
+
+Reply all
+
+Reply to author
+
+Forward

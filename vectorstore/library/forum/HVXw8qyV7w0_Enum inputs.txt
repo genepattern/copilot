@@ -1,0 +1,1 @@
+A GenePattern module developer asked how to create an input field with predefined enum options ("intron", "exon", "CDS") to restrict user input, and received guidance that a drop-down list can be configured to allow only valid selections, with documentation available to explain the parameter type configuration process.

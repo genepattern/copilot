@@ -1,0 +1,1 @@
+For CNV analysis using GISTIC, a researcher should select SNP profile datasets from NCBI GEO, as GISTIC specifically analyzes somatic copy number variation data, and is distinct from expression or methylation datasets; researchers are advised to carefully review the original GISTIC algorithm manuscript to understand the methodology and appropriate data selection.

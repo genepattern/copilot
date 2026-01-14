@@ -1,0 +1,156 @@
+URL: https://groups.google.com./g/genepattern-help/c/e9wFPn4XJRY
+Title: "Essential container in task exite" after running GISTIC 2.0 module
+----------------------------------------
+
+
+
+
+
+"Essential container in task exite" after running GISTIC 2.0 module
+23 views
+Skip to first unread message
+
+mao
+unread,
+Apr 3, 2020, 10:33:25 PM
+
+
+
+to GenePattern Help Forum
+After running GISTIC 2.0 module, there was no output file and the job status demonstrated:
+
+
+Essential container in task exite
+Queue	arn:aws:batch:us-east-1:718039241689:job-queue/gp-cloud-default
+
+
+
+Can someone shed some light on this issue? 
+
+
+
+Job ID: 219195. GISTIC_2.0 
+
+
+parameter:
+-ta 0.1
+-armpeel 1
+-brlen 0.7
+-cap 1.5
+-conf 0.99
+-td 0.1
+-genegistic 1
+-gcm extreme
+-js 4
+-maxseg 2000
+-qvt 0.25
+-rx 0
+
+
+Ted Liefeld
+unread,
+Apr 4, 2020, 1:46:40 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+it appears that the compute node that your job was dispatched to ran out of disk space.  Since the nodes are shared/reused this happens from time to time.  I am in the process of replacing that node with a fresh instance which should allow you to re-run your analysis.
+
+
+Sorry about this, please let me know if you have further problems
+
+
+Ted 
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/288f872a-4b03-4dc8-a39e-28afb64eb03f%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+mao
+unread,
+Apr 4, 2020, 7:02:55 PM
+
+
+
+to GenePattern Help Forum
+Than you so much, Ted. Really appreciate your help!
+
+
+Could you please let me know when everything is ok?
+
+
+
+Rui
+
+在 2020年4月5日星期日 UTC+8上午4:46:40，Ted Liefeld写道：
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/288f872a-4b03-4dc8-a39e-28afb64eb03f%40googlegroups.com.
+
+
+Ted Liefeld
+unread,
+Apr 4, 2020, 7:21:19 PM
+
+
+
+to genepatt...@googlegroups.com
+It should be ok now. I reran you’re job successfully. Give it a go whenever you can
+
+
+Ted
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c74b29aa-374f-45ef-af0c-bfc51d912805%40googlegroups.com.
+
+
+mao
+unread,
+Apr 5, 2020, 9:45:30 PM
+
+
+
+to GenePattern Help Forum
+It's working perfectly. Thanks a lot!
+
+
+Rui
+
+在 2020年4月5日星期日 UTC+8上午10:21:19，Ted Liefeld写道：
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c74b29aa-374f-45ef-af0c-bfc51d912805%40googlegroups.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

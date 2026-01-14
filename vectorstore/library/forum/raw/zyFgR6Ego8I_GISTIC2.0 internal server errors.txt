@@ -1,0 +1,178 @@
+URL: https://groups.google.com./g/genepattern-help/c/zyFgR6Ego8I
+Title: GISTIC2.0 internal server errors
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 internal server errors
+72 views
+Skip to first unread message
+
+Andi L.
+unread,
+Oct 26, 2022, 4:13:03 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+
+
+as two others have recently mentioned, I'm getting internal server errors when trying to run GISTIC.
+
+
+It may be because I'm using quite a big amount of samples (about 4000) but other than that I'm pretty sure my inputs and parameters should be fine as I have used GISTIC before on this platform.
+
+
+
+Any ideas on what I can do? Error codes below.
+
+
+Best wishes and many thanks,
+Andi
+
+
+
+
+
+
+
+
+
+GenePattern Server error preparing job 471584 for execution. org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error    at java.util.concurrent.FutureTask.report(FutureTask.java:122)    at java.util.concurrent.FutureTask.get(FutureTask.java:206)    at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1803)    at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1562)    at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)    at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)    at java.util.concurrent.FutureTask.run(FutureTask.java:266)    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)    at java.lang.Thread.run(Thread.java:748) Caused by: org.genepattern.server.executor.CommandExecutorException: POST https://genepattern.ucsd.edu/gp/rest/v1/jobs failed! 500: Internal Server Error    at org.genepattern.drm.impl.gpongp.AlternativeGpServerJobRunner.startJob(AlternativeGpServerJobRunner.java:201)    at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:853)    at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1799)    at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1796)    ... 4 more
+
+
+
+
+
+
+
+
+
+
+Ted Liefeld
+unread,
+Oct 26, 2022, 7:08:32 AM
+
+
+
+to GenePattern Help Forum
+Andi
+
+
+Sorry you are having issues with this.  Please retry the job now.  Detailed answer below...
+
+
+In order to keep GenePattern a free service we have to use inexpensive compute options whenever possible.  GISTIC module runs are sent to run on the San Diego Supercomputer Center (SDSC) Expanse supercomputer instead of on AWS to help us reduce costs.  GISTIC was one of the modules chosen because it  tends to have long runtimes of 30-180 minutes and SDSC charges us less, but by the hour rounded up, unlike AWS which charges by the second. Unfortunately the SDSC file system has had less than perfect reliability lately.  There is a planned maintenance for it next Monday Oct 31 and recently we have been seeing intermittent failures.  I have redirected GISTIC jobs to be sent to the AWS  compute nodes for now until after the SDSC maintenance.
+
+
+
+Andi L.
+unread,
+Oct 26, 2022, 8:19:55 AM
+
+
+
+to GenePattern Help Forum
+Dear Lie,
+
+
+First off, thanks so much for taking care of that.
+
+
+
+After starting a new job about an hour ago, it appeared to start running as expected according to the logs, but after about 20 minutes it was terminated with the following error message:
+Host EC2 (instance i-0020f0c36aa18ace6) terminated.
+
+
+Any ideas? This can't be an issue on my end, right?
+
+
+Thanks again, I really appreciate the work you guys are doing for genepattern.
+
+
+BW,
+Andi
+
+
+Ted Liefeld
+unread,
+Oct 26, 2022, 9:38:30 AM
+
+
+
+to GenePattern Help Forum
+Andi
+
+
+if you give me a job number I can look to see if there is anything in the system logs.  The most likely cause is that it did not have enough memory.  I think the default for GISTIC is 4GB.  Try resubmitting with 8 or 16.
+
+
+Ted
+
+
+
+Andi L.
+unread,
+Oct 27, 2022, 12:10:39 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+My most recent job number is 471933. I've tried to resubmit twice just now and the jobs have immediately failed with the error "Task failed to start".
+
+
+BW,
+Andi
+
+
+Andi L.
+unread,
+Oct 27, 2022, 4:41:55 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+I kept resubmitting my job today like 10 times with different job resource parameters until it finally exectuted to completion with 16GB Mem and 16 cores. My personal issue is therefore closed.
+
+
+Despite these issues, I'm very grateful to you and the others trying to keep genepattern running for free and even provide troubleshooting. It's an awesome service and made getting into bioinformatics so much easier for me. Thank you.
+
+
+Andi
+
+
+Ted Liefeld
+unread,
+Oct 27, 2022, 7:42:05 AM
+
+
+
+to GenePattern Help Forum
+Andi
+
+
+the errors sound like memory was the problem.  My guess is that you don't need to specify the 16 cores but the 16GB RAM is probably what made the difference.  Unfortunately when running on AWS in docker when an out of memory error occurs usually the container just dies and the host then shuts down (is terminated) if nothing else is running on it.  I wish that R (and in GISTIC's case, MatLab) provided a memory error but that is outside of our control.
+
+
+In any case I am glad that you were able to get your analysis done and tanks for the kind words.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

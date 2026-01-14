@@ -1,0 +1,160 @@
+URL: https://groups.google.com./g/genepattern-help/c/hY-KQLF4tiw
+Title: Unsolved error when attempting to run GSEA
+----------------------------------------
+
+
+
+
+
+Unsolved error when attempting to run GSEA
+22 views
+Skip to first unread message
+
+samira...@gmail.com
+unread,
+Dec 13, 2018, 7:37:11 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am trying to re-run an GSEA analysis (GSEAPreranked), using default parameters that I have been running successfully last Friday using a modified gene set.
+However, today I am encountering the following error:
+
+
+There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+
+I have been also trying to re-run the same analysis from last week, but I get the same error.
+
+Even when I am just trying to upload a file in the files panel on the left hand side of the menue through the GenePattern Uploads, independent of running an analysis, I get an error.
+
+
+Running a GSEA with a standard gene set database provided by GenePattern does also not work for me anymore.
+
+
+Many thanks in advance for your help.
+Samira (user id: samira.jaeger)
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 7:58:29 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Samira,
+
+
+This is on cloud.genepattern.org, correct? Could you share your Job ID to look into this.
+
+
+Also, there is a thread discussing this issue, I recommend you take a look there to see if we (or some users) quickly find a reason as to why this is happening.
+
+
+Edit: I forgot to give you a link to the thread: https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/genepattern-help/_SBlbjm05p4
+
+
+Edwin.
+
+samira...@gmail.com
+unread,
+Dec 13, 2018, 8:09:10 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+thanks for getting back to me so quickly.
+
+
+I had a looked into the thread but couldn't find a solution in there, thats why I decided to write directly.
+Yes, I am using cloud.genepattern.org. I couldnt find a Job Id, I think the run fails directly after hitting the run button, the job does not even appear in the Jobs panel on the left hand side.
+
+
+Thank you,
+Samira
+
+
+
+
+
+
+
+Am Donnerstag, 13. Dezember 2018 16:58:29 UTC+1 schrieb Edwin Juarez:
+Hello Samira,
+
+
+This is on cloud.genepattern.org, correct? Could you share your Job ID to look into this.
+
+
+Also, there is a thread discussing this issue, I recommend you take a look there to see if we (or some users) quickly find a reason as to why this is happening.
+
+
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 8:19:40 AM
+
+
+
+to GenePattern Help Forum
+Got it. We'll post a solution on that thread when we have a solution to this and I'll copy that solution here too.
+
+
+Thanks for explaining what is happening on your case, it is helpful to know that the job is not even submitted.
+
+
+If you are trying to get results ASAP you may want to consider running GSEA desktop (http://software.broadinstitute.org/gsea/downloads.jsp) while we are investigating this issue.
+
+
+Kind regards,
+Edwin.
+
+samira...@gmail.com
+unread,
+Dec 13, 2018, 8:21:53 AM
+
+
+
+to GenePattern Help Forum
+Thanks a lot.
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 9:24:41 AM
+
+
+
+to GenePattern Help Forum
+Samira, our file storage was completely full, which was likely the source of the problem. I can submit GSEApreranked jobs now. Please let us know if this has solved your issues.
+
+samira...@gmail.com
+unread,
+Dec 13, 2018, 9:40:10 AM
+
+
+
+to GenePattern Help Forum
+Yes, it works like a charm again.
+Many thanks!
+
+
+Edwin Juarez
+unread,
+Dec 13, 2018, 9:42:38 AM
+
+
+
+to GenePattern Help Forum
+Great to hear that! You are welcome!
+
+
+Reply all
+
+Reply to author
+
+Forward

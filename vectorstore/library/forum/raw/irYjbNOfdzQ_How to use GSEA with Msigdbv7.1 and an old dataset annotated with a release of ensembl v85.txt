@@ -1,0 +1,105 @@
+URL: https://groups.google.com./g/genepattern-help/c/irYjbNOfdzQ
+Title: How to use GSEA with Msigdbv7.1 and an old dataset annotated with a release of ensembl v85
+----------------------------------------
+
+
+
+
+
+How to use GSEA with Msigdbv7.1 and an old dataset annotated with a release of ensembl v85
+5 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+May 28, 2020, 1:47:02 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm wondering if I'am using GSEA the right way with my old dataset annotated with ensembl annotation from 2016.(Ensembl v85/GENCODE v25)
+
+
+I don't understand collapse/remap option well.
+
+
+I'm using collapse option set to yes and select Human_Ensembl_Gene_Msigdb.v7.1.chip.
+
+
+Should I redo the analysis because version from 2016 is not the one used in Msigdb v7.1 ? What is the good manner to process data annotated from a different version from Ensembl v99/GENCODE v33
+
+
+Thanks.
+Anthony Castanza
+unread,
+May 28, 2020, 2:17:13 PM
+
+
+
+to genepatt...@googlegroups.com
+Older versions of Ensembl than the one used in that MSigDB release should work perfectly fine.
+
+
+So, your Ensembl 85 analysis when used with the MSigDB 7.1 chips will have their Gene IDs mapped to the Gene Symbols that were used in Ensembl 99. This is perfectly fine.
+
+
+In theory, Ensembl Gene IDs are stable enough that this could also work with newer Ensembl versions (like the current Release 100) and it would map back the Ensembl 100 genes to their Ensembl 99 symbols.
+
+
+Ensembl 85 is old enough that you *might* benefit from reanalyzing with a newer transcriptome anyway, but as long as you're working in the Ensembl Gene ID namespace, you don't have to do anything special to get it to work with MSigDB other than use the correct CHIP file for the identifiers.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6d1fe720-091e-43b7-823d-a3b634b48e87%40googlegroups.com.
+
+Jean-Philippe Villemin
+unread,
+May 28, 2020, 2:20:54 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Anthony !
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZw8%3DNUv%2BTYYsk_ginBT8KL42W0k6CgVq_-sLppEqh_Kxg%40mail.gmail.com.
+
+
+
+
+
+--
+
+Jean-Philippe Villemin   - Bioinformatics, Software Engineer -
+
+
+IGH (Institute of Human Genetics)
+Team: Splicing and Epigenetics
+141 rue de la Cardonille
+Montpellier France 4094 cedex 5
+jpvil...@gmail.com
+
+
+
+Reply all
+
+Reply to author
+
+Forward

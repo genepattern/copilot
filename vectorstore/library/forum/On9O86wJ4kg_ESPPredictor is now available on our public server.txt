@@ -1,0 +1,1 @@
+ESPPredictor is a new module on the public GenePattern server designed to help researchers predict optimal tryptic peptides for generating strong signals in electrospray ionization mass spectrometry (ESI-MS), offering a computational tool to improve peptide selection and mass spectrometry experimental design.

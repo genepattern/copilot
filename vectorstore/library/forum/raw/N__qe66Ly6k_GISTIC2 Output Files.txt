@@ -1,0 +1,186 @@
+URL: https://groups.google.com./g/genepattern-help/c/N__qe66Ly6k
+Title: GISTIC2 Output Files
+----------------------------------------
+
+
+
+
+
+GISTIC2 Output Files
+66 views
+Skip to first unread message
+
+oo Yu
+unread,
+Apr 26, 2023, 6:25:27 PM
+
+
+
+to GenePattern Help Forum
+Output file does not meet expectations
+
+Andrew Cherniack
+unread,
+Apr 26, 2023, 6:34:32 PM
+
+
+
+to GenePattern Help Forum
+GISTIC stopped because of an error.
+There is something wrong with either your seg file, marker file or both.
+It's impossible to know what the error is without access to your files.
+
+oo Yu
+unread,
+Apr 26, 2023, 6:40:59 PM
+
+
+
+to GenePattern Help Forum
+When I upload my file there is an error and I cannot upload
+
+Andrew Cherniack
+unread,
+Apr 26, 2023, 7:03:54 PM
+
+
+
+to GenePattern Help Forum
+Can you put it in a dropbox or a google drive?
+
+oo Yu
+unread,
+Apr 26, 2023, 7:19:00 PM
+
+
+
+to GenePattern Help Forum
+I only have the baidu drive: https://pan.baidu.com/s/1EgsLzONbX4ZG66efk3Qizw?pwd=04gv
+
+oo Yu
+unread,
+Apr 26, 2023, 7:24:33 PM
+
+
+
+to GenePattern Help Forum
+Dropbox
+seg file ：https://www.dropbox.com/s/u2bat3y22ecrhi1/Hg_marker.txt?dl=0
+marker file ：https://www.dropbox.com/s/nhd4w5mvpgbzfnv/tumor_seg.txt?dl=0
+
+
+
+Andrew Cherniack
+unread,
+Apr 26, 2023, 7:35:44 PM
+
+
+
+to genepatt...@googlegroups.com
+I see two problems,
+
+1) Your seg file has an extra first column.  Remove the first column with row numbers but keep all of the column headers.  Currently, the last column has no column header.
+2) Several columns in both the seg and marker files have quotes.  Eliminate all quotes.
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/56b6d0cd-f3a2-4349-9637-91e16f482878n%40googlegroups.com.
+
+oo Yu
+unread,
+Apr 26, 2023, 7:58:28 PM
+
+
+
+to GenePattern Help Forum
+I changed my data but it still failed to run.
+
+https://www.dropbox.com/s/cnepuph91ubdk2z/tumor_seg.txt?dl=0
+
+
+Andrew Cherniack
+unread,
+Apr 27, 2023, 6:45:20 AM
+
+
+
+to genepatt...@googlegroups.com
+There could be an issue with your marker file.  
+Try running GISTIC without a marker file.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/15e58639-bf86-4891-8ac2-45a84043e8d3n%40googlegroups.com.
+
+oo Yu
+unread,
+Apr 27, 2023, 7:04:58 AM
+
+
+
+to GenePattern Help Forum
+Still not running the expected files
+
+Ted Liefeld
+unread,
+Apr 27, 2023, 7:21:14 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+when you see errors you should look at the contents of the sdterr.txt and the stdout.txt files.  In this case you still have an error with your seg file and here is what was reported in the stdout.txt;
+
+
+GISTIC 2.0 input error detected:
+Error scanning segment file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/4010/tumor_seg.txt':
+Mismatch between file and format string.
+Trouble reading number from file (row 1u, field 3u) ==> "1"	3301765	5013095	1249	-0.0941
+
+
+
+Hope this helps
+
+
+Ted 
+
+
+
+oo Yu
+unread,
+Apr 27, 2023, 7:32:06 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your opinion, I will try it！
+
+Andrew Cherniack
+unread,
+Apr 27, 2023, 7:36:02 AM
+
+
+
+to GenePattern Help Forum
+
+You have a small formatting issue with your new seg file that might be causing it to error.
+Your new file uses UTF-16 line breaks  Change these to UTF-8 line breaks and try it out.  Also, I am not sure if this is an issue but the file extension should be .seg .
+You need it formatted this way to view it in IGV.
+
+
+Reply all
+
+Reply to author
+
+Forward

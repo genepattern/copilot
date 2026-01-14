@@ -1,0 +1,139 @@
+URL: https://groups.google.com./g/genepattern-help/c/cw_eY0U8ImI
+Title: Error Encountered While Running ssGSEA on GenePattern
+----------------------------------------
+
+
+
+
+
+Error Encountered While Running ssGSEA on GenePattern
+131 views
+Skip to first unread message
+
+Mohammed Noor
+unread,
+Jun 27, 2024, 11:36:12 AM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern Support Team,
+
+
+
+
+I hope this message finds you well. I am writing to report an issue I encountered while running the single-sample Gene Set Enrichment Analysis (ssGSEA) module on GenePattern. Despite following the GenePattern formatting guidelines, I am unable to complete the analysis due to an error. Below are the details of the files and the error messages received:
+
+
+
+
+Files Used:
+
+
+
+
+1. Expression Dataset (.GCT file):
+
+• The dataset is formatted according to the GenePattern guidelines for .GCT files.
+
+2. Gene Set (.GMT file):
+
+• The gene set contains only one gene set with over 3000 genes and is formatted as per the GenePattern guidelines for .GMT files.
+
+Upon running the ssGSEA module, I received the following error messages:
+
+stderr.txt: Error in `[<-`(`*tmp*`, start:(start + N.gs - 1), 1:max(GSDB$size.G),  : 
+
+  subscript out of bounds
+
+Calls: ssGSEA.cmdline
+
+Execution halted
+
+stdout.txt: WARNING: ignoring environment value of R_HOME
+
+[1] "No normalization to be made."
+
+Troubleshooting Attempts:
+
+I have tried allocating different amounts of memory for the job, but the error persists.
+
+
+
+
+I would appreciate your assistance in resolving this issue. Specifically, I am looking for guidance on:
+
+
+
+
+
+Thank you in advance for your help. I look forward to hearing back from you guys.
+
+Mohammed Noor
+unread,
+Jun 27, 2024, 11:41:59 AM
+
+
+
+to GenePattern Help Forum
+Here are the Job information which I forgot to list in my original post 
+# Job: 589064 # User: mohamme...@mail.mcgill.ca # Submitted: 2024-06-27 18:18:36.0 # Started Running: 2024-06-27 18:22:07.0 # Finished Running: 2024-06-27 18:23:30.0 # Completed: Thu Jun 27 18:23:32 UTC 2024 # ET(ms): 296146 server: https://cloud.genepattern.org/gp/ # Module: ssGSEA urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00270:10.1.0 # Parameters: # input.gct.file = NormPcount.gct https://cloud.genepattern.org/gp/users/mohammed.noor2%40mail.mcgill.ca/tmp/run4562123598301916211.tmp/input.gct.file/1/NormPcount.gct # file size 3746355 40390 11 # output.file.prefix = # gene.sets.database.files = gene.sets.database.files.list.txt https://cloud.genepattern.org/gp/users/mohammed.noor2%40mail.mcgill.ca/tmp/run6050680109878885972.tmp/gene.sets.database.files.list.txt # file size 134 # gene.symbol.column = Column 1 # gene.set.selection = ALL # sample.normalization.method = none # weighting.exponent = 0.75 # min.gene.set.size = 10 # combine.mode = combine.add
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Jul 2, 2024, 10:51:26 AM
+
+
+
+to GenePattern Help Forum
+Hi Ariyan,
+
+
+Looking at your GMT file for the gene sets database files* parameter,  there are some rows where there are blanks. Can you try again with those rows removed? Here are some more details on the GMT file format: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29 
+
+
+Edwin 
+
+Mohammed Noor
+unread,
+Jul 2, 2024, 11:38:32 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+I double-checked my GMT file, which contains a single gene set and therefore just one row. After ensuring there were no blank spaces, I re-uploaded the file, but I am still encountering the same issue.
+
+# Job: 590282 # User: mohamme...@mail.mcgill.ca # Submitted: 2024-07-02 18:28:50.0 # Started Running: 2024-07-02 18:31:16.0 # Finished Running: 2024-07-02 18:32:12.0 # Completed: Tue Jul 02 18:32:18 UTC 2024 # ET(ms): 208319 server: https://cloud.genepattern.org/gp/ # Module: ssGSEA urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00270:10.1.0 # Parameters: # input.gct.file = NormPcount.gct https://cloud.genepattern.org/gp/users/mohammed.noor2%40mail.mcgill.ca/tmp/run8047287562534976567.tmp/input.gct.file/1/NormPcount.gct # file size 3746355 40390 11 # output.file.prefix = # gene.sets.database.files = gene.sets.database.files.list.txt https://cloud.genepattern.org/gp/users/mohammed.noor2%40mail.mcgill.ca/tmp/run7617323139449120713.tmp/gene.sets.database.files.list.txt # file size 136 # gene.symbol.column = Column 1 # gene.set.selection = ALL # sample.normalization.method = none # weighting.exponent = 0.75 # min.gene.set.size = 10 # combine.mode = combine.add
+
+
+
+edh...@cloud.ucsd.edu
+unread,
+Jul 8, 2024, 11:03:08 AM
+
+
+
+to GenePattern Help Forum
+Hi Ariyan, 
+
+
+The issue is that you have ~3420 genes in the gene set that you provided,  however ssGSEA has a hard coded internal gene set size of maximum 2000 genes. We suggest to restrict the gene list further by going back to the source data and restrict the potential miRNA target genes through some application of a more stringent confidence cutoff. 
+
+
+Please let us know if there are any other issues. 
+
+
+Thanks, 
+Edwin 
+
+
+Reply all
+
+Reply to author
+
+Forward

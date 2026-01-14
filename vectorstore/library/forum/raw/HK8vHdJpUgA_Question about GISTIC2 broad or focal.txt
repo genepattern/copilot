@@ -1,0 +1,47 @@
+URL: https://groups.google.com./g/genepattern-help/c/HK8vHdJpUgA
+Title: Question about GISTIC2 broad or focal?
+----------------------------------------
+
+
+
+
+
+Question about GISTIC2 broad or focal?
+36 views
+Skip to first unread message
+
+Peter fan
+unread,
+Aug 30, 2022, 5:13:23 AM
+
+
+
+to GenePattern Help Forum
+Hello：
+For the output files of GISTIC2， in all_lesions.conf_99.txt all "focal or broad" are  NAs.  How can I get the information about focal or broad? I appreciate your reply.
+
+
+JobID in cloud.genepattern.org was  458291, 458304, 458308 and 458316. GISTIC_2.0   
+Ted Liefeld
+unread,
+Aug 30, 2022, 6:14:16 AM
+
+
+
+to GenePattern Help Forum
+For a question like this its best to consult the GISTIC forum (https://groups.google.com/a/broadinstitute.org/g/gistic-forum) where the authors and developers of GISTIC can respond.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

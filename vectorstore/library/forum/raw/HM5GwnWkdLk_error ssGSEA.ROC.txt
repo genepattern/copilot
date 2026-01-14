@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/HM5GwnWkdLk
+Title: error ssGSEA.ROC
+----------------------------------------
+
+
+
+
+
+error ssGSEA.ROC
+36 views
+Skip to first unread message
+
+Hai Tran
+unread,
+May 15, 2022, 3:27:50 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone,
+I was trying to compare ssGSEA results of two group phenotype. It came following error:
+
+
+Error in library("getopt") : there is no package called ‘getopt’ Calls: suppressMessages -> withCallingHandlers Execution halted
+
+
+My cls file is following:
+ 6 2 1                                                    
+# I II                                                    
+I    I    I    I    II    II
+
+
+Somebody is familiar with this error? 
+Thank you in advance!
+
+
+Hai
+Anthony Castanza
+unread,
+May 15, 2022, 8:01:33 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello Hai
+
+It looks like there was an error in the construction of the back end of that module resulting in a missing dependency. We’ll get that fixed asap.
+
+ 
+
+In the mean time, you might try running this version: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal:genepatternmodules:177:1.0.1 the computations are the same but it uses a different, albeit slightly slower back end – but fortunately one that should avoid this issue.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d007ac0b-25ca-4df7-8dd7-61526d70d783n%40googlegroups.com.
+
+Hai Tran
+unread,
+May 16, 2022, 12:43:16 AM
+
+
+
+to GenePattern Help Forum
+
+Dear Anthony,
+
+
+Thank you very much for your quick response and help. The version in clound you suggested has worked without any error.
+
+
+Best,
+Hai
+
+
+Reply all
+
+Reply to author
+
+Forward

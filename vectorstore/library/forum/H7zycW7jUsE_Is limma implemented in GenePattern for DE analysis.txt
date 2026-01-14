@@ -1,0 +1,1 @@
+Limma differential expression analysis capabilities in GenePattern are limited to the VOOM method from the Bioconductor limma package, implemented through the 'VoomNormalize' module, with no additional comprehensive limma modules currently available in the platform.

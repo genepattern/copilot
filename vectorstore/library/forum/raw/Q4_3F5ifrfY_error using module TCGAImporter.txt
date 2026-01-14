@@ -1,0 +1,178 @@
+URL: https://groups.google.com./g/genepattern-help/c/Q4_3F5ifrfY
+Title: error using module TCGAImporter
+----------------------------------------
+
+
+
+
+
+error using module TCGAImporter
+49 views
+Skip to first unread message
+
+sot
+unread,
+Jul 27, 2022, 7:20:53 AM
+
+
+
+to GenePattern Help Forum
+I've been trying to use it over the last few days.
+Every time, the job gets terminated and the stderr only contains " Host EC2 (instance i-06176cd2143bfd89e) terminated. "
+The last jobid that had it was " 453303 "
+
+
+Thanks in advance
+
+Ted Liefeld
+unread,
+Jul 27, 2022, 7:23:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+Can you provide a job number for us to look at?  Usually when you see messages like this you have hit either the memory limit or the time limit for a job so you might want to increase one or both of those if you want to retry.
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5b74820f-54e0-4033-9fda-a5c37a75e3ben%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Ted Liefeld
+unread,
+Jul 27, 2022, 2:39:33 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I belatedly saw that your job number was in the original post.  From a quick look its almost certainly either memory or disk space running out on our compute node because I think this is a bigger TCGAImporter job than we have seen before.  It appears to be grabbing 9748 counts files in one go where we more usually see a hundred or so.  I am trying to see if we can adjust things to let this job run and will report back when I have a definitive answer.
+
+
+Ted 
+
+
+
+sot
+unread,
+Jul 28, 2022, 8:51:20 AM
+
+
+
+to GenePattern Help Forum
+OK, just please let me know how it goes.
+
+sot
+unread,
+Jul 31, 2022, 11:23:04 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+I have a different type of error now.
+I created a manifest file with only 2-3 file cases.
+While it is supposed to download the files from GDC and convert them to .gct, all that it does is to download them without any conversions.
+JobID 454358
+
+The stderr points to some Typeerrors and keyerrors.
+At least we know now that the previous error was due to the number of files.
+
+
+Ted Liefeld
+unread,
+Aug 1, 2022, 10:55:18 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+After looking at your smaller jobs and the module code it looks like the problem is that the TCGAImporter module was created to download multiple files of the types htseq.counts.gz and FPKM.txt.gz and then to convert those into Genepattern's gct tabular format. Your jobs seem to be retrieving files in the formats .rna_seq.augmented_star_gene_counts.tsv, ASCAT.copy_number_variation.seg.txt, and methylation_array.sesame.level3betas.txt. (for the jobs I looked at) and those formats will not work with this module.
+
+
+Can you tell me a bit about your research objective and we will have our team discuss whether there is something we can do to help.
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+sot
+unread,
+Aug 2, 2022, 8:42:12 AM
+
+
+
+to GenePattern Help Forum
+Sure thing, for starters I tried to download the .txt files on the assumption that TCGAImporter does not work with .tsv files.
+What I want to do is to explore certain mRNA expressions across different human cancers.
+
+Based on what I saw in GDC, they can be only obtained as a .tsv file format.
+But tools like the ssGSEA seem that they only support .gct files.
+So what I need is to download the needed files from GDC and convert them to .gct to continue with my analysis.
+
+
+Ted Liefeld
+unread,
+Aug 3, 2022, 11:13:22 AM
+
+
+
+to GenePattern Help Forum
+So for the TCGAImporter module, it can only consume the htseq.counts.gz and FPKM.txt.gz formats.  It is just not possible to use it with the other formats you are trying to download.  Assuming you do get your files into gct format I am not sure that ssGSEA is able to work on copy number or methylation data.  To answer this I suggest you ask the GSEA experts at   https://groups.google.com/group/gsea-help.
+
+
+They can probably help with the appropriateness of the data.  Then if you want to proceed you can manually convert your tsv files into the gct format (https://www.genepattern.org/file-formats-guide#GCT) pretty easily.  I think the simplest would be to use the Pandas library in python to load your tsv files into a dataframe, and then the genepattern python library (https://github.com/genepattern/genepattern-python/blob/master/gp/data.py) to write the dataframe as a gct file. 
+
+
+
+Hope this helps,
+
+
+Ted
+
+sot
+unread,
+Aug 4, 2022, 5:46:59 AM
+
+
+
+to GenePattern Help Forum
+Thanks! :-) 
+
+
+
+Reply all
+
+Reply to author
+
+Forward

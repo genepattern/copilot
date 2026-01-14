@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/Go94LlTwBUY
+Title: Website down
+----------------------------------------
+
+
+
+
+
+Website down
+13 views
+Skip to first unread message
+
+Vithurran Thavarajah
+unread,
+Mar 14, 2022, 3:52:52 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The entire GenePattern website seems to be down? Could not get to the ssGSEA module.
+
+
+
+
+Barbara Hill
+unread,
+Mar 14, 2022, 9:29:34 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+GenePattern.org, the website where we host documentation about the server, was indeed down and is now back up.
+
+
+However, our server, https://cloud.genepattern.org/gp, has not had any recent unplanned downtime, and that is where you can find and use the ssGSEA module.
+
+
+It might be helpful to bookmark the server address, in case you've been getting there via our website.
+
+
+With apologies for any inconvenience or confusion,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

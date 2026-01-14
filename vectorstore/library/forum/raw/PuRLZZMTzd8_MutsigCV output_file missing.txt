@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/PuRLZZMTzd8
+Title: MutsigCV output_file missing
+----------------------------------------
+
+
+
+
+
+MutsigCV output_file missing
+207 views
+Skip to first unread message
+
+Tzu-Yu CHU
+unread,
+May 31, 2021, 7:47:20 AM
+
+
+
+to GenePattern Help Forum
+HI,
+I only got the " stdout.txt " after MutsigCV finished .
+But I where I can find this file:
+
+""Wrote results to /opt/gpcloud/gp_home/users/YM-309112013/uploads/tmp/run1379303382656161195.tmp/mutation.type.dictionary/1/mutation_type_dictionary_file.txt.sig_genes.txt""
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+MutSigCV: RUN ------------- Loading mutation_file... NOTE: Both "gene" and "Hugo_Symbol" are present in mutation_file. Using "gene". NOTE: Both "patient" and "Tumor_Sample_Barcode" are present in mutation_file. Using "patient". NOTE: Both "effect" and "is_coding"/"is_silent" are present in mutation_file. Using "effect". Loading coverage file... Loading covariate file... NOTE: Trimming "-Tumor" from patient names. NOTE: Converting "-" to "_" in patient names. Building n and N tables... Processing covariates... Finding bagels... 1000/18267 2000/18267 3000/18267 4000/18267 5000/18267 6000/18267 7000/18267 8000/18267 9000/18267 10000/18267 11000/18267 12000/18267 13000/18267 14000/18267 15000/18267 16000/18267 17000/18267 18000/18267 Expanding to (x,X)_gcp... Calculating p-value using 2D Projection method... 1000/18267 2000/18267 3000/18267 4000/18267 5000/18267 6000/18267 7000/18267 8000/18267 9000/18267 10000/18267 11000/18267 12000/18267 13000/18267 14000/18267 15000/18267 16000/18267 17000/18267 18000/18267 Done. Wrote results to /opt/gpcloud/gp_home/users/YM-309112013/uploads/tmp/run1379303382656161195.tmp/mutation.type.dictionary/1/mutation_type_dictionary_file.txt.sig_genes.txt
+
+Tzu-Yu CHU
+unread,
+Jun 1, 2021, 6:58:41 AM
+
+
+
+to GenePattern Help Forum
+And I also got this error when I run my own MAF file: 
+
+
+Error using gp_MutSigCV>MutSig_preprocess (line 302) missing mutation_type_dictionary_file Error in gp_MutSigCV (line 184)
+
+I download this file from the website: http://www.broadinstitute.org/cancer/cga/sites/default/files/data/tools/mutsig/reference_files/mutation_type_dictionary_file.txt
+ 
+
+
+Tzu-Yu CHU 在 2021年5月31日 星期一下午10:47:20 [UTC+8] 的信中寫道：
+
+
+Barbara Hill
+unread,
+Jun 1, 2021, 2:37:22 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+We are looking into the first error, where you did not get your results, but we need a job id for the second issue. 
+
+
+Best,
+Barbara
+Tzu-Yu CHU
+unread,
+Jun 1, 2021, 9:39:26 PM
+
+
+
+to GenePattern Help Forum
+Hi, Barbara:
+Thanks for your replay.
+My job ID is 350848.
+
+Tzu-Yu
+
+
+Tzu-Yu CHU 在 2021年6月1日 星期二下午9:58:41 [UTC+8] 的信中寫道：
+
+
+Barbara Hill
+unread,
+Jun 7, 2021, 9:24:54 AM
+
+
+
+to GenePattern Help Forum
+Hello Tzu-Yu,
+
+
+I believe the issue is in the way you are specifying the output file name.
+
+
+Text within the carets should not be edited. So,   <mutation.table.file_LIHC> , is incorrect. This is a substitution variable and changing it means GenePattern no longer knows what to substitute. 
+In order to rename your output with LIHC that field in the input form should instead be "<mutation.table.file_basename>_LIHC" (without the quotes).
+
+
+This will take the file name of your mutation table file, minus the .maf extension and then add _LIHC before the extension. 
+
+
+For example, if your mutation table file was MutationTableFile.maf your coverage output would be MutationTableFile_LIHC.coverage.txt
+
+Please let us know if that helps to resolve the issues for you.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,34 @@
+URL: https://groups.google.com./g/genepattern-help/c/sLdfD11EUwo
+Title: Missing reCAPTCHA response
+----------------------------------------
+
+
+
+
+
+Missing reCAPTCHA response
+30 views
+Skip to first unread message
+Pan Yitong
+unread,
+Oct 7, 2021, 7:47:34 PM
+
+
+
+to GenePattern Help Forum
+
+Dear genepattern team，
+
+    Recently, when I registered an account on https://cloud.genepattern.org, the webpage kept saying "Missing reCAPTCHA response", and I saw an official reply saying I have subscribed to the Google Groups "genepattern-team" group. So, i send email to unsub...@broadinstitute.org to unsubscribe from that group and stop receiving emails from it. However, email sending error, and saying this address coundn't be found or is unable to receive mail. I'm dying to use Mutsig2CV and GISTIC to help me finish my phD program. please help me.
+
+
+
+
+Best wishes!
+
+
+Reply all
+
+Reply to author
+
+Forward

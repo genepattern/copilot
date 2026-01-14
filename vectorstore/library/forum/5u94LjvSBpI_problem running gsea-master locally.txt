@@ -1,0 +1,1 @@
+GSEA local execution problem where analysis runs successfully through most gene sets but stalls near completion in c5.bp.v6.2.ensg.gmt file, with user having tried multiple R versions and machines without resolution, ultimately recommended to seek help specifically from GSEA help forum rather than GenePattern support channel.

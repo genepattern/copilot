@@ -1,0 +1,147 @@
+URL: https://groups.google.com./g/genepattern-help/c/AYt1Ez7zl40
+Title: tximport.DESeq2 issue
+----------------------------------------
+
+
+
+
+
+tximport.DESeq2 issue
+23 views
+Skip to first unread message
+
+Mingyuan Wan
+unread,
+Feb 7, 2023, 12:45:35 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I tried to use tximport.DESeq2 module and my input were RSEM files but the system kept saying i need input of Transcriptome Database. 
+
+
+Thanks,
+Anthony Castanza
+unread,
+Feb 7, 2023, 12:59:40 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+Do you have a job number for the run where you experienced this error message?
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6a7d0333-e8a8-4dcc-997a-ee42a3acd89bn%40googlegroups.com.
+
+Mingyuan Wan
+unread,
+Feb 7, 2023, 1:01:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi, 
+Thanks for the fast response. It did even let me run the work so it wasn’t a error message. 
+
+
+Thanks,
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZwexTWGzjoVxacekBN6qUzD1RM14h13j3j_Epb1TQTG3A%40mail.gmail.com.
+
+Castanza, Anthony
+unread,
+Feb 7, 2023, 1:04:12 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Oh, I see the issue. The Transcriptome Database parameter is flagged as a required field even though it is not used for RSEM produced datasets. We’ll get this corrected.
+
+In the meantime, if you know what transcriptome you data was quantified with, you can supply the GTF file in .tar.gz format and it’ll allow you to run the dataset even though the file itself will be ignored in the analysis.
+
+If you don’t know which transcriptome was used, let me know (along with the species of the data) and I can direct you to a file that can be used.
+
+
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Department of Medicine
+
+University of California, San Diego
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOQjBGdLH7%3Dkj_E5n%2BsmnX5ZfCZ6e_AOKrgAAZT8bQA-hhuvdg%40mail.gmail.com.
+
+ 
+
+Mingyuan Wan
+unread,
+Feb 7, 2023, 1:25:20 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you! May I know how long till it will be fixed and ready to use? No I don’t know the  transcriptome that was used. It is human sapiens.  Much appreciated. 
+
+
+Best,
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/E7CCE49C-2ADE-4B2B-BE5D-601EE08487D2%40hxcore.ol.
+
+Ted Liefeld
+unread,
+Feb 13, 2023, 8:12:10 AM
+
+
+
+to GenePattern Help Forum
+Please give it another try now.  We have a new version (3.8) where the parameter is no longer required.
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

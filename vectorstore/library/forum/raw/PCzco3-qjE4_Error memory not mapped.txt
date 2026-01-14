@@ -1,0 +1,97 @@
+URL: https://groups.google.com./g/genepattern-help/c/PCzco3-qjE4
+Title: Error: memory not mapped
+----------------------------------------
+
+
+
+
+
+Error: memory not mapped
+29 views
+Skip to first unread message
+
+Nerea Herrera
+unread,
+Mar 6, 2024, 7:14:08 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I try to run NMF Consensus with my gct file, but I get this error:
+
+
+*** caught segfault *** address 0xfffffffef1c3a8c8, cause 'memory not mapped' Traceback: 1: order(H[, j], decreasing = T) 2: NMF.div(V = A, k = k, maxniter = n.iter, seed = seed + i, stopconv = stopconv, stopfreq = stopfreq) 3: nmfconsensus("/opt/gpcloud/gp_home/users/guest_94104/uploads/tmp/run4409211512573354598.tmp/dataset.filename/1/SOL2024018_Report_IMSMI_quantity (Pivot) - copia para GenePattern 2.gct", "2", "5", "20", "2000", "divergence", "123456789", "40", "10", "T", "SOL2024018_Report_IMSMI_quantity (Pivot) - copia para GenePattern 2") aborting ...
+
+
+
+Could you help me, please?
+Best regards,
+
+
+Nerea
+
+Problem-GenePattern.JPG
+Ted Liefeld
+unread,
+Mar 6, 2024, 8:15:26 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+The most likely issue is just that it needs more memory to run.  You can change this in the job.memory parameter in the "job options" section of the run page.  If you post your job mumber I can look deeper
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Nerea Herrera
+unread,
+Mar 6, 2024, 8:37:40 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+my job number is  567699
+
+
+thank you so much
+
+
+best regards,
+Nerea
+
+Ted Liefeld
+unread,
+Mar 6, 2024, 11:14:22 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+there seems to be 2 problems with your input file.  First , while you have declared 16 columns and provided 16 column names, that is followed by another 16 tabs which makes the parser of NMFConsensus expect to find 32 columns (but there is only data for 16).  The second problem is the presence of NaN values, which NMFConsensus cannot handle.  You can use the module RemoveMissingValues to remove just those rows (~620 of them) or alternatively the samples (columns).
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

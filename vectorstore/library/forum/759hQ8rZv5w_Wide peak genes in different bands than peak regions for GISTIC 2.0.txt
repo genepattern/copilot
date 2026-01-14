@@ -1,0 +1,1 @@
+GISTIC 2.0 analysis question: User inquired about why wide peak genes are detected in slightly different cytogenetic bands than the primary peak region, with an example of genes from 14q13.1 being listed for a peak at 14q13.2, and received guidance to consult the GISTIC-specific forum for a detailed technical explanation.

@@ -1,0 +1,1 @@
+GenePattern forum discussion about a user experiencing an error when running the DiSCoVER module with normalized total gene count from DESeq2, with a solution suggested involving reopening and resaving CSV input files in Excel to potentially resolve file compatibility or corruption issues.

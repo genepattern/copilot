@@ -1,0 +1,1 @@
+A user encountered an error while attempting to use Picard's SortSam module in GenePattern to process a large nanopore BAM file, which failed to generate a BAI index file; after modifying the upstream pipeline, the issue was resolved, suggesting the original problem may have been related to file formatting or upstream processing inconsistencies.

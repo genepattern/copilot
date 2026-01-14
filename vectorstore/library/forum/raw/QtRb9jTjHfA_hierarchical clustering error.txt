@@ -1,0 +1,87 @@
+URL: https://groups.google.com./g/genepattern-help/c/QtRb9jTjHfA
+Title: hierarchical clustering error
+----------------------------------------
+
+
+
+
+
+hierarchical clustering error
+18 views
+Clustering
+hierarchical
+Skip to first unread message
+
+jheey1521
+unread,
+Jul 1, 2019, 3:15:04 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+139333. HierarchicalClustering
+
+
+
+The error I got is:
+
+
+
+Traceback (most recent call last):
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py", line 78, in <module>
+    col_D = pdist(data_transpose, metric=pdist_dict[col_distance_metric])
+  File "/opt/conda/lib/python3.6/site-packages/scipy/spatial/distance.py", line 1429, in pdist
+    dm[k] = metric(X[i], X[j])
+TypeError: my_affinity_u() takes 1 positional argument but 2 were give
+
+
+How do I fix it? Thank you in advance.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+
+Edwin Juarez
+unread,
+Jul 16, 2019, 10:23:34 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+There seems to be a bug with the uncentered correlation function. I have made a note of this and will address it in our next development cycle.
+
+
+In the meantime, you can use other distance metrics (like the Pearson Correlation) unless you have a specific need for an uncentered Pearson correlation metric.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,163 @@
+URL: https://groups.google.com./g/genepattern-help/c/10dskUkn-0Y
+Title: Error with Hierarchical clustering
+----------------------------------------
+
+
+
+
+
+Error with Hierarchical clustering
+23 views
+Skip to first unread message
+
+SARA MENEGATTI
+unread,
+Jun 7, 2019, 7:40:02 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am trying to run hierarchical clustering but I keep getting an error.
+
+
+The .stderr shows up this type of message:
+Traceback (most recent call last):
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py", line 114, in <module>
+    Z = fastcluster.linkage(row_D, method=linkage_dic[clustering_method])
+  File "/opt/conda/lib/python3.6/site-packages/fastcluster.py", line 247, in linkage
+    linkage_wrap(N, X, Z, mthidx[method])
+FloatingPointError: NaN dissimilarity value.
+
+
+
+The .stdout instead is this:
+::::: 14:27:00.226259 37 ===>  About to parse the inputs
+Using:
+	gct_name = /opt/gpbeta/gp_home/users/sara.mene/uploads/tmp/run6382798484597558796.tmp/input.filename/1/CLUSTER9CPM.gct
+	col_distance_metric = pearson
+	output_distances = False
+	row_distance_metric = pearson
+	clustering_method = average
+	output_base_name = cluster9genes
+	row_normalization = False
+	col_normalization = False
+	row_centering = None
+	col_centering = None
+['/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py', '/opt/gpbeta/gp_home/users/sara.mene/uploads/tmp/run6382798484597558796.tmp/input.filename/1/CLUSTER9CPM.gct', '2', 'False', '2', 'a', 'cluster9genes', 'False', 'False', 'None', 'None']
+::::: 14:27:00.226326 45 ===>  About to parse data
+::::: 14:27:00.441173 62 ===>  About to cluster columns
+::::: 14:27:00.498826 90 ===>  About to write atr file
+::::: 14:27:01.171117 95 ===>  About to cluster rows
+
+
+
+
+Could you please help me with this?
+
+
+Thanks,
+Sara
+
+Edwin Juarez
+unread,
+Jun 7, 2019, 8:58:38 AM
+
+
+
+to GenePattern Help Forum
+Hello Sara,
+
+
+From the outputs you have shared, it seems like when computing the distance/dissimilarity of the rows, some values could not be computed (which are represented as NaN), probably due to missing values in the data (this is just an speculation on my part).
+
+
+I recommend taking two steps in debugging, I'd appreciate it if you can post the results of these runs here too:
+
+
+1- Rerun this job but set row clustering to  "No row clustering"
+2- Try this again by first running your data through the module named "PreprocessDataset" (this is to filter out some data).
+
+
+Thanks,
+Edwin.
+
+SARA MENEGATTI
+unread,
+Jun 10, 2019, 3:43:06 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin, 
+
+
+When I rerun it after setting "no row clustering" it does seem to work, as it generates the .cdt and .atr files without errors but when I use these two files in HierarchicalClusteringViewer it says : "Error: no sample names found in CDT file".
+I have then used the PreProcessDataset module and it gave me another error: "Filtered all genes".
+
+
+How should I go from here?
+
+
+Thanks,
+Sara
+
+SARA MENEGATTI
+unread,
+Jun 10, 2019, 3:48:14 AM
+
+
+
+to GenePattern Help Forum
+
+
+I have also tried to run HierarchicalClusteringImage but I got another error:
+
+Exception in thread "main" java.util.NoSuchElementException
+	at java.util.StringTokenizer.nextToken(StringTokenizer.java:349)
+	at org.genepattern.io.stanford.CdtParser._parse(EIKM)
+	at org.genepattern.io.stanford.CdtParser.parse(EIKM)
+	at org.genepattern.module.hclimage.RunHCLImage.parseDataset(EIKM)
+	at org.genepattern.module.heatmapimage.RunHeatMapImage.parse(EIKM)
+	at org.genepattern.module.hclimage.RunHCLImage.main(EIKM)
+
+Many thanks,
+Sara
+
+
+
+Barbara Hill
+unread,
+Jun 10, 2019, 2:27:18 PM
+
+
+
+to GenePattern Help Forum
+Hello Sara, 
+
+
+How are you supplying the input files? and in what browser?
+
+
+Basically, the issue is that your input files are incorrect. They are bookmarks, rather than pointers to actual files.
+
+
+Did you drag, copy & paste, or send the files from your HierarchicalClustering job?
+
+
+Any of those should work, but it may be that your browser does not support one of those features correctly.
+
+
+(hint - the input files should end with .cdt, .gtr or .atr once in the inptu file field. If it ends in .url, it won't work)
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

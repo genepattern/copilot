@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/t7k2wlJCl34
+Title: Issue with Genepattern GISTIC.
+----------------------------------------
+
+
+
+
+
+Issue with Genepattern GISTIC.
+11 views
+Skip to first unread message
+
+Andrew Cherniack
+unread,
+Aug 26, 2019, 1:20:34 PM
+
+
+
+to GenePattern Help Forum
+I got the following error while running GISTIC_2.0 (job# 183384).
+
+
+xchip/gpbroad/servers/gpbroad/taskLib/GISTIC_2.0.6.14.4588/gp_gistic2_from_seg: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+
+
+I checked on xchip and this file does exist. I know that xchip may be going out of service.  Can this be fixed?
+
+
+
+
+Regards,
+Andy
+Barbara Hill
+unread,
+Aug 27, 2019, 8:50:52 AM
+
+
+
+to GenePattern Help Forum
+Hi Andy, 
+
+
+It looks like a dotkit changed here at the Broad. 
+
+
+Unfortunately, we are no longer developing modules to work with Broad dotkits. Instead, we are now developing modules to run in Docker containers. Accordingly, GISTIC_2.0 has been updated to run in Docker and is installed on our production server, hosted in Amazon - https://cloud.genepattern.org.
+
+
+I did look to see if there was a quick configuration fix for this on gpbroad, but there is not, so the best thing to do is to use GISTIC_2.0 in the cloud.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

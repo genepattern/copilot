@@ -1,0 +1,1 @@
+DESeq2 module in GenePattern encountered an error related to data loading, specifically with the .cls file labels not matching the number of data points; user was advised to provide job details for further investigation, but no definitive solution was provided in the visible thread.

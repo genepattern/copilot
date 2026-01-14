@@ -1,0 +1,1 @@
+A bioinformatics user encountered unexpected identical p-values when running NTP (Nearest Template Prediction) modules in GenePattern and sought confirmation about the credibility of their results, with no definitive resolution provided in the visible thread.

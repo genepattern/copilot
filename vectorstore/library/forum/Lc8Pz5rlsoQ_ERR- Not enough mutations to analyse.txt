@@ -1,0 +1,1 @@
+GenePattern user encountered an error "Not enough mutations to analyse" when running MutSigCV, with initial support suggesting the error stems from insufficient or problematic MAF file data, and recommending consultation with the GISTIC forum for further specialized input on mutation analysis, though a definitive resolution was not provided in the thread.

@@ -1,0 +1,1 @@
+Announcement of updated AffySTExpressionfileCreator module v2 for GenePattern, resolving previous image issues, upgrading to R 4.0.4, and restoring support for Clariom arrays, available for download via provided link.

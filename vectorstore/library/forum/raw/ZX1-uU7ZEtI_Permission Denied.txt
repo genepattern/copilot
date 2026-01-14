@@ -1,0 +1,189 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZX1-uU7ZEtI
+Title: Permission Denied
+----------------------------------------
+
+
+
+
+
+Permission Denied
+27 views
+Skip to first unread message
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 8:56:43 AM
+
+
+
+to GenePattern Help Forum
+I ran a series of modules last week, NMF Consensus and Metagene Projection, but today when I logged in, I was unable to view the results due to "Permission Denied", even though I am logged in. Why might access be denied, and can I regain access to my analyses and results from last week?
+Ted Liefeld
+unread,
+Feb 22, 2021, 9:37:43 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+can you give me some job numbers and I will take a look to see where the problem is.
+
+
+Thanks
+
+
+Ted
+
+
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 10:02:13 AM
+
+
+
+to GenePattern Help Forum
+The attached image shows all the jobs from last week, that I do not seem to have access to anymore. I was under the impression they are purged from the server after 14 days, so I was surprised of the "Permission Denied" issue after less than 7 days. 
+
+
+Jobs.png
+Ted Liefeld
+unread,
+Feb 22, 2021, 10:14:51 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+those jobs are still there (at least all that I checked manually) and the files are still on the server and seem to be owned by the account "kmansfield".  Try logging out and then back in to see if that fixes things as you might have a stale session.  
+
+
+Ted
+
+
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 10:16:54 AM
+
+
+
+to GenePattern Help Forum
+I just tried it again and still no access. I had logged out on Friday but when I logged in this morning, it shows they are jobs I ran but I do not have permission to any of the data. 
+
+Ted Liefeld
+unread,
+Feb 22, 2021, 10:23:37 AM
+
+
+
+to GenePattern Help Forum
+Can you show me exactly what you are seeing with the permissions error in the browser?
+
+Ted Liefeld
+unread,
+Feb 22, 2021, 10:26:53 AM
+
+
+
+to GenePattern Help Forum
+Also does this apply to all your old jobs or just this subset from the last week or so?
+
+
+p.s. another thing to try would be to re-run the jobs
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 10:28:25 AM
+
+
+
+to GenePattern Help Forum
+A screenshot of my browser is attached for the last job run on Friday (#322563). When I try to download or click on any of the files on the left, I get a Status403 error (also attached). This is not happening with my job run this morning (#323010).
+
+
+PermissionDenied.png
+
+Status403.png
+Ted Liefeld
+unread,
+Feb 22, 2021, 11:06:43 AM
+
+
+
+to GenePattern Help Forum
+I think the issue is due to a flaw in our handling of case in usernames.  When I look at the jobs you have run, only the one from today has a capital 'K' in the username, all the rest have it lowercase
+
+
+JOB_NO	USER_ID	DATE_SUBMITTED
+323010	Kmansfield	2021-02-22 17:02:43.0
+322563	kmansfield	2021-02-19 23:13:29.0
+322560	kmansfield	2021-02-19 22:46:44.0
+322360	kmansfield	2021-02-18 19:05:43.0
+322343	kmansfield	2021-02-18 16:59:52.0
+322340	kmansfield	2021-02-18 16:51:16.0
+322084	kmansfield	2021-02-17 17:47:47.0
+322080	kmansfield	2021-02-17 17:09:07.0
+322076	kmansfield	2021-02-17 16:54:49.0
+321849	kmansfield	2021-02-16 21:39:04.0
+321842	kmansfield	2021-02-16 21:26:20.0
+321838	kmansfield	2021-02-16 21:14:10.0
+318681	kmansfield	2021-02-03 23:26:44.0
+318678	kmansfield	2021-02-03 23:05:31.0
+318677	kmansfield	2021-02-03 22:58:47.0
+318621	kmansfield	2021-02-03 17:16:23.0
+317697	kmansfield	2021-02-02 00:29:40.0
+317671	kmansfield	2021-02-01 22:36:15.0
+317666	kmansfield	2021-02-01 22:28:48.0
+317665	kmansfield	2021-02-01 22:26:12.0
+317662	kmansfield	2021-02-01 22:20:22.0
+317656	kmansfield	2021-02-01 22:14:58.0
+317653	kmansfield	2021-02-01 22:00:27.0
+317631	kmansfield	2021-02-01 17:55:47.0
+317629	kmansfield	2021-02-01 17:38:26.0
+
+
+so it might be if you logout and back in again, making sure to use the lower case 'k' that you will be able to see your old jobs, but not the one from this morning.
+
+
+Ted
+
+Krystine Mansfield
+unread,
+Feb 22, 2021, 11:09:38 AM
+
+
+
+to GenePattern Help Forum
+Good to know. When I logged out, and logged back in using the lowercase "k", all of the jobs are accessible.  I will have to keep that in mind next time.  
+Thanks.
+
+
+
+Ted Liefeld
+unread,
+Feb 22, 2021, 11:12:48 AM
+
+
+
+to GenePattern Help Forum
+I am glad we found a workaround.  We will be sure to get this fixed in an upcoming release.  It's a bit mind boggling that we haven't bumped into this before.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

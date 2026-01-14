@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/k3e2L5sHhKQ
+Title: Different results with DESeq2 analysis on GenePattern and in R
+----------------------------------------
+
+
+
+
+
+Different results with DESeq2 analysis on GenePattern and in R
+16 views
+Skip to first unread message
+
+Matthew Koelzer
+unread,
+Jul 24, 2018, 2:41:10 PM
+
+
+
+to GenePattern Help Forum
+I am running DESeq2 with ~3,000 different genes for 69 samples to look for any differential expression between two subsets of the samples. When I run DESeq2 on GenePattern, I get 32 genes with adjusted p-values below .05. However, when I run DESeq2 in RStudio, I only get 9 genes with adjusted p-values below .05. All 9 of the genes from RStudio are included in the 32 on GenePattern, but they are in a different order and have different adjusted p-values. I am using the same input files for both. Does anyone know what would cause such a big difference in results?
+Barbara Hill
+unread,
+Jul 27, 2018, 2:49:22 PM
+
+
+
+to GenePattern Help Forum
+What version of DESeq2 are you running in RStudio? and with which version of R?
+
+
+Best
+-Barbara
+Message has been deleted
+Matthew Koelzer
+unread,
+Jul 30, 2018, 9:23:24 AM
+
+
+
+to GenePattern Help Forum
+Looks like DESeq2 is version 1.18.1 and RStudio is version 1.1.423.
+
+Barbara Hill
+unread,
+Aug 3, 2018, 2:10:12 PM
+
+
+
+to GenePattern Help Forum
+The GenePattern module is running DESeq2_1.10.1 - so you are comparing the results of two different versions of DESeq2. I would suggest reading the release notes for DESeq2 to see if this is expected.
+
+
+Do you know what version of R  you are using in RStudio? IE 3.5 or...?
+
+
+GenePattern is using R 3.2.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Aug 3, 2018, 2:11:41 PM
+
+
+
+to GenePattern Help Forum
+This is the bioconductor page for DESeq2: https://bioconductor.org/packages/release/bioc/html/DESeq2.html
+
+
+The GenePattern module simply wraps the version provided by bioconductor.
+
+
+Best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

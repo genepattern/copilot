@@ -1,0 +1,1 @@
+A ComparativeMarkerSelection GenePattern module was experiencing an error where q-values were not being computed, which was traced to an incompatibility with R 2.5 in the Java container; the module was subsequently updated to resolve the q-value calculation issue, allowing successful job completion.

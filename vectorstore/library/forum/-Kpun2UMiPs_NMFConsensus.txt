@@ -1,0 +1,1 @@
+User seeks method to identify molecular patterns defining clusters in NMF consensus clustering, with solution provided involving extracting cluster-specific gene expression data via SelectFeaturesColumns and visualizing results using HeatMapViewer, with recommendation for potential programming-based alternatives and future improvements to the workflow.

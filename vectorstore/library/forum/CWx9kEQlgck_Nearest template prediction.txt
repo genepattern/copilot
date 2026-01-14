@@ -1,0 +1,1 @@
+A GenePattern forum user encountered an error while running the Nearest Template Prediction tool, specifically a "missing value where TRUE/FALSE needed" error when processing a .gct input file, which had previously worked successfully in other jobs, suggesting a potential data inconsistency or processing issue in this specific job that prevented the analysis from completing.

@@ -1,0 +1,125 @@
+URL: https://groups.google.com./g/genepattern-help/c/WVyJg0cx6K8
+Title: TangentNormalization download
+----------------------------------------
+
+
+
+
+
+TangentNormalization download
+31 views
+CNV
+TangentNormalization
+Skip to first unread message
+
+Dong Wang
+unread,
+Jun 4, 2020, 4:20:38 PM
+
+
+
+to GenePattern Help Forum
+Where I can found TangentNormalization module link to download it?
+
+
+Is there any public server which has SNP analysis pipeline in 2020? After the fire on 2018, Genepatter public server does not maintain this pipeline.
+
+
+I am tring to install it locally.
+
+
+Thanks.
+GenePattern Help Forum
+unread,
+Jun 8, 2020, 2:20:38 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Unfortunately, this module is now deprecated in GenePattern.
+
+
+The authors have since published a Docker image allowing you to run the method in your own Docker container.
+
+
+Paper:
+https://www.biorxiv.org/content/10.1101/566505v1.full.pdf 
+
+
+GitHub repository:
+https://github.com/coyin/tangent
+
+
+DockerHub repository:
+https://hub.docker.com/r/coyin/tangent
+
+
+All the best
+-Barbara 
+
+
+
+Dong
+unread,
+Jun 8, 2020, 6:19:24 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks very much for your reply.
+
+
+I am tring to use CopyNumberInferencePipeline to analyze Affymetrix SNP 6.0 data. Is this pipeline was deprecated in Genepattern too? Do you have suggestion for analyzing SNP 6.0 data?
+
+
+I used Birdsuite get the CNV calls. I am trying to used DNAcopy and GISTIC to do downstream analysis.
+
+
+GenePattern Help Forum <genepatt...@googlegroups.com> 于2020年6月8日周一 下午3:20写道：
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5b9c4e74-0a9a-4826-bfec-79b32ba45393n%40googlegroups.com.
+
+GenePattern Help Forum
+unread,
+Jun 12, 2020, 9:09:38 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Unfortunately, the pipeline is deprecated and we do not have an alternative in GenePattern. The authors of the SNP6 modules are no longer maintaining those methods, and the GenePattern team has now focused our groups' efforts on both conventional bulk RNA-seq and single-cell RNA-seq analyses.
+
+
+I'm sorry we couldn't be more helpful.
+
+
+Best
+-Barbara Hill
+GenePattern Help Forum
+unread,
+Jun 12, 2020, 9:11:54 AM
+
+
+
+to GenePattern Help Forum
+I should note that if you are having specific trouble with GISTIC, I would recommend writing to the GISTIC forum. 
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

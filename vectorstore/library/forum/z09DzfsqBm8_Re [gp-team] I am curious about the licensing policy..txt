@@ -1,0 +1,1 @@
+GenePattern is a free-to-use bioinformatics platform with an open-source license available on GitHub, allowing researchers to use the software without cost and potentially set up their own server while following the licensing terms defined in the repository.

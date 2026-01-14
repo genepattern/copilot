@@ -1,0 +1,47 @@
+URL: https://groups.google.com./g/genepattern-help/c/7DMKM62Chko
+Title: classifiers
+----------------------------------------
+
+
+
+
+
+classifiers
+25 views
+Skip to first unread message
+
+Torik Ayoubi
+unread,
+Mar 7, 2018, 6:18:58 AM
+
+
+
+to GenePattern Help Forum
+In general, classification tools perform a calculation and identify a group of genes that are able to classify samples. I am looking for a classifier in which I can submit several gene sets that I have identified as contain a suitable set of genes to classify many different classes of cancer samples (for example one gene set for colon cancer, one gene set for liver cancer and so on). Is any tool in GenePattern able to use a predefined gene set and test how good it is able to classify samples into different predefined classes? Ideally, it should be able to be used also to classify ONE SINGLE cancer sample and not only on a group of samples. At the end such tool should be used to diagnose a single patient. Nearest Template Prediction comes close but cannot be used for a single sample and ssGSEAprojection does not provide any kind of significance or probability indication or FDR (and also requires a minimum of 2 samples). Any other multi-class classifiers in GenePattern that can use my gene sets on a single sample? Is't it remarkable that classifiers do not seem to have been developed to predict the class of a single sample?
+Edwin Juarez
+unread,
+Mar 19, 2018, 1:34:49 PM
+
+
+
+to GenePattern Help Forum
+Hello Torik,
+
+
+Sorry for the late reply.
+
+
+I think you are correct about your assessment on the availability of classification/prediction modules in GenePattern. There aren't single patient predictors because the issue of predicting outcomes for a single patient is tricky (to say the least), some people even challenge the very concept of personalized medicine. Whenever a single patient predictor is developed, it is often only to be used in a very limited context (for example DiSCoVER -- DOI: 10.1126/science.286.5439.531), so it is not possible at the moment to have a general-purpose, predictor like the one you describe. Perhaps, one way to go around these requirements is to use the K-nearest neighbors classification and/or HierarchicalClustering modules with your known dataset, verify that you can classify/cluster those samples correctly, then modify your input file to include your  new sample and observe where it is classified.
+
+
+Additionally, you may want to give PNN a shot, but as noted here: https://genepattern.broadinstitute.org/gp/pages/protocols/Prediction.html that module is not available in the public repository.
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

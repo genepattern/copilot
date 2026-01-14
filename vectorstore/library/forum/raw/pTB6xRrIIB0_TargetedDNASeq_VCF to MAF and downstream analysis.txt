@@ -1,0 +1,153 @@
+URL: https://groups.google.com./g/genepattern-help/c/pTB6xRrIIB0
+Title: TargetedDNASeq_VCF to MAF and downstream analysis
+----------------------------------------
+
+
+
+
+
+TargetedDNASeq_VCF to MAF and downstream analysis
+45 views
+Skip to first unread message
+
+ravi
+unread,
+Apr 29, 2024, 6:33:50 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am new to DNA seq data analysis.
+
+
+1 - May I know which module is best for analysing Targeted DNA Seq data? 
+
+
+2 - Is it possible to convert vcf files to maf format files for downstream analysis using GenePattern?
+
+3 - Also, could you let me know if it is possible to generate different plots (number of mutations per sample, top 10 mutated genes, unique/novel mutations, commonly shared mutations in different samples....) for targeted DNA seq data using which module in GenePattern?
+Your suggestion will be helpful.
+
+
+Thank you,
+
+Ravi.
+Message has been deleted
+forre...@gmail.com
+unread,
+Apr 30, 2024, 2:25:54 PM
+
+
+
+to GenePattern Help Forum
+Hi Ravi,
+
+1 & 3 - Given the type of analysis you are looking to perform the closest module on GenePattern seems to be MutSigCV (https://www.genepattern.org/modules/docs/MutSigCV). Take a look at the documentation to see if it fits your needs.
+
+2 - For converting a VCF file to the MAF file format, there is no module currently on GenePattern that can do that task. Outside of GenePattern, you can check out this commonly used tool: https://github.com/mskcc/vcf2maf.
+
+Let me know if you have any more questions of if we can help in any other way.
+
+Thanks,
+Forrest
+
+ravi velaga
+unread,
+Apr 30, 2024, 6:06:15 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Forrest,
+
+
+Thank you very much for your expert suggestions. I will give it a try.
+
+
+Best regards,
+Ravi.
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/pTB6xRrIIB0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/86fd2fb2-5188-4d52-9777-29913d01b8b5n%40googlegroups.com.
+
+ravi velaga
+unread,
+Apr 30, 2024, 6:14:06 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Forrest,
+
+
+I am sorry for the follow-up. I looked into MutSigCV documentation and found that it accepts MAF file format data from whole genome/exome sequencing. However, as I mentioned, I want to analyse Targeted DNA/Amplicon sequencing data. Can I still use MutSigCV?
+
+
+Your reply will help.
+
+
+Thank you,
+Ravi.
+
+
+
+
+On Wed, 1 May 2024 at 06:25, forre...@gmail.com <forre...@gmail.com> wrote:
+
+
+--
+
+
+forre...@gmail.com
+unread,
+May 6, 2024, 11:50:23 AM
+
+
+
+to GenePattern Help Forum
+Hi Ravi,
+
+
+I'm not too sure about if it works with that type of data. My assumption is that it might have some issues downstream. You might want to get in touch with the original module author Mike Lawrence Ph.D. to get further clarification.
+
+
+
+Here's a link to his lab website: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.massgeneral.org/cancer-center/clinical-trials-and-research/center-for-cancer-research/investigators/lawrence-lab&ved=2ahUKEwjTjbST2PmFAxXQIkQIHQsLAPIQFnoECA8QAQ&usg=AOvVaw3yQwXSHC_odTiw5_8HICWz.
+
+
+
+Thanks and let me know if you have any further questions,
+Forrest
+
+
+ravi velaga
+unread,
+May 7, 2024, 12:23:05 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you, Forrest.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/df6fbb38-3179-4e78-9264-9f9f4ba7dca1n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

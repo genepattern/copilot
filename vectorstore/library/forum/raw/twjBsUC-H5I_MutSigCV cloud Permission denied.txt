@@ -1,0 +1,83 @@
+URL: https://groups.google.com./g/genepattern-help/c/twjBsUC-H5I
+Title: MutSigCV cloud: Permission denied
+----------------------------------------
+
+
+
+
+
+MutSigCV cloud: Permission denied
+18 views
+Skip to first unread message
+
+Yongchao Dou
+unread,
+Jan 3, 2019, 1:07:15 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am using GenePattern on cloud to run a MutSigCV job and get such error information. Can you help me fix it?
+
+
+Job ID: 70800.MutSigCV
+
+
+Error information.
+stderr.txt: /opt/gpbeta/gp_home/resources/wrapper_scripts/gp-common.sh: line 598: /opt/gpbeta/gp_home/taskLib/MutSigCV.1.2.890/gp_MutSigCV: Permission denied
+
+
+Thank you very much!
+
+
+Yongchao Dou
+Barbara Hill
+unread,
+Jan 14, 2019, 1:57:56 PM
+
+
+
+to GenePattern Help Forum
+Hello Yongchau,
+
+
+We are working to update this module to function correctly in our new compute environment.
+
+
+We expect to have a version available for use by the end of the month.
+
+
+Best
+-Barbara
+Peter Carr
+unread,
+Jan 17, 2019, 10:15:09 AM
+
+
+
+to GenePattern Help Forum
+I installed a new version of MutSigCV (v1.3.4) on the cloud.gp server which fixes the "Permission Denied" error. This is a provisional release which has not gone through our full test suite. Feel free to give it a try.
+
+
+Details:
+I created a new container for the module (genepattern/docker-mutsigcv:0.2) which includes the application binary. Previously this was copied into the container at runtime.
+
+
+Next steps:
+* migrate the module code from SVN to GitHub
+* validate GpUnit test suite
+* release module to public repository
+
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

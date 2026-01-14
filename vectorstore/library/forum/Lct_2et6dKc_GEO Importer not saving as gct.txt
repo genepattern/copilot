@@ -1,0 +1,1 @@
+GEO Importer module user experienced issue with GEOImporter failing to generate a .gct file for GEO series GSE110021, instead producing .txt files, with support staff acknowledging the issue and indicating they would investigate the problem further in another discussion thread.

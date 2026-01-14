@@ -1,0 +1,623 @@
+URL: https://groups.google.com./g/genepattern-help/c/lAcKzXqcs1I
+Title: 6/25/14 -- GP Local Server without GUI and SGE Queue Configuration
+----------------------------------------
+
+
+
+
+
+6/25/14 -- GP Local Server without GUI and SGE Queue Configuration
+25 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Aug 22, 2017, 3:42:02 PM
+
+
+
+to GenePattern Help Forum
+(THIS IS A RE-POST FROM OUR PREVIOUS FORUM)
+
+
+Dear GP Team,
+
+I am trying to install GP on Ubuntu Server without GUI and I would like to know how can one install GP without GUI and configure tomcat on different ports.
+
+Also, could you please elaborate a little more on how to configure queues on GP so it uses the SGE.
+
+Thanks & Regards,
+Nirmal
+
+======================================
+
+
+
+
+Hello Nirmal,
+
+
+
+ For a headless install, place install-gp.properties file next to the GPserver.bin file. (ftp://gpftp.broadinstitute.org/install-gp.properties)
+Edit the file, so that the correct values set.
+Install with this command:
+    ./GPserver.bin -f install-gp.properties
+
+After running the installer you may need to manually set the GenePatternURL which is defined in the genepattern.properties file.
+
+
+As for SGE - I'm assuming you've read this page? what sorts of further details do you seek?
+
+
+Best
+
+
+-Barbara
+
+
+========================================
+
+
+Thanks for the link. That happened to be a good starting point. I am still struggling to set-up genePattern with SGE.
+
+I have problem understanding the following parameters in the config_example.yaml file.
+
+SGE_SESSION_FILE:  
+
+I am not able to figure out the sge_contact.txt... What should be the contents of this file look like?
+
+Additionaly, I would also like to understand how does SGE work with the users of the GenePattern or does it work with the user id who runs the server?
+
+Also the parameter user.properties and group.properties?
+
+    test:  ### should it be SGE here?
+        # override default properties for all users in group 'test'
+        executor: Test   ####### should it be SGE here?
+        java_flags: -Xmx16g
+        # override module.properties for all users in group 'test'
+        module.properties:
+            ExpressionFileCreator:
+                lsf.max.memory: 2
+
+
+I have attached my config.yaml file here for your reference..
+
+I am running a fresh installation of a standalone server with Ubuntu 13.10. My SGE is configured on this server which has about 25 cores and I call my queue as "main.q". Would you like any other info, please let me know...
+
+Note: Gene Pattern works well with config_default.yaml file
+
+
+
+
+================================================
+
+You can leave the SGE_SESSION_FILE as-is: 
+     SGE_SESSION_FILE: ./sge/sge_contact.txt 
+
+Then make a 'sge' folder in your resources folder. There is no need to create 
+the file. 
+
+To use sge for all GenePattern jobs you can set the executor in the 
+default.properties section. 
+
+default.properties: 
+     executor: SGE 
+
+The other options (setting it in user.properties, group.properties, or 
+module.properties) are only needed if you want to customize your server to use 
+different queuing systems based on the user or the module. 
+
+To help with debugging, make some edits to the 
+./Tomcat/webapps/gp/WEB-INF/classes/log4j.properties file. 
+# debugging SGE integration 
+log4j.logger.org.broadinstitute.zamboni=DEBUG, stdout 
+log4j.logger.org.genepattern.server.executor.sge=DEBUG, stdout 
+
+You need to restart your server for this to take effect. 
+
+Regards, 
+Peter 
+
+
+
+
+
+======================================================
+
+Thank you again!
+
+
+I changed to
+
+default.properties:
+    executor: SGE
+
+
+I updated the SGE_ROOT and SGE_CELL.SGE:
+
+That section looks like below....
+
+
+        classname: org.genepattern.server.executor.sge.SgeCommandExecutor
+        configuration.properties:
+            # SGE config variables, see the SGE doc for more explanation
+            SGE_ROOT: /var/lib/gridengine
+            SGE_CELL: mnb
+            # path to the session file, relative to the gp server's working directory
+            SGE_SESSION_FILE: ./sge/sge_contact.txt
+            # internal variable used by the GP SGE plugin. You probably don't need to change this.
+            SGE_BATCH_SYSTEM_NAME: genepattern_server
+        # below is a list of configuration parameters for the sge executor
+        # these can be set globally, by uncommenting this default.properties section
+        # Note: experimental. These settings have not all been tested.
+        default.properties:
+             sge.priority: -10
+             sge.queueName: main.q
+        #    sge.exclusive:
+        #    sge.maxRunningTime:
+        #    sge.memoryReservation:
+        #    sge.maxMemory:
+        #    sge.slotReservation:
+        #    sge.restartable:
+
+
+
+I added the edit for logs... as suggested.
+
+
+Now, when I submit a test pipeline (Which works with config_default.yaml). I get the following error.
+
+
+
+2014-07-16 16:32:41.774 ERROR [pool-3-thread-3] (JobSubmitter.java:114) - Error submitting job #35
+org.genepattern.server.executor.JobDispatchException: Server error: CommandExecutor not set for executorId=SGE
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.initCmdExec2(GenePatternAnalysisTask.java:1541)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1551)
+	at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1521)
+	at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:72)
+	at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:146)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2014-07-16 16:32:41.952 ERROR [pool-3-thread-3] (JobInfoWrapper.java:367) - Outputfile not found on server: /webapps/gp/jobResults/35/stderr.txt
+2014-07-16 16:32:41.953 ERROR [pool-3-thread-3] (JobInfoWrapper.java:367) - Outputfile not found on server: /webapps/gp/jobResults/35/gp_execution_log.txt
+2014-07-16 16:32:42.255 ERROR [http-8085-Processor22] (JobInfoWrapper.java:367) - Outputfile not found on server: /webapps/gp/jobResults/35/stderr.txt
+2014-07-16 16:32:42.256 ERROR [http-8085-Processor22] (JobInfoWrapper.java:367) - Outputfile not found on server: /webapps/gp/jobResults/35/gp_execution_log.txt
+2014-07-16 16:32:42.559 ERROR [http-8085-Processor22] (ReducedHTMLParser.java:645) - Malformed end tag at line 367; skipping parsing
+
+
+
+Any help would be really helpful?
+
+
+
+Thanks,
+Nirmal 
+
+
+=========================================================================
+
+
+Hi,
+
+
+I am not sure if the following can be of any help.. After I start the server, I get the following error "no drmaa in java.library.path"....
+
+
+2014-07-16 17:24:40.951  INFO [main] (SgeCommandExecutor.java:89) - SGE_BATCH_SYSTEM_NAME=genepattern_server
+2014-07-16 17:24:40.951  INFO [main] (SgeCommandExecutor.java:90) - SGE_LOG_FILENAME=.sge.out
+2014-07-16 17:24:40.951 DEBUG [main] (SgeCommandExecutor.java:108) - initializing Zamboni's SGE service ...
+2014-07-16 17:24:40.993 ERROR [main] (BasicCommandManager.java:296) - Error starting CommandExecutor, for class: org.genepattern.server.executor.sge.SgeCommandExecutor: no drmaa in java.library.path
+java.lang.UnsatisfiedLinkError: no drmaa in java.library.path
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1857)
+	at java.lang.Runtime.loadLibrary0(Runtime.java:870)
+	at java.lang.System.loadLibrary(System.java:1119)
+	at com.sun.grid.drmaa.SessionImpl$1.run(SessionImpl.java:64)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.grid.drmaa.SessionImpl.<clinit>(SessionImpl.java:62)
+	at com.sun.grid.drmaa.SessionFactoryImpl.getSession(SessionFactoryImpl.java:60)
+	at org.broadinstitute.zamboni.server.batchsystem.sge.SgeBatchSystem.<init>(SgeBatchSystem.scala:100)
+	at org.genepattern.server.executor.sge.SgeCommandExecutor.start(SgeCommandExecutor.java:109)
+	at org.genepattern.server.executor.BasicCommandManager.startCommandExecutors(BasicCommandManager.java:293)
+	at org.genepattern.server.executor.CommandManagerFactory.startJobQueue(CommandManagerFactory.java:59)
+	at org.genepattern.server.webapp.StartupServlet.init(StartupServlet.java:130)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1105)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:932)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:3917)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4201)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:759)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:739)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:524)
+	at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:904)
+	at org.apache.catalina.startup.HostConfig.deployDirectories(HostConfig.java:867)
+	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:474)
+	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1122)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:310)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1021)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:718)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1013)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:442)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:450)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:709)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:551)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:294)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:432)
+2014-07-16 17:24:41.083  INFO [main] (StartupServlet.java:136) - 	initializing system messages...
+2014-07-16 17:24:41.094  INFO [main] (StartupServlet.java:146) - 	initializing user upload directories ...
+2014-07-16 17:24:41.103  INFO [main] (StartupServlet.java:155) - 	migrating job upload directories ...
+2014-07-16 17:24:41.113  INFO [main] (StartupServlet.java:255) - 
+*****************************************************************************
+GenePattern server version 3.8.2 build 13527 built 2014-06-23 11:24 is ready.
+	GenePatternURL: http://127.0.0.1:8085/gp/
+	Java Version: 1.8.0_05
+	user.dir: /opt/genePattern/Tomcat
+	tasklib: /opt/genePattern/Tomcat/../taskLib
+	jobs: /webapps/gp/jobResults
+	java.io.tmpdir: /opt/genePattern/Tomcat/../temp
+	soap.attachment.dir: /opt/genePattern/Tomcat/../temp/attachments
+	config.file: /opt/genePattern/resources/config_sge.yaml
+*****************************************************************************
+2014-07-16 17:24:41.157  INFO [JobMonitor] (Log.scala:16) - Starting thread (JobMonitor, 302059473, 36)
+
+
+
+
+Am I missing any thing in java libraries?
+
+
+Thanks,
+Nirmal
+
+
+=====================================================================================================
+
+
+Yes, that is helpful. You need to add the appropriate SGE library to your LD_LIBRARY_PATH before starting the server.
+For our installation, I run this line before starting the server.
+    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/broad/gridengine/lib/lx24-amd64
+
+FYI, we include a version the required DRMAA java library in the GenePattern install.
+    ./Tomcat/webapps/gp/WEB-INF/lib/sge-drmaa.jar
+It can't hurt to replace this with the drmaa.jar that is part of your SGE system.
+
+Regards,
+Peter
+
+
+
+=================================================================================================
+
+
+Hi Peter,
+
+Thanks for that info. I am still stuck with this.
+
+I have gridengine version GE 6.2u5. Apparently there is no folder lib under $SGE_ROOT.
+
+
+/var/lib/gridengine$ ls
+bin  mnb  utilbin
+/var/lib/gridengine/bin$ ls
+lx24-alpha  lx24-amd64  lx24-ia64  lx24-sparc  lx24-sparc64  lx24-x86  lx26-alpha  lx26-amd64  lx26-ia64  lx26-ppc  lx26-sparc  lx26-sparc64  lx26-x86
+:/var/lib/gridengine/utilbin$ ls
+lx24-alpha  lx24-amd64  lx24-ia64  lx24-sparc  lx24-sparc64  lx24-x86  lx26-alpha  lx26-amd64  lx26-ia64  lx26-ppc  lx26-sparc  lx26-sparc64  lx26-x86
+
+neither in utilbin nor in bin I see drmaa related stuff. Could you tell me, if there are other ways to include drmaa in the server start?
+
+Thanks, Nirmal
+
+
+
+
+=================================================================================================
+
+
+
+
+I think I finally managed to have this solved.
+
+# cd /usr/lib64
+# sudo ln -sf /usr/lib/gridengine-drmaa/lib/libdrmaa.so.1.0 libdrmaa.so
+# sudo ldconfig
+
+placing a soft link of libdrmaa.so in the /lib64 did the trick.
+
+
+
+
+=======================================================================================================
+
+Hi Peter,
+
+Thank you very much. You have been very kind to help me set-up a local GP server.
+
+I probably have one last things.
+
+When I start the sever, there is one db connection error. My test pipeline is running successfully (a simple hierarchic clustering and image generation..). Should I be concerned regarding this error?  I am not sure, where this "gpdb" is set...
+
+
+2014-07-18 17:52:34.158 FATAL [main] (DatasourceConnectionProvider.java:55) - Could not find datasource: java:comp/env/jdbc/gpdb
+javax.naming.NameNotFoundException: Name gpdb is not bound in this Context
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:769)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:152)
+        at org.apache.naming.SelectorContext.lookup(SelectorContext.java:136)
+        at javax.naming.InitialContext.lookup(InitialContext.java:417)
+        at org.hibernate.connection.DatasourceConnectionProvider.configure(DatasourceConnectionProvider.java:52)
+        at org.hibernate.connection.ConnectionProviderFactory.newConnectionProvider(ConnectionProviderFactory.java:124)
+        at org.hibernate.connection.ConnectionProviderFactory.newConnectionProvider(ConnectionProviderFactory.java:56)
+        at org.hibernate.cfg.SettingsFactory.createConnectionProvider(SettingsFactory.java:385)
+        at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:61)
+        at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:1928)
+        at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1211)
+        at edu.mit.broad.core.util.HibernateBuilder.build(HibernateBuilder.java:96)
+        at edu.mit.broad.core.Main.start(Main.java:100)
+        at org.genepattern.server.executor.lsf.LsfCommandExecutor.start(LsfCommandExecutor.java:142)
+
+- show quoted text -
+
+2014-07-18 17:52:34.162 ERROR [main] (LsfCommandExecutor.java:145) - Error starting BroadCore: Could not find datasource
+org.hibernate.HibernateException: Could not find datasource
+        at org.hibernate.connection.DatasourceConnectionProvider.configure(DatasourceConnectionProvider.java:56)
+        at org.hibernate.connection.ConnectionProviderFactory.newConnectionProvider(ConnectionProviderFactory.java:124)
+        at org.hibernate.connection.ConnectionProviderFactory.newConnectionProvider(ConnectionProviderFactory.java:56)
+        at org.hibernate.cfg.SettingsFactory.createConnectionProvider(SettingsFactory.java:385)
+        at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:61)
+        at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:1928)
+        at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1211)
+        at edu.mit.broad.core.util.HibernateBuilder.build(HibernateBuilder.java:96)
+        at edu.mit.broad.core.Main.start(Main.java:100)
+        at org.genepattern.server.executor.lsf.LsfCommandExecutor.start(LsfCommandExecutor.java:142)
+
+- show quoted text -
+
+Caused by: javax.naming.NameNotFoundException: Name gpdb is not bound in this Context
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:769)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:139)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:780)
+        at org.apache.naming.NamingContext.lookup(NamingContext.java:152)
+        at org.apache.naming.SelectorContext.lookup(SelectorContext.java:136)
+        at javax.naming.InitialContext.lookup(InitialContext.java:417)
+        at org.hibernate.connection.DatasourceConnectionProvider.configure(DatasourceConnectionProvider.java:52)
+        ... 38 more
+2014-07-18 17:52:34.166  INFO [main] (SgeCommandExecutor.java:68) - starting SGE CommandExecutor...
+2014-07-18 17:52:34.166 DEBUG [main] (SgeCommandExecutor.java:71) - SGE_ROOT=null
+2014-07-18 17:52:34.167 DEBUG [main] (SgeCommandExecutor.java:72) - SGE_CELL=null
+2014-07-18 17:52:34.168  INFO [main] (SgeCommandExecutor.java:85) - SGE_ROOT=/var/lib/gridengine
+2014-07-18 17:52:34.169  INFO [main] (SgeCommandExecutor.java:86) - SGE_CELL=mnb
+2014-07-18 17:52:34.169  INFO [main] (SgeCommandExecutor.java:87) - SGE_PROJECT=null
+2014-07-18 17:52:34.169  INFO [main] (SgeCommandExecutor.java:88) - SGE_SESSION_FILE=./sge/sge_contact.txt
+2014-07-18 17:52:34.169  INFO [main] (SgeCommandExecutor.java:89) - SGE_BATCH_SYSTEM_NAME=genepattern_server
+2014-07-18 17:52:34.170  INFO [main] (SgeCommandExecutor.java:90) - SGE_LOG_FILENAME=.sge.out
+2014-07-18 17:52:34.170 DEBUG [main] (SgeCommandExecutor.java:108) - initializing Zamboni's SGE service ...
+2014-07-18 17:52:34.232  INFO [main] (Log.scala:16) - Initializing SGEBatchSystem session
+2014-07-18 17:52:34.295 DEBUG [main] (SgeCommandExecutor.java:110) - starting job monitor ...
+2014-07-18 17:52:34.310  INFO [JobMonitor] (Log.scala:16) - Starting thread (JobMonitor, 130564501, 36)
+2014-07-18 17:52:34.314  INFO [main] (SgeCommandExecutor.java:112) - ... started SGE CommandExecutor.
+2014-07-18 17:52:34.315  INFO [pool-4-thread-1] (JobMonitor.java:43) - starting jobCompletionService ... 
+2014-07-18 17:52:34.315 DEBUG [pool-4-thread-1] (JobMonitor.java:49) - polling ended jobs queue ... (numCompletedJobsInQueue=0)
+2014-07-18 17:52:34.363  INFO [main] (StartupServlet.java:136) -         initializing system messages...
+2014-07-18 17:52:34.368  INFO [main] (StartupServlet.java:146) -         initializing user upload directories ...
+2014-07-18 17:52:34.373  INFO [main] (StartupServlet.java:155) -         migrating job upload directories ...
+2014-07-18 17:52:34.380  INFO [main] (StartupServlet.java:255) -
+
+Thank you very much!
+
+Nirmal
+
+============================================================================================================
+
+That error indicates a possible DB configuration error. You can verify the DB 
+connection from a hidden 'sql.jsp' web page on your server. 
+     http://127.0.0.1:8080/gp/sql.jsp 
+The following query is good enough for testing. 
+     select * from props 
+
+That error message may result from trying to start the LSF executor. Does your 
+config_yaml file include an entry for LSF as well as SGE? 
+
+Regards, 
+Peter 
+
+
+===========================================================================================================
+
+Hi Peter,
+
+Thanks that solved the error.. removed all entries for LSF executor.
+
+In general I have a problem with the following error in logs. I actually have the job Results written to a file server mounted under $GP_Tomcat/webapps/gp/GP_Job_Results.
+
+However, for some reason, I get the following line in webserver.log. But in reality I have these files written to these location and the files are accesible via browser. I wonder why this error message?
+
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/logs/segment_juncs.log
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/tmp/segment.deletions
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/tmp/segment.fusions
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/tmp/segment.insertions
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/tmp/segment.juncs
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/logs/juncs_db.log
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/tmp/segment_juncs.fa
+2014-07-24 10:31:51.253 ERROR [pool-2-thread-1] (JobInfoWrapper.java:367) - Outputfile not found on server: /opt/genePattern/Tomcat/webapps/gp/GP_Job_Results/207/tophat_out/logs/bowtie_build.log
+
+How can I set multiple queues where GP can submit jobs? Should this be done while creating different SGE executors or just adding another queue name to queue name paramter?
+
+Thanks
+
+============================================================================================================
+
+See my responses inline.
+
+- show quoted text -
+
+Is this a temporary problem? In other words, when you go to the Job Status page do you see the list of output files and the file sizes? If so, you can disregard the error. Here is my theory. When mounting a remote file system there can be a time lag between when the GP server is notified that the job is complete and when the files appear via the 'ls' command. Because this page checks the file system each time, it will correct itself with a page refresh.
+
+
+
+
+How can I set multiple queues where GP can submit jobs? Should this be done while creating different SGE executors or just adding another queue name to queue name paramter?
+
+The default 'sge.queueName' can be set as a global property; It can be customized on a per-user, per-group, or per-module basis in the config_yaml file. There is a deterministic order of precedence, but to make your life easy I recommend organizing by module name. That seems to work best for our team.
+
+For example,
+    SGE:
+
+
+        classname: org.genepattern.server.executor.sge.SgeCommandExecutor
+        configuration.properties:
+            # SGE config variables, see the SGE doc for more explanation
+            SGE_ROOT: /var/lib/gridengine
+
+
+            # ...
+        default.properties:
+             sge.queueName: main.q
+
+module.properties:
+    # custom sge queue by module name
+    ConvertLineEndings:
+        sge.queueName: cle.q
+    # custom sge queue by module lsid
+    " urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00002:1":
+        sge.queueName: cle.q
+
+group.properties:
+    test_group:
+        sge.queueName: group.q
+
+user.properties:
+    test_user:
+        sge.queueName: user.q
+
+Btw, we are working on improvements which make it possible for you to prompt for a queue name from the user interface. 
+
+Regards,
+Peter
+
+
+
+
+
+========================================================================================================
+
+Hi Peter,
+
+When the job is completed, I have the file sizes in the Job Results Summary Page. the files are written to appropriate location. So I will ignore this message then.
+
+And for the queues, yes it will be nice to choose the queue during the run time to make some informed decisions.
+
+Thanks again!
+
+Best,
+Nirmal
+
+=======================================================================================================
+
+Remind me what version of GP you have running. Newer versions allow you to 
+include custom job queue parameters on the job input form. 
+For example, to enable this for all users, add this line to the 
+'default.properties' section of your config_yaml file: 
+
+     job.inputParams: "sgeInputParams.yaml" 
+
+Save the attached sgeInputParams.yaml file into your resources folder. Make 
+edits as necessary. Then click 'Reload job configuration' (or restart your 
+server) on the Admin -> Job Configuration page. 
+FYI, if you happen to make additional edits  to the 'sgeInputParams.yaml' file, 
+you do not need to 'reload job configuration'. 
+
+Regards, 
+Peter 
+
+
+=======================================================================================================
+
+Hi Peter,
+
+
+Thanks for that input. I am using GP 3.8.2. 
+
+I will try your suggestion and get back on how it goes for me.
+
+
+Thanks & Regards,
+
+
+Nirmal
+
+
+
+
+
+========================================================================================================
+
+Hi Peter,
+
+This is a great feature and it works well. Can you show how to allow users to specify maximum memory requirement? Is there any way to set a complex variable as well?
+
+Thanks,
+Justin.
+
+
+
+
+=========================================================================================================
+
+For the memory flag we set a range of values in the 'job.memory' menu, something 
+like, 
+     job.memory 
+     choices: [ "2 Gb", "8 Gb", "32 Gb", "128 Gb", "512 Gb=max available (512 Gb)" ] 
+We don't have support for a concept of job.memory=MAX 
+
+We don't support custom complex variables from the job input form. Let me know 
+your specific requirements, and we can take it under consideration as a new 
+feature request. 
+
+The newer Grid Engine code (which we use for in-house Univa Grid Engine 
+integration) uses more general param names such as 'job.memory' and 'job.queue' 
+for customization. 
+     https://github.com/genepattern/gp-jobrunner-drmaa_v1 
+It is ready for beta use with other DRMAA v1 capable Grid Engine systems but we 
+have not tested it. 
+
+We recommend using these param names to pick up a couple of extra features of 
+our system. 
+* built-in parser to resolve human readable memory flags (e.g. 'job.memory=4 Gb' 
+is properly understood at runtime) 
+* initialization of optional default 'job.memory' flag from the module manifest. 
+This makes it unnecessary to manually edit the config file for large memory jobs. 
+* common flags are portable to other integrations (e.g. SLURM, PBS/Torque, and LSF) 
+
+Regards, 
+Peter 
+
+
+
+
+
+
+config_sge.yaml
+
+sgeInputParams.yaml.txt
+
+jobInputParams_demo.yaml
+
+Reply all
+
+Reply to author
+
+Forward

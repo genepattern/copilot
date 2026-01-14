@@ -1,0 +1,1 @@
+RNA-seq differential gene expression analysis subset task: A user wants to filter RNA-seq data to analyze only a specific list of genes of interest, seeking guidance on extracting targeted gene expression information from their dataset, with an initial request for clarification about the current data format and preprocessing steps performed.

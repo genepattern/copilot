@@ -1,0 +1,1 @@
+A user expressed gratitude to the GenePattern team for the ease of use of their Python API, specifically highlighting how it enabled scaling up GSEA runs from infrequent one-offs to batches of 5-10 runs every couple of weeks, with a team member responding positively and encouraging continued feedback and communication.

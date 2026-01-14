@@ -1,0 +1,191 @@
+URL: https://groups.google.com./g/genepattern-help/c/OEoPv5HxNTE
+Title: HierarchicalClustering output matrix error
+----------------------------------------
+
+
+
+
+
+HierarchicalClustering output matrix error
+16 views
+Skip to first unread message
+
+Akshaya Ramesh
+unread,
+May 31, 2018, 3:32:51 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I've been running spearmann correlation on my RNA-seq data (Job ID: #26304; params: avg-linkage, subtract median from each row, norm row, center col centering, no column normalizing), and I would like to output the matrix. This is throwing the following error: 
+
+
+Traceback (most recent call last):
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.14.630/HierarchicalClustering.py", line 133, in <module>
+    dist_file.write(",".join(col_model.labels_.astype(str))+"\n")
+NameError: name 'col_model' is not defined
+
+
+Would you be able to help me with this?
+
+
+Thanks,
+Akshaya 
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+May 31, 2018, 5:22:03 PM
+
+
+
+to genepatt...@googlegroups.com
+It looks like a server configuration error related to a software update I did earlier today. I will investigate.
+
+Thanks,
+Peter
+
+Peter Carr
+unread,
+May 31, 2018, 6:08:37 PM
+
+
+
+to genepatt...@googlegroups.com
+I double checked and your error was not caused by the recent software update. I ran a similar job and get the same error your reported:
+
+
+
+Traceback (most recent call last):
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.14.630/HierarchicalClustering.py", line 133, in <module>
+    dist_file.write(",".join(col_model.labels_.astype(str))+"\n")
+NameError: name 'col_model' is not defined
+
+I am not sure what is causing the error.
+
+Regards,
+Peter
+
+Edwin Juarez
+unread,
+Jun 1, 2018, 9:01:25 AM
+
+
+
+to GenePattern Help Forum
+Hello Akshaya and Peter,
+
+
+I'm taking a look at the code, this could be a bug in the implementation. I'll update you on my findings later today.
+
+
+Edwin.
+
+Edwin Juarez
+unread,
+Jun 1, 2018, 9:46:05 AM
+
+
+
+to GenePattern Help Forum
+Akshaya,
+
+
+I found the bug in the code and fixed it. I will be releasing a new version of HierarchicalClustering soon (it'll be v7.15). Thanks for pointing this out! Since the described behavior of this functionality is "... the distance between each column will be called..."  I have left it at that, though I can see why someone would like to compute the row distance matrix. If that is what you are interested in doing, let me know and I may be able to add this functionality in this release as well, otherwise, I'll leave it with column distance only for now.
+
+
+Edwin.
+
+Edwin Juarez
+unread,
+Jun 1, 2018, 5:11:21 PM
+
+
+
+to GenePattern Help Forum
+Akshaya,
+
+
+
+The latest version of HierarchicalClustering (v. 7.17) fixes this bug. Please let us know if you still encounter it or if you find any other bugs!
+
+
+Edwin.
+
+Akshaya Ramesh
+unread,
+Jun 2, 2018, 2:16:27 AM
+
+
+
+to GenePattern Help Forum
+Edwin and Peter,
+
+
+Thanks for your help with this - it works very nicely!
+
+
+Akshaya 
+
+Akshaya Ramesh
+unread,
+Jun 2, 2018, 2:17:46 AM
+
+
+
+to GenePattern Help Forum
+I am also interested in getting the row distance matrix - would that be a feature that would be easy to include?
+
+
+Akshaya 
+
+Edwin Juarez
+unread,
+Jun 2, 2018, 9:23:14 AM
+
+
+
+to GenePattern Help Forum
+Glad to hear it is working nicely for you!
+
+
+We can include the row-distance matrix as well, I did write some prototype code for it, but I didn't want to potentially add another bug right before our next workshop (since I don't have much time to test that feature at the moment). I'll create a ticket in our internal system noting this feature has been requested and I think we will be able to add it soon!
+
+
+Thank you for your feedback and keep letting us know what we can do to aid in your work!
+
+
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

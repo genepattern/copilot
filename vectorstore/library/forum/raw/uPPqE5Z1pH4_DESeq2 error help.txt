@@ -1,0 +1,74 @@
+URL: https://groups.google.com./g/genepattern-help/c/uPPqE5Z1pH4
+Title: DESeq2 error help
+----------------------------------------
+
+
+
+
+
+DESeq2 error help
+28 views
+Skip to first unread message
+
+Carlo Donato
+unread,
+Jul 31, 2019, 1:00:58 PM
+
+
+
+to GenePattern Help Forum
+Hello !!
+
+
+Please, could you help me?
+I am trying to use DESeq2 on genepattern, but I am always receiving the same error message:
+Error in getopt(spec = spec, opt = args) : 
+  long flag "output.file.base=" is invalid
+Calls: parse_args -> getopt
+Execution halted
+Thank you!
+Best wishes, Donato.
+
+
+
+Job ID: 149146. DESeq2
+
+
+
+
+
+
+Ted Liefeld
+unread,
+Jul 31, 2019, 1:49:37 PM
+
+
+
+to GenePattern Help Forum
+Carlo,
+
+
+I am seeing a different error on that job number.  Are you sure the job number is 149146 or alternatively where did you get that error from?  In the stderr.txt I see this
+
+
+Error in GP.deseq2(gct, cls, confounding.var.cls, opts$qc.plot.format,  : 
+  The cls.file must be categorical with exactly two classes
+Execution halted
+
+
+and the cls file does have 9 classes defined.
+
+
+Please let me know,
+
+
+Thanks
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

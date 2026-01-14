@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/xHBC0BEsWfs
+Title: Local Install of MutSigCV
+----------------------------------------
+
+
+
+
+
+Local Install of MutSigCV
+18 views
+Skip to first unread message
+
+Zoran Gajic
+unread,
+Oct 1, 2017, 6:39:48 PM
+
+
+
+to GenePattern Help Forum
+I'm trying to do a local in stall of MutSigCV and it mentioned on the MutSigCV webpage that I would need to contact someone for specialized install instructions.
+
+
+
+Can someone point me to the right person/group?
+
+
+
+
+Peter Carr
+unread,
+Oct 10, 2017, 11:27:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Do you want to install this for use from a GenePattern Server?
+Thanks,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

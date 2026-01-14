@@ -1,0 +1,141 @@
+URL: https://groups.google.com./g/genepattern-help/c/2PnBBs3g5F0
+Title: Calling Gistic2.0 from RStudio
+----------------------------------------
+
+
+
+
+
+Calling Gistic2.0 from RStudio
+50 views
+Skip to first unread message
+
+Matt Moravec
+unread,
+Jun 29, 2020, 10:19:55 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+I am running gistic2.0 from RStudio and have been successful when running it with only a few input parameters, however, when I try and run it with all avaliable parameters I receive an error saying I have unexpected equal signs in the parameters. In the code with only a few input parameters I have successfully called the function with the same syntax I have used in this call. In the code I have been running I have been trying to use the default values and still include all parameters in the call, so I can include in another function with the option to use all parameters but not be forced to use all parameters. The example code on the GenePattern website looks to use the same syntax as well. I will include the successful and unsuccessful code and error message below.
+
+
+Best,
+Matt
+
+
+Successful code:
+humanGene<- "Human_Hg38.UCSC.add_miR.160920.refgene.mat"
+copyNumber<- "https://cloud.genepattern.org/gp/users/miRDriver/ovary_brca_cnv_masked.txt"
+conf.lev<-0.90
+username <- "miRDriver"
+password <- "1234"
+servername <- "https://cloud.genepattern.org/gp"
+    gp.client <- gp.login(servername, username, password)
+    file <-
+      paste0(
+        "ftp://gpftp.broadinstitute.org/module_support_files/GISTIC/refgene/",
+        humanGene
+      )
+  
+
+
+    GISTIC_2.0.result <-
+      run.analysis(
+        gp.client,
+        "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28",
+        refgene.file = file,
+        seg.file = copyNumber,
+        confidence.level = conf.lev
+      )
+
+
+
+
+
+
+Unsuccessful Code:
+
+
+Error: unexpected '=' in ".file=markersfile, maxspace=max.space, array.list.file=arraylistfile, cnv.file=cnvfile, gene.gistic=genegistic, amplifications.threshold=amplificationsthreshold, deletions.threshold=deletionst"
+
+
+
+
+humanGene<- "Human_Hg38.UCSC.add_miR.160920.refgene.mat"
+copyNumber<- "https://cloud.genepattern.org/gp/users/miRDriver/ovary_brca_cnv_masked.txt"
+conf.lev<-0.90
+username <- "miRDriver"
+password <- "1234"
+markersfile <- ""
+max.space <-"1000"
+arraylistfile <- ""
+cnvfile <- ""
+genegistic <- "1"
+amplificationsthreshold <- ""
+deletionsthreshold <-""
+joinsegmentsize <- ""
+qvaluethreshold <- ""
+removeX <- ""
+capval <-""
+runbroadanalysis <- "0"
+focallengthcutoff <- ".5"
+maxsamplesegs <- ""
+armpeel <- "0"
+samplecenter <- ""
+genecollapsemethod <- "extreme"
+outputprefix <- ""
+log.dat <- ""
+
+
+servername <- "https://cloud.genepattern.org/gp"
+  gp.client <- gp.login(servername, username, password)
+  file <-
+    paste0(
+      "ftp://gpftp.broadinstitute.org/module_support_files/GISTIC/refgene/",
+      humanGene
+    )
+  
+  GISTIC_2.0.result <- run.analysis(gp.client, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28", refgene.file=humanGene, seg.file=copyNumber, markers.file=markersfile, maxspace=max.space, array.list.file=arraylistfile, cnv.file=cnvfile, gene.gistic=genegistic, amplifications.threshold=amplificationsthreshold, deletions.threshold=deletionsthreshold, join.segment.size=joinsegmentsize, q-value.threshold=qvaluethreshold, remove.X=removeX, cap.val=capval, confidence.level=conf.lev, run.broad.analysis=runbroadanalysis,focal.length.cutoff=focallengthcutoff, max.sample.segs=maxsamplesegs, arm.peel=armpeel, sample.center=samplecenter, gene.collapse.method=genecollapsemethod, output.prefix=outputprefix, logdat=log.dat)
+  
+GenePattern Help Forum
+unread,
+Jul 16, 2020, 2:03:59 PM
+
+
+
+to GenePattern Help Forum
+
+Hi Matt, 
+
+
+I'm sorry it's taken us so long to get back to you.
+
+
+Unfortunately, this is due to the fact that our R programming client has been unofficially deprecated for some time. We will be officially deprecating it now and removing it from our documentation and interfaces.
+
+
+Our sincere apologies for any confusion this has caused, and again for taking so long to respond.
+
+
+Please let us know if we can help with anything else.
+
+
+All the best
+-Barbara 
+Matt Moravec
+unread,
+Jul 16, 2020, 2:05:36 PM
+
+
+
+to GenePattern Help Forum
+Thanks!
+
+
+Reply all
+
+Reply to author
+
+Forward

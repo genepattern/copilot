@@ -1,0 +1,1 @@
+HISAT2 RNA and DNA sequencing alignment tool now available on GenePattern cloud AWS server, providing researchers with a fast and sensitive platform for mapping next-generation sequencing reads.

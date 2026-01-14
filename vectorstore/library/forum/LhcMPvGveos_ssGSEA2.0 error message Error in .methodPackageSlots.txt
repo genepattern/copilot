@@ -1,0 +1,1 @@
+A user encountered an error while running ssGSEA2.0 in R version 4.2.3, specifically an ".methodPackageSlots" error when attempting to process a GCT file with a GMT database, and the recommended solution was to run ssGSEA through the GenePattern web server instead of directly in R to avoid potential compatibility issues.

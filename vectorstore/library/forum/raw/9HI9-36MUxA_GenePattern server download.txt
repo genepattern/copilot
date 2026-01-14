@@ -1,0 +1,200 @@
+URL: https://groups.google.com./g/genepattern-help/c/9HI9-36MUxA
+Title: GenePattern server download
+----------------------------------------
+
+
+
+
+
+GenePattern server download
+38 views
+Skip to first unread message
+
+Y Y
+unread,
+Dec 12, 2018, 6:42:42 AM
+
+
+
+to GenePattern Help Forum
+
+You stopped updating downloadable GP server?
+
+
+
+Barbara Hill
+unread,
+Dec 12, 2018, 7:00:50 AM
+
+
+
+to GenePattern Help Forum
+Hello Yujin,
+
+
+
+It's nice to hear from you!
+
+
+
+We are still updating GenePattern (we are currently on 3.9.11-prerelease 11), but this is not a full production release which is why it is not on the downloads page.
+
+
+We have been focusing on the incremental changes, large and small, for our move to the Amazon cloud for our publicly hosted server, and haven't made any significant changes to the code base which impacts a locally installed server.
+
+
+In the next year we will do a full production release which includes support for running GenePattern modules in a local Docker, as this is now the current best practice for releasing and running modules in GenePattern.
+
+
+
+Sadly, the download page is rather out-of-date and is slated for a renovation in the new year, but as a stop-gap, I'll talk to the team about adding a link indicating that interim and pre-release builds are available in our GitHub repository - which is now the unfiltered "truth" as far as our release process goes.
+
+
+Thanks for writing in and bringing this to our attention!
+
+
+All the best,
+
+Barbara
+
+Y Y
+unread,
+Dec 12, 2018, 7:57:52 AM
+
+
+
+to genepatt...@googlegroups.com
+Yes, nice to communicate with you again! Thanks for the information and making the link available!
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e834cfa0-f1c8-4725-a672-cfb672e226f1%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Neelam Shinde
+unread,
+Dec 12, 2018, 9:29:46 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Barbara,
+I work at the Ohio state University. I recently ran a GSEA analysis using gene pattern. I was trying to run a leading edge analysis on the results. I uploaded the file and it ran the leading edge analysis but when I click the ✔️ icon doesn’t open. Is there anything I need to do additional to open it? Please help.
+
+
+Thanks,
+Neelam.
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFz8d4MJ6yEU2dr1yVNmhwZusa3v1t0Cn0MOupro1CYWsgZexQ%40mail.gmail.com.
+
+Y Y
+unread,
+Dec 18, 2018, 10:40:27 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+ 
+
+We're trying to set up gene pattern server (3.9.10) on a local server.
+
+ 
+
+We want to set paths to R, but there is no "Programming Language Configurations" pane on the "Programming Language" page.
+
+ 
+
+Is there any way to show the pane?
+
+ 
+
+Thanks!
+
+Yujin
+
+ 
+
+
+
+On Wednesday, December 12, 2018 at 9:57:52 AM UTC-6, Y Y wrote:
+Yes, nice to communicate with you again! Thanks for the information and making the link available!
+
+
+
+
+On Wed, Dec 12, 2018 at 9:00 AM Barbara Hill <bh...@broadinstitute.org> wrote:
+
+Hello Yujin,
+
+
+
+It's nice to hear from you!
+
+
+
+We are still updating GenePattern (we are currently on 3.9.11-prerelease 11), but this is not a full production release which is why it is not on the downloads page.
+
+
+We have been focusing on the incremental changes, large and small, for our move to the Amazon cloud for our publicly hosted server, and haven't made any significant changes to the code base which impacts a locally installed server.
+
+
+In the next year we will do a full production release which includes support for running GenePattern modules in a local Docker, as this is now the current best practice for releasing and running modules in GenePattern.
+
+
+
+Sadly, the download page is rather out-of-date and is slated for a renovation in the new year, but as a stop-gap, I'll talk to the team about adding a link indicating that interim and pre-release builds are available in our GitHub repository - which is now the unfiltered "truth" as far as our release process goes.
+
+
+Thanks for writing in and bringing this to our attention!
+
+
+All the best,
+
+Barbara
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+Peter Carr
+unread,
+Dec 18, 2018, 2:21:17 PM
+
+
+
+to genepatt...@googlegroups.com
+Our current best practice is to run modules in docker containers. As a matter of fact, docker is required on the new public GenePattern Server running in the cloud. See this blog post for general information on the migration to the cloud:
+    http://software.broadinstitute.org/cancer/software/genepattern/blog/2018/10/25/genepattern-is-moving-to-the-cloud
+
+This means that the "Programming Language" page is no longer relevant. Our developer documentation and admin pages are not yet up to date. We have been mostly focusing our attention on the end users. I suggest starting with a 3.9.11 release candidate. This comes out-of-the-box configured for docker integration. A few additional steps are required, depending on which module and which OS you are using.
+
+What OS are you using for your local server?
+
+The release candidates are available for download from GitHub ...
+    https://github.com/genepattern/genepattern-server/releases
+
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

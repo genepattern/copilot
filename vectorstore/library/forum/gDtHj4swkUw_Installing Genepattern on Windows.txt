@@ -1,0 +1,1 @@
+GenePattern forum thread discussing Windows installation challenges, with Barbara explaining that Windows local server installation is currently unsupported, but Docker-based installation is in development to provide Windows users with a local GenePattern server option in the future.

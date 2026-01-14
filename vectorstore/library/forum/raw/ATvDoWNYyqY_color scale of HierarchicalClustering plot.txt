@@ -1,0 +1,122 @@
+URL: https://groups.google.com./g/genepattern-help/c/ATvDoWNYyqY
+Title: color scale of HierarchicalClustering plot
+----------------------------------------
+
+
+
+
+
+color scale of HierarchicalClustering plot
+14 views
+Skip to first unread message
+
+Gao Yajing
+unread,
+Oct 3, 2017, 3:16:53 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Does anyone know what is the measure and the calculation of the color scale for Hierarchical Clustering Plot generated in the online server?
+
+
+Thanks!
+Yajing
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Oct 17, 2017, 9:41:45 AM
+
+
+
+to GenePattern Help Forum
+Hello Gao,
+
+
+Our apologies for the delay in responding.
+
+
+Are you asking about the plot derived from HierarchicalClusteringImage (outputs a .jpeg) or HierarchicalClusteringViewer (interactive viewer)?
+
+
+Best
+
+
+-Barbara
+Gao Yajing
+unread,
+Dec 7, 2017, 6:11:02 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+It is the hierarchical clustering image. Could you also explain how the row normalization was performed?
+
+
+Thank you,
+Yajing
+
+Barbara Hill
+unread,
+Dec 8, 2017, 1:00:09 PM
+
+
+
+to GenePattern Help Forum
+Hello Yajing,
+
+
+The normalization is actually performed by the HierarchicalClustering module. HierarchicalClusteringImage is just a visual representation of the results of HierarchicalClustering.
+
+
+To determine how this was achieved, I would suggest reading through the references as listed in the documentation for HierarchicalClustering. (Note also, that you should check to see if row normalization was performed, as that calculation is not run by default)
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/HierarchicalClustering/6
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

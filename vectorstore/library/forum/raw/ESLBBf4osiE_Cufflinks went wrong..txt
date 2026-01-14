@@ -1,0 +1,195 @@
+URL: https://groups.google.com./g/genepattern-help/c/ESLBBf4osiE
+Title: Cufflinks went wrong.
+----------------------------------------
+
+
+
+
+
+Cufflinks went wrong.
+41 views
+Skip to first unread message
+
+李思碩
+unread,
+Nov 5, 2018, 11:24:15 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear,
+I found Cufflinks ver.7 may have something wrong.
+I apply Cufflinks in my RNAseq analysis pipeline which right after TopHat and  Picard.SortSam.
+However, it's keeping reveal an error like this.
+
+
+"failed at /opt/gpbeta/gp_home/taskLib/Cufflinks.7.39/CufflinksWrapper.pl line 135." 
+
+
+I already tried few times with changing parameters and the source of GTF files but it still could not work.
+My Job ID are  54903 in 54900
+                        54680 in 54683
+                        54551 in 54553
+                        54542 in 54545.
+
+
+The problem also could be from my mistake in pipeline building, however, the pipeline was fine in GenePattern before moving to cloud.
+
+
+Thank for your help and read my message.
+Whether you ignore me, or not, you guys are still awesome! You really help the lab which could not buy a good computer or server to perform data analysis.
+
+
+Sincerely,
+Scott, Szu Shuo Lee
+
+
+
+
+
+Barbara Hill
+unread,
+Nov 8, 2018, 9:45:14 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+We are looking into this and we are updating Cufflinks to run on our new Amazon Cloud server.
+
+
+We will let you know as soon as this is available for you to try out.
+
+
+Best
+-Barbara
+李思碩
+unread,
+Nov 8, 2018, 7:21:14 PM
+
+
+
+to GenePattern Help Forum
+Dear,
+Thank you so much.
+You won't know how grateful I am.
+Waiting for your good news.
+
+
+Sincerely,
+Scott
+
+Barbara Hill於 2018年11月9日星期五 UTC+8上午1時45分14秒寫道：
+
+Izabela Rukat
+unread,
+May 24, 2019, 3:29:32 AM
+
+
+
+to GenePattern Help Forum
+Did your work run properly? I have the same error with my runs. What did you change?
+Sincerely,
+Iza
+
+
+Barbara Hill
+unread,
+May 24, 2019, 12:11:30 PM
+
+
+
+to GenePattern Help Forum
+Hello Iza, 
+
+
+Please provide a job id and we'll look into your errors.
+
+
+Best
+-Barbara
+Izabela Rukat
+unread,
+May 27, 2019, 1:18:11 AM
+
+
+
+to genepatt...@googlegroups.com
+My job id is 124151.
+I will be glad for help.
+Sincerely,
+Iza
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2a4987b6-09df-4f28-9d93-df183e97a8ee%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Izabela Rukat
+unread,
+Jun 6, 2019, 12:22:02 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+I tried few more times to run Cufflinks with my data with no effect (job ID:129878) and once using test data from http://cole-trapnell-lab.github.io/cufflinks/getting_started/ and I got the same error (job ID:129928). Could you explain me what kind of mistake it is, please? 
+
+
+W dniu poniedziałek, 27 maja 2019 10:18:11 UTC+2 użytkownik Izabela Rukat napisał:
+My job id is 124151.
+I will be glad for help.
+Sincerely,
+Iza
+
+
+
+pt., 24 maj 2019 o 21:11 Barbara Hill <bh...@broadinstitute.org> napisał(a):
+
+Hello Iza, 
+
+
+Please provide a job id and we'll look into your errors.
+
+
+Best
+-Barbara
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+Barbara Hill
+unread,
+Jan 24, 2020, 1:09:03 PM
+
+
+
+to GenePattern Help Forum
+Hello Izabela,
+
+
+I'm so sorry that I did not get back to you about this.
+
+
+If you have any remaining questions, please feel free to reach out again.
+
+
+Apologies,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

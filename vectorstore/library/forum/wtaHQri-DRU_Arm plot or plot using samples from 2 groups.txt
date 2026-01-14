@@ -1,0 +1,1 @@
+A GenePattern user asked how to create an arm plot comparing samples from two groups using GISTIC2, seeking guidance on preparing input files and generating visualization, with a response suggesting using GISTIC output scores files and potentially manually flipping or horizontally combining plots to achieve the desired comparative visualization of chromosomal alterations.

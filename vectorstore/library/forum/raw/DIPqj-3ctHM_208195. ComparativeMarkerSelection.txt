@@ -1,0 +1,47 @@
+URL: https://groups.google.com./g/genepattern-help/c/DIPqj-3ctHM
+Title: 208195. ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+208195. ComparativeMarkerSelection
+11 views
+Skip to first unread message
+
+Elena Pipi
+unread,
+Feb 23, 2020, 2:19:25 PM
+
+
+
+to GenePattern Help Forum
+Coupld you please help with this error? Many thanks, best, elena
+
+
+java.lang.Exception: Could not find parser for file: /opt/gpcloud/gp_home/users/elenapipi/uploads/tmp/run2588007510480670581.tmp/input.file/1/ForHeatMap_B6_vs_NODv1.GST
+	at org.broadinstitute.marker.MarkerSelection.run(MarkerSelection.java:1661)
+	at org.broadinstitute.marker.MarkerSelection.main(MarkerSelection.java:1746)
+Unable to parse ForHeatMap_B6_vs_NODv1.GST
+Alex Wenzel
+unread,
+Feb 23, 2020, 7:47:31 PM
+
+
+
+to GenePattern Help Forum
+Hi Elena,
+
+
+I was able to run the module without error by changing the "GST" extension to "gct", can you try this and let me know if it helps?
+
+
+Alex
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+Salmon quantification module for bulk and single-cell RNA-seq data added to GenePattern, enabling researchers to create indices and perform transcript quantification using Salmon and Alevin computational tools developed by COMBINE-lab at the University of Maryland.

@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/ldRwLgZGJfE
+Title: DESeq2 ver 3 issues
+----------------------------------------
+
+
+
+
+
+DESeq2 ver 3 issues
+24 views
+Skip to first unread message
+
+Subhojit paul
+unread,
+Mar 8, 2025, 3:47:15 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am currently getting this error message for job id: 630561
+Error in seq_len(length(idx) - 1) :
+  argument must be coercible to non-negative integer
+Calls: GP.deseq2 ... DESeqDataSet -> paste -> standardGeneric -> eval -> eval -> eval
+Execution halted
+
+
+
+For job id: 630307,
+same cls and gct were used but gct had the last 3 columns as first 3 columns. it was successfully run.
+
+
+Can you please help with this?
+
+
+Thanks,
+Subhojit Paul
+Postdoc
+Hoshida lab
+UTSW, Dallas
+Ted Liefeld
+unread,
+Apr 2, 2025, 10:42:54 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+Sorry that this was missed when you sent this to gp-help originally.   Unfortunately the job has already been deleted from the server (they are cleaned up after 2 weeks).  It looks likely that it was a format issue in the gct file.  If you still need help, please re-run the job and let us know the new job number.
+
+
+Thanks for your patience,
+
+Ted 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

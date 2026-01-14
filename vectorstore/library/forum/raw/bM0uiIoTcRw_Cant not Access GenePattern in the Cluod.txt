@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/bM0uiIoTcRw
+Title: Cant not Access GenePattern in the Cluod
+----------------------------------------
+
+
+
+
+
+Cant not Access GenePattern in the Cluod
+9 views
+Skip to first unread message
+
+­이우승 / 학생 / 협동과정 생물정보학전공
+unread,
+Aug 20, 2020, 7:10:39 PM
+
+
+
+to GenePattern Help Forum
+
+
+Dear GenePattern team, I have been using your GenePattern cloud server since last month.
+
+
+It is really awesome platform and I got many helps from it.
+
+
+
+However, I can not access anymore the website( https://cloud.genepattern.org/gp/pages/login.jsf ) now.
+
+
+Is it the time of regular inspection?
+
+
+
+Thank you.
+
+
+-Wooseung
+
+Edwin Juarez
+unread,
+Aug 21, 2020, 10:44:01 AM
+
+
+
+to GenePattern Help Forum
+Wooseung,
+
+
+Within the last 12 hours the GenePattern server was experiencing some issues and we had to restart it. It is fully operational now, please check again and let us know if you still have trouble accessing it.
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user asked about missing DAPPLE job outputs, and support clarified that the jobs were terminated due to incorrectly providing gene lists instead of SNPs, with job results typically accessible through the files tab, navigation bar, or job widget in the web application.

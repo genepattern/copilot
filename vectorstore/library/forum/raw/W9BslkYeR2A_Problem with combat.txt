@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/W9BslkYeR2A
+Title: Problem with combat
+----------------------------------------
+
+
+
+
+
+Problem with combat
+31 views
+Skip to first unread message
+
+TRAN Thom
+unread,
+Jan 19, 2018, 6:01:25 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+I tried to use module combat to remove batch effect so i had combined the data from two experiences in 2 different batches and without any control sample between them.
+I couldn't found the problem with 2 fiches put in. I just had got the fiche result that stderr.txt
+
+
+Error in `row.names<-.data.frame`(`*tmp*`, value = c(4022L, 14246L, 14977L,  : 
+  duplicate 'row.names' are not allowed
+Calls: parseCmdLine ... gp.combat.R -> row.names<- -> row.names<-.data.frame
+Execution halted
+
+
+ So would you look my fiches and help me to find the problem.
+
+Thanks a lot,
+
+
+
+
+ sample text3.txt
+ Filtration_datamalfemelle.gct
+Barbara Hill
+unread,
+Jan 22, 2018, 11:15:45 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Did you check your input files (fiches) to make sure that they do not contain duplicate row names?
+
+
+You'll have to grant me permission to view your files, or you can send me your job id, from the GenePattern server, and I can take a look at the details there.
+
+
+All the best
+-Barbara
+Barbara Hill
+unread,
+Jan 23, 2018, 9:17:07 AM
+
+
+
+to GenePattern Help Forum
+Your GCT file is full of duplicate row names.
+
+
+For instance, the row name in row 9, occurs 10x within the GCT file.
+
+
+As the error states, this is not allowed. GCT files must have unique row identifiers. 
+
+
+Please read the documentation for additional requirements. Note that, for instance, you need to preprocess this data before sending it through ComBat.
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/ComBat/3
+
+
+Please let us know if you have any questions.
+
+
+All the best
+-Barbara
+TRAN Thom
+unread,
+Jan 24, 2018, 11:53:50 PM
+
+
+
+to GenePattern Help Forum
+oh, it is really simple.
+Thank you so much.
+
+
+Reply all
+
+Reply to author
+
+Forward

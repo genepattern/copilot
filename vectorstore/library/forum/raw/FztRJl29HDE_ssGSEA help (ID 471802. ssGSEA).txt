@@ -1,0 +1,167 @@
+URL: https://groups.google.com./g/genepattern-help/c/FztRJl29HDE
+Title: ssGSEA help (ID: 471802. ssGSEA)
+----------------------------------------
+
+
+
+
+
+ssGSEA help (ID: 471802. ssGSEA)
+52 views
+Skip to first unread message
+
+Vithurran Thavarajah
+unread,
+Oct 26, 2022, 10:08:07 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm trying to run an NGS dataset with my own genelist (both .gmt format) but keep running into the following error;
+
+
+"Error in file(file, "r") : cannot open the connection
+Calls: ssGSEA.cmdline
+Execution halted"
+
+
+
+Not sure if this is an issue with my file formats or a technical issue with the tool?
+
+
+Kind regards,
+Vit
+Ted Liefeld
+unread,
+Oct 26, 2022, 10:40:13 AM
+
+
+
+to GenePattern Help Forum
+Vit
+
+
+can you provide a job number and we will look into it?
+
+
+Thanks
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Oct 26, 2022, 10:42:39 AM
+
+
+
+to GenePattern Help Forum
+NVM Just noticed it was in the title.  From a first guess I think the problem is the quotes that are a part of the input gct file which seems to have been named
+
+"count.gct".gct
+
+
+Try renaming the file to just count.gct
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Vithurran Thavarajah
+unread,
+Oct 26, 2022, 10:57:00 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Ted, 
+
+
+I thought the job number was 471802 (in the subject title of previous email). Is this is not, where would I find it please?
+
+
+On 26 Oct 2022, at 18:42, Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+
+﻿NVM Just noticed it was in the title.  From a first guess I think the problem is the quotes that are a part of the input gct file which seems to have been named
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/FztRJl29HDE/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d9d504b5-6114-4bf1-84de-69a0954540dbn%40googlegroups.com.
+
+Vithurran Thavarajah
+unread,
+Oct 26, 2022, 11:14:05 AM
+
+
+
+to genepatt...@googlegroups.com
+Apologies Ted, didn't see the follow-up email. I tried re-running (ID: 471814) without any quotation marks and now get a different error;
+
+
+"Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+Calls: ssGSEA.cmdline
+Execution halted"
+
+Anthony Castanza
+unread,
+Oct 26, 2022, 11:20:57 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+The problem here would appear to be with your gene sets database file. You're specifying it as a gmt file but the file itself is not compliant with the GMT format. Please take a look here: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29 correct the file, and give it another go.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CA%2BOZ5OS6sn-DBDp_QpQ7t5UmH3Ey_JU4iVr_ULX0n3C6oA5reg%40mail.gmail.com.
+
+Vithurran Thavarajah
+unread,
+Oct 26, 2022, 1:04:58 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Anthony and Ted,
+
+
+Apologies for the late reply. Yes it seems to be a fault on my end with the .gmt file formatting. Seems to work now. Appreciated.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZy8JUPtW6_cczaZWyXCCCqfqmkQ0LyCgcrx2PN1%2B2eO_w%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

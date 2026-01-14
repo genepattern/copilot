@@ -1,0 +1,889 @@
+URL: https://groups.google.com./g/genepattern-help/c/Hh8pbCxxJFI
+Title: Local GenePattern server setup
+----------------------------------------
+
+
+
+
+
+Local GenePattern server setup
+112 views
+Skip to first unread message
+
+Y Y
+unread,
+Jan 15, 2019, 6:52:50 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+ 
+
+We're trying to set up gene pattern server (3.9.10) on a local server.
+
+ 
+
+We want to set paths to R, but there is no "Programming Language Configurations" pane on the "Programming Language" page.
+
+ 
+
+Is there any way to show the pane?
+
+ 
+
+Thanks!
+
+Yujin
+
+ 
+
+Peter Carr
+unread,
+Jan 15, 2019, 9:08:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Our current best practice is to run modules in docker containers. As a matter of fact, docker is required on the new public GenePattern Server running in the cloud. See this blog post for general information on the migration to the cloud:
+    http://software.broadinstitute.org/cancer/software/genepattern/blog/2018/10/25/genepattern-is-moving-to-the-cloud
+
+
+This means that the "Programming Language" page is no longer relevant. Our developer documentation and admin pages are not yet up to date. We have been mostly focusing our attention on the end users. I suggest starting with a 3.9.11 release candidate. This comes out-of-the-box configured for docker integration. A few additional steps are required, depending on which module and which OS you are using.
+
+
+The release candidates are available for download from GitHub ...
+
+    https://github.com/genepattern/genepattern-server/releases
+
+
+At the moment (circa Jan 2019), you should start with the 3.9.11 Pre-release version of GenePattern. The Mac OS X installer is preconfigured to run modules with docker. The linux version requires additional configuration. Go ahead and run the installer on your system.
+
+Note: Running modules in docker from the Linux GP server is not quite ready for public use. We have been putting all of our effort towards supporting this on the cloud.gp server which is running on AWS infrastructure. In February we will test this and write up README style documentation.
+
+
+Meanwhile, if you want to get started right now, I recommend ...
+* install GenePattern on your Linux server
+* install docker
+* verify that you can run docker from the linux command line
+* make a custom configuration file for your server, e.g.
+cd /path/to/gp/resources
+cp config_default.yaml config_custom.yaml
+
+* restart your server
+
+* reverse engineer the Mac OS X installation, edit the './resources/config_custom.yaml'
+yingfei chen
+unread,
+Jan 15, 2019, 9:55:14 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+Thanks for the reply. I'm a little confused because you mentioned it was easiest to install it on Mac OS X first and then copy the installation to the linux machine. Here in this post you gave the steps to install in the linux server directly. Which steps should I follow?
+
+
+Thanks,
+Yingfei 
+
+Peter Carr
+unread,
+Jan 15, 2019, 11:38:35 AM
+
+
+
+to GenePattern Help Forum
+I have not yet gone through the exercise of configuring a linux installation to run modules in docker. The Mac and Linux installer are configured to work with Docker, but we have not done any testing with the linux installer. 
+
+
+The easiest thing to do is to wait for the official 3.9.11 release of GenePattern. I hope to have something ready for review in early February. If you want to get started right away ...
+
+
+* first, install docker on your server, make sure you can run basic docker commands from the command line
+* then start with the linux installer
+
+
+After you run the installer you have have to set the path to docker. First make a copy of the 'config_default.yaml'  as 'config_custom.yaml'. Then edit the config_custom.yaml file. If necessary, change the path to where you installed docker. Here's the default value:
+
+
+
+            "docker": "/usr/local/bin/docker"
+
+
+Then restart the server. 
+
+
+To test your installation, install the ConvertLineEndings module and run a test job.
+
+
+Y Y
+unread,
+Jan 15, 2019, 12:28:01 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Peter!
+
+
+Yingfei,
+Can we try that while we're waiting for the release of newer version?
+
+
+Thanks!
+Yujin
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e49123eb-4e9f-4d0f-aabd-1c6c267a3b78%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+yingfei chen
+unread,
+Jan 15, 2019, 2:38:15 PM
+
+
+
+to GenePattern Help Forum
+Yes, I'll try.
+
+
+Thanks,
+Yingfei
+
+yingfei chen
+unread,
+Jan 28, 2019, 11:50:19 AM
+
+
+
+to GenePattern Help Forum
+
+Hi Yujin,
+
+ 
+
+I have followed the instruction of Peter and set up the GenePattern 3.9.11-pre release version on our server.
+
+You could now visit: genepattern.biohpc.swmed.edu:8080 (or 198.215.54.122:8080) on your workstation. (Currently, only workstation and thin client works, and I'm asking IR about the reason and possible solution)
+
+ 
+
+What I've done:
+
+1) install docker-ce on the server
+
+2) install GenePattern 3.9.11-rc4 
+
+3) modify /opt/genepattern/gp/resources/genepattern.properties
+
+change value of GenePatternURL, fqHostName from 127.0.0.1 to 198.215.54.122 (our genepattern server ip)
+
+4) cp /opt/genepattern/gp/resources/config_default.yaml /opt/genepattern/gp/resources/config_custom.yaml
+
+modify "docker": "/usr/local/bin/docker" to 
+
+"docker": "/usr/bin/docker"  #where the docker is located
+
+ 
+
+Hi Peter,
+
+Right now, if we visit the website, it will go to genepattern.biohpc.swmed.edu:8080/gp/pages/registerServer.jsf, which I assume is the correct default webpage. (Although, you may not be able to visit due to network issue.)
+
+How could we test further to make sure the installation is successful?
+
+ 
+
+I’ll update on the google group with same reply, so that we also keep track of it there, as well. Also, let’s always copy biohpc-help so that we could keep a record there.
+
+
+Y Y
+unread,
+Jan 28, 2019, 12:50:30 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peter,
+
+
+I tried to install from local zip and got this error.
+
+
+Errors:1.evSummary: no substitution available for &lt;R2.5&gt; in command line &lt;R2.5&gt; &lt;libdir&gt;evSummary.R evSummary &lt;input.filename&gt; &lt;treatment&gt; &lt;dose&gt; &lt;control&gt; &lt;image.type&gt; &lt;mean.max&gt; &lt;result.order&gt; &lt;tissue.area.correction&gt; &lt;output.name&gt;.
+
+
+
+How can we specify the path to local R? In "Programing Language" option, I don't see the fields to specify it.
+
+
+
+Thanks!
+Yujin
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/da8a6a40-c8b3-4e72-827f-0e4322946aad%40googlegroups.com.
+
+Peter Carr
+unread,
+Jan 28, 2019, 2:15:24 PM
+
+
+
+to genepatt...@googlegroups.com
+GenePattern now runs modules in docker containers. We removed the "Programming Language" page because it does not allow you to select the docker image to use. Instead you must set the 'job.docker.image' in the manifest file. You should also replace the substitution variable ('<R2.5>') with the executable that you want to run in your container ('R').
+ 
+To fix your error ...
+
+* (optional) add 'R2.5' as a custom property.
+Go to the "Administration > Server Settings > Custom" page and add a new "R2.5" custom setting.
+  R2.5=R
+
+* set the 'job.docker.image' for your module to use an R/2.5 docker container
+Create a new version of your module and edit the manifest file. Update the lsid version, add the job.docker.image, and (optionally) edit the commandLine. For example:
+old version:
+
+urn:lsid:my-example:cancer.software.genepattern.module.analysis:00062:2.2
+commandLine=<R2.5> --version
+
+new version:
+
+urn:lsid:my-example:cancer.software.genepattern.module.analysis:00062:2.3
+job.docker.image=genepattern/docker-r-2-5
+commandLine=R --version
+
+Create a new zip file with the updated manifest file. Install the module from the new zip file.
+
+For testing, try these commands from your shell.
+
+# verify that docker is on your path
+$ which docker
+# verify the docker version
+$ docker --version
+# run the R --version command in the 'genepattern/docker-r-2-5:0.1' container.
+$ docker run -it genepattern/docker-r-2-5:0.1 R --version
+
+
+FYI, technically, you can still run a legacy module on your server, e.g. something with the '<R2.5>' substitution on the command line. However, these modules will not be portable and we will not be able to support them on the public GenePattern Server.
+
+Regards,
+Peter
+
+Y Y
+unread,
+Jan 28, 2019, 3:36:53 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for the detailed instruction, Peter! We'll try it with Yingfei's help.
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0cc64dac-8929-2411-db93-9f4a707af29d%40broadinstitute.org.
+
+Peter Carr
+unread,
+Jan 30, 2019, 3:40:44 PM
+
+
+
+to GenePattern Help Forum
+from Yingfei ...
+
+
+Hi Peter and Yujin,
+
+
+(a) Add R2.5: I'm not sure if I added it correctly. But I change the values under Administrator -> Custom -> Add New Custom Setting
+
+
+name: R2.5  value:R
+
+
+ 
+
+
+(b) The docker command works great. And it shows R 2.5.1 as expected.
+
+
+    # run the R --version command in the 'genepattern/docker-r-2-5:0.1' container.
+    $ docker run -it genepattern/docker-r-2-5:0.1 R --version
+
+
+(c) It seems I cannot find the setting files about the new module. Thus, I don't know how to change job.docker.image, and Update the lsid version.
+
+
+    Yujin, since you know more about the module stuff, maybe you could also give me some hints?
+
+
+ 
+
+
+Thanks,
+
+
+Yingfei
+Peter Carr
+unread,
+Jan 30, 2019, 3:41:49 PM
+
+
+
+to GenePattern Help Forum
+from Yujin ...
+Thanks, Yingfei! (Shijia, our bioinformatics head cc’d)
+
+
+ 
+
+
+I could install an R-based module, so the path works.
+
+
+ 
+
+
+But I got the following error when I ran the module.
+
+
+ 
+
+
+/usr/bin/docker: Error response from daemon: invalid mount config for type "bind": bind source path does not exist: /Users.
+
+
+See '/usr/bin/docker run --help'.
+
+
+Process exited with an error: 125 (Exit value: 125)
+
+
+ 
+
+
+Peter,
+
+
+Any idea what’s wrong with it?
+
+
+ 
+
+
+Thanks!
+
+
+Yujin
+
+Peter Carr
+unread,
+Jan 30, 2019, 3:42:44 PM
+
+
+
+to GenePattern Help Forum
+The config file is set up for Mac OS X; it requires additional edits to work on a Linux system. Change the 'job.docker.bind_src' and 'job.docker.bind_dst' parameters in your config_custom.yaml file.
+Example:
+            "job.docker.bind_src": "/opt/genepattern"
+            "job.docker.bind_dst": "/opt/genepattern"
+This file path is mounted into the docker container for each running GenePattern job.
+
+
+Look for more detailed documentation in the "Docker integration" section of the config file.
+Make sure to reload the config file.
+From "Administration > Server Settings > Job Configuration", click "Reload Job Configuration".
+If for some reason you had a typo, you will see an error message on the page.
+
+
+Regards,
+Peter
+
+yingfei chen
+unread,
+Feb 4, 2019, 1:31:51 PM
+
+
+
+to GenePattern Help Forum
+Hi Yujin,
+
+
+I've updated the config_custom.yaml according to Peter's suggestion.
+Please run the module again and see if it still have error.
+Please let me know what I can help with next. 
+
+Thanks,
+Yingfei
+
+Y Y
+unread,
+Feb 4, 2019, 1:44:56 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Yingfei! I just re-run it and got this error.
+
+
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+/usr/bin/docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "exec: \"R\": executable file not found in $PATH": unknown.
+Process exited with an error: 127 (Exit value: 127)
+Peter,
+Can you tell what's wrong?
+
+
+Thanks!
+Yujin
+
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b174c30d-14aa-4ea9-9ceb-26be0a628b7d%40googlegroups.com.
+
+Peter Carr
+unread,
+Feb 4, 2019, 2:03:38 PM
+
+
+
+to genepatt...@googlegroups.com
+What happens when you run the ConvertLineEndings module?
+
+If that works, then you should double check the commandLine for your module. To view the commandLine, go to the Job Input page > gear menu > Properties.
+
+Regards,
+Peter
+
+Y Y
+unread,
+Feb 4, 2019, 2:23:18 PM
+
+
+
+to genepatt...@googlegroups.com
+I got output file together with the following message.
+
+
+Unable to find image 'genepattern/docker-perl52:0.1' locally
+0.1: Pulling from genepattern/docker-perl52
+8b87079b7a06: Pulling fs layer
+a3ed95caeb02: Pulling fs layer
+1bb8eaf3d643: Pulling fs layer
+3e04171ce2e5: Pulling fs layer
+0b73d3fea769: Pulling fs layer
+ffb34b57cdf2: Pulling fs layer
+8eeaf71aee14: Pulling fs layer
+72cfc9cbff48: Pulling fs layer
+2d693787a8c5: Pulling fs layer
+95f884b98059: Pulling fs layer
+ef0b1543d8e3: Pulling fs layer
+459127541861: Pulling fs layer
+bce4a5614fb4: Pulling fs layer
+e0300ae509e7: Pulling fs layer
+71ed332ff8ff: Pulling fs layer
+fac4d4698eef: Pulling fs layer
+b6497c2006a5: Pulling fs layer
+ffb34b57cdf2: Waiting
+8eeaf71aee14: Waiting
+72cfc9cbff48: Waiting
+2d693787a8c5: Waiting
+95f884b98059: Waiting
+71ed332ff8ff: Waiting
+fac4d4698eef: Waiting
+b6497c2006a5: Waiting
+ef0b1543d8e3: Waiting
+459127541861: Waiting
+bce4a5614fb4: Waiting
+e0300ae509e7: Waiting
+3e04171ce2e5: Waiting
+0b73d3fea769: Waiting
+a3ed95caeb02: Verifying Checksum
+a3ed95caeb02: Download complete
+1bb8eaf3d643: Verifying Checksum
+1bb8eaf3d643: Download complete
+8b87079b7a06: Verifying Checksum
+8b87079b7a06: Download complete
+3e04171ce2e5: Verifying Checksum
+3e04171ce2e5: Download complete
+ffb34b57cdf2: Verifying Checksum
+ffb34b57cdf2: Download complete
+8eeaf71aee14: Verifying Checksum
+8eeaf71aee14: Download complete
+72cfc9cbff48: Verifying Checksum
+72cfc9cbff48: Download complete
+95f884b98059: Download complete
+ef0b1543d8e3: Verifying Checksum
+ef0b1543d8e3: Download complete
+2d693787a8c5: Download complete
+459127541861: Verifying Checksum
+459127541861: Download complete
+8b87079b7a06: Pull complete
+bce4a5614fb4: Verifying Checksum
+bce4a5614fb4: Download complete
+a3ed95caeb02: Pull complete
+e0300ae509e7: Verifying Checksum
+e0300ae509e7: Download complete
+0b73d3fea769: Verifying Checksum
+0b73d3fea769: Download complete
+1bb8eaf3d643: Pull complete
+b6497c2006a5: Verifying Checksum
+b6497c2006a5: Download complete
+fac4d4698eef: Verifying Checksum
+fac4d4698eef: Download complete
+3e04171ce2e5: Pull complete
+0b73d3fea769: Pull complete
+ffb34b57cdf2: Pull complete
+8eeaf71aee14: Pull complete
+72cfc9cbff48: Pull complete
+2d693787a8c5: Pull complete
+95f884b98059: Pull complete
+ef0b1543d8e3: Pull complete
+459127541861: Pull complete
+bce4a5614fb4: Pull complete
+e0300ae509e7: Pull complete
+71ed332ff8ff: Verifying Checksum
+71ed332ff8ff: Download complete
+71ed332ff8ff: Pull complete
+fac4d4698eef: Pull complete
+b6497c2006a5: Pull complete
+Digest: sha256:afabe07e7d5c74cb652acdeb78b90763817e8edf0e524a9d559a2dc0a86fbc9b
+Status: Downloaded newer image for genepattern/docker-perl52:0.1
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/eb68ff98-76d6-99a8-6743-245b9dc5905b%40broadinstitute.org.
+
+Peter Carr
+unread,
+Feb 5, 2019, 9:56:25 AM
+
+
+
+to genepatt...@googlegroups.com
+You can ignore that error message. This just happens the first time you use a particular container (e.g. genepattern/docker-perl52:0.1) on your server.
+To confirm, run the CLE module again. If it runs without error, it means that docker is properly set up for that module.
+
+Next, we should investigate what is different about your module. What is the commandLine and job.docker.image.
+
+To view the commandLine, go to the Job Input page > gear menu > Properties.
+
+Regards,
+Peter
+
+
+
+On 2/4/19 5:23 PM, Y Y wrote:
+
+I got output file together with the following message.
+
+
+Unable to find image 'genepattern/docker-perl52:0.1' locally
+0.1: Pulling from genepattern/docker-perl52
+8b87079b7a06: Pulling fs layer
+a3ed95caeb02: Pulling fs layer
+...
+71ed332ff8ff: Pull complete
+fac4d4698eef: Pull complete
+b6497c2006a5: Pull complete
+Digest: sha256:afabe07e7d5c74cb652acdeb78b90763817e8edf0e524a9d559a2dc0a86fbc9b
+Status: Downloaded newer image for genepattern/docker-perl52:0.1
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+
+Y Y
+unread,
+Feb 5, 2019, 10:47:47 AM
+
+
+
+to genepatt...@googlegroups.com
+For CLE, now I see just the following warning. Is it something we need to fix?
+
+
+
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+
+
+
+
+Here is the command line of our module.
+
+
+<R2.5> <libdir>evSummary.R evSummary <input.filename> <treatment> <dose> <control> <image.type>  <mean.max> <result.order> <tissue.area.correction> <output.name>
+
+
+& the latest error message.
+
+
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+/usr/bin/docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused "exec: \"R\": executable file not found in $PATH": unknown.  time="2019-02-05T13:18:28-05:00" level=error msg="error waiting for container: context canceled" Process exited with an error: 127 (Exit value: 127)
+
+
+Thanks!
+Yujin
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6fa33d8f-c40a-9b8c-256b-dfd463205944%40broadinstitute.org.
+
+Peter Carr
+unread,
+Feb 5, 2019, 11:00:11 AM
+
+
+
+to genepatt...@googlegroups.com
+Did you add 'job.docker.image' to the manifest file? If so, what docker image did you use?
+Thanks
+
+Peter Carr
+unread,
+Feb 5, 2019, 11:02:05 AM
+
+
+
+to genepatt...@googlegroups.com
+No, you do not need to fix this error.
+
+
+On 2/5/19 1:47 PM, Y Y wrote:
+
+
+Y Y
+unread,
+Feb 6, 2019, 6:55:25 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Peter!
+
+
+Yingfei, please see his comment re docker image below.
+
+
+Thanks!
+Yujin
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/83e214d1-1401-92b7-c69a-3fe2f53c8ae7%40broadinstitute.org.
+
+yingfei chen
+unread,
+Feb 7, 2019, 1:53:10 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter and Yujin,
+
+
+In the /opt/genepattern/gp/resources/config_custom.yaml, it only specify "job.docker.image.default". 
+    "job.docker.image.default": "genepattern/docker-java17:0.12"
+
+
+
+To Peter, where should I add the line of "job.docker.image", maybe just after "job.docker.image.default"?  
+To Yujin, what docker image should I specify there for "job.docker.image"? genepattern/docker-perl52:0.1?
+
+
+
+
+
+Hi Yujin,
+What about having a meeting between us? I'd like to talk about GenePattern in general, and especially about the setting and running modules. I'm quite flexible in my schedule, and I'm at E4.350. Please let me know your available time, we can either meet at E4 or your office.
+
+
+
+
+Thanks,
+Yingfei
+
+Yujin Hoshida
+unread,
+Feb 9, 2019, 10:21:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Yingfei,
+
+Sorry I missed the chance to reply earlier.
+
+What about meeting next Wed afternoon? We'll come by E4.
+
+Thanks!
+Yujin
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1468e084-a4a0-4560-a9e7-241fc499bddd%40googlegroups.com.
+
+Y Y
+unread,
+Feb 13, 2019, 12:40:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peter,
+
+
+We've been trying to figure out how the docker works, and here are our questions for you.
+
+
+1. Would you mind sharing an example docker (recipe or image) file that can be used to specify which R installation to use?
+2. If we understand correctly, a docker file can be shared across multiple modules using the same environment(e.g. an R installation), correct?
+3. How can we specify the docker file in the module configuration? We're puzzled to see some modules don't even have the filed to specify a docker file, and wonder how the module can call a programing language to run the code.
+
+
+
+Yingfei, Shijia, please chime in if I miss anything.
+
+
+Thanks!
+Yujin
+
+
+
+Peter Carr
+unread,
+Feb 13, 2019, 3:23:23 PM
+
+
+
+to genepatt...@googlegroups.com
+It looks like you are trying to run a legacy '<R2.5>' module, which actually wraps the call to R via a java class. We have a container for this. I have a demo module in the works. As a sneak peek, here are the relevant entries from the manifest file:
+
+job.docker.image=genepattern/docker-r-2-5:0.1
+commandLine=<java> -DR_HOME=/usr/local/lib64/R "-Dr_flags=--no-save --quiet --slave --no-restore" -cp /build RunR <libdir>hello.R hello
+
+The <libdir> is mounted into the docker container.
+Regards,
+Peter
+
+Peter Carr
+unread,
+Feb 13, 2019, 3:24:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Note: For this to work properly you must set the <java> substitution on the Admin > Server Settings > Custom page.
+    java=java
+
+Y Y
+unread,
+Feb 13, 2019, 3:32:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Peter! I assume this is to be added to the module configuration page, right?
+Yujin
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f1152af4-fe6a-9c3e-f6a8-426be86d8e30%40broadinstitute.org.
+
+Y Y
+unread,
+Feb 13, 2019, 3:33:13 PM
+
+
+
+to genepatt...@googlegroups.com
+Got it, we'll do it.
+Thanks!
+Yujin
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5195e815-7c55-fa7e-09ad-5411df9da8b9%40broadinstitute.org.
+
+Y Y
+unread,
+Feb 13, 2019, 3:37:40 PM
+
+
+
+to genepatt...@googlegroups.com
+It worked! Thanks a lot, Peter!
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

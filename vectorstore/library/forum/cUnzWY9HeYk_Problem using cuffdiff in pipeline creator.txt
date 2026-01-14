@@ -1,0 +1,1 @@
+The user asked about how to assign multiple sorted BAM files with conditions to the Cuffdiff module in the GenePattern pipeline creator, and requested guidance on generating a list of BAM files with associated conditions for differential gene expression analysis, seeking advice on the best method to input multiple files and assign experimental groups for comparative analysis.

@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/hZHeYbjbFl0
+Title: Parameters used in my previous Job 526322
+----------------------------------------
+
+
+
+
+
+Parameters used in my previous Job 526322
+23 views
+Skip to first unread message
+
+Xiaofan Lu
+unread,
+Oct 7, 2023, 3:12:12 AM
+
+
+
+to GenePattern Help Forum
+To whom it may concern:
+
+
+I just wonder if it is possible to get the detailed parameters used in my previous Job 526322 for GISTIC analysis.
+
+
+Many thanks in advance!
+
+
+Best,
+Xiaofan
+Ted Liefeld
+unread,
+Oct 9, 2023, 10:46:42 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have emailed the parameters to the email associated with the GenePattern account that ran this job.
+
+
+Hope this helps,
+
+Ted 
+
+
+p.s. When you download jobs results, if you either download the entire job (as a zip) or individually download the gp_execution_log.txt file, that file contains all your parameters, execution times, etc
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

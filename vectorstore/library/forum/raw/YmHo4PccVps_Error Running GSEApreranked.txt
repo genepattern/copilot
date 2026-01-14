@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/YmHo4PccVps
+Title: Error Running GSEApreranked
+----------------------------------------
+
+
+
+
+
+Error Running GSEApreranked
+22 views
+Skip to first unread message
+
+Michelle Hulke
+unread,
+Mar 24, 2022, 12:48:52 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I was previously running GSEA preranked successfully when my runs started failing with the error message:
+
+
+Essential container in task exited
+
+
+
+My problem sounds identical to another user on Jan 23, 22. Would it be possible to apply the same fix as before?
+
+
+Thank you for any help you can offer,
+
+
+Michelle
+Michelle Hulke
+unread,
+Mar 24, 2022, 1:03:49 PM
+
+
+
+to GenePattern Help Forum
+Never mind. It seems to be working now.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,112 @@
+URL: https://groups.google.com./g/genepattern-help/c/0G43dM_Hr4I
+Title: Heatmaps with missing gene labels, Cannot extract top 100 genes based on logfold
+----------------------------------------
+
+
+
+
+
+Heatmaps with missing gene labels, Cannot extract top 100 genes based on logfold
+28 views
+Skip to first unread message
+
+Jyothsna Girish
+unread,
+Aug 23, 2020, 3:12:11 PM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+
+I have been doing a microarray analysis with the comparative marker selection module, then the extract comparative marker selection module to get the top 100 genes and then heatmapviewer to visualize.
+
+
+
+The initial heatmaps as well as the ones generated later seem to have missing labels for some probes. Is there any reason or solution for this?
+
+
+Also why am I not able to get a heatmap with only top 100 genes if I do it based on log fold and not rank?
+
+
+I would really appreciate any advice
+
+
+
+Thank you in advance
+
+
+
+Regards,
+
+Jyothsna Girish
+
+Edwin Juarez
+unread,
+Aug 25, 2020, 10:43:02 AM
+
+
+
+to GenePattern Help Forum
+Jyothsna,
+
+
+After the ComparativeMarkerSelection module you can try using ComparativeMarkerSelectionViewer instead: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.visualizer:00045:9
+
+
+Also, it would be helpful if you give us your Job ID numbers so we can look at the input files (perhaps those are missing the same labels you don't see in the output).
+
+
+Edwin.
+
+
+
+Jyothsna Girish
+unread,
+Aug 26, 2020, 12:08:55 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+
+
+
+I do use the comparative marker selection viewer, but still get this issue.
+
+
+Also, after the extract comparative marker selection module if I took the top 100 based on rank, it is able to give me the heatmap with only the top 100 genes. But when I ask it to do the same based on Foldchange, it just gives me the full heatmap again.
+
+
+
+Job ID:
+ExtractComparativeMarkerResults - 269458
+
+
+Thank you
+
+
+Regards,
+
+Jyothsna
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/0G43dM_Hr4I/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d74d6b0a-a878-4cea-80fe-05da868df33fn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

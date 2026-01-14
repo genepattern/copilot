@@ -1,0 +1,1 @@
+GenePattern user asks if ComparativeMarkerSelection module on cloud supports generating an execution log, with response confirming that 'gp_execution_log.txt' is available by checking a checkbox on job status page, and a hidden command line log can be accessed via a specific URL format with job ID.

@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/aPdUAGr1ejg
+Title: Announcement: Correction: Salmon is now available in GenePattern!
+----------------------------------------
+
+
+
+
+
+Announcement: Correction: Salmon is now available in GenePattern!
+6 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Sep 1, 2021, 12:05:25 PM
+
+
+
+to GenePattern Help Forum
+Salmon is now available in GenePattern! 
+Create indices and quantify both bulk and single-cell RNA seq data with Salmon & Alevin from the COMBINE-lab at the University of Maryland.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

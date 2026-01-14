@@ -1,0 +1,178 @@
+URL: https://groups.google.com./g/genepattern-help/c/6H9vscajV7E
+Title: Regarding GEOImporter module
+----------------------------------------
+
+
+
+
+
+Regarding GEOImporter module
+53 views
+Skip to first unread message
+
+Niharika
+unread,
+Mar 16, 2021, 3:12:42 AM
+
+
+
+to GenePattern Help Forum
+I am unable to import GEO file using GEO Accession number as well as using soft file format. Kindly help.
+Barbara Hill
+unread,
+Mar 16, 2021, 8:54:00 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Please provide a job id so that we can look into the details of this issue.
+
+
+Best
+Barbara
+
+
+
+
+Anthony Castanza
+unread,
+Mar 16, 2021, 9:10:17 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Niharika,
+
+ 
+
+If you could share with us the Job ID of one of the failed runs or the GEO Accession you’re trying to import we can look into what might be going wrong here.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81181dd6-3715-4379-8c1c-516557b09597n%40googlegroups.com.
+
+Niharika
+unread,
+Mar 18, 2021, 9:57:21 PM
+
+
+
+to genepatt...@googlegroups.com
+
+
+Above mentioned are JobIDs 
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/6H9vscajV7E/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB57827D8CCC45494FB2EF04E2F76B9%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+Mar 18, 2021, 11:31:16 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Niharika,
+
+ 
+
+For Job 329941: The issue here is that the dataset you’re inputing the GEO ID for is an RNA-seq dataset where the count information has been deposited in a separate file:
+https://ftp.ncbi.nlm.nih.gov/geo/series/GSE126nnn/GSE126101/suppl/GSE126101%5Fcounts%2Ecsv%2Egz
+
+And not in the SOFT/Series Matrix files that are used by the GEO Importer tool. At some point it became convention for people to deposit RNA-seq data into GEO with these separate files rather than using the soft file. Unfortunately, this means that the GEO Importer tool only really works with deposited microarray data that follow the proper.
+
+ 
+
+If you’re intending to run GSEA on this data you would need to download the _counts.csv file and convert it into a GCT (excel should work for this). I’ve taken the liberty of doing this for you and will be attaching the file to a separate message. With this file you can normalize the counts using the GenePattern DESeq2 module. DESeq2 should give you a “normalized_counts.GCT” file that can be used with GSEA (this file will also be attached to the follow-up email). For GSEA you’ll want to set collapse/dataset to collapse, and use the Human_Ensembl_Gene_ID CHIP file. You’ll also need a CLS file, I’ll also include one of those, but you might want to adjust it some for your specific interest here – in the one I’m including I’ve combined the P5 and P6 timepoint since otherwise there are only 2 samples per treatment group. GSEA has difficulty with N=2 experiments. You’re also going to need to set permutation type to gene_set instead of phenotyoe.
+
+ 
+
+For Job 329462: The issue is that FTP credentials were incorrectly populated, probably by auto-fill into the ftp proxy username and ftp proxy passwords fields. Try rerunning this job and deleting the data that was filled in there.
+
+ 
+
+For Job 329459: This is again the RNA-seq issue that was the problem for Job 329941, however, the processing here is going to be a little more complicated, I’ll get back to you on it.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Niharika <officialn...@gmail.com>
+Date: Thursday, March 18, 2021 at 9:57 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:1854] Regarding GEOImporter module
+
+Above mentioned are JobIDs 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAKJobZSnnyu05XzRb1Jpq2jYPrPjTtqZidvS5%2BOtaLRGxVguxw%40mail.gmail.com.
+
+Niharika
+unread,
+Mar 19, 2021, 2:04:42 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much. It was a great help . Also sorry for the delayed response .
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB5782B415C8544548BD425555F7689%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

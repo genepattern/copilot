@@ -1,0 +1,1 @@
+GenePattern forum thread summary addressing the user's request to locate the IlluminaNormalizer module, revealing that the module was deprecated after a June 2018 fire that destroyed its hosting machine, with no direct alternative or source code provided for recovery, leaving the user without a clear path to replicate or access the specific normalization module.

@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/_SppLqjGNHY
+Title: GISTIC2.0 error message
+----------------------------------------
+
+
+
+
+
+GISTIC2.0 error message
+17 views
+Skip to first unread message
+许满意
+unread,
+Sep 26, 2022, 3:05:12 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern team
+ I met some errors when I run GISTIC2.0.
+GenePattern Server error preparing job 463939 for execution.
+org.genepattern.server.executor.CommandExecutorException: Module GISTIC_2.0 with LSID: urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28 is not on the remote system designated to execute it.  Contact your admin to inform them.
+
+java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: Module GISTIC_2.0 with LSID: urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28 is not on the remote system designated to execute it.  Contact your admin to inform them.
+    at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+    at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+    at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1803)
+    at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1562)
+    at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81)
+    at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at java.lang.Thread.run(Thread.java:748)
+Caused by: org.genepattern.server.executor.CommandExecutorException: Module GISTIC_2.0 with LSID: urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.28 is not on the remote system designated to execute it.  Contact your admin to inform them.
+    at org.genepattern.drm.impl.gpongp.AlternativeGpServerJobRunner.startJob(AlternativeGpServerJobRunner.java:201)
+    at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:853)
+    at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1799)
+    at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1796)
+    ... 4 more
+
+could you please let me konw if you can handle it.
+
+Reply all
+
+Reply to author
+
+Forward

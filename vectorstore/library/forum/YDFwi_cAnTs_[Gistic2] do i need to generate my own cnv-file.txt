@@ -1,0 +1,1 @@
+A GenePattern forum user asked about generating CNV and marker files for running GISTIC2 on WES samples aligned to hg38, with .seg files already created using GATK copy number analysis pipelines, and received a redirect to the GISTIC-specific forum for more detailed assistance on file preparation.

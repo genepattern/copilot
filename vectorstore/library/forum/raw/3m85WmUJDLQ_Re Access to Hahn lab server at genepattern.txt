@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/3m85WmUJDLQ
+Title: Re: Access to Hahn lab server at genepattern
+----------------------------------------
+
+
+
+
+
+Re: Access to Hahn lab server at genepattern
+7 views
+Skip to first unread message
+GP-Info
+unread,
+Jan 9, 2018, 9:50:28 AM
+
+
+
+to Miju Kim, GenePattern Help Forum
+Hello Miju, 
+
+
+Apologies for the delay. We have all just returned from the holidays, and are happy to help.
+
+
+Please note that we prefer to answer help emails in our help forum, so as to facilitate the spread of knowledge in our community.
+
+
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!forum/genepattern-help
+
+
+
+Are you looking to connect your gpbroad user account with data you have hosted at the Broad?
+
+
+We'll need your username and then you'll need to give our server user account access to your file system. This will require that you have sufficient Unix access permissions for your Hahn lab data.
+
+
+All the best,
+Barbara
+
+
+--
+
+--
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://www.broadinstitute.org/cancer
+
+Reply all
+
+Reply to author
+
+Forward

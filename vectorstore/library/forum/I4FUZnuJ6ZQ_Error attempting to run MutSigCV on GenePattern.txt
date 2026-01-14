@@ -1,0 +1,1 @@
+GenePattern MutSigCV error investigation: User encountered a "Permission denied" error when attempting to run MutSig on 80 samples, likely due to file permission issues with the wrapper script or executable; technical support requested job ID for further debugging, but no definitive resolution was provided in the thread.

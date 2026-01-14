@@ -1,0 +1,1 @@
+A user experienced memory allocation errors when running multiple Hisat2Aligner jobs simultaneously on a public server, and the technical support recommended increasing computational resources from 1 CPU and 2 GB RAM to 2-4 CPUs and 8-16 GB RAM to resolve the memory allocation issue and successfully run the RNA-seq mapping jobs.

@@ -1,0 +1,420 @@
+URL: https://groups.google.com./g/genepattern-help/c/sukgyBNJ6lw
+Title: ssGSEA
+----------------------------------------
+
+
+
+
+
+ssGSEA
+536 views
+Skip to first unread message
+
+Mohamed Kamal
+unread,
+Feb 22, 2021, 2:25:21 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+This is my first time to use genepattern. I am trying to do ssGSEA analyses using the EMT gene signature from GenSig. 
+
+
+I used my normalized RNA seq read counts (Deseq2 object) and I changed the format manually to .gct following instructions on gene pattern website. I have downloaded the EMT gene signature as .gmt file.
+
+
+When I run ssGSEA on gene pattern, it gives me this error message:
+
+
+"Error in `[.data.frame`(column.names, 3:length(column.names)) : undefined columns selected Calls: ssGSEA.cmdline Execution halted"
+
+
+
+Please let me know what I am doing wrong. 
+
+
+Job ID: 323067. ssGSEA 
+
+
+I also attached the input files I used.
+
+
+Looking forward to hearing back from you.
+
+
+Mohamed
+Anthony Castanza
+unread,
+Feb 22, 2021, 2:35:01 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+The input gct file you’ve provided is comma separated, ssGSEA requires tab separated files. If you’re writing files out from R make sure to pass sep=”\t” to the write.table function. Also, the recommended quantification input for ssGSEA is TPM/FPKM/RPKM not normalized counts, normalized counts is used for standard GSEA which calculates differential expression across samples, whereas GSEA only ranks within a sample and therefore needs an internally normalized representation of relative expression (like TPM).
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d00fa280-1466-4ae8-b314-c4964be5affen%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Feb 23, 2021, 9:58:22 AM
+
+
+
+to GenePattern Help Forum
+
+Thank you so much Anthony for your reply, very much appreciated. By the way to you know an easy way to convert the featurecouts out put count table to TPM/FPKM/RPKM? or I have to reanalyze the data to generate FPKM using Cufflinks for example?
+
+
+Thanks.
+
+
+Mohamed
+
+Anthony Castanza
+unread,
+Feb 23, 2021, 10:01:44 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+I would refer you to this biostars thread: https://www.biostars.org/p/340547/
+
+ 
+
+If you still have the original feature counts output which includes a column giving gene length, there’s a formula in that thread that you can apply to your data to calculate FPKM. If not, there’s another suggestion that might help but would require more work to apply.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8648d6d0-8b74-41a0-8272-4e110416c18dn%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Feb 24, 2021, 8:49:23 AM
+
+
+
+to GenePattern Help Forum
+Thanks again Anthony,
+
+
+I am just wondering, does the contToFPKM package (referred to in the above thread) work also for the single end reads? The description of the package says it's for paired end reads. My data are single end. Could I still use this package?
+
+
+Thank you so much.
+
+
+Mohamed
+
+
+
+Anthony Castanza
+unread,
+Feb 24, 2021, 8:51:50 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+It’s unlikely, FPKM is specifically “fragments per kilobase million” which requires paired end reads to constitute the “fragment”. The metric for single end reads is RPKM (reads per kilobase million) which would probably require a slightly different calculation.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/be5dae28-7183-4741-a3cc-ad77670d92fan%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Feb 24, 2021, 9:05:42 AM
+
+
+
+to GenePattern Help Forum
+Oh, thank you for the explanation. 
+
+
+I found this to perform ssGSEA from row counts, do you think it works?
+I quoted this from the thread "if you use raw counts, use ssgsea <- gsva (counts, method="ssgsea", kcdf="Poisson", ...)"
+
+
+https://www.biostars.org/p/173024/
+
+
+
+Thank you.
+
+
+Mohamed
+
+Anthony Castanza
+unread,
+Feb 24, 2021, 9:10:16 AM
+
+
+
+to genepatt...@googlegroups.com
+
+GSVA may perform some internal normalization but from the command I don’t see that. I would strongly advise against using counts as it will substantially bias your enrichment towards long genes.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e9af3de6-1471-4315-ac0c-1b044f54d5c2n%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Feb 24, 2021, 9:20:38 AM
+
+
+
+to GenePattern Help Forum
+Sounds good, I am currently looking for a way to convert my single end counts to RPKM. In the meantime, if you recommend a method it would be very much appreciated.
+
+
+Thanks.
+
+
+Mohamed
+
+
+
+Mohamed Kamal
+unread,
+Feb 25, 2021, 2:06:11 PM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+
+
+I have managed to convert my row counts into RPKM using a perl script, saved it as a .tab delimited and converted into a .gct file. When I run the ssGSEA analyses it gave me the error below. Would it be possible please to have a look and let me know what could be the reason?
+
+
+"Error in ssGSEA.project.dataset(input.gct.filename, paste(output.prefix, : No output gct file written: no gene sets satisfied the min overlap criterion Calls: ssGSEA.cmdline Execution halted"
+
+
+Job ID: 324051
+Thanks.
+
+
+Mohamed
+
+Anthony Castanza
+unread,
+Feb 25, 2021, 2:12:38 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+This error means that the gene sets used don’t have enough overlap with your gene set to run the ssGSEA calculations, this is typically for one of two reasons:
+
+You’ve used a truncated expression dataset like one that’s been filtered by expression level or significance
+Your gene identifiers don’t match the gene identifiers used in MSigDB (HGNC gene symbols pulled from Ensembl)
+
+If 1) please supply the full dataset to ssGSEA, if 2) you’ll need to collapse your dataset to gene symbols. This can be done with the GenePattern CollapseDataset module: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00134:2.0.0
+
+If your dataset is Human, I recommend using “sum of probes” if mouse or rat, “max_probe”. The chip file selected should match the gene identifier space used in your dataset.
+
+ 
+
+Let me know if you have any additional difficulty with this process.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a1a98f47-6b63-4b03-9ac7-8f57e01212d3n%40googlegroups.com.
+
+Mohamed Kamal
+unread,
+Feb 25, 2021, 3:41:10 PM
+
+
+
+to GenePattern Help Forum
+Thanks Anthony,
+
+
+It seems working now, would it be possible having a look at my ssGSEA files and see if it looks normal?
+Job ID: 324065 (sorry I could not post the message with attached file.
+
+
+Also is there a way I can load it to R? and open it in excel or convert to .txt file?
+
+
+Thank you so much for all the help.
+
+
+Best regards.
+
+
+Mohamed
+Anthony Castanza
+unread,
+Feb 25, 2021, 3:50:36 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Mohamed,
+
+ 
+
+The output looks as expected assuming you intended the analysis to be performed on a single gene set.
+
+The gct format is tab delimited text so it should be easy to import to excel. To read it into R, you might want to open it with a text editor and remove the first two (header) rows, or read it in with read.table() setting sep=”\t”,  fill=TRUE.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Mohamed Kamal <mohamedka...@gmail.com>
+
+
+Date: Thursday, February 25, 2021 at 3:41 PM
+To: GenePattern Help Forum <genepatt...@googlegroups.com>
+
+
+
+
+
+--
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/09792276-9501-4948-b861-0c618f0d816fn%40googlegroups.com.
+
+Vithurran Thavarajah
+unread,
+Apr 21, 2022, 12:56:26 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I noticed this thread and i'm getting the same error message.
+
+
+"Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+Calls: ssGSEA.cmdline
+Execution halted"
+
+
+The job ID is 429731. ssGSEA. My input file was saved as .txt then the extension was replaced with .gct. I inputted my own gene set which I saved as a .txt file then replaced with .gct. I've attached the gene set for reference but the .gct file was too large to upload so was hoping you could access it via the job ID.. Any help appreciated please. Thank you.
+
+
+
+
+AIM.gmt
+Anthony Castanza
+unread,
+Apr 21, 2022, 9:55:40 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+I wasn't able to view your job ID directly, because it appears that that job was deleted. In the future, please leave the errored job in place if requesting debugging so we can view what went wrong. What I suspect happened here is that this was caused by file formatting errors.
+
+ 
+
+Looking at your gene set file, you've formatted this is a GMX file not the GMT extension that you've given and also you are missing the Gene Set Name and Description rows. Please see https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#Gene_Set_Database_Formats for the proper structure for the GMT and GMX formats.
+
+Additionally, please double check that the correct formatting for the GCT format was applied here: https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29 including the header and description column (the description can be filled with NA's).
+
+ 
+
+If you still encounter errors after correcting the formatting please let us know
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ebcb688f-44da-4ef0-918f-fa334835b073n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

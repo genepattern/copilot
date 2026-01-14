@@ -1,0 +1,170 @@
+URL: https://groups.google.com./g/genepattern-help/c/zOgGUbRvTLc
+Title: SOAP attachment issue
+----------------------------------------
+
+
+
+
+
+SOAP attachment issue
+23 views
+Skip to first unread message
+
+Ivan Chang
+unread,
+Sep 11, 2017, 11:25:54 AM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern support,
+
+
+We are having some trouble with JAVA API calls to GP server 3.9.10 in which when uploading files, we obtain the error:
+
+
+
+Error: “Error moving soap attachment to tmp upload dir
+
+
+
+on the client end, and 
+
+
+
+**
+
+2017-09-11 11:08:39.301 ERROR [http-8080-Processor19] (DataResource.java:781) - Failed to rename soap attachment file from /home/xxx/GenePatternServer/temp/attachments/Axis5509684275231316920.att to /home/xxx/GenePatternServer/users/xxxx/uploads/tmp/run838009223941565145.tmp/K-xxx.txt
+
+
+
+on the server log. And there was no file in the soap.attachment.dir
+
+
+We check the file folder permissions and they were fine (even tried to open them to be accessed by all). Do you have any idea what could be going on? Thanks for your time!
+
+
+Best,
+
+
+Ivan 
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Sep 11, 2017, 11:36:01 AM
+
+
+
+to genepatt...@googlegroups.com
+As a first guess ... you may be up against an obscure bug with the '-' character in the filename. Try a different filename without any special characters.
+Thanks,
+Peter
+
+Ivan Chang
+unread,
+Sep 11, 2017, 12:01:27 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thanks for the suggestion, but unfortunately we are still getting the same error. Are there any additional logs or debugging tricks that we could use to follow what happened to the upload? 
+
+
+Best,
+
+
+Ivan
+
+Ivan Chang
+unread,
+Sep 13, 2017, 10:59:46 AM
+
+
+
+to GenePattern Help Forum
+To update on this issue, we are still having trouble with SOAP-attachment based file transfers, however we tested the file upload with the REST api through GP python and that worked well. I tried specifying the java.io.tmpdir and the soap.attachment.dir but they had no effects. I can see MIMEXXXXXXXXXXXX.tmp with zero bytes being generated at the specified temp directory, but the attachment folder never were written to. Could there be some SOAP permission properties that is preventing the attachment from being saved?
+
+
+
+Best,
+
+
+Ivan
+
+Peter Carr
+unread,
+Sep 13, 2017, 11:41:14 AM
+
+
+
+to genepatt...@googlegroups.com
+If you have not done this already go through the example from the Programmer's Guide > "Using GenePattern from Java"
+Run this with an account on the public GenePattern Server to double-check that the client code is correct.
+
+The example uses an external data file as input,
+    String inputDataset = "ftp://ftp.broadinstitute.org/pub/genepattern/all_aml/all_aml_train.res";
+    ...
+    new Parameter("input.filename", inputDataset)
+    ...
+
+
+I haven't tested this with a local path in a while. For best results use a fully-qualified path.
+
+Regards,
+Peter
+
+Ivan Chang
+unread,
+Sep 13, 2017, 12:09:44 PM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+
+
+Thanks again, and yes, we had already tested the client code on the public GenePattern Server as well as on local GP server on a macbook. The trouble started when we tried to use the same code to connect to the GP server we have setup on the SDSC VM (CentOS 7). The GP server is connected to SDSC Comet through customized slurm jobrunner. We've already tested temporary switching to a local jobrunner and it's still giving the same SOAP error. We will probably just go with the REST api in the future to get around this issue, but were really stumped on this strange behavior. BTW, both the local GP and the SDSC VM GP are from the 3.9.10 153 build.
+
+
+Best,
+
+
+Ivan
+
+
+Reply all
+
+Reply to author
+
+Forward

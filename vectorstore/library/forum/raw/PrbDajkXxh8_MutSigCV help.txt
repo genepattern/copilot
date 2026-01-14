@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/PrbDajkXxh8
+Title: MutSigCV help
+----------------------------------------
+
+
+
+
+
+MutSigCV help
+30 views
+Skip to first unread message
+
+Jennifer Diaz
+unread,
+Aug 7, 2024, 10:00:30 AM
+
+
+
+to GenePattern Help Forum
+I'm trying to use MutSigCV with a maf I'm supplying, and the files provided on the server for the other outputs. But I'm getting the error in the screenshot attached, even after registering and trying to run this while logged in. Help? Thanks!
+
+
+
+Screenshot 2024-08-07 115931.png
+Ted Liefeld
+unread,
+Aug 7, 2024, 10:40:13 AM
+
+
+
+to GenePattern Help Forum
+Hi,  can you provide us a job number to look at?
+
+
+Thanks
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Aug 7, 2024, 10:47:43 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I took a guess at trying to find your job and I think that I did (596807).  If that is yours, the problem is that the Broad Institute no longer supports ftp and so the gene covariates file could not be retrieved.  You can get a copy now from
+
+https://datasets.genepattern.org/gpftp/module_support_files/MutSigCV_1.4/gene.covariates.txt
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Jennifer Diaz
+unread,
+Aug 12, 2024, 8:18:25 AM
+
+
+
+to GenePattern Help Forum
+Thank you! Found everything I needed at that site.
+
+
+Reply all
+
+Reply to author
+
+Forward

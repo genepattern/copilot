@@ -1,0 +1,253 @@
+URL: https://groups.google.com./g/genepattern-help/c/1zTjbVnNYpY
+Title: Visualizing output from ScanpyUtilities
+----------------------------------------
+
+
+
+
+
+Visualizing output from ScanpyUtilities
+12 views
+scanpy
+scanpyutilities
+visualization
+Skip to first unread message
+
+Mohammed Khalfan
+unread,
+Oct 3, 2019, 4:12:07 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+I ran ScanpyUtilities in a Gene Pattern Notebook. It finishes without errors and I see a few .h5ad files which it has created. But how do I visualize these results? Do I have to download the .h5ad file, upload it to my GPN file manager, then interact with it using the command line? Are there any built in visualizations in ScanpyUtilities and how do they work?
+
+
+Job ID:
+
+Job #169613
+
+
+Tried searching but no luck.
+
+
+
+Please advise. Thank you.
+Barbara Hill
+unread,
+Oct 4, 2019, 2:06:58 PM
+
+
+
+to GenePattern Help Forum
+Hi Mohammed, 
+
+
+My colleague suggested the following:
+
+
+'This is used in the CoGAPS aka Census of Immune Cells notebook. It does a variety of different visualizations at different stages including scatter plots, histograms, TSNE and UMap'
+
+
+
+Please let us know if we can provide any further assistance.
+
+
+Best
+-Barbara
+Mohammed Khalfan
+unread,
+Oct 7, 2019, 12:47:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi thanks for your quick reply.
+
+
+
+1) There are many UI interfaces for utilities like "InspectHDF5" and "ViewRandomSubset {}" that are not available in Tools (not available in other notebooks). Are these local to this notebook?
+
+In particular, i'm curious about the "LoadFunctions{}" block. It is described as "This next cell will load all the functions that support the UI cells you see throughout the notebook.". Does this mean that visualizations only work in this particular notebook, because of these special functoins? And does this mean that the ScanpyUtilities tool on it's own, does not do any visualiztions?
+
+
+2) My notebook failed with many errors at the very start, at the "SetupPythonEnvironment {}" and "SetupREnvironment { }" steps. Here are the errors:
+SetupPythonEnvironment {} Error:
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-86-a33f4a156d3e> in <module>
+      1 import nbtools
+----> 2 nbtools.tool(id="SetupPythonEnvironment", origin="Notebook").function_or_method()
+
+<ipython-input-9-76498f5a72ed> in SetupPythonEnvironment()
+     36 
+     37 def SetupPythonEnvironment():
+---> 38     assert(checkVersion(sc, (1,4)))
+     39     print("scanpy package is up to date")
+     40     assert(checkVersion(anndata, (0,6,18)))
+
+<ipython-input-9-76498f5a72ed> in checkVersion(pkg, targetVersion)
+     28 # function that checks that the pacakge version is greater or equal to the target
+     29 def checkVersion(pkg, targetVersion):
+---> 30     pkgVersion = [int(i) for i in pkg.__version__.split('.')]
+     31     while len(targetVersion) < len(pkgVersion):
+     32         targetVersion += (0,)
+
+<ipython-input-9-76498f5a72ed> in <listcomp>(.0)
+     28 # function that checks that the pacakge version is greater or equal to the target
+     29 def checkVersion(pkg, targetVersion):
+---> 30     pkgVersion = [int(i) for i in pkg.__version__.split('.')]
+     31     while len(targetVersion) < len(pkgVersion):
+     32         targetVersion += (0,)
+
+ValueError: invalid literal for int() with base 10: 'post1'
+
+
+SetupREnvironment {} Error:
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-87-5aa16e572863> in <module>
+      1 import nbtools
+----> 2 nbtools.tool(id="SetupREnvironment", origin="Notebook").function_or_method()
+
+<ipython-input-10-1f852148e973> in SetupREnvironment()
+     13     get_ipython().run_line_magic('R', 'if (!packageInstalled("BiocManager")) install.packages("BiocManager", lib="~/Rpackages")')
+     14     get_ipython().run_line_magic('R', 'if (!packageInstalled("Matrix")) BiocManager::install("Matrix", ask=FALSE, update=FALSE, lib="~/Rpackages")')
+---> 15     get_ipython().run_line_magic('R', 'if (!packageInstalled("rhdf5")) BiocManager::install("rhdf5", ask=FALSE, update=FALSE, lib="~/Rpackages")')
+     16     get_ipython().run_line_magic('R', 'if (!packageInstalled("dunn.test")) BiocManager::install("dunn.test", ask=FALSE, update=FALSE, lib="~/Rpackages")')
+     17 
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/IPython/core/interactiveshell.py in run_line_magic(self, magic_name, line, _stack_depth)
+   2312                 kwargs['local_ns'] = sys._getframe(stack_depth).f_locals
+   2313             with self.builtin_trap:
+-> 2314                 result = fn(*args, **kwargs)
+   2315             return result
+   2316 
+
+</opt/conda/envs/python3.7/lib/python3.7/site-packages/decorator.py:decorator-gen-366> in R(self, line, cell, local_ns)
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/IPython/core/magic.py in <lambda>(f, *a, **k)
+    185     # but it's overkill for just that one bit of state.
+    186     def magic_deco(arg):
+--> 187         call = lambda f, *a, **k: f(*a, **k)
+    188 
+    189         if callable(arg):
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/rpy2/ipython/rmagic.py in R(self, line, cell, local_ns)
+    730             if result is not ri.NULL:
+    731                 if args.converter is None:
+--> 732                     return converter.ri2py(result)
+    733                 else:
+    734                     return localconverter.ri2py(result)
+
+/opt/conda/envs/python3.7/lib/python3.7/functools.py in wrapper(*args, **kw)
+    825                             '1 positional argument')
+    826 
+--> 827         return dispatch(args[0].__class__)(*args, **kw)
+    828 
+    829     funcname = getattr(func, '__name__', 'singledispatch function')
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/rpy2/robjects/pandas2ri.py in ri2py_vector(obj)
+    123 @ri2py.register(SexpVector)
+    124 def ri2py_vector(obj):
+--> 125     res = numpy2ri.ri2py(obj)
+    126     return res
+    127 
+
+/opt/conda/envs/python3.7/lib/python3.7/functools.py in wrapper(*args, **kw)
+    825                             '1 positional argument')
+    826 
+--> 827         return dispatch(args[0].__class__)(*args, **kw)
+    828 
+    829     funcname = getattr(func, '__name__', 'singledispatch function')
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/rpy2/robjects/numpy2ri.py in ri2py_sexp(obj)
+    151 def ri2py_sexp(obj):
+    152     if (obj.typeof in _vectortypes) and (obj.typeof != VECSXP):
+--> 153         res = numpy.asarray(obj)
+    154     else:
+    155         res = ro.default_converter.ri2py(obj)
+
+/opt/conda/envs/python3.7/lib/python3.7/site-packages/numpy/core/_asarray.py in asarray(a, dtype, order)
+     83 
+     84     """
+---> 85     return array(a, dtype, copy=False, order=order)
+     86 
+     87 
+
+ValueError: Buffer for this type not yet supported.
+Ted Liefeld
+unread,
+Oct 10, 2019, 9:54:54 AM
+
+
+
+to GenePattern Help Forum
+Mohammed,
+
+
+please see my replies inline below;
+
+
+On Monday, October 7, 2019 at 12:47:22 PM UTC-7, Mohammed Khalfan wrote:
+Hi thanks for your quick reply.
+
+
+
+1) There are many UI interfaces for utilities like "InspectHDF5" and "ViewRandomSubset {}" that are not available in Tools (not available in other notebooks). Are these local to this notebook?
+
+In particular, i'm curious about the "LoadFunctions{}" block. It is described as "This next cell will load all the functions that support the UI cells you see throughout the notebook.". Does this mean that visualizations only work in this particular notebook, because of these special functoins? And does this mean that the ScanpyUtilities tool on it's own, does not do any visualiztions?
+
+
+
+
+The methods that you are not seeing in the tools are all defined in the LoadFunctions code cell.  If you 'Toggle code view' from the gear icon on the cell you should be able to see the underlying code.
+
+
+They should be showing up in your tools though, but not until after you have logged in to GenePattern.  If you are logged in to GenePattern (the 7th cell from the top of the notebook where the notebook logs into the cloud GenePattern server) and still don't see them then something is off and not working as expected.
+
+
+Most of the visualization functions are using scanpy to actually do the plotting, though this is scanpy inside the notebook and not the ScanpyUtilities module.  They are the same scanpy code, but when run as a module it gets a server with more CPU and memory.  In this notebook the dataset before filtering is too large to load into the notebook itself because the notebook servers are sharing 8GB between up to 3 users.  Once the module filters it down somewhat its small enough to load easily.
+
+
+So for visualization for example the scatter plot function in the notebook looks like this
+def CellScatterPlot(AnnData_File, x_variable, y_variable):
+    adata = sc.read(AnnData_File, backed='r+')
+    print("Creating scatter plot of", x_variable, "vs", y_variable)
+    sc.pl.scatter(adata, x_variable, y_variable)
+So you see that scanpy is actually doing the work and all the wrapper does is point it to a anndata file instead of a pre-loaded dataset.
+
+This is unfortunate and the result of the GPNB server updating the version since this notebook was created.  If you execute the following snippet you will see that the version of scanpy doesn't have a purely numeric version number as the notebook expects
+
+
+import scanpy as sc
+print(sc.__version__)
+ 
+This gives '1.4.4.post1' as scanpy's version.  Since the notebook wants a scanpy >1.4 this is actually OK, its the logic doing the check that is flawed.  You should be able to run the rest of the notebook even though this cell fails.
+
+
+There will likely be another failure further down the notebook for the same reason (when it tries to create the CoGAPS parameter file) due to an issue with rpy2.  We are trying to get the version on the server corrected, but if you do run into it let me know and I will walk you through the code change to make it work.
+
+
+Finally, the authors (the Fertig Lab at Johns Hopkins) are in the process of rewriting this notebook and splitting it into 2 separate notebooks, one for the preprocessing and a second for the actual CoGAPS run.  I am involved with this and I am pretty sure that the new versions work with the current libraries on the server.  If you continue to have problems with getting the current notebook to run and are interested, I could share them with you.  You would in effect be the first tester of the new notebooks outside the Mesirov and Fertig labs.
+
+
+
+
+hope this helps
+
+
+Ted
+
+
+
+
+ 
+
+Reply all
+
+Reply to author
+
+Forward

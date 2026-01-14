@@ -1,0 +1,1 @@
+User encountered an error while trying to run Gistic2 on GenePattern, with a server-side execution error preventing job completion; the system administrator acknowledged a compute environment issue and redirected the module to a different environment, which should resolve the problem and allow the user to rerun their analysis successfully.

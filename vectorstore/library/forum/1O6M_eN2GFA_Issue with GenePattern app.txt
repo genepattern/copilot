@@ -1,0 +1,1 @@
+A user encountered an issue launching the GenePattern app on macOS Mojave, where the configuration window repeatedly opens without completing the launch after entering an email address, with the support team recommending trying the latest release from GitHub or using their public server as potential solutions.

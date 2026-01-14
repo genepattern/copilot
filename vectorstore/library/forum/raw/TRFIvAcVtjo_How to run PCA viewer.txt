@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/TRFIvAcVtjo
+Title: How to run PCA viewer
+----------------------------------------
+
+
+
+
+
+How to run PCA viewer
+16 views
+Skip to first unread message
+
+Genta Ishikawa
+unread,
+Mar 15, 2018, 3:29:35 PM
+
+
+
+to GenePattern Help Forum
+Hi all:
+
+
+I have difficulty in opening "PCA viewer" in the public website of GenePattern.
+I use Windows 10 and already downloaded Java8 and Java 3D. I tried by using Firefox and Internet explorer.
+ 
+Would you give me any tips to run PCA viewer?
+
+
+Genta
+
+
+Barbara Hill
+unread,
+Mar 16, 2018, 12:08:55 PM
+
+
+
+to GenePattern Help Forum
+Please see this post for for information: https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!searchin/genepattern-help/PCA%7Csort:date/genepattern-help/FCznvzbhhjM/qAKz4BqoBAAJ
+
+Reply all
+
+Reply to author
+
+Forward

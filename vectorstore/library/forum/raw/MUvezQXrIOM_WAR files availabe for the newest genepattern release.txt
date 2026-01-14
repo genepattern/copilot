@@ -1,0 +1,74 @@
+URL: https://groups.google.com./g/genepattern-help/c/MUvezQXrIOM
+Title: WAR files availabe for the newest genepattern release ?
+----------------------------------------
+
+
+
+
+
+WAR files availabe for the newest genepattern release ?
+26 views
+Skip to first unread message
+
+Thomas Mohr
+unread,
+Jul 7, 2018, 2:42:02 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Team,
+
+I would like to install the gene pattern server, however we have a
+running tomcat installation. Is it possible to get a WAR file for the
+last version ? thanks in advance a lot,
+
+Thomas Mohr
+Barbara Hill
+unread,
+Jul 16, 2018, 10:29:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Thomas, 
+
+
+The war file link is below.
+However - please note that you've now officially entered DIY territory, and are truly administering your own Franken-GenePattern*.
+You will need to:
+ install Mac OS X and reverse-engineer the project layout for your server.
+ caveat: GP *must* use the '/gp' servlet path, e.g. this will work 'http://127.0.0.1:8080/gp'. This will not: http://127.0.0.1:8080/my-custom-path'
+   * caveat: we have not ever tested GP on a different version of Tomcat
+
+
+
+We'll help if we can, but if you can use the typical Mac installer, or better yet one of our hosted servers, that will free you from server administration tasks and allow you to simply use GenePattern and its modules.
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/download_installer/installers/gp-3.9.10-156_deprecated/warfile/gp_war.zip
+
+
+
+Good Luck!
+-Barbara
+
+
+Barbara Hill
+unread,
+Jul 16, 2018, 10:30:58 AM
+
+
+
+to GenePattern Help Forum
+Forgot to send the link in the original message - mea culpa:
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/download_installer/installers/gp-3.9.10-156_deprecated/warfile/gp_war.zip
+
+
+Reply all
+
+Reply to author
+
+Forward

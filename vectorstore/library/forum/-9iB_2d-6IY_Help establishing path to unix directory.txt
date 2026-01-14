@@ -1,0 +1,1 @@
+Forum thread summary: A user seeks assistance in updating their Unix directory path connection in GenePattern, requesting guidance on how to establish or modify the directory link to enable direct access from the GenePattern interface, with the underlying goal of maintaining seamless file access and workflow continuity after a directory location change.

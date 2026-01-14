@@ -1,0 +1,1 @@
+A user encountered an issue with MultiplotStudio where file names were not appearing in axis menus when launching the Java Visualizer on both Mac and PC, and a support team member suggested this was likely caused by an off-by-one error in the GCT file headers, with 15083 data rows and 3 header rows potentially causing display problems.

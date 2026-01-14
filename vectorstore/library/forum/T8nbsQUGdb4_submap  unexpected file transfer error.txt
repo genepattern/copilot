@@ -1,0 +1,1 @@
+`GenePattern user experiencing an unexpected file transfer error when attempting to run the SubMap module, potentially related to network connectivity or AWS S3 upload restrictions, with support staff requesting additional network configuration details to diagnose the underlying issue.`

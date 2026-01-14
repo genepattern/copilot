@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/0cleLB0Ykjk
+Title: GSEAPreranked
+----------------------------------------
+
+
+
+
+
+GSEAPreranked
+26 views
+Skip to first unread message
+
+Sofya Polyanskaya
+unread,
+Jul 8, 2021, 1:23:31 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Team,
+
+
+Name spolyans.
+I cannot access any results for any of my GSEAPreranked jobs!
+
+
+Examples:
+360732. GSEAPreranked 
+
+
+
+AccessDeniedAccess DeniedREDCTW2SJJE2XJSSTa+yOsUv43QTi/UQ9vllVMkN/RsMl5rzi7FYWpOnLIyubF/kh7/CWqUkyOGiVYMxwvcEZZOUBew=
+
+
+
+
+
+
+
+Sofya Polyanskaya
+unread,
+Jul 8, 2021, 1:36:17 PM
+
+
+
+to GenePattern Help Forum
+Especially bad is that I cannot access Summary spreadsheets with NES vs FDR (index.html for GSEAPreranked):
+
+
+AccessDeniedAccess DeniedC7TR28KH1TAEV59Vnti/v0Nsf6ipMfNMEz196rVQfgkKhtZ/n1+nzigJRmDzTutcdNVObVNL3wMqrXSHhoQld1IJ5CQ=
+
+Sofya Polyanskaya
+unread,
+Jul 8, 2021, 1:38:44 PM
+
+
+
+to GenePattern Help Forum
+Job IDs I have problems with: 360731, 360732 
+
+Sofya Polyanskaya
+unread,
+Jul 8, 2021, 1:41:31 PM
+
+
+
+to GenePattern Help Forum
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>VGTVYWW8M3XYSGYT</RequestId><HostId>Z3crUzwev9OkT7T9IPwwBM6Xae0SwJh8lTIGmAMqfcpAb+14U/WLLAB7qpRYQyVe8CaCF+oBSOs=</HostId></Error>
+
+Edwin Juarez
+unread,
+Jul 12, 2021, 12:09:53 PM
+
+
+
+to GenePattern Help Forum
+There seems to be some issues rendering the files that GSEAPreranked created, so I recommend you download the .zip file created for each of your jobs and look at the results locally. I have tested this and the files you mention render correctly from the index.html on a local directory.
+
+
+We are working on a long term solution for this.
+
+
+Kind regards,
+Edwin.
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

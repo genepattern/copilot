@@ -1,0 +1,74 @@
+URL: https://groups.google.com./g/genepattern-help/c/wtaHQri-DRU
+Title: Arm plot or plot using samples from 2 groups
+----------------------------------------
+
+
+
+
+
+Arm plot or plot using samples from 2 groups
+12 views
+Skip to first unread message
+
+Parvathi Kk
+unread,
+Apr 5, 2023, 6:29:25 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am trying to make a comparison plot in GISTIC2, similar to the attached. I am using the web version from Genepattern. I could only use one input file as segment file, tand here is no option for two input files. Also, the array list file has only one column. So, I couldn't figure out how to use this tool to make this plot. 
+Can anyone please tell me how to prepare this type of results? 
+
+
+Thanks
+Parvathi.
+
+Autosomal-SCNAs-identified-by-Gistic2-a-Breast-tumor-amplification-SCNAs-in-European.png
+Andrew Cherniack
+unread,
+Apr 5, 2023, 6:43:22 AM
+
+
+
+to genepatt...@googlegroups.com
+These were usually done by taking two Gistic outputs, horizontal flipping one and manually flipping or adding back the axis labels.  
+
+
+You could also generate your own plots by using the scores.gistic file in the output.
+
+
+
+
+Andrew 
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/52a47cee-ed17-42b8-9892-374f4820c573n%40googlegroups.com.
+
+--
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

@@ -1,0 +1,139 @@
+URL: https://groups.google.com./g/genepattern-help/c/donDMKp3T3Q
+Title: error in submap
+----------------------------------------
+
+
+
+
+
+error in submap
+79 views
+Skip to first unread message
+
+huan yang
+unread,
+Oct 6, 2020, 2:34:46 AM
+
+
+
+to GenePattern Help Forum
+I always failed when i run submap, but i have checked the format of my files many times, i really don't know how to solve it. Looking forward to your help!
+  the error is:
+  *** caught segfault ***
+address 0xfffffffef15c7d78, cause 'memory not mapped'
+
+
+Traceback:
+ 1: order(data[, 1])
+ 2: `[.data.frame`(data, order(data[, 1]), )
+ 3: data[order(data[, 1]), ]
+ 4: read.gct(filename = input.data.A)
+ 5: submap.main("/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run133497408585252311.tmp/datasetA.file/1/LUSCgenematgctlog.gct",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run3074669800647881964.tmp/datasetB.file/2/melanomanewgenemap.gct",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run930977420477474430.tmp/classA.file/3/LUSC.cls",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run562500264601242954.tmp/classB.file/4/melnoma.cls",     "SubMap", "31", "100", "1000", "1", "pool", "Bonferroni",     "1", "1", "T", "T", "47365321")
+aborting ...
+Ted Liefeld
+unread,
+Oct 6, 2020, 11:00:18 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it appears that you have problems in 3 of your files.
+
+
+1. The class file index has to start with 0, not 1.  So in the LUSC class file, the class numbers should be 0 and 1 (not 1 and 2).  For the Melanoma class file it should be 0,1,2,3 (not 1,2,3,4).
+
+
+2. In the LUSC gct file, there are 15 expression entries that are the string "#NAME?" instead of being a number.
+
+
+Let us know if you continue to have problems,
+
+
+Ted
+
+
+
+huan yang
+unread,
+Oct 7, 2020, 5:12:44 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for your reply. Following your advice, I have modified the files, but the error still exists.
+the error is:
+
+ *** caught segfault ***
+address 0xfffffffef1a95328, cause 'memory not mapped'
+
+
+Traceback:
+ 1: order(data[, 1])
+ 2: `[.data.frame`(data, order(data[, 1]), )
+ 3: data[order(data[, 1]), ]
+ 4: read.gct(filename = input.data.A)
+
+ 5: submap.main("/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run7351302405185818156.tmp/datasetA.file/1/melanoma.gct",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run4026770934523310285.tmp/datasetB.file/2/LUSClog.gct",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run5727939434282022097.tmp/classA.file/3/melanoma.cls",     "/opt/gpcloud/gp_home/users/ynwang/uploads/tmp/run7221189206718707044.tmp/classB.file/4/LUSC.cls",     "SubMap", "100", "100", "1000", "1", "pool", "Bonferroni",     "1", "1", "T", "T", "47365321")
+aborting ...
+
+
+
+Ted Liefeld <lie...@broadinstitute.org> 于2020年10月7日周三 上午2:00写道：
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/donDMKp3T3Q/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a67ac230-a475-4dfe-b4e5-d0d79b630ac7n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Oct 7, 2020, 10:25:16 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+yes this does seem to be a problem with the current container (docker container that runs the module).  I am trying to identify a fix for it but have had to look for some help from people with experience in older version of R (this uses R 2.5 from ~2007).
+
+
+Ted
+
+
+p.s. The changes to your class files appear to have been unnecessary.  While the CLS file format specifies that the class numbers should start at 0, this particular module will accept them beginning at 1 instead
+
+
+
+Ted Liefeld
+unread,
+Oct 9, 2020, 1:35:55 PM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+we tracked down the bug and it appears that this module is not able to handle gct files where the descriptions are all blank or all the same (it tries to order the dataframe based on the description column).  So you can get around this by providing at least a few different values in the description columns of your two gct files.  In my test for the LUSC file, I just replicated the first column (gene name) into the description.  For the melanoma I only changed the first row, and with that we get past the seg fault error you have been seeing.
+
+
+Once past that however we do run into a similar error generating the heatmaps.  It does generate the result file and the SA matrix, just not the two heatmaps.  I have not yet figured out a fix for this but hopefully you will get some value from having the result matrix even without the figures.
+
+
+Hope this helps
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

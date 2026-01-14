@@ -1,0 +1,222 @@
+URL: https://groups.google.com./g/genepattern-help/c/qXoLPIRAuZ8
+Title: ESP Predictor module
+----------------------------------------
+
+
+
+
+
+ESP Predictor module
+26 views
+Skip to first unread message
+
+bigel.b...@gmail.com
+unread,
+Apr 30, 2019, 4:01:06 AM
+
+
+
+to GenePattern Help Forum
+
+Hi GenePattern Help
+
+ 
+
+I like to use ESPPredictor module in Gene Pattern, but I cannot find it. I read that this module was gone with the fire last year, but it was really important for our project. When do you think it will be back?  
+
+ 
+
+Thanks for your time and looking forward to your reply
+
+ 
+
+Best wishes,
+
+ 
+
+Béatrice
+
+Barbara Hill
+unread,
+Apr 30, 2019, 6:43:04 AM
+
+
+
+to GenePattern Help Forum
+Hello Béatrice
+
+
+Unfortunately, while we know the module was heavily used by some members of our community, it is not ours, and the person who developed it has moved on.
+
+
+We are willing to look into creating a new version, but I'm not sure when that will be. I've added it as a discussion point for our next planning session.
+
+
+We will let you know when we have more information.
+
+
+Best
+-Barbara
+
+
+Amir Khan
+unread,
+Jul 17, 2019, 6:44:19 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+I want to use the ESPPredictor Module but it's not here. Due you have any clue if the author is running it as a standalone or it got vanished?
+
+
+Regards 
+
+Ted Liefeld
+unread,
+Jul 19, 2019, 2:56:31 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I have created a container to allow the ESPPredictor module to run but I am not that familiar with the details of the module.  I hope to make this module available on the beta.genepattern.org server early next week.  If you could try it out there (next week) and let me know how it goes I would appreciate it
+
+
+Thanks
+
+Ted
+
+Honghui Wang
+unread,
+Jul 19, 2019, 3:59:56 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Thanks. Let me know when it is ready. I certainly like to test it next week.
+
+
+Thank you so much for doing this project.
+
+
+Honghui
+
+
+Sent from my iPhone
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4629a1e7-30f3-4afb-a755-fb4df29a5948%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Ted Liefeld
+unread,
+Jul 22, 2019, 2:26:26 PM
+
+
+
+to GenePattern Help Forum
+Honghui,
+
+
+the first version is now up on beta if you have time to try it out
+
+
+    https://beta.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:999999999
+
+
+Please report back here if it works or not,
+
+
+Thanks
+
+
+Ted
+
+
+On Friday, July 19, 2019 at 3:59:56 PM UTC-7, Honghui Wang wrote:
+Hi Ted,
+
+
+Thanks. Let me know when it is ready. I certainly like to test it next week.
+
+
+Thank you so much for doing this project.
+
+
+Honghui
+
+
+Sent from my iPhone
+
+On Jul 19, 2019, at 5:56 PM, Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+
+Hi
+
+
+I have created a container to allow the ESPPredictor module to run but I am not that familiar with the details of the module.  I hope to make this module available on the beta.genepattern.org server early next week.  If you could try it out there (next week) and let me know how it goes I would appreciate it
+
+
+Thanks
+
+Ted
+
+On Wednesday, July 17, 2019 at 6:44:19 PM UTC-7, Amir Khan wrote:
+Hello,
+I want to use the ESPPredictor Module but it's not here. Due you have any clue if the author is running it as a standalone or it got vanished?
+
+
+Regards 
+
+On Tuesday, 30 April 2019 22:43:04 UTC+9, Barbara Hill wrote:
+Hello Béatrice
+
+
+Unfortunately, while we know the module was heavily used by some members of our community, it is not ours, and the person who developed it has moved on.
+
+
+We are willing to look into creating a new version, but I'm not sure when that will be. I've added it as a discussion point for our next planning session.
+
+
+We will let you know when we have more information.
+
+
+Best
+-Barbara
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+Ted Liefeld
+unread,
+Jul 23, 2019, 2:29:28 PM
+
+
+
+to GenePattern Help Forum
+Hongui had found a bug where it failed if there were spaces in the file names.  This is now fixed so please feel free to test it again
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

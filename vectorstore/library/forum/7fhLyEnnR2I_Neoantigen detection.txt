@@ -1,0 +1,1 @@
+GenePattern forum thread discussing neoantigen detection tools, where the user asked about available modules for detecting neoantigens from RNA-seq and WES data, and received a response that GenePattern currently lacks native tools, with a recommendation to use pVacTools and an indication that neoantigen detection support may be added in future updates.

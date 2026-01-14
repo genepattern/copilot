@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/A4HK93VLLgI
+Title: FINAL UPDATE - Module repository functionality has been restored! Open for configuration details
+----------------------------------------
+
+
+
+
+
+FINAL UPDATE - Module repository functionality has been restored! Open for configuration details
+68 views
+Skip to first unread message
+
+Barbara Hill
+unread,
+Jul 19, 2019, 7:37:38 AM
+
+
+
+to genepatt...@googlegroups.com
+As mentioned in a previous post, we are working to restore the module repository functionality after some unplanned system maintenance.
+
+
+As of today, we have restored the following:
+The ability to browse modules on genepattern.org
+The ability to download modules from gparc.org
+The ability to install modules on your GenePattern server
+to do so, follow the instructions in our blog post.
+
+
+A redirect* is also in place from the old URL, and a new version of GenePattern with all of the above changes, plus additional changes to remove all old urls will be made available later this summer.
+
+
+*The redirect will not work for the install from repository page, so you will need to follow the instructions above to correctly configure that page.
+Please contact us if you are having any trouble obtaining a module you wish to install.
+
+
+With thanks for your patience and understanding,
+
+
+-The GenePattern Team
+朱红波
+unread,
+Oct 1, 2019, 3:13:14 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara Hill,
+   I’m a new learner of this platform. And I am trying to use the platform in the R environment and want to install the R version of GenePattern in the R-Studio. As illustrated in the documentation of Programmers Guide, I should download the R package to my computer, which is run with Windows 10. There is no R package of GenePattern in the module of Download. So I wonder to know how to find the R package and install it.
+
+  Besides, could you please configure my user account to run a longer time not a default limit of 1 day. Because the run time exceeds 1 day when I run my dataset in the cloud of GenePattern client and encounter the same problem with Shion Zhang. My account name is zhuxiaoer. Best wishes.
+
+
+
+
+Barbara Hill
+unread,
+Jan 13, 2020, 9:40:17 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm sorry no one has responded to you sooner!
+
+
+Do you still have questions about using R in GenePattern? or still need your run time configured? If so, please start a new thread with your questions.
+
+
+Apologies again for the delay in responding.
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

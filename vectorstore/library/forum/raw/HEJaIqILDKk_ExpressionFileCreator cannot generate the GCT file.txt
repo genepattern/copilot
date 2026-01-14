@@ -1,0 +1,159 @@
+URL: https://groups.google.com./g/genepattern-help/c/HEJaIqILDKk
+Title: ExpressionFileCreator cannot generate the GCT file
+----------------------------------------
+
+
+
+
+
+ExpressionFileCreator cannot generate the GCT file
+91 views
+Skip to first unread message
+
+parin....@gmail.com
+unread,
+Feb 23, 2018, 1:04:38 AM
+
+
+
+to genepatt...@googlegroups.com
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): I want to generate a RES or GCT file from a set of Affymetrix CEL files. I upload the CEL files and CDF file for run analysis. Finally, The job finished without an error but I get only stdout.txt file that detailed about an error of No annotations found for chip Clariom_S_Human.
+
+Job ID if run on a publicly available server. The job ID is 1639851. ExpressionFileCreator
+
+
+
+
+srilaksh...@gmail.com
+unread,
+Aug 6, 2018, 10:59:49 AM
+
+
+
+to GenePattern Help Forum
+HIi, did you get a response from GP help for this problem?
+
+
+I can't even access expression file creator. WOuld you mind advising me how you did it?
+
+
+
+Thanks
+
+
+Sri
+
+
+Barbara Hill
+unread,
+Aug 13, 2018, 1:09:12 PM
+
+
+
+to GenePattern Help Forum
+Hello Sri, 
+
+
+Can you explain what you mean by "I can't even access expression file creator. "?
+
+
+Best
+-Barbara
+srilakshmi sharma
+unread,
+Aug 13, 2018, 1:31:49 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear Barbara
+
+
+Thanks so much for contacting me. I was beginning to lose hope!
+
+
+
+
+The current online version of gene pattern does not permit me to convert IVT (Affymetrix) array  CEL files . It only allows ST arrays
+
+
+Therefore, it is suggested that I download an older version of genepattern in order to find expression file creator somewhere in that package.
+On attempting to do open a genepattern dated from 2017 or even earlier, the package downloads to my Macbook and then asks me to register which I duly do and then asks me to re-open gene pattern When I attempt to open gene pattern, it opens a browser page ( firefox) but I get a completely blank screen. 
+There is no facility to open an older version of genepattern without the internet. 
+
+
+Please note, the only reason I am trying to download genepattern is because I need to use expression file creator to make GCT files from my CEL files and utilise GSEA using my data
+
+
+Thank you for your kind attention to this issue. I apologise for not being more computer savvy
+
+
+Sri
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2ebea389-66db-42e2-999a-f2f4416e33ab%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Aug 13, 2018, 1:36:57 PM
+
+
+
+to GenePattern Help Forum
+Hello Sri, 
+
+
+Several of us were away on vacation, hence the delay. Our apologies.
+
+
+I sent links to the module you are looking for - you do not need to run it on your own server.
+
+
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/genepattern-help/eNJqp0Mmzfs
+
+
+Please let me know if that does not answer your questions.
+
+
+Best
+-Barbara
+
+
+
+
+srilakshmi sharma
+unread,
+Aug 13, 2018, 1:38:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks so much Barbara
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/17656d64-bf44-450f-9129-22fa74d06f22%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,148 @@
+URL: https://groups.google.com./g/genepattern-help/c/-R3hieoWI1k
+Title: FCS to CSV creates Empty CSV file
+----------------------------------------
+
+
+
+
+
+FCS to CSV creates Empty CSV file
+54 views
+Skip to first unread message
+
+myle...@gmail.com
+unread,
+Oct 5, 2017, 8:39:28 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+I put an .fcs file I got from mass cytometry (Cytof 2.1) into the FcsToCsv module and it gave me back an empty .csv file. (0 kb) It also produced a text file called "stderr.txt" which contained text saying "Exception: Null" I'm not sure why it's throwing a null exception, but I'd like to know how I can fix it. Your module was the easiest way I've found to convert .fcs files to .csv files.
+
+
+Job ID if run on a publicly available server.
+Job ID: 1556361
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Oct 5, 2017, 9:07:41 AM
+
+
+
+to genepatt...@googlegroups.com
+I tried our basic workaround: rename the file to avoid special characters in the filename. I get the same stderr.txt:
+  Exception:Null
+
+I will put you in touch with the module author who may be able to offer more help.
+
+Regards,
+Peter
+
+Josef Spidlen
+unread,
+Oct 5, 2017, 9:39:40 AM
+
+
+
+to GenePattern Help Forum
+Hmm... sorry for this, looks like either there is an issue with the FCS file, or there is a bug in the module. Could you guys share the FCS file so that I can debug this?
+Cheers,
+Josef
+
+myle...@gmail.com
+unread,
+Oct 5, 2017, 11:12:25 AM
+
+
+
+to GenePattern Help Forum
+I'd be glad to share, but the file is too large to attach here. I'll share it through Google Drive if you include your email, Josef.
+
+Peter Carr
+unread,
+Oct 5, 2017, 12:12:05 PM
+
+
+
+to genepatt...@googlegroups.com
+You can also share the job from the GenePattern Job Results page. Select your job, click the 'Edit sharing...' link on the upper right section of the page. Share 'Read only' with the Public.
+
+Regards,
+Peter
+
+myle...@gmail.com
+unread,
+Oct 5, 2017, 12:22:57 PM
+
+
+
+to GenePattern Help Forum
+Thanks, Peter! I just did that now. The file name is "170906 MF Brody Lab Mouse Panel 01 3xTG Mouse Microglial Cells_01_0_normalized.csv"
+
+Josef Spidlen
+unread,
+Oct 5, 2017, 4:10:58 PM
+
+
+
+to GenePattern Help Forum
+Hi guys,
+I inspected the FCS file a binary editor and turns out that it is somewhat bad. Specifically, the FCS header says that the TEXT segment ends at the same byte position (3580) where the DATA segment starts; this is wrong, the output from your CyTOF is off by one byte with respect to where the TEXT segment ends, which confuses the FCS2CSV convertor (i.e., the FCS2CSV convertor does not know if byte 3580 is part of the TEXT segment or the DATA segment).
+
+
+I fixed the FCS header to state the correct TEXT segment end offset (3579) and then I was able to run the convertor no problem. I shared the fixed FCS file as well as the output from the conversion here:
+https://drive.google.com/open?id=0B7qA2XRMbgZAMGgxdjRkUENGSjA
+
+
+
+I cannot commit to making the FCS2CSV convertor resistant to this sort of an file format issue at this point. If you have several corrupted files that you need to convert, then you could
+1) Use FlowJo to read the FCS and export the CSV; FlowJo is much more liberal in terms of what file formats it tolerates. You could just sign up for a free 30 days trial if this is a one-time thing (disclaimer: I work for FlowJo)
+2) Fix the FCS files manually in a binary editor (like iHex... but that would require you to understand the FCS spec a bit)
+3) Convince Fluidigm that they should fix the output files
+4) Use R and the flowCore library; it will complain, but it will read the file (and likely drop the last keyword due to this particular issue). So once you have read it using read.FCS then you should be able to save the data matrix using the write.csv function.
+
+
+Cheers,
+Josef
+
+
+-- 
+
+Josef Spidlen, Ph.D.
+Director of Bioinformatics | FlowJo, LLC
+
+385 Williamson Way
+Ashland, OR 97520  USA
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

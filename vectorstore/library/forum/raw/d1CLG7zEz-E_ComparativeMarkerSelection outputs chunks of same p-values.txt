@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/d1CLG7zEz-E
+Title: ComparativeMarkerSelection outputs chunks of same p-values
+----------------------------------------
+
+
+
+
+
+ComparativeMarkerSelection outputs chunks of same p-values
+14 views
+Skip to first unread message
+
+Elena Carazo
+unread,
+Jun 24, 2020, 12:32:16 PM
+
+
+
+to GenePattern Help Forum
+Hi there, 
+
+
+I was recently tasked with going over some old Microarray data that was collected in my lab. I have some of the differential expression files that were obtained using the ComparativeMarkerSelection in Gene Pattern, but after taking a close look at them, there seems to be big chunks of genes with apparently the same q-value (and related metrics). I'm attaching a picture for clarification. The files I have are in an excel format, so my instinct was to think that something went wrong when exporting the files.
+
+
+I have tried running the ExtractComparativeMarkerResults myself from the original odf output files, but I can't find the "dataset filename"  or anything with a .gct or .res extension. 
+
+
+So I was wondering if this kind of p-value in "chunks" is common or if I should keep digging to find a way to re-do the analysis myself. 
+
+
+Thanks!
+
+
+
+
+
+
+GenePattern_Output.PNG
+Edwin Juarez
+unread,
+Jun 25, 2020, 12:07:40 PM
+
+
+
+to GenePattern Help Forum
+Elena,
+
+
+Seeing multiple genes/features with same p-values is not uncommon, particularly for the "extreme"  values (e.g., the ones with the highest scores, like the ones shown in the image you attached). Typically, if you were to increase the number of permutations run, you would expect the number of features with identical associated p-values. I believe the default number of permutation for ComparativeMarkerSelection is 10000, so if you want to get more accuracy on those estimated p-values you could try with a larger number of permutations. However, if you are already using a large number of permutations (e.g., the default 10000), I would focus instead on the combination of statistics that are being shown, like it sounds like you are already doing (e.g., low FDR and low p-value).
+
+
+In short, this kind of p-value in "chunks" is indeed common to see, based on my experience.
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

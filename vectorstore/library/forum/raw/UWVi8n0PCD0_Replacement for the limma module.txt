@@ -1,0 +1,111 @@
+URL: https://groups.google.com./g/genepattern-help/c/UWVi8n0PCD0
+Title: Replacement for the limma module
+----------------------------------------
+
+
+
+
+
+Replacement for the limma module
+23 views
+Skip to first unread message
+
+Jyothsna Girish
+unread,
+Aug 23, 2020, 3:10:02 PM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+
+Is there areplacement for the Limma module? I need to generate .rnk files but am unable to.
+
+
+
+Thank you
+
+
+
+Regards,
+
+
+Jyothsna
+
+Edwin Juarez
+unread,
+Aug 24, 2020, 12:01:11 PM
+
+
+
+to GenePattern Help Forum
+Hello Jyothsna,
+
+
+Are you in need of .rnk files in order to use them for preranked GSEA (https://www.genepattern.org/modules/docs/GSEAPreranked/1)? 
+
+
+If so, you can create your .rnk file following the description here: http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#RNK:_Ranked_list_file_format_.28.2A.rnk.29
+
+
+Let us know if that's what you are intending to do.
+
+
+Edwin.
+
+Jyothsna Girish
+unread,
+Aug 24, 2020, 9:37:15 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+
+
+
+Yes, I am trying to generate .rnk files for the preranked GSEA module. I have seen that link before but was not clear on what values were used there. Is it simply the tTest values?
+
+
+Thank you so much
+
+
+
+Regards,
+
+Jyothsna
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/22fab3eb-307f-4af3-8d53-9ed573f7eaefn%40googlegroups.com.
+
+Edwin Juarez
+unread,
+Aug 25, 2020, 10:47:35 AM
+
+
+
+to GenePattern Help Forum
+Jyothsna, yes, you can use the t-Test values as your metric (that value will be used to order your genes, so you can use anything that would order them in the way you intend).
+
+
+If this question is related to the differential expression question you posted? If so, you could use the same GCT & CLS files you provide ComparativeMarkerSelection as your inputs for the GSEA module. Though, I am not sure if that's what you are trying to do.
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

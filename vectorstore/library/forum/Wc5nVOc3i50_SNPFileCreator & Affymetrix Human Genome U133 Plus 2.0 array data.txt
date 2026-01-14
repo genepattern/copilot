@@ -1,0 +1,1 @@
+A GenePattern forum user inquired about using SNPFileCreator with Affymetrix Human Genome U133 Plus 2.0 array data, and received a response clarifying that gene expression arrays like U133 are not suitable for SNP detection, as they lack the necessary probe design for identifying single nucleotide polymorphisms, and thus alternative tools would be required for SNP analysis.

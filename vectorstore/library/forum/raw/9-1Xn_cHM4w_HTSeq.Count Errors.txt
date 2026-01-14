@@ -1,0 +1,98 @@
+URL: https://groups.google.com./g/genepattern-help/c/9-1Xn_cHM4w
+Title: HTSeq.Count Errors
+----------------------------------------
+
+
+
+
+
+HTSeq.Count Errors
+9 views
+Skip to first unread message
+
+Lisa Green
+unread,
+Aug 13, 2019, 10:14:08 AM
+
+
+
+to GenePattern Help Forum
+I am trying to run the HTSeq.Count module (version 0.4) with BAM input. The BAM was aligned with hg19, and I tried using all versions of hg19 from the options for feature file. I've also tried uploading a hg19 .gff file. But I keep getting an error:
+/xchip/gpbroad/servers/gpbroad/gp/resources/wrapper_scripts/gp-common.sh: line 598: htseq-count: command not found
+
+Is there something different I should be doing?
+
+Thanks,
+Lisa
+
+Barbara Hill
+unread,
+Sep 6, 2019, 12:32:40 PM
+
+
+
+to GenePattern Help Forum
+Hello Lisa,
+
+
+Apologies for the delay in responding.
+
+
+Are you running this on the Broad Internal server?  (gpbroad.broadinstitute.org)
+
+
+Unfortunately, there was a change in the compute notes offered by the Broad and the dotkit required is no longer available.
+
+
+We are looking to provide this module on our production server, but I do not currently have an estimate on when that will be available. I'm sorry.
+
+
+All the best
+-Barbara
+Lisa Green
+unread,
+Sep 10, 2019, 8:21:17 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Barbara.  Yes, I was using the internal server.  I don't really need the module at this time, but let me know if it becomes available on the production server.
+
+
+Thanks,
+Lisa
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/59f54ab1-3363-43c5-9014-6845fc3d3cf4%40googlegroups.com.
+
+
+
+
+
+--
+
+Lisa Green
+
+Senior Process Development Scientist
+
+Genomics Platform
+320 Charles Street
+Office 222
+Cambridge, MA 02141
+
+
+Tel: +1 617 714 8277
+http://www.broadinstitute.org
+
+
+
+Reply all
+
+Reply to author
+
+Forward

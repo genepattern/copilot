@@ -1,0 +1,1 @@
+DESeq2 module in GenePattern encountered an error parsing CLS file due to space-delimited class labels, which caused an invalid factor conversion; solution involves replacing spaces in class names with underscores to ensure proper parsing and successful module execution.

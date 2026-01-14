@@ -1,0 +1,1 @@
+A new GenePattern user encountered tutorial and documentation link errors when trying to follow guides, with a helpful response suggesting updating dataset URLs from 'www.genepattern.org' to 'datasets.genepattern.org' to resolve access issues, and subsequent confirmation that documentation links were subsequently updated to fix the original problem.

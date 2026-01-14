@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/-dImIton2UI
+Title: where to download mutsig2CV
+----------------------------------------
+
+
+
+
+
+where to download mutsig2CV
+593 views
+Skip to first unread message
+
+chen suo
+unread,
+Mar 28, 2018, 12:58:38 AM
+
+
+
+to GenePattern Help Forum
+I have noticed people using mutsig2CV in the published work (Lin DC et al., Gut 2017; Campbell JD, NatGenet 2016) and also that mutsig2CV results on TCGA data are available from FireBrowse.
+However, I cannot find where to download mutsig2CV. The latest version on the mutsig website is version 1.4 (http://archive.broadinstitute.org/cancer/cga/mutsig).
+
+
+Could anyone advise on this, please? I appreciate it very much.
+
+
+Barbara Hill
+unread,
+Apr 9, 2018, 1:16:27 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would also suggest checking the CGA forum or writing to
+mutsi...@broadinstitute.org
+http://archive.broadinstitute.org/cancer/cga/forum/5
+
+
+Best
+-Barbara
+Robin J
+unread,
+Jul 7, 2020, 7:22:28 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+I have the same confusion about the latest Mutsig. 
+
+Thank you for posting the link but somehow I cannot open any of the websites. 
+
+在 2018年4月10日星期二 UTC+10上午6:16:27，Barbara Hill写道：
+
+GenePattern Help Forum
+unread,
+Jul 8, 2020, 9:35:57 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It appears that the old forum maintained by the authors is no longer available.
+
+
+I would suggest emailing the authors using the address I provided, or perhaps attempt to reach them through their recent GitHub repository for a new version of Mutsig2CV_NC - I'm not sure if they'll be able to help you with this issue, but the code maintained there was at least active as of March 2020 and the result of a recent paper.
+
+
+https://github.com/broadinstitute/getzlab-PCAWG-MutSig2CV_NC 
+
+
+Best of luck,
+Barbara 
+
+
+On Tuesday, July 7, 2020 at 10:22:28 PM UTC-4
+
+
+Robin J
+unread,
+Jul 8, 2020, 2:40:48 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Thank you so much for the reply.
+
+
+I’ve look at the github Mutsig2CV_NC. That one is for the non coding area. Please correct me if I‘m wrong, I feel the github one is quite different from the MutSigCV which focuses on exon. But, it’s good to also do the noncoding as well. And maybe I can find answers or my questions will be answered in github as well.
+
+
+GenePattern Help Forum <genepatt...@googlegroups.com>于2020年7月9日 周四上午2:36写道：
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6009b095-3341-4820-b04a-da104e2f3fccn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/sfncL5Q_9x8
+Title: run genePattern from docker
+----------------------------------------
+
+
+
+
+
+run genePattern from docker
+14 views
+Skip to first unread message
+
+dl...@foghorntx.com
+unread,
+Aug 7, 2018, 8:23:03 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I'm wondering if it is possible to run GenePattern server from within a docker container.  I see instructions for using genePattern notebook (which also looks great) but I'm wondering if I can just access the web interface of the server running out of a docker container.
+
+Cheers,
+Dave
+Peter Carr
+unread,
+Aug 13, 2018, 9:21:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Dave,
+
+At this time, there is no docker container for the GenePattern Server. This is on our road map but we have not gone through the exercise of creating the container. This is not a simple task because we have to put some thought into how to run individual analysis jobs from within that container. If you want to DIY, I can offer some pointers.
+
+Regards,
+Peter
+
+Dave Lahr
+unread,
+Aug 14, 2018, 3:53:56 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Thank you Peter!  I have no experience with Docker so it's probably best for me to not start here :).
+
+ 
+
+Cheers,
+
+Dave
+
+ 
+
+From: <genepatt...@googlegroups.com> on behalf of Peter Carr <pc...@broadinstitute.org>
+Reply-To: "genepatt...@googlegroups.com" <genepatt...@googlegroups.com>
+Date: Monday, August 13, 2018 at 12:21 PM
+To: "genepatt...@googlegroups.com" <genepatt...@googlegroups.com>
+Subject: [EXTERNAL] Re: [genepattern-help:571] run genePattern from docker
+
+ 
+
+This message originated from outside your organization
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/sfncL5Q_9x8/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d8fc1575-a279-5e0c-f0c2-c45843fb4232%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+
+
+Disclaimer
+
+The information contained in this communication from the sender is confidential and may be privileged. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful. If you have received this email in error, please notify the sender immediately and destroy this email.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

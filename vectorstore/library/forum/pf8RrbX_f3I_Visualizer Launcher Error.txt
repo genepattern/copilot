@@ -1,0 +1,1 @@
+Question and resolution regarding GenePattern Heatmap Viewer error: User encountered a JSON parsing error when attempting to launch a visualizer, with the solution being to upgrade to the latest JavaScript-based version of the HeatMapViewer or verify the correct server address (https://cloud.genepattern.org/gp) when using the Java Visualizer Launcher.

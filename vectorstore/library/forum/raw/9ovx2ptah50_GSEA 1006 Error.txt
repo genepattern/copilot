@@ -1,0 +1,226 @@
+URL: https://groups.google.com./g/genepattern-help/c/9ovx2ptah50
+Title: GSEA 1006 Error
+----------------------------------------
+
+
+
+
+
+GSEA 1006 Error
+16 views
+Skip to first unread message
+
+Maëlle Anciaux
+unread,
+Jun 26, 2019, 6:41:54 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am encoutering the error 1006 on GSEA, "One of the classes in this subset has too few samples in one of the classes to use this metric" (see gsea1).
+
+
+I am indeed using Signal2Noise metric, which I know requires at least 3 samples per class. The thing is that I have 89 samples, distributed as 41 in class 1 and 48 in class 2 (see the attached picture gsea2).
+
+
+I changed the metric to log2Ratio_of_classes, and used phenotype permutation, which worked. Isn't that weird, given that phenotype permutation requires at least 7 samples per class, and that it showed me the error that I don't even have three samples per class ?
+
+
+I am a bit lost here.
+
+
+Thank you in advance for your help ! 
+
+
+Best regards
+
+
+Maëlle
+
+
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+gsea1.png
+
+gsea2.png
+David Eby
+unread,
+Jul 7, 2019, 9:40:10 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Maëlle,
+
+
+Sorry for the delay in responding.  It's better to ask general GSEA questions over on the GSEA Forum as they are more likely to be seen by the GSEA team over there.  We may not be monitoring the GP forum as closely so it's easier to miss.
+
+
+That said, I don't really have a good answer here.  It sounds like you got this to work in the end so maybe it's not important, but we could have a look at your data if you like to try to see what's going on.  I'm curious myself because this seems like a bug.
+
+
+One possibility comes to mind, though.  Does your data happen to have a large number of NA or NaN values?
+
+
+I happened to be looking at the CLS-loading code the other day for an unrelated reason and noticed there's some special case handling for this situation, so maybe it's related.  Unfortunately I can't articulate the conditions more clearly than that (not being the original author).  Seeing your data might help.
+
+
+We definitely do recommend using gene_set permutation over phenotype permutation whenever possible, so let us know if you'd like us to take a look.  It might not be possible with your data, but I'm curious as I said.
+
+
+- David
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e5d77606-ae21-412f-b36a-3aac42e5e733%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Maëlle Anciaux
+unread,
+Jul 22, 2019, 2:43:07 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi David,
+
+
+Thank you for your reply. Indeed I think the error was linked to a large number of NA values, because when normalizing differently and displaying no NA values, I didn't encounter the same problem.
+
+
+I have a second question though ; how must I handle genes up or downregulated ? Must they be in two different gene sets ?
+
+
+Thank you,
+
+
+Maëlle
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFEo9Xgc72fQ%2BHHFdnmg%3Dh9paeTJWgVvAbXLxcqzK-HaXuoErQ%40mail.gmail.com.
+
+David Eby
+unread,
+Jul 22, 2019, 3:22:03 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Maëlle,
+
+
+Can you start a second forum thread for your follow-up question?  My colleague will be able to give a better answer than I will, but follow-ups like this can get lost unless they are in their own topic.  I'll be sure to point him to it after you post.
+
+
+Thanks,
+David
+
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADWYZQcPcRvkVEMQ2wfjcnxAB_BvhShFmtcSOE1qPqfhNDtfNg%40mail.gmail.com.
+
+Maëlle Anciaux
+unread,
+Jul 22, 2019, 4:09:35 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi David,
+
+
+Sure it's done (https://groups.google.com/forum/#!topic/gsea-help/0Oc8Y_AHGOU)
+
+
+Thank you
+
+
+Maëlle
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFEo9XhADqBhcZXije9Wt%3DevdMuQSL8VL2pP9x7TjKvQ07nw7A%40mail.gmail.com.
+
+David Eby
+unread,
+Jul 22, 2019, 4:30:57 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks!  I forwarded it to my colleague.
+
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADWYZQcJsiEhPtMc0Rr7aUVzVq2kM%3DcE%3DwFOpexGkGis4xW%2BfA%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

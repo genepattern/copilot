@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/Yxn8fZZC_qc
+Title: Trouble with DESeq2
+----------------------------------------
+
+
+
+
+
+Trouble with DESeq2
+39 views
+Skip to first unread message
+
+Mauricio Cuello
+unread,
+May 22, 2022, 4:30:07 PM
+
+
+
+to GenePattern Help Forum
+Can you check on DESeq2 module. I have been using since a while ago but this weekend it is not working. 
+Constantly it appears stderr.txt saying 
+
+
+Error in library(getopt) : there is no package called ‘getopt’ Calls: suppressMessages -> withCallingHandlers Execution halted
+
+
+getopt is missing in the library
+
+
+Thanks for taking care of this issue or explaining how to solve in GenePattern
+
+
+
+Ted Liefeld
+unread,
+May 23, 2022, 8:17:45 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+DESeq2 should be working again now, we are sorry for the inconvenience.  The problem was that for a while it was unable to connect to the CRAN repository.  This is a problem we see periodically and some of the old R modules (including this one) need to do some installations at the start of their runs.  We will add creating a custom docker container for this module to our queue of work, but I cannot give any idea of an ETA at the moment.  If this happens again you just need to wait a few hours for the CRAN repository to become available again, after which you can re-run your jobs.
+
+Thanks for your patience,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

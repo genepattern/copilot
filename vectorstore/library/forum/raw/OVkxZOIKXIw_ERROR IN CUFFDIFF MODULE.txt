@@ -1,0 +1,66 @@
+URL: https://groups.google.com./g/genepattern-help/c/OVkxZOIKXIw
+Title: ERROR IN CUFFDIFF MODULE
+----------------------------------------
+
+
+
+
+
+ERROR IN CUFFDIFF MODULE
+15 views
+Skip to first unread message
+
+Noor- Us-Subah
+unread,
+Nov 29, 2018, 8:18:39 AM
+
+
+
+to genepatt...@googlegroups.com
+Whenever I run cuffdiff module for identifying differential expression  I get an error after the execution and only gives stdout.txt stderr.txt whereas stderr.txt is also not helpful.
+
+
+
+
+
+Noor- Us-Subah
+unread,
+Nov 29, 2018, 9:51:47 PM
+
+
+
+to genepatt...@googlegroups.com
+I am having error in cuffdiff module on gene pattern whenever i run the module it gives the same error again and again. Error is mentioned below :
+open3: exec of /opt/gpbeta/gp_home/patches/Cufflinks/2.0.2/cufflinks-2.0.2.Linux_x86_64/cuffdiff -L wt,ko -v --no-update-check --geometric-norm --compatible-hits-norm -u -c 0 --FDR .05 -p 8 --library-type fr-unstranded /opt/gpbeta/gp_home/jobResults/60570/Mouse_wGeneID.gtf /opt/gpbeta/gp_home/users/noorussubah/uploads/tmp/external/dm.genomespace.org/datamanager/v1.0/file/Home/noorussubah/GSE6328/Prep1_WT_RNA.bam /opt/gpbeta/gp_home/users/noorussubah/uploads/tmp/external/dm.genomespace.org/datamanager/v1.0/file/Home/noorussubah/GSE6328/Prep1_KO_RNA.bam failed at /opt/gpbeta/gp_home/taskLib/ Cuffdiff.7.38/CDwrapper.pl line 295.
+
+
+
+Barbara Hill
+unread,
+Nov 30, 2018, 2:04:38 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am unable to determine why this is occurring. However, we have made some changes to the server to improve performance.
+
+
+Please try re-running your job, both as is and also try running with files that you upload to our server, rather than linking to them from GenomeSpace.
+
+
+
+
+Let us know if you continue to have difficulties.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

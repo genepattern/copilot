@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/fS6mX0ZSaps
+Title: HeatMapImage color scale legend
+----------------------------------------
+
+
+
+
+
+HeatMapImage color scale legend
+6 views
+Skip to first unread message
+
+saq...@columbia.edu
+unread,
+Jul 13, 2018, 10:18:47 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I would like to use a heatmap generated from HeatMapImage v6, however, it is not immediately clear to me how to make a legend for the color scale. Under row normalization is each row max/min set independently for individual rows or is there a universal scale?
+
+
+Thanks,
+-Aidan
+Barbara Hill
+unread,
+Jul 16, 2018, 9:52:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Aidan, 
+
+
+Unfortunately, there is no legend output available for this module, and as it is a legacy module, we will not be adding that feature.
+
+
+All current and future development for the viewing of heatmaps is and will be in the HeatMapViewer module. 
+
+
+As for row max/min vs global - this can be set in the HeatMapImage module.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

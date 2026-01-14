@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/TnlrWulsLlU
+Title: GSEA // ssGSEA // combat
+----------------------------------------
+
+
+
+
+
+GSEA // ssGSEA // combat
+32 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+Oct 31, 2020, 3:49:39 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+Does anyone know if GSEA analysis or ssGSEA analysis are reliable after combat.
+Running a comparative marker selection on the combat files gives Fold Changes around 1, thus, I was wondering whether the GSEA and/or the ssGSEA outputs were solid.
+Thanks
+R
+Anthony Castanza
+unread,
+Nov 2, 2020, 12:08:53 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Data should always be properly normalized for between-sample comparisons before running GSEA, batch correction via tools like combat is should definitely be performed if you suspect that there may be batch effects in your data.
+We can't really speak to the specifics of your underlying dataset, if the fold changes are around 1, that's just what your data is.
+
+
+
+Without knowing more about what exactly you are using as input for GSEA/ssGSEA I can't really say if the results of that analysis are "sold" or not, but assuming you've followed all the recommended procedures for data processing for GSEA (between sample normalization - normalized counts - for standard GSEA, or within-sample normalization - TPM - for ssGSEA, use of the data for all genes not just DEGs, permutation type appropriate for sample number - for standard GSEA, etc.), I don't see why it wouldn't be.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+http://gsea-msigdb.org/
+
+
+Reply all
+
+Reply to author
+
+Forward

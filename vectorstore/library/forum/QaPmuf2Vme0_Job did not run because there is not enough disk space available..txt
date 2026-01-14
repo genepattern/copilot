@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user experienced a job failure due to insufficient disk space, reporting only 80MB of data in their directory, which was resolved by technical support without detailed explanation of the specific disk space constraint or solution mechanism.

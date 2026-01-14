@@ -1,0 +1,1 @@
+A user encountered a SubMap job failure in GenePattern due to two primary issues: insufficient memory allocation (initially resolved by increasing memory to 8GB) and an input file formatting error where the GCT file was missing a description column and improperly using spaces instead of tabs for separation, causing a mismatch in expected sample count.

@@ -1,0 +1,199 @@
+URL: https://groups.google.com./g/genepattern-help/c/xwfjs_LSZvo
+Title: Argument list-item order differs between module form submission and runtime
+----------------------------------------
+
+
+
+
+
+Argument list-item order differs between module form submission and runtime
+8 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 7, 2017, 4:59:31 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear,
+
+
+Using my picard MultipleMetrics full-GUI module, I have one residual problem linked to the default PROGRAM(s) used by the app.
+
+
+When no non-default option for PROGRAM= is specified, picard takes 5 predifined ones by default.
+This means that if I set any of the 5 defaults, I get all 5, even when I need only one.
+To cancel this behaviour, the user should give null as FIRST program choice to reset the defaults then one or more new PROGRAMs to be executed.
+
+
+I did put null as first choice in the list but when I set null + for instance 2 other program options from the list, the null argument is passed as second instead of first and cancels the first argument from the list in the resulting command (see extracts below).
+
+
+How can I enforce that the list arguments be taken in the order they are present in the module argument list, it does not seem the case (see new manifest cut for P4 and command behaviour)
+
+
+# the manifest reports null as first in list as the GUI interface defined it
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=CollectAlignmentSummaryMetrics
+p4_description=QC metrics (select 0 or more, add null to reset defaults)
+p4_fileFormat=
+p4_flag=PROGRAM\=
+p4_listMode=cmd_opt
+p4_name=program
+p4_numValues=0+
+p4_optional=on
+p4_prefix=PROGRAM\=
+p4_prefix_when_specified=PROGRAM\=
+p4_type=java.lang.String
+p4_value=null\=null;CollectAlignmentSummaryMetrics\=CollectAlignmentSummaryMetrics;CollectInsertSizeMetrics\=CollectInsertSizeMetrics;QualityScoreDistribution\=QualityScoreDistribution;MeanQualityByCycle\=MeanQualityByCycle;CollectBaseDistributionByCycle\=CollectBaseDistributionByCycle;CollectGcBiasMetrics\=CollectGcBiasMetrics;RnaSeqMetrics\=RnaSeqMetrics;CollectSequencingArtifactMetrics\=CollectSequencingArtifactMetrics;CollectQualityYieldMetrics\=CollectQualityYieldMetrics
+
+
+# Although first above, 'null' was moved as second when building the actual command below, deactivating the new-first argument CollectAlignmentSummaryMetrics
+
+
+cat ../535/.rte.out 
+
+job command line: /usr/lib/jvm/java-8-oracle/bin/java -Dhttp.proxyHost=null -Dhttp.proxyPort=null -jar /opt/tools/GenePatternServer/patches/picard-tools-2/picard.jar CollectMultipleMetrics I=/opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam O=MetricsQC_NA18507-10pc_sample_coord-srt.sorted.bam.txt PROGRAM=CollectAlignmentSummaryMetrics PROGRAM=null PROGRAM=CollectInsertSizeMetrics R=/opt/tools/GenePatternServer/users/.cache/uploads/cache/193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa VALIDATION_STRINGENCY=LENIENT VERBOSITY=INFO
+
+arg[0]: '/usr/lib/jvm/java-8-oracle/bin/java'
+arg[1]: '-Dhttp.proxyHost=null'
+arg[2]: '-Dhttp.proxyPort=null'
+arg[3]: '-jar'
+arg[4]: '/opt/tools/GenePatternServer/patches/picard-tools-2/picard.jar'
+arg[5]: 'CollectMultipleMetrics'
+arg[6]: 'I=/opt/tools/GenePatternServer/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam'
+arg[7]: 'O=MetricsQC_NA18507-10pc_sample_coord-srt.sorted.bam.txt'
+arg[8]: 'PROGRAM=CollectAlignmentSummaryMetrics'
+arg[9]: 'PROGRAM=null'
+arg[10]: 'PROGRAM=CollectInsertSizeMetrics'
+arg[11]: 'R=/opt/tools/GenePatternServer/users/.cache/uploads/cache/193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa'
+arg[12]: 'VALIDATION_STRINGENCY=LENIENT'
+arg[13]: 'VERBOSITY=INFO'
+
+
+# same 'disorder' in log
+
+
+cat gp_execution_log.txt
+
+# Created: Thu Aug 03 11:32:58 CEST 2017 by splaisan 
+# Job: 535    server:  http://10.33.126.105:8100 
+# Module: Picard_CollectMultipleMetrics_sp urn:lsid:8100.admin.MAF-SRV-04.maf-srv-04.med.ad10.intern.kuleuven.ac.be:genepatternmodules:29:12 
+# Parameters:  
+#    input.file = NA18507-10pc_sample_coord-srt.sorted.bam   http://10.33.126.105:8100/jobResults/340/NA18507-10pc_sample_coord-srt.sorted.bam 
+#    reference = ftp://193.191.128.4/pub/genome/Homo_sapiens.UCSC.hg19.fa 
+#    output_prefix = MetricsQC_<input.file_file>.txt 
+#    program = [CollectAlignmentSummaryMetrics, null, CollectInsertSizeMetrics] 
+#    stringency = LENIENT 
+#    verbosity = INFO
+
+Thanks for your feedback
+Stephane
+Peter Carr
+unread,
+Aug 7, 2017, 11:01:02 AM
+
+
+
+to genepatt...@googlegroups.com
+What version of Picard are you using?
+
+
+
+Stephane Plaisance
+unread,
+Aug 7, 2017, 11:56:12 PM
+
+
+
+to GenePattern Help Forum
+Dear Support, 
+
+I use the latest jar release link from https://broadinstitute.github.io/picard/command-line-overview.html which points to https://github.com/broadinstitute/picard/releases (I always stay uptodate as they keep improving it). 
+
+This release 2.10.7 includes the fix for the xml issue I reported before. 
+
+I installed the single jar file it in patches/picard-tools-2 and created a link <picard-tools-2> to the folder for use in the module
+
+
+ <java> <java_flags> -jar <picard-tools-2>/picard.jar CollectMultipleMetrics I=<input.file> ASSUME_SORTED=<assume.sorted> O=<output_prefix> <program>  INCLUDE_UNPAIRED=<include.unpaired> METRIC_ACCUMULATION_LEVEL=<MetricAccumulationLevel> <reference> <dbSNP> <intervals> FILE_EXTENSION=.txt VALIDATION_STRINGENCY=<stringency> VERBOSITY=<verbosity> QUIET=<quiet>
+
+I think the issue has nothing to do with Picard iself and occurs while creating the command on GP since the manifest is still OK and the logged PROGRAM options are wrongly ordered! 
+
+
+p5_MODE=
+
+
+p5_TYPE=TEXT
+
+p5_default_value=
+
+p5_description=QC metrics (select 0 or more, add null to reset defaults)
+
+p5_fileFormat=
+
+p5_flag=PROGRAM\=
+
+p5_listMode=cmd_opt
+
+p5_name=program
+
+p5_numValues=0+
+
+p5_optional=on
+
+p5_prefix=PROGRAM\=
+
+p5_prefix_when_specified=PROGRAM\=
+
+p5_type=java.lang.String
+
+p5_value=null\=null;CollectAlignmentSummaryMetrics\=CollectAlignmentSummaryMetrics;CollectInsertSizeMetrics\=CollectInsertSizeMetrics;QualityScoreDistribution\=QualityScoreDistribution;MeanQualityByCycle\=MeanQualityByCycle;CollectBaseDistributionByCycle\=CollectBaseDistributionByCycle;CollectGcBiasMetrics\=CollectGcBiasMetrics;RnaSeqMetrics\=RnaSeqMetrics;CollectSequencingArtifactMetrics\=CollectSequencingArtifactMetrics;CollectQualityYieldMetrics\=CollectQualityYieldMetrics
+
+
+
+
+I attach the further modified module for testing.
+ 
+Best Regards,
+Stephane
+
+Picard_CollectMultipleMetrics_sp.zip
+Peter Carr
+unread,
+Aug 8, 2017, 12:46:53 PM
+
+
+
+to GenePattern Help Forum
+When you create a 'Get-opt style list' for a parameter, they are passed along to the command line in the order in which they are selected. 
+
+
+To workaround this problem ...
+1) open the menu and click 'X Uncheck all'
+2) select 'null' option
+3) select other options in order ...
+
+
+I expect the selections to appear in the order in which they were made in the GUI, e.g.
+PROGRAM
+	
+
+null (overrides default), CollectAlignmentSummaryMetrics, CollectInsertSizeMetrics
+Which should result in a properly ordered command line, e.g.
+  java -jar /path/to/picard.jar CollectMultipleMetrics ... PROGRAM=null PROGRAM=CollectAlignmentSummaryMetrics PROGRAM=CollectInsertSizeMetrics  ...
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

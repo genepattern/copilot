@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/cFwXCq0fEaw
+Title: Module repositories currently offline for unplanned system maintenance
+----------------------------------------
+
+
+
+
+
+Module repositories currently offline for unplanned system maintenance
+35 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Apr 26, 2019, 11:24:08 AM
+
+
+
+to genepatt...@googlegroups.com
+An update to this post can be found here.
+
+
+The GenePattern module repository is currently offline for unplanned system maintenance.
+
+
+If you need access to a module not already installed on your server, please leave a message here in the forum and we work to get you a copy, which can be installed via the "Install from Zip" item in the Modules & Pipelines menu.
+
+
+We do apologize for the inconvenience.
+
+
+Sincerely, 
+The GenePattern Team
+Gerry
+unread,
+Apr 28, 2019, 8:07:32 PM
+
+
+
+to GenePattern Help Forum
+Hii, 
+
+
+May I get a copy of the ComparisonMarkerSelection module for installation? Many thanks. 
+
+
+
+On Saturday, 27 April 2019 02:24:08 UTC+8, GenePattern Help Forum wrote:
+The GenePattern module repository is currently offline for unplanned system maintenance. We are
+
+Peter Carr
+unread,
+Apr 29, 2019, 8:40:54 AM
+
+
+
+to genepatt...@googlegroups.com
+You can download the module from the GenePattern Server.
+    1) Log in to GenePattern (https://cloud.genepattern.org/gp/)
+    2) Click the 'Modules' tab and enter or select ComparativeMarkerSelection. This takes you to the module input form.
+    3) Click the gear menu on the module input form and 'Export' the module as a zip file.
+
+In general, recently released modules (and pre-releases) are available as GitHub releases.
+  Note: CMS v10.1 is not in GitHub. You should get it from the GP server.
+  Note: pre-release modules may not be fully vetted. For best results, double check the latest version that is installed on the cloud.gp server.
+
+    1) Go to the GenePattern GitHub repository, https://github.com/genepattern
+    2) Enter the module name in the "Find a repository ..." box. This will show a link to the github repo for the module. E.g.
+        https://github.com/genepattern/ComparativeMarkerSelection
+    3) From the GitHub repo for the module, click the 'releases' link, E.g.
+        https://github.com/genepattern/ComparativeMarkerSelection/releases
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8c33a298-ea7e-48ff-8ff6-76d7b36b705d%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

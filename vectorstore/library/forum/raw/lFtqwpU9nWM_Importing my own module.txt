@@ -1,0 +1,119 @@
+URL: https://groups.google.com./g/genepattern-help/c/lFtqwpU9nWM
+Title: Importing my own module
+----------------------------------------
+
+
+
+
+
+Importing my own module
+14 views
+Skip to first unread message
+
+Barry Demchak
+unread,
+Jun 9, 2021, 3:47:42 PM
+
+
+
+to GenePattern Help Forum
+Hi, all --
+
+
+I'm porting a notebook into GenePattern Notebook and am having problems importing a module I wrote and checked into PyPI. The following code is an outtake of what works on another Jupyter Notebook system, but doesn't work here.
+
+
+I'm sure this must be basic basic basic, so if anyone can help, please do ...
+
+
+!pip install py4cytoscape   # Seems to install without problems
+
+print("\n\nIt looks like py4cytoscape is installed and should be available:")
+!pip show py4cytoscape  # Shows without problems
+
+print("\n\nBut it's not available:")
+import py4cytoscape as p4c  # This fails ... can't find py4cytoscape module
+
+
+Thanks!
+
+Thorin Tabor
+unread,
+Jun 9, 2021, 4:07:05 PM
+
+
+
+to genepatt...@googlegroups.com, Barry Demchak
+
+Hello,
+
+It looks like your Python package is being installed into the container's default Python environment rather than the Python environment used by that specific IPython kernel. To make your package available in the kernel, I recommend installing it with the --user flag. For example:
+
+!pip install --user py4cytoscape
+
+Hope that helps.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/38e585a9-d2b2-4b9f-ba77-2aa9c5901914n%40googlegroups.com.
+
+Barry Demchak
+unread,
+Jun 9, 2021, 4:23:53 PM
+
+
+
+to Thorin Tabor, genepatt...@googlegroups.com
+
+Thanks, Thorin –
+
+ 
+
+Just tried that … same result.
+
+ 
+
+So, after playing with GenePattern Notebook a bit (and still failing in the same way), it looks like the right thing was to drop into a Terminal session, uninstall py4cytoscape (pip uninstall py4cytoscape), and then try my test again.
+
+ 
+
+Still getting a failure, but a better one … using “—user” seems to now install as expected, and the error is in an igraph import that’s in one of the py4cytoscape modules. So now I think my drill is to collect up the dependencies and do the same –user install.
+
+ 
+
+Good stuff … I’ll work on this more tomorrow.
+
+ 
+
+Thanks!
+
+
+Barry Demchak
+unread,
+Jun 10, 2021, 1:57:53 PM
+
+
+
+to GenePattern Help Forum
+OK ... I think I'm OK now ...
+
+
+For the record, too ... I needed to make sure the module was installed in the directory corresponding to the kernel I was using. For example, py4cytoscape was installed in the local directory for python3.8 ... a new script that uses python3.7 didn't find py4cytoscape. The fix was to set the kernel for the new script to python3.8, too.
+
+
+Hopefully, anyone else having this problem will see this thread.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

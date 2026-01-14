@@ -1,0 +1,1 @@
+Announcement of HTSeq.Count version 0.11.2 module now available on GenePattern Cloud platform, providing researchers with a new computational tool for RNA-seq read counting and quantification analysis.

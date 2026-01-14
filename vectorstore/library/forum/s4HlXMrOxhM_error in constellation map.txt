@@ -1,0 +1,1 @@
+GenePattern constellation map module error involving inability to open 'xxx.HEATMAP.png' file, likely due to input file compatibility or processing issue with ssGSEA module results, with support representative requesting additional job details to diagnose specific problem and potential resolution.

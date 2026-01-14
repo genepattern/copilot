@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/KkZ6lmQA-_4
+Title: Error using genes_at (line 15)
+----------------------------------------
+
+
+
+
+
+Error using genes_at (line 15)
+15 views
+Skip to first unread message
+
+Niels Verburg
+unread,
+Jan 13, 2021, 12:26:22 AM
+
+
+
+to GenePattern Help Forum
+
+
+Dear GenePattern,
+
+I get the following error message when trying to run GISTIC2 (via broad website) on DNA methylation (EPIC array) derived segmentation file (CHAMP pipeline) of multiple samples:
+
+"Error using genes_at (line 15) End position is before start position Error in genetables (line 71) Error in write_gistic_outfiles (line 88) Error in run_focal_gistic (line 319) Error in run_gistic20 (line 124) Error in run_gistic2_from_seg (line 249) Error in gp_gistic2_from_seg (line 97)"
+
+I've checked the segmentation file and end.position is always higher than the start.position. Using a marker file does not change the error.
+
+Kind regards,
+
+Niels Verburg
+
+Barbara Hill
+unread,
+Jan 13, 2021, 7:30:27 AM
+
+
+
+to GenePattern Help Forum
+Hi Niels, 
+
+
+Can you send your job id? That will help with debugging on our end.
+
+
+Thank you!
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

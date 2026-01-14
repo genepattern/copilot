@@ -1,0 +1,1 @@
+GSEAPreranked module in GenePattern encountered a NumberFormatException error due to 'Inf' values in the input ranked file, which Java cannot parse as a float; the solution was to replace 'Inf' values with a large finite number like 9999999999999, allowing the module to successfully complete the gene set enrichment analysis.

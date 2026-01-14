@@ -1,0 +1,1 @@
+A user reported problems running Nearest Template Prediction (NTP) in GenePattern, where all samples were being classified as class 0, potentially due to an interaction between log2 normalized data and cosine similarity metric, with no definitive resolution identified.

@@ -1,0 +1,104 @@
+URL: https://groups.google.com./g/genepattern-help/c/hA0892hrFgo
+Title: ARACNE help please?
+----------------------------------------
+
+
+
+
+
+ARACNE help please?
+23 views
+Skip to first unread message
+
+Daniel Lee
+unread,
+Nov 27, 2023, 2:51:09 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+I'd like to utilize the hub genes and transcription factor (TF) features.
+
+
+I have a list of differentially expressed genes (DEGs).
+Do I select the hub genes among the DEGs using whichever criteria- e.g., fold change?
+How do I compile the TF file- are these the TFs among the DEGs, or do I compile the list by finding the TFs that regulate all the DEGs?
+
+
+Thanks in advance,
+Daniel
+Michael Reich
+unread,
+Nov 27, 2023, 11:11:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Daniel - please see below for answers to your questions,
+
+
+https://groups.google.com/g/genepattern-help
+
+
+
+On Mon, Nov 27, 2023 at 2:51 AM Daniel Lee <beave...@gmail.com> wrote:
+
+Dear all,
+I'd like to utilize the hub genes and transcription factor (TF) features.
+
+
+I have a list of differentially expressed genes (DEGs).
+Do I select the hub genes among the DEGs using whichever criteria- e.g., fold change?
+Yes, you can use fold change on differentially expressed genes or any other similar criteria to select hub genes.
+How do I compile the TF file- are these the TFs among the DEGs, or do I compile the list by finding the TFs that regulate all the DEGs?
+The TF file consists of all features of the input dataset that are transcription factors, not only those that regulate the DEGs or are among the DEG.
+
+
+Thanks in advance,
+Daniel
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/99d0ac59-32a6-4682-a6d6-b17c27110d4cn%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+Daniel Lee
+unread,
+Nov 27, 2023, 12:40:20 PM
+
+
+
+to GenePattern Help Forum
+Dear Michael and all,
+Thanks for the answers. Do you agree with the boldened summaries below:
+
+Do I select the hub genes among the DEGs using whichever criteria- e.g., fold change?
+Yes, you can use fold change on differentially expressed genes or any other similar criteria to select hub genes.
+OK, so I can select "hub genes" however I'd like.
+
+
+How do I compile the TF file- are these the TFs among the DEGs, or do I compile the list by finding the TFs that regulate all the DEGs?
+The TF file consists of all features of the input dataset that are transcription factors, not only those that regulate the DEGs or are among the DEG.
+Meaning that the TF file includes 1) the DEGs that are TFs and 2) the genes not in the DEGs, but are TFs of the DEGs.
+
+
+Thanks for clarifying!
+
+
+Reply all
+
+Reply to author
+
+Forward

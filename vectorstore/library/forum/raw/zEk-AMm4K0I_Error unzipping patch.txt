@@ -1,0 +1,112 @@
+URL: https://groups.google.com./g/genepattern-help/c/zEk-AMm4K0I
+Title: Error unzipping patch
+----------------------------------------
+
+
+
+
+
+Error unzipping patch
+12 views
+Skip to first unread message
+
+MARC TORMO PUIGGROS
+unread,
+Sep 30, 2020, 12:54:48 AM
+
+
+
+to GenePattern Help Forum
+
+
+Hello,
+
+
+I'm trying to use Genepattern in a cluster, but I'm  getting errors when installing some modules:
+
+Bowtie.aligner
+
+Downloading required patch from http://software.broadinstitute.org/webservices/gpModuleRepository/download/prod/patch/?file=/Bowtie_2.1.0/broadinstitute.org:plugin/Bowtie_2.1.0/1/Bowtie_2_1_0.zip...
+Download length: 341 bytes.
+downloaded 341 bytes
+Installing patch from /aplic/noarch/software/GenePattern/v3.9.11-b250/patches/broadinstitute.org.plugin.Bowtie_2.1.0.1.
+
+Errors: 1. Error unzipping patch from ./temp/task3668872982107093525.zip into /aplic/noarch/software/GenePattern/v3.9.11-b250/patches/broadinstitute.org.plugin.Bowtie_2.1.0.1
+
+
+Do you have any clue for this error?
+
+
+Thank you very much!
+
+Ted Liefeld
+unread,
+Sep 30, 2020, 11:51:46 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it appears you found a bug in our current version.  The issue is that the patch URL is being redirected several times (from software.broadinstitute.org -> www.broadinstitute.org -> modulerepository.genepattern.org -> https://modulerepository.genepattern.org) and somewhere along the way the code is getting confused and is not following the redirect.
+
+
+As a temporary workaround, I have edited the module manifest to use the final path and made it available at https://datasets.genepattern.org/data/module_support_files/BowTie/Bowtie.aligner.patched.zip.  You can try to install it from this URL instead using the GenePattern "Modules & Pipelines --> Install from zip" menu item.
+
+
+I have created a new bug report for this and we will fix it in a future GenePattern release.
+
+
+hope this helps,
+
+
+Ted
+
+TORMO PUIGGROS, MARC
+unread,
+Oct 1, 2020, 12:47:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks,
+
+
+It worked for me.
+
+
+Best
+
+
+Marc Tormo
+
+marc....@upf.edu
+
+
+Bioinformatician
+CEXS - Universitat Pompeu Fabra
+Office 62.350.08 | Dr. Aiguader, 88 | 08003 Barcelona
+[Tel.] +34 93 316 09 15 (1915)
+
+
+
+
+
+
+
+Missatge de Ted Liefeld <lie...@broadinstitute.org> del dia dc., 30 de set. 2020 a les 20:51:
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/zEk-AMm4K0I/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e205f274-8ae1-4756-a950-54e427acbbcdn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

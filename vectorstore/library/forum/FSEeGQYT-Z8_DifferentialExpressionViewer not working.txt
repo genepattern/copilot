@@ -1,0 +1,1 @@
+A GenePattern user experienced an error loading the DifferentialExpressionViewer when attempting to visualize differential expression analysis results, with a "Not Found" error message appearing despite the ODF and GCT files being recognized, prompting a request from the GenePattern team for additional job details to help troubleshoot the technical issue.

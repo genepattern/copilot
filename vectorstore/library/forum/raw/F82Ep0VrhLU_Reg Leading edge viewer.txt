@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/F82Ep0VrhLU
+Title: Reg Leading edge viewer
+----------------------------------------
+
+
+
+
+
+Reg Leading edge viewer
+24 views
+Skip to first unread message
+
+Chitra Subramanian
+unread,
+Jan 4, 2020, 7:41:01 PM
+
+
+
+to GenePattern Help Forum
+I am trying to view the results of my leading edge analysis. But, get an error. Even though i have the right user name and password as well as the job number.
+Error retrieving job details: HTTP/1.1 401 Invalid credentials, https://cloud.genepattern.org/gp/rest/v1/jobs/194167
+
+Ted Liefeld
+unread,
+Jan 6, 2020, 11:41:26 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+how are you trying to run this.  Are you using the Visualizer Launcher and having difficulty with that (https://genepattern.github.io/VisualizerLauncher/) or are you doing this some other way?
+
+
+Thanks
+
+
+Ted
+
+Chitra Subramanian
+unread,
+Jan 6, 2020, 6:16:55 PM
+
+
+
+to GenePattern Help Forum
+Yes. I am using https://genepattern.github.io/VisualizerLauncher/. When i use the visualization analyzer i get error message.
+
+Ted Liefeld
+unread,
+Jan 7, 2020, 9:07:03 AM
+
+
+
+to GenePattern Help Forum
+This is a bit of a mystery.  I presume that this is persisting and was not just a one-time blip.  One thing you could try would be to change the job permissions to public and see if that lets it work.  In my account (as admin) I have no problem launching the visualizer.
+
+
+Ted
+
+Chitra Subramanian
+unread,
+Jan 14, 2020, 1:12:54 PM
+
+
+
+to GenePattern Help Forum
+Hi
+I am still having error. How do I change the permission tp public
+
+
+On Saturday, January 4, 2020 at 10:41:01 PM UTC-5, Chitra Subramanian wrote:
+
+Ted Liefeld
+unread,
+Jan 24, 2020, 10:37:33 AM
+
+
+
+to GenePattern Help Forum
+Sorry I missed this for so long.  On the JobStatus page, click on the 'edit sharing' link near the lock icon.  It opens another dialog to let you set the permissions on the job.
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

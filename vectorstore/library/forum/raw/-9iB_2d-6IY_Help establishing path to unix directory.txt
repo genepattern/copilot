@@ -1,0 +1,34 @@
+URL: https://groups.google.com./g/genepattern-help/c/-9iB_2d-6IY
+Title: Help establishing path to unix directory
+----------------------------------------
+
+
+
+
+
+Help establishing path to unix directory
+6 views
+Skip to first unread message
+dbou...@broadinstitute.org
+unread,
+Nov 16, 2017, 11:04:21 AM
+
+
+
+to GenePattern Help Forum
+hi
+
+
+I previously had a path set up linking my unix directory to GP.  My directory path has changed and I'm wondering if someone can update it so I can access my directory straight from GP or let me know how to do so. 
+
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

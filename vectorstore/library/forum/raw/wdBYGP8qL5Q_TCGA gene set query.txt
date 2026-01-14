@@ -1,0 +1,113 @@
+URL: https://groups.google.com./g/genepattern-help/c/wdBYGP8qL5Q
+Title: TCGA gene set query
+----------------------------------------
+
+
+
+
+
+TCGA gene set query
+35 views
+Skip to first unread message
+
+Daniel Fisher
+unread,
+Apr 24, 2024, 9:47:11 AM
+
+
+
+to GenePattern Help Forum
+I have a technical question about GenePattern, which maybe you can reply or forward to the appropriate person? I'm looking for expression of a gene set (not a single gene), and I want to query LALM dataset (AML versus normal control CD34+ cells) for prevalence of high expression of this gene set. It isn't clear to me how to do this in GenePattern. Can you please instruct me on this or forward my question to someone who can?
+
+
+
+If possible, please direct reply to my work email: fis...@wustl.edu
+
+
+Thank you,
+
+
+Daniel Fisher
+
+
+edh...@cloud.ucsd.edu
+unread,
+Apr 24, 2024, 1:53:14 PM
+
+
+
+to GenePattern Help Forum
+Hi Daniel, 
+
+
+GSEA on GenePattern can do what you want. Here's the documentation page to the algorithm and what inputs/outputs to use: https://gsea-msigdb.github.io/gsea-gpmodule/v20/index.html. There's also a GSEA specific help page you can post on: https://groups.google.com/g/gsea-help. This paper can help you walk through the analysis steps - you can feel free to ignore the parts that refer to older technology platforms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893799/. 
+
+
+Let us know if you have any other questions!
+Edwin Huang
+
+Daniel Fisher
+unread,
+Apr 24, 2024, 3:02:23 PM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+
+
+Thanks! I'm familiar with GSEA. I've been doing a lot of it lately. A problem here is that the TCGA LAML RNA-Seq dataset is publicly available only as files for individuals in the dataset -- probably because of large file sizes -- which would mean an enormous amount of downloading files, and then somehow combining them into one gigantic gct file. 
+I was wondering if there was a workaround for this. I know GenePattern has a TCGA related GSEA function, but I couldn't get it to work. The TCGA website allows queries of individual genes, but not gene sets. Do you know of a solution to this problem?
+
+
+Thanks again,
+
+
+Daniel
+
+edh...@cloud.ucsd.edu
+unread,
+Apr 26, 2024, 10:41:08 AM
+
+
+
+to GenePattern Help Forum
+Hi Daniel,
+
+
+Sorry for the late reply, I thought I posted the message but I guess it didn't send. 
+
+
+To answer your question, the TCGAImporter module will help with that. This module imports data from TCGA by taking in a GDC manifest file, downloading the files listed on that manifest, renaming them to be human-friendly, and compiling them into a GCT file to be computer-friendly. 
+
+
+Some documentation links:
+Module documentation: https://www.genepattern.org/modules/docs/TCGAImporter/6#gsc.tab=0
+Guide to downloading manifest file: https://github.com/genepattern/TCGAImporter/blob/master/how_to_download_a_manifest_and_metadata.pdf
+
+
+Hope this helps, 
+Edwin 
+
+Daniel Fisher
+unread,
+Apr 29, 2024, 11:46:08 AM
+
+
+
+to GenePattern Help Forum
+Hi Edwin,
+Thank you! I'll read the guide you sent and then try it. If I have any problems, I'll contact you.
+
+
+Thanks again,
+
+
+Daniel
+
+
+Reply all
+
+Reply to author
+
+Forward

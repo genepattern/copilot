@@ -1,0 +1,1 @@
+GenePattern NTP module error caused by duplicate gene rows in input GCT file, resolved by removing duplicate rows with gene names following the pattern "PAR_Y_<gene name of the line above>", which were preventing proper data processing and causing a missing value error during gene matrix analysis.

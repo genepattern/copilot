@@ -1,0 +1,29 @@
+URL: https://groups.google.com./g/genepattern-help/c/ZcnYJOsoZvA
+Title: Announcement: GParc website is now deprecated.
+----------------------------------------
+
+
+
+
+
+Announcement: GParc website is now deprecated.
+4 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 13, 2021, 8:48:38 AM
+
+
+
+to GenePattern Help Forum
+As of Dec 13, 2021, we have deprecated the GParc website. 
+GParc modules are still available in the GParc repository, and GParc module documentation has been archived in GitHub.
+For more information please see our blog:
+https://www.genepattern.org/blog/2021/12/09/end-of-support-for-gparc
+
+
+Reply all
+
+Reply to author
+
+Forward

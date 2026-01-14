@@ -1,0 +1,160 @@
+URL: https://groups.google.com./g/genepattern-help/c/9UmpaGk4hhI
+Title: Genepattern server docker installation
+----------------------------------------
+
+
+
+
+
+Genepattern server docker installation
+52 views
+Docker
+Installation
+Skip to first unread message
+
+ppdragon
+unread,
+Jun 8, 2020, 7:29:05 PM
+
+
+
+to genepatt...@googlegroups.com
+I tried run genepattern server in docker. The genepattern server  can not be started. Below are my steps, 
+
+
+1.
+docker pull genepattern/genepattern-server:v3.9.11-rc.5-b252
+
+
+2.
+docker run -it genepattern/genepattern-server:v3.9.11-rc.5-b252 /bin/bash
+
+
+3.
+cd /opt/genepattern
+
+
+ ./StartGenepatternserver
+
+(there is no output in the terminal),
+4. Open browser on host, go 127.0.0.1:8080/gp, the server can not be started
+
+
+Attached please find webserver.log and genepatter.log.
+________________________________________
+
+
+I also tired to run
+./startgp-host.sh
+
+in /gpinstall, get error:
+ 
+
+lookup docker on 192.168.1.1:53 no such host
+
+
+This looks like a very common error of Docker. I tried lots of things to fix it including editing /etc/resolv.conf 
+add nameserver 8.8.8.8
+
+
+
+But the error is the same. 
+
+
+Did I did someting run for genepattern-server docker? 
+
+
+My OS is Ubuntu 20, I tried MAC, and had the same error.
+
+
+Thanks.
+
+
+
+webserver.log
+
+genepattern.log
+Ted Liefeld
+unread,
+Jun 9, 2020, 7:26:59 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+you are jumping the gun on us a bit as we are just starting to write up the doc and process for running a GenePattern server in docker.  I can send you the current doc for it via a private message in the forum.  Since its not yet complete or QA'd I would rather not publish the doc publicly yet.
+
+
+That said, I will try to set out the issues here in case others want to try this before we release.  
+
+
+So far we have only run the server on docker in OSX but this should also work for linux.  The things that might be missing in your first attempt are
+
+
+1. Port mapping - you need to map 8080 out to the host 
+2. Drive mapping - we keep the jobResults, tasklib,  user and resources folder external to the container (mounted drive or docker volume) so they persist through GenePattern updates
+3. docker.sock mapping - GenePattern needs to call the docker host to run modules so the docker.sock also has to be mounted to the container
+4. configuration - the jobs.docker.bind.source in the GenePattern config_custom.yaml file must specify the root folder for the jobResults, tasklib, resources and user folders so that the module containers can access their contents as well.
+ 
+When this is released there will be a script to do all this setup for you.  In the meantime I will send along the current doc privately.
+
+
+Hope this helps
+
+
+Ted
+
+ppdragon
+unread,
+Jun 9, 2020, 10:21:38 PM
+
+
+
+to GenePattern Help Forum
+Yes, please send me the document. I would like to try it.
+What is the platform that you recommend for local genepattern server? Linux or OSX.
+
+
+I tried both, but neither of them works for me. I will ask in another post.
+
+
+Ted Liefeld
+unread,
+Jun 10, 2020, 6:03:02 AM
+
+
+
+to genepatt...@googlegroups.com
+You should have gotten the document in another message just a few minutes after the last one.  You might want to check your spam folder/trash.  as for platform, development was done on OSX
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0cd0552e-ca6b-4838-9ed8-6f734aecff8eo%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

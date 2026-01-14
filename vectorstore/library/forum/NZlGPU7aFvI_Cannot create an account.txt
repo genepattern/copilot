@@ -1,0 +1,1 @@
+Thread summary: A user experienced an account creation error on the Broad Institute GenePattern server related to an inability to create a home directory, which was resolved after a system administrator performed disk cleanup, enabling successful account registration.

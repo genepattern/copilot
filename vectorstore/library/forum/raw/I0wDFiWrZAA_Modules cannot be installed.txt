@@ -1,0 +1,72 @@
+URL: https://groups.google.com./g/genepattern-help/c/I0wDFiWrZAA
+Title: Modules cannot be installed
+----------------------------------------
+
+
+
+
+
+Modules cannot be installed
+25 views
+Skip to first unread message
+
+Berengere
+unread,
+Jul 31, 2017, 3:05:46 AM
+
+
+
+to GenePattern Help Forum
+Dear all,
+
+I just tried to start a new server for genepattern on my windows computer (I installed the last version for windows). However, on the interface, I can see this message:
+
+"There are no modules installed. Click here to install modules from the module repository."
+
+If I click on the "here" link, I reach a page with a new error message:
+
+"Sorry, the module repository is not currently available: http://www.broadinstitute.org/webservices/gpModuleRepository White spaces are required between publicId and systemId.
+
+If you use a web proxy to connect to the internet, please ensure your web proxy settings are correct"
+
+
+
+
+
+
+
+Could you please thus indicate to me how to overcome this problem and to install these modules?
+
+Thank you very much in advance for your help.
+
+Best regards,
+
+Bérengère
+
+Barbara Hill
+unread,
+Jul 31, 2017, 2:48:08 PM
+
+
+
+to GenePattern Help Forum
+Hello Bérengère
+
+
+We no longer support Windows local GenePattern installs, and there has been a change to the way the servers connect to the repositories since we we did support Windows. Which is to say, this is expected.
+
+
+Is there a reason you need a local install of GenePattern? There are a few DIY things you could try, but if you don't really need to be administrating your own server, I would suggest using on of our public servers: http://software.broadinstitute.org/cancer/software/genepattern/use-genepattern
+
+
+Let us know how we can help.
+
+
+Best,
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

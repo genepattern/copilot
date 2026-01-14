@@ -1,0 +1,1 @@
+A GenePattern team member informed users that the download page for GenePattern server installers has been moved directly to GitHub (https://github.com/genepattern/genepattern-server/releases), replacing the previous redirect page, and recommended users update their notes or scripts to use the new GitHub link for downloading server releases.

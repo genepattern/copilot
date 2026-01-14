@@ -1,0 +1,1 @@
+Announcement of planned server maintenance for GenePattern cloud platform to address file access module issues, with scheduled downtime from 10:30-11:30 AM PDT on July 12, providing users advance notice of temporary service interruption for system update.

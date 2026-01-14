@@ -1,0 +1,149 @@
+URL: https://groups.google.com./g/genepattern-help/c/3xne6_r_I24
+Title: public server jobs slow to exectute
+----------------------------------------
+
+
+
+
+
+public server jobs slow to exectute
+27 views
+Skip to first unread message
+
+Charlie Whittaker
+unread,
+Mar 29, 2018, 4:48:39 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+I have 2 small jobs on the public server that have been pending for several hours
+
+1654908. PreprocessDataset
+Pending
+2018-03-29 11:03:13.923
+1654907. PreprocessDataset
+Pending
+2018-03-29 11:01:59.092
+
+Is the server running ok? Normally these kinds of things execute immediately
+
+Thanks
+
+Charlie
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Mar 29, 2018, 6:08:43 PM
+
+
+
+to genepatt...@googlegroups.com
+I am offline right now. I look into the traffic jam on our production server first thing Friday. 
+
+
+Meanwhile, try one of our other servers as mentioned on the Use GenePattern page (http://software.broadinstitute.org/cancer/software/genepattern/use-genepattern).
+
+
+I recommend GP@IU (http://gp.indiana.edu/gp/). 
+
+
+We also have a beta server hosted on AWS infrastructure (https://gp-beta-ami.genepattern.org/gp/).
+
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d8701048-c70a-435b-9790-46822d24e675%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Charlie Whittaker
+unread,
+Mar 30, 2018, 2:33:50 AM
+
+
+
+to GenePattern Help Forum
+Thank you Peter, the AWS version:
+https://gp-beta-ami.genepattern.org/gp/
+
+
+
+worked perfectly
+
+Message has been deleted
+Peter Carr
+unread,
+Apr 2, 2018, 8:04:59 PM
+
+
+
+to genepatt...@googlegroups.com
+The traffic jam should be cleared up by now. Are you able to run your jobs on the public server?
+
+I'd like to know more about your experience with the beta version? Did you try on the beta server?
+    https://gp-beta-ami.genepattern.org/gp/
+If so, what module were your trying to run. And what problems did you encounter.
+
+Thanks,
+Peter
+
+   
+
+
+On 3/30/18 2:26 PM, Patricia Hernandez wrote:
+
+I'm having the same problem. I have been trying to run a prediction on the public server. I ran it perfectly find on Tuesday, but yesterday (Thursday) and today, the jobs don't process.
+
+
+I tried the beta version, still no luck.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4b45d1af-1664-43ac-9956-4f707416ab45%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+
+Reply all
+
+Reply to author
+
+Forward

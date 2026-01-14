@@ -1,0 +1,199 @@
+URL: https://groups.google.com./g/genepattern-help/c/H0KS8CBCy-c
+Title: Request to Help for GSEA Analysis
+----------------------------------------
+
+
+
+
+
+Request to Help for GSEA Analysis
+58 views
+Skip to first unread message
+
+Shams Zahra
+unread,
+May 11, 2021, 10:51:23 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+I am trying to do a Gene Set Enrichment Analysis (GSEA) analysis of my bulk RNA sequence data, I have 2 groups control and treatment (each having triplicate samples).
+I tried to follow the gsea user guide as well as the tutorial, but there seems to be some problem with  either my input file or  Selecting Hosted Chip Annotations
+While running gsea it gives an error that shows there's no input file.
+1) I would appreciate it if I could see any format template file.
+2) Also I want to ask can I load 2 values i.e. averages of triplicate of each group.
+
+
+Thanks in anticipation.
+Best regards
+Zahra Shams
+Anthony Castanza
+unread,
+May 11, 2021, 10:56:52 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Zahra,
+
+
+Could you please provide the Job ID for the GSEA run that errored so that we can see what might've gone wrong?
+
+
+You can find the GCT format specification for the input files here: http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29
+but until I'm able to look at the error message I can't say for sure if there was anything wrong with your file's format.
+
+
+With regard to using sample averages. We don't recommend this. GSEA works best when providing the full data for all samples. This is what it was designed to work with and what the included ranking metrics support.
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFp_%2Bba%3DvK_O0C3bfNcwc%3D3VqDppN%3DEm0VAXrwpmDKW5g_f1uw%40mail.gmail.com.
+
+
+
+--
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+Shams Zahra
+unread,
+Jun 2, 2021, 10:37:59 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Anthony,
+Apologies for late response, I just got my notebook repaired back. I am attaching the screenshot of an error which I am facing continuously and unable to run my gsea as well as I am also pasting my selection, please have a look if there is any problem (as I am quite a beginner in this). I would greatly appreciate it if you could kindly help me to resolve this issue. FYI, my file is a text file as per gsea user guide containing gene id list and values
+Thank you.
+Best Regards
+Zahra
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZw%2Bc_AHw2SYZ2D3svWxNJLqP4o1VAAnQO0OvqX8aaR%2Bpw%40mail.gmail.com.
+
+Anthony Castanza
+unread,
+Jun 2, 2021, 11:07:42 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Zahra,
+
+
+I think I see the issue now, you actually mentioned it in your first message and I missed it. You should not use the triplicate averages for each group. You should use the data for all the replicates, GSEA will do the averaging internally, and if you don't provide it the replicates it isn't able to perform the expected math.
+
+
+You'll also have the make the corresponding change to the CLS file.
+
+
+Additionally with a 3 vs 3 experiment you'll want to set permutation type to "gene_set" rather than "phenotype".
+
+
+Also, I'd take a close look at your CLS file name, it looks like GSEA might be doing something weird with the ' character in it. GSEA has kind of an old codebase so, out of an abundance of caution, we generally recommend against using any special characters in filenames.
+
+
+Finally, your gene set database file appears to be pointing at an extremely old and unsupported version (version 6.0). The current version is 7.4 and we strongly recommend using it over the old ones. 
+
+
+Likewise, your chip file is pointing at the MSigDB 7.0 version, another old file that's undergone extensive refinement in newer builds, and we recommend using the matching 7.4 version (there was a name change to include the "Human Orthologs" text in the file names, this is because all MSigDB gene sets are in human gene symbols so we have to perform conversion to make them match the gene sets). It's unusual to have a dataset using the NCBI gene ID namespace, if you want to send an example of the gene IDs from your file, I'd be happy to double check that this is the correct chip file for your data.
+
+
+I think this should address the issues I noticed in your screenshots, but if you encounter further error messages please don't hesitate to reach out again.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFp_%2BbZMsiRFPn16Zq8AzPJYJBN4uC2MnBS7JaaGMsH5ZFRGTA%40mail.gmail.com.
+
+Shams Zahra
+unread,
+Jun 6, 2021, 4:39:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Anthony,
+I must appreciate your kind and detailed explanation. For sure I am gonna follow these instructions to re-run my gsea to perform it correctly.
+1) Here I am attaching an example of the gene IDs from my file. Please double check it as you mentioned and let me know if my selected chip file is the correct chip file for my data or not.
+(Additionally, please note my RNA seq data is from mouse cell lines).
+2) Being a beginner to gsea, For my own curiosity I wanna ask a simple question usually what you recommend to run all of the genes i.e 23K+ whatever whole list we got from our bulk RNA seq data or we can run only our analyzed list of genes which we are focusing on like 2 fold &  p<0.05.
+Much thanks for your help.
+Best Regards
+Zahra
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZxHLov5B%2BFZGwv9s%3DdigxHradneJ16jm-2iAxx2f96gkg%40mail.gmail.com.
+
+
+geneID example.xlsx
+Anthony Castanza
+unread,
+Jun 6, 2021, 10:08:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Zahra,
+
+
+1) For running mouse data with these IDs using MSigDB 7.4, the correct chip would be "Mouse_Gene_Symbol_Remapping_Human_Orthologs_MSigDB.v7.4.chip", and not the NCBI_Gene_ID chip.
+2) GSEA needs the entire list of genes, not the filtered list after applying cutoffs.
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAFp_%2BbZns0ZOnxn%3D2Xt_g5MQHieW7m8V_8f8B%3DGn%2BA9%2Bgan5jw%40mail.gmail.com.
+
+
+Shams Zahra
+unread,
+Jun 6, 2021, 9:51:18 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Anthony,
+Thank you for your kind response, I already loaded my entire list of genes and I will update the chip file as well.
+
+Thank you.
+Best Regards
+Zahra
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZwdpmAv649Aii6PPn6ADB_uA6h%3DwjtgFHG1o%2BTLkfT6jw%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

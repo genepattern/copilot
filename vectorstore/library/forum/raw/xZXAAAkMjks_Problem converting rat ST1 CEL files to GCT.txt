@@ -1,0 +1,30 @@
+URL: https://groups.google.com./g/genepattern-help/c/xZXAAAkMjks
+Title: Problem converting rat ST1 CEL files to GCT
+----------------------------------------
+
+
+
+
+
+Problem converting rat ST1 CEL files to GCT
+3 views
+Skip to first unread message
+JMB
+unread,
+Mar 22, 2019, 7:49:31 AM
+
+
+
+to GenePattern Help Forum
+Uploading zip of CEL files.  I keep getting this error message: /N/u/gpserver/Karst/opt/genepattern/gp/resources/wrapper_scripts/run-with-env.sh: line 598: Rscript: command not found
+job finished but exit code is not 0, return C   JOB 88241
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

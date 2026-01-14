@@ -1,0 +1,1 @@
+GenePattern forum thread summary focused on converting FCS files to CSV, where a user encountered issues with file conversion due to filename spaces, and resolved the problem by removing double spaces in the filename, with additional discussion about channel scaling options during file conversion.

@@ -1,0 +1,37 @@
+URL: https://groups.google.com./g/genepattern-help/c/8S_B5lQebNU
+Title: Reading a WES CRAM file - is this a good tool? What would you use?
+----------------------------------------
+
+
+
+
+
+Reading a WES CRAM file - is this a good tool? What would you use?
+1 view
+Skip to first unread message
+Paulette Persons
+unread,
+Oct 2, 2019, 6:21:39 AM
+
+
+
+to GenePattern Help Forum
+General question: I am a patient who has been handed a CRAM file from WES.  I would like to read the data.  Would you use this tool?  If so, how, what features of this tool would you select?  If not, what tool would you recommend?  Thanks!
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Reply all
+
+Reply to author
+
+Forward

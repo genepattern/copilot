@@ -1,0 +1,1 @@
+A GenePattern user encountered a "Permission denied" error when attempting to run MutSigCV on the cloud platform, which was resolved by the GenePattern team creating a new container version (v1.3.4) that fixes the executable permission issue, with plans to further validate and publicly release the updated module.

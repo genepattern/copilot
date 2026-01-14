@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/BSJxwPjcRcA
+Title: ssGSEA Guidance for Filtering and Comparison
+----------------------------------------
+
+
+
+
+
+ssGSEA Guidance for Filtering and Comparison
+30 views
+Skip to first unread message
+
+Dario Strbenac
+unread,
+Aug 8, 2019, 5:00:20 PM
+
+
+
+to GenePattern Help Forum
+In the documentation of ssGSEAProjection, can you add a couple of sentences explaining whether filtering of genes with zero read counts is necessary? For example, GENCODE Genes has about 20000 long non-coding RNA but poly-A RNA-seq has zero chance to detect most of them because the majority of such RNAs don't have a poly-A tail, so there will artificially be thousands of rows in the gene FPKM abundance table of zeros, making the gene rankings of mRNA genes seem artificially high. Unlike standard GSEA, in which the zero-abundance genes get a test statistic of about 0 and fall in the middle of the test statistic ranking, I think that filtering is necessary for ssGSEA, which ranks the genes and the undetectable genes all get extremely low rankings. Also, guidance on whether enrichment scores can be directly compared between different gene sets for a particular sample could be explicitly documented. Perhaps ssGSEA should have an option for the user to specify what kind of RNA-seq their input data is (e.g. poly-A or total RNA) and automatically filter the table for them to the genes which are detectable (e.g. for poly-A subset to only mRNA genes, so that micro RNA and long non-coding RNA don't affect the rankings).
+
+Finally, the Contact section of the help page has an e-mail address, but my question was rejected because Google Groups should be used. This section needs updating to refer to Google Groups. I notice this has been updated in v9 beta of ssGSEAProjection, but when will v9 ever become the release version? v9 beta depends on a long-outdated version or R; 2.15. Almost everyone would be using the version 3 series by now.
+
+Barbara Hill
+unread,
+Aug 9, 2019, 12:38:47 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I've passed your information and questions along to the lead GSEA developer.
+
+
+You may find it faster to contact them directly in the GSEA forum, in the future.
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

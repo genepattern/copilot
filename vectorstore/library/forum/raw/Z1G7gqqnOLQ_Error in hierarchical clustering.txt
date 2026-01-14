@@ -1,0 +1,417 @@
+URL: https://groups.google.com./g/genepattern-help/c/Z1G7gqqnOLQ
+Title: Error in hierarchical clustering
+----------------------------------------
+
+
+
+
+
+Error in hierarchical clustering
+26 views
+Skip to first unread message
+
+Elena Pipi
+unread,
+Feb 15, 2019, 7:06:05 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have tried to run an hierarchical clustering with my data, but I got an err. How could I troubleshoot?
+
+
+best,
+elena
+Edwin Juarez
+unread,
+Feb 15, 2019, 9:26:37 AM
+
+
+
+to GenePattern Help Forum
+Hello Elena,
+
+
+What error message did you get (this info is in the stderr.txt file)? Could you also post your Job ID/Number?
+
+
+Thanks
+Edwin.
+
+Elena Pipi
+unread,
+Feb 17, 2019, 9:29:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+The Job number is 
+86813. HierarchicalClustering 
+2019-02-15 17:20:01.0
+
+The error I got is:
+ Traceback (most recent call last):
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py", line 49, in <module>
+    parse_data(gct_name, row_normalization, col_normalization, row_centering, col_centering)
+  File "/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/hc_functions.py", line 835, in parse_data
+    row_norm = np.sum(data * data, axis=1)
+TypeError: can't multiply sequence by non-int of type 'str'
+
+
+::::: 17:20:29.320399 37 ===>  About to parse the inputs
+Using:
+	gct_name = /opt/gpbeta/gp_home/users/elenapipi/uploads/tmp/run8182284056921165108.tmp/input.filename/1/Log2data.GCT
+	col_distance_metric = uncentered_pearson
+	output_distances = False
+	row_distance_metric = uncentered_pearson
+	clustering_method = average
+	output_base_name = Log2data
+	row_normalization = True
+	col_normalization = False
+	row_centering = None
+	col_centering = Mean
+['/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py', '/opt/gpbeta/gp_home/users/elenapipi/uploads/tmp/run8182284056921165108.tmp/input.filename/1/Log2data.GCT', '1', 'False', '1', 'a', 'Log2data', 'True', 'False', 'None', 'Mean']
+::::: 17:20:29.320491 45 ===>  About to parse data
+
+Thanks for your help
+
+
+
+
+	Virus-free. www.avast.com
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+Edwin Juarez
+unread,
+Feb 20, 2019, 8:11:54 AM
+
+
+
+to GenePattern Help Forum
+Thank you Elena,
+
+
+I took a look at your file and the one difference I could notice was that the first column (the one with the ENSEMBL IDs) was not titled "Name", refer to this guide if you created your file manually: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT -- did you use a specific tool to create this file?
+
+
+I renamed that column and the error went away. I will create a ticket to make this module more robust (or at the very least provide a more helpful error message). Here is a job currently running (it's taken a while because row clustering is a compute-intensive process).
+
+
+88603. HierarchicalClustering
+
+
+I would like to point out that you helped me find a different bug in the code, uncentered correlation and uncentered correlation, absolute value are providing two distance metrics at once (I believe these functions are returning the confidence in the metric as well). I'll patch that formatting bug and will make a different release of the module, but this step may take a bit longer (in the order of 2-3 weeks). In the meantime, I tried using pearson correlation and the information coefficient and those functions appear to be working well (the job I linked is using pearson correlation distance for both columns and rows). Let me know if you are in urgent need of a specific distance metric and I will consider that a higher priority when testing/implementing this bug fix.
+
+
+Kind regards,
+Edwin.
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+Elena Pipi
+unread,
+Feb 20, 2019, 8:18:14 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+Thanks for your reply. If I am using the old version, it is running with out correcting the name of the column. Good to know that the new version is working with this correction. BTW, I have posted this question before. How can I see the genes that have been "used" to create the different clusters in NMFConsensus?
+
+
+best,
+elena
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ed2ff51-1138-4c44-8272-f826e2ad617e%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+Edwin Juarez
+unread,
+Feb 20, 2019, 8:32:09 AM
+
+
+
+to GenePattern Help Forum
+Hi Elena,
+
+
+I have not released a new version of the module yet, what I meant is that I modified your GCT file, on the job that I linked (88603. HierarchicalClustering) you can see the modified GCT at the bottom next to "input.filename" you can download that file from there and use it in any future analyses.
+
+
+I just replied to your NMFConsensus question in that thread (https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/genepattern-help/-Kpun2UMiPs), let us know there if you have any further questions.
+
+
+Edwin.
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ed2ff51-1138-4c44-8272-f826e2ad617e%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+Elena Pipi
+unread,
+Feb 20, 2019, 8:51:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Edwin,
+
+
+Thank you for your reply. If I understood correct, this will allow me to find which samples belong to the same cluster, and then I can visualise on HeatMap all the genes, no? However, my question in how I can find the specific gene expression pattern that lead to the generation of the clustering. 
+
+
+best,
+elena
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ed2ff51-1138-4c44-8272-f826e2ad617e%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7f19c451-5096-42f3-b876-e12767c5d7e2%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+Edwin Juarez
+unread,
+Feb 20, 2019, 9:05:49 AM
+
+
+
+to genepatt...@googlegroups.com
+Elena,
+
+
+That is correct, you could visualize all the genes which belong to that cluster.
+
+
+The question of which gene expression pattern that lead to the generation of the cluster is a bit tricker, NMF clusters based on metagenes (not directly based on the gene expression per-se), for more info you can take a look at this paper: https://www.pnas.org/content/101/12/4164. However, one thing you do is to look at which genes are differentially expressed in those clusters. For that you could use ComparativeMarkerSelection but you would need a CLS file indicating to which cluster each sample/column belongs (to create this CLS file you can use ClsFileCreator).
+
+
+Kind regards,
+Edwin.
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14ab856c-f0d5-49ee-8ce7-c99fb63a3cd6%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+elena
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ed2ff51-1138-4c44-8272-f826e2ad617e%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7f19c451-5096-42f3-b876-e12767c5d7e2%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+elena
+
+
+Reply all
+
+Reply to author
+
+Forward

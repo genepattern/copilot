@@ -1,0 +1,144 @@
+URL: https://groups.google.com./g/genepattern-help/c/MUWVazD6AJw
+Title: GenePattern and docker
+----------------------------------------
+
+
+
+
+
+GenePattern and docker
+34 views
+Skip to first unread message
+
+Guy Bottu
+unread,
+Aug 24, 2018, 11:34:39 AM
+
+
+
+to GenePattern Help Forum
+I had the possibility to test a prerelease of the new GenePattern version. This uses docker to start modules. There I noted a problem : the docker demon runs as root. As a consequence some of the files created by GenePattern now belong to root rather than to the user who runs the GenePattern server. One consequence is that GenePattern cannot delete the jobs. Is there a solution for this (other than run GenePattern as root) ?
+
+Peter Carr
+unread,
+Aug 27, 2018, 1:56:06 PM
+
+
+
+to genepatt...@googlegroups.com
+This is a known issue. We haven't come up with a workaround yet. To be clear, we have not spent a lot of time on this because we are focusing on the AWS integration. I will ask other members of the GP Team to chime in.
+
+One possibility is to use Singularity; the FAQ suggests that root is not required to use a container. It is required to create a container, but that can be done as a one-time admin step for each module. This looks promising.
+
+As a matter of fact, it's already in use on the production GP server at Indiana University (https://gp.indiana.edu/gp/). On this server we wrap a module in two steps:
+    (1) pull the docker image into a singularity image on the local file system
+    (2) edit the GP configuration to use the singularity command
+
+On newer versions of GenePattern (>= v3.9.11), the customization is simple. You still have to manually create the image file. The rest is a simple update to the config_custom.yaml file. I am happy to offer the details if and/or when you are ready to use Singularity.
+
+Regards,
+Peter
+
+Guy Bottu
+unread,
+Sep 7, 2018, 12:23:00 PM
+
+
+
+to GenePattern Help Forum
+I found another problem. I tried to run a module that needs Python and got the following error message :
+
+
+/usr/bin/python: error while loading shared libraries: libpython2.7.so.1.0: cannot open shared object file: No such file or directory
+
+
+I had already noticed that I need to "mount" inside the default docker of GenePattern all folders where a program needs to read or write. However /usr is "mounted" and the lib is inside /usr/lib64. Yet it does not work. What could be the reason. Maybe something with environment variables ?
+
+
+A suggestion : would it not be better, in order to let all vintage modules run smoothly,to not use a default docker but just let the (programmer of a) module choose between running in docker or running in the environment ?
+
+
+Peter Carr
+unread,
+Sep 7, 2018, 12:37:51 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Guy,
+
+Please share more details about the python module, such as module name, docker image, and command line. I don't have an answer off the top of my head, however this kind of an error does seem familiar. Perhaps you need to set the environment variables in the container?
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ce4848a0-498d-47ee-969a-b7ceed21709f%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Guy Bottu
+unread,
+Sep 10, 2018, 11:23:05 AM
+
+
+
+to GenePattern Help Forum
+ I first noticed the problem with local developments. An example of a "standard" module that suffers from the problem is MergeHTSeqCounts.
+Guy Bottu
+unread,
+Nov 2, 2018, 7:50:15 AM
+
+
+
+to genepatt...@googlegroups.com
+
+
+Op maandag 27 augustus 2018 22:56:06 UTC+2 schreef Peter Carr:
+One possibility is to use Singularity; the FAQ suggests that root is not required to use a container. It is required to create a container, but that can be done as a one-time admin step for each module. This looks promising.
+
+As a matter of fact, it's already in use on the production GP server at Indiana University (https://gp.indiana.edu/gp/). On this server we wrap a module in two steps:
+    (1) pull the docker image into a singularity image on the local file system
+    (2) edit the GP configuration to use the singularity command
+
+On newer versions of GenePattern (>= v3.9.11), the customization is simple. You still have to manually create the image file. The rest is a simple update to the config_custom.yaml file. I am happy to offer the details if and/or when you are ready to use Singularity.
+
+Regards,
+Peter
+
+
+ 
+I was busy with preparing materials for a course, but now I have singularity running on our test machine and I have time. I would be happy if you could explain me the details of running GenePattern under singularity.
+
+
+By the way, an idea when the definitive release GenePattern 3.9.11 will be out ?
+
+
+Regards
+Guy Bottu 
+Peter Carr
+unread,
+Nov 2, 2018, 10:32:53 AM
+
+
+
+to genepatt...@googlegroups.com
+We don't have a specific date in mind. I am happy to provide a link to our latest prerelease version. We use this on our production servers.
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

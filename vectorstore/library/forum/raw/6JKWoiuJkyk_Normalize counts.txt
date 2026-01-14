@@ -1,0 +1,266 @@
+URL: https://groups.google.com./g/genepattern-help/c/6JKWoiuJkyk
+Title: Normalize counts
+----------------------------------------
+
+
+
+
+
+Normalize counts
+22 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Feb 10, 2022, 9:19:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+Is there a way to normalize counts without the knowledge of coding and programming languages?
+
+
+Regards,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack	02/10/22, 10:47:13 PM	
+Anthony Castanza
+unread,
+Feb 10, 2022, 9:23:08 AM
+
+
+
+to genepatt...@googlegroups.com
+
+The DESeq2 module will output normalized counts as a gct file in addition to the differential expression data.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Sruthi S <sruth...@gmail.com>
+Date: Thursday, February 10, 2022 at 9:19 AM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: [genepattern-help:2277] Normalize counts
+
+Hi sir,
+
+Is there a way to normalize counts without the knowledge of coding and programming languages?
+
+ 
+
+Regards,
+
+Sruthi S
+
+
+
+
+Sender notified by
+Mailtrack
+
+	
+
+02/10/22, 10:47:13 PM
+
+	
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOHECBJAgtZoSwtdKEn1S_Cb%3Df5pS50ROh%2BJKuuQrDLDf8R2ag%40mail.gmail.com.
+
+Sruthi S
+unread,
+Feb 10, 2022, 9:44:48 AM
+
+
+
+to genepatt...@googlegroups.com
+Sir, I was running the DESeq2 module, but it showed errors. Job Id: 410889. The stderr link: https://cloud.genepattern.org/gp/jobResults/410889/stderr.txt
+Can you please help me with this?
+
+
+Regards
+Sruthi S
+
+
+
+
+
+
+	Sender notified by
+Mailtrack	02/10/22, 11:14:25 PM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB76095C5C76330D70D753CD99F72F9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+Feb 10, 2022, 9:52:54 AM
+
+
+
+to genepatt...@googlegroups.com
+
+There are a bunch of rows of just 2's at the bottom of your data:
+                                2              2              2              2
+
+With no gene information, these would have to be removed.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Sruthi S <sruth...@gmail.com>
+Date: Thursday, February 10, 2022 at 9:44 AM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:2279] Normalize counts
+
+Sir, I was running the DESeq2 module, but it showed errors. Job Id: 410889. The stderr link: https://cloud.genepattern.org/gp/jobResults/410889/stderr.txt
+
+Can you please help me with this?
+
+ 
+
+Regards
+
+Sruthi S
+
+
+
+
+ 
+
+	
+
+Sender notified by
+Mailtrack
+
+	
+
+02/10/22, 11:14:25 PM
+
+	
+
+
+
+
+On Thu, 10 Feb 2022 at 22:53, Anthony Castanza <acas...@cloud.ucsd.edu> wrote:
+
+The DESeq2 module will output normalized counts as a gct file in addition to the differential expression data.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Sruthi S <sruth...@gmail.com>
+Date: Thursday, February 10, 2022 at 9:19 AM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: [genepattern-help:2277] Normalize counts
+
+Hi sir,
+
+Is there a way to normalize counts without the knowledge of coding and programming languages?
+
+ 
+
+Regards,
+
+Sruthi S
+
+
+
+Error! Filename not specified.
+
+Sender notified by
+Mailtrack
+
+	
+
+02/10/22, 10:47:13 PM
+
+	
+
+Error! Filename not specified.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOHECBJAgtZoSwtdKEn1S_Cb%3Df5pS50ROh%2BJKuuQrDLDf8R2ag%40mail.gmail.com.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB76095C5C76330D70D753CD99F72F9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOHECB%2ByURYv3Qd-ohRphAq1GyKotbKUeTC1uZUUfFyKZdxGpw%40mail.gmail.com.
+
+Sruthi S
+unread,
+Feb 10, 2022, 12:09:36 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you sir.
+
+
+
+
+	Sender notified by
+Mailtrack	02/11/22, 01:39:15 AM	
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB7609DAA3DF415A0BF84A5A1EF72F9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

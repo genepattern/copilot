@@ -1,0 +1,1 @@
+"Researcher seeking advice on running GISTIC analysis for samples with genome doubling, experiencing unexpected results where known amplification regions are not showing significance, potentially due to background model issues, with recommendation to consult GISTIC-specific forum for more expert guidance on handling genome-duplicated samples in copy number analysis."

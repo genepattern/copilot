@@ -1,0 +1,165 @@
+URL: https://groups.google.com./g/genepattern-help/c/s5mIau9pG9k
+Title: Long wait to start job
+----------------------------------------
+
+
+
+
+
+Long wait to start job
+19 views
+Skip to first unread message
+
+Nanette Bishopric
+unread,
+Jul 12, 2025, 2:14:11 PM
+
+
+
+to GenePattern Help Forum
+Hi, I have been waiting most of the day to run GSEA. I have "Please wait" and the spinning blue ball for hours at a time.  Is it just very busy this Saturday? I was at least getting some jobs attempted earlier in the morning.  Thanks!
+Ted (aka John) Liefeld
+unread,
+Jul 12, 2025, 2:27:18 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+sorry that you are having problems.  From the back end it looks like your job finished with an error at 7:12 am this morning (PST, UTC+8).  Have you reloaded the page and/or what happens if you reload the page now?
+
+
+Ted
+
+
+On Sat, Jul 12, 2025 at 2:14 PM Nanette Bishopric <nbish...@gmail.com> wrote:
+
+Hi, I have been waiting most of the day to run GSEA. I have "Please wait" and the spinning blue ball for hours at a time.  Is it just very busy this Saturday? I was at least getting some jobs attempted earlier in the morning.  Thanks!
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/f3b5e7c6-78d7-47fa-b51d-31cc12e71465n%40googlegroups.com.
+
+Message has been deleted
+Message has been deleted
+Nanette Bishopric
+unread,
+Jul 17, 2025, 1:04:19 PM
+
+
+
+to GenePattern Help Forum
+I ran Hierarchical Clustering and got the same ""ERROR: missing argument" - so no wait this time, but I haven't solved the error. What am I missing? 
+
+Nanette Bishopric
+unread,
+Jul 17, 2025, 1:04:51 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Thanks! I did get that job report - with message "ERROR: missing argument". 
+I was trying the run again (although I am not sure what was missed out).  But that job never got initiated, just "Please wait". 
+I then tried to rn th GSEA module and that hanged at the same spinning blue ball. 
+I will try again now and see if I can get a better result.
+Nanette
+On Saturday, July 12, 2025 at 5:27:18 PM UTC-4 Ted (aka John) Liefeld wrote:
+
+
+John Liefeld
+unread,
+Jul 17, 2025, 1:06:18 PM
+
+
+
+to GenePattern Help Forum
+Hi,  the last 2 messages you sent didn't make it to the help forum for some reason, I just found them in the pending messages.  Can you give me some job numbers to look at if you haven't solved this yet?
+
+
+Apologies for the delay
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jul 17, 2025, 1:13:04 PM
+
+
+
+to genepatt...@googlegroups.com
+Nanette,
+
+
+what is the job number for your run?
+
+
+Ted
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/b706b42c-2761-4cbc-908d-49bff1858fd1n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+John Liefeld
+unread,
+Jul 17, 2025, 1:29:40 PM
+
+
+
+to GenePattern Help Forum
+Found it.  The issue is the output filename you entered, "<HC.RAGEDOX>".  GenePattern treats any input values between the greater and and less than signs as a tag it is supposed to substitute from another parameter or from a server configuration item.  Since there is no module or server substitution for <HC.RAGEDOX> it is ending up with nothing for the output filename.
+
+
+I think what you want for output filename is either "HC.RAGEDOX" without the <> or else "<input.filename_basename>" which will take the name of your input filename, strip off the 3-letter extension and substitute that in at runtime.  These will both have the same result with this input file, but the second option will also change to match different input files.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Nanette Bishopric
+unread,
+Jul 17, 2025, 1:43:30 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you! That makes sense. 
+Apologies for not responding sooner- just got off a long plane flight.
+Best,
+Nanette 
+
+
+On Jul 17, 2025, at 1:30 PM, John Liefeld <jlie...@cloud.ucsd.edu> wrote:
+
+
+﻿Found it.  The issue is the output filename you entered, "<HC.RAGEDOX>".  GenePattern treats any input values between the greater and and less than signs as a tag it is supposed to substitute from another parameter or from a server configuration item.  Since there is no module or server substitution for <HC.RAGEDOX> it is ending up with nothing for the output filename.
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/605e985f-3128-4c5c-a281-55984dcb8e5cn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

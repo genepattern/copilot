@@ -1,0 +1,35 @@
+URL: https://groups.google.com./g/genepattern-help/c/WRHjDGLxYgM
+Title: RankNormalize Error in Module
+----------------------------------------
+
+
+
+
+
+RankNormalize Error in Module
+5 views
+Skip to first unread message
+Hussein El Saghire
+unread,
+Feb 20, 2019, 8:04:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear genepattern team, 
+
+
+I posted several times a question about RankNormalize module error and never got a response. Please can you check why the module is giving an error: 
+
+
+/opt/gpbeta/gp_home/jobResults/88599.meta/exec.sh: 4: /opt/gpbeta/gp_home/jobResults/88599.meta/exec.sh: Rscript: not found
+
+
+Kind regards
+Hussein
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,131 @@
+URL: https://groups.google.com./g/genepattern-help/c/itTkSRKOmoY
+Title: error for runnign pre ranked GESA
+----------------------------------------
+
+
+
+
+
+error for runnign pre ranked GESA
+33 views
+Skip to first unread message
+
+Chitra Subramanian
+unread,
+Jan 14, 2020, 12:44:23 PM
+
+
+
+to GenePattern Help Forum
+
+
+
+
+I get the following error message
+My job id is 197216 and I am running preranked GSEA
+WARNING: package com.apple.laf not in java.desktop
+WARNING: package com.sun.java.swing.plaf.windows not in java.desktop
+WARNING: package sun.awt.windows not in java.desktop
+edu.mit.broad.genome.parsers.ParserException: Bad rnk file format exception - expected 2 fields but got: 1 line>GJA8<
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:77)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:556)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:756)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:799)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:787)
+at org.gsea_msigdb.gsea/xtools.api.param.PobParam.getPob(PobParam.java:79)
+at org.gsea_msigdb.gsea/xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.createHeader(GseaPreranked.java:232)
+at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.execute(GseaPreranked.java:84)
+at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:434)
+at org.gsea_msigdb.gsea/org.genepattern.modules.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:227)
+at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:32)
+edu.mit.broad.genome.parsers.ParserException: Bad rnk file format exception - expected 2 fields but got: 1 line>GJA8<
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser._parse(RankedListParser.java:77)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.RankedListParser.parse(RankedListParser.java:57)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.readRankedList(ParserFactory.java:556)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:756)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:799)
+at org.gsea_msigdb.gsea/edu.mit.broad.genome.parsers.ParserFactory.read(ParserFactory.java:787)
+at org.gsea_msigdb.gsea/xtools.api.param.PobParam.getPob(PobParam.java:79)
+at org.gsea_msigdb.gsea/xtools.api.param.RankedListReqdParam.getRankedList(RankedListReqdParam.java:28)
+at org.gsea_msigdb.gsea/xtools.gsea.GseaPreranked.execute(GseaPreranked.java:87)
+at org.gsea_msigdb.gsea/xtools.api.AbstractTool.module_main(AbstractTool.java:434)
+at org.gsea_msigdb.gsea/org.genepattern.modules.GseaPrerankedWrapper.main(GseaPrerankedWrapper.java:227)
+at org.gsea_msigdb.gsea/xapps.gsea.CLI.main(CLI.java:32)
+
+Using system JDK.
+1071     [INFO  ] - Parameters passing to GSEAPreranked.main:
+1074     [INFO  ] - rnk /opt/gpcloud/gp_home/users/csubramanian/uploads/tmp/run779911581572436821.tmp/ranked.list/1/control.rnk
+1074     [INFO  ] - gmx /opt/gpcloud/gp_home/users/.cache/uploads/cache/gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.all.v7.0.symbols.gmt
+1074     [INFO  ] - rpt_label control
+1074     [INFO  ] - collapse No_Collapse
+1074     [INFO  ] - zip_report true
+1074     [INFO  ] - gui false
+1074     [INFO  ] - out .tmp_gsea/analysis
+1074     [INFO  ] - mode Max_probe
+1075     [INFO  ] - norm meandiv
+1075     [INFO  ] - nperm 1000
+1075     [INFO  ] - scoring_scheme weighted
+1075     [INFO  ] - include_only_symbols true
+1075     [INFO  ] - make_sets true
+1075     [INFO  ] - plot_top_x 20
+1075     [INFO  ] - rnd_seed timestamp
+1075     [INFO  ] - create_svgs false
+1075     [INFO  ] - set_max 500
+1075     [INFO  ] - set_min 15
+1144     [INFO  ] - Made Vdb dir JIT: /opt/gpcloud/gp_home/jobResults/197216/jan14
+1195     [INFO  ] - Begun importing: RankedList from: /opt/gpcloud/gp_home/users/csubramanian/uploads/tmp/run779911581572436821.tmp/ranked.list/1/control.rnk
+1772     [INFO  ] - Your current version of GSEA is 4.0.2. A newer version (4.0.3) is available.
+To update, please download from http://gsea-msigdb.org/gsea/downloads.jsp
+(build date: Thu, 21 Nov 2019 23:45:23 -0500)
+Bug-fix release
+1772     [INFO  ] - Note: GenePattern users should update through GenePattern.
+Working in DETERMINISTIC report mode -- a subdir ts will not be applied
+1804     [INFO  ] - Begun importing: RankedList from: /opt/gpcloud/gp_home/users/csubramanian/uploads/tmp/run779911581572436821.tmp/ranked.list/1/control.rnk
+1825     [INFO  ] - Renaming rpt dir on error to: .tmp_gsea/error_analysis
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Alex Wenzel
+unread,
+Jan 19, 2020, 1:48:19 PM
+
+
+
+to GenePattern Help Forum
+Hi Chitra,
+
+
+It looks like there is an error with the format of your .rnk file, potentially involving the line that has the gene GJA8. Please make sure the .rnk file conforms to the specification in the RNK section of the file format guide. Also feel free to post a segment of your RNK file if the solution is unclear.
+
+
+Alex
+
+Reply all
+
+Reply to author
+
+Forward

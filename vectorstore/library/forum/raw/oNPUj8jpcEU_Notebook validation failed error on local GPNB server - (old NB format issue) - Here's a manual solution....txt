@@ -1,0 +1,115 @@
+URL: https://groups.google.com./g/genepattern-help/c/oNPUj8jpcEU
+Title: "Notebook validation failed" error on local GPNB server - (old NB format issue) - Here's a manual solution...
+----------------------------------------
+
+
+
+
+
+"Notebook validation failed" error on local GPNB server - (old NB format issue) - Here's a manual solution...
+9 views
+Skip to first unread message
+Rich Lysakowski
+unread,
+Mar 1, 2020, 2:26:47 PM
+
+
+
+to GenePattern Help Forum
+I just installed a local GP Jupyter Notebook server packages into a new local conda virtual environment and got the following errors:
+Notebook validation failed
+
+An invalid notebook may not function properly. The validation error was:
+
+Notebook validation failed: {'model_id': '940dbc169d9f44e3b3d51a91146773f3', 'version_major': 2, 'version_minor': 0} is not valid under any of the given schemas:
+{
+ "model_id": "940dbc169d9f44e3b3d51a91146773f3",
+ "version_major": 2,
+ "version_minor": 0
+}
+
+
+
+   What were your Parameter values?
+   Server Platform = Windows 10 
+
+
+(base) C:\WINDOWS\system32>activate genepattern
+
+
+(genepattern) C:\WINDOWS\system32>jupyter --version
+
+
+jupyter core     : 4.6.1
+jupyter-notebook : 6.0.2
+qtconsole        : 4.6.0
+ipython          : 7.12.0
+ipykernel        : 5.1.4
+jupyter client   : 5.3.4
+jupyter lab      : not installed
+nbconvert        : 5.6.1
+ipywidgets       : 7.5.1
+nbformat         : 5.0.4
+traitlets        : 4.3.3
+
+
+(genepattern) C:\WINDOWS\system32>
+
+
+python --version = Python 3.7.6
+
+
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+IN THE CONSOLE THESE ARE THE ERRORS THAT I AM GETTING:
+
+
+[I 16:38:24.629 NotebookApp] Saving file at /02-GenePattern/GenePattern Notebook Tutorial.ipynb
+[E 16:39:21.016 NotebookApp] Notebook JSON is invalid: {'version_major': 2, 'version_minor': 0, 'model_id': 'f473686acac945ea8d0a344ef7cf67dc'} is not valid under any of the given schemas
+
+
+    Failed validating 'oneOf' in display_data['properties']['data']['patternProperties']['^(?!application/json$)[a-zA-Z0-9]+/[a-zA-Z0-9\\-\\+\\.]+$']:
+
+
+    On instance['cells'][8]['outputs'][0]['data']['application/vnd.jupyter.widget-view+json']:
+    {'model_id': 'f473686acac945ea8d0a344ef7cf67dc',
+     'version_major': 2,
+     'version_minor': 0}
+
+
+SOLUTION:   
+
+
+Save the NB giving the error.  Reopen the older format "Classic Notebook" using the latest version of JupyterLab.  This will convert the notebook file to the newer format.  Now when you reopen that notebook in Jupyter Classic, the error will no longer appear, because the NB file metadata will be updated.  
+
+
+See https://github.com/jupyter/nbformat/issues/161 for a fuller explanation. 
+
+
+
+MSeal commented on Jan 22 • 
+edited 
+edited 
+
+Yes that is Notebook Classic. To repair the issue launch jupyter lab, load the notebook and save it back. This will automatically update the notebook format so classic will be able to load and manipulate the document again. Usually this process is just updating the minor version number as suggested above, but it could include other small changes to fix the notebook in other places as the format changed over the years.
+
+The longer explanation is below:
+
+Essentially nbformat 5 release added validation for the older format versions instead of using the 4.4 format checks regardless of document version. This was causing invalid format issues with nbformat < 5 when evaluating notebook documents, so the newer package is more strict to avoid errors in notebook processing. This caused manipulations of older formats to fail in places where they were succeeding before because those manipulations were likely not actually spec compliant and your notebook was acting like a 4.4 notebook as best it can. The classic notebook server has been in a frozen / undeveloped state for many years, with lab, nteract, colab, and sagemaker making new interfaces.
+
+Yes that is Notebook Classic. To repair the issue launch jupyter lab, load the notebook and save it back. This will automatically update the notebook format so classic will be able to load and manipulate the document again. Usually this process is just updating the minor version number as suggested above, but it could include other small changes to fix the notebook in other places as the format changed over the years.
+The longer explanation is below:
+Essentially nbformat 5 release added validation for the older format versions instead of using the 4.4 format checks regardless of document version. This was causing invalid format issues with nbformat < 5 when evaluating notebook documents, so the newer package is more strict to avoid errors in notebook processing. This caused manipulations of older formats to fail in places where they were succeeding before because those manipulations were likely not actually spec compliant and your notebook was acting like a 4.4 notebook as best it can. The classic notebook server has been in a frozen / undeveloped state for many years, with lab, nteract, colab, and sagemaker making new interfaces.
+
+
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

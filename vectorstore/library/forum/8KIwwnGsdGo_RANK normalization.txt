@@ -1,0 +1,1 @@
+`A GenePattern user asked about handling NA values during RankNormalization of mRNA and miRNA sequencing data, seeking guidance on whether to exclude NA values or process them; Barbara Hill suggested consulting the module documentation section on "Adjusting the Dataset Before Ranking" for specific recommendations on data preprocessing strategies before normalization.`

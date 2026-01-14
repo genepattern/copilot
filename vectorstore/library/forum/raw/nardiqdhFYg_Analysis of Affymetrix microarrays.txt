@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/nardiqdhFYg
+Title: Analysis of Affymetrix microarrays
+----------------------------------------
+
+
+
+
+
+Analysis of Affymetrix microarrays
+21 views
+Skip to first unread message
+
+Hugo Farne
+unread,
+Dec 15, 2020, 8:48:05 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm a clinician (little/no bioinformatics knowledge!) looking to analyse .CEL data from Affymetrix microarrays (HuGene U133 plus 2.0 and HuGene 1.0 ST v1). I am going to convert the .CEL files to .GCT using the ExpressionFileCreator module but wasn't clear if this incorporated background correction, normalization and summarization or whether I would then need to use the PreprocessDataset module?
+
+
+Thanks!
+mmr...@cloud.ucsd.edu
+unread,
+Dec 15, 2020, 11:07:22 AM
+
+
+
+to GenePattern Help Forum
+Hi Hugo,
+
+
+The ExpressionFileCreator module is the right choice for what you want to do. More detail on the analytic steps behind the RMA summarization method is at https://academic.oup.com/biostatistics/article/4/2/249/245074. 
+
+
+The PreprocessDataset module applies to already summarized data and provides variation filters and post-summarization normalization options.
+
+
+Best,
+Michael
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,27 @@
+URL: https://groups.google.com./g/genepattern-help/c/VTzcEYOSakM
+Title: Announcement: The server update has completed successfully and regular use of cloud.genepattern.org may now resume.
+----------------------------------------
+
+
+
+
+
+Announcement: The server update has completed successfully and regular use of cloud.genepattern.org may now resume.
+6 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jun 29, 2021, 2:48:29 PM
+
+
+
+to GenePattern Help Forum
+The server update has completed successfully and regular use of https://cloud.genepattern.org may now resume.
+Please see the release notes for more details about this update. https://github.com/genepattern/genepattern-server/releases/tag/v3.9_21.06_b344
+
+
+Reply all
+
+Reply to author
+
+Forward

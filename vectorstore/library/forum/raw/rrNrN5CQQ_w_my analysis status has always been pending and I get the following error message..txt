@@ -1,0 +1,43 @@
+URL: https://groups.google.com./g/genepattern-help/c/rrNrN5CQQ_w
+Title: my analysis status has always been pending and I get the following error message.
+----------------------------------------
+
+
+
+
+
+my analysis status has always been pending and I get the following error message.
+4 views
+Skip to first unread message
+bin sun
+unread,
+Jul 2, 2020, 11:21:18 PM
+
+
+
+to GenePattern Help Forum
+Dear GSEA staff: 
+     During the analysis, my analysis status has always been pending and I get the following error message. Hope to get your advice.
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+
+屏幕快照 2020-07-02 上午10.22.09.png
+
+屏幕快照 2020-07-02 上午10.50.17.png
+
+Reply all
+
+Reply to author
+
+Forward

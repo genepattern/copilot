@@ -1,0 +1,1 @@
+GenePattern source code access request resolved: User inquired about obtaining source code access, and was provided with GitHub repository link (https://github.com/genepattern/genepattern-server) as a direct solution, with user confirming receipt of information and expressing gratitude.

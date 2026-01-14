@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/S8Zb4HM3AsI
+Title: ssGSEA web version run error
+----------------------------------------
+
+
+
+
+
+ssGSEA web version run error
+47 views
+Skip to first unread message
+
+vineelaga...@gmail.com
+unread,
+Sep 24, 2021, 1:59:27 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+
+I am seeing this error for ssGSEA, with my rpkm expression matrix and geneset.gmt file. I tried running ssGSEA with the same input files that worked few weeks ago and now I am seeing this error. Could you someone help me understand the error. I am on a deadline to complete my project.
+
+Error in vector(length = gene.set.size, mode = "character") : invalid 'length' argument Calls: ssGSEA.cmdline Execution halted
+
+
+Thanks,
+Vineela
+
+Barbara Hill
+unread,
+Sep 27, 2021, 11:54:01 AM
+
+
+
+to GenePattern Help Forum
+Hi Vineela,
+
+
+ Could you send us your job ids?
+
+
+Thanks
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

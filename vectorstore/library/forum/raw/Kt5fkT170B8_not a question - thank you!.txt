@@ -1,0 +1,66 @@
+URL: https://groups.google.com./g/genepattern-help/c/Kt5fkT170B8
+Title: not a question - thank you!
+----------------------------------------
+
+
+
+
+
+not a question - thank you!
+6 views
+Skip to first unread message
+
+David Lahr
+unread,
+Apr 28, 2020, 1:35:27 PM
+
+
+
+to GenePattern Help Forum
+Not a question - just wanted to say thank you to the whole GenePattern team!  I've been using it increasingly and started using the python API, and wow that was fast and easy to learn!  It made it very easy to "scale up"* my GSEA runs, and it's great to not have to maintain my own GenePattern server for our limited use.
+
+
+* scale up in this case is going from infrequent one offs to batches of 5-10 every couple weeks ¯\_(ツ)_/¯
+
+
+Thank you so much for providing GenePattern and the well documented Python API!
+
+
+Best,
+Dave
+Barbara Hill
+unread,
+Apr 28, 2020, 2:03:24 PM
+
+
+
+to GenePattern Help Forum
+Hi Dave!
+
+
+This is so awesome and just made my whole week!
+
+
+It's great knowing that you are still using and loving GenePattern!
+
+
+Let us know if you ever have any suggestions or comments, or just keep sending us encouragement. We like that too. =)
+
+
+Best always,
+Barbara
+David Lahr
+unread,
+Apr 28, 2020, 2:26:24 PM
+
+
+
+to GenePattern Help Forum
+Absolutely will do :)
+
+
+Reply all
+
+Reply to author
+
+Forward

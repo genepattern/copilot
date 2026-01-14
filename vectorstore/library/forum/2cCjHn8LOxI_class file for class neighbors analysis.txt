@@ -1,0 +1,1 @@
+A new user inquired about the class file format for class neighbors analysis in GenePattern, and a support team member directed them to review the module documentation and help guide for specific details about the required CLS file format, emphasizing the resources available within the GenePattern interface.

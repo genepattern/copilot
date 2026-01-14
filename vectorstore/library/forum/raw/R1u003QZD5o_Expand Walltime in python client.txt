@@ -1,0 +1,179 @@
+URL: https://groups.google.com./g/genepattern-help/c/R1u003QZD5o
+Title: Expand Walltime in python client
+----------------------------------------
+
+
+
+
+
+Expand Walltime in python client
+35 views
+Skip to first unread message
+
+Miguel Torres
+unread,
+Sep 18, 2019, 12:47:43 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am using the genepattern python module to run jobs through your server. It's working great, but I was wondering what command should I use in order to expand the walltime. I couldn't find this info in your documentation.
+
+
+Thank you,
+
+
+Miguel
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Sep 19, 2019, 3:43:13 PM
+
+
+
+to GenePattern Help Forum
+Hi Miguel, 
+
+
+You need to set the job.wall.time (https://github.com/genepattern/genepattern-server/blob/GP-7826/resources/config_example.yaml  line 584)
+
+
+I'm not entirely sure what you mean by the "genepattern python module", so I can't be more specific. Are you using the notebook workspace to run GenePattern via widgets or via Python itself?
+
+
+Best
+-Barbara
+Miguel
+unread,
+Sep 20, 2019, 4:19:50 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+
+I'm sorry that I didn't explain all the details thoroguhly.
+
+
+Here is what I did:
+
+
+1 - I installed the the genepattern conda environment (https://anaconda.org/ijstokes/genepattern), and from there I run directly python itself. 
+
+
+     As I mention, it works perfectly, I am able to directly download files and all what I need for my subsequent pipeline. The problem is that the Submap module, for some long comparisons, is killed after 2 hours of walltime, and I'd like to increase that (in the same way that can be done directly via web).
+
+
+2 - This is an example code:
+
+
+import glob
+import os
+import re
+import gp
+
+
+
+
+gpserver = gp.GPServer("https://cloud.genepattern.org/gp", "xxxx", "password")
+
+
+File_A = '1.gct'
+File_B = '2.gct'
+class_A = '1.cls'
+class_B = '2.cls'
+uploaded_file_1 = gpserver.upload_file("datasetA.gct", File_A)
+uploaded_file_2 = gpserver.upload_file("datasetB.gct", File_B)
+uploaded_file_3 = gpserver.upload_file("classA.cls", class_A)
+uploaded_file_4 = gpserver.upload_file("classB.cls", class_B)
+submap_task = gp.GPTask(gpserver, "urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00101:3")
+submap_task.param_load()
+submap_job_spec = submap_task.make_job_spec()
+submap_job_spec.set_parameter("datasetA.file", uploaded_file_1.get_url())
+submap_job_spec.set_parameter("datasetB.file", uploaded_file_2.get_url())
+submap_job_spec.set_parameter("classA.file", uploaded_file_3.get_url())
+submap_job_spec.set_parameter("classB.file", uploaded_file_4.get_url())
+submap_job_spec.set_parameter("num.marker.genes", "100")
+submap_job_spec.set_parameter("num.perm", "100")
+submap_job_spec.set_parameter("num.perm.fisher", "1000")
+submap_job_spec.set_parameter("weighted.score.type", "1")
+submap_job_spec.set_parameter("null.distribution", "pool")
+submap_job_spec.set_parameter("p.value.correction", "Bonferroni")
+submap_job_spec.set_parameter("cluster.rows", "1")
+submap_job_spec.set_parameter("cluster.columns", "1")
+submap_job_spec.set_parameter("nominal.p.value.matrix", "T")
+submap_job_spec.set_parameter("create.legend", "T")
+submap_job_spec.set_parameter("random.seed", "47365321")
+submap_job_spec.set_parameter("output.filename", "SubMap")
+submap_job = gpserver.run_job(submap_job_spec)
+output_list = submap_job.get_output_files()
+
+
+Thank you for your help!
+
+
+Miguel
+Thorin Tabor
+unread,
+Sep 20, 2019, 10:24:03 AM
+
+
+
+to GenePattern Help Forum
+Miguel,
+
+
+I'll look into letting a user configure the walltime in the next release. In the meantime, you can work around this issue by calling run_job with the wait_until_done parameter, and then polling periodically to see if the job has completed. An example of this is below:
+
+
+
+submap_job = gpserver.run_job(submap_job_spec, wait_until_done=False)
+
+while not submap_job.is_finished():           # Wait until the job is complete
+    # print(submap_job.get_status_message())  # Other logic for checking the status of the job can also be added
+    time.sleep(60)                            # Wait a minute and check the status again
+
+output_list = submap_job.get_output_files()
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Miguel
+unread,
+Sep 20, 2019, 12:46:19 PM
+
+
+
+to GenePattern Help Forum
+Hi Thorin,
+
+
+This is not really a workaround, right? This will just tell me if the job is keep going or has stopped (which doesn't solve my issue, as I need more walltime for running this specific submap). I actually tried and that's exactly what happened.
+
+
+It would be great if you can include in the next release.
+
+
+Thank you and Barbara for your help!
+
+
+Miguel
+
+Reply all
+
+Reply to author
+
+Forward

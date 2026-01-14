@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/nJ6Q-qUiyyE
+Title: PreprocessReadCounts module not available
+----------------------------------------
+
+
+
+
+
+PreprocessReadCounts module not available
+4 views
+Skip to first unread message
+
+Toby
+unread,
+Feb 18, 2019, 8:53:21 AM
+
+
+
+to GenePattern Help Forum
+Hi I was wondering if the Preprocess ReadCounts module will be available on the new Genepattern?
+
+
+Thank you
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Feb 19, 2019, 9:15:22 AM
+
+
+
+to GenePattern Help Forum
+Hi Toby, 
+
+
+The module is still there, it has just been renamed more accurately to VoomNormalize. I will see that this is added to the description so that it shows up when you search for PreprocessReadCounts.
+
+
+Thank you for contacting us!
+
+
+Best
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

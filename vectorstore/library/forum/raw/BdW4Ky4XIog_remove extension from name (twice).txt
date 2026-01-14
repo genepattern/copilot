@@ -1,0 +1,131 @@
+URL: https://groups.google.com./g/genepattern-help/c/BdW4Ky4XIog
+Title: remove extension from name (twice)
+----------------------------------------
+
+
+
+
+
+remove extension from name (twice)
+13 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 4, 2017, 7:41:34 AM
+
+
+
+to genepatt...@googlegroups.com
+I use a inputfile.vcf.gz file as input and would line to extract the file name without the two extensions to name the output.
+
+
+which would correspond to:
+<input.file_basename_basename> OR <<input.file_basename>_basename> (both tried ;-) )
+
+
+Can I alternatively do a substitution like the bash
+basename ${filename%%.*}
+
+
+For instance can I use a command line in teh module like:
+name=basename ${filename%%.*}; command <input.file> \> $name.xxx
+
+
+I did not succeed so far to have a multiple command with ';' there
+
+
+Thanks,
+
+
+Stephane
+Peter Carr
+unread,
+Aug 8, 2017, 11:59:33 AM
+
+
+
+to GenePattern Help Forum
+This is not supported in GenePattern. It's a nice feature request. To make it simple, I propose the following:
+    re-define '_basename' to mean the filename up to but excluding the first '.'
+
+
+I will discuss it with the rest of the GP Team and add it to our development radar.
+
+
+FYI, it is not possible to use the ';' to separate commands. I run into this now and then and have to remind myself of the fact that the ';' is a bash idiom and does not match the general architecture of the GP server. In GenePattern each module equates to one and only one process aka command.
+
+
+Thanks,
+Peter
+
+Stéphane Plaisance
+unread,
+Aug 9, 2017, 12:10:04 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for these two answers, it is what I needed to know.
+
+
+For multiple commands, I now create systematically a small wrapper.
+
+
+The fix for basename is not possible when using purely GUI modules and some filenames may contain additional dots earlier in while I only want to remove from the second-last, it would really be a nice addition to the arsenal of aliases as more and more NGS programs accept .ext.gz inputs.
+
+
+Best,
+Stephane
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/BdW4Ky4XIog/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/718a706b-6d3a-428e-9c2d-747527891037%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Peter Carr
+unread,
+Aug 9, 2017, 1:17:24 PM
+
+
+
+to GenePattern Help Forum
+This seems like a workable fix. I will add a ticket to our tracking system.
+
+
+Regards,
+Peter
+
+
+Peter Carr
+unread,
+Aug 14, 2017, 1:17:22 PM
+
+
+
+to GenePattern Help Forum
+For my records, created GP-6630
+
+
+Barbara Hill
+unread,
+Aug 14, 2017, 1:19:36 PM
+
+
+
+to GenePattern Help Forum
+For internal tracking - GP-6630
+
+Reply all
+
+Reply to author
+
+Forward

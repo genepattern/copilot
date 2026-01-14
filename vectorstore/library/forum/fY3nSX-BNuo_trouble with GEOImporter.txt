@@ -1,0 +1,1 @@
+GenePattern forum thread summary: User experienced issues importing GEO dataset GSE199982 using GEOImporter, encountering R configuration errors on Indiana University server, with support staff recommending using cloud.genepattern.org server as an alternative solution to resolve the module import problem.

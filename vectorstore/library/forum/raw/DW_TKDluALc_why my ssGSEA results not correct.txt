@@ -1,0 +1,198 @@
+URL: https://groups.google.com./g/genepattern-help/c/DW_TKDluALc
+Title: why my ssGSEA results not correct?
+----------------------------------------
+
+
+
+
+
+why my ssGSEA results not correct?
+49 views
+Skip to first unread message
+
+Wira Winardi
+unread,
+Jan 19, 2021, 10:57:26 PM
+
+
+
+to GenePattern Help Forum
+I ran ssGSEA to my RNAseq samples using genepatern platform. I used normalized CPM and TPM data as input for the ssGSEA. the platform running well without error, however, the results are not supposed to be (between -1 and 1). could anyone help me with this problem? thank you  
+
+Barbara Hill
+unread,
+Jan 20, 2021, 10:49:23 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Can you provide your job id? That will help us to figure out what is going on.
+
+
+Best
+-Barbara
+Message has been deleted
+Message has been deleted
+GenePattern Help Forum
+unread,
+Feb 5, 2021, 1:42:19 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm not sure why your messages were getting deleted. I've made sure that your user can post.
+
+
+Please provide us with a job id for any issues you are having.
+
+
+Best
+-Barbara
+
+
+
+Wira Winardi
+unread,
+Feb 5, 2021, 2:48:43 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+My job ID is 313774, 311539, and 311527
+
+
+Thank you. 
+Show quoted text
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9ca9d3c2-da68-4a68-a520-1d082e30aca3n%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Feb 5, 2021, 3:11:05 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Wira,
+
+ 
+
+I took a look at your job results. There are, of course, some differences between the projections run on the old 7.0 version of MSigDB’s gene sets with ssGSEA v9 compared to the new 7.2 sets accessed using the v10 ssGSEA module. That’s expected due to the changes in symbol mapping that can occur between MSigDB releases combined with the collapse dataset tool, but the results otherwise seem reasonable to me. Could you clarify what precisely you’re expecting that appears wrong in these results?
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADVJibb9SbAZuBTk4i_kP_UOuNAjfm5xjiuyEB1JiK_RZFH2UA%40mail.gmail.com.
+
+Wira Winardi
+unread,
+Feb 5, 2021, 4:41:46 PM
+
+
+
+to genepatt...@googlegroups.com
+Here are my newest results using FPKM normalized data.  the job ID is  317776
+The value of ssGSEA is should be between -1 to 1, but not with mine. thank you for your response, I really appreciate it.
+
+
+best wishes
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB5782AFC133C903A07323A581F7B29%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+ssGSEA.png
+Anthony Castanza
+unread,
+Feb 5, 2021, 4:47:19 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Wira,
+
+ 
+
+That is not accurate. The range of ssGSEA enrichment scores is not bounded to -1, +1. That is the case for the non-normalized enrichment score in the standard GSEA methodology, but ssGSEA uses a substantially different mathematical operation that isn’t constrained the same way.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Wira Winardi <winard...@gmail.com>
+Date: Friday, February 5, 2021 at 4:41 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:1736] Re: why my ssGSEA results not correct?
+
+Here are my newest results using FPKM normalized data.  the job ID is  317776
+
+The value of ssGSEA is should be between -1 to 1, but not with mine. thank you for your response, I really appreciate it.
+
+ 
+
+best wishes
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADVJibanv0bw%2BAG3XYXi1yWK224gogfDAN51VXeF3tR3OvpptA%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

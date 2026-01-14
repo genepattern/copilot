@@ -1,0 +1,1 @@
+GenePattern user experiencing difficulty downloading job results in Firefox on Linux, ultimately resolved by switching to Chrome browser, with support team suggesting logging out and restarting browser as potential troubleshooting step; no persistent technical issue identified.

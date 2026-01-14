@@ -1,0 +1,1 @@
+GenePattern forum thread summary focused on obtaining a WAR file for GenePattern server installation on an existing Tomcat server, with a support response providing the WAR file download link and cautioning about potential complexities of manual server configuration, recommending instead using the standard Mac installer or hosted server options to avoid administrative challenges.

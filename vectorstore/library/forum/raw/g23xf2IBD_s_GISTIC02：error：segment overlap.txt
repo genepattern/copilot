@@ -1,0 +1,49 @@
+URL: https://groups.google.com./g/genepattern-help/c/g23xf2IBD_s
+Title: GISTIC02：error：segment overlap
+----------------------------------------
+
+
+
+
+
+GISTIC02：error：segment overlap
+21 views
+Skip to first unread message
+
+oo Yu
+unread,
+May 13, 2023, 4:04:42 AM
+
+
+
+to GenePattern Help Forum
+I reprocessed my file, but it still reports an error, and I don't know how to deal with the problem of overlapping segments.
+
+My job ID is:
+509735. GISTIC_2.0
+
+Andrew Cherniack
+unread,
+May 13, 2023, 5:17:33 AM
+
+
+
+to GenePattern Help Forum
+
+Have you checked your seg file to make sure you have no overlapping segments in a signal sample or have two samples with identical names?
+
+Andrew Cherniack
+unread,
+May 15, 2023, 10:24:53 AM
+
+
+
+to GenePattern Help Forum
+Sorry I mean overlapping segments in a single sample or have two samples with identical names.
+
+
+Reply all
+
+Reply to author
+
+Forward

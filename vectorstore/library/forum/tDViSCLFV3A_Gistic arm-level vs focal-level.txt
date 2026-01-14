@@ -1,0 +1,1 @@
+`A user sought guidance on distinguishing GISTIC focal and arm-level copy number alterations in GenePattern, specifically asking how to plot these levels separately and understanding the impact of the -brlen cutoff parameter, with a recommendation to consult the specific GISTIC forum for detailed technical assistance.`

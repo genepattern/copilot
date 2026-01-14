@@ -1,0 +1,64 @@
+URL: https://groups.google.com./g/genepattern-help/c/dzmcZVeKPto
+Title: Comparative Marker Selection generated similar p-values
+----------------------------------------
+
+
+
+
+
+Comparative Marker Selection generated similar p-values
+15 views
+MarkerSelection
+pvalue
+Skip to first unread message
+
+Diana Song
+unread,
+Nov 20, 2017, 10:58:46 AM
+
+
+
+to GenePattern Help Forum
+Problem: I have a microarray dataset of 23 patients, with pre and post treatment. The microarray platform is Agilent 2-color, and the data is normalized log-ratio. I'm trying to use ComparativeMakerSelection to run a DEGs analysis. The result of comparative marker selection has over 3000 significant with blocks of similar p-values.
+
+
+
+Job ID: 
+CMS - 1575990
+CMSViewer - 1581382
+
+
+Thank you for helping!
+
+
+Best,
+Diana
+Barbara Hill
+unread,
+Nov 20, 2017, 1:49:26 PM
+
+
+
+to GenePattern Help Forum
+Hello Diana, 
+
+
+It looks like some of our data has been deleted so I can't actually look at your jobs.
+
+
+In general though, if you are seeing similar values this may mean that you need to do more stringent preprocessing.
+
+
+This tutorial is a little out of date in its screenshots but the analysis remains the same and may provide some pointers for you: http://software.broadinstitute.org/cancer/software/genepattern/tutorial
+
+
+Best
+
+
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

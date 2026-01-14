@@ -1,0 +1,1 @@
+Owen Chapman reported an issue with GenePattern's ConsensusClustering module using Non-Negative Matrix Factorization (NMF) that fails when input data contains zero values, generating an error message "ERROR: At least one matrix entry <= 0: M[8,6] = 0.0", despite NMF theoretically being able to handle zero values, and no definitive resolution was provided in the forum thread.

@@ -1,0 +1,115 @@
+URL: https://groups.google.com./g/genepattern-help/c/ogRXkpXa6Bg
+Title: Gene signature from cell lines sensitivity screens
+----------------------------------------
+
+
+
+
+
+Gene signature from cell lines sensitivity screens
+44 views
+Skip to first unread message
+
+David Waneback
+unread,
+Aug 24, 2023, 11:01:48 PM
+
+
+
+to GenePattern Help Forum
+
+Hi GenePattern Team,
+
+I am relatively new to this field and I'm finding myself a bit overwhelmed by the sheer number and diversity of available tests. My objective is to analyze gene expression data from cell lines treated with a specific compound. I'm aiming to extract a gene signature associated with the sensitivity of cells (IC50) to this treatment. Could you kindly recommend any specific test or pipeline that could help me achieve this?
+
+Additionally, my ultimate goal is to use the derived gene signature to create a scoring system. This scoring system would then be applied to other samples, such as tumors from TCGA. The aim is to predict the sensitivity of these samples based on the generated score.
+
+Thank you very much in advance for your guidance.
+
+
+
+Castanza, Anthony
+unread,
+Aug 25, 2023, 11:47:34 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi David,
+
+Something very similar to what you describe was done for this study: https://academic.oup.com/neuro-oncology/article/23/7/1072/6081306
+
+For the later part, determining if your signature is a good classifier for predicting sensitivity, for that study we developed a method called ssGSEA.ROC that is available through GenePattern. If you have questions about how the procedure works, please let me know.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1e78db0f-f587-423f-b5ec-56e3f83c4f0dn%40googlegroups.com.
+
+ 
+
+David Waneback
+unread,
+Sep 7, 2023, 10:52:24 AM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+many thanks for your very helpful answer. 
+In this article, they used a continuous vector (IC50) to run GSEA analysis. They also ran their GSEA analysis using TPM gene expression, which is not an appropriate format (https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Using_RNA-seq_Datasets_with_GSEA). Is a DESeq2 normalisation process required (or even possible) when running  a "continuous vector" GSEA or an analysis on TPM count is acceptable?  
+Thank you very much in advance for your guidance.
+
+
+
+
+
+Anthony Castanza
+unread,
+Sep 7, 2023, 11:37:37 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi David,
+
+For two-phenotype GSEA you're correct that we would not recommend using TPM data, however, for correlation based computations like when using the continuous vector mode we don't have a definitive answer. For this study data availability was limited and we found the computation to be reasonable for the purposes of the study, and considering the additional downstream analysis.
+
+You can perform the DESeq2 normalization if you supply arbitrary phenotypes. It should not impact the normalization calculation although any computed differential expression wouldn't be meaniningul.
+
+
+My suggestion would be to attempt to develop the signature both ways and perform additional validation to determine which is more sensitive and specific for your purposes. I suspect that, in actuality, the result will be quite similar.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d8ff63ae-4c11-48da-b14a-2b86c14597f6n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

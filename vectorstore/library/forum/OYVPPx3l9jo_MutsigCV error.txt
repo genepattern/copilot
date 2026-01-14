@@ -1,0 +1,1 @@
+A user encountered an error while running MutsigCV on GenePattern, involving a missing mutation type dictionary file and a technical issue with the AWS EC2 compute node; the support team suggested contacting the Broad Institute's cancer research group for specific technical assistance with the MutSigCV module and recommended verifying the correct coverage file for analysis.

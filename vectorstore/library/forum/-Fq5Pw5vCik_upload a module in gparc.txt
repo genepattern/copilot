@@ -1,0 +1,1 @@
+GenePattern module upload issue where user experienced problems uploading a module in GPArc due to configuration and zipfile validation errors, with support staff recommending direct email of files to technical support for assistance in resolving the upload process and ensuring module compatibility.

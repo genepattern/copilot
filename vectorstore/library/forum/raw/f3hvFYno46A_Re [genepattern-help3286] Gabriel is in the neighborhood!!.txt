@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/f3hvFYno46A
+Title: Re: [genepattern-help:3286] Gabriel is in the neighborhood!!
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:3286] Gabriel is in the neighborhood!!
+18 views
+Skip to first unread message
+
+Message has been deleted
+Harper Tayar
+unread,
+Nov 28, 2025, 12:46:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Anyone interested?
+
+
+On Fri, Nov 28, 2025, 5:59 AM Harper Tayar <harpe...@gmail.com> wrote:
+
+Hello Everyone!
+
+We’re scheduling a dryer vent cleaning and if anyone else is interested, we can get a group discount. Normally, this service costs $350, but if more people sign up, the price drops to $150 per home! Not cleaning your dryer vent increases the risk of fire in your home because lint and dust build up inside the vents, which can become a serious fire hazard.
+We’ve used this service before, and they do an excellent job. (he does duct and chimney cleaning if you need that as well)
+
+If you’re interested, please PM me your contact info and address, and I’ll arrange a convenient time. Or feel free to text Gabriel at 301-409-1848.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/4696755a-b7cf-4030-b472-c09f55205204n%40googlegroups.com.
+
+Harper Tayar
+unread,
+Dec 1, 2025, 10:24:44 AM
+
+
+
+to genepatt...@googlegroups.com
+Anyone interested?
+
+li.dav...@gmail.com
+unread,
+Dec 1, 2025, 1:29:15 PM
+
+
+
+to GenePattern Help Forum
+Hi Harper, Yes we are interested! As a GenePattern user, the most common problem for us is the dirty gene expression data that comes from various sources (e.g., Gaussian white noise, which is really annoying). I've used the dryer vent service before, and the result is fantastic -- the heatmap shows a beautiful red-blue pattern, even for genes with non-significant value (p>0.2) and low log-fold changes (FC<0.1)! How many users do you think you need to secure a $150 price, to get a publication-ready figure, even if your data is 90% trash? Please let me know,
+
+
+Reply all
+
+Reply to author
+
+Forward

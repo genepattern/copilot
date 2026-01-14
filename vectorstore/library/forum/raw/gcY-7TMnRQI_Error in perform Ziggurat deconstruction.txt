@@ -1,0 +1,97 @@
+URL: https://groups.google.com./g/genepattern-help/c/gcY-7TMnRQI
+Title: Error in perform Ziggurat deconstruction
+----------------------------------------
+
+
+
+
+
+Error in perform Ziggurat deconstruction
+90 views
+Skip to first unread message
+
+Elena Lara
+unread,
+Mar 1, 2022, 7:10:11 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run GISTIC on a segments file but can't seem to solve an error.
+
+
+GISTIC version: v.2.0.23
+Input file: segments file from WGS, with columns patient, analysis, chromosome, cnv_start, cnv_end, median_coverage, median_baf_logodds, n_hetero_snps, total_snps, major_copy_number, minor_copy_number, gain_loss and loh. I am not sure which pipeline was used to create this file. Also, I am using the columns n_hetero_snps as "Num markers" and median_baf_logodds as "Seg.CN"
+Genome version: hg19
+The rest of parameters are left as default.
+
+
+The error is:
+Index exceeds matrix dimensions.
+Error in normalize_by_arm_length (line 85)
+Error in make_sample_B (line 50)
+
+Error in perform_deconstruction (line 68)
+
+Error in perform_ziggurat_deconstruction (line 126)
+Error in run_focal_gistic (line 151)
+Error in run_gistic20 (line 124)
+Error in run_gistic2_from_seg (line 249)
+Error in gp_gistic2_from_seg (line 97)
+
+
+We have tried as well filling the gaps between segments and creating our own markers file, but the same error remains. 
+
+
+Hope you can help us!
+Best,
+Elena.
+
+
+
+
+
+
+Barbara Hill
+unread,
+Mar 1, 2022, 8:14:23 AM
+
+
+
+to GenePattern Help Forum
+Hello Elena,
+
+
+For an error like this, it is best to post in the GISTIC Forum, where the lead developer and other members of the GISTIC community can assist you. 
+
+In this case, there are many instances of this error and this post may be of help.
+
+
+Best
+-Barbara
+
+
+Elena Lara
+unread,
+Mar 2, 2022, 3:17:05 AM
+
+
+
+to GenePattern Help Forum
+Thank you, Barbara.
+
+I moved the question to https://groups.google.com/a/broadinstitute.org/g/gistic-forum/c/dcdJvGu-WBw/
+
+
+Best,
+Elena.
+
+
+Reply all
+
+Reply to author
+
+Forward

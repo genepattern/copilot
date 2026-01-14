@@ -1,0 +1,1 @@
+GenePattern ssGSEA module encountered a parsing error when attempting to run ROC analysis, likely due to unexpected formatting in dataset classification file; user reported resolving the issue without providing specific technical details, suggesting potential configuration or file formatting correction made independently.

@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/CA0R8nVjBl8
+Title: Problems running Nearest Template Prediction (NTP)
+----------------------------------------
+
+
+
+
+
+Problems running Nearest Template Prediction (NTP)
+74 views
+NTP
+Skip to first unread message
+
+Laura
+unread,
+May 7, 2018, 12:27:51 AM
+
+
+
+to GenePattern Help Forum
+I have a problem running NTP, I tried with all the versions available on GenePattern (also version 3 that seems to be the stable one) and it always gives me that all samples belong to class 0. I followed all the instructions for the preparation of the input file.
+
+
+
+Job ID 1671913.NearestTemplatePrediction
+
+
+
+
+Thanks 
+Laura
+Barbara Hill
+unread,
+May 15, 2018, 9:22:12 AM
+
+
+
+to GenePattern Help Forum
+Hello Laura, 
+
+
+My apologies for the delay in responding. 
+
+
+I was unable to determine the issue on my own and requested that another colleague take a look. He said that his " hunch is that the combination of log2 normalized data and cosine similarity may be what's leading to predicting all samples to be in the same class", but he didn't have a chance to test that out.
+
+
+Let us know if that helps get you pointed in the right direction.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

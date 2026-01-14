@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/vhdfepjbAMg
+Title: Voom Normalize problem
+----------------------------------------
+
+
+
+
+
+Voom Normalize problem
+20 views
+Skip to first unread message
+
+吳尚殷_Wu Shang-Yin
+unread,
+Feb 9, 2022, 3:05:24 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I encounter the following error when trying to run VoomNormalize,
+
+Error in read.gct(opts$input.file) :
+  Number of sample names 15 not equal to the number of columns 6 .
+
+The job number is 410571
+
+Thanks for your support,
+
+Shang-Yin
+
+Barbara Hill
+unread,
+Feb 9, 2022, 11:00:43 AM
+
+
+
+to GenePattern Help Forum
+Hello Shang-Yin,
+
+
+There is trailing blank space on each of the lines in your gct file, causing the parser to determine that you have 15 samples rather than the 6 indicated by the header in the gct file.
+
+
+I would suggest opening your file up in a text editor or IDE and making sure that all of your rows end after the final column.
+
+
+Best,
+Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

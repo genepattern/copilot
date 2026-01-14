@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/-VPcvdDz7MQ
+Title: RNAseq rnk file return "A 'chip.platform.file' must be provided for collapse/remap" Error
+----------------------------------------
+
+
+
+
+
+RNAseq rnk file return "A 'chip.platform.file' must be provided for collapse/remap" Error
+31 views
+Error
+GSEA
+parameters
+rna-seq
+Skip to first unread message
+
+Domenico Somma
+unread,
+Dec 10, 2019, 8:33:01 AM
+
+
+
+to GenePattern Help Forum
+Hi, I am using GSEAPreranked with a .rnk file I generated from RNAseq data, with HUGO gene names. The same file works with v6.0.12 but doesn't with v7.0.3, and the error says:
+"2071 [ERROR ] - A 'chip.platform.file' must be provided for collapse/remap
+2091 [ERROR ] - Error while processng:
+
+2091 [ERROR ] - There were one or more errors with the job parameters.
+
+Please check log output for details."
+
+
+If there is a mistake in the rnk file I generated, I don't understand the older version of the software is working, but not the new one.
+
+
+JobID not working, v7.0.3: 189965
+JobID working, v6.0.12: 189843
+
+
+Thanks
+Best Regards
+Anthony Castanza
+unread,
+Dec 10, 2019, 10:50:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+To align with changes that we implemented in GSEA Desktop Preranked, version 7 of the module allows the GSEA collapse dataset function. The default value of this collapse dataset parameter expects that you provide a chip file in order to process your gene identifiers using the Remap Only mode. This allows us to make sure that the version of Gene Symbols used in the input ranked list are consistent with the symbols used in MSigDB.
+
+
+If you do not wish to provide a chip file, make sure the "collapse dataset" parameter is set to "No collapse"
+
+
+This should resolve the error that you are seeing.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9c20ab2a-f759-4a76-ab6c-8ace5029e56a%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/yLgD81gFV_c
+Title: NTP
+----------------------------------------
+
+
+
+
+
+NTP
+32 views
+Skip to first unread message
+
+Admita
+unread,
+Sep 19, 2024, 9:41:16 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+I got the same p values of the output file after running the NTP modules,Is this result credible?
+
+Thanks
+edh...@cloud.ucsd.edu
+unread,
+Sep 20, 2024, 10:58:42 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+What's the Job ID for this result? 
+
+
+Edwin 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

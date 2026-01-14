@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/OQnd3Q2o3EM
+Title: SLAMS
+----------------------------------------
+
+
+
+
+
+SLAMS
+11 views
+Skip to first unread message
+
+Alexia Cotte
+unread,
+Sep 16, 2020, 11:10:07 AM
+
+
+
+to GenePattern Help Forum
+Hi
+I would like to know if there is a module in genepattern to run a stepwise linkage analysis (SLAMS)  to  identify copy number variation (CNV)-associated transcriptional regulators ?
+Thank you
+GenePattern Help Forum
+unread,
+Sep 18, 2020, 11:10:34 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Unfortunately, we do not have a specific module for SLAMS. 
+
+
+It appears that SAM has been archived here: https://statweb.stanford.edu/~tibs/SAM/
+
+
+And you might find the procedure described in this GenomeSpace recipe helpful. Note, however, that the Genomespace project has ended and this recipe can therefore only serve as an archival reference.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

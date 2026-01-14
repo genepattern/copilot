@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/31NKpzwehRk
+Title: Scheduled Maintenance Downtime - Saturday, December 1, 2018
+----------------------------------------
+
+
+
+
+
+Scheduled Maintenance Downtime - Saturday, December 1, 2018
+8 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Nov 21, 2018, 2:09:22 PM
+
+
+
+to GenePattern Help Forum
+
+GenePattern servers, files and websites hosted at the Broad Institute will be offline next Saturday, December 1, 2018 due to planned Broad IT system maintenance. They will be back up by 10am (EDT) on Monday, December 3, 2018.
+
+Affected websites are:
+
+The GenePattern website - http://genepattern.org (to include files hosted on this website)
+The GenePattern ftp site - ftp://gpftp.broadinstitute.org/
+The GParc website - http://gparc.org/
+The GenePattern module repositories - regardless of which server is used to access them
+
+Affected servers are:
+
+GenePattern @ Broad - https://genepattern.broadinstitute.org
+Jobs for this server will no longer be accepted after 5pm ET on November 30, 2018, as we continue our migration to our production Amazon server, https://cloud.genepattern.org. (Please see this post for more information)
+GenePattern Internal @ Broad - https://gpbroad.broadinstitute.org 
+Any jobs which have not completed by  8am  (EDT) on Saturday will be canceled. We suggest you wait to run any long-running jobs until Sunday morning (EDT).
+
+The Amazon cloud server - https://cloud.genepattern.org - is not impacted by this maintenance and will be available throughout the weekend.
+
+Follow us on  Twitter and  Facebook for updates.
+
+We apologize for any inconvenience this may cause, and invite you to contact us with any questions or concerns you may have.
+
+Sincerely,
+
+-The GenePattern Team
+
+
+Reply all
+
+Reply to author
+
+Forward

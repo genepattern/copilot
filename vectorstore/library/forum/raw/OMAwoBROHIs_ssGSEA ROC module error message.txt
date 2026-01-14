@@ -1,0 +1,98 @@
+URL: https://groups.google.com./g/genepattern-help/c/OMAwoBROHIs
+Title: ssGSEA ROC module error message
+----------------------------------------
+
+
+
+
+
+ssGSEA ROC module error message
+23 views
+Skip to first unread message
+
+Mario Ezquerra
+unread,
+Oct 25, 2022, 2:15:54 AM
+
+
+
+to GenePattern Help Forum
+
+Hi, I launched the ROC curve module and the software gives me this message error. I think that the CLS and GCT files are correct, so I am not sure about the origin of problem, any idea?
+
+Thanks
+
+Mario
+
+
+
+
+
+Warning message: In readLines(clsfile) : incomplete final line found on '/opt/gpcloud/gp_home/users/Marioezq/uploads/tmp/run1804698797315094022.tmp/CLS/2/Train name CLS_PD.cls' Error in prediction(as.numeric(eval(parse(text = paste0("dataset$", dataset_calculations[dataset_calculations[c(1)] == : Number of predictions in each run must be equal to the number of labels for each run. Execution halted
+
+
+data_test PD.gct
+
+name CLS_PD.cls
+Anthony Castanza
+unread,
+Oct 25, 2022, 10:21:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Mario,
+
+
+It appears that this error is resulting from some extreme behavior in the calculation of the Matthews correlation coefficient matrix for the null permutations resulting in NAN computations. I'll have to dig deeper into this error, but it would appear that I missed an edge-case when writing this module.
+Hopefully I can resolve this and get a fix out but I can't really offer much of an ETA there, sorry!
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/42b8e1c7-55ef-428d-a9db-13ca9071f992n%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Oct 25, 2022, 11:12:41 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Mario,
+
+
+Quick follow up. I have a workaround for you. If you change the names of your gene sets to replace the "-" with "_" the calculations will go through. There is an issue in R where the "-" character gets replaced in column names and this messes up the matching that we're doing in the ssGSEA_ROC script. I've attached a fixed GCT that should run here.
+
+
+Let me know if you have any questions, or if this fix doesn't work for you
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+data_test PD.gct
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/TqeeytrLouo
+Title: GICTIC Floating point exception
+----------------------------------------
+
+
+
+
+
+GICTIC Floating point exception
+62 views
+Skip to first unread message
+
+Yun Xiao
+unread,
+Apr 13, 2024, 9:09:32 PM
+
+
+
+to GenePattern Help Forum
+when using gistic2 to analyze the tcga crc copy number data. i got the following error:
+arm 41: 21p 0 markers                                                                                                                                                              
+arm 42: 21q 3432 markers                                                                                                                                                          
+arm 43: 22p 0 markers                                                                                                                                                              
+arm 44: 22q 2778 markers                                                                                                                                                          
+                                                                                                                                                                                   
+------------------------------------------------------------------------                                                                                                          
+      Floating point exception detected at Sun Apr 14 11:35:45 2024                                                                                                                
+------------------------------------------------------------------------                                                                                                          
+                                                                                                                                                                                   
+Configuration:                                                                                                                                                                    
+  Crash Decoding     : Disabled                                                                                                                                                    
+  Current Visual     : None                                                                                                                                                        
+  Default Encoding   : UTF-8    
+
+
+how to solve the problems 
+
+Andrew Cherniack
+unread,
+Apr 16, 2024, 7:49:01 AM
+
+
+
+to GenePattern Help Forum
+Can you provide more information?
+What were your input parameters?  What was your segfile? 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

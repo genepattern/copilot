@@ -1,0 +1,206 @@
+URL: https://groups.google.com./g/genepattern-help/c/8GmM0phaAaY
+Title: GISTIC Refgene files
+----------------------------------------
+
+
+
+
+
+GISTIC Refgene files
+45 views
+Skip to first unread message
+
+Andrew Cherniack
+unread,
+Feb 15, 2023, 11:55:31 AM
+
+
+
+to GenePattern Help Forum
+Is there a way to import your own Reference Genome matlab file into Gene Pattern GISTIC?
+We are finding that the HG19 refgene file seems to missing some genes that we are interested in.
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 17, 2023, 10:57:43 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+At the moment we don't have an easy way to use your own refgene file with the GISTIC module. However, that looks like an easy change for us to make. We will aim to release a new version of the module next week that can accept a custom refgene.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Andrew Cherniack
+unread,
+Feb 17, 2023, 11:35:18 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you!
+
+
+Best,
+Andy
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/8GmM0phaAaY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/071c1887-8e36-4702-9436-0bf01cca9619n%40googlegroups.com.
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 21, 2023, 11:05:04 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+A new version of the GISTIC_2.0 module has been released that supports custom refgene files.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+Andrew Cherniack
+unread,
+Feb 21, 2023, 12:37:55 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Thorin,
+
+
+Thanks for doing this.  I was able to run GISTIC with my own reference gene file.
+
+
+However, I just found a bug while trying it out for GISTIC 6.15.28.
+Remove X in the advanced parameters does not work correctly.  I set the flag to not remove X. 
+In Matlab remove X should be set to 0 in this case.
+But when I ran GISTIC the X was removed.  
+In the Matlab output  remove X was set to 1
+I am going to trying it out on the previous version of GISTIC
+Regards,
+Andy
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1dc2c7f8-7dea-4f27-8def-73b20dd1b828n%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Feb 21, 2023, 1:26:14 PM
+
+
+
+to genepatt...@googlegroups.com
+
+
+For version 6.15.21.
+The remove X parameter works correctly.
+Both GenePattern versions use GISTIC  2.0.23. and so GISTIC itself is unlikely to be the issue.
+
+
+Andy
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 21, 2023, 1:28:44 PM
+
+
+
+to GenePattern Help Forum
+Thank you for pointing this out. I'll see if I can reproduce the issue and create a fix.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 22, 2023, 12:47:15 PM
+
+
+
+to GenePattern Help Forum
+Hello Andy,
+
+
+I was able to reproduce your issue and a new version of the GISTIC_2.0 module has been released that fixes the remove.X bug.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Andrew Cherniack
+unread,
+Feb 22, 2023, 1:11:02 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks again!
+
+
+Andy
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/17e473fc-2d80-4bd1-9c78-3ac571812274n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

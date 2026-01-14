@@ -1,0 +1,78 @@
+URL: https://groups.google.com./g/genepattern-help/c/0X6GT4yd3q8
+Title: help SVM prediction
+----------------------------------------
+
+
+
+
+
+help SVM prediction
+23 views
+Skip to first unread message
+
+Mario Ezquerra
+unread,
+Oct 5, 2022, 7:53:30 AM
+
+
+
+to GenePattern Help Forum
+I am a new user. I launched the two train files (training data and training class files, in gct and cls format) to perform a prediction analysis using SVM algorithm.
+
+
+The software accepted my files as correct, but I can not understand the results file (attached). is something wrong?
+
+thank you in advance!
+Mario
+
+traindata_test PD model RESULTS.model
+Ted Liefeld
+unread,
+Oct 5, 2022, 9:37:18 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+this SVM module has two different modalities.  If only train data is provided, it creates the model file (as you have found).  If instead you run it with test data AND a model file, it will generate prediction results which you can use in the PredictionResultsViewer visualizer.  If you give it train and test data (but no model) it will generate a model and then use that to create prediction results.
+
+
+I believe the model file is an R binary format, and we don't have any way to visualize that in GenePattern, but you could probably load it into R to look at it but we have no documentation on what that might look like.
+
+
+I am guessing that what you really want is prediction results, so you can either reuse that model file with another dataset, or split your dataset into train and test portions (e.g. using the SplitDatasetTrainTest module) to generate predictions on the test portion.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Mario Ezquerra
+unread,
+Oct 21, 2022, 6:58:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks! it works
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/0X6GT4yd3q8/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/34447339-3f66-40a8-b73d-a8de26bb7269n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

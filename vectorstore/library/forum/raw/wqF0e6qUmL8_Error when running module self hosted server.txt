@@ -1,0 +1,234 @@
+URL: https://groups.google.com./g/genepattern-help/c/wqF0e6qUmL8
+Title: Error when running module self hosted server
+----------------------------------------
+
+
+
+
+
+Error when running module self hosted server
+56 views
+Skip to first unread message
+
+Rashid O
+unread,
+Jun 19, 2023, 6:08:45 PM
+
+
+
+to GenePattern Help Forum
+I have a personal hosted genepattern setup through docker on an AWS instance. I am attempting to run the ssGSEA module as a test on my web UI, however any job submitted instantly fails with the error
+
+```
+WARNING: ignoring environment value of R_HOME
+Fatal error: cannot open file '/opt/genepattern/taskLib/ssGSEA.10.1.0.1/ssGSEA.R': No such file or directory
+
+```
+
+
+Any pointers on what to check on my docker instance to resolve this? Checking the genepattern folder on my server which I run the install script from, I confirm that the file and folder does indeed exists, and I have installed and reinstalled the module from the public repo.
+tmt...@cloud.ucsd.edu
+unread,
+Jun 20, 2023, 11:22:17 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+There are a few things to check in order to begin debugging this issue. First, it sounds like you are running the GenePattern server inside a Docker container. Is that correct? If so, you need to make sure that the container running the server is able to launch and access other containers for the module jobs. You also need to make sure that you have the correct image pulled for the ssGSEA module (genepattern/docker-r-3-2:0.1). Furthermore, you'll need to make sure that the GenePattern sever container and module container are both able to access the /opt/genepattern/taskLib/ directory.
+
+
+
+If you're not running the GenePattern server inside a container, things are a bit simpler, as only the host will need the ability to launch containers.
+
+
+Hopefully this gives you a place to begin debugging. If not, please provide a bit more information about how you're running the GenePattern server and perhaps I can suggest a solution.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Rashid O
+unread,
+Jun 20, 2023, 11:49:12 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for that information,
+
+
+I'm running the GenePattern server inside a docker container using the ./start_genepattern script provided by the team - having followed the docker setup guide in the administrator guide.
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/wqF0e6qUmL8/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8b7215df-2375-4670-b9a8-a365332b9c5an%40googlegroups.com.
+
+Rashid O
+unread,
+Jun 20, 2023, 11:51:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Here is the output of my pulled docker images:
+
+docker images
+REPOSITORY                       TAG               IMAGE ID       CREATED        SIZE
+genepattern/genepattern-server   v3.9_22.11_b389   48e7d1e9145e   6 months ago   718MB
+genepattern/docker-r-3-2         0.1               8be4cf265417   5 years ago    1.49GB
+
+I can see the docker-r-3-2 pulled correctly, which I originally installed from the administration panel in my frontend.
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 21, 2023, 1:23:20 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The Docker images look good.
+
+
+
+Our expert on this is on vacation this week. I'll make sure he sees your question when he gets back. In the meantime, I recommend making sure that you can access the /opt/genepattern/taskLib/ssGSEA.10.1.0.1/ssGSEA.R path from within the GenePattern Docker container and not just on the host (docker exec -it <container_id> bash). If not, you will need to mount the taskLib directory into the container when it is launched.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Rashid O
+unread,
+Jun 22, 2023, 7:37:24 AM
+
+
+
+to GenePattern Help Forum
+Interesting,
+
+
+I just checked and the file and path are present inside my docker container, and I was able to check the contents of the ssGSEA.R file to make sure it was correct. Thank you for your help and I'll wait on that.
+
+Since it seems the module was updated the error is slightly updated if that's important
+
+> Fatal error: cannot open file '/opt/genepattern/taskLib/ssGSEA.10.1.0.2/ssGSEA.R': No such file or directory
+
+
+
+
+
+Rashid O
+unread,
+Jun 26, 2023, 4:37:50 PM
+
+
+
+to GenePattern Help Forum
+Any updates on this issue?
+
+Ted Liefeld
+unread,
+Jun 27, 2023, 10:55:00 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+It looks like the issue is that in the job container, its not getting the /opt/genepattern/taskLib/ssGSEA.10.1.0.1/ssGSEA.R file. So there are a few things to check.
+
+
+1. Is the server's tasklib available outside of the server container. Verify that it is and that the full path is present on the host machine. If it isn't you will have to make the tasklib into a mounted directory for the server. If you used our startup script (https://github.com/genepattern/genepattern-server/blob/develop/docker/start-genepattern.sh) this should already be there.
+
+
+2. The tasklib is there but its not being mounted to the job container. For this look in your $GENEPATTERN_HOME/resources/config_custom.xml and make sure that the value set for "job.docker.bind_src=<your GenePattern install location on the host machine>" and "job.docker.bind_dst=/opt/genepattern".
+
+
+If both of these are correct we may have to write a test module to tell us what it is seeing when its run.  This could just be a shell fragment that has "ls -al /opt/genepattern > somefile.txt" in it.  Make a copy of the ssGSEA module, upload the shell script and change the command line line to the ls command.  Might also need to delete the parameters so that ls doesn't complain about them.
+
+
+Let me know how this goes,
+
+
+Ted
+
+Rashid O
+unread,
+Jun 27, 2023, 1:12:24 PM
+
+
+
+to GenePattern Help Forum
+Thanks for this information,
+
+
+1. I verified that taskLib is present outside the container, containing the module, and inside the container as I used the startup script so it did this for me automatically.
+
+2. This was the issue - my folder outside the host wasn't in the root where the startup script was expecting it to be as I did a little server organization
+
+Thank you so much for pointing this out!
+
+
+
+Ted Liefeld
+unread,
+Jun 27, 2023, 1:58:50 PM
+
+
+
+to genepatt...@googlegroups.com
+Great, so are you up and running now?
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9c418330-5fb3-406b-9dd4-0ea3ecd98703n%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Rashid O
+unread,
+Jun 27, 2023, 2:18:33 PM
+
+
+
+to genepatt...@googlegroups.com
+Yes - I'm able to use modules perfectly and jobs aren't causing any errors - Thanks as always. I will keep testing it and let you know if anything else goes strange.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdQVUR7kvKz-KwCY3iweV3gLusmML6fbpJsS5wgY%2BcGQ%3Dg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

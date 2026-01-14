@@ -1,0 +1,415 @@
+URL: https://groups.google.com./g/genepattern-help/c/kvklyT9jDe8
+Title: Re: [gp-team] module installation errors
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] module installation errors
+17 views
+Skip to first unread message
+
+Barbara Hill
+unread,
+Mar 21, 2019, 8:36:43 AM
+
+
+
+to GenePattern Help Forum, genepattern-team
+Hello Gerry, 
+
+
+This question is best suited for our forum as you will reach a wider audience for support and the answers will be available to others who have similar questions.
+
+
+We will respond there.
+
+
+Best
+-Barbara
+
+
+On Wed, Mar 20, 2019 at 3:42 PM Gerry Kwok <gggj...@gmail.com> wrote:
+
+Dear Sir,
+
+How do I resolve the problem of having R version 3.5.1 from anaconda with genepattern modules such as ABSOLUTE requiring R 2.15. I’ve also run into installation issues with HIERARCHICALClustering having no substitution for python 3.6. MacOS 10.13.6. Many thanks.
+
+Yours sincerely,
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/90B4F233-0DE7-478F-A35C-FA1FACD78870%40gmail.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+Ted Liefeld
+unread,
+Mar 25, 2019, 8:08:06 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+in the past we used to have a collection of scripts to help set up the different environments for the various modules, but as you may guess that was a bit cumbersome.  The latest versions of GenePattern (last year or so) use docker containers to keep the different module environments separate.  We may not have a container for every module (especially older versions) yet, but most modules and definitely the most popular ones should be covered.
+
+
+Since you are on a mac, the best thing would be to take the most recent release candidate from our github releases page (https://github.com/genepattern/genepattern-server/releases).  You will first need to install docker on your mac (https://docs.docker.com/docker-for-mac/install/), then install the new version of GenePattern and things should just work.  If you find a module that does not work that you need, post it here and we'll make sure it moves to the top of the queue for our attention.
+
+
+Thanks
+
+Ted
+
+
+
+
+On Thursday, March 21, 2019 at 8:36:43 AM UTC-7, Barbara Hill wrote:
+Hello Gerry, 
+
+
+This question is best suited for our forum as you will reach a wider audience for support and the answers will be available to others who have similar questions.
+
+
+We will respond there.
+
+
+Best
+-Barbara
+
+
+On Wed, Mar 20, 2019 at 3:42 PM Gerry Kwok <gggj...@gmail.com> wrote:
+
+Dear Sir,
+
+How do I resolve the problem of having R version 3.5.1 from anaconda with genepattern modules such as ABSOLUTE requiring R 2.15. I’ve also run into installation issues with HIERARCHICALClustering having no substitution for python 3.6. MacOS 10.13.6. Many thanks.
+
+Yours sincerely,
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-team+unsubscribe@broadinstitute.org.
+To post to this group, send email to genepattern-team@broadinstitute.org.
+
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/90B4F233-0DE7-478F-A35C-FA1FACD78870%40gmail.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bhill@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+Aafaque Khan
+unread,
+Mar 25, 2019, 8:23:52 AM
+
+
+
+to genepatt...@googlegroups.com, lie...@broadinstitute.org
+Hi Ted,
+Thanks for your reply. The ParallelCBS module on public server is not working for me. I have shared the error screenshot previously with GenePattern team ((Job ID 87841)) but I am still waiting for their response. I am attaching it again for your reference. It would be great if you can have a look and suggest a solution to fix it.
+
+
+Thanks,
+Aafaque
+
+
+On Mon, Mar 25, 2019 at 11:08 AM Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+Hi
+
+
+in the past we used to have a collection of scripts to help set up the different environments for the various modules, but as you may guess that was a bit cumbersome.  The latest versions of GenePattern (last year or so) use docker containers to keep the different module environments separate.  We may not have a container for every module (especially older versions) yet, but most modules and definitely the most popular ones should be covered.
+
+
+Since you are on a mac, the best thing would be to take the most recent release candidate from our github releases page (https://github.com/genepattern/genepattern-server/releases).  You will first need to install docker on your mac (https://docs.docker.com/docker-for-mac/install/), then install the new version of GenePattern and things should just work.  If you find a module that does not work that you need, post it here and we'll make sure it moves to the top of the queue for our attention.
+
+
+Thanks
+
+Ted
+
+
+
+
+On Thursday, March 21, 2019 at 8:36:43 AM UTC-7, Barbara Hill wrote:
+Hello Gerry, 
+
+
+This question is best suited for our forum as you will reach a wider audience for support and the answers will be available to others who have similar questions.
+
+
+We will respond there.
+
+
+Best
+-Barbara
+
+
+On Wed, Mar 20, 2019 at 3:42 PM Gerry Kwok <gggj...@gmail.com> wrote:
+
+Dear Sir,
+
+How do I resolve the problem of having R version 3.5.1 from anaconda with genepattern modules such as ABSOLUTE requiring R 2.15. I’ve also run into installation issues with HIERARCHICALClustering having no substitution for python 3.6. MacOS 10.13.6. Many thanks.
+
+Yours sincerely,
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/90B4F233-0DE7-478F-A35C-FA1FACD78870%40gmail.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cfff35f2-0b99-4b12-99ac-7d05f63f3747%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+PCBS error.png
+Ted Liefeld
+unread,
+Mar 25, 2019, 8:46:42 AM
+
+
+
+to GenePattern Help Forum
+Unfortunately that one might take a bit longer before it is working on our public server as it uses a parallel execution pipeline to run many CBS modules simultaneously.  I don't know what the status of the parallel-support is on our new server so I can't really answer when it will work.  Do you know if the executing a single instance of the CBS module works for a single input file?  If so then it would be possible to work around this pretty easily.  If not, we can try to get CBS to the head of the queue for updating.
+
+
+Ted
+
+
+
+On Monday, March 25, 2019 at 8:23:52 AM UTC-7, Aafaque Khan wrote:
+Hi Ted,
+Thanks for your reply. The ParallelCBS module on public server is not working for me. I have shared the error screenshot previously with GenePattern team ((Job ID 87841)) but I am still waiting for their response. I am attaching it again for your reference. It would be great if you can have a look and suggest a solution to fix it.
+
+
+Thanks,
+Aafaque
+
+
+On Mon, Mar 25, 2019 at 11:08 AM Ted Liefeld <lie...@broadinstitute.org> wrote:
+
+Hi
+
+
+in the past we used to have a collection of scripts to help set up the different environments for the various modules, but as you may guess that was a bit cumbersome.  The latest versions of GenePattern (last year or so) use docker containers to keep the different module environments separate.  We may not have a container for every module (especially older versions) yet, but most modules and definitely the most popular ones should be covered.
+
+
+Since you are on a mac, the best thing would be to take the most recent release candidate from our github releases page (https://github.com/genepattern/genepattern-server/releases).  You will first need to install docker on your mac (https://docs.docker.com/docker-for-mac/install/), then install the new version of GenePattern and things should just work.  If you find a module that does not work that you need, post it here and we'll make sure it moves to the top of the queue for our attention.
+
+
+Thanks
+
+Ted
+
+
+
+
+On Thursday, March 21, 2019 at 8:36:43 AM UTC-7, Barbara Hill wrote:
+Hello Gerry, 
+
+
+This question is best suited for our forum as you will reach a wider audience for support and the answers will be available to others who have similar questions.
+
+
+We will respond there.
+
+
+Best
+-Barbara
+
+
+On Wed, Mar 20, 2019 at 3:42 PM Gerry Kwok <gggj...@gmail.com> wrote:
+
+Dear Sir,
+
+How do I resolve the problem of having R version 3.5.1 from anaconda with genepattern modules such as ABSOLUTE requiring R 2.15. I’ve also run into installation issues with HIERARCHICALClustering having no substitution for python 3.6. MacOS 10.13.6. Many thanks.
+
+Yours sincerely,
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-team+unsubscribe@broadinstitute.org.
+To post to this group, send email to genepattern-team@broadinstitute.org.
+
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/90B4F233-0DE7-478F-A35C-FA1FACD78870%40gmail.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bhill@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+Aafaque Khan
+unread,
+Mar 25, 2019, 9:09:33 AM
+
+
+
+to genepatt...@googlegroups.com
+CBS module for single input works perfectly, the issue is with ParrallelCBS only. 
+
+
+Aafaque
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To post to this group, send email to genepatt...@broadinstitute.org.
+
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/90B4F233-0DE7-478F-A35C-FA1FACD78870%40gmail.com.
+
+
+
+
+
+--
+
+-- 
+Barbara Hill
+Senior Test Engineer
+GenePattern Product Owner
+
+Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+email: bh...@broadinstitute.org
+phone: 617-714-7508
+http://genepattern.org
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/cfff35f2-0b99-4b12-99ac-7d05f63f3747%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/48fb05f5-73c4-4952-91e5-49a2ec95fb3f%40googlegroups.com.
+
+Peter Carr
+unread,
+Mar 25, 2019, 9:43:28 AM
+
+
+
+to genepatt...@googlegroups.com
+If I recall correctly, the CBS module was updated to work in Docker but the ParallelCBS pipeline was not updated to use the newer version of the CBS module.
+
+Regards,
+Peter
+
+Barbara Hill
+unread,
+Mar 26, 2019, 10:30:45 AM
+
+
+
+to GenePattern Help Forum
+Hi all, 
+
+
+I've continued the discussion of ParallelCBS in it's original ticket:
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!searchin/genepattern-help/khan%7Csort:date/genepattern-help/ofs8P9NEqSc/7ZF7ul7NAwAJ
+
+
+best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

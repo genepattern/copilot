@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/f1oMNU3_ga0
+Title: 2-factor analysis with DEseq2
+----------------------------------------
+
+
+
+
+
+2-factor analysis with DEseq2
+9 views
+Skip to first unread message
+
+andrew Williams
+unread,
+Jan 14, 2021, 6:38:10 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying to conduct a two-factor analysis using DEseq2 - according to the instructions at: https://genepattern.github.io/DESeq2/v1/index.html.  I have a 2x2 experiment thus I have four treatment groups A,B,C,D 
+
+
+In the instructions it says:  "choose a type of analysis, resulting in the following comparisons:
+
+one-versus-all:  “A vs. (B and C and D)”, “B vs. (A and C and D)”, “C vs. (A and B and D)”, and “D vs. (A and B and C)”
+
+all-pairs: “A vs. B”, “A vs. C”, “A vs. D”, “B vs. C”, “B vs. D”, “C vs. D”
+
+
+
+I am pretty sure I have formatted the input files correctly,
+but when I run the module I cannot see how to set up the analysis to run comparisons between the different factors, Thus, in the output I only get one comparison.
+
+
+Can you please let me know how I can run the module to specify the different comparisons I want, as quoted above? 
+
+
+Many thanks, Andrew 
+Barbara Hill
+unread,
+Jan 14, 2021, 7:45:26 AM
+
+
+
+to GenePattern Help Forum
+Hello Andrew, 
+
+
+Please send a job id so that we can take a look at all of the information and better help you.
+
+
+All the best
+-Barbara
+
+andrew Williams
+unread,
+Jan 14, 2021, 7:50:41 AM
+
+
+
+to GenePattern Help Forum
+thanks Barbara,
+its  312293
+thanks , andrew :)  
+
+
+
+Barbara Hill
+unread,
+Jan 14, 2021, 10:03:52 AM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+
+
+You are so right! We had left the ability to do two-factor out of the beta release, but it looks like it was never added to the v1 production release. I'm looking into the size of this update (IE when it will be available), but for now, I can at least update the doc, so it's no longer misleading.
+
+
+Thank you so much for bringing this to our attention! and I'm sorry for the confusion and any inconvenience it has caused.
+
+
+All the best,
+Barbara
+
+andrew Williams
+unread,
+Jan 14, 2021, 12:54:19 PM
+
+
+
+to GenePattern Help Forum
+No worries, thanks :) 
+
+
+Reply all
+
+Reply to author
+
+Forward

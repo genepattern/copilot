@@ -1,0 +1,1 @@
+GenePattern module development query addressing how to programmatically access and print the current user's username during module execution, with solutions provided including using the <userid> substitution variable and accessing jobInfo.getUserID() method, demonstrating multiple approaches for retrieving user identification within module workflows.

@@ -85,11 +85,16 @@ def invoke_for_module(state, prompt, rag_format=True):
     return state
 
 
-def invoke_for_doc(state, prompt, rag_format=True):
+def invoke_for_doc(state, prompt, rag_format=True, thread_format=False):
     if rag_format:
         format_desc = """Format your description in embedding-friendly chunks for ingestion in a chroma 
         vector store. Break the content into atomic, semantically distinct chunks, with and natural language phrasing. 
         Write one chunk per line. Only write the text of the chunk; do not write metadata. Do not include any other text."""
+    elif thread_format:
+        format_desc = """"Format your description as a single embedding-friendly chunk, ready for ingestion in a chroma 
+        vector store. It should be a single line of text, including both the main question asked, as well as any relevant answers or solutions provided. 
+        Do not include the names of specific people or job numbers. 
+        If no question was asked relevant to either GenePattern or bioinformatics, simply respond with `N/A`."""
     else:
         format_desc = ''
 
@@ -122,6 +127,14 @@ def server_documentize(state: ModuleState):
     be targeted at someone with an undergraduate level of biological knowledge."""
 
     state = invoke_for_doc(state, prompt)
+    return state
+
+
+def forum_documentize(state: ModuleState):
+    prompt = """Please summarize the following GenePattern forum thread, including the main question asked, as well as any relevant answers or solutions provided.
+    The summary should be targeted at someone with an undergraduate level of biological knowledge."""
+
+    state = invoke_for_doc(state, prompt, rag_format=False, thread_format=True)
     return state
 
 
@@ -179,6 +192,17 @@ def process_server_doc(doc: str) -> tuple[str, str]:
     return state.name, contents
 
 
+def process_forum_threads(doc: str) -> tuple[str, str]:
+    """Process GenePattern forum threads"""
+    state = ModuleState(doc=doc)
+
+    # Run the pipeline
+    state = forum_documentize(state)
+
+    contents = "\n".join(state.documents)
+    return state.name, contents
+
+
 def load_pdf(file_path):
     print(f"Loading PDF at {file_path}")
     text_content = []
@@ -205,6 +229,18 @@ def load_html(file_path):
         raise ValueError(f"An error occurred while processing {file_path}: {e}")
 
 
+def load_txt(file_path):
+    print(f"Loading txt at {file_path}")
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            text_content = file.read()
+        return text_content
+    except FileNotFoundError:
+        raise ValueError(f"File not found: {file_path}")
+    except Exception as e:
+        raise ValueError(f"An error occurred while processing {file_path}: {e}")
+
+
 def write_summary(directory, basename, content):
     """Write the given content to <basename>.txt in the specified directory."""
     if not os.path.exists(directory):
@@ -219,8 +255,12 @@ def write_summary(directory, basename, content):
 def summarize_html(doc, doc_type='module'):
     if doc_type == 'module':
         return process_module_doc(doc)
-    else:
+    elif doc_type == 'server':
         return process_server_doc(doc)
+    elif doc_type == 'forum':
+        return process_forum_threads(doc)
+    else:
+        raise ValueError(f"Unknown doc_type: {doc_type}")
 
 
 def summarize_all_doc(doc_type, read_dir, write_dir):
@@ -228,14 +268,18 @@ def summarize_all_doc(doc_type, read_dir, write_dir):
         raise ValueError(f"The path '{read_dir}' is not a valid directory.")
 
     for filename in os.listdir(read_dir):
-        base_name = os.path.basename(filename)[:-5]
+        base_name, ext = os.path.splitext(filename)
         if os.path.exists(os.path.join(write_dir, base_name + '.txt')):
             print(f"Skipping {filename}")
             continue
-        if filename.lower().endswith('.html') or filename.lower().endswith('.pdf'):
+        if (filename.lower().endswith('.html')
+                or filename.lower().endswith('.pdf')
+                or filename.lower().endswith('.txt')):
             full_path = os.path.join(read_dir, filename)
             if filename.lower().endswith('.pdf'):
                 content = load_pdf(full_path)
+            elif filename.lower().endswith('.txt'):
+                content = load_txt(full_path)
             else:
                 content = load_html(full_path)
             page_name, summary = summarize_html(content, doc_type)
@@ -245,9 +289,10 @@ def summarize_all_doc(doc_type, read_dir, write_dir):
 
 
 # Summarize all HTML documentation files
-summarize_all_doc('module', './library/moduledoc/raw', './library/moduledoc/')
-summarize_all_doc('server', './library/serverdoc/raw', './library/serverdoc/')
-summarize_all_doc('server', './library/notebookdoc/raw', './library/notebookdoc/')
+# summarize_all_doc('module', './library/moduledoc/raw', './library/moduledoc/')
+# summarize_all_doc('server', './library/serverdoc/raw', './library/serverdoc/')
+# summarize_all_doc('server', './library/notebookdoc/raw', './library/notebookdoc/')
+summarize_all_doc('forum', './library/forum/raw', './library/forum/')
 
 # TEST WITH ONLY A SINGLE MODULE
 # content = load_html('./library/moduledoc/raw/DESeq2.html')

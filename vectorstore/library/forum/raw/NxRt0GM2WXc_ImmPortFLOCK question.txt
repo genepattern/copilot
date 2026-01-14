@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/NxRt0GM2WXc
+Title: ImmPortFLOCK question
+----------------------------------------
+
+
+
+
+
+ImmPortFLOCK question
+6 views
+Flow_Cytometry
+ImmPortFLOCK
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Oct 22, 2018, 1:16:02 PM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern,
+
+
+
+I am looking for the GenePattern ImmPortFLOCK module to use for software testing. I see a couple references to ImmPortFLOCK on your site (http://software.broadinstitute.org/cancer/software/genepattern/flow-cytometry-gating-and-clustering, http://software.broadinstitute.org/cancer/software/genepattern/modules) however if I login (https://genepattern.broadinstitute.org/gp/pages/index.jsf, Browse Modules » Flow Cytometry) I do not see it. Has ImmPortFLOCK been retired from GenePattern? If not, can you tell me where I can find it?
+
+
+Thanks for your help.
+Barbara Hill
+unread,
+Oct 22, 2018, 1:23:00 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+The ImmPortFLOCK module was deprecated after a fire in our data center on June 22, 2018. 
+
+
+
+More information can be found in the announcement in the top of this forum, in the announcement at the top of the GenePattern Flow Cytometry forum, on our blog, or in the System Message on our Broad-hosted public GenePattern server.
+
+
+ImmPortFLOCK is slated to be moved to the GParc repository along with the rest of the BCCRC Flow Cytometry modules. You might try asking in the Flow Cytometry forum about this module, as the authors may have a later version they can share with you.
+
+
+Please let us know if you can be of further assistance.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/sicFE4CGc3w
+Title: ssGSEA NES unstablization
+----------------------------------------
+
+
+
+
+
+ssGSEA NES unstablization
+27 views
+Skip to first unread message
+
+Yuliang Wang
+unread,
+Sep 21, 2020, 7:15:14 PM
+
+
+
+to GenePattern Help Forum
+Hi ,
+
+
+       I got a question about ssGSEA NES , I have run ssGSEA with same condition and code for 5 times, which have 5 different NESs. I wonder if it is normal  and why?
+
+
+
+
+       Thank you 
+David Lahr
+unread,
+Sep 22, 2020, 5:16:21 AM
+
+
+
+to GenePattern Help Forum
+How different are the values you observe from one run to the next?  How many permutations did you use in the calculation?  The permutations are randomly generated, and used to calculate the NES, so I suspect relatively low ES scores and few permutations could lead to observable changes in the NES from run to run.
+
+Yuliang Wang
+unread,
+Sep 26, 2020, 5:02:32 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much! I set 1000 permutations and the difference between the two is less than 1 . 
+
+
+David Lahr <dll...@gmail.com> 于2020年9月22日周二 下午8:16写道：
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/sicFE4CGc3w/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/fa4798bd-78d9-47e0-b4ec-83875f7dd593n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

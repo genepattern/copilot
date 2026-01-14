@@ -1,0 +1,134 @@
+URL: https://groups.google.com./g/genepattern-help/c/rTLdx1B66Gc
+Title: ESPpredicotor
+----------------------------------------
+
+
+
+
+
+ESPpredicotor
+9 views
+Skip to first unread message
+
+Ke Li
+unread,
+Jan 11, 2019, 9:10:59 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+I am planning to use the ESPPredictor module which should be located under "proteomic" category. But I checked all the modules under "proteomics'  just now, it is not there. Can anyone help me find where it is?
+Thanks.
+
+
+Ke
+
+
+
+
+
+
+
+
+
+Capture1.PNG
+Peter Carr
+unread,
+Jan 11, 2019, 9:23:47 AM
+
+
+
+to genepatt...@googlegroups.com
+This module needs an update before it is ready to run on our cloud infrastructure. I will double check it's status and get back to you.
+Regards,
+Peter
+
+Ke Li
+unread,
+Jan 11, 2019, 9:42:43 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter,
+Appreciate your help.
+
+Regards,
+
+Ke
+
+Barbara Hill
+unread,
+Jan 14, 2019, 1:19:02 PM
+
+
+
+to GenePattern Help Forum
+Hello Ke, 
+
+
+Please see these forum posts regarding the status of ESPPredictor.
+
+
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/genepattern-help/99NgzO8gKoQ/IMvJfn_pCgAJ
+
+
+
+https://groups.google.com/d/msg/genepattern-help/2h5SzCktz8w/0txty5h6AwAJ (which I believe you have also been following)
+
+
+
+As they mention, it has been unavailable since June 22, 2018, due to a fire in the data center. 
+
+
+It is on the list of modules to modify for our new infrastructure and is currently slated to be worked on in February.
+
+
+We will be posting here as well as on Twitter, Facebook and in system messages on the cloud.genepattern.org server.
+
+
+Please let us know if we can help with anything else.
+
+
+Best
+Barbara
+Ke Li
+unread,
+Jan 14, 2019, 3:54:29 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+Thanks for your information.
+
+Best,
+
+Ke
+
+Barbara Hill
+unread,
+Apr 30, 2020, 1:48:08 PM
+
+
+
+to GenePattern Help Forum
+Hello Ke, 
+
+
+We have just now released ESPPredictor on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:4
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/NZlGPU7aFvI
+Title: Cannot create an account?
+----------------------------------------
+
+
+
+
+
+Cannot create an account?
+15 views
+Skip to first unread message
+
+Gerrit Beemster
+unread,
+Mar 6, 2018, 2:31:35 AM
+
+
+
+to GenePattern Help Forum
+Wannabe newly here. When trying to register for the Broad Institute GenePattern server I get this error:
+
+
+
+
+Error creating 'gp.user.dir' for username=gbeemster, error: Unable to create home directory for user gbeemster, userDir=/xchip/gpprod/servers/genepattern/users/gbeemster 
+
+I don't have the same problem with the Indiana server, but that one does not include a DeSeq module.
+
+Please advice?
+
+Thanks in advance, Gerrit
+Peter Carr
+unread,
+Mar 6, 2018, 3:33:16 AM
+
+
+
+to genepatt...@googlegroups.com
+I will look into this later today. Thanks for letting us know.
+- Peter
+
+Barbara Hill
+unread,
+Mar 6, 2018, 9:43:32 AM
+
+
+
+to GenePattern Help Forum
+Hello Gerrit, 
+
+
+I did some disk cleanup which should have alleviated the issue for the moment. 
+
+
+Are you able to log in now?
+
+
+Best
+-Barbara
+
+
+PS welcome newbie!
+
+
+Gerrit Beemster
+unread,
+Mar 6, 2018, 11:27:55 AM
+
+
+
+to GenePattern Help Forum
+Yes! Thanks a lot!
+
+Op dinsdag 6 maart 2018 18:43:32 UTC+1 schreef Barbara Hill:
+
+
+Reply all
+
+Reply to author
+
+Forward

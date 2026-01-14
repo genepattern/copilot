@@ -1,0 +1,162 @@
+URL: https://groups.google.com./g/genepattern-help/c/8OPRkkk5Fcs
+Title: Will the ComBat module be moved to the new server?
+----------------------------------------
+
+
+
+
+
+Will the ComBat module be moved to the new server?
+19 views
+Skip to first unread message
+
+Briana
+unread,
+Dec 4, 2018, 8:59:30 AM
+
+
+
+to GenePattern Help Forum
+Hi I was wondering if the ComBat module will be moved  to the new server?
+
+
+Thank you
+Barbara Hill
+unread,
+Dec 4, 2018, 2:05:02 PM
+
+
+
+to GenePattern Help Forum
+Hi Briana,
+
+
+Do you need to generate the prior plots?
+
+
+Best
+-Barbara
+jham...@gmail.com
+unread,
+Dec 5, 2018, 7:17:22 AM
+
+
+
+to GenePattern Help Forum
+I'm wondering the same. I can´t find the COMBAT module in the new platform
+
+Barbara Hill
+unread,
+Dec 6, 2018, 8:32:49 AM
+
+
+
+to GenePattern Help Forum
+Do you need the prior plots?
+
+
+If not, we can get a patch up on the server next week. If that is important, it will have to wait for the new year as that requires a full reconfiguration of the module. 
+
+
+Let us know and we'll prioritize accordingly.
+
+
+Thank you for writing in and for using GenePattern!
+
+
+Best
+-Barbara
+jham...@gmail.com
+unread,
+Dec 6, 2018, 8:37:04 AM
+
+
+
+to GenePattern Help Forum
+
+
+No, I don't need the prior plots.
+
+
+Thank you for your answer Barbara.
+
+
+
+Best
+Jhajaira
+Barbara Hill
+unread,
+Dec 10, 2018, 11:58:00 AM
+
+
+
+to GenePattern Help Forum
+OK great. We've scheduled the patch fix to be made available in the next two weeks. Hopefully, this week though.
+
+
+We'll let you know as soon as that is on the server.
+
+
+Best
+-Barbara
+Edwin Juarez
+unread,
+Dec 12, 2018, 10:54:57 AM
+
+
+
+to GenePattern Help Forum
+Hello Jhajaira,
+
+
+ComBat has been patched (it does not have the option of creating prior plots allowing it to run to completion in my tests), look for version 3.1 on cloud.genepattern.org.
+
+Please let us know if you can run it successfully as well.
+
+
+Kind regards,
+Edwin.
+
+Edwin Juarez
+unread,
+Dec 12, 2018, 10:56:10 AM
+
+
+
+to GenePattern Help Forum
+Hello Briana!
+
+
+Writing here the same thing as I mentioned to Jhajaira.
+
+
+ComBat has been patched (it does not have the option of creating prior plots allowing it to run to completion in my tests), look for version 3.1 on cloud.genepattern.org.
+Please let us know if you can run it successfully as well.
+
+
+Kind regards,
+Edwin.
+
+
+
+jham...@gmail.com
+unread,
+Dec 17, 2018, 7:28:04 AM
+
+
+
+to GenePattern Help Forum
+
+Hello Edwin,
+
+
+Everything works well.
+
+
+Thank you.
+
+Reply all
+
+Reply to author
+
+Forward

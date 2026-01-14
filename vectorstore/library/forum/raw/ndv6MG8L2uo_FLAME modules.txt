@@ -1,0 +1,107 @@
+URL: https://groups.google.com./g/genepattern-help/c/ndv6MG8L2uo
+Title: FLAME modules
+----------------------------------------
+
+
+
+
+
+FLAME modules
+14 views
+Skip to first unread message
+
+Sara Soria
+unread,
+Oct 20, 2022, 1:30:08 PM
+
+
+
+to GenePattern Help Forum
+I am trying to work with the FLAME (FLow analysis with Automated Multivariate Estimation) modules from the GenePatterns server. The first module, "FLAMEPreprocess" works without problems. The next module, "FLAMEMixtureModel", is not in the repository. So, when I try to install it by clicking in the link mentioned in the page,  the next page cannot be found, It is with the error: "http Error 404". Could you tell me, please, how I can resolve the problem?
+Thank you very much for your time. Sincerely
+tmt...@cloud.ucsd.edu
+unread,
+Oct 21, 2022, 10:56:01 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+We are currently looking into this issue and will get back to you once we have a better understanding of the cause.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Oct 21, 2022, 2:48:47 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I apologize, but due to hardware compatibility issues, the FLAME modules are no longer available on the GenePattern platform. If you would like, I can point you at the modules' source code, but we are unable to provide further technical assistance.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Sara Soria
+unread,
+Oct 25, 2022, 1:33:22 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+Sorry for the late reply. Ok, I understand. In this case, and if it is possible, I would like to have the modules' source code, please. 
+Thank you a lot in advance.
+
+
+Sara
+
+
+
+Thorin Tabor
+unread,
+Oct 25, 2022, 7:21:05 PM
+
+
+
+to genepatt...@googlegroups.com, Sara Soria
+
+Hello,
+
+You can find the source for the FLAME modules at the following links:
+
+FlamePreprocess: https://github.com/genepattern/FLAMEPreprocess
+FLAMEChooseOptimalClusterNumber: https://github.com/genepattern/FLAMEChooseOptimalClusterNumber
+FLAMEMixtureModel: https://github.com/genepattern/FLAMEMixtureModel
+FLAMEMetacluster: https://github.com/genepattern/FLAMEMetacluster
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0b632db6-7a32-4e29-82fc-d645ad13813dn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

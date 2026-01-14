@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/JAwFqCc4bcA
+Title: error in chromosomal location
+----------------------------------------
+
+
+
+
+
+error in chromosomal location
+32 views
+Skip to first unread message
+
+pushpinde...@gmail.com
+unread,
+Jun 4, 2018, 4:52:07 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am getting error in the chromosome location for some genes after running GISTIC. The job ID is 1687710 and 1687708. I downloaded the segmented data for ILC patients from TCGA and GENIE study from cBioportal and uploaded that segmented file in GISTIC 2.0.23 for identifying significantly amplified regions. I used hg19 reference genome as TCGA and GENIE has used the same reference for analyzing the genomic data. I also noticed that the files named for eg., genie_public_segments_IDC.del_genes.conf_90.txt is not having any information about broad and focal data. 
+
+
+In addition, for some of my genes the GISTIC showed different chromosomal location. For eg. the chromosomal location for KRAS is 12p12.1. But the results from GISTIC showed that it is located on 12p11.23. Why there is a such kind of difference?
+
+
+Thanks
+
+
+Pushpinder
+
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Jun 6, 2018, 10:22:32 AM
+
+
+
+to GenePattern Help Forum
+Hello Pushpinder,
+
+
+The del & amp_genes.conf_x files do not contain broad or focal data information, and those columns will also be blank in the all_lesions files for all versions of GISTIC_2.0.
+
+
+See this post for more information: https://groups.google.com/a/broadinstitute.org/forum/#!topic/gistic-forum/3sjhSTnCHMo
+
+
+I'm unfortunately unsure as to why your chromosomal locations are different, but I suspect it is because there is actually a mismatch between the GISTIC reference genome and the once used in creating the TCGA segmented data.
+
+
+All the best
+-Barbara
+pushpinde...@gmail.com
+unread,
+Jun 11, 2018, 2:22:30 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Is it possible to use hg38 reference genome in GISTIC 2.0.23? 
+
+
+Thanks
+
+
+Pushpinder
+
+Barbara Hill
+unread,
+Jun 18, 2018, 2:08:04 PM
+
+
+
+to GenePattern Help Forum
+Hello Pushpinder, 
+
+
+Please see this discussion thread in the GISTIC forum: https://groups.google.com/a/broadinstitute.org/forum/#!topic/gistic-forum/Ymtr3OOPeOQ
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

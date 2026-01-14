@@ -1,0 +1,1 @@
+DESeq2 Error with HTSeq counts: User encountered package installation warnings and R version compatibility issues while processing RNA-seq count data, which were resolved by GenePattern support updating to R version 4.3.0 and DESeq2 version 1.40.2, successfully completing the differential gene expression analysis job.

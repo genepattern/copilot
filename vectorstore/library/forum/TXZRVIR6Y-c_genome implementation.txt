@@ -1,0 +1,1 @@
+User requested genome implementation for Vitis vinifera (grapevine) and Plasmopora viticola genome in GenePattern platform, seeking support for RNA-seq mapping and differential gene expression analysis on these specific organisms by asking the GenePattern help team to expand their genome reference database to include these species.

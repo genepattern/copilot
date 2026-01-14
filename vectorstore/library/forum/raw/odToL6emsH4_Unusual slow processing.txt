@@ -1,0 +1,87 @@
+URL: https://groups.google.com./g/genepattern-help/c/odToL6emsH4
+Title: Unusual slow processing
+----------------------------------------
+
+
+
+
+
+Unusual slow processing
+13 views
+Skip to first unread message
+
+Andrea Caricilli
+unread,
+Aug 23, 2017, 7:32:49 AM
+
+
+
+to GenePattern Help Forum
+Hello. We have two jobs running (1537926 and 1537927) and it has been four days already. From our experience, this is unusually slow. We are using a Mac. Is there any problem with the run?
+Thank you.
+Andrea Blotta/Scott Widenmaier
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Peter Carr
+unread,
+Aug 23, 2017, 9:34:53 AM
+
+
+
+to genepatt...@googlegroups.com
+It looks like your jobs require a lot of processing time. Here are the stats from the queuing system ...
+
+$ qstat -j GP_1537926 | grep -E 'submission_time|start_time|job_name|usage|exec_host|cwd'
+submission_time:            08/19/2017 08:47:57.789
+cwd:                        /xchip/gpprod/servers/genepattern/jobResults/1537926
+job_name:                   GP_1537926
+start_time            1:    08/19/2017 08:47:57.794
+exec_host_list        1:    genepat-d007.broadinstitute.org:1
+usage                 1:    wallclock=4:03:42:57, cpu=11:11:55:11, mem=17903447.87943 GBs, io=93.10947 GB, iow=13.050 s, ioops=22941869, vmem=26.024G, maxvmem=27.407G
+
+$ qstat -j GP_1537927 | grep -E 'submission_time|start_time|job_name|usage|exec_host|cwd'
+submission_time:            08/19/2017 08:50:35.634
+cwd:                        /xchip/gpprod/servers/genepattern/jobResults/1537927
+job_name:                   GP_1537927
+start_time            1:    08/19/2017 08:50:35.639
+exec_host_list        1:    genepat-d006.broadinstitute.org:1
+usage                 1:    wallclock=4:03:40:15, cpu=5:08:47:04, mem=6789310.41020 GBs, io=50.38844 GB, iow=2.830 s, ioops=12183964, vmem=30.352G, maxvmem=31.070G
+
+From the looks of things it is still processing. And the compute cluster appears healthy.
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

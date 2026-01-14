@@ -1,0 +1,212 @@
+URL: https://groups.google.com./g/genepattern-help/c/yCbwn7lWhx0
+Title: question about LSID
+----------------------------------------
+
+
+
+
+
+question about LSID
+30 views
+Skip to first unread message
+
+Peter Carr
+unread,
+Aug 9, 2017, 12:36:09 PM
+
+
+
+to GenePattern Help Forum
+I still have a final question about the LSID line
+LSID=urn\:lsid\:8100.admin.MAF-SRV-04.maf-srv-04.med.ad10.intern.kuleuven.ac.be\:genepatternmodules\:57\:0.4.2
+what does 57 mean here before the version space? Can we put a random value here (like 0!) or is it related to the number of modules on the server...
+Best Regards,
+Stephane
+
+
+Hi Stephane,
+
+
+For your module, '57' is the lsid identifier. When you create a new module in the GUI, the server uses the next available integer as the unique identifier. So, in a way, yes, the number is related to the number of modules created on your server. A numerical value is not strictly necessary. If you want to use a different identifier, I suggest using a non-integer value to avoid a conflict. However, it is a bit tricky to make changes of this kind and still use the GUI, aka module integrator, for making edits.
+
+
+Here is the template for an LSID:
+  urn:lsid:{authority}:{namespace}:{identifier}[:{version}]
+
+For your module,
+  authority=8100.admin.MAF-SRV-04.maf-srv-04.med.ad10.intern.kuleuven.ac.be
+  namespace=genepatternmodules
+  identifier=57
+  version=0.4.2
+
+
+
+By comparison, here's the LSID for the ConvertLineEndings module:
+  LSID=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00002:2
+  authority=broad.mit.edu
+  namespace=cancer.software.genepattern.module.analysis
+  identifier=00002
+  version=2
+
+
+Regards,
+Peter
+
+
+
+
+
+
+ 
+
+
+
+
+Peter Carr
+unread,
+Aug 10, 2017, 9:46:36 AM
+
+
+
+to GenePattern Help Forum
+Update: Don't change the lsid.identifier to a different integer value. It will conflict with modules created in the GUI.
+
+
+More specifically, the lsid identifier assigned by the GUI does not account for identifiers from modules which are installed from a zip file. I did not test with modules installed from a repository such as GParc or Broad repos. I suspect it will be a problem there as well.
+
+
+In case you are interested ... I tested this by creating a new module in the GUI. Lsid identifier was automatically created as '12'. Next I created a different module by hand with lsid identifier set to '13', then uploaded from zip. Next I created a new module in the GUI. It was given the same identifier '13'. To clean up, I deleted the conflicting module from the Manage Modules page.
+
+
+On Wednesday, August 9, 2017 at 3:36:09 PM UTC-4, Peter Carr wrote:
+... I suggest using a non-integer value to avoid a conflict. However, it is a bit tricky to make changes of this kind and still use the GUI, aka module integrator, for making edits.
+
+
+
+
+
+Stephane Plaisance
+unread,
+Aug 14, 2017, 2:59:39 AM
+
+
+
+to GenePattern Help Forum
+Inspired by your comments, I created a manifest in a code editor by recycling an existing one, this led to a conflict at the level of the lsid and the uploaded zip was added to the family of the copied manifest although I gave different names inside it.
+
+
+I cloned this file and could finally edit it further in the GUI under a new module name (this fixed it but is not what I expected).
+
+
+How do you manage to create new manifests for entirely new modules and import them as zip when you do not know which is the next available lsid number, do you leave the lsid line empty in the manifest which gets populated during import?
+
+
+
+Best,
+Stephane
+
+Peter Carr
+unread,
+Aug 14, 2017, 10:14:33 AM
+
+
+
+to genepatt...@googlegroups.com
+short answer: we don't have a clean way of doing this. It's on my wish list, because the current system is a nuisance.
+stay posted for a more detailed answer later in the week.
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/11d382f6-7b7e-48b5-be5b-a3f13fbd2aca%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Peter Carr
+unread,
+Aug 14, 2017, 1:41:49 PM
+
+
+
+to genepatt...@googlegroups.com
+Update: Don't recycle existing module lsids. This creates more problems.
+
+For best results ...
+* do not use the same base LSID for two different modules
+* do not use the same name for two different modules
+
+As you discovered, module versions are grouped by base lsid and not by name.
+
+
+
+On 8/14/17 5:59 AM, Stephane Plaisance wrote:
+
+
+Peter Carr
+unread,
+Aug 14, 2017, 2:01:53 PM
+
+
+
+to genepatt...@googlegroups.com
+I create the initial version in the GUI. The server will generate a valid lsid with a unique (to the server) lsid identifier. I recommend the following recipe.
+
+Step 1: Create initial version in the GUI.
+   -- assign it a unique name
+   -- start with a minor or patch level version to indicate pre-release status, e.g.
+        Version Increment: 'New patch version (v0.0.1)'
+
+Step 2: Export as zip. Save the manifest file into your project working directory. I usually rename it to track the version number, e.g.
+  mv MyModule.zip MyModule_v0.0.1.zip
+
+When updating the module, before installing from zip, edit the manifest file.
+* Increment lsid version, e.g. LSID=....:0.0.2
+* add a version comment, e.g. comment=Added new feature
+
+Regards,
+Peter
+
+
+
+On 8/14/17 5:59 AM, Stephane Plaisance wrote:
+
+
+Stéphane Plaisance
+unread,
+Aug 16, 2017, 5:15:28 AM
+
+
+
+to genepatt...@googlegroups.com
+This makes perfect sense, you can close this ticket,
+THANKS
+Stephane
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/yCbwn7lWhx0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1767340b-68e9-fe31-87fb-a276d1cba0d4%40broadinstitute.org.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,201 @@
+URL: https://groups.google.com./g/genepattern-help/c/y3Y6yrdeR3M
+Title: GISTIC2 Issue
+----------------------------------------
+
+
+
+
+
+GISTIC2 Issue
+200 views
+Skip to first unread message
+
+John L Pulice
+unread,
+Feb 10, 2023, 6:43:04 PM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+GISTIC2 keeps throwing me the following error: /opt/gpcloud/gp_home/taskLib/GISTIC_2.0.6.15.28.796/gp_gistic2_from_seg: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+
+
+This occurs on files I successfully ran with GISTIC2 two weeks ago, not sure what has happened since! I am using default settings and just the hg19 or hg38 MAT file. 
+
+
+Thanks!
+John
+Hanie Azari
+unread,
+Feb 13, 2023, 5:24:54 AM
+
+
+
+to GenePattern Help Forum
+I also keep facing this issue, have you found any solution?
+
+
+best,
+hanie A
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 13, 2023, 8:13:34 AM
+
+
+
+to GenePattern Help Forum
+
+Hello John and Hanie,
+
+We recently updated the GISTIC2 module, so it is possible that this indicative that something is wrong with the new version. We'll look into this further.
+
+In the meantime, you can use the older version of the module by clicking on the link below. Let us know if this resolves your issue.
+
+
+https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00125:6.15.21
+
+Thorin Tabor
+GenePattern Team
+
+
+Hanie Azari
+unread,
+Feb 13, 2023, 8:46:36 AM
+
+
+
+to GenePattern Help Forum
+
+Dear Thorin,
+
+ 
+
+Thanks for your early response,
+
+I also have overlapped issues in CNVanalysis using GISTIC online, how should I remove it?
+
+Would you please help me with that? I’ve been looking for a solution for weeks
+
+ my file is a CNV of Colon cancer from TCGA which is attached here.
+
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 13, 2023, 1:59:19 PM
+
+
+
+to GenePattern Help Forum
+We have just updated the GISTIC_2.0 module. Please try again.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+
+
+On Friday, February 10, 2023 at 6:43:04 PM UTC-8 jpu...@broadinstitute.org wrote:
+
+
+Hanie Azari
+unread,
+Feb 14, 2023, 12:24:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear thorin, 
+
+
+I tried again, but I faced the same problem 
+my job number is Job 493067 - GISTIC_2.0
+would you please check this problem?
+
+
+best, 
+Hanie A
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/y3Y6yrdeR3M/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2d83919a-0ad7-4d9b-b01b-d075a607edafn%40googlegroups.com.
+
+John L Pulice
+unread,
+Feb 14, 2023, 7:00:38 AM
+
+
+
+to genepatt...@googlegroups.com
+My issues were completely resolved, thanks Thorin!!
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6sThYf%3D5JCBQV%2Bpw7dfHWHkerd4qhEFmhvyfQU1Hx54PrGhw%40mail.gmail.com.
+
+--
+
+--
+John Pulice
+PhD Candidate, Program in Biological and Biomedical Sciences, Harvard Medical School
+
+NDSEG Fellow, Meyerson Lab, Dana-Farber Cancer Institute
+
+jpu...@broadinstitute.org – he/him
+
+tmt...@cloud.ucsd.edu
+unread,
+Feb 14, 2023, 10:53:44 AM
+
+
+
+to GenePattern Help Forum
+Hanie,
+
+
+This appears to be an error within GISTIC itself, so to understand this error it's best to consult the GISTIC forum (https://groups.google.com/a/broadinstitute.org/g/gistic-forum) where the authors and developers of GISTIC can respond.
+
+
+Hope this helps!
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Hanie Azari
+unread,
+Feb 14, 2023, 1:11:54 PM
+
+
+
+to genepatt...@googlegroups.com
+thanks for your reply thorin 🌹
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/897ba5c0-f0de-44a0-a7cd-076de3eb2417n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

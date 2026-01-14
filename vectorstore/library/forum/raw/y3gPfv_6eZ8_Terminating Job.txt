@@ -1,0 +1,107 @@
+URL: https://groups.google.com./g/genepattern-help/c/y3gPfv_6eZ8
+Title: Terminating Job
+----------------------------------------
+
+
+
+
+
+Terminating Job
+3 views
+Skip to first unread message
+
+dklin...@unmc.edu
+unread,
+Dec 18, 2018, 7:12:21 AM
+
+
+
+to GenePattern Help Forum
+I have two jobs that have been running for several days and I have been trying to terminate them. It will not let me terminate. Jobs are on the cloud #64818 and 64817
+
+Peter Carr
+unread,
+Dec 18, 2018, 12:37:46 PM
+
+
+
+to genepatt...@googlegroups.com
+thanks for letting us know. you can ignore those jobs. they are no longer running on the compute cluster. 
+
+
+the GenePattern Server still thinks they are running. I will go in and clean that up later today.
+
+
+Regards,
+Peter
+
+On Dec 18, 2018, at 10:12 AM, dklin...@unmc.edu wrote:
+
+
+I have two jobs that have been running for several days and I have been trying to terminate them. It will not let me terminate. Jobs are on the cloud #64818 and 64817
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8254272b-e456-4c18-a0a1-af4b1f0183ab%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Peter Carr
+unread,
+Dec 18, 2018, 2:37:55 PM
+
+
+
+to GenePattern Help Forum
+fyi, I flagged the jobs as completed.
+
+
+Klinkebiel, David L
+unread,
+Dec 18, 2018, 2:50:27 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Thanks  Peter!
+
+ 
+
+From: genepatt...@googlegroups.com [mailto:genepatt...@googlegroups.com] On Behalf Of Peter Carr
+Sent: Tuesday, December 18, 2018 4:38 PM
+To: GenePattern Help Forum
+Subject: Re: [genepattern-help:757] Terminating Job
+
+ 
+
+Non-UNMC email
+
+
+ 
+
+fyi, I flagged the jobs as completed.
+
+--
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9df1c216-1c6b-4dd1-a37f-77cde0c28ce7%40googlegroups.com.
+
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+The information in this e-mail may be privileged and confidential, intended only for the use of the addressee(s) above. Any unauthorized use or disclosure of this information is prohibited. If you have received this e-mail by mistake, please delete it and immediately contact the sender.
+
+Reply all
+
+Reply to author
+
+Forward

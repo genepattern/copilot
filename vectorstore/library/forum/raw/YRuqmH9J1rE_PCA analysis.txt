@@ -1,0 +1,142 @@
+URL: https://groups.google.com./g/genepattern-help/c/YRuqmH9J1rE
+Title: PCA analysis
+----------------------------------------
+
+
+
+
+
+PCA analysis
+22 views
+Skip to first unread message
+
+Gashaw Garedew
+unread,
+Jun 13, 2023, 5:54:59 AM
+
+
+
+to GenePattern Help Forum
+
+Hello, 
+
+I tried to perform Principal Component Analysis and was not able to do it. After uploading the GCT file, an error occurred when clicking the "run" icon. 
+
+I saw the following error message in stderr.txt.
+
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2 at edu.mit.wi.genome.gp.mev.PCAAlgorithmWrapper.main(PCAAlgorithmWrapper.java:35)
+
+
+
+
+Please help how to fix this problem.
+
+Many thanks 
+
+Gashaw 
+
+Ted Liefeld
+unread,
+Jun 13, 2023, 7:20:23 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi
+
+
+Can you tell us the job number so we can take a look?
+
+
+Thanks
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/18d6d872-3340-4c58-8378-bbb919376aden%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Gashaw Garedew
+unread,
+Jun 13, 2023, 7:39:18 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Ted,
+Thanks for your reply. 
+Please find below the job number.
+515036.
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/YRuqmH9J1rE/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdSneLV3sHput9q4UT6AdpaqX0tJaSOu63D0KM_ONsWReg%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Jun 13, 2023, 10:06:25 AM
+
+
+
+to GenePattern Help Forum
+I think the problem is that it is running out of memory.  I have rerun your job several times selecting different memory allocations from the job options section of the module parameters.  It runs inconsistently with 8GB (about half of jobs still fail) but seems to be working consistently with 12GB.  
+
+
+So please rerun with 12 GB and please let me know if you get the results you need.
+
+
+Hope this helps,
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jun 13, 2023, 11:33:54 AM
+
+
+
+to GenePattern Help Forum
+Hi, one of my coworkers noticed another problem that also needs to be addressed.  The output filename specified contains the characters "<" and ">".  This is probably the true cause of the failure.  In my tests using different memory settings, some included that and some did not which lead me to mistakenly identify memory as the problem.
+
+
+So please rerun with the "<" and ">" removed from the output file name and let us know how it goes.
+
+
+Ted
+
+
+p.s. the reason for the issue with the characters is that GenePattern tokenizes and replaces elements on the command line that are between the < and > characters.  You can see more details in the GenePattern Programmers Guide (https://www.genepattern.org/programmers-guide#_Creating_Modules) about 1/4 of the way down in the section on the command line.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

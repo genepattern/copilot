@@ -1,0 +1,133 @@
+URL: https://groups.google.com./g/genepattern-help/c/Qd7PoRRgRN4
+Title: MutSigCV, GenePattern, File Transfer Error
+----------------------------------------
+
+
+
+
+
+MutSigCV, GenePattern, File Transfer Error
+29 views
+Skip to first unread message
+
+GenePattern User
+unread,
+Oct 9, 2022, 6:26:01 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern forum,
+
+I am currently trying to run MutSigCV on the example LUSC dataset from https://software.broadinstitute.org/cancer/cga/mutsig_run, and I am experiencing a file transfer error, "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+I have also tried to use the Uploader in the Files tab, and still experience this file transfer error.
+
+I noticed that another conversation had a similar error, but the method for finding a resolution was not noted.
+
+Is there a way to avoid this error, and successfully upload & process files through GenePattern MutSigCV?
+
+Thank you for your help
+
+Ted Liefeld
+unread,
+Oct 10, 2022, 6:59:55 AM
+
+
+
+to GenePattern Help Forum
+Hi,  sorry you are having trouble with this.  Uploads to GenePattern are routed through Amazon Web Services' S3 servers.  When we have had other users with this problem the issue was typically transitory and between their laptops and S3.  So first try again to upload a file.  You could use the ConvertLineEndings module to test if uploads are working as it will accept any text file as input.
+
+
+If that is still not working, can you tell me what your local environment is?  e.g. Are you at a private residence, a University or a for-profit company.  Sometimes network restrictions at commercial organizations prevent the connection.
+
+
+Ted
+
+
+
+Ben Fefferman
+unread,
+Oct 10, 2022, 7:33:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Mr. Liefeld,
+
+
+I have tried using the ConvertLineEndings module, and uploading a sample text file does not work either, resulting in the same file transfer error mentioned above. I have tried to run this module on both a laptop and a separate computer, and I have also tried running from my residential internet connection, as well as my university's internet connection. In each of these cases, I'm still experiencing the file transfer error.
+
+
+Is there another possible solution to the file transfer issue?
+
+
+Thank you so much for your help!
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9a7c4dc1-1ab8-4916-9773-ada40542ac89n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Oct 10, 2022, 9:25:35 AM
+
+
+
+to GenePattern Help Forum
+A couple more questions;
+
+
+1. Which browser are you using
+2. What country are you connecting from
+3. Can you (in the browser window with the failed transfer) open your javascript console (https://support.cytobank.org/hc/en-us/articles/206273618-How-to-open-and-use-your-browser-s-JavaScript-console) and send me any error it displays
+
+Ted
+
+GenePattern User
+unread,
+Oct 10, 2022, 10:14:21 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Mr. Liefeld,
+
+
+I am connecting to the GenePattern MutSigCV server from the US, and I have experienced this file transfer error in both Safari and Chrome.
+
+
+From the JavaScript console, I am seeing "Failed to load resource: the server responded with a status of 500 ()" for both the mutation_type_dictionary_file.txt and gene.covariates.txt file suggested for use from the LUSC dataset.
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Qd7PoRRgRN4/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d53acad2-eb5d-4183-b674-6ba13949ed2an%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Oct 10, 2022, 11:05:47 AM
+
+
+
+to GenePattern Help Forum
+I have sent you a private email to set up a zoom call when you have time today.  I see that you have some of the files uploaded (successfully) to your files tab already.  What happens when you try to run using those versions?
+
+
+Ted 
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

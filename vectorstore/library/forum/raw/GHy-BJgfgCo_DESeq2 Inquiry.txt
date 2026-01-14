@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/GHy-BJgfgCo
+Title: DESeq2 Inquiry
+----------------------------------------
+
+
+
+
+
+DESeq2 Inquiry
+25 views
+Skip to first unread message
+
+Abraam Zakhary
+unread,
+Apr 17, 2023, 11:06:19 AM
+
+
+
+to GenePattern Help Forum
+I have a gct file containing two tumour types. The file is ordered with the first tumor type RNAseq data then by the next. 
+I used the CLS file creator module to create the CLS file.
+Then I used the DESeq2 module to get the deseq analysis results. 
+
+
+I was wondering if I have the gct/cls file labelled TumorAvsTumorB and in the filename option in the DESeq2 module I input the same file name yet the resulting file is called "TumorAvsTumorB.TumorB.vs.TumorA.DESeq2_results_report" 
+
+
+Does that mean that the comparison was reversed? Does that mean that the positive fold change value correspond to tumor B?
+edh...@cloud.ucsd.edu
+unread,
+Apr 17, 2023, 11:40:15 AM
+
+
+
+to GenePattern Help Forum
+Hi  Abraam, 
+
+
+Can you provide us with the job number? 
+
+
+Thanks, 
+Edwin 
+
+
+
+Abraam Zakhary
+unread,
+Apr 17, 2023, 11:56:24 AM
+
+
+
+to GenePattern Help Forum
+Hello Edwin,
+
+
+505162
+Thanks for your help :)
+
+Abraam Zakhary
+unread,
+Apr 18, 2023, 5:19:49 PM
+
+
+
+to GenePattern Help Forum
+Hey,
+
+
+Just following up regarding this issue? Any help?
+
+
+Thanks.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

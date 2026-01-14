@@ -1,0 +1,141 @@
+URL: https://groups.google.com./g/genepattern-help/c/ue4eQzrAb5o
+Title: Failed to create job on my own server
+----------------------------------------
+
+
+
+
+
+Failed to create job on my own server
+20 views
+Skip to first unread message
+
+Bin Wang
+unread,
+Nov 5, 2020, 11:34:02 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+ I have installed the GenePattern server 3.9.11 b282 on my local Ubuntu server 20.04 LTS. I have latest docker and openjdk 1.8.0_272 installed, and run the bin package to install the server. When I tried to create a job such as TopHat or Bowtie.aligner, it failed immediately saying error when creating job. I checked the genepattern.log. It shows:
+
+
+2020-11-06 07:11:38.907 DEBUG [http-8080-Processor24] (AdminDAO.java:167) -     fetched taskId=3
+2020-11-06 07:11:38.908 DEBUG [http-8080-Processor24] (AdminDAO.java:190) - latestTask.taskId=3
+2020-11-06 07:11:38.911 ERROR [http-8080-Processor24] (RunTaskServlet.java:934) - An error occurred while submitting the job
+java.lang.NullPointerException
+        at org.genepattern.server.webapp.rest.RunTaskServlet.addJob(RunTaskServlet.java:835)
+        at org.genepattern.server.webapp.rest.RunTaskServlet.addJob(RunTaskServlet.java:593)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+
+
+Can anybody give me some hint to fix it, please?
+Thank you.
+Ted Liefeld
+unread,
+Nov 6, 2020, 1:09:22 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+sorry about that, it is the result of a bug that got out in the last release.  It has been fixed but we haven't built a new release since the fix.
+
+
+The problem is that it expects for there to be job input parameters defined (i.e. the options lists  for memory and cpu choices) and they are not present by default.  You should be able to get around this by adding a jobInputParams.yaml file (example below) and then referencing that in your config_custom.yaml file.  Then reload the configuration or restart the server and try to run a job again.
+
+
+So in your config_custom.yaml, add this line
+
+
+
+        # custom drop-down menus on the job input form
+
+         job.inputParams: "jobInputParams.yaml"
+
+
+
+Then in your resources directory add the jobInputParams.yaml file.  Below is the content from the one on my laptop currently.  Realistically you probably don't want to give it options for RAM/CPU values that your server cannot satisfy.
+
+
+Hope this helps, let me know if it does not,
+
+
+Ted
+
+
+=========.  jobInputParams.yaml ==========
+
+{
+
+  
+
+    name: "Job Options",
+
+    hidden: false,
+
+    parameters: [
+
+    { name: "job.memory",
+
+      altName: "job.memory",
+
+      choices: [ "=(default)", "1G", "2Gb", "4Gb", "8Gb", "16Gb", "32Gb", "64Gb", "128Gb", "256Gb"],
+
+      defaultValue: "",
+
+      optional: true
+
+    },
+
+
+
+
+    { name: "job.cpuCount",
+
+    description: "optional --container-overrides vcpus=(job.cpuCount)",
+
+    choices: [ "=(default)", "1", "2", "4", "8", "12", "16" ],
+
+    defaultValue: "",
+
+    optional: true
+
+    },
+
+
+
+
+    { name: "job.walltime",
+
+    altName: "walltime",
+
+    description: "the runtime limit for the job in {days-hh:mm:ss} format",
+
+    choices: [ "=(default)", "00:00:02=debug (2 seconds)", "02:00:00=short (2 hours)", "04:00:00=long (4 hours)", "24:00:00=max (1 day)" ],
+
+    defaultValue: "02:00:00",
+
+    optional: true
+
+    }
+
+    ]
+
+}
+
+
+
+Reply all
+
+Reply to author
+
+Forward

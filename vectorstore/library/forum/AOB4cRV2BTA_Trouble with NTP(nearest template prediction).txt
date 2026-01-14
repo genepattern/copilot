@@ -1,0 +1,1 @@
+A user experienced difficulties uploading input files for Nearest Template Prediction (NTP) in GenePattern, and was advised to modify their feature file by converting it to tab-separated format and removing the leftmost numerical index column; after implementing these changes, the user successfully ran the NTP analysis.

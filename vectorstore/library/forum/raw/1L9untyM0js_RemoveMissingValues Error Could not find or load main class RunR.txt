@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/1L9untyM0js
+Title: RemoveMissingValues Error: Could not find or load main class RunR
+----------------------------------------
+
+
+
+
+
+RemoveMissingValues Error: Could not find or load main class RunR
+12 views
+Skip to first unread message
+
+Alyssa
+unread,
+Jun 24, 2020, 2:37:17 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm trying to run the RemoveMissingValues module, but I keep running into this error:
+
+
+"Error: Could not find or load main class RunR"
+
+
+The job id was 247285. Main class RunR seems to have been an issue previously with other modules on the cloud server so I'm wondering if that may be the case here.
+
+
+Thank you!
+Alyssa
+GenePattern Help Forum
+unread,
+Jun 25, 2020, 12:58:31 PM
+
+
+
+to GenePattern Help Forum
+Hello Alyssa, 
+
+
+This module was not configured to run properly. I have fixed that and your job should run now.
+
+
+Please let us know if you have any other problems.
+
+
+Best
+Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

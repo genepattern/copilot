@@ -1,0 +1,233 @@
+URL: https://groups.google.com./g/genepattern-help/c/KEwB3ZpIxi0
+Title: GISTIC_2.0
+----------------------------------------
+
+
+
+
+
+GISTIC_2.0
+117 views
+Skip to first unread message
+
+ting gao
+unread,
+Oct 30, 2019, 11:34:45 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+    Sorry for trouble you, I want to run the MutsigCV with my data from sequence, I don't know why there are some error. I will be very grateful for your help. Thank you.
+Job ID：177769.
+
+
+stderr.txt
+Error using MException
+Formatted MESSAGE input may only include scalar numeric values and character strings
+
+Error in make_D_from_seg (line 129)
+
+
+
+Error in run_gistic2_from_seg (line 188)
+
+
+
+Error in gp_gistic2_from_seg (line 97)
+
+
+
+MATLAB:MException:nonScalarInput
+
+
+stdoud.txt:
+
+
+GISTIC version 2.0.23
+
+
+
+Thank you very much. Hope for your help.
+Barbara Hill
+unread,
+Dec 11, 2019, 11:37:45 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+My sincere apologies for the delay in responding - can you try running your job again and sending the new job id? this will help me look into the specifics.
+
+
+All the best
+-Barbara
+
+
+ting gao
+unread,
+Dec 11, 2019, 12:01:53 PM
+
+
+
+to GenePattern Help Forum
+It's ok. Thank you very much for your reply. The Job ID: 188963.GISTIC_2.0.
+
+
+
+stdout .txt.:
+GISTIC version 2.0.23
+ 
+GISTIC 2.0 input error detected:
+All input data were removed after NaN processing.
+
+
+I don't know why. Hopefully you can give me some advice.
+
+
+Thanks
+
+
+
+
+
+
+
+在 2019年10月30日星期三 UTC-5下午1:34:45，ting gao写道：
+
+Barbara Hill
+unread,
+Dec 11, 2019, 12:18:08 PM
+
+
+
+to GenePattern Help Forum
+I took a look at your seg file in IGV (you have to change the extenstion to .seg from .txt) and found that you have too little coverage and too few samples. 
+You have only 15 samples and this is not sufficient for GISTIC. 
+You need to have good coverage on all chromosomes for at least 30 samples in order for the algorithm to work and be accurate and function correctly.
+
+You may find additional GISTIC specific assistance in the GISTIC help forum:  https://groups.google.com/a/broadinstitute.org/forum/#!forum/gistic-forum
+
+
+All the best
+-Barbara 
+ting gao
+unread,
+Dec 11, 2019, 12:39:24 PM
+
+
+
+to GenePattern Help Forum
+Thank you very much for your reply. I will try to run again by changing the extenstion to .seg from .txt and add samples. Thank you very much.
+
+在 2019年12月11日星期三 UTC-6下午2:18:08，Barbara Hill写道：
+
+Barbara Hill
+unread,
+Dec 11, 2019, 12:58:14 PM
+
+
+
+to GenePattern Help Forum
+To be clear, you only need to change the file ending to seg in order to view it in IGV - that is not needed to run GISTIC and did not impact its function.
+
+
+Best
+-Barbara 
+
+ting gao
+unread,
+Dec 12, 2019, 12:03:35 PM
+
+
+
+to GenePattern Help Forum
+Thank you very much. I run it again afer change the file from tex.to seg. It dosen't work. Could you please help me to check it? Thank you very much. The job ID IS:190584.
+
+
+GISTIC 2.0 input error detected:
+All input data were removed after NaN processing.
+
+
+
+
+
+在 2019年12月11日星期三 UTC-6下午2:58:14，Barbara Hill写道：
+
+Barbara Hill
+unread,
+Dec 12, 2019, 12:30:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello 
+
+
+I'm sorry if I was unclear the problem was not your seg file. You do not have enough samples or enough coverage of the samples you do have for GISTIC to work.
+
+
+"... you have too little coverage and too few samples. 
+
+ting gao
+unread,
+Dec 12, 2019, 12:36:14 PM
+
+
+
+to GenePattern Help Forum
+Thank you very much. This time i run by adding 3 kinds of tumor. The number of samples are 30. Do you mean maybe the copy number variants too less to work? Thank you very much.
+
+在 2019年12月12日星期四 UTC-6下午2:30:29，Barbara Hill写道：
+
+Barbara Hill
+unread,
+Dec 12, 2019, 12:38:01 PM
+
+
+
+to GenePattern Help Forum
+Please send your job id - that way I can see what your new seg file looks like.
+
+
+Best
+Barbara
+Tingting Gao
+unread,
+Dec 12, 2019, 12:39:29 PM
+
+
+
+to genepatt...@googlegroups.com
+
+The job id is 190590. Thank you very much.
+
+
+​
+
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Barbara Hill <bh...@broadinstitute.org>
+Sent: Thursday, December 12, 2019 2:38 PM
+To: GenePattern Help Forum
+Subject: [genepattern-help:1232] Re: GISTIC_2.0
+ 
+Please send your job id - that way I can see what your new seg file looks like.
+
+
+Best
+Barbara
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/37ec0d1c-7396-433f-a561-7f153580756b%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

@@ -1,0 +1,1 @@
+GSEA forum discussion summary: A user asked about generating GSEA plots with ssGSEA, and the response indicated that the ssGSEA module does not produce traditional GSEA mountain plots, with standard results typically presented as heatmaps or clustered heatmaps, leaving the user without a direct method to create the desired visualization.

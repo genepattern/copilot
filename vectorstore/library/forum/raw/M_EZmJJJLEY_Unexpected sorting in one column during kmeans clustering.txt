@@ -1,0 +1,73 @@
+URL: https://groups.google.com./g/genepattern-help/c/M_EZmJJJLEY
+Title: Unexpected sorting in one column during kmeans clustering
+----------------------------------------
+
+
+
+
+
+Unexpected sorting in one column during kmeans clustering
+15 views
+Clustering
+kmeans
+Skip to first unread message
+Mark Manzano
+unread,
+Feb 20, 2019, 1:26:36 PM
+
+
+
+to GenePattern Help Forum
+Hello all,
+
+
+I was doing k-means clustering on z-scores from gene expression datasets (Job IDs 88665, 88667, 88669, 88670 --- same dataset but with k=3,4,5,6). 
+
+
+I noticed that the expression values for each cluster are sorted by column 9 for all jobs.
+
+
+So when I plot the heatmaps, column 9 looks like a smooth gradient while the rest look like a traditional gene expression heatmap (see attached). Col 9 is also a replicate of Cols 7 & 8. 
+
+
+This seems to hold true when I set my seed differently (I tried seed=1 and seed=12345 for k=6).
+
+
+Not the end of the world but is there a way to proceed with the clustering but NOT sort by column 9? 
+
+
+I'd like to get somewhat close to a publication-ready figure and the smooth gradient for 1 replicate is a bit of an eyesore (and I don't seem to see this done in published papers).
+
+
+Thank you for the help!
+
+
+Mark
+
+
+
+kmeans.jpg
+Barbara Hill
+unread,
+Jan 24, 2020, 1:16:42 PM
+
+
+
+to GenePattern Help Forum
+Hello Mark, 
+
+
+I'm so sorry we never responded.
+
+
+Would you still like an answer to this question about sorting in KMeansClustering?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

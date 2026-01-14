@@ -1,0 +1,1 @@
+A GenePattern user experienced authentication errors when trying to launch a Java Visualizer (GSEALeadingEdgeViewer), which was resolved by changing the server URL to "https://gp-beta-ami.genepattern.org/gp" instead of the default server, successfully enabling access to the visualization tool after initially encountering a 401 Invalid credentials error.

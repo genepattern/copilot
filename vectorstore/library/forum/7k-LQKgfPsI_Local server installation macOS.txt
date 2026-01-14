@@ -1,0 +1,1 @@
+A GenePattern user encountered an error while trying to install a local GenePattern server on macOS 10.12.6, specifically experiencing a Java Virtual Machine creation failure when using Java 8, with a support representative recommending installation of the Java Development Kit (JDK) as a potential solution to resolve the compatibility issue between Tomcat and Java.

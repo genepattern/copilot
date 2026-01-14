@@ -1,0 +1,1 @@
+GenePattern R package is no longer available due to deprecation; users can now access GenePattern modules via REST API using httr and jsonlite packages in R, or alternatively use the Python library for interacting with GenePattern, with the recommendation to update documentation to clarify package availability and current interaction methods.

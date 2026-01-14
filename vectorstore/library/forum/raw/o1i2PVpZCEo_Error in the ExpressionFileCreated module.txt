@@ -1,0 +1,239 @@
+URL: https://groups.google.com./g/genepattern-help/c/o1i2PVpZCEo
+Title: Error in the ExpressionFileCreated module
+----------------------------------------
+
+
+
+
+
+Error in the ExpressionFileCreated module
+25 views
+Skip to first unread message
+
+Sandra Romero
+unread,
+Mar 23, 2021, 1:09:33 PM
+
+
+
+to gp-...@broadinstitute.org, genepatt...@googlegroups.com, acas...@cloud.ucsd.edu
+
+Dear GenePattern team: 
+
+I am trying to analyze raw cel files from Human Genome U133A and U133A plus Affymetrix arrays through the ExpressionFileCreated v 12.5 module. But I encountered the following error: 
+
+
+
+
+Error: No CEL files found.  If you used a CLM it may have filtered out them all out.
+
+Execution halted
+
+
+
+
+I checked my zip files containing the cel files and is ok: it only contains unzipped cel files.  I also included as an input the cdf file provided by Affymetrix but I continue getting the same error. 
+
+
+
+
+Jod id 332028. 
+
+
+
+
+Any advice? 
+
+
+
+
+I would appreciate your comments
+
+
+
+Sandra Romero
+
+
+
+Anthony Castanza
+unread,
+Mar 23, 2021, 1:18:09 PM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+
+Hi Sandra,
+
+ 
+
+The ExpressionFileCreator module is specifically for IVT arrays. Please give your file a try with the “AffySTExpressionFileCreator” module, it should be able to accept the platform you’ve indicated.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOcpLGM_9U%3DbGQfw-SBJn7CQuc9BWiOHqLoSwsn-wx24SC%2BFzQ%40mail.gmail.com.
+
+Sandra Romero
+unread,
+Mar 23, 2021, 1:42:47 PM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+
+Thanks for your prompt answer, 
+
+
+
+
+As far as I understandU133 arrays are 3’ IVT expression arrays. I had  also tried with the module you suggest v 0.14, since v1.3 is not already available, but I also got the following error: 
+
+
+
+
+Error in GP.affyst.efc(files.to.process, normalize, background.correct,  : 
+
+  Array type HG-U133A does not seem to be an ST array.  You may want to check whether it is supported by ExpressionFileCreator instead.
+
+Calls: tryCatch -> tryCatchList -> GP.affyst.efc
+
+Execution halted
+
+
+
+
+Not sure if the module update by the gene pattern team would solve this situation. In fact, I was able to run the Clarium S array by providing the cdf in the ExpressionFileCreated v 12.5 module.
+
+
+
+
+Not sure how to proceed with
+
+
+
+
+Thanks
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578293EDE9C295B8778B00CBF7649%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+
+
+
+--
+
+Dra. Sandra L. Romero-Cordoba, Ph.D.
+Investigador en ciencias médicas
+Unidad de Bioquímica
+Instituto Nacional de Ciencias Médicas y Nutrición Salvador Zubiran (INCMNSZ)
+Tel: 54870900 ext 2606
+
+
+Anthony Castanza
+unread,
+Mar 23, 2021, 2:15:46 PM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+
+Hi Sandra,
+
+ 
+
+You’re absolutely right, they are IVT arrays, that’s my mistake. I’ll look into why this module isn’t working.
+
+ 
+
+I have to say, I’m surprised that the Clariom arrays worked through that module, it wasn’t designed for them. Looking at the platform, I think it only worked because the platform had been modified to use the “entrezgeneid_st” pseudo-naming of genes that some older deposited datasets use which is a format that was adopted to “trick” older tools into processing it (a trick which seems to also work on our tools, which is good to know). The standard Transcript cluster level clariom data doesn’t, I believe, work through this module.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAOcpLGNbMbM7q2Xbb1YjQiBwHGQ-DnjTWYGWJByKqWLh5JJEFw%40mail.gmail.com.
+
+Anthony Castanza
+unread,
+Mar 23, 2021, 3:23:25 PM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+
+Hi Sandra,
+
+ 
+
+I think I figured out the issue here. The ExpressionFileCreator module, which is quite old, doesn’t like the ZIP files created through the MacOS, right click menu “Compress” tool. This is because MacOS adds a bunch structure and hidden files to it that the script can’t parse as its current written.
+
+ 
+
+If you need to create zip files for data like these in the future, you’re going to want to do it from the terminal using:
+
+ 
+
+cd “/path/to/dir/with/celfiles/”
+
+zip -r GEOID_files.zip . -x ".*" -x "__MACOSX"
+
+ 
+
+In this case, I’ve recreated your archive using the above command and rerun the module on the new archive. You should be able to access the results here: https://cloud.genepattern.org/gp/pages/index.jsf?jobid=332073&openVisualizers=false&openNewWindow=false
+
+Let me know if you have any issues accessing it.
+
+ 
+
+-Anthony
+
+
+Sandra Romero
+unread,
+Mar 23, 2021, 9:24:40 PM
+
+
+
+to genepatt...@googlegroups.com, gp-...@broadinstitute.org
+Dear Anthony: 
+
+
+Thanks for your solution!!!, it works perfectly now. 
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB57820306AEB3CA0C136C0769F7649%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

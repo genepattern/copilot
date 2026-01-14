@@ -1,0 +1,1 @@
+GenePattern user reported technical difficulties running Network Topology Profiling (NTP) modules, with GenePattern support acknowledging a potential server-side synchronization issue between the main server and compute nodes, suggesting users temporarily utilize an alternative public server at UCSD until the problem is resolved.

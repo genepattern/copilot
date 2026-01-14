@@ -1,0 +1,140 @@
+URL: https://groups.google.com./g/genepattern-help/c/mp6RPKkAnVc
+Title: MutPanning alignment errors
+----------------------------------------
+
+
+
+
+
+MutPanning alignment errors
+28 views
+Skip to first unread message
+
+Sehrish Kanwal
+unread,
+Mar 5, 2024, 4:59:50 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I am trying to run MutPanning through GenePattern (job ID 567506).
+
+The job is erroring out at initial alignment stage (log files attached).
+Can you please help debug the issue?
+
+
+
+
+
+
+stdout.txt
+
+stderr.txt
+Ted Liefeld
+unread,
+Mar 6, 2024, 9:01:27 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+I am looking into the issue.  Nothing is obvious at first glance so it may take a little bit of time to sort out.  I will let you know when I have identified a cause.
+
+
+Ted
+
+
+
+Sehrish Kanwal
+unread,
+Mar 6, 2024, 2:26:13 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+Thank you so much for looking into the issue. 
+I look forward to hearing back from you. 
+
+Best,
+Sehrish
+
+Ted Liefeld
+unread,
+Mar 7, 2024, 9:03:49 AM
+
+
+
+to GenePattern Help Forum
+Sehrish,
+
+
+I have forwarded this issue to the author of the MutPanning algorithm.  I'll leet you know if/when they have a solution
+
+
+Ted 
+
+
+
+Sehrish Kanwal
+unread,
+Mar 8, 2024, 3:10:47 AM
+
+
+
+to GenePattern Help Forum
+Many thanks, Ted. Hopefully, Felix can provide some insight into the underneath issue.
+
+Ted Liefeld
+unread,
+Mar 11, 2024, 3:54:02 PM
+
+
+
+to GenePattern Help Forum
+Sehrish,
+
+
+here are the comments from the author.  Hopefully one of them will help
+
+
+" the maf file looks good at first glance but it's huge and composed of at least different subcohorts - an individual corrupted line or subcohort might have easily thrown the method off. But I didnt find anything specific either."
+
+
+"one quick additional thought - I just looked again at the header of the maf file and seems like it's not exactly formatted in the way as described in the manual. The authors could download the example dataset and reformat it the way the sample maf file is formatted (exact labels from maf and switch the order of the columns)."
+
+
+Hope this helps,
+
+
+Ted
+
+Sehrish Kanwal
+unread,
+Mar 13, 2024, 7:15:56 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+Thanks for getting back to me.
+
+I tried formatting the MAF file to the format described in the manual but unfortunately couldn't get it to work (job ID 569161. MutPanning).
+Yes my MAF file is big as it compromises of a lot of sub atlas data but I have analysed it through various other tools (including MAF summary and driver analysis) that have worked.
+So, we can think and believe the data is fine? Just hoping to get some guidance and help here to make it work.
+
+Best,
+Sehrish
+
+
+Reply all
+
+Reply to author
+
+Forward

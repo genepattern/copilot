@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/Jyx7uxKvyKc
+Title: ssGSEA Rscript error
+----------------------------------------
+
+
+
+
+
+ssGSEA Rscript error
+11 views
+Skip to first unread message
+
+JL
+unread,
+Mar 15, 2019, 3:57:30 PM
+
+
+
+to GenePattern Help Forum
+I'm trying to run files through ssGSEA, but get errors with both GenePattern html interface and the Rscript gui. I'm running on a Mac in both cases, and have run Genepattern from Safari, Firefox, and Chrome with the same results.
+
+
+Genepattern:
+I run my gct and one of the gmt files from the db folder, but get the following error every time. I've tried formatting my gct file using either the "fpkm_trackingtoGct" module or with Morpheus, but neither work. The issue seems to be before the files even run from what I can tell. I can't find a Job ID listed.
+Error:
+/Users/[myusername]/.genepattern/resources/wrapper_scripts/run-rscript-pkgs.sh: line 92: Rscript: command not found
+
+Stdout:
+initEnv(): initializing 'r/2.15' environment ...
+initEnv():      adding '/Library/Frameworks/R.framework/Versions/2.15/Resources/bin' to the PATH ...
+
+
+
+Rscript GUI:
+I get in an endless loop of windows popping up. The instructions ask to select the folder containing the gct files, but I only have the option to open files, not folders. Even when I select my gct file then in the second popup select the gmt file from the db folder, it continues to ask for files. If I select cancel, I get the following error:
+Error in names(gct.files) : object 'gct.files' not found
+
+
+
+
+Any ideas on how to get either method to run? Thanks!
+JL
+unread,
+Mar 15, 2019, 4:17:36 PM
+
+
+
+to GenePattern Help Forum
+OK, of course after posting this I noticed the stickied thread on the main page. If anyone else encounters this error, use the Amazon cloud version, as the original one is no longer supported: https://cloud.genepattern.org
+
+Barbara Hill
+unread,
+Mar 19, 2019, 12:19:17 PM
+
+
+
+to GenePattern Help Forum
+No worries - you didn't miss the announcement. I put that up in response to your thread. 
+
+
+Thank you again for bringing this to our attention!
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Mar 19, 2019, 12:22:07 PM
+
+
+
+to GenePattern Help Forum
+Oh - I see this is a different question - my apologies.
+
+
+
+I'm not sure I understand your question, but it seems my other announcement answered it. 
+
+
+Let us know if you are still having any trouble, or have any additional questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/dsEzpPCrJN4
+Title: Questions about NTP analysis
+----------------------------------------
+
+
+
+
+
+Questions about NTP analysis
+38 views
+Skip to first unread message
+
+hiroki
+unread,
+Feb 9, 2021, 9:34:22 AM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern Help Forum
+
+
+ I would like to perform NTP analysis based on the gene expression values obtained by RNA sequencing. I have a few questions about NTP analysis.
+
+・In creating “input exp filename”, I understand that we have to use normalized gene expression values but is it better to use log-transformed values or is log conversion unnecessary? 
+
+・In creating “input features filename”, is it OK to use the same names in the first column “Probe ID” and the second column “gene name” ?
+
+I'm sorry for the inconvenience, but I would appreciate it if you could tell me how to do this.
+
+Barbara Hill
+unread,
+Feb 11, 2021, 6:15:21 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Unfortunately, as you have probably noticed, the documentation for NTP is rather lacking in its specification of log-transformed input data. However, the example data does not appear to be log-transformed, so I think it is safe to assume that this is allowed, if not preferred.
+
+
+As for the two columns. Again, the documentation is a little light here, but it seems the most important thing is that the first column "Probe IDs" should match the first column of Probe IDs in your input GCT file. I would suspect that, like a GCT file, the second column is a descriptive column for humans, and thus using the same probe ids would be allowed.
+
+
+Give it a try and let us know if you have any further questions.
+
+
+Best
+-Barbara
+hiroki
+unread,
+Feb 11, 2021, 7:16:23 AM
+
+
+
+to GenePattern Help Forum
+
+Dear Ms.Barbara
+
+ I asked this question because there was a slight difference in NTP analysis results between pre log-transformed data and log-transformed data. I understand very well. Thank you very much for your help.
+
+Best regards
+
+Hiroki
+
+
+
+2021年2月11日木曜日 23:15:21 UTC+9 Barbara Hill:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

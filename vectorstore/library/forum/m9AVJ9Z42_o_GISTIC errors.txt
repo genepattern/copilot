@@ -1,0 +1,1 @@
+Bioinformatics troubleshooting thread about GISTIC 2.0 analysis where a user encountered an error during segmentation analysis, specifically an error indicating chromosomal crossing in genomic location processing, with the recommendation to seek further assistance from the GISTIC-specific support forum at Broad Institute for more targeted troubleshooting.

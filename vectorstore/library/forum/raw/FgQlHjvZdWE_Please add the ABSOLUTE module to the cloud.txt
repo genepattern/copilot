@@ -1,0 +1,315 @@
+URL: https://groups.google.com./g/genepattern-help/c/FgQlHjvZdWE
+Title: Please add the ABSOLUTE module to the cloud
+----------------------------------------
+
+
+
+
+
+Please add the ABSOLUTE module to the cloud
+63 views
+Skip to first unread message
+
+kmva...@gmail.com
+unread,
+Nov 24, 2018, 2:41:37 PM
+
+
+
+to GenePattern Help Forum
+Please add the ABSOLUTE module to the cloud (only the Review and Summarize modules are up).
+
+Barbara Hill
+unread,
+Nov 26, 2018, 1:46:31 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Thank you for using our new server and for letting us know that you are interested in ABSOLUTE. 
+
+
+We are currently planning to have this module configured to run in the new Docker environment before the end of the year. The version that ran on our old Broad-hosted server needs to be modified to work on the new server.
+
+
+We will let you know as soon as we have a version for you to use.
+
+
+Best
+-Barbara
+Kristin Valdez
+unread,
+Nov 26, 2018, 1:48:59 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Thank you!
+
+
+Best,
+Kristin
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f91adcf5-f740-4dcf-a3ac-af8daa125127%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Nov 26, 2018, 2:05:51 PM
+
+
+
+to GenePattern Help Forum
+Hi Kristen, 
+
+
+You are very welcome.
+
+
+I forgot to mention that in the meantime, you are welcome to use ABSOLUTE on the GenePattern server hosted at Indiana University - https://gp.indiana.edu/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00309:1.4
+
+
+Please let us know if you have any other questions or comments.
+
+
+Best
+-Barbara
+Kristin Valdez
+unread,
+Sep 12, 2019, 12:20:30 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thanks again, I am back and using ABSOLUTE for new data.
+
+
+
+I am using the indiana site, however when I click ok to accept the license agreement nothing happens?
+
+
+Best,
+Kristin
+
+
+Barbara Hill
+unread,
+Sep 13, 2019, 3:07:35 PM
+
+
+
+to GenePattern Help Forum
+Hi Kate, 
+
+
+There does appear to be a bug in the recording of license acceptance on the Indiana server. I'll speak to the administrator and hopefully, we can get this cleared up quickly.
+
+
+Thank you for bringing this to our attention!
+
+
+-Barbara
+
+Kristin Valdez
+unread,
+Sep 19, 2019, 6:20:58 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thanks for following up, is there any update on this?
+
+
+Best,
+Kristin
+
+
+Barbara Hill
+unread,
+Sep 19, 2019, 3:34:56 PM
+
+
+
+to GenePattern Help Forum
+Hi Kristen, 
+
+
+I am working with the server administrator at IU, but we do not yet have a solution.
+
+
+Apologies,
+Barbara
+Barbara Hill
+unread,
+Sep 19, 2019, 3:39:14 PM
+
+
+
+to GenePattern Help Forum
+Hi Kristin, 
+
+
+(sorry about the misspelling of your name in my last message) - I just had an idea, it's a hack, but it might get you back on track.
+
+
+What is your user name?
+
+
+Thanks
+-Barbara
+Kristin Valdez
+unread,
+Sep 19, 2019, 3:41:55 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+No worries, happens all the time.
+
+
+
+It's worth a try!  My user name is kvaldez.
+
+
+Thanks again,
+Kristin
+
+
+Barbara Hill
+unread,
+Sep 19, 2019, 4:06:46 PM
+
+
+
+to GenePattern Help Forum
+Ok - I think this will work - tell me if you can use ABSOLUTE now.
+
+
+-Barbara
+
+Kristin Valdez
+unread,
+Sep 20, 2019, 7:07:02 AM
+
+
+
+to GenePattern Help Forum
+Yes that worked!  Thank you so much!
+
+Barbara Hill
+unread,
+Sep 20, 2019, 10:30:25 AM
+
+
+
+to GenePattern Help Forum
+Excellent! I'm glad it worked!
+Kristin Valdez
+unread,
+Sep 23, 2019, 7:53:38 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Do you mind applying the same hack to ABSOLUTE summarize and ABSOLUTE review as well?
+
+
+Thanks,
+Kristin
+
+
+Barbara Hill
+unread,
+Sep 23, 2019, 12:49:58 PM
+
+
+
+to GenePattern Help Forum
+Hi Kristin, 
+
+
+Sure! They should both be available for your use now.
+
+
+Let us know if you run into anything else.
+
+
+Best
+-Barbara
+
+Kristin Valdez
+unread,
+Sep 23, 2019, 12:54:17 PM
+
+
+
+to GenePattern Help Forum
+Will do, thanks again!
+
+
+Kristin
+
+
+François RICHARD
+unread,
+Nov 8, 2019, 1:44:51 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+I am catching up the conversation. I can not find the ABSOLUTE modules on the gene pattern public server. I guess it is in progress of being solved.
+
+Do you have an idea when they should be back on running?
+Thanks a lot,
+François
+
+Thorin Tabor
+unread,
+Dec 13, 2019, 9:53:23 AM
+
+
+
+to GenePattern Help Forum
+Getting the ABSOLUTE modules running on GenePattern Cloud is still a work in progress. In the meantime, they are available on the GenePattern IU server:
+
+
+
+https://gp.indiana.edu/gp/
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+Reply all
+
+Reply to author
+
+Forward

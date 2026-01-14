@@ -1,0 +1,104 @@
+URL: https://groups.google.com./g/genepattern-help/c/t2wHY2Xm2TM
+Title: Replace GP basic Auth with institutional CAS
+----------------------------------------
+
+
+
+
+
+Replace GP basic Auth with institutional CAS
+12 views
+Skip to first unread message
+
+Christophe Poulet
+unread,
+May 21, 2021, 3:07:33 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Is there a simple way / plugin to use an institutional CAS that would replace the default GP login/register?
+
+
+Thanks
+Ted Liefeld
+unread,
+May 21, 2021, 6:59:40 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+there is a way but I am not sure how simple you will consider it.  You can create your own java implementation for the IAuthenticationPlugin interface.  I have not actually done it myself yet, but will be doing this myself during June where I will try to create a plugin to authenticate using OpenIDConnect.  If your institution is an OpenID Connect identity Provider (anyone using google apps for example) this should make it easier for you later this summer.
+
+
+It is documented in our Administrators guide here: https://www.genepattern.org/administrators-guide#_User_Authentication_and
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Christophe Poulet
+unread,
+May 26, 2021, 3:05:20 AM
+
+
+
+to GenePattern Help Forum
+Thanks a lot Ted.
+
+
+I am going to wait for your implementation and see if it fits with my institution CAS or at least help me develop one.
+
+Ted Liefeld
+unread,
+May 26, 2021, 5:56:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Christophe,
+
+
+I will try to remember to post the details here when it is available, but in case I forget please remind me either here or with an email (I am sending you my direct email separately)
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/t2wHY2Xm2TM/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9595e516-2e6a-4e07-ac0f-710fea25a52fn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

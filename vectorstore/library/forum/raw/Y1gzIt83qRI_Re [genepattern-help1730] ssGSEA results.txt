@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/Y1gzIt83qRI
+Title: Re: [genepattern-help:1730] ssGSEA results
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:1730] ssGSEA results
+19 views
+Skip to first unread message
+Anthony Castanza
+unread,
+Feb 5, 2021, 2:29:53 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Wira,
+
+ 
+
+Looking at the screenshot you sent, I’m not seeing anything obviously wrong with these results. Sharing your job number would allow us to take a look at them in detail but can you describe in what way you consider these results to be not “correct”?
+
+ 
+
+Thanks,
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Wira Winardi <winard...@gmail.com>
+Date: Friday, February 5, 2021 at 1:40 PM
+To: GenePattern Help Forum <genepatt...@googlegroups.com>
+Subject: [genepattern-help:1730] ssGSEA results
+
+I ran ssGSEA but I couldn't get a correct result. the input files in TPM and FPKM. 
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b48f3a71-5118-4165-b1ed-6d1f808ebdf1n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

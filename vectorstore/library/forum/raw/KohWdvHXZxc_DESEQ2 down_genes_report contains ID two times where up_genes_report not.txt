@@ -1,0 +1,79 @@
+URL: https://groups.google.com./g/genepattern-help/c/KohWdvHXZxc
+Title: DESEQ2 down_genes_report contains ID two times where up_genes_report not
+----------------------------------------
+
+
+
+
+
+DESEQ2 down_genes_report contains ID two times where up_genes_report not
+10 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+Jun 10, 2020, 4:23:52 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I thinks there is a simple bug in print somewhere. The ensembl id is present two times in down_genes_report output after deseq2 analysis.
+JobID 237200. DESeq2 
+ Down output : 
+
+
+
+id baseMean log2FoldChange lfcSE stat pvalue padj
+ENSG00000104921 ENSG00000104921 188.395158494278 -3.55229353460916 0.317794037485927 -11.1779741454919 5.22695484714091e-29 1.45372068208683e-25
+
+
+
+
+Up output : 
+id baseMean log2FoldChange lfcSE stat pvalue padj
+ENSG00000121351 7.56055257434681 2.59272065647349 0.589260226816623 4.39995869139212 1.0827148680223e-05 0.000130545372439753
+Enter code here...
+
+
+
+
+
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right-hand corner of the module input page or here: https://www.genepattern.org/modules
+* GenePattern FAQ - https://www.genepattern.org/FAQ
+* GenePattern  Videos - https://www.genepattern.org/video-tutorials
+* GenePattern File Formats - https://www.genepattern.org/file-formats-guide#file-formats
+* GenePattern User Guide - https://www.genepattern.org/user-guide#user-guide
+* GenePattern Programmer's Guide - https://www.genepattern.org/programmers-guide
+* GenePattern Release Notes - https://github.com/genepattern/genepattern-server/releases/latest
+
+GenePattern Help Forum
+unread,
+Jun 12, 2020, 9:50:39 AM
+
+
+
+to GenePattern Help Forum
+Hello Jean-Phillipe (apologies for getting that only half right in my last email)
+
+
+Yes, it does look like there is a bug there - thanks for catching that!
+
+
+I'll pass this along to the module author and we'll see about getting this fixed.
+
+
+Thanks again!
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/ukbt8wEHzIk
+Title: Re: [gp-team] 502 bad gateway error
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] 502 bad gateway error
+3 views
+Skip to first unread message
+
+Ted (aka John) Liefeld
+unread,
+Sep 16, 2024, 7:44:51 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+The GenePattern server is down for maintenance at the moment.  It should be available again in a few hours.
+
+
+Ted
+
+
+On Mon, Sep 16, 2024 at 7:21 AM 'Dalvin, Lauren A., M.D.' via genepattern-team <genepatt...@broadinstitute.org> wrote:
+
+
+Hello,
+
+ 
+
+I am trying to use the online genepattern platform, but I keep getting a 502 bad gateway error on multiple browsers and devices. Is there something special I need to do to register first that might resolve the bad gateway issue?
+
+ 
+
+Thanks for your help!
+
+Lauren
+
+ 
+
+Lauren A. Dalvin, MD
+
+Associate Professor
+
+Ocular Oncology Service
+
+Department of Ophthalmology
+
+Joint Appointment in Medical Oncology
+
+Mayo Clinic, Rochester, MN
+
+Secretary Shauna Petersen: 507-284-3760
+
+ 
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/CO1PR01MB6565A10A7C39F728796D44108D602%40CO1PR01MB6565.prod.exchangelabs.com.
+
+Ted Liefeld
+unread,
+Sep 16, 2024, 9:25:17 AM
+
+
+
+to GenePattern Help Forum
+The server is available again now.  PLease let us know if you have any further problems
+
+
+Ted
+
+
+
+Reply all
+
+Reply to author
+
+Forward

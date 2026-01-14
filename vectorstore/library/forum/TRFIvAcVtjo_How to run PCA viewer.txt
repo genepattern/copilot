@@ -1,0 +1,1 @@
+A GenePattern user is experiencing difficulty running the PCA (Principal Component Analysis) viewer on the GenePattern public website using Windows 10, having already installed Java 8 and Java 3D, and tried multiple browsers; another user suggested referring to a previous forum thread for troubleshooting information.

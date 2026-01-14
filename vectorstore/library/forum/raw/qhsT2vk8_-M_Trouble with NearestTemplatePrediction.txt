@@ -1,0 +1,171 @@
+URL: https://groups.google.com./g/genepattern-help/c/qhsT2vk8_-M
+Title: Trouble with NearestTemplatePrediction
+----------------------------------------
+
+
+
+
+
+Trouble with NearestTemplatePrediction
+52 views
+Skip to first unread message
+
+二哈李
+unread,
+Jun 2, 2022, 4:16:18 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone, I have some problems when I am doing NTP analysis. My own input files are all organized in the format of the example files. I don't know why it still gives an error. Hope you can help me solve this problem. thanks
+tmt...@cloud.ucsd.edu
+unread,
+Jun 3, 2022, 10:43:37 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Could you please provide the job number that gave you the error. It's probably some issue with the white space in one of the files; once we have the job number we can take a look.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+二哈李
+unread,
+Jun 5, 2022, 11:38:22 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Sorry, I don't know which number is the job number, is it 441757? I will give you a screenshot of the entire website page to see if the job number exists on this page.Thank you for taking the time to help me solve the problem.
+
+
+Thanks
+Lipengcheng
+
+
+
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 6, 2022, 11:58:48 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I have examined the erred job and have noticed a couple issues with Input.txt. The data is missing cox scores and there is an extra blank line at the end of the file. Removing the extra line and providing the missing scores may solve your issue.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+二哈李
+unread,
+Jun 7, 2022, 11:32:45 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+
+
+I re-modified my input file according to the requirements of the reference document. The cox scores column is optional, so I only kept the three columns of probe id, Gene name, and class. And I deleted the blank line at the end of the input file according to your method, but the program still runs incorrectly (job number is 443368). The error file seems to prompt me that the file format is wrong, but I don't know what is wrong. Could you help me modify the file format and run the program successfully?
+
+
+Thanks
+pengcheng LI
+
+
+
+
+
+
+
+
+
+
+123.png789.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 8, 2022, 10:59:27 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+After taking a second look at your files, I was able to figure out what was wrong and run NearestTemplatePrediction with them successfully.
+
+
+There are two problems in Input.txt.
+
+
+1) The file is saved using UTF-16 encoding. This is a fairly uncommon encoding used almost exclusively by a handful of Windows text editors. It does not work well with R, which is the language that NearestTemplatePrediction is implemented in. To get the file to work, you need to first save as using the much more standard UTF-8 encoding. I don't know which text editor you're using, but most will have that option somewhere.
+
+
+2) If you do not include a weight, such as cox scores, you need to remove that header from the file. Because the header exists, NearestTemplatePrediction expects those scores to be included.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+二哈李
+unread,
+Jun 9, 2022, 2:54:04 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+It's really a problem with the file encoding. After modifying the file encoding, the program runs successfully. 
+
+
+Thank you very much!
+
+
+Pengcheng Li
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

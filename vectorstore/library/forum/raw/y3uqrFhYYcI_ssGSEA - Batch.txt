@@ -1,0 +1,141 @@
+URL: https://groups.google.com./g/genepattern-help/c/y3uqrFhYYcI
+Title: ssGSEA - Batch
+----------------------------------------
+
+
+
+
+
+ssGSEA - Batch
+44 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+Sep 25, 2020, 3:25:57 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+does anyone know how to get the files automatically labelled with the correspondent gene-signature-name when using the 'batch' option to be able to analyze simultaneously several gene sets database files ?
+Thanks
+
+
+  
+
+Barbara Hill
+unread,
+Oct 2, 2020, 7:22:25 AM
+
+
+
+to GenePattern Help Forum
+Hi Roser, 
+
+
+Apologies for the delay.
+
+
+Are you doing this through the webapp (cloud.genepattern.org)or the notebook (notebook.genepattern.org)?
+
+
+Many thanks
+-Barbara
+Roser Pinyol
+unread,
+Oct 2, 2020, 7:25:58 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+I am using the webapp version.
+Thanks
+Roser
+
+Barbara Hill
+unread,
+Oct 2, 2020, 7:30:44 AM
+
+
+
+to GenePattern Help Forum
+Okay, if I'm understanding your question correctly, you should be able to add this to the output file prefix:
+
+<gene.sets.database.files_basename>
+
+It would look like this in the app. (see below) Let us know if that works.
+
+
+
+Roser Pinyol
+unread,
+Oct 2, 2020, 7:42:19 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+as output file prefix, I used <gene.sets.database.files_basename> [see A] but the output does still not capture the name of the GMXs I had uploaded in the analysis [see B].
+Let me know if I understood correctly your suggested 'output file prefix', or if I have to add any additional information when runing the job.
+Many thanks
+Roser
+
+
+A:
+
+
+
+
+
+
+
+
+
+
+B:
+
+
+
+
+
+
+Roser Pinyol
+unread,
+Oct 2, 2020, 8:05:16 AM
+
+
+
+to GenePattern Help Forum
+I see that images A and B got lost from the text. Here attached.
+
+
+B.PNG
+
+A.PNG
+Barbara Hill
+unread,
+Oct 2, 2020, 8:40:06 AM
+
+
+
+to GenePattern Help Forum
+OK that makes sense. It's making a list of the gene sets which results in a file named "gene.sets.database.files.list.txt" so the basename is "gene.sets.database.files.list". I hadn't realized that was the methodology.
+
+Unfortunately, there's not much to do from the webapp. You could do this in a notebook with some code to rename the output files based on the GMX file names, but we don't have built-in functionality for this right now.
+
+
+I'm sorry I couldn't solve this one for you.
+
+
+All the best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

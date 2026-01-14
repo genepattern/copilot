@@ -1,0 +1,1 @@
+GenePattern multiplot preprocessing module was deprecated and users experiencing pending/stuck status should switch to the newer MultiplotStudio module, which requires using VisualizerLauncher to address browser-based Java restrictions when generating visualizations.

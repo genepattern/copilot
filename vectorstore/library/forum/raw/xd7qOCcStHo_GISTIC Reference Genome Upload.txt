@@ -1,0 +1,68 @@
+URL: https://groups.google.com./g/genepattern-help/c/xd7qOCcStHo
+Title: GISTIC Reference Genome Upload
+----------------------------------------
+
+
+
+
+
+GISTIC Reference Genome Upload
+30 views
+Skip to first unread message
+
+Andi L.
+unread,
+Oct 14, 2020, 10:23:53 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I have a simple question which is if there is a way to upload a reference genome to use with GISTIC2.0 instead of using one from the dropdown menu? I need to run an analysis for the mm10 reference genome but the dropdown menu only features human builds.
+
+
+Thanks in advance,
+Andi
+Ted Liefeld
+unread,
+Oct 14, 2020, 10:51:20 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The GenePattern module does not allow uploading a reference genome.  You can ask for more GISTIC specific help in the GISTIC-forum where they may be able to help.
+
+
+Hope this helps,
+
+
+Ted.
+
+
+Andi L.
+unread,
+Oct 14, 2020, 12:23:04 PM
+
+
+
+to GenePattern Help Forum
+Thank you Ted!
+
+I guess I will try to get GISTIC working in R then, unless someone has an easier idea :)
+
+Cheers,
+Andi
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

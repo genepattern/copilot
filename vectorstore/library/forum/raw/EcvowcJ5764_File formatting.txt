@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/EcvowcJ5764
+Title: File formatting
+----------------------------------------
+
+
+
+
+
+File formatting
+31 views
+Skip to first unread message
+
+Erbol Nishanov
+unread,
+Nov 30, 2022, 1:07:17 PM
+
+
+
+to GenePattern Help Forum
+When I submitted the GSEA pre-rank job, an error prevents me from submission: "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+I saved an excel sheet as a tab-delimited text file for the gct format. How exactly do I need to create and format the files for them to be processable? I attached the gct and gmx files below for reference. 
+
+
+Also, how do you change the GenePattern server? 
+
+
+
+
+
+uploadsite.gct
+
+Gene List.gmx
+Ted Liefeld
+unread,
+Nov 30, 2022, 1:44:45 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+the file transfer error might not be the format.  There is a bug that is fixed in the next release of GenePattern. Can you tell me the username or email you used to register and I will try to check if that is the case and fix it.
+
+
+The gct file format is OK but you have duplicate gene names (row names) and that will cause failures in most GenePattern modules.  I found it for "CYB561" but there might be others.  A quick test for this and format compatibility is to run it through the PreprocessDataset module as it is fast and validates the input format.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

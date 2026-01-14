@@ -1,0 +1,156 @@
+URL: https://groups.google.com./g/genepattern-help/c/LOfPulezQE0
+Title: Unexpected Error after Importing GCT in GSEA
+----------------------------------------
+
+
+
+
+
+Unexpected Error after Importing GCT in GSEA
+60 views
+Skip to first unread message
+
+Joe Allen
+unread,
+Apr 11, 2022, 12:16:45 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+When looking to the log files for a recent failed GSEA run, I see a line that reads: 
+"Unexpected error" shortly after importing my input GCT. My job ID is 426488. Any clues as to what might be going on?
+
+
+Thanks!
+Anthony Castanza
+unread,
+Apr 11, 2022, 2:18:51 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Joe,
+
+ 
+
+It looks like the GCT file upload to GenePattern might have failed. I'd suggest trying to retun the job, but rather than use the cached input dataset, try a fresh upload. Alternatively, first upload the GCT file to your files tab, then drag and drop that into the parameter.
+
+ 
+
+Let me know if you still have issues after trying a reupload.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5d35f499-47a5-44a3-950e-8ddbfa3ee3e3n%40googlegroups.com.
+
+Joe Allen
+unread,
+Apr 11, 2022, 3:33:44 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+
+
+I repeated the analysis by dragging my GCT from the files tab and using a fresh upload of the gene sets database but unfortunately I still got the same error message. Any ideas?
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/LOfPulezQE0/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/SJ0PR05MB76090970E0D8241C050A5093F7EA9%40SJ0PR05MB7609.namprd05.prod.outlook.com.
+
+
+
+
+
+--
+
+
+Joseph Allen
+
+Research Associate I, Proteomics Platform
+
+Broad Institute of MIT and Harvard
+
+415 Main Street, Cambridge, MA 02142
+
+joe@broadinstitute.org
+
+617-714-8843
+
+
+Anthony Castanza
+unread,
+Apr 11, 2022, 3:37:55 PM
+
+
+
+to genepatt...@googlegroups.com
+A fresh upload of the input dataset gct file not a fresh upload of the gene sets database file. The problem appears to be that the gct file is "empty" in GenePattern's database.
+
+
+If that still doesn't work, one of the GenePattern specific software architects will need to take a look at what might be going wrong here.
+
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CACsKK4MXPUzNzTKQan8adAvw6tGXz8axbyhTwGjgQ8y0KmZhiQ%40mail.gmail.com.
+
+Joe Allen
+unread,
+Apr 12, 2022, 8:50:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+
+
+I think I figured it out! Just a formatting issue in my GCT. Thanks for all of your help!
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZwaPRGnOCXFAA0A8jmF8QLexFCcsY7HCR-58A-5zf_B%2BQ%40mail.gmail.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

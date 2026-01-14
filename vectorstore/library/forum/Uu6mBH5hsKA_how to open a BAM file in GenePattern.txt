@@ -1,0 +1,1 @@
+GenePattern supports opening and processing BAM files through multiple modules; users are recommended to search the Module search box using "bam" to discover relevant tools for specific bioinformatics analyses, with the specific approach depending on the intended research goal and downstream processing requirements.

@@ -1,0 +1,2 @@
+Here's a summary formatted for vector store ingestion:
+ssGSEA error troubleshooting in GenePattern involving incompatible GCT file versions (1.2 and 1.3) with gene set analysis modules, resolved by replacing NaN values with zeros and ensuring proper GMT file format, highlighting challenges in handling different gene expression data formats and potential preprocessing requirements for successful ssGSEA projection.

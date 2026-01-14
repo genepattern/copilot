@@ -1,0 +1,70 @@
+URL: https://groups.google.com./g/genepattern-help/c/97_CF3RJJFI
+Title: Boilerplate code
+----------------------------------------
+
+
+
+
+
+Boilerplate code
+13 views
+Skip to first unread message
+
+Barry Demchak
+unread,
+Jun 10, 2021, 2:01:55 PM
+
+
+
+to GenePattern Help Forum
+Hi ...
+
+
+I have a number of Python scripts that start out with the same cells ... to set up the local directories, pip install py4cytoscape, and import py4cytoscape.
+
+
+Is there a way to package these cells as a single script, and either execute it at the beginning of each of my scripts ... or automatically for anyone who is in my group?
+
+
+Thanks!
+
+tmt...@cloud.ucsd.edu
+unread,
+Jun 14, 2021, 1:34:33 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The best suggestion I have is to create a helper package that you can import, which lazily creates the local directions when imported and which lists py4cytoscape as a dependency, so that it is automatically installed alongside the helper package. Doing things this way gets rid of some of those pain points. It still, however, requires that all of your notebooks import the helper package, which is a basic limitation of the Python global namespace.
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Barry Demchak
+unread,
+Jun 15, 2021, 11:33:18 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Thanks, Thorin … this is useful information, and I’ll roll it into our plan.
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1e25ebfd-6f83-4556-bac8-deb81a927982n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

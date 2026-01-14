@@ -1,0 +1,1 @@
+A GenePattern user encountered an issue with GISTIC2 not generating deletion plots, which was resolved by rerunning the job due to a technical problem with temporary file locations at a compute center, where changes in the $TMPDIR environment caused containerized applications to fail plot generation while maintaining basic job functionality.

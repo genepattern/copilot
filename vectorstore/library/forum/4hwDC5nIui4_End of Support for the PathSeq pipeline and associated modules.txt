@@ -1,0 +1,1 @@
+The GenePattern team announced the end of support for the PathSeq pipeline and its associated modules, indicating they are no longer installed on servers or available in repositories due to lack of ongoing author support.

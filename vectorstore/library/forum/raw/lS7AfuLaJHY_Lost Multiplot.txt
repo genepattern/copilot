@@ -1,0 +1,127 @@
+URL: https://groups.google.com./g/genepattern-help/c/lS7AfuLaJHY
+Title: Lost Multiplot
+----------------------------------------
+
+
+
+
+
+Lost Multiplot
+5 views
+Skip to first unread message
+
+Amy Barczak
+unread,
+Nov 14, 2018, 4:46:22 AM
+
+
+
+to GenePattern Help Forum
+Hi-
+
+
+ It's been a few months since I used GenePattern (we use it to analyze large mass spec datasets to identify and visualize ions significantly changedbetween conditions)- we had a Multiplot work flow for doing this, but logging into GenePattern this morning, it looks like MultiPlot may have been phased out of the current version of GenePattern. Is there a way to access Multiplot? Or is there an alternate GenePattern app/function that would allow me to do this?
+
+
+Thanks very much-
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 15, 2018, 10:55:45 AM
+
+
+
+to GenePattern Help Forum
+Hi Amy, 
+
+
+Multiplot was deprecated by the author and replaced with Multiplot Studio. I've installed Multiplot Studio on our Amazon Cloud server - https://cloud.genepattern.org/.
+
+
+In case you have not seen our communications, the Amazon Cloud server is now our production GenePattern server, and will be turning off the job queue on our Broad GenePattern server on December 1 in preparation for its decommission on  January 1, 2019. 
+
+
+So, if you've not yet created an account on that server, I would suggest doing so now.
+
+
+Please note that Multiplot Studio is an older Java applet visualizer and therefore requires the use of our Visualizer Launcher.
+
+
+Let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+Amy Barczak
+unread,
+Nov 15, 2018, 1:34:25 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Barbara-
+
+
+As a separate question, the cloud appears to allow me to use my previous username and password to sign in- do I need to set up a new account sometime before December 1?
+
+
+Amy
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4b4d4a3d-3d16-493d-96fb-0cda0654b6e0%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Barbara Hill
+unread,
+Nov 15, 2018, 2:08:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Amy, 
+
+
+No need to re-register. We migrated your existing credentials over so that you wouldn't need to take that extra step. 
+
+
+Let us know if anything else comes up!
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

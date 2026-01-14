@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/-flZATQlf2I
+Title: There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+----------------------------------------
+
+
+
+
+
+There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+24 views
+Skip to first unread message
+
+carlamon...@gmail.com
+unread,
+Nov 27, 2021, 8:20:04 AM
+
+
+
+to GenePattern Help Forum
+I can't get ssGSEA to work.. It's been a while now...
+Ted Liefeld
+unread,
+Nov 29, 2021, 10:55:07 AM
+
+
+
+to GenePattern Help Forum
+I am sorry that you are having problems with GenePattern.  The error you are seeing is typically an issue with the GenePattern server and/or the browser and web application.
+
+
+We have seen sporadic issues with people's files not uploading (to Amazon AWS S3) due to firewalls.  Can you tell me if you are using GenePattern from within an institution or company network or from your own or home location?  Also if you could tell me what browser and operating system you are using and your username I will look through our logs for other clues.
+
+Finally,  if you are able to open your browser's javascript console (see https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers) and try to submit the job again, that may show evidence of the error as well.  Please send me the contents if you are able to do this.
+
+
+Thanks for your help and patience,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/nyeridkVjqE
+Title: how to use custom.properties definitions in new modules
+----------------------------------------
+
+
+
+
+
+how to use custom.properties definitions in new modules
+13 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 1, 2017, 2:11:39 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+New to modules, I still have difficulties.
+
+
+I installed samtools1.5 and friends and set the folder location in 'custom.properties'
+'''samtools_1.5=/opt/tools/GenePatternServer/patches/SAMTools/samtools-1.5'''
+How can I programatically link to the custom.properties definition of the samtools1.5 path in the module maker interface to call tabix for instance which is present in the [custom.properties/samtools1.5] location?
+
+Is there a notation for this kind of reference like <libdir> for the module path?
+
+
+Best Regards,
+Stephane
+Peter Carr
+unread,
+Aug 1, 2017, 10:34:55 AM
+
+
+
+to genepatt...@googlegroups.com
+You have a few options:
+(1) add another entry to the custom.properties for tabix, e.g. in custom.properties
+  tabix=<samtools_1.5>/bin/tabix
+in the module integrator (or manifest file)
+  commandLine=<tabix> ...
+
+(2) pass the path directly on the command line, e.g.
+  commandLine=<samtools_1.5>/bin/tabix ...
+
+I am not that familiar with the tabix command, so use your best judgement.
+
+Please send along a brief summary of how you want to use tabix. We are developing new and improved methods for integrating GenePattern with pre-installed tools such as samtools and tabix.
+
+Regards,
+Peter
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5eab3143-9d07-4b2a-a4cc-2ac7f3716c29%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Stephane Plaisance
+unread,
+Aug 1, 2017, 11:56:43 PM
+
+
+
+to GenePattern Help Forum
+Thanks a lot Peter for this clear fix. I should have guessed it from what I saw in some scripts developed by Guy.
+This is great and allows having several versions of the exe apps (like samtools) installed in //.
+
+
+Ìf I may suggest, some addition to the Programer's guide could develop this a little deeper (unless I missed it).
+
+
+Best Regards
+Stephane
+
+
+Reply all
+
+Reply to author
+
+Forward

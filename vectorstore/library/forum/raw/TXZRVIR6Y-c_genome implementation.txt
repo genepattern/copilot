@@ -1,0 +1,46 @@
+URL: https://groups.google.com./g/genepattern-help/c/TXZRVIR6Y-c
+Title: genome implementation
+----------------------------------------
+
+
+
+
+
+genome implementation
+3 views
+Skip to first unread message
+Markus
+unread,
+Nov 12, 2018, 9:32:49 AM
+
+
+
+to GenePattern Help Forum
+
+Dear genepattern team,
+
+
+
+
+first of all thanks for your great platform, it's really a super tool.
+
+
+
+
+
+I currently have some RNA-seq data for differential expression analysis from Vitis vinifera (https://plants.ensembl.org/Vitis_vinifera/Info/Index) and Plasmopora viticola (https://www.ncbi.nlm.nih.gov/nuccore/MBPM00000000.2) and  would like to know if it would be possible for you to implement these genomes into your platforme so one could do mapping and DEGs analysis on you platform.
+
+
+
+
+thanks in advance,
+
+Markus
+
+
+
+Reply all
+
+Reply to author
+
+Forward

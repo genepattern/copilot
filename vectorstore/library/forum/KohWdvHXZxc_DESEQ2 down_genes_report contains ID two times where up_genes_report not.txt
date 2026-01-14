@@ -1,0 +1,1 @@
+In a GenePattern DESeq2 analysis, a user reported a data formatting issue where the Ensembl gene ID appears duplicated in the down-regulated genes report but not in the up-regulated genes report, suggesting a potential minor bug in the module's output generation that may require attention from the module developers.

@@ -1,0 +1,1 @@
+GenePattern forum thread summary: A user experienced a job execution issue where no result files were generated without an explicit error, and a support engineer suggested that the job likely exceeded the default 2-hour runtime limit, recommending increasing the allocated runtime in the job options section to resolve the problem.

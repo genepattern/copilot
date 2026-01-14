@@ -1,0 +1,44 @@
+URL: https://groups.google.com./g/genepattern-help/c/4s3kDjnIlec
+Title: Converting txt files to gct
+----------------------------------------
+
+
+
+
+
+Converting txt files to gct
+11 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Jul 12, 2019, 9:34:18 AM
+
+
+
+to GenePattern Help Forum
+I’m interested in using the Hierarchial clustering program in Gene Pattern notebook but I’m having trouble with converting my data to a readable format. I currently have a txt (Tab-delimited text) file with my data but the webpage wants the data in a gct format. I watched a video tutorial saying that Gene pattern notebook has an expression file creator under the modules tab. However when I click the module tab it says that the page could not be found. Is there any way this could be fixed or could you instruct me on another way to do this conversion?
+
+Barbara Hill
+unread,
+Jul 12, 2019, 9:40:45 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+Unfortunately, ExpressionFileCreator is for converting .cel files into .gct files, so that would not have helped you. However, the link should not be broken. Which module tab did you click? Can you send a screenshot?
+
+
+As for converting from txt to gct please see our format guide here: http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#GCT
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

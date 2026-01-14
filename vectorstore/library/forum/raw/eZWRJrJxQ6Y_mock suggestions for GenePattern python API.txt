@@ -1,0 +1,92 @@
+URL: https://groups.google.com./g/genepattern-help/c/eZWRJrJxQ6Y
+Title: mock suggestions for GenePattern python API?
+----------------------------------------
+
+
+
+
+
+mock suggestions for GenePattern python API?
+17 views
+api
+python
+Skip to first unread message
+
+David Lahr
+unread,
+Aug 5, 2020, 6:37:15 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+We're writing a python script / module that uses the GenePattern python API, we're planning on writing some tests (unit mainly) and we plan to mock the GenePattern python API.  Has anyone already done this / have any existing code or suggestions?  If not we're happy to share.
+
+
+Cheers,
+Dave
+Ted Liefeld
+unread,
+Aug 5, 2020, 10:57:10 AM
+
+
+
+to GenePattern Help Forum
+Dave
+
+
+the person on the GenePattern team that might have done this (i.e. the developer of the API) is out this week.  I will ask him to let you know when he is back in the (home) office on Monday.
+
+
+Ted 
+
+tmt...@cloud.ucsd.edu
+unread,
+Aug 10, 2020, 12:27:23 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+We don't currently have any mock objects for the GenePattern Python API. We'd love to see any you come up with, if you're willing to share. It should be easy enough to generate valid responses by querying the API and pickling or otherwise serializing the data structures that get returned.
+
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Dave Lahr
+unread,
+Aug 10, 2020, 12:36:04 PM
+
+
+
+to genepatt...@googlegroups.com
+Sounds good - thanks for getting back to us - we'll definitely put some together and share with you.
+
+
+Cheers,
+Dave
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/eZWRJrJxQ6Y/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0522918c-058c-44d7-bd28-45984da3d1a4n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

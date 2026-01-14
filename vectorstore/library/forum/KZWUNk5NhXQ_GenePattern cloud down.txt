@@ -1,0 +1,1 @@
+GenePattern cloud service experienced upload issues on 12/12/18 around 3:00 PM, with users encountering an incomplete error message when attempting to upload files and run hierarchical clustering; support team requested additional details about file size and specific upload conditions to diagnose and potentially resolve the technical problem.

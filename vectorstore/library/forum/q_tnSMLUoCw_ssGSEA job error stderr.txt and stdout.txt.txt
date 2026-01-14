@@ -1,0 +1,1 @@
+A user encountered an ssGSEA job error when attempting to run a projection with a GCT file from Phantasus, with potential root cause being gene set symbol mismatches between the GMT file and input GCT file, potentially requiring gene identifier alignment or symbol conversion to ensure successful ssGSEA analysis.

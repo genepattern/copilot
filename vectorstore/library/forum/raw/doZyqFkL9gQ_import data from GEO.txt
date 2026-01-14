@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/doZyqFkL9gQ
+Title: import data from GEO
+----------------------------------------
+
+
+
+
+
+import data from GEO
+15 views
+Skip to first unread message
+
+Aracelly Quiroz
+unread,
+Jan 9, 2021, 3:34:50 PM
+
+
+
+to GenePattern Help Forum
+I am trying to import data from GEO, like the studies "GSE XXX" but when I am ran the analysis I got a "stderr.txt or stdout.txt " file insted of the .gct file that I need for use in GSEA software. 
+
+
+for example in my run: 311134 I got that problem and my file of interest, but sometimes I can not have my gct file, just the stderr.txt.... 
+
+
+Thanks, 
+Aracelly. 
+Barbara Hill
+unread,
+Jan 11, 2021, 10:11:35 AM
+
+
+
+to GenePattern Help Forum
+Hello Aracelly, 
+
+
+I looked at all of the GEOImporter jobs for your user_id and all 6 produced non-empty .gct files. 
+
+Could you point me to a job that did not?
+
+
+You can safely ignore those stderr & stdout files.
+GEOImporter is written in R and R notoriously sends informational messages to both stderr & stdout, which is both annoying and confusing. So, in GenePattern we have a check to see how the module code stopped running (in other words, how it exited). If it exited with an error (IE something went wrong) then it sends a "non-zero exit code" back to GenePattern and we show the module as having failed with a red "ERR" status instead of a green check mark. (That error will also be reported in the stderr file, along with the other information output by R) If it exited/stopped running normally, then it sends an exit code of 0 and we mark it passed with a green check mark. This is how all modules are handled by default in GenePattern.
+All that being said, this is a beta version of the module (it was just updated to use the new NCI FTP URLs in December), and in the production version (due out next month) we will be working to put all informational messages in stdout, rather than stderr, so as to avoid the confusion.
+
+
+Please let me know if I can provide any further help.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

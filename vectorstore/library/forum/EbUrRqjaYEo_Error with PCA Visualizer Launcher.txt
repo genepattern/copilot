@@ -1,0 +1,1 @@
+A user encountered an issue with the PCA Visualizer Launcher in GenePattern, where the Java applet failed to load after submitting login credentials, possibly due to a data file inconsistency with 711 vs 712 expected column names and potential Java version compatibility problems on a Mac system.

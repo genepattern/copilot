@@ -1,0 +1,147 @@
+URL: https://groups.google.com./g/genepattern-help/c/nDs8PMUN-FU
+Title: GISTIC error: Cell contents reference from a non-cell array object
+----------------------------------------
+
+
+
+
+
+GISTIC error: Cell contents reference from a non-cell array object
+12 views
+Skip to first unread message
+
+Sahand KhakAbi
+unread,
+Apr 27, 2018, 12:59:17 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I am trying to run GISTIC 2.0 with my segmentation and marker files (Job ID 1666689) and the program issues this error:
+
+
+{ ??? Cell contents reference from a non-cell array object.
+
+
+Error in ==> gene_score_permutations at 114
+
+
+Error in ==> compute_stats at 83
+
+
+Error in ==> run_focal_gistic at 206
+
+
+
+Error in ==> run_gistic20 at 127
+
+
+Error in ==> run_gistic2_from_seg at 225
+
+
+Error in ==> gp_gistic2_from_seg at 97
+
+
+}  
+Cell contents reference from a non-cell array object.
+MATLAB:cellRefFromNonCell
+
+
+
+
+The 'stdout.txt' file contains the following:
+
+
+GISTIC version 2.0.22
+Conv:.
+Conv:.
+Warning: No display specified.  You will not be able to display graphics on the screen.
+
+
+Do you know what could be the reason for the error?
+
+
+Thanks,
+Sahand
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Apr 27, 2018, 12:27:26 PM
+
+
+
+to GenePattern Help Forum
+Hello Sahand,
+
+
+The issue is that you have only 1 sample in your segmentation file.
+
+GISTIC is a statistical method and requires a greater number of samples to provide significance. The significance begins to diminish with fewer than 40 samples.
+
+Please let me know if I can be of further assistance.
+
+Best
+-Barbara
+Sahand KhakAbi
+unread,
+Apr 27, 2018, 12:39:39 PM
+
+
+
+to genepatt...@googlegroups.com
+Thank you very much Barbara! That was a great help!
+
+
+Best,
+Sahand
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/nDs8PMUN-FU/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9aaa84a3-b4b9-466d-b597-19f62092ce72%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

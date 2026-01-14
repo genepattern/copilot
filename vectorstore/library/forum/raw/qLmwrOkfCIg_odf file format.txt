@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/qLmwrOkfCIg
+Title: odf file format
+----------------------------------------
+
+
+
+
+
+odf file format
+5 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Aug 22, 2017, 2:54:33 PM
+
+
+
+to GenePattern Help Forum
+(THIS IS A REPOST FROM OUR PREVIOUS FORUM)
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+How do you know from a odf file (results of SOM determination) which row belongs to which cluster?
+
+
+
+===================================================================
+Best Answer
+
+
+
+
+You need to look at two lines in the odf output file:
+- The line that begins with "ROW_NAMES"
+- The line that begins with "assignments:"
+
+The values in the "assignments" line correspond to which cluster each row is assigned to. Clusters are numbered beginning with 0.
+
+To match each row with its cluster, look at the contents of the line that begins with "ROW_NAMES". The first value on the ROW_NAMES line is assigned to the first cluster number on the "assignments" line, and so on.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

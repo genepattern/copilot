@@ -1,0 +1,337 @@
+URL: https://groups.google.com./g/genepattern-help/c/PF1ZN6Kqtxc
+Title: 11/9/16 launching server: script complains about missing java executable although available at the right position
+----------------------------------------
+
+
+
+
+
+11/9/16 launching server: script complains about missing java executable although available at the right position
+26 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Aug 22, 2017, 3:02:07 PM
+
+
+
+to GenePattern Help Forum
+(This is a post from our previous forum)
+
+
+
+
+Hi,
+
+i have a server 3.8.2 which is started by the respective script. Ubuntu is 14.04. 
+I used an older release because i couldn't succeed in installing the most recent versions.
+In the script the java executable is launched with some parameters.
+bash complains about not finding the file although it is available at exact that position:
+
+root@PC62470:/usr/local/GenePattern# ./StartGenePatternServer
+/usr/local/GenePattern/jre/bin/java   -Xmx1024m -Xms256m  com.zerog.lax.LAX\ /usr/local/GenePattern/./StartGenePatternServer.lax /tmp/env.properties.3685
+
+./StartGenePatternServer: 1715: exec: /usr/local/GenePattern/jre/bin/java: not found
+
+
+This are the respective lines in the script:
+
+ if [ $cpArg  ]; then
+                exec "$actvm" $options $cpArg "$CLASSPATH"\ $lax_nl_java_launcher_main_class "$propfname" "$envPropertiesFile"\ $cmdLineArgs
+        else
+                echo ""$actvm" $options $lax_nl_java_launcher_main_class\ "$propfname" "$envPropertiesFile" $cmdLineArgs \n"
+                exec "$actvm" $options $lax_nl_java_launcher_main_class\ "$propfname" "$envPropertiesFile" $cmdLineArgs       <===== line 1715
+        fi
+
+As you see i added an echo before line 1715.
+
+The script is launching /usr/local/GenePattern/jre/bin/java. Exactly this file is avaible:
+
+root@PC62470:/usr/local/GenePattern# ll /usr/local/GenePattern/jre/bin/java
+-rwxrwxrwx 1 root root 47308 Sep 15  2010\ /usr/local/GenePattern/jre/bin/java*
+
+root@PC62470:/usr/local/GenePattern# file\ /usr/local/GenePattern/jre/bin/java
+/usr/local/GenePattern/jre/bin/java: ELF 32-bit LSB  executable, Intel\ 80386, version 1 (SYSV), dynamically linked (uses shared libs), for\ GNU/Linux 2.2.5, not stripped
+
+Launching java manually also does not work:
+
+root@PC62470:/usr/local/GenePattern# /usr/local/GenePattern/jre/bin/java
+-bash: /usr/local/GenePattern/jre/bin/java: No such file or directory
+
+Same via relative path:
+
+root@PC62470:/usr/local/GenePattern# jre/bin/java
+-bash: jre/bin/java: No such file or directory
+
+Any ideas ?
+
+
+Bernd
+
+
+
+
+===============================================================================================================================
+
+
+
+
+You should use a newer version of Java, preferably Oracle JDK 1.8+. 
+Once you have java installed, set JAVA_HOME and launch GP server 
+directly from a shell command. Something like: 
+     cd /usr/local/GenePattern 
+     ./Tomcat/bin/catalina.sh start 
+
+Regards, 
+Peter 
+
+
+
+
+
+========================================================================================================================
+
+
+
+
+Hi Peter,
+
+thanks for your news.
+I installed Oracle JDK 8.
+JAVA_HOME is set:
+J2REDIR=/usr/lib/jvm/java-8-oracle/jre
+J2SDKDIR=/usr/lib/jvm/java-8-oracle
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
+The server starts and three ports are opened:
+8005, 8009, 8080.
+Access via browser does not work. I get errors like:
+pc62470 redirected you too many times.
+Try clearing your cookies.
+I cleared the cookies but it didn't help.
+
+I have entries like the following in the logs:
+
+2016-11-10 11:28:57.257 ERROR [http-8080-Processor24] (RegisterServerBean.java:328) - Didn't get registration info from database: Cannot open connection
+org.hibernate.exception.JDBCConnectionException: Cannot open connection
+        at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:74)
+        at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+        at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:29)
+        at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:420)
+        at org.hibernate.jdbc.ConnectionManager.getConnection(ConnectionManager.java:144)
+        at org.hibernate.jdbc.JDBCContext.connection(JDBCContext.java:118)
+        at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:57)
+        at org.hibernate.impl.SessionImpl.beginTransaction(SessionImpl.java:1319)
+        at sun.reflect.GeneratedMethodAccessor75.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at org.hibernate.context.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:301)
+        at com.sun.proxy.$Proxy66.beginTransaction(Unknown Source)
+        at org.genepattern.server.database.HibernateUtil.beginTransaction(HibernateUtil.java:162)
+        at org.genepattern.server.webservice.server.dao.BaseDAO.<init>(BaseDAO.java:41)
+        at org.genepattern.server.webapp.jsf.RegisterServerBean.getDbRegisteredVersion(RegisterServerBean.java:321)
+        at org.genepattern.server.webapp.jsf.RegisterServerBean.isRegistered(RegisterServerBean.java:287)
+        at org.genepattern.server.webapp.jsf.RegisterServerBean.isRegisteredOrDeclined(RegisterServerBean.java:275)
+        at org.genepattern.server.webapp.RegistrationFilter.doFilter(RegistrationFilter.java:40)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:202)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:173)
+        at org.genepattern.server.webapp.ConnectionFilter.doFilter(ConnectionFilter.java:48)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:202)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:173)
+        at org.genepattern.server.webapp.RedirectToFQHostFilter.doFilter(RedirectToFQHostFilter.java:96)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:202)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:173)
+        at org.genepattern.server.webapp.CorsFilter.doFilter(CorsFilter.java:102)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:202)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:173)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:178)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:126)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:105)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:107)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:148)
+        at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:869)
+        at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:664)
+        at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:527)
+        at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:80)
+        at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: java.sql.SQLException: socket creation error
+        at org.hsqldb.jdbc.Util.sqlException(Unknown Source)
+        at org.hsqldb.jdbc.jdbcConnection.<init>(Unknown Source)
+        at org.hsqldb.jdbcDriver.getConnection(Unknown Source)
+        at org.hsqldb.jdbcDriver.connect(Unknown Source)
+        at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:119)
+        at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:143)
+        at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:132)
+        at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPoolManager.initializeAutomaticTestTable(C3P0PooledConnectionPoolManager.java:772)
+        at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPoolManager.createPooledConnectionPool(C3P0PooledConnectionPoolManager.java:696)
+        at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPoolManager.getPool(C3P0PooledConnectionPoolManager.java:257)
+        at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPoolManager.getPool(C3P0PooledConnectionPoolManager.java:271)
+        at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+        at org.hibernate.connection.DatasourceConnectionProvider.getConnection(DatasourceConnectionProvider.java:69)
+        at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:417)
+        ... 38 more
+
+catalina.out complains:
+
+11/10 11:41 INFO [main]-        initializing properties...
+java.io.FileNotFoundException: /usr/local/GenePattern/Tomcat/resources/genepattern.properties (No such file or directory)
+        at java.io.FileInputStream.open0(Native Method)
+        at java.io.FileInputStream.open(FileInputStream.java:195)
+        at java.io.FileInputStream.<init>(FileInputStream.java:138)
+        at org.genepattern.server.webapp.StartupServlet.loadProperties(StartupServlet.java:335)
+        at org.genepattern.server.webapp.StartupServlet.init(StartupServlet.java:79)
+        at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1105)
+        at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:932)
+        at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:3917)
+        at org.apache.catalina.core.StandardContext.start(StandardContext.java:4201)
+        at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:759)
+        at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:739)
+        at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:524)
+        at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:904)
+        at org.apache.catalina.startup.HostConfig.deployDirectories(HostConfig.java:867)
+        at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:474)
+        at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1122)
+        at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:310)
+        at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+        at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1021)
+        at org.apache.catalina.core.StandardHost.start(StandardHost.java:718)
+        at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1013)
+        at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:442)
+        at org.apache.catalina.core.StandardService.start(StandardService.java:450)
+        at org.apache.catalina.core.StandardServer.start(StandardServer.java:709)
+        at org.apache.catalina.startup.Catalina.start(Catalina.java:551)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:294)
+        at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:432)
+
+I don't have a folder called "ressources" there:
+
+root@PC62470:/usr/local/GenePattern/Tomcat/logs# ll /usr/local/GenePattern/Tomcat/
+
+total 76
+drwxrwxr-x 10 root root  4096 Nov  9 14:30 ./
+drwxrwxr-x  8 root root  4096 Nov  9 19:17 ../
+drwxrwxr-x  3 root root  4096 Nov 10 10:55 bin/
+drwxrwxr-x  5 root root  4096 Nov  9 14:30 common/
+drwxrwxr-x  2 root root  4096 Nov 10 11:41 conf/
+-rwxrwxr-x  1 root root 11357 Jun 16  2014 LICENSE*
+drwxrwxr-x  3 root root  4096 Nov 10 11:25 logs/
+-rwxrwxr-x  1 root root   687 Jun 16  2014 NOTICE*
+-rwxrwxr-x  1 root root  6210 Jun 16  2014 RELEASE-NOTES*
+-rwxrwxr-x  1 root root  6964 Jun 16  2014 RUNNING.txt*
+drwxrwxr-x  3 root root  4096 Nov  9 14:30 server/
+-rwxrwxr-x  1 root root     1 Jun 16  2014 Server.properties*
+drwxrwxr-x  3 root root  4096 Nov 10 10:43 temp/
+drwxrwxr-x  4 root root  4096 Nov  9 14:30 webapps/
+drwxrwxr-x  3 root root  4096 Nov  9 14:30 work/
+
+I can provide you with the full log per download if necessary.
+Just give me a hint.
+
+Bernd
+
+
+
+
+===================================================================================================================
+
+
+
+
+Try shutting down server. Make to to kill the process as necessary. 
+
+How are you starting the server? First, double check that the resources directory is present. It should contain a 'database_*.properties' file. 
+
+Make sure to start the server from the 
+GenePattern directory: 
+     nohup ./StartGenePatternServer & 
+
+Or from Tomcat dir with, 
+    ./bin/catalina.sh start 
+
+
+
+
+
+====================================================================================================================
+
+
+
+
+Hi Peter,
+
+server is now running fine. We are currently trying to install some modules but we don't succeed. We downloaded several from gparc.org.
+We choose "Modules & Pipelines" ==> "Install from a zip file", chosse the downloaded zip, choose "Install" but then get the message
+"Unable to install CRISPR.single_sgRNA_count.zip. Please ensure that CRISPR.single_sgRNA_count.zip is a valid module or pipeline zip file."
+
+Any idea ?
+
+
+Bernd
+
+
+
+
+===================================================================================================================
+
+
+
+
+Hi,
+
+we also are not able to install modules via repositories. 
+Choosing a repository gives us the message:
+Sorry, the module repository is not currently available: http://www.broadinstitute.org/webservices/gparcModuleRepository
+
+The proxy is configured.
+
+Another question:
+You wrote i should use Orcale JDK 1.8 which i did. But GenePattern installs also a JRE of its own, it seems.
+In Administration ==> Server Settings ==> Programming Langages the path to java shows to the JRE installed by GenePattern and not to the Oracle JDK installed with aptitude (it's an Ubuntu host).
+Is that correct ?
+And some modules require to set a value "python_2.7" to point to the path of phython. I configured that under Administration ==> Server Settings ==> Custom.
+Is that correct ?
+Bernd
+
+
+
+
+=========================================================================================================================
+
+
+
+
+It's good that you are installing from zip. The install from repo feature is temporarily broken. 
+
+I am not sure what the problem is with that particular zip file. Will you double check it's contents with the 'file' and/or 'unzip -l' command. 
+
+
+
+
+
+===========================================================================================================================
+
+
+
+
+Hi Peter,
+
+i did already. The zip's seem to be ok, i could unzip them (on a CLI) and the content looks good.
+I tried to install several modules as zip files, none of them suceeded.
+
+Don't forget i'm running GenePattern 3.8.2.
+Installation of 3.9.8 and 3.9.7 didn't succeed (java error after launching the installer), so i choosed an older version.
+
+Bernd
+
+
+Reply all
+
+Reply to author
+
+Forward

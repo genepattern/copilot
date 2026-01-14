@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/OQHQg7gJDyI
+Title: Question regarding ssGSEA
+----------------------------------------
+
+
+
+
+
+Question regarding ssGSEA
+21 views
+Skip to first unread message
+
+Jihyun Youn
+unread,
+Jul 23, 2024, 10:05:16 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+is there any way to run ssGSEA using RNA expression data that lacks a value for a particular gene for a specific sample? 
+
+
+Thanks,
+Jane
+Anthony Castanza
+unread,
+Jul 24, 2024, 2:49:44 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Jane,
+
+
+The general approach is just to fill it in with a zero. But ultimately it depends on why the value is missing.
+If it was missing because the software you used did some sort of filtering for non-expressed genes that's probably fine and a 0 is valid. But if was not assayed in the experiment at all but has been added to the list as a result of merging with other samples then just filling it in with a zero is probably not statistically valid, creating separate files for each experiment and quantitating them separately in batch mode with their true assayed gene universe is probably better in this case.
+
+I wish I could give you more concrete advice here, but I just simply don't know enough about how the data was generated and why the value is missing to make a recommendation.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/abf3b9e5-0826-4ab2-9e9a-a8fdaf935695n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

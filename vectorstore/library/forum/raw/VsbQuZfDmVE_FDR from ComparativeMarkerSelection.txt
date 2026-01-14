@@ -1,0 +1,70 @@
+URL: https://groups.google.com./g/genepattern-help/c/VsbQuZfDmVE
+Title: FDR from ComparativeMarkerSelection
+----------------------------------------
+
+
+
+
+
+FDR from ComparativeMarkerSelection
+4 views
+Skip to first unread message
+
+Jean-Michel Fustin Seki
+unread,
+Jun 12, 2018, 11:49:55 PM
+
+
+
+to GenePattern Help Forum
+I am comparing protein amounts between WT and KO animals by two-sided test.
+
+Based on FDR(BH) in Comparativemarkerselection and viewer, I always get an apparently one-sided results where all the significant data (FDR<0.05 or <0.1) belong only to one half of the data, say all "upregulated in control" but none of the significant results are "upregulated in KO", even though, looking at the heatmap, there should be. Based on rank, there are matches with top-level rank that are "upregulated in control" or "upregulated in KO". So, how does genepattern compute FDR? Since the rank is rather obscurely defined, should I use the more common FDR < 0.05 as a filter to extract significant data? If yes, then why such skewed distribution?
+
+
+Job IDs: 1691107 to 1691110
+
+
+
+Thank you very much in advance for your help!
+
+
+JM
+Barbara Hill
+unread,
+Jun 18, 2018, 2:03:20 PM
+
+
+
+to GenePattern Help Forum
+Hello Jean-Michel,
+
+
+The ComparativeMarkerSelection documentation (available from the link in the upper right of the module submit page) notes the following:
+
+
+Rank: The rank of the feature within the dataset based on the value of the test statistic. If a two-sided p-value is computed, the rank is with respect to the absolute value of the statistic. 
+FDR (BH): An estimate of the false discovery rate by the Benjamini and Hochberg procedure (1). The FDR is the expected proportion of erroneous rejections among all rejections. 
+More information about the exact methodology can be found by exploring the references:
+References
+Benjamini Y, Hochberg Y. Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. Journal of the Royal Statistical Society. Series B (Methodological). 1995;57(1):289-300. 
+Golub T, Slonim D, et al. Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression. Science. 1999;286:531-537. 
+Good P. Permutation Tests: A Practical Guide for Testing Hypotheses, 2nd Ed. New York: Springer-Verlag. 2000. 
+Gould J, Getz G, Monti S, Reich M, Mesirov JP. Comparative gene marker selection suite. Bioinformatics. 2006;22;1924-1925, doi:10.1093/bioinformatics/btl196. 
+Lu J, Getz G, Miska E, et al. MicroRNA Expression Profiles Classify Human Cancers. Nature. 2005;435:834-838. 
+Storey JD, Tibshirani R. Statistical significance for genomewide studies. PNAS. 2003;100(16):9440-9445. 
+Westfall PH, Young SS. Resampling-Based Multiple Testing: Examples and Methods for p-Value Adjustment, in Wiley Series in Probability and Statistics. New York: Wiley, 1993. 
+Please let us know if you have any other questions or comments.
+
+
+Best
+-Barbara
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

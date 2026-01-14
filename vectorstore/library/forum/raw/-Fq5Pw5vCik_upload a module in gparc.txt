@@ -1,0 +1,130 @@
+URL: https://groups.google.com./g/genepattern-help/c/-Fq5Pw5vCik
+Title: upload a module in gparc
+----------------------------------------
+
+
+
+
+
+upload a module in gparc
+9 views
+Skip to first unread message
+
+tq...@nyu.edu
+unread,
+Mar 16, 2021, 11:14:36 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern Help Forum team,
+
+I have been trying to upload a module in gparc. The module includes documentation and test files. The zip is less than 2GB, but the upload process failed. The message reminds me to check the error in the logs, but I did not find the log information in my account.
+
+May I ask where to see the log info and how to solve this issue? Thank you!
+
+Best,
+Tongqi
+
+Barbara Hill
+unread,
+Mar 16, 2021, 3:22:01 PM
+
+
+
+to GenePattern Help Forum
+Hello Tongqi,
+
+
+There was a configuration issue that has now been resolved.
+
+
+Please try again.
+
+
+Apologies,
+Barbara
+Tongqi Qian
+unread,
+Mar 18, 2021, 7:01:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+Thanks for the email.
+
+The upload still has some issues but It is not from your side. The exported zipfile from our server does not include the test documents. I just manually added these files together with the module zipfile for uploading, and got the message that it was not a valid module zipfile. Now Our server is down.
+
+
+
+Could you please help with helping with the uploading? Can I send you the files?
+
+
+Thank you very much!
+
+
+Best,
+Tongqi
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/-Fq5Pw5vCik/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7196b028-265c-47e2-92ac-ac7c1ee2657cn%40googlegroups.com.
+
+Barbara Hill
+unread,
+Mar 19, 2021, 8:03:00 AM
+
+
+
+to GenePattern Help Forum
+Hello Tongqi,
+
+
+Yes, please email them to genepatt...@broadinstitute.org. 
+
+
+I will then send the file back to you. If I upload it, you will not be able to edit your module in GPArc.
+
+
+Best,
+Barbara
+
+Tongqi Qian
+unread,
+Mar 19, 2021, 10:20:14 AM
+
+
+
+to genepatt...@googlegroups.com
+OK. Thank you, Barbara!
+Just send our zipfile to the email address.
+
+
+Best,
+Tongqi
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6eb02f93-cef4-49d6-aed5-91fcf7776360n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

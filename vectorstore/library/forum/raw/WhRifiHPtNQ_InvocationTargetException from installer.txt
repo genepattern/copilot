@@ -1,0 +1,208 @@
+URL: https://groups.google.com./g/genepattern-help/c/WhRifiHPtNQ
+Title: InvocationTargetException from installer
+----------------------------------------
+
+
+
+
+
+InvocationTargetException from installer
+65 views
+Skip to first unread message
+
+Scott
+unread,
+Aug 24, 2017, 5:45:16 AM
+
+
+
+to GenePattern Help Forum
+
+
+I'm trying to install the latest GenePattern on Debian 8.  I've tried OpenJDK 1.7.0_131 and also Java SE 1.8.0_131-b11 and the installer gives this error and exits:
+
+
+java.lang.NullPointerException
+        at Flexeraaru.ag(Unknown Source)
+        at com.zerog.ia.installer.LifeCycleManager.init(Unknown Source)
+        at com.zerog.ia.installer.LifeCycleManager.executeApplication(Unknown Source)
+        at com.zerog.ia.installer.Main.main(Unknown Source)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at com.zerog.lax.LAX.launch(Unknown Source)
+        at com.zerog.lax.LAX.main(Unknown Source)
+Invocation of this Java Application has caused an InvocationTargetException. This application will now exit. (LAX)
+
+
+
+
+Any suggestions?
+Barbara Hill
+unread,
+Aug 29, 2017, 2:08:22 PM
+
+
+
+to GenePattern Help Forum
+Hi Scott,
+
+
+Apologies for the delay in responding - as Michael mentioned, the dev team has been involved in sorting out performance issues on our production servers.
+
+
+Are you using a headless install?
+
+
+Create an
+installer.properties file and then run ...
+      ./GPserver.bin -f installer.properties
+
+----- installer.properties example -----
+#
+#NOTE: if installing into a dir where there is already a GenePattern server
+#      the values in this file will be overwritten by the contents of the
+#      old genepattern.properties file
+#
+USER_INSTALL_DIR=/opt/genepattern/gp
+
+INSTALLER_UI=silent
+INSTALLER_TEMP_DIR=~/tmp
+IATEMPDIR=~/tmp
+
+Scott
+unread,
+Aug 30, 2017, 5:32:58 AM
+
+
+
+to GenePattern Help Forum
+
+
+That did it, thanks!
+
+Scott
+unread,
+Aug 30, 2017, 6:33:41 AM
+
+
+
+to GenePattern Help Forum
+
+
+Well, that got it installed, but now I'm getting a 404 on gp/pages/registerServer.jsf
+
+
+I ran a find in /opt/genepattern and there isn't a single .jsf file anywhere in there.  In case it's useful, the messages out of the installer said:
+
+
+Connecting to : http://localhost:8080/gp/index.jsp
+OBJ=com.zerog.ia.installer.util.magicfolders.InstallDirMF
+XMLScriptWriter: No Installation Objects were skipped
+Retrying Installables deferred in pass 0
+Deferral retries done because: 
+There were no deferrals in the last pass.
+Warning: Could not create SWID tag file at /opt/genepattern/gp/regid.2014-08.org.broadinstitute,cancer/software
+Warning: Could not create SWID tag file at /usr/share/regid.2014-08.org.broadinstitute,cancer/software
+
+Barbara Hill
+unread,
+Aug 31, 2017, 2:58:09 PM
+
+
+
+to GenePattern Help Forum
+Hi Scott, 
+
+
+You may also need to manually set the GenePatternURL in genepattern.properties which should be in ~/genepattern/gp/resources.
+
+
+Note that "gp/pages" are found in ~/genepattern/gp/Tomcat/webapps/gp.
+
+
+Also,what do you see when you do a ps -ef |grep genepattern
+
+
+Let me know if that helps.
+
+
+Best
+
+
+-Barbara
+
+
+David Eby
+unread,
+Aug 31, 2017, 5:49:56 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Scott,
+
+
+I just went through this on my own Linux set-up.  Apparently there's an issue with registration on Linux.  I don't recall the details, but the workaround is to add 'registeredServer=true' to the resources/genepattern.properties file.
+
+
+Be sure to stop the server first and restart after.
+
+
+Hope that helps!
+Regards,
+David
+
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0ea71331-53a8-4e06-a03d-340513ba73d7%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Scott
+unread,
+Sep 1, 2017, 10:23:05 AM
+
+
+
+to GenePattern Help Forum
+
+
+Perfect, I'm in!  Thanks again!
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

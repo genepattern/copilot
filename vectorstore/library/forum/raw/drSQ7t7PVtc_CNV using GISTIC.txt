@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/drSQ7t7PVtc
+Title: CNV using GISTIC
+----------------------------------------
+
+
+
+
+
+CNV using GISTIC
+38 views
+Skip to first unread message
+
+Ananta Kapoor
+unread,
+Sep 13, 2023, 11:32:14 AM
+
+
+
+to GenePattern Help Forum
+I am doing CNV analysis using GISTIC. What type of study should I choose from NCBI GEO Dataset for this analysis? For example Methylation profile, Expression profile, SNP profile, Protein, etc? 
+
+Andrew Cherniack
+unread,
+Sep 13, 2023, 12:16:53 PM
+
+
+
+to GenePattern Help Forum
+GISTIC is an analysis of somatic copy number data.
+GEO is a dataset of expression data
+Before doing GISTIC analysis,  I would recommend reading the GISTIC manuscript to understand what this algorithm does.
+
+
+https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-4-r41
+
+
+
+
+
+
+
+Ananta Kapoor
+unread,
+Sep 23, 2023, 8:35:39 PM
+
+
+
+to GenePattern Help Forum
+Sir I will read more thankyou. Please confirm this.
+
+
+Screenshot 2023-09-24 090352.png
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+"A user asked how to extract expression data for a subset of samples in GenePattern, with Barbara Hill recommending the SelectFeaturesColumns module as a solution. A follow-up user encountered memory issues when trying to subset GTX gene expression data with large sample sizes, and was advised to increase memory allocation to 4 GB when running the selection module."

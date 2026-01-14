@@ -1,0 +1,1 @@
+GenePattern web server experiencing a "Spawn failed: Timeout" error when launching a project, which was caused by a notebook server being stuck; the issue was resolved by the GenePattern team by restarting the server, allowing the project to launch successfully after retrying.

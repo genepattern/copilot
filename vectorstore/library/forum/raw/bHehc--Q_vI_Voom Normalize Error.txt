@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/bHehc--Q_vI
+Title: Voom Normalize Error
+----------------------------------------
+
+
+
+
+
+Voom Normalize Error
+21 views
+Skip to first unread message
+
+Daryl Griffin
+unread,
+Oct 12, 2020, 8:49:08 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Im getting the following error when trying to run VoomNormalize:
+
+
+Error in if (fit$rank < ncol(design)) { : argument is of length zero Calls: GP.preprocess.read.counts -> voom Execution halted  
+
+
+
+The job number is 284778
+
+
+Any help is greatly appreciated,
+Daryl
+Edwin Juarez
+unread,
+Oct 12, 2020, 12:01:31 PM
+
+
+
+to GenePattern Help Forum
+Hello Daryl,
+
+
+The issue seems to stem from the input data formatting. Looking at the GCT file you used, those data seem to be log normalized (that's my guess based on the values I see) -- VoomNormalize expects raw counts, do you have access to these? Supplying VoomNormalize with raw-counts would likely fix this issue.
+
+
+Edwin.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

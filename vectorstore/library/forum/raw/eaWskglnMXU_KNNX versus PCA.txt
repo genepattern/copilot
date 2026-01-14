@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/eaWskglnMXU
+Title: KNNX versus PCA
+----------------------------------------
+
+
+
+
+
+KNNX versus PCA
+16 views
+Skip to first unread message
+
+Andy Scherer
+unread,
+Dec 22, 2023, 4:48:08 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am analysing a RNAseq dataset. The two groups in the dataset are separated nicely in a PCA, but the KNNX (with leave-one-out due to a dataset size of only 20 samples (10 in each group) does not find any classifier (2 of 20 correctly classified,3 neighbors, SNR, 1 thru 10 genes in steps of 1). We have similar datasets where the PCA looks nice, and the classifier from KNNX works very smoothly. Would you have any idea what I should look at in particular, what the issue could be? Why is the PCA indicating two separated groups, but the classification does not work?
+Thanks so much.
+Andy
+
+Michael Reich
+unread,
+Dec 22, 2023, 3:06:37 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Andy,
+
+
+Given the size of your dataset, it is likely that the number of samples is too small and the number of features too large for KNN to work well. Running KNN on your PCA results may give you better classification accuracy.
+
+
+Best,
+Michael
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/b98ca044-0570-4401-9a7d-427a8f2000c4n%40googlegroups.com.
+
+
+
+
+
+--
+
+Michael Reich
+Assistant Director of Bioinformatics
+University of California, San Diego
+9500 Gilman Dr. #0765
+La Jolla, CA 92093-0765
+Andy Scherer
+unread,
+Dec 23, 2023, 2:26:38 AM
+
+
+
+to GenePattern Help Forum
+Thank you so much, Michael. The "interesting"  aspect is though, that from the same study but different sample groups with similar size and and gene number in the analysis, the PCA also separates two groups along the PC1, the hierarchical cluster analysis looks good as well, AND a KNN works well. Just this one I mentioned earlier does not, and I cannot figure out, what the difference may be to the other datasets where it worked well. I have not done a KNN on PCs yet. I know how to get the PCs and how to feed them into a KNN. But how do I get from the PCs that I can use for the KNN back to the genes, in order to develop a candidate gene classifier?
+Best,
+Andy
+
+
+
+Reply all
+
+Reply to author
+
+Forward

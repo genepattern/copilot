@@ -1,0 +1,103 @@
+URL: https://groups.google.com./g/genepattern-help/c/po4c30vDOTY
+Title: adding to PERL5LIB path after patch install
+----------------------------------------
+
+
+
+
+
+adding to PERL5LIB path after patch install
+12 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 2, 2017, 12:03:44 AM
+
+
+
+to GenePattern Help Forum
+Dear,
+
+
+I installed VCFTools which relies on perl dependencies that normally need to be declared like
+export PERL5LIB=/path/to/your/vcftools-directory/src/perl/
+
+
+
+How can I set this in the GP server? 
+Should I add some code in my script(s) to add the full path or can I instead use a setting line in custom.properties to lead to the perl folder path?
+Is there another place on the server where PERL5LIB can be amended?
+
+
+Thanks in advance,
+
+Stephane
+Peter Carr
+unread,
+Aug 2, 2017, 7:26:16 AM
+
+
+
+to genepatt...@googlegroups.com
+What version of GP server do you have installed? What platform: Mac OS X or Linux?
+
+I use a generic wrapper script, <run-with-env>, to set environment variables for a module.
+For example,
+  # install vcftools and set the path in custom.properties, e.g.
+  vcftools/0.1.15=/path/to/...
+
+  # set environment variables with '-e' key=value args, e.g.
+  commandLine=<run-with-env> -e PERL5LIB=<vcftools/0.1.15>/src/perl ...
+
+The <run-with-env> substitution is ready-to-use on newer Mac OS X installations. On Linux you must edit your custom.properties. Here are the defaults (as of this writing, circa GP 3.9.10):
+  run-with-env=<wrapper-scripts>/run-with-env.sh -c <env-custom>
+  # default, wrapper-scripts usually does not need to be set
+  wrapper-scripts=<resources>/wrapper_scripts
+  # env-custom can be blank, it's only needed for multi-architecture installations
+  env-custom=
+
+I have not used vcftools from genepattern, so my examples are just for illustration. Use your best judgement. A quick glance at the documentation suggests this commandLine for a vcf.annotate GP module ...
+  # define runtime environments with '-u' environment-name, e.g.
+  commandLine=<run-with-env> -u vcftools/0.1.15 vcf-annotate ...
+The '-u' vcftools/0.0.15 means "use vcftools v0.0.15".
+
+The <run-with-env> command can be customized to match the way your system manages software packages. For example,
+DotKit (e.g. Broad internal)
+  use vcftools/0.1.15
+Environment Modules (e.g. Indiana U, PCS, and other HPC sites)
+  module load vcftools/0.1.15
+
+These tools set the environment variables for you so they are not passed along as command line args. I am happy to continue the discussion to help you configure your server for the '-u' arg, or to review how to use the '-e' args for your particular module.
+
+Note: <run-with-env> is an experimental / beta feature of GP. The script works really well for setting environment variables and declaring requirements. We are experimenting with better ways to partition the runtime requirements from the actual module command line. E.g.
+  commandLine=vcf-annotate ...
+  requirements=vcftools/0.1.15
+
+Regards,
+Peter
+
+Stephane Plaisance
+unread,
+Aug 2, 2017, 7:40:40 AM
+
+
+
+to GenePattern Help Forum
+Thanks Peter,
+
+
+Sounds good, I'll need to experiment with it though :-)
+We run GPS 3.9.8_140 as the 'about' says (java 1.8.0_131)
+
+
+Best
+Stephane
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GenePattern public server scheduled for brief maintenance on May 18th from 1-2 PM UTC -8 to install version 3.9.11 build 250 update, which was successfully completed and confirmed by system administrators, with release notes available on GitHub repository.

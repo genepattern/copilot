@@ -1,0 +1,68 @@
+URL: https://groups.google.com./g/genepattern-help/c/e4qMSEt9ucU
+Title: gp_MutSigCV: Permission denied
+----------------------------------------
+
+
+
+
+
+gp_MutSigCV: Permission denied
+26 views
+Error
+mutsigcv
+Skip to first unread message
+
+Shixiang Wang
+unread,
+Dec 25, 2018, 2:48:56 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+When I run MutSigCV on GenePattern Cloud, I got error:
+
+
+/opt/gpbeta/gp_home/resources/wrapper_scripts/gp-common.sh: line 598: /opt/gpbeta/gp_home/taskLib/MutSigCV.1.2.890/gp_MutSigCV: Permission denied
+
+
+
+The job id is 69390, link is https://cloud.genepattern.org/gp/jobResults/69390/stderr.txt.
+
+
+How can I fix this?
+
+
+Best,
+Shixiang
+Barbara Hill
+unread,
+Feb 4, 2019, 2:36:09 PM
+
+
+
+to GenePattern Help Forum
+Hello Shixiang,
+
+
+My sincere apologies for having not responded sooner. 
+
+
+An updated version of MutSigCV has been installed which addresses this issue.
+
+
+Please let us know if you have any other questions or comments.
+
+
+Apologies again,
+Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

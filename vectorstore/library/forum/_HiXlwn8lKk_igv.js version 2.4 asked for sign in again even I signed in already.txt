@@ -1,0 +1,1 @@
+GenePattern support forum thread summarizing an igv.js sign-in issue where a user reported repeatedly being prompted to sign in after already logging into their account, with a support team member requesting additional job details to investigate the authentication problem in version 2.4 of igv.js.

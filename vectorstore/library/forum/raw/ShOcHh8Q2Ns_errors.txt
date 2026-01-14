@@ -1,0 +1,83 @@
+URL: https://groups.google.com./g/genepattern-help/c/ShOcHh8Q2Ns
+Title: errors
+----------------------------------------
+
+
+
+
+
+errors
+7 views
+Clustering
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Nov 8, 2018, 9:12:55 AM
+
+
+
+to GenePattern Help Forum
+
+Hello,
+
+ 
+
+I want to perform hierarchical clustering but i keep on getting errors.
+
+What am I doing wrong in my file?
+
+ 
+
+::::: 12:14:35.777800 37 ===>  About to parse the inputs
+
+Using:
+
+        gct_name = /opt/gpbeta/gp_home/users/<redacted username>/uploads/tmp/run4726136103131038224.tmp/input.filename/1/<redacted file name with spaces>.gct
+
+        col_distance_metric = pearson
+
+        output_distances = False
+
+        row_distance_metric = No_row_clustering
+
+        clustering_method = average
+
+        output_base_name = alle qPCR dCT A3 versie 2
+
+        row_normalization = True
+
+        col_normalization = True
+
+        row_centering = Mean
+
+        col_centering = Mean
+
+['/opt/gpbeta/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py', '/opt/gpbeta/gp_home/users/<redacted username>/uploads/tmp/run4726136103131038224.tmp/input.filename/1/<redacted filename with spaces>.gct', '2', 'False', '0', 'a', '<redacted file name>', 'True', 'True', 'Mean', 'Mean']
+
+::::: 12:14:35.777868 45 ===>  About to parse data
+
+ 
+
+Kind regards,
+
+GenePattern Help Forum
+unread,
+Nov 8, 2018, 9:13:39 AM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+I would start with removing the spaces from your file name.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

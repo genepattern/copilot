@@ -1,0 +1,1 @@
+A user encountered a software bug in the GenePattern HierarchicalClustering module where the code threw a NameError when attempting to output the column distance matrix, which was resolved by the software developers through a code fix in version 7.17, with the user also expressing interest in potentially adding a row distance matrix feature in a future release.

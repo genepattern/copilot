@@ -1,0 +1,1 @@
+GenePattern cloud server update completion announcement indicating that users can now return to normal operation of the https://cloud.genepattern.org platform after maintenance.

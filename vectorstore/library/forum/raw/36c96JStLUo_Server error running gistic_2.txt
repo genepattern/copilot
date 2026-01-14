@@ -1,0 +1,106 @@
+URL: https://groups.google.com./g/genepattern-help/c/36c96JStLUo
+Title: Server error running gistic_2
+----------------------------------------
+
+
+
+
+
+Server error running gistic_2
+21 views
+Skip to first unread message
+
+Anna Fedenko
+unread,
+Dec 15, 2023, 2:57:24 AM
+
+
+
+to GenePattern Help Forum
+Good day,
+
+
+I ran into the server error while running gistic_2 on a public server, job # 21634 (screenshot in the attachment). Could you please help me to resolve this?
+
+
+Best wishes
+
+
+Anna
+
+
+Error:
+GenePattern Server error preparing job 21634 for execution. org.genepattern.server.executor.CommandExecutorException: Error running cmd java.util.concurrent.ExecutionException: org.genepattern.server.executor.CommandExecutorException: Error running cmd at java.util.concurrent.FutureTask.report(FutureTask.java:122) at java.util.concurrent.FutureTask.get(FutureTask.java:206) at org.genepattern.server.genepattern.GenePatternAnalysisTask.runCommand(GenePatternAnalysisTask.java:1824) at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:1562) at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81) at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:750) Caused by: org.genepattern.server.executor.CommandExecutorException: Error running cmd at org.genepattern.server.executor.slurm.SlurmJobRunner.startJob(SlurmJobRunner.java:429) at org.genepattern.server.executor.drm.JobExecutor.runCommand(JobExecutor.java:853) at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1815) at org.genepattern.server.genepattern.GenePatternAnalysisTask$2.call(GenePatternAnalysisTask.java:1811) ... 4 more
+
+Screenshot from 2023-12-15 11-51-19.png
+Ted Liefeld
+unread,
+Dec 15, 2023, 6:56:32 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+there appears to be a problem with the SDSC Expanse system that runs jobs for this public server (genepattern.ucsd.edu).  Until it is resolved, please instead use our other main public server at https://cloud.genepattern.org/gp.  If you saw errors earlier on cloud that is because normally for GISTIC jobs, cloud delegates to the ucsd server for exection, but that has now been disabled, so GISTIC is running properly on cloud at the moment
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Dec 15, 2023, 8:39:16 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+the issue with the expanse cluster has been resolved and the genepattern.ucsd.edu server is operating normally again
+
+
+Ted
+
+
+
+lbs iimcb
+unread,
+Dec 18, 2023, 4:20:13 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Many thanks for your help, it seems to be working now :)
+
+
+Best wishes
+
+
+Anna
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/36c96JStLUo/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0b143244-bb89-4166-811f-32161ba7f0f2n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

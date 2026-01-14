@@ -1,0 +1,1 @@
+A GenePattern user inquired about directly accessing the SQL database used by GenePattern, to which an administrator responded that it is possible to access the database using database connection details from configuration files, and that administrators can use a specific web page (/gp/sql.jsp) to execute limited SQL queries against the database.

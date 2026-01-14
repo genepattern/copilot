@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/uS-c5kOdp8c
+Title: AuDIT
+----------------------------------------
+
+
+
+
+
+AuDIT
+27 views
+Skip to first unread message
+
+Sudhir Reddy
+unread,
+Mar 8, 2021, 11:04:16 AM
+
+
+
+to GenePattern Help Forum
+
+I would like to use AuDIT for the analysis of MRM assay data generated in Altis trip quad mass spec. 
+
+To practice, I tried running the csv input file, which is available on AuDIT homepage: the file name is skyline-export-data.csv 
+
+But I got the following error message
+
+Error: Could not find or load main class RunR
+
+ Would you please help to solve any mistakes here with running this test file? Thank you.
+
+ Best Regards
+
+Sudhir Reddy 
+
+Barbara Hill
+unread,
+Mar 11, 2021, 7:59:23 AM
+
+
+
+to GenePattern Help Forum
+Hello Sudhir, 
+
+
+I believe he may have reached out to you already, but if not, the author can be reached at man...@broadinstitute.org.
+
+
+Please let us know if you have any other questions or comments.
+-Barbara
+
+
+Sudhir Reddy
+unread,
+Mar 11, 2021, 9:30:14 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I haven't received any message/reply from author, okay will contact him, thank you.
+
+
+Best
+Sudhir Reddy 
+
+man...@broadinstitute.org
+unread,
+Mar 18, 2021, 7:27:15 AM
+
+
+
+to GenePattern Help Forum
+Hello Bobbie,
+
+
+I took a look at this. The error "Could not find or load main class RunR" seems to be coming from some GenePattern component. AuDIT is an R program, and just tries to run R code. Maybe there have been changes to the GenePattern environment which is causing the error? I can't seem to edit the module either to try to debug this further. Could someone from the GP support group take a look or help me with this?
+
+
+Thanks!
+
+
+-- Mani
+
+
+Reply all
+
+Reply to author
+
+Forward

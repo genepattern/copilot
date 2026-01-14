@@ -1,0 +1,203 @@
+URL: https://groups.google.com./g/genepattern-help/c/JMFnFObpoLA
+Title: Re: Error on installing modules from ZIP
+----------------------------------------
+
+
+
+
+
+Re: Error on installing modules from ZIP
+41 views
+Skip to first unread message
+
+Message has been deleted
+Ted Liefeld
+unread,
+Jul 19, 2019, 2:54:50 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+you probably need to make sure that 'perl' is defined (with the path to perl on your system) in the server properties from the administration>custom page.
+
+
+Hope this helps
+
+
+Ted
+
+On Thursday, July 18, 2019 at 11:45:41 PM UTC-7, Sören Kuypers wrote:
+Dear Genepattern,
+
+
+I'm following up on the question we asked on github.
+https://github.com/genepattern/genepattern-server/issues/82
+
+
+
+
+UPDATE: the same happens when the install script requires Python3(.6).
+
+Whenever I try to install a module from ZIP, I get an error about a substitution for <perl>:
+
+Errors:1.GtfToBed: no substitution available for <perl> in command line <perl> <libdir>gtf2bed.pl <GTF.file>.
+
+This is not only for the GtfToBed module. perl is installed on the system:
+
+$ which perl
+/usr/bin/perl
+
+
+Additional remark: the actual error message hasn't been properly HTML-decoded when displayed by GenePattern:
+
+Errors:1.GtfToBed: no substitution available for &lt;perl&gt; in command line &lt;perl&gt; &lt;libdir&gt;gtf2bed.pl &lt;GTF.file&gt;.
+
+
+
+The OS is Ubuntu 18.04.
+
+
+The Genepattern version we've installed is:
+Version:	3.9.10
+Build Id:	153
+Date:	2017-05-10 14:34
+Java Version:	1.8.0_201
+
+
+Any idea on how we can get modules running?
+
+
+Thanks in advance,
+Kind regards,
+Sören Kuypers
+Sören Kuypers
+unread,
+Jul 22, 2019, 3:18:56 AM
+
+
+
+to GenePattern Help Forum
+Dear Ted,
+
+
+Thank you for your reply.
+That is also what I thought, however we have the path registered.
+name	value	
+perl	perl=/usr/bin/perl	delete
+
+python	python_3.6=/usr/bin/python3.6	delete
+
+
+
+
+
+Yet we still get an error like this:
+Errors:1.RSeQC.BamStat: no substitution available for &lt;RSEQC&gt; in command line &lt;perl&gt; &lt;libdir&gt;bam_stat_wrapper.pl --rseqcpydir &lt;RSEQC&gt; --input &lt;input.file&gt; --min &lt;min.map.qual&gt;.
+
+
+Kind regards,
+Sören
+
+Op vrijdag 19 juli 2019 23:54:50 UTC+2 schreef Ted Liefeld:
+
+Barbara Hill
+unread,
+Jul 22, 2019, 8:54:26 AM
+
+
+
+to GenePattern Help Forum
+Hello Sören,
+
+
+Our apologies for not having a ready answer for this. We've been running our modules in Docker for the past few years and our local configuration knowledged has somewhat atrophied, I'm afraid.
+
+
+I have two suggestions, which are on the obvious side of things, but worth checking.
+
+
+Have you rebooted the server since making those changes? I don't believe this is necessary, but it might be worth a try.
+Are these custom changes reflected in your custom.properties file?
+Let us know how it goes.
+
+
+All the best
+-Barbara
+
+
+
+
+Sören Kuypers
+unread,
+Apr 15, 2020, 12:53:55 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara,
+
+
+We have rebooted the server since, however it did not help.
+The changes are reflected in the custom.properties file.
+I guess I have to look into docker to try and get it running or would installing a previous genepattern server build be a better option?
+
+
+Thanks
+Kind regards,
+Sören
+
+Op maandag 22 juli 2019 17:54:26 UTC+2 schreef Barbara Hill:
+
+Barbara Hill
+unread,
+May 7, 2020, 10:53:08 AM
+
+
+
+to GenePattern Help Forum
+Hello Sören,
+
+
+My apologies for having not responded sooner.
+
+
+From your last message, it looked like GenePattern was able to find Perl, but not RSEQ - you will also need to define that variable. 
+
+
+As for Docker, It's relatively easy to set up, but I will have to defer to my colleagues who have run GenePattern locally as to how to set that up. 
+
+
+
+In the meantime - you are always welcome to use our public server https://cloud.genepattern.org
+
+
+We will be in touch again soon.
+
+
+Best
+Barbara
+Barbara Hill
+unread,
+May 15, 2020, 12:30:26 PM
+
+
+
+to GenePattern Help Forum
+Hello Sören,
+
+
+If you would like, we could set up a video call to help debug in real-time. 
+Would that be helpful?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

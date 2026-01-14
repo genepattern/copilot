@@ -1,0 +1,1 @@
+A user encountered an issue with the SubMap module in GenePattern where the Adobe Acrobat Document (SubMap_SAmatrix) was empty (0 KB), and a support forum representative suggested re-running the analysis and removing spaces from file names as potential troubleshooting steps.

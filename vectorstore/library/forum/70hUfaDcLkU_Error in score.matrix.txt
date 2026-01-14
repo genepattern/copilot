@@ -1,0 +1,1 @@
+A GenePattern user experienced errors running single-sample GSEA (ssGSEA) with a single-cell RNA-seq dataset, initially due to an incorrect GCT file format with only one sample, which was resolved by adding a second dummy sample with non-zero values to enable mathematical calculations in the ssGSEA analysis module.

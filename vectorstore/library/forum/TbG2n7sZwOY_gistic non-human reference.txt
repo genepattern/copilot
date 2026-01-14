@@ -1,0 +1,1 @@
+A biological researcher requested guidance on generating a reference genome file for GISTIC analysis using the mm39 (mouse) genome, specifically seeking advice on processing non-human genomic data for copy number variation analysis in GenePattern.

@@ -1,0 +1,1 @@
+A GenePattern user encountered a file transfer error when attempting to run GSEA on cloud.genepattern.org, preventing job submission; the issue was resolved when the platform's file storage was cleared, allowing successful job execution, and the user was advised to use GSEA desktop as a temporary alternative if immediate results were needed.

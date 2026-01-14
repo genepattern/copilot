@@ -1,0 +1,120 @@
+URL: https://groups.google.com./g/genepattern-help/c/Lc8Pz5rlsoQ
+Title: ERR- Not enough mutations to analyse
+----------------------------------------
+
+
+
+
+
+ERR- Not enough mutations to analyse
+38 views
+Skip to first unread message
+
+Sakshi sen
+unread,
+Aug 22, 2024, 6:13:27 AM
+
+
+
+to GenePattern Help Forum
+Hii 
+i got this error and warning ,anyone can help me to resolve that
+
+
+Error using gp_MutSigCV>MutSig_runCV (line 850) not enough mutations to analyze Error in gp_MutSigCV (line 194)
+
+
+
+Warning: application is running on a locale different from the original platform locale. Warning: No display specified. You will not be able to display graphics on the screen.
+how can i get the display graphics
+tmt...@cloud.ucsd.edu
+unread,
+Aug 23, 2024, 10:42:32 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+This is likely an issue with the MAF file or other data. Could you please provide the GenePattern job number so that we can further investigate the issue?
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Sakshi sen
+unread,
+Aug 23, 2024, 9:49:19 PM
+
+
+
+to GenePattern Help Forum
+Hii
+Thank you responding. This is the gene pattern job number  599794 . 
+
+
+
+tmt...@cloud.ucsd.edu
+unread,
+Aug 27, 2024, 10:39:27 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Upon examining the job, it looks like this is most likely due to an issue with the MAF file. Unfortunately, we're not the best equipped to answer specific questions about the MAF data; it's best to consult the GISTIC forum, where the authors and developers can respond.
+
+
+
+https://groups.google.com/a/broadinstitute.org/g/gistic-forum
+
+
+Thorin Tabor
+GenePattern Team
+
+
+Andrew Cherniack
+unread,
+Aug 27, 2024, 10:46:05 AM
+
+
+
+to genepatt...@googlegroups.com
+.GISTIC is a copy number significance algorithm; it doesn't use a map.
+
+
+Andrew Cherniack
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5b5062fe-9f93-4160-ad5a-6e93e7ec7d94n%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Aug 27, 2024, 10:46:51 AM
+
+
+
+to genepatt...@googlegroups.com
+Is doesn't use a maf.
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

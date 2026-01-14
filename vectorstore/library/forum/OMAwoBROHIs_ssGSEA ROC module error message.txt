@@ -1,0 +1,1 @@
+A GenePattern ssGSEA ROC module error occurred due to incompatible file formatting, specifically with gene set names containing hyphens, which caused calculation issues in R; the recommended solution was to replace hyphens with underscores in gene set names to enable successful computation of Matthews correlation coefficient matrix and complete the ROC curve analysis.

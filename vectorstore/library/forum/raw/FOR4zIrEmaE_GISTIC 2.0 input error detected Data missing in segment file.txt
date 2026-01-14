@@ -1,0 +1,255 @@
+URL: https://groups.google.com./g/genepattern-help/c/FOR4zIrEmaE
+Title: GISTIC 2.0 input error detected: Data missing in segment file
+----------------------------------------
+
+
+
+
+
+GISTIC 2.0 input error detected: Data missing in segment file
+274 views
+Skip to first unread message
+
+Peipei Wang
+unread,
+Jun 28, 2023, 12:32:27 PM
+
+
+
+to GenePattern Help Forum
+Hi there,
+
+
+I seem to be running into a simple problem that I cannot figure out how to fix with my seg file. Perhaps it's because I downloaded this from the PanCanAtlas as an ISAR corrected txt file originally and then filtered for my lung adenocarcinoma samples of interest before trying to save the new file as a .seg file in R. When I open the seg file I newly created it appears to be in the correct format that GISTIC documentation requires so I am unsure how to adjust it further.  The error thrown is 
+
+
+"GISTIC 2.0 input error detected:
+Data missing in segment file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/5324/scna_TCGA_LUAD_FSpred_cs.seg', line 2"
+
+
+Job number is 517859 and my seg file is attached.
+
+
+
+
+
+Thanks so much for your help in advance,
+Peipei
+
+
+
+scna_TCGA_LUAD_FSpred.seg
+Andrew Cherniack
+unread,
+Jun 28, 2023, 1:03:00 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peipei,
+
+
+You have an extra line at the bottom of your file.
+Delete that line. 
+The last line should be the last data line (43348).
+
+
+
+
+Regards,
+Andrew Cherniack
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/56542d1f-3b0a-4eb1-8b8d-e4c6ac10c0b4n%40googlegroups.com.
+
+Peipei Wang
+unread,
+Jun 28, 2023, 11:08:32 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+
+
+Sorry for the late response, I'm still getting the same error with the last data line being 43348 (new version attached). I wasn't able to directly edit the seg file so it saved as a seg.txt file although I'm not sure if that makes a difference.
+The error I receive is still: Data missing in segment file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/5368/scna_TCGA_LUAD_FSpred.seg.txt', line 2
+
+
+Any suggestions would be highly appreciated,
+Peipei
+
+
+
+
+scna_TCGA_LUAD_FSpred.seg.txt
+Peipei Wang
+unread,
+Jun 29, 2023, 1:27:37 PM
+
+
+
+to GenePattern Help Forum
+To follow up on my previous response, I know have downloaded the same data from cBioPortal and when I place all the TCGA LUAD patients into GISTIC 2.0, it runs with no problem. However, again when I filter for my desired patients using R and save as a seg file then put into GISTIC 2.0, I am coming up with the same error regarding data missing in line 2.
+
+
+I attached the whole dataset that runs (data_cna_hg19.seg) and my filtered data (scna_TCGA_LUAD_FSpred_ns_hg_19.seg) and when side by side I don't know they are different. For more context, I read in the seg file into R using read.delim and saved my new filtered file with write_delim(cna_ns, 'scna_TCGA_LUAD_FSpred_ns_hg19.seg'). Not sure if this is contributing to the problem
+
+
+Thanks kindly,
+Peipei
+
+
+
+Andrew Cherniack
+unread,
+Jun 29, 2023, 2:29:28 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Peipei
+
+There seems to be spaces and not tabs between all of your data columns.
+Regenerate this as a tab file, and I think it will solve your problem.
+
+
+Andrew
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/06448cfc-a97e-4246-8a6d-339668766cban%40googlegroups.com.
+
+Peipei Wang
+unread,
+Jun 29, 2023, 3:58:42 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew,
+
+
+Thanks so much for your response; that file is now able to run with no problem! I'm trying to run the companion file to that one now, which has more double the previous number of samples, but I'm coming across an error saying:
+"143 segment overlaps detected in file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/5406/scna_TCGA_LUAD_FSpred_cs_hg19.seg.txt'.
+First overlap detected between segments at lines 9629 and 9767."
+
+
+Is there something that I can do about this?
+Thanks again,
+Peipei
+
+
+scna_TCGA_LUAD_FSpred_cs_hg19.seg.txt
+Andrew Cherniack
+unread,
+Jun 29, 2023, 4:38:58 PM
+
+
+
+to genepatt...@googlegroups.com
+Check to see if you have two tumors with the exact same name or one sample that is duplicated in your seg file.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f06d9ea1-f289-4515-85e4-e3c1777737aan%40googlegroups.com.
+
+--
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Cancer Program
+Broad Institute of Harvard and MIT
+415 Main Street
+Cambridge, Mass 02142
+email: ache...@broadinstitute.org
+___________________________
+
+Peipei Wang
+unread,
+Jul 1, 2023, 5:09:40 PM
+
+
+
+to GenePattern Help Forum
+Thanks for the suggestion. This was indeed the case and now both my datasets are up and running!!
+
+
+A quick separate question, is there a way to input both my datasets now into the same gistic job so that the raw copy number plot can compare the two groups? Or is there data I can download from these two separate jobs and recreate a group with a facet_wrap like appearance in R? I attached an image of what I'm referring to in this email.
+
+
+Thanks so much again,
+Peipei
+
+
+
+
+
+
+
+
+example plot.PNG
+Andrew Cherniack
+unread,
+Jul 2, 2023, 9:32:33 AM
+
+
+
+to genepatt...@googlegroups.com
+The best way to generate this is with IGV.
+https://software.broadinstitute.org/software/igv/
+
+
+
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d095f57c-04a0-49a7-98ca-08c3ec43a4cen%40googlegroups.com.
+
+
+Peipei Wang
+unread,
+Jul 14, 2023, 12:32:38 PM
+
+
+
+to GenePattern Help Forum
+Thanks so much for all your help Andrew, it's helped me tremendously! I've gotten the plots I've been envisioning and have some exciting results to write up now.
+
+
+Thanks again!
+Peipei
+
+
+
+槐笑栀
+unread,
+Sep 28, 2023, 7:06:20 AM
+
+
+
+to GenePattern Help Forum
+Hi Peipei!
+I meet the same problem with you! In my first-time input seg-file, it's a problem that have  482 segment overlaps detected in seg-file,.And then I checked the duplicated rows by "Sample，Chrosome, Start_Position” in R, so I deleted 116 rows which was duplicated. Running GISTIC2 again, it tipped 361 overlaps segment remained, once again, I check the overlaps by "Sample，Chrosome, End_Position”, but only 74 overlaps are detected. How can I thoroughly eliminate the overlaps segment? I really need your experience to slove this awful issue for me!
+Xiaozi Huai!
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,327 @@
+URL: https://groups.google.com./g/genepattern-help/c/5WMAs_biWDA
+Title: invalid multibyte string-ssGSEA
+----------------------------------------
+
+
+
+
+
+invalid multibyte string-ssGSEA
+66 views
+Skip to first unread message
+
+Alkaid
+unread,
+Feb 22, 2022, 6:09:32 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+
+I am trying to analyze the normalized microarray data using ssGSEA. I have encountered the following error message:  
+Error in type.convert(data[[i]], as.is = as.is[i], dec = dec, numerals = numerals, : invalid multibyte string at '<c2>8j <f9><19><0c><b1><5e><b3><84><46><22><a9>' Calls: ssGSEA.cmdline Execution halted
+
+
+
+I have confirmed the formatof gct file. And there was no empty cell in the normalized gene expression dataset. Could I have your advice on this?
+
+
+
+Thank you very much!
+
+Alkaid
+
+Barbara Hill
+unread,
+Feb 23, 2022, 11:03:25 AM
+
+
+
+to GenePattern Help Forum
+Hello Akaid,
+
+
+Please send your job id so that we can take a look at your input file.
+
+
+Best
+-Barbara
+Alkaid
+unread,
+Feb 23, 2022, 11:51:26 AM
+
+
+
+to GenePattern Help Forum
+Hello Barbara,
+
+
+
+The job id is 413662. The logs are also attached below:
+
+# Created: Wed Feb 23 19:49:42 UTC 2022 by atyf # Job: 413662 server: https://cloud.genepattern.org/gp/ # Module: ssGSEA urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00270:10.0.9 # Parameters: # input.gct.file = 0806MCCAFS1.gct https://cloud.genepattern.org/gp/users/atyf/tmp/run2922168503366875364.tmp/input.gct.file/1/0806MCCAFS1.gct # output.file.prefix = # gene.sets.database.files = gene.sets.database.files.list.txt https://cloud.genepattern.org/gp/users/atyf/tmp/run636152024681878730.tmp/gene.sets.database.files.list.txt # gene.symbol.column = Column 1 # gene.set.selection = ALL # sample.normalization.method = log # weighting.exponent = 0.75 # min.gene.set.size = 0 # combine.mode = combine.add
+
+
+Thank you very much!!
+
+Alkaid
+
+
+Barbara Hill
+unread,
+Mar 1, 2022, 8:27:36 AM
+
+
+
+to GenePattern Help Forum
+Hello Alkaid, 
+
+First of all, my apologies for misspelling your name in my reply, and also for this delayed response. Your emails keep going into my spam folder. 
+
+
+I took a look at the job and it looks like something strange happened to your input data. It's being represented as empty XML files rather than the expected inputs.
+
+
+I would just start over, as I suspect something went wrong in uploading your data.
+
+
+Please let us know if you continue to have any trouble.
+
+
+Best
+-Barbara
+
+
+馮資喻
+unread,
+Mar 3, 2022, 10:47:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+
+No worries!
+
+
+
+I still have the same problem here. Could you please give me some tips? I have used the same module, but I haven't had this type of problem before.
+
+
+
+Thank you!!
+
+Alkaid
+
+Anthony Castanza
+unread,
+Mar 3, 2022, 11:57:59 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Alkaid,
+
+
+If you could please provide us a Job ID so we can take a look at what might be going wrong we'd really appreciate it.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAA2VEkcQO0dGEUJq4-bnJiDcP-KArEidjKXKkB_C3R_DCR-oVQ%40mail.gmail.com.
+
+馮資喻
+unread,
+Mar 3, 2022, 12:10:03 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Antony,
+
+
+
+it is 415452. Thank you!
+
+
+
+Alkaid
+
+
+
+Anthony Castanza <acas...@cloud.ucsd.edu> 於 2022年3月3日 週四 下午2:57寫道：
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZyiifeN%3D3rrj%2BVhRC8bYGNne1a57YrgGyCUu8tSPv81ZA%40mail.gmail.com.
+
+Anthony Castanza
+unread,
+Mar 3, 2022, 12:28:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Alkaid,
+
+
+That is indeed the same issue. This gct file is not a gct file which expects tab delimited text formatted to the GCT specification. This file appears to be an XML formatted file saved from Microsoft Excel as an XLS/x spec format. The file would need to be reopened in Excel, and saved using the "Save As > Text (tab delimited)" function, then have the file extension changed from .txt to .gct.
+
+
+Hope that helps,
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAA2VEkcz54p8wUeFYz1UKBxXJZ5NscvXWSR1uqVFGzogZYwhrA%40mail.gmail.com.
+
+馮資喻
+unread,
+Mar 4, 2022, 7:23:56 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+
+
+
+Thank you so much for your help! My problem was solved : )
+
+
+Have a nice weekend,
+
+Alkaid
+
+
+
+Anthony Castanza <acas...@cloud.ucsd.edu> 於 2022年3月3日 週四 下午3:28寫道：
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZzQXkBvGny%3DkphTEY-ZCBXT10G1LFncpUjWgnKFV%3D6MGA%40mail.gmail.com.
+
+Vithurran Thavarajah
+unread,
+Apr 27, 2022, 6:17:57 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+
+
+I’m trying to perform an ssGSEA using a large genesets of 313 genes (job id: 431587). It comes up with an error saying result would be too long a vector. 
+
+
+Is there a limit to how many genes I can input please?
+
+
+On 4 Mar 2022, at 15:23, 馮資喻 <play...@gmail.com> wrote:
+
+
+﻿
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAA2VEkf34m5oWKj-2QT%3D1opRcfKihO8V6STzxxZMj1cuwsDjQw%40mail.gmail.com.
+
+Anthony Castanza
+unread,
+Apr 27, 2022, 10:59:46 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Alkaid,
+
+ 
+
+ssGSEA has an internal gene set size limit of 2,000 genes.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/E3522FEE-A8D8-45A1-908E-D8E75BD46CF8%40gmail.com.
+
+Anthony Castanza
+unread,
+Apr 27, 2022, 11:03:48 AM
+
+
+
+to genepatt...@googlegroups.com
+
+My apologies, I sent my reply too soon, ssGSEA has an internal gene set size limit of 2,000 genes. I checked the Prostate cancer.gmx file you provided and it appears to have 6100+ genes in it internally, the gct file you provided has 17000+ genes. The 313 gene file appears to not have not been used in the job that caused this error.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Vithurran Thavarajah <vithurran....@gmail.com>
+
+
+Date: Wednesday, April 27, 2022 at 6:17 AM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:2356] Re: invalid multibyte string-ssGSEA
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/E3522FEE-A8D8-45A1-908E-D8E75BD46CF8%40gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,109 @@
+URL: https://groups.google.com./g/genepattern-help/c/em09Ead-0i8
+Title: How can I share training data with all registered users of our GP server?
+----------------------------------------
+
+
+
+
+
+How can I share training data with all registered users of our GP server?
+9 views
+Skip to first unread message
+
+Stephane Plaisance
+unread,
+Aug 22, 2017, 7:33:32 AM
+
+
+
+to GenePattern Help Forum
+Dear support,
+
+
+I use to know the answer from a former training but do not find my notes anymore.
+I remember something about defining a new env in some config to point to a folder on the GP server.
+I have now a folder in my Files/uploads section that I want to move and make visible in every user's File section.
+How should I proceed?
+
+
+Thanks
+Stephane
+Peter Carr
+unread,
+Aug 22, 2017, 8:13:39 AM
+
+
+
+to genepatt...@googlegroups.com
+We don't have formal support for customizing the 'Files' tab. You can add shared folders to the job input form.
+
+Set the 'server.browse.file.system.root' property in the config_custom.yaml file. Use yaml list format to set multiple shared data directories. These directories are added to the 'Add Path or URL...' dialog from the job input form. on the server. For example, to add 'shared_data' and 'genome_files' directories for all users add this line to the config_custom.yaml file. See below for examples.
+
+Example 1:
+default.properties:
+    server.browse.file.system.root: [ "/opt/gp_home/shared_data", "/opt/genomes" ]
+
+Example 2: This can be customized on a per-user, per-group, or even per-module basis. Note, you have to repeat yourself when you customize for a particular user or group. The default.properties setting is replaced by the custom setting. For example,
+    ...
+group.properties:
+    "my-group":
+        server.browse.file.system.root: [ "/opt/gp_home/shared_data", "/opt/genomes", "/opt/my-group-data" ]
+    ...
+
+Example 3: For admins, we usually add an additional folder for test data that we do not want to share with the public. For example,
+    ...
+group.properties:
+    "administrators":
+        server.browse.file.system.root: [ "/opt/gp_home/shared_data", "/opt/genomes", "/private/test_data" ]
+     ...
+
+Example 4: Occasionally we add a custom folder for a particular user or project.
+    ...
+user.properties:
+    "my-user":
+        server.browse.file.system.root: [ "/opt/gp_home/shared_data", "/opt/genomes", "/mount/my-user-project-folder" ]
+    ...
+
+Peter Carr
+unread,
+Aug 22, 2017, 8:35:50 AM
+
+
+
+to GenePattern Help Forum
+Here is the workaround to add a shared data directory to the 'Files' tab for a particular user.
+
+
+Step 1: Create a symbolic link on the server file system from the user data directory to a custom location. In a linux shell,
+  cd /opt/gp_home/users/_username_/uploads
+  ln -s /path/to/shared_folder [optional folder name]
+
+
+Step 2: Resync Uploads. In the GP GUI, log in as an admin user, navigate to 
+  Admin -> Server Settings -> Users and Groups. 
+  Enter the username in text field. 
+  Click 'Resync Uploads'. You may have to wait a few moments if there are a large number of files in the shared folder.
+
+
+Note: To find the path to the user data directory login as an admin user, navigate to Admin -> Server Settings -> Uploaded Files. Look at the 'user.dir' column.
+
+
+I don't recall what you did to automate this for multiple accounts. You may have to do this individually for each user.
+
+Stephane Plaisance
+unread,
+Aug 22, 2017, 9:24:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Peter.
+Both methods are fitting different needs and will be applied. We will see what best suits the training session.
+Best regards
+Stephane
+
+Reply all
+
+Reply to author
+
+Forward

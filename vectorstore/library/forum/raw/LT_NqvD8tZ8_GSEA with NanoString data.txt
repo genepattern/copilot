@@ -1,0 +1,64 @@
+URL: https://groups.google.com./g/genepattern-help/c/LT_NqvD8tZ8
+Title: GSEA with NanoString data
+----------------------------------------
+
+
+
+
+
+GSEA with NanoString data
+299 views
+Skip to first unread message
+
+Si. Ri.
+unread,
+Sep 21, 2021, 7:56:22 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I have been reading your blog with interest and came across a problem, which I still cannot solve yet. We have performed a nanostring analysis in T cells from two groups of tumor patients looking on around 600 genes. Now we are wondering if it is valid to perform a pathway analysis within this gene set using GSEA.
+
+As I have understood so far, GSEA was initially designed for the analysis of microarray and mRNA seq data, where the gene sets are much bigger than in a nanstring analysis. Now in one of your comments, you posted that the gene set used by nanostring analysis is too small and therefore using GSEA is not valid in this case. However, another comment stated, that when adjusting the reference gene list to your used gene list, it would be possible to perform GSEA. To further explain our data, we are comparing two patient groups with each other and have a healthy donor control, for all groups the same gene set was analysed, we have calculated the t-statistics/ log-fold change with the Software nanostring provided. Furthermore we were wondering whether it would be an additional benefit to rather use a preranked gene list for the analysis.
+
+Many thanks for your help in advance!
+
+Anthony Castanza
+unread,
+Sep 21, 2021, 11:13:29 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello, I'm not exactly sure which blog posts you're referring to but, unless the experiment is very carefully designed, it is unlikely to be statistically valid. The nanostring assay would need to contain a representative sampling of the genome to have a chance at giving reasonable results – this is a slightly different use case than a targeted panel and not something I think you could achieve with the 600 gene version. The general recommendation is as I'd said originally; the statistical validity is questionable and we really don't recommend it.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/63272c9e-30af-49b5-935d-9c4a2078706bn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

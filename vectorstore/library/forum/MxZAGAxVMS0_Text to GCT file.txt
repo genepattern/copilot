@@ -1,0 +1,1 @@
+A user asked how to convert a text-delimited file to a GCT file format for GenePattern, with the specific challenge being how to properly change the file extension and ensure the file is recognized as a .gct file, with a solution provided explaining how to show and modify file extensions in Windows to correctly rename the file.

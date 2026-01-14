@@ -1,0 +1,185 @@
+URL: https://groups.google.com./g/genepattern-help/c/b54YbnnB71E
+Title: Displaying error
+----------------------------------------
+
+
+
+
+
+Displaying error
+29 views
+Skip to first unread message
+
+Sruthi S
+unread,
+Jan 14, 2022, 8:50:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi sir,
+I was working with the .fq.gz file and aligner module HISAT2. But I got an error after that with an empty SAM file. Can you please look into it?
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack	01/14/22, 10:16:53 PM	
+Barbara Hill
+unread,
+Jan 14, 2022, 9:56:36 AM
+
+
+
+to GenePattern Help Forum
+Hello Sruthi, 
+
+
+Please send your job id, so that we may look into the details of this issue.
+
+
+Best
+-Barbara
+
+Sruthi S
+unread,
+Jan 14, 2022, 10:21:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Mam,
+https://cloud.genepattern.org/gp/jobResults/404424/
+this is the link. 
+
+
+And also, I recently uploaded .fq file into the files tab, but I am not sure how to select that and work from there.
+
+
+Thank You,
+SruthiS
+
+
+
+
+
+
+	Sender notified by
+Mailtrack
+01/14/22, 11:49:40 PM	
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/851778c3-cb31-4776-afe5-1bbb35185cfen%40googlegroups.com.
+
+Sruthi S
+unread,
+Jan 14, 2022, 10:32:07 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi mam,
+I had uploaded a fq file in the genepattern and run using HISAT2 aligner. But they are saying that it is the expected file format.
+I have attached the screenshot for your reference.
+
+
+Kindly check
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/15/22, 12:00:03 AM	
+
+
+
+
+Screenshot (31).png
+
+Screenshot (30).png
+Barbara Hill
+unread,
+Jan 14, 2022, 12:00:25 PM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+The file format is fine. The issue is that your job ran out of memory. If you click on the stderr.txt file you will see this error.
+
+
+Reload the job, then scroll to the bottom of the job submit form, expand the Job Options, and increase the memory requested. I would suggest starting with 4 or 8GB - if you request more you will wait longer for your job to run, as there are more small memory hosts than large.
+
+
+Please let us know if that resolves the issue.
+
+
+Best
+-Barbara
+Sruthi S
+unread,
+Jan 14, 2022, 12:06:58 PM
+
+
+
+to genepatt...@googlegroups.com
+Ok mam, thank you. Can you please tell me how to make a cls file, like they are asking samples, define sample and assign class?
+
+
+Thank you,
+Sruthi S
+
+
+
+
+	Sender notified by
+Mailtrack
+01/15/22, 01:35:18 AM	
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c279ab94-98ad-43ce-8b57-6ed5ad728d1an%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jan 14, 2022, 12:08:16 PM
+
+
+
+to GenePattern Help Forum
+Hi Sruthi,
+
+
+Please see the file formats guide for more information:
+https://genepattern.org/file-formats-guide#CLS
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

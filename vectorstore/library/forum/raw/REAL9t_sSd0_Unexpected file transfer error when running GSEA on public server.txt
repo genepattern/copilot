@@ -1,0 +1,55 @@
+URL: https://groups.google.com./g/genepattern-help/c/REAL9t_sSd0
+Title: Unexpected file transfer error when running GSEA on public server
+----------------------------------------
+
+
+
+
+
+Unexpected file transfer error when running GSEA on public server
+95 views
+GSEA
+Skip to first unread message
+Wei Li
+unread,
+Feb 4, 2019, 4:03:12 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+When I submitted the GSEA pre-rank job, an error prevents me from submission: There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+
+From the previous discussions, it seems that the problem is because the available space is full? Please help address this issue. Thank you!
+ 
+Job ID if run on a publicly available server.
+No jobID as the job was not submitted successfully.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+Reply all
+
+Reply to author
+
+Forward

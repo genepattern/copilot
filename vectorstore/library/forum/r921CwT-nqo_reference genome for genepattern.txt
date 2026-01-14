@@ -1,0 +1,1 @@
+A GenePattern user requested assistance adding maize reference genome versions 3 and 4 to their GenePattern platform for NGS analyses, but encountered difficulties during the genome addition process, with the support team asking for more specific details about the module being used and specific errors encountered to provide targeted troubleshooting.

@@ -1,0 +1,1 @@
+A GenePattern user encountered a floating point exception error while running GISTIC2 to analyze TCGA colorectal cancer copy number data, requesting help troubleshooting the issue, with the forum moderator asking for more context about input parameters and segmentation file to diagnose the potential cause of the computational error.

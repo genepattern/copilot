@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/eTGPcnKyLS8
+Title: Increased storage
+----------------------------------------
+
+
+
+
+
+Increased storage
+22 views
+Skip to first unread message
+
+Jessie Hollingsworth
+unread,
+Mar 5, 2025, 10:00:28 AM
+
+
+
+to GenePattern Help Forum
+Hello, I would like my storage to be increased from 30GB to 150 GB. Thank you.
+Ted Liefeld
+unread,
+Mar 5, 2025, 10:41:16 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+yes we can make this change, but I could not find an account tied to the email 'jessie.hol...@gmail.com' on either of our public servers (cloud.genepattern.org, genepattern.ucsd.edu).  Please send me the username (and which server).  Also could you tell us why you need it and how long will you need the space?
+
+
+Thanks
+
+
+Ted
+
+
+
+Jessie Hollingsworth
+unread,
+Mar 5, 2025, 11:12:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+My email for the account is jh1...@rwjms.rutgers.edu 
+
+
+I am uploading whole genome sequencing results and each file is approximately 15GB. I will need the expanded storage for 1 year. 
+Thanks. 
+
+
+On Mar 5, 2025, at 1:41 PM, 'Ted Liefeld' via GenePattern Help Forum <genepatt...@googlegroups.com> wrote:
+
+
+﻿Hi,
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/c82f7637-b3e3-4bba-aedc-57f41b69e2b5n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Mar 5, 2025, 11:17:54 AM
+
+
+
+to GenePattern Help Forum
+Please refresh the page, you should see the update now.  I assumed you were on cloud.genepattern.org
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

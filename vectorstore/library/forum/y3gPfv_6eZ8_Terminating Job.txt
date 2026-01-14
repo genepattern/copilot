@@ -1,0 +1,1 @@
+A user reported being unable to terminate two long-running jobs on GenePattern cloud services (jobs #64818 and #64817), and a GenePattern administrator confirmed the jobs were no longer running on the compute cluster, manually flagged them as completed, and would clean up the server-side job status later that day.

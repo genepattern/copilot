@@ -1,0 +1,2 @@
+Here's the summary formatted for vector store embedding:
+A researcher asked about selecting hub genes from differentially expressed genes (DEGs) using criteria like fold change, and how to compile a transcription factor (TF) file, with an expert clarifying that hub genes can be selected using various methods and the TF file should include all transcription factors in the dataset, not just those directly related to the DEGs.

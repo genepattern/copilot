@@ -1,0 +1,1 @@
+A user encountered a "Permission denied" error when running MutSigCV on GenePattern Cloud, specifically with the executable file /opt/gpbeta/gp_home/taskLib/MutSigCV.1.2.890/gp_MutSigCV not having proper execution permissions; the GenePattern support team acknowledged the issue and indicated they installed an updated version of MutSigCV that resolved the permission problem.

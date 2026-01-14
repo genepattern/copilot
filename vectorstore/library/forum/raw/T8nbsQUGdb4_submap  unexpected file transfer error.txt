@@ -1,0 +1,63 @@
+URL: https://groups.google.com./g/genepattern-help/c/T8nbsQUGdb4
+Title: submap : unexpected file transfer error
+----------------------------------------
+
+
+
+
+
+submap : unexpected file transfer error
+45 views
+Skip to first unread message
+
+archana bhardwaj
+unread,
+Oct 8, 2021, 4:47:02 AM
+
+
+
+to GenePattern Help Forum
+Hello 
+I am trying to run submap module . I have prepared all the input files in gct and cls format. But I am getting constant error 
+
+
+ There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+
+I tried to run on multiple computers and changed the browsers. But can not resolve this issue. 
+
+
+Please help me to solve this issue 
+
+
+Thanks 
+Archana 
+Ted Liefeld
+unread,
+Oct 8, 2021, 10:57:29 AM
+
+
+
+to GenePattern Help Forum
+Archana
+
+
+we have seen this happen twice before but have not yet been able to determine the cause.  Can you tell me a bit about where you are connecting from (geographically and the organization) and whether you are on a VPN or have other specific network details.
+
+
+The file uploads go direct to the Amazon AWS Simple Storage Service (S3) so if you have an local IT department they may be able to help check if that is blocked for some reason.
+
+
+Thanks for your patience as we try to get this fixed for you
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

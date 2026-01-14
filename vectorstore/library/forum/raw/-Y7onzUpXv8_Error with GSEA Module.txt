@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/-Y7onzUpXv8
+Title: Error with GSEA Module
+----------------------------------------
+
+
+
+
+
+Error with GSEA Module
+34 views
+Skip to first unread message
+
+mohamm...@yale.edu
+unread,
+Feb 20, 2019, 9:13:54 AM
+
+
+
+to GenePattern Help Forum
+I am receiving an error when I run GSEA on gene pattern. I am using the example dataset from http://software.broadinstitute.org/gsea/datasets.jsp, specially "Gender_hgu133a.gct" & "Gender.cls". I've been receiving different errors the past few days every time I try to run GSEA, any suggestions on how to proceed forward?
+Error:
+An error occurred while submitting the job: Error updating upload file record for file 'tmp': null
+
+
+Barbara Hill
+unread,
+Jan 24, 2020, 1:17:38 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I'm so sorry we never responded to you. Were you able to resolve or workaround these issues in GSEA?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

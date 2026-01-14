@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/pf8RrbX_f3I
+Title: Visualizer Launcher Error
+----------------------------------------
+
+
+
+
+
+Visualizer Launcher Error
+6 views
+Skip to first unread message
+
+Russell Ericksen
+unread,
+Jan 24, 2019, 1:40:34 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi all,
+
+
+I've been using Heatmap Viewer on the public server for a few years now, but today I got an error message I've never seen before. Everything looks normal after uploading the gct file and submitting the job, just when I input the job number and other details into the Visualizer Launcher applet, I get the message "Error retrieving job details: A JSONObject text must begin with '{' at 1 [character 2 line1]". Is this a bug on your end or did I mess something up? (last I used this workflow successfully was about 3-4 months ago, not sure if anything has changed since then).
+
+
+Thanks very much,
+
+
+Error2.jpeg
+
+Error1.jpeg
+Peter Carr
+unread,
+Jan 24, 2019, 10:57:44 AM
+
+
+
+to genepatt...@googlegroups.com
+I recommend that you use the latest version of the HeatMapViewer (currently v13.9). We ported it to JavaScript to avoid known issues with Java applets. It opens directly in your web browser; you don't need to use the Java Visualizer Launcher.
+
+If for some reason you want to use the Visualizer Launcher (for example for other visualizers which have not been ported to JavaScript), double check that you are using the correct server address in the dialog box. Starting November 2018 we have a new server address:
+
+    server: https://cloud.genepattern.org/gp
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

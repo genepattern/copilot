@@ -1,0 +1,308 @@
+URL: https://groups.google.com./g/genepattern-help/c/uv1XHFIiGIY
+Title: login problem
+----------------------------------------
+
+
+
+
+
+login problem
+18 views
+Skip to first unread message
+
+Edward Rietman
+unread,
+Apr 22, 2019, 1:59:46 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+
+
+
+I am trying to login to GP. It has been a few months since I did. I forgot my password. The system responds that I am not registered. So when I attempt to reregister it tells me that I am already registered. 
+Please advise on how to register, or get a password reset link.
+
+
+thanks,
+ed
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Apr 22, 2019, 2:33:26 PM
+
+
+
+to GenePattern Help Forum
+Please note that this is now being handled offline as personal account information needed to be exchanged.
+
+
+A good first step for others who may find themselves in a similar situation is to check your spam folder.
+
+
+
+
+Ed Rietman
+unread,
+Apr 22, 2019, 2:42:07 PM
+
+
+
+to genepatt...@googlegroups.com
+So what do I do now? Should I wait till i get a link or something?
+
+
+ed
+
+
+On Mon, Apr 22, 2019 at 5:33 PM Barbara Hill <bh...@broadinstitute.org> wrote:
+
+Please note that this is now being handled offline as personal account information needed to be exchanged.
+
+
+A good first step for others who may find themselves in a similar situation is to check your spam folder.
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0c28e6b8-7439-4403-9881-c44fcc4a3f28%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+--
+
+
+"[W]e can try endlessly and tirelessly to fix this dream…. or we can simply wake up." Ken Wilber
+
+Barbara Hill
+unread,
+Apr 22, 2019, 2:53:58 PM
+
+
+
+to GenePattern Help Forum
+Hi Ed, 
+
+
+We can continue to sort this out via private email, as we may need to send you a reset password, rather than here in the forum.
+
+
+Best
+-Barbara
+Ed Rietman
+unread,
+Apr 23, 2019, 1:37:20 PM
+
+
+
+to genepatt...@googlegroups.com
+I have also downloaded the GenePattern.app for my Mac. The app claims I need to update to Java 7 but, I am running Java 8. So that's another bug in the system.
+
+
+ed
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/3896775f-a4b1-4ed2-8344-94bcab7557f7%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Barbara Hill
+unread,
+Apr 23, 2019, 2:29:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Ed, 
+
+
+I would suggest getting the GenePattern app from our GitHub repository releases, as they are more up-to-date than our website, and following the instructions there:
+https://github.com/genepattern/genepattern-server/releases
+
+
+We are in the process of updating our website and apologize for any confusion.
+
+
+
+In the meantime, we are still working on our SMTP service. It is working for our beta server, and seems to intermittently be working for the cloud server, so it's been difficult to debug.
+
+
+Thank you for your patience!
+Best
+-Barbara
+Ed Rietman
+unread,
+Apr 23, 2019, 2:42:08 PM
+
+
+
+to genepatt...@googlegroups.com
+Ok. Please let me know as soon as possible when the password issue is resolved.
+
+
+thanks,
+ed
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d5be7403-61f1-4eb9-a2b1-390abdee5cec%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Barbara Hill
+unread,
+Apr 23, 2019, 3:48:46 PM
+
+
+
+to GenePattern Help Forum
+As soon as we get SMTP back up and running on the server we will let you know. 
+
+
+
+
+
+Barbara Hill
+unread,
+Apr 24, 2019, 11:39:22 AM
+
+
+
+to GenePattern Help Forum
+Hello Ed, 
+
+
+The issue with SMTP has been resolved and you should now be able to reset your password. (Do check your spam if you do not see the email, but Mailjet should be keeping it from going to spam)
+
+
+It turned out the AMI just needed to restarted to reset its ports.
+
+
+"Have you tried turning it off and turning it back on again?"... Sometimes the simplest solution is the best solution.
+
+
+Our apologies for the delays while we tried the more complex solutions.
+
+
+Please let us know if you need anything else.
+
+
+Best
+Barbara
+Ed Rietman
+unread,
+Apr 24, 2019, 2:54:13 PM
+
+
+
+to genepatt...@googlegroups.com
+I'm away for the next few days and will try it Monday. Many thanks. I'll let you know how it goes.
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c1e71d8c-cad1-43d7-8727-432d27347729%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Ed Rietman
+unread,
+Apr 27, 2019, 11:10:42 AM
+
+
+
+to genepatt...@googlegroups.com
+it worked. thank you.
+ed
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c1e71d8c-cad1-43d7-8727-432d27347729%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+Barbara Hill
+unread,
+Apr 29, 2019, 9:04:08 AM
+
+
+
+to GenePattern Help Forum
+Great news!
+
+
+Please let us know if anything else comes up.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,27 @@
+URL: https://groups.google.com./g/genepattern-help/c/x2RG4vaVFAU
+Title: Announcement - Upcoming Downtime for maintenance,: Monday, April 5, 2021
+----------------------------------------
+
+
+
+
+
+Announcement - Upcoming Downtime for maintenance,: Monday, April 5, 2021
+4 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Apr 1, 2021, 9:11:49 AM
+
+
+
+to GenePattern Help Forum
+On Monday, Apr 5, the main GenePattern server (https://cloud.genepattern.org) will be offline from 1 PM - 4 PM PDT (UTC -7) to install the latest updates, including more efficient transfer of files via S3. 
+Please see the release notes for more details.
+https://github.com/genepattern/genepattern-server/releases/tag/v3.9_21.04.05_b325
+
+Reply all
+
+Reply to author
+
+Forward

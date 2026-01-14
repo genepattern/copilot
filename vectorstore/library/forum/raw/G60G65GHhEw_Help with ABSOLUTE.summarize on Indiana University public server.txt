@@ -1,0 +1,141 @@
+URL: https://groups.google.com./g/genepattern-help/c/G60G65GHhEw
+Title: Help with ABSOLUTE.summarize on Indiana University public server
+----------------------------------------
+
+
+
+
+
+Help with ABSOLUTE.summarize on Indiana University public server
+9 views
+Skip to first unread message
+
+Garrett Morgan
+unread,
+Jul 21, 2019, 8:18:33 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+
+
+I have repeatedly received the following error message when trying to run ABSOLUTE.summarize with Rdata output files from previous ABSOLUTE run. The summarize module is required to use ABSOLUTE.review module, which generates the final data output for the ABSOLUT pipeline. Any thoughts on what the issue might be would be greatly appreciated. Thanks.
+
+ /N/u/gpserver/Karst/opt/genepattern/gp/resources/wrapper_scripts/run-with-env.sh: line 598: Rscript: command not found
+job finished but exit code is not 0, return C
+
+Job ID if run on a publicly available server.
+
+
+Job ID from Indiana University public server is the following...
+
+
+99644. ABSOLUTE.summarize
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Jul 22, 2019, 9:08:59 AM
+
+
+
+to GenePattern Help Forum
+Hi Garrett, 
+
+
+I have forwarded this error to the administrator of the Indiana University server. It appears that ABSOLUTE.summarize is not correctly configured.
+
+
+Best
+-Barbara
+Garrett Morgan
+unread,
+Jul 22, 2019, 10:59:47 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Thank you so much! I will await word from them then,
+
+
+All the best,
+Garrett
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7b663947-b8d2-4d65-834a-c2682b78387c%40googlegroups.com.
+
+Barbara Hill
+unread,
+Jul 22, 2019, 11:36:53 AM
+
+
+
+to GenePattern Help Forum
+Hi Garrett, 
+
+
+This should be fixed now.
+
+
+Let us know if you have any further troubles.
+
+
+All the best
+-Barbara
+Garrett Morgan
+unread,
+Jul 22, 2019, 12:24:34 PM
+
+
+
+to genepatt...@googlegroups.com
+Hurray!
+
+
+Thank you so much. I will take a crack at it tonight, and let you know if any more issues.
+
+
+Garrett
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/10aad9c6-295e-4b82-8f41-99ac83d3b2f0%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,30 @@
+URL: https://groups.google.com./g/genepattern-help/c/V0GCl8onPZM
+Title: Job attempt duration exceeded timeout
+----------------------------------------
+
+
+
+
+
+Job attempt duration exceeded timeout
+40 views
+Error
+Skip to first unread message
+tang5...@gmail.com
+unread,
+Feb 17, 2019, 4:51:50 AM
+
+
+
+to GenePattern Help Forum
+hi,
+my job ID is 86910 for NMFconsencus, and I have noticed Barbara's replies of this question. i changed the default time to 1 day, but still failing with the error message "Job attempt duration exceeded timeout". maybe, the work may take more than a day to complete. so, how to solve this problem?
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+The summary in an embedding-friendly chunk is: "User encountered a GISTIC2.0 module error in GenePattern, specifically a module not found issue where the GISTIC 2.0 module is not available on the remote system executing the job, requiring administrator intervention to resolve the module availability problem."

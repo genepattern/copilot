@@ -1,0 +1,90 @@
+URL: https://groups.google.com./g/genepattern-help/c/9zSVk4KHsmo
+Title: Error while reading the gct file
+----------------------------------------
+
+
+
+
+
+Error while reading the gct file
+17 views
+Expression
+GenomeSpace
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Oct 22, 2018, 1:36:38 PM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern-Team,
+
+ 
+
+today, I want to check my gene expression data set according to your recipe “Identify an up- or down-regulated pathway from expression data”. Unfortunately, I get an error at step 4:
+
+ 
+
+org.genepattern.io.ParseException: Data at line number 4 and column 0 is not a number.
+
+        at org.genepattern.io.expr.gct.GctParser.readData(GctParser.java:117)
+
+        at org.genepattern.io.expr.gct.GctParser.parse(GctParser.java:77)
+
+        at org.genepattern.io.expr.ReaderUtil.read(ReaderUtil.java:37)
+
+        at org.genepattern.io.expr.gct.GctReader.read(GctReader.java:42)
+
+        at org.genepattern.module.AnalysisUtil.readExpressionData(AnalysisUtil.java:156)
+
+        at org.genepattern.module.AnalysisUtil.readExpressionData(AnalysisUtil.java:177)
+
+        at edu.mit.broad.modules.marker.CreateMarkersFileModule.main(CreateMarkersFileModule.java:174)
+
+An error occured while reading the file Diff.gct.txt.
+
+Cause: Data at line number 4 and column 0 is not a number.
+
+ 
+
+Moreover, in step 3 I don´t get a “Score”. But if I compare my gct file with the example, I can´t find my fault.
+
+ 
+
+I´m sorry for all the questions and I would be glad if you can help me.
+
+Barbara Hill
+unread,
+Oct 22, 2018, 1:38:25 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+I have run through this recipe in GenomeSpace and did not have any trouble with the example data indicated.
+
+
+I see that you have used your own data - Diff.gct.txt. 
+
+
+The first issue is that your file ends in txt. It should end in gct.
+
+
+Then, be sure it matches the correct format of a GCT file - see here.
+
+
+Please let us know if you need any further assistance.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user encountered an error when running ssGSEA with a custom gene set, specifically a parsing issue caused by an atypical dash character in the gene set description, which was resolved by replacing the non-standard dash with a standard short dash in a plain text editor.

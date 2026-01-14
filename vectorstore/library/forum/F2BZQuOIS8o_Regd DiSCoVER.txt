@@ -1,0 +1,1 @@
+DiSCoVER module discussion: User inquired about using TPM/RPKM values for gene expression and running samples from different treatment groups, with expert recommendation to use TPM values and run DiSCoVER on one treatment/control pair at a time, and confirmation that normalized DESeq2 read counts are also compatible with the algorithm.

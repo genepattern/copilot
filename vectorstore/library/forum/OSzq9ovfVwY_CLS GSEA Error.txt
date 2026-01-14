@@ -1,0 +1,1 @@
+GSEA CLS file parsing error caused by incorrect file formatting, where all data was on a single line instead of being properly delimited with newline characters; the solution involves opening the file in a text editor to verify and correct the formatting, ensuring each class/sample is on a separate line with proper column separation.

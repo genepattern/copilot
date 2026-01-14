@@ -1,0 +1,223 @@
+URL: https://groups.google.com./g/genepattern-help/c/V3c-dZoqXXI
+Title: Error when running ssGSEA
+----------------------------------------
+
+
+
+
+
+Error when running ssGSEA
+99 views
+Skip to first unread message
+
+Scott Varney
+unread,
+Jul 6, 2021, 1:33:44 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+My genepattern username is: scott.varney
+
+
+I have encountered an error when attempting to run the ssGSEA module on cloud.genepattern.org. I tried to use the upload files option within the ssGSEA module for each of the files, however, this generates the error message:
+
+
+"There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+
+
+I then used the "uploader" which appeared to be successful. However, after uploading the .gct and .gmx or .gmt files to my account and running the module I get the following error message:
+
+
+" cloud.genepattern.org says
+Error:
+An error occured while submitting the job: Error updating upload file record for file 'tmp':null"
+
+
+I don't believe there is an issue with any of the .gct or .gmx/gmt files as I have used them all successfully in the standard GSEA desktop software.
+
+
+Any suggestions?
+Thanks!
+-Scott
+Scott Varney
+unread,
+Jul 6, 2021, 1:38:20 PM
+
+
+
+to GenePattern Help Forum
+Update:
+
+
+I also got the same message while using the standard GSEA module using the same .gct, .cls and .gmt files that run successfully on the desktop app.
+
+
+thanks
+
+
+
+Ted Liefeld
+unread,
+Jul 7, 2021, 10:46:03 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+for the files you were passing can you give me a little more detail?  Were they being uploaded on the run page, passed as URL on the run page, or coming from your files tab?
+
+
+Thanks
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jul 7, 2021, 10:50:20 AM
+
+
+
+to GenePattern Help Forum
+A couple of additional questions;
+- What gene set database did you select or were you uploading (or passing a URL) to your own?
+- Were you on a VPN and where geographically are you connecting from?
+
+
+Thanks for your patience
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jul 7, 2021, 3:53:26 PM
+
+
+
+to GenePattern Help Forum
+Final 2 questions...
+
+
+We think we have identified an issue that might be causing this.  Can you provide me a job number for a failed job (if it got that far) or else the databases and chip file that you were using?
+
+
+Thanks
+
+Ted
+
+
+
+Scott Varney
+unread,
+Jul 11, 2021, 1:10:38 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Sorry for the delayed response. 
+
+
+q1) for the files you were passing can you give me a little more detail?  Were they being uploaded on the run page, passed as URL on the run page, or coming from your files tab?
+ A1) I tried both ways, at first I attempted to upload the files on the run page and when that didn't work, I uploaded to the files tab and then passed them to the module from there. 
+      When I attempt to upload directly on the run page, I get the following error message: "There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab."
+      When passing the files through to module from the files tab I get a different error message: " cloud.genepattern.org says Error: An error occured while submitting the job: Error updating upload file record for file 'tmp':null"
+
+
+
+
+q2) - What gene set database did you select or were you uploading (or passing a URL) to your own?
+A2) These are my own .gct/.cls/.gmt/.gmx files. I have used all of these files successfully on the desktop GSEA app. I even tried using the hallmarks gene set rather than uploading my own gene set, but that resulted in the same error message: " cloud.genepattern.org says Error: An error occured while submitting the job: Error updating upload file record for file 'tmp':null"
+
+
+q3) - Were you on a VPN and where geographically are you connecting from?
+A3) I am not using a VPN and I tried on two different computers. I am from Philadelphia, PA USA
+
+
+We think we have identified an issue that might be causing this.  Can you provide me a job number for a failed job (if it got that far) or else the databases and chip file that you were using?
+
+A4/5) The job number was never generated as it didn't get that far. I'll send the .gct file in another email as my work computer will not allow me to attach it.
+
+Scott Varney
+unread,
+Jul 11, 2021, 1:13:25 PM
+
+
+
+to GenePattern Help Forum
+Evidently, I am not able to post to this thread from my personal computer. However, if you still need the .gct file, they are in my files tab associated with scott.varney account. Can you access them?
+
+Ted Liefeld
+unread,
+Jul 12, 2021, 6:50:52 AM
+
+
+
+to GenePattern Help Forum
+Scott,
+
+
+There is definitely something odd happening with your account and I have not been able to track it down yet.  I see your account in the database but for some reason it never created your user home directory on the server so I think something went wrong during registration.  I will dig into the log files to see if I can spot it but in the meantime here are a few things we can try.
+
+
+1. I manually created the missing home directory for your account (where the uploaded files are supposed to land) so try to upload files again.  It might be all we need to do.
+
+
+2. Create a new account, this time leave out the "." (dot) because sometimes the special characters like that cause problems.  I just created a new account mimicking yours though and that worked fine.
+
+
+3. Also unlikely, but you can try making an account on our beta server (beta.genepattern.org) which has a fix for some other file uploading problems but I am pretty sure your case is a different thing.
+
+
+Let me know if any of the above get you going and I will report back after digging through the log files
+
+
+Thanks for your patience,
+
+
+Ted 
+
+Scott Varney
+unread,
+Jul 19, 2021, 8:26:33 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+I'm not sure why, but when I created a new username without a period between my first and last name, everything seems to have worked. I'm running a test run now to confirm, but it looks like the files at least got to the next stage. 
+
+
+First few runs look good now.
+
+
+Thanks!
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/V3c-dZoqXXI/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/1f017a43-c064-4b4d-b82c-dbd84d5fd7can%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

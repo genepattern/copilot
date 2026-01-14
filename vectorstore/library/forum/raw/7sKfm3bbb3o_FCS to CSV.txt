@@ -1,0 +1,192 @@
+URL: https://groups.google.com./g/genepattern-help/c/7sKfm3bbb3o
+Title: FCS to CSV
+----------------------------------------
+
+
+
+
+
+FCS to CSV
+104 views
+Skip to first unread message
+
+Joan Slonczewski
+unread,
+Aug 10, 2022, 6:42:19 PM
+
+
+
+to GenePattern Help Forum
+I tried converting an FCS file to CSV using your module.
+It worked the first time (yesterday) but then did not work again today.
+How might this be fixed?
+
+
+Joan L. Slonczewski (they/them/theirs)
+Professor of Biology
+202 N. College Road
+Kenyon College
+Gambier, OH 43022
+http://biology.kenyon.edu/slonc/slonc.htm
+slonc...@kenyon.edu
+Phone: 740-427-5397
+Text: 740-504-2215
+
+Ted Liefeld
+unread,
+Aug 11, 2022, 11:29:07 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+can you give us the job numbers for both Jobs and we will take a look at what happened.
+
+
+Thanks
+
+
+Ted
+
+
+
+Joan Slonczewski
+unread,
+Aug 11, 2022, 11:34:27 AM
+
+
+
+to genepatt...@googlegroups.com
+The job that worked was 455591.
+Then I tried three times on a different file, jobs 456017, 456018, 456021. They did not work.
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/7sKfm3bbb3o/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/887e2343-4c39-4217-a286-565f13b0d777n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 11, 2022, 12:20:13 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+the problem appears to be the double spaces between the "Ph" and the "f" right at the start of the input filename,  and the logic that uses the base of the input filename for the output files is not working properly for that.
+
+
+There are two quick workarounds;
+1. Edit the input file name to remove the double spaces (ideally all spaces to be safe) and then re-run.
+or
+2. Change the value for the parameters "Output CSV file name" and "Output keyword file name" to not use the <Input.FCS.data.file_basename> placeholder.
+
+
+Please let me know if this works for you
+
+
+Ted
+
+Joan Slonczewski
+unread,
+Aug 11, 2022, 1:08:14 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Ted, changing the filename worked.
+May I ask briefly what does it mean "convert channel to scale"?  I just want to be sure we are using the correct selection.
+Joan
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/42bb4af1-9c7c-43c1-a88e-63f695914f7en%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 12, 2022, 10:40:27 AM
+
+
+
+to GenePattern Help Forum
+Joan,
+
+
+The module doc says: 
+===============
+Specify whether to convert log channel values to linear scale or not:
+              • true=convert channel to linear scale  (default)
+               • no=no conversion, store same as in the FCS file 
+
+===============
+
+
+I am afraid that since the modules were developed at the BC Cancer Research Center we don't have anyone on the team that can answer with any more detail.  The author of the module is listed in the doc as Josef Spidlen (jspi...@bccrc.ca) so you could try contacting him.
+
+
+Hope this helps
+
+
+Ted
+
+Joan Slonczewski
+unread,
+Aug 12, 2022, 10:44:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, Ted. The files do look correct, consistent with the BD software. I really appreciate your help.
+Joan
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e0aa9c0c-0851-4f84-8807-ab26329143ben%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 12, 2022, 10:47:39 AM
+
+
+
+to genepatt...@googlegroups.com
+I am glad that things are working for you now.  Let us know if you have any other questions
+
+
+Ted
+
+
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAAzKrdJ2LoMME2kHx3BJKQpAHxQ1jbfm5nqyU2zMLieBc-7c0A%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

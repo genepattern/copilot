@@ -1,0 +1,28 @@
+URL: https://groups.google.com./g/genepattern-help/c/AJRYIKob76o
+Title: GEOImporter temporarily removed from our main server (http://cloud.genepattern.org)
+----------------------------------------
+
+
+
+
+
+GEOImporter temporarily removed from our main server (http://cloud.genepattern.org)
+9 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Nov 23, 2020, 3:33:37 PM
+
+
+
+to GenePattern Help Forum
+GEOImporter has been temporarily removed from our main server (http://cloud.genepattern.org) while it awaits an update for changes in GEO's programmatic access. We do apologize for any inconvenience this causes and will work to have it back up as soon as possible.  
+
+Sincerely, 
+The GenePattern team
+
+Reply all
+
+Reply to author
+
+Forward

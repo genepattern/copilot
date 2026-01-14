@@ -1,0 +1,1 @@
+A user encountered an error when running the QuaSAR program on Skyline, specifically experiencing an AuDIT processing error related to p-value calculation, likely stemming from incompatible sample units (ug and fmol/ul) and potential data formatting issues when processing sample groups with different concentrations and spike-in standards.

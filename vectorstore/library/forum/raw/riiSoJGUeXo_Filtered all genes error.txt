@@ -1,0 +1,44 @@
+URL: https://groups.google.com./g/genepattern-help/c/riiSoJGUeXo
+Title: "Filtered all genes" error
+----------------------------------------
+
+
+
+
+
+"Filtered all genes" error
+8 views
+Skip to first unread message
+
+Khushbakht
+unread,
+May 8, 2020, 7:48:25 AM
+
+
+
+to GenePattern Help Forum
+Today while using Preprocess Dataset Module I got error "Filtered all genes", and I have no idea how to resolve this issue.
+Ted Liefeld
+unread,
+May 8, 2020, 10:51:34 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+usually this is due to having the filtering set too aggressively for your dataset (ceiling, floor or fold-change).  If you provide a job number we can look in more detail or you can just try more relaxed filter settings.
+
+
+Hope this helps,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

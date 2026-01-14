@@ -1,0 +1,259 @@
+URL: https://groups.google.com./g/genepattern-help/c/TQQRO55SS-8
+Title: GISTIC error - Index exceeds matrix dimensions.
+----------------------------------------
+
+
+
+
+
+GISTIC error - Index exceeds matrix dimensions.
+92 views
+Skip to first unread message
+
+Ben H
+unread,
+Apr 4, 2018, 8:22:29 PM
+
+
+
+to GenePattern Help Forum
+
+Hi,
+
+
+
+
+I have been trying to run GISTIC (job id 1644295) but it keeps crashing. In the error log it said index exceeds matrix dimensions and I can't figure out what's wrong as the probes matches the marker file. Has anyone ran into this issue lately? 
+
+
+
+
+I have been using GISTIC in the past but never had this before. I'm attached the file here.
+
+
+
+
+
+
+
+
+{ ??? Index exceeds matrix dimensions.
+
+
+Error in ==> gp_gistic2_from_seg at 99
+
+
+
+
+}  
+ 
+Index exceeds matrix dimensions.
+MATLAB:badsubscript
+
+
+
+
+
+
+---------------------------------------------------------
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+427_Gistic_ready_a.seg
+Barbara Hill
+unread,
+Apr 9, 2018, 1:01:58 PM
+
+
+
+to GenePattern Help Forum
+Hello Ben, 
+
+
+It appears that this job has been deleted from the server. Do you have another we could look at?
+
+
+Best
+-Barbara
+SickBoy
+unread,
+Apr 12, 2018, 4:42:07 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Sorry for the delay. I have resubmitted the jobs to make sure they are reproducible - which it is.
+Jobs 1660497 - 1660504 have failed.
+while some seg files that were prepared the same way 1660505 - 1660508 works.
+
+
+The only difference I can think of is that the ones that failed are usually larger files.
+
+
+The error is same as before:
+{ ??? Index exceeds matrix dimensions.
+
+
+Error in ==> gp_gistic2_from_seg at 99
+
+
+
+
+}  
+Index exceeds matrix dimensions.
+MATLAB:badsubscript
+
+
+Thanks for your attention.
+
+Barbara Hill
+unread,
+Apr 13, 2018, 12:59:23 PM
+
+
+
+to GenePattern Help Forum
+Hi Ben, 
+
+
+I'm about to release a new version of GISTIC which should give us some better debugging. This error message is really generic and even after looking at your data, I think it's best to get some better information from the code itself.
+
+
+I should have that available by Wed next week, at the latest.
+
+
+Best
+-Barbara
+Ben H
+unread,
+Apr 14, 2018, 6:11:58 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Barbara. Hope the new release helps to debug. Will try to resubmit again when it goes online.
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/f80fd185-aa72-4603-a054-79b45151df8f%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+SickBoy
+unread,
+Apr 19, 2018, 9:11:07 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+I was wondering if the new GISTIC has gone live?
+
+
+Thanks,
+Ben
+
+Barbara Hill
+unread,
+Apr 27, 2018, 12:34:02 PM
+
+
+
+to GenePattern Help Forum
+Hi Ben,
+
+
+Not yet - we had some delays due to workshops.
+I hope to have this released next week.
+
+
+Apologies for the delay.
+
+
+-Barbara
+Ben H
+unread,
+Apr 27, 2018, 3:04:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Thanks for the update.
+
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d517c90b-ddf6-4305-a037-1c1d625ca146%40googlegroups.com.
+
+Barbara Hill
+unread,
+May 8, 2018, 9:48:25 AM
+
+
+
+to GenePattern Help Forum
+Hello Ben, 
+
+
+Things got a bit hung up here, but GISTIC_2.0 version 2.0.23 is now available in beta on our production server.
+
+
+Please let me know if you have any future questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

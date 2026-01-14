@@ -1,0 +1,1 @@
+A user reported issues with the HierarchicalClustering module in GenePattern, experiencing "Task failed to start" errors for multiple job submissions, which were resolved when support staff indicated a temporary computational resource allocation problem that was subsequently fixed, allowing previous jobs to run successfully.

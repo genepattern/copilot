@@ -1,0 +1,1 @@
+GenePattern cloud server user experienced access issues to https://cloud.genepattern.org, with support team confirming temporary server problems that were resolved by restarting the server, recommending user retry accessing the platform after the restart.

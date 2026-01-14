@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/QBwqFB5_G4o
+Title: Re: [gp-team] Log in error
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] Log in error
+13 views
+Skip to first unread message
+Ted (aka John) Liefeld
+unread,
+Feb 26, 2025, 9:52:08 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Courtney,
+
+
+Sorry this is happening to you. 
+
+
+Starting with the second error, the emails are case sensitive and the all lower-case version is what we have in the database for you, so it is simply not finding the mixed case version.
+
+
+For the first error ('unable to send...') it looks like it failed to connect to our mail server (at the Broad institute) but I cannot reproduce this with any of my testing so it might have been a transient network issue.  Try again using either your lower-case email or username.  If it continues to not work, the option would be for me to change the email for your account in the database and then have it send the new password to me instead.  I would then forward it to you and after login you can change your email back.
+
+Let me know if a retry works or if you want me to do the email shuffle,
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+On Wed, Feb 26, 2025 at 9:32 AM Courtney Katz <Courtn...@utsouthwestern.edu> wrote:
+
+
+Hello,
+
+ 
+
+I am trying to log in and keep receiving this error message. Please advise how I can fix this.
+
+ 
+
+Thanks,
+
+Courtney
+
+
+
+
+UT Southwestern
+
+
+
+
+Medical Center
+
+
+
+
+
+The future of medicine, today.
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/CH0PR14MB4929ED38DA46EBC8766772499FC22%40CH0PR14MB4929.namprd14.prod.outlook.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

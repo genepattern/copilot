@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/hLgf2f4Q5aE
+Title: Venn diagram
+----------------------------------------
+
+
+
+
+
+Venn diagram
+15 views
+Skip to first unread message
+
+Arun Jajoriya
+unread,
+Sep 20, 2021, 9:48:50 AM
+
+
+
+to GenePattern Help Forum
+Hello 
+
+
+I want to create the Venn diagram using excel/.txt files (which consists differet gene names and I want to represent the number of common gene names among different columns in the excell file) by GenePattern but I don't see any result. I tried using different file formats but I don't see creation of any Venn diagram. Could you please let me know if there is any instruction page/protocol on how to make Venn diagrams?
+
+
+Thanks in advance!
+
+
+Regards
+Arun
+Ted Liefeld
+unread,
+Sep 20, 2021, 11:45:31 AM
+
+
+
+to GenePattern Help Forum
+Arun
+
+
+the VennDiagram module is one of our old, deprecated, Java visualizers.  You may be able to get it to run by using the Visualizer Launcher detailed in this blog post
+
+
+https://www.genepattern.org/blog/2017/04/11/java-applet-visualizer-launcher-now-available
+
+
+If that does not work for you we will have to figure out another way to help you.  There are plenty of pages/posts detailing how to make a Venn diagram using Jupyter which you can probably use in the GenePattern Notebook environment.  If you want to try one of these we can try to create a notebook example for you
+
+
+hope this helps,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

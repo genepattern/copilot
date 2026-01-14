@@ -1,0 +1,1 @@
+GenePattern user encountered an issue generating a hierarchical clustering image with a custom color palette, specifically with color codes containing extra octets, which were resolved by stripping out the trailing "FF" transparency values to create valid hex color codes that the HierarchicalClusteringImage module could process successfully.

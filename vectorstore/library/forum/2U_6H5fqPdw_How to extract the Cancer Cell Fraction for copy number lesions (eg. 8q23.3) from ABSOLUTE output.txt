@@ -1,0 +1,1 @@
+`ABSOLUTE analysis question regarding extracting Cancer Cell Fraction (CCF) for specific chromosomal lesions from segmentation data, with GenePattern support team suggesting examining the 'segtab' dataframe in the .RData output for potential location of CCF information, but ultimately unable to provide definitive guidance on precise extraction method`

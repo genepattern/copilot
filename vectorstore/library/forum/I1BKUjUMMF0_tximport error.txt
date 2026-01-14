@@ -1,0 +1,1 @@
+GenePattern tximport thread summary focusing on resolving a Kallisto abundance file import error by requiring a transcriptome GTF/GFF3 file for mapping transcript identifiers to gene identifiers during import, with specific guidance that the transcriptome database must match the file used in the original Kallisto quantification workflow.

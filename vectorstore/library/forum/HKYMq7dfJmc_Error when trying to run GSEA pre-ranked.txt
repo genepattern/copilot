@@ -1,0 +1,1 @@
+User encountered "Essential container in task exited" error when attempting to run GSEA pre-ranked analysis, which was resolved when the technical support team fixed a Docker container image issue on DockerHub, after which subsequent job runs were successful with only minimal job failure unrelated to the original container problem.

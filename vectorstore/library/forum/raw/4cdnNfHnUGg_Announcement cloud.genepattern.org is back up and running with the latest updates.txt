@@ -1,0 +1,30 @@
+URL: https://groups.google.com./g/genepattern-help/c/4cdnNfHnUGg
+Title: Announcement: cloud.genepattern.org is back up and running with the latest updates
+----------------------------------------
+
+
+
+
+
+Announcement: cloud.genepattern.org is back up and running with the latest updates
+6 views
+Announcement
+Skip to first unread message
+GenePattern Help Forum
+unread,
+Dec 23, 2020, 1:17:59 PM
+
+
+
+to GenePattern Help Forum
+Today's maintenance period is complete and cloud.genepattern.org is back and up and running with the latest updates.
+
+
+Release notes are available at  https://github.com/genepattern/genepattern-server/releases/tag/v3.9_20.12.23_b307  
+
+
+Reply all
+
+Reply to author
+
+Forward

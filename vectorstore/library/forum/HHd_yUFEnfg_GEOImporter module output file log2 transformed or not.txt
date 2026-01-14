@@ -1,0 +1,1 @@
+A user asked how to determine if the GEOImporter module's output file (.gct) is log2 transformed, specifically for use with the ComparativeMarkerSelection module, and received advice to check the source data, with the recommendation to use PreprocessDataset for log2 transformation if needed or simply indicate the transformation state in ComparativeMarkerSelection.

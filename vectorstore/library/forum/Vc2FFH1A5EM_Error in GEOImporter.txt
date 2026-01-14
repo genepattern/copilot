@@ -1,0 +1,1 @@
+GEOImporter module in GenePattern experienced a system error when importing GEO accession data, caused by browser autofill inappropriately populating proxy username fields, which was resolved by manually clearing the autofilled proxy username and password parameters before running the import job.

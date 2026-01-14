@@ -1,0 +1,1 @@
+GISTIC module troubleshooting: A user experienced error messages when running GISTIC, which was resolved by a module update from the GenePattern team, with recommendation to rerun the analysis and potentially consult the GISTIC-specific forum if issues persist.

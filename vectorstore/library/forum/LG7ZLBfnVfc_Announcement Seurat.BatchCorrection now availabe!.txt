@@ -1,0 +1,1 @@
+Seurat.BatchCorrection module announcement in GenePattern platform, introducing a new computational method for correcting batch effects in single-cell RNA sequencing data using Seurat version 3.2.0, available on cloud.genepattern.org for researchers to standardize and integrate datasets across different experimental batches.

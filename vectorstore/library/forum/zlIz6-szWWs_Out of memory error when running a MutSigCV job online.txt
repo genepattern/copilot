@@ -1,0 +1,1 @@
+MutSigCV analysis on GenePattern web interface encountered persistent out-of-memory errors when processing a large TCGA Gastric Cancer dataset MAF file (250 MB, 240k mutations), with no immediate solution identified; GenePattern support suggested waiting a day or two and retrying, acknowledging an ongoing AWS-related issue that had not yet been resolved.

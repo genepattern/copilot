@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/5lZfP9gMbrw
+Title: SNP Copy Number and Loss of Heterozygosity Estimation public pipeline
+----------------------------------------
+
+
+
+
+
+SNP Copy Number and Loss of Heterozygosity Estimation public pipeline
+31 views
+Skip to first unread message
+
+Nik
+unread,
+Sep 14, 2022, 1:11:43 AM
+
+
+
+to GenePattern Help Forum
+Dear GenePattern team,
+
+I am currently trying to run "SNP Copy Number and Loss of Heterozygosity Estimation" on your public server. The pipeline is on your frontpage and has a documentation (https://cloud.genepattern.org/gp/pages/protocols/SnpCN.html), but I have some problems and questions.
+
+1) There are some example files, but the links are dead (e.g. GISTIC_Hind_subset.zip, sample_info_subset.txt). I also can not find them anywhere else and it would be really helpful to understand the inputs. 
+
+2) The old and lost CopyNumberInferencePipeline had the very important step called CopyNumberInference, whereas the signal intensities were converted to copy number calls, which are comparable to todays NGS calls. The current available pipeline has the step "XChromosomeCorrect", is this doing a similar procedure?
+If not how is this done nowadays? There seems to be a non-linear relation between sequencing vs microarray copynumber calls and I can not find any information about a solution except this module.
+
+3) Maybe this is related to 1), but I tried to run the module pipeline with what I think is the correct input. Sadly the SNPFileCreator breaks almost immediately.
+
+The error is this:
+Error: java.lang.NullPointerException
+java.lang.NullPointerException
+    at java.util.TimSort.sort(TimSort.java:182)
+    at java.util.Arrays.sort(Arrays.java:727)
+    at edu.mit.broad.cg.modules.PreProcess.Normalizer.getCurve(Normalizer.java:85)
+    at edu.mit.broad.cg.modules.PreProcess.ChipData.normalize(ChipData.java:472)
+    at edu.mit.broad.cg.modules.PreProcess.PreProcess.main(PreProcess.java:490)
+
+The log file is this:
+0     INFO  [main] APPLICATION - Logging initialized (via properties)
+2     INFO  [main] APPLICATION - Reading CDF File: /opt/gpcloud/gp_home/taskLib/SNPFileCreator.1.139//Mapping50K_Hind240.cdf
+1054  INFO  [main] APPLICATION - Processing CEL files
+1055  INFO  [main] APPLICATION - Processing...CYANS_p_TCGAb_422_423_424_NSP_GenomeWideSNP_6_D11_1513844.CEL
+1508  INFO  [main] APPLICATION - Txt File Not Found:
+1508  INFO  [main] APPLICATION - Median:0
+1508  INFO  [main] APPLICATION - Processing...CYANS_p_TCGAb_422_423_424_NSP_GenomeWideSNP_6_D12_1513742.CEL
+1658  INFO  [main] APPLICATION - Txt File Not Found:
+1658  INFO  [main] APPLICATION - Median:0
+1658  INFO  [main] APPLICATION - Read in 2 Files
+1658  INFO  [main] APPLICATION - Baseline:CYANS_p_TCGAb_422_423_424_NSP_GenomeWideSNP_6_D11_1513844
+1658  INFO  [main] NORM - Normalizing CYANS_p_TCGAb_422_423_424_NSP_GenomeWideSNP_6_D12_1513742 with reference CYANS_p_TCGAb_422_423_424_NSP_GenomeWideSNP_6_D11_1513844
+
+
+Thank you very much for your help.
+
+Ted Liefeld
+unread,
+Sep 14, 2022, 11:12:05 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+With respect to your question 1, it looks like the links to the datasets at the Broad Institute are no longer working.  We will fix this in the next release of GenePattern. There are copies of the 2 input files at
+
+
+https://datasets.genepattern.org/?prefix=data/GISTIC/
+
+
+ Wrt question 3, I was able to run the steps of the protocol using these versions without the error you encountered.
+
+
+I cannot answer your second question but we are contacting our collaborators to see if we can get an answer for you.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

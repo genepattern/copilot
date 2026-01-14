@@ -1,0 +1,215 @@
+URL: https://groups.google.com./g/genepattern-help/c/CgbNITiBPiU
+Title: Not enough mutations to analyze?
+----------------------------------------
+
+
+
+
+
+Not enough mutations to analyze?
+261 views
+Error
+mutsigcv
+Skip to first unread message
+
+Steve L
+unread,
+Aug 21, 2018, 12:51:25 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong): Hi, I have been trying to run MutSigCV on a group of patients that have had Whole Exome Sequencing done to see which genes are significantly mutated for that group.  I have formatted the MAF file into the format required and am using the exome_full192.coverage.txt file as well as the gene.covariates.txt provide. However I am getting the stderr.txt:
+
+
+Error using gp_MutSigCV>MutSig_runCV (line 850)
+not enough mutations to analyze
+
+
+Error in gp_MutSigCV (line 194)
+ 
+
+And the stdout.txt:
+
+
+MutSigCV: PREPROCESS
+--------------------
+Loading mutation_file...
+Loading coverage file...
+Processing mutation "effect"...
+Will use the pre-existing "effect" column.
+Processing mutation "categ"...
+"categ" of mutation_file does not match coverage_file.  Ignoring it.
+NOTE:  unable to perform category discovery, because Chromosome/Start_position/Reference_Allele/Tumor_Seq_Allele1/Tumor_Seq_Allele2 missing from mutation_file.Will use two categories: missense and null+indel.
+Collapsing coverage...
+Writing preprocessed files.
+MutSig_preprocess finished.
+
+
+
+
+MutSigCV: RUN
+-------------
+Loading mutation_file...
+Loading coverage file...
+Loading covariate file...
+NOTE:  728/9679 gene names could not be mapped to coverage information.  Excluding them.
+Building n and N tables...
+
+
+I have hundreds or thousands of mutations for each sample. Is the minimum of mutations that is required? Thank you very much for your time and help in advance!
+
+Job ID if run on a publicly available server. #1718330
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Aug 27, 2018, 1:42:36 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It may be that you have too few silent mutations.
+
+
+https://software.broadinstitute.org/cancer/cga/node/119
+
+
+
+That is from the archived CGA forum. 
+
+
+You might also try contacting the developers at mutsi...@broadinstitute.org
+
+
+You might also take a look at the stdout.txt which reports issues with gene names and categories, which may be preventing the algorithm from getting all of the information it needs to run correctly.
+
+
+Best
+-Barbara
+Steve L
+unread,
+Aug 27, 2018, 2:13:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thank you for the advice! I will give that a try. What is the purpose of the silent mutations? Will those silent mutations contribute to "significant" genes?
+
+
+Thanks!!
+-Steve
+
+Barbara Hill
+unread,
+Aug 27, 2018, 2:40:41 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Steve, 
+
+
+As a GenePattern team member, I'm afraid I am just the messenger here. We did not write MutSig, nor do we maintain its algorithm.
+
+
+If you write to the MutSig development team, they may be able to answer that question.
+
+
+All the best
+-Barbara
+
+
+
+Steve L
+unread,
+Aug 28, 2018, 6:31:25 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Since I did not have any silent mutations, I put in an equal number of "dummy" silent mutations to the data. However instead of getting "not enough mutations to analyze," I am receiving the error:
+
+
+
+Error using gp_MutSigCV>MutSig_runCV (line 854)
+
+silent and nonsilent rates are too different
+
+Error in gp_MutSigCV (line 194)
+
+
+
+I am using the full coverage.txt file that is provided on the shared folder.
+
+
+Thanks!
+-Steve
+
+Barbara Hill
+unread,
+Sep 7, 2018, 12:59:11 PM
+
+
+
+to GenePattern Help Forum
+Hi Steve,
+
+
+Again, this is very far outside my area of expertise, but I searched the forum I linked to before and found this: https://software.broadinstitute.org/cancer/cga/node/103
+ 
+I also found a note from gsaksena suggesting that this may be due to having only 1 sample - you have more than 1 sample, yes? 1 sample is too few.
+
+
+Best
+-Barbara
+tingting gao
+unread,
+Jul 8, 2020, 1:30:40 PM
+
+
+
+to GenePattern Help Forum
+Hello Steve,
+
+
+How are you? Have you solved this problem? I have the same probelm with you. Can you tell me how to modify it, if you solve this problem? Thank you very much.
+
+
+Thanks,
+Tingting
+
+在 2018年8月21日星期二 UTC-5下午2:51:25，Steve L写道：
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,70 @@
+URL: https://groups.google.com./g/genepattern-help/c/L1xLo0KTDuI
+Title: Error running SurvivalDifference and CoxRegression
+----------------------------------------
+
+
+
+
+
+Error running SurvivalDifference and CoxRegression
+9 views
+Skip to first unread message
+
+Alexandra Glathar
+unread,
+Mar 25, 2025, 11:43:12 AM
+
+
+
+to GenePattern Help Forum
+Hello! 
+
+
+I am trying to run survival analyses on some TCGA patient data but any program I try to run I get the error "Could not find or load main class RunR" no matter what parameters I change. Any help would be appreciated.
+
+
+Ted Liefeld
+unread,
+Mar 25, 2025, 12:59:59 PM
+
+
+
+to GenePattern Help Forum
+Alexandra,  
+
+
+I see the errors and I am looking into it.  I will let you know when there is a resolution or workaround.
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Mar 25, 2025, 3:28:58 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+SurvivalDifference is running again using the test data from the documentation (https://datasets.genepattern.org/?prefix=gpftp/pub/genepattern/example_files/CoxRegression/).
+CoxRegression is also running again using the same data.
+
+I did not have success running using your data but I am not certain of the correct parameter settings and I am not familiar with either of these analyses or the R language they are written in.  Hopefully they will work for you now.
+
+
+Hope this helps
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

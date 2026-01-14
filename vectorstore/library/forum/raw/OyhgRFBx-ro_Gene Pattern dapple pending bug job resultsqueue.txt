@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/OyhgRFBx-ro
+Title: Gene Pattern dapple pending? bug job results/queue?
+----------------------------------------
+
+
+
+
+
+Gene Pattern dapple pending? bug job results/queue?
+23 views
+Skip to first unread message
+
+DIANA
+unread,
+Jan 3, 2023, 12:55:51 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I have a pending issue on the gene pattern website. I'm using the dapple tool and I don't have any jobs running besides my one file (only one job running...) and it says I have 17 jobs ahead of me. It's telling me it's going to take several days when it usually just takes 10 minutes. 
+
+
+Does anyone else have this issue? Is this a bug?
+
+
+Best,
+Diana
+Ted Liefeld
+unread,
+Jan 3, 2023, 12:59:14 PM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+it appears the AWS queue is wedged for some reason.  I will look into it and try to get things moving again
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Jan 3, 2023, 1:11:06 PM
+
+
+
+to GenePattern Help Forum
+I have the queue operating normally again and your job has started.  Please let me know if you experience any additional problems,
+
+
+Thanks for letting us know about this
+
+
+Ted
+
+
+
+DIANA
+unread,
+Jan 3, 2023, 1:40:23 PM
+
+
+
+to GenePattern Help Forum
+
+Thank you for getting the queue working again!
+
+
+
+Reply all
+
+Reply to author
+
+Forward

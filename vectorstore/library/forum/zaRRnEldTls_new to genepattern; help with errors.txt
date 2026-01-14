@@ -1,0 +1,1 @@
+A new GenePattern user encountered an error when attempting to run GSEA pre-ranked analysis with a filtered gene expression file, and the recommended solution was to use the complete dataset with ranking information for all expressed genes, not just significant ones, to ensure proper analysis and avoid processing errors.

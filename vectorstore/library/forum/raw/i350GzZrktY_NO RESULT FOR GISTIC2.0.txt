@@ -1,0 +1,990 @@
+URL: https://groups.google.com./g/genepattern-help/c/i350GzZrktY
+Title: NO RESULT FOR GISTIC2.0
+----------------------------------------
+
+
+
+
+
+NO RESULT FOR GISTIC2.0
+202 views
+Skip to first unread message
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 5:45:58 AM
+
+
+
+to GenePattern Help Forum
+I am not getting results after GISTIC2.0 analysis. The filenames I got are: gistic_inputs.mat, remote_stderr.txt and remote_stdout.txt
+Can you help me with this?
+
+Ted Liefeld
+unread,
+Aug 2, 2023, 6:30:57 AM
+
+
+
+to GenePattern Help Forum
+Can you give us a job number to look into?  Other GISTIC jobs are running fine as of 6:27 AM PST so its not a systemic failure
+
+
+Ted
+
+
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 8:23:04 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your response. My job number is below.
+
+
+
+
+
+523600. GISTIC_2.0
+
+
+Ted Liefeld <lie...@broadinstitute.org>, 2 Ağu 2023 Çar, 16:32 tarihinde şunu yazdı:
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/i350GzZrktY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e14d37a8-5f69-4c76-9b96-62b0c2ca6b3cn%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 2, 2023, 8:44:47 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+if you look at the remote_stdout.txt file that was generated, it contains the following error;
+
+
+GISTIC 2.0 input error detected:
+22441 segment overlaps detected in file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/6645/segment_edit3.txt'.
+First overlap detected between segments at lines 548 and 1596.
+
+
+So it looks like it is probably an issue with your input data.  I am not familiar enough with GISTIC data to diagnose the exact issue with your input file, but you should check your data against the GISTIC documentation.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 9:25:26 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your response. I will check the input file and then again try to run the GISTIC. 
+
+2 Ağustos 2023 Çarşamba tarihinde Ted Liefeld <lie...@broadinstitute.org> yazdı:
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Aug 2, 2023, 9:31:04 AM
+
+
+
+to GenePattern Help Forum
+That many segment overlaps is an indication that you have multiple tumors within your seg file with the same name.
+Every tumors has to have a unique identifier, and no tumor within a seg file can have overlapping segments.
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 10:34:50 AM
+
+
+
+to genepatt...@googlegroups.com
+When you say tumor, do you mean sample id? So I got this seq file from tcga and edited it to include only the desired 6 columns and ran the analysis like that. I did not understand how to solve this problem.
+
+2 Ağustos 2023 Çarşamba tarihinde Andrew Cherniack <ache...@broadinstitute.org> yazdı:
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+Andrew Cherniack
+unread,
+Aug 2, 2023, 11:13:46 AM
+
+
+
+to genepatt...@googlegroups.com
+The first column ahould be tumor ids.
+Can you post a few lines of what your seg file looks like?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 11:22:20 AM
+
+
+
+to genepatt...@googlegroups.com
+I can't share the whole thing because of the file size. That's why I'm sharing the first few lines as screenshots.
+
+
+
+
+
+Andrew Cherniack <ache...@broadinstitute.org>, 2 Ağu 2023 Çar, 21:13 tarihinde şunu yazdı:
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+WhatsApp Image 2023-08-02 at 21.19.02.jpeg
+Andrew Cherniack
+unread,
+Aug 2, 2023, 11:50:25 AM
+
+
+
+to genepatt...@googlegroups.com
+The format looks fine.
+
+
+22441 overlapping segments likely indicate that you have samples (TCGA-##-####-01) in your sig file more than once.
+
+
+
+Andy
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 1:48:33 PM
+
+
+
+to genepatt...@googlegroups.com
+In the first version of this dataset, there were 01A, 01B phrases at the end of the sample names. However, when I removed these A and B expressions, some sample names became the same. So I guess this will work when I reduce the repeated samples that are the same to a single number and do the analysis again, right?
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+Andrew Cherniack
+unread,
+Aug 2, 2023, 1:51:37 PM
+
+
+
+to genepatt...@googlegroups.com
+Correct.  
+That should fix it.
+
+
+_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVN_GoFFM7deUE%2BBEEebXqVct5t2FoHVBqWc%3DEVeBPhKQ%40mail.gmail.com.
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 2:10:59 PM
+
+
+
+to genepatt...@googlegroups.com
+When I removed the rows with the common sample ids and did the analysis again, I could not get a result. I really can't find where the problem is. Thank you very much for everything and sorry for asking so many questions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVN_GoFFM7deUE%2BBEEebXqVct5t2FoHVBqWc%3DEVeBPhKQ%40mail.gmail.com.
+
+
+--
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6UYi%2BCFRTT0Jrhe6tdHNxyRatHipFOvB5hBp-sy_qFP4A%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Aug 2, 2023, 2:15:46 PM
+
+
+
+to genepatt...@googlegroups.com
+Please provide a job number again and I will take another look
+
+
+Ted
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVN_GoFFM7deUE%2BBEEebXqVct5t2FoHVBqWc%3DEVeBPhKQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6UYi%2BCFRTT0Jrhe6tdHNxyRatHipFOvB5hBp-sy_qFP4A%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRUt_08jh%2BCp6%2BbzSWAjgG9wT2dCEn8MdC9ZXjTbTQCSgA%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Güllü Elif Özdemir
+unread,
+Aug 2, 2023, 3:02:11 PM
+
+
+
+to genepatt...@googlegroups.com
+Of course. Job number is 523810.
+
+3 Ağustos 2023 Perşembe tarihinde Ted Liefeld <lie...@broadinstitute.org> yazdı:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVN_GoFFM7deUE%2BBEEebXqVct5t2FoHVBqWc%3DEVeBPhKQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6UYi%2BCFRTT0Jrhe6tdHNxyRatHipFOvB5hBp-sy_qFP4A%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRUt_08jh%2BCp6%2BbzSWAjgG9wT2dCEn8MdC9ZXjTbTQCSgA%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdT64Jws-0r9K-bqM8-OBHKvqPGehYx4FFmhyRGmVimQvw%40mail.gmail.com.
+
+Andrew Cherniack
+unread,
+Aug 3, 2023, 5:48:18 AM
+
+
+
+to genepatt...@googlegroups.com
+Make sure you have no extra lines in your seg file after you removed the duplicates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d550e4b7-f100-4a08-a423-3eb0a8f56caen%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/81f600d2-1aa5-446e-8399-950fc64cfad1n%40googlegroups.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRWzHVJOzhhmHeUxHQT-C5G_sT%2BwQuD5G63g-0Ts8VoR-Q%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6VgqthS7VeqMaXX4HUvyrz2Hg9S3hkd4ewLZSHCCvcmDA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVOrTUZs%3D7HyBmKBw8Q-9a8dQBr%3DpY6j99U1AhHGqcGGA%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6X0L%3DY9%3D98BZpBQdk%2BucZJiyfyAhXYdBssNWpdwtxfGyQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRVN_GoFFM7deUE%2BBEEebXqVct5t2FoHVBqWc%3DEVeBPhKQ%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6UYi%2BCFRTT0Jrhe6tdHNxyRatHipFOvB5hBp-sy_qFP4A%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRUt_08jh%2BCp6%2BbzSWAjgG9wT2dCEn8MdC9ZXjTbTQCSgA%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdT64Jws-0r9K-bqM8-OBHKvqPGehYx4FFmhyRGmVimQvw%40mail.gmail.com.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGsjeRX578wmyWJBdnPdcq6xLcO%3DN79oAE%3D4Nmienj5-zjKaVg%40mail.gmail.com.
+
+Ted Liefeld
+unread,
+Aug 3, 2023, 8:56:11 AM
+
+
+
+to GenePattern Help Forum
+For the job # you gave, this is the error.
+
+
+GISTIC 2.0 input error detected:
+
+Error scanning segment file '/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/jobResults/6722/segment_edit_trial.txt':
+Mismatch between file and format string.
+Trouble reading number from file (row 1u, field 3u) ==> "1"	62920	2949336	583	0.0665
+
+
+You can see these errors yourself if you just look at the remote_stdout.txt and remote_stderr.txt.
+
+
+Ted
+
+Güllü Elif Özdemir
+unread,
+Aug 7, 2023, 1:56:36 AM
+
+
+
+to genepatt...@googlegroups.com
+I re-examined what you said and tried it. However, I could not perform GISTIC analysis for the CNA data I downloaded from any TCGA. Then I downloaded and tried the CNA data from Firehose and the problem was solved. Thanks for your help.
+
+
+
+Ted Liefeld <lie...@broadinstitute.org>, 3 Ağu 2023 Per, 18:56 tarihinde şunu yazdı:
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d718efac-af8d-40ea-b6c6-36b30a36593fn%40googlegroups.com.
+
+shahin rmz
+unread,
+Sep 20, 2023, 5:10:50 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+Could you please tell me which cna Data did you use that brought the results to you?
+I am using CNA from Firehose in cBioportal and get dimentional error.
+other than that, could not find any data that has right dimentions.
+Thanks for sharing experience.
+
+
+Screenshot from 2023-09-20 14-09-49.png
+Ted Liefeld
+unread,
+Sep 20, 2023, 10:40:41 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+This seems to be a different issue than the initial author of this thread.  Can you start a new thread and include a job number so that we may look at what is happening?
+
+
+Thanks
+
+
+Ted
+
+Andrew Cherniack
+unread,
+Sep 20, 2023, 12:38:03 PM
+
+
+
+to GenePattern Help Forum
+Shahin,
+
+
+How did you save this file? 
+
+
+Can you post the seg file that you are using in GISTIC.
+
+
+Regards,
+Andy
+
+shahin rmz
+unread,
+Sep 20, 2023, 1:34:18 PM
+
+
+
+to GenePattern Help Forum
+Thanks for your reply.
+As already mentioned, I am trying to learn it by "Learning by doing method." (which I always do). But I end up with many stupid questions, which I don't want to spam the Forum with.
+That's why I search for the answers in the "already posted questions" or documentations.
+The job that I have had problem with, had the ID of 
+534236.
+However, now I have done another job, which is 534264. and it was successful. I am now trying to figure out how to interpret it.
+Any helpful resources will be most welcome.
+Best
+Shahin 
+
+
+
+shahin rmz
+unread,
+Sep 20, 2023, 1:45:45 PM
+
+
+
+to GenePattern Help Forum
+Hi Andrew, thanks for reply.
+sure I will post the seg file.
+I have used seg file of all patients with Glioblastoma who had Stag2 gene alterations.
+However, it seems that the data can not be used with GISTIC2 algorithm.
+After that I have used the seg file of all patients of the study, and it worked!
+Now want to interpret the results.
+in my file, I had manually merged all data from 14 patients who had GBM and had Stag2 gene alterations.
+Best
+Shahin
+
+shahin rmz
+unread,
+Sep 20, 2023, 2:09:10 PM
+
+
+
+to GenePattern Help Forum
+I can not post the file here anyhow
+shahin rmz
+unread,
+Sep 20, 2023, 2:30:12 PM
+
+
+
+to GenePattern Help Forum
+This is a very short version of my file.
+the original one has +2 500 000 rows and 140 Mb Volume!
+
+
+total_half.txt
+Andrew Cherniack
+unread,
+Sep 20, 2023, 5:43:06 PM
+
+
+
+to genepatt...@googlegroups.com
+This is not the correct input file for GISTIC.
+It should be a .seg file that looks like  this.
+
+
+https://software.broadinstitute.org/software/igv/SEG
+
+
+
+
+
+
+--
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/i350GzZrktY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6edac16d-14dd-41fc-bdeb-73629d8b909cn%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

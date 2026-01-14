@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ptuqw30IxHo
+Title: ssGSEA---enrichment score output
+----------------------------------------
+
+
+
+
+
+ssGSEA---enrichment score output
+338 views
+Skip to first unread message
+
+Yasmin Kamal
+unread,
+Oct 17, 2017, 12:40:54 PM
+
+
+
+to GenePattern Help Forum
+Hi, 
+I had a question about ssGSEA on gene pattern. 
+
+Specifically, I read through the Barbie et al., paper and it appears that they normalized the enrichment scores after performing ssGSEA. However, the scores i get are in the 100-1000s range. My question is, the dataset output of enrichment scores from the ssGSEA module in gene pattern, are those scores normalized, or can they be used as is in say regression models? 
+
+
+
+
+i can be found on gene pattern under the account ykamal. 
+
+Thank you! 
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Oct 30, 2017, 12:57:17 PM
+
+
+
+to GenePattern Help Forum
+Hello Yasmin, 
+
+
+Unfortunately, the person best able to answer this question is out of the office. I've notified him of your question and he will get back to you as soon as he is able.
+
+
+Apologies for the delay.
+
+
+Best
+
+
+-Barbara
+David Eby
+unread,
+Nov 7, 2017, 9:14:48 PM
+
+
+
+to GenePattern Help Forum
+Hi Yasmin,
+
+
+Sorry for the delay.  We had to get an answer from the author who has moved on to a different institution and it took a while for the reply.  Here is his answer:
+The output ssGSEA are not normalized and should be considered as measured in arbitrary units. For the purposes of downstream analysis e.g. matching the ssGSEA scores against a phenotype etc, they can be normalized or standardized.
+I hope that helps!
+Regards,
+David
+
+
+Reply all
+
+Reply to author
+
+Forward

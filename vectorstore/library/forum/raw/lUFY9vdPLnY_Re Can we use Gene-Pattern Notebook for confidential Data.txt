@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/lUFY9vdPLnY
+Title: Re: Can we use Gene-Pattern Notebook for confidential Data
+----------------------------------------
+
+
+
+
+
+Re: Can we use Gene-Pattern Notebook for confidential Data
+20 views
+Skip to first unread message
+Message has been deleted
+tmt...@cloud.ucsd.edu
+unread,
+Jun 1, 2023, 10:03:56 AM
+
+
+
+to GenePattern Help Forum
+Hello Vivek,
+
+
+I am uncertain how confidential your data is, but the GenePattern Notebook Workspace isn't intended for use with Protected Health Information (PHI). If you feel that your data would fall under this category, we recommend that you download your own copy of GenePattern Notebook and run it on your computer. Instructions for doing this can be found at the link below:
+
+
+https://gpnotebook-website-docs.readthedocs.io/en/latest/local-installation/
+
+
+Thorin Tabor
+GenePattern Team
+
+
+
+On Thursday, June 1, 2023 at 7:33:36 AM UTC-7 viv...@iiitd.ac.in wrote:
+
+Hello,
+
+
+I am working on whole exam sequencing DNA data from multiple repositories which is not published and open-source yet. If I want to use the Gene-Pattern notebook, I have to upload the data files in their server. So, I would like to know does the Gene-Pattern keeps the data confidential and delete after job completion. Can I securely upload the confidential data to Gene-Pattern servers to run their inbuilt tools and notebook. Please suggest.
+
+
+Thanks
+Vivek Ruhela 
+
+
+Reply all
+
+Reply to author
+
+Forward

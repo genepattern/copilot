@@ -1,0 +1,1 @@
+A user encountered an issue with the GenePattern Expression File Creator module, experiencing an error indicating no CEL files were found despite uploading a zip file containing CEL files, and sought guidance on proper file formatting and whether a CLM or CDF file was required for successful module execution.

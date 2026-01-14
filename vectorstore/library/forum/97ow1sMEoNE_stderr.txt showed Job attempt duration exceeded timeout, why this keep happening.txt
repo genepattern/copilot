@@ -1,0 +1,1 @@
+A user encountered a "Job attempt duration exceeded timeout" error when running an RNA-seq pipeline with Tophat and Cufflinks on GenePattern, with a file size under 1GB, and received advice to try the pipeline with a smaller dataset and verify the job details, though no definitive resolution was provided in the thread.

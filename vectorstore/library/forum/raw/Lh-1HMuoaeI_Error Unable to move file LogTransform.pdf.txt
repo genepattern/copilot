@@ -1,0 +1,142 @@
+URL: https://groups.google.com./g/genepattern-help/c/Lh-1HMuoaeI
+Title: Error: Unable to move file: LogTransform.pdf
+----------------------------------------
+
+
+
+
+
+Error: Unable to move file: LogTransform.pdf
+47 views
+Skip to first unread message
+
+Tim Chan
+unread,
+Jun 27, 2021, 9:46:50 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I was following the tutorial at https://www.genepattern.org/blog/2012/12/15/creating-a-genepattern-module but encountered an error while trying to save the new module.
+
+
+Any idea? What does the error message mean?
+
+Screen Shot 2021-06-28 at 2.43.15 pm.png
+Ted Liefeld
+unread,
+Jun 28, 2021, 9:33:00 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+To help us diagnose this issue, could you tell us what version of GenePattern you are using (from the about page) and whether this was happening in the initial save of the module or if it was in an edit after it had already been saved one or more times?  Also if GenePattern server running directly in an OS please let us know which one, or if it is in docker, the docker container version.
+
+
+As an experiment try to delete the logTransform.pdf file and see if this repeats or if the error repeats for a different file.  Since help files are handled slightly differently (and pdfs are assumed to be help files) it would be useful to know if this problem only affects the pdf or if other file types are affected as well.
+
+
+Thanks
+
+Ted
+
+
+
+Tim Chan
+unread,
+Jun 29, 2021, 3:18:08 AM
+
+
+
+to GenePattern Help Forum
+Thanks,
+
+
+I started a brand new installation with docker:
+
+
+wget https://raw.githubusercontent.com/genepattern/genepattern-server/develop/docker/start-genepattern.sh
+chmod a+x start-genepattern.sh
+./start-genepattern.sh
+
+
+Next I simply followed the tutorial on my new installation, but encountered the error. I've recorded the video at:
+https://drive.google.com/file/d/1IhLdZuWFhB437BrrD32NMzBDo3tGP4mI/view?usp=sharing 
+
+At the end of the video you will see the error.
+
+Ted Liefeld
+unread,
+Jul 1, 2021, 8:35:04 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+there was an intermittent issue with the file rename operation where it failed sometimes.  In trying to get more information about the failures I changed the code to use a slightly different method that would give more details (switched from java.io.File rename() to java.nio.Files move() method for any who see this and are interested) and now its working without error for me every time.  The fix will be in the next release but i have pushed a new docker container that you can try without waiting.
+
+
+Try running the script as before but provide the version tag "genepattern/genepattern-server:test_070121"  instead of using the default.
+
+
+e.g.     ./start-genepattern.sh -v test_070121 
+
+
+Please let me know if this works for you.
+
+
+Ted
+
+
+
+Tim Chan
+unread,
+Jul 4, 2021, 1:05:29 AM
+
+
+
+to GenePattern Help Forum
+Thanks for the help,
+
+
+I did the following steps:
+Removed all running and exited containers
+Removed the genepattern docker image
+Run "./start-genepattern.sh -v test_070121" to download the docker image again
+However, I'm still getting the same error while creating a module.
+
+
+By trial and errors, I've found no error come out if I remove the "taskLib" volume binding in docker (towards the end of start-genepattern.sh).
+
+
+The new docker command I used:
+
+
+    docker run -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD -v $PWD/resources:/opt/genepattern/resources  -v $PWD/jobResults:/opt/genepattern/jobResults -v $PWD/users:/opt/genepattern/users  -p 8888:8888 -p 8080:8080  -d --name "$name" genepattern/genepattern-server:$VERSION /opt/genepattern/StartGenePatternServer
+
+
+There is no taskLib here because I removed it.
+
+Ted Liefeld
+unread,
+Jul 6, 2021, 9:30:40 AM
+
+
+
+to GenePattern Help Forum
+From what you say it seems likely that there is a file permissions issue with your local (host) tasklib directory such that the docker container cannot write to it.  By removing the volume mount GenePattern will simply use a folder inside the container that is not exposed on the host machine (ie your laptop).  This should run fine, however if you were to delete the container (or try to update to a newer version of the GenePattern container) your old installed modules would be lost. 
+
+
+Reply all
+
+Reply to author
+
+Forward

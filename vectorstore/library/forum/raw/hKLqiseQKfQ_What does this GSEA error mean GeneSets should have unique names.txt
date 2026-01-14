@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/hKLqiseQKfQ
+Title: What does this GSEA error mean? "GeneSets should have unique names"
+----------------------------------------
+
+
+
+
+
+What does this GSEA error mean? "GeneSets should have unique names"
+425 views
+Error
+GSEA
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Jan 28, 2019, 1:07:34 PM
+
+
+
+to GenePattern Help Forum
+Thanks for your interest in GSEA and MSigDB. This error message is usually a
+result of using both a parent collection and a sub-collection (such as C2 and
+CP:CP:KEGG) at the same time in an analysis run. GSEA requires unique gene set
+names, but since the parent collection holds all of the items in the
+sub-collection, GSEA will flag all of these as duplicates.
+
+Just use the parent collections without any of their sub-collections and the
+issue should go away.
+
+
+
+Sincerely,
+The GenePattern Team
+Johanna Daily
+unread,
+Feb 5, 2019, 7:46:06 AM
+
+
+
+to GenePattern Help Forum
+thanks, it does seem that when I use a different dataset results are provided
+thank you!
+johanna
+
+
+
+Reply all
+
+Reply to author
+
+Forward

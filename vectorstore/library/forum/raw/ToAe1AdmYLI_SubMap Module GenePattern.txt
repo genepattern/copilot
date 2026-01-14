@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/ToAe1AdmYLI
+Title: SubMap Module GenePattern
+----------------------------------------
+
+
+
+
+
+SubMap Module GenePattern
+34 views
+Skip to first unread message
+
+corin...@gmail.com
+unread,
+Apr 23, 2019, 4:51:57 AM
+
+
+
+to GenePattern Help Forum
+The Adobe Acrobat Document corresponding to the SubMap_SAmatrix is empty (0 KB file).
+ 
+Analysis #112991
+
+
+Thanks.
+
+
+Corina Lorz
+
+
+
+
+
+SubMap_Bonferroni_SAmatrix.gct
+
+SubMap_FDR_SAmatrix.gct
+
+SubMap_SubMapResult.txt
+
+SubMap_nominal_p_matrix_AonB.gct
+
+SubMap_nominal_p_matrix_BonA.gct
+
+stderr.txt
+
+stdout.txt
+Barbara Hill
+unread,
+Apr 29, 2019, 12:36:14 PM
+
+
+
+to GenePattern Help Forum
+Hello Corina, 
+
+
+I've done a bunch of digging and I think this may be a transient problem with R. Have you run this again? (I'd also suggest remove the spaces from the names of your .cls files)
+
+
+All the best
+-Barbara
+corin...@gmail.com
+unread,
+May 1, 2019, 2:20:20 AM
+
+
+
+to genepatt...@googlegroups.com
+Many thanks Barbara,
+I will run it again following your suggestions.
+
+
+Corina
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/14304869-ed44-4537-9316-2af5c8b2e399%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

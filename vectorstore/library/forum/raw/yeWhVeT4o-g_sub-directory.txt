@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/yeWhVeT4o-g
+Title: sub-directory
+----------------------------------------
+
+
+
+
+
+sub-directory
+16 views
+Skip to first unread message
+
+Roser Pinyol
+unread,
+May 8, 2024, 2:48:07 PM
+
+
+
+to GenePattern Help Forum
+My intention was to move one sub-directory to hang directly from the "uploads" directory. When I pressed move, all my files and directories and sub-directories disappeared from my profile. 
+Someone knows how I could restore them?
+Thanks
+
+
+Ted Liefeld
+unread,
+May 9, 2024, 6:16:21 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+There appears to be a bug in the directory renaming and directory move operations on the cloud server at the moment.  We have created a ticket for that and an engineer will begin working on it shortly, but a deployed fix is unlikely before June.
+
+
+Assuming you are using the r.pinyol account, I see a number of files and directories are present in our file storage.  I will try to recover the files for you but will not be able to recover the directory structure until the fix is created and deployed.  This will take several hours.  It might be faster to upload them again.
+
+
+Also, many of your directory and file names  contain spaces and special characters.  You will have seen the warning when uploading them (and creating the directories) that this can cause problems.  if you re-upload them, please rename them first to avoid the special characters or I cannot guarantee that further problems will not occur.
+
+
+Thanks for your pateince
+
+
+Ted
+
+Ted Liefeld
+unread,
+May 9, 2024, 6:58:52 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+I think that your files have been restored, please confirm.
+
+
+I was not able to restore your directory structure.
+I had to rename many of your files, replacing special characters with underscores.
+
+
+As mentioned before, there is a problem with directory moves.  You should be able to move files to newly created directories, provided the directory names do not contain special characters.  If you see an issue again, please contact me directly immediately so that I can try to save just a few files instead of many.  I believe you should have my email from our other correspondence a week or 2 ago. 
+
+
+Hope this helps,
+
+
+Ted
+
+
+
+Roser Pinyol
+unread,
+May 9, 2024, 9:12:10 AM
+
+
+
+to genepatt...@googlegroups.com
+Many thanks!!
+Best wishes
+Roser
+
+
+Missatge de 'Ted Liefeld' via GenePattern Help Forum <genepatt...@googlegroups.com> del dia dj., 9 de maig 2024 a les 15:58:
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/yeWhVeT4o-g/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/bfd9a42c-9bc3-4c8a-b255-819019a3ac84n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

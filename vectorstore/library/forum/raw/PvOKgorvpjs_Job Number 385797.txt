@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/PvOKgorvpjs
+Title: Job Number: 385797
+----------------------------------------
+
+
+
+
+
+Job Number: 385797
+23 views
+Skip to first unread message
+
+Daryl Griffin
+unread,
+Oct 18, 2021, 5:25:48 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+Im receiving the following error when trying to VoomNormalise my data (Job Number: 385797):
+
+
+Error in if (fit$rank < ncol(design)) { : argument is of length zero Calls: GP.preprocess.read.counts -> voom Execution halted
+
+
+
+Can you assist please. Im doing this so i can use the DESeq2 module but the data used was brought in using GEOIMporter:Job Number 385323.  Is there another way to import it so its in a ready format for DESeq2 analysis?
+
+
+Best,
+Daryl
+
+
+Anthony Castanza
+unread,
+Oct 18, 2021, 9:59:27 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Daryl,
+
+ 
+
+This dataset is from a microarray platform (GSE72865 is tagged as Platform: GPL10558 Illumina HumanHT-12 V4.0 expression beadchip) and not a sequencing based one. The both Voom and DESeq2 expect counts from RNA-seq so Voom failing is expected, and DESeq2 should as well (or would return a non-statistically valid result). I believe that the correct module to analyze this data would be the ComparativeMarkerSelection tool, but any of my colleagues here can feel free to chime in and correct me.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e05074e3-c254-4c9a-bde4-8823021fead5n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

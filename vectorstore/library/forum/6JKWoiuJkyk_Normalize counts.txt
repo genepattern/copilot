@@ -1,0 +1,1 @@
+A user asked how to normalize RNA-seq count data in GenePattern without programming knowledge, and received guidance to use the DESeq2 module to output normalized counts as a GCT file, with a recommendation to first remove rows without gene information that contained only '2' values to prevent potential module errors.

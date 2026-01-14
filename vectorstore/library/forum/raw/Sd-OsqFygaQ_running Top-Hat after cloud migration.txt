@@ -1,0 +1,81 @@
+URL: https://groups.google.com./g/genepattern-help/c/Sd-OsqFygaQ
+Title: running Top-Hat after cloud migration
+----------------------------------------
+
+
+
+
+
+running Top-Hat after cloud migration
+23 views
+Skip to first unread message
+
+Charul Jani
+unread,
+Feb 20, 2019, 9:56:49 AM
+
+
+
+to GenePattern Help Forum
+
+
+ have used Top-Hap module on GenePattern multiple times in the past. In last two days, when I try to use it, I get errors. 
+One of the error message I receive is "Error: An error occurred while submitting the job: Error updating upload file record for file 'tmp': null"
+
+
+
+Job ID if run on a publicly available server.- 179881. TopHat
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values? Default
+   Server Platform (Mac/Linux)? Mac
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues: stderr.txt file attached 
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+
+stderr.txt
+mohamm...@yale.edu
+unread,
+Feb 24, 2019, 3:45:22 PM
+
+
+
+to GenePattern Help Forum
+I am having the same error occur but with the GSEA module.
+
+Barbara Hill
+unread,
+May 24, 2019, 1:19:32 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Apologies for the delay.
+
+
+Are either of you still having trouble submitting your jobs?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,149 @@
+URL: https://groups.google.com./g/genepattern-help/c/30C7avP4nl4
+Title: Help with ssGSEA
+----------------------------------------
+
+
+
+
+
+Help with ssGSEA
+58 views
+Skip to first unread message
+
+Patricia Muskus
+unread,
+Sep 9, 2024, 8:50:53 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am obtaining the following error when attempting to run the ssGSEA module: 
+
+
+Error in `[.data.frame`(column.names, 3:length(column.names)) : undefined columns selected Calls: ssGSEA.cmdline Execution halted
+
+
+
+602548. ssGSEA
+
+
+
+Thanks in advance!
+
+
+
+
+Anthony Castanza
+unread,
+Sep 9, 2024, 9:00:27 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Patricia,
+
+
+The gct file you used appears to be, internally, an xml file. This is typically caused by renaming an .xlsx file produced by excel to gct directly. In order to create a properly formatted GCT file it first must be saved out of excel as tab delimited text (.txt) and only then can it be renamed to .gct.
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/033ebe61-54ef-463a-bc26-43d97608fe78n%40googlegroups.com.
+
+Patricia Muskus
+unread,
+Sep 9, 2024, 10:55:21 AM
+
+
+
+to GenePattern Help Forum
+Thanks Anthony, ssGSEA worked!
+
+
+I'm now trying to visualize the results using the ConstellationMap module. To do this, I first created a cls file with ClsFileCreator.  However, when I pass both the .gct and .cls file onto ConstellationMap, I get the following error: 
+
+
+Error in MSIG.ReadPhenFile.2(file = cls.filename) : Failed to parse input cls file cls.cls. Expected 3 lines in categorical type CLS file. Instead saw 6 lines.
+Execution halted  
+
+
+602571. ConstellationMap
+
+
+
+Thanks again,
+Patricia
+
+
+
+Anthony Castanza
+unread,
+Sep 9, 2024, 11:48:40 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi  Patricia,
+
+
+I'm not sure why it thinks there are 6 lines in the CLS, it's possible that it's choking on the / character in the phenotype names. Additionally, spaces in phenotype names for cls files aren't supported.
+
+
+Try using the attached CLS file instead, I did some cleanup to bring the phenotype names in line with the format expectations.
+
+
+That said, I've never run a dataset with more than two phenotypes through Constellation map so I'm not entirely sure if it's supported.
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0bf6c5b1-1d66-447e-a4d9-71439952b00an%40googlegroups.com.
+
+
+count_cleaned_20_283_29.PROJ.cls
+Patricia Muskus
+unread,
+Sep 10, 2024, 11:25:39 AM
+
+
+
+to GenePattern Help Forum
+Thanks Anthony, I went ahead and narrowed it down to two groups. 
+
+
+I'm sorry for all the questions, I'm still very new at this. I'm now encountering the following problem:
+
+
+Warning message: In readLines(file) : incomplete final line found on '/opt/gpcloud/gp_home/users/guest_98824/uploads/tmp/run5851885708483540510.tmp/input.cls.file/2/count_cleaned%20%28selected%20grouops%29.PROJ%20%281%29.cls' Error: Failed to match all gene set names from count_cleaned (selected grouops).PROJ (1).gct with corresponding gene sets from h.all.v2024.1.Hs.symbols.gmt Be sure that the gene set file matches the original from the upstream job, including version, and that combine.off is used with ssGSEAProjection if applicable. Execution halted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

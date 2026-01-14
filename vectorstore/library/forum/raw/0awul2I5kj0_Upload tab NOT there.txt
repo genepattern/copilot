@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/0awul2I5kj0
+Title: Upload tab NOT there
+----------------------------------------
+
+
+
+
+
+Upload tab NOT there
+2 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Jul 12, 2019, 9:49:04 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+The tutorials show an “upload” button on the right-hand side of the home screen (to be used for files >2 GB). However I do not have that button (see screen shot attached). Is my interface different because I am on a mac?
+
+
+
+Barbara Hill
+unread,
+Jul 12, 2019, 9:50:07 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I believe you were looking at an outdated video or tutorial.
+
+
+The tab you are looking for is now labeled "Files".
+
+
+Our apologies for the confusion.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

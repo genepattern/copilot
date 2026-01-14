@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/QykTow64GRo
+Title: error after installing module
+----------------------------------------
+
+
+
+
+
+error after installing module
+18 views
+Skip to first unread message
+
+soumithwork p
+unread,
+Jun 13, 2025, 9:31:45 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am trying to install a module on local genepattern server. but I am getting the following output. 
+All the input files even the R scirpt is getting ignored am I missing something to select or give while instaling?
+
+
+
+ARGUMENT 'run_plsec_calculator.R' __ignored__ WARNING: unknown option '--gct.file=gct.file' WARNING: unknown option '--ref.file=ref.file' ARGUMENT '/opt/genepattern/gp/users/S226953/uploads/tmp/run728455053892781360.tmp/gct.file/1/THCCCn1440_obs.conc.gct' __ignored__ ARGUMENT '/opt/genepattern/gp/users/S226953/uploads/tmp/run5407982317924071824.tmp/ref.file/2/ref_2024.10.16.txt' __ignored__ > could you please let me know how I can resolve this? thanks,
+Soumith
+John Liefeld
+unread,
+Jun 16, 2025, 10:40:40 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+that looks like an error at run time not an error at the time of module installation.  To debug this I think I will need to look at your module and its underlying code.  I'll send you my email address privately in a moment and if you could share the module zip file (export from your GenePattern server) I can take a more detailed look.
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

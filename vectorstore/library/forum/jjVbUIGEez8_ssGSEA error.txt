@@ -1,0 +1,1 @@
+A user encountered a persistent ssGSEA job submission error in GenePattern involving a "403 forbidden" status, likely related to authentication/cookie issues potentially caused by geographical network filters, with troubleshooting suggestions including logging out and back in, verifying file upload capabilities, and checking network connectivity from the user's location.

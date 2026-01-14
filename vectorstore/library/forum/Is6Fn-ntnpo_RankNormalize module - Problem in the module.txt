@@ -1,0 +1,1 @@
+A user encountered an error when trying to run the RankNormalize module in GenePattern, specifically receiving a "Rscript: not found" error, which suggests R is not properly installed or configured in the computational environment, and the user sought troubleshooting assistance for running a classical GCT file through the module.

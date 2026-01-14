@@ -1,0 +1,1 @@
+A GenePattern user was experiencing difficulties generating PNG graphics in R within a Docker container running an older R version, with challenges related to X11 compatibility; the solution involved switching from png() to pdf() graphics output, which worked successfully without relying on X11 rendering.

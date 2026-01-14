@@ -1,0 +1,116 @@
+URL: https://groups.google.com./g/genepattern-help/c/3msBzpFXR-g
+Title: Re: [genepattern-help:2790] Issue with mounting jobResults folder
+----------------------------------------
+
+
+
+
+
+Re: [genepattern-help:2790] Issue with mounting jobResults folder
+16 views
+Skip to first unread message
+
+Ted Liefeld
+unread,
+Aug 8, 2023, 12:57:56 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I think you are correct that the jobResults folder is not being mounted into the GenePattern server container correctly.  Since the analysis jobs are spun off in their own containers, with their own mounts, that explains how you see the result files, but the GP server only sees the stdout.txt, which the server generates itself (within its container).
+
+
+The first steps I would take in debugging is to make sure that the jobResults mount being done in the start-genepattern.sh is correct.  In the script it looks like this;
+       -v $PWD/jobResults:/opt/genepattern/jobResults
+The first path ($PWD/jobResults) is relative to where the script was run.  The second (/opt/genepattern/jobResults) is inside the container.  So make sure that the folder mount is correct and that you started it from the correct directory.
+
+
+You can also "docker inspect genepattern" and then look at what the ($PWD/jobResults) mount actually points to (just search inside the return of the inspect for "jobResults").  If it's not correct, then you can try to make things align properly again.  The easiest would be to "docker rm genepattern" to remove the existing container and then to rerun start-genepattern.sh and let it create a new container, making sure you are in the correct location (right above jobResults and the other directories).
+
+
+Alternatively you could move the jobResults folder on the host machine to where the GenePattern container is looking for it.  You would also have to update your config_custom.yaml since the mount point for the jobs themselves will need to change to the new location as well.  I would recommend just creating a new container (option 1) over this.
+
+
+Let me know what you find,
+
+
+Ted
+
+
+
+
+On Tue, Aug 8, 2023 at 12:30 PM Rashid O <rosma...@gmail.com> wrote:
+
+Hello,
+
+
+I am having an odd issue in which module jobs do not return any output despite running successfully, outputting a blank stout.txt. I am self hosting through a docker container using the setup script - and observed that in my external jobResults folder I can see the results of the jobs as intended. However, when I explore inside the docker container into the mounted jobResults file at the root - it shows only the blank stdout.txt being generated and returned at the front end.
+
+
+My path to my jobResults is correctly set in the config and everything is at the root and being detected by the startup script. What would be a good way to debug this issue? Knowing that the results are there - but only showing up in the external jobResults folder. Something is making me think the folder is not being mounted properly despite the file path being correct - and all other folders such as users and such mounting correctly.
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/23ff90ea-b733-4081-b030-b42bb715fabbn%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Rashid O
+unread,
+Aug 8, 2023, 1:53:51 PM
+
+
+
+to GenePattern Help Forum
+Hey Ted,
+
+
+My mistake, I actually don't see the result files anywhere on the server and it shows the blank output in both locations. This is only happening when I am using a 60mb file input gct for the ssGSEA module which is having me think that the job is running out of memory or CPU and therefore is giving a "blank output". Is this a common reason for this? The machine specs I am using are quite weak and I think I will need to upgrade them (1CPU, 512Mb Ram AWS EC2). Are there any recommended specs for this module? Running the same job on the public server with the 2GB setting worked fine. 
+
+
+Rashid O
+unread,
+Aug 8, 2023, 1:54:44 PM
+
+
+
+to GenePattern Help Forum
+It is also notable to mention that rerunning the job sometimes causes the entire server to crash as CPU usage on my EC2 dashboard goes to 100%, triggering a gateway 502 error only fixed by restarting the server and genepattern.
+
+Ted Liefeld
+unread,
+Aug 9, 2023, 10:40:32 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+It sounds like the machine you are using just does not have enough ram and CPU.  It sounds like the ssGSEA docker container is either dying or else gets into an endless loop trying to get enough memory to run.  Is there a reason not to just use the public server since you already ran there anyway?
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

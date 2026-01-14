@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/e_7aSDrFz_s
+Title: Question on the CNV analysis of Affymetrix cytoscan HD
+----------------------------------------
+
+
+
+
+
+Question on the CNV analysis of Affymetrix cytoscan HD
+16 views
+CNV
+SNP6
+affymetrix
+Skip to first unread message
+
+Jibin Zhang
+unread,
+Jul 31, 2020, 11:18:45 AM
+
+
+
+to GenePattern Help Forum
+Hello everyone:
+
+
+Sorry to cluster your email. I am a new user of GenePattern. Does anyone know how to use it to analyze copy number variation with the Affymetrix Cytoscan HD CEL data? I am trying to use the Affymetrix SNP6 Copy Number Inference Pipeline, but I could not find the option for cytoscan data. I also did not find in the manual. I would appreciate if someone can give me a guidance. 
+
+
+Jibin
+Barbara Hill
+unread,
+Jul 31, 2020, 2:41:47 PM
+
+
+
+to GenePattern Help Forum
+Hello Jibin, 
+
+
+Unfortunately, the CopyNumberInferencePipeline is no longer supported.
+
+
+I'm sorry we couldn't be more helpful.
+
+
+Please let us know if we can help with anything else.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

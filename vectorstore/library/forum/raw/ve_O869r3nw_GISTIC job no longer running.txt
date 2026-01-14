@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/ve_O869r3nw
+Title: GISTIC job no longer running
+----------------------------------------
+
+
+
+
+
+GISTIC job no longer running
+10 views
+Skip to first unread message
+
+Caroline Snowden
+unread,
+May 19, 2020, 6:24:59 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I am attempting to run jobs using the GISTIC module and repeatedly getting the same error message. When I re-run jobs that worked a few days ago using the exact same inputs, the same error message persists. For example, job 233681 ran successfully on 5/17/2020, and when I re-ran in this morning I got the error message attached (job 234288). Is this an glitch being caused by the new system update?
+
+
+Thanks!
+
+stderr.txt
+Barbara Hill
+unread,
+May 19, 2020, 6:56:49 AM
+
+
+
+to GenePattern Help Forum
+Hi Caroline, 
+
+
+There does appear to be something wrong with GISTIC right now, but not other modules. We are looking into this and will get back to you ASAP.
+
+
+All the best
+Barbara
+
+Ted Liefeld
+unread,
+May 19, 2020, 8:03:31 AM
+
+
+
+to genepatt...@googlegroups.com
+Caroline
+
+
+There was indeed a problem with the update that only affected modules that had special characters in their names (e.g. the '.' in 'GISTIC_2.0').  This has just been corrected and GISTIC should work for you now
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/bd1b1744-2e99-4344-bebd-5b81a2a1036d%40googlegroups.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/lrczomqrHnA
+Title: Error when running GISTIC 2.0
+----------------------------------------
+
+
+
+
+
+Error when running GISTIC 2.0
+178 views
+Skip to first unread message
+Hareem Ali
+unread,
+Jul 6, 2021, 11:18:27 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I am working on cancer data and wish to use GISTIC to identify significant variations across the genome. I ran gistic with a combined seg file of 91 samples and used the hg38 refgene. I did not add a markers file. I got an error saying I have 14768 invalid chromosomes and the first invalid chromosome is '1990' on line 2. After running all I generated was a mat file called gistic_input.mat.
+
+
+I was wondering if anyone could help me understand this error and how to fix it.
+
+
+Thanks, 
+Hareem
+Edwin Juarez
+unread,
+Jul 7, 2021, 10:42:12 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I would suggest posting in the GISTIC forum about this particular question, as that is frequented by the method authors as well as frequent users of GISTIC.
+
+
+Kind regards,
+Edwin.
+
+
+Reply all
+
+Reply to author
+
+Forward

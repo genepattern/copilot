@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/J2w_RNlkNmA
+Title: multiplot preprocess error?
+----------------------------------------
+
+
+
+
+
+multiplot preprocess error?
+9 views
+Skip to first unread message
+
+강이중
+unread,
+Jul 27, 2017, 3:28:15 AM
+
+
+
+to GenePattern Help Forum
+Hello
+When I use the multiplot preprocess, it keeps pending. Even after a long time has been a pending state.
+I wonder how to solve it. please answer about my question.
+
+Barbara Hill
+unread,
+Jul 27, 2017, 1:54:46 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+That module is actually deprecated. I'll look into why it is still showing on the server.
+
+
+It was replaced by the author with MultiplotStudio which will also require that you use our VisualizerLauncher, to work around Java restrictions in the browser.
+
+
+Please let us know if you have any questions.
+
+
+Best
+
+
+Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+GISTIC copy-number units are changes from baseline diploid state (2 copies), where deviation represents amplification or deletion relative to normal cellular chromosome complement, typically measured as log2 fold-change from diploid baseline in genomic analysis.

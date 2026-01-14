@@ -1,0 +1,1 @@
+A user encountered "Essential container in task exited" errors while running GSEAPreranked jobs, which were initially suggested to be memory-related, but ultimately resolved by switching to an older module version (7.3.5) and then updating to a new version (7.3.7) that fixed the underlying technical issue, successfully allowing the GSEA analysis to complete.

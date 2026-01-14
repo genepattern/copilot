@@ -1,0 +1,1 @@
+User attempting to run GSEA module encountered a "java: command not found" error on a Mac platform, likely indicating Java is not installed or not correctly configured in the system path, with GenePattern support acknowledging the initial support request but providing no concrete solution in this thread.

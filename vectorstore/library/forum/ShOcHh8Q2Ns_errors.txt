@@ -1,0 +1,1 @@
+GenePattern forum thread summary focused on troubleshooting hierarchical clustering errors, with the primary suggestion being to remove spaces from input filename to resolve potential parsing issues in the GenePattern clustering module.

@@ -1,0 +1,1 @@
+A user encountered a module execution error with GISTIC2.0 on GenePattern, where the module was not available on the designated remote system, which was resolved by the GenePattern team by correcting remote compute node issues and recommending job resubmission, with plans for future automated failover to improve job reliability across multiple cloud computing platforms.

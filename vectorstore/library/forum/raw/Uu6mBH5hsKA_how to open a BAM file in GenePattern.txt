@@ -1,0 +1,57 @@
+URL: https://groups.google.com./g/genepattern-help/c/Uu6mBH5hsKA
+Title: how to open a BAM file in GenePattern
+----------------------------------------
+
+
+
+
+
+how to open a BAM file in GenePattern
+5 views
+Skip to first unread message
+
+Rosa Vasquez Espinoza
+unread,
+Feb 23, 2022, 8:29:32 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm new in some bioinformatic tools and would like to know if and how can I open a .bam file in GenePattern?
+
+
+Thanks so much
+Barbara Hill
+unread,
+Feb 23, 2022, 9:00:04 AM
+
+
+
+to GenePattern Help Forum
+
+Hello Rosa,
+
+
+It depends somewhat on what you are trying to do.
+
+
+I would suggest going to the Module search box and typing in "bam" to see the list of all modules we have that work with bam files, and then reading their descriptions to see what will work for your needs.
+
+
+
+
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

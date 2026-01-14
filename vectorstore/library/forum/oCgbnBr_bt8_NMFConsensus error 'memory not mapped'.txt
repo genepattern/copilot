@@ -1,0 +1,1 @@
+A GenePattern user experienced a "memory not mapped" error when running the NMFConsensus module, which was resolved by removing rows containing "NA" values in the input matrix; the user was advised to either remove these rows or impute missing values to successfully run the analysis.

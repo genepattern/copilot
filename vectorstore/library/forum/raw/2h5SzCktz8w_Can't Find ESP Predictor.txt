@@ -1,0 +1,292 @@
+URL: https://groups.google.com./g/genepattern-help/c/2h5SzCktz8w
+Title: Can't Find ESP Predictor
+----------------------------------------
+
+
+
+
+
+Can't Find ESP Predictor
+30 views
+Skip to first unread message
+
+Sandi Spencer
+unread,
+Nov 27, 2018, 2:59:03 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I would like to use ESP Predictor but can't find the module either on the cloud or the Broad server.... it's not in the proteomics category and doesn't come up when I search for it. 
+
+
+I appreciate any assistance you can provide.
+
+
+Cheers,
+
+
+Sandi
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 29, 2018, 12:54:37 PM
+
+
+
+to GenePattern Help Forum
+Hi Sandi,
+
+
+Unfortunately ESPPredictor is one of the modules which was impacted by the fire we had at our data center in June.
+
+
+As we mentioned in the blog post, we are aware that there is interest in this module, and are looking to re-write it to run in a modern enviornment. 
+
+
+We will post updates regarding this and all other module work, as we have news to report.
+
+
+Many thanks for your interest and for taking time to write to us!
+
+
+Best
+-Barbara
+Honghui Wang
+unread,
+Nov 30, 2018, 6:04:40 AM
+
+
+
+to genepatt...@googlegroups.com
+Just to let you know, I’m also waiting for ESPpredictor. This tool is important for our projects and I hope you can make this function available soon.
+
+
+I tried to run  ESPpredictor on my desktop pc, R programming is just to much for me and it didn’t work.
+
+
+Honghui
+
+
+Sent from my iPhone
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/50ab0f82-d8a9-47e7-a2d3-0bc5390b6058%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+Xiangzhi Meng
+unread,
+Dec 6, 2018, 2:27:02 PM
+
+
+
+to GenePattern Help Forum
+Hi Honghui,
+I'm waiting for ESPpredictor, too. May I ask where you got the program? I hope to try running it on my desktop but can't find anywhere downloading the program.
+Thank you!
+
+
+Best,
+Meng
+
+Honghui Wang
+unread,
+Dec 6, 2018, 5:10:00 PM
+
+
+
+to genepatt...@googlegroups.com
+I downloaded the program before it was taken out of the server. I think it is still in my download folder.
+
+
+Honghui
+
+
+
+Sent from my iPhone
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2c1e0883-c006-49d9-8fbc-adc9e253e4fd%40googlegroups.com.
+
+Xiangzhi Meng
+unread,
+Dec 6, 2018, 5:12:32 PM
+
+
+
+to genepatt...@googlegroups.com, hw08...@gmail.com
+Could you possibly share me a copy of your downloaded program through mengxia...@gmail.com? That would be of great help.
+Thank you in advance!
+
+
+Best,
+Meng
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/6B5D0A57-F063-428F-832D-A9CE86E2DDD1%40gmail.com.
+
+Ke Li
+unread,
+Jan 11, 2019, 11:00:14 AM
+
+
+
+to GenePattern Help Forum
+Hi Honghui,
+Would you please also send a copy of the ESP predictor software to me (kl...@mst.edu). Thanks.
+
+
+Best, 
+
+
+Ke
+
+Honghui Wang
+unread,
+Jan 11, 2019, 11:21:13 AM
+
+
+
+to genepatt...@googlegroups.com
+The zipped file is about 600mb. Couldn’t send via regular mail.
+
+
+Honghui 
+
+
+Sent from my iPhone
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c6dc96f7-dce3-4228-9ab8-3a69b35a8e33%40googlegroups.com.
+
+Ke Li
+unread,
+Jan 11, 2019, 12:43:37 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks Honghui, I think we can do in this way. We can transfer file through Google Drive.  You upload the file to google drive and share it to me, then I can directly download it from Google Drive. Could you please share it to me? Thanks.
+
+
+Ke
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/F1D3064C-8E0C-4289-AF08-22C3B7FF741B%40gmail.com.
+
+Honghui Wang
+unread,
+Jan 11, 2019, 2:43:33 PM
+
+
+
+to genepatt...@googlegroups.com
+Sorry. It is only 80mb. Sent to you via WeTransfer.
+
+
+Honghui
+
+
+Sent from my iPhone
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAJ4UYtNLcr20ufbpD1O3d%2BK1t7pdteG1SkxtUsrphfHx6maf8A%40mail.gmail.com.
+
+Ke Li
+unread,
+Jan 11, 2019, 2:59:19 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks, appreciate your help.
+
+
+Ke
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2DC2A260-7E83-4457-9EA3-918B512C969C%40gmail.com.
+
+anne-marie hesse
+unread,
+Feb 8, 2019, 7:11:09 AM
+
+
+
+to GenePattern Help Forum
+Hi 
+
+
+I would be very interesting if you could send to me your copy of ESP predictor !
+
+
+thanks a lot
+
+
+best regards
+Anne-Marie
+
+Barbara Hill
+unread,
+Apr 30, 2020, 1:40:39 PM
+
+
+
+to GenePattern Help Forum
+Hi Sandi, 
+
+
+We have just now released ESPPredictor on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:4
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

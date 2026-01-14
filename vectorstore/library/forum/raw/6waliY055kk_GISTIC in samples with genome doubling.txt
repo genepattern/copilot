@@ -1,0 +1,59 @@
+URL: https://groups.google.com./g/genepattern-help/c/6waliY055kk
+Title: GISTIC in samples with genome doubling
+----------------------------------------
+
+
+
+
+
+GISTIC in samples with genome doubling
+13 views
+Skip to first unread message
+
+Bach Zic
+unread,
+Mar 2, 2021, 1:59:03 PM
+
+
+
+to GenePattern Help Forum
+Hi all,
+I have a question: I’m running a group of samples some of which have the entire genome duplicated. I know that some regions are amplified in 85% of cases, but when I run GISTIC they are not significant. On the contrary, I find the significant peak in the deletion plot. Probably this is caused by the background model. Is there any way to fix this run?
+
+Thanks for your availability
+
+Barbara Hill
+unread,
+Mar 3, 2021, 7:14:01 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+This question will probably find a better answer over the GISTIC forum, where the authors and other frequent users can all chime in.
+
+
+All the best
+-Barbara
+
+Bach Zic
+unread,
+Mar 3, 2021, 7:49:01 AM
+
+
+
+to GenePattern Help Forum
+Thank you very much!
+Best,
+Bachisio
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

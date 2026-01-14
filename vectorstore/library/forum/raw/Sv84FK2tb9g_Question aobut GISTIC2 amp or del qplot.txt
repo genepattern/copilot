@@ -1,0 +1,39 @@
+URL: https://groups.google.com./g/genepattern-help/c/Sv84FK2tb9g
+Title: Question aobut GISTIC2 amp or del qplot?
+----------------------------------------
+
+
+
+
+
+Question aobut GISTIC2 amp or del qplot?
+83 views
+Skip to first unread message
+
+shiyong li
+unread,
+Nov 17, 2021, 8:44:41 PM
+
+
+
+to GenePattern Help Forum
+Hello：
+For the output figures of GISTIC2， CNV heatmap showed thant chr8 amp and chr7 del was significant recurrent. However, the gistic qplot figure didnot include this region. Did these figures include broad region(arm level)?  How can I get a gisitic figure including both focal and broad signiciant mutational peak region?
+
+
+JobID in cloud.genepattern.org was  392686. GISTIC_2.0   
+1169925992
+unread,
+Nov 17, 2021, 8:44:53 PM
+
+
+
+to shiyong li
+您好，邮件已收到~
+我会尽快向您回复邮件
+
+Reply all
+
+Reply to author
+
+Forward

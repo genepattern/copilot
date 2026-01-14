@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/N3lH3EpoB2U
+Title: MergeHTseq
+----------------------------------------
+
+
+
+
+
+MergeHTseq
+22 views
+Skip to first unread message
+Laurie Baert
+unread,
+Dec 9, 2021, 10:57:21 AM
+
+
+
+to GenePattern Help Forum
+Hi, 
+
+
+I ran HTseq count from my samples and now I would like to merge them in 1 file but it doesn't work.
+I put the screenshot of the failed jobs.
+
+
+Thanks for your help
+
+
+Laurie
+Laurie Baert
+unread,
+Dec 9, 2021, 10:58:32 AM
+
+
+
+to GenePattern Help Forum
+
+
+screenshot3.docx
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,77 @@
+URL: https://groups.google.com./g/genepattern-help/c/FgUbE9p9vcA
+Title: What determines which segments are included in the scores.gistic in GISTIC2.0 output?
+----------------------------------------
+
+
+
+
+
+What determines which segments are included in the scores.gistic in GISTIC2.0 output?
+24 views
+Skip to first unread message
+
+Yige Wu
+unread,
+Aug 27, 2018, 12:17:05 PM
+
+
+
+to GenePattern Help Forum
+In my input segmentation file for GISTIC2.0, there're some segments overlapping a gene of my interest. However in the output scores.gistic file, I cannot find any segment overlapping that gene. I'm wondering what might be the reason those segments are filtered out?
+
+
+Barbara Hill
+unread,
+Aug 27, 2018, 1:14:44 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It is normal for GISTIC to shorten segments that overlap in order to remove the overlap.
+
+
+Check your stdout.txt for a line like: "Shortened 12 segments in '/GISTIC/myfiles/segmentationfile.txt' that overlap by one marker."
+
+
+Best
+-Barbara
+jga...@unav.es
+unread,
+May 7, 2019, 5:01:47 AM
+
+
+
+to GenePattern Help Forum
+Hi @Barbara, 
+
+
+Thanks for your response... and there's a way to avoid to shorten that overlapping segments? I'm missing entire samples because of that :==)
+
+
+Thanks again!
+Barbara Hill
+unread,
+May 10, 2019, 1:59:09 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I'm afraid I am not the one to ask. I've forwarded your question to the lead developer for this method.
+
+
+All the best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

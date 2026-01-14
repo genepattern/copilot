@@ -1,0 +1,1 @@
+A GenePattern forum thread discussing the unavailability of the Affymetrix SNP6 Copy Number Inference Pipeline on the online server, with the user seeking alternative pipelines for copy number analysis, but being informed by support staff that no similar pipelines are currently available on the platform.

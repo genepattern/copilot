@@ -1,0 +1,139 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ag779xj3ZDA
+Title: 208180. HierarchicalClustering
+----------------------------------------
+
+
+
+
+
+208180. HierarchicalClustering
+18 views
+Skip to first unread message
+
+Elena Pipi
+unread,
+Feb 23, 2020, 12:20:29 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have tried to do hierarchical clustering (208180. HierarchicalClustering), but I get error. Could you help please? Btw, I want the cluster to be done on rows and not columns. 
+
+
+Nevertheless, the error message i get is:
+Traceback (most recent call last):
+  File "/opt/gpcloud/gp_home/taskLib/HierarchicalClustering.7.17.648/HierarchicalClustering.py", line 49, in <module>
+    parse_data(gct_name, row_normalization, col_normalization, row_centering, col_centering)
+  File "/opt/gpcloud/gp_home/taskLib/HierarchicalClustering.7.17.648/hc_functions.py", line 826, in parse_data
+    row_means = np.mean(data, axis=1)
+  File "/opt/conda/lib/python3.6/site-packages/numpy/core/fromnumeric.py", line 2909, in mean
+    out=out, **kwargs)
+  File "/opt/conda/lib/python3.6/site-packages/numpy/core/_methods.py", line 70, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims)
+TypeError: must be str, not float
+Ted Liefeld
+unread,
+Feb 26, 2020, 8:42:02 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+just wanted to let you know we are looking into this.  The input file you used is formatted correctly as a gct file (though it is tagged as 'GST' instead).  Also, while you have a space in the file name, which is something we usually recommend against (many modules cannot handle special characters in filenames) that also does not seem to be the problem.  This leaves that there must be an issue with this file within the module itself.  The module author is unfortunately not available this week to look into this so please be patient.  I will dig into the module code a bit, but I am unfamiliar with it so keep your expectations low.
+
+
+Thanks
+
+
+Ted 
+
+
+
+Ted Liefeld
+unread,
+Feb 26, 2020, 8:48:53 AM
+
+
+
+to GenePattern Help Forum
+One other point,  if you switch to the earlier version of the HierarchicalClustering module (version 6 and not the latest 7.17) then you can successfully cluster your data (I verified this).
+
+
+Ted
+
+
+
+Elena Pipi
+unread,
+Feb 26, 2020, 10:56:30 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted,
+
+
+Thanks for your email. It looks like the clustering can run with the previous version. Do not know why the recent does not work. Had this issue in the past. Just remembered.
+best,
+elena
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9d76b753-56f4-4f86-b74b-92e23d4d4e61%40googlegroups.com.
+
+
+
+
+
+--
+
+elena
+
+Ted Liefeld
+unread,
+Feb 26, 2020, 11:05:18 AM
+
+
+
+to GenePattern Help Forum
+Elena
+
+
+My suspicion is that its due to the small number of samples and features in your file (5x29) and that the computations are getting a divide by zero or something similar somewhere.  The older implementation is Java and the newer one in Python which is why they are behaving differently.
+
+
+Hope this helps,
+
+Ted
+
+
+
+
+
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/9d76b753-56f4-4f86-b74b-92e23d4d4e61%40googlegroups.com.
+
+
+
+
+
+--
+
+elena
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,48 @@
+URL: https://groups.google.com./g/genepattern-help/c/N6EGTWm15gE
+Title: NTP not work well
+----------------------------------------
+
+
+
+
+
+NTP not work well
+20 views
+Skip to first unread message
+
+yulu shi
+unread,
+Oct 18, 2023, 2:25:03 AM
+
+
+
+to GenePattern Help Forum
+Hi，
+I load my files as required when working on NTP (nearest template prediction). But it comes an error (job number is 540973). I am sure that the format of the files are as required. So I reload a job which works successfully before, It cant work now and turns the same error(539893 before, 540975 now).
+Hope you can help me with it.
+Best regards 
+Yulu
+Ted Liefeld
+unread,
+Oct 18, 2023, 5:09:29 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+There was a problem with the remote compute nodes that we use to execute NearestTemplatePrediction.  This has now be corrected and you can reload and re-run your job.
+
+Thanks for your patience,
+
+Ted
+
+p.s. For the details, read on … Our GenePattern server uses several different cloud systems (both commercial and academic) to execute jobs. We attempt to keep costs down, and GenePattern free, by using less expensive, or free services to run computations when we can.  Unfortunately less expensive and free also translate into less reliable and sometimes they become unavailable as happened over the weekend with the service we were sending GISTIC to.  The next release of GenePattern has an automated failover so that if a job fails on one system, it can be retried automatically on another without requiring user (or administrator) intervention.  This update will be released later today at 1pm EST, Oct 18, 2023
+
+
+Reply all
+
+Reply to author
+
+Forward
+Message has been deleted

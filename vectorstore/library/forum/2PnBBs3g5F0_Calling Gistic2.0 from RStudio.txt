@@ -1,0 +1,1 @@
+A user experienced an error when attempting to run GISTIC 2.0 in RStudio with multiple parameters, receiving an "unexpected equal signs" error, and the GenePattern support team confirmed that their R programming client is unofficially deprecated and will be removed from documentation, suggesting the user seek alternative methods for running the analysis.

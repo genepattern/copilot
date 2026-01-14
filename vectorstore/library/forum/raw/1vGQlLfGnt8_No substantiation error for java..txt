@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/1vGQlLfGnt8
+Title: No substantiation error for java.
+----------------------------------------
+
+
+
+
+
+No substantiation error for java.
+26 views
+java
+Skip to first unread message
+
+Magda Orzechowska
+unread,
+Oct 30, 2017, 6:07:28 AM
+
+
+
+to GenePattern Help Forum
+Dear Colleagues,
+
+
+
+We maintain Gene Paterrn in form of our lab server and recently with the latest update of GP we started to experience the followed error (stderr):
+HierarchicalClustering: no substitution available for  in command line <java> <java_flags> -Djava.awt.headless=true -Dlibdir=<libdir> -Dwin=cluster.exe -Dmac=clusterMac -Dlinux=clusterLinux -Dlinux64=clusterLinux64 -cp <libdir>hcl.jar<path.separator><libdir>legacy-gp-modules.jar<path.separator><libdir>ant.jar org.genepattern.modules.hcl.RunCluster -f <input.filename> <log.transform> <row.center> <row.normalize> <column.center> <column.normalize> -u <output.base.name> -e <column.distance.measure> -g <row.distance.measure> -m <clustering.method>.
+
+
+This issue was not present when we had older GP version, however with older version of GP we were not able to use new Viewer app, because it could not reach our server.
+We will appreciate any help how to solve this issue. In addition, our server is working under Linux.
+
+
+Best regards!
+
+Peter Carr
+unread,
+Oct 30, 2017, 6:26:01 AM
+
+
+
+to genepatt...@googlegroups.com
+You need to set the following substitution variables:
+  java=
+  java_flags=
+
+In your custom.properties file.
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5133efd0-2f6c-451e-afde-8696266e4ff5%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Peter Carr
+Sr. Software Engineer
+Broad Institute (http://broadinstitute.org) - GenePattern Team (http://genepattern.org/)
+Joris VAN HOUTVEN
+unread,
+Feb 13, 2019, 2:19:53 AM
+
+
+
+to GenePattern Help Forum
+Hi Peter
+
+
+This works for perl, but for some strange reason it didn't work for python (or rather, 'python_3.6'). I have set:
+  python_3.6=/usr/bin/python3
+  python3=/usr/bin/python3
+  python=/usr/bin/python3
+
+
+
+but none of them work. Any ideas?
+
+Op maandag 30 oktober 2017 14:26:01 UTC+1 schreef Peter Carr:
+
+
+Reply all
+
+Reply to author
+
+Forward

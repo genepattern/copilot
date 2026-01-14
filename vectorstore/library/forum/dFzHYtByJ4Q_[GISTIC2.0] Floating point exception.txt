@@ -1,0 +1,1 @@
+A GenePattern user encountered a floating point exception error while running GISTIC 2.0, experiencing an unexpected crash despite having successfully run the same file previously, and is seeking technical support to resolve the computational error in their genomic data analysis workflow.

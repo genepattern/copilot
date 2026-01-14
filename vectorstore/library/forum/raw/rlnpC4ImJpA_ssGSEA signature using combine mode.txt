@@ -1,0 +1,95 @@
+URL: https://groups.google.com./g/genepattern-help/c/rlnpC4ImJpA
+Title: ssGSEA signature using combine mode
+----------------------------------------
+
+
+
+
+
+ssGSEA signature using combine mode
+20 views
+Skip to first unread message
+
+Johanna Szychter
+unread,
+Jul 13, 2021, 12:41:25 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+I ran a ssGSEA analysis using both Combine.add and Combine.replace modes, and I got a good result for one of the combined signatures.
+
+
+I usually go on the MSigDB website to download the associated gmx file to then run only the specific signature in the standard GSEA software and got the enrichment curve. However, I can't find a signature associated with the combined mode. 
+
+
+Would you have an idea of how or where I can find the associated signatures? If not,m how to recreate it?
+
+
+Thanks for your answer,
+Best regards
+Johanna
+Anthony Castanza
+unread,
+Jul 13, 2021, 11:08:09 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Johanna,
+
+ 
+
+The combined signatures are created from a union of two signatures with the same base name (e.g. RESPONSE_TO_XYZ_INHIBITION) and the suffixes _UP and _DN, so if you wanted to find the original signatures that made up the combined signature, you'd need to recreate the names (RESPONSE_TO_XYZ_INHIBITION_UP and RESPONSE_TO_XYZ_INHIBITION_DN) then download those signatures from the website and combine them manually.
+
+ 
+
+Let me know if that answer is unclear, or you're still unable to find the original signatures.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ec1edef1-0f25-4895-9403-506f01fde7c9n%40googlegroups.com.
+
+Johanna Szychter
+unread,
+Jul 14, 2021, 6:40:06 AM
+
+
+
+to GenePattern Help Forum
+Hi Anthony,
+
+
+Thanks a lot for your answer! I will combine them manually so.
+
+
+Have a great day!
+Johanna
+
+
+Reply all
+
+Reply to author
+
+Forward

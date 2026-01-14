@@ -1,0 +1,1 @@
+A patient with a Whole Exome Sequencing (WES) CRAM file seeks guidance on reading and analyzing their genomic data, requesting recommendations for appropriate tools to explore the file's contents and extract meaningful biological insights, with potential interest in using GenePattern or alternative bioinformatics platforms for file interpretation.

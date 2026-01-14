@@ -1,0 +1,1 @@
+GenePattern forum thread summary: User asked whether ComparativeMarkerSelection log-transforms mean values by default, with Edwin Juarez clarifying that log transformation is not automatic and requires manually changing the "log2 transform" parameter in the module, with a reference to PreprocessDataset documentation provided for further guidance on data transformation settings.

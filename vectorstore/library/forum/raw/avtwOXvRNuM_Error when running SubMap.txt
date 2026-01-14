@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/avtwOXvRNuM
+Title: Error when running SubMap
+----------------------------------------
+
+
+
+
+
+Error when running SubMap
+43 views
+Skip to first unread message
+
+Hannah Lai
+unread,
+Feb 2, 2018, 1:50:59 AM
+
+
+
+to GenePattern Help Forum
+Hello, I have been trying to use SubMap and got some error, as described in stderr.txt file: 
+
+Error in order(na.last, decreasing, ...) : argument 1 is not a vector Execution halted
+
+
+my job ID is 1624164. I have been checking my inputs and seem like nothing wrong with them...
+
+
+Could you possibly advise me what the error means, please?
+
+
+Thanks so much!
+
+
+Peter Carr
+unread,
+Feb 2, 2018, 3:41:26 PM
+
+
+
+to genepatt...@googlegroups.com
+One or more of your input files may have a missing value. Just a guess based on the "na.last" in the error message.
+Our documentation states: "Note: Remove spaces from sample names".
+
+https://genepattern.broadinstitute.org/gp/getTaskDoc.jsp?name=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00101:3
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,159 @@
+URL: https://groups.google.com./g/genepattern-help/c/sgi2AdXYTP8
+Title: Submap error
+----------------------------------------
+
+
+
+
+
+Submap error
+51 views
+Skip to first unread message
+
+Amphun chaiboonchoe
+unread,
+Jun 30, 2022, 3:31:45 AM
+
+
+
+to GenePattern Help Forum
+Hi  
+
+
+I have an error ' memory not mapped' while using the Submap module. 
+
+
+ *** caught segfault ***
+address 0xfffffffef1c8cce0, cause 'memory not mapped'
+
+Traceback:
+ 1: order(data[, 1])
+ 2: `[.data.frame`(data, order(data[, 1]), )
+ 3: data[order(data[, 1]), ]
+ 4: read.gct(filename = input.data.A)
+ 5: submap.main("/opt/gpcloud/gp_home/users/amphun.cha/BC-TNBC_Gene-Expression.gct",     "/opt/gpcloud/gp_home/users/amphun.cha/BC-TNBC_Gene-Expression-TGCA-ref.gct",     "/opt/gpcloud/gp_home/users/amphun.cha/BC-TNBC_Gene-Expression-TNBC group.cls",     "/opt/gpcloud/gp_home/users/amphun.cha/BC-TNBC_Gene-Expression-TGCA-ref.cls",     "SubMap", "100", "50", "1000", "1", "pool", "Bonferroni",     "1", "1", "T", "T", "47365321")
+aborting ...
+
+
+
+Any suggestions on how to solve this error?
+
+
+Thanks for your support.
+Amphun
+
+stderr (1).txt
+Ted Liefeld
+unread,
+Jul 5, 2022, 10:43:16 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+It will help us if you can give us a job number to allow us to look it up on the server.
+
+
+Thanks
+Ted
+
+Kathrin Julia Laue
+unread,
+Jul 5, 2022, 12:10:21 PM
+
+
+
+to genepatt...@googlegroups.com
+That’s not my help request, see below.
+Something got mixed up here, I submitted a question about how to generate GSEA plots with ssGSEA in genepattern!
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/5726eb46-287a-41d1-a989-a9af758c0f0fn%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jul 5, 2022, 12:41:48 PM
+
+
+
+to GenePattern Help Forum
+Well that is something I haven't seen before.  I guess even Google (Google Groups) has to deal with bugs in their code...
+
+Amphun chaiboonchoe
+unread,
+Jul 5, 2022, 7:23:33 PM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+Here is my job no. 447976 and 447988.
+
+
+Thank you in advance.
+Amphun
+
+
+
+Jianhan Wu
+unread,
+Jul 7, 2022, 11:57:07 AM
+
+
+
+to GenePattern Help Forum
+Hi everyone, I also came across the identical error. My job numbers were:  448278, 448279, 448285,448287. Thanks in advance for your help!
+
+Ted Liefeld
+unread,
+Jul 8, 2022, 1:32:31 PM
+
+
+
+to GenePattern Help Forum
+All,
+
+
+we have a new prototype version of SubMap (version 3.1) available on our beta server.  It seems to be working correctly but has not yet been tested to our satisfaction (hence its only on the beta server).  If you want to try it out, login to https://beta.genepattern.org.  This server has separate accounts from our production (cloud.genepattern.org) server so you may need to register again if you haven't been on the beta server before.
+
+
+If you want to wait for it to be available on cloud, it should be available there some time next week.  Thanks for your patience,
+
+
+Ted
+
+
+p.s. The problem seems to be related to sorting dataframes in the R code.  As a workaround in some cases you will be able to run the older version of submap if you ensure that you have some variation in the description column of your gct files.  e.g. if all rows have 'na' for description, change a few tp 'na1' or 'na2'.  This does not let you past all of the 'memory not mapped' errors though.  If your stderr.txt file indicates a failure while sorting for the heatmap, you will have to wait for the new module version
+
+Ted Liefeld
+unread,
+Jul 12, 2022, 8:08:46 AM
+
+
+
+to GenePattern Help Forum
+Hi again.  We have released a new version of SubMap (4.0) and it is now available on our public server.  Please let us know if you experience any problems with it.
+
+
+Thanks for your patience,
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

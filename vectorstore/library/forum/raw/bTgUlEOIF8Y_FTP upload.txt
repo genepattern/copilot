@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/bTgUlEOIF8Y
+Title: FTP upload
+----------------------------------------
+
+
+
+
+
+FTP upload
+8 views
+ftp
+rna-seq
+upload
+Skip to first unread message
+
+Souza
+unread,
+Dec 13, 2017, 11:02:08 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+I would like to know if it is possible to upload files through FTP, I am trying to send a file but its almost 1GB and I having trouble to do that, is there  another way to upload files?
+Because the counter only stays on 9%.
+
+
+
+
+Thank you!
+
+
+Regards!
+Peter Carr
+unread,
+Dec 13, 2017, 3:13:25 PM
+
+
+
+to GenePattern Help Forum
+How do you plan on using the file? 
+
+
+For a single analysis job, you can directly enter the ftp url as the input file. The GP server will copy from the ftp site behind the scenes before running the analysis command line. From the job input form, select 'Add Path or URL...', and paste the full ftp url.
+
+
+If you plan on reusing this file for multiple analyses I suggest using GenomeSpace (http://www.genomespace.org/). It's very easy to link your GP account to GenomeSpace and then to link GenomeSpace files from the GP user interface. 
+
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,184 @@
+URL: https://groups.google.com./g/genepattern-help/c/8nnbH2Pz7W0
+Title: Overlapping samples in MutSig2CV
+----------------------------------------
+
+
+
+
+
+Overlapping samples in MutSig2CV
+138 views
+MutSig2CV
+overlap
+overlapping
+Skip to first unread message
+
+Diogo Pellegrina
+unread,
+Mar 26, 2019, 7:21:35 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm using MutSig2CV (on my linux server) and I got the following arror that I can't understand:
+"
+5 patients involved in an overlap.
+2 cliques of overlapping samples.
+12 unique samples.
+Removing the following 3 duplicate patients:
+    '30T'
+    '50T'
+    '56T'
+"
+I have 15 samples, and already tried to sort my input by the 'patient' column. Why is mutsig considering my samples to be duplicates?
+
+
+Thanks
+Diogo
+
+
+Barbara Hill
+unread,
+Mar 26, 2019, 10:04:17 AM
+
+
+
+to GenePattern Help Forum
+Hello Diogo, 
+
+
+I reached out to one of the MutSig maintainers and they had this to say:
+
+
+MutSig considers patients to be duplicates when they share a significant amount of mutations.
+
+
+The exact criteria are if two patients share 10 or more mutations comprising at least 10% of the union of their mutations, or if two patients share 3 or more mutations comprising ≥30% of the union of their mutations.
+
+
+Sorting the input by the "patient" column (or any reordering of the input) has no effect on the duplicate patient filter (or indeed, on any MutSig results).
+
+
+Generally, when the duplicate patient filter is tripped, it indicates something is seriously wrong with the input data.  A few common problems include:
+The somatic mutation calls contain a considerable amount of germline events, usually due to no-matched-normal calling or poor paired calling
+The somatic mutation calls contain many recurrent sequencing artifacts
+The "patients" comprise multiple biopsies from the same individual, thereby sharing truncal mutations
+For either case, MutSig results will likely be poor, since its background model assumes that all samples are completely independent.
+
+
+Could any of the above issues be relevant to your callset?
+
+
+All the best,
+Barbara
+Diogo Pellegrina
+unread,
+Mar 26, 2019, 12:42:57 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara
+
+
+I checked the union% of the mutations, most share more than 10 mutations (considering two mutations are equal if the chromosome and start position were the same), but the from all possible pairs the maximum I got was 7%.
+
+
+As for the common problems, they are all made from different individuals, each with its own blood sample control.
+
+
+Is there a workaround for this problem? I'll look for recurrent mutations that could be considered sequencing artifacts, but it might be challenging to make the distinction.
+
+
+I don't know if this is relevant, but everything works perfectly if I also add to the .maf file lines from the .vcf files that weren't valid (for example those flagged "t_lod_fstar"). They enlarge the union sets, but they would include many false positives to the input.
+
+
+Thanks for the quick response.
+
+
+Diogo Pellegrina
+unread,
+Mar 26, 2019, 12:57:08 PM
+
+
+
+to GenePattern Help Forum
+Just noticed, those 3 samples have union% below 10% but they are the only ones with union% larger than 5%, maybe this is the actual threshold?
+
+Diogo Pellegrina
+unread,
+Mar 27, 2019, 10:08:37 AM
+
+
+
+to GenePattern Help Forum
+Hi again,
+
+
+From the README.txt I found the following option to be placed in a parameter file:
+	remove_duplicate_patients: Boolean.  Finds and removes duplicate patients in the
+	cohort by comparing mutation overlap between patients.  This should be
+	disabled when high levels of overlap are expected between samples (e.g.
+	primary/met combined cohorts).  Default: true
+
+
+But MutSig2Cv is behaving very strangely. I tries using "remove_duplicate_patients	false" and it didn't appear to change anything, and then I used the following parameter_file:
+	are_you_reading_me	true
+	remove_duplicate_patients	false
+	remove_duplicate_patients	0
+	remove_duplicate_patients	False
+	remove_duplicate_patients	false
+	what_happens_if_I_only_use_1_column
+
+
+
+No error appeared, and it ran as if the parameters file wasn't being read.
+Then I added another line:
+	remove_duplicate_patients	false
+
+	remove_duplicate_patients	0
+	remove_duplicate_patients	False
+	remove_duplicate_patients	false
+	remove_duplicate_patients=false
+
+
+
+And it printed this error:
+	Error setting field "remove_duplicate_patients=false"
+
+	  MException with properties:
+	
+
+	    identifier: 'MATLAB:AddField:InvalidFieldName'
+	       message: 'Invalid field name: 'remove_duplicate_patients=false'.'
+	         cause: {}
+	         stack: [5x1 struct]
+	
+
+	Invalid field name: 'remove_duplicate_patients=false'.
+
+
+I also tried each of the above lines separately, but it always ran an as if the parameters file wasn't being read.
+
+
+Thanks again,
+Diogo
+
+Diogo Pellegrina
+unread,
+Apr 4, 2019, 12:14:42 PM
+
+
+
+to GenePattern Help Forum
+Since there was a certain development in this thread I thought it would be better to creat a new thread: https://groups.google.com/forum/#!topic/genepattern-help/uGEWez0NYF4
+
+
+Reply all
+
+Reply to author
+
+Forward

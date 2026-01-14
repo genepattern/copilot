@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/C2I5mQ_iSoQ
+Title: ssGSEA geneset sizes
+----------------------------------------
+
+
+
+
+
+ssGSEA geneset sizes
+20 views
+Skip to first unread message
+
+Fer Calvo
+unread,
+Nov 22, 2017, 4:51:49 PM
+
+
+
+to GenePattern Help Forum
+Hi
+I have noticed that when I run ssGSEA, gene sets containing more than 2,000 genes are not computed and do not appear in the result file. This is using a gmt file obtained somewhere else, not from MSigDB. Is there actually a limit for geneset size or can it be a problem with the gmt file? How can I overcome this issue?
+Thanks
+Fernando.
+David Eby
+unread,
+Nov 22, 2017, 7:32:55 PM
+
+
+
+to GenePattern Help Forum
+Hi Fernando,
+
+
+There is indeed a max threshold of 2000 members for a gene set in the code (min is 2, FWIW).  I'm not sure why that's a hard-coded setting rather than a parameter but will check with the method author.
+
+
+Unfortunately there's not a lot that could be done to workaround this, past the obvious step of limiting the size of your gene sets.  The code is available as open-source and you could modify it for local use (either as a GP module or in an R session), but we have no active plans for adding new features to this modules just now.
+
+
+Regards,
+David
+
+David Eby
+Consultant
+Cancer Informatics Development
+Broad Institute of MIT and Harvard
+415 Main St, Cambridge, MA 02142, USA
+http://www.broadinstitute.org/cancer
+http://www.gsea-msigdb.org
+https://twitter.com/GSEA_MSigDB
+https://twitter.com/GenePattern
+
+
+Reply all
+
+Reply to author
+
+Forward

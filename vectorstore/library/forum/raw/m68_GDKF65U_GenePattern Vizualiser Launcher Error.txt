@@ -1,0 +1,126 @@
+URL: https://groups.google.com./g/genepattern-help/c/m68_GDKF65U
+Title: GenePattern Vizualiser Launcher Error
+----------------------------------------
+
+
+
+
+
+GenePattern Vizualiser Launcher Error
+28 views
+Skip to first unread message
+
+Olga Kuchuk
+unread,
+Nov 17, 2017, 8:15:11 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+I tried running the PCAViewer to visualize the PCA analysis. Because the PCAViewer is currently not maintained, I downloaded the GenePattern Vizualiser Launcher and followed the instructions. However, every time I hit the Submit button, I get the Error message: Error retrieving job details: HTTP/1.1 401 Invalid credentials, https://genepattern.broadinstitute.org/gp/rest/v1/jobs/1579287. I tried different variations of entering the URL file, job details (either the job number only, or including the extension), I checked suggested forums but I don't see the solution for this problem.
+
+Any help will be appreciated.
+Thank you!
+
+
+
+Job ID if run on a publicly available server: 1579289.PCAViewer
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues: Error retrieving job details: HTTP/1.1 401 Invalid credentials, https://genepattern.broadinstitute.org/gp/rest/v1/jobs/1579289
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 17, 2017, 12:23:29 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Olga, 
+
+
+Can you send a screenshot of your launcher?
+
+
+It should look something like this:
+
+
+
+Olga Kuchuk
+unread,
+Nov 17, 2017, 12:37:44 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Barbara,
+
+
+Mine looked exactly the same as in the picture you've attached. I was screenshoting my launcher, when suddenly it became black and in a few moments showed a table and a graph for principal component 1. This is a good start, but now I need to figure out how to get other PCs and a projection. Any suggestions?
+
+
+Thank you,
+
+Olga
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/m68_GDKF65U/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c3760d15-d09e-400c-a1ea-4217ba0d269a%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Nov 17, 2017, 12:40:57 PM
+
+
+
+to GenePattern Help Forum
+Hi Olga, 
+
+
+A good first place to look is the documentation: https://genepattern.broadinstitute.org/gp/module/doc/urn:lsid:broad.mit.edu:cancer.software.genepattern.module.visualizer:00018:6
+
+
+Note that you will also need Java 3D to use all the features of PCAViewer.
+
+
+All the best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

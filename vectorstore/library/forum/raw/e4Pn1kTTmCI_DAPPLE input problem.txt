@@ -1,0 +1,109 @@
+URL: https://groups.google.com./g/genepattern-help/c/e4Pn1kTTmCI
+Title: DAPPLE input problem
+----------------------------------------
+
+
+
+
+
+DAPPLE input problem
+34 views
+DAPPLE
+Error
+GWAS
+Input
+Skip to first unread message
+
+anfal alizai
+unread,
+Jun 27, 2018, 8:38:40 PM
+
+
+
+to GenePattern Help Forum
+Hello GenePattern,
+
+
+Good afternoon, I am doing DAPPLE analysis for my data, I am facing input problem, the error message shows that file must have alphanumeric characters"Please only use alphanumeric characters in your". my input file is a list of SNPs p-value < 5e-05. I used some command and rewrite the input file to remove other hidden characters but still getting error can anyone please help me to sort out this problem and rerun my analysis on DAPPLE module.
+Thank you 
+Sincerely
+Aamir Fahira
+
+
+Barbara Hill
+unread,
+Jun 28, 2018, 9:51:08 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+Please include your job id so that we can take a look at your data and see what might be causing this error.
+
+
+Best
+-Barbara
+anfal alizai
+unread,
+Jun 29, 2018, 12:43:08 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you for your reply, 
+My Job ID is 169710. 
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/734e00d0-2649-48ba-8eaf-a4a01b4d38b9%40googlegroups.com.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+anfal alizai
+unread,
+Jul 2, 2018, 10:40:36 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello Miss Barbara Hill,
+
+
+Can you please help me, I am still facing that problem.
+
+
+
+
+Barbara Hill
+unread,
+Jul 16, 2018, 10:16:09 AM
+
+
+
+to GenePattern Help Forum
+Hello Anfal,
+
+
+I was away on vacation and have just returned. Do you have a new job id?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/gZesArst-Mw
+Title: zip module windows
+----------------------------------------
+
+
+
+
+
+zip module windows
+8 views
+Skip to first unread message
+
+Hussein El Saghire
+unread,
+Jan 21, 2021, 2:00:30 AM
+
+
+
+to GenePattern Help Forum
+dear all, 
+i am not able to install genepattern server on my windows computer to run a module from zip file. is there a way to run a zip module independent from installing a local server genepattern?
+kind regards and thank you for your help
+
+
+GenePattern Help Forum
+unread,
+Jan 22, 2021, 3:37:09 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+As I mentioned we are working on a version of GenePattern that will run inside a Docker container, but we are not ready to release any of that at this time.
+
+
+You could try the last build we made of GenePattern for Windows in March of 2015, but we haven't tested it since then, so it may not work, or may not work with your module.
+
+
+https://github.com/genepattern/genepattern-server/releases/tag/GenePattern_3.9.2
+
+
+If you simply want to run the code in the module, independent of GenePattern, you can look at the command line in the manifest, as well as it's dependencies and from there re-construct a command line and environment that you could run in a terminal.
+
+
+Is this a module that you wrote?
+
+
+Best
+-Barbara
+
+
+
+Hussein El Saghire
+unread,
+Jan 23, 2021, 7:00:34 AM
+
+
+
+to genepatt...@googlegroups.com
+this version of gene pattern works, thank you
+kind regards
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/gZesArst-Mw/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/651d6d50-d763-4799-8ff8-f8970d11285an%40googlegroups.com.
+
+GenePattern Help Forum
+unread,
+Jan 25, 2021, 8:20:32 AM
+
+
+
+to GenePattern Help Forum
+Oh - that's great news! I'm glad it worked for you.
+
+
+All the best
+-Barbara
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,84 @@
+URL: https://groups.google.com./g/genepattern-help/c/r0Qv1SbMmMQ
+Title: Impossible to found the IlluminaNormalizer module
+----------------------------------------
+
+
+
+
+
+Impossible to found the IlluminaNormalizer module
+12 views
+Skip to first unread message
+
+Fa Da
+unread,
+Jul 1, 2020, 6:32:04 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I need to use the IlluminaNormalizer module from the public server to analyze some data coming from GEO, but I don't know whether it comes from me or ... I cannot find it anywhere on the website ?!
+A lot of Material & Method paper are refering to this module which can be accessed and used easily, but I cannot find it ...
+
+
+Do I make something wrong here ? Did this module disappeared at one point ? 
+
+
+If you have any information regarding this issue, I would be very happy to hear more :)
+
+
+Have a nice day.
+
+
+Fa
+
+
+GenePattern Help Forum
+unread,
+Jul 1, 2020, 2:10:07 PM
+
+
+
+to GenePattern Help Forum
+Hello Fa, 
+
+
+Unfortunately, that module was deprecated after the June 2018 fire which destroyed the machine it ran on.
+
+
+Please see this post for more information.
+
+
+Best,
+Barbara
+
+Fa Da
+unread,
+Jul 1, 2020, 3:14:38 PM
+
+
+
+to GenePattern Help Forum
+Thank you very much Barbara for your help to understand what's going on here.!
+
+
+May be you don't know, but I take my chance : Could you indiciate me a way to download this module somewhere (a website, a forum, ...)  ?
+Or may be a source code try to reproduce the module by myself ?
+Or someone else able to further help me ?
+
+
+Thanks you again for your kind help.
+
+
+Have a nice evening.
+Fa.
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/FNk-m1Zxk4Q
+Title: Copy number analysis
+----------------------------------------
+
+
+
+
+
+Copy number analysis
+28 views
+CNV
+SNP6
+Skip to first unread message
+
+Sandra Romero
+unread,
+Jan 7, 2019, 11:58:03 AM
+
+
+
+to GenePattern Help Forum
+
+Dear GenePattern team:
+
+ 
+
+I was looking to reanalyze some old CNV data that I already evaluated some years ago with the CopyNumberInferencePipeline (Gordon Saksena, Barbara Tabak, Jeff Gentry) to generate segmented copy number calls from raw tumor and normal SNP6 CEL files, but in the cloud GenePattern there is no longer listed it in the public modules. Is there any way to get and install it? Or any other pipeline to generate the segmentation files from raw snp6 cel files to then used other modules as Gistic or Hapseg.
+
+ 
+
+Thank you
+
+Barbara Hill
+unread,
+Jan 14, 2019, 1:55:53 PM
+
+
+
+to GenePattern Help Forum
+Hello Sandra, 
+
+
+Unfortunately, this pipeline is unable to be run in the cloud due to its use of insufficiently anonymized data, as well as the need to modify most of its constituent modules to run in the new cloud compute infrastructure.
+
+
+As the CGA team is no longer, there are no active plans to modify this pipeline.
+
+
+I'm sorry that I don't have a more helpful answer for you.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

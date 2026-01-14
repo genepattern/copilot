@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/Vc2FFH1A5EM
+Title: Error in GEOImporter
+----------------------------------------
+
+
+
+
+
+Error in GEOImporter
+20 views
+Skip to first unread message
+
+Tuğberk Üte
+unread,
+Apr 9, 2023, 3:03:46 PM
+
+
+
+to GenePattern Help Forum
+Hello everyone,
+
+I want to use GEOImporter, I entered the GEO accession code and run the GEOImporter, however I get the following error:
+"
+
+Error in Sys.setenv("ftp_proxy_user", ftp.proxy.user) : 
+  all arguments must be named
+Calls: run ... suppressMessages -> withCallingHandlers -> .run -> Sys.setenv
+Execution halted
+
+"
+
+
+Can anyone help me please?
+Job ID: 503527
+Ted Liefeld
+unread,
+Apr 10, 2023, 2:11:42 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+this seems to be a problem that started for all GEOImporter runs sometime after April 7th.  We are investigating and will let you know when we find and fix the problem.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Apr 10, 2023, 2:19:19 PM
+
+
+
+to GenePattern Help Forum
+Hi again
+
+
+this seems to be a result of a change in browser behavior.  Chrome (and possibly other browsers) is now autofilling the Genepattern username and password into the "ftp proxy username" and "ftp proxy password" parameter fields.  Manually delete these values and the job should run OK.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

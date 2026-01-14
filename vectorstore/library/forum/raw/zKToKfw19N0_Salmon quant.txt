@@ -1,0 +1,191 @@
+URL: https://groups.google.com./g/genepattern-help/c/zKToKfw19N0
+Title: Salmon quant
+----------------------------------------
+
+
+
+
+
+Salmon quant
+51 views
+Skip to first unread message
+
+Laurie Baert
+unread,
+Dec 8, 2021, 8:49:38 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am trying to use GenePattern and I have a hard time to run any analysis...
+I uploaded my files in the format .fq.gz ( I have paired-reads) so I have A1_1.fq.gz and A1_2.fq.gz and so on for each different sample.
+Then, when I choose the module Salmon Quant and drag my samples from the Files tab, it says that 'the file extension is not one of the expected types' and a .url appears after .fq.gz !
+I do not understand why and I guess that's why every analysis I run failed.
+Do you know how to fix that ?
+
+
+thank you for your help
+
+
+Laurie
+
+
+
+screenshot.docx
+Barbara Hill
+unread,
+Dec 8, 2021, 9:13:40 AM
+
+
+
+to GenePattern Help Forum
+Hello Laurie,
+
+
+This does seem to be a bug with all dragged-in inputs. 
+
+
+While we work to resolve this please either right-click/command-click to copy the URL and provide it as input, or click on the file names then select "Send to Reads" from the menu that slides out. (See the screenshot below)
+
+
+Please let us know if this does not help you get back up and running.
+
+
+All the best
+-Barbara
+
+
+Screenshot 2021-12-08 121126.jpg
+Barbara Hill
+unread,
+Dec 8, 2021, 9:30:15 AM
+
+
+
+to GenePattern Help Forum
+Hi Laurie, 
+
+
+This turned out to be a browser issue.  
+If you upgrade to the latest Chrome, Firefox or Safari, this will be resolved.
+Unfortunately, this seems to be an ongoing and unresolved issue in Microsoft Edge.
+
+
+Best
+-Barbara
+Message has been deleted
+Laurie Baert
+unread,
+Dec 8, 2021, 10:00:42 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara, 
+
+
+Thank you for your advices, unfortunately I tried the both methods instead of dragging the files but it doesn't work. I also upgraded Chrome and tried to use Firefox as well but I have the same issue, this time I do not have.url at the end but I still have error message.
+
+
+best, 
+
+
+laurie
+
+
+
+screenshot1.docx
+Anthony Castanza
+unread,
+Dec 8, 2021, 10:29:18 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Laurie,
+
+ 
+
+If the only issue is the red triangle try submitting the job anyway, it looks like the module might not be detecting the supported file extensions correctly, but that shouldn't actually affect the job's ability to run. If you're getting error messages from the job itself, please send us a job number so we can take a deeper look.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/8c89a5bc-c788-4de6-a263-0936cef81b34n%40googlegroups.com.
+
+Laurie Baert
+unread,
+Dec 8, 2021, 2:20:33 PM
+
+
+
+to GenePattern Help Forum
+Hi Anthony, 
+
+
+I tried to run mutiple times HISAT2Aligner even with the red triangle was present, I changed few parameters each times but nothing worked.
+I enclosed a screenshot of the jobs so you have the numbers.
+
+
+Thank you for your help
+
+
+Laurie
+
+
+screenshot2.docx
+Anthony Castanza
+unread,
+Dec 8, 2021, 3:27:21 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Laurie,
+
+ 
+
+I ran some tests and It looks like the issue here is in the "Job Options" section, it would appear that with the default settings, this module doesn't get enough RAM to load in the index completely.
+
+ 
+
+I'd recommend changing "job memory" to "32Gb", and perhaps also "job cpuCount" to "4". This should resolve the issue with HISAT2Aligner and allow your job to complete.
+
+ 
+
+Also, from your screenshot it looks like you were able to get the Salmon.Quant job to complete, that's great to see!
+
+ 
+
+Let us know if you encounter more issues
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/46a6cdca-eb3c-4260-a91b-c8a30d8617b2n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

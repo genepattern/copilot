@@ -1,0 +1,56 @@
+URL: https://groups.google.com./g/genepattern-help/c/OyqycT3bJ2g
+Title: tximport.DESeq2 error
+----------------------------------------
+
+
+
+
+
+tximport.DESeq2 error
+10 views
+Skip to first unread message
+
+Viktor
+unread,
+Jan 21, 2022, 11:37:41 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Getting an error with job 406378. Not sure what the problem is.
+
+
+Thank you for taking a look,
+Viktor
+Viktor
+unread,
+Jan 21, 2022, 12:24:25 PM
+
+
+
+to GenePattern Help Forum
+And now I am getting a different error for job 406383 with the same input parameters.
+
+Viktor
+unread,
+Jan 21, 2022, 12:41:00 PM
+
+
+
+to GenePattern Help Forum
+Last update: I reran the job that successfully completed before (job 402939) with the same input parameters. Now I am getting an error (job 406394).
+
+
+It seems that the module is not working properly.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

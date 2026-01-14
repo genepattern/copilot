@@ -1,0 +1,149 @@
+URL: https://groups.google.com./g/genepattern-help/c/PtM9Aa6i_48
+Title: ERR in MutSigCV
+----------------------------------------
+
+
+
+
+
+ERR in MutSigCV
+66 views
+Skip to first unread message
+
+Sakshi sen
+unread,
+Aug 11, 2023, 12:15:28 AM
+
+
+
+to GenePattern Help Forum
+Hello 
+i am using MutSigCV but when i use my file it gives ERR and if i use example file it shows following ERR 
+Error using gp_MutSigCV>MutSig_preprocess (line 256) in coverage_file, "effect" must be one of noncoding/silent/nonsilent Error in gp_MutSigCV (line 184) how to resolve this Err and please let me know how to make a coverage file or from where i can the coverage file 
+
+
+Thank you 
+Ted Liefeld
+unread,
+Aug 11, 2023, 6:47:22 AM
+
+
+
+to GenePattern Help Forum
+Hi,  can you provide some job numbers for us to look at?
+
+
+Thanks
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Aug 11, 2023, 7:39:39 AM
+
+
+
+to GenePattern Help Forum
+I think I found your job on the cloud server (525210).  I found a few errors with the input data.  Per the error you cite, the effect column in your coverage file includes many different categorizations, but MutSigCV requires only the values silent, nonsilent or noncoding.  Fixing this error leads to another error which is that your maf file  does not have the columns "categ" or "effect" and thus according to the documentation you need to also provide a mutation type dictionary file.  Here is the description from the module;
+
+
+"The mutation type dictionary to use for automatic category and effect discovery. This is necessary only if you are using a MAF file without the columns "categ" and "effect". A suggested dictionary can be found using "Add Path or URL" under "shared_data/example_files/MutSigCV_1.3/mutation_type_dictionary_file.txt"." 
+
+
+
+Hope this helps,
+
+
+Ted
+
+Sakshi sen
+unread,
+Aug 13, 2023, 9:50:51 PM
+
+
+
+to genepatt...@googlegroups.com
+Hii 
+i check all my input files and correct them and i also use dictionary URL but it shows you can't access the data from dictionary file what should i do 
+Thank you
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/70bc0d8c-c10b-4d2a-8123-d91986080de8n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 14, 2023, 7:00:48 AM
+
+
+
+to GenePattern Help Forum
+Can you provide a job number?  I was unable to find any MutSigCV jobs where a dictionary was provided.
+
+
+Thanks
+
+
+Ted
+
+
+
+Sakshi sen
+unread,
+Aug 14, 2023, 11:19:30 PM
+
+
+
+to genepatt...@googlegroups.com
+this URL  is not working ....it shows ERR that u cant access the data 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/afeba256-57d8-4c30-be28-47e51e201715n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Aug 15, 2023, 7:37:38 AM
+
+
+
+to genepatt...@googlegroups.com
+That documentation dates back about 10 years ago so its not too surprising the link no longer works.  If you visit the gdac-help forum I sent you in your other help request they may be able to help you find a more up to date link.
+
+
+I won't be able to help more without the job number from your initial question.
+
+
+Ted  
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAG2GQa19wXukTAh4OgOR5XCK7RNqQ-c3KcqOC_pK3uRyZm8sJw%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

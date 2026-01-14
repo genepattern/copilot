@@ -1,0 +1,86 @@
+URL: https://groups.google.com./g/genepattern-help/c/T7oE2v9HAa8
+Title: dapple output
+----------------------------------------
+
+
+
+
+
+dapple output
+19 views
+Skip to first unread message
+
+Tongjun Gu
+unread,
+Aug 5, 2021, 12:42:00 PM
+
+
+
+to GenePattern Help Forum
+Dear Support,
+
+
+I ran two small jobs using DAPPLE (job IDs: 367789 and 367756). But I cannot find the output of the jobs. Could you please point where the results are? Thank you!
+
+
+Tongjun
+Tongjun Gu
+unread,
+Aug 6, 2021, 7:07:43 AM
+
+
+
+to GenePattern Help Forum
+Is it possible that there is no results output for the gene list I submitted? I received no error for the jobs. 
+
+Barbara Hill
+unread,
+Aug 9, 2021, 12:28:07 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+In both cases your jobs output an error file "ErrorReport" 
+"Your job was terminated for the following reason:
+You must input SNPs if you chose to use the nearest gene."
+
+
+In both jobs you provided genes, rather than SNPs.
+
+
+Job results can always be found either in the files tab in the panel on the left , or from the navigation bar at the top of the Genepattern webapp.
+
+
+Left Panel
+
+
+
+
+Nav bar
+
+
+
+
+
+
+In the notebooks job results appear at the bottom of the job widget.
+https://notebook.genepattern.org/basic-features/#analysis-jobs
+
+
+
+Please let us know if there is anything else we can help with.
+
+
+Best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

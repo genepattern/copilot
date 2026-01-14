@@ -1,0 +1,1 @@
+GenePattern forum thread about a Metagene Projection Module error involving "Could not find or load main class RunR", where a user reported a runtime issue and a system administrator (Barbara Hill) responded by fixing the module configuration on the Amazon server, recommending that the user retry the job and report any subsequent problems.

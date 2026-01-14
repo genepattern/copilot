@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/GYPerVgeKjo
+Title: Re: [gp-team] Request for Deletion of Uploaded Data
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] Request for Deletion of Uploaded Data
+10 views
+Skip to first unread message
+Ted (aka John) Liefeld
+unread,
+Aug 18, 2025, 6:47:30 AM
+
+
+
+to genepatt...@googlegroups.com, genepatt...@broadinstitute.org
+Polina,
+
+
+I have ensured that those job results and their input files have been deleted from our system.  We do retain a record that the job existed and the parameters used, including filenames, but not the files or their contents.  If this happens again you can delete the jobs yourself, simply click on the job in the jobs pane and use the Jobs menu to delete the job (see Jobs Menu in https://www.genepattern.org/user-guide/).  This is how I deleted the jobs for you, though I did also scour the file system and S3 buckets to ensure job files were in fact deleted correctly (they were).
+
+
+Hope this helps,
+
+
+Ted
+
+
+On Sun, Aug 17, 2025 at 10:37 PM 'Полина Козлова' via genepattern-team <genepatt...@broadinstitute.org> wrote:
+
+
+Dear GenePattern Support Team,
+
+ 
+
+I am writing to request your assistance regarding data that I previously uploaded to the GenePattern platform. Unfortunately, I mistakenly uploaded information for which I did not have the authorization to share.
+
+Although I confirmed my consent for the potential public use of data during registration, I only realized afterwards that I was not permitted to make these materials publicly available.
+
+Therefore, I kindly request that you:
+
+refrain from using the uploaded data for public purposes, and
+
+if possible, remove the following entries from the system:
+
+651124
+
+651125
+
+651126
+
+651818
+
+ 
+
+I sincerely apologize for this situation and would be very grateful for your understanding and assistance.
+
+Thank you very much for your attention to this matter.
+
+ 
+
+Best regards,
+Polina Kozlova
+
+ 
+ 
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/1755495412.263774232%40f469.i.mail.ru.
+
+
+Reply all
+
+Reply to author
+
+Forward

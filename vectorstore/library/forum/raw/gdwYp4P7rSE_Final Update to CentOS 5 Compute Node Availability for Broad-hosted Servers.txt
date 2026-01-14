@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/gdwYp4P7rSE
+Title: Final Update to CentOS 5 Compute Node Availability for Broad-hosted Servers
+----------------------------------------
+
+
+
+
+
+Final Update to CentOS 5 Compute Node Availability for Broad-hosted Servers
+71 views
+Skip to first unread message
+Barbara Hill
+unread,
+Jul 19, 2018, 9:40:28 AM
+
+
+
+to genepatt...@googlegroups.com
+
+On June 22, 2018, there was a fire at the main data center for the Broad Institute, resulting in an end of service for the last remaining CentOS 5 node, which enabled the running of the following legacy modules on our Broad-hosted servers:
+
+ApplyGatingML
+CopyNumberInferencePipeline (SNPFileCreator_SNP6, Birdseed, CopyNumberInference, CopyNumberNoise, RemoveCopyNumberOutliers, TangentNormalization, ParallelCBS, SegmentationCount)
+ESPPredictor (now available on our public server)
+FCMSinglePanelQC
+FLAMEChooseOptimalClusterNumber
+FLAMEMetacluster
+FLAMEMixtureModel
+FlowMeansCluster
+FlowMergeCluster
+GLAD
+IlluminaDASLPipeline (IlluminaScanExtractor, IlluminaNormalizer, IlluminaConcatenate)
+IlluminaNormalizer
+ImmPortFCSConvLogicleTrans
+ImmPort_FLOCK_CrossSample (ImmPortFCSConvLogicleTrans, ImmPortColSelection, ImmPortFLOCK, ImmPortCrossSample)
+ImmPort_FLOCK_Individual_FCS (ImmPortFCSConvLogicleTrans, ImmPortColSelection, ImmPortFLOCK)
+MultiplotPreprocess (and thus Multiplot)
+RemoveCopyNumberOutliers
+REVEALER
+SamSPECTRALClusterFCS
+SuggestNumberOfPopulationsFCS
+TangentNormalization
+
+This means that these modules and pipelines are no longer installed on any of our servers, and the latest versions will be transitioned to the GParc repository, and potentially GitHub (depending on licensing) for archiving.
+
+
+
+
+Please contact us if you have any questions.
+
+
+Reply all
+
+Reply to author
+
+Forward
+This conversation is locked
+You cannot reply and perform actions on locked conversations.

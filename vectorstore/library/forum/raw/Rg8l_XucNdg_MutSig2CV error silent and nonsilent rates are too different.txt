@@ -1,0 +1,102 @@
+URL: https://groups.google.com./g/genepattern-help/c/Rg8l_XucNdg
+Title: MutSig2CV error: silent and nonsilent rates are too different
+----------------------------------------
+
+
+
+
+
+MutSig2CV error: silent and nonsilent rates are too different
+52 views
+Skip to first unread message
+
+Camilla Ceccarani
+unread,
+Sep 15, 2022, 2:24:22 AM
+
+
+
+to GenePattern Help Forum
+Hi, I'm new here.
+
+My job ID is 461602.
+
+I'm using the online tool and I'm getting the error
+
+"Error using gp_MutSigCV>MutSig_runCV (line 854)
+
+silent and nonsilent rates are too different
+ Error in gp_MutSigCV (line 194)"
+
+
+
+The website is giving me some output data, but the result is this error. The stout says:
+
+
+
+"MutSigCV: RUN -------------
+
+Loading mutation_file...
+
+NOTE: Both "gene" and "Hugo_Symbol" are present in mutation_file. Using "gene".
+
+NOTE: Both "patient" and "Tumor_Sample_Barcode" are present in mutation_file. Using "patient".
+
+Loading coverage file...
+
+Loading covariate file...
+
+NOTE: 1518/12486 gene names could not be mapped to coverage information. Excluding them.
+
+Building n and N tables..."
+
+
+I've inserted the combined maf obtained from my samples processed through the R package maftools.
+
+
+
+Can someone please help me? Thank you
+
+mmr...@cloud.ucsd.edu
+unread,
+Sep 16, 2022, 12:41:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Camilla,
+
+
+I recommend that you try one of the following, which are specific to MutSigCV issues:
+
+
+http://www.broadinstitute.org/cancer/cga/cga_forums
+mutsi...@broadinstitute.org
+
+
+Best,
+Michael
+
+
+
+Camilla Ceccarani
+unread,
+Sep 19, 2022, 3:55:21 AM
+
+
+
+to GenePattern Help Forum
+Thank you Michael,
+
+although I couldn't find any solution to my problem and that forum has not been used for about 4 years.
+
+I saw more activity on this forum and gave it a shot.
+
+Someone else can help me? I'm still in need for an explanation!
+
+
+Reply all
+
+Reply to author
+
+Forward

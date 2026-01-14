@@ -1,0 +1,1 @@
+User experienced download error when attempting to run GSEA v20.4.0 on GenePattern, with multiple jobs failing due to an incorrect URL for retrieving the Human Ensembl Gene ID MSigDB chip file; the solution was to modify the URL by adding a 'v' character before the version number, which resolved the file retrieval issue and allowed the GSEA analysis to complete successfully.

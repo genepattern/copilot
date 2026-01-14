@@ -1,0 +1,27 @@
+URL: https://groups.google.com./g/genepattern-help/c/i8Uanr7RPxI
+Title: Announcement -- New Module: TCGA.SampleSelection is now available!
+----------------------------------------
+
+
+
+
+
+Announcement -- New Module: TCGA.SampleSelection is now available!
+9 views
+Skip to first unread message
+GenePattern Help Forum
+unread,
+May 4, 2021, 11:06:54 AM
+
+
+
+to GenePattern Help Forum
+TCGA.SampleSelection is now available! Retrieve TCGA data from Broad FireBrowse & perform sample selection based on the expression level of a gene of interest using GSEA tools. 
+http://bit.ly/CloudGP_TCGA-SampleSelection 
+
+
+Reply all
+
+Reply to author
+
+Forward

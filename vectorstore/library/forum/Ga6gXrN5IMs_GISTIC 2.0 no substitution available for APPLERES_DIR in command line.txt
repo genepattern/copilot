@@ -1,0 +1,1 @@
+A user encountered an error running GISTIC 2.0 on the GenePattern server with the error "<APPLERES_DIR> no substitution available", which was resolved by updating to the latest version (v6.10/GISTIC 2.0.22) instead of using an older version, with the solution confirmed to work successfully after module version upgrade.

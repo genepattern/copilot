@@ -1,0 +1,98 @@
+URL: https://groups.google.com./g/genepattern-help/c/o27C1tEaaCA
+Title: ssGSEA - combine.add option
+----------------------------------------
+
+
+
+
+
+ssGSEA - combine.add option
+43 views
+ssGSEA
+Skip to first unread message
+
+AKumar
+unread,
+Nov 13, 2017, 10:22:29 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+      I am using the ssGSEA module. When I use the combine.add option for up and down regulated gene sets and pass the result file to ComparitiveMarkerSelection module, it shows,
+
+
+java.lang.IllegalArgumentException: Duplicate row names are not allowed:SANSOM_APC_TARGETS
+
+
+But it works if I use combine.off option.
+
+
+Please help.
+
+
+Thanks
+
+
+
+
+
+
+
+
+
+
+
+
+Barbara Hill
+unread,
+Nov 14, 2017, 9:44:03 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+This would appear to be functioning as designed:
+https://gsea-msigdb.github.io/ssGSEAProjection-gpmodule/v9/index.html
+"Options for combining enrichment scores for paired *_UP and *_DN gene sets. (Default: combine.add)
+
+For gene set collections that do not utilize _UP and _DN suffixes at the ends of set names, the combine mode parameter option is irrelevant as all the modes give the same output.
+
+For Gene set collections that utilize _UP and _DN suffixes, which include MSigDB v5's C2.all, C2.CGP, C6.all, and C7.all, recombine sets in two different ways:
+Combine.add mode [default] keeps the original paired sets with independent scores and adds the new combined set with combined score to the output file, increasing the number of gene sets by the number of paired sets.
+Combine.replace replaces the original paired gene sets with a new combined gene set and thus reduces the number of gene sets in the output by half the paired sets. Combined sets report combined enrichment scores.
+Combine.off keeps _UP and _DN sets separate."
+
+
+I am unable to advise as to which option you should choose, as I am unfamiliar with your data and intended analysis.
+
+
+One way to work around this, if you want the combine.add results, is to run the combine.add results through UniquifyLabels.
+
+
+Please let us know if you need further assistance.
+
+
+Best
+-Barbara
+AKumar
+unread,
+Nov 14, 2017, 11:20:18 AM
+
+
+
+to GenePattern Help Forum
+Thank you Ms. Hill. I want to use the combine.add option. It worked when I used the UniquifyLabels module.
+
+
+Thanks,
+Anu
+
+
+Reply all
+
+Reply to author
+
+Forward

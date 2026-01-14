@@ -1,0 +1,1 @@
+A GenePattern user encountered a file transfer error when submitting a GSEA pre-rank job, seeking guidance on correct file formatting for gct and gmx files, with a support team member suggesting the error might be due to a known system bug and noting potential issues with duplicate gene names in the uploaded files.

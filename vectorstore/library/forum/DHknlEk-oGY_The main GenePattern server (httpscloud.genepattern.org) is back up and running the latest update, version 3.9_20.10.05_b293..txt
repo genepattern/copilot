@@ -1,0 +1,1 @@
+The GenePattern cloud server was updated to version 3.9_20.10.05_b293 and successfully restored to operational status, with full release notes available on the GitHub repository for this version.

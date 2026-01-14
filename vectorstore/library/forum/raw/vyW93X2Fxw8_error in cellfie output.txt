@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/vyW93X2Fxw8
+Title: error in cellfie output
+----------------------------------------
+
+
+
+
+
+error in cellfie output
+39 views
+Skip to first unread message
+Sasan Ashrafi
+unread,
+Oct 7, 2020, 7:18:47 AM
+
+
+
+to GenePattern Help Forum
+hi
+I used cellfie online job with csv file based on Tutorial. dimensions= 18865:11 (10 sample) 
+I got  this error:
+
+
+Error using struct 
+Array dimensions of input '4' must match those of input '2', or be scalar. 
+ Error in execCellfie (line 7) 
+ MATLAB:StructConversion:DimensionMismatch  
+
+
+
+what can i do?
+Alex Wenzel
+unread,
+Oct 21, 2020, 12:53:56 PM
+
+
+
+to GenePattern Help Forum
+Hi Sasan,
+
+
+I apologize for the late response. I made the CellFie module and will get in touch with the CellFie algorithm developers about this issue. Would you mind sharing the parameters you used? Alternatively, if you could re-run the job and send me the job number, that would be great too! 
+
+
+Alex
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

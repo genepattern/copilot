@@ -1,0 +1,52 @@
+URL: https://groups.google.com./g/genepattern-help/c/JQZW5TVNchw
+Title: Getting error while running DESeq2
+----------------------------------------
+
+
+
+
+
+Getting error while running DESeq2
+10 views
+Skip to first unread message
+
+Ranjan J. Sarma
+unread,
+Aug 12, 2020, 1:34:02 PM
+
+
+
+to GenePattern Help Forum
+Error Message:
+
+Error in if (numberOfDataPoints != length(labels)) { :
+  missing value where TRUE/FALSE needed
+Calls: read.cls
+Execution halted
+
+
+
+
+
+
+Barbara Hill
+unread,
+Aug 13, 2020, 8:20:28 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Please send your job id, so that we can look into the details of this error.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

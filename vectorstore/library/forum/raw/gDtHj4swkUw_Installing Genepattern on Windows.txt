@@ -1,0 +1,51 @@
+URL: https://groups.google.com./g/genepattern-help/c/gDtHj4swkUw
+Title: Installing Genepattern on Windows
+----------------------------------------
+
+
+
+
+
+Installing Genepattern on Windows
+10 views
+Skip to first unread message
+
+Hussein El Saghire
+unread,
+Jan 17, 2021, 3:35:44 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I am not able to find how to download genepattern local server on windows computer. There are instructions only for Linux and Mac. Any help please? 
+
+
+Thank you 
+Barbara Hill
+unread,
+Jan 19, 2021, 7:26:37 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+We do not currently support Windows as a local install. However, we are actively working on GenePattern in Docker (IE running in a Docker container) which will allow Windows users to once again have local GenePattern installs if they so choose. Stay tuned! 
+
+
+Best
+-Barbara 
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+User seeking assistance running large BAM files around 40 GB in GenePattern, with administrators able to manually expand user file quotas for bioinformatics data processing upon request, demonstrating platform flexibility for handling large genomic sequencing datasets.

@@ -1,0 +1,111 @@
+URL: https://groups.google.com./g/genepattern-help/c/8YZLSk1aA04
+Title: Error Getting Documentation for ssGSEA
+----------------------------------------
+
+
+
+
+
+Error Getting Documentation for ssGSEA
+11 views
+Skip to first unread message
+
+Morgan Roberts
+unread,
+Oct 3, 2025, 1:46:11 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I am trying to access the documentation for the ssGSEA module through the documentation page (https://gsea-msigdb.github.io/ssGSEA-gpmodule/v10/index.html) but when I click on the links to information about the file formats (e.g. "see the GCT file format information" --> https://docs.gsea-msigdb.org/#GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29) it just takes me to an error page that says:
+
+
+404 Not Found
+Code: NoSuchKey
+Message: The specified key does not exist.
+Key: GCT:_Gene_Cluster_Text_file_format_.28.2A.gct.29
+RequestId: KBRH7FJZB5PW10M6
+HostId: 0tVGYHk0du7AOo2DZrjBncBfOQMaPETWmDu6yeL6vxAYupXKxIAAffzudHL3lvc1PaLk06uyv6Q=
+An Error Occurred While Attempting to Retrieve a Custom Error Document
+Code: NoSuchKey
+Message: The specified key does not exist.
+Key: error.html
+Any help with this would be great!
+
+
+Thanks,
+
+
+Morgan
+Anthony Castanza
+unread,
+Oct 3, 2025, 2:12:17 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Morgan,
+
+
+It looks like the link might not have properly embedded into the document, the GCT file format documentation is here: https://docs.gsea-msigdb.org/#GSEA/Data_Formats/#gct-gene-cluster-text-file-format-gct
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/ca2a214d-266e-4594-b12a-aa80da5d62fdn%40googlegroups.com.
+
+Anthony Castanza
+unread,
+Oct 3, 2025, 2:13:53 PM
+
+
+
+to genepatt...@googlegroups.com
+The hyperlink embedding is broken by the second # symbol, you'll need to copy and paste that link I just sent rather than use the embedded hyperlink
+
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+Morgan Roberts
+unread,
+Oct 3, 2025, 2:19:10 PM
+
+
+
+to genepatt...@googlegroups.com
+That worked, thanks!
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZxXc4nAt%3DpfwFsnaBvPVYR5kZFXLEkbPrKbjUs1c-KePg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

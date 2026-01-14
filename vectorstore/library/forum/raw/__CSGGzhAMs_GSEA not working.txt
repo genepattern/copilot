@@ -1,0 +1,114 @@
+URL: https://groups.google.com./g/genepattern-help/c/__CSGGzhAMs
+Title: GSEA not working
+----------------------------------------
+
+
+
+
+
+GSEA not working
+19 views
+Error
+GSEA
+Input
+Skip to first unread message
+
+Matthew Cserhati
+unread,
+Nov 20, 2018, 8:12:48 AM
+
+
+
+to GenePattern Help Forum
+Hello GenePattern forum,
+
+
+I am trying to run GSEA on te GenePattern website: https://genepattern.broadinstitute.org/gp/pages/index.jsf
+My job id is 1750490. I keep getting the following error:
+
+
+
+
+java.lang.IllegalArgumentException: <html>
+<body>
+<p>No template for name: 9HCCpats_RPKM_allSamples.cls#9lat_test2</p><p>The Available templates are:</p>
+9HCCpats_RPKM_allSamples.cls<br>
+9HCCpats_RPKM_allSamples.cls#NML_versus_TUM<br>
+9HCCpats_RPKM_allSamples.cls#TUM_versus_NML<br>
+9HCCpats_RPKM_allSamples.cls#NML<br>
+9HCCpats_RPKM_allSamples.cls#TUM<br>
+</body></html>
+	at edu.mit.broad.genome.parsers.ParserFactory.findTemplate(ParserFactory.java:1033)
+	at edu.mit.broad.genome.parsers.ParserFactory.readTemplate(ParserFactory.java:298)
+	at edu.mit.broad.genome.parsers.ParserFactory.readTemplate(ParserFactory.java:273)
+	at xtools.api.param.TemplateSingleChooserParam._getTemplates(TemplateSingleChooserParam.java:142)
+	at xtools.api.param.TemplateSingleChooserParam.getTemplate(TemplateSingleChooserParam.java:52)
+	at xtools.gsea.Gsea.execute(Gsea.java:69)
+	at xtools.api.AbstractTool.tool_main(AbstractTool.java:406)
+	at xtools.gsea.Gsea.main(Gsea.java:140)
+	at org.genepattern.modules.gsea.GseaWrapper.main(GseaWrapper.java:362)
+
+
+I tried creating the cls file with the ClsFileCreator module for my .gct file.
+
+I even tried re-running GSEA with some files that I knew had worked previously, but those also failed (job # 1750489).
+
+
+Is something wrong with the server? I think I've gotten the file format right, I just don't understand why I keep getting this error.
+
+
+Thanks, Matthew
+
+
+
+===================
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 20, 2018, 4:55:40 PM
+
+
+
+to GenePattern Help Forum
+Hello Matthew, 
+
+
+Both of the jobs you cited seem to have been deleted.
+
+
+Were you able to resolve your error?
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

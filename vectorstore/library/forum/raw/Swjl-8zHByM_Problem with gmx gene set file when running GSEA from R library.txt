@@ -1,0 +1,156 @@
+URL: https://groups.google.com./g/genepattern-help/c/Swjl-8zHByM
+Title: Problem with gmx gene set file when running GSEA from R library
+----------------------------------------
+
+
+
+
+
+Problem with gmx gene set file when running GSEA from R library
+15 views
+Skip to first unread message
+
+Jeffrey Chang
+unread,
+Apr 26, 2018, 8:26:12 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have been running GSEA analyses on the Broad public server from the R GenePattern library for years.  However, I seem to have recently developed a problem.  I'm not sure when it started, since I have just started using it again today for the first time in a few months.
+
+
+My GSEA analyses from R fails with a message in stderr.txt:
+java.io.IOException: Bad line format: gmx       HALLMARK_TNFA_SIGNALING_VIA_NFKB        http://www.broadinstitute.org/gsea/msigdb/cards/HALLMARK_TNFA_SIGNALING_VIA_NFKB        JUNB    CXCL2   ATF3    NFKBIA  TNFAIP3 PTGS2   CXCL1 
+[... skip whole gene set file] 
+
+
+Rather than passing GSEA the name of the gene set file, GenePattern, at some point, seems to be reading in the whole file and passing the contents.  In the stdout.txt file, I see:
+
+Parameters passing to GSEA.main:
+
+gmx       HALLMARK_TNFA_SIGNALING_VIA_NFKB [...]
+
+res     /xchip/gpprod/servers/genepattern/users/xiaolingchen/uploads/tmp/run7571601434042246496.tmp/signal.gct
+
+
+cls     /xchip/gpprod/servers/genepattern/users/xiaolingchen/uploads/tmp/run9204111616495429395.tmp/signal.cls
+
+
+The other files are uploaded and passed correctly.
+
+
+If I run the same analysis on the public server, the analysis finishes correctly.
+
+
+I'm not sure why the analysis does not work from the R library anymore:
+result <- run.analysis(gp.client, 'GSEA', permutation.type='phenotype', collapse.dataset='false', gene.sets.database='h.all.v6.1.symbols.gmt [Hallmarks]', expression.dataset='signal.gct', phenotype.labels='signal.cls')
+
+
+
+I have tried setting gene.sets.database to the ftp site, but that also fails.
+
+
+Please let me know if there is something else I should try.
+
+
+Thanks!
+
+
+Jeff
+
+
+
+
+Peter Carr
+unread,
+Apr 26, 2018, 10:30:25 PM
+
+
+
+to genepatt...@googlegroups.com
+We recently installed a new version (GSEA v19.0.24) on the public server. Perhaps this accounts for the change in behavior. There are a couple of things going on.
+    1) your R client code calls the 'GSEA' module without specifying a version number. When we install new versions of the module, you will have to double check that the R client code is still compatible
+    2) the latest version of GSEA may use a parameter type which is not compatible with the R client library. This merits further investigation. As far as I know, we haven't tested GSEA v19+ from the R client. If this is indeed a blocker, there are workarounds.
+
+Meanwhile, try to use the version that was working for you before. Do you remember? I will guess that it was v18. Change your R code to use a specific version of GSEA. For example, this calls the latest installed version
+    result <- run.analysis(gp.client, 'GSEA', ...
+This calls v18
+    result <- run.analysis(gp.client, 'urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00072:18', ...
+
+
+Regards,
+Peter
+
+Jeffrey Chang
+unread,
+Apr 27, 2018, 7:28:53 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for looking at this Peter!
+
+From the parameters I used, I can see that I previously used either version 17.6 or 18. I tried using those versions again, and get the same Java exception. I'm thinking that something might have changed with how GenePattern passes data from file parameter types to the modules.
+
+However, I did fine a work-around. In GSEA 19+, from the web interface, users can set gene.sets.database either from a pull-down or by uploading their own file. In previous versions, this was split between two different parameters: gene.sets.database (pulldown) or gene.sets.database.file (if uploading file). If I use previous versions of GSEA from the R client, specifying the gene.sets.database value no longer works (I get the exception below). However, uploading a gene.sets.database.file still works. Therefore, the workaround is to use an older version of GSEA, download the proper gene set file from MSigDB, and pass it myself through gene.sets.database.file, rather than specifying the desired gene set with gene.set.database.
+
+Hopefully, this might be useful for someone else running into similar problems.
+
+Jeff
+
+
+> --
+> You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+> To post to this group, send email to genepatt...@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/df854a5f-8b78-4299-634b-6f31ad0013c8%40broadinstitute.org.
+> For more options, visit https://groups.google.com/d/optout.
+
+
+Peter Carr
+unread,
+Apr 27, 2018, 10:29:32 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks for the detailed report. We are not actively using the R client
+library. We use the REST API instead, via python or curl. I will look
+into this next week to see if I can replicate the problem.
+Regards,
+Peter
+
+
+Jeffrey Chang
+unread,
+Apr 27, 2018, 10:33:15 AM
+
+
+
+to genepatt...@googlegroups.com
+Thanks! Please let me know if there is anything I can do to help.
+
+It is good to know that the REST API is preferred now. We can start switching over.
+
+Thanks,
+Jeff
+
+
+> --
+> You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+> To post to this group, send email to genepatt...@googlegroups.com.
+
+> To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/a817ddfb-f04f-a8db-aa23-9229f3c5b9f5%40broadinstitute.org.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

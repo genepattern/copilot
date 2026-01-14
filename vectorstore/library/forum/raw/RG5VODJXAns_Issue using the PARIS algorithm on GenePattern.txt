@@ -1,0 +1,221 @@
+URL: https://groups.google.com./g/genepattern-help/c/RG5VODJXAns
+Title: Issue using the PARIS algorithm on GenePattern
+----------------------------------------
+
+
+
+
+
+Issue using the PARIS algorithm on GenePattern
+30 views
+Skip to first unread message
+
+Dennis Moccia
+unread,
+Oct 2, 2017, 6:36:00 AM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern Help
+
+
+I am having some issue when trying to run the PARIS module in Gene Pattern
+
+
+In the stdout.txt I am seeing:
+
+
+Patch dir:  /xchip/gpprod/servers/genepattern/gp/patches
+Library dir:  /xchip/gpprod/servers/genepattern/gp/patches/rlib/2.15/site-library
+Loading library: [1] "getopt"
+
+
+In the stderr.txt I am seeing:
+
+
+Error in load.packages(libdir, patch.dir, server.dir, vers) : 
+  The location at /xchip/gpprod/servers/genepattern/gp/patches/rlib/2.15/site-library does not exist
+Execution halted
+
+
+
+
+From the errors it looks like a library loading issue?  I have run this module several times in the past and without an issue.  I have even tried loading in one of my previous analyses just to be sure that I was not doing anything different in my gct files.
+
+
+My most recent job ids are
+
+
+1555054. PARIS
+1554379. PARIS
+1553993. PARIS
+1553990. PARIS
+
+
+If you need my input files I would prefer to send them privately.  Thank you for any help you can provide!
+
+
+Dennis
+
+
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Oct 2, 2017, 1:22:21 PM
+
+
+
+to GenePattern Help Forum
+Hi Dennis, 
+
+
+We are looking into this and will get back to you shortly.
+
+
+Best
+-Barbara
+Dennis Moccia
+unread,
+Oct 2, 2017, 1:50:14 PM
+
+
+
+to GenePattern Help Forum
+Thank you Barbara, let me know if I can be of assistance with respect to testing/files/etc.
+
+
+Dennis
+
+Keyue Ma
+unread,
+Oct 9, 2017, 8:10:05 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara, I was running PARIS and also had this problem:
+Error in load.packages(libdir, patch.dir, server.dir, vers) : 
+  The location at /xchip/gpprod/servers/genepattern/gp/patches/rlib/2.15/site-library does not exist
+Execution halted
+
+
+I'm wondering if there is any updates on this issue? Thank you!
+
+
+Best
+
+
+Kevin
+
+Peter Carr
+unread,
+Oct 10, 2017, 11:15:52 AM
+
+
+
+to genepatt...@googlegroups.com
+There may have been a configuration error on the server. Please try again and let me know if your jobs are working now.
+
+Thanks,
+Peter
+
+Dennis Moccia
+unread,
+Oct 12, 2017, 6:14:27 AM
+
+
+
+to genepatt...@googlegroups.com
+Peter
+
+
+Thank you for looking into this! Things are working properly now!  I appreciate the help,
+
+Dennis
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/RG5VODJXAns/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-help+unsubscribe@googlegroups.com.
+To post to this group, send email to genepattern-help@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/bf1f4995-d307-aa9c-7598-86756ebde334%40broadinstitute.org.
+
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+
+
+
+--
+
+Dennis Moccia
+Founder
+Cognitive Dataworks, Inc.
+den...@cognitivedataworks.com
+617-251-8196
+
+
+________________________________________________________________
+
+
+
+This e-mail, and any of its attachments, is a business communication of Cognitive Dataworks, Inc. and could contain information that is confidential, proprietary and/or privileged.  Please do not share it with anyone to whom is not addressed unless permission is provided.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

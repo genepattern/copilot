@@ -1,0 +1,78 @@
+URL: https://groups.google.com./g/genepattern-help/c/HHd_yUFEnfg
+Title: GEOImporter module output file log2 transformed or not
+----------------------------------------
+
+
+
+
+
+GEOImporter module output file log2 transformed or not
+12 views
+Skip to first unread message
+
+Scorpio
+unread,
+Feb 21, 2018, 1:33:39 AM
+
+
+
+to GenePattern Help Forum
+Dear Team,
+How can I ensure that the output file from GEOImporter mopdule (*.gct) file is log2 transformed or not? I want to use the ComparativeMarkerSelection module for gene expression analysis. One of the input parameter required is whether the input data is log transformed or not. Please let me know
+
+
+Regards,
+Scorpio
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Mar 2, 2018, 1:56:09 PM
+
+
+
+to GenePattern Help Forum
+Hello Scorpio,
+
+
+You would have to check the source data.
+
+
+If it is not log transformed, you can use PreprocessDataset to do so, or simply indicate the state in ComparativeMarkerSelection.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

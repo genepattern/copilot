@@ -1,0 +1,116 @@
+URL: https://groups.google.com./g/genepattern-help/c/Ci9ndSBLWGs
+Title: Error in ssGSEA
+----------------------------------------
+
+
+
+
+
+Error in ssGSEA
+31 views
+Skip to first unread message
+
+Tak, Takuma Nakashima
+unread,
+Mar 29, 2022, 8:14:05 AM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I have started to use ssGSEA in these several days.
+I cannot overcome an error and ask you some advice.
+
+
+My job id is 422439. ssGSEA, and the error message was as follows.
+--------
+Error in rep(c("double"), columns) : invalid 'times' argument
+Calls: ssGSEA.cmdline
+Execution halted
+
+--------
+
+
+I tried using my colleague's input file that was successfully accomplished the program a few years ago, but I had the same error.
+Does anyone have any suggestions?
+
+
+Thank you very much for your kindness.
+
+
+Taku
+Anthony Castanza
+unread,
+Mar 29, 2022, 10:15:51 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Taku,
+
+ 
+
+The issue appears to be with the GCT header you're using here. It's specifying itself as a GCT v1.3 header, but this application can't handle the extra metadata that the 1.3 specification implies (even though that metadata isn't actually present based on the definition in the other header columns).
+
+To resolve this, you should just change the first two header lines so they read:
+
+ 
+
+#1.2
+
+19955    48
+
+ 
+
+This should allow ssGSEA to handle this dataset
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/7e87bad1-7174-4d84-84b6-8fb34d257062n%40googlegroups.com.
+
+Tak, Takuma Nakashima
+unread,
+Mar 31, 2022, 6:47:50 AM
+
+
+
+to GenePattern Help Forum
+Hi, Anthony
+
+
+Thank you very much for your help.
+I have just successfully done the ssGSEA by changing the gct file as you showed.
+
+
+Taku
+
+
+2022年3月30日水曜日 2:15:51 UTC+9 Anthony Castanza:
+
+
+
+Reply all
+
+Reply to author
+
+Forward

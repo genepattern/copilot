@@ -1,0 +1,100 @@
+URL: https://groups.google.com./g/genepattern-help/c/DqqkLJ-jwR4
+Title: TCGAImporter Error Message
+----------------------------------------
+
+
+
+
+
+TCGAImporter Error Message
+16 views
+Skip to first unread message
+
+Natalia V
+unread,
+Oct 26, 2022, 10:03:37 PM
+
+
+
+to GenePattern Help Forum
+Hi GenePattern Team, 
+
+
+I was hoping that you might be able to direct me with where my TCGAImporter job is going wrong. I continue to receive the following error message when trying to convert the TCGA COAD and READ manifest files: Host EC2 (instance i-0a49f8f0f13b6a0ef) terminated.
+
+
+Example Job ID : 471874. 
+
+
+I'm thinking it may be that I'm running out of memory? How do I go about resolving this?
+
+
+Thank you in advance for your assistance, 
+Best wishes, 
+Natalia 
+Ted Liefeld
+unread,
+Oct 27, 2022, 9:43:46 AM
+
+
+
+to GenePattern Help Forum
+Natalia
+
+
+I am looking into the failure for this run.  I suspect the problem is that it is running out of disk space on the compute node since there are many, many files in your manifest.  I have a few test jobs running right now and will report back in this forum once I have more information.
+
+
+Ted
+
+
+
+Ted Liefeld
+unread,
+Oct 27, 2022, 12:36:04 PM
+
+
+
+to GenePattern Help Forum
+Natalia
+
+
+I think there are a few problems here and it may be necessary for you to download outside of GenePattern.  I can help you with that if you want to try it.  The problems I have identified so far are
+
+
+1. Because of the large number of files in your manifest (7178) and their size, you are overflowing the disk space available for your job on our default compute nodes.  In one of my test runs (still going) its at 40GB after downloading 2395 files.  So if its linear we will hit ~120GB while our default compute nodes only have 80GB.  We do have an alternative queue (in the advanced parameters) called RNASeq_large_disk that has 500GB of space.  However using this runs into a second issue…
+
+
+2. I believe either some of the files in your manifest are controlled access data.  The module is downloading anonymously and is seeing this error message for about 1/2 of the files
+
+      "RuntimeError: 403 Client Error: FORBIDDEN for url: https://api.gdc.cancer.gov/data/3fbdc20d-df8f-40e8-8bb2-47edc48f59d6"
+
+
+
+which appears to be because of access controls on some of the files…
+
+        2022-10-27 18:38:26,244: INFO: [32mSuccessfully downloaded [0m: 3569 
+        2022-10-27 18:38:26,244: INFO: [31mFailed downloads [0m: 3609
+
+
+
+Options:
+
+
+If you are certain that there is no controlled data, the other possibility is that the GDC is throttling the request and rejecting the downloads after about the first 3569 files have been retrieved. In this case you can try to break up your manifest into several smaller parts, submit them individually and then join the gct and cls files together after all downloads are done.
+
+
+If you think that there is controlled access data, then you cannot use GenePattern for the download since it is not a HIPPA secure environment.  I could provide you with an altered docker container for this module that would allow you to provide an access-control token (see https://docs.gdc.cancer.gov/Data_Transfer_Tool/Users_Guide/Data_Download_and_Upload/) which you could run in an appropriately secure environment.  We cannot run this way on the GenePattern servers though since we do not allow controlled access or protected data, and also should never have passwords or access tokens passed as module parameters.
+
+
+Please let me know how you would like to proceed,
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

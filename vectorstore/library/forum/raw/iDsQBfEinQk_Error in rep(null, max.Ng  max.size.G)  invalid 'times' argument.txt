@@ -1,0 +1,105 @@
+URL: https://groups.google.com./g/genepattern-help/c/iDsQBfEinQk
+Title: Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+----------------------------------------
+
+
+
+
+
+Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+28 views
+Skip to first unread message
+
+Catarina Marques
+unread,
+Mar 5, 2024, 11:17:04 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm trying to perform ssGSEA imputing my own gene set as a gmt file, but I keep getting the same error message: 
+
+
+Error in rep("null", max.Ng * max.size.G) : invalid 'times' argument
+Calls: ssGSEA.cmdline Execution halted
+
+
+Could someone help me out? the job nº is 567428. ssGSEA
+
+
+Thanks a lot!
+
+
+Catarina
+Anthony Castanza
+unread,
+Mar 5, 2024, 12:05:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Catarina,
+
+
+It looks like the gene set file you provided was an excel file that was simply renamed to .gmt. In order for ssGSEA to be able to parse the file it needs to be saved out of excel as tab delimited text (.txt), and only then renamed to the .gmt file extension. Once you've corrected the file format your job should run successfully, but let us know if you still encounter errors
+
+
+-Anthony
+
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d191649a-1873-4f19-b875-65834f7309e6n%40googlegroups.com.
+
+Catarina Marques
+unread,
+Mar 5, 2024, 11:42:05 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+
+
+It worked! 
+
+
+Thank you so much for your help, I really appreciate it!
+
+
+Cheers,
+
+
+Catarina
+
+
+
+
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/iDsQBfEinQk/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CAGCeyZwxpqKtLZ44DcnhywdzJJ%2B-psn_YittXmkHa3XzdYbtCw%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

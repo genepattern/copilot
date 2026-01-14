@@ -1,0 +1,110 @@
+URL: https://groups.google.com./g/genepattern-help/c/9ZqxEazgDzU
+Title: (JOB-No.1577452) I want to compare the three groups.
+----------------------------------------
+
+
+
+
+
+(JOB-No.1577452) I want to compare the three groups.
+10 views
+Skip to first unread message
+
+한영인
+unread,
+Nov 15, 2017, 1:16:23 AM
+
+
+
+to GenePattern Help Forum
+(JOB-No.1577452)
+
+
+I want to compare the three groups. The values given are the same.I wonder why I can not see the value from the given F value? 
+
+
+
+In the group given F value (Feature P, FDR (BH), Q Value, Bonferroni, Fold Change) NaN is displayed at the desired value.
+
+
+
+However, you can get the desired value in other groups that do not have an F value.
+
+
+I'm sorry, I'm a beginner and I'm still using it poorly.
+
+
+Please explain it easily.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 17, 2017, 12:46:50 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+The first problem is that ComparativeMarkerSelection will only work with 2 classes. 
+
+
+The second is that within each class you must have at least 3 samples.
+
+
+It's always a good idea to take a quick look through the documentation when you are getting started with the modules. We do try to keep them easy to read and understand and they will often help sort out these sorts of questions, which are absolutely normal to have when you are learning.
+
+
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/ComparativeMarkerSelection/10
+
+
+
+Please let us know if you have any other questions.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

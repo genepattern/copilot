@@ -1,0 +1,1 @@
+GenePattern Public Notebook Collection now accessible in web app: Version 3.9.11 introduces a new Notebook tab allowing users to browse, open, and interact with public notebooks, which can be run, edited, shared, and saved within the user's personal notebook workspace.

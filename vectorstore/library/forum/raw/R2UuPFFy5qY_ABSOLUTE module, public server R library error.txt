@@ -1,0 +1,234 @@
+URL: https://groups.google.com./g/genepattern-help/c/R2UuPFFy5qY
+Title: ABSOLUTE module, public server R library error
+----------------------------------------
+
+
+
+
+
+ABSOLUTE module, public server R library error
+83 views
+ABSOLUTE
+R
+Skip to first unread message
+Qingyao Huang
+unread,
+Oct 8, 2017, 9:52:12 AM
+
+
+
+to GenePattern Help Forum
+I am using the ABSOLUTE modules, including ABSOLUTE and ABSOLUTE.summary. But for both of them, I run into this error of R package library:
+
+
+Error in load.packages(libdir, patch.dir, server.dir, vers) : 
+  The location at /xchip/gpprod/servers/genepattern/gp/patches/rlib/2.15/site-library does not exist
+Execution halted
+
+
+
+I run on a public server, Job ID: 
+
+1557080. ABSOLUTE.summarize
+
+
+
+
+and 1557065. ABSOLUTE 
+
+
+
+
+
+Thank you very much!
+
+Qingyao Huang
+unread,
+Oct 8, 2017, 10:11:46 AM
+
+
+
+to GenePattern Help Forum
+Also, now that I try to install GenePattern on my Mac, it keeps showing the small window, asking to input a email address, then restart. But it never starts. It is quite different from what the Install page shows.
+
+Peter Carr
+unread,
+Oct 10, 2017, 11:24:00 AM
+
+
+
+to genepatt...@googlegroups.com
+There may have been a configuration error on the server. I moved the patches directory back to the correct location. Please try again and let me know if your jobs are working now.
+
+Thanks,
+Peter
+
+Huang Qingyao
+unread,
+Oct 10, 2017, 1:32:01 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear Peter,
+
+
+Thanks a lot for your kind reply! 
+
+
+I re-ran the jobs and now both worked. I looked at the tips to select the right model for ABSOLUTE, but I prefer an automated selection like .summarize should do. The file I got from the summarize run looks like this:
+________________________________________________
+array	sample	call status	purity	ploidy	Genome doublings	delta	Coverage for 80% power	Cancer DNA fraction	Subclonal genome fraction	tau	E_CR
+A2488	A2488	high entropy	0.15	2.77	0	0.07	75	0.2	0.01	0	0
+________________________________________________
+
+
+I just wonder, 
+1. if there is any way I can get the ABSOLUTE.summarize to run locally, and 
+
+
+2. if I can get a file format looking like this, as the supplementary file in the publication "Absolute quantification of somatic DNA alterations in human cancer” in 2012:
+________________________________________________
+Sample	Chromosome	Start.bp	End.bp	n_probes	length	seg_sigma	W	HSCR_A1	HSCR_A2	modal_A1	modal_A2	expected_A1	expected_A2	LOH	HZ
+PRAWN_p_Sty26_Mapping250K_Sty_F12_95284	1	767376	247135059	19634	246367683	0.00508	0.04433	1.04685	1.05313	1	1	1	1	0	0
+________________________________________________
+
+
+I am very interested to get the modal_A1 and modal_A2 in absolute copy number for each segment, but I don’t see this anywhere in the output files of running .summarize.
+
+
+I will greatly appreciate it if you could give me some feedback and suggestions. Have a nice day!
+
+
+Best,
+Qingyao
+
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/R2UuPFFy5qY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/2d5ca8b1-5947-5fe1-fbcf-ae3f74ddd42d%40broadinstitute.org.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+Barbara Hill
+unread,
+Oct 17, 2017, 9:30:56 AM
+
+
+
+to GenePattern Help Forum
+Hello Qingyao,
+
+
+For your questions regarding how to get the same results as you saw in the paper, I would suggest you contact the method authors; their contact information is in the documentation:
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/ABSOLUTE.summarize/2
+
+
+When you say you want to run ABSOLUTE locally, do you mean on the command line? or in on a locally installed GenePattern server?
+
+
+Best
+-Barbara
+Qingyao Huang
+unread,
+Oct 18, 2017, 6:17:58 AM
+
+
+
+to genepatt...@googlegroups.com
+Dear Barbara,
+
+
+Thanks a lot for your reply! For your first suggestion, may I ask you if you received my message through absolu...@broadinstitute.org? Because on that page, it shows authors can be contacted with this email address?
+
+
+For your question, I mean to run it (ABSOLUTE.summarize and ABSOLUTE.review) as part of a pipeline (on command line or in a R module), independent of the GenePattern server. Is it possible? 
+
+
+Thank you very much. I am looking forward to hearing from you!
+
+
+Best,
+Qingyao
+
+
+-----------------------------------------------------------
+Qingyao Huang
+PhD student (Class of 2017)
+Theoretical Cytogenetics and Oncogenomics
+University of Zurich
+
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/R2UuPFFy5qY/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/c7746855-b7a4-4334-8ab0-a2a24f761451%40googlegroups.com.
+
+Barbara Hill
+unread,
+Oct 30, 2017, 12:53:48 PM
+
+
+
+to GenePattern Help Forum
+Hello Qingyao, 
+
+
+We received this message in our GenePattern help forum.
+
+
+Unfortunately, we can not provide assistance for ABSOLUTE on the command line as this was not developed by us and the code you use on the command line may have diverged from the code we wrapped for use in GenePattern.
+
+
+I'm sorry we couldn't be of greater assistance.
+
+
+Best
+
+
+-Barbara
+lyan...@126.com
+unread,
+May 21, 2018, 12:25:07 AM
+
+
+
+to GenePattern Help Forum
+
+黄博士：
+
+        您好！
+
+        我是中国的硕士生，我在安装 ABSOLUTE的时候出现了一些问题，不知道能不能请您帮忙分享一下您之前的安装经验。
+
+        冒昧打扰了，我的邮箱是lyan...@126.com,希望能得到您的帮助，非常感谢！
+
+
+在 2017年10月9日星期一 UTC+8上午12:52:12，Qingyao Huang写道：
+
+
+Reply all
+
+Reply to author
+
+Forward

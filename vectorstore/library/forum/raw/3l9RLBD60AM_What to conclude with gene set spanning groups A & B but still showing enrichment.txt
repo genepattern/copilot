@@ -1,0 +1,109 @@
+URL: https://groups.google.com./g/genepattern-help/c/3l9RLBD60AM
+Title: What to conclude with gene set spanning groups A & B but still showing enrichment ?
+----------------------------------------
+
+
+
+
+
+What to conclude with gene set spanning groups A & B but still showing enrichment ?
+5 views
+Skip to first unread message
+
+Jean-Philippe Villemin
+unread,
+May 29, 2020, 2:13:10 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I have a case where I do an analyse with phenotype permutation(1000) over cancer basal subtype patients. (75 vs 75) So the differences can be very subtile.
+
+
+I observed that I have a lot of cases who seems to be enriched but it's not a clear cut. FDR is good but for a lot of them.
+It's often a half of the signature that seems to be differentially regulated. 
+ry low , but still gene set are spanning A & B. 
+
+
+So how you go with that to explain to someone else you kept the signature because fdr is very low but genes span your both groups. It's tricky. I don't understand why it's saying it's still enriched.
+
+
+For example, using C2.all databse of geneset.
+2042 / 4094 gene sets are upregulated in phenotype A
+1083 gene sets are significant at FDR < 25%
+Using Hallmark.
+
+24 / 50 gene sets are upregulated in phenotype A
+12 gene sets are significant at FDR < 25%
+It's look like,  when you have a lot of tricky cases spending A & B, more gene set are enriched with good FDR ??
+
+
+As you said in the fact : "Too many enriched gene sets of significance may indicate that, in fact, many gene sets are enriched between phenotypes. Perhaps the gene sets represent the same biological signal."
+
+
+But if you use C2 or Hallmark, you know that the gene sets represent different biological signal. 
+1083 gene set enriched using C2 is still a lot for patient with same subtype of cancer....
+
+
+
+Thanks for you comment about this kind of situation.
+
+
+Job ID is 237211 if yoou want to check analyse I have in mind.
+
+
+
+
+
+test.png
+
+test2.png
+Anthony Castanza
+unread,
+Jun 2, 2020, 11:45:25 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+These plots for calling the gene set as "enriched" look perfectly fine to me. It is clear that there is high abundance of set members in the most upregulated genes and a sparsity of set members in the most downregulated genes.
+
+
+The default "weighted" version of the GSEA K-S running sum function means that the score is increased or decreased using the exact value of the enrichment metric in the calculation. So, having genes on the negative side subtracts from the score, but there aren't enough of them being highly values to cancel out that initial highly weighted cluster.
+
+
+This concept is explained in detail in the foundational 2005 GSEA paper (subramanian et al.).
+
+
+With regard to your second question; Hallmarks are each distinct biological signatures but C2.all actually contains a substantial proportion of gene sets that are somewhat redundant for specific biological signals. This is simply because the C2.cgp subcolection is the primary repository of signatures which have been curated from literature.
+
+
+75 vs. 75 is quite a lot, you're going to have the sensitivity to score "significant" for potentially even quite subtle changes. With that many, I might also recommend increasing your number of permutations since you have the power to do so validly.
+
+
+-Anthony
+
+Anthony S. Castanza, PhD
+Curator, Molecular Signatures Database
+Mesirov Lab, Department of Medicine
+University of California, San Diego
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/4311c609-62bd-438b-8295-80b3e0599236%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

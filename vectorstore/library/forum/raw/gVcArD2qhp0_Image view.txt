@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/gVcArD2qhp0
+Title: Image view
+----------------------------------------
+
+
+
+
+
+Image view
+14 views
+Skip to first unread message
+
+Vered Bar
+unread,
+Apr 29, 2025, 2:42:55 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I've used both heatmap image and Hierarchical Clustering Image modules. Both were completed successfully, but I can't view the images.
+I've tried both Jpeg and Png formats.
+
+
+Any suggestions?
+
+
+Job IDs are: 639364, 639365, 639366 and 639367.
+
+
+Thanks,
+Vered
+John Liefeld
+unread,
+Apr 29, 2025, 7:48:05 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+The image is there and you can trick a browser into viewing it but I think you might want to consider filtering the dataset and generating new images.  
+
+
+The issue is that your input gct file is 61860x23, which generates an image that is ~500,000 pixels tall but only 184 pixels wide.  So the with the default display in a browser you end up with  a vertical line in the middle of the screen that is less than a single pixel wide.  By using developer tools I could force it to display (see attached pic) that content was there but desktop apps like Preview can't deal with these dimensions and refuse to open it.
+
+
+I suggest that you process the data to figure out which rows you are really interested in and then generate a new image with only those rows.  Even with 100 rows you will have a hard to view image.
+
+
+Hope this helps
+
+
+Ted
+
+
+Screenshot 2025-04-29 at 7.35.17 AM.png
+Vered Bar
+unread,
+Apr 29, 2025, 10:25:43 AM
+
+
+
+to genepatt...@googlegroups.com, GenePattern Help Forum
+Thanks!!
+
+Sent from my iPhone
+
+
+On 29 Apr 2025, at 17:48, John Liefeld <jlie...@cloud.ucsd.edu> wrote:
+
+
+﻿Hi,
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/db3e1e7a-3d47-49c7-a545-eb39e925c429n%40googlegroups.com.
+
+<Screenshot 2025-04-29 at 7.35.17 AM.png>
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/FMNuewIpf5k
+Title: more than 30-hour pending ESPPredictor
+----------------------------------------
+
+
+
+
+
+more than 30-hour pending ESPPredictor
+14 views
+Skip to first unread message
+
+hw08...@gmail.com
+unread,
+Jun 28, 2018, 10:23:34 AM
+
+
+
+to GenePattern Help Forum
+I submitted a list of peptides (<20 peptides) for ESPPredictor 30 hours ago, It is listed as pending. Normally, it took a few seconds to get the results back. Could you check if the system is working?
+
+
+Job ID: 1695682 submission date (Jun 25 4;13pm) (a list of ~20 peptides)
+Job ID: 1696815 submission date Jun 27, 10:44am (a list of 1 peptide using a different computer to test the server connection)
+
+
+I'm using PC on public server.
+no error message.
+
+
+Job Queue Status
+The job queue is experiencing severe wait times for this job. Pending times of several days are possible.
+
+
+In addition, is it possible to install ESPPredictor on my local computer?
+
+Thank you for your help!
+
+
+
+
+Barbara Hill
+unread,
+Jun 28, 2018, 12:25:25 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+It appears that the compute node needed to run this module did not come back up after the power outage and fire at our data center this past weekend. I've asked our IT team to look into it, and we will keep you and all users updated as we work to resolve the issue.
+
+
+It is probably not possible to install this module on your PC for a number of reasons. 
+1) we no longer support GenePattern servers running on Windows
+2) It requires and old version of Matlab (2010a)
+3) It requires R2.5 (also old and hard to find/install)
+
+
+We will let you know once we have a solution.
+
+
+Our apologies for the inconvenience.
+
+
+Best
+-Barbara
+Barbara Hill
+unread,
+Apr 30, 2020, 1:42:15 PM
+
+
+
+to GenePattern Help Forum
+We have just now released ESPPredictor on our cloud server: https://cloud.genepattern.org/gp/pages/index.jsf?lsid=urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00158:4
+
+
+Please let us know if you have any questions or comments.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

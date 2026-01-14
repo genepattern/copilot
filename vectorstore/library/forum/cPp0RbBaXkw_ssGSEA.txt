@@ -1,0 +1,1 @@
+A user was experiencing an error while attempting to use ssGSEAprojection to analyze immune cell infiltration from TCGA data, receiving an abnormal job exit message. The forum suggested checking the stderr.txt file and renaming the input file to remove special characters as potential troubleshooting steps for resolving the GenePattern tool execution issue.

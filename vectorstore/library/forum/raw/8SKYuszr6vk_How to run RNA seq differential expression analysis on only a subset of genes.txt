@@ -1,0 +1,66 @@
+URL: https://groups.google.com./g/genepattern-help/c/8SKYuszr6vk
+Title: How to run RNA seq differential expression analysis on only a subset of genes
+----------------------------------------
+
+
+
+
+
+How to run RNA seq differential expression analysis on only a subset of genes
+10 views
+Skip to first unread message
+
+Ayush Kishore
+unread,
+Apr 4, 2018, 11:42:57 AM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+I would like to exclude analysis of all genes except for a list of genes that I am interested in for RNA-seq differential gene expression analysis. What is the best way for me to extract my list of genes and their expression information from my RNA seq data set so that I can analyze it?
+
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Apr 9, 2018, 1:03:54 PM
+
+
+
+to GenePattern Help Forum
+Hello Ayush, 
+
+
+What format is your data currently in and what processing has it been through? (IE trimming, aligning...etc)
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

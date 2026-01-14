@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/nRX0ycR51t0
+Title: doc for dynamic drop-down list ?
+----------------------------------------
+
+
+
+
+
+doc for dynamic drop-down list ?
+7 views
+Skip to first unread message
+
+RJ
+unread,
+Sep 25, 2018, 5:01:01 AM
+
+
+
+to GenePattern Help Forum
+Dear,
+
+
+We installed a gene pattern server and we use static drop-down lists in our modules.
+
+I have heard that it is possible to use dynamic drop-down list using an anonymous ftp server.
+
+Obviously nowadays it is difficult to get such ftp server done safely within a high secure IT environment.
+
+
+
+Can you confirm that I need it ? or what are the other ways ?
+Can you tell me where it is documented ?
+
+
+
+Many thanks
+
+
+
+RJ
+
+Peter Carr
+unread,
+Oct 4, 2018, 6:42:41 PM
+
+
+
+to GenePattern Help Forum
+The dynamic drop-down feature does require an FTP server. We would like to improve the situation by making a more general API for dynamic drop-downs. This is on our radar but not yet scheduled for development. There are a few workarounds.
+static dropdown - release a new version of the module each time you want to change the dropdown menu. This is simplest method. For an example look at the 'gene.sets.database' parameter on the latest version (v19.0.24) of the GSEA module.
+local.choiceDirs - this server configuration property makes it possible to skip the remote FTP calls for dynamic drop-down parameters. For more details look at the config_example.yaml file in your resources directory (./resources/config_example.yaml). This requires you to maintain the files on an FTP server, however you can copy the entire contents of the ftp folder into a local directory on your server.
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

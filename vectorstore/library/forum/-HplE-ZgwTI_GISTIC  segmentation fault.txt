@@ -1,0 +1,1 @@
+A GenePattern user encountered a GISTIC2.0 module error involving segmentation faults and incomplete chromosome processing (stopping at chromosome 12/13), but the specific resolution method was not detailed in the thread, with only a brief response from Tingting indicating the problem was solved and no substantive troubleshooting steps shared publicly.

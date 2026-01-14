@@ -1,0 +1,1 @@
+GenePattern AWS installation guide inquiry: User found outdated AMI link and sought updated installation instructions, with GenePattern developer recommending using their Docker container and following AWS port configuration documentation instead of attempting to use the existing AMI.

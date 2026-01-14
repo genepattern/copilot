@@ -1,0 +1,273 @@
+URL: https://groups.google.com./g/genepattern-help/c/Qdh-WcakW2c
+Title: Error in basicRMA(pms, pnVec, normalize, background) :
+----------------------------------------
+
+
+
+
+
+Error in basicRMA(pms, pnVec, normalize, background) :
+394 views
+Skip to first unread message
+
+Thibaut Matis
+unread,
+Feb 23, 2021, 1:57:56 AM
+
+
+
+to GenePattern Help Forum
+Hi, I'm Thibaut, I'm trying to use/discover the Affymetrix expression tool. 
+
+
+I downloaded the examples CEL files from the tutorial in tar format. Then I normalized, corrected background, and annotated rows, and I launched the analysis.
+
+
+Each time the analysis is stopped with this error message at oligo step :
+
+
+Welcome to oligoClasses version 1.52.0 ================================================================================ Welcome to oligo version 1.54.1 ================================================================================ Error in basicRMA(pms, pnVec, normalize, background) : ERROR; return code from pthread_create() is 22 Calls: tryCatch ... tryCatchList -> GP.affyst.efc -> rma -> rma -> .local -> basicRMA Execution halted
+
+
+
+Thanks a lot for your help
+Anthony Castanza
+unread,
+Feb 23, 2021, 10:08:05 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+What tutorial are you referencing? The documentation supplys sample files but these are indented to be used as-is with the AffySTExpressionFileCreator module. The default behavior of the AffySTExpressionFileCreator module is to normalize, background correct, and annotate the dataset using its internal functions. It appears that you’ve already done this to the dataset manually. Because of this preprocessing, did you set the applicable parameters in the module to “no”? From the error message it appears that the module is attempting to normalize the data that you’ve already normalized, this would be expected to cause an error in order to prevent erroneous double normalization.
+
+ 
+
+Let me know if this isn’t the case, or if you’re still having issues with the module,
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/06fec958-ccdf-4330-9d97-04136d2d2a26n%40googlegroups.com.
+
+Thibaut Matis
+unread,
+Feb 23, 2021, 1:48:22 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi! Thank you a lot for your reply!!
+I'm talking about the Affymetrix documentation:https://www.genepattern.org/modules/docs/AffySTExpressionFileCreator/2. There are examples of input files at the bottom I used
+I understand your point, so I reloaded the job without setting normalization once or without background as well, same issue with the same error message
+
+
+
+
+	Garanti sans virus. www.avast.com
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578294C7E19A1EDCAB54433DF7809%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+
+
+
+--
+
+Thibaut MATIS 
+Interne d'Oncogénétique
+Institut Bergonié - Bordeaux
+email : t.m...@bordeaux.unicancer.fr
+
+
+
+
+
+
+	Garanti sans virus. www.avast.com
+Anthony Castanza
+unread,
+Feb 23, 2021, 1:57:25 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Could you send us the Job ID of one of the runs that returned this error so that we can investigate what might’ve gone wrong?
+
+ 
+
+Thanks!
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+From: genepatt...@googlegroups.com <genepatt...@googlegroups.com> on behalf of Thibaut Matis <thibau...@gmail.com>
+Date: Tuesday, February 23, 2021 at 1:48 PM
+To: genepatt...@googlegroups.com <genepatt...@googlegroups.com>
+Subject: Re: [genepattern-help:1771] Error in basicRMA(pms, pnVec, normalize, background) :
+
+Hi! Thank you a lot for your reply!!
+
+I'm talking about the Affymetrix documentation:https://www.genepattern.org/modules/docs/AffySTExpressionFileCreator/2. There are examples of input files at the bottom I used
+
+I understand your point, so I reloaded the job without setting normalization once or without background as well, same issue with the same error message
+
+ 
+
+ 
+
+	
+
+Garanti sans virus. www.avast.com
+
+
+
+ 
+
+	
+
+Garanti sans virus. www.avast.com
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CANf4ZSp2MOWtMEEg_sVGvpLoxpdEqp3ksk0TBi7o5HVcoVv_pg%40mail.gmail.com.
+
+Thibaut Matis
+unread,
+Feb 24, 2021, 12:24:58 AM
+
+
+
+to genepatt...@googlegroups.com
+Yes, it is the 323376
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Qdh-WcakW2c/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578268882294310AFE903ED7F7809%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+Anthony Castanza
+unread,
+Feb 24, 2021, 9:14:02 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi,
+
+ 
+
+Thanks for bringing this to your attention. We use an externally sourced docker container to run this module, and it appears as if they silently pushed an update to the tag we target that modified the underlying operating system and caused the module to fail. We’re working on getting this fixed ASAP. In the meantime if you need to run Affymetrix arrays that are not based on the Clariom platform, the previous version of the module is available until we can get this version (that introduced clariom array support) back up and running.
+
+
+
+
+
+ 
+
+Error! Filename not specified.
+
+	
+
+Garanti sans virus. www.avast.com
+
+
+
+ 
+
+Error! Filename not specified.
+
+	
+
+Garanti sans virus. www.avast.com
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CANf4ZSp2MOWtMEEg_sVGvpLoxpdEqp3ksk0TBi7o5HVcoVv_pg%40mail.gmail.com.
+
+--
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/Qdh-WcakW2c/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578268882294310AFE903ED7F7809%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+
+
+ 
+
+--
+
+Thibaut MATIS 
+
+Interne d'Oncogénétique
+
+Institut Bergonié - Bordeaux
+
+email : t.m...@bordeaux.unicancer.fr
+
+ 
+
+ 
+
+--
+
+
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CANf4ZSo30v%3Dq%3D%2BZch_u65raMkTYev5sMO52PSP6Dck3s9Pc%3Dtg%40mail.gmail.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

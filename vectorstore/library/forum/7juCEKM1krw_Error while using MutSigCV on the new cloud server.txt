@@ -1,0 +1,1 @@
+MutSigCV module error on GenePattern cloud server: User encountered a permission denied error when attempting to run the module, with GenePattern support indicating they will update the module to be compatible with Docker in the coming weeks, resolving the technical compatibility issue between the old and new server environments.

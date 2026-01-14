@@ -1,0 +1,172 @@
+URL: https://groups.google.com./g/genepattern-help/c/ngIAtskkAvs
+Title: GISTIC failed to produce out puts
+----------------------------------------
+
+
+
+
+
+GISTIC failed to produce out puts
+18 views
+Skip to first unread message
+
+Andrew Cherniack
+unread,
+Jul 14, 2025, 5:30:43 AM
+
+
+
+to GenePattern Help Forum
+I am getting this error message after GISTIC is run.
+Failed to download all output files from remote system. Found 20 of 23 Files not retrieved: gistic_inputs.mat, remote_stderr.txt, remote_stdout.txt
+
+
+In addition many of the output files have nothing in it.
+John Liefeld
+unread,
+Jul 14, 2025, 6:41:14 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+unfortunately the remote system delegated to run the analysis was having some file system issues over the weekend.  From looking at your job on both GenePattern and the remote server it seems that only those 3 files failed to transfer.  For job 648034 there was nothing in the stderr.txt file
+ so the rest of the outputs should be viable analyses.  
+
+
+There are a few options we can take from here;
+1. if you don't need the gistic_inputs.mat result, you can just proceed with your analysis.
+2. You can rerun the analysis to get a fresh set of outputs (file system issues are currently resolved) 
+3. I can retrieve the complete set of result files from the remote system and email them to you
+4. I can retrieve just the missing files from the remote system and email them to you
+
+
+For options 3 or 4 let me know all the job numbers that you are interested in.
+
+
+Thanks for your patience
+
+
+Ted
+
+Andrew Cherniack
+unread,
+Jul 14, 2025, 6:47:24 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Ted
+
+
+
+
+It’s more than files not transferring. If you look at job 64909, many of the files have nothing in them (look at the sizes). Amp.qplot.pdf is consistent with GISTIC being run to completion, and there should be data in these files.
+
+
+Andy
+
+___________________________
+Andrew Cherniack, PhD                                               
+Senior Group Leader
+Broad Institute of Harvard and MIT and
+Dana-Farber Cancer Institute
+email: ache...@broadinstitute.org
+___________________________
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/8fc0a5e2-203d-4479-ae7b-0f676c5d34c9n%40googlegroups.com.
+
+Ted Liefeld
+unread,
+Jul 14, 2025, 6:51:47 AM
+
+
+
+to genepatt...@googlegroups.com
+In that case do you want to rerun or have me pull the files from the remote system, just give me all the job numbers you need.
+
+
+Ted
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAF6ge6XMENjX4Hk704%2Bq7whRjCffyYUCfacwVTWSUD07D9kfDg%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Andrew Cherniack
+unread,
+Jul 14, 2025, 7:04:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Can you pull the data for these files:
+648032, 648033, 648034.
+
+
+Andy
+
+
+
+
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdQE2w5T4Ymi6-5jTep_wEUKYCM3wdYih8hBJQReJyk7YA%40mail.gmail.com.
+
+John Liefeld
+unread,
+Jul 14, 2025, 7:40:10 AM
+
+
+
+to GenePattern Help Forum
+Sent you a link to a google drive.  Let me know if you are all set.
+
+Ted
+
+
+
+Andrew Cherniack
+unread,
+Jul 14, 2025, 12:02:14 PM
+
+
+
+to genepatt...@googlegroups.com
+Thanks
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/1886b38c-ee61-4879-a468-210b5d1821dan%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

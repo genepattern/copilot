@@ -1,0 +1,277 @@
+URL: https://groups.google.com./g/genepattern-help/c/79Oc3JpLrIU
+Title: RNASeq TPM and inter-sample variability in ssGSEA
+----------------------------------------
+
+
+
+
+
+RNASeq TPM and inter-sample variability in ssGSEA
+791 views
+Skip to first unread message
+
+sz
+unread,
+Apr 30, 2021, 3:07:31 AM
+
+
+
+to GenePattern Help Forum
+
+
+Hello,
+I would like to run ssGSEA in RNASeq data from the  CCLE repository. 
+
+
+
+In this thread https://groups.google.com/g/genepattern-help/c/vcg9gLolZAY , it is recommended to use the PreprocessReadCounts module to process raw counts and then directly use ssGSEA. I found that the PreprocessReadCounts is now renamed as VoomNormalize but this module does not provide TPMs or accounts for gene length issues that influence ssGSEA performance. Nonetheless, it accounts for intersample variability, which is ignored in TPM units.
+In a more recent thread, https://groups.google.com/g/genepattern-help/c/pVvpxGOkiZU/m/Vsjrn-p6DQAJ , it is recommended to use TPM units as input to ssGSEA.
+
+
+
+My questions:
+1) Should I use the VoomNormalize results or the TPM values as input to ssGSEA?
+
+
+2) If I use TPM units, how should I remove the inter-sample variability? Which sample normalization method, from the 3 options (rank, rank.log or log), would be best?
+
+
+
+Thanks in advance.
+
+
+Best regards,
+
+
+S.
+
+
+
+Anthony Castanza
+unread,
+Apr 30, 2021, 10:18:56 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hello,
+
+ 
+
+The more recent answer is the correct one. ssGSEA needs to have the gene length count bias corrected for. TPM is the best way to correct for that bias. ssGSEA calculates enrichment within an individual sample, therefore, the biases within that sample are the most important to account for. The count-based normalization methods do not account for the length bias at all.
+
+ 
+
+There are definitely concerns with comparing TPM across samples directly, a good summarization of this is here: https://rnajournal.cshlp.org/content/early/2020/04/13/rna.074922.120.full.pdf
+
+However, many of the concerns they mention aren’t TPM specific, but rather largely general concerns for comparing between wildly differing samples.
+
+ 
+
+For data processed through a common pipeline like CCLE, potential technical variance issues are lessened substantially.
+
+ 
+
+For the “sample normalization method”, with TPM data, we generally recommend leaving it on the default “none”, the other options are for specialized use cases.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/ff966767-2851-4e6d-b983-618da7e824e9n%40googlegroups.com.
+
+Sheila Zúñiga
+unread,
+Apr 30, 2021, 11:59:50 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello Anthony,
+Thanks very much for your quick reply.
+
+
+Should I correct TPMs by batch effect with Combat or similar before applying ssGSEA? I would also like to use ssGSEA in my own cohort where I can see differences related to different batches with a PCA.
+
+
+Could you please give more details about when to apply other options of "sample normalization method"? Does any of these cases relate to RNASeq data when sample variability is high? My cohort is a mixture of FFPE tumors, FFPE normals and organoids.
+
+
+Thanks in advance.
+
+
+Best regards.
+
+
+Sheila
+
+
+
+
+
+You received this message because you are subscribed to a topic in the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this topic, visit https://groups.google.com/d/topic/genepattern-help/79Oc3JpLrIU/unsubscribe.
+To unsubscribe from this group and all its topics, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578200C2FCA0684359806C8CF75E9%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+Apr 30, 2021, 1:04:57 PM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Sheila,
+
+ 
+
+I don’t have an easy answer for you. Batch effects are a complicated thing to deal with even when using standard gene-level analysis pipelines, and none of the tools are designed to work on TPM data since the standard pipeline ends at gene-level differential expression, or between phenotype group enrichment analysis, which is count-based.
+
+ 
+
+I might suggest running ssGSEA first, then clustering your ssGSEA results to see if the data is still clustering by batch at the level of gene sets. If it is, then yes, you’ll probably have to perform some batch correction.
+
+ 
+
+Mike Love, the author of DESeq, answered a similar question about batch correcting TPM on biostars (here: https://support.bioconductor.org/p/107760/)
+
+ 
+
+His suggestion is to remove the mean batch shift from log2(TPM) data. I’d suggest actually *un*Log-ing it at the end for ssSGEA however (because of the way ssGSEA’s internal math works). I think that’s basically what you’re proposing to do. To use `svaseq` (the package that combat is part of) to get the batch variables and then use those with removebatcheffect.
+
+I can’t tell you in advance if it’s going to work, the only thing you can do is try it and see if your data clusters reasonably well before running ssGSEA. If it works, then you should have removed the batch effects, but preserved the length-bias removal of the TPM conversion.
+
+ 
+
+I don’t actually remember when we’d recommend using the “sample normalization method” parameter. I believe it is one of the options that was implemented for using microarray data with ssGSEA.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Curator, Molecular Signatures Database
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+http://gsea-msigdb.org/
+
+ 
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CACg8vLvrvmjia8WDZkyd56TV8AfJrttV6eyhw%2BMoAA2QiXJGSQ%40mail.gmail.com.
+
+Sheila Zúñiga
+unread,
+May 2, 2021, 3:31:40 PM
+
+
+
+to genepatt...@googlegroups.com
+Hello,
+Thank you very much for the exhaustive explanation. I followed your recommendations about first executing ssGSEA and then check if batch effect was still there with the resulting scores. Samples do not cluster together by batch if I proceed this way.
+
+
+
+One more question. Is there any link with example files to run the "combine mode" with up- or down-regulated genes, i.e. gene set format for pairings of up- and down-regulated gene sets, and also how to set the "combine mode" option (differences between combine.replace and combine.add) in ssGSEA? Should I open a new thread?
+
+
+Thanks you very much in advance.
+
+
+
+
+Best regards,
+
+
+Sheila
+
+
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB5782F349130BACC91D41B5EAF75E9%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+Anthony Castanza
+unread,
+May 3, 2021, 10:25:55 AM
+
+
+
+to genepatt...@googlegroups.com
+
+Hi Sheila,
+
+ 
+
+I don’t think we have any specific examples of the combine function. That said, it’s pretty simple.
+
+The combine mode works by looking for gene set pairs with the suffix _UP and _DN and an otherwise identical gene set name. Typically these are gene sets that come from the Upregulated and Downregulated sides of a single experiment. If “combine.replace” is set, it will merge the _UP and _DN gene sets and just use the single combined set instead of the separate up and down sets. If combine.add is set, it’ll test the merged set in addition to the separate _UP and _DN sets. (combine.off tells it to not do any of this).
+
+The documentation (https://gsea-msigdb.github.io/ssGSEA-gpmodule/v10/index.html) describes this in a little more detail.
+
+ 
+
+There generally isn’t any harm in running in combine.add mode, if any sets paired in this way are detected, you’ll just get an extra gene set in your results, but if there aren’t it has no effect.
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/CACg8vLuxHoTqHu3us0xfwv%3DQmNs1KoX8E%2BTHtumC4FSFErnU2A%40mail.gmail.com.
+
+Sheila Zúñiga
+unread,
+May 4, 2021, 2:58:19 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi Anthony,
+Thank you very much for all your help.
+
+
+Best regards,
+
+
+Sheila
+
+
+
+
+
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/BYAPR05MB578282794DBAE38901866D09F75B9%40BYAPR05MB5782.namprd05.prod.outlook.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

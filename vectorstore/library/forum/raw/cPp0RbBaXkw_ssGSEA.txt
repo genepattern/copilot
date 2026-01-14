@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/cPp0RbBaXkw
+Title: ssGSEA
+----------------------------------------
+
+
+
+
+
+ssGSEA
+56 views
+Skip to first unread message
+
+yg...@khu.ac.kr
+unread,
+Nov 27, 2017, 6:41:46 PM
+
+
+
+to GenePattern Help Forum
+Hello.
+I tried to use ssGSEAprojection for get immune cell infiltration from TCGA data(.txt)
+but I found this message
+"
+The job exited abnormally before finishing, for example if the command exited with a non-zero exit code or by exceeding a resource usage limit
+Queue	uges_long_rhel6
+Exit Code	1
+Status date	Nov 27 09:35:29 PM
+"
+
+
+
+
+
+How can I use this tool right?
+
+
+best
+
+
+Young-gyu Eun
+
+
+Peter Carr
+unread,
+Nov 28, 2017, 9:46:47 AM
+
+
+
+to genepatt...@googlegroups.com
+For starters, send me the job id so that I can investigate. Then look at the stderr.txt output. It may explain what went wrong. As a first guess, try renaming your input file so that it does not contain special characters in the filename.
+
+Regards,
+Peter
+
+Young-Gyu Eun
+unread,
+Nov 28, 2017, 7:19:04 PM
+
+
+
+to GenePattern Help Forum
+Thank you for your reply.
+my id is "ygeun31"
+
+
+Best
+
+
+Young-gyu Eun
+
+
+2017년 11월 29일 수요일 오전 2시 46분 47초 UTC+9, Peter Carr 님의 말:
+
+Barbara Hill
+unread,
+Jan 9, 2018, 9:24:54 AM
+
+
+
+to GenePattern Help Forum
+Hello Young-gyu Eun,
+
+
+Do you still need help with ssGSEA?
+
+
+Best,
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

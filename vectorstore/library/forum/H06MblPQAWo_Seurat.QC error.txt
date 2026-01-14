@@ -1,0 +1,1 @@
+`Single-cell RNA sequencing GenePattern user encountered a Seurat.QC module error when trying to load zipped 10x genomics files, specifically an error indicating the input directory does not exist, with a recommended troubleshooting step of re-running the job to check if it was a temporary server-side issue.`

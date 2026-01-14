@@ -1,0 +1,45 @@
+URL: https://groups.google.com./g/genepattern-help/c/x5o8HTXGIy0
+Title: How to creat coverage file the input file required by MutSigCV
+----------------------------------------
+
+
+
+
+
+How to creat coverage file the input file required by MutSigCV
+95 views
+Skip to first unread message
+stroke cheng
+unread,
+Dec 27, 2021, 5:15:47 AM
+
+
+
+to GenePattern Help Forum
+Excuse me:
+I am trying to used MutSigCV to analyze my own WES data. Several input files were required, including MAF file, one coverage file and one covariate file. Although the document provided one alternative  all-purpose  coverage file, I think a coverage file created from my own data may generate more accurate results. The document pointed out that this tab-delimited coverage file can be produced by processing the sample-level coverage files in WIG (wiggle) format output by the MuTect tool. But no more details, could you provide more details about how to create specific coverage file. A example will be the best. Hope your response! Appreciate! Best wishes for you during worldwide pandemic. 
+The follwoing is buid-in coverage file in the example file of the software(LUSC.coverage.txt), this is what I want to create.
+gene    zone    categ   LUSC_18_3406    LUSC_18_3407    LUSC_18_3408  LUSC_18_3409  
+A1BG    nonsilent       1       19      18      19      17      
+A1CF    nonsilent       1       16      14      12      16      
+A2BP1   nonsilent       1       27      26      29      24     
+A2M     nonsilent       1       34      27      31      31       
+A2ML1   nonsilent       1       34      33      34      34      
+A4GALT  nonsilent       1       25      23      28      25    
+A4GNT   nonsilent       1       9       9       9       9               
+AAAS    nonsilent       1       27      26      27      26    
+AACS    nonsilent       1       28      28      28      28    
+AADAC   nonsilent       1       7       7       5       7      
+AADACL2 nonsilent       1       8       8       8       8       
+AADACL3 nonsilent       1       10      10      10      10      
+AADACL4 nonsilent       1       15      15      15      15     
+AADAT   nonsilent       1       6       6       6       6           
+AAGAB   nonsilent       1       4       4       4       4        
+AAK1    nonsilent       1       19      18      18      19      
+
+
+Reply all
+
+Reply to author
+
+Forward

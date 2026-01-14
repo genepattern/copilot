@@ -1,0 +1,1 @@
+A user reported running GSEA in GenePattern and only receiving a stdout.txt file instead of the expected zip file, with a potential solution suggested involving avoiding special characters or spaces in file and gene set names to prevent processing errors.

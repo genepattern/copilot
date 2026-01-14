@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/7E7lH3DKOzQ
+Title: Re: [gp-team] Registration Issues
+----------------------------------------
+
+
+
+
+
+Re: [gp-team] Registration Issues
+14 views
+Skip to first unread message
+Ted Liefeld
+unread,
+May 8, 2021, 6:39:46 AM
+
+
+
+to genepatt...@googlegroups.com, genepattern-team
+Hi
+
+
+Sorry about the captcha issue.  I cannot replicate it so my suspicion is that there is a network issue between you and the captcha server.  Since you have effectively verified yourself with this email anyway, I created an account for you using the username "hersheymy" (as in your email as my mail server presents it) with your email account.  You can use the forgot password link to have a temporary password emailed to you and then you can reset the password to your own choice.
+
+
+hope this helps,
+
+
+Ted
+
+
+On Sat, May 8, 2021 at 1:31 AM 莫言 <hers...@stu.gxmu.edu.cn> wrote:
+
+
+Dear genepattern team，
+
+Recently, when I registered an account on https://cloud.genepattern.org, the webpage kept saying "Missing reCAPTCHA response". I tried many times and it still didn't work. How to deal with it？I would be very grateful indeed for any help you could give me.
+
+Best wishes!
+
+--
+You received this message because you are subscribed to the Google Groups "genepattern-team" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-te...@broadinstitute.org.
+To view this discussion on the web visit https://groups.google.com/a/broadinstitute.org/d/msgid/genepattern-team/tencent_3CC901E3657A31F1163F44D4%40qq.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+
+Reply all
+
+Reply to author
+
+Forward

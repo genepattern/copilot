@@ -1,0 +1,1 @@
+The thread discusses a technical issue with the ComparativeMarkerSelectionViewer in GenePattern where no graphics were displayed due to an incorrect input file, which was resolved by using the original GCT gene expression file instead of the CLS file, allowing successful visualization of the rank list and graphics.

@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/DbeJ9Tv8Tgg
+Title: Issue in setting up a local gene pattern server gp_execution_log.txt
+----------------------------------------
+
+
+
+
+
+Issue in setting up a local gene pattern server gp_execution_log.txt
+12 views
+Skip to first unread message
+
+Dennis Moccia
+unread,
+Dec 20, 2017, 8:51:10 AM
+
+
+
+to GenePattern Help Forum
+Hello GenePattern Team:
+
+
+I was hoping you may be able to point us in the right direction to solving a minor problem we are experiencing with our local version of GenePattern.
+
+
+We were able to setup, install modules and even run jobs programmatically with our local install, however every job finishes with as an "Error".  When we look at the output everything appears ok, all the files we expect and the analysis is great!  The only thing that appears to be missing is the file "gp_execution_log.txt"
+
+
+ In this particular case we are using the PARIS module, but I am not sure if this issue is based on the PARIS module or if gp_execution_log.txt is a file which is generated with every GP job, I suspect that it is the latter.  Ultimately while our analyses are working so this is not critical but it would be nice to see which jobs complete and which jobs truly fail.  I was not sure if there was a way of turning off this particular log or if you had any insight into what may be going on?  Please do not spend too much time on this, we just figured we would reach out in case it was something easy!
+
+
+Thank you
+
+
+Dennis
+
+
+
+
+Peter Carr
+unread,
+Dec 20, 2017, 3:32:47 PM
+
+
+
+to genepatt...@googlegroups.com
+The 'gp_execution_log.txt' file is hidden by default. To see it, you must select the "Show Execution Logs" checkbox at the top of the job status page for your job.
+
+I am not sure what is causing the particular error with PARIS. Most likely you need to configure your server to ignore stderr output. To do so, edit the config_custom.yaml file. Make sure it has these settings in the default.properties section.
+
+default.properties:
+
+    ...
+
+    # Error handling
+    #  by default, non-zero exit code is an ERROR
+    job.error_status.exit_value: true
+    #  by default, ignore stderr output
+    job.error_status.stderr: false
+
+    ...
+
+If you are not familiar with config_custom.yaml, follow these steps.
+
+To get started, create a new config_custom.yaml file as a copy of the config_default.yaml. E.g.
+  cd <GenePatternServer>/resources
+  cp config_default.yaml config_custom.yaml
+The GenePattern Server, will use the custom file instead of the default file so it's important to start with the existing copy.
+
+After each edit to the config_custom.yaml, you must reload the config from the admin page.
+  Administration > Server Settings > Job Configuration
+  click Reload job configuration
+
+Regards,
+Peter
+
+
+Reply all
+
+Reply to author
+
+Forward

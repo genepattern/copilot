@@ -1,0 +1,93 @@
+URL: https://groups.google.com./g/genepattern-help/c/tXfAinRMwE4
+Title: Error: Invalid GCT file. Expected '#1.2' on line 1
+----------------------------------------
+
+
+
+
+
+Error: Invalid GCT file. Expected '#1.2' on line 1
+19 views
+Skip to first unread message
+
+yuan.hu...@gmail.com
+unread,
+Dec 11, 2017, 9:34:08 AM
+
+
+
+to GenePattern Help Forum
+I was following the 10-minute step-by-step tutorial with a local private server, and using the provided files.
+I generated the results of the ComparativeMarkerSelection analysis.
+
+I tried to run ComparativeMarkerSelectionViewer, but it gave the error:
+
+Error: Invalid GCT file. Expected '#1.2' on line 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yuan.hu...@gmail.com
+unread,
+Dec 11, 2017, 9:49:16 AM
+
+
+
+to genepatt...@googlegroups.com
+I just tried the public server with the same tutorial, and got the same error on the public server.
+The job id is 1595647.
+Barbara Hill
+unread,
+Dec 12, 2017, 9:46:29 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello, 
+
+
+The problem was that we had an old version of the tutorial which instructed you to provide a .res file, and the new viewer does not accept .res files.
+
+
+I've updated that section of the tutorial to remove that point of confusion.
+
+
+Please let us know if you find anything else amiss.
+
+
+Best
+-Barbara
+
+
+yuan.hu...@gmail.com
+unread,
+Dec 12, 2017, 7:57:26 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Thanks for the update.
+I can reproduce the same result as the new tutorial.
+Thank you.
+
+
+Yuan
+
+Reply all
+
+Reply to author
+
+Forward

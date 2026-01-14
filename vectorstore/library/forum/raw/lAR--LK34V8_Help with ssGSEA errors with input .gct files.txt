@@ -1,0 +1,50 @@
+URL: https://groups.google.com./g/genepattern-help/c/lAR--LK34V8
+Title: Help with ssGSEA errors with input .gct files
+----------------------------------------
+
+
+
+
+
+Help with ssGSEA errors with input .gct files
+45 views
+Skip to first unread message
+Andy Jia
+unread,
+Feb 13, 2025, 6:26:07 PM
+
+
+
+to GenePattern Help Forum
+Hello, my input .gct gene expression files produce constant error files and process terminations on the online ssGSEA GenePattern module. I have 4 samples (4 sample columns)
+
+
+I formatted the gene expression file according to GSEA requirements for .gct files first in excel. Then, I have tried saving the files as both "Text (Tab delimited)" and "Formatted text (space delimited)" and renaming the file as "expressionfile.gct" so that the .txt won't appear when uploading the file. 
+
+
+After uploading the expression files, selecting the BioCarta gene sets, choosing log.rank normalization method, and increasing Job options, I keep ending up with terminated processes and the following .txt error messages for the text tab delimited files:
+
+
+(Error in read.gct(file) : Number of sample names 6 not equal to the number of columns 4 . Calls: ssGSEA.cmdline Execution halted)
+
+
+and
+
+
+(WARNING: ignoring environment value of R_HOME)
+
+
+Formatted text files produce this:
+
+
+(Error in ssGSEA.project.dataset(input.gct.filename, paste(output.prefix, :
+No output gct file written: no gene sets satisfied the min overlap criterion Calls: ssGSEA.cmdline Execution halted)
+
+
+How do I resolve this? Any help will be appreciated!!!
+
+Reply all
+
+Reply to author
+
+Forward

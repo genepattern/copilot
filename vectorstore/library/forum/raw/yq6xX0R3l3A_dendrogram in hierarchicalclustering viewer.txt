@@ -1,0 +1,65 @@
+URL: https://groups.google.com./g/genepattern-help/c/yq6xX0R3l3A
+Title: dendrogram in hierarchicalclustering viewer
+----------------------------------------
+
+
+
+
+
+dendrogram in hierarchicalclustering viewer
+8 views
+Skip to first unread message
+
+Veronika Malek
+unread,
+Aug 14, 2017, 1:47:40 PM
+
+
+
+to GenePattern Help Forum
+Hello ,
+
+
+just a question, not a problem: 
+
+
+
+
+Do the distances on the y-axis of the dendrogram reflect how similar the two groups are? 
+
+
+Thank you for your help, I really appreciate it!
+
+
+Best,
+Veronika
+
+hierarchical clustering viewer.png
+Barbara Hill
+unread,
+Aug 14, 2017, 2:52:21 PM
+
+
+
+to GenePattern Help Forum
+Hello Veronika,
+
+
+The short answer is, yes.
+
+
+More information can be found by looking into dendrograms: https://en.wikipedia.org/wiki/Dendrogram
+
+
+Best
+
+
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

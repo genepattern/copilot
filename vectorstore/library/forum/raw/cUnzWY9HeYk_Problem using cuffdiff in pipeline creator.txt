@@ -1,0 +1,71 @@
+URL: https://groups.google.com./g/genepattern-help/c/cUnzWY9HeYk
+Title: Problem using cuffdiff in pipeline creator
+----------------------------------------
+
+
+
+
+
+Problem using cuffdiff in pipeline creator
+9 views
+Skip to first unread message
+
+dominiklstec
+unread,
+Nov 17, 2017, 3:24:09 PM
+
+
+
+to GenePattern Help Forum
+Whenever I try to assign sorted BAM files from Picard.SortSAM to the Cuffdiff input files in the Pipeline creator, it only allows one file to be assigned and doesn't allow for conditions to be assigned. Should I generate a list of the bam files I want to run and assign that to Cuffdiff? If I need to, how do I generate this list of files with conditions?
+
+
+
+
+Please respond with the following information as applicable:
+ Complete description of the problem (ie what you were trying to do and what went wrong):
+
+Job ID if run on a publicly available server.
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Please note that many common errors can be resolved by searching this forum or taking a look at our documentation: 
+
+* Module Documentation - available from the "documentation" link in the upper right hand corner of the module input page or here: http://software.broadinstitute.org/cancer/software/genepattern/modules
+* GenePattern FAQ - http://software.broadinstitute.org/cancer/software/genepattern/FAQ
+* GenePattern  Videos - http://software.broadinstitute.org/cancer/software/genepattern/video-tutorials
+* GenePattern File Formats - http://software.broadinstitute.org/cancer/software/genepattern/file-formats-guide#file-formats
+* GenePattern User Guide - http://software.broadinstitute.org/cancer/software/genepattern/user-guide#user-guide
+* GenePattern Programmer's Guide - http://software.broadinstitute.org/cancer/software/genepattern/programmers-guide
+* GenePattern Release Notes - http://software.broadinstitute.org/cancer/software/genepattern/doc/relnotes/current
+
+Barbara Hill
+unread,
+Nov 20, 2017, 2:16:32 PM
+
+
+
+to GenePattern Help Forum
+Hello
+
+
+Are you trying to use the pipeline designer to run your pipeline? I'm just a little confused as to why you would be assigning conditions without knowing your data. Perhaps I am missing something.
+
+
+Can you say a little bit more about what you are ultimately trying to do? IE run the same data repeatedly or allow you or others to repeatedly run the same series of step on different data.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

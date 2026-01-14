@@ -1,0 +1,1 @@
+A user encountered an error while attempting ssGSEA analysis with a custom gene set file, which was resolved by converting an Excel file to a properly formatted tab-delimited text file saved with a .gmt extension, allowing the GenePattern module to successfully parse the gene set data.

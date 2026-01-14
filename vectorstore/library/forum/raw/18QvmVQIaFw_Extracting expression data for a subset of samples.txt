@@ -1,0 +1,171 @@
+URL: https://groups.google.com./g/genepattern-help/c/18QvmVQIaFw
+Title: Extracting expression data for a subset of samples
+----------------------------------------
+
+
+
+
+
+Extracting expression data for a subset of samples
+33 views
+Skip to first unread message
+
+Viktor
+unread,
+Mar 11, 2021, 4:22:13 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Is there a GenePattern module that allows me to pull down expression data for a subset of samples (e.g. provided as a list) from a larger dataset?
+
+
+Thank you,
+Viktor
+Barbara Hill
+unread,
+Mar 11, 2021, 7:27:38 AM
+
+
+
+to GenePattern Help Forum
+Hi Viktor, 
+
+
+Would something like SelectFeaturesRows provide the functionality you are looking for?
+
+
+Best
+-Barbara
+
+Barbara Hill
+unread,
+Mar 11, 2021, 10:10:52 AM
+
+
+
+to GenePattern Help Forum
+Hi again Viktor,
+
+
+My apologies, I should have suggested SelectFeaturesColumns, not rows. 
+
+
+Let us know if that helps.
+-Barbara
+Viktor
+unread,
+Mar 11, 2021, 11:35:11 AM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+Perfect, this is exactly what I was looking for.
+
+
+Thank you for your help,
+Viktor
+
+Barbara Hill
+unread,
+Mar 11, 2021, 11:40:06 AM
+
+
+
+to GenePattern Help Forum
+Oh good!
+
+Don't hesitate to reach out if you need anything else.
+
+
+All the best
+-Barbara
+
+Martina Bosic
+unread,
+Mar 15, 2021, 10:05:56 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I want to use GTEx gene expression data but on subset of tissue types. I have tried subsetting expression data from .gct file with SelectFeatureRows but I am constantly getting an error. I tried with just providing list of sample IDs in txt file or GTEX annotations for sample attributes (for selected tissues).  I want to do subsetting because it is a nightmare to create a .cls file filtering almost 23,000 samples... What am I doing wrong?
+
+
+Thank you,
+Martina
+
+
+
+Barbara Hill
+unread,
+Mar 15, 2021, 11:17:21 AM
+
+
+
+to GenePattern Help Forum
+Hi Martina, 
+
+
+Please send a job id so that we can take a look at the specifics of your job.
+
+
+Many thanks
+-Barbara
+Martina Bosic
+unread,
+Mar 15, 2021, 12:18:49 PM
+
+
+
+to GenePattern Help Forum
+Hi Barbara,
+
+
+IDs are 329281 and 329283.
+
+
+Many thanks,
+Martina
+
+
+
+Barbara Hill
+unread,
+Mar 15, 2021, 3:25:55 PM
+
+
+
+to GenePattern Help Forum
+  Hi Martina, 
+
+
+You are running out of memory - which makes sense, given what you said about the number of samples.
+
+
+At the bottom of the job submit form (where you provide your files to the module) there is an option to increase the requested memory.
+
+
+
+
+
+I would suggest trying 4 Gb first.
+
+
+Let us know if that helps.
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

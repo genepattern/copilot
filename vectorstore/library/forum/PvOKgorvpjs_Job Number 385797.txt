@@ -1,0 +1,1 @@
+A user encountered an error when attempting to use Voom normalization on microarray data imported via GEOImporter, and received guidance that since the data is from an Illumina microarray platform (not RNA-seq), Voom and DESeq2 are inappropriate analysis tools, with ComparativeMarkerSelection recommended as a more suitable alternative for this type of gene expression dataset.

@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/qTbb5MHHy-o
+Title: How to get a timestamp for old GenePattern GSEA result?
+----------------------------------------
+
+
+
+
+
+How to get a timestamp for old GenePattern GSEA result?
+14 views
+GSEA
+Skip to first unread message
+
+Viktor
+unread,
+Jan 29, 2019, 12:07:39 PM
+
+
+
+to GenePattern Help Forum
+
+Hello,
+
+ 
+
+I’ve been trying to reproduce GSEA results from old GenePattern using both new GenePattern and javaGSEA 3.0.
+
+ 
+
+I’ve been getting similar yet not identical results possibly because of random seed parameter with default timestamp value. The good news is that when I’m using producer_timestamp value from old GenePattern GSEA as a random seed value, the results from new GenePattern and javaGSEA are 100% identical. However I’m still confused as to which timestamp value to use in new GenePattern GSEA to make results 100% identical to old GenePattern GSEA. Any ideas?
+
+ 
+
+Index HTML and RPT file for old GenePattern GSEA attached.
+
+ 
+
+Thanks,
+
+Viktor
+
+
+GSEA_old.html
+
+GSEA_old.rpt
+David Eby
+unread,
+Jan 29, 2019, 4:58:18 PM
+
+
+
+to genepatt...@googlegroups.com
+Hi Viktor,
+
+
+I posted an answer to your question over on the GSEA forum:
+https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/gsea-help/n-qhB2E_WDA
+
+
+
+Just adding that link here for future reference in case others have the same question...
+
+
+- David
+
+David Eby
+www.gsea-msigdb.org
+igv.org
+genepattern.org
+
+
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/d4993002-56cd-4c38-8325-b347d7f3987b%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+Reply all
+
+Reply to author
+
+Forward

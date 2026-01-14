@@ -1,0 +1,62 @@
+URL: https://groups.google.com./g/genepattern-help/c/8KIwwnGsdGo
+Title: RANK normalization
+----------------------------------------
+
+
+
+
+
+RANK normalization
+15 views
+Skip to first unread message
+
+김섭
+unread,
+Aug 17, 2017, 12:01:09 AM
+
+
+
+to GenePattern Help Forum
+
+I use RankNormalize (Version 1.9) to normalize mRNAseq and miRNAseq data
+
+I downloaded files from TCGA database.
+
+Some values are NA(I think Not assessed).
+
+For the first time, I did RankNormalization without change.
+
+After processiong, I look at value which was NA and there was some change(NA-> some values)
+
+I think that excluding this data is best way.
+
+Do you have any suggestions???
+
+
+
+
+
+Barbara Hill
+unread,
+Aug 18, 2017, 11:26:01 AM
+
+
+
+to genepatt...@googlegroups.com
+Hello, 
+
+
+I would suggest reviewing the section in the documentation titled: Adjusting the Dataset Before Ranking
+http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/RankNormalize/2
+
+
+Best
+
+
+Barbara
+
+Reply all
+
+Reply to author
+
+Forward

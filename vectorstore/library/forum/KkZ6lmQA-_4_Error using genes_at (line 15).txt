@@ -1,0 +1,1 @@
+GenePattern forum thread summary focusing on a user experiencing an error with the `genes_at` function when running GISTIC2 on DNA methylation segmentation data, where the user reported that end positions appear correct, but an error indicates end position is before start position, with a support representative requesting additional job details for troubleshooting.

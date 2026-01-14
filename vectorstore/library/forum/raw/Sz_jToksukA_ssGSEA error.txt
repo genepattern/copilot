@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/Sz_jToksukA
+Title: ssGSEA error
+----------------------------------------
+
+
+
+
+
+ssGSEA error
+40 views
+Skip to first unread message
+
+Julia Huguet
+unread,
+Jul 20, 2022, 2:37:20 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+I am trying a ssGSEA but it constantly appears the following error: There was an unexpected file transfer error while submitting your job. Please check your network connection and try to submit again or use the Uploader in the Files tab.
+
+
+I've tried several times and days and it's not fixed it. Some mates have tried the same with the same files and they don't receive the error.
+If someone could help me to fix it I would be grateful.
+Thanks, 
+Júlia.
+forre...@gmail.com
+unread,
+Jul 21, 2022, 3:47:16 PM
+
+
+
+to GenePattern Help Forum
+Hi Júlia,
+
+
+Can you tell me a bit about where you are connecting from (geographically and the organization) and whether you are on a VPN or have other specific network details.
+
+
+The file uploads go direct to the Amazon AWS Simple Storage Service (S3) so if you have an local IT department they may be able to help check if that is blocked for some reason.
+
+
+Thanks for your patience as we try to get this fixed for you
+
+
+Forrest
+
+
+Reply all
+
+Reply to author
+
+Forward

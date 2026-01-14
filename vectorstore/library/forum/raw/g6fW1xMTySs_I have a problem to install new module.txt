@@ -1,0 +1,69 @@
+URL: https://groups.google.com./g/genepattern-help/c/g6fW1xMTySs
+Title: I have a problem to install new module
+----------------------------------------
+
+
+
+
+
+I have a problem to install new module
+21 views
+Skip to first unread message
+
+GenePattern Help Forum
+unread,
+Jul 31, 2017, 2:37:15 PM
+
+
+
+to GenePattern Help Forum
+
+Hello,
+
+I am writing to seek your assistance in a matter with the installation of module. Whene i click on " There are no modules installed. Click here to install modules from the module repository" a new web page opens showing that :
+
+Sorry, the module repository is not currently available: http://www.broadinstitute.org/webservices/betaModuleRepository
+
+White spaces are required between publicId and systemId.
+
+If you use a web proxy to connect to the internet, please ensure your web proxy settings are correct
+
+I don't understand because i don't use a web proxy to connect to the internet.
+
+Barbara Hill
+unread,
+Jul 31, 2017, 2:38:00 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+I assume you have installed a local GenePattern server. On what platform? (Windows, Mac, Linux...etc) and were you able to install from the default, Public repository?
+
+Please note that we are going to be shutting down this email address in the near future, and will be answering questions, instead in our new forum: 
+
+Best
+
+-Barbara
+
+Alexis
+unread,
+Aug 2, 2017, 12:29:16 AM
+
+
+
+to GenePattern Help Forum
+Thank you for your answer !
+I had the same probleme as Berengere (https://groups.google.com/forum/#!topic/genepattern-help/I0wDFiWrZAA). I followed your guidance and it is perfect for me
+
+Best
+
+
+
+Reply all
+
+Reply to author
+
+Forward

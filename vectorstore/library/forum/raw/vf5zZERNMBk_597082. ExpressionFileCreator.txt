@@ -1,0 +1,54 @@
+URL: https://groups.google.com./g/genepattern-help/c/vf5zZERNMBk
+Title: 597082. ExpressionFileCreator
+----------------------------------------
+
+
+
+
+
+597082. ExpressionFileCreator
+6 views
+Skip to first unread message
+
+Ronald Missihoun
+unread,
+Aug 8, 2024, 11:04:43 AM
+
+
+
+to GenePattern Help Forum
+This was my error message while I was trying to create a file from my FQ/GZ folder.
+Stderr text reads: Error in scan(file, what, nmax, sep, dec, quote, skip, nlines, na.strings, :
+line 4 did not have 4 elements Calls: parseCmdLine ... create.expression.file -> read.clm -> read.table -> scan Execution halted.
+
+
+Attached is my clm file.
+Thanks for your help
+
+CIC WT.KO CLM File.txt
+Ted Liefeld
+unread,
+Aug 12, 2024, 7:12:53 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+Your first 3 lines have 2 tab characters after the second column.  You can see this if you open it in excel, or in vi and then use "set list" to display the tabs.  Try removing the extra tabs and resubmit the job.  If it still fails, please include a job number here so the admins can see it in context.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

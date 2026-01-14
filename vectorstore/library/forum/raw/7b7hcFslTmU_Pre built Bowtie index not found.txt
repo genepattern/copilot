@@ -1,0 +1,91 @@
+URL: https://groups.google.com./g/genepattern-help/c/7b7hcFslTmU
+Title: Pre built Bowtie index not found
+----------------------------------------
+
+
+
+
+
+Pre built Bowtie index not found
+7 views
+Skip to first unread message
+
+Boris Guyot
+unread,
+Feb 12, 2020, 11:52:55 PM
+
+
+
+to GenePattern Help Forum
+
+Hi, 
+
+
+I’m trying to use the Bowtie.Aligner module for RNA-seq experiments (fastq files) on the amazon cloud, my system is OS X 10.15.3
+
+I selected the Homo sapiens UCSC hg19 prebuilt bowtie index and I keep getting the following stderr message: (as an exemple: Job ID: 205522, parameters in attached file)
+
+
+Could not download file at: 'ftp.broadinstitute.org/pub/genepattern/rna_seq/pre_built_index/bowtie2/Homo_sapiens_UCSC_hg19.1.zip' at /opt/gpcloud/gp_home/taskLib/Bowtie.aligner.4.10/download_bowtie_index.pl line 133, <MD5SUMS> line 56.
+
+
+ It’s the same with other human prebuilt index and I also get similar error messages with the HiSat2Aligner module (Job ID 205266, parameters in attached file):
+
+
+Could not locate a HISAT2 index corresponding to basename "/opt/gpcloud/gp_home/users/.cache/uploads/cache/gpftp.broadinstitute.org/module_support_files/hisat2/index/by_genome/H.Sapiens_UCSC_hg19/genome"
+Error: Encountered internal HISAT2 exception (#1)
+Command: /usr/local/bin/hisat2-align-s --wrapper basic-0 -x /opt/gpcloud/gp_home/users/.cache/uploads/cache/gpftp.broadinstitute.org/module_support_files/hisat2/index/by_genome/H.Sapiens_UCSC_hg19/genome -S mapped.sam -k 5 --max-seeds 5 --n-ceil L,0,.15 --mp 6,2 --np 1 --rdg 5,3 --rfg 5,3 --pen-cansplice 0 --pen-noncansplice 12 --pen-canintronlen G,-8,1 --min-intronlen 20 --max-intronlen 500000 -X 500 -q --phred33 --fr --sp 2,1 -I 0 --score-min L,0,-.2 --pen-noncanintronlen G,-8,1 -p 1 -U /tmp/19.unp 
+(ERR): hisat2-align exited with value 1
+ 
+Thanks in advance for your help,
+
+
+Best
+
+
+Boris
+
+
+
+
+
+
+
+
+
+
+
+205266.png
+
+205522.png
+Barbara Hill
+unread,
+Feb 13, 2020, 12:57:54 PM
+
+
+
+to GenePattern Help Forum
+Hi Boris, 
+
+
+Thanks for this and for the extra information! 
+
+
+We believe that the Hisat2.Aligner issue is now resolved. It appeares to have been an issue with a node having run out of memory.
+
+
+We are still working on the Bowtie issue and will let you know as soon as we have that resolved.
+
+
+All the best,
+Barbara
+
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

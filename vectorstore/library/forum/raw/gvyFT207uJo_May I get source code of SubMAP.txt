@@ -1,0 +1,94 @@
+URL: https://groups.google.com./g/genepattern-help/c/gvyFT207uJo
+Title: May I get source code of SubMAP
+----------------------------------------
+
+
+
+
+
+May I get source code of SubMAP
+106 views
+Skip to first unread message
+
+tobin xiang
+unread,
+Jun 20, 2021, 1:46:21 AM
+
+
+
+to GenePattern Help Forum
+Dear developer,
+    These days, I want to use submap to compare two group of data cluster result. And I don't find a valid website which contains subMAP source code. And luckily I found genepattern have that.
+   But because of some political reason, I can't upload my data to gp server. Therefore, may I get the source code of SubMAP.
+Thanks.
+
+
+Message has been deleted
+Barbara Hill
+unread,
+Jun 21, 2021, 8:01:34 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+Since SubMap is written in R, you need only export it to get the source code. (see below) Note that it requires R 2.5 to run.
+
+
+Can you say a little more about why you can't upload data to GenePatttern? Are you getting an error? or can you not upload from your network?
+
+
+Best
+-Barbara
+
+
+tobin xiang
+unread,
+Jun 23, 2021, 10:58:28 PM
+
+
+
+to GenePattern Help Forum
+Wow! Thank you very much!
+I only clicked R code button, which is the code how to call genepattern in R but not source code.
+Thank you again.
+
+
+
+Anthony Castanza
+unread,
+Jun 23, 2021, 11:03:03 PM
+
+
+
+to genepatt...@googlegroups.com
+
+The button you’re looking for is the “Export” button not the “R Code” button. The Export button will download a zip archive that contains the actual code for the module (a .R file) along with the manifest that describes the various parameters, command line syntax and other technical details, as well as the documentation PDF.
+
+ 
+
+-Anthony
+
+ 
+
+Anthony S. Castanza, PhD
+
+Mesirov Lab, Department of Medicine
+
+University of California, San Diego
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/01f63da6-7c49-42ca-8315-c8032c51cfc6n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

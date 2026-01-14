@@ -1,0 +1,67 @@
+URL: https://groups.google.com./g/genepattern-help/c/a9NcSEfRUwc
+Title: Job id: 604988 - Error
+----------------------------------------
+
+
+
+
+
+Job id: 604988 - Error
+11 views
+Skip to first unread message
+
+ravi
+unread,
+Sep 22, 2024, 3:48:16 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I used normalised total gene count from DESeq2 as the input for DiSCoVER module and it returned an error.
+
+
+Could you please suggest what the error means and how I could rectify to move forward?
+
+
+Job id: 604988
+
+
+I eagerly wait for your suggestion.
+
+
+Thank you,
+Ravi.
+
+
+Ted Liefeld
+unread,
+Sep 23, 2024, 10:52:27 AM
+
+
+
+to GenePattern Help Forum
+Ravi,
+
+
+based off the error it looks like the csv files are possibly corrupted or are somehow incompatible with the code.  To test this I opened them in Excel (no problems, on a mac) and resaved them as csv files.  Diffing them showed a difference on the first line but I could not figure out what the issue was using my usual tools to show non-printable characters in a file.
+
+
+I am happy to report however that the new files  ran without error though.  So I would suggest opening and resaving them using excel and trying again.  If that still fails I can send you the versions I resaved to try.
+
+
+Hope this helps
+
+
+Ted
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

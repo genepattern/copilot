@@ -1,0 +1,1 @@
+A GenePattern user encountered missing output files when running the DAPPLE gene prioritization module, which were critical for obtaining gene ranking p-values. The issue was resolved by changing the permutation parameter from the default value of 0 to 1000, which enabled the calculation of p-values and generation of the required output files.

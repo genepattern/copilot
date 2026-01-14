@@ -1,0 +1,88 @@
+URL: https://groups.google.com./g/genepattern-help/c/9helJ0Gf4CA
+Title: Couldnt view the ComparativeMarkerSelectionViewer results
+----------------------------------------
+
+
+
+
+
+Couldnt view the ComparativeMarkerSelectionViewer results
+4 views
+Skip to first unread message
+
+Abdulazeez Giwa
+unread,
+Apr 14, 2019, 1:36:22 PM
+
+
+
+to GenePattern Help Forum
+
+
+I ran a differential gene expression job as described - ComparativeMarkerSelection, ComparativeMarkerSelectionViewer, ExtractComparativeMarkerSelection and HeatMapViewer. When i ran the ComparativeMarkerSelectionViewer job i could not view the results. The view that was supposed to come up did not. It gave a blank page. I was however able to view the HeatMapViewer image.
+
+
+I ran it on the public server (cloud). The JobID/no is 109829. I was on chrome browser.
+
+
+
+Barbara Hill
+unread,
+May 10, 2019, 2:17:04 PM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+
+Apologies for the very late response. Are you still having difficulty with the ComparativeMarkerSelectionViewer?
+
+
+Best
+-Barbara
+Abdulazeez Giwa
+unread,
+May 11, 2019, 8:41:47 AM
+
+
+
+to genepatt...@googlegroups.com
+No. it was resolved.
+
+
+Thanks.
+
+
+Regards.
+
+
+Abdulazeez
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To post to this group, send email to genepatt...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/e6ea6f80-eb91-4c56-b87f-011f7fb07b9d%40googlegroups.com.
+For more options, visit https://groups.google.com/d/optout.
+
+
+
+--
+
+Kind Regards
+
+
+Giwa, Abdulazeez O.
+
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,1 @@
+A GenePattern user encountered an error while performing hierarchical clustering and was advised to add the ".gct" file extension to the input file, which resolved the processing issue for this older module, suggesting that file naming conventions can be critical in bioinformatics data analysis workflows.

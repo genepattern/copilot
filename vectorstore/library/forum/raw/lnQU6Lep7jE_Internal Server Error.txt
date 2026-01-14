@@ -1,0 +1,61 @@
+URL: https://groups.google.com./g/genepattern-help/c/lnQU6Lep7jE
+Title: Internal Server Error
+----------------------------------------
+
+
+
+
+
+Internal Server Error
+11 views
+Skip to first unread message
+
+Thomas Sherman
+unread,
+Jul 9, 2019, 11:59:02 AM
+
+
+
+to genepatt...@googlegroups.com
+Hi,
+
+
+I've been getting the following error on both notebook.genepattern.org and hca.genepattern.org for the past hour or so.
+
+
+500 : Internal Server Error
+Failed to start your server on the last attempt. Please contact admin if the issue persists.
+You can try restarting your server from the home page.
+
+
+
+This happens with any account I try to log in with.
+
+
+Tom
+
+
+Barbara Hill
+unread,
+Jul 11, 2019, 3:06:02 PM
+
+
+
+to GenePattern Help Forum
+Hi Tom, 
+
+
+We have resolved the issue, and the workspaces should now be functioning normally.
+
+
+Please let us know if you run into any further trouble.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

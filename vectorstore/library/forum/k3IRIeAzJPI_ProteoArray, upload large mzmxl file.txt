@@ -1,0 +1,2 @@
+Here's the embedding-friendly summary:
+A user was attempting to upload a large zipped file containing 6 mzmxl files for ProteoArray analysis on GenePattern, encountering multiple challenges with file transfer and access, including initial file transfer confusion, server selection issues, and permission problems when trying to input the file path; the support staff recommended using file drag-and-drop instead of manual path entry and suggested using cloud.genepattern.org instead of the beta server for more stable file management.

@@ -1,0 +1,1 @@
+GenePattern forum discussion about ComBat batch effect correction where a user encountered an error processing 640 data points, likely due to incorrect GCT file formatting, with the forum moderator suggesting reviewing the ComBat documentation and proper file preparation for accurate batch effect correction.

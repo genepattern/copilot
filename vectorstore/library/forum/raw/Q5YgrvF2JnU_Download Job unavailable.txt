@@ -1,0 +1,58 @@
+URL: https://groups.google.com./g/genepattern-help/c/Q5YgrvF2JnU
+Title: Download Job unavailable
+----------------------------------------
+
+
+
+
+
+Download Job unavailable
+14 views
+Skip to first unread message
+
+Krystine Mansfield
+unread,
+Apr 5, 2021, 4:54:43 PM
+
+
+
+to GenePattern Help Forum
+I just ran a new job, after the maintenance window ended, and I noticed that the "Download job" option is no longer available as it was the last time I ran one in mid-March. Was this feature removed or is there a new bug? 
+Ted Liefeld
+unread,
+Apr 6, 2021, 8:16:58 AM
+
+
+
+to GenePattern Help Forum
+Hi
+
+
+this feature has been temporarily removed.  Part of the changes in yesterday's update make it impossible to zip up the collection of files for a module efficiently.  If this feature is very important for you please say so and we will try to move its re-implementation into one of the next releases,
+
+
+Thanks
+
+
+Ted 
+
+
+
+Krystine Mansfield
+unread,
+Apr 6, 2021, 9:06:11 AM
+
+
+
+to GenePattern Help Forum
+That is good to know. So far, this feature has been very useful as we are doing a lot of data comparison and parameter testing right now, and being able to easily download all the figures and tables for MetageneProjection has been crucial. If possible, I think re-implementing it would be beneficial for modules that generate larger amounts of output files.
+For now, I will export the files I need individually. Thank you for your quick response.
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

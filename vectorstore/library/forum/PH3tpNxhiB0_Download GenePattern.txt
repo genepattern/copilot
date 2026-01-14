@@ -1,0 +1,1 @@
+A GenePattern user inquired about a discrepancy between downloaded GenePattern Server versions (3.9.11 vs 3.9.10), and received a clarifying response that the team is updating their website, with the latest version now hosted on GitHub at version 3.9.11 build 228, with release notes still available on their official website, resolving the user's version confusion.

@@ -1,0 +1,164 @@
+URL: https://groups.google.com./g/genepattern-help/c/h-SK1A9SCv0
+Title: GISTIC_2.0 Error
+----------------------------------------
+
+
+
+
+
+GISTIC_2.0 Error
+30 views
+Skip to first unread message
+
+Debajyoti Kabiraj
+unread,
+Jul 6, 2024, 8:22:49 AM
+
+
+
+to GenePattern Help Forum
+Hi All,
+
+First, I'd like to thank you for creating such an excellent program as GISTIC_2.0. I'm trying this tool for the first time and am having some issues.
+Also, I'd want to mention that I'm running GISTIC_2.0 with the IchorCNA output .seg file as the input.
+It would be very appreciated if someone could please correct where I am going wrong. 
+I've also attached my input seg file.
+
+
+The Error file shows that
+
+Error using genes_at (line 15)
+End position is before start position
+
+Error in genetables (line 71)
+
+
+
+Error in write_gistic_outfiles (line 88)
+
+
+
+Error in run_focal_gistic (line 319)
+
+
+
+Error in run_gistic20 (line 124)
+
+
+
+Error in run_gistic2_from_seg (line 249)
+
+
+
+Error in gp_gistic2_from_seg (line 97)
+
+
+
+
+ichorCNA_02cBR_10kb_TEST_Fi.seg
+Ted Liefeld
+unread,
+Jul 8, 2024, 10:30:50 AM
+
+
+
+to GenePattern Help Forum
+Hi, it would help if you could include a jobnumber for the GenePattern server,
+
+
+Thanks
+
+Ted
+
+
+
+Debajyoti Kabiraj
+unread,
+Jul 8, 2024, 12:02:15 PM
+
+
+
+to GenePattern Help Forum
+Thank you for your response,
+
+My job Id is 590914
+
+I don't know how to get the server name, however, these is status of the job. Please, let me know if this information helps. 
+
+Status
+Queue
+arn:aws:batch:us-east-1:718039241689:job-queue/gp-cloud-default
+Exit Code
+255
+Status date
+Jul 06 02:45:30 PM
+Requested resources
+job.memory
+8 GB
+job.cpuCount
+1
+job.walltime
+24:00:00
+job.queue
+gp-cloud-default
+Event log
+Added to GenePattern
+Jul 06 10:03:53 AM
+Submitted to queue
+Jul 06 10:03:59 AM
+Started running
+Jul 06 10:06:56 AM
+Finished running
+Jul 06 02:45:28 PM
+Completed in GenePattern
+Jul 06 02:45:32 PM
+
+
+Regards,
+deb
+
+Andrew Cherniack
+unread,
+Jul 8, 2024, 3:04:12 PM
+
+
+
+to GenePattern Help Forum
+Try adding headers to your seg file.
+Standard headers are:  Sample	    Chromosome	Start	End	    Num_Probes	Segment_Mean
+
+
+
+Andrew Cherniack
+unread,
+Jul 8, 2024, 3:15:18 PM
+
+
+
+to GenePattern Help Forum
+Also, what genome build are you are you using?
+
+Another issue is that your copy number profiles are hyper-segmented. 
+I am not familiar with running IchorDNA, but there may be a problem with how your segments were generated.  
+
+Debajyoti Kabiraj
+unread,
+Jul 8, 2024, 9:06:53 PM
+
+
+
+to GenePattern Help Forum
+Thanks for your valuable responses, after adding the header it's working. 
+
+
+Best, 
+Deb
+
+
+
+
+Reply all
+
+Reply to author
+
+Forward

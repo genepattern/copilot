@@ -1,0 +1,89 @@
+URL: https://groups.google.com./g/genepattern-help/c/SiJoijGpfNQ
+Title: fcs to csv et vice versa
+----------------------------------------
+
+
+
+
+
+fcs to csv et vice versa
+12 views
+Skip to first unread message
+
+Vincent Blancheteau
+unread,
+Jan 6, 2021, 11:08:09 AM
+
+
+
+to GenePattern Help Forum
+Hello,
+
+I'd like to convert fcs files into csv files and vice versa. If I understand correctly, I'm in the right place. my question: genepattern does work on Mac or linux only, correct? nothing in windows?
+many thanks
+Vince
+
+
+
+Barbara Hill
+unread,
+Jan 8, 2021, 11:37:31 AM
+
+
+
+to GenePattern Help Forum
+Hello Vince, 
+
+
+Yes, you can convert fcs to csv with GenePattern. There are two modules - FcsToCsv and CsvToFcs - with rather self-explanatory names.
+
+
+The easiest way to use them is actually to just create an account on our hosted server and just run your jobs. This saves you from installing and maintaining your own GenePattern server (we do all that work in the AWS Cloud for you!).
+
+
+If you need to install your own server for security or privacy reasons...etc You can find information about that in our GitHub repository. 
+
+
+We do not currently support Windows as a local install. However, we are actively working on GenePattern in Docker (IE running in a Docker container) which will allow Windows users to once again have local GenePattern installs if they so choose. Stay tuned!
+
+
+Please let me know if I can help with anything else.
+
+
+Best
+-Barbara
+
+
+
+Vincent Blancheteau
+unread,
+Jan 8, 2021, 1:04:12 PM
+
+
+
+to genepatt...@googlegroups.com
+Dear Barbara,
+
+
+many thanks for your reply.
+
+
+best,
+
+vincent
+
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/0d3dbfa2-5ff9-43aa-abf3-caee1e0eb8d3n%40googlegroups.com.
+
+
+Reply all
+
+Reply to author
+
+Forward

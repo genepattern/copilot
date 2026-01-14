@@ -1,0 +1,207 @@
+URL: https://groups.google.com./g/genepattern-help/c/9DWKtB_kTo4
+Title: A Request for Quota Increase
+----------------------------------------
+
+
+
+
+
+A Request for Quota Increase
+20 views
+Skip to first unread message
+
+Dong Gun Oh
+unread,
+Nov 25, 2025, 6:29:34 PM
+
+
+
+to GenePattern Help Forum
+Hello Admin,
+
+
+I have a same problem. Could you please increase the quota for mine as well? Mine is a little bit above 40GB. I would say 50GB will be great for me. My username is wordmmm1234.
+
+
+Please let me know if you need anything from my end.
+
+
+Thank you!
+John Liefeld
+unread,
+Nov 26, 2025, 6:19:19 AM
+
+
+
+to GenePattern Help Forum
+You should now have a 50Gb quota.  please let us know if/when you no longer need the extra space.
+
+
+Ted
+
+
+
+Dong Gun Oh
+unread,
+Nov 26, 2025, 7:19:01 AM
+
+
+
+to GenePattern Help Forum
+Thank you so much!
+
+
+I have one more question; I am trying to upload and integrate my data which are in RDS form, but I am getting errors saying 1) when I upload the file it says the file extension is not one of the expected types txt. 2) When I run the samples, I have "subscript out of bounds" as an error. Could you please help me out to solve these errors?
+
+
+Thank you again!
+
+
+
+2025년 11월 26일 수요일 오전 9시 19분 19초 UTC-5에 John Liefeld님이 작성:
+
+
+Ted (aka John) Liefeld
+unread,
+Nov 26, 2025, 7:36:19 AM
+
+
+
+to genepatt...@googlegroups.com
+You can ignore the file extension warning as it's just a warning, probably the module does not define input file extensions.  For the subscript I would need to see more detail but it's probably a problem with the dataframe/matrix in your RDS file.  How was the rds file generated?
+
+
+btw the lab is shut down for the US Thanksgiving holiday so responses may be slow or delayed until next Monday.
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/311245e6-1829-4949-8809-9873a24acff4n%40googlegroups.com.
+
+Dong Gun Oh
+unread,
+Nov 26, 2025, 7:38:54 AM
+
+
+
+to genepatt...@googlegroups.com
+Thank you so much! I just attached the error txts.
+
+
+These rds files are files after PostQC on Seurat were done and integrated. I want to integrate all into one is what I am trying.
+
+
+Please let me know if you need more information.
+
+
+2025년 11월 26일 (수) AM 10:36, Ted (aka John) Liefeld <jlie...@cloud.ucsd.edu>님이 작성:
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAJVzJCOH3i6kMmQMcwYytOqD3nGk8pw30%2B_Xm0WUs%2B-qrHAXRA%40mail.gmail.com.
+
+
+
+
+
+--
+
+Dong Gun Oh (Dan)
+do...@gatech.edu
+
+Georgia Institute of Technology
+Wallace H. Coulter Department of Biomedical Engineering
+
+
+
+stderr.txt
+
+stdout.txt
+Ted Liefeld
+unread,
+Nov 26, 2025, 7:41:18 AM
+
+
+
+to genepatt...@googlegroups.com
+What is the job number?
+
+
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CAHF%3DjmNiKewQ_1c3svEudmdQoe%3DtrBicVk6hLpO%3Dui5_fgZ1pg%40mail.gmail.com.
+
+
+
+
+
+--
+
+Ted Liefeld                                      UC San Diego
+
+Mesirov Lab                                    lie...@ucsd.edu                                
+Office 2A24, BRF-II                        858-246-1974
+
+
+Dong Gun Oh
+unread,
+Nov 26, 2025, 7:42:53 AM
+
+
+
+to genepatt...@googlegroups.com
+It was 664267 and I am running them again now which is 664273,
+
+
+Thank you!
+
+
+2025년 11월 26일 (수) AM 10:41, 'Ted Liefeld' via GenePattern Help Forum <genepatt...@googlegroups.com>님이 작성:
+
+
+To view this discussion visit https://groups.google.com/d/msgid/genepattern-help/CADqKjdQ7L38ikT6pwWhhwAcn5viBivBDPGmbdpkAmEjv%3DQjG0g%40mail.gmail.com.
+
+
+John Liefeld
+unread,
+Nov 26, 2025, 7:54:57 AM
+
+
+
+to GenePattern Help Forum
+It looks like the contents of the rds file don't exactly match what it is expecting for an assay.  I am not familiar with this module and have asked a few other lab members to take a look but I am not sure if they are working today either due to the holiday.  The most likely path forward would be to use R to convert the rds files back to txt files similar in format to the examples in the module documentation (https://github.com/genepattern/Seurat.IntegrateData/blob/v3/doc.md) and then to run it again using the txt files.
+
+
+Hope this helps
+
+Ted
+
+
+
+John Liefeld
+unread,
+Nov 29, 2025, 10:56:14 AM
+
+
+
+to GenePattern Help Forum
+
+Hi,  I was just going to take another look and it seems the input files for you job are no longer on the server.  If you make them available to me I will see if I can translates them into the txt format and see if I can get past the errors in your analysis.  Probably the easiest way to share them securely is to upload to GenePattern and run another seurat integrateData job and send me the new job number.
+
+
+Thanks
+
+
+Ted
+
+
+Reply all
+
+Reply to author
+
+Forward

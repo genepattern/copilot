@@ -1,0 +1,60 @@
+URL: https://groups.google.com./g/genepattern-help/c/GP0_0k0gIEo
+Title: Error running example dataset on gene expression analysis protocol
+----------------------------------------
+
+
+
+
+
+Error running example dataset on gene expression analysis protocol
+4 views
+DGE
+geneexpression
+sample
+Skip to first unread message
+
+angela cannata
+unread,
+May 11, 2020, 9:48:34 PM
+
+
+
+to GenePattern Help Forum
+Please respond with the following information as applicable:
+ A complete description of the problem (ie what you were trying to do and what went wrong):
+Trying to learn how to use the software by going through the Differential Gene Expression protocol on the main page. For each step I used the "open module with sample dataset" and ran the module but an error returned for each step. Any ideas why the sample might not run?
+
+Job ID if run on a publicly available server. 231371
+
+
+If not on Public Server, please share your input files, if possible. If you need to do so privately, let us know.
+ 
+   What were your Parameter values?
+   Server Platform (Mac/Linux)?
+   Any errors or warnings you see in either stderr.txt, stdout.txt or popup dialogues:
+
+
+Barbara Hill
+unread,
+May 15, 2020, 12:24:54 PM
+
+
+
+to GenePattern Help Forum
+Hello, 
+
+
+This job seems to have been deleted from the server.
+
+
+Please let us know if you are still having trouble.
+
+
+Best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

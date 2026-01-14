@@ -1,0 +1,1 @@
+A GenePattern user experienced an error when reading a GCT file during a gene expression analysis, specifically a `ParseException` at line 4, column 0 indicating non-numeric data. The recommended solution was to ensure the file has a .gct extension and follows the correct GCT file format specification, with careful attention to data formatting and numeric entries in each column.

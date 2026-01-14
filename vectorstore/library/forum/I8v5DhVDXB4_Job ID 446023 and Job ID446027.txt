@@ -1,0 +1,1 @@
+A user encountered an error with MutSigCV analysis on a breast cancer MAF file, receiving a "not enough mutations to analyze" error, likely due to insufficient mutation data in the sample (only 83 lines), with the recommendation to contact MutSigCV developers directly for further guidance on handling small mutation datasets.

@@ -1,0 +1,80 @@
+URL: https://groups.google.com./g/genepattern-help/c/Uem2Z9kf5Vs
+Title: add comment to job when submitting via python API
+----------------------------------------
+
+
+
+
+
+add comment to job when submitting via python API
+7 views
+REST
+python
+Skip to first unread message
+
+dl...@foghorntx.com
+unread,
+Mar 20, 2018, 9:42:27 AM
+
+
+
+to GenePattern Help Forum
+Hi - we discussed this at office hours, following up with a post here - when we submit a job via the python API, it would be great to able to add a comment (or tags) (this can currently be done via the UI).  I think you mentioned there is a REST API that can be used for this (tagging at least) - can you give us some pointers / curl command examples?
+
+
+Thank you,
+Dave
+Peter Carr
+unread,
+Mar 20, 2018, 10:07:51 AM
+
+
+
+to genepatt...@googlegroups.com
+I will look into the answer about the python api. Meanwhile, here are the curl commands to POST a tag and a comment for a job.
+
+
+To tag a job ...
+# template
+    $ curl --request POST --user "{userid}:{password}" {gpUrl}/rest/v1/jobs/{jobId}/tags/add?tagText="{tag-text}"
+# example
+    $ curl --request POST --user "test-user:test-password" http://127.0.0.1:8080/gp/rest/v1/jobs/818/tags/add?tagText="test-tag"
+e...
+
+
+To comment on a job ...
+# template
+    $ curl -X POST --user "{userid}:{password}" -d 'text={comment-text}' {gpUrl}/gp/rest/v1/jobs/{jobId}/comments/add
+
+
+# example
+    $ curl -X POST --user "test-user:test-password" -d 'text=my comment' http://127.0.0.1:8080/gp/rest/v1/jobs/818/comments/add
+
+
+
+
+Peter Carr
+unread,
+Mar 20, 2018, 10:16:37 AM
+
+
+
+to GenePattern Help Forum
+FYI, the source code is in GitHub, in case you ever need to reverse engineer any of the REST API calls ...
+    https://github.com/genepattern/genepattern-server/blob/master/src/org/genepattern/server/webapp/rest/api/v1/job/JobsResource.java
+
+
+dl...@foghorntx.com
+unread,
+Mar 20, 2018, 11:40:18 AM
+
+
+
+to GenePattern Help Forum
+Thanks Pete, much appreciated!
+
+Reply all
+
+Reply to author
+
+Forward

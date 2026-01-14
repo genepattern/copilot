@@ -1,0 +1,1 @@
+Jobs not being submitted to queue: user reported MutSigCV jobs appearing to be stuck in pending state, with potential resolution involving checking job status page and manually refreshing, which revealed jobs were actually running successfully and completing within approximately 40 minutes.

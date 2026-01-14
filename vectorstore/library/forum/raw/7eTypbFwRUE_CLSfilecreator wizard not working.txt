@@ -1,0 +1,53 @@
+URL: https://groups.google.com./g/genepattern-help/c/7eTypbFwRUE
+Title: CLSfilecreator wizard not working
+----------------------------------------
+
+
+
+
+
+CLSfilecreator wizard not working
+8 views
+Skip to first unread message
+
+Nicole Cruz
+unread,
+Sep 5, 2020, 10:53:43 AM
+
+
+
+to GenePattern Help Forum
+Hi, I'm trying to use the CLSfilecreator wizard but it says that it can't connect to the server. 
+
+
+modreposdoc.genepatter.org:8765/prod/ClsFileCreator/broad.mit.edu:cancer.software.genepattern.module.visualizer/00261/4/doc.html
+
+
+Is there any other wizard or software where I can create a CLS file?
+Barbara Hill
+unread,
+Sep 8, 2020, 9:12:47 AM
+
+
+
+to GenePattern Help Forum
+Hello Nicole, 
+
+
+How are you attempting to run this module? Are you using our cloud server? https://cloud.genepattern.org/
+
+
+I was able to run it there with an uploaded gct file.
+
+
+"modreposdoc.genepattern.org" is not a server that we know of or administer - is this where you are trying to run your job?
+
+
+All the best
+-Barbara
+
+Reply all
+
+Reply to author
+
+Forward

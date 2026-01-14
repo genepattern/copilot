@@ -1,0 +1,82 @@
+URL: https://groups.google.com./g/genepattern-help/c/cUme4cwOdkE
+Title: phantom ERR
+----------------------------------------
+
+
+
+
+
+phantom ERR
+14 views
+Skip to first unread message
+
+Ivan Chang
+unread,
+Oct 10, 2017, 3:57:58 PM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+I'm still getting random phantom ERR job return status even though everything in the modules ran as they should and within the resource and time limit set for the job. Our installation is using a modified SLURMjobrunner on SDSC Comet cluster, and even though there is no STDERR generated and SLURM reported 0 exit code, the job management on the GP would still show ERR by the reason of non-zero exit code some of the times. Repeating the runs confirms that sometimes GP gets it right by returning "The job finished without an error." Is there any way to capture exactly what is making GP think that the module is returning non-zero exit code? 
+
+
+Thanks!
+
+
+-Ivan
+Peter Carr
+unread,
+Oct 17, 2017, 9:47:03 AM
+
+
+
+to genepatt...@googlegroups.com
+I am not that familiar with all of the details. For starters, change the debug level. Edit the resources/log4j.properties file and restart your server. These statements show up in the genepattern.log file E.g.
+
+
+# debug JobRunner API
+log4j.logger.org.genepattern.server.executor.drm.JobExecutor=DEBUG
+
+
+# this line for debugging a particular job runner implementation
+# Note: use the fully qualified package or classname for your job runner
+#  example package name 
+log4j.logger.org.genepattern.server.executor.slurm=DEBUG
+#  example class name 
+log4j.logger.org.genepattern.server.executor.slurm.SlurmJobRunner=DEBUG
+ 
+Look at the JobExecutor source code to see what is logged from the GenePattern Server side of things. This is also a good reference for how to add debugging statements to your java code.
+
+
+    https://github.com/genepattern/genepattern-server/blob/develop/src/org/genepattern/server/executor/drm/JobExecutor.java
+
+
+
+The SlurmJobRunner has sparse debugging statements, but there is one example:
+
+
+    https://github.com/genepattern/genepattern-server/blob/develop/gp-slurm-queue/src/org/genepattern/server/executor/slurm/SlurmJobRunner.java
+
+
+
+Regards,
+Peter
+
+Peter Carr
+unread,
+Oct 17, 2017, 9:49:07 AM
+
+
+
+to GenePattern Help Forum
+Correction, here is the proper log4j.properties entry to set log level for a class
+
+
+Reply all
+
+Reply to author
+
+Forward

@@ -1,0 +1,118 @@
+URL: https://groups.google.com./g/genepattern-help/c/5E4mnYXOwxU
+Title: question about HSQL database
+----------------------------------------
+
+
+
+
+
+question about HSQL database
+24 views
+Skip to first unread message
+
+guy....@skynet.be
+unread,
+Feb 10, 2021, 8:02:48 AM
+
+
+
+to GenePattern Help Forum
+I have a problem. We are using GenePattern 3.9.10. Since shortly, after a change in the VM on which it runs, the server does not start up properly. The log contains an error :
+"java.sql.SQLExcption: Connections could not be acquired from the underlying database"
+How could this happen ? And, by the way, where actually is the database located ?
+
+
+regards
+Guy Bottu
+VIB BioinformaticsCore
+Barbara Hill
+unread,
+Feb 11, 2021, 6:09:36 AM
+
+
+
+to GenePattern Help Forum
+Hello Guy, 
+
+
+I'm not sure why 3.9.10 would be having problems on a new VM, as I'm not familiar with your install at this point, unfortuantely.
+
+
+As for the location of the HSQL database - all database configuration information should be found in, or pointed to from, a database*.properties file in $GP_HOME/resources.
+
+
+The default file from the last 3.9.10 release (patch 0.5.2) looked like this.  If I didn't already know the database configuration of a GenePattern server, that is where I would start looking. Additionally, assuming you are using the default HSQL database from that release,  the database files should be found in that same location.
+
+
+You should be able to query your database either from an external tool (using the information in the properties file to connect) or via the <your_server_url>/gp/sql.jsp page (which is accessible only by admin-level users, unless you have configured that differently)
+
+
+Please let us know if that helps at all.
+
+
+Best always,
+Barbara
+
+guy....@skynet.be
+unread,
+Feb 12, 2021, 1:07:57 AM
+
+
+
+to GenePattern Help Forum
+Dear Barbara
+
+
+Thanks for your reply. In the mean time the IT support had discovered that, for some mysterious reason, the file GenePatternDB.script had been altered and had become :
+-------------------------------------
+#HSQL Database Engine 2.3.2
+#Sat Jan 23 11:33:31 CET 2021
+version=2.3.2
+modified=no
+-----------------------------------------
+They replaced it by a file from the remnants of a previous GenePattern installation. The result is that GenePattern runs again, however the interface now displays info about non-existing modules, lacks recently added users, etc. Is it so that the HSQL database is actually generated on-the-fly in live memory using commands stored in GenePattternDB.script ? And hence, that there is no way to restore the functionality other than to reupload the modules from zip files and recreate the user accounts ?
+
+
+
+
+Op donderdag 11 februari 2021 om 15:09:36 UTC+1 schreef Barbara Hill:
+
+
+Barbara Hill
+unread,
+Feb 16, 2021, 6:42:50 AM
+
+
+
+to GenePattern Help Forum
+Hello Guy, 
+
+
+As I suspected there are a few things you might be able to do, but unless you had backups of the filesystem and the database from before the replacement, you are a little bit out of luck.
+
+
+Here's a more detailed response from our team software architect, Ted Liefeld:
+
+
+"The [database] contents are stored in that file so they may want to check for a recent backup that has the contents.  But if their current copy has modules that are not there but missing users that makes no sense unless they were deleting modules.  I would expect either no modules and no users (for a blank database) or modules and users but modules not running if the tasklib dir was also deleted.  So it's odd that they have modules there "but missing" unless they mean just a few of the last-added modules.
+
+
+As for recovery, if they have backups of the resources, jobResults, users, and tasklib directories (all from the same time point) that is about the only thing that would work that did not require re-creating users and re-installing modules.  
+
+
+If you delete your file system and database, and don't have backups, you won't have the contents of the file system and database."
+
+
+Please let us know if we can do anything more to help.
+
+
+All the best
+-Barbara
+
+
+
+Reply all
+
+Reply to author
+
+Forward

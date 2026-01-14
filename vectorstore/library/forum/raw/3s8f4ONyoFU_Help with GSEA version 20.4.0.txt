@@ -1,0 +1,140 @@
+URL: https://groups.google.com./g/genepattern-help/c/3s8f4ONyoFU
+Title: Help with GSEA version 20.4.0
+----------------------------------------
+
+
+
+
+
+Help with GSEA version 20.4.0
+35 views
+Skip to first unread message
+
+Tom Savy
+unread,
+Aug 14, 2024, 5:56:40 AM
+
+
+
+to GenePattern Help Forum
+Hi all,
+
+
+I am having an issue using GSEA with my data, all my runs stop due to error and can't I seem to figure out why. I am inclined to believe that this is not an error with my data inputs, because I have run the same datasets in the GSEA app successfully, using chip & gene set files that I downloaded. This error seems to happen only on the GenePattern/GSEA website. Additionally, the GenePattern error message points towards issues in getting files from MSigDB. 
+
+
+The error message I receive is this:
+
+
+
+MESSAGE START
+GenePattern Server error preparing job 598176 for execution. Error getting cached value for externalUrl=https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Human_Ensembl_Gene_ID_MSigDB.2024.1.Hs.chip: java.util.concurrent.ExecutionException - org.genepattern.server.job.input.cache.DownloadException: I/O Exception while downloading file: https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Human_Ensembl_Gene_ID_MSigDB.2024.1.Hs.chip org.genepattern.server.executor.JobDispatchException: Error getting cached value for externalUrl=https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Human_Ensembl_Gene_ID_MSigDB.2024.1.Hs.chip: java.util.concurrent.ExecutionException - org.genepattern.server.job.input.cache.DownloadException: I/O Exception while downloading file: https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Human_Ensembl_Gene_ID_MSigDB.2024.1.Hs.chip at org.genepattern.server.job.input.cache.FileCache.downloadCachedFile(FileCache.java:189) at org.genepattern.server.genepattern.GenePatternAnalysisTask.onJob(GenePatternAnalysisTask.java:774) at org.genepattern.server.executor.JobSubmitter.run(JobSubmitter.java:81) at org.genepattern.server.executor.AnalysisJobScheduler$2$1.run(AnalysisJobScheduler.java:142) at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) at java.util.concurrent.FutureTask.run(FutureTask.java:266) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at java.lang.Thread.run(Thread.java:750)
+
+MESSAGE END
+
+
+Please let me know if there is more that I can provide (.GCT/.CLS). Many thanks in advance.
+
+
+Kind regards,
+Thomas
+Ted (aka John) Liefeld
+unread,
+Aug 14, 2024, 6:28:16 AM
+
+
+
+to genepatt...@googlegroups.com
+Please provide one or more job numbers so that the admin can find the jobs to help with debugging,
+
+
+Thanks
+
+
+Ted
+
+
+
+
+--
+You received this message because you are subscribed to the Google Groups "GenePattern Help Forum" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to genepattern-he...@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/genepattern-help/45c115c0-afe6-4af6-b0cd-6492ed804d69n%40googlegroups.com.
+
+Tom Savy
+unread,
+Aug 14, 2024, 6:33:08 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+
+
+The error message I posted was from job 598176. From what I can see, jobs 598103 & 597960 have an identical error.
+
+
+The job numbers are shown in my "Jobs" as: [job_number]. GSEA
+Thanks.
+Kind regards,
+Thomas
+
+Ted Liefeld
+unread,
+Aug 14, 2024, 8:09:20 AM
+
+
+
+to GenePattern Help Forum
+Hi,
+
+
+this version of GSEA and  the data store at the Broad institute seem to be slightly out of sync.  The chip file URL that is in the GSEA parameter is wrong, missing a single character.  You can use this link for the moment;
+
+
+
+https://data.broadinstitute.org/gsea-msigdb/msigdb/annotations/human/Human_Ensembl_Gene_ID_MSigDB.v2024.1.Hs.chip
+
+Note the "v" 14 characters before the end of the URL.  It is missing in the parameter definition.  This looks like something the GSEA team can fix easily without a new module version.  i will contact them immediately, in the meantime try using the link with the 'v'.
+
+
+
+
+Ted
+
+
+
+
+Ted Liefeld
+unread,
+Aug 19, 2024, 6:37:44 AM
+
+
+
+to GenePattern Help Forum
+The GSEA urls have  been updated by the GSEA team so this issue should be resolved and not reoccur moving forwards.
+
+
+Hope this helps,
+
+
+Ted
+
+Tom Savy
+unread,
+Aug 20, 2024, 8:49:50 AM
+
+
+
+to GenePattern Help Forum
+Hi Ted,
+Thanks for the emails. The updated GSEA works with my data now.
+Kind regards,
+Thomas
+
+
+Reply all
+
+Reply to author
+
+Forward

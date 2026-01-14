@@ -1,0 +1,1 @@
+GenePattern forum thread about creating a color key/scale for a heatmap generated using Hierarchical Clustering module, with a response confirming that a default color legend is automatically displayed in the upper left corner of the image viewer, which helps users interpret the color representation of normalized RNA-Seq read counts.
