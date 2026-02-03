@@ -32,9 +32,14 @@ def validation_results(request):
 
 
 def markdown_to_html(markdown_text):
-    parser = MarkdownIt()
+    parser = MarkdownIt("gfm-like")
     html = parser.render(markdown_text)
     soup = BeautifulSoup(html, 'html.parser')
+
+    # Add Bootstrap classes to tables
+    for table in soup.find_all('table'):
+        table['class'] = table.get('class', []) + ['table', 'table-striped']
+
     for a in soup.find_all('a', href=True): a['target'] = '_blank'
     return str(soup)
 

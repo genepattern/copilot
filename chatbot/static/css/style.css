@@ -75,6 +75,45 @@ body {
     margin: 0;
 }
 
+/* Custom styling for tables in chat messages */
+.message.bot table.table {
+    font-size: 0.85em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+}
+
+.message.bot table.table thead th {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: #e9ecef;
+    border-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+}
+
+.message.bot table.table tbody tr {
+    background-color: rgba(248, 249, 250, 0.05);
+    color: #e9ecef;
+}
+
+.message.bot table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(248, 249, 250, 0.08);
+}
+
+.message.bot table.table tbody td {
+    color: #e9ecef;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: inherit;
+    padding: 8px 12px;
+}
+
+.message.bot code {
+    color: #33a1d6;
+}
+
+/*.message.bot table.table tbody tr:hover {*/
+/*    background-color: rgba(248, 249, 250, 0.12);*/
+/*}*/
+
 .input-area {
     display: flex;
     padding: 15px;
